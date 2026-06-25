@@ -37,6 +37,9 @@
 ## Раздел 2. Управление программой
 
 * [Operators](docs/01-javascript/17-operators.md)
+* [Conditionals](docs/01-javascript/18-conditionals.md)
+* [Loops](docs/01-javascript/19-loops.md)
+* [Error Handling](docs/01-javascript/20-error-handling.md)
 
 > Остальные главы будут добавляться по мере написания.
 
