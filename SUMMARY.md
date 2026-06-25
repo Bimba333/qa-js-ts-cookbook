@@ -41,6 +41,12 @@
 * [Loops](docs/01-javascript/19-loops.md)
 * [Error Handling](docs/01-javascript/20-error-handling.md)
 
+## Раздел 3. Functions
+
+* [Function Declaration](docs/01-javascript/21-function-declaration.md)
+* [Function Expression](docs/01-javascript/22-function-expression.md)
+* [Arrow Functions](docs/01-javascript/23-arrow-functions.md)
+
 > Остальные главы будут добавляться по мере написания.
 
 ---
