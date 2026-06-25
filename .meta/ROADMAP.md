@@ -2,7 +2,7 @@
 
 # Полная структура курса
 
-> Версия: 1.0
+> Версия: 2.0
 > Статус: Active
 
 ---
@@ -51,7 +51,7 @@
 
 # Часть I. JavaScript
 
-## Раздел 1. Основы языка
+## Раздел 1. Как работает JavaScript
 
 ### 1. Что такое JavaScript
 
@@ -75,8 +75,8 @@
 
 ### 3. Execution Context
 
-* Global Context
-* Function Context
+* Global Execution Context
+* Function Execution Context
 * Creation Phase
 * Execution Phase
 
@@ -84,13 +84,35 @@
 
 ### 4. Call Stack
 
-* Стек вызовов
-* Переполнение стека
-* Рекурсия
+* Push
+* Pop
+* Stack Trace
+* Stack Overflow
 
 ---
 
-### 5. Scope
+### 5. Memory
+
+* Зачем программе память
+* Значения
+* Идентификаторы
+* Жизненный цикл данных
+* Временные и постоянные данные
+
+---
+
+### 6. Variables
+
+* var
+* let
+* const
+* Объявление
+* Инициализация
+* Присваивание
+
+---
+
+### 7. Scope
 
 * Global Scope
 * Function Scope
@@ -99,29 +121,34 @@
 
 ---
 
-### 6. Lexical Environment
+### 8. Lexical Environment
+
+* Environment Record
+* Outer Environment
+* Связь со Scope
 
 ---
 
-### 7. Hoisting
+### 9. Hoisting
+
+* Function Hoisting
+* Variable Hoisting
+* Поведение var
+* Поведение let и const
 
 ---
 
-### 8. Temporal Dead Zone
+### 10. Temporal Dead Zone
+
+* TDZ
+* Почему существует TDZ
+* Практические ошибки
 
 ---
 
-## Раздел 2. Переменные и типы
+## Раздел 2. Значения и типы
 
-### 9. Variables
-
-* var
-* let
-* const
-
----
-
-### 10. Primitive Types
+### 11. Primitive Types
 
 * Number
 * String
@@ -133,48 +160,65 @@
 
 ---
 
-### 11. Object Type
+### 12. Object Type
 
----
-
-### 12. Stack & Heap
+* Object
+* Array
+* Function
+* Date
+* Другие встроенные объекты
 
 ---
 
 ### 13. References
 
----
-
-### 14. Type Conversion
-
-* Implicit
-* Explicit
+* Что такое ссылка
+* Передача по ссылке
+* Изменяемость объектов
 
 ---
 
-### 15. Equality
+### 14. Stack & Heap
+
+* Концептуальная модель памяти
+* Где находятся примитивы
+* Где находятся объекты
+* Ограничения модели Stack & Heap
+
+---
+
+### 15. Type Conversion
+
+* Implicit Conversion
+* Explicit Conversion
+* Truthy / Falsy
+
+---
+
+### 16. Equality
 
 * ==
 * ===
 * Object.is()
+* Практические рекомендации
 
 ---
 
 ## Раздел 3. Управление программой
 
-### 16. Operators
+### 17. Operators
 
 ---
 
-### 17. Conditionals
+### 18. Conditionals
 
 ---
 
-### 18. Loops
+### 19. Loops
 
 ---
 
-### 19. Error Handling
+### 20. Error Handling
 
 * throw
 * try
@@ -185,99 +229,99 @@
 
 ## Раздел 4. Functions
 
-### 20. Function Declaration
+### 21. Function Declaration
 
 ---
 
-### 21. Function Expression
+### 22. Function Expression
 
 ---
 
-### 22. Arrow Functions
+### 23. Arrow Functions
 
 ---
 
-### 23. Parameters
+### 24. Parameters
 
 ---
 
-### 24. Return
+### 25. Return
 
 ---
 
-### 25. Rest
+### 26. Rest
 
 ---
 
-### 26. Spread
+### 27. Spread
 
 ---
 
-### 27. Closures
+### 28. Closures
 
 ---
 
-### 28. this
+### 29. this
 
 ---
 
-### 29. call
+### 30. call
 
 ---
 
-### 30. apply
+### 31. apply
 
 ---
 
-### 31. bind
+### 32. bind
 
 ---
 
 ## Раздел 5. Objects
 
-### 32. Objects
+### 33. Objects
 
 ---
 
-### 33. Destructuring
+### 34. Destructuring
 
 ---
 
-### 34. Optional Chaining
+### 35. Optional Chaining
 
 ---
 
-### 35. Nullish Coalescing
+### 36. Nullish Coalescing
 
 ---
 
-### 36. Object Methods
+### 37. Object Methods
 
 ---
 
-### 37. Object Descriptors
+### 38. Object Descriptors
 
 ---
 
-### 38. Prototype
+### 39. Prototype
 
 ---
 
-### 39. Prototype Chain
+### 40. Prototype Chain
 
 ---
 
-### 40. Classes
+### 41. Classes
 
 ---
 
 ## Раздел 6. Arrays
 
-### 41. Arrays
+### 42. Arrays
 
 ---
 
-### 42. Iteration Methods
+### 43. Iteration Methods
 
 * map
 * filter
@@ -288,107 +332,107 @@
 
 ---
 
-### 43. Sorting
+### 44. Sorting
 
 ---
 
-### 44. Searching
+### 45. Searching
 
 ---
 
-### 45. Immutable Operations
+### 46. Immutable Operations
 
 ---
 
 ## Раздел 7. Collections
 
-### 46. Map
+### 47. Map
 
 ---
 
-### 47. Set
+### 48. Set
 
 ---
 
-### 48. WeakMap
+### 49. WeakMap
 
 ---
 
-### 49. WeakSet
+### 50. WeakSet
 
 ---
 
 ## Раздел 8. Modules
 
-### 50. import
+### 51. import
 
 ---
 
-### 51. export
+### 52. export
 
 ---
 
-### 52. CommonJS
+### 53. CommonJS
 
 ---
 
-### 53. ES Modules
+### 54. ES Modules
 
 ---
 
 ## Раздел 9. Async JavaScript
 
-### 54. Callback
+### 55. Callback
 
 ---
 
-### 55. Promise
+### 56. Promise
 
 ---
 
-### 56. Promise API
+### 57. Promise API
 
 ---
 
-### 57. async / await
+### 58. async / await
 
 ---
 
-### 58. Event Loop
+### 59. Event Loop
 
 ---
 
-### 59. Microtasks
+### 60. Microtasks
 
 ---
 
-### 60. Macrotasks
+### 61. Macrotasks
 
 ---
 
 ## Раздел 10. Advanced JavaScript
 
-### 61. Iterators
+### 62. Iterators
 
 ---
 
-### 62. Generators
+### 63. Generators
 
 ---
 
-### 63. Memory Management
+### 64. Memory Management
 
 ---
 
-### 64. Garbage Collector
+### 65. Garbage Collector
 
 ---
 
-### 65. Performance
+### 66. Performance
 
 ---
 
-### 66. Debugging
+### 67. Debugging
 
 ---
 
@@ -396,107 +440,107 @@
 
 ## Раздел 1. Основы
 
-### 67. Почему появился TypeScript
+### 68. Почему появился TypeScript
 
-### 68. Компилятор
+### 69. Компилятор
 
-### 69. tsconfig
+### 70. tsconfig
 
-### 70. Type Erasure
+### 71. Type Erasure
 
 ---
 
 ## Раздел 2. Типы
 
-### 71. Primitive Types
+### 72. Primitive Types
 
-### 72. Object Types
+### 73. Object Types
 
-### 73. Arrays
+### 74. Arrays
 
-### 74. Tuples
+### 75. Tuples
 
-### 75. Enum
+### 76. Enum
 
-### 76. Literal Types
+### 77. Literal Types
 
-### 77. Union Types
+### 78. Union Types
 
-### 78. Intersection Types
+### 79. Intersection Types
 
 ---
 
 ## Раздел 3. Описание типов
 
-### 79. Type Alias
+### 80. Type Alias
 
-### 80. Interface
+### 81. Interface
 
-### 81. Interface vs Type
+### 82. Interface vs Type
 
-### 82. Structural Typing
+### 83. Structural Typing
 
 ---
 
 ## Раздел 4. Вывод типов
 
-### 83. Type Inference
+### 84. Type Inference
 
-### 84. Narrowing
+### 85. Narrowing
 
-### 85. Type Guards
+### 86. Type Guards
 
-### 86. Assertions
+### 87. Assertions
 
-### 87. satisfies
+### 88. satisfies
 
-### 88. as const
+### 89. as const
 
 ---
 
 ## Раздел 5. Functions
 
-### 89. Function Types
+### 90. Function Types
 
-### 90. Overloads
+### 91. Overloads
 
-### 91. Generics
+### 92. Generics
 
-### 92. Generic Constraints
+### 93. Generic Constraints
 
 ---
 
 ## Раздел 6. Продвинутые типы
 
-### 93. keyof
+### 94. keyof
 
-### 94. typeof
+### 95. typeof
 
-### 95. Indexed Access Types
+### 96. Indexed Access Types
 
-### 96. Mapped Types
+### 97. Mapped Types
 
-### 97. Conditional Types
+### 98. Conditional Types
 
-### 98. infer
+### 99. infer
 
-### 99. Utility Types
+### 100. Utility Types
 
 ---
 
 ## Раздел 7. Экосистема
 
-### 100. Declaration Files
+### 101. Declaration Files
 
-### 101. Modules
+### 102. Modules
 
-### 102. Decorators
+### 103. Decorators
 
-### 103. ESLint
+### 104. ESLint
 
-### 104. Prettier
+### 105. Prettier
 
-### 105. TypeScript в Playwright
+### 106. TypeScript в Playwright
 
 ---
 
@@ -504,108 +548,114 @@
 
 ## Раздел 1. Архитектура
 
-### 106. Структура проекта
+### 107. Структура проекта
 
-### 107. Playwright Test
+### 108. Playwright Test
 
-### 108. Fixtures
+### 109. Fixtures
 
-### 109. Page Object
+### 110. Page Object
 
-### 110. Components
+### 111. Components
 
 ---
 
 ## Раздел 2. API
 
-### 111. REST
+### 112. REST
 
-### 112. API Client
+### 113. API Client
 
-### 113. Validation
+### 114. Validation
 
-### 114. Contract Testing
+### 115. Contract Testing
 
 ---
 
 ## Раздел 3. gRPC
 
-### 115. Основы
+### 116. Основы
 
-### 116. Клиенты
+### 117. Клиенты
 
-### 117. Проверки
+### 118. Проверки
 
 ---
 
 ## Раздел 4. Database
 
-### 118. PostgreSQL
+### 119. PostgreSQL
 
-### 119. Data Verification
+### 120. Data Verification
 
-### 120. Repository Pattern
+### 121. Repository Pattern
 
 ---
 
 ## Раздел 5. Framework
 
-### 121. Helpers
+### 122. Helpers
 
-### 122. Assertions
+### 123. Assertions
 
-### 123. Config
+### 124. Config
 
-### 124. Environment
+### 125. Environment
 
-### 125. Reporting
+### 126. Reporting
 
-### 126. Allure
+### 127. Allure
 
-### 127. Test Data Builders
+### 128. Test Data Builders
 
-### 128. Retry
+### 129. Retry
 
-### 129. Logging
+### 130. Logging
 
-### 130. Архитектура Framework
+### 131. Архитектура Framework
 
 ---
 
 # Часть IV. Финальный проект
 
-### 131. Проектирование Framework
+### 132. Проектирование Framework
 
-### 132. Создание структуры
+### 133. Создание структуры
 
-### 133. Реализация
+### 134. Реализация
 
-### 134. API Layer
+### 135. API Layer
 
-### 135. gRPC Layer
+### 136. gRPC Layer
 
-### 136. Database Layer
+### 137. Database Layer
 
-### 137. Helpers
+### 138. Helpers
 
-### 138. Fixtures
+### 139. Fixtures
 
-### 139. Assertions
+### 140. Assertions
 
-### 140. Reporting
+### 141. Reporting
 
-### 141. CI
+### 142. CI
 
-### 142. Итоговый рефакторинг
+### 143. Итоговый рефакторинг
 
-### 143. Best Practices
+### 144. Best Practices
 
-### 144. Заключение
+### 145. Заключение
 
 ---
 
 # Итог
 
-Общее количество глав: **144**
+Общее количество глав: **145**
 
-После завершения курса читатель должен понимать не только синтаксис JavaScript и TypeScript, но и внутренние механизмы языка, уметь применять их в реальных задачах Automation QA и самостоятельно проектировать и поддерживать промышлененный фреймворк автоматизированного тестирования.
+После завершения курса читатель будет:
+
+* понимать внутренние механизмы JavaScript, а не только синтаксис;
+* уверенно использовать TypeScript и понимать, как он работает поверх JavaScript;
+* самостоятельно проектировать промышлененный Automation QA Framework на Playwright;
+* понимать причины поведения языка и уметь анализировать сложные ошибки;
+* применять инженерный подход к разработке, отладке и сопровождению автотестов.

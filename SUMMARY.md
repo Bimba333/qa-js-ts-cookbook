@@ -21,20 +21,11 @@
 * [Как выполняется JavaScript](docs/01-javascript/02-how-javascript-works.md)
 * [Execution Context](docs/01-javascript/03-execution-context.md)
 * [Call Stack](docs/01-javascript/04-call-stack.md)
-* [Scope](docs/01-javascript/05-scope.md)
-* [Lexical Environment](docs/01-javascript/06-lexical-environment.md)
-* [Hoisting](docs/01-javascript/07-hoisting.md)
-* [Temporal Dead Zone](docs/01-javascript/08-temporal-dead-zone.md)
-
-## Раздел 2. Переменные и типы
-
-* [Variables](docs/01-javascript/09-variables.md)
-* [Primitive Types](docs/01-javascript/10-primitive-types.md)
-* [Object Type](docs/01-javascript/11-object-type.md)
-* [Stack и Heap](docs/01-javascript/12-stack-and-heap.md)
-* [References](docs/01-javascript/13-references.md)
-* [Type Conversion](docs/01-javascript/14-type-conversion.md)
-* [Equality](docs/01-javascript/15-equality.md)
+* [Memory](docs/01-javascript/05-memory.md)
+* [Variables](docs/01-javascript/06-variables.md)
+* [Scope](docs/01-javascript/07-scope.md)
+* [Lexical Environment](docs/01-javascript/08-lexical-environment.md)
+* [Hoisting](docs/01-javascript/09-hoisting.md)
 
 > Остальные главы будут добавляться по мере написания.
 
