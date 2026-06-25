@@ -28,6 +28,15 @@
 * [Hoisting](docs/01-javascript/09-hoisting.md)
 * [Temporal Dead Zone](docs/01-javascript/10-temporal-dead-zone.md)
 * [Primitive Types](docs/01-javascript/11-primitive-types.md)
+* [Object Type](docs/01-javascript/12-object-type.md)
+* [References](docs/01-javascript/13-references.md)
+* [Stack & Heap](docs/01-javascript/14-stack-and-heap.md)
+* [Type Conversion](docs/01-javascript/15-type-conversion.md)
+* [Equality](docs/01-javascript/16-equality.md)
+
+## Раздел 2. Управление программой
+
+* [Operators](docs/01-javascript/17-operators.md)
 
 > Остальные главы будут добавляться по мере написания.
 
