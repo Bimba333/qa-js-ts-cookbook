@@ -26,6 +26,8 @@
 * [Scope](docs/01-javascript/07-scope.md)
 * [Lexical Environment](docs/01-javascript/08-lexical-environment.md)
 * [Hoisting](docs/01-javascript/09-hoisting.md)
+* [Temporal Dead Zone](docs/01-javascript/10-temporal-dead-zone.md)
+* [Primitive Types](docs/01-javascript/11-primitive-types.md)
 
 > Остальные главы будут добавляться по мере написания.
 
