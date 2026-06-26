@@ -46,6 +46,11 @@
 * [Function Declaration](docs/01-javascript/21-function-declaration.md)
 * [Function Expression](docs/01-javascript/22-function-expression.md)
 * [Arrow Functions](docs/01-javascript/23-arrow-functions.md)
+* [Parameters](docs/01-javascript/24-parameters.md)
+* [Return](docs/01-javascript/25-return.md)
+* [Rest Parameters](docs/01-javascript/26-rest.md)
+* [Spread](docs/01-javascript/27-spread.md)
+* [Closures](docs/01-javascript/28-closures.md)
 
 > Остальные главы будут добавляться по мере написания.
 
