@@ -59,6 +59,13 @@
 ## Раздел 4. Objects
 
 * [Objects](docs/01-javascript/33-objects.md)
+* [Destructuring](docs/01-javascript/34-destructuring.md)
+* [Optional Chaining](docs/01-javascript/35-optional-chaining.md)
+* [Nullish Coalescing](docs/01-javascript/36-nullish-coalescing.md)
+* [Object Methods](docs/01-javascript/37-object-methods.md)
+* [Object Descriptors](docs/01-javascript/38-object-descriptors.md)
+* [Prototype](docs/01-javascript/39-prototype.md)
+* [Prototype Chain](docs/01-javascript/40-prototype-chain.md)
 
 > Остальные главы будут добавляться по мере написания.
 
