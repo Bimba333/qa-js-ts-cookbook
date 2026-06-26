@@ -51,6 +51,14 @@
 * [Rest Parameters](docs/01-javascript/26-rest.md)
 * [Spread](docs/01-javascript/27-spread.md)
 * [Closures](docs/01-javascript/28-closures.md)
+* [this](docs/01-javascript/29-this.md)
+* [call](docs/01-javascript/30-call.md)
+* [apply](docs/01-javascript/31-apply.md)
+* [bind](docs/01-javascript/32-bind.md)
+
+## Раздел 4. Objects
+
+* [Objects](docs/01-javascript/33-objects.md)
 
 > Остальные главы будут добавляться по мере написания.
 
