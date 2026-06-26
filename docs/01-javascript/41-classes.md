@@ -1,0 +1,1437 @@
+# Classes
+
+## Связь с предыдущей главой
+
+Предыдущие главы объяснили три связанные идеи.
+
+Сначала Object Methods:
+
+```text
+Object
+│
+├── State
+└── Behavior
+```
+
+Затем Prototype:
+
+```text
+Many objects
+│
+▼
+One shared behavior
+```
+
+Затем Prototype Chain:
+
+```text
+Need property
+│
+▼
+Current object
+│
+├── Found? use it
+└── Not found
+    │
+    ▼
+    Next prototype
+```
+
+Теперь появляется следующий практический вопрос:
+
+> Как удобно создать много похожих objects, которые имеют own data and shared prototype methods?
+
+Вручную это возможно:
+
+```text
+create object
+│
+add own data
+│
+connect prototype
+│
+repeat many times
+```
+
+Но repeated setup быстро становится шумным.
+
+Classes дают более удобную форму для этой задачи:
+
+```text
+Need many similar objects
+│
+▼
+Class
+│
+▼
+Creates objects
+│
+▼
+Objects still use prototypes
+```
+
+Важно: classes do not replace prototypes. Classes use prototypes.
+
+---
+
+## Предварительные требования
+
+Для этой главы нужно понимать:
+
+* что object can contain own data;
+* что methods are function object properties;
+* что ordinary method invocation chooses receiver from call form;
+* что prototype is ordinary object used as shared source of properties;
+* что Prototype Chain is lookup algorithm;
+* что own property wins over inherited property;
+* что method location and receiver are different concepts.
+
+Не требуется знать inheritance, `extends`, `super`, private fields, static members, decorators, `instanceof`, advanced constructor behavior or transpilation. Эти темы будут изучаться позже.
+
+---
+
+## Время изучения
+
+Ориентировочное время:
+
+```text
+Чтение главы:            150-190 минут
+Разбор схем:             70-90 минут
+Запуск примеров:         25-35 минут
+Практика:                130-160 минут
+Повторение материала:    35 минут
+```
+
+Уровень сложности: **L4**.
+
+Classes выглядят как новая большая тема, но в этой главе они изучаются как следующий слой над уже понятной моделью: object creation + own data + shared prototype methods.
+
+---
+
+## Навигация
+
+Предыдущая глава:
+
+```text
+docs/01-javascript/40-prototype-chain.md
+```
+
+Текущая глава:
+
+```text
+docs/01-javascript/41-classes.md
+```
+
+Следующая глава:
+
+```text
+docs/01-javascript/42-class-inheritance.md
+```
+
+Следующая глава ответит:
+
+> Как one class can reuse behavior from another class?
+
+---
+
+## Цели обучения
+
+После изучения этой главы вы будете понимать:
+
+* зачем classes появились в JavaScript;
+* какую повторяющуюся работу class убирает;
+* что такое class declaration;
+* зачем нужен constructor;
+* что такое instance;
+* как создаются own data properties;
+* где находятся class methods на высоком уровне;
+* почему class does not replace prototype;
+* почему class improves readability for repeated object creation;
+* как classes применяются in Automation QA architecture.
+
+---
+
+## Мотивация
+
+Начнем не с `class`.
+
+Начнем с проблемы.
+
+Есть Page Object:
+
+```javascript
+const loginPage = {
+  name: 'LoginPage',
+  url: '/login'
+};
+```
+
+Есть shared behavior:
+
+```javascript
+const pageBehavior = {
+  describePage() {
+    return `${this.name}: ${this.url}`;
+  }
+};
+```
+
+Можно вручную связать object with prototype:
+
+```javascript
+Object.setPrototypeOf(loginPage, pageBehavior);
+```
+
+Для одного object это нормально.
+
+Но теперь нужно много pages:
+
+```text
+LoginPage
+ProfilePage
+OrdersPage
+SettingsPage
+AdminPage
+...
+```
+
+Для каждого object повторяется setup:
+
+```text
+create object
+│
+add name
+│
+add url
+│
+connect prototype
+```
+
+Проблема:
+
+```text
+manual creation
+│
+├── repetitive
+├── easy to forget setup step
+├── noisy
+└── harder to read as architecture
+```
+
+Нужен object recipe:
+
+```text
+Page object recipe
+│
+├── receive name
+├── receive url
+├── create object
+└── attach shared methods
+```
+
+Class gives this recipe a language-level form.
+
+---
+
+## Теория
+
+Class is a convenient syntax for creating similar objects with shared prototype methods.
+
+Главная модель:
+
+```text
+Class
+│
+├── constructor
+│   └── prepares own data
+│
+└── methods
+    └── shared through prototype
+```
+
+Class declaration:
+
+```javascript
+class PageObject {
+  constructor(name, url) {
+    this.name = name;
+    this.url = url;
+  }
+
+  describePage() {
+    return `${this.name}: ${this.url}`;
+  }
+}
+```
+
+Создание instance:
+
+```javascript
+const loginPage = new PageObject('LoginPage', '/login');
+```
+
+В этой главе `new` рассматривается только как syntax for creating class instance. Advanced behavior of `new` will be studied later.
+
+Что важно сейчас:
+
+```text
+new PageObject(...)
+│
+▼
+creates object
+│
+▼
+runs constructor
+│
+▼
+own data appears on instance
+│
+▼
+methods are available through prototype lookup
+```
+
+### Constructor
+
+Constructor is special method that runs when new instance is created.
+
+```text
+new PageObject('LoginPage', '/login')
+│
+▼
+constructor receives values
+│
+▼
+this.name = name
+this.url = url
+```
+
+Constructor answers:
+
+> What own data should each new object receive?
+
+### Instance
+
+Instance is object created from class.
+
+```text
+Class
+│
+▼
+instance
+```
+
+For example:
+
+```javascript
+const loginPage = new PageObject('LoginPage', '/login');
+const profilePage = new PageObject('ProfilePage', '/profile');
+```
+
+Each instance has own data:
+
+```text
+loginPage
+│
+├── name: "LoginPage"
+└── url: "/login"
+
+profilePage
+│
+├── name: "ProfilePage"
+└── url: "/profile"
+```
+
+But methods are shared:
+
+```text
+PageObject methods
+│
+└── describePage()
+    │
+    ├── used by loginPage
+    └── used by profilePage
+```
+
+### Relationship with prototypes
+
+Class does not remove prototype lookup.
+
+High-level model:
+
+```text
+loginPage
+│
+├── own data
+│
+└── prototype ──► PageObject.prototype
+                  │
+                  └── describePage()
+```
+
+You do not need to manually write `PageObject.prototype` in this chapter.
+
+But you must understand the relationship:
+
+```text
+class method
+│
+▼
+available through prototype lookup
+```
+
+This is why classes fit naturally after Prototype and Prototype Chain.
+
+---
+
+## Внутренний механизм
+
+When JavaScript evaluates:
+
+```javascript
+const loginPage = new PageObject('LoginPage', '/login');
+```
+
+Mentally:
+
+```text
+Step 1
+│
+▼
+Create a new object
+```
+
+```text
+Step 2
+│
+▼
+Connect object to PageObject prototype
+```
+
+```text
+Step 3
+│
+▼
+Run constructor with this = new object
+```
+
+```text
+Step 4
+│
+▼
+Constructor writes own data
+```
+
+```text
+Step 5
+│
+▼
+Variable receives created instance
+```
+
+After creation:
+
+```text
+loginPage
+│
+├── own: name
+├── own: url
+└── prototype
+    └── describePage()
+```
+
+When code calls:
+
+```javascript
+loginPage.describePage();
+```
+
+Lookup still works:
+
+```text
+Need describePage
+│
+▼
+Check loginPage
+│
+└── not found as own property
+    │
+    ▼
+Check PageObject prototype
+│
+└── found
+```
+
+Receiver reminder:
+
+```text
+loginPage.describePage()
+│
+├── method found through prototype
+└── receiver is loginPage
+```
+
+Inside method:
+
+```javascript
+return `${this.name}: ${this.url}`;
+```
+
+`this.name` reads from instance:
+
+```text
+this
+│
+▼
+loginPage
+│
+├── name
+└── url
+```
+
+This is the same model from `this`, Prototype and Prototype Chain chapters.
+
+### Syntactic sugar
+
+After the mental model is clear, we can say the common phrase:
+
+Class syntax is often described as syntactic sugar over prototype-based object creation.
+
+Meaning:
+
+```text
+class
+│
+does not create a separate object model
+│
+uses prototype mechanism underneath
+```
+
+Do not reduce the whole chapter to this phrase. It is useful only after you understand what repetitive work class removes.
+
+---
+
+## Ментальная модель
+
+Class is an object recipe.
+
+Важно отделять учебную аналогию от технического определения.
+
+В этой главе слова `recipe`, `blueprint`, `template`, `factory` and `cookie cutter` используются как mental models.
+
+Они помогают понять назначение classes:
+
+```text
+need many similar objects
+│
+▼
+use one creation form
+```
+
+Но это не формальное определение class в JavaScript.
+
+Мы используем эти аналогии, чтобы увидеть проблему repeated object creation and the role of class syntax. Внутренние детали языка здесь не раскрываются и будут появляться только тогда, когда станут нужны для следующих тем.
+
+```text
+Class
+│
+└── recipe for similar objects
+```
+
+Factory blueprint:
+
+```text
+Blueprint
+│
+├── what data each object gets
+└── what shared methods objects can use
+```
+
+Cookie cutter:
+
+```text
+cookie cutter
+│
+├── same shape
+└── many cookies
+```
+
+Building template:
+
+```text
+template
+│
+├── common plan
+└── individual buildings
+```
+
+Production line:
+
+```text
+production line
+│
+├── input data
+├── create object
+└── output instance
+```
+
+Important distinction:
+
+```text
+Class
+│
+└── template
+
+Instance
+│
+└── actual object
+```
+
+---
+
+## Примеры кода
+
+Примеры находятся в:
+
+```text
+examples/chapter-44/
+```
+
+Запуск:
+
+```bash
+node examples/chapter-44/01-first-class.js
+```
+
+### Пример 1. First class
+
+Файл:
+
+```text
+examples/chapter-44/01-first-class.js
+```
+
+Показывает minimal class and instance creation.
+
+### Пример 2. Constructor
+
+Файл:
+
+```text
+examples/chapter-44/02-constructor.js
+```
+
+Показывает how constructor writes own data.
+
+### Пример 3. Methods
+
+Файл:
+
+```text
+examples/chapter-44/03-methods.js
+```
+
+Показывает shared methods used by different instances.
+
+### Пример 4. Prototype reminder
+
+Файл:
+
+```text
+examples/chapter-44/04-prototype-reminder.js
+```
+
+Показывает high-level relationship between class method and prototype lookup.
+
+### Пример 5. Common mistakes
+
+Файл:
+
+```text
+examples/chapter-44/05-common-mistakes.js
+```
+
+Показывает mistake: forgetting `this` inside class method.
+
+### Пример 6. QA example
+
+Файл:
+
+```text
+examples/chapter-44/06-qa-example.js
+```
+
+Показывает API client class with own config and shared methods.
+
+---
+
+## Частые вопросы
+
+### Class заменяет prototype?
+
+Нет.
+
+Class does not replace prototype. Class uses prototype.
+
+```text
+class method
+│
+▼
+available through prototype lookup
+```
+
+### JavaScript стал class-based language?
+
+Нет.
+
+В этой главе важно не менять mental model. Objects still use prototypes.
+
+### Constructor - это обычный method?
+
+Constructor has special role during instance creation. It runs when the new instance is created and prepares own data.
+
+Advanced constructor behavior будет изучаться позже.
+
+### Methods inside class copied into every instance?
+
+Нет.
+
+High-level model:
+
+```text
+instances
+│
+├── own data
+└── shared methods through prototype
+```
+
+### Нужно ли всегда использовать classes?
+
+Нет.
+
+Classes useful when you need many similar objects. For one small object, object literal may be clearer.
+
+---
+
+## Распространенные мифы
+
+### Миф: class создает новый object model
+
+Реальность: class gives convenient syntax over prototype-based object creation.
+
+### Миф: class methods are copied to every instance
+
+Реальность: methods are shared through prototype lookup.
+
+### Миф: constructor is for business logic
+
+Реальность: constructor should primarily initialize the new object. Heavy business logic makes instances harder to create and test.
+
+### Миф: classes are required for Automation QA
+
+Реальность: classes are useful for Page Objects and framework objects, but not every helper must be a class.
+
+---
+
+## Типичные ошибки
+
+### Ошибка 1. Забыть `new`
+
+Неправильный код:
+
+```javascript
+const loginPage = PageObject('LoginPage', '/login');
+```
+
+Что произошло:
+
+`class` must be called with `new`.
+
+Исправленный вариант:
+
+```javascript
+const loginPage = new PageObject('LoginPage', '/login');
+```
+
+Почему:
+
+Class describes how to create instance. `new` starts instance creation.
+
+### Ошибка 2. Забыть `this` inside method
+
+Неправильный код:
+
+```javascript
+class PageObject {
+  constructor(name) {
+    this.name = name;
+  }
+
+  describePage() {
+    return name;
+  }
+}
+```
+
+Что произошло:
+
+`name` is variable lookup, not instance property lookup.
+
+Исправленный вариант:
+
+```javascript
+describePage() {
+  return this.name;
+}
+```
+
+### Ошибка 3. Думать, что class method is own property
+
+Неправильная модель:
+
+```text
+instance
+│
+└── own method copy
+```
+
+Правильная модель:
+
+```text
+instance
+│
+└── prototype
+    └── method
+```
+
+### Ошибка 4. Перегружать constructor
+
+Неправильная модель:
+
+```text
+constructor
+│
+├── create object
+├── send API request
+├── read files
+└── assert result
+```
+
+Почему плохо:
+
+Instance creation becomes unpredictable.
+
+Исправленная модель:
+
+```text
+constructor
+│
+└── initialize object data
+```
+
+---
+
+## Практическое использование
+
+Use class when:
+
+```text
+many similar objects
+│
+├── same structure
+├── similar own data
+└── shared behavior
+```
+
+Examples:
+
+* Page Objects;
+* API clients;
+* validators;
+* request builders;
+* configuration wrappers;
+* framework service objects.
+
+Do not use class only because it looks serious.
+
+```text
+single simple object
+│
+└── object literal may be enough
+```
+
+Good class design:
+
+```text
+constructor
+│
+└── clear data initialization
+
+methods
+│
+└── meaningful behavior
+```
+
+---
+
+## Использование в Automation QA
+
+### Page Objects
+
+Page Objects are natural class candidates:
+
+```text
+class LoginPage
+│
+├── own data
+│   ├── page
+│   └── url
+│
+└── methods
+    ├── open()
+    └── login()
+```
+
+This creates readable test code:
+
+```javascript
+const loginPage = new LoginPage('/login');
+```
+
+### API clients
+
+API client class can keep environment config as own data:
+
+```text
+ApiClient instance
+│
+├── own baseUrl
+└── shared request methods
+```
+
+### Reusable validators
+
+Validator class:
+
+```text
+StatusValidator
+│
+├── expected
+├── actual
+└── isValid()
+```
+
+### Request builders
+
+Request builder class can collect request data and provide methods for building payloads.
+
+Detailed builder patterns will appear later in Automation QA architecture sections.
+
+### Framework objects
+
+Classes help make framework objects explicit:
+
+```text
+Reporter
+ConfigProvider
+ApiClient
+DatabaseClient
+PageObject
+```
+
+But they should still be small and readable.
+
+---
+
+## Диаграммы главы
+
+### 1. Why classes exist
+
+```text
+many similar objects
+│
+└── repeated setup
+    │
+    ▼
+    class
+```
+
+### 2. Manual creation
+
+```text
+create object
+│
+set data
+│
+connect prototype
+```
+
+### 3. Repeated setup
+
+```text
+object A setup
+object B setup
+object C setup
+```
+
+### 4. Class template
+
+```text
+Class
+│
+├── constructor
+└── methods
+```
+
+### 5. Instance creation
+
+```text
+Class
+│
+▼
+new instance
+```
+
+### 6. Constructor
+
+```text
+constructor
+│
+└── initializes own data
+```
+
+### 7. Methods
+
+```text
+class methods
+│
+└── shared behavior
+```
+
+### 8. Prototype reminder
+
+```text
+instance
+│
+└── prototype
+    └── class methods
+```
+
+### 9. Current JavaScript model
+
+```text
+Objects
+│
+├── Prototype
+├── Prototype Chain
+└── Classes
+```
+
+### 10. Object creation flow
+
+```text
+new Class(args)
+│
+▼
+create object
+│
+▼
+run constructor
+```
+
+### 11. QA Page Object example
+
+```text
+LoginPage instance
+│
+├── own url
+└── shared methods
+```
+
+### 12. API client example
+
+```text
+ApiClient
+│
+├── baseUrl
+└── request()
+```
+
+### 13. Test user example
+
+```text
+TestUser
+│
+├── email
+├── role
+└── describe()
+```
+
+### 14. Readability
+
+```text
+Class name
+│
+└── communicates object purpose
+```
+
+### 15. Common mistakes
+
+```text
+class without new
+│
+└── error
+```
+
+### 16. Blueprint analogy
+
+```text
+blueprint
+│
+└── many buildings
+```
+
+### 17. Cookie cutter analogy
+
+```text
+cutter
+│
+└── many cookies
+```
+
+### 18. Factory analogy
+
+```text
+factory
+│
+└── production output
+```
+
+### 19. Recipe analogy
+
+```text
+recipe
+│
+└── prepared object
+```
+
+### 20. Constructor flow
+
+```text
+arguments
+│
+▼
+constructor
+│
+▼
+own properties
+```
+
+### 21. Instance lifecycle
+
+```text
+create
+│
+initialize
+│
+use methods
+```
+
+### 22. Shared methods
+
+```text
+method
+│
+├── instance A
+└── instance B
+```
+
+### 23. Own data
+
+```text
+instance
+│
+├── own name
+└── own url
+```
+
+### 24. Prototype behind class
+
+```text
+class method
+│
+▼
+prototype
+```
+
+### 25. Class to prototype
+
+```text
+Class
+│
+└── prototype with methods
+```
+
+### 26. Object relationship
+
+```text
+instance
+│
+└── linked to class prototype
+```
+
+### 27. Mental model summary
+
+```text
+Class
+│
+▼
+Object template
+│
+▼
+Many similar objects
+```
+
+### 28. Complete class model
+
+```text
+Class
+│
+├── constructor -> own data
+└── methods -> prototype
+```
+
+### 29. Build process
+
+```text
+input values
+│
+▼
+constructor
+│
+▼
+instance
+```
+
+### 30. Receiver reminder
+
+```text
+instance.method()
+│
+└── receiver is instance
+```
+
+### 31. Constructor execution
+
+```text
+new
+│
+▼
+constructor runs
+```
+
+### 32. Shared behavior reuse
+
+```text
+one method
+│
+└── many instances
+```
+
+### 33. Bridge to Inheritance
+
+```text
+Class
+│
+▼
+next: reuse behavior between classes
+```
+
+### 34. Bridge to extends
+
+```text
+next chapter
+│
+└── extends
+```
+
+### 35. Object evolution
+
+```text
+object literal
+│
+▼
+prototype
+│
+▼
+class
+```
+
+### 36. Production line
+
+```text
+same class
+│
+├── object 1
+├── object 2
+└── object 3
+```
+
+### 37. Object identity
+
+```text
+instance A
+│
+≠
+instance B
+```
+
+### 38. Prototype lookup still works
+
+```text
+instance method call
+│
+▼
+prototype lookup
+```
+
+### 39. Hidden prototype
+
+```text
+class syntax
+│
+└── prototype mechanism underneath
+```
+
+### 40. Summary diagram
+
+```text
+Need many similar objects
+│
+▼
+Class
+│
+▼
+Creates instances
+│
+▼
+Instances have own data
+│
+▼
+Methods are shared through prototype
+```
+
+---
+
+## Итоги
+
+Classes appear after Prototype and Prototype Chain naturally.
+
+Prototype showed:
+
+```text
+many objects
+│
+▼
+shared behavior
+```
+
+Prototype Chain showed:
+
+```text
+method lookup
+│
+▼
+through prototypes
+```
+
+Classes answer:
+
+```text
+How to create many similar objects more conveniently?
+```
+
+Class gives object creation a readable template:
+
+```text
+Class
+│
+├── constructor
+│   └── own data
+│
+└── methods
+    └── shared through prototype
+```
+
+Classes do not replace prototypes. Classes use prototypes.
+
+The next chapter will explain class inheritance: how one class can reuse behavior from another class.
+
+---
+
+## Что нужно запомнить
+
+✓ Class is a convenient template for creating similar objects.
+
+✓ Constructor runs during instance creation.
+
+✓ Constructor usually initializes own data.
+
+✓ Instance is object created from class.
+
+✓ Class methods are shared through prototype lookup.
+
+✓ Classes do not replace prototypes.
+
+✓ Classes use prototypes.
+
+✓ `this` inside method refers to receiver during ordinary invocation.
+
+✓ Use classes when repeated object creation becomes clearer.
+
+✓ Inheritance is a separate topic for the next chapter.
+
+---
+
+## Quick Check
+
+1. What repetitive work does class remove?
+
+2. What does constructor usually do?
+
+3. What is an instance?
+
+4. Where does instance own data live?
+
+5. Are class methods copied into every instance?
+
+6. Why does class not replace prototypes?
+
+7. What does `new Class(...)` start?
+
+8. Why should constructor not contain too much business logic?
+
+9. How are classes useful for Page Objects?
+
+10. What topic comes next after classes?
+
+---
+
+## Практика
+
+Практические задания находятся в отдельном файле:
+
+```text
+practice/chapter-44.md
+```
+
+---
+
+## Решения
+
+Решения находятся в отдельном файле:
+
+```text
+solutions/chapter-44.md
+```
+
+Сначала выполните практику самостоятельно. Затем сравните reasoning, not only final answer.

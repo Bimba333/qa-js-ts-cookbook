@@ -66,6 +66,13 @@
 * [Object Descriptors](docs/01-javascript/38-object-descriptors.md)
 * [Prototype](docs/01-javascript/39-prototype.md)
 * [Prototype Chain](docs/01-javascript/40-prototype-chain.md)
+* [Classes](docs/01-javascript/41-classes.md)
+* [Class Inheritance](docs/01-javascript/42-class-inheritance.md)
+* [super](docs/01-javascript/43-super.md)
+
+## Раздел 5. Arrays
+
+* [Arrays](docs/01-javascript/44-arrays.md)
 
 > Остальные главы будут добавляться по мере написания.
 
