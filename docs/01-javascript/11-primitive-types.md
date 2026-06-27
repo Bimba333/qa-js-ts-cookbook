@@ -1030,7 +1030,7 @@ What kind of value is this?
 Примеры к этой главе находятся в папке:
 
 ```text
-examples/chapter-14/
+examples/01-javascript/chapter-11/
 ```
 
 Запускайте их из корня проекта.
@@ -1040,7 +1040,7 @@ examples/chapter-14/
 Файл:
 
 ```text
-examples/chapter-14/01-number.js
+examples/01-javascript/chapter-11/01-number.js
 ```
 
 Показывает Number values in test-like data.
@@ -1050,7 +1050,7 @@ examples/chapter-14/01-number.js
 Файл:
 
 ```text
-examples/chapter-14/02-string.js
+examples/01-javascript/chapter-11/02-string.js
 ```
 
 Показывает String values.
@@ -1060,7 +1060,7 @@ examples/chapter-14/02-string.js
 Файл:
 
 ```text
-examples/chapter-14/03-boolean.js
+examples/01-javascript/chapter-11/03-boolean.js
 ```
 
 Показывает Boolean values for flags.
@@ -1070,7 +1070,7 @@ examples/chapter-14/03-boolean.js
 Файл:
 
 ```text
-examples/chapter-14/04-null-undefined.js
+examples/01-javascript/chapter-11/04-null-undefined.js
 ```
 
 Показывает difference between `null` and `undefined`.
@@ -1080,7 +1080,7 @@ examples/chapter-14/04-null-undefined.js
 Файл:
 
 ```text
-examples/chapter-14/05-symbol-bigint.js
+examples/01-javascript/chapter-11/05-symbol-bigint.js
 ```
 
 Показывает less common primitive values.
@@ -1090,7 +1090,7 @@ examples/chapter-14/05-symbol-bigint.js
 Файл:
 
 ```text
-examples/chapter-14/06-typeof.js
+examples/01-javascript/chapter-11/06-typeof.js
 ```
 
 Показывает `typeof` results, including historical `typeof null`.
@@ -1443,10 +1443,10 @@ Objects are different and will be studied separately in the next chapter.
 Практика к этой главе находится в файле:
 
 ```text
-practice/chapter-14.md
+practice/01-javascript/11-primitive-types.md
 ```
 
-Перед практикой запустите примеры из `examples/chapter-14/` и для каждого value запишите primitive type and `typeof` result.
+Перед практикой запустите примеры из `examples/01-javascript/chapter-11/` и для каждого value запишите primitive type and `typeof` result.
 
 ---
 
@@ -1455,7 +1455,7 @@ practice/chapter-14.md
 Решения находятся в файле:
 
 ```text
-solutions/chapter-14.md
+solutions/01-javascript/11-primitive-types.md
 ```
 
 Открывайте решения после самостоятельной попытки. В этой главе важно сравнивать не только output, но и kind of value.

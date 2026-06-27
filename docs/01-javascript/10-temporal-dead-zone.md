@@ -1148,7 +1148,7 @@ Access is temporarily forbidden until initialization.
 Примеры к этой главе находятся в папке:
 
 ```text
-examples/chapter-13/
+examples/01-javascript/chapter-10/
 ```
 
 Запускайте их из корня проекта.
@@ -1158,7 +1158,7 @@ examples/chapter-13/
 Файл:
 
 ```text
-examples/chapter-13/01-let-tdz.js
+examples/01-javascript/chapter-10/01-let-tdz.js
 ```
 
 Показывает safe access after initialization и содержит закомментированный unsafe access.
@@ -1168,7 +1168,7 @@ examples/chapter-13/01-let-tdz.js
 Файл:
 
 ```text
-examples/chapter-13/02-const-tdz.js
+examples/01-javascript/chapter-10/02-const-tdz.js
 ```
 
 Показывает, что `const` becomes readable only after initialization.
@@ -1178,7 +1178,7 @@ examples/chapter-13/02-const-tdz.js
 Файл:
 
 ```text
-examples/chapter-13/03-var-comparison.js
+examples/01-javascript/chapter-10/03-var-comparison.js
 ```
 
 Показывает, что `var` readable as `undefined` before assignment.
@@ -1188,7 +1188,7 @@ examples/chapter-13/03-var-comparison.js
 Файл:
 
 ```text
-examples/chapter-13/04-initialization.js
+examples/01-javascript/chapter-10/04-initialization.js
 ```
 
 Показывает момент, когда `let` declaration without value still initializes identifier with `undefined`.
@@ -1198,7 +1198,7 @@ examples/chapter-13/04-initialization.js
 Файл:
 
 ```text
-examples/chapter-13/05-safe-access.js
+examples/01-javascript/chapter-10/05-safe-access.js
 ```
 
 Показывает безопасный порядок declaration before read.
@@ -1208,7 +1208,7 @@ examples/chapter-13/05-safe-access.js
 Файл:
 
 ```text
-examples/chapter-13/06-common-mistakes.js
+examples/01-javascript/chapter-10/06-common-mistakes.js
 ```
 
 Показывает common TDZ mistakes через comments and corrected code.
@@ -1556,10 +1556,10 @@ Do not say `let` and `const` are "not hoisted." A more precise model is: they ar
 Практика к этой главе находится в файле:
 
 ```text
-practice/chapter-13.md
+practice/01-javascript/10-temporal-dead-zone.md
 ```
 
-Перед практикой запустите примеры из `examples/chapter-13/` и для каждого identifier выпишите state: registered, uninitialized, initialized, readable.
+Перед практикой запустите примеры из `examples/01-javascript/chapter-10/` и для каждого identifier выпишите state: registered, uninitialized, initialized, readable.
 
 ---
 
@@ -1568,7 +1568,7 @@ practice/chapter-13.md
 Решения находятся в файле:
 
 ```text
-solutions/chapter-13.md
+solutions/01-javascript/10-temporal-dead-zone.md
 ```
 
 Открывайте решения после самостоятельной попытки. В этой главе важно сравнивать не только output, но и state identifier на каждой строке.

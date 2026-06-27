@@ -693,18 +693,18 @@ function helper(first, ...rest)
 Все примеры находятся в:
 
 ```text
-examples/chapter-29/
+examples/01-javascript/chapter-26/
 ```
 
 Запуск:
 
 ```bash
-node examples/chapter-29/01-rest-basic.js
-node examples/chapter-29/02-rest-array.js
-node examples/chapter-29/03-rest-position.js
-node examples/chapter-29/04-zero-many-arguments.js
-node examples/chapter-29/05-common-mistakes.js
-node examples/chapter-29/06-qa-example.js
+node examples/01-javascript/chapter-26/01-rest-basic.js
+node examples/01-javascript/chapter-26/02-rest-array.js
+node examples/01-javascript/chapter-26/03-rest-position.js
+node examples/01-javascript/chapter-26/04-zero-many-arguments.js
+node examples/01-javascript/chapter-26/05-common-mistakes.js
+node examples/01-javascript/chapter-26/06-qa-example.js
 ```
 
 ### 01-rest-basic.js
@@ -1040,7 +1040,7 @@ arg1, arg2, arg3
 Практика находится в файле:
 
 ```text
-practice/chapter-29.md
+practice/01-javascript/26-rest.md
 ```
 
 Сначала решайте задания на предсказание вывода без запуска. Главная цель - видеть, что находится внутри rest array.
@@ -1052,7 +1052,7 @@ practice/chapter-29.md
 Решения находятся в файле:
 
 ```text
-solutions/chapter-29.md
+solutions/01-javascript/26-rest.md
 ```
 
 Читайте решения после самостоятельной попытки. Проверяйте главный вопрос: как функция собирает все входящие arguments?

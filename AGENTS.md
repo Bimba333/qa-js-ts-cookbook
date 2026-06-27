@@ -169,6 +169,59 @@ Avoid unnecessary complexity.
 
 ---
 
+# Intentional Invalid Examples
+
+Some files in `/examples/` are intentionally invalid JavaScript.
+
+These files are used to demonstrate syntax errors, invalid code, and debugging situations.
+
+They must NOT be:
+
+* fixed;
+* rewritten;
+* deleted;
+* validated with `node --check`;
+* normalized into valid JavaScript.
+
+Examples include:
+
+* syntax-error demos;
+* broken code for debugging tasks;
+* educational invalid examples.
+
+If a file contains:
+
+```javascript
+// INTENTIONAL SYNTAX ERROR
+```
+
+or:
+
+```javascript
+// EDUCATIONAL INVALID EXAMPLE
+```
+
+then:
+
+* it MUST be excluded from validation;
+* it MUST be treated as documentation material;
+* Codex must preserve the intentional mistake.
+
+Validation rule:
+
+* `node --check` applies only to `examples/**/valid/**` or files without intentional-error markers;
+* files marked as intentional-error are excluded;
+* files named or organized as syntax-error, invalid, or broken examples must be reviewed as teaching material before any validation or edit.
+
+Codex must NEVER:
+
+* "fix" syntax-error examples;
+* "clean" broken code in the examples folder;
+* remove intentional mistakes;
+* normalize invalid code that exists for teaching.
+
+---
+
 # Automation QA Rules
 
 Whenever possible connect the topic with:

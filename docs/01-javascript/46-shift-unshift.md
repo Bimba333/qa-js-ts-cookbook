@@ -698,13 +698,13 @@ length уменьшается
 Примеры находятся в:
 
 ```text
-examples/chapter-46/
+examples/01-javascript/chapter-46/
 ```
 
 Запуск:
 
 ```bash
-node examples/chapter-46/01-unshift.js
+node examples/01-javascript/chapter-46/01-unshift.js
 ```
 
 ### Пример 1. unshift
@@ -712,7 +712,7 @@ node examples/chapter-46/01-unshift.js
 Файл:
 
 ```text
-examples/chapter-46/01-unshift.js
+examples/01-javascript/chapter-46/01-unshift.js
 ```
 
 Показывает добавление срочной задачи в начало.
@@ -722,7 +722,7 @@ examples/chapter-46/01-unshift.js
 Файл:
 
 ```text
-examples/chapter-46/02-shift.js
+examples/01-javascript/chapter-46/02-shift.js
 ```
 
 Показывает удаление и возврат первой задачи.
@@ -732,7 +732,7 @@ examples/chapter-46/02-shift.js
 Файл:
 
 ```text
-examples/chapter-46/03-index-shifting.js
+examples/01-javascript/chapter-46/03-index-shifting.js
 ```
 
 Показывает, почему существующие indexes меняются.
@@ -742,7 +742,7 @@ examples/chapter-46/03-index-shifting.js
 Файл:
 
 ```text
-examples/chapter-46/04-return-value.js
+examples/01-javascript/chapter-46/04-return-value.js
 ```
 
 Показывает, что `shift()` возвращает удаленный первый элемент.
@@ -752,7 +752,7 @@ examples/chapter-46/04-return-value.js
 Файл:
 
 ```text
-examples/chapter-46/05-common-mistakes.js
+examples/01-javascript/chapter-46/05-common-mistakes.js
 ```
 
 Показывает ошибку: ожидание, что `shift()` удалит последний элемент.
@@ -762,7 +762,7 @@ examples/chapter-46/05-common-mistakes.js
 Файл:
 
 ```text
-examples/chapter-46/06-qa-example.js
+examples/01-javascript/chapter-46/06-qa-example.js
 ```
 
 Показывает простой сценарий обработки requests.
@@ -1586,7 +1586,7 @@ length уменьшается
 Практические задания находятся в отдельном файле:
 
 ```text
-practice/chapter-46.md
+practice/01-javascript/46-shift-unshift.md
 ```
 
 ---
@@ -1596,7 +1596,7 @@ practice/chapter-46.md
 Решения находятся в отдельном файле:
 
 ```text
-solutions/chapter-46.md
+solutions/01-javascript/46-shift-unshift.md
 ```
 
 Сначала выполните практику самостоятельно. Затем сравните объяснение, а не только финальный ответ.

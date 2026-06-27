@@ -791,18 +791,18 @@ Function body
 Все примеры находятся в:
 
 ```text
-examples/chapter-27/
+examples/01-javascript/chapter-24/
 ```
 
 Запуск:
 
 ```bash
-node examples/chapter-27/01-no-parameters.js
-node examples/chapter-27/02-one-parameter.js
-node examples/chapter-27/03-multiple-parameters.js
-node examples/chapter-27/04-missing-extra-arguments.js
-node examples/chapter-27/05-common-mistakes.js
-node examples/chapter-27/06-qa-example.js
+node examples/01-javascript/chapter-24/01-no-parameters.js
+node examples/01-javascript/chapter-24/02-one-parameter.js
+node examples/01-javascript/chapter-24/03-multiple-parameters.js
+node examples/01-javascript/chapter-24/04-missing-extra-arguments.js
+node examples/01-javascript/chapter-24/05-common-mistakes.js
+node examples/01-javascript/chapter-24/06-qa-example.js
 ```
 
 ### 01-no-parameters.js
@@ -1178,7 +1178,7 @@ Arguments become available inside the function through parameters.
 Практика находится в файле:
 
 ```text
-practice/chapter-27.md
+practice/01-javascript/24-parameters.md
 ```
 
 Сначала решайте задания на предсказание вывода без запуска. Главная цель - не смешивать parameter и argument.
@@ -1190,7 +1190,7 @@ practice/chapter-27.md
 Решения находятся в файле:
 
 ```text
-solutions/chapter-27.md
+solutions/01-javascript/24-parameters.md
 ```
 
 Читайте решения после самостоятельной попытки. Проверяйте главный вопрос: откуда пришло это значение?

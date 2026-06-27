@@ -755,18 +755,18 @@ return
 Все примеры находятся в:
 
 ```text
-examples/chapter-28/
+examples/01-javascript/chapter-25/
 ```
 
 Запуск:
 
 ```bash
-node examples/chapter-28/01-basic-return.js
-node examples/chapter-28/02-return-value.js
-node examples/chapter-28/03-multiple-return.js
-node examples/chapter-28/04-implicit-undefined.js
-node examples/chapter-28/05-common-mistakes.js
-node examples/chapter-28/06-qa-example.js
+node examples/01-javascript/chapter-25/01-basic-return.js
+node examples/01-javascript/chapter-25/02-return-value.js
+node examples/01-javascript/chapter-25/03-multiple-return.js
+node examples/01-javascript/chapter-25/04-implicit-undefined.js
+node examples/01-javascript/chapter-25/05-common-mistakes.js
+node examples/01-javascript/chapter-25/06-qa-example.js
 ```
 
 ### 01-basic-return.js
@@ -1129,7 +1129,7 @@ return value
 Практика находится в файле:
 
 ```text
-practice/chapter-28.md
+practice/01-javascript/25-return.md
 ```
 
 Сначала решайте задания на предсказание вывода без запуска. Главная цель - отличать вывод в консоль от возвращения значения.
@@ -1141,7 +1141,7 @@ practice/chapter-28.md
 Решения находятся в файле:
 
 ```text
-solutions/chapter-28.md
+solutions/01-javascript/25-return.md
 ```
 
 Читайте решения после самостоятельной попытки. Проверяйте главный вопрос: как результат выходит из функции?

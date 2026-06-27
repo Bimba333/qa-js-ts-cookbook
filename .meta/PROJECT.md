@@ -198,6 +198,38 @@
 
 Если пример содержит ошибку, она должна быть намеренной и подробно разобранной.
 
+Исключение: часть файлов в `examples/` может быть намеренно невалидным JavaScript-кодом.
+
+Такие файлы используются как учебный материал для демонстрации syntax errors, invalid code и debugging-сценариев.
+
+Если файл содержит marker:
+
+```javascript
+// INTENTIONAL SYNTAX ERROR
+```
+
+или:
+
+```javascript
+// EDUCATIONAL INVALID EXAMPLE
+```
+
+то он:
+
+* не должен исправляться автоматически;
+* не должен удаляться;
+* не должен проверяться через `node --check`;
+* должен рассматриваться как documentation material.
+
+Project validation must exclude intentionally invalid examples.
+
+`node --check` применяется только к:
+
+* `examples/**/valid/**`;
+* файлам без intentional-error marker.
+
+Файлы, отмеченные как intentional invalid examples, являются частью teaching system.
+
 ---
 
 ## Принцип 5

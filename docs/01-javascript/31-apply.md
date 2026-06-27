@@ -782,18 +782,18 @@ bind()
 Примеры находятся в папке:
 
 ```text
-examples/chapter-34/
+examples/01-javascript/chapter-31/
 ```
 
 Запуск:
 
 ```bash
-node examples/chapter-34/01-basic-apply.js
-node examples/chapter-34/02-array-arguments.js
-node examples/chapter-34/03-call-vs-apply.js
-node examples/chapter-34/04-common-mistakes.js
-node examples/chapter-34/05-qa-example.js
-node examples/chapter-34/06-parameter-mapping.js
+node examples/01-javascript/chapter-31/01-basic-apply.js
+node examples/01-javascript/chapter-31/02-array-arguments.js
+node examples/01-javascript/chapter-31/03-call-vs-apply.js
+node examples/01-javascript/chapter-31/04-common-mistakes.js
+node examples/01-javascript/chapter-31/05-qa-example.js
+node examples/01-javascript/chapter-31/06-parameter-mapping.js
 ```
 
 ### Basic apply
@@ -1163,10 +1163,10 @@ Test data array
 Практика находится в файле:
 
 ```text
-practice/chapter-34.md
+practice/01-javascript/31-apply.md
 ```
 
-Выполняйте задания после запуска примеров из `examples/chapter-34/`.
+Выполняйте задания после запуска примеров из `examples/01-javascript/chapter-31/`.
 
 Главный вопрос практики:
 
@@ -1181,7 +1181,7 @@ What changed compared to call()?
 Файл с решениями:
 
 ```text
-solutions/chapter-34.md
+solutions/01-javascript/31-apply.md
 ```
 
 В решениях важно отдельно отслеживать:

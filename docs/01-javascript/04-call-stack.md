@@ -1011,7 +1011,7 @@ Tray stack
 Примеры к этой главе находятся в папке:
 
 ```text
-examples/chapter-07/
+examples/01-javascript/chapter-04/
 ```
 
 Запускайте их из корня проекта.
@@ -1021,7 +1021,7 @@ examples/chapter-07/
 Файл:
 
 ```text
-examples/chapter-07/01-single-call.js
+examples/01-javascript/chapter-04/01-single-call.js
 ```
 
 Показывает один function call: push Function Context, выполнение, pop Function Context.
@@ -1031,7 +1031,7 @@ examples/chapter-07/01-single-call.js
 Файл:
 
 ```text
-examples/chapter-07/02-nested-calls.js
+examples/01-javascript/chapter-04/02-nested-calls.js
 ```
 
 Показывает вложенные вызовы `first → second → third`.
@@ -1041,7 +1041,7 @@ examples/chapter-07/02-nested-calls.js
 Файл:
 
 ```text
-examples/chapter-07/03-stack-growth.js
+examples/01-javascript/chapter-04/03-stack-growth.js
 ```
 
 Показывает наблюдаемое движение при росте stack.
@@ -1051,7 +1051,7 @@ examples/chapter-07/03-stack-growth.js
 Файл:
 
 ```text
-examples/chapter-07/04-stack-pop.js
+examples/01-javascript/chapter-04/04-stack-pop.js
 ```
 
 Показывает возврат к предыдущему context после завершения внутренней функции.
@@ -1061,7 +1061,7 @@ examples/chapter-07/04-stack-pop.js
 Файл:
 
 ```text
-examples/chapter-07/05-stack-trace.js
+examples/01-javascript/chapter-04/05-stack-trace.js
 ```
 
 Пример намеренно выбрасывает runtime error, чтобы показать stack trace.
@@ -1071,7 +1071,7 @@ examples/chapter-07/05-stack-trace.js
 Файл:
 
 ```text
-examples/chapter-07/06-stack-overflow-concept.js
+examples/01-javascript/chapter-04/06-stack-overflow-concept.js
 ```
 
 Пример безопасно показывает идею глубины вызовов без настоящего переполнения stack.
@@ -1398,10 +1398,10 @@ Call Stack работает по принципу last in — first out. Пос�
 Практика к этой главе находится в файле:
 
 ```text
-practice/chapter-07.md
+practice/01-javascript/04-call-stack.md
 ```
 
-Перед практикой запустите примеры из `examples/chapter-07/` и вручную нарисуйте Call Stack для каждого файла.
+Перед практикой запустите примеры из `examples/01-javascript/chapter-04/` и вручную нарисуйте Call Stack для каждого файла.
 
 ---
 
@@ -1410,7 +1410,7 @@ practice/chapter-07.md
 Решения находятся в файле:
 
 ```text
-solutions/chapter-07.md
+solutions/01-javascript/04-call-stack.md
 ```
 
 Открывайте решения после самостоятельной попытки. В этой главе важно сравнивать не только ответ, но и нарисованный Call Stack.

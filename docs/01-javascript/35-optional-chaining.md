@@ -654,18 +654,18 @@ Return undefined
 Примеры находятся в:
 
 ```text
-examples/chapter-38/
+examples/01-javascript/chapter-35/
 ```
 
 Запуск:
 
 ```bash
-node examples/chapter-38/01-basic-optional-chaining.js
-node examples/chapter-38/02-nested-properties.js
-node examples/chapter-38/03-short-circuit.js
-node examples/chapter-38/04-common-mistakes.js
-node examples/chapter-38/05-method-preview.js
-node examples/chapter-38/06-qa-example.js
+node examples/01-javascript/chapter-35/01-basic-optional-chaining.js
+node examples/01-javascript/chapter-35/02-nested-properties.js
+node examples/01-javascript/chapter-35/03-short-circuit.js
+node examples/01-javascript/chapter-35/04-common-mistakes.js
+node examples/01-javascript/chapter-35/05-method-preview.js
+node examples/01-javascript/chapter-35/06-qa-example.js
 ```
 
 ### Пример 1. Basic Optional Chaining
@@ -1347,7 +1347,7 @@ Optional Chaining
 Практика находится в:
 
 ```text
-practice/chapter-38.md
+practice/01-javascript/35-optional-chaining.md
 ```
 
 Рекомендуемый порядок:
@@ -1356,10 +1356,10 @@ practice/chapter-38.md
 1. Ответить на концептуальные вопросы.
 2. Определить result optional chains.
 3. Предсказать вывод кода.
-4. Запустить examples/chapter-38/.
+4. Запустить examples/01-javascript/chapter-35/.
 5. Выполнить debugging tasks.
 6. Сделать QA mini-project.
-7. Свериться с solutions/chapter-38.md.
+7. Свериться с solutions/01-javascript/35-optional-chaining.md.
 ```
 
 ---
@@ -1369,7 +1369,7 @@ practice/chapter-38.md
 Решения находятся в:
 
 ```text
-solutions/chapter-38.md
+solutions/01-javascript/35-optional-chaining.md
 ```
 
 Не открывайте решения до самостоятельной попытки. Главный навык главы - понимать, где chain stops and why result becomes `undefined`.

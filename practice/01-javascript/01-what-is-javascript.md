@@ -35,13 +35,13 @@ console.log('Has process:', typeof process !== 'undefined');
 Перед запуском файла предскажите вывод:
 
 ```text
-examples/chapter-04/01-node-runtime.js
+examples/01-javascript/chapter-01/01-node-runtime.js
 ```
 
 Команда:
 
 ```bash
-node examples/chapter-04/01-node-runtime.js
+node examples/01-javascript/chapter-01/01-node-runtime.js
 ```
 
 Ответьте:
@@ -54,13 +54,13 @@ node examples/chapter-04/01-node-runtime.js
 Перед запуском файла предскажите вывод:
 
 ```text
-examples/chapter-04/03-browser-only-api.js
+examples/01-javascript/chapter-01/03-browser-only-api.js
 ```
 
 Команда:
 
 ```bash
-node examples/chapter-04/03-browser-only-api.js
+node examples/01-javascript/chapter-01/03-browser-only-api.js
 ```
 
 Ответьте:

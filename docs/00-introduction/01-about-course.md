@@ -620,7 +620,7 @@ test(...)
 Практика к этой главе находится в файле:
 
 ```text
-practice/chapter-00.md
+practice/00-introduction/01-about-course.md
 ```
 
 В ней есть:
@@ -635,7 +635,7 @@ practice/chapter-00.md
 Решения находятся в файле:
 
 ```text
-solutions/chapter-00.md
+solutions/00-introduction/01-about-course.md
 ```
 
 Сначала выполните практику самостоятельно. Решения нужно открывать только после попытки объяснить ответы своими словами.

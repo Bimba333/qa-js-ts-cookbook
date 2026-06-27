@@ -946,18 +946,18 @@ apply()
 Примеры находятся в папке:
 
 ```text
-examples/chapter-33/
+examples/01-javascript/chapter-30/
 ```
 
 Запуск:
 
 ```bash
-node examples/chapter-33/01-basic-call.js
-node examples/chapter-33/02-detached-method.js
-node examples/chapter-33/03-call-with-arguments.js
-node examples/chapter-33/04-reusing-methods.js
-node examples/chapter-33/05-common-mistakes.js
-node examples/chapter-33/06-qa-example.js
+node examples/01-javascript/chapter-30/01-basic-call.js
+node examples/01-javascript/chapter-30/02-detached-method.js
+node examples/01-javascript/chapter-30/03-call-with-arguments.js
+node examples/01-javascript/chapter-30/04-reusing-methods.js
+node examples/01-javascript/chapter-30/05-common-mistakes.js
+node examples/01-javascript/chapter-30/06-qa-example.js
 ```
 
 ### Basic call
@@ -1373,10 +1373,10 @@ call()
 Практика находится в файле:
 
 ```text
-practice/chapter-33.md
+practice/01-javascript/30-call.md
 ```
 
-Выполняйте задания после запуска примеров из `examples/chapter-33/`.
+Выполняйте задания после запуска примеров из `examples/01-javascript/chapter-30/`.
 
 Главный вопрос практики:
 
@@ -1391,7 +1391,7 @@ Who chooses the receiver?
 Файл с решениями:
 
 ```text
-solutions/chapter-33.md
+solutions/01-javascript/30-call.md
 ```
 
 В решениях важно смотреть не только на результат, но и на receiver flow:

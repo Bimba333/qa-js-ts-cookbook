@@ -168,7 +168,7 @@ Has process: false
 Файл:
 
 ```text
-examples/chapter-04/01-node-runtime.js
+examples/01-javascript/chapter-01/01-node-runtime.js
 ```
 
 Ожидаемый вывод:
@@ -195,7 +195,7 @@ Node.js version: <ваша версия Node.js>
 Файл:
 
 ```text
-examples/chapter-04/03-browser-only-api.js
+examples/01-javascript/chapter-01/03-browser-only-api.js
 ```
 
 Ожидаемый вывод:
@@ -428,7 +428,7 @@ Runtime looks like Node.js: true
 
 После выполнения практики можно:
 
-* запустить все файлы из `examples/chapter-04/`;
+* запустить все файлы из `examples/01-javascript/chapter-01/`;
 * создать собственный runtime report в `playground/`;
 * записать в личные заметки различие между language, engine и runtime;
 * добавить пример ошибки `document is not defined` и ее объяснение.

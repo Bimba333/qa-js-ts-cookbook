@@ -536,18 +536,18 @@ Property
 Примеры находятся в:
 
 ```text
-examples/chapter-41/
+examples/01-javascript/chapter-38/
 ```
 
 Запуск:
 
 ```bash
-node examples/chapter-41/01-basic-descriptor.js
-node examples/chapter-41/02-readonly.js
-node examples/chapter-41/03-hidden-property.js
-node examples/chapter-41/04-define-property.js
-node examples/chapter-41/05-common-mistakes.js
-node examples/chapter-41/06-qa-example.js
+node examples/01-javascript/chapter-38/01-basic-descriptor.js
+node examples/01-javascript/chapter-38/02-readonly.js
+node examples/01-javascript/chapter-38/03-hidden-property.js
+node examples/01-javascript/chapter-38/04-define-property.js
+node examples/01-javascript/chapter-38/05-common-mistakes.js
+node examples/01-javascript/chapter-38/06-qa-example.js
 ```
 
 ### Пример 1. Basic descriptor
@@ -1170,7 +1170,7 @@ Property
 Практика находится в:
 
 ```text
-practice/chapter-41.md
+practice/01-javascript/38-object-descriptors.md
 ```
 
 Рекомендуемый порядок:
@@ -1179,10 +1179,10 @@ practice/chapter-41.md
 1. Ответить на концептуальные вопросы.
 2. Определить descriptor behavior.
 3. Предсказать output.
-4. Запустить examples/chapter-41/.
+4. Запустить examples/01-javascript/chapter-38/.
 5. Выполнить debugging tasks.
 6. Сделать QA mini-project.
-7. Свериться с solutions/chapter-41.md.
+7. Свериться с solutions/01-javascript/38-object-descriptors.md.
 ```
 
 ---
@@ -1192,7 +1192,7 @@ practice/chapter-41.md
 Решения находятся в:
 
 ```text
-solutions/chapter-41.md
+solutions/01-javascript/38-object-descriptors.md
 ```
 
 Не открывайте решения до самостоятельной попытки. Главный вопрос:

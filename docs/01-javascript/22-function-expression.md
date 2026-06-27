@@ -822,18 +822,18 @@ Invocation reads the value and executes it.
 Все примеры находятся в:
 
 ```text
-examples/chapter-25/
+examples/01-javascript/chapter-22/
 ```
 
 Запуск:
 
 ```bash
-node examples/chapter-25/01-function-value.js
-node examples/chapter-25/02-function-expression.js
-node examples/chapter-25/03-call-expression.js
-node examples/chapter-25/04-declaration-vs-expression.js
-node examples/chapter-25/05-common-mistakes.js
-node examples/chapter-25/06-qa-example.js
+node examples/01-javascript/chapter-22/01-function-value.js
+node examples/01-javascript/chapter-22/02-function-expression.js
+node examples/01-javascript/chapter-22/03-call-expression.js
+node examples/01-javascript/chapter-22/04-declaration-vs-expression.js
+node examples/01-javascript/chapter-22/05-common-mistakes.js
+node examples/01-javascript/chapter-22/06-qa-example.js
 ```
 
 ### 01-function-value.js
@@ -1192,7 +1192,7 @@ Function Expression
 Практика находится в файле:
 
 ```text
-practice/chapter-25.md
+practice/01-javascript/22-function-expression.md
 ```
 
 Сначала решайте задания на предсказание вывода без запуска. Главная цель - видеть, где создается function object, где он хранится и где вызывается.
@@ -1204,7 +1204,7 @@ practice/chapter-25.md
 Решения находятся в файле:
 
 ```text
-solutions/chapter-25.md
+solutions/01-javascript/22-function-expression.md
 ```
 
 Читайте решения после самостоятельной попытки. Проверяйте главный вопрос: какое значение хранит переменная?

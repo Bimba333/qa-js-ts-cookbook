@@ -785,18 +785,18 @@ bind() prepares work
 Примеры находятся в:
 
 ```text
-examples/chapter-35/
+examples/01-javascript/chapter-32/
 ```
 
 Запуск:
 
 ```bash
-node examples/chapter-35/01-basic-bind.js
-node examples/chapter-35/02-bound-function.js
-node examples/chapter-35/03-call-vs-bind.js
-node examples/chapter-35/04-common-mistakes.js
-node examples/chapter-35/05-qa-example.js
-node examples/chapter-35/06-reusable-helper.js
+node examples/01-javascript/chapter-32/01-basic-bind.js
+node examples/01-javascript/chapter-32/02-bound-function.js
+node examples/01-javascript/chapter-32/03-call-vs-bind.js
+node examples/01-javascript/chapter-32/04-common-mistakes.js
+node examples/01-javascript/chapter-32/05-qa-example.js
+node examples/01-javascript/chapter-32/06-reusable-helper.js
 ```
 
 ### Пример 1. Basic bind
@@ -1718,7 +1718,7 @@ Need receiver for future calls?
 Практика находится в:
 
 ```text
-practice/chapter-35.md
+practice/01-javascript/32-bind.md
 ```
 
 Рекомендуемый порядок:
@@ -1726,10 +1726,10 @@ practice/chapter-35.md
 ```text
 1. Ответить на концептуальные вопросы.
 2. Предсказать вывод кода.
-3. Запустить examples/chapter-35/.
+3. Запустить examples/01-javascript/chapter-32/.
 4. Выполнить debugging tasks.
 5. Сделать QA mini-project.
-6. Свериться с solutions/chapter-35.md.
+6. Свериться с solutions/01-javascript/32-bind.md.
 ```
 
 ---
@@ -1739,7 +1739,7 @@ practice/chapter-35.md
 Решения находятся в:
 
 ```text
-solutions/chapter-35.md
+solutions/01-javascript/32-bind.md
 ```
 
 Не открывайте решения до самостоятельной попытки. В этой теме особенно важно самому различить:

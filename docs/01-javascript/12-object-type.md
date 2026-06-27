@@ -1171,18 +1171,18 @@ Which pieces of information should travel together?
 Все примеры находятся в:
 
 ```text
-examples/chapter-15/
+examples/01-javascript/chapter-12/
 ```
 
 Запуск:
 
 ```bash
-node examples/chapter-15/01-create-object.js
-node examples/chapter-15/02-read-properties.js
-node examples/chapter-15/03-update-properties.js
-node examples/chapter-15/04-add-properties.js
-node examples/chapter-15/05-delete-properties.js
-node examples/chapter-15/06-nested-object.js
+node examples/01-javascript/chapter-12/01-create-object.js
+node examples/01-javascript/chapter-12/02-read-properties.js
+node examples/01-javascript/chapter-12/03-update-properties.js
+node examples/01-javascript/chapter-12/04-add-properties.js
+node examples/01-javascript/chapter-12/05-delete-properties.js
+node examples/01-javascript/chapter-12/06-nested-object.js
 ```
 
 ### 01-create-object.js
@@ -1787,7 +1787,7 @@ That is the topic of References.
 Практика находится в файле:
 
 ```text
-practice/chapter-15.md
+practice/01-javascript/12-object-type.md
 ```
 
 Выполняйте задания после чтения главы и запуска examples.
@@ -1801,7 +1801,7 @@ practice/chapter-15.md
 Решения находятся в файле:
 
 ```text
-solutions/chapter-15.md
+solutions/01-javascript/12-object-type.md
 ```
 
 Читайте решения после самостоятельной попытки. В этой теме важно сравнивать не только final answer, но и reasoning: какая информация сгруппирована, какие property names используются и где object shape отличается от ожидания.

@@ -1000,18 +1000,18 @@ How is this function called and what is its receiver?
 Примеры находятся в папке:
 
 ```text
-examples/chapter-31/
+examples/01-javascript/chapter-28/
 ```
 
 Запуск:
 
 ```bash
-node examples/chapter-31/01-first-closure.js
-node examples/chapter-31/02-counter.js
-node examples/chapter-31/03-independent-closures.js
-node examples/chapter-31/04-common-mistakes.js
-node examples/chapter-31/05-memory-intuition.js
-node examples/chapter-31/06-qa-example.js
+node examples/01-javascript/chapter-28/01-first-closure.js
+node examples/01-javascript/chapter-28/02-counter.js
+node examples/01-javascript/chapter-28/03-independent-closures.js
+node examples/01-javascript/chapter-28/04-common-mistakes.js
+node examples/01-javascript/chapter-28/05-memory-intuition.js
+node examples/01-javascript/chapter-28/06-qa-example.js
 ```
 
 ### Первый Closure
@@ -1559,15 +1559,15 @@ createLocator(prefix)
 Практика находится в файле:
 
 ```text
-practice/chapter-31.md
+practice/01-javascript/28-closures.md
 ```
 
-Выполняйте задания после запуска примеров из `examples/chapter-31/`.
+Выполняйте задания после запуска примеров из `examples/01-javascript/chapter-28/`.
 
 Решения находятся отдельно:
 
 ```text
-solutions/chapter-31.md
+solutions/01-javascript/28-closures.md
 ```
 
 Сначала решите задания самостоятельно. Для Closures особенно важно не угадывать ответ, а вручную рисовать environment:
@@ -1585,7 +1585,7 @@ function object
 Файл с решениями:
 
 ```text
-solutions/chapter-31.md
+solutions/01-javascript/28-closures.md
 ```
 
 В решениях важно смотреть не только на итоговый код, но и на reasoning: для Closures главный навык - объяснять, почему function object все еще имеет доступ к конкретному lexical environment.

@@ -1119,7 +1119,7 @@ Function room
 Примеры к этой главе находятся в папке:
 
 ```text
-examples/chapter-06/
+examples/01-javascript/chapter-03/
 ```
 
 Запускайте их из корня проекта.
@@ -1129,7 +1129,7 @@ examples/chapter-06/
 Файл:
 
 ```text
-examples/chapter-06/01-global-context.js
+examples/01-javascript/chapter-03/01-global-context.js
 ```
 
 Этот пример показывает top-level выполнение: engine создает Global Execution Context и выполняет строки файла.
@@ -1139,7 +1139,7 @@ examples/chapter-06/01-global-context.js
 Файл:
 
 ```text
-examples/chapter-06/02-function-context.js
+examples/01-javascript/chapter-03/02-function-context.js
 ```
 
 Пример показывает, что при вызове функции создается отдельный Function Execution Context.
@@ -1149,7 +1149,7 @@ examples/chapter-06/02-function-context.js
 Файл:
 
 ```text
-examples/chapter-06/03-nested-contexts.js
+examples/01-javascript/chapter-03/03-nested-contexts.js
 ```
 
 Пример показывает вложенный вызов: одна функция вызывает другую.
@@ -1159,7 +1159,7 @@ examples/chapter-06/03-nested-contexts.js
 Файл:
 
 ```text
-examples/chapter-06/04-context-lifecycle.js
+examples/01-javascript/chapter-03/04-context-lifecycle.js
 ```
 
 Пример показывает появление и завершение function context через наблюдаемый вывод.
@@ -1169,7 +1169,7 @@ examples/chapter-06/04-context-lifecycle.js
 Файл:
 
 ```text
-examples/chapter-06/05-registration-before-execution.js
+examples/01-javascript/chapter-03/05-registration-before-execution.js
 ```
 
 Пример показывает, что function declaration может быть вызвана до строки объявления, потому что регистрация произошла во время creation phase.
@@ -1179,7 +1179,7 @@ examples/chapter-06/05-registration-before-execution.js
 Файл:
 
 ```text
-examples/chapter-06/06-common-mistake.js
+examples/01-javascript/chapter-03/06-common-mistake.js
 ```
 
 Пример показывает ошибку ожидания "переменная появляется только когда execution дошел до строки". Детали `var` будут разобраны позже, но уже сейчас видно, что подготовка происходит до выполнения.
@@ -1495,10 +1495,10 @@ Global Execution Context создается для верхнего уровня
 Практика к этой главе находится в файле:
 
 ```text
-practice/chapter-06.md
+practice/01-javascript/03-execution-context.md
 ```
 
-Перед практикой запустите примеры из `examples/chapter-06/` и попробуйте для каждого файла проговорить creation phase и execution phase.
+Перед практикой запустите примеры из `examples/01-javascript/chapter-03/` и попробуйте для каждого файла проговорить creation phase и execution phase.
 
 ---
 
@@ -1507,7 +1507,7 @@ practice/chapter-06.md
 Решения находятся в файле:
 
 ```text
-solutions/chapter-06.md
+solutions/01-javascript/03-execution-context.md
 ```
 
 Открывайте решения после самостоятельной попытки. В этой главе особенно важно сравнивать не только результат, но и ментальную симуляцию работы engine.

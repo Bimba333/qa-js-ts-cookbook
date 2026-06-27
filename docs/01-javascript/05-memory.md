@@ -1170,7 +1170,7 @@ Memory
 Примеры к этой главе находятся в папке:
 
 ```text
-examples/chapter-08/
+examples/01-javascript/chapter-05/
 ```
 
 Запускайте их из корня проекта.
@@ -1180,7 +1180,7 @@ examples/chapter-08/
 Файл:
 
 ```text
-examples/chapter-08/01-store-value.js
+examples/01-javascript/chapter-05/01-store-value.js
 ```
 
 Показывает, что value может быть сохранен под identifier и использован позже.
@@ -1190,7 +1190,7 @@ examples/chapter-08/01-store-value.js
 Файл:
 
 ```text
-examples/chapter-08/02-read-value.js
+examples/01-javascript/chapter-05/02-read-value.js
 ```
 
 Показывает чтение одного сохраненного value несколько раз.
@@ -1200,7 +1200,7 @@ examples/chapter-08/02-read-value.js
 Файл:
 
 ```text
-examples/chapter-08/03-update-value.js
+examples/01-javascript/chapter-05/03-update-value.js
 ```
 
 Показывает обновление сохраненной информации.
@@ -1210,7 +1210,7 @@ examples/chapter-08/03-update-value.js
 Файл:
 
 ```text
-examples/chapter-08/04-function-memory.js
+examples/01-javascript/chapter-05/04-function-memory.js
 ```
 
 Показывает, что информация может быть нужна только во время выполнения функции.
@@ -1220,7 +1220,7 @@ examples/chapter-08/04-function-memory.js
 Файл:
 
 ```text
-examples/chapter-08/05-lifetime.js
+examples/01-javascript/chapter-05/05-lifetime.js
 ```
 
 Показывает difference между data, которая нужна нескольким шагам, и data, которая нужна только внутри одного вызова.
@@ -1230,7 +1230,7 @@ examples/chapter-08/05-lifetime.js
 Файл:
 
 ```text
-examples/chapter-08/06-temporary-data.js
+examples/01-javascript/chapter-05/06-temporary-data.js
 ```
 
 Показывает временный результат, который сразу используется.
@@ -1608,10 +1608,10 @@ Memory stores everything the engine needs while the program runs.
 Практика к этой главе находится в файле:
 
 ```text
-practice/chapter-08.md
+practice/01-javascript/05-memory.md
 ```
 
-Перед выполнением практики запустите примеры из `examples/chapter-08/` и для каждого файла составьте таблицу:
+Перед выполнением практики запустите примеры из `examples/01-javascript/chapter-05/` и для каждого файла составьте таблицу:
 
 ```text
 identifier → current value
@@ -1624,7 +1624,7 @@ identifier → current value
 Решения находятся в файле:
 
 ```text
-solutions/chapter-08.md
+solutions/01-javascript/05-memory.md
 ```
 
 Открывайте решения после самостоятельной попытки. В этой главе важно сравнивать не только итоговый ответ, но и путь изменения memory state.

@@ -737,18 +737,18 @@ Loop = repeated execution until stopping condition is reached.
 Все примеры находятся в:
 
 ```text
-examples/chapter-22/
+examples/01-javascript/chapter-19/
 ```
 
 Запуск:
 
 ```bash
-node examples/chapter-22/01-while.js
-node examples/chapter-22/02-do-while.js
-node examples/chapter-22/03-for.js
-node examples/chapter-22/04-break-continue.js
-node examples/chapter-22/05-common-mistakes.js
-node examples/chapter-22/06-qa-example.js
+node examples/01-javascript/chapter-19/01-while.js
+node examples/01-javascript/chapter-19/02-do-while.js
+node examples/01-javascript/chapter-19/03-for.js
+node examples/01-javascript/chapter-19/04-break-continue.js
+node examples/01-javascript/chapter-19/05-common-mistakes.js
+node examples/01-javascript/chapter-19/06-qa-example.js
 ```
 
 ### 01-while.js
@@ -1050,7 +1050,7 @@ What should happen if an error occurs during execution?
 Практика находится в файле:
 
 ```text
-practice/chapter-22.md
+practice/01-javascript/19-loops.md
 ```
 
 Сначала решайте predict output задания без запуска. Главная цель - видеть lifecycle: initialization, condition, body, update.
@@ -1062,7 +1062,7 @@ practice/chapter-22.md
 Решения находятся в файле:
 
 ```text
-solutions/chapter-22.md
+solutions/01-javascript/19-loops.md
 ```
 
 Читайте решения после самостоятельной попытки. Проверяйте reasoning: what is repeated and when does repetition stop?

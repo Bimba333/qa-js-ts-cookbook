@@ -562,18 +562,18 @@ Is it null or undefined?
 Примеры находятся в:
 
 ```text
-examples/chapter-39/
+examples/01-javascript/chapter-36/
 ```
 
 Запуск:
 
 ```bash
-node examples/chapter-39/01-basic-nullish.js
-node examples/chapter-39/02-undefined.js
-node examples/chapter-39/03-null.js
-node examples/chapter-39/04-optional-chaining.js
-node examples/chapter-39/05-common-mistakes.js
-node examples/chapter-39/06-qa-example.js
+node examples/01-javascript/chapter-36/01-basic-nullish.js
+node examples/01-javascript/chapter-36/02-undefined.js
+node examples/01-javascript/chapter-36/03-null.js
+node examples/01-javascript/chapter-36/04-optional-chaining.js
+node examples/01-javascript/chapter-36/05-common-mistakes.js
+node examples/01-javascript/chapter-36/06-qa-example.js
 ```
 
 ### Пример 1. Basic nullish
@@ -1210,7 +1210,7 @@ Is it null or undefined?
 Практика находится в:
 
 ```text
-practice/chapter-39.md
+practice/01-javascript/36-nullish-coalescing.md
 ```
 
 Рекомендуемый порядок:
@@ -1219,10 +1219,10 @@ practice/chapter-39.md
 1. Ответить на концептуальные вопросы.
 2. Определить result expressions.
 3. Предсказать вывод кода.
-4. Запустить examples/chapter-39/.
+4. Запустить examples/01-javascript/chapter-36/.
 5. Выполнить debugging tasks.
 6. Сделать QA mini-project.
-7. Свериться с solutions/chapter-39.md.
+7. Свериться с solutions/01-javascript/36-nullish-coalescing.md.
 ```
 
 ---
@@ -1232,7 +1232,7 @@ practice/chapter-39.md
 Решения находятся в:
 
 ```text
-solutions/chapter-39.md
+solutions/01-javascript/36-nullish-coalescing.md
 ```
 
 Не открывайте решения до самостоятельной попытки. Главный навык главы - понимать, когда fallback is used and when original value is preserved.

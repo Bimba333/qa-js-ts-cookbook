@@ -1004,18 +1004,18 @@ call / apply / bind
 Примеры находятся в папке:
 
 ```text
-examples/chapter-32/
+examples/01-javascript/chapter-29/
 ```
 
 Запуск:
 
 ```bash
-node examples/chapter-32/01-global-call.js
-node examples/chapter-32/02-method-call.js
-node examples/chapter-32/03-detached-function.js
-node examples/chapter-32/04-arrow-preview.js
-node examples/chapter-32/05-common-mistakes.js
-node examples/chapter-32/06-qa-example.js
+node examples/01-javascript/chapter-29/01-global-call.js
+node examples/01-javascript/chapter-29/02-method-call.js
+node examples/01-javascript/chapter-29/03-detached-function.js
+node examples/01-javascript/chapter-29/04-arrow-preview.js
+node examples/01-javascript/chapter-29/05-common-mistakes.js
+node examples/01-javascript/chapter-29/06-qa-example.js
 ```
 
 ### Global call
@@ -1411,10 +1411,10 @@ assertions
 Практика находится в файле:
 
 ```text
-practice/chapter-32.md
+practice/01-javascript/29-this.md
 ```
 
-Выполняйте задания после запуска примеров из `examples/chapter-32/`.
+Выполняйте задания после запуска примеров из `examples/01-javascript/chapter-29/`.
 
 Главное упражнение этой главы - для каждого вызова задавать вопрос:
 
@@ -1429,7 +1429,7 @@ Who is the receiver of this invocation?
 Файл с решениями:
 
 ```text
-solutions/chapter-32.md
+solutions/01-javascript/29-this.md
 ```
 
 В решениях обращайте внимание на reasoning. Для `this` недостаточно назвать результат; нужно объяснить, какая форма invocation выбрала receiver.

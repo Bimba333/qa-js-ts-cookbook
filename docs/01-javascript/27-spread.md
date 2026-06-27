@@ -732,18 +732,18 @@ new context
 Все примеры находятся в:
 
 ```text
-examples/chapter-30/
+examples/01-javascript/chapter-27/
 ```
 
 Запуск:
 
 ```bash
-node examples/chapter-30/01-array-spread.js
-node examples/chapter-30/02-function-call.js
-node examples/chapter-30/03-object-spread.js
-node examples/chapter-30/04-copy-merge.js
-node examples/chapter-30/05-common-mistakes.js
-node examples/chapter-30/06-qa-example.js
+node examples/01-javascript/chapter-27/01-array-spread.js
+node examples/01-javascript/chapter-27/02-function-call.js
+node examples/01-javascript/chapter-27/03-object-spread.js
+node examples/01-javascript/chapter-27/04-copy-merge.js
+node examples/01-javascript/chapter-27/05-common-mistakes.js
+node examples/01-javascript/chapter-27/06-qa-example.js
 ```
 
 ### 01-array-spread.js
@@ -1074,7 +1074,7 @@ Spread
 Практика находится в файле:
 
 ```text
-practice/chapter-30.md
+practice/01-javascript/27-spread.md
 ```
 
 Сначала решайте задания на предсказание вывода без запуска. Главная цель - видеть направление: Rest собирает, Spread раскрывает.
@@ -1086,7 +1086,7 @@ practice/chapter-30.md
 Решения находятся в файле:
 
 ```text
-solutions/chapter-30.md
+solutions/01-javascript/27-spread.md
 ```
 
 Читайте решения после самостоятельной попытки. Проверяйте главный вопрос: как раскрываются значения?

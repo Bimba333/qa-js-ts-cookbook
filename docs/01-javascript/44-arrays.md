@@ -614,13 +614,13 @@ Array
 Примеры находятся в:
 
 ```text
-examples/chapter-47/
+examples/01-javascript/chapter-44/
 ```
 
 Запуск:
 
 ```bash
-node examples/chapter-47/01-first-array.js
+node examples/01-javascript/chapter-44/01-first-array.js
 ```
 
 ### Пример 1. First array
@@ -628,7 +628,7 @@ node examples/chapter-47/01-first-array.js
 Файл:
 
 ```text
-examples/chapter-47/01-first-array.js
+examples/01-javascript/chapter-44/01-first-array.js
 ```
 
 Показывает array literal as ordered collection.
@@ -638,7 +638,7 @@ examples/chapter-47/01-first-array.js
 Файл:
 
 ```text
-examples/chapter-47/02-indexes.js
+examples/01-javascript/chapter-44/02-indexes.js
 ```
 
 Показывает reading values by index.
@@ -648,7 +648,7 @@ examples/chapter-47/02-indexes.js
 Файл:
 
 ```text
-examples/chapter-47/03-update-elements.js
+examples/01-javascript/chapter-44/03-update-elements.js
 ```
 
 Показывает replacement at existing position.
@@ -658,7 +658,7 @@ examples/chapter-47/03-update-elements.js
 Файл:
 
 ```text
-examples/chapter-47/04-length.js
+examples/01-javascript/chapter-44/04-length.js
 ```
 
 Показывает `length` and last index relation.
@@ -668,7 +668,7 @@ examples/chapter-47/04-length.js
 Файл:
 
 ```text
-examples/chapter-47/05-common-mistakes.js
+examples/01-javascript/chapter-44/05-common-mistakes.js
 ```
 
 Показывает off-by-one mistake.
@@ -678,7 +678,7 @@ examples/chapter-47/05-common-mistakes.js
 Файл:
 
 ```text
-examples/chapter-47/06-qa-example.js
+examples/01-javascript/chapter-44/06-qa-example.js
 ```
 
 Показывает list of users returned from API.
@@ -1466,7 +1466,7 @@ The next chapter will explain how arrays grow and shrink with methods such as `p
 Практические задания находятся в отдельном файле:
 
 ```text
-practice/chapter-47.md
+practice/01-javascript/44-arrays.md
 ```
 
 ---
@@ -1476,7 +1476,7 @@ practice/chapter-47.md
 Решения находятся в отдельном файле:
 
 ```text
-solutions/chapter-47.md
+solutions/01-javascript/44-arrays.md
 ```
 
 Сначала выполните практику самостоятельно. Затем сравните reasoning, not only final answer.

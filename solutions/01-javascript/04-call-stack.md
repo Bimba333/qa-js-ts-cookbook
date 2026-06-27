@@ -159,7 +159,7 @@ Stack overflow — ситуация, когда активных вызовов 
 Файл:
 
 ```text
-examples/chapter-07/02-nested-calls.js
+examples/01-javascript/chapter-04/02-nested-calls.js
 ```
 
 Ожидаемый вывод:

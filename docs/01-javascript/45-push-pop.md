@@ -639,13 +639,13 @@ length уменьшается
 Примеры находятся в:
 
 ```text
-examples/chapter-48/
+examples/01-javascript/chapter-45/
 ```
 
 Запуск:
 
 ```bash
-node examples/chapter-48/01-push.js
+node examples/01-javascript/chapter-45/01-push.js
 ```
 
 ### Пример 1. push
@@ -653,7 +653,7 @@ node examples/chapter-48/01-push.js
 Файл:
 
 ```text
-examples/chapter-48/01-push.js
+examples/01-javascript/chapter-45/01-push.js
 ```
 
 Показывает adding new last element.
@@ -663,7 +663,7 @@ examples/chapter-48/01-push.js
 Файл:
 
 ```text
-examples/chapter-48/02-pop.js
+examples/01-javascript/chapter-45/02-pop.js
 ```
 
 Показывает removing last element.
@@ -673,7 +673,7 @@ examples/chapter-48/02-pop.js
 Файл:
 
 ```text
-examples/chapter-48/03-length.js
+examples/01-javascript/chapter-45/03-length.js
 ```
 
 Показывает how `length` reflects the current number of elements.
@@ -683,7 +683,7 @@ examples/chapter-48/03-length.js
 Файл:
 
 ```text
-examples/chapter-48/04-return-value.js
+examples/01-javascript/chapter-45/04-return-value.js
 ```
 
 Показывает that `pop()` returns removed value.
@@ -693,7 +693,7 @@ examples/chapter-48/04-return-value.js
 Файл:
 
 ```text
-examples/chapter-48/05-common-mistakes.js
+examples/01-javascript/chapter-45/05-common-mistakes.js
 ```
 
 Показывает mistake: expecting `pop()` to return array.
@@ -703,7 +703,7 @@ examples/chapter-48/05-common-mistakes.js
 Файл:
 
 ```text
-examples/chapter-48/06-qa-example.js
+examples/01-javascript/chapter-45/06-qa-example.js
 ```
 
 Показывает collecting failed assertions.
@@ -1483,7 +1483,7 @@ The next chapter will explain `shift()` and `unshift()`: changing arrays at the 
 Практические задания находятся в отдельном файле:
 
 ```text
-practice/chapter-48.md
+practice/01-javascript/45-push-pop.md
 ```
 
 ---
@@ -1493,7 +1493,7 @@ practice/chapter-48.md
 Решения находятся в отдельном файле:
 
 ```text
-solutions/chapter-48.md
+solutions/01-javascript/45-push-pop.md
 ```
 
 Сначала выполните практику самостоятельно. Затем сравните reasoning, not only final answer.

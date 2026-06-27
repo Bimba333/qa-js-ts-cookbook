@@ -743,18 +743,18 @@ Program execution normally flows forward. Errors interrupt normal execution. Err
 Все примеры находятся в:
 
 ```text
-examples/chapter-23/
+examples/01-javascript/chapter-20/
 ```
 
 Запуск:
 
 ```bash
-node examples/chapter-23/01-runtime-error.js
-node examples/chapter-23/02-throw.js
-node examples/chapter-23/03-try-catch.js
-node examples/chapter-23/04-finally.js
-node examples/chapter-23/05-common-mistakes.js
-node examples/chapter-23/06-qa-example.js
+node examples/01-javascript/chapter-20/01-runtime-error.js
+node examples/01-javascript/chapter-20/02-throw.js
+node examples/01-javascript/chapter-20/03-try-catch.js
+node examples/01-javascript/chapter-20/04-finally.js
+node examples/01-javascript/chapter-20/05-common-mistakes.js
+node examples/01-javascript/chapter-20/06-qa-example.js
 ```
 
 ### 01-runtime-error.js
@@ -1083,7 +1083,7 @@ Functions are the next abstraction: they let us give names to reusable behavior 
 Практика находится в файле:
 
 ```text
-practice/chapter-23.md
+practice/01-javascript/20-error-handling.md
 ```
 
 Сначала решайте predict output задания без запуска. Главная цель - понять execution flow: normal path, error path, catch, finally.
@@ -1095,7 +1095,7 @@ practice/chapter-23.md
 Решения находятся в файле:
 
 ```text
-solutions/chapter-23.md
+solutions/01-javascript/20-error-handling.md
 ```
 
 Читайте решения после самостоятельной попытки. Проверяйте reasoning: what happens to execution now?

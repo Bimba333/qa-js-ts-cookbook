@@ -907,18 +907,18 @@ Flexibility is useful, but hidden conversion can create bugs.
 Все примеры находятся в:
 
 ```text
-examples/chapter-18/
+examples/01-javascript/chapter-15/
 ```
 
 Запуск:
 
 ```bash
-node examples/chapter-18/01-number-conversion.js
-node examples/chapter-18/02-string-conversion.js
-node examples/chapter-18/03-boolean-conversion.js
-node examples/chapter-18/04-implicit-conversion.js
-node examples/chapter-18/05-explicit-conversion.js
-node examples/chapter-18/06-common-mistakes.js
+node examples/01-javascript/chapter-15/01-number-conversion.js
+node examples/01-javascript/chapter-15/02-string-conversion.js
+node examples/01-javascript/chapter-15/03-boolean-conversion.js
+node examples/01-javascript/chapter-15/04-implicit-conversion.js
+node examples/01-javascript/chapter-15/05-explicit-conversion.js
+node examples/01-javascript/chapter-15/06-common-mistakes.js
 ```
 
 ### 01-number-conversion.js
@@ -1283,7 +1283,7 @@ What happens when JavaScript compares two values?
 Практика находится в файле:
 
 ```text
-practice/chapter-18.md
+practice/01-javascript/15-type-conversion.md
 ```
 
 Решайте задания без запуска там, где требуется predict output. Главная цель - научиться видеть expected type of operation.
@@ -1295,7 +1295,7 @@ practice/chapter-18.md
 Решения находятся в файле:
 
 ```text
-solutions/chapter-18.md
+solutions/01-javascript/15-type-conversion.md
 ```
 
 Читайте решения после самостоятельной попытки. Проверяйте reasoning: какая операция ожидала какой type and which conversion happened.

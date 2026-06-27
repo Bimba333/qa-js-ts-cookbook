@@ -860,18 +860,18 @@ many named properties
 Примеры находятся в:
 
 ```text
-examples/chapter-36/
+examples/01-javascript/chapter-33/
 ```
 
 Запуск:
 
 ```bash
-node examples/chapter-36/01-object-literal.js
-node examples/chapter-36/02-read-properties.js
-node examples/chapter-36/03-update-properties.js
-node examples/chapter-36/04-bracket-notation.js
-node examples/chapter-36/05-common-mistakes.js
-node examples/chapter-36/06-qa-example.js
+node examples/01-javascript/chapter-33/01-object-literal.js
+node examples/01-javascript/chapter-33/02-read-properties.js
+node examples/01-javascript/chapter-33/03-update-properties.js
+node examples/01-javascript/chapter-33/04-bracket-notation.js
+node examples/01-javascript/chapter-33/05-common-mistakes.js
+node examples/01-javascript/chapter-33/06-qa-example.js
 ```
 
 ### Пример 1. Object literal
@@ -1687,7 +1687,7 @@ clearer program structure
 Практика находится в:
 
 ```text
-practice/chapter-36.md
+practice/01-javascript/33-objects.md
 ```
 
 Рекомендуемый порядок:
@@ -1696,10 +1696,10 @@ practice/chapter-36.md
 1. Ответить на концептуальные вопросы.
 2. Определить properties, keys and values.
 3. Предсказать вывод кода.
-4. Запустить examples/chapter-36/.
+4. Запустить examples/01-javascript/chapter-33/.
 5. Выполнить debugging tasks.
 6. Сделать QA mini-project.
-7. Свериться с solutions/chapter-36.md.
+7. Свериться с solutions/01-javascript/33-objects.md.
 ```
 
 ---
@@ -1709,7 +1709,7 @@ practice/chapter-36.md
 Решения находятся в:
 
 ```text
-solutions/chapter-36.md
+solutions/01-javascript/33-objects.md
 ```
 
 Не открывайте решения до самостоятельной попытки. В этой теме важно не просто знать syntax, а уметь видеть:

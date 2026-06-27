@@ -784,7 +784,7 @@ Execution начался
 Примеры к этой главе находятся в папке:
 
 ```text
-examples/chapter-05/
+examples/01-javascript/chapter-02/
 ```
 
 Запускайте команды из корня проекта.
@@ -794,13 +794,13 @@ examples/chapter-05/
 Файл:
 
 ```text
-examples/chapter-05/01-valid-program.js
+examples/01-javascript/chapter-02/01-valid-program.js
 ```
 
 Команда:
 
 ```bash
-node examples/chapter-05/01-valid-program.js
+node examples/01-javascript/chapter-02/01-valid-program.js
 ```
 
 Этот пример показывает нормальный путь: source code успешно проходит parsing, engine начинает execution, runtime выводит результат в терминал.
@@ -810,13 +810,13 @@ node examples/chapter-05/01-valid-program.js
 Файл:
 
 ```text
-examples/chapter-05/02-syntax-error.js
+examples/01-javascript/chapter-02/02-syntax-error.js
 ```
 
 Команда:
 
 ```bash
-node examples/chapter-05/02-syntax-error.js
+node examples/01-javascript/chapter-02/02-syntax-error.js
 ```
 
 Этот пример намеренно содержит syntax error. Он нужен, чтобы увидеть важное поведение: первая строка файла не выполняется, потому что engine останавливается до execution.
@@ -826,13 +826,13 @@ node examples/chapter-05/02-syntax-error.js
 Файл:
 
 ```text
-examples/chapter-05/03-engine-flow.js
+examples/01-javascript/chapter-02/03-engine-flow.js
 ```
 
 Команда:
 
 ```bash
-node examples/chapter-05/03-engine-flow.js
+node examples/01-javascript/chapter-02/03-engine-flow.js
 ```
 
 Пример показывает наблюдаемый результат успешной подготовки: если вывод появился, файл уже прошел ранние этапы engine pipeline.
@@ -842,13 +842,13 @@ node examples/chapter-05/03-engine-flow.js
 Файл:
 
 ```text
-examples/chapter-05/04-runtime-flow.js
+examples/01-javascript/chapter-02/04-runtime-flow.js
 ```
 
 Команда:
 
 ```bash
-node examples/chapter-05/04-runtime-flow.js
+node examples/01-javascript/chapter-02/04-runtime-flow.js
 ```
 
 Пример показывает, что видимый вывод появляется через runtime API.
@@ -858,7 +858,7 @@ node examples/chapter-05/04-runtime-flow.js
 Файл:
 
 ```text
-examples/chapter-05/05-ast-visualization.md
+examples/01-javascript/chapter-02/05-ast-visualization.md
 ```
 
 Это не запускаемый JavaScript-файл, а ручная схема AST. Она нужна для закрепления модели `source code → tree`.
@@ -1205,10 +1205,10 @@ result
 Практика к этой главе находится в файле:
 
 ```text
-practice/chapter-05.md
+practice/01-javascript/02-how-javascript-works.md
 ```
 
-Перед практикой запустите безопасные примеры из `examples/chapter-05/`. Файл `02-syntax-error.js` содержит намеренную syntax error, поэтому его нужно запускать отдельно и читать сообщение как учебный материал.
+Перед практикой запустите безопасные примеры из `examples/01-javascript/chapter-02/`. Файл `02-syntax-error.js` содержит намеренную syntax error, поэтому его нужно запускать отдельно и читать сообщение как учебный материал.
 
 ---
 
@@ -1217,7 +1217,7 @@ practice/chapter-05.md
 Решения находятся в файле:
 
 ```text
-solutions/chapter-05.md
+solutions/01-javascript/02-how-javascript-works.md
 ```
 
 Открывайте решения после собственной попытки. В этой главе важно сравнивать не только ответ, но и объяснение: что engine делает на каждом этапе.

@@ -594,18 +594,18 @@ Object
 Примеры находятся в:
 
 ```text
-examples/chapter-40/
+examples/01-javascript/chapter-37/
 ```
 
 Запуск:
 
 ```bash
-node examples/chapter-40/01-basic-method.js
-node examples/chapter-40/02-method-call.js
-node examples/chapter-40/03-this-preview.js
-node examples/chapter-40/04-common-mistakes.js
-node examples/chapter-40/05-api-client.js
-node examples/chapter-40/06-qa-example.js
+node examples/01-javascript/chapter-37/01-basic-method.js
+node examples/01-javascript/chapter-37/02-method-call.js
+node examples/01-javascript/chapter-37/03-this-preview.js
+node examples/01-javascript/chapter-37/04-common-mistakes.js
+node examples/01-javascript/chapter-37/05-api-client.js
+node examples/01-javascript/chapter-37/06-qa-example.js
 ```
 
 ### Пример 1. Basic method
@@ -1219,7 +1219,7 @@ Object
 Практика находится в:
 
 ```text
-practice/chapter-40.md
+practice/01-javascript/37-object-methods.md
 ```
 
 Рекомендуемый порядок:
@@ -1228,10 +1228,10 @@ practice/chapter-40.md
 1. Ответить на концептуальные вопросы.
 2. Определить methods.
 3. Предсказать output.
-4. Запустить examples/chapter-40/.
+4. Запустить examples/01-javascript/chapter-37/.
 5. Выполнить debugging tasks.
 6. Сделать QA mini-project.
-7. Свериться с solutions/chapter-40.md.
+7. Свериться с solutions/01-javascript/37-object-methods.md.
 ```
 
 ---
@@ -1241,7 +1241,7 @@ practice/chapter-40.md
 Решения находятся в:
 
 ```text
-solutions/chapter-40.md
+solutions/01-javascript/37-object-methods.md
 ```
 
 Не открывайте решения до самостоятельной попытки. Главный вопрос практики:

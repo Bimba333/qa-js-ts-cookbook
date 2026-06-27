@@ -897,18 +897,18 @@ The map helps navigate. It is not the full physical world.
 Все примеры находятся в:
 
 ```text
-examples/chapter-17/
+examples/01-javascript/chapter-14/
 ```
 
 Запуск:
 
 ```bash
-node examples/chapter-17/01-primitive-memory.js
-node examples/chapter-17/02-object-memory.js
-node examples/chapter-17/03-reference-sharing.js
-node examples/chapter-17/04-reassignment.js
-node examples/chapter-17/05-function-call.js
-node examples/chapter-17/06-common-mistakes.js
+node examples/01-javascript/chapter-14/01-primitive-memory.js
+node examples/01-javascript/chapter-14/02-object-memory.js
+node examples/01-javascript/chapter-14/03-reference-sharing.js
+node examples/01-javascript/chapter-14/04-reassignment.js
+node examples/01-javascript/chapter-14/05-function-call.js
+node examples/01-javascript/chapter-14/06-common-mistakes.js
 ```
 
 ### 01-primitive-memory.js
@@ -1227,7 +1227,7 @@ Next chapter moves from memory visualization to value transformation: Type Conve
 Практика находится в файле:
 
 ```text
-practice/chapter-17.md
+practice/01-javascript/14-stack-and-heap.md
 ```
 
 Рисуйте схемы вручную. Для этой главы это не дополнительное упражнение, а основной способ проверить понимание.
@@ -1239,7 +1239,7 @@ practice/chapter-17.md
 Решения находятся в файле:
 
 ```text
-solutions/chapter-17.md
+solutions/01-javascript/14-stack-and-heap.md
 ```
 
 Читайте решения после самостоятельной попытки и сравнивайте не только output, но и diagram reasoning.

@@ -744,18 +744,18 @@ Arrow Function
 Все примеры находятся в:
 
 ```text
-examples/chapter-26/
+examples/01-javascript/chapter-23/
 ```
 
 Запуск:
 
 ```bash
-node examples/chapter-26/01-arrow-basic.js
-node examples/chapter-26/02-parameters.js
-node examples/chapter-26/03-return.js
-node examples/chapter-26/04-expression-vs-arrow.js
-node examples/chapter-26/05-common-mistakes.js
-node examples/chapter-26/06-qa-example.js
+node examples/01-javascript/chapter-23/01-arrow-basic.js
+node examples/01-javascript/chapter-23/02-parameters.js
+node examples/01-javascript/chapter-23/03-return.js
+node examples/01-javascript/chapter-23/04-expression-vs-arrow.js
+node examples/01-javascript/chapter-23/05-common-mistakes.js
+node examples/01-javascript/chapter-23/06-qa-example.js
 ```
 
 ### 01-arrow-basic.js
@@ -1149,7 +1149,7 @@ Arrow Function
 Практика находится в файле:
 
 ```text
-practice/chapter-26.md
+practice/01-javascript/23-arrow-functions.md
 ```
 
 Сначала решайте задания на предсказание вывода без запуска. Главная цель - видеть, что Arrow Function создает function object, а компактная запись не отменяет обычную модель вызова.
@@ -1161,7 +1161,7 @@ practice/chapter-26.md
 Решения находятся в файле:
 
 ```text
-solutions/chapter-26.md
+solutions/01-javascript/23-arrow-functions.md
 ```
 
 Читайте решения после самостоятельной попытки. Проверяйте рассуждение: какую проблему решает этот синтаксис?

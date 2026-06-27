@@ -1126,7 +1126,7 @@ Scope Chain answers conceptually:
 Примеры к этой главе находятся в папке:
 
 ```text
-examples/chapter-10/
+examples/01-javascript/chapter-07/
 ```
 
 Запускайте их из корня проекта.
@@ -1136,7 +1136,7 @@ examples/chapter-10/
 Файл:
 
 ```text
-examples/chapter-10/01-global-scope.js
+examples/01-javascript/chapter-07/01-global-scope.js
 ```
 
 Показывает identifier, объявленный в Global Scope.
@@ -1146,7 +1146,7 @@ examples/chapter-10/01-global-scope.js
 Файл:
 
 ```text
-examples/chapter-10/02-function-scope.js
+examples/01-javascript/chapter-07/02-function-scope.js
 ```
 
 Показывает function-local identifier.
@@ -1156,7 +1156,7 @@ examples/chapter-10/02-function-scope.js
 Файл:
 
 ```text
-examples/chapter-10/03-block-scope.js
+examples/01-javascript/chapter-07/03-block-scope.js
 ```
 
 Показывает block-local identifier для `const`.
@@ -1166,7 +1166,7 @@ examples/chapter-10/03-block-scope.js
 Файл:
 
 ```text
-examples/chapter-10/04-shadowing.js
+examples/01-javascript/chapter-07/04-shadowing.js
 ```
 
 Показывает, как inner identifier shadow-ит outer identifier.
@@ -1176,7 +1176,7 @@ examples/chapter-10/04-shadowing.js
 Файл:
 
 ```text
-examples/chapter-10/05-scope-chain.js
+examples/01-javascript/chapter-07/05-scope-chain.js
 ```
 
 Показывает lookup из block scope во function scope и global scope.
@@ -1186,7 +1186,7 @@ examples/chapter-10/05-scope-chain.js
 Файл:
 
 ```text
-examples/chapter-10/06-common-mistakes.js
+examples/01-javascript/chapter-07/06-common-mistakes.js
 ```
 
 Показывает типичные ошибки через безопасные закомментированные строки и корректные варианты.
@@ -1640,10 +1640,10 @@ Engine ищет outward only и останавливается на первом
 Практика к этой главе находится в файле:
 
 ```text
-practice/chapter-10.md
+practice/01-javascript/07-scope.md
 ```
 
-Перед практикой запустите примеры из `examples/chapter-10/` и для каждого identifier ответьте:
+Перед практикой запустите примеры из `examples/01-javascript/chapter-07/` и для каждого identifier ответьте:
 
 ```text
 Where is it declared?
@@ -1658,7 +1658,7 @@ Where is it read?
 Решения находятся в файле:
 
 ```text
-solutions/chapter-10.md
+solutions/01-javascript/07-scope.md
 ```
 
 Открывайте решения после самостоятельной попытки. В этой главе важно сравнивать не только вывод, но и путь lookup для каждого identifier.

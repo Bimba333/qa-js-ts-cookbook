@@ -984,7 +984,7 @@ Lookup
 Примеры к этой главе находятся в папке:
 
 ```text
-examples/chapter-11/
+examples/01-javascript/chapter-08/
 ```
 
 Запускайте их из корня проекта.
@@ -994,7 +994,7 @@ examples/chapter-11/
 Файл:
 
 ```text
-examples/chapter-11/01-global-environment.js
+examples/01-javascript/chapter-08/01-global-environment.js
 ```
 
 Показывает identifiers, которые conceptually попадают в global environment record.
@@ -1004,7 +1004,7 @@ examples/chapter-11/01-global-environment.js
 Файл:
 
 ```text
-examples/chapter-11/02-function-environment.js
+examples/01-javascript/chapter-08/02-function-environment.js
 ```
 
 Показывает function-local environment record.
@@ -1014,7 +1014,7 @@ examples/chapter-11/02-function-environment.js
 Файл:
 
 ```text
-examples/chapter-11/03-nested-environments.js
+examples/01-javascript/chapter-08/03-nested-environments.js
 ```
 
 Показывает linked environments: global → function → block.
@@ -1024,7 +1024,7 @@ examples/chapter-11/03-nested-environments.js
 Файл:
 
 ```text
-examples/chapter-11/04-environment-record.js
+examples/01-javascript/chapter-08/04-environment-record.js
 ```
 
 Показывает, какие identifiers local function использует из своего record.
@@ -1034,7 +1034,7 @@ examples/chapter-11/04-environment-record.js
 Файл:
 
 ```text
-examples/chapter-11/05-lookup.js
+examples/01-javascript/chapter-08/05-lookup.js
 ```
 
 Показывает lookup local identifier и outer identifier.
@@ -1044,7 +1044,7 @@ examples/chapter-11/05-lookup.js
 Файл:
 
 ```text
-examples/chapter-11/06-common-mistakes.js
+examples/01-javascript/chapter-08/06-common-mistakes.js
 ```
 
 Показывает типичные ошибки через безопасные закомментированные строки.
@@ -1421,10 +1421,10 @@ Execution Context использует Lexical Environment для resolving iden
 Практика к этой главе находится в файле:
 
 ```text
-practice/chapter-11.md
+practice/01-javascript/08-lexical-environment.md
 ```
 
-Перед практикой запустите примеры из `examples/chapter-11/` и для каждого identifier составьте lookup path.
+Перед практикой запустите примеры из `examples/01-javascript/chapter-08/` и для каждого identifier составьте lookup path.
 
 ---
 
@@ -1433,7 +1433,7 @@ practice/chapter-11.md
 Решения находятся в файле:
 
 ```text
-solutions/chapter-11.md
+solutions/01-javascript/08-lexical-environment.md
 ```
 
 Открывайте решения после самостоятельной попытки. В этой главе важно сравнивать не только результат выполнения, но и Environment Record / Outer Environment Reference path.

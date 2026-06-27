@@ -1064,7 +1064,7 @@ Node.js позволяет запускать JavaScript-файлы вне бр�
 Практика к этой главе находится в файле:
 
 ```text
-practice/chapter-03.md
+practice/00-introduction/04-development-environment.md
 ```
 
 Выполните ее после того, как проверите команды `node -v`, `npm -v` и запустите минимальный файл из `playground/`.
@@ -1076,7 +1076,7 @@ practice/chapter-03.md
 Решения находятся в файле:
 
 ```text
-solutions/chapter-03.md
+solutions/00-introduction/04-development-environment.md
 ```
 
 Открывайте решения только после самостоятельной попытки. В этой главе особенно важно сравнивать не только ответ, но и ход диагностики.

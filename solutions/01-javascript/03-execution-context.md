@@ -211,7 +211,7 @@ Registration и call — разные события. Регистрация п�
 Файл:
 
 ```text
-examples/chapter-06/02-function-context.js
+examples/01-javascript/chapter-03/02-function-context.js
 ```
 
 Ожидаемый вывод:
@@ -286,7 +286,7 @@ Execution до строки объявления не нужен для само
 Файл:
 
 ```text
-examples/chapter-06/06-common-mistake.js
+examples/01-javascript/chapter-03/06-common-mistake.js
 ```
 
 Ответ:

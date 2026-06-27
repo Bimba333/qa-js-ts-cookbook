@@ -575,13 +575,13 @@ through class relationship
 Примеры находятся в:
 
 ```text
-examples/chapter-49/
+examples/01-javascript/chapter-43/
 ```
 
 Запуск:
 
 ```bash
-node examples/chapter-49/01-basic-super.js
+node examples/01-javascript/chapter-43/01-basic-super.js
 ```
 
 ### Пример 1. Basic super
@@ -589,7 +589,7 @@ node examples/chapter-49/01-basic-super.js
 Файл:
 
 ```text
-examples/chapter-49/01-basic-super.js
+examples/01-javascript/chapter-43/01-basic-super.js
 ```
 
 Показывает `super.open()` inside derived `open()`.
@@ -599,7 +599,7 @@ examples/chapter-49/01-basic-super.js
 Файл:
 
 ```text
-examples/chapter-49/02-extend-method.js
+examples/01-javascript/chapter-43/02-extend-method.js
 ```
 
 Показывает base result plus derived-specific text.
@@ -609,7 +609,7 @@ examples/chapter-49/02-extend-method.js
 Файл:
 
 ```text
-examples/chapter-49/03-this-with-super.js
+examples/01-javascript/chapter-43/03-this-with-super.js
 ```
 
 Показывает that base method called through `super` still works with receiver object.
@@ -619,7 +619,7 @@ examples/chapter-49/03-this-with-super.js
 Файл:
 
 ```text
-examples/chapter-49/04-common-mistakes.js
+examples/01-javascript/chapter-43/04-common-mistakes.js
 ```
 
 Показывает override without `super`: base behavior is not reused.
@@ -629,7 +629,7 @@ examples/chapter-49/04-common-mistakes.js
 Файл:
 
 ```text
-examples/chapter-49/05-page-object.js
+examples/01-javascript/chapter-43/05-page-object.js
 ```
 
 Показывает `BasePage.open()` and `LoginPage.open()` extending it.
@@ -639,7 +639,7 @@ examples/chapter-49/05-page-object.js
 Файл:
 
 ```text
-examples/chapter-49/06-qa-example.js
+examples/01-javascript/chapter-43/06-qa-example.js
 ```
 
 Показывает base API client request description extended by service client.
@@ -1373,7 +1373,7 @@ The next chapter starts the Arrays section.
 Практические задания находятся в отдельном файле:
 
 ```text
-practice/chapter-49.md
+practice/01-javascript/43-super.md
 ```
 
 ---
@@ -1383,7 +1383,7 @@ practice/chapter-49.md
 Решения находятся в отдельном файле:
 
 ```text
-solutions/chapter-49.md
+solutions/01-javascript/43-super.md
 ```
 
 Сначала выполните практику самостоятельно. Затем сравните объяснение, а не только финальный ответ.

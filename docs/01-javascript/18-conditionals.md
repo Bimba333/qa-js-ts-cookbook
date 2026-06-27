@@ -719,18 +719,18 @@ Programs do not guess. They check a result and choose path.
 Все примеры находятся в:
 
 ```text
-examples/chapter-21/
+examples/01-javascript/chapter-18/
 ```
 
 Запуск:
 
 ```bash
-node examples/chapter-21/01-if.js
-node examples/chapter-21/02-if-else.js
-node examples/chapter-21/03-else-if.js
-node examples/chapter-21/04-switch.js
-node examples/chapter-21/05-nested.js
-node examples/chapter-21/06-common-mistakes.js
+node examples/01-javascript/chapter-18/01-if.js
+node examples/01-javascript/chapter-18/02-if-else.js
+node examples/01-javascript/chapter-18/03-else-if.js
+node examples/01-javascript/chapter-18/04-switch.js
+node examples/01-javascript/chapter-18/05-nested.js
+node examples/01-javascript/chapter-18/06-common-mistakes.js
 ```
 
 ### 01-if.js
@@ -1051,7 +1051,7 @@ What if the same decision has to be made many times?
 Практика находится в файле:
 
 ```text
-practice/chapter-21.md
+practice/01-javascript/18-conditionals.md
 ```
 
 Сначала отвечайте без запуска там, где нужно predict output. Главная цель - определить evaluated expression and chosen path.
@@ -1063,7 +1063,7 @@ practice/chapter-21.md
 Решения находятся в файле:
 
 ```text
-solutions/chapter-21.md
+solutions/01-javascript/18-conditionals.md
 ```
 
 Читайте решения после самостоятельной попытки. Проверяйте reasoning: what decision is the program making?

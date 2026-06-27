@@ -629,13 +629,13 @@ Prototype Chain
 Примеры находятся в:
 
 ```text
-examples/chapter-43/
+examples/01-javascript/chapter-40/
 ```
 
 Запуск:
 
 ```bash
-node examples/chapter-43/01-basic-chain.js
+node examples/01-javascript/chapter-40/01-basic-chain.js
 ```
 
 ### Пример 1. Basic chain
@@ -643,7 +643,7 @@ node examples/chapter-43/01-basic-chain.js
 Файл:
 
 ```text
-examples/chapter-43/01-basic-chain.js
+examples/01-javascript/chapter-40/01-basic-chain.js
 ```
 
 Показывает:
@@ -663,7 +663,7 @@ second prototype
 Файл:
 
 ```text
-examples/chapter-43/02-property-lookup.js
+examples/01-javascript/chapter-40/02-property-lookup.js
 ```
 
 Показывает lookup order from own property to shared framework behavior.
@@ -673,7 +673,7 @@ examples/chapter-43/02-property-lookup.js
 Файл:
 
 ```text
-examples/chapter-43/03-shadowing.js
+examples/01-javascript/chapter-40/03-shadowing.js
 ```
 
 Показывает:
@@ -689,7 +689,7 @@ own property
 Файл:
 
 ```text
-examples/chapter-43/04-common-mistakes.js
+examples/01-javascript/chapter-40/04-common-mistakes.js
 ```
 
 Показывает ошибку ожидания, что far prototype wins over closer property.
@@ -699,7 +699,7 @@ examples/chapter-43/04-common-mistakes.js
 Файл:
 
 ```text
-examples/chapter-43/05-framework-preview.js
+examples/01-javascript/chapter-40/05-framework-preview.js
 ```
 
 Показывает layered framework behavior.
@@ -709,7 +709,7 @@ examples/chapter-43/05-framework-preview.js
 Файл:
 
 ```text
-examples/chapter-43/06-qa-example.js
+examples/01-javascript/chapter-40/06-qa-example.js
 ```
 
 Показывает API client lookup through client-specific, service-level and framework-level behavior.
@@ -1601,7 +1601,7 @@ Own properties have priority. Closer properties shadow farther properties. If lo
 Практические задания находятся в отдельном файле:
 
 ```text
-practice/chapter-43.md
+practice/01-javascript/40-prototype-chain.md
 ```
 
 ---
@@ -1611,7 +1611,7 @@ practice/chapter-43.md
 Решения находятся в отдельном файле:
 
 ```text
-solutions/chapter-43.md
+solutions/01-javascript/40-prototype-chain.md
 ```
 
 Сначала выполните практику самостоятельно. Затем сравните reasoning, not only final answer.

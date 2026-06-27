@@ -1153,7 +1153,7 @@ Hoisting is preparation before execution.
 Примеры к этой главе находятся в папке:
 
 ```text
-examples/chapter-12/
+examples/01-javascript/chapter-09/
 ```
 
 Запускайте их из корня проекта.
@@ -1163,7 +1163,7 @@ examples/chapter-12/
 Файл:
 
 ```text
-examples/chapter-12/01-function-hoisting.js
+examples/01-javascript/chapter-09/01-function-hoisting.js
 ```
 
 Показывает, что function declaration can be called before its line because Creation Phase prepared it.
@@ -1173,7 +1173,7 @@ examples/chapter-12/01-function-hoisting.js
 Файл:
 
 ```text
-examples/chapter-12/02-var-hoisting.js
+examples/01-javascript/chapter-09/02-var-hoisting.js
 ```
 
 Показывает, что `var` is registered with `undefined` before assignment line.
@@ -1183,7 +1183,7 @@ examples/chapter-12/02-var-hoisting.js
 Файл:
 
 ```text
-examples/chapter-12/03-let-behavior.js
+examples/01-javascript/chapter-09/03-let-behavior.js
 ```
 
 Показывает safe access после initialization и содержит закомментированную строку, которая будет разобрана в следующей главе про TDZ.
@@ -1193,7 +1193,7 @@ examples/chapter-12/03-let-behavior.js
 Файл:
 
 ```text
-examples/chapter-12/04-const-behavior.js
+examples/01-javascript/chapter-09/04-const-behavior.js
 ```
 
 Показывает safe access после required initialization.
@@ -1203,7 +1203,7 @@ examples/chapter-12/04-const-behavior.js
 Файл:
 
 ```text
-examples/chapter-12/05-declaration-vs-initialization.js
+examples/01-javascript/chapter-09/05-declaration-vs-initialization.js
 ```
 
 Показывает, что declaration и assignment — разные части.
@@ -1213,7 +1213,7 @@ examples/chapter-12/05-declaration-vs-initialization.js
 Файл:
 
 ```text
-examples/chapter-12/06-common-mistakes.js
+examples/01-javascript/chapter-09/06-common-mistakes.js
 ```
 
 Показывает типичные мифы через безопасные comments and corrected code.
@@ -1551,10 +1551,10 @@ let / const
 Практика к этой главе находится в файле:
 
 ```text
-practice/chapter-12.md
+practice/01-javascript/09-hoisting.md
 ```
 
-Перед практикой запустите примеры из `examples/chapter-12/` и для каждого файла составьте Creation Phase / Execution Phase timeline.
+Перед практикой запустите примеры из `examples/01-javascript/chapter-09/` и для каждого файла составьте Creation Phase / Execution Phase timeline.
 
 ---
 
@@ -1563,7 +1563,7 @@ practice/chapter-12.md
 Решения находятся в файле:
 
 ```text
-solutions/chapter-12.md
+solutions/01-javascript/09-hoisting.md
 ```
 
 Открывайте решения после самостоятельной попытки. В этой главе важно сравнивать не только output, но и то, что было prepared before execution.

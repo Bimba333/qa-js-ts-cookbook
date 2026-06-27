@@ -35,13 +35,13 @@ console.log('Program finished');
 Перед запуском предскажите вывод файла:
 
 ```text
-examples/chapter-05/01-valid-program.js
+examples/01-javascript/chapter-02/01-valid-program.js
 ```
 
 Команда:
 
 ```bash
-node examples/chapter-05/01-valid-program.js
+node examples/01-javascript/chapter-02/01-valid-program.js
 ```
 
 Запишите ожидаемый результат и объясните, какие этапы прошел engine.
@@ -51,13 +51,13 @@ node examples/chapter-05/01-valid-program.js
 Перед запуском предскажите, выполнится ли первая строка файла:
 
 ```text
-examples/chapter-05/02-syntax-error.js
+examples/01-javascript/chapter-02/02-syntax-error.js
 ```
 
 Команда:
 
 ```bash
-node examples/chapter-05/02-syntax-error.js
+node examples/01-javascript/chapter-02/02-syntax-error.js
 ```
 
 Ответьте:

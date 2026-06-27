@@ -672,18 +672,18 @@ Parameters
 Все примеры находятся в:
 
 ```text
-examples/chapter-24/
+examples/01-javascript/chapter-21/
 ```
 
 Запуск:
 
 ```bash
-node examples/chapter-24/01-duplication.js
-node examples/chapter-24/02-first-function.js
-node examples/chapter-24/03-call-function.js
-node examples/chapter-24/04-multiple-calls.js
-node examples/chapter-24/05-common-mistakes.js
-node examples/chapter-24/06-qa-example.js
+node examples/01-javascript/chapter-21/01-duplication.js
+node examples/01-javascript/chapter-21/02-first-function.js
+node examples/01-javascript/chapter-21/03-call-function.js
+node examples/01-javascript/chapter-21/04-multiple-calls.js
+node examples/01-javascript/chapter-21/05-common-mistakes.js
+node examples/01-javascript/chapter-21/06-qa-example.js
 ```
 
 ### 01-duplication.js
@@ -988,7 +988,7 @@ name()
 Практика находится в файле:
 
 ```text
-practice/chapter-24.md
+practice/01-javascript/21-function-declaration.md
 ```
 
 Сначала решайте задания на предсказание вывода без запуска. Главная цель - отличать объявление от вызова.
@@ -1000,7 +1000,7 @@ practice/chapter-24.md
 Решения находятся в файле:
 
 ```text
-solutions/chapter-24.md
+solutions/01-javascript/21-function-declaration.md
 ```
 
 Читайте решения после самостоятельной попытки. Проверяйте рассуждение: какой переиспользуемый алгоритм мы создаем?

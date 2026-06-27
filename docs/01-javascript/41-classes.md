@@ -593,13 +593,13 @@ Instance
 Примеры находятся в:
 
 ```text
-examples/chapter-44/
+examples/01-javascript/chapter-41/
 ```
 
 Запуск:
 
 ```bash
-node examples/chapter-44/01-first-class.js
+node examples/01-javascript/chapter-41/01-first-class.js
 ```
 
 ### Пример 1. First class
@@ -607,7 +607,7 @@ node examples/chapter-44/01-first-class.js
 Файл:
 
 ```text
-examples/chapter-44/01-first-class.js
+examples/01-javascript/chapter-41/01-first-class.js
 ```
 
 Показывает minimal class and instance creation.
@@ -617,7 +617,7 @@ examples/chapter-44/01-first-class.js
 Файл:
 
 ```text
-examples/chapter-44/02-constructor.js
+examples/01-javascript/chapter-41/02-constructor.js
 ```
 
 Показывает how constructor writes own data.
@@ -627,7 +627,7 @@ examples/chapter-44/02-constructor.js
 Файл:
 
 ```text
-examples/chapter-44/03-methods.js
+examples/01-javascript/chapter-41/03-methods.js
 ```
 
 Показывает shared methods used by different instances.
@@ -637,7 +637,7 @@ examples/chapter-44/03-methods.js
 Файл:
 
 ```text
-examples/chapter-44/04-prototype-reminder.js
+examples/01-javascript/chapter-41/04-prototype-reminder.js
 ```
 
 Показывает high-level relationship between class method and prototype lookup.
@@ -647,7 +647,7 @@ examples/chapter-44/04-prototype-reminder.js
 Файл:
 
 ```text
-examples/chapter-44/05-common-mistakes.js
+examples/01-javascript/chapter-41/05-common-mistakes.js
 ```
 
 Показывает mistake: forgetting `this` inside class method.
@@ -657,7 +657,7 @@ examples/chapter-44/05-common-mistakes.js
 Файл:
 
 ```text
-examples/chapter-44/06-qa-example.js
+examples/01-javascript/chapter-41/06-qa-example.js
 ```
 
 Показывает API client class with own config and shared methods.
@@ -1421,7 +1421,7 @@ The next chapter will explain class inheritance: how one class can reuse behavio
 Практические задания находятся в отдельном файле:
 
 ```text
-practice/chapter-44.md
+practice/01-javascript/41-classes.md
 ```
 
 ---
@@ -1431,7 +1431,7 @@ practice/chapter-44.md
 Решения находятся в отдельном файле:
 
 ```text
-solutions/chapter-44.md
+solutions/01-javascript/41-classes.md
 ```
 
 Сначала выполните практику самостоятельно. Затем сравните reasoning, not only final answer.

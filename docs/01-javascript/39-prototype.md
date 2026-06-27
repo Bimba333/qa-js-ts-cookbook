@@ -644,13 +644,13 @@ Prototype
 Примеры находятся в:
 
 ```text
-examples/chapter-42/
+examples/01-javascript/chapter-39/
 ```
 
 Запуск:
 
 ```bash
-node examples/chapter-42/01-duplicated-methods.js
+node examples/01-javascript/chapter-39/01-duplicated-methods.js
 ```
 
 ### Пример 1. Дублированные методы
@@ -658,7 +658,7 @@ node examples/chapter-42/01-duplicated-methods.js
 Файл:
 
 ```text
-examples/chapter-42/01-duplicated-methods.js
+examples/01-javascript/chapter-39/01-duplicated-methods.js
 ```
 
 Идея:
@@ -676,7 +676,7 @@ many objects
 Файл:
 
 ```text
-examples/chapter-42/02-shared-method.js
+examples/01-javascript/chapter-39/02-shared-method.js
 ```
 
 Идея:
@@ -696,7 +696,7 @@ shared behavior
 Файл:
 
 ```text
-examples/chapter-42/03-property-lookup.js
+examples/01-javascript/chapter-39/03-property-lookup.js
 ```
 
 Идея:
@@ -713,7 +713,7 @@ read property
 Файл:
 
 ```text
-examples/chapter-42/04-common-mistakes.js
+examples/01-javascript/chapter-39/04-common-mistakes.js
 ```
 
 Идея:
@@ -729,7 +729,7 @@ shared prototype object
 Файл:
 
 ```text
-examples/chapter-42/05-page-object-preview.js
+examples/01-javascript/chapter-39/05-page-object-preview.js
 ```
 
 Идея:
@@ -746,7 +746,7 @@ Page Object instances
 Файл:
 
 ```text
-examples/chapter-42/06-qa-example.js
+examples/01-javascript/chapter-39/06-qa-example.js
 ```
 
 Идея:
@@ -1689,7 +1689,7 @@ Prototype of prototype
 Практические задания находятся в отдельном файле:
 
 ```text
-practice/chapter-42.md
+practice/01-javascript/39-prototype.md
 ```
 
 Выполняйте их после чтения главы и запуска examples.
@@ -1701,7 +1701,7 @@ practice/chapter-42.md
 Решения находятся в отдельном файле:
 
 ```text
-solutions/chapter-42.md
+solutions/01-javascript/39-prototype.md
 ```
 
 Сначала выполните задания самостоятельно. Затем сравните не только answer, но и reasoning.

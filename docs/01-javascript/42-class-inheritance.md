@@ -574,13 +574,13 @@ prototype lookup still works
 Примеры находятся в:
 
 ```text
-examples/chapter-45/
+examples/01-javascript/chapter-42/
 ```
 
 Запуск:
 
 ```bash
-node examples/chapter-45/01-first-inheritance.js
+node examples/01-javascript/chapter-42/01-first-inheritance.js
 ```
 
 ### Пример 1. First inheritance
@@ -588,7 +588,7 @@ node examples/chapter-45/01-first-inheritance.js
 Файл:
 
 ```text
-examples/chapter-45/01-first-inheritance.js
+examples/01-javascript/chapter-42/01-first-inheritance.js
 ```
 
 Показывает `BasePage` and `LoginPage extends BasePage`.
@@ -598,7 +598,7 @@ examples/chapter-45/01-first-inheritance.js
 Файл:
 
 ```text
-examples/chapter-45/02-shared-methods.js
+examples/01-javascript/chapter-42/02-shared-methods.js
 ```
 
 Показывает several derived classes using same base methods.
@@ -608,7 +608,7 @@ examples/chapter-45/02-shared-methods.js
 Файл:
 
 ```text
-examples/chapter-45/03-overriding.js
+examples/01-javascript/chapter-42/03-overriding.js
 ```
 
 Показывает method with same name in derived class.
@@ -618,7 +618,7 @@ examples/chapter-45/03-overriding.js
 Файл:
 
 ```text
-examples/chapter-45/04-common-mistakes.js
+examples/01-javascript/chapter-42/04-common-mistakes.js
 ```
 
 Показывает that inheritance does not copy methods into instance.
@@ -628,7 +628,7 @@ examples/chapter-45/04-common-mistakes.js
 Файл:
 
 ```text
-examples/chapter-45/05-page-object.js
+examples/01-javascript/chapter-42/05-page-object.js
 ```
 
 Показывает realistic BasePage/LoginPage/ProfilePage model.
@@ -638,7 +638,7 @@ examples/chapter-45/05-page-object.js
 Файл:
 
 ```text
-examples/chapter-45/06-qa-example.js
+examples/01-javascript/chapter-42/06-qa-example.js
 ```
 
 Показывает base API client behavior reused by service clients.
@@ -1445,7 +1445,7 @@ The next chapter will explain `super`: how a derived class can call behavior fro
 Практические задания находятся в отдельном файле:
 
 ```text
-practice/chapter-45.md
+practice/01-javascript/42-class-inheritance.md
 ```
 
 ---
@@ -1455,7 +1455,7 @@ practice/chapter-45.md
 Решения находятся в отдельном файле:
 
 ```text
-solutions/chapter-45.md
+solutions/01-javascript/42-class-inheritance.md
 ```
 
 Сначала выполните практику самостоятельно. Затем сравните reasoning, not only final answer.

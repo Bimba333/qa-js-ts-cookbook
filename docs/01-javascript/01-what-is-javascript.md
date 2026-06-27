@@ -582,7 +582,7 @@ Runtime provides tools
 Примеры к этой главе находятся в папке:
 
 ```text
-examples/chapter-04/
+examples/01-javascript/chapter-01/
 ```
 
 Запускайте их из корня проекта.
@@ -592,13 +592,13 @@ examples/chapter-04/
 Файл:
 
 ```text
-examples/chapter-04/01-node-runtime.js
+examples/01-javascript/chapter-01/01-node-runtime.js
 ```
 
 Запуск:
 
 ```bash
-node examples/chapter-04/01-node-runtime.js
+node examples/01-javascript/chapter-01/01-node-runtime.js
 ```
 
 Этот пример показывает, что файл выполняется в Node.js и может вывести версию Node.js.
@@ -608,13 +608,13 @@ node examples/chapter-04/01-node-runtime.js
 Файл:
 
 ```text
-examples/chapter-04/02-runtime-check.js
+examples/01-javascript/chapter-01/02-runtime-check.js
 ```
 
 Запуск:
 
 ```bash
-node examples/chapter-04/02-runtime-check.js
+node examples/01-javascript/chapter-01/02-runtime-check.js
 ```
 
 Пример проверяет наличие признаков Node.js и browser runtime через безопасные проверки `typeof`.
@@ -626,13 +626,13 @@ node examples/chapter-04/02-runtime-check.js
 Файл:
 
 ```text
-examples/chapter-04/03-browser-only-api.js
+examples/01-javascript/chapter-01/03-browser-only-api.js
 ```
 
 Запуск:
 
 ```bash
-node examples/chapter-04/03-browser-only-api.js
+node examples/01-javascript/chapter-01/03-browser-only-api.js
 ```
 
 Пример не обращается к `document` напрямую. Он безопасно проверяет, доступен ли `document` в Node.js. В обычном Node.js-файле результат покажет, что browser API недоступен.
@@ -642,13 +642,13 @@ node examples/chapter-04/03-browser-only-api.js
 Файл:
 
 ```text
-examples/chapter-04/04-node-only-api.js
+examples/01-javascript/chapter-01/04-node-only-api.js
 ```
 
 Запуск:
 
 ```bash
-node examples/chapter-04/04-node-only-api.js
+node examples/01-javascript/chapter-01/04-node-only-api.js
 ```
 
 Пример показывает Node.js API `process`. В браузерной странице такой API обычно недоступен.
@@ -974,10 +974,10 @@ Browser runtime предоставляет `window`, `document`, DOM и browser 
 Практика к этой главе находится в файле:
 
 ```text
-practice/chapter-04.md
+practice/01-javascript/01-what-is-javascript.md
 ```
 
-Перед выполнением практики запустите все примеры из `examples/chapter-04/` и сравните результат с объяснениями в главе.
+Перед выполнением практики запустите все примеры из `examples/01-javascript/chapter-01/` и сравните результат с объяснениями в главе.
 
 ---
 
@@ -986,7 +986,7 @@ practice/chapter-04.md
 Решения находятся в файле:
 
 ```text
-solutions/chapter-04.md
+solutions/01-javascript/01-what-is-javascript.md
 ```
 
 Открывайте решения после самостоятельной попытки. В этой главе особенно важно объяснять не только ответ, но и runtime, в котором выполняется код.

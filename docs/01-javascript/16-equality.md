@@ -796,18 +796,18 @@ If two labels point to same box, object equality by identity is true.
 Все примеры находятся в:
 
 ```text
-examples/chapter-19/
+examples/01-javascript/chapter-16/
 ```
 
 Запуск:
 
 ```bash
-node examples/chapter-19/01-strict-equality.js
-node examples/chapter-19/02-loose-equality.js
-node examples/chapter-19/03-object-is.js
-node examples/chapter-19/04-object-comparison.js
-node examples/chapter-19/05-nan.js
-node examples/chapter-19/06-common-mistakes.js
+node examples/01-javascript/chapter-16/01-strict-equality.js
+node examples/01-javascript/chapter-16/02-loose-equality.js
+node examples/01-javascript/chapter-16/03-object-is.js
+node examples/01-javascript/chapter-16/04-object-comparison.js
+node examples/01-javascript/chapter-16/05-nan.js
+node examples/01-javascript/chapter-16/06-common-mistakes.js
 ```
 
 ### 01-strict-equality.js
@@ -1155,7 +1155,7 @@ Use Object.is() for the few cases where its semantics are specifically needed.
 Практика находится в файле:
 
 ```text
-practice/chapter-19.md
+practice/01-javascript/16-equality.md
 ```
 
 Сначала решайте без запуска. Главная цель - reasoning, not memorized tables.
@@ -1167,7 +1167,7 @@ practice/chapter-19.md
 Решения находятся в файле:
 
 ```text
-solutions/chapter-19.md
+solutions/01-javascript/16-equality.md
 ```
 
 Читайте решения после самостоятельной попытки. Проверяйте вопрос: what exactly is being compared?

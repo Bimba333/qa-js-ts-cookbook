@@ -1179,7 +1179,7 @@ Reassignment
 Примеры к этой главе находятся в папке:
 
 ```text
-examples/chapter-09/
+examples/01-javascript/chapter-06/
 ```
 
 Запускайте их из корня проекта.
@@ -1189,7 +1189,7 @@ examples/chapter-09/
 Файл:
 
 ```text
-examples/chapter-09/01-declaration.js
+examples/01-javascript/chapter-06/01-declaration.js
 ```
 
 Показывает declaration without initialization.
@@ -1199,7 +1199,7 @@ examples/chapter-09/01-declaration.js
 Файл:
 
 ```text
-examples/chapter-09/02-initialization.js
+examples/01-javascript/chapter-06/02-initialization.js
 ```
 
 Показывает declaration вместе с initial value.
@@ -1209,7 +1209,7 @@ examples/chapter-09/02-initialization.js
 Файл:
 
 ```text
-examples/chapter-09/03-assignment.js
+examples/01-javascript/chapter-06/03-assignment.js
 ```
 
 Показывает declaration отдельно от assignment.
@@ -1219,7 +1219,7 @@ examples/chapter-09/03-assignment.js
 Файл:
 
 ```text
-examples/chapter-09/04-reassignment.js
+examples/01-javascript/chapter-06/04-reassignment.js
 ```
 
 Показывает изменение current value через `let`.
@@ -1229,7 +1229,7 @@ examples/chapter-09/04-reassignment.js
 Файл:
 
 ```text
-examples/chapter-09/05-var-let-const.js
+examples/01-javascript/chapter-06/05-var-let-const.js
 ```
 
 Показывает базовое поведение трех declaration keywords без углубления в Hoisting и Scope.
@@ -1239,7 +1239,7 @@ examples/chapter-09/05-var-let-const.js
 Файл:
 
 ```text
-examples/chapter-09/06-common-mistakes.js
+examples/01-javascript/chapter-06/06-common-mistakes.js
 ```
 
 Показывает типичные ошибки через безопасные закомментированные строки и корректный вариант.
@@ -1691,10 +1691,10 @@ Reassignment
 Практика к этой главе находится в файле:
 
 ```text
-practice/chapter-09.md
+practice/01-javascript/06-variables.md
 ```
 
-Перед практикой запустите примеры из `examples/chapter-09/` и для каждого файла выпишите операции:
+Перед практикой запустите примеры из `examples/01-javascript/chapter-06/` и для каждого файла выпишите операции:
 
 ```text
 declaration
@@ -1711,7 +1711,7 @@ read
 Решения находятся в файле:
 
 ```text
-solutions/chapter-09.md
+solutions/01-javascript/06-variables.md
 ```
 
 Открывайте решения после самостоятельной попытки. В этой главе важно сравнивать не только вывод программы, но и список операций, которые engine выполняет с identifiers и values.

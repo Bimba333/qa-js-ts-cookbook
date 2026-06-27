@@ -20,7 +20,7 @@
 Перед запуском файла:
 
 ```text
-examples/chapter-07/02-nested-calls.js
+examples/01-javascript/chapter-04/02-nested-calls.js
 ```
 
 Запишите:
@@ -65,7 +65,7 @@ loadConfig();
 Запустите:
 
 ```bash
-node examples/chapter-07/05-stack-trace.js
+node examples/01-javascript/chapter-04/05-stack-trace.js
 ```
 
 Ответьте:

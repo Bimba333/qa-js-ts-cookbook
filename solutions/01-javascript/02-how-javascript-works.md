@@ -172,7 +172,7 @@ Execution начинается после успешной подготовки.
 Файл:
 
 ```text
-examples/chapter-05/01-valid-program.js
+examples/01-javascript/chapter-02/01-valid-program.js
 ```
 
 Ожидаемый вывод:
@@ -195,7 +195,7 @@ Program finished
 Файл:
 
 ```text
-examples/chapter-05/02-syntax-error.js
+examples/01-javascript/chapter-02/02-syntax-error.js
 ```
 
 Ответ:

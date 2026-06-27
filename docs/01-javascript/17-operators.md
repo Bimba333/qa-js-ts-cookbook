@@ -906,18 +906,18 @@ Operator receives operands and produces result.
 Все примеры находятся в:
 
 ```text
-examples/chapter-20/
+examples/01-javascript/chapter-17/
 ```
 
 Запуск:
 
 ```bash
-node examples/chapter-20/01-arithmetic.js
-node examples/chapter-20/02-comparison.js
-node examples/chapter-20/03-logical.js
-node examples/chapter-20/04-assignment.js
-node examples/chapter-20/05-special-operators.js
-node examples/chapter-20/06-common-mistakes.js
+node examples/01-javascript/chapter-17/01-arithmetic.js
+node examples/01-javascript/chapter-17/02-comparison.js
+node examples/01-javascript/chapter-17/03-logical.js
+node examples/01-javascript/chapter-17/04-assignment.js
+node examples/01-javascript/chapter-17/05-special-operators.js
+node examples/01-javascript/chapter-17/06-common-mistakes.js
 ```
 
 ### 01-arithmetic.js
@@ -1192,7 +1192,7 @@ The next chapter uses operator results to explain Conditionals.
 Практика находится в файле:
 
 ```text
-practice/chapter-20.md
+practice/01-javascript/17-operators.md
 ```
 
 Сначала решайте predict output задания без запуска. Главная цель - определить operator, operands, category and result.
@@ -1204,7 +1204,7 @@ practice/chapter-20.md
 Решения находятся в файле:
 
 ```text
-solutions/chapter-20.md
+solutions/01-javascript/17-operators.md
 ```
 
 Читайте решения после самостоятельной попытки. Проверяйте reasoning: what operation is being performed?

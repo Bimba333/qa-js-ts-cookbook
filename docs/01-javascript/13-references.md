@@ -1047,18 +1047,18 @@ expectedUser and actualUser should not accidentally point to the same mutable ob
 Все примеры находятся в:
 
 ```text
-examples/chapter-16/
+examples/01-javascript/chapter-13/
 ```
 
 Запуск:
 
 ```bash
-node examples/chapter-16/01-primitive-copy.js
-node examples/chapter-16/02-object-reference.js
-node examples/chapter-16/03-two-variables.js
-node examples/chapter-16/04-update-through-reference.js
-node examples/chapter-16/05-reference-reassignment.js
-node examples/chapter-16/06-common-mistakes.js
+node examples/01-javascript/chapter-13/01-primitive-copy.js
+node examples/01-javascript/chapter-13/02-object-reference.js
+node examples/01-javascript/chapter-13/03-two-variables.js
+node examples/01-javascript/chapter-13/04-update-through-reference.js
+node examples/01-javascript/chapter-13/05-reference-reassignment.js
+node examples/01-javascript/chapter-13/06-common-mistakes.js
 ```
 
 ### 01-primitive-copy.js
@@ -1586,7 +1586,7 @@ The next chapter will explain Stack & Heap as the common conceptual memory model
 Практика находится в файле:
 
 ```text
-practice/chapter-16.md
+practice/01-javascript/13-references.md
 ```
 
 Сначала решайте задания самостоятельно. Для этой темы особенно важно рисовать diagrams by hand: какая variable refers to which object right now.
@@ -1598,7 +1598,7 @@ practice/chapter-16.md
 Решения находятся в файле:
 
 ```text
-solutions/chapter-16.md
+solutions/01-javascript/13-references.md
 ```
 
 Читайте решения после самостоятельной попытки. Проверяйте не только output, но и reasoning: какой object общий, какой object новый, где произошло property update, где произошло reassignment.

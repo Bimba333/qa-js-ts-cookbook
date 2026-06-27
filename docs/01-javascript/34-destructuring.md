@@ -717,18 +717,18 @@ variables for current code
 Примеры находятся в:
 
 ```text
-examples/chapter-37/
+examples/01-javascript/chapter-34/
 ```
 
 Запуск:
 
 ```bash
-node examples/chapter-37/01-basic-destructuring.js
-node examples/chapter-37/02-default-values.js
-node examples/chapter-37/03-renaming.js
-node examples/chapter-37/04-common-mistakes.js
-node examples/chapter-37/05-nested-preview.js
-node examples/chapter-37/06-qa-example.js
+node examples/01-javascript/chapter-34/01-basic-destructuring.js
+node examples/01-javascript/chapter-34/02-default-values.js
+node examples/01-javascript/chapter-34/03-renaming.js
+node examples/01-javascript/chapter-34/04-common-mistakes.js
+node examples/01-javascript/chapter-34/05-nested-preview.js
+node examples/01-javascript/chapter-34/06-qa-example.js
 ```
 
 ### Пример 1. Basic destructuring
@@ -1433,7 +1433,7 @@ Destructuring
 Практика находится в:
 
 ```text
-practice/chapter-37.md
+practice/01-javascript/34-destructuring.md
 ```
 
 Рекомендуемый порядок:
@@ -1442,10 +1442,10 @@ practice/chapter-37.md
 1. Ответить на концептуальные вопросы.
 2. Определить extracted variables.
 3. Предсказать вывод кода.
-4. Запустить examples/chapter-37/.
+4. Запустить examples/01-javascript/chapter-34/.
 5. Выполнить debugging tasks.
 6. Сделать QA mini-project.
-7. Свериться с solutions/chapter-37.md.
+7. Свериться с solutions/01-javascript/34-destructuring.md.
 ```
 
 ---
@@ -1455,7 +1455,7 @@ practice/chapter-37.md
 Решения находятся в:
 
 ```text
-solutions/chapter-37.md
+solutions/01-javascript/34-destructuring.md
 ```
 
 Не открывайте решения до самостоятельной попытки. Главный навык этой главы - видеть, какие values are extracted and which variables are created.
