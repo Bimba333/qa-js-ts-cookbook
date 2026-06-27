@@ -8,15 +8,15 @@
 
 References exist because objects are structured values, and JavaScript needs a way for variables to work with object values without copying the whole object on every assignment.
 
-Рассуждение:
+Объяснение:
 
 Object can contain many properties. Assignment of object to another variable gives that variable access to the same object.
 
-Типичная ошибка:
+Распространённая ошибка:
 
 Think assignment creates a full independent object copy.
 
-Automation QA connection:
+Связь с Automation QA:
 
 Shared test data often becomes risky because several variables can work with the same object.
 
@@ -26,15 +26,15 @@ Shared test data often becomes risky because several variables can work with the
 
 Reference is a conceptual connection from a variable to an object value.
 
-Рассуждение:
+Объяснение:
 
 Variable does not contain object. It refers to object.
 
-Типичная ошибка:
+Распространённая ошибка:
 
 Treat reference as the object itself.
 
-Automation QA connection:
+Связь с Automation QA:
 
 Understanding references helps debug unexpected changes in request payloads and expected objects.
 
@@ -44,15 +44,15 @@ Understanding references helps debug unexpected changes in request payloads and 
 
 Object is the value with properties. Reference is the way a variable reaches that object.
 
-Рассуждение:
+Объяснение:
 
 `user` can refer to an object, but object itself is the grouped information with properties.
 
-Типичная ошибка:
+Распространённая ошибка:
 
 Use "reference" and "object" as identical terms.
 
-Automation QA connection:
+Связь с Automation QA:
 
 When a helper receives an object, it receives access to that object, not an isolated independent copy.
 
@@ -62,15 +62,15 @@ When a helper receives an object, it receives access to that object, not an isol
 
 It means the variable gives access to an object value.
 
-Рассуждение:
+Объяснение:
 
 Reading or updating `user.name` goes through `user` to the object and then to property `name`.
 
-Типичная ошибка:
+Распространённая ошибка:
 
 Imagine that `user` physically contains all object properties.
 
-Automation QA connection:
+Связь с Automation QA:
 
 This model explains why shared fixtures can be modified from different places.
 
@@ -80,15 +80,15 @@ This model explains why shared fixtures can be modified from different places.
 
 When one object reference is assigned to another variable, both variables refer to the same object.
 
-Рассуждение:
+Объяснение:
 
 `const admin = user` does not create a new object.
 
-Типичная ошибка:
+Распространённая ошибка:
 
 Expect `admin` to be independent from `user`.
 
-Automation QA connection:
+Связь с Automation QA:
 
 Expected and actual objects should not accidentally be aliases for the same object.
 
@@ -98,15 +98,15 @@ Expected and actual objects should not accidentally be aliases for the same obje
 
 Engine follows the variable's reference to object, then reads property value.
 
-Рассуждение:
+Объяснение:
 
 For `admin.name`, first determine which object `admin` refers to, then read property `name`.
 
-Типичная ошибка:
+Распространённая ошибка:
 
 Ignore which object variable currently refers to.
 
-Automation QA connection:
+Связь с Automation QA:
 
 Nested response debugging starts with knowing which object is being read.
 
@@ -116,15 +116,15 @@ Nested response debugging starts with knowing which object is being read.
 
 Engine follows reference to object and changes property value inside that object.
 
-Рассуждение:
+Объяснение:
 
 If another variable refers to the same object, it observes the updated property.
 
-Типичная ошибка:
+Распространённая ошибка:
 
 Think update belongs only to the variable used in the assignment.
 
-Automation QA connection:
+Связь с Automation QA:
 
 Helper functions can mutate shared payloads.
 
@@ -134,15 +134,15 @@ Helper functions can mutate shared payloads.
 
 The second variable starts referring to the same object as the first.
 
-Рассуждение:
+Объяснение:
 
 No new object is created by direct assignment.
 
-Типичная ошибка:
+Распространённая ошибка:
 
 Assume assignment copies all properties.
 
-Automation QA connection:
+Связь с Automation QA:
 
 Directly assigning shared test data can make tests affect each other.
 
@@ -152,15 +152,15 @@ Directly assigning shared test data can make tests affect each other.
 
 Primitive assignment behaves like a copied value at this conceptual level. Object assignment copies the reference, so variables can refer to same object.
 
-Рассуждение:
+Объяснение:
 
 Changing one primitive variable does not update another. Updating shared object's property is visible through all variables referring to it.
 
-Типичная ошибка:
+Распространённая ошибка:
 
 Apply primitive mental model to objects.
 
-Automation QA connection:
+Связь с Automation QA:
 
 Primitive expected values are usually safer from accidental mutation than object expected data.
 
@@ -170,15 +170,15 @@ Primitive expected values are usually safer from accidental mutation than object
 
 Object identity asks whether two variables refer to the same object.
 
-Рассуждение:
+Объяснение:
 
 Two objects can have same properties but still be different objects.
 
-Типичная ошибка:
+Распространённая ошибка:
 
 Think same-looking objects are identical.
 
-Automation QA connection:
+Связь с Automation QA:
 
 Object equality and structure assertions must be chosen carefully.
 
@@ -188,15 +188,15 @@ Object equality and structure assertions must be chosen carefully.
 
 They can be different because each object literal creates a separate object value.
 
-Рассуждение:
+Объяснение:
 
 `{ name: 'Anna' }` and `{ name: 'Anna' }` are two object values with similar structure.
 
-Типичная ошибка:
+Распространённая ошибка:
 
 Expect strict comparison to compare property structure.
 
-Automation QA connection:
+Связь с Automation QA:
 
 Use proper object assertions rather than identity comparison when checking API response structure.
 
@@ -206,19 +206,19 @@ Use proper object assertions rather than identity comparison when checking API r
 
 They explain shared test data mutation, helper side effects and unexpected object changes.
 
-Рассуждение:
+Объяснение:
 
 Automation frameworks pass objects through helpers, fixtures and assertions. Shared references can make changes visible in unexpected places.
 
-Типичная ошибка:
+Распространённая ошибка:
 
 Debug only the failing assertion and ignore where the object was changed earlier.
 
-Automation QA connection:
+Связь с Automation QA:
 
 Reference mental model is essential for stable Playwright and API tests.
 
-## Predict the output before running
+## Предскажите вывод перед запуском
 
 ### Задача 1
 
@@ -229,15 +229,15 @@ Anna
 Kate
 ```
 
-Рассуждение:
+Объяснение:
 
 Primitive assignment gives `adminName` its own primitive value conceptually. Reassigning `adminName` does not change `userName`.
 
-Типичная ошибка:
+Распространённая ошибка:
 
 Expect both variables to change together.
 
-Automation QA connection:
+Связь с Automation QA:
 
 Primitive expected values do not share mutable object state.
 
@@ -250,15 +250,15 @@ Kate
 Kate
 ```
 
-Рассуждение:
+Объяснение:
 
 `user` and `admin` refer to the same object. Updating `admin.name` updates the shared object.
 
-Типичная ошибка:
+Распространённая ошибка:
 
 Think `admin` received a copied object.
 
-Automation QA connection:
+Связь с Automation QA:
 
 This is the classic shared test data mutation problem.
 
@@ -270,15 +270,15 @@ This is the classic shared test data mutation problem.
 false
 ```
 
-Рассуждение:
+Объяснение:
 
 Two object literals create two different object values. Strict comparison checks whether both variables refer to same object.
 
-Типичная ошибка:
+Распространённая ошибка:
 
 Expect object structure comparison.
 
-Automation QA connection:
+Связь с Automation QA:
 
 Use deep structure assertions for API objects, not identity comparison.
 
@@ -291,19 +291,19 @@ Anna
 Kate
 ```
 
-Рассуждение:
+Объяснение:
 
 `oldUser` still refers to first object. `currentUser` was reassigned to a new object.
 
-Типичная ошибка:
+Распространённая ошибка:
 
 Think reassignment changes all variables that previously referred to the old object.
 
-Automation QA connection:
+Связь с Automation QA:
 
 Reassigning local variable does not update all aliases in test setup.
 
-## Identify references
+## Определите references
 
 ### Задача 1
 
@@ -315,15 +315,15 @@ Object values created: 1.
 
 All three variables refer to same object.
 
-Рассуждение:
+Объяснение:
 
 `admin = user`, then `currentUser = admin`. No new object literal is created after the first one.
 
-Типичная ошибка:
+Распространённая ошибка:
 
 Count three objects because there are three variables.
 
-Automation QA connection:
+Связь с Automation QA:
 
 Several fixture variables can point to same object.
 
@@ -337,15 +337,15 @@ Object values created: 2.
 
 They do not refer to same object.
 
-Рассуждение:
+Объяснение:
 
 There are two separate object literals.
 
-Типичная ошибка:
+Распространённая ошибка:
 
 Think same property values imply same object.
 
-Automation QA connection:
+Связь с Automation QA:
 
 Expected and actual objects may have same shape but should still be compared by structure, not identity.
 
@@ -357,19 +357,19 @@ Object values created: 2.
 
 Initially `selectedUser` and `firstSelection` refer to first object. After reassignment, `selectedUser` refers to second object, `firstSelection` still refers to first object.
 
-Рассуждение:
+Объяснение:
 
 Reassignment changes which object `selectedUser` refers to. It does not move `firstSelection`.
 
-Типичная ошибка:
+Распространённая ошибка:
 
 Think reassignment changes the old object.
 
-Automation QA connection:
+Связь с Automation QA:
 
 Important when test code replaces payload object after saving previous version.
 
-## Code reading
+## Чтение кода
 
 Ответ:
 
@@ -383,19 +383,19 @@ admin
 
 4. It is dangerous because expected or default test data can be changed accidentally.
 
-Рассуждение:
+Объяснение:
 
 `adminUser` refers to the same object as `defaultUser`.
 
-Типичная ошибка:
+Распространённая ошибка:
 
 Assume `adminUser` is an independent copy.
 
-Automation QA connection:
+Связь с Automation QA:
 
 Shared default payloads should not be mutated directly across tests.
 
-## Debugging tasks
+## Задачи на отладку
 
 ### Задача 1
 
@@ -419,15 +419,15 @@ const actualUser = {
 console.log(expectedUser.role);
 ```
 
-Рассуждение:
+Объяснение:
 
 `actualUser.role = 'admin'` mutated shared object.
 
-Типичная ошибка:
+Распространённая ошибка:
 
 Debug the assertion instead of object setup.
 
-Automation QA connection:
+Связь с Automation QA:
 
 Expected data must be protected from accidental mutation.
 
@@ -437,15 +437,15 @@ Expected data must be protected from accidental mutation.
 
 It returns `false` because `expectedUser` and `actualUser` refer to different objects.
 
-Рассуждение:
+Объяснение:
 
 Same property values do not mean same object identity.
 
-Типичная ошибка:
+Распространённая ошибка:
 
 Use strict identity comparison for object structure.
 
-Automation QA connection:
+Связь с Automation QA:
 
 API object assertions should compare structure and values through appropriate assertion tools.
 
@@ -461,15 +461,15 @@ admin
 
 The helper updates property `role` of the object passed to it.
 
-Рассуждение:
+Объяснение:
 
 The parameter `user` refers to the same object as `testUser` during helper call.
 
-Типичная ошибка:
+Распространённая ошибка:
 
 Assume helper works on a private copy.
 
-Automation QA connection:
+Связь с Automation QA:
 
 Helpers that modify payloads should be named clearly or return new objects.
 
@@ -491,19 +491,19 @@ const adminUser = {
 };
 ```
 
-Рассуждение:
+Объяснение:
 
 Object spread creates a new first-level object instead of reusing same object reference.
 
-Типичная ошибка:
+Распространённая ошибка:
 
 Think `const adminUser = defaultUser` creates a copy.
 
-Automation QA connection:
+Связь с Automation QA:
 
 This pattern is common when deriving test data variants.
 
-## QA-oriented tasks
+## QA-задачи
 
 ### Сценарий 1. Shared test data
 
@@ -511,15 +511,15 @@ This pattern is common when deriving test data variants.
 
 Direct assignment is dangerous because both variables will refer to same object. Updating role for admin scenario also changes default request body.
 
-Рассуждение:
+Объяснение:
 
 `const adminBody = defaultRequestBody` creates another reference to the same object.
 
-Типичная ошибка:
+Распространённая ошибка:
 
 Modify default test data in one test and wonder why another test fails.
 
-Automation QA connection:
+Связь с Automation QA:
 
 Shared fixtures and default payloads should be treated carefully.
 
@@ -529,15 +529,15 @@ Shared fixtures and default payloads should be treated carefully.
 
 The original object passed to helper will get property `trackingId`.
 
-Рассуждение:
+Объяснение:
 
 Helper receives a reference to the object and updates it.
 
-Типичная ошибка:
+Распространённая ошибка:
 
 Assume helper only changes a temporary local value.
 
-Automation QA connection:
+Связь с Automation QA:
 
 Request builders can accidentally mutate payloads reused in later assertions.
 
@@ -547,15 +547,15 @@ Request builders can accidentally mutate payloads reused in later assertions.
 
 This is unsafe because expected and actual variables refer to same object.
 
-Рассуждение:
+Объяснение:
 
 Any update to `actualUser` also changes `expectedUser`.
 
-Типичная ошибка:
+Распространённая ошибка:
 
 Make assertion meaningless by comparing an object with itself through another variable.
 
-Automation QA connection:
+Связь с Automation QA:
 
 Expected and actual data should be independently produced unless intentionally testing same identity.
 
@@ -575,19 +575,19 @@ Checklist:
 7. Is a fixture returning the same object instance repeatedly?
 ```
 
-Рассуждение:
+Объяснение:
 
 Unexpected mutation is usually caused by shared reference and property update.
 
-Типичная ошибка:
+Распространённая ошибка:
 
 Look only at the line where assertion failed.
 
-Automation QA connection:
+Связь с Automation QA:
 
 This checklist is useful for Playwright fixtures, API payload builders and shared config objects.
 
-## Mini-project
+## Мини-проект
 
 Возможное решение:
 
@@ -623,14 +623,14 @@ sharedAdmin   | yes                                   | admin             | muta
 safeAdmin     | no, first-level new object             | admin             | safer for simple objects
 ```
 
-Рассуждение:
+Объяснение:
 
 `sharedAdmin` receives the same reference as `defaultUser`. Updating `sharedAdmin.role` updates the shared object. `safeAdmin` is created as a new first-level object using spread.
 
-Типичная ошибка:
+Распространённая ошибка:
 
 Expect `sharedAdmin` to be independent.
 
-Automation QA connection:
+Связь с Automation QA:
 
 This mini-project mirrors real test data preparation: direct assignment is risky, creating a new object is safer for variants.

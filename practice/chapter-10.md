@@ -17,7 +17,7 @@
 11. Чем visibility отличается от lifetime?
 12. Почему Scope Chain не является Call Stack?
 
-## Determine variable visibility
+## Определите видимость переменных
 
 Для каждого фрагмента ответьте, где identifier visible.
 
@@ -51,7 +51,7 @@ if (true) {
 }
 ```
 
-## Identify Scope
+## Определите Scope
 
 Для кода ниже подпишите identifiers и scopes:
 
@@ -77,7 +77,7 @@ function buildLoginUrl() {
 4. Какой lookup path у `baseUrl` внутри блока?
 5. Какой lookup path у `path` внутри блока?
 
-## Predict output before running
+## Предскажите вывод перед запуском
 
 Перед запуском предскажите вывод.
 
@@ -123,7 +123,7 @@ function printUrl() {
 printUrl();
 ```
 
-## Debugging
+## Задачи на отладку
 
 ### Задача 1
 
@@ -177,7 +177,7 @@ function testB() {
 
 Объясните риск для автотестов.
 
-## QA-oriented tasks
+## QA-задачи
 
 ### Сценарий 1
 
@@ -207,7 +207,7 @@ Fixture создает `authToken`, а тест использует тольк�
 
 Объясните, когда это shadowing может быть проблемой.
 
-## Mini-project
+## Мини-проект
 
 Создайте файл:
 

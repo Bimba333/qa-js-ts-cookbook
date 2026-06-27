@@ -642,7 +642,7 @@ examples/chapter-44/04-prototype-reminder.js
 
 Показывает high-level relationship between class method and prototype lookup.
 
-### Пример 5. Common mistakes
+### Пример 5. Типичные ошибки
 
 Файл:
 
@@ -842,7 +842,7 @@ many similar objects
 └── shared behavior
 ```
 
-Examples:
+Примеры:
 
 * Page Objects;
 * API clients;
@@ -1016,7 +1016,7 @@ instance
     └── class methods
 ```
 
-### 9. Current JavaScript model
+### 9. Текущая модель JavaScript
 
 ```text
 Objects
@@ -1066,7 +1066,7 @@ TestUser
 └── describe()
 ```
 
-### 14. Readability
+### 14. Читаемость
 
 ```text
 Class name
@@ -1074,7 +1074,7 @@ Class name
 └── communicates object purpose
 ```
 
-### 15. Common mistakes
+### 15. Типичные ошибки
 
 ```text
 class without new
@@ -1179,7 +1179,7 @@ instance
 └── linked to class prototype
 ```
 
-### 27. Mental model summary
+### 27. Краткая ментальная модель
 
 ```text
 Class
@@ -1237,7 +1237,7 @@ one method
 └── many instances
 ```
 
-### 33. Bridge to Inheritance
+### 33. Переход к Inheritance
 
 ```text
 Class
@@ -1246,7 +1246,7 @@ Class
 next: reuse behavior between classes
 ```
 
-### 34. Bridge to extends
+### 34. Переход к extends
 
 ```text
 next chapter
@@ -1302,7 +1302,7 @@ class syntax
 └── prototype mechanism underneath
 ```
 
-### 40. Summary diagram
+### 40. Итоговая схема
 
 ```text
 Need many similar objects
@@ -1392,7 +1392,7 @@ The next chapter will explain class inheritance: how one class can reuse behavio
 
 ---
 
-## Quick Check
+## Проверьте себя
 
 1. What repetitive work does class remove?
 

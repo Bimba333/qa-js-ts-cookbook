@@ -8,15 +8,15 @@
 
 Operator is a language action performed on operand values that produces a result.
 
-Рассуждение:
+Объяснение:
 
 In `2 + 3`, `+` performs addition.
 
-Типичная ошибка:
+Распространённая ошибка:
 
 Think operator is only a symbol, not an operation.
 
-Automation QA connection:
+Связь с Automation QA:
 
 Assertions and validation expressions are built from operators.
 
@@ -26,15 +26,15 @@ Assertions and validation expressions are built from operators.
 
 Operand is a value used by an operator.
 
-Рассуждение:
+Объяснение:
 
 In `2 + 3`, `2` and `3` are operands.
 
-Типичная ошибка:
+Распространённая ошибка:
 
 Confuse operand with result.
 
-Automation QA connection:
+Связь с Automation QA:
 
 In `statusCode === 200`, both `statusCode` and `200` are operands.
 
@@ -44,15 +44,15 @@ In `statusCode === 200`, both `statusCode` and `200` are operands.
 
 Operator result is the value produced after operation.
 
-Рассуждение:
+Объяснение:
 
 `2 + 3` produces `5`; `200 === 200` produces `true`.
 
-Типичная ошибка:
+Распространённая ошибка:
 
 Ignore result and expect visible effect.
 
-Automation QA connection:
+Связь с Automation QA:
 
 Assertions use Boolean results.
 
@@ -62,15 +62,15 @@ Assertions use Boolean results.
 
 Categories group operators by operation type.
 
-Рассуждение:
+Объяснение:
 
 Arithmetic calculates, comparison compares, assignment updates.
 
-Типичная ошибка:
+Распространённая ошибка:
 
 Expect all operators to behave like arithmetic.
 
-Automation QA connection:
+Связь с Automation QA:
 
 Understanding category helps read test expressions.
 
@@ -80,15 +80,15 @@ Understanding category helps read test expressions.
 
 Unary operator works with one operand.
 
-Рассуждение:
+Объяснение:
 
 `typeof value` and `!isReady` are examples.
 
-Типичная ошибка:
+Распространённая ошибка:
 
 Expect every operator to have two operands.
 
-Automation QA connection:
+Связь с Automation QA:
 
 `typeof` is useful for debugging API values.
 
@@ -98,15 +98,15 @@ Automation QA connection:
 
 Binary operator works with two operands.
 
-Рассуждение:
+Объяснение:
 
 `2 + 3`, `statusCode === 200`, `'id' in body`.
 
-Типичная ошибка:
+Распространённая ошибка:
 
 Miss left and right operands.
 
-Automation QA connection:
+Связь с Automation QA:
 
 Most assertions use binary comparisons.
 
@@ -116,15 +116,15 @@ Most assertions use binary comparisons.
 
 Ternary operator works with three operands.
 
-Рассуждение:
+Объяснение:
 
 `condition ? valueIfTrue : valueIfFalse`.
 
-Типичная ошибка:
+Распространённая ошибка:
 
 Use ternary for complex logic too early.
 
-Automation QA connection:
+Связь с Automation QA:
 
 Can create simple labels in reports, but conditionals will be studied later.
 
@@ -134,15 +134,15 @@ Can create simple labels in reports, but conditionals will be studied later.
 
 They perform numeric-like calculations.
 
-Рассуждение:
+Объяснение:
 
 Examples: `+`, `-`, `*`, `/`, `%`.
 
-Типичная ошибка:
+Распространённая ошибка:
 
 Forget `+` can also interact with strings.
 
-Automation QA connection:
+Связь с Automation QA:
 
 Used for totals, timeouts, retries.
 
@@ -152,15 +152,15 @@ Used for totals, timeouts, retries.
 
 They compare values and usually produce Boolean result.
 
-Рассуждение:
+Объяснение:
 
 `===`, `<`, `>=` are comparison operators.
 
-Типичная ошибка:
+Распространённая ошибка:
 
 Confuse comparison with assignment.
 
-Automation QA connection:
+Связь с Automation QA:
 
 Assertions depend on comparisons.
 
@@ -170,15 +170,15 @@ Assertions depend on comparisons.
 
 They combine or evaluate condition-like values.
 
-Рассуждение:
+Объяснение:
 
 `&&`, `||`, `!` are logical operators.
 
-Типичная ошибка:
+Распространённая ошибка:
 
 Jump into short-circuit details before understanding category.
 
-Automation QA connection:
+Связь с Automation QA:
 
 Used to combine validation checks.
 
@@ -188,15 +188,15 @@ Used to combine validation checks.
 
 They store or update values.
 
-Рассуждение:
+Объяснение:
 
 `=` assigns; `+=` updates based on current value.
 
-Типичная ошибка:
+Распространённая ошибка:
 
 Confuse `=` with `===`.
 
-Automation QA connection:
+Связь с Automation QA:
 
 Used for counters and prepared test data.
 
@@ -206,15 +206,15 @@ Used for counters and prepared test data.
 
 `typeof` returns string with type category.
 
-Рассуждение:
+Объяснение:
 
 `typeof 'Anna'` returns `'string'`.
 
-Типичная ошибка:
+Распространённая ошибка:
 
 Call `typeof` a function.
 
-Automation QA connection:
+Связь с Automation QA:
 
 Useful for debugging response field types.
 
@@ -224,15 +224,15 @@ Useful for debugging response field types.
 
 At a high level, `delete` removes property from object.
 
-Рассуждение:
+Объяснение:
 
 After deleting property, `in` can show it is no longer present.
 
-Типичная ошибка:
+Распространённая ошибка:
 
 Think delete removes a variable.
 
-Automation QA connection:
+Связь с Automation QA:
 
 Used for sanitizing objects before comparison.
 
@@ -242,15 +242,15 @@ Used for sanitizing objects before comparison.
 
 `in` checks property presence in object.
 
-Рассуждение:
+Объяснение:
 
 It does not compare property value.
 
-Типичная ошибка:
+Распространённая ошибка:
 
 Use `in` to check value correctness.
 
-Automation QA connection:
+Связь с Automation QA:
 
 Useful for response schema-like checks.
 
@@ -260,19 +260,19 @@ Useful for response schema-like checks.
 
 Precedence decides operation order when expression has multiple operators.
 
-Рассуждение:
+Объяснение:
 
 `*` is evaluated before `+` in `2 + 3 * 4`.
 
-Типичная ошибка:
+Распространённая ошибка:
 
 Rely on memory instead of using parentheses.
 
-Automation QA connection:
+Связь с Automation QA:
 
 Readable validation expressions reduce review mistakes.
 
-## Identify operator category
+## Определите operator category
 
 ### Задача 1
 
@@ -280,15 +280,15 @@ Readable validation expressions reduce review mistakes.
 
 Operator: `+`. Operands: `2`, `3`. Category: arithmetic. Result type: Number.
 
-Рассуждение:
+Объяснение:
 
 Addition calculates result.
 
-Типичная ошибка:
+Распространённая ошибка:
 
 Forget `+` may behave differently with strings.
 
-Automation QA connection:
+Связь с Automation QA:
 
 Used in calculations.
 
@@ -298,15 +298,15 @@ Used in calculations.
 
 Operator: `===`. Operands: `statusCode`, `200`. Category: comparison. Result type: Boolean.
 
-Рассуждение:
+Объяснение:
 
 Strict equality compares without conversion.
 
-Типичная ошибка:
+Распространённая ошибка:
 
 Confuse with assignment.
 
-Automation QA connection:
+Связь с Automation QA:
 
 Common assertion expression.
 
@@ -316,15 +316,15 @@ Common assertion expression.
 
 Operator: `&&`. Operands: `isReady`, `hasUser`. Category: logical. Result: condition-like result.
 
-Рассуждение:
+Объяснение:
 
 It combines checks.
 
-Типичная ошибка:
+Распространённая ошибка:
 
 Explain short-circuit before understanding operator category.
 
-Automation QA connection:
+Связь с Automation QA:
 
 Used to combine validation states.
 
@@ -334,15 +334,15 @@ Used to combine validation states.
 
 Operator: `typeof`. Operand: `userName`. Category: type inspection. Result type: String.
 
-Рассуждение:
+Объяснение:
 
 `typeof` returns type category string.
 
-Типичная ошибка:
+Распространённая ошибка:
 
 Write `typeof(userName)` and think it is a normal function call.
 
-Automation QA connection:
+Связь с Automation QA:
 
 Debugging API value types.
 
@@ -352,15 +352,15 @@ Debugging API value types.
 
 Operator: `in`. Operands: `'id'`, `responseBody`. Category: property/object-related. Result type: Boolean.
 
-Рассуждение:
+Объяснение:
 
 It checks property presence.
 
-Типичная ошибка:
+Распространённая ошибка:
 
 Expect it to check property value.
 
-Automation QA connection:
+Связь с Automation QA:
 
 Response field existence check.
 
@@ -370,19 +370,19 @@ Response field existence check.
 
 Operator: `+=`. Operands: `retryCount`, `1`. Category: assignment/update. Result type depends on updated value.
 
-Рассуждение:
+Объяснение:
 
 It reads current value, performs operation and assigns back.
 
-Типичная ошибка:
+Распространённая ошибка:
 
 Forget current value participates.
 
-Automation QA connection:
+Связь с Automation QA:
 
 Retry counters.
 
-## Predict the output before running
+## Предскажите вывод перед запуском
 
 ### Задача 1
 
@@ -393,15 +393,15 @@ Retry counters.
 102
 ```
 
-Рассуждение:
+Объяснение:
 
 `*` multiplies; `+` adds numbers.
 
-Типичная ошибка:
+Распространённая ошибка:
 
 Confuse item count and addition.
 
-Automation QA connection:
+Связь с Automation QA:
 
 Calculating totals.
 
@@ -415,15 +415,15 @@ false
 true
 ```
 
-Рассуждение:
+Объяснение:
 
 Each comparison produces Boolean result.
 
-Типичная ошибка:
+Распространённая ошибка:
 
 Read `<` and `>=` backward.
 
-Automation QA connection:
+Связь с Automation QA:
 
 Response validation thresholds.
 
@@ -437,15 +437,15 @@ true
 true
 ```
 
-Рассуждение:
+Объяснение:
 
 `&&` needs both condition-like values true. `||` accepts one true. `!false` becomes true.
 
-Типичная ошибка:
+Распространённая ошибка:
 
 Confuse AND and OR.
 
-Automation QA connection:
+Связь с Automation QA:
 
 Combining validation checks.
 
@@ -459,15 +459,15 @@ true
 false
 ```
 
-Рассуждение:
+Объяснение:
 
 `typeof responseBody.name` is string. `id` exists; `role` does not.
 
-Типичная ошибка:
+Распространённая ошибка:
 
 Expect `in` to check value instead of presence.
 
-Automation QA connection:
+Связь с Automation QA:
 
 Response body shape checks.
 
@@ -480,19 +480,19 @@ Response body shape checks.
 20
 ```
 
-Рассуждение:
+Объяснение:
 
 Multiplication happens before addition. Parentheses change order.
 
-Типичная ошибка:
+Распространённая ошибка:
 
 Ignore precedence.
 
-Automation QA connection:
+Связь с Automation QA:
 
 Parentheses make test expressions easier to review.
 
-## Code reading
+## Чтение кода
 
 Ответ:
 
@@ -518,19 +518,19 @@ Possible type conversion issue:
 retryCountFromEnv + 1
 ```
 
-Рассуждение:
+Объяснение:
 
 `retryCountFromEnv` is string, so `+` does not produce numeric increment here.
 
-Типичная ошибка:
+Распространённая ошибка:
 
 Assume numeric-looking string behaves as number.
 
-Automation QA connection:
+Связь с Automation QA:
 
 Environment variables often arrive as strings.
 
-## Debugging tasks
+## Задачи на отладку
 
 ### Задача 1
 
@@ -545,15 +545,15 @@ const retryCount = '3';
 const nextRetryCount = Number(retryCount) + 1;
 ```
 
-Рассуждение:
+Объяснение:
 
 Numeric operation needs Number.
 
-Типичная ошибка:
+Распространённая ошибка:
 
 Ignore operand type.
 
-Automation QA connection:
+Связь с Automation QA:
 
 Parsing config values.
 
@@ -563,15 +563,15 @@ Parsing config values.
 
 `*` has higher precedence than `+`, so expression is `2 + (3 * 4)`.
 
-Рассуждение:
+Объяснение:
 
 `3 * 4` is `12`; `2 + 12` is `14`.
 
-Типичная ошибка:
+Распространённая ошибка:
 
 Assume left-to-right for every operator.
 
-Automation QA connection:
+Связь с Automation QA:
 
 Use parentheses in complex validations.
 
@@ -581,15 +581,15 @@ Use parentheses in complex validations.
 
 `in` checks whether property exists. It does not compare the value `101`.
 
-Рассуждение:
+Объяснение:
 
 `'id' in responseBody` returns true because property is present.
 
-Типичная ошибка:
+Распространённая ошибка:
 
 Use presence check as value assertion.
 
-Automation QA connection:
+Связь с Automation QA:
 
 Need separate checks for existence and value.
 
@@ -603,19 +603,19 @@ Property `temporaryCode` is removed. The final result is:
 false
 ```
 
-Рассуждение:
+Объяснение:
 
 `delete` removes property at a high level; `in` then checks presence.
 
-Типичная ошибка:
+Распространённая ошибка:
 
 Expect deleted property to still be present with `undefined`.
 
-Automation QA connection:
+Связь с Automation QA:
 
 Sanitizing payloads.
 
-## QA-oriented tasks
+## QA-задачи
 
 ### Сценарий 1
 
@@ -627,15 +627,15 @@ const isFastEnough = responseTimeMs < 500;
 const isValid = isStatusExpected && isFastEnough;
 ```
 
-Рассуждение:
+Объяснение:
 
 Comparison operators produce Booleans; logical operator combines them.
 
-Типичная ошибка:
+Распространённая ошибка:
 
 Combine raw values without explicit checks.
 
-Automation QA connection:
+Связь с Automation QA:
 
 Common validation pattern.
 
@@ -649,15 +649,15 @@ const statusCode = '200';
 console.log(typeof statusCode);
 ```
 
-Рассуждение:
+Объяснение:
 
 `typeof` inspects type category.
 
-Типичная ошибка:
+Распространённая ошибка:
 
 Assume value is number because it looks numeric.
 
-Automation QA connection:
+Связь с Automation QA:
 
 Debugging API responses.
 
@@ -675,15 +675,15 @@ console.log('id' in responseBody);
 console.log('role' in responseBody);
 ```
 
-Рассуждение:
+Объяснение:
 
 `in` checks property presence.
 
-Типичная ошибка:
+Распространённая ошибка:
 
 Think `in` validates property value.
 
-Automation QA connection:
+Связь с Automation QA:
 
 Schema-like response checks.
 
@@ -697,19 +697,19 @@ const createdAt = new Date();
 console.log(createdAt instanceof Date);
 ```
 
-Рассуждение:
+Объяснение:
 
 `instanceof` checks runtime relationship at a high level.
 
-Типичная ошибка:
+Распространённая ошибка:
 
 Use `typeof` for Date and expect `"date"`.
 
-Automation QA connection:
+Связь с Automation QA:
 
 Runtime validation of values returned by helpers.
 
-## Mini-project
+## Мини-проект
 
 Возможное решение:
 
@@ -760,14 +760,14 @@ delete response.body.role        | property deletion        | -      | role remo
 "role" in response.body          | property presence        | false  | role no longer exists
 ```
 
-Рассуждение:
+Объяснение:
 
 The project combines comparison, logical, type inspection, property presence and delete operators.
 
-Типичная ошибка:
+Распространённая ошибка:
 
 Treat every check as a value comparison.
 
-Automation QA connection:
+Связь с Automation QA:
 
 This mirrors response validation in API tests.

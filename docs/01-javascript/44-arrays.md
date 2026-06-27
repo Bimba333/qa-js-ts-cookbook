@@ -264,7 +264,7 @@ First element has index `0`.
 console.log(users[0]);
 ```
 
-Result:
+Результат:
 
 ```text
 anna@example.test
@@ -279,7 +279,7 @@ const firstUser = users[0];
 const secondUser = users[1];
 ```
 
-Mental model:
+Ментальная модель:
 
 ```text
 users[1]
@@ -299,7 +299,7 @@ You can replace value at position:
 users[1] = 'kate.updated@example.test';
 ```
 
-Mental model:
+Ментальная модель:
 
 ```text
 index 1
@@ -358,7 +358,7 @@ Empty array contains no elements:
 const failedAssertions = [];
 ```
 
-Mental model:
+Ментальная модель:
 
 ```text
 empty array
@@ -437,7 +437,7 @@ Use index 2 as position
 Step 3
 │
 ▼
-Return value stored there
+Возвращаемое значение stored there
 ```
 
 If index exists:
@@ -663,7 +663,7 @@ examples/chapter-47/04-length.js
 
 Показывает `length` and last index relation.
 
-### Пример 5. Common mistakes
+### Пример 5. Типичные ошибки
 
 Файл:
 
@@ -868,7 +868,7 @@ and
 order matters
 ```
 
-Examples:
+Примеры:
 
 * list of users;
 * list of test cases;
@@ -1068,7 +1068,7 @@ replace element
 └── allowed but use carefully
 ```
 
-### 11. Current JavaScript model
+### 11. Текущая модель JavaScript
 
 ```text
 Values
@@ -1106,7 +1106,7 @@ testCases
 └── locked user
 ```
 
-### 15. Readability
+### 15. Читаемость
 
 ```text
 one collection name
@@ -1116,7 +1116,7 @@ better than
 many numbered variables
 ```
 
-### 16. Common mistakes
+### 16. Типичные ошибки
 
 ```text
 length 3
@@ -1195,7 +1195,7 @@ old value
 new value at same index
 ```
 
-### 25. Mental model summary
+### 25. Краткая ментальная модель
 
 ```text
 Many values
@@ -1258,7 +1258,7 @@ update
 grow later
 ```
 
-### 31. Bridge to push()
+### 31. Переход к push()
 
 ```text
 fixed elements now
@@ -1267,7 +1267,7 @@ fixed elements now
 push() later
 ```
 
-### 32. Bridge to loops
+### 32. Переход к loops
 
 ```text
 many elements
@@ -1276,7 +1276,7 @@ many elements
 later: repeat over them
 ```
 
-### 33. Bridge to iteration
+### 33. Переход к iteration
 
 ```text
 array
@@ -1345,7 +1345,7 @@ find position
 return value
 ```
 
-### 40. Summary diagram
+### 40. Итоговая схема
 
 ```text
 Many values
@@ -1437,7 +1437,7 @@ The next chapter will explain how arrays grow and shrink with methods such as `p
 
 ---
 
-## Quick Check
+## Проверьте себя
 
 1. What problem do arrays solve?
 

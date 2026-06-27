@@ -6,11 +6,11 @@
 
 Ответ: `call()` нужен, чтобы вызвать function object и вручную выбрать receiver для `this`.
 
-Рассуждение: ordinary invocation выбирает receiver из формы вызова. `call()` позволяет передать receiver явно первым argument.
+Объяснение: ordinary invocation выбирает receiver из формы вызова. `call()` позволяет передать receiver явно первым argument.
 
-Типичная ошибка: думать, что `call()` создает новую функцию.
+Распространённая ошибка: думать, что `call()` создает новую функцию.
 
-Automation QA связь: `call()` помогает явно выбирать config object для reusable validators; detached helper methods - только один из случаев, где это полезно.
+Связь с Automation QA: `call()` помогает явно выбирать config object для reusable validators; detached helper methods - только один из случаев, где это полезно.
 
 ---
 
@@ -18,7 +18,7 @@ Automation QA связь: `call()` помогает явно выбирать co
 
 Ответ: JavaScript выбирает receiver по ordinary invocation form, изученной в главе про `this`.
 
-Рассуждение:
+Объяснение:
 
 ```text
 object.method()
@@ -26,9 +26,9 @@ object.method()
 └── receiver comes from ordinary method call
 ```
 
-Типичная ошибка: считать это универсальным правилом для всех форм вызова.
+Распространённая ошибка: считать это универсальным правилом для всех форм вызова.
 
-Automation QA связь: page object methods обычно вызываются как `pageObject.method()`.
+Связь с Automation QA: page object methods обычно вызываются как `pageObject.method()`.
 
 ---
 
@@ -36,7 +36,7 @@ Automation QA связь: page object methods обычно вызываются 
 
 Ответ: разработчик.
 
-Рассуждение:
+Объяснение:
 
 ```text
 functionObject.call(receiver)
@@ -44,9 +44,9 @@ functionObject.call(receiver)
 └── receiver passed manually
 ```
 
-Типичная ошибка: ждать, что receiver будет взят из object, где function была создана.
+Распространённая ошибка: ждать, что receiver будет взят из object, где function была создана.
 
-Automation QA связь: можно вызвать общий validator с разными config objects.
+Связь с Automation QA: можно вызвать общий validator с разными config objects.
 
 ---
 
@@ -54,7 +54,7 @@ Automation QA связь: можно вызвать общий validator с ра
 
 Ответ: первый argument становится `this` внутри вызываемой function.
 
-Рассуждение:
+Объяснение:
 
 ```text
 validate.call(config, response)
@@ -63,9 +63,9 @@ validate.call(config, response)
 └── response -> first parameter
 ```
 
-Типичная ошибка: передать обычный function argument первым и случайно сделать его receiver.
+Распространённая ошибка: передать обычный function argument первым и случайно сделать его receiver.
 
-Automation QA связь: особенно важно не путать config object и response object.
+Связь с Automation QA: особенно важно не путать config object и response object.
 
 ---
 
@@ -73,7 +73,7 @@ Automation QA связь: особенно важно не путать config o
 
 Ответ: они передаются в parameters вызываемой function по позиции.
 
-Рассуждение:
+Объяснение:
 
 ```text
 format.call(client, 'GET', '/users')
@@ -83,9 +83,9 @@ format.call(client, 'GET', '/users')
 └── '/users' -> path
 ```
 
-Типичная ошибка: думать, что все arguments `call()` становятся parameters.
+Распространённая ошибка: думать, что все arguments `call()` становятся parameters.
 
-Automation QA связь: так можно передавать response, path, method и другие test data.
+Связь с Automation QA: так можно передавать response, path, method и другие test data.
 
 ---
 
@@ -93,11 +93,11 @@ Automation QA связь: так можно передавать response, path,
 
 Ответ: `call()` выбирает receiver только для одного invocation.
 
-Рассуждение: следующий вызов той же function может быть ordinary invocation, another `call()` или standalone call.
+Объяснение: следующий вызов той же function может быть ordinary invocation, another `call()` или standalone call.
 
-Типичная ошибка: вызвать `fn.call(object)` один раз и ожидать, что `fn()` дальше будет использовать тот же object.
+Распространённая ошибка: вызвать `fn.call(object)` один раз и ожидать, что `fn()` дальше будет использовать тот же object.
 
-Automation QA связь: если нужен устойчиво привязанный helper, следующая тема `bind()` будет важнее.
+Связь с Automation QA: если нужен устойчиво привязанный helper, следующая тема `bind()` будет важнее.
 
 ---
 
@@ -105,7 +105,7 @@ Automation QA связь: если нужен устойчиво привяза�
 
 Ответ: в ordinary `object.method()` receiver выбирается из формы вызова. В `call()` receiver передается явно.
 
-Рассуждение:
+Объяснение:
 
 ```text
 object.method(value)
@@ -117,9 +117,9 @@ method.call(object, value)
 └── developer chooses receiver
 ```
 
-Типичная ошибка: заменять все method calls на `call()` без причины.
+Распространённая ошибка: заменять все method calls на `call()` без причины.
 
-Automation QA связь: обычный method call часто лучше читается в page objects и API clients.
+Связь с Automation QA: обычный method call часто лучше читается в page objects и API clients.
 
 ---
 
@@ -127,11 +127,11 @@ Automation QA связь: обычный method call часто лучше чи�
 
 Ответ: `apply()` тоже связан с ручным выбором receiver, но передает arguments другой формой.
 
-Рассуждение: `call()` передает arguments по одному. `apply()` будет изучаться дальше и покажет, что делать, если arguments уже собраны в collection.
+Объяснение: `call()` передает arguments по одному. `apply()` будет изучаться дальше и покажет, что делать, если arguments уже собраны в collection.
 
-Типичная ошибка: пытаться подробно объяснить `apply()` до понимания `call()`.
+Распространённая ошибка: пытаться подробно объяснить `apply()` до понимания `call()`.
 
-Automation QA связь: массивы test data часто возникают в automation code, поэтому `apply()` будет естественным продолжением.
+Связь с Automation QA: массивы test data часто возникают в automation code, поэтому `apply()` будет естественным продолжением.
 
 ---
 
@@ -149,7 +149,7 @@ Receiver выбирает разработчик через `call(service)`.
 
 `this` становится `service`.
 
-Рассуждение:
+Объяснение:
 
 ```text
 printServiceName.call(service)
@@ -158,9 +158,9 @@ printServiceName.call(service)
 └── no normal arguments
 ```
 
-Типичная ошибка: думать, что `service` станет parameter. У функции нет parameters, а `service` становится `this`.
+Распространённая ошибка: думать, что `service` станет parameter. У функции нет parameters, а `service` становится `this`.
 
-Automation QA связь: похожим образом можно вызывать shared helper с конкретным config object.
+Связь с Automation QA: похожим образом можно вызывать shared helper с конкретным config object.
 
 ---
 
@@ -176,7 +176,7 @@ https://api.example.test/users
 
 `path` получает `'/users'`.
 
-Рассуждение:
+Объяснение:
 
 ```text
 buildUrl.call(apiClient, '/users')
@@ -185,9 +185,9 @@ buildUrl.call(apiClient, '/users')
 └── '/users'  -> path
 ```
 
-Типичная ошибка: забыть, что normal arguments начинаются после receiver.
+Распространённая ошибка: забыть, что normal arguments начинаются после receiver.
 
-Automation QA связь: это типичный URL builder для API tests.
+Связь с Automation QA: это типичный URL builder для API tests.
 
 ---
 
@@ -201,11 +201,11 @@ Automation QA связь: это типичный URL builder для API tests.
 apiClient.buildUrl.call(apiClient, '/orders');
 ```
 
-Рассуждение: function object находится в `apiClient.buildUrl`, а receiver передается первым argument в `call()`.
+Объяснение: function object находится в `apiClient.buildUrl`, а receiver передается первым argument в `call()`.
 
-Типичная ошибка: написать `apiClient.buildUrl.call('/orders')`, сделав `'/orders'` receiver.
+Распространённая ошибка: написать `apiClient.buildUrl.call('/orders')`, сделав `'/orders'` receiver.
 
-Automation QA связь: такой rewrite полезен для понимания, но в реальном коде `apiClient.buildUrl('/orders')` обычно читается лучше.
+Связь с Automation QA: такой rewrite полезен для понимания, но в реальном коде `apiClient.buildUrl('/orders')` обычно читается лучше.
 
 ---
 
@@ -217,16 +217,16 @@ Automation QA связь: такой rewrite полезен для понима�
 assertions.statusMatches.call(assertions, response);
 ```
 
-Рассуждение:
+Объяснение:
 
 ```text
 assertions -> this
 response   -> response parameter
 ```
 
-Типичная ошибка: поменять местами `assertions` и `response`.
+Распространённая ошибка: поменять местами `assertions` и `response`.
 
-Automation QA связь: assertion helper получает config через `this`, а проверяемый response как обычный argument.
+Связь с Automation QA: assertion helper получает config через `this`, а проверяемый response как обычный argument.
 
 ---
 
@@ -241,7 +241,7 @@ Automation QA связь: assertion helper получает config через `t
 201
 ```
 
-Рассуждение: каждый `call()` выбирает receiver для одного invocation.
+Объяснение: каждый `call()` выбирает receiver для одного invocation.
 
 ```text
 getExpectedStatus.call(okConfig)
@@ -253,9 +253,9 @@ getExpectedStatus.call(createdConfig)
 └── this -> createdConfig
 ```
 
-Типичная ошибка: думать, что первый `call()` навсегда меняет function.
+Распространённая ошибка: думать, что первый `call()` навсегда меняет function.
 
-Automation QA связь: один helper можно вызывать с разными expected configs.
+Связь с Automation QA: один helper можно вызывать с разными expected configs.
 
 ---
 
@@ -267,7 +267,7 @@ Automation QA связь: один helper можно вызывать с раз�
 POST https://api.example.test/orders
 ```
 
-Рассуждение:
+Объяснение:
 
 ```text
 formatRequest.call(apiClient, 'POST', '/orders')
@@ -277,9 +277,9 @@ formatRequest.call(apiClient, 'POST', '/orders')
 └── '/orders' -> path
 ```
 
-Типичная ошибка: забыть, что receiver не передается в `method`.
+Распространённая ошибка: забыть, что receiver не передается в `method`.
 
-Automation QA связь: request formatters могут использовать client configuration через `this`.
+Связь с Automation QA: request formatters могут использовать client configuration через `this`.
 
 ---
 
@@ -291,7 +291,7 @@ Automation QA связь: request formatters могут использовать
 true
 ```
 
-Рассуждение:
+Объяснение:
 
 ```text
 validateStatus.call(response, config)
@@ -328,9 +328,9 @@ console.log(validateStatus.call(config, response));
 true
 ```
 
-Типичная ошибка: поменять receiver и data argument местами.
+Распространённая ошибка: поменять receiver и data argument местами.
 
-Automation QA связь: в тестах такая ошибка может дать ложноположительный результат, если object shapes случайно совпали.
+Связь с Automation QA: в тестах такая ошибка может дать ложноположительный результат, если object shapes случайно совпали.
 
 ---
 
@@ -354,11 +354,11 @@ buildUrl.call(apiClient, '/orders')
 └── path -> '/orders'
 ```
 
-Рассуждение: первый вызов использует ordinary invocation. Второй вызов использует manual receiver selection.
+Объяснение: первый вызов использует ordinary invocation. Второй вызов использует manual receiver selection.
 
-Типичная ошибка: не различать механизм выбора receiver, если результат одинаковый.
+Распространённая ошибка: не различать механизм выбора receiver, если результат одинаковый.
 
-Automation QA связь: понимание разницы важно при явном выборе config object и при отладке detached methods.
+Связь с Automation QA: понимание разницы важно при явном выборе config object и при отладке detached methods.
 
 ---
 
@@ -386,11 +386,11 @@ console.log(buildUrl.call(apiClient, '/users'));
 https://api.example.test/users
 ```
 
-Рассуждение: `apiClient` должен быть receiver, а `'/users'` должен быть normal argument.
+Объяснение: `apiClient` должен быть receiver, а `'/users'` должен быть normal argument.
 
-Типичная ошибка: забыть первый receiver argument.
+Распространённая ошибка: забыть первый receiver argument.
 
-Automation QA связь: это частая ошибка в reusable API helper functions.
+Связь с Automation QA: это частая ошибка в reusable API helper functions.
 
 ---
 
@@ -420,16 +420,16 @@ console.log(validateStatus.call(config, response));
 true
 ```
 
-Рассуждение:
+Объяснение:
 
 ```text
 config   -> this
 response -> response parameter
 ```
 
-Типичная ошибка: ставить data object на место receiver.
+Распространённая ошибка: ставить data object на место receiver.
 
-Automation QA связь: config и actual response должны играть разные роли.
+Связь с Automation QA: config и actual response должны играть разные роли.
 
 ---
 
@@ -467,11 +467,11 @@ true
 false
 ```
 
-Рассуждение: один function object вызывается с двумя receivers.
+Объяснение: один function object вызывается с двумя receivers.
 
-Типичная ошибка: создавать две одинаковые functions вместо одной reusable function.
+Распространённая ошибка: создавать две одинаковые functions вместо одной reusable function.
 
-Automation QA связь: удобно для shared assertion helpers.
+Связь с Automation QA: удобно для shared assertion helpers.
 
 ---
 
@@ -503,11 +503,11 @@ https://users.example.test/list
 https://orders.example.test/list
 ```
 
-Рассуждение: `call()` выбирает different receiver for each invocation.
+Объяснение: `call()` выбирает different receiver for each invocation.
 
-Типичная ошибка: ожидать, что function remembers previous receiver.
+Распространённая ошибка: ожидать, что function remembers previous receiver.
 
-Automation QA связь: один URL builder может работать с разными API configs.
+Связь с Automation QA: один URL builder может работать с разными API configs.
 
 ---
 
@@ -570,7 +570,7 @@ statusMatches.call(okAssertionConfig, response)
 └── response          -> response parameter
 ```
 
-Рассуждение: `call()` подходит, потому что function behavior общий, а receiver configuration меняется.
+Объяснение: `call()` подходит, потому что function behavior общий, а receiver configuration меняется.
 
 Где ordinary method call читается лучше:
 
@@ -582,8 +582,8 @@ usersApiConfig.formatRequest('/users');
 
 Почему `call()` не сохраняет receiver навсегда: каждый invocation выбирает receiver отдельно.
 
-Типичная ошибка: использовать `call()` там, где обычный object method сделал бы код проще.
+Распространённая ошибка: использовать `call()` там, где обычный object method сделал бы код проще.
 
-Automation QA связь: pattern полезен для понимания shared validators, но в framework architecture часто лучше выбирать более читаемую структуру helpers.
+Связь с Automation QA: pattern полезен для понимания shared validators, но в framework architecture часто лучше выбирать более читаемую структуру helpers.
 
 Возможное улучшение: после главы `apply()` можно будет передавать список arguments из array-like структуры.

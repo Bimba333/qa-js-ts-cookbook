@@ -951,7 +951,7 @@ They are temporarily locked.
 They become usable after initialization.
 ```
 
-### Bridge to Functions
+### Переход к Functions
 
 Следующая большая группа тем постепенно приведет к values, types, operators and functions. Functions will later explain how parameters, return values and function calls create more situations where Scope and Lexical Environment matter.
 
@@ -1203,7 +1203,7 @@ examples/chapter-13/05-safe-access.js
 
 Показывает безопасный порядок declaration before read.
 
-### Пример 6. Common mistakes
+### Пример 6. Типичные ошибки
 
 Файл:
 
@@ -1527,7 +1527,7 @@ Do not say `let` and `const` are "not hoisted." A more precise model is: they ar
 
 ---
 
-## Quick Check
+## Проверьте себя
 
 1. Что такое Temporal Dead Zone?
 

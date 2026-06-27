@@ -357,7 +357,7 @@ const actualUser = {
 
 ---
 
-## 9. Mini-project
+## 9. Мини-проект
 
 Создайте небольшой набор test data для API проверки.
 

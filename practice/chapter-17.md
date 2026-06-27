@@ -14,7 +14,7 @@
 8. Чем mutation отличается от reassignment на диаграмме?
 9. Почему two variables can point to one object?
 10. Почему same-looking objects can be different objects?
-11. Как function parameter can refer to caller's object?
+11. Как function parameter can refer to вызывающий код's object?
 12. Почему memory diagrams useful for flaky tests?
 
 ## Draw memory diagrams
@@ -63,7 +63,7 @@ const user = {
 };
 ```
 
-## Identify shared objects
+## Определите shared objects
 
 Для каждого примера укажите:
 
@@ -108,7 +108,7 @@ selectedUser = {
 };
 ```
 
-## Predict the output before running
+## Предскажите вывод перед запуском
 
 ### Задача 1
 
@@ -154,7 +154,7 @@ const secondUser = {
 console.log(firstUser === secondUser);
 ```
 
-## Debugging tasks
+## Задачи на отладку
 
 ### Задача 1
 
@@ -208,7 +208,7 @@ const actual = {
 console.log(expected === actual);
 ```
 
-## QA-oriented tasks
+## QA-задачи
 
 ### Сценарий 1. Fixture mutation
 
@@ -237,7 +237,7 @@ const defaultPayload = {
 
 Составьте debug checklist using Stack & Heap diagrams.
 
-## Mini-project
+## Мини-проект
 
 Создайте файл:
 

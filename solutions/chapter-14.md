@@ -8,15 +8,15 @@
 
 Value — actual information, с которой работает JavaScript.
 
-Рассуждение:
+Объяснение:
 
 Identifier gives access, but value is the information itself: `200`, `'Anna'`, `true`.
 
-Типичная ошибка:
+Распространённая ошибка:
 
 Путать identifier and value.
 
-Automation QA connection:
+Связь с Automation QA:
 
 Assertions compare values, not variable names.
 
@@ -26,15 +26,15 @@ Assertions compare values, not variable names.
 
 JavaScript separates fundamental indivisible values from structured object values.
 
-Рассуждение:
+Объяснение:
 
 Primitive values are atomic in this mental model; objects behave differently and will be studied later.
 
-Типичная ошибка:
+Распространённая ошибка:
 
 Use object behavior to explain primitives.
 
-Automation QA connection:
+Связь с Automation QA:
 
 API responses contain both primitive fields and structured objects.
 
@@ -44,15 +44,15 @@ API responses contain both primitive fields and structured objects.
 
 Primitive value is fundamental indivisible value.
 
-Рассуждение:
+Объяснение:
 
 `30`, `'active'`, `true`, `null` are not treated as structures in this chapter.
 
-Типичная ошибка:
+Распространённая ошибка:
 
 Think primitives are just tiny objects.
 
-Automation QA connection:
+Связь с Automation QA:
 
 Primitive assertions are the base of most tests.
 
@@ -62,15 +62,15 @@ Primitive assertions are the base of most tests.
 
 Number, String, Boolean, Undefined, Null, Symbol, BigInt.
 
-Рассуждение:
+Объяснение:
 
 These are the seven primitive types in JavaScript.
 
-Типичная ошибка:
+Распространённая ошибка:
 
 Forget Null because `typeof null` returns `"object"`.
 
-Automation QA connection:
+Связь с Automation QA:
 
 Knowing all primitive types helps read data from APIs and libraries.
 
@@ -80,15 +80,15 @@ Knowing all primitive types helps read data from APIs and libraries.
 
 Number represents numeric values like `200`, `30`, `19.99`.
 
-Рассуждение:
+Объяснение:
 
 JavaScript uses Number for integer-like and fractional numeric values.
 
-Типичная ошибка:
+Распространённая ошибка:
 
 Treat numeric string `"200"` as Number.
 
-Automation QA connection:
+Связь с Automation QA:
 
 HTTP status code from API is usually Number.
 
@@ -98,15 +98,15 @@ HTTP status code from API is usually Number.
 
 String represents text values.
 
-Рассуждение:
+Объяснение:
 
 `'Anna'`, `'active'`, `'200'` are strings.
 
-Типичная ошибка:
+Распространённая ошибка:
 
 Confuse visually numeric string with number.
 
-Automation QA connection:
+Связь с Automation QA:
 
 UI text is often String even when it looks like a number.
 
@@ -116,15 +116,15 @@ UI text is often String even when it looks like a number.
 
 Boolean has two values: `true` and `false`.
 
-Рассуждение:
+Объяснение:
 
 It represents flags and yes/no states.
 
-Типичная ошибка:
+Распространённая ошибка:
 
 Use string `"true"` instead of Boolean `true`.
 
-Automation QA connection:
+Связь с Automation QA:
 
 API fields like `active` often are Boolean.
 
@@ -134,15 +134,15 @@ API fields like `active` often are Boolean.
 
 `undefined` often means not assigned or missing. `null` usually means intentional absence.
 
-Рассуждение:
+Объяснение:
 
 They are different primitive values with different meanings.
 
-Типичная ошибка:
+Распространённая ошибка:
 
 Treat both as same "nothing".
 
-Automation QA connection:
+Связь с Automation QA:
 
 API may intentionally return `null`; JSON does not represent `undefined`.
 
@@ -152,15 +152,15 @@ API may intentionally return `null`; JSON does not represent `undefined`.
 
 Symbol creates unique primitive values.
 
-Рассуждение:
+Объяснение:
 
 `Symbol('id')` and `Symbol('id')` are different values.
 
-Типичная ошибка:
+Распространённая ошибка:
 
 Think same description means same Symbol.
 
-Automation QA connection:
+Связь с Automation QA:
 
 Less common in tests, but may appear in libraries.
 
@@ -170,15 +170,15 @@ Less common in tests, but may appear in libraries.
 
 BigInt represents large integer values.
 
-Рассуждение:
+Объяснение:
 
 BigInt literal ends with `n`, for example `10n`.
 
-Типичная ошибка:
+Распространённая ошибка:
 
 Mix Number and BigInt casually.
 
-Automation QA connection:
+Связь с Automation QA:
 
 Large IDs may be represented as BigInt or String depending on API.
 
@@ -188,15 +188,15 @@ Large IDs may be represented as BigInt or String depending on API.
 
 `typeof` returns a string with type category.
 
-Рассуждение:
+Объяснение:
 
 It helps inspect values, but has historical behavior for `null`.
 
-Типичная ошибка:
+Распространённая ошибка:
 
 Trust `typeof null` as proof that null is object.
 
-Automation QA connection:
+Связь с Automation QA:
 
 Useful when debugging unexpected API response values.
 
@@ -206,19 +206,19 @@ Useful when debugging unexpected API response values.
 
 Primitive value itself cannot be changed internally.
 
-Рассуждение:
+Объяснение:
 
 Reassignment points identifier to another primitive value; it does not mutate old value.
 
-Типичная ошибка:
+Распространённая ошибка:
 
 Confuse reassignment with mutation.
 
-Automation QA connection:
+Связь с Automation QA:
 
 Helps reason about expected values in tests.
 
-## Identify primitive types
+## Определите primitive types
 
 Ответ:
 
@@ -232,19 +232,19 @@ uniqueId     → Symbol
 largeId      → BigInt
 ```
 
-Рассуждение:
+Объяснение:
 
 Each literal belongs to a primitive category.
 
-Типичная ошибка:
+Распространённая ошибка:
 
 Classify `deletedAt` by `typeof null` as object.
 
-Automation QA connection:
+Связь с Automation QA:
 
 Same classification is used for API assertions.
 
-## Predict typeof
+## Предскажите typeof
 
 Ответ:
 
@@ -258,19 +258,19 @@ symbol
 bigint
 ```
 
-Рассуждение:
+Объяснение:
 
 `typeof null` returns `"object"` historically, despite null being primitive.
 
-Типичная ошибка:
+Распространённая ошибка:
 
 Expect `typeof null` to be `"null"`.
 
-Automation QA connection:
+Связь с Automation QA:
 
 `typeof` can help debug, but must be interpreted carefully.
 
-## Code reading
+## Чтение кода
 
 Ответ:
 
@@ -305,19 +305,19 @@ Missing / not assigned:
 responseTime → undefined before assignment
 ```
 
-Рассуждение:
+Объяснение:
 
 Value appearance does not determine type by visual similarity alone.
 
-Типичная ошибка:
+Распространённая ошибка:
 
 Treat `"200"` as Number.
 
-Automation QA connection:
+Связь с Automation QA:
 
 This is common when comparing UI text and API response values.
 
-## Debugging tasks
+## Задачи на отладку
 
 ### Задача 1
 
@@ -325,15 +325,15 @@ This is common when comparing UI text and API response values.
 
 `expectedStatusCode` is Number, `actualStatusCode` is String.
 
-Рассуждение:
+Объяснение:
 
 They look similar but are different primitive types.
 
-Типичная ошибка:
+Распространённая ошибка:
 
 Compare visual output instead of value type.
 
-Automation QA connection:
+Связь с Automation QA:
 
 UI text often needs explicit parsing or string expectation.
 
@@ -343,15 +343,15 @@ UI text often needs explicit parsing or string expectation.
 
 Expected should be `null`, not `undefined`, because API intentionally returns JSON `null`.
 
-Рассуждение:
+Объяснение:
 
 JSON has `null`, but not `undefined`.
 
-Типичная ошибка:
+Распространённая ошибка:
 
 Use undefined for all absent values.
 
-Automation QA connection:
+Связь с Automation QA:
 
 Correct API validation depends on distinguishing null from missing fields.
 
@@ -361,19 +361,19 @@ Correct API validation depends on distinguishing null from missing fields.
 
 `typeof null` returns `"object"` due to historical behavior. `null` remains primitive.
 
-Рассуждение:
+Объяснение:
 
 `typeof` result is not a perfect conceptual taxonomy for `null`.
 
-Типичная ошибка:
+Распространённая ошибка:
 
 Build object mental model around null.
 
-Automation QA connection:
+Связь с Automation QA:
 
 Avoid wrong assertions based only on `typeof`.
 
-## QA-oriented tasks
+## QA-задачи
 
 ### Сценарий 1
 
@@ -386,15 +386,15 @@ expectedActive    → true → Boolean
 expectedDeletedAt → null → Null
 ```
 
-Рассуждение:
+Объяснение:
 
 Each JSON field maps to a primitive value after parsing.
 
-Типичная ошибка:
+Распространённая ошибка:
 
 Expect age as `"30"` because UI displays it as text.
 
-Automation QA connection:
+Связь с Automation QA:
 
 API response validation should preserve expected types.
 
@@ -404,15 +404,15 @@ API response validation should preserve expected types.
 
 UI text `"200"` is String. API value `200` is Number.
 
-Рассуждение:
+Объяснение:
 
 Assertions should either compare string with string or number with number intentionally.
 
-Типичная ошибка:
+Распространённая ошибка:
 
 Mix UI and API values without conversion plan.
 
-Automation QA connection:
+Связь с Automation QA:
 
 Cross-layer tests often compare UI text and backend values.
 
@@ -422,19 +422,19 @@ Cross-layer tests often compare UI text and backend values.
 
 Large IDs are often stored as String to avoid numeric precision issues and preserve exact representation.
 
-Рассуждение:
+Объяснение:
 
 BigInt exists, but APIs often serialize IDs as strings.
 
-Типичная ошибка:
+Распространённая ошибка:
 
 Treat every numeric-looking ID as Number.
 
-Automation QA connection:
+Связь с Automation QA:
 
 IDs should usually be compared exactly, often as strings.
 
-## Mini-project
+## Мини-проект
 
 Один из вариантов:
 
@@ -466,15 +466,15 @@ optionalComment | undefined          | Undefined      | undefined     | not assi
 largeOrderId    | 9007199254740993n  | BigInt         | bigint        | large ID
 ```
 
-Рассуждение:
+Объяснение:
 
 The project shows primitive values and the limitation of `typeof null`.
 
-Типичная ошибка:
+Распространённая ошибка:
 
 Mark `deletedAt` as Object because typeof result is `"object"`.
 
-Automation QA connection:
+Связь с Automation QA:
 
 This table format is useful for API response validation design.
 

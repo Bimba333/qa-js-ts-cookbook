@@ -17,7 +17,7 @@
 11. Почему Lexical Environment не нужно воспринимать как обычный object?
 12. Как эта глава подготавливает Hoisting?
 
-## Identify Lexical Environments
+## Определите Lexical Environments
 
 Для кода ниже выпишите:
 
@@ -43,7 +43,7 @@ function testLogin() {
 }
 ```
 
-## Predict identifier lookup
+## Предскажите поиск идентификатора
 
 Для каждого identifier укажите lookup path.
 
@@ -103,7 +103,7 @@ message
 testName
 ```
 
-## Predict output before running
+## Предскажите вывод перед запуском
 
 Перед запуском предскажите вывод.
 
@@ -136,7 +136,7 @@ printStatus();
 console.log(status);
 ```
 
-## Debugging
+## Задачи на отладку
 
 ### Задача 1
 
@@ -186,7 +186,7 @@ function checkStatus() {
 
 Объясните lookup через Environment Record.
 
-## QA-oriented tasks
+## QA-задачи
 
 ### Сценарий 1
 
@@ -216,7 +216,7 @@ Playwright stack trace показывает падение внутри helper.
 2. Что показывает Lexical Environment model?
 3. Почему для debugging нужны оба слоя?
 
-## Mini-project
+## Мини-проект
 
 Создайте файл:
 

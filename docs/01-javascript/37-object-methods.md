@@ -319,7 +319,7 @@ const user = {
 };
 ```
 
-Both store function value in object property.
+Both store function object in object property.
 
 In this chapter we use method syntax because it expresses intention clearly.
 
@@ -375,7 +375,7 @@ const user = {
 
 Difference is not that method is a magical new kind of function.
 
-Important:
+Важно:
 
 ```text
 Methods are ordinary functions.
@@ -444,7 +444,7 @@ Conceptual flow:
 ```text
 1. Read identifier apiClient
 2. Find property "buildUrl"
-3. Get function value stored in that property
+3. Get function object stored in that property
 4. Call it through apiClient
 5. Set receiver for this invocation
 6. Inside method: this -> apiClient
@@ -487,7 +487,7 @@ method reads/uses object state
 
 ### Function vs method internally
 
-The function value itself remains a function object.
+The function object itself remains a function object.
 
 ```text
 function object
@@ -649,7 +649,7 @@ const stagingClient = {
 console.log(stagingClient.buildUrl('/users'));
 ```
 
-### Пример 4. Common mistakes
+### Пример 4. Типичные ошибки
 
 ```javascript
 const user = {
@@ -665,7 +665,7 @@ console.log(user.describe());
 console.log(typeof describe);
 ```
 
-Detached function is not called here to avoid intentional runtime error. The example shows that method value can be detached as function value.
+Detached function is not called here to avoid intentional runtime error. The example shows that method value can be detached as function object.
 
 ### Пример 5. API client
 
@@ -798,7 +798,7 @@ If behavior does not need object state, ordinary function may be simpler.
 const buildUrl = apiClient.buildUrl;
 ```
 
-Now function value is detached. If called as `buildUrl('/users')`, ordinary receiver is gone. This was studied in `this`, `call()` and `bind()`.
+Now function object is detached. If called as `buildUrl('/users')`, ordinary receiver is gone. This was studied in `this`, `call()` and `bind()`.
 
 ### Ошибка 4. Использовать arrow function for method without understanding `this`
 
@@ -962,7 +962,7 @@ entity
 └── properties with functions
 ```
 
-### 7. Current JavaScript model
+### 7. Текущая модель JavaScript
 
 ```text
 Objects
@@ -1004,7 +1004,7 @@ this
 ### 11. Function vs method
 
 ```text
-function value
+function object
 │
 ├── called alone -> ordinary function call
 └── called through object -> method call
@@ -1038,7 +1038,7 @@ config
 └── describe()
 ```
 
-### 15. Readability
+### 15. Читаемость
 
 ```text
 behavior near data
@@ -1047,7 +1047,7 @@ behavior near data
 reader sees responsibility
 ```
 
-### 16. Common mistakes
+### 16. Типичные ошибки
 
 ```text
 detach method
@@ -1121,7 +1121,7 @@ updates property
 state changes
 ```
 
-### 23. Bridge to descriptors
+### 23. Переход к descriptors
 
 ```text
 properties can behave differently
@@ -1130,7 +1130,7 @@ properties can behave differently
 Object Descriptors
 ```
 
-### 24. Bridge to prototypes
+### 24. Переход к prototypes
 
 ```text
 methods can be shared
@@ -1139,7 +1139,7 @@ methods can be shared
 Prototype later
 ```
 
-### 25. Mental model summary
+### 25. Краткая ментальная модель
 
 ```text
 employee profile
@@ -1203,7 +1203,7 @@ object with behavior
 future: prototypes/classes
 ```
 
-### 32. Summary diagram
+### 32. Итоговая схема
 
 ```text
 Object
@@ -1300,7 +1300,7 @@ Method is ordinary function used as object behavior. It is called as `object.met
 
 ---
 
-## Quick Check
+## Проверьте себя
 
 Ответьте без запуска кода.
 

@@ -8,11 +8,11 @@
 
 Function Expressions существуют, чтобы создавать функцию как значение и сохранять это значение в переменной.
 
-Рассуждение:
+Объяснение:
 
-Function Declaration создает именованную функцию. Function Expression подчеркивает другую идею: справа от `=` появляется function value.
+Function Declaration создает именованную функцию. Function Expression подчеркивает другую идею: справа от `=` появляется function object.
 
-Типичная ошибка:
+Распространённая ошибка:
 
 Думать, что это просто другой способ написать тот же синтаксис без изменения модели.
 
@@ -26,11 +26,11 @@ Function Declaration создает именованную функцию. Funct
 
 Это значит, что функция может быть сохранена в переменной.
 
-Рассуждение:
+Объяснение:
 
 JavaScript позволяет работать с функцией как со значением: создать, сохранить и вызвать позже.
 
-Типичная ошибка:
+Распространённая ошибка:
 
 Думать, что функция может только объявляться через `function name()`.
 
@@ -42,13 +42,13 @@ Helper-функции могут быть частью набора utilities.
 
 Ответ:
 
-Переменная хранит function value.
+Переменная хранит function object.
 
-Рассуждение:
+Объяснение:
 
-В `const validateStatus = function () { ... };` справа создается function value, а слева переменная получает это значение.
+В `const validateStatus = function () { ... };` справа создается function object, а слева переменная получает это значение.
 
-Типичная ошибка:
+Распространённая ошибка:
 
 Думать, что переменная хранит результат выполнения тела.
 
@@ -62,11 +62,11 @@ Validator можно сохранить и вызвать в нужном мес
 
 Нет. Тело функции не выполняется при присваивании.
 
-Рассуждение:
+Объяснение:
 
-Присваивание сохраняет function value. Вызов происходит только при `validateStatus()`.
+Присваивание сохраняет function object. Вызов происходит только при `validateStatus()`.
 
-Типичная ошибка:
+Распространённая ошибка:
 
 Ожидать вывод в консоль сразу после строки с Function Expression.
 
@@ -80,11 +80,11 @@ Helper не выполняет setup или validation, пока его явно
 
 Это function expression без собственного имени после `function`.
 
-Рассуждение:
+Объяснение:
 
-В `const validateStatus = function () {}` имя есть у переменной, но не у самого function value.
+В `const validateStatus = function () {}` имя есть у переменной, но не у самого function object.
 
-Типичная ошибка:
+Распространённая ошибка:
 
 Считать anonymous function всегда нечитаемой.
 
@@ -96,13 +96,13 @@ Helper не выполняет setup или validation, пока его явно
 
 Ответ:
 
-Это function expression, где function value имеет собственное имя.
+Это function expression, где function object имеет собственное имя.
 
-Рассуждение:
+Объяснение:
 
-В `const validateStatus = function validateSuccessfulStatus() {}` имя переменной и имя function value не обязаны совпадать.
+В `const validateStatus = function validateSuccessfulStatus() {}` имя переменной и имя function object не обязаны совпадать.
 
-Типичная ошибка:
+Распространённая ошибка:
 
 Думать, что это то же самое, что Function Declaration.
 
@@ -114,15 +114,15 @@ Helper не выполняет setup или validation, пока его явно
 
 Ответ:
 
-Function Declaration объявляет функцию с именем. Function Expression создает function value, которое может быть сохранено в переменной.
+Function Declaration объявляет функцию с именем. Function Expression создает function object, которое может быть сохранено в переменной.
 
-Рассуждение:
+Объяснение:
 
 Оба варианта позволяют вызвать функцию, но путь создания отличается.
 
-Типичная ошибка:
+Распространённая ошибка:
 
-Смешивать две формы и не видеть, где находится function value.
+Смешивать две формы и не видеть, где находится function object.
 
 Связь с Automation QA:
 
@@ -132,13 +132,13 @@ Function Declaration объявляет функцию с именем. Function
 
 Ответ:
 
-Потому что переменная хранит function value.
+Потому что переменная хранит function object.
 
-Рассуждение:
+Объяснение:
 
 `validateStatus()` сначала читает значение из `validateStatus`, а затем вызывает его как функцию.
 
-Типичная ошибка:
+Распространённая ошибка:
 
 Писать `validateStatus;` и ожидать выполнение.
 
@@ -152,11 +152,11 @@ Function Declaration объявляет функцию с именем. Function
 
 Имя переменной объясняет, какое поведение хранится внутри.
 
-Рассуждение:
+Объяснение:
 
 `validateUserProfile` читается как действие. `fn` не дает смысла.
 
-Типичная ошибка:
+Распространённая ошибка:
 
 Использовать короткое имя ради удобства набора.
 
@@ -170,11 +170,11 @@ Function Declaration объявляет функцию с именем. Function
 
 Потому что функция здесь только хранится в переменной и вызывается напрямую.
 
-Рассуждение:
+Объяснение:
 
 Callback - это функция, переданная в другую функцию. Эта глава еще не вводит такую модель.
 
-Типичная ошибка:
+Распространённая ошибка:
 
 Сразу объяснять Function Expression через callbacks.
 
@@ -188,11 +188,11 @@ Callbacks появятся позже в обработчиках, ожидан�
 
 Function Expressions могут хранить validators, setup helpers, cleanup helpers и другие utilities.
 
-Рассуждение:
+Объяснение:
 
 Тестовый код часто состоит из повторяемых действий с понятными именами.
 
-Типичная ошибка:
+Распространённая ошибка:
 
 Хранить все в одной большой функции вместо набора ясных helper-функций.
 
@@ -200,7 +200,7 @@ Function Expressions могут хранить validators, setup helpers, cleanu
 
 Это основа организованных test utilities.
 
-## Identify declaration vs expression
+## Определите declaration vs expression
 
 ### Задача 1
 
@@ -208,11 +208,11 @@ Function Expressions могут хранить validators, setup helpers, cleanu
 
 Это Function Declaration.
 
-Рассуждение:
+Объяснение:
 
 Код начинается с `function validateStatus()`. Функция объявляется с именем.
 
-Типичная ошибка:
+Распространённая ошибка:
 
 Искать переменную, которой здесь нет.
 
@@ -226,13 +226,13 @@ Function Expressions могут хранить validators, setup helpers, cleanu
 
 Это Function Expression.
 
-Переменная `validateStatus` хранит function value.
+Переменная `validateStatus` хранит function object.
 
-Рассуждение:
+Объяснение:
 
 Справа от `=` находится `function () { ... }`.
 
-Типичная ошибка:
+Распространённая ошибка:
 
 Думать, что `validateStatus` хранит результат `console.log`.
 
@@ -246,13 +246,13 @@ Function Expressions могут хранить validators, setup helpers, cleanu
 
 Это named function expression.
 
-Переменная `cleanupTestData` хранит function value, у которого есть внутреннее имя `cleanup`.
+Переменная `cleanupTestData` хранит function object, у которого есть внутреннее имя `cleanup`.
 
-Рассуждение:
+Объяснение:
 
 Справа от `=` находится function expression с именем после `function`.
 
-Типичная ошибка:
+Распространённая ошибка:
 
 Считать это Function Declaration из-за имени `cleanup`.
 
@@ -260,23 +260,23 @@ Function Expressions могут хранить validators, setup helpers, cleanu
 
 Такой вариант может быть полезен для читаемости отладки, но не нужен механически везде.
 
-## Identify stored function values
+## Определите сохраненный function objects
 
 ### Задача 1
 
 Ответ:
 
-Переменная `openProfile` хранит function value.
+Переменная `openProfile` хранит function object.
 
-Function value создается справа от `=`.
+Function object создается справа от `=`.
 
-Function value вызывается строкой `openProfile();`.
+Function object вызывается строкой `openProfile();`.
 
-Рассуждение:
+Объяснение:
 
 Сначала значение сохраняется, затем вызывается через переменную.
 
-Типичная ошибка:
+Распространённая ошибка:
 
 Считать, что тело выполняется сразу при создании.
 
@@ -288,17 +288,17 @@ Navigation helper запускается только в месте вызова
 
 Ответ:
 
-С function value связаны `validateUser` и `checkUser`.
+С function object связаны `validateUser` и `checkUser`.
 
 Для вызова используется `checkUser`.
 
-Тело выполняется, потому что `checkUser()` вызывает сохраненное function value.
+Тело выполняется, потому что `checkUser()` вызывает сохраненное function object.
 
-Рассуждение:
+Объяснение:
 
-`const checkUser = validateUser;` сохраняет то же function value в другой переменной.
+`const checkUser = validateUser;` сохраняет то же function object в другой переменной.
 
-Типичная ошибка:
+Распространённая ошибка:
 
 Думать, что копируется результат выполнения.
 
@@ -318,11 +318,11 @@ Validate status
 After
 ```
 
-Рассуждение:
+Объяснение:
 
 Function Expression создает значение, но тело выполняется только на строке `validateStatus()`.
 
-Типичная ошибка:
+Распространённая ошибка:
 
 Ожидать `Validate status` до `Before`.
 
@@ -338,11 +338,11 @@ Validator выполняется там, где он вызван.
 function
 ```
 
-Рассуждение:
+Объяснение:
 
-`validateStatus` хранит function value, а `typeof` для функции возвращает `function`.
+`validateStatus` хранит function object, а `typeof` для функции возвращает `function`.
 
-Типичная ошибка:
+Распространённая ошибка:
 
 Ожидать `object` из-за того, что функции связаны с объектной моделью JavaScript.
 
@@ -359,11 +359,11 @@ Cleanup
 Setup
 ```
 
-Рассуждение:
+Объяснение:
 
 Порядок выполнения определяется порядком вызовов, а не порядком "правильного" сценария.
 
-Типичная ошибка:
+Распространённая ошибка:
 
 Считать, что setup обязан выполниться первым из-за имени.
 
@@ -379,11 +379,11 @@ Setup
 Stored
 ```
 
-Рассуждение:
+Объяснение:
 
 Функция сохранена, но не вызвана.
 
-Типичная ошибка:
+Распространённая ошибка:
 
 Ожидать `Validate status`.
 
@@ -409,11 +409,11 @@ const validateStatus = function () {
 validateStatus();
 ```
 
-Рассуждение:
+Объяснение:
 
 `validateStatus;` только читает значение переменной.
 
-Типичная ошибка:
+Распространённая ошибка:
 
 Забыть круглые скобки.
 
@@ -437,11 +437,11 @@ const validateUserProfile = function () {
 validateUserProfile();
 ```
 
-Рассуждение:
+Объяснение:
 
-Переменная хранит function value, поэтому ее имя должно описывать поведение.
+Переменная хранит function object, поэтому ее имя должно описывать поведение.
 
-Типичная ошибка:
+Распространённая ошибка:
 
 Использовать техническое имя вместо доменного.
 
@@ -455,19 +455,19 @@ validateUserProfile();
 
 Ошибка в том, что присваивание не выполняет тело функции.
 
-Рассуждение:
+Объяснение:
 
-Строка создает function value и сохраняет его в `validateStatus`.
+Строка создает function object и сохраняет его в `validateStatus`.
 
-Типичная ошибка:
+Распространённая ошибка:
 
-Путать создание function value и invocation.
+Путать создание function object и invocation.
 
 Связь с Automation QA:
 
 Setup или validation не произойдут без явного вызова.
 
-## QA-oriented tasks
+## QA-задачи
 
 ### Сценарий 1
 
@@ -481,11 +481,11 @@ const validateApiStatus = function () {
 validateApiStatus();
 ```
 
-Рассуждение:
+Объяснение:
 
-Переменная `validateApiStatus` хранит function value.
+Переменная `validateApiStatus` хранит function object.
 
-Типичная ошибка:
+Распространённая ошибка:
 
 Объявить переменную, но не вызвать ее как функцию.
 
@@ -515,11 +515,11 @@ openUserProfile();
 cleanupTestData();
 ```
 
-Рассуждение:
+Объяснение:
 
-Каждая переменная хранит отдельное function value для отдельного действия.
+Каждая переменная хранит отдельное function object для отдельного действия.
 
-Типичная ошибка:
+Распространённая ошибка:
 
 Объединить все действия в одну расплывчатую функцию.
 
@@ -537,11 +537,11 @@ const validateUserProfile = function () {
 };
 ```
 
-Рассуждение:
+Объяснение:
 
-Function Declaration заменен на Function Expression, где function value сохраняется в переменной.
+Function Declaration заменен на Function Expression, где function object сохраняется в переменной.
 
-Типичная ошибка:
+Распространённая ошибка:
 
 Оставить `function validateUserProfile()` и считать, что это expression.
 
@@ -560,11 +560,11 @@ openProfilePage
 deleteTestData
 ```
 
-Рассуждение:
+Объяснение:
 
-Имена описывают действие, которое хранится как function value.
+Имена описывают действие, которое хранится как function object.
 
-Типичная ошибка:
+Распространённая ошибка:
 
 Выбрать имена `fn`, `handler`, `doIt` без доменного смысла.
 
@@ -605,17 +605,17 @@ cleanupTestData();
 ```text
 Имя переменной       | Хранимое значение | Вызвана? | QA-смысл
 -------------------- | ----------------- | -------- | -----------------------
-setupTestData        | function value    | да       | setup helper
-validateUserProfile  | function value    | да       | profile validator
-validateUserSettings | function value    | да       | settings validator
-cleanupTestData      | function value    | да       | cleanup helper
+setupTestData        | function object    | да       | setup helper
+validateUserProfile  | function object    | да       | profile validator
+validateUserSettings | function object    | да       | settings validator
+cleanupTestData      | function object    | да       | cleanup helper
 ```
 
-Рассуждение:
+Объяснение:
 
-Каждая переменная хранит отдельное function value. `validateUserProfile` вызвана дважды, чтобы показать переиспользование.
+Каждая переменная хранит отдельное function object. `validateUserProfile` вызвана дважды, чтобы показать переиспользование.
 
-Типичная ошибка:
+Распространённая ошибка:
 
 Создать функции, но забыть вызвать одну из них.
 

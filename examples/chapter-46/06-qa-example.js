@@ -1,16 +1,8 @@
-class BaseApiClient {
-  describeRequest(serviceName, endpoint) {
-    return `${serviceName}: ${endpoint}`;
-  }
-}
+const requestTasks = ['GET /users', 'GET /orders'];
 
-class UsersClient extends BaseApiClient {
-  describeRequest(endpoint) {
-    const baseDescription = super.describeRequest('users', endpoint);
-    return `${baseDescription} [authenticated]`;
-  }
-}
+requestTasks.unshift('POST /login');
 
-const usersClient = new UsersClient();
+const nextRequest = requestTasks.shift();
 
-console.log(usersClient.describeRequest('/users/42'));
+console.log(`Execute first: ${nextRequest}`);
+console.log(requestTasks);

@@ -6,11 +6,11 @@
 
 Ответ: потому что returned function object сохраняет доступ к lexical environment, где эта переменная была создана.
 
-Рассуждение: outer function завершает выполнение, ее Execution Context больше не активен в Call Stack. Но если inner function использует identifier из outer scope и сама функция продолжает существовать, JavaScript сохраняет нужное lexical environment.
+Объяснение: outer function завершает выполнение, ее Execution Context больше не активен в Call Stack. Но если inner function использует identifier из outer scope и сама функция продолжает существовать, JavaScript сохраняет нужное lexical environment.
 
-Типичная ошибка: думать, что завершение Execution Context всегда означает немедленное исчезновение всех данных.
+Распространённая ошибка: думать, что завершение Execution Context всегда означает немедленное исчезновение всех данных.
 
-Automation QA связь: так работают helper creators, которые запоминают configuration, expected status или base URL.
+Связь с Automation QA: так работают helper creators, которые запоминают configuration, expected status или base URL.
 
 ---
 
@@ -18,11 +18,11 @@ Automation QA связь: так работают helper creators, которы�
 
 Ответ: Closure сохраняет доступ к lexical environment, а не frozen copy значения.
 
-Рассуждение: если captured variable изменяется внутри returned function, следующий вызов видит новое состояние. Это показывает, что речь не о копии на каждый вызов.
+Объяснение: если captured variable изменяется внутри returned function, следующий вызов видит новое состояние. Это показывает, что речь не о копии на каждый вызов.
 
-Типичная ошибка: объяснять Closure как "функция скопировала переменные внутрь себя".
+Распространённая ошибка: объяснять Closure как "функция скопировала переменные внутрь себя".
 
-Automation QA связь: counter-like helpers и validators могут хранить состояние между вызовами, если это сделано намеренно.
+Связь с Automation QA: counter-like helpers и validators могут хранить состояние между вызовами, если это сделано намеренно.
 
 ---
 
@@ -30,11 +30,11 @@ Automation QA связь: counter-like helpers и validators могут хран
 
 Ответ: captured variable остается в своем lexical environment. Она доступна только функциям, которые имеют к этому environment связь.
 
-Рассуждение: global variable видна из global scope. Captured variable не появляется в global scope и не становится доступной по имени снаружи.
+Объяснение: global variable видна из global scope. Captured variable не появляется в global scope и не становится доступной по имени снаружи.
 
-Типичная ошибка: считать, что если значение живет дольше функции, оно стало global.
+Распространённая ошибка: считать, что если значение живет дольше функции, оно стало global.
 
-Automation QA связь: это помогает избегать global mutable state в тестовом фреймворке.
+Связь с Automation QA: это помогает избегать global mutable state в тестовом фреймворке.
 
 ---
 
@@ -42,11 +42,11 @@ Automation QA связь: это помогает избегать global mutabl
 
 Ответ: Scope отвечает за видимость identifiers. Closure объясняет, почему outer environment может оставаться доступным позже.
 
-Рассуждение: Scope говорит, где функция имеет право искать имя. Closure добавляет lifetime: нужное окружение сохраняется, если returned function все еще может его использовать.
+Объяснение: Scope говорит, где функция имеет право искать имя. Closure добавляет lifetime: нужное окружение сохраняется, если returned function все еще может его использовать.
 
-Типичная ошибка: использовать слова Scope и Closure как синонимы.
+Распространённая ошибка: использовать слова Scope и Closure как синонимы.
 
-Automation QA связь: при отладке helpers важно понимать не только где имя видно, но и почему старое значение все еще доступно.
+Связь с Automation QA: при отладке helpers важно понимать не только где имя видно, но и почему старое значение все еще доступно.
 
 ---
 
@@ -54,11 +54,11 @@ Automation QA связь: при отладке helpers важно понима�
 
 Ответ: каждый вызов factory function создает новое lexical environment.
 
-Рассуждение: одна и та же function definition может выполняться много раз. Каждый вызов получает свои parameters и local variables. Если каждый вызов возвращает inner function, каждая returned function сохраняет свое окружение.
+Объяснение: одна и та же function definition может выполняться много раз. Каждый вызов получает свои parameters и local variables. Если каждый вызов возвращает inner function, каждая returned function сохраняет свое окружение.
 
-Типичная ошибка: думать, что все closures из одной factory function делят одну общую переменную.
+Распространённая ошибка: думать, что все closures из одной factory function делят одну общую переменную.
 
-Automation QA связь: можно создать `validateOk` и `validateCreated`, и каждый validator будет помнить свой expected status.
+Связь с Automation QA: можно создать `validateOk` и `validateCreated`, и каждый validator будет помнить свой expected status.
 
 ---
 
@@ -66,11 +66,11 @@ Automation QA связь: можно создать `validateOk` и `validateCre
 
 Ответ: выполнение outer function заканчивается, и ее Execution Context удаляется из Call Stack.
 
-Рассуждение: Call Stack управляет активным выполнением. После `return` outer function больше не выполняется. Но нужное lexical environment может сохраниться.
+Объяснение: Call Stack управляет активным выполнением. После `return` outer function больше не выполняется. Но нужное lexical environment может сохраниться.
 
-Типичная ошибка: думать, что Closure сохраняет весь Execution Context активным.
+Распространённая ошибка: думать, что Closure сохраняет весь Execution Context активным.
 
-Automation QA связь: helper factory не "продолжает выполняться"; она только создает configured helper.
+Связь с Automation QA: helper factory не "продолжает выполняться"; она только создает configured helper.
 
 ---
 
@@ -78,11 +78,11 @@ Automation QA связь: helper factory не "продолжает выполн
 
 Ответ: lexical environment, нужное returned function.
 
-Рассуждение: если inner function использует outer identifiers, JavaScript должен сохранить окружение, где эти identifiers находятся.
+Объяснение: если inner function использует outer identifiers, JavaScript должен сохранить окружение, где эти identifiers находятся.
 
-Типичная ошибка: говорить, что "сохраняется стек вызовов".
+Распространённая ошибка: говорить, что "сохраняется стек вызовов".
 
-Automation QA связь: это объясняет, почему validator помнит expected value после создания.
+Связь с Automation QA: это объясняет, почему validator помнит expected value после создания.
 
 ---
 
@@ -90,11 +90,11 @@ Automation QA связь: это объясняет, почему validator по
 
 Ответ: потому что Closure следует из уже изученных механизмов: function object, Scope и Lexical Environment.
 
-Рассуждение: функция создается в конкретном lexical environment. Если она используется позже, связь с этим окружением сохраняется.
+Объяснение: функция создается в конкретном lexical environment. Если она используется позже, связь с этим окружением сохраняется.
 
-Типичная ошибка: запоминать определение Closure без понимания Execution Context и Lexical Environment.
+Распространённая ошибка: запоминать определение Closure без понимания Execution Context и Lexical Environment.
 
-Automation QA связь: понимание механизма помогает читать сложные helper chains и factory functions.
+Связь с Automation QA: понимание механизма помогает читать сложные helper chains и factory functions.
 
 ---
 
@@ -120,7 +120,7 @@ Captured variable: `value`.
 
 `value` доступна при вызове `reader()`, потому что returned function object сохраняет доступ к lexical environment функции `createReader`.
 
-Рассуждение:
+Объяснение:
 
 ```text
 createReader()
@@ -134,9 +134,9 @@ reader()
 └── reads value from preserved environment
 ```
 
-Типичная ошибка: считать, что `value` исчезла сразу после `createReader()`.
+Распространённая ошибка: считать, что `value` исчезла сразу после `createReader()`.
 
-Automation QA связь: аналогично helper может помнить expected value.
+Связь с Automation QA: аналогично helper может помнить expected value.
 
 ---
 
@@ -152,7 +152,7 @@ true
 
 `validateUser` берет `expectedRole` из preserved lexical environment вызова `createValidator('admin')`.
 
-Рассуждение:
+Объяснение:
 
 ```text
 createValidator('admin')
@@ -162,9 +162,9 @@ createValidator('admin')
     └── captured by validateUser
 ```
 
-Типичная ошибка: искать `expectedRole` внутри object `user`.
+Распространённая ошибка: искать `expectedRole` внутри object `user`.
 
-Automation QA связь: так можно создавать validators для ролей, статусов, типов ответа.
+Связь с Automation QA: так можно создавать validators для ролей, статусов, типов ответа.
 
 ---
 
@@ -180,11 +180,11 @@ Automation QA связь: так можно создавать validators для
 3
 ```
 
-Рассуждение: `count` создан один раз при вызове `createCounter()`. Returned function `increment` сохраняет доступ к этому `count` и обновляет его при каждом вызове.
+Объяснение: `count` создан один раз при вызове `createCounter()`. Returned function `increment` сохраняет доступ к этому `count` и обновляет его при каждом вызове.
 
-Типичная ошибка: ожидать `1 1 1`, как будто `count` создается заново при каждом вызове `counter()`.
+Распространённая ошибка: ожидать `1 1 1`, как будто `count` создается заново при каждом вызове `counter()`.
 
-Automation QA связь: если helper сохраняет состояние, каждый вызов может зависеть от предыдущего. Это нужно делать осознанно.
+Связь с Automation QA: если helper сохраняет состояние, каждый вызов может зависеть от предыдущего. Это нужно делать осознанно.
 
 ---
 
@@ -199,7 +199,7 @@ Automation QA связь: если helper сохраняет состояние,
 12
 ```
 
-Рассуждение:
+Объяснение:
 
 ```text
 first
@@ -213,9 +213,9 @@ second
 
 Каждый вызов `createCounter(start)` создает отдельное lexical environment.
 
-Типичная ошибка: думать, что `first` и `second` используют один общий `count`.
+Распространённая ошибка: думать, что `first` и `second` используют один общий `count`.
 
-Automation QA связь: независимые validators или builders не должны мешать друг другу.
+Связь с Automation QA: независимые validators или builders не должны мешать друг другу.
 
 ---
 
@@ -261,11 +261,11 @@ createTokenReader returns readToken
 token remains available through preserved environment
 ```
 
-Рассуждение: `token` нужен returned function, поэтому lexical environment с `token` сохраняется.
+Объяснение: `token` нужен returned function, поэтому lexical environment с `token` сохраняется.
 
-Типичная ошибка: говорить, что сохраняется "переменная в стеке". В этой главе используется conceptual model: сохраняется нужное lexical environment.
+Распространённая ошибка: говорить, что сохраняется "переменная в стеке". В этой главе используется conceptual model: сохраняется нужное lexical environment.
 
-Automation QA связь: token readers, URL builders и configured validators часто работают именно так.
+Связь с Automation QA: token readers, URL builders и configured validators часто работают именно так.
 
 ---
 
@@ -312,11 +312,11 @@ function readStatus() {
 
 Функция использует outer scope. Но для учебной модели этой главы самый важный случай - когда функция продолжает использовать outer environment после завершения outer function. Здесь outer scope - global scope, он и так живет до конца программы.
 
-Рассуждение: Closure лучше всего видно, когда функция создана внутри другой функции и возвращена наружу.
+Объяснение: Closure лучше всего видно, когда функция создана внутри другой функции и возвращена наружу.
 
-Типичная ошибка: считать, что Closure существует только там, где есть слово `return`. `return function` просто делает механизм хорошо видимым.
+Распространённая ошибка: считать, что Closure существует только там, где есть слово `return`. `return function` просто делает механизм хорошо видимым.
 
-Automation QA связь: factory functions дают наиболее практичный и контролируемый способ использовать Closures.
+Связь с Automation QA: factory functions дают наиболее практичный и контролируемый способ использовать Closures.
 
 ---
 
@@ -347,11 +347,11 @@ true
 false
 ```
 
-Рассуждение: каждый validator сохраняет свой `expectedStatus` в отдельном lexical environment.
+Объяснение: каждый validator сохраняет свой `expectedStatus` в отдельном lexical environment.
 
-Типичная ошибка: оставлять `expectedStatus` как global mutable state.
+Распространённая ошибка: оставлять `expectedStatus` как global mutable state.
 
-Automation QA связь: global mutable state часто приводит к flaky tests, когда один тест меняет состояние для другого.
+Связь с Automation QA: global mutable state часто приводит к flaky tests, когда один тест меняет состояние для другого.
 
 ---
 
@@ -377,11 +377,11 @@ console.log(buildApiMessage('Request failed'));
 API: Request failed
 ```
 
-Рассуждение: inner function должна использовать `prefix` из outer lexical environment и `text`, который приходит как argument при вызове.
+Объяснение: inner function должна использовать `prefix` из outer lexical environment и `text`, который приходит как argument при вызове.
 
-Типичная ошибка: создать Closure, но не использовать captured variable.
+Распространённая ошибка: создать Closure, но не использовать captured variable.
 
-Automation QA связь: такие builders полезны для логирования, отчетов и сообщений assertion errors.
+Связь с Automation QA: такие builders полезны для логирования, отчетов и сообщений assertion errors.
 
 ---
 
@@ -411,11 +411,11 @@ true
 false
 ```
 
-Рассуждение: `expectedStatus` captured один раз при создании validator. `response` приходит каждый раз как argument.
+Объяснение: `expectedStatus` captured один раз при создании validator. `response` приходит каждый раз как argument.
 
-Типичная ошибка: передавать `expectedStatus` в каждый вызов, хотя цель factory function - сохранить его заранее.
+Распространённая ошибка: передавать `expectedStatus` в каждый вызов, хотя цель factory function - сохранить его заранее.
 
-Automation QA связь: этот паттерн полезен для REST API assertions.
+Связь с Automation QA: этот паттерн полезен для REST API assertions.
 
 ---
 
@@ -443,11 +443,11 @@ https://api.example.test/users
 https://api.example.test/orders
 ```
 
-Рассуждение: `baseUrl` captured, а `path` передается при каждом вызове.
+Объяснение: `baseUrl` captured, а `path` передается при каждом вызове.
 
-Типичная ошибка: хранить `baseUrl` в global variable и менять его между тестами.
+Распространённая ошибка: хранить `baseUrl` в global variable и менять его между тестами.
 
-Automation QA связь: так можно создать URL builders для staging, production-like и local environments.
+Связь с Automation QA: так можно создать URL builders для staging, production-like и local environments.
 
 ---
 
@@ -478,11 +478,11 @@ false
 true
 ```
 
-Рассуждение: `validateAdmin` и `validateGuest` имеют разные preserved lexical environments.
+Объяснение: `validateAdmin` и `validateGuest` имеют разные preserved lexical environments.
 
-Типичная ошибка: использовать один общий `expectedRole` для всех validators.
+Распространённая ошибка: использовать один общий `expectedRole` для всех validators.
 
-Automation QA связь: role validators полезны при проверке API responses, fixtures и test data.
+Связь с Automation QA: role validators полезны при проверке API responses, fixtures и test data.
 
 ---
 
@@ -558,7 +558,7 @@ validateRequestId
     └── headerName = 'x-request-id'
 ```
 
-Рассуждение: factory functions создают specialized helpers. Одни значения captured при создании helper, другие приходят позже как arguments.
+Объяснение: factory functions создают specialized helpers. Одни значения captured при создании helper, другие приходят позже как arguments.
 
 Captured values:
 
@@ -572,8 +572,8 @@ Arguments:
 
 Почему helpers независимы: каждый вызов factory function создает отдельное lexical environment.
 
-Типичная ошибка: сделать один общий `expectedStatus` или `headerName` снаружи и менять его между проверками.
+Распространённая ошибка: сделать один общий `expectedStatus` или `headerName` снаружи и менять его между проверками.
 
-Automation QA связь: такой подход помогает строить reusable validators для API tests без глобального изменяемого состояния.
+Связь с Automation QA: такой подход помогает строить reusable validators для API tests без глобального изменяемого состояния.
 
 Возможное улучшение: добавить понятные сообщения об ошибке или возвращать object с результатом проверки. Это будет полезно в будущих главах про framework architecture и assertions.

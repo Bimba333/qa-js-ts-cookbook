@@ -8,7 +8,7 @@
 
 **Объяснение:** if several classes repeat the same methods, common methods can live in base class.
 
-**Типичная ошибка:** think inheritance exists to make code look more object-oriented.
+**Распространённая ошибка:** think inheritance exists to make code look more object-oriented.
 
 **Связь с Automation QA:** `BasePage` can keep common page actions.
 
@@ -18,7 +18,7 @@
 
 **Объяснение:** one missed update can make classes behave inconsistently.
 
-**Типичная ошибка:** accept duplication because tests still pass today.
+**Распространённая ошибка:** accept duplication because tests still pass today.
 
 **Связь с Automation QA:** duplicated `waitReady()` in many Page Objects becomes fragile.
 
@@ -28,7 +28,7 @@
 
 **Объяснение:** base class should hold methods that truly belong to all derived classes.
 
-**Типичная ошибка:** put page-specific methods into base class.
+**Распространённая ошибка:** put page-specific methods into base class.
 
 **Связь с Automation QA:** `BasePage` may contain `open()` and `waitReady()`.
 
@@ -38,7 +38,7 @@
 
 **Объяснение:** derived class can use inherited methods and define its own methods.
 
-**Типичная ошибка:** make derived class empty when it needs specific behavior.
+**Распространённая ошибка:** make derived class empty when it needs specific behavior.
 
 **Связь с Automation QA:** `LoginPage` can extend `BasePage` and add `login()`.
 
@@ -48,7 +48,7 @@
 
 **Объяснение:** this relationship allows method lookup to reach base class behavior.
 
-**Типичная ошибка:** think `extends` copies methods.
+**Распространённая ошибка:** think `extends` copies methods.
 
 **Связь с Automation QA:** `LoginPage extends BasePage` means LoginPage can reuse common page behavior.
 
@@ -58,7 +58,7 @@
 
 **Объяснение:** methods are found through lookup based on the class/prototype relationship.
 
-**Типичная ошибка:** imagine each derived class receives physical method copies.
+**Распространённая ошибка:** imagine each derived class receives physical method copies.
 
 **Связь с Automation QA:** one base method can be reused by many page classes.
 
@@ -68,7 +68,7 @@
 
 **Объяснение:** if method is not found closer to instance, lookup can continue to base class behavior.
 
-**Типичная ошибка:** think inheritance creates a separate lookup mechanism.
+**Распространённая ошибка:** think inheritance creates a separate lookup mechanism.
 
 **Связь с Automation QA:** inherited Page Object methods still follow lookup rules.
 
@@ -78,7 +78,7 @@
 
 **Объяснение:** derived method is found first and base method is not used for that call.
 
-**Типичная ошибка:** think overriding deletes base method.
+**Распространённая ошибка:** think overriding deletes base method.
 
 **Связь с Automation QA:** specific page can override generic behavior when needed.
 
@@ -88,7 +88,7 @@
 
 **Объяснение:** if base contains specific behavior, unrelated classes get confusing methods.
 
-**Типичная ошибка:** turn base class into a storage place for random helpers.
+**Распространённая ошибка:** turn base class into a storage place for random helpers.
 
 **Связь с Automation QA:** `login()` should not be available on `ProfilePage`.
 
@@ -98,7 +98,7 @@
 
 **Объяснение:** `super` is needed when derived class wants to call base class behavior explicitly; that is next chapter.
 
-**Типичная ошибка:** introduce `super` before understanding basic inheritance.
+**Распространённая ошибка:** introduce `super` before understanding basic inheritance.
 
 **Связь с Automation QA:** first understand that `LoginPage` can use `BasePage.open()`.
 
@@ -116,7 +116,7 @@
 
 **Объяснение:** `open` and `waitReady` are inherited through `extends`.
 
-**Типичная ошибка:** think `LoginPage` instance can use only methods written directly in `LoginPage`.
+**Распространённая ошибка:** think `LoginPage` instance can use only methods written directly in `LoginPage`.
 
 **Связь с Automation QA:** Page Object inherits common actions and adds page-specific actions.
 
@@ -129,7 +129,7 @@
 
 **Объяснение:** common request description belongs to base client; user endpoint belongs to specific service client.
 
-**Типичная ошибка:** duplicate `describeRequest` in every service client.
+**Распространённая ошибка:** duplicate `describeRequest` in every service client.
 
 **Связь с Automation QA:** API framework clients often share request formatting.
 
@@ -147,7 +147,7 @@ open page
 
 **Объяснение:** `LoginPage` does not define `open`, so lookup finds inherited `BasePage.open`.
 
-**Типичная ошибка:** expect error because `open` is not written in `LoginPage`.
+**Распространённая ошибка:** expect error because `open` is not written in `LoginPage`.
 
 **Связь с Automation QA:** page instance can use common base page methods.
 
@@ -161,7 +161,7 @@ login
 
 **Объяснение:** `LoginPage.describe` is closer and overrides `BasePage.describe`.
 
-**Типичная ошибка:** expect base method to win because it is "base".
+**Распространённая ошибка:** expect base method to win because it is "base".
 
 **Связь с Automation QA:** page-specific behavior can override generic behavior.
 
@@ -176,7 +176,7 @@ false
 
 **Объяснение:** `format` is inherited from `BaseValidator`; `isValid` belongs to `StatusValidator`.
 
-**Типичная ошибка:** think inherited and own methods are called differently.
+**Распространённая ошибка:** think inherited and own methods are called differently.
 
 **Связь с Automation QA:** validators can share formatting and keep specific validation.
 
@@ -198,7 +198,7 @@ class LoginPage extends BasePage {
 
 **Объяснение:** without `extends`, `LoginPage` has no relationship with `BasePage`, so lookup cannot find `open`.
 
-**Типичная ошибка:** define base class but forget to connect derived class.
+**Распространённая ошибка:** define base class but forget to connect derived class.
 
 **Связь с Automation QA:** Page Object must explicitly extend base class to reuse base behavior.
 
@@ -208,7 +208,7 @@ class LoginPage extends BasePage {
 
 **Объяснение:** base class behavior becomes available to all derived pages. Not every page can log in.
 
-**Типичная ошибка:** put specific methods into base class because it is convenient.
+**Распространённая ошибка:** put specific methods into base class because it is convenient.
 
 **Связь с Automation QA:** `ProfilePage` should not inherit `login()` if it is not meaningful there.
 
@@ -218,7 +218,7 @@ class LoginPage extends BasePage {
 
 **Объяснение:** derived method overrides base method because lookup finds closer method first.
 
-**Типичная ошибка:** think overriding calls both methods automatically.
+**Распространённая ошибка:** think overriding calls both methods automatically.
 
 **Связь с Automation QA:** specific page can customize description without changing base page.
 
@@ -256,7 +256,7 @@ console.log(loginPage.login());
 
 **Объяснение:** common page actions are inherited; login action is specific.
 
-**Типичная ошибка:** repeat `open` and `waitReady` inside `LoginPage`.
+**Распространённая ошибка:** repeat `open` and `waitReady` inside `LoginPage`.
 
 **Связь с Automation QA:** this is a basic BasePage pattern.
 
@@ -292,7 +292,7 @@ console.log(ordersClient.describeRequest('orders', ordersClient.orderEndpoint('1
 
 **Объяснение:** request description is shared; endpoints are service-specific.
 
-**Типичная ошибка:** put `userEndpoint` into base API client.
+**Распространённая ошибка:** put `userEndpoint` into base API client.
 
 **Связь с Automation QA:** API layers often share request utilities and specialize by resource.
 
@@ -326,7 +326,7 @@ console.log(validator.isValid(200, 201));
 
 **Объяснение:** formatting is shared; status comparison is specific.
 
-**Типичная ошибка:** duplicate formatting in each validator class.
+**Распространённая ошибка:** duplicate formatting in each validator class.
 
 **Связь с Automation QA:** assertion infrastructure often shares message formatting.
 
@@ -336,13 +336,13 @@ console.log(validator.isValid(200, 201));
 
 **Объяснение:** if classes are connected only to hide random duplication, hierarchy becomes confusing.
 
-**Типичная ошибка:** create base class for unrelated helpers.
+**Распространённая ошибка:** create base class for unrelated helpers.
 
 **Связь с Automation QA:** unclear Page Object hierarchies make test failures harder to debug.
 
 ---
 
-## 6. Mini-project
+## 6. Мини-проект
 
 **Ответ:**
 
@@ -394,7 +394,7 @@ update user profile
 
 **Объяснение:** common behavior lives in `BasePage`. Specific behavior lives in `LoginPage` and `ProfilePage`. Methods are reused through inheritance and prototype lookup, not copied into each derived class.
 
-**Типичная ошибка:** put `login()` and `updateProfile()` into `BasePage`.
+**Распространённая ошибка:** put `login()` and `updateProfile()` into `BasePage`.
 
 **Связь с Automation QA:** this is the core mental model behind simple Page Object inheritance.
 

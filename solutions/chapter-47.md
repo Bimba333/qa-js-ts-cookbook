@@ -8,7 +8,7 @@
 
 **Объяснение:** many related values should be represented as one collection.
 
-**Типичная ошибка:** think array is only square bracket syntax.
+**Распространённая ошибка:** think array is only square bracket syntax.
 
 **Связь с Automation QA:** API responses often return lists of users, orders or errors.
 
@@ -18,7 +18,7 @@
 
 **Объяснение:** `user1`, `user2`, `user3` do not scale and make order harder to manage.
 
-**Типичная ошибка:** create numbered variables instead of collection.
+**Распространённая ошибка:** create numbered variables instead of collection.
 
 **Связь с Automation QA:** test users, requests and assertions are easier to pass as arrays.
 
@@ -28,7 +28,7 @@
 
 **Объяснение:** array remembers first, second, third and so on through indexes.
 
-**Типичная ошибка:** treat array like unordered set of values.
+**Распространённая ошибка:** treat array like unordered set of values.
 
 **Связь с Automation QA:** order can matter in UI rows, API results and reports.
 
@@ -38,7 +38,7 @@
 
 **Объяснение:** `users[0]` reads value at position `0`.
 
-**Типичная ошибка:** confuse index with count.
+**Распространённая ошибка:** confuse index with count.
 
 **Связь с Automation QA:** first API user is commonly read as `users[0]`.
 
@@ -48,7 +48,7 @@
 
 **Объяснение:** practical rule: first element is index `0`; last index is `length - 1`.
 
-**Типичная ошибка:** read first element with `[1]`.
+**Распространённая ошибка:** read first element with `[1]`.
 
 **Связь с Automation QA:** off-by-one mistakes often break assertions against first/last row.
 
@@ -58,7 +58,7 @@
 
 **Объяснение:** array with three elements has indexes `0`, `1`, `2`.
 
-**Типичная ошибка:** use `array[array.length]` for last element.
+**Распространённая ошибка:** use `array[array.length]` for last element.
 
 **Связь с Automation QA:** reading last failed assertion requires `length - 1`.
 
@@ -68,7 +68,7 @@
 
 **Объяснение:** it can be a valid state, such as no failures yet.
 
-**Типичная ошибка:** treat every empty array as error.
+**Распространённая ошибка:** treat every empty array as error.
 
 **Связь с Automation QA:** `failedAssertions = []` can mean all checks passed so far.
 
@@ -78,7 +78,7 @@
 
 **Объяснение:** user email and role belong to one user object.
 
-**Типичная ошибка:** use array positions for unrelated named fields.
+**Распространённая ошибка:** use array positions for unrelated named fields.
 
 **Связь с Automation QA:** one API user should usually be object.
 
@@ -88,7 +88,7 @@
 
 **Объяснение:** list of users or test cases fits array.
 
-**Типичная ошибка:** use object with keys `user1`, `user2`, `user3`.
+**Распространённая ошибка:** use object with keys `user1`, `user2`, `user3`.
 
 **Связь с Automation QA:** API collection response is naturally an array.
 
@@ -98,7 +98,7 @@
 
 **Объяснение:** array of same kind of element is easier to understand.
 
-**Типичная ошибка:** put unrelated status, user and boolean into one array.
+**Распространённая ошибка:** put unrelated status, user and boolean into one array.
 
 **Связь с Automation QA:** clear test data reduces assertion mistakes.
 
@@ -118,7 +118,7 @@
 
 **Объяснение:** first element starts at index `0`, so last index is `length - 1`.
 
-**Типичная ошибка:** say last index is `3`.
+**Распространённая ошибка:** say last index is `3`.
 
 **Связь с Automation QA:** reading last returned user requires correct index.
 
@@ -132,7 +132,7 @@
 
 **Объяснение:** four elements have indexes `0`, `1`, `2`, `3`.
 
-**Типичная ошибка:** shift every index by one.
+**Распространённая ошибка:** shift every index by one.
 
 **Связь с Automation QA:** request sequence assertions often depend on correct positions.
 
@@ -152,7 +152,7 @@ viewer
 
 **Объяснение:** `roles[0]` is first element; `roles[2]` is third element; length is count.
 
-**Типичная ошибка:** expect `roles[2]` to be second element.
+**Распространённая ошибка:** expect `roles[2]` to be second element.
 
 **Связь с Automation QA:** role list assertions often use indexes.
 
@@ -167,7 +167,7 @@ viewer
 
 **Объяснение:** assignment replaces value at index `2`; number of elements does not change.
 
-**Типичная ошибка:** think update changes length.
+**Распространённая ошибка:** think update changes length.
 
 **Связь с Automation QA:** updating expected status at same position should not change test case count.
 
@@ -182,7 +182,7 @@ profile
 
 **Объяснение:** `pages[2]` is missing because indexes are `0` and `1`. `pages.length - 1` is `1`.
 
-**Типичная ошибка:** use `length` as last index.
+**Распространённая ошибка:** use `length` as last index.
 
 **Связь с Automation QA:** last browser tab/page requires `length - 1`.
 
@@ -200,7 +200,7 @@ const lastUser = users[users.length - 1];
 
 **Объяснение:** `users.length` is `3`, but last index is `2`.
 
-**Типичная ошибка:** confuse count with position.
+**Распространённая ошибка:** confuse count with position.
 
 **Связь с Automation QA:** same issue appears when checking last row in UI table.
 
@@ -214,7 +214,7 @@ console.log(users[0].email);
 
 **Объяснение:** `users` is array. First read element by index, then read object property.
 
-**Типичная ошибка:** treat array as if it were user object.
+**Распространённая ошибка:** treat array as if it were user object.
 
 **Связь с Automation QA:** API often returns array of user objects.
 
@@ -224,7 +224,7 @@ console.log(users[0].email);
 
 **Объяснение:** empty array has no first element. This can validly mean no failures yet.
 
-**Типичная ошибка:** think empty array always means broken test.
+**Распространённая ошибка:** think empty array always means broken test.
 
 **Связь с Automation QA:** empty failure collection can mean all assertions passed.
 
@@ -254,7 +254,7 @@ console.log(lastUser);
 
 **Объяснение:** array keeps users in order.
 
-**Типичная ошибка:** read last user with `testUsers[testUsers.length]`.
+**Распространённая ошибка:** read last user with `testUsers[testUsers.length]`.
 
 **Связь с Automation QA:** ordered users may be used for role-based test scenarios.
 
@@ -280,7 +280,7 @@ console.log(apiUsers[1].role);
 
 **Объяснение:** array stores many user objects; each object stores named user properties.
 
-**Типичная ошибка:** write `apiUsers.email`.
+**Распространённая ошибка:** write `apiUsers.email`.
 
 **Связь с Automation QA:** this mirrors common REST API response shape.
 
@@ -303,7 +303,7 @@ console.log(testCases.length);
 
 **Объяснение:** replacing existing element does not change length.
 
-**Типичная ошибка:** expect length to change after replacement.
+**Распространённая ошибка:** expect length to change after replacement.
 
 **Связь с Automation QA:** renaming test case at same position preserves suite size.
 
@@ -313,13 +313,13 @@ console.log(testCases.length);
 
 **Объяснение:** `users` is array; each `user` inside it is object.
 
-**Типичная ошибка:** choose structure by syntax preference instead of data shape.
+**Распространённая ошибка:** choose structure by syntax preference instead of data shape.
 
 **Связь с Automation QA:** API response often contains arrays of objects.
 
 ---
 
-## 6. Mini-project
+## 6. Мини-проект
 
 **Ответ:**
 
@@ -361,7 +361,7 @@ admin
 
 **Объяснение:** `apiUsers` is one ordered collection. Each element is one user object. Array is better than `user1`, `user2`, `user3` because it keeps related values together and preserves order.
 
-**Типичная ошибка:** confuse array index and object property access.
+**Распространённая ошибка:** confuse array index and object property access.
 
 **Связь с Automation QA:** this is a typical shape for API response validation.
 

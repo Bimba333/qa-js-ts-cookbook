@@ -488,7 +488,7 @@ let userName;
 console.log(userName);
 ```
 
-Result:
+Результат:
 
 ```text
 undefined
@@ -660,7 +660,7 @@ Symbol()    | "symbol"
 10n         | "bigint"
 ```
 
-Important:
+Важно:
 
 ```text
 typeof null === "object"
@@ -826,7 +826,7 @@ Primitive Values
 └── BigInt
 ```
 
-### Bridge to Object Type
+### Переход к Object Type
 
 Primitive values are fundamental indivisible values.
 
@@ -953,7 +953,7 @@ Primitive atom
 └── indivisible value
 ```
 
-Examples:
+Примеры:
 
 ```text
 30
@@ -1414,7 +1414,7 @@ Objects are different and will be studied separately in the next chapter.
 
 ---
 
-## Quick Check
+## Проверьте себя
 
 1. Что такое value?
 

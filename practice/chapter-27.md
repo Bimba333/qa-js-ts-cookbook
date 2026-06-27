@@ -144,7 +144,7 @@ function validate(a, b) {
 actualStatus и expectedStatus являются arguments.
 ```
 
-## QA-oriented tasks
+## QA-задачи
 
 ### Сценарий 1. API status validator
 

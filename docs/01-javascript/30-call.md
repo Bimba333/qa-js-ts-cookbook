@@ -876,7 +876,7 @@ Receiver - это actor, который исполняет script в данно�
 
 ---
 
-### Mental model summary
+### Краткая ментальная модель
 
 ```text
 call()
@@ -887,7 +887,7 @@ call()
 └── sets this for this one invocation
 ```
 
-Summary diagram:
+Итоговая схема:
 
 ```text
 function object
@@ -925,7 +925,7 @@ Functions
     └── manual receiver selection
 ```
 
-Bridge to apply():
+Переход к apply():
 
 ```text
 call()
@@ -1214,7 +1214,7 @@ assertionConfig -> response parameter
 validateStatus.call(assertionConfig, response);
 ```
 
-Common mistakes:
+Типичные ошибки:
 
 ```text
 call(receiver, arg1)
@@ -1229,7 +1229,7 @@ call(receiver, arg1)
 
 `call()` полезен, когда function object уже есть, но receiver нужно выбрать явно.
 
-Practical usage:
+Практическое использование:
 
 ```text
 shared function
@@ -1263,7 +1263,7 @@ console.log(validateStatus.call(okAssertion, { status: 200 }));
 console.log(validateStatus.call(createdAssertion, { status: 200 }));
 ```
 
-Readability:
+Читаемость:
 
 ```text
 Use call()
@@ -1451,7 +1451,7 @@ functionObject.call(receiver, arg1, arg2)
 * `call()` не заменяет обычные method calls там, где `object.method()` читается лучше.
 * `apply()` будет изучаться в следующей главе и продолжит тему manual receiver selection.
 
-Mental model summary:
+Краткая ментальная модель:
 
 ```text
 call()
@@ -1463,7 +1463,7 @@ call()
 
 ---
 
-## Quick Check
+## Проверьте себя
 
 Ответьте без запуска кода:
 

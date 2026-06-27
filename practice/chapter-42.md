@@ -351,7 +351,7 @@ console.log(user.describe());
 
 ---
 
-## 8. Mini-project
+## 8. Мини-проект
 
 Создайте small QA framework model.
 

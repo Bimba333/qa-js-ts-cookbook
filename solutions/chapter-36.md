@@ -8,7 +8,7 @@
 
 **Объяснение:** если `id`, `name`, `role` и `active` описывают одного пользователя, object делает эту связь явной.
 
-**Типичная ошибка:** думать, что object нужен только для "больших" данных.
+**Распространённая ошибка:** думать, что object нужен только для "больших" данных.
 
 **Связь с Automation QA:** test user, API response, config and payload usually are objects.
 
@@ -18,7 +18,7 @@
 
 **Объяснение:** object группирует смысл, а не только значения.
 
-**Типичная ошибка:** создавать длинные наборы `userName`, `userEmail`, `userRole` вместо `user`.
+**Распространённая ошибка:** создавать длинные наборы `userName`, `userEmail`, `userRole` вместо `user`.
 
 **Связь с Automation QA:** helpers проще принимать один `testUser`, чем много отдельных arguments.
 
@@ -28,7 +28,7 @@
 
 **Объяснение:** property имеет key и value.
 
-**Типичная ошибка:** называть property только value.
+**Распространённая ошибка:** называть property только value.
 
 **Связь с Automation QA:** `response.status` and `response.body` are properties of response object.
 
@@ -38,7 +38,7 @@
 
 **Объяснение:** key отвечает на вопрос: "как называется эта часть object?"
 
-**Типичная ошибка:** путать key `name` и value `'Anna'`.
+**Распространённая ошибка:** путать key `name` и value `'Anna'`.
 
 **Связь с Automation QA:** assertion часто проверяет, что нужные keys есть in API response.
 
@@ -48,7 +48,7 @@
 
 **Объяснение:** в `name: 'Anna'` key is `name`, value is `'Anna'`.
 
-**Типичная ошибка:** думать, что key and value are both variables.
+**Распространённая ошибка:** думать, что key and value are both variables.
 
 **Связь с Automation QA:** expected values сравниваются с actual property values.
 
@@ -58,7 +58,7 @@
 
 **Объяснение:** фраза "key-value pairs" описывает форму, но не объясняет, почему эти pairs должны быть в одном object.
 
-**Типичная ошибка:** создавать object без смысловой границы.
+**Распространённая ошибка:** создавать object без смысловой границы.
 
 **Связь с Automation QA:** `config`, `payload`, `expectedUser` are meaningful entities.
 
@@ -68,7 +68,7 @@
 
 **Объяснение:** braces with properties produce a new object.
 
-**Типичная ошибка:** думать, что literal только "формат записи", без создания value.
+**Распространённая ошибка:** думать, что literal только "формат записи", без создания value.
 
 **Связь с Automation QA:** test data often starts as object literal.
 
@@ -78,7 +78,7 @@
 
 **Объяснение:** `user.name` ищет key `"name"`, `user[fieldName]` сначала читает `fieldName`.
 
-**Типичная ошибка:** писать `user.fieldName`, ожидая value из variable `fieldName`.
+**Распространённая ошибка:** писать `user.fieldName`, ожидая value из variable `fieldName`.
 
 **Связь с Automation QA:** dynamic validation fields require bracket notation.
 
@@ -88,7 +88,7 @@
 
 **Объяснение:** `response['status code']` works, `response.status code` does not.
 
-**Типичная ошибка:** использовать dot notation for dynamic key.
+**Распространённая ошибка:** использовать dot notation for dynamic key.
 
 **Связь с Automation QA:** validating table fields or API fields by variable key uses bracket notation.
 
@@ -98,7 +98,7 @@
 
 **Объяснение:** missing property - это не syntax error.
 
-**Типичная ошибка:** считать `undefined` признаком сломанного object literal.
+**Распространённая ошибка:** считать `undefined` признаком сломанного object literal.
 
 **Связь с Automation QA:** absence of expected field in API response often appears as `undefined`.
 
@@ -116,7 +116,7 @@
 
 **Объяснение:** каждая строка inside object literal describes one property.
 
-**Типичная ошибка:** считать `user` property key. `user` is variable name.
+**Распространённая ошибка:** считать `user` property key. `user` is variable name.
 
 **Связь с Automation QA:** user object can represent expected profile.
 
@@ -130,7 +130,7 @@
 
 **Объяснение:** config groups environment settings.
 
-**Типичная ошибка:** хранить config values в несвязанных variables.
+**Распространённая ошибка:** хранить config values в несвязанных variables.
 
 **Связь с Automation QA:** configuration objects are used across API and UI tests.
 
@@ -144,7 +144,7 @@
 
 **Объяснение:** `null` здесь тоже property value.
 
-**Типичная ошибка:** игнорировать properties with `null`.
+**Распространённая ошибка:** игнорировать properties with `null`.
 
 **Связь с Automation QA:** `error: null` often means operation succeeded without error details.
 
@@ -163,7 +163,7 @@ admin
 
 **Объяснение:** `user.name` reads value of key `name`; `user.role` reads value of key `role`.
 
-**Типичная ошибка:** путать property access with variable access.
+**Распространённая ошибка:** путать property access with variable access.
 
 **Связь с Automation QA:** так читаются fields from expected test user.
 
@@ -178,7 +178,7 @@ undefined
 
 **Объяснение:** `baseUrl` exists, `retries` does not exist in this object.
 
-**Типичная ошибка:** ожидать runtime error for missing property.
+**Распространённая ошибка:** ожидать runtime error for missing property.
 
 **Связь с Automation QA:** missing config property often becomes `undefined`.
 
@@ -193,7 +193,7 @@ Anna
 
 **Объяснение:** `response.body` is object, then `.name` reads its property.
 
-**Типичная ошибка:** забыть, что nested object тоже имеет properties.
+**Распространённая ошибка:** забыть, что nested object тоже имеет properties.
 
 **Связь с Automation QA:** API response body often contains nested data.
 
@@ -211,7 +211,7 @@ console.log(user.name);
 
 **Объяснение:** key `name` known in advance and can be written after dot.
 
-**Типичная ошибка:** использовать bracket notation без необходимости. Это не ошибка, но dot notation читабельнее.
+**Распространённая ошибка:** использовать bracket notation без необходимости. Это не ошибка, но dot notation читабельнее.
 
 **Связь с Automation QA:** fixed response fields usually read through dot notation.
 
@@ -225,7 +225,7 @@ console.log(user[fieldName]);
 
 **Объяснение:** key is stored in variable `fieldName`.
 
-**Типичная ошибка:** `user.fieldName` looks for key literally named `"fieldName"`.
+**Распространённая ошибка:** `user.fieldName` looks for key literally named `"fieldName"`.
 
 **Связь с Automation QA:** dynamic field validation uses this pattern.
 
@@ -239,7 +239,7 @@ console.log(response['status code']);
 
 **Объяснение:** key contains a space, so dot notation cannot express it.
 
-**Типичная ошибка:** писать invalid syntax `response.status code`.
+**Распространённая ошибка:** писать invalid syntax `response.status code`.
 
 **Связь с Automation QA:** external data sometimes has keys that are not convenient JavaScript identifiers.
 
@@ -249,7 +249,7 @@ console.log(response['status code']);
 
 **Объяснение:** brackets allow expression-based key access.
 
-**Типичная ошибка:** считать bracket notation just alternative style. Иногда это requirement.
+**Распространённая ошибка:** считать bracket notation just alternative style. Иногда это requirement.
 
 **Связь с Automation QA:** API fields, table columns and config keys can be selected dynamically.
 
@@ -271,7 +271,7 @@ console.log(response['status code']);
 
 **Объяснение:** `role` existed and was updated. `email` did not exist and was added.
 
-**Типичная ошибка:** считать any assignment as only update. It can add property too.
+**Распространённая ошибка:** считать any assignment as only update. It can add property too.
 
 **Связь с Automation QA:** test data may be extended with fields before request.
 
@@ -294,7 +294,7 @@ Then object no longer has `retries`:
 
 **Объяснение:** `delete config.retries` removes property. Reading it later returns `undefined`.
 
-**Типичная ошибка:** думать, что `delete` assigns `undefined`.
+**Распространённая ошибка:** думать, что `delete` assigns `undefined`.
 
 **Связь с Automation QA:** service fields can be removed before comparing public expected data.
 
@@ -313,7 +313,7 @@ undefined
 
 **Объяснение:** `name` exists; `email` does not.
 
-**Типичная ошибка:** ожидать error for missing property.
+**Распространённая ошибка:** ожидать error for missing property.
 
 **Связь с Automation QA:** missing response fields often show up as `undefined`.
 
@@ -328,7 +328,7 @@ undefined
 
 **Объяснение:** `response.key` searches property literally named `key`. `response[key]` reads variable `key`, gets `'status'`, then reads `response.status`.
 
-**Типичная ошибка:** confuse dot notation and bracket notation.
+**Распространённая ошибка:** confuse dot notation and bracket notation.
 
 **Связь с Automation QA:** dynamic assertion field names require bracket notation.
 
@@ -343,7 +343,7 @@ admin
 
 **Объяснение:** `role` was added, `name` was updated.
 
-**Типичная ошибка:** forget that object properties can be changed even when object variable is `const`.
+**Распространённая ошибка:** forget that object properties can be changed even when object variable is `const`.
 
 **Связь с Automation QA:** request payload can be prepared step by step.
 
@@ -357,7 +357,7 @@ false
 
 **Объяснение:** two object literals create two different objects even if properties look the same.
 
-**Типичная ошибка:** compare objects by `===` expecting structural equality.
+**Распространённая ошибка:** compare objects by `===` expecting structural equality.
 
 **Связь с Automation QA:** object equality in assertions requires framework-specific matchers, studied later.
 
@@ -384,7 +384,7 @@ console.log(user[fieldName]);
 
 **Объяснение:** key is stored in variable, so bracket notation is required.
 
-**Типичная ошибка:** use dot notation for dynamic key.
+**Распространённая ошибка:** use dot notation for dynamic key.
 
 **Связь с Automation QA:** reusable field validators often receive field name as argument.
 
@@ -404,7 +404,7 @@ console.log(response['status code']);
 
 **Объяснение:** key contains a space.
 
-**Типичная ошибка:** trying to force dot notation for non-identifier keys.
+**Распространённая ошибка:** trying to force dot notation for non-identifier keys.
 
 **Связь с Automation QA:** some external payloads use keys inconvenient for dot notation.
 
@@ -426,7 +426,7 @@ console.log(config.timeout);
 
 **Объяснение:** property must exist before reading if expected value is required.
 
-**Типичная ошибка:** read before write.
+**Распространённая ошибка:** read before write.
 
 **Связь с Automation QA:** setup order matters when preparing config objects.
 
@@ -450,7 +450,7 @@ console.log(testUser.role);
 
 **Объяснение:** all user-related data is grouped inside one object.
 
-**Типичная ошибка:** split user data into unrelated variables.
+**Распространённая ошибка:** split user data into unrelated variables.
 
 **Связь с Automation QA:** test user objects are passed into setup helpers.
 
@@ -471,7 +471,7 @@ console.log(stagingConfig);
 
 **Объяснение:** `timeout` is updated; `environment` is added.
 
-**Типичная ошибка:** think `const` prevents property updates.
+**Распространённая ошибка:** think `const` prevents property updates.
 
 **Связь с Automation QA:** config objects often evolve during setup.
 
@@ -495,7 +495,7 @@ console.log(apiResponse.body.role);
 
 **Объяснение:** response groups status and body; body groups user data.
 
-**Типичная ошибка:** flatten all response fields into separate variables.
+**Распространённая ошибка:** flatten all response fields into separate variables.
 
 **Связь с Automation QA:** this mirrors many REST API responses.
 
@@ -516,13 +516,13 @@ console.log(actualUser);
 
 **Объяснение:** service field removed before comparison.
 
-**Типичная ошибка:** set `internalToken = undefined` and assume property is absent.
+**Распространённая ошибка:** set `internalToken = undefined` and assume property is absent.
 
 **Связь с Automation QA:** API responses often contain fields that should be ignored in public assertions.
 
 ---
 
-## 9. Mini-project
+## 9. Мини-проект
 
 Один из возможных вариантов:
 
@@ -570,7 +570,7 @@ console.log(apiResponse.body);
 
 **Объяснение:** request, expected data and actual response are separate entities. Objects make that structure visible.
 
-**Типичная ошибка:** store `requestName`, `expectedName`, `actualName`, `actualRole` as scattered variables.
+**Распространённая ошибка:** store `requestName`, `expectedName`, `actualName`, `actualRole` as scattered variables.
 
 **Связь с Automation QA:** this mirrors realistic API test preparation.
 

@@ -8,11 +8,11 @@
 
 Spread нужен, чтобы раскрыть collection в отдельные values или properties.
 
-Рассуждение:
+Объяснение:
 
 Если функция ожидает отдельные arguments, а данные лежат в array, Spread раскрывает array в call site.
 
-Типичная ошибка:
+Распространённая ошибка:
 
 Путать Spread с Rest.
 
@@ -26,11 +26,11 @@ Spread нужен, чтобы раскрыть collection в отдельные 
 
 Spread идет от одного collection к многим values.
 
-Рассуждение:
+Объяснение:
 
 `...statuses` раскрывает `[200, 201]` в `200, 201`.
 
-Типичная ошибка:
+Распространённая ошибка:
 
 Говорить, что Spread собирает.
 
@@ -44,11 +44,11 @@ Status array можно раскрыть в helper arguments.
 
 Rest собирает many values в one array.
 
-Рассуждение:
+Объяснение:
 
 В parameter list `...values` принимает remaining arguments.
 
-Типичная ошибка:
+Распространённая ошибка:
 
 Запоминать только три точки без context.
 
@@ -62,11 +62,11 @@ Rest полезен для flexible helpers, Spread - для раскрытия 
 
 Потому что meaning depends on context.
 
-Рассуждение:
+Объяснение:
 
 В parameter list это Rest, в function call, array literal и object literal это Spread.
 
-Типичная ошибка:
+Распространённая ошибка:
 
 Объяснять все случаи одной фразой.
 
@@ -80,11 +80,11 @@ Rest полезен для flexible helpers, Spread - для раскрытия 
 
 Он раскрывает array values в separate arguments.
 
-Рассуждение:
+Объяснение:
 
 `fn(...values)` становится вызовом с отдельными values.
 
-Типичная ошибка:
+Распространённая ошибка:
 
 Думать, что функция получает array как один argument.
 
@@ -98,11 +98,11 @@ Rest полезен для flexible helpers, Spread - для раскрытия 
 
 Он раскрывает array values внутри нового array.
 
-Рассуждение:
+Объяснение:
 
 `[...a, ...b]` создает array из values обоих arrays.
 
-Типичная ошибка:
+Распространённая ошибка:
 
 Ожидать nested arrays.
 
@@ -116,11 +116,11 @@ Rest полезен для flexible helpers, Spread - для раскрытия 
 
 Он раскрывает object properties внутри нового object.
 
-Рассуждение:
+Объяснение:
 
 `{ ...base, role: 'admin' }` копирует top-level properties и добавляет override.
 
-Типичная ошибка:
+Распространённая ошибка:
 
 Ожидать deep merge.
 
@@ -134,11 +134,11 @@ Rest полезен для flexible helpers, Spread - для раскрытия 
 
 Shallow copy создает новый top-level container, но не делает глубокую копию nested objects.
 
-Рассуждение:
+Объяснение:
 
 Spread copy не равен deep copy.
 
-Типичная ошибка:
+Распространённая ошибка:
 
 Использовать Spread как универсальное клонирование.
 
@@ -152,11 +152,11 @@ Nested payloads требуют осторожности.
 
 Later properties override earlier properties.
 
-Рассуждение:
+Объяснение:
 
 Если `role` задан дважды, последнее значение победит.
 
-Типичная ошибка:
+Распространённая ошибка:
 
 Поставить override перед spread и потерять его.
 
@@ -170,11 +170,11 @@ Config overrides зависят от порядка.
 
 Spread полезен для merging test data, copying request payloads, extending config и composing helper arguments.
 
-Рассуждение:
+Объяснение:
 
 Эти задачи часто требуют взять базовое значение и раскрыть его в новый context.
 
-Типичная ошибка:
+Распространённая ошибка:
 
 Делать слишком сложные spread expressions.
 
@@ -190,11 +190,11 @@ Readable setup важнее короткого setup.
 
 Это Rest.
 
-Рассуждение:
+Объяснение:
 
 `...values` находится в parameter list и собирает incoming arguments.
 
-Типичная ошибка:
+Распространённая ошибка:
 
 Назвать это Spread из-за трех точек.
 
@@ -208,11 +208,11 @@ Readable setup важнее короткого setup.
 
 Это Spread.
 
-Рассуждение:
+Объяснение:
 
 `...values` находится в function call и раскрывает array в arguments.
 
-Типичная ошибка:
+Распространённая ошибка:
 
 Думать, что function получает array как один argument.
 
@@ -226,11 +226,11 @@ Prepared values раскрываются в helper call.
 
 Это Spread в array literal.
 
-Рассуждение:
+Объяснение:
 
 Он раскрывает values из `values` внутрь нового array.
 
-Типичная ошибка:
+Распространённая ошибка:
 
 Ожидать nested array.
 
@@ -238,7 +238,7 @@ Prepared values раскрываются в helper call.
 
 Так можно сделать shallow copy списка данных.
 
-## Identify Spread direction
+## Определите Spread direction
 
 ### Задача 1
 
@@ -246,11 +246,11 @@ Prepared values раскрываются в helper call.
 
 Array `statuses` раскрывается в separate values для `console.log`.
 
-Рассуждение:
+Объяснение:
 
 Function call получает values individually.
 
-Типичная ошибка:
+Распространённая ошибка:
 
 Ожидать вывод array как одного значения.
 
@@ -264,11 +264,11 @@ Function call получает values individually.
 
 Оба arrays раскрываются внутрь нового array `allStatuses`.
 
-Рассуждение:
+Объяснение:
 
 Array literal получает values из двух collections.
 
-Типичная ошибка:
+Распространённая ошибка:
 
 Получить nested arrays из-за отсутствия Spread.
 
@@ -282,11 +282,11 @@ Combining status lists.
 
 Object `basePayload` раскрывает properties внутрь нового object.
 
-Рассуждение:
+Объяснение:
 
 `email` добавляется после spread.
 
-Типичная ошибка:
+Распространённая ошибка:
 
 Ожидать deep copy nested data.
 
@@ -304,11 +304,11 @@ Request payload composition.
 [ 200, 201, 204 ]
 ```
 
-Рассуждение:
+Объяснение:
 
 Spread раскрывает values из `statuses`, затем добавляется `204`.
 
-Типичная ошибка:
+Распространённая ошибка:
 
 Ожидать `[ [200, 201], 204 ]`.
 
@@ -325,11 +325,11 @@ Spread раскрывает values из `statuses`, затем добавляе�
 201
 ```
 
-Рассуждение:
+Объяснение:
 
 Array values стали separate arguments.
 
-Типичная ошибка:
+Распространённая ошибка:
 
 Ожидать, что первый parameter получит весь array.
 
@@ -345,11 +345,11 @@ Function call receives individual statuses.
 admin
 ```
 
-Рассуждение:
+Объяснение:
 
 `role: 'admin'` идет после spread и overwrites previous `role`.
 
-Типичная ошибка:
+Распространённая ошибка:
 
 Игнорировать порядок properties.
 
@@ -365,11 +365,11 @@ Overrides in payloads depend on order.
 1
 ```
 
-Рассуждение:
+Объяснение:
 
 `...baseConfig` идет после `retries: 2`, поэтому значение `1` overwrites `2`.
 
-Типичная ошибка:
+Распространённая ошибка:
 
 Ожидать, что first value wins.
 
@@ -385,11 +385,11 @@ Config override order matters.
 
 В function call Spread раскрывает array в arguments. Он не собирает.
 
-Рассуждение:
+Объяснение:
 
 Сбор происходит в parameter list через Rest.
 
-Типичная ошибка:
+Распространённая ошибка:
 
 Путать direction.
 
@@ -412,11 +412,11 @@ const user = {
 };
 ```
 
-Рассуждение:
+Объяснение:
 
 Later property wins.
 
-Типичная ошибка:
+Распространённая ошибка:
 
 Не учитывать order in object literal.
 
@@ -430,11 +430,11 @@ Payload overrides must be placed after base spread.
 
 Spread copy is shallow copy.
 
-Рассуждение:
+Объяснение:
 
 Top-level object is new, nested objects are not deeply cloned here.
 
-Типичная ошибка:
+Распространённая ошибка:
 
 Использовать Spread как deep clone.
 
@@ -448,11 +448,11 @@ Nested request payloads требуют осторожности.
 
 Слишком много spread parts в одной строке скрывают порядок и смысл overrides.
 
-Рассуждение:
+Объяснение:
 
 Читателю трудно быстро понять final payload.
 
-Типичная ошибка:
+Распространённая ошибка:
 
 Считать компактность преимуществом всегда.
 
@@ -460,7 +460,7 @@ Nested request payloads требуют осторожности.
 
 Readable test setup важнее короткой строки.
 
-## QA-oriented tasks
+## QA-задачи
 
 ### Сценарий 1
 
@@ -478,11 +478,11 @@ const adminUser = {
 };
 ```
 
-Рассуждение:
+Объяснение:
 
 Object spread copies top-level properties, later `role` overrides previous value.
 
-Типичная ошибка:
+Распространённая ошибка:
 
 Поставить `role: 'admin'` перед `...baseUser`.
 
@@ -505,11 +505,11 @@ const requestPayload = {
 };
 ```
 
-Рассуждение:
+Объяснение:
 
 New payload gets base properties and scenario-specific email.
 
-Типичная ошибка:
+Распространённая ошибка:
 
 Ожидать deep copy для nested data.
 
@@ -531,11 +531,11 @@ const statuses = [200, 201, 204];
 validateThreeStatuses(...statuses);
 ```
 
-Рассуждение:
+Объяснение:
 
 Spread expands array values into separate arguments.
 
-Типичная ошибка:
+Распространённая ошибка:
 
 Передать `statuses` без Spread и получить array as first argument.
 
@@ -558,11 +558,11 @@ const localConfig = {
 };
 ```
 
-Рассуждение:
+Объяснение:
 
 Local config extends base config.
 
-Типичная ошибка:
+Распространённая ошибка:
 
 Не учитывать property override order.
 
@@ -609,11 +609,11 @@ allStatuses        | smoke + regression statuses  | combined status list        
 validate statuses  | allStatuses                  | separate helper arguments      | helper invocation
 ```
 
-Рассуждение:
+Объяснение:
 
 Проект показывает три use cases: object composition, array merging и function call arguments.
 
-Типичная ошибка:
+Распространённая ошибка:
 
 Смешать Rest и Spread в отчете.
 

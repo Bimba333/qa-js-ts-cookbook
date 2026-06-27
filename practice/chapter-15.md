@@ -25,7 +25,7 @@ const user = {
 };
 ```
 
-## Identify properties
+## Определите properties
 
 Для каждого object укажите:
 
@@ -88,7 +88,7 @@ console.log(user.status.role);
 console.log(user.status.isActive);
 ```
 
-## Predict the output before running
+## Предскажите вывод перед запуском
 
 ### Задача 1
 
@@ -137,7 +137,7 @@ console.log(user.firstName);
 console.log(user.firstname);
 ```
 
-## Code reading
+## Чтение кода
 
 Прочитайте код и ответьте:
 
@@ -162,7 +162,7 @@ const expectedUser = {
 };
 ```
 
-## Small coding tasks
+## Небольшие задачи на код
 
 ### Задача 1
 
@@ -206,7 +206,7 @@ const expectedUser = {
 
 Выведите object.
 
-## Debugging tasks
+## Задачи на отладку
 
 ### Задача 1
 
@@ -269,7 +269,7 @@ user.isActive = true;
 
 Предложите более читаемый вариант.
 
-## QA-oriented tasks
+## QA-задачи
 
 ### Сценарий 1. API response
 
@@ -334,7 +334,7 @@ Active: Yes
 
 Создайте object for expected profile data. Какие property names вы выберете и почему?
 
-## Mini-project
+## Мини-проект
 
 Создайте файл:
 

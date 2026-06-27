@@ -8,7 +8,7 @@
 
 **Объяснение:** вместо повторения `response.status`, `response.body`, `response.durationMs` можно явно указать, какие properties нужны.
 
-**Типичная ошибка:** считать destructuring только сокращением записи.
+**Распространённая ошибка:** считать destructuring только сокращением записи.
 
 **Связь с Automation QA:** API response часто содержит много fields, а тесту нужны только несколько.
 
@@ -18,7 +18,7 @@
 
 **Объяснение:** code reader сразу видит selected properties.
 
-**Типичная ошибка:** применять destructuring везде, даже когда оно ухудшает readability.
+**Распространённая ошибка:** применять destructuring везде, даже когда оно ухудшает readability.
 
 **Связь с Automation QA:** helper becomes clearer when it extracts only assertion-related fields.
 
@@ -28,7 +28,7 @@
 
 **Объяснение:** source object already exists; destructuring reads properties and creates variables.
 
-**Типичная ошибка:** думать, что создается новый object.
+**Распространённая ошибка:** думать, что создается новый object.
 
 **Связь с Automation QA:** destructuring does not clone response or payload.
 
@@ -38,7 +38,7 @@
 
 **Объяснение:** destructuring reads property values. It does not add, update or delete properties.
 
-**Типичная ошибка:** ожидать, что extracted property исчезнет from object.
+**Распространённая ошибка:** ожидать, что extracted property исчезнет from object.
 
 **Связь с Automation QA:** `apiResponse` remains available for later assertions.
 
@@ -48,7 +48,7 @@
 
 **Объяснение:** `const { role } = user` asks for property key `"role"`.
 
-**Типичная ошибка:** думать, что matching идет по позиции.
+**Распространённая ошибка:** думать, что matching идет по позиции.
 
 **Связь с Automation QA:** order of response fields does not matter for object destructuring.
 
@@ -58,7 +58,7 @@
 
 **Объяснение:** this follows normal missing property reading behavior.
 
-**Типичная ошибка:** ожидать syntax error.
+**Распространённая ошибка:** ожидать syntax error.
 
 **Связь с Automation QA:** missing API field can become `undefined` in assertion helper.
 
@@ -68,7 +68,7 @@
 
 **Объяснение:** default value affects variable, not source object.
 
-**Типичная ошибка:** ожидать, что default value добавит property to object.
+**Распространённая ошибка:** ожидать, что default value добавит property to object.
 
 **Связь с Automation QA:** config timeout can have local fallback.
 
@@ -78,7 +78,7 @@
 
 **Объяснение:** `name: userName` means read property `name`, create variable `userName`.
 
-**Типичная ошибка:** думать, что both `name` and `userName` are created.
+**Распространённая ошибка:** думать, что both `name` and `userName` are created.
 
 **Связь с Automation QA:** `expectedName` and `actualName` make assertions clearer.
 
@@ -88,7 +88,7 @@
 
 **Объяснение:** when many nested levels appear in one statement, code hides the path.
 
-**Типичная ошибка:** compress too much extraction into one line.
+**Распространённая ошибка:** compress too much extraction into one line.
 
 **Связь с Automation QA:** API responses can be deeply nested; clear extraction steps are often better.
 
@@ -98,7 +98,7 @@
 
 **Объяснение:** these objects contain multiple properties, but each check often needs selected fields.
 
-**Типичная ошибка:** destructure fields too early before it is clear which values are needed.
+**Распространённая ошибка:** destructure fields too early before it is clear which values are needed.
 
 **Связь с Automation QA:** readable tests show exactly which fields are validated.
 
@@ -112,7 +112,7 @@
 
 **Объяснение:** destructuring asks for properties `"name"` and `"role"`.
 
-**Типичная ошибка:** include `id`, although it was not extracted.
+**Распространённая ошибка:** include `id`, although it was not extracted.
 
 **Связь с Automation QA:** tests often extract only fields used in assertions.
 
@@ -122,7 +122,7 @@
 
 **Объяснение:** `body` exists but is not requested in pattern.
 
-**Типичная ошибка:** assume all object properties are extracted.
+**Распространённая ошибка:** assume all object properties are extracted.
 
 **Связь с Automation QA:** destructuring can ignore fields irrelevant for current check.
 
@@ -132,7 +132,7 @@
 
 **Объяснение:** `baseUrl: apiBaseUrl` renames property value into variable `apiBaseUrl`.
 
-**Типичная ошибка:** expect variable `baseUrl` to exist.
+**Распространённая ошибка:** expect variable `baseUrl` to exist.
 
 **Связь с Automation QA:** renamed config values can avoid collisions.
 
@@ -151,7 +151,7 @@ admin
 
 **Объяснение:** properties `name` and `role` exist.
 
-**Типичная ошибка:** think destructuring modifies user.
+**Распространённая ошибка:** think destructuring modifies user.
 
 **Связь с Automation QA:** simple extraction from expected user.
 
@@ -165,7 +165,7 @@ undefined
 
 **Объяснение:** property `role` is missing.
 
-**Типичная ошибка:** expect empty string or error.
+**Распространённая ошибка:** expect empty string or error.
 
 **Связь с Automation QA:** missing API field often appears as `undefined`.
 
@@ -180,7 +180,7 @@ undefined
 
 **Объяснение:** variable `timeout` gets default value; `config.timeout` remains missing.
 
-**Типичная ошибка:** expect default value to be written into config.
+**Распространённая ошибка:** expect default value to be written into config.
 
 **Связь с Automation QA:** fallback config values should not be confused with modifying config object.
 
@@ -195,7 +195,7 @@ Anna
 
 **Объяснение:** `userName` is created from `user.name`; source object remains unchanged.
 
-**Типичная ошибка:** think renaming removes or changes `user.name`.
+**Распространённая ошибка:** think renaming removes or changes `user.name`.
 
 **Связь с Automation QA:** expected values can be renamed without changing test data.
 
@@ -209,7 +209,7 @@ Anna
 
 **Объяснение:** property missing gives `undefined`, so default is used.
 
-**Типичная ошибка:** expect `config.retries` to become `2`.
+**Распространённая ошибка:** expect `config.retries` to become `2`.
 
 **Связь с Automation QA:** local fallback for optional config.
 
@@ -219,7 +219,7 @@ Anna
 
 **Объяснение:** actual value exists, so default is ignored.
 
-**Типичная ошибка:** think default always overrides.
+**Распространённая ошибка:** think default always overrides.
 
 **Связь с Automation QA:** explicit config should win over fallback.
 
@@ -229,7 +229,7 @@ Anna
 
 **Объяснение:** extracted value is `undefined`, so default applies.
 
-**Типичная ошибка:** think default only applies when key is absent. It applies when extracted value is `undefined`.
+**Распространённая ошибка:** think default only applies when key is absent. It applies when extracted value is `undefined`.
 
 **Связь с Automation QA:** optional response field may be present but undefined.
 
@@ -245,7 +245,7 @@ const { name: userName, role: userRole } = user;
 
 **Объяснение:** `name` and `role` are property keys; `userName` and `userRole` are variables.
 
-**Типичная ошибка:** write `const { userName, userRole } = user`, which looks for different keys.
+**Распространённая ошибка:** write `const { userName, userRole } = user`, which looks for different keys.
 
 **Связь с Automation QA:** readable local names improve assertions.
 
@@ -257,7 +257,7 @@ const { status: responseStatus, body: responseBody } = response;
 
 **Объяснение:** values are extracted from `status` and `body`.
 
-**Типичная ошибка:** expect both `status` and `responseStatus` to exist.
+**Распространённая ошибка:** expect both `status` and `responseStatus` to exist.
 
 **Связь с Automation QA:** names like `responseStatus` clarify value source.
 
@@ -283,7 +283,7 @@ console.log(userName);
 
 **Объяснение:** `name` is property key, `userName` is created variable.
 
-**Типичная ошибка:** misunderstand renaming syntax.
+**Распространённая ошибка:** misunderstand renaming syntax.
 
 **Связь с Automation QA:** this error often appears with `expectedName` / `actualName`.
 
@@ -303,7 +303,7 @@ console.log(timeout);
 
 **Объяснение:** default value belongs to variable `timeout`.
 
-**Типичная ошибка:** expect destructuring to mutate config.
+**Распространённая ошибка:** expect destructuring to mutate config.
 
 **Связь с Automation QA:** local defaults should be used through local variable.
 
@@ -329,7 +329,7 @@ console.log(name);
 
 **Объяснение:** extraction in steps is readable and avoids deep pattern.
 
-**Типичная ошибка:** destructure from wrong object level.
+**Распространённая ошибка:** destructure from wrong object level.
 
 **Связь с Automation QA:** API fields often live inside `body`, not at response root.
 
@@ -345,7 +345,7 @@ const { status, body, durationMs } = apiResponse;
 
 **Объяснение:** these variables are created from root response properties.
 
-**Типичная ошибка:** expect nested user properties to be extracted too.
+**Распространённая ошибка:** expect nested user properties to be extracted too.
 
 **Связь с Automation QA:** common first step in API assertions.
 
@@ -357,7 +357,7 @@ const { name, role } = body;
 
 **Объяснение:** after extracting `body`, user fields can be extracted from it.
 
-**Типичная ошибка:** destructure `name` from `apiResponse` root.
+**Распространённая ошибка:** destructure `name` from `apiResponse` root.
 
 **Связь с Automation QA:** response body usually holds domain data.
 
@@ -369,7 +369,7 @@ const { baseUrl, timeout = 5000 } = config;
 
 **Объяснение:** `baseUrl` exists; `timeout` uses default.
 
-**Типичная ошибка:** think config was updated with timeout.
+**Распространённая ошибка:** think config was updated with timeout.
 
 **Связь с Automation QA:** local fallback for environment configuration.
 
@@ -381,13 +381,13 @@ const { name: expectedName, role: expectedRole } = expectedUser;
 
 **Объяснение:** renaming clarifies that values are expected.
 
-**Типичная ошибка:** use `{ expectedName, expectedRole }`, which looks for keys with those names.
+**Распространённая ошибка:** use `{ expectedName, expectedRole }`, which looks for keys with those names.
 
 **Связь с Automation QA:** expected/actual naming reduces assertion ambiguity.
 
 ---
 
-## 8. Mini-project
+## 8. Мини-проект
 
 Один из возможных вариантов:
 
@@ -429,7 +429,7 @@ console.log(apiResponse.body.name);
 
 **Объяснение:** destructuring creates variables from existing properties. `apiResponse` remains unchanged.
 
-**Типичная ошибка:** expect destructuring to remove `status`, `body` or `durationMs` from `apiResponse`.
+**Распространённая ошибка:** expect destructuring to remove `status`, `body` or `durationMs` from `apiResponse`.
 
 **Связь с Automation QA:** this mirrors API test code that extracts response values for assertions.
 

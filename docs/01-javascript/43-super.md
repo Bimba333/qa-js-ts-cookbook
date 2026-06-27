@@ -50,7 +50,7 @@ LoginPage.open()
 
 Теперь появляется следующий вопрос:
 
-> What if derived method overrides base method but still wants to use base behavior?
+> Что если derived method переопределяет base method, но все еще хочет использовать base behavior?
 
 Например:
 
@@ -147,7 +147,7 @@ docs/01-javascript/44-arrays.md
 
 Следующая глава начнет новый раздел:
 
-> How does JavaScript work with ordered collections of values?
+> Как JavaScript работает с ordered collections значений?
 
 ---
 
@@ -225,7 +225,7 @@ LoginPage.open()
 Override
 │
 ▼
-Use base behavior
+Использовать base behavior
 │
 ▼
 Add specific behavior
@@ -243,7 +243,7 @@ Add specific behavior
 
 Начинайте с вопроса:
 
-> What base behavior is being reused?
+> Какое base behavior используется повторно?
 
 Example:
 
@@ -312,7 +312,7 @@ call BasePage behavior through class relationship
 
 ### Relationship with `this`
 
-Important:
+Важно:
 
 ```text
 loginPage.open()
@@ -371,16 +371,16 @@ const loginPage = new LoginPage();
 loginPage.open('LoginPage');
 ```
 
-Step 1:
+Шаг 1:
 
 ```text
-Need method: open
+Нужен method: open
 │
 ▼
 Start from loginPage
 ```
 
-Step 2:
+Шаг 2:
 
 ```text
 Lookup finds LoginPage.open()
@@ -389,7 +389,7 @@ Lookup finds LoginPage.open()
 derived method is selected
 ```
 
-Step 3:
+Шаг 3:
 
 ```text
 Run LoginPage.open()
@@ -398,7 +398,7 @@ Run LoginPage.open()
 receiver is loginPage
 ```
 
-Step 4:
+Шаг 4:
 
 ```text
 Inside LoginPage.open()
@@ -407,7 +407,7 @@ Inside LoginPage.open()
 super.open('LoginPage')
 ```
 
-Step 5:
+Шаг 5:
 
 ```text
 super.open()
@@ -419,7 +419,7 @@ calls BasePage.open()
 with same receiver
 ```
 
-Step 6:
+Шаг 6:
 
 ```text
 BasePage.open()
@@ -428,7 +428,7 @@ BasePage.open()
 returns common result
 ```
 
-Step 7:
+Шаг 7:
 
 ```text
 LoginPage.open()
@@ -461,7 +461,7 @@ back to LoginPage.open()
 final result
 ```
 
-### What is happening with `this`?
+### Что происходит с `this`?
 
 If base method uses `this`:
 
@@ -507,7 +507,7 @@ Specialized procedure
 └── add special step
 ```
 
-Use standard procedure first:
+Сначала использовать стандартную процедуру:
 
 ```text
 Derived method
@@ -550,7 +550,7 @@ Central idea:
 Override
 │
 ▼
-Use base behavior
+Использовать base behavior
 │
 ▼
 Add specific behavior
@@ -575,13 +575,13 @@ through class relationship
 Примеры находятся в:
 
 ```text
-examples/chapter-46/
+examples/chapter-49/
 ```
 
 Запуск:
 
 ```bash
-node examples/chapter-46/01-basic-super.js
+node examples/chapter-49/01-basic-super.js
 ```
 
 ### Пример 1. Basic super
@@ -589,7 +589,7 @@ node examples/chapter-46/01-basic-super.js
 Файл:
 
 ```text
-examples/chapter-46/01-basic-super.js
+examples/chapter-49/01-basic-super.js
 ```
 
 Показывает `super.open()` inside derived `open()`.
@@ -599,7 +599,7 @@ examples/chapter-46/01-basic-super.js
 Файл:
 
 ```text
-examples/chapter-46/02-extend-method.js
+examples/chapter-49/02-extend-method.js
 ```
 
 Показывает base result plus derived-specific text.
@@ -609,17 +609,17 @@ examples/chapter-46/02-extend-method.js
 Файл:
 
 ```text
-examples/chapter-46/03-this-with-super.js
+examples/chapter-49/03-this-with-super.js
 ```
 
 Показывает that base method called through `super` still works with receiver object.
 
-### Пример 4. Common mistakes
+### Пример 4. Типичные ошибки
 
 Файл:
 
 ```text
-examples/chapter-46/04-common-mistakes.js
+examples/chapter-49/04-common-mistakes.js
 ```
 
 Показывает override without `super`: base behavior is not reused.
@@ -629,7 +629,7 @@ examples/chapter-46/04-common-mistakes.js
 Файл:
 
 ```text
-examples/chapter-46/05-page-object.js
+examples/chapter-49/05-page-object.js
 ```
 
 Показывает `BasePage.open()` and `LoginPage.open()` extending it.
@@ -639,7 +639,7 @@ examples/chapter-46/05-page-object.js
 Файл:
 
 ```text
-examples/chapter-46/06-qa-example.js
+examples/chapter-49/06-qa-example.js
 ```
 
 Показывает base API client request description extended by service client.
@@ -720,7 +720,7 @@ Constructor `super()` will be studied later when constructor inheritance becomes
 
 ### Миф: every override should call `super`
 
-Реальность: sometimes override intentionally replaces behavior. Use `super` when base behavior should be reused.
+Реальность: иногда override намеренно заменяет behavior. Используйте `super`, когда base behavior нужно переиспользовать.
 
 ---
 
@@ -778,7 +778,7 @@ loginPage.open()
     └── this is still loginPage
 ```
 
-### Ошибка 3. Use `super` when replacement is intended
+### Ошибка 3. Использовать `super`, когда нужна замена behavior
 
 Sometimes derived method should fully replace base behavior.
 
@@ -823,7 +823,7 @@ super.method()
 
 ## Практическое использование
 
-Use `super.method()` when:
+Используйте `super.method()`, когда:
 
 ```text
 derived method
@@ -850,7 +850,7 @@ derived behavior
 should fully replace base behavior
 ```
 
-Readability rule:
+Правило читаемости:
 
 ```text
 super.method()
@@ -925,7 +925,7 @@ StatusValidator.formatFailure()
 
 ## Диаграммы главы
 
-### 1. Why super exists
+### 1. Зачем существует super
 
 ```text
 override
@@ -1002,7 +1002,7 @@ add specific
 return result
 ```
 
-### 9. Current JavaScript model
+### 9. Текущая модель JavaScript
 
 ```text
 Classes
@@ -1064,7 +1064,7 @@ UsersClient.describeRequest()
 └── add service name
 ```
 
-### 16. Readability
+### 16. Читаемость
 
 ```text
 common behavior stays common
@@ -1072,7 +1072,7 @@ common behavior stays common
 specific behavior stays specific
 ```
 
-### 17. Common mistakes
+### 17. Типичные ошибки
 
 ```text
 override
@@ -1106,10 +1106,10 @@ base result
 derived result
 ```
 
-### 21. Mental model summary
+### 21. Краткая ментальная модель
 
 ```text
-Use base behavior
+Использовать base behavior
 │
 then add specialization
 ```
@@ -1193,7 +1193,7 @@ method source: base
 receiver: derived instance
 ```
 
-### 30. Bridge to constructor super
+### 30. Переход к constructor super
 
 ```text
 super.method()
@@ -1203,7 +1203,7 @@ now
 super() in constructors later
 ```
 
-### 31. Bridge to advanced inheritance
+### 31. Переход к advanced inheritance
 
 ```text
 basic super
@@ -1248,7 +1248,7 @@ common part -> base
 specific part -> derived
 ```
 
-### 36. Summary diagram
+### 36. Итоговая схема
 
 ```text
 Derived method
@@ -1295,7 +1295,7 @@ Base method
 `super` answers:
 
 ```text
-How can derived method override base method
+Как derived method может переопределить base method
 but still reuse base behavior?
 ```
 
@@ -1344,27 +1344,27 @@ The next chapter starts the Arrays section.
 
 ---
 
-## Quick Check
+## Проверьте себя
 
-1. What problem does `super` solve?
+1. Какую проблему решает `super`?
 
-2. What is the difference between override with and without `super`?
+2. В чем разница между override с `super` и без `super`?
 
 3. Does `super.method()` copy base method code?
 
-4. What base behavior is reused in `LoginPage.open()`?
+4. Какое base behavior переиспользуется в `LoginPage.open()`?
 
-5. What does `this` refer to inside a base method called through `super`?
+5. На что указывает `this` внутри base method, вызванного через `super`?
 
-6. Why use `super` instead of copying base method code?
+6. Почему использовать `super`, а не копировать код base method?
 
 7. When should an override avoid `super`?
 
-8. Why is constructor `super()` not covered here?
+8. Почему constructor `super()` здесь не рассматривается?
 
-9. How is `super` useful in Page Objects?
+9. Чем `super` полезен в Page Objects?
 
-10. What section comes next?
+10. Какой раздел идет дальше?
 
 ---
 
@@ -1373,7 +1373,7 @@ The next chapter starts the Arrays section.
 Практические задания находятся в отдельном файле:
 
 ```text
-practice/chapter-46.md
+practice/chapter-49.md
 ```
 
 ---
@@ -1383,7 +1383,7 @@ practice/chapter-46.md
 Решения находятся в отдельном файле:
 
 ```text
-solutions/chapter-46.md
+solutions/chapter-49.md
 ```
 
-Сначала выполните практику самостоятельно. Затем сравните reasoning, not only final answer.
+Сначала выполните практику самостоятельно. Затем сравните объяснение, а не только финальный ответ.

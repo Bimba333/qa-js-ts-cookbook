@@ -99,7 +99,7 @@ playground/node-context-check.js
 
 Подсказка: используйте `typeof process !== 'undefined'`.
 
-## Debugging-задачи
+## Задачи на отладку
 
 ### Задача 1
 

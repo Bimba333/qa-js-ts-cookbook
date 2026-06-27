@@ -41,7 +41,7 @@ collectValues(...values);
 const copiedValues = [...values];
 ```
 
-## Identify Spread direction
+## Определите Spread direction
 
 Для каждого примера укажите, что раскрывается и куда.
 
@@ -164,7 +164,7 @@ const copiedPayload = {
 const payload = { ...base, ...user, ...override, role: 'admin' };
 ```
 
-## QA-oriented tasks
+## QA-задачи
 
 ### Сценарий 1. Merge test data
 

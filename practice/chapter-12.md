@@ -17,7 +17,7 @@
 11. Почему `let` и `const` требуют отдельной главы про TDZ?
 12. Как Hoisting связан с Lexical Environment?
 
-## Predict output
+## Предскажите вывод
 
 Перед запуском предскажите вывод.
 
@@ -65,7 +65,7 @@ console.log(baseUrl);
 
 Ответьте также: что произойдет, если раскомментировать первую строку?
 
-## Identify Creation Phase
+## Определите Creation Phase
 
 Для кода ниже выпишите, что будет prepared before execution.
 
@@ -89,7 +89,7 @@ function runTest() {
 Identifier | Declaration kind | Creation Phase state
 ```
 
-## Identify declaration vs initialization
+## Определите declaration vs initialization
 
 Для каждой строки подпишите:
 
@@ -113,7 +113,7 @@ environmentName = 'production';
 console.log(environmentName);
 ```
 
-## Debugging
+## Задачи на отладку
 
 ### Задача 1
 
@@ -149,7 +149,7 @@ let and const are not hoisted.
 
 Почему эта формулировка неточная?
 
-## QA-oriented tasks
+## QA-задачи
 
 ### Сценарий 1
 
@@ -187,7 +187,7 @@ var configName = 'local';
 2. Почему лучше объявлять helpers before usage?
 3. Зачем все равно понимать Hoisting?
 
-## Mini-project
+## Мини-проект
 
 Создайте файл:
 

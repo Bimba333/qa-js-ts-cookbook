@@ -719,7 +719,7 @@ Value model
         └── can be invoked
 ```
 
-Bridge to Arrow Functions:
+Переход к Arrow Functions:
 
 ```text
 Function Expression
@@ -780,7 +780,7 @@ Drawer: validateStatus
 open drawer
 │
 ▼
-take stored function object
+take сохраненный function object
 │
 ▼
 run it
@@ -1170,7 +1170,7 @@ Function Expression
 
 ---
 
-## Quick Check
+## Проверьте себя
 
 Ответьте без запуска кода.
 

@@ -8,7 +8,7 @@
 
 **Объяснение:** `call()` и `apply()` выбирают receiver и сразу выполняют function. `bind()` выбирает receiver, но возвращает function.
 
-**Типичная ошибка:** думать, что `bind()` просто вызывает function с нужным `this`.
+**Распространённая ошибка:** думать, что `bind()` просто вызывает function с нужным `this`.
 
 **Связь с Automation QA:** это удобно для reusable validators, которые должны много раз работать с одной configuration.
 
@@ -18,7 +18,7 @@
 
 **Объяснение:** invocation происходит только тогда, когда вызывается returned function.
 
-**Типичная ошибка:** ожидать output сразу после строки с `bind()`.
+**Распространённая ошибка:** ожидать output сразу после строки с `bind()`.
 
 **Связь с Automation QA:** prepared helper можно создать в setup, а вызывать позже в тестах.
 
@@ -28,7 +28,7 @@
 
 **Объяснение:** эта function связана с target function и заранее выбранным receiver.
 
-**Типичная ошибка:** считать, что `bind()` возвращает результат выполнения target function.
+**Распространённая ошибка:** считать, что `bind()` возвращает результат выполнения target function.
 
 **Связь с Automation QA:** переменная после `bind()` обычно хранит helper, а не результат проверки.
 
@@ -38,7 +38,7 @@
 
 **Объяснение:** оба механизма выбирают receiver явно, но момент выполнения разный.
 
-**Типичная ошибка:** использовать `bind()`, когда нужен одноразовый немедленный вызов.
+**Распространённая ошибка:** использовать `bind()`, когда нужен одноразовый немедленный вызов.
 
 **Связь с Automation QA:** для одного вызова `call()` может быть проще, для серии проверок `bind()` часто читабельнее.
 
@@ -48,7 +48,7 @@
 
 **Объяснение:** `apply()` решает задачу передачи ordered argument list, `bind()` - задачу delayed invocation с fixed receiver.
 
-**Типичная ошибка:** сравнивать `bind()` и `apply()` только по синтаксису.
+**Распространённая ошибка:** сравнивать `bind()` и `apply()` только по синтаксису.
 
 **Связь с Automation QA:** `apply()` полезен, когда данные уже лежат в array, `bind()` - когда нужен reusable helper.
 
@@ -58,7 +58,7 @@
 
 **Объяснение:** при вызове bound function `this` берется из binding, а не из обычной формы вызова.
 
-**Типичная ошибка:** думать, что receiver будет каждый раз определяться заново как у обычного method call.
+**Распространённая ошибка:** думать, что receiver будет каждый раз определяться заново как у обычного method call.
 
 **Связь с Automation QA:** fixed receiver может быть environment config, API client или reporting context.
 
@@ -68,7 +68,7 @@
 
 **Объяснение:** original function остается такой же и может быть вызвана с другим receiver через `call()` или `apply()`.
 
-**Типичная ошибка:** ожидать, что после `validate.bind(config)` сама `validate` уже привязана.
+**Распространённая ошибка:** ожидать, что после `validate.bind(config)` сама `validate` уже привязана.
 
 **Связь с Automation QA:** один общий validator можно привязать к разным configs и получить несколько helpers.
 
@@ -78,7 +78,7 @@
 
 **Объяснение:** `bind()` возвращает function object, который можно сохранить и вызвать в другой строке.
 
-**Типичная ошибка:** не различать создание function и ее invocation.
+**Распространённая ошибка:** не различать создание function и ее invocation.
 
 **Связь с Automation QA:** helper можно создать при настройке suite и вызвать в конкретных тестах.
 
@@ -88,7 +88,7 @@
 
 **Объяснение:** вместо повторяющегося `.call(config, ...)` появляется named helper.
 
-**Типичная ошибка:** применять `bind()` для одного вызова без необходимости.
+**Распространённая ошибка:** применять `bind()` для одного вызова без необходимости.
 
 **Связь с Automation QA:** `validateStagingResponse(...)` обычно читается лучше, чем повторяющийся `validateResponse.call(stagingConfig, ...)`.
 
@@ -98,7 +98,7 @@
 
 **Объяснение:** восстановление receiver у detached function - только один сценарий. Другой сценарий - создание prepared helper для многих вызовов.
 
-**Типичная ошибка:** определять `bind()` только через detached functions.
+**Распространённая ошибка:** определять `bind()` только через detached functions.
 
 **Связь с Automation QA:** чаще важна не detached function сама по себе, а reusable function с конкретной configuration.
 
@@ -112,7 +112,7 @@
 
 **Объяснение:** `printName.bind(user)` возвращает bound function с fixed receiver `user`.
 
-**Типичная ошибка:** искать receiver в форме `printUserName()`. Для bound function receiver уже выбран.
+**Распространённая ошибка:** искать receiver в форме `printUserName()`. Для bound function receiver уже выбран.
 
 **Связь с Automation QA:** так можно привязать helper к конкретному config object.
 
@@ -126,7 +126,7 @@ https://staging.example.test/users
 
 **Объяснение:** `buildUrl.bind(stagingClient)` создает function, которая использует `stagingClient` как `this`.
 
-**Типичная ошибка:** ожидать, что `productionClient` как-то влияет на вызов. Он нигде не используется.
+**Распространённая ошибка:** ожидать, что `productionClient` как-то влияет на вызов. Он нигде не используется.
 
 **Связь с Automation QA:** полезно для API client helpers с заранее выбранным `baseUrl`.
 
@@ -140,7 +140,7 @@ smoke: passed
 
 **Объяснение:** `formatSmokeMessage` уже bound function. В этой базовой модели receiver выбран через `bind(reportConfig)`.
 
-**Типичная ошибка:** думать, что `.call(anotherConfig, ...)` обязательно заменит receiver у bound function.
+**Распространённая ошибка:** думать, что `.call(anotherConfig, ...)` обязательно заменит receiver у bound function.
 
 **Связь с Automation QA:** если helper уже привязан к suite config, его поведение предсказуемо при обычном использовании.
 
@@ -154,7 +154,7 @@ smoke: passed
 
 **Объяснение:** правая часть `validateStatus.bind(config)` возвращает новую function, и она присваивается `validateOk`.
 
-**Типичная ошибка:** считать `validateOk` boolean-результатом проверки.
+**Распространённая ошибка:** считать `validateOk` boolean-результатом проверки.
 
 **Связь с Automation QA:** `validateOk` - reusable validator.
 
@@ -164,7 +164,7 @@ smoke: passed
 
 **Объяснение:** `result` - function. `line` - результат вызова этой function с argument `'login'`.
 
-**Типичная ошибка:** плохое имя `result` может ввести в заблуждение. Лучше назвать `createSmokeLine`.
+**Распространённая ошибка:** плохое имя `result` может ввести в заблуждение. Лучше назвать `createSmokeLine`.
 
 **Связь с Automation QA:** имена bound helpers должны показывать, что это function.
 
@@ -174,7 +174,7 @@ smoke: passed
 
 **Объяснение:** `printEnvironment.bind(local)` создает function, но результат выражения никуда не присваивается.
 
-**Типичная ошибка:** ожидать, что original `printEnvironment` изменится.
+**Распространённая ошибка:** ожидать, что original `printEnvironment` изменится.
 
 **Связь с Automation QA:** потерянный bound helper означает, что настройка не будет использована.
 
@@ -192,7 +192,7 @@ staging
 
 **Объяснение:** `getStagingEnvironment` - bound function с receiver `config`.
 
-**Типичная ошибка:** думать, что `this` будет `undefined`, потому что вызов выглядит как standalone. Для bound function receiver уже выбран.
+**Распространённая ошибка:** думать, что `this` будет `undefined`, потому что вызов выглядит как standalone. Для bound function receiver уже выбран.
 
 **Связь с Automation QA:** helper может безопасно использовать environment config.
 
@@ -207,7 +207,7 @@ function
 
 **Объяснение:** первый вызов выполняет bound function. Второй показывает, что `formatQaStatus` является function.
 
-**Типичная ошибка:** считать, что переменная после `bind()` содержит строку.
+**Распространённая ошибка:** считать, что переменная после `bind()` содержит строку.
 
 **Связь с Automation QA:** prepared validators остаются functions, которые можно вызывать много раз.
 
@@ -223,7 +223,7 @@ after
 
 **Объяснение:** `bind()` создает `prepared`, но вывод `baseUrl` происходит только при `prepared()`.
 
-**Типичная ошибка:** ожидать вывод до `before`.
+**Распространённая ошибка:** ожидать вывод до `before`.
 
 **Связь с Automation QA:** создание helper в setup не равно выполнению проверки.
 
@@ -238,7 +238,7 @@ false
 
 **Объяснение:** оба вызова `bind()` создают разные function objects, даже если target function и receiver одинаковые.
 
-**Типичная ошибка:** ожидать `true`, потому что receiver один и тот же.
+**Распространённая ошибка:** ожидать `true`, потому что receiver один и тот же.
 
 **Связь с Automation QA:** если нужно сравнивать или удалять handlers/helpers по identity, важно хранить конкретную function.
 
@@ -273,7 +273,7 @@ preparedPrint();
 
 **Объяснение:** `bind()` отвечает за preparation, invocation делает `preparedPrint()`.
 
-**Типичная ошибка:** перепутать returned function и результат выполнения.
+**Распространённая ошибка:** перепутать returned function и результат выполнения.
 
 **Связь с Automation QA:** подготовка assertion helper не должна запускать assertion раньше времени.
 
@@ -305,7 +305,7 @@ console.log(validateExpectedStatus(200));
 
 **Объяснение:** original `validateStatus` не изменился после `bind()`.
 
-**Типичная ошибка:** вызывать original function и ожидать fixed receiver.
+**Распространённая ошибка:** вызывать original function и ожидать fixed receiver.
 
 **Связь с Automation QA:** так часто ломаются helpers, которые "привязали", но продолжили вызывать старую function.
 
@@ -333,7 +333,7 @@ console.log(reportLine('login'));
 
 **Объяснение:** `reportLine` - function. Чтобы получить string, ее нужно вызвать.
 
-**Типичная ошибка:** забыть parentheses.
+**Распространённая ошибка:** забыть parentheses.
 
 **Связь с Automation QA:** reusable report helper должен быть вызван с test name.
 
@@ -361,7 +361,7 @@ console.log(buildApiUrl('/users'));
 
 **Объяснение:** `bind(apiClient)` фиксирует receiver, но не передает `path`, если он не указан отдельно.
 
-**Типичная ошибка:** думать, что `bind()` решает все arguments автоматически.
+**Распространённая ошибка:** думать, что `bind()` решает все arguments автоматически.
 
 **Связь с Automation QA:** bound API helper все равно должен получить endpoint path.
 
@@ -391,7 +391,7 @@ console.log(validateStagingStatus('/profile', 200, 200));
 
 **Объяснение:** receiver `staging` выбран один раз, затем helper вызывается как обычная function.
 
-**Типичная ошибка:** оставить `.call(staging, ...)` после создания bound helper.
+**Распространённая ошибка:** оставить `.call(staging, ...)` после создания bound helper.
 
 **Связь с Automation QA:** это делает набор API checks компактнее.
 
@@ -416,7 +416,7 @@ console.log(buildApiUrl('/orders'));
 
 **Объяснение:** `buildApiUrl` уже знает receiver.
 
-**Типичная ошибка:** ожидать, что `bind()` построит URL без вызова.
+**Распространённая ошибка:** ожидать, что `bind()` построит URL без вызова.
 
 **Связь с Automation QA:** API helper становится привязанным к конкретному client config.
 
@@ -445,7 +445,7 @@ console.log(assertSmokeStatus('checkout', 500, 200));
 
 **Объяснение:** `assertSmokeStatus` - reusable helper with fixed receiver.
 
-**Типичная ошибка:** передавать `smokeSuite` как обычный first argument вместо binding receiver.
+**Распространённая ошибка:** передавать `smokeSuite` как обычный first argument вместо binding receiver.
 
 **Связь с Automation QA:** suite metadata не нужно повторять в каждом assertion.
 
@@ -471,7 +471,7 @@ console.log(requestBillingPath('/refunds'));
 
 **Объяснение:** receiver `billingClient` выбран один раз.
 
-**Типичная ошибка:** забыть передать path при вызове prepared helper.
+**Распространённая ошибка:** забыть передать path при вызове prepared helper.
 
 **Связь с Automation QA:** так можно подготовить helpers для разных API domains.
 
@@ -481,13 +481,13 @@ console.log(requestBillingPath('/refunds'));
 
 **Объяснение:** имя `validateStagingResponse` фиксирует намерение. Код ниже фокусируется на path и status, а не на постоянном receiver.
 
-**Типичная ошибка:** всегда заменять `call()` на `bind()`. Если вызов один, `call()` может быть яснее.
+**Распространённая ошибка:** всегда заменять `call()` на `bind()`. Если вызов один, `call()` может быть яснее.
 
 **Связь с Automation QA:** в больших spec files снижение повторения делает проверки понятнее.
 
 ---
 
-## 9. Mini-project
+## 9. Мини-проект
 
 Один из возможных вариантов:
 
@@ -524,7 +524,7 @@ console.log(formatLocalBillingCheck('/payments', 200, 200));
 
 **Объяснение:** `typeof formatStagingBillingCheck` показывает, что `bind()` вернул function. Реальные строки появляются только после invocation.
 
-**Типичная ошибка:** назвать переменную `stagingResult`, хотя она хранит function.
+**Распространённая ошибка:** назвать переменную `stagingResult`, хотя она хранит function.
 
 **Связь с Automation QA:** такой подход отделяет configuration от конкретных checks.
 

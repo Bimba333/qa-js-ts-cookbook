@@ -19,7 +19,7 @@
 13. Why do infinite loops happen?
 14. How do you choose appropriate loop?
 
-## Identify loop lifecycle
+## Определите loop lifecycle
 
 Для каждого примера укажите:
 
@@ -58,7 +58,7 @@ do {
 } while (shouldRetry);
 ```
 
-## Predict the output before running
+## Предскажите вывод перед запуском
 
 ### Задача 1
 
@@ -106,7 +106,7 @@ do {
 } while (attempt < 3);
 ```
 
-## Code reading
+## Чтение кода
 
 Прочитайте код и ответьте:
 
@@ -134,7 +134,7 @@ for (let index = 0; index < responses.length; index += 1) {
 }
 ```
 
-## Debugging tasks
+## Задачи на отладку
 
 ### Задача 1
 
@@ -176,7 +176,7 @@ for (let index = 0; index < 5; index += 1) {
 }
 ```
 
-## QA-oriented tasks
+## QA-задачи
 
 ### Сценарий 1. Validate many responses
 
@@ -216,7 +216,7 @@ const users = [
 
 Опишите loop lifecycle for polling status until it becomes `ready` or max attempts reached.
 
-## Mini-project
+## Мини-проект
 
 Создайте файл:
 

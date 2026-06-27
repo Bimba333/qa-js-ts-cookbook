@@ -142,11 +142,11 @@ Engine не может выполнять код в пустоте.
 
 ```text
 Source Code
-↓
+▼
 Parsing / AST
-↓
+▼
 Preparation
-↓
+▼
 Execution
 ```
 
@@ -154,9 +154,9 @@ Execution
 
 ```text
 Source Code
-↓
+▼
 Execution Context Creation
-↓
+▼
 Execution Phase
 ```
 
@@ -996,7 +996,7 @@ JavaScript Engine
 
 Это схема, которую стоит держать в голове при чтении следующих глав. Scope, Call Stack, Hoisting и Event Loop будут добавлять новые слои к этому фильму, но не отменят его.
 
-### Bridge to Call Stack
+### Переход к Call Stack
 
 После этой главы возникает следующий вопрос:
 
@@ -1468,7 +1468,7 @@ Global Execution Context создается для верхнего уровня
 
 ---
 
-## Quick Check
+## Проверьте себя
 
 1. Почему JavaScript не может выполнять код без Execution Context?
 

@@ -58,7 +58,7 @@ examples/chapter-06/02-function-context.js
 5. Engine присваивает значение переменной.
 6. Engine создает Function Execution Context при вызове.
 
-## Debugging
+## Задачи на отладку
 
 ### Задача 1
 

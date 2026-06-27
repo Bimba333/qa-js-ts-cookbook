@@ -17,7 +17,7 @@
 11. Why does JavaScript not randomly choose branches?
 12. How do conditionals connect to operators?
 
-## Identify execution path
+## Определите execution path
 
 Для каждого примера укажите:
 
@@ -65,7 +65,7 @@ switch (environment) {
 }
 ```
 
-## Predict the output before running
+## Предскажите вывод перед запуском
 
 ### Задача 1
 
@@ -129,7 +129,7 @@ switch (environment) {
 }
 ```
 
-## Code reading
+## Чтение кода
 
 Прочитайте код и ответьте:
 
@@ -150,7 +150,7 @@ if (statusCode === 200 && responseTimeMs < 500 && hasUserId) {
 }
 ```
 
-## Debugging tasks
+## Задачи на отладку
 
 ### Задача 1
 
@@ -192,7 +192,7 @@ if (statusCode === 200 && responseTimeMs < 500 && hasUserId && !isDeleted) {
 }
 ```
 
-## QA-oriented tasks
+## QA-задачи
 
 ### Сценарий 1. Status code validation
 
@@ -220,7 +220,7 @@ Use `switch` for:
 
 If `responseType` is `user`, print `Assert user fields`; otherwise print `Assert generic response`.
 
-## Mini-project
+## Мини-проект
 
 Создайте файл:
 

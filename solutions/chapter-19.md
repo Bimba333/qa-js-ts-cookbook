@@ -8,15 +8,15 @@
 
 Equality is needed to decide whether two values match according to a chosen comparison rule.
 
-Рассуждение:
+Объяснение:
 
 Programs compare API values, user roles, status codes, parsed configuration and object identity.
 
-Типичная ошибка:
+Распространённая ошибка:
 
 Think equality has one universal meaning.
 
-Automation QA connection:
+Связь с Automation QA:
 
 Assertions are comparisons.
 
@@ -26,15 +26,15 @@ Assertions are comparisons.
 
 Because JavaScript supports comparison with conversion, comparison without conversion and special exact comparison through `Object.is()`.
 
-Рассуждение:
+Объяснение:
 
 Different operators answer different questions.
 
-Типичная ошибка:
+Распространённая ошибка:
 
 Think `==` and `===` differ only by style.
 
-Automation QA connection:
+Связь с Automation QA:
 
 Choosing wrong operator can hide bugs.
 
@@ -44,15 +44,15 @@ Choosing wrong operator can hide bugs.
 
 `==` asks: can these values become comparable?
 
-Рассуждение:
+Объяснение:
 
 It may perform conversion before comparison.
 
-Типичная ошибка:
+Распространённая ошибка:
 
 Use `==` accidentally.
 
-Automation QA connection:
+Связь с Automation QA:
 
 `200 == '200'` can hide an API contract mismatch.
 
@@ -62,15 +62,15 @@ Automation QA connection:
 
 `===` asks: are these already the same type and value?
 
-Рассуждение:
+Объяснение:
 
 It never performs type conversion.
 
-Типичная ошибка:
+Распространённая ошибка:
 
 Expect `5 === '5'` to be true because values look similar.
 
-Automation QA connection:
+Связь с Automation QA:
 
 Strict equality reveals type mismatches.
 
@@ -80,15 +80,15 @@ Strict equality reveals type mismatches.
 
 `Object.is()` asks whether values are the same according to its exact comparison rules.
 
-Рассуждение:
+Объяснение:
 
 It differs from `===` for `NaN` and `+0` / `-0`.
 
-Типичная ошибка:
+Распространённая ошибка:
 
 Use it everywhere instead of knowing why it is needed.
 
-Automation QA connection:
+Связь с Automation QA:
 
 Useful for explicit edge-case checks.
 
@@ -98,15 +98,15 @@ Useful for explicit edge-case checks.
 
 Because it may convert values before comparison.
 
-Рассуждение:
+Объяснение:
 
 String `'200'` can become Number `200`, making comparison pass.
 
-Типичная ошибка:
+Распространённая ошибка:
 
 Let loose equality validate API contract.
 
-Automation QA connection:
+Связь с Automation QA:
 
 Tests should catch wrong response types.
 
@@ -116,15 +116,15 @@ Tests should catch wrong response types.
 
 It compares without type conversion.
 
-Рассуждение:
+Объяснение:
 
 If types differ, result is false.
 
-Типичная ошибка:
+Распространённая ошибка:
 
 Parse after comparison instead of before.
 
-Automation QA connection:
+Связь с Automation QA:
 
 Use explicit parsing before strict comparison when conversion is intended.
 
@@ -134,15 +134,15 @@ Use explicit parsing before strict comparison when conversion is intended.
 
 Object identity means whether two variables refer to the same object.
 
-Рассуждение:
+Объяснение:
 
 Objects are compared by identity, not shape.
 
-Типичная ошибка:
+Распространённая ошибка:
 
 Expect two same-looking objects to be equal with `===`.
 
-Automation QA connection:
+Связь с Automation QA:
 
 Use framework structure matchers for response object shape.
 
@@ -152,15 +152,15 @@ Use framework structure matchers for response object shape.
 
 They are not equal by identity if they are different object values.
 
-Рассуждение:
+Объяснение:
 
 Two object literals create two objects.
 
-Типичная ошибка:
+Распространённая ошибка:
 
 Confuse visual similarity with identity.
 
-Automation QA connection:
+Связь с Automation QA:
 
 API response object and expected object are usually different objects.
 
@@ -170,15 +170,15 @@ API response object and expected object are usually different objects.
 
 `NaN === NaN` is false, while `Object.is(NaN, NaN)` is true.
 
-Рассуждение:
+Объяснение:
 
 `NaN` is a special numeric value.
 
-Типичная ошибка:
+Распространённая ошибка:
 
 Check NaN with strict equality.
 
-Automation QA connection:
+Связь с Automation QA:
 
 Parsed invalid numeric fields may become `NaN`.
 
@@ -188,15 +188,15 @@ Parsed invalid numeric fields may become `NaN`.
 
 `+0 === -0` is true, but `Object.is(+0, -0)` is false.
 
-Рассуждение:
+Объяснение:
 
 This is a special edge case for exact semantics.
 
-Типичная ошибка:
+Распространённая ошибка:
 
 Assume `Object.is()` always matches `===`.
 
-Automation QA connection:
+Связь с Automation QA:
 
 Rare in tests, but important for understanding semantics.
 
@@ -206,19 +206,19 @@ Rare in tests, but important for understanding semantics.
 
 Prefer `===` by default. Use `==` only intentionally. Use `Object.is()` for specific edge cases.
 
-Рассуждение:
+Объяснение:
 
 This strategy minimizes hidden conversion.
 
-Типичная ошибка:
+Распространённая ошибка:
 
 Use one operator everywhere without understanding.
 
-Automation QA connection:
+Связь с Automation QA:
 
 Strict comparisons make tests more reliable.
 
-## Predict the output before running
+## Предскажите вывод перед запуском
 
 ### Задача 1
 
@@ -230,15 +230,15 @@ false
 true
 ```
 
-Рассуждение:
+Объяснение:
 
 `==` converts, `===` does not. Explicit `Number('5')` gives Number `5`.
 
-Типичная ошибка:
+Распространённая ошибка:
 
 Forget that `===` checks type too.
 
-Automation QA connection:
+Связь с Automation QA:
 
 Parse before strict assertion.
 
@@ -253,15 +253,15 @@ true
 false
 ```
 
-Рассуждение:
+Объяснение:
 
 Loose equality can convert values. Strict equality does not.
 
-Типичная ошибка:
+Распространённая ошибка:
 
 Use `==` and accidentally accept wrong type.
 
-Automation QA connection:
+Связь с Automation QA:
 
 Falsy-like values can create misleading test passes.
 
@@ -274,15 +274,15 @@ false
 true
 ```
 
-Рассуждение:
+Объяснение:
 
 `firstUser` and `secondUser` are different objects. `sameUser` refers to same object as `firstUser`.
 
-Типичная ошибка:
+Распространённая ошибка:
 
 Compare object shape with `===`.
 
-Automation QA connection:
+Связь с Automation QA:
 
 Object response structure needs proper matcher later.
 
@@ -297,19 +297,19 @@ true
 false
 ```
 
-Рассуждение:
+Объяснение:
 
 `NaN` and `+0/-0` are special cases where `Object.is()` differs from `===`.
 
-Типичная ошибка:
+Распространённая ошибка:
 
 Assume `Object.is()` is always identical to `===`.
 
-Automation QA connection:
+Связь с Automation QA:
 
 Use explicit edge-case checks when needed.
 
-## Identify comparison strategy
+## Определите comparison strategy
 
 ### Сценарий 1
 
@@ -317,15 +317,15 @@ Use explicit edge-case checks when needed.
 
 If contract expects Number, use `===` and fail on string, or explicitly parse only if contract allows string input. For strict contract validation, `===`.
 
-Рассуждение:
+Объяснение:
 
 `==` would hide type mismatch.
 
-Типичная ошибка:
+Распространённая ошибка:
 
 Use loose equality to make test pass.
 
-Automation QA connection:
+Связь с Automation QA:
 
 Contract tests should reveal wrong types.
 
@@ -335,15 +335,15 @@ Contract tests should reveal wrong types.
 
 Use `===` for object identity.
 
-Рассуждение:
+Объяснение:
 
 For objects, `===` checks whether both variables refer to same object.
 
-Типичная ошибка:
+Распространённая ошибка:
 
 Assume it checks shape.
 
-Automation QA connection:
+Связь с Automation QA:
 
 Useful for debugging shared references.
 
@@ -353,15 +353,15 @@ Useful for debugging shared references.
 
 Use `Object.is(value, NaN)` or `Number.isNaN(value)`.
 
-Рассуждение:
+Объяснение:
 
 `value === NaN` is false.
 
-Типичная ошибка:
+Распространённая ошибка:
 
 Check NaN with strict equality.
 
-Automation QA connection:
+Связь с Automation QA:
 
 Invalid parsed API fields can become `NaN`.
 
@@ -371,15 +371,15 @@ Invalid parsed API fields can become `NaN`.
 
 Use object structure comparison later in testing framework.
 
-Рассуждение:
+Объяснение:
 
 `===` checks identity, not deep shape.
 
-Типичная ошибка:
+Распространённая ошибка:
 
 Expect plain `===` to compare object contents.
 
-Automation QA connection:
+Связь с Automation QA:
 
 Framework matchers handle this in real tests.
 
@@ -389,19 +389,19 @@ Framework matchers handle this in real tests.
 
 Use `==` only if conversion is intentionally desired and documented.
 
-Рассуждение:
+Объяснение:
 
 Loose equality asks whether values can become comparable.
 
-Типичная ошибка:
+Распространённая ошибка:
 
 Use `==` because it is shorter.
 
-Automation QA connection:
+Связь с Automation QA:
 
 Intentional loose comparison should be rare in tests.
 
-## Code reading
+## Чтение кода
 
 Ответ:
 
@@ -409,19 +409,19 @@ Intentional loose comparison should be rare in tests.
 2. `expectedStatus === actualStatusFromApi` reveals mismatch.
 3. `expectedStatus === Number(actualStatusFromApi)` is best after intentional parsing.
 
-Рассуждение:
+Объяснение:
 
 The API value is String. The expected value is Number.
 
-Типичная ошибка:
+Распространённая ошибка:
 
 Compare before deciding whether parsing is part of the test.
 
-Automation QA connection:
+Связь с Automation QA:
 
 This is common in API response validation.
 
-## Debugging tasks
+## Задачи на отладку
 
 ### Задача 1
 
@@ -444,15 +444,15 @@ If API intentionally returns string, parse explicitly:
 console.log(expectedStatus === Number(actualStatus));
 ```
 
-Рассуждение:
+Объяснение:
 
 The correct fix depends on API contract.
 
-Типичная ошибка:
+Распространённая ошибка:
 
 Use loose equality to avoid dealing with types.
 
-Automation QA connection:
+Связь с Automation QA:
 
 Strict assertions catch contract drift.
 
@@ -462,15 +462,15 @@ Strict assertions catch contract drift.
 
 `expectedUser` and `actualUser` are different objects.
 
-Рассуждение:
+Объяснение:
 
 `===` compares object identity, not shape.
 
-Типичная ошибка:
+Распространённая ошибка:
 
 Expect deep comparison from strict equality.
 
-Automation QA connection:
+Связь с Automation QA:
 
 Testing framework matchers are needed for object structure.
 
@@ -480,19 +480,19 @@ Testing framework matchers are needed for object structure.
 
 `price === NaN` is false because `NaN` is special. `Object.is(price, NaN)` is true because `Object.is()` treats `NaN` values as same.
 
-Рассуждение:
+Объяснение:
 
 `Number('not available')` produces `NaN`.
 
-Типичная ошибка:
+Распространённая ошибка:
 
 Check invalid number with strict equality.
 
-Automation QA connection:
+Связь с Automation QA:
 
 Useful when validating parsed numeric API fields.
 
-## QA-oriented tasks
+## QA-задачи
 
 ### Сценарий 1
 
@@ -509,15 +509,15 @@ console.log(actualStatusCode === expectedStatusCode);
 
 This should fail.
 
-Рассуждение:
+Объяснение:
 
 API returned wrong type according to contract.
 
-Типичная ошибка:
+Распространённая ошибка:
 
 Use `==` and hide the bug.
 
-Automation QA connection:
+Связь с Automation QA:
 
 Contract tests should enforce value and type.
 
@@ -533,15 +533,15 @@ const parsedStatusCode = Number(actualStatusCodeFromApi);
 console.log(parsedStatusCode === expectedStatusCode);
 ```
 
-Рассуждение:
+Объяснение:
 
 Conversion is intentional and visible.
 
-Типичная ошибка:
+Распространённая ошибка:
 
 Let `==` perform hidden conversion.
 
-Automation QA connection:
+Связь с Automation QA:
 
 Parsed values should be compared strictly.
 
@@ -551,15 +551,15 @@ Parsed values should be compared strictly.
 
 `expected === actual` checks whether both variables refer to same object. It does not compare fields.
 
-Рассуждение:
+Объяснение:
 
 The objects are separate object values.
 
-Типичная ошибка:
+Распространённая ошибка:
 
 Use strict equality as deep equality.
 
-Automation QA connection:
+Связь с Automation QA:
 
 Real object assertions need framework matchers later.
 
@@ -579,19 +579,19 @@ Checklist:
 7. For NaN, use Object.is() or Number.isNaN().
 ```
 
-Рассуждение:
+Объяснение:
 
 Unsafe loose equality hides type mismatches.
 
-Типичная ошибка:
+Распространённая ошибка:
 
 Replace all comparisons mechanically without understanding.
 
-Automation QA connection:
+Связь с Automation QA:
 
 This checklist helps harden test suites.
 
-## Mini-project
+## Мини-проект
 
 Возможное решение:
 
@@ -636,14 +636,14 @@ Object.is(parsed price, NaN)   | true   | Object.is NaN semantics             | 
 expected === actual            | false  | object identity                     | not structure comparison
 ```
 
-Рассуждение:
+Объяснение:
 
 The project demonstrates all central comparison modes.
 
-Типичная ошибка:
+Распространённая ошибка:
 
 Use one equality operator for every situation.
 
-Automation QA connection:
+Связь с Automation QA:
 
 This mirrors API validation and parsed response checks.

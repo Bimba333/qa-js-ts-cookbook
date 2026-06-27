@@ -349,7 +349,7 @@ stored value
 
 Identifier не является самим value. Это имя, через которое программа получает доступ к value.
 
-Типичная ошибка:
+Распространённая ошибка:
 
 ```text
 status и "ready" воспринимаются как одно и то же
@@ -994,7 +994,7 @@ temporary result is no longer needed
 
 Это помогает не думать, что каждое промежуточное значение обязательно становится долгоживущей записью программы.
 
-### Bridge to Variables
+### Переход к Variables
 
 Эта глава объяснила, что программе нужна memory.
 
@@ -1579,7 +1579,7 @@ Memory stores everything the engine needs while the program runs.
 
 ---
 
-## Quick Check
+## Проверьте себя
 
 1. Почему программа не может работать без memory?
 

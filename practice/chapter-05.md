@@ -99,7 +99,7 @@ console.log('QA');
 6. execution;
 7. runtime interaction.
 
-## Debugging-задачи
+## Задачи на отладку
 
 ### Задача 1
 

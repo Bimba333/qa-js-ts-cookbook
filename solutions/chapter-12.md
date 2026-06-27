@@ -8,15 +8,15 @@
 
 Hoisting существует как observable result того, что engine prepares declarations during Creation Phase.
 
-Рассуждение:
+Объяснение:
 
 Execution начинается не сразу. Сначала engine prepares Lexical Environment and Environment Records.
 
-Типичная ошибка:
+Распространённая ошибка:
 
 Думать, что Hoisting — отдельный механизм переноса строк.
 
-Automation QA connection:
+Связь с Automation QA:
 
 Это помогает читать old helpers and framework code without myths.
 
@@ -26,15 +26,15 @@ Automation QA connection:
 
 Source code сохраняет original order. Engine only prepares declaration records before execution.
 
-Рассуждение:
+Объяснение:
 
 Execution Phase runs lines in source order.
 
-Типичная ошибка:
+Распространённая ошибка:
 
 Рисовать переписанный source file as if engine changed it.
 
-Automation QA connection:
+Связь с Automation QA:
 
 При debugging старого JS важно анализировать preparation, not imaginary rewritten code.
 
@@ -44,15 +44,15 @@ Automation QA connection:
 
 During Creation Phase engine creates Execution Context, prepares Lexical Environment and registers declarations.
 
-Рассуждение:
+Объяснение:
 
 This happens before code lines start executing.
 
-Типичная ошибка:
+Распространённая ошибка:
 
 Считать, что all identifiers appear only when execution reaches their lines.
 
-Automation QA connection:
+Связь с Automation QA:
 
 Explains why function declarations in old test framework can be used early.
 
@@ -62,15 +62,15 @@ Explains why function declarations in old test framework can be used early.
 
 During Execution Phase engine runs source code in original order.
 
-Рассуждение:
+Объяснение:
 
 Reads, assignments and calls happen as execution reaches corresponding lines.
 
-Типичная ошибка:
+Распространённая ошибка:
 
 Смешивать preparation with actual assignment.
 
-Automation QA connection:
+Связь с Automation QA:
 
 Helps debug why config variable is `undefined` before assignment line.
 
@@ -80,15 +80,15 @@ Helps debug why config variable is `undefined` before assignment line.
 
 Function declaration registered as callable binding during Creation Phase.
 
-Рассуждение:
+Объяснение:
 
 That is why it can be called before its source line.
 
-Типичная ошибка:
+Распространённая ошибка:
 
 Thinking function body moved upward.
 
-Automation QA connection:
+Связь с Automation QA:
 
 Legacy framework helpers often use declarations before their physical location.
 
@@ -98,15 +98,15 @@ Legacy framework helpers often use declarations before their physical location.
 
 `var` identifier registered with `undefined` during Creation Phase.
 
-Рассуждение:
+Объяснение:
 
 Assignment happens later during Execution Phase.
 
-Типичная ошибка:
+Распространённая ошибка:
 
 Expecting assigned value before assignment line.
 
-Automation QA connection:
+Связь с Automation QA:
 
 Old Node.js helpers may print `undefined` for config variables.
 
@@ -114,19 +114,19 @@ Old Node.js helpers may print `undefined` for config variables.
 
 Ответ:
 
-`let` identifier registered during Creation Phase but not initialized like `var`.
+Identifier, объявленный через `let`, регистрируется во время Creation Phase, но не инициализируется так, как `var`.
 
-Рассуждение:
+Объяснение:
 
-Access before initialization is restricted; TDZ explains it next.
+Доступ до initialization ограничен; TDZ объясняет это в следующей главе.
 
-Типичная ошибка:
+Распространённая ошибка:
 
-Saying `let is not hoisted`.
+Говорить `let is not hoisted` и пропускать важную часть модели.
 
-Automation QA connection:
+Связь с Automation QA:
 
-Modern test code relies on `let`/`const`; understanding the timing prevents wrong explanations.
+Современный test code активно использует `let` и `const`; понимание timing предотвращает неверные объяснения ошибок.
 
 ### 8. const registration
 
@@ -134,15 +134,15 @@ Modern test code relies on `let`/`const`; understanding the timing prevents wron
 
 `const` identifier registered during Creation Phase and initialized when execution reaches declaration line.
 
-Рассуждение:
+Объяснение:
 
 `const` also must receive value at declaration.
 
-Типичная ошибка:
+Распространённая ошибка:
 
 Expecting `const` to behave like `var`.
 
-Automation QA connection:
+Связь с Automation QA:
 
 Stable test data with `const` is safe after declaration, not before.
 
@@ -152,15 +152,15 @@ Stable test data with `const` is safe after declaration, not before.
 
 Declaration registers identifier. Initialization gives first meaningful value.
 
-Рассуждение:
+Объяснение:
 
 Hoisting mostly concerns declaration preparation, not moving initialization upward.
 
-Типичная ошибка:
+Распространённая ошибка:
 
 Treating `var a = 5` as one preparation step with value `5`.
 
-Automation QA connection:
+Связь с Automation QA:
 
 Debugging setup values requires knowing whether assignment already ran.
 
@@ -170,15 +170,15 @@ Debugging setup values requires knowing whether assignment already ran.
 
 Creation Phase prepares `a` with `undefined`; assignment `a = 5` happens only during Execution Phase.
 
-Рассуждение:
+Объяснение:
 
 The value `5` is not assigned until execution reaches the source line.
 
-Типичная ошибка:
+Распространённая ошибка:
 
 Thinking complete statement is hoisted.
 
-Automation QA connection:
+Связь с Automation QA:
 
 Old helper variables can exist but still have no configured value yet.
 
@@ -188,15 +188,15 @@ Old helper variables can exist but still have no configured value yet.
 
 TDZ explains why `let` and `const` are registered but cannot be accessed before initialization.
 
-Рассуждение:
+Объяснение:
 
 Hoisting gives the preparation model; TDZ explains access restrictions.
 
-Типичная ошибка:
+Распространённая ошибка:
 
 Trying to solve all `let`/`const` behavior in Hoisting chapter.
 
-Automation QA connection:
+Связь с Automation QA:
 
 Helps read modern Playwright code errors accurately.
 
@@ -206,19 +206,19 @@ Helps read modern Playwright code errors accurately.
 
 Hoisting is related to how declarations affect Environment Records during Creation Phase.
 
-Рассуждение:
+Объяснение:
 
 Lexical Environment provides the place where identifier records are prepared.
 
-Типичная ошибка:
+Распространённая ошибка:
 
 Explaining Hoisting without Environment Records.
 
-Automation QA connection:
+Связь с Automation QA:
 
 Good mental model prevents false debugging stories in JS/TS test projects.
 
-## Predict output
+## Предскажите вывод
 
 ### Задача 1
 
@@ -228,15 +228,15 @@ Good mental model prevents false debugging stories in JS/TS test projects.
 ready
 ```
 
-Рассуждение:
+Объяснение:
 
 Function declaration registered as callable before Execution Phase.
 
-Типичная ошибка:
+Распространённая ошибка:
 
 Expect ReferenceError because function appears later.
 
-Automation QA connection:
+Связь с Automation QA:
 
 Legacy setup helpers may work this way.
 
@@ -249,15 +249,15 @@ undefined
 Anna
 ```
 
-Рассуждение:
+Объяснение:
 
 Creation Phase registers `userName` with `undefined`; assignment happens later.
 
-Типичная ошибка:
+Распространённая ошибка:
 
 Expect `Anna` in first output.
 
-Automation QA connection:
+Связь с Automation QA:
 
 Explains old config helper behavior.
 
@@ -270,15 +270,15 @@ undefined
 ready
 ```
 
-Рассуждение:
+Объяснение:
 
 `testStatus` starts as `undefined`, then assignment to `'created'`, then reassignment to `'ready'`.
 
-Типичная ошибка:
+Распространённая ошибка:
 
 Ignore reassignment to ready.
 
-Automation QA connection:
+Связь с Automation QA:
 
 Status variables in setup can change before assertion.
 
@@ -294,19 +294,19 @@ https://example.com
 
 If uncommented, access before initialization fails. The next chapter explains this as TDZ.
 
-Рассуждение:
+Объяснение:
 
 `const` is initialized only when execution reaches declaration line.
 
-Типичная ошибка:
+Распространённая ошибка:
 
 Expect `undefined` like `var`.
 
-Automation QA connection:
+Связь с Automation QA:
 
 Modern config constants are safe only after declaration.
 
-## Identify Creation Phase
+## Определите Creation Phase
 
 Ответ:
 
@@ -318,19 +318,19 @@ userRole   | let                   | registered, not initialized
 baseUrl    | const                 | registered, not initialized
 ```
 
-Рассуждение:
+Объяснение:
 
 Creation Phase prepares records before execution starts.
 
-Типичная ошибка:
+Распространённая ошибка:
 
 Put assigned values `Anna`, `admin`, URL into Creation Phase for all declarations.
 
-Automation QA connection:
+Связь с Automation QA:
 
 This table is a practical way to read old JavaScript setup files.
 
-## Identify declaration vs initialization
+## Определите declaration vs initialization
 
 Ответ:
 
@@ -353,19 +353,19 @@ console.log(environmentName);
 └── read
 ```
 
-Рассуждение:
+Объяснение:
 
 Declaration part affects Creation Phase; assignments run during Execution Phase.
 
-Типичная ошибка:
+Распространённая ошибка:
 
 Treat full `var environmentName = 'staging'` as Creation Phase value.
 
-Automation QA connection:
+Связь с Automation QA:
 
 Useful for debugging env variables in legacy test helpers.
 
-## Debugging
+## Задачи на отладку
 
 ### Задача 1
 
@@ -373,15 +373,15 @@ Useful for debugging env variables in legacy test helpers.
 
 Engine did not rewrite source code. It registered `userName` during Creation Phase.
 
-Рассуждение:
+Объяснение:
 
 Execution still runs `console.log` before assignment line, so it reads prepared `undefined`.
 
-Типичная ошибка:
+Распространённая ошибка:
 
 Draw `var userName` line above `console.log` as changed source.
 
-Automation QA connection:
+Связь с Automation QA:
 
 Avoids wrong explanations in code reviews.
 
@@ -402,15 +402,15 @@ console.log(userName) → undefined
 var userName = "Anna" → assignment
 ```
 
-Рассуждение:
+Объяснение:
 
 Assigned value does not exist at first read.
 
-Типичная ошибка:
+Распространённая ошибка:
 
 Confuse declaration preparation with assignment.
 
-Automation QA connection:
+Связь с Automation QA:
 
 Same pattern can hide bugs in old setup code.
 
@@ -418,21 +418,21 @@ Same pattern can hide bugs in old setup code.
 
 Ответ:
 
-It is more accurate to say `let` and `const` are registered during Creation Phase but not initialized before their declaration line.
+Точнее говорить так: `let` и `const` регистрируются во время Creation Phase, но не инициализируются до строки объявления.
 
-Рассуждение:
+Объяснение:
 
-Access before initialization is restricted by TDZ.
+Доступ до initialization ограничен TDZ.
 
-Типичная ошибка:
+Распространённая ошибка:
 
-Say "not hoisted" and miss why engine knows the identifier.
+Сказать "not hoisted" и не объяснить, почему engine уже знает identifier.
 
-Automation QA connection:
+Связь с Automation QA:
 
-Modern JS errors become easier to explain.
+Ошибки современного JavaScript становятся проще для объяснения.
 
-## QA-oriented tasks
+## QA-задачи
 
 ### Сценарий 1
 
@@ -440,15 +440,15 @@ Modern JS errors become easier to explain.
 
 It works because `setupTest` function declaration is registered as callable during Creation Phase.
 
-Рассуждение:
+Объяснение:
 
 Execution can call it before source line.
 
-Типичная ошибка:
+Распространённая ошибка:
 
 Think framework rewrites helper order.
 
-Automation QA connection:
+Связь с Automation QA:
 
 Common in legacy framework files.
 
@@ -462,15 +462,15 @@ Expected output:
 undefined
 ```
 
-Рассуждение:
+Объяснение:
 
 `configName` registered with `undefined`; assignment to `'local'` happens after first read.
 
-Типичная ошибка:
+Распространённая ошибка:
 
 Expect `local`.
 
-Automation QA connection:
+Связь с Automation QA:
 
 Useful for debugging old Node.js helper configuration.
 
@@ -482,19 +482,19 @@ Useful for debugging old Node.js helper configuration.
 2. Declaring helpers before usage makes execution easier to read.
 3. Hoisting still matters for reading existing JavaScript and debugging old helper files.
 
-Рассуждение:
+Объяснение:
 
 Understanding a mechanism is not the same as using it as style.
 
-Типичная ошибка:
+Распространённая ошибка:
 
 Use Hoisting tricks to show language knowledge.
 
-Automation QA connection:
+Связь с Automation QA:
 
 Test code should optimize for clear scenario reading.
 
-## Mini-project
+## Мини-проект
 
 Один из вариантов:
 
@@ -540,15 +540,15 @@ read userRole
 read baseUrl
 ```
 
-Рассуждение:
+Объяснение:
 
 The output follows prepared records and original source order.
 
-Типичная ошибка:
+Распространённая ошибка:
 
 Move all declarations to top mentally and assign values too early.
 
-Automation QA connection:
+Связь с Automation QA:
 
 This mirrors old setup files with mixed function declarations, `var`, `let`, and `const`.
 

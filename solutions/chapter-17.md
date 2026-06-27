@@ -8,15 +8,15 @@
 
 They help visualize primitive values, object values, references, sharing, mutation and reassignment.
 
-Рассуждение:
+Объяснение:
 
 The diagram turns invisible reference behavior into a map.
 
-Типичная ошибка:
+Распространённая ошибка:
 
 Think the diagram is valuable only if it is exact engine implementation.
 
-Automation QA connection:
+Связь с Automation QA:
 
 Diagrams help debug shared request bodies and fixture state.
 
@@ -26,15 +26,15 @@ Diagrams help debug shared request bodies and fixture state.
 
 Real JavaScript engines are optimized and more sophisticated than textbook diagrams.
 
-Рассуждение:
+Объяснение:
 
 The chapter teaches a conceptual model, not V8 or SpiderMonkey internals.
 
-Типичная ошибка:
+Распространённая ошибка:
 
 Teach simplified diagrams as physical truth.
 
-Automation QA connection:
+Связь с Automation QA:
 
 For debugging tests, behavior model is more useful than engine internals.
 
@@ -44,15 +44,15 @@ For debugging tests, behavior model is more useful than engine internals.
 
 It is where diagrams show active variable entries, primitive values and references.
 
-Рассуждение:
+Объяснение:
 
 It represents currently active names in a compact way.
 
-Типичная ошибка:
+Распространённая ошибка:
 
 Assume every drawn primitive is physically stored exactly there.
 
-Automation QA connection:
+Связь с Automation QA:
 
 Useful to track variables in a test or helper.
 
@@ -62,15 +62,15 @@ Useful to track variables in a test or helper.
 
 It is where diagrams show object values.
 
-Рассуждение:
+Объяснение:
 
 Objects are drawn separately so references and sharing are visible.
 
-Типичная ошибка:
+Распространённая ошибка:
 
 Say every object is physically stored exactly as drawn.
 
-Automation QA connection:
+Связь с Automation QA:
 
 Useful to see shared payload objects.
 
@@ -80,15 +80,15 @@ Useful to see shared payload objects.
 
 They are often drawn directly near variable names in stack-like area.
 
-Рассуждение:
+Объяснение:
 
 This explains why primitive reassignment does not mutate another variable.
 
-Типичная ошибка:
+Распространённая ошибка:
 
 Apply object sharing behavior to primitives.
 
-Automation QA connection:
+Связь с Automation QA:
 
 Primitive expected values are not mutated like shared objects.
 
@@ -98,15 +98,15 @@ Primitive expected values are not mutated like shared objects.
 
 They are drawn in heap-like area, with variables pointing to them.
 
-Рассуждение:
+Объяснение:
 
 This makes reference sharing visible.
 
-Типичная ошибка:
+Распространённая ошибка:
 
 Draw copied object after direct assignment.
 
-Automation QA connection:
+Связь с Automation QA:
 
 Shared object diagrams reveal payload mutation.
 
@@ -116,15 +116,15 @@ Shared object diagrams reveal payload mutation.
 
 It represents conceptual reference from variable to object.
 
-Рассуждение:
+Объяснение:
 
 The arrow says: this variable can reach this object.
 
-Типичная ошибка:
+Распространённая ошибка:
 
 Treat arrow as a low-level implementation claim.
 
-Automation QA connection:
+Связь с Automation QA:
 
 It shows which test variables operate on same data.
 
@@ -134,15 +134,15 @@ It shows which test variables operate on same data.
 
 Mutation changes property in same object. Reassignment changes which object a variable refers to.
 
-Рассуждение:
+Объяснение:
 
 In mutation, arrow stays, object content changes. In reassignment, arrow moves to another object.
 
-Типичная ошибка:
+Распространённая ошибка:
 
 Use both words interchangeably.
 
-Automation QA connection:
+Связь с Automation QA:
 
 Debugging needs to know whether helper mutated data or variable was reassigned.
 
@@ -152,15 +152,15 @@ Debugging needs to know whether helper mutated data or variable was reassigned.
 
 Direct object assignment copies the reference conceptually.
 
-Рассуждение:
+Объяснение:
 
 `const admin = user` means both variables refer to same object.
 
-Типичная ошибка:
+Распространённая ошибка:
 
 Assume object was cloned.
 
-Automation QA connection:
+Связь с Automation QA:
 
 Common source of shared test data bugs.
 
@@ -170,15 +170,15 @@ Common source of shared test data bugs.
 
 Two object literals create two different object values, even if properties look identical.
 
-Рассуждение:
+Объяснение:
 
 Identity asks whether variables refer to the same object.
 
-Типичная ошибка:
+Распространённая ошибка:
 
 Expect strict comparison to compare structure.
 
-Automation QA connection:
+Связь с Automation QA:
 
 Use structure assertions for API responses.
 
@@ -186,17 +186,17 @@ Use structure assertions for API responses.
 
 Ответ:
 
-Parameter can refer to the same object passed by caller.
+Parameter can refer to the same object passed by вызывающий код.
 
-Рассуждение:
+Объяснение:
 
-If function updates property, caller's object is updated.
+If function updates property, вызывающий код's object is updated.
 
-Типичная ошибка:
+Распространённая ошибка:
 
 Assume function receives independent copy.
 
-Automation QA connection:
+Связь с Automation QA:
 
 Helpers can mutate payloads.
 
@@ -206,15 +206,15 @@ Helpers can mutate payloads.
 
 Diagrams show hidden shared state and where mutation happens.
 
-Рассуждение:
+Объяснение:
 
 Flakiness often appears when shared object is changed by another test or helper.
 
-Типичная ошибка:
+Распространённая ошибка:
 
 Look only at final assertion.
 
-Automation QA connection:
+Связь с Automation QA:
 
 Memory maps help debug Playwright fixtures and shared configs.
 
@@ -231,15 +231,15 @@ Stack-like area
 └── adminName: "Kate"
 ```
 
-Рассуждение:
+Объяснение:
 
 Primitive reassignment changes `adminName`, not `userName`.
 
-Типичная ошибка:
+Распространённая ошибка:
 
 Draw reference sharing for primitives.
 
-Automation QA connection:
+Связь с Automation QA:
 
 Primitive expected values are usually simple to reason about.
 
@@ -254,15 +254,15 @@ admin ───────────────┘──► Object A
                           └── name: "Anna"
 ```
 
-Рассуждение:
+Объяснение:
 
 Only one object literal exists. `admin = user` shares reference.
 
-Типичная ошибка:
+Распространённая ошибка:
 
 Draw Object B for `admin`.
 
-Automation QA connection:
+Связь с Automation QA:
 
 Direct assignment of payload creates shared object.
 
@@ -278,15 +278,15 @@ currentUser ───────► Object B
                     └── name: "Kate"
 ```
 
-Рассуждение:
+Объяснение:
 
 Reassignment moves `currentUser` to new object. `oldUser` remains with Object A.
 
-Типичная ошибка:
+Распространённая ошибка:
 
 Think reassignment updates Object A.
 
-Automation QA connection:
+Связь с Automation QA:
 
 Important when preserving original test data.
 
@@ -301,19 +301,19 @@ user ───────────────────► Object A
                                           └── name: "Anna"
 ```
 
-Рассуждение:
+Объяснение:
 
 Nested object is also represented as object value in the conceptual map.
 
-Типичная ошибка:
+Распространённая ошибка:
 
 Draw nested object as primitive field.
 
-Automation QA connection:
+Связь с Automation QA:
 
 API responses often have nested objects.
 
-## Identify shared objects
+## Определите shared objects
 
 ### Задача 1
 
@@ -321,15 +321,15 @@ API responses often have nested objects.
 
 Objects created: 1. `defaultPayload` and `adminPayload` refer to same object. Mutation: `adminPayload.role = 'admin'`. No reassignment.
 
-Рассуждение:
+Объяснение:
 
 Direct assignment shares reference.
 
-Типичная ошибка:
+Распространённая ошибка:
 
 Expect `defaultPayload.role` to stay `'user'`.
 
-Automation QA connection:
+Связь с Automation QA:
 
 Shared request body changed unexpectedly.
 
@@ -339,15 +339,15 @@ Shared request body changed unexpectedly.
 
 Objects created: 2. No shared object. No mutation. No reassignment.
 
-Рассуждение:
+Объяснение:
 
 Two object literals create two object values.
 
-Типичная ошибка:
+Распространённая ошибка:
 
 Think identical properties mean same object.
 
-Automation QA connection:
+Связь с Automation QA:
 
 Expected and actual objects can be structurally same but not identical.
 
@@ -357,19 +357,19 @@ Expected and actual objects can be structurally same but not identical.
 
 Objects created: 2. `selectedUser` first refers to Object A, then is reassigned to Object B. No shared object remains.
 
-Рассуждение:
+Объяснение:
 
 Second object literal creates new object; assignment moves the variable's reference.
 
-Типичная ошибка:
+Распространённая ошибка:
 
 Call reassignment a mutation.
 
-Automation QA connection:
+Связь с Automation QA:
 
 Useful when replacing request payload entirely.
 
-## Predict the output before running
+## Предскажите вывод перед запуском
 
 ### Задача 1
 
@@ -379,15 +379,15 @@ Useful when replacing request payload entirely.
 admin
 ```
 
-Рассуждение:
+Объяснение:
 
 `admin` and `user` refer to same object, so mutation through `admin` is visible through `user`.
 
-Типичная ошибка:
+Распространённая ошибка:
 
 Expect `user.role` to remain `'user'`.
 
-Automation QA connection:
+Связь с Automation QA:
 
 Same issue with shared fixtures.
 
@@ -400,15 +400,15 @@ Anna
 Kate
 ```
 
-Рассуждение:
+Объяснение:
 
 `firstUser` remains connected to Object A. `currentUser` moves to Object B.
 
-Типичная ошибка:
+Распространённая ошибка:
 
 Think reassignment affects all aliases.
 
-Automation QA connection:
+Связь с Automation QA:
 
 Preserved references keep old object.
 
@@ -420,19 +420,19 @@ Preserved references keep old object.
 false
 ```
 
-Рассуждение:
+Объяснение:
 
 The variables refer to two different objects.
 
-Типичная ошибка:
+Распространённая ошибка:
 
 Expect structure comparison.
 
-Automation QA connection:
+Связь с Automation QA:
 
 Use suitable assertions for object structure.
 
-## Debugging tasks
+## Задачи на отладку
 
 ### Задача 1
 
@@ -448,15 +448,15 @@ requestPayload ──┘──► Object A
 
 Bug: `requestPayload` is not a new object. It refers to same object as `defaultPayload`.
 
-Рассуждение:
+Объяснение:
 
 Mutation through `requestPayload` updates Object A.
 
-Типичная ошибка:
+Распространённая ошибка:
 
 Think direct assignment copied the object.
 
-Automation QA connection:
+Связь с Automation QA:
 
 This causes request data leaks between tests.
 
@@ -472,17 +472,17 @@ true
 
 The helper parameter refers to the same object as `testUser`.
 
-Рассуждение:
+Объяснение:
 
 `user.deleted = true` mutates Object A.
 
-Типичная ошибка:
+Распространённая ошибка:
 
 Assume helper receives a copy.
 
-Automation QA connection:
+Связь с Automation QA:
 
-Payload builders can mutate caller's object.
+Payload builders can mutate вызывающий код's object.
 
 ### Задача 3
 
@@ -490,19 +490,19 @@ Payload builders can mutate caller's object.
 
 `false`, because `expected` and `actual` refer to different objects.
 
-Рассуждение:
+Объяснение:
 
 Strict comparison checks identity for objects.
 
-Типичная ошибка:
+Распространённая ошибка:
 
 Expect same properties to be enough.
 
-Automation QA connection:
+Связь с Automation QA:
 
 Use deep equality or field assertions where appropriate.
 
-## QA-oriented tasks
+## QA-задачи
 
 ### Сценарий 1
 
@@ -516,15 +516,15 @@ test local user    ───┘──► Object A
                            └── role: changed by test
 ```
 
-Рассуждение:
+Объяснение:
 
 If fixture returns shared object and test mutates it, shared state changes.
 
-Типичная ошибка:
+Распространённая ошибка:
 
 Treat fixture result as private data without checking creation strategy.
 
-Automation QA connection:
+Связь с Automation QA:
 
 Fixture mutation can produce flaky tests.
 
@@ -556,15 +556,15 @@ adminPayload ───────► Object B
                       └── role: "admin"
 ```
 
-Рассуждение:
+Объяснение:
 
 Object spread creates a new first-level object.
 
-Типичная ошибка:
+Распространённая ошибка:
 
 Use `const adminPayload = defaultPayload`.
 
-Automation QA connection:
+Связь с Automation QA:
 
 Safe payload variants reduce shared state risk.
 
@@ -585,19 +585,19 @@ Checklist:
 8. Check if payload variant was copied or shared.
 ```
 
-Рассуждение:
+Объяснение:
 
 The flaky role value likely comes from shared mutation.
 
-Типичная ошибка:
+Распространённая ошибка:
 
 Only inspect assertion line.
 
-Automation QA connection:
+Связь с Automation QA:
 
 This is a practical Playwright debugging workflow.
 
-## Mini-project
+## Мини-проект
 
 Возможное решение:
 
@@ -637,14 +637,14 @@ sharedPayload  | Object A          | shared with defaultPayload     | mutates de
 safePayload    | Object B          | separate first-level object    | safer, but nested needs care
 ```
 
-Рассуждение:
+Объяснение:
 
 `sharedPayload` and `defaultPayload` refer to Object A. `safePayload` is a new first-level object, then helper mutates that object by adding `trackingId`.
 
-Типичная ошибка:
+Распространённая ошибка:
 
 Think `sharedPayload` is independent.
 
-Automation QA connection:
+Связь с Automation QA:
 
 This mirrors real request payload preparation in API and Playwright tests.

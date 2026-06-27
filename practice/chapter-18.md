@@ -18,7 +18,7 @@
 12. Почему conversion is not random?
 13. Почему equality has its own chapter?
 
-## Identify conversions
+## Определите преобразования
 
 Для каждого выражения укажите:
 
@@ -56,7 +56,7 @@ Boolean('');
 '5' + 1;
 ```
 
-## Predict the output before running
+## Предскажите вывод перед запуском
 
 ### Задача 1
 
@@ -96,7 +96,7 @@ console.log('5' - 1);
 console.log('5' * 2);
 ```
 
-## Truthy / Falsy exercises
+## Упражнения на truthy и falsy
 
 Разделите values на truthy and falsy.
 
@@ -116,7 +116,7 @@ NaN;
 {};
 ```
 
-## Code reading
+## Чтение кода
 
 Прочитайте код и ответьте:
 
@@ -136,7 +136,7 @@ console.log(retryCount);
 console.log(headless);
 ```
 
-## Debugging tasks
+## Задачи на отладку
 
 ### Задача 1
 
@@ -177,7 +177,7 @@ console.log(price);
 
 Что произошло and why?
 
-## QA-oriented tasks
+## QA-задачи
 
 ### Сценарий 1. API returns string status code
 
@@ -216,7 +216,7 @@ Parse them intentionally for test config.
 
 Составьте checklist для поиска hidden conversion bugs in tests.
 
-## Mini-project
+## Мини-проект
 
 Создайте файл:
 

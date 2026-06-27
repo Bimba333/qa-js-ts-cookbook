@@ -910,7 +910,7 @@ Global Scope
 └── userName not visible
 ```
 
-### Bridge to Lexical Environment
+### Переход к Lexical Environment
 
 Мы уже можем объяснить поведение:
 
@@ -1181,7 +1181,7 @@ examples/chapter-10/05-scope-chain.js
 
 Показывает lookup из block scope во function scope и global scope.
 
-### Пример 6. Common mistakes
+### Пример 6. Типичные ошибки
 
 Файл:
 
@@ -1611,7 +1611,7 @@ Engine ищет outward only и останавливается на первом
 
 ---
 
-## Quick Check
+## Проверьте себя
 
 1. Зачем существует Scope?
 

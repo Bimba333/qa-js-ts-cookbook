@@ -917,7 +917,7 @@ Call Stack
     variables available for current execution model
 ```
 
-### Bridge to Scope
+### Переход к Scope
 
 После variables возникает новый вопрос:
 
@@ -1234,7 +1234,7 @@ examples/chapter-09/05-var-let-const.js
 
 Показывает базовое поведение трех declaration keywords без углубления в Hoisting и Scope.
 
-### Пример 6. Common mistakes
+### Пример 6. Типичные ошибки
 
 Файл:
 
@@ -1662,7 +1662,7 @@ Reassignment
 
 ---
 
-## Quick Check
+## Проверьте себя
 
 1. Почему variables существуют?
 

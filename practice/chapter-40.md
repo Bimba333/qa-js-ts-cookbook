@@ -211,7 +211,7 @@ const assertionHelper = {
 
 ---
 
-## 6. Mini-project
+## 6. Мини-проект
 
 Создайте small QA helper module.
 

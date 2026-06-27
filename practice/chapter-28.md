@@ -6,9 +6,9 @@
 
 1. Зачем существует `return`?
 2. Что такое return value?
-3. Как функция отправляет данные caller?
+3. Как функция отправляет данные вызывающий код?
 4. Что происходит с выполнением функции после `return`?
-5. Что получает caller, если explicit return отсутствует?
+5. Что получает вызывающий код, если explicit return отсутствует?
 6. Чем `console.log()` отличается от `return`?
 7. Что значит implicit `undefined`?
 8. Что такое one return statement?
@@ -16,13 +16,13 @@
 10. Почему return paths должны быть читаемыми?
 11. Почему функции можно рассматривать как transformations of data?
 
-## Identify return values
+## Определите return values
 
 Для каждого примера укажите:
 
 * есть ли explicit return;
 * какое значение возвращает функция;
-* что получает caller.
+* что получает вызывающий код.
 
 ### Задача 1
 
@@ -159,7 +159,7 @@ console.log(validateStatus(200));
 
 ### Задача 3
 
-Почему caller не может использовать результат проверки?
+Почему вызывающий код не может использовать результат проверки?
 
 ```javascript
 function isSuccessfulStatus(statusCode) {
@@ -182,7 +182,7 @@ function getStatusMessage(statusCode) {
 }
 ```
 
-## QA-oriented tasks
+## QA-задачи
 
 ### Сценарий 1. Boolean validator
 
@@ -213,7 +213,7 @@ getUserEmail
 
 Вторая должна возвращать email.
 
-Сравните, что получает caller.
+Сравните, что получает вызывающий код.
 
 ### Сценарий 4. Readable helper API
 
@@ -245,5 +245,5 @@ playground/return-qa-helpers.js
 7. Добавьте отчет:
 
 ```text
-Function | Input | Return value | QA meaning
+Function | Input | Возвращаемое значение | QA-смысл
 ```

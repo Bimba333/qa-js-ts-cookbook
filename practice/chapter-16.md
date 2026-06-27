@@ -17,7 +17,7 @@
 11. Почему same-looking objects can be different objects?
 12. Почему references важны для Automation QA?
 
-## Predict the output before running
+## Предскажите вывод перед запуском
 
 ### Задача 1
 
@@ -77,7 +77,7 @@ console.log(oldUser.name);
 console.log(currentUser.name);
 ```
 
-## Identify references
+## Определите references
 
 Для каждого примера ответьте:
 
@@ -123,7 +123,7 @@ selectedUser = {
 };
 ```
 
-## Code reading
+## Чтение кода
 
 Прочитайте код и ответьте:
 
@@ -145,7 +145,7 @@ adminUser.role = 'admin';
 console.log(defaultUser.role);
 ```
 
-## Debugging tasks
+## Задачи на отладку
 
 ### Задача 1
 
@@ -215,7 +215,7 @@ const adminUser = defaultUser;
 adminUser.role = 'admin';
 ```
 
-## QA-oriented tasks
+## QA-задачи
 
 ### Сценарий 1. Shared test data
 
@@ -260,7 +260,7 @@ const actualUser = expectedUser;
 
 Составьте checklist из вопросов для debugging unexpected object mutation in Playwright tests.
 
-## Mini-project
+## Мини-проект
 
 Создайте файл:
 

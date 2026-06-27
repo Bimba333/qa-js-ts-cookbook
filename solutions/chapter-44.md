@@ -8,7 +8,7 @@
 
 **Объяснение:** class combines constructor for own data and shared methods in one readable template.
 
-**Типичная ошибка:** think class exists only to make syntax look familiar.
+**Распространённая ошибка:** think class exists only to make syntax look familiar.
 
 **Связь с Automation QA:** Page Objects and API clients often need many similar objects.
 
@@ -18,7 +18,7 @@
 
 **Объяснение:** instances have own data, while class methods are available through prototype lookup.
 
-**Типичная ошибка:** think JavaScript becomes class-based after `class` syntax.
+**Распространённая ошибка:** think JavaScript becomes class-based after `class` syntax.
 
 **Связь с Automation QA:** debugging Page Object methods still requires prototype mental model.
 
@@ -28,7 +28,7 @@
 
 **Объяснение:** it usually initializes own data on the new object.
 
-**Типичная ошибка:** put heavy test actions or assertions into constructor.
+**Распространённая ошибка:** put heavy test actions or assertions into constructor.
 
 **Связь с Automation QA:** constructor can store `page`, `baseUrl`, config or expected values.
 
@@ -38,7 +38,7 @@
 
 **Объяснение:** `new PageObject(...)` creates an instance.
 
-**Типичная ошибка:** confuse class template with object instance.
+**Распространённая ошибка:** confuse class template with object instance.
 
 **Связь с Automation QA:** `loginPage` is an instance of `LoginPage` class.
 
@@ -48,7 +48,7 @@
 
 **Объяснение:** assignments like `this.name = name` create or update own properties.
 
-**Типичная ошибка:** think all class data lives in prototype.
+**Распространённая ошибка:** think all class data lives in prototype.
 
 **Связь с Automation QA:** each API client instance can have its own `baseUrl`.
 
@@ -58,7 +58,7 @@
 
 **Объяснение:** methods are shared through prototype lookup.
 
-**Типичная ошибка:** imagine every object stores separate method copy.
+**Распространённая ошибка:** imagine every object stores separate method copy.
 
 **Связь с Automation QA:** many Page Objects can share the same method implementation.
 
@@ -68,7 +68,7 @@
 
 **Объяснение:** class makes repeated page object creation readable and consistent.
 
-**Типичная ошибка:** put all test logic into Page Object constructor.
+**Распространённая ошибка:** put all test logic into Page Object constructor.
 
 **Связь с Automation QA:** class can model pages with own locators/config and shared actions.
 
@@ -78,7 +78,7 @@
 
 **Объяснение:** class is useful for repeated creation, not for every object.
 
-**Типичная ошибка:** wrap every helper in class automatically.
+**Распространённая ошибка:** wrap every helper in class automatically.
 
 **Связь с Automation QA:** simple expected API response can remain plain object.
 
@@ -88,7 +88,7 @@
 
 **Объяснение:** constructor should usually initialize object state; heavy actions make instances hard to create and test.
 
-**Типичная ошибка:** send requests or assert inside constructor.
+**Распространённая ошибка:** send requests or assert inside constructor.
 
 **Связь с Automation QA:** creating `ApiClient` should not automatically call API.
 
@@ -98,7 +98,7 @@
 
 **Объяснение:** after creating objects with shared prototype behavior, next question is how one class can reuse behavior from another class.
 
-**Типичная ошибка:** start using `extends` before understanding basic class/prototype relationship.
+**Распространённая ошибка:** start using `extends` before understanding basic class/prototype relationship.
 
 **Связь с Automation QA:** shared base Page Object behavior will be easier to discuss after this chapter.
 
@@ -116,7 +116,7 @@
 
 **Объяснение:** `this.name = name` and `this.url = url` write data to the new instance.
 
-**Типичная ошибка:** think constructor parameters automatically become properties.
+**Распространённая ошибка:** think constructor parameters automatically become properties.
 
 **Связь с Automation QA:** Page Object constructor commonly stores page name, URL or Playwright page reference.
 
@@ -129,7 +129,7 @@
 
 **Объяснение:** shared methods can remain on class prototype, while `baseUrl` belongs to each instance.
 
-**Типичная ошибка:** store environment-specific `baseUrl` as shared method data.
+**Распространённая ошибка:** store environment-specific `baseUrl` as shared method data.
 
 **Связь с Automation QA:** staging and production clients should not accidentally share mutable environment state.
 
@@ -147,7 +147,7 @@ anna@example.test [admin]
 
 **Объяснение:** constructor stores `email` and `role`; method reads them through `this`.
 
-**Типичная ошибка:** think `describe()` receives constructor arguments directly.
+**Распространённая ошибка:** think `describe()` receives constructor arguments directly.
 
 **Связь с Automation QA:** test user objects can format readable debug output.
 
@@ -161,7 +161,7 @@ true
 
 **Объяснение:** both instances use same method through prototype lookup.
 
-**Типичная ошибка:** expect `false` because instances are different objects.
+**Распространённая ошибка:** expect `false` because instances are different objects.
 
 **Связь с Automation QA:** many Page Object instances can share the same action methods.
 
@@ -175,7 +175,7 @@ false
 
 **Объяснение:** `200 === 201` is false. Constructor stores values as own properties.
 
-**Типичная ошибка:** confuse expected and actual values.
+**Распространённая ошибка:** confuse expected and actual values.
 
 **Связь с Automation QA:** validators often compare expected and actual test results.
 
@@ -193,7 +193,7 @@ const loginPage = new PageObject('LoginPage');
 
 **Объяснение:** class must be called with `new`; `new` starts instance creation.
 
-**Типичная ошибка:** treat class as ordinary function call.
+**Распространённая ошибка:** treat class as ordinary function call.
 
 **Связь с Automation QA:** Page Object instances are usually created with `new`.
 
@@ -209,7 +209,7 @@ describePage() {
 
 **Объяснение:** `name` alone is variable lookup. `this.name` reads instance property.
 
-**Типичная ошибка:** forget that constructor properties do not become local variables in methods.
+**Распространённая ошибка:** forget that constructor properties do not become local variables in methods.
 
 **Связь с Automation QA:** methods should read page/client-specific data through `this`.
 
@@ -227,7 +227,7 @@ class ApiClient {
 
 **Объяснение:** `baseUrl = baseUrl` only assigns parameter to itself. `this.baseUrl` writes property to instance.
 
-**Типичная ошибка:** forget `this` in constructor assignment.
+**Распространённая ошибка:** forget `this` in constructor assignment.
 
 **Связь с Automation QA:** API client config must be stored on the client instance.
 
@@ -257,7 +257,7 @@ console.log(loginPage.describePage());
 
 **Объяснение:** `url` is own data. `describePage` is shared class method.
 
-**Типичная ошибка:** hardcode URL inside method and lose instance flexibility.
+**Распространённая ошибка:** hardcode URL inside method and lose instance flexibility.
 
 **Связь с Automation QA:** Page Object can store route or selectors as instance data.
 
@@ -286,7 +286,7 @@ console.log(productionClient.describeRequest('/users'));
 
 **Объяснение:** each instance stores own config; method is reused.
 
-**Типичная ошибка:** create separate duplicated methods for every environment.
+**Распространённая ошибка:** create separate duplicated methods for every environment.
 
 **Связь с Automation QA:** useful for REST API testing across environments.
 
@@ -318,7 +318,7 @@ console.log(validator.describe());
 
 **Объяснение:** expected/actual are own data; validation and description are shared behavior.
 
-**Типичная ошибка:** make `expected` and `actual` shared data.
+**Распространённая ошибка:** make `expected` and `actual` shared data.
 
 **Связь с Automation QA:** validators are common framework objects.
 
@@ -328,13 +328,13 @@ console.log(validator.describe());
 
 **Объяснение:** class improves object creation syntax, but objects still use prototype relationships.
 
-**Типичная ошибка:** think class introduces separate class-based object model.
+**Распространённая ошибка:** think class introduces separate class-based object model.
 
 **Связь с Automation QA:** understanding prototypes helps debug methods on Page Object classes.
 
 ---
 
-## 6. Mini-project
+## 6. Мини-проект
 
 **Ответ:**
 
@@ -372,7 +372,7 @@ true
 
 **Объяснение:** `name` and `baseUrl` live as own data on each instance. `buildUrl` and `describeRequest` are shared methods available through prototype lookup.
 
-**Типичная ошибка:** expect method comparison to be `false` because instances are different.
+**Распространённая ошибка:** expect method comparison to be `false` because instances are different.
 
 **Связь с Automation QA:** one API client class can create clients for multiple environments without duplicating methods.
 

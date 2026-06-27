@@ -225,7 +225,7 @@ Requirements:
 
 ---
 
-## 6. Mini-project
+## 6. Мини-проект
 
 Создайте small QA framework object model.
 

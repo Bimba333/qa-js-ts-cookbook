@@ -245,7 +245,7 @@ console.log('after reporter');
 
 ---
 
-## 7. Mini-project
+## 7. Мини-проект
 
 Создайте QA scenario.
 

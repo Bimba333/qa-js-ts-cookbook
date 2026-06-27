@@ -613,7 +613,7 @@ examples/chapter-45/03-overriding.js
 
 Показывает method with same name in derived class.
 
-### Пример 4. Common mistakes
+### Пример 4. Типичные ошибки
 
 Файл:
 
@@ -852,7 +852,7 @@ several classes
 share same behavior
 ```
 
-Examples:
+Примеры:
 
 * base page actions;
 * common API client behavior;
@@ -880,7 +880,7 @@ Base class
 └── everything that seemed convenient
 ```
 
-Readability question:
+Вопрос читаемости:
 
 > Does the hierarchy explain the domain, or only hide duplicated code?
 
@@ -1039,7 +1039,7 @@ shadowed by
 LoginPage.open()
 ```
 
-### 9. Current JavaScript model
+### 9. Текущая модель JavaScript
 
 ```text
 Objects
@@ -1076,7 +1076,7 @@ BaseApiClient
 └── OrdersClient
 ```
 
-### 13. Readability
+### 13. Читаемость
 
 ```text
 common behavior
@@ -1084,7 +1084,7 @@ common behavior
 └── one clear base class
 ```
 
-### 14. Common mistakes
+### 14. Типичные ошибки
 
 ```text
 base class
@@ -1181,7 +1181,7 @@ check derived
 found? stop
 ```
 
-### 24. Mental model summary
+### 24. Краткая ментальная модель
 
 ```text
 Common behavior
@@ -1239,7 +1239,7 @@ loginPage.open()
 └── this is loginPage
 ```
 
-### 30. Bridge to super
+### 30. Переход к super
 
 ```text
 override method
@@ -1248,7 +1248,7 @@ override method
 next: call base method
 ```
 
-### 31. Bridge to composition
+### 31. Переход к composition
 
 ```text
 inheritance
@@ -1332,7 +1332,7 @@ one base method
 └── used by ProfilePage
 ```
 
-### 40. Summary diagram
+### 40. Итоговая схема
 
 ```text
 Shared behavior
@@ -1416,7 +1416,7 @@ The next chapter will explain `super`: how a derived class can call behavior fro
 
 ---
 
-## Quick Check
+## Проверьте себя
 
 1. What problem does class inheritance solve?
 

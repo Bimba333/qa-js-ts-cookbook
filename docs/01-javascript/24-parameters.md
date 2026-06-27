@@ -688,7 +688,7 @@ Arguments become available
 through parameters
 ```
 
-Bridge to Return:
+Переход к Return:
 
 ```text
 Parameters
@@ -768,7 +768,7 @@ Invocation
 └── gives ingredient: 200
 ```
 
-Mental model summary:
+Краткая ментальная модель:
 
 ```text
 Parameter
@@ -1156,7 +1156,7 @@ Arguments become available inside the function through parameters.
 
 ---
 
-## Quick Check
+## Проверьте себя
 
 Ответьте без запуска кода.
 

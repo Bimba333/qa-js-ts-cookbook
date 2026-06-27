@@ -8,7 +8,7 @@
 
 **Объяснение:** user has data (`name`, `role`) and behavior (`describe`, `rename`) that naturally belongs to user.
 
-**Типичная ошибка:** store all behavior as unrelated functions.
+**Распространённая ошибка:** store all behavior as unrelated functions.
 
 **Связь с Automation QA:** API clients and Page Objects combine state and behavior.
 
@@ -18,7 +18,7 @@
 
 **Объяснение:** `baseUrl`, `timeout`, `role` are examples of state.
 
-**Типичная ошибка:** confuse method result with state.
+**Распространённая ошибка:** confuse method result with state.
 
 **Связь с Automation QA:** config values and locators are object state.
 
@@ -28,17 +28,17 @@
 
 **Объяснение:** `buildUrl()`, `formatStatus()` and `describe()` are behavior.
 
-**Типичная ошибка:** think behavior must always change state. It can only read state.
+**Распространённая ошибка:** think behavior must always change state. It can only read state.
 
 **Связь с Automation QA:** assertion helpers often format or validate without mutating.
 
 ### 1.4 Почему method is ordinary function?
 
-**Ответ:** method uses function value; it is not a separate magical function kind.
+**Ответ:** method uses function object; it is not a separate magical function kind.
 
 **Объяснение:** function becomes method when used as behavior through object invocation.
 
-**Типичная ошибка:** think methods ignore normal function invocation rules.
+**Распространённая ошибка:** think methods ignore normal function invocation rules.
 
 **Связь с Automation QA:** detached helper methods can still lose receiver.
 
@@ -48,7 +48,7 @@
 
 **Объяснение:** this connects method call with `this`.
 
-**Типичная ошибка:** think method is permanently bound to object just because it was written there.
+**Распространённая ошибка:** think method is permanently bound to object just because it was written there.
 
 **Связь с Automation QA:** Page Object methods should usually be called through page object instance.
 
@@ -58,7 +58,7 @@
 
 **Объяснение:** `apiClient.buildUrl()` makes `apiClient` receiver.
 
-**Типичная ошибка:** assume `this` is decided where function was created.
+**Распространённая ошибка:** assume `this` is decided where function was created.
 
 **Связь с Automation QA:** API client methods use `this.baseUrl`.
 
@@ -68,7 +68,7 @@
 
 **Объяснение:** `buildUrl()` belongs to API client because it uses client `baseUrl`.
 
-**Типичная ошибка:** attach unrelated functions to object.
+**Распространённая ошибка:** attach unrelated functions to object.
 
 **Связь с Automation QA:** request builder behavior belongs to builder object.
 
@@ -78,7 +78,7 @@
 
 **Объяснение:** pure utility calculations often stay ordinary functions.
 
-**Типичная ошибка:** put every helper into object.
+**Распространённая ошибка:** put every helper into object.
 
 **Связь с Automation QA:** generic string formatting may not need object state.
 
@@ -88,7 +88,7 @@
 
 **Объяснение:** this chapter recommends regular method syntax.
 
-**Типичная ошибка:** write arrow method and expect ordinary receiver `this`.
+**Распространённая ошибка:** write arrow method and expect ordinary receiver `this`.
 
 **Связь с Automation QA:** method `this` bugs can break Page Object helpers.
 
@@ -98,7 +98,7 @@
 
 **Объяснение:** these entities own both data and actions.
 
-**Типичная ошибка:** separate related behavior from its state.
+**Распространённая ошибка:** separate related behavior from its state.
 
 **Связь с Automation QA:** object methods are foundation for framework architecture.
 
@@ -112,7 +112,7 @@
 
 **Объяснение:** `describe` stores function behavior and uses object state via `this`.
 
-**Типичная ошибка:** call `describe` a data field only because it is a property.
+**Распространённая ошибка:** call `describe` a data field only because it is a property.
 
 **Связь с Automation QA:** test entity can describe itself for reports.
 
@@ -122,7 +122,7 @@
 
 **Объяснение:** behavior describes same entity.
 
-**Типичная ошибка:** move behavior away and pass config manually everywhere.
+**Распространённая ошибка:** move behavior away and pass config manually everywhere.
 
 **Связь с Automation QA:** config helper can explain current environment setup.
 
@@ -132,7 +132,7 @@
 
 **Объяснение:** `buildUrl` reads `this.baseUrl`; `requestName` uses only arguments.
 
-**Типичная ошибка:** assume every method uses `this`.
+**Распространённая ошибка:** assume every method uses `this`.
 
 **Связь с Automation QA:** some helper methods may be better as ordinary functions if they do not belong to object state.
 
@@ -150,7 +150,7 @@ Anna is admin
 
 **Объяснение:** `user.describe()` makes `user` receiver; `this.name` and `this.role` read user state.
 
-**Типичная ошибка:** think `this` is undefined in any function. In ordinary method call receiver is selected.
+**Распространённая ошибка:** think `this` is undefined in any function. In ordinary method call receiver is selected.
 
 **Связь с Automation QA:** entity methods can format readable labels.
 
@@ -164,7 +164,7 @@ Anna is admin
 
 **Объяснение:** `deposit(50)` updates `this.balance`; `getBalance()` returns updated state.
 
-**Типичная ошибка:** forget that methods can change object state.
+**Распространённая ошибка:** forget that methods can change object state.
 
 **Связь с Automation QA:** request builders may update internal state before building payload.
 
@@ -178,7 +178,7 @@ https://api.example.test/users
 
 **Объяснение:** `this.baseUrl` reads apiClient state.
 
-**Типичная ошибка:** use `baseUrl` without `this`.
+**Распространённая ошибка:** use `baseUrl` without `this`.
 
 **Связь с Automation QA:** API clients build endpoint URLs this way.
 
@@ -203,7 +203,7 @@ console.log(apiClient.buildUrl('/users'));
 
 **Объяснение:** `baseUrl` is object property, so method reads it through `this.baseUrl`.
 
-**Типичная ошибка:** treat property as local variable.
+**Распространённая ошибка:** treat property as local variable.
 
 **Связь с Automation QA:** API client methods commonly access object config through `this`.
 
@@ -219,7 +219,7 @@ const describe = user.describe.bind(user);
 
 **Объяснение:** `bind()` creates function with fixed receiver.
 
-**Типичная ошибка:** assume method remains bound forever.
+**Распространённая ошибка:** assume method remains bound forever.
 
 **Связь с Automation QA:** detached Page Object methods can fail when passed around.
 
@@ -238,7 +238,7 @@ const assertionHelper = {
 
 **Объяснение:** `suite` is object state, not local variable.
 
-**Типичная ошибка:** forget `this` inside method.
+**Распространённая ошибка:** forget `this` inside method.
 
 **Связь с Automation QA:** assertion helpers often use suite/reporting state.
 
@@ -262,7 +262,7 @@ const apiClient = {
 
 **Объяснение:** URL behavior belongs to API client because it uses `baseUrl`.
 
-**Типичная ошибка:** duplicate baseUrl logic outside client.
+**Распространённая ошибка:** duplicate baseUrl logic outside client.
 
 **Связь с Automation QA:** API layer often starts from client objects.
 
@@ -279,7 +279,7 @@ const assertionHelper = {
 
 **Объяснение:** formatting behavior belongs to helper because it uses suite state.
 
-**Типичная ошибка:** hardcode suite in every assertion.
+**Распространённая ошибка:** hardcode suite in every assertion.
 
 **Связь с Automation QA:** reporting helpers often own prefixes and labels.
 
@@ -300,7 +300,7 @@ const requestBuilder = {
 
 **Объяснение:** builder owns default role and behavior for creating payload.
 
-**Типичная ошибка:** pass default role manually every time.
+**Распространённая ошибка:** pass default role manually every time.
 
 **Связь с Automation QA:** request builders reduce payload duplication.
 
@@ -310,13 +310,13 @@ const requestBuilder = {
 
 **Объяснение:** `buildUrl` uses `baseUrl`; `formatStatus` uses `suite`; `createUser` uses `defaultRole`.
 
-**Типичная ошибка:** group behavior by convenience rather than responsibility.
+**Распространённая ошибка:** group behavior by convenience rather than responsibility.
 
 **Связь с Automation QA:** good framework architecture is responsibility-based.
 
 ---
 
-## 6. Mini-project
+## 6. Мини-проект
 
 Один из возможных вариант:
 
@@ -355,7 +355,7 @@ console.log(testUser.describe());
 
 **Объяснение:** state is stored data: `baseUrl`, `suite`, user fields. Behavior is methods: `buildUrl`, `describeRequest`, `statusLine`, `describe`.
 
-**Типичная ошибка:** move related behavior into unrelated utility functions.
+**Распространённая ошибка:** move related behavior into unrelated utility functions.
 
 **Связь с Automation QA:** this pattern is a small preview of API clients, assertion helpers and Page Objects.
 

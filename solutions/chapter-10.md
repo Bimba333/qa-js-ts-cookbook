@@ -8,15 +8,15 @@
 
 Scope существует, чтобы определить, где identifiers visible и откуда к ним можно обращаться.
 
-Рассуждение:
+Объяснение:
 
 Без Scope все names были бы visible everywhere, что приводило бы к collisions и неуправляемому состоянию.
 
-Типичная ошибка:
+Распространённая ошибка:
 
 Считать Scope дополнительным синтаксисом, а не правилом видимости.
 
-Automation QA connection:
+Связь с Automation QA:
 
 Scope помогает изолировать test data, helper internals и fixture setup.
 
@@ -26,15 +26,15 @@ Scope помогает изолировать test data, helper internals и fix
 
 Visibility означает, можно ли access identifier из текущего места кода.
 
-Рассуждение:
+Объяснение:
 
 Identifier может существовать внутри функции, но быть invisible снаружи.
 
-Типичная ошибка:
+Распространённая ошибка:
 
 Думать, что если функция была вызвана, ее local identifiers стали доступны outside.
 
-Automation QA connection:
+Связь с Automation QA:
 
 Helper-local values не должны случайно использоваться тестом напрямую.
 
@@ -44,15 +44,15 @@ Helper-local values не должны случайно использовать�
 
 Global Scope — внешний scope программы или файла.
 
-Рассуждение:
+Объяснение:
 
 Identifiers в Global Scope могут быть найдены при outward lookup из inner scopes.
 
-Типичная ошибка:
+Распространённая ошибка:
 
 Хранить весь test state globally.
 
-Automation QA connection:
+Связь с Automation QA:
 
 Global Scope подходит для stable constants в маленьких примерах, но global mutable state опасен.
 
@@ -62,15 +62,15 @@ Global Scope подходит для stable constants в маленьких пр
 
 Function Scope — область видимости identifiers, объявленных внутри функции.
 
-Рассуждение:
+Объяснение:
 
 Function-local identifiers visible inside function и hidden from outside.
 
-Типичная ошибка:
+Распространённая ошибка:
 
 Пытаться читать function-local variable после вызова функции.
 
-Automation QA connection:
+Связь с Automation QA:
 
 Helper implementation details должны оставаться в helper scope.
 
@@ -80,15 +80,15 @@ Helper implementation details должны оставаться в helper scope.
 
 Block Scope — область видимости внутри `{ ... }` для `let` и `const`.
 
-Рассуждение:
+Объяснение:
 
 Identifier, объявленный через `const` внутри `if`, visible внутри блока.
 
-Типичная ошибка:
+Распространённая ошибка:
 
 Ожидать block-local value after block.
 
-Automation QA connection:
+Связь с Automation QA:
 
 Block Scope помогает держать temporary assertion data рядом с проверкой.
 
@@ -98,15 +98,15 @@ Block Scope помогает держать temporary assertion data рядом 
 
 Parent scope — внешний scope по отношению к текущему.
 
-Рассуждение:
+Объяснение:
 
 Для block scope parent может быть function scope.
 
-Типичная ошибка:
+Распространённая ошибка:
 
 Думать, что parent scope всегда Global Scope.
 
-Automation QA connection:
+Связь с Automation QA:
 
 Test scope может быть parent для block-level assertion setup.
 
@@ -116,15 +116,15 @@ Test scope может быть parent для block-level assertion setup.
 
 Child scope — вложенный scope внутри parent scope.
 
-Рассуждение:
+Объяснение:
 
 Function scope является child для Global Scope, а block scope может быть child для function scope.
 
-Типичная ошибка:
+Распространённая ошибка:
 
 Ожидать, что parent видит all child identifiers.
 
-Automation QA connection:
+Связь с Automation QA:
 
 Fixture internals могут быть child scope по отношению к test runner logic и не обязаны быть visible.
 
@@ -134,15 +134,15 @@ Fixture internals могут быть child scope по отношению к tes
 
 Scope Chain — conceptual chain outward scopes, по которой engine ищет identifier.
 
-Рассуждение:
+Объяснение:
 
 Lookup starts in current scope, then parent, then parent of parent.
 
-Типичная ошибка:
+Распространённая ошибка:
 
 Путать Scope Chain с Call Stack.
 
-Automation QA connection:
+Связь с Automation QA:
 
 Это помогает понимать, почему helper читает global config, но test не читает helper-local variables.
 
@@ -152,15 +152,15 @@ Automation QA connection:
 
 Identifier lookup — процесс поиска visible identifier.
 
-Рассуждение:
+Объяснение:
 
 Engine проверяет current scope и движется outward until found or failed.
 
-Типичная ошибка:
+Распространённая ошибка:
 
 Думать, что engine ищет имя по всему файлу.
 
-Automation QA connection:
+Связь с Automation QA:
 
 При debugging undefined/ReferenceError нужно понять, в каком scope ищется identifier.
 
@@ -170,15 +170,15 @@ Automation QA connection:
 
 Shadowing происходит, когда inner scope объявляет identifier с тем же name, что и outer scope.
 
-Рассуждение:
+Объяснение:
 
 Lookup использует ближайший visible identifier.
 
-Типичная ошибка:
+Распространённая ошибка:
 
 Думать, что outer variable была перезаписана.
 
-Automation QA connection:
+Связь с Automation QA:
 
 Shadowing `status` или `userName` в tests может запутать expected и actual values.
 
@@ -188,15 +188,15 @@ Shadowing `status` или `userName` в tests может запутать expect
 
 Visibility отвечает, где identifier можно access. Lifetime отвечает, как долго информация существует или нужна.
 
-Рассуждение:
+Объяснение:
 
 Это связанные, но разные вопросы.
 
-Типичная ошибка:
+Распространённая ошибка:
 
 Считать invisible identifier удаленным во всех смыслах.
 
-Automation QA connection:
+Связь с Automation QA:
 
 Debugging test data требует отдельно думать о доступности имени и о времени жизни данных.
 
@@ -206,19 +206,19 @@ Debugging test data требует отдельно думать о доступ
 
 Call Stack управляет active Execution Contexts. Scope Chain управляет conceptual lookup path для identifiers.
 
-Рассуждение:
+Объяснение:
 
 Это разные механизмы: один про выполнение, другой про видимость имен.
 
-Типичная ошибка:
+Распространённая ошибка:
 
 Объяснять видимость переменных порядком вызовов функций.
 
-Automation QA connection:
+Связь с Automation QA:
 
 Stack trace показывает call path, но не заменяет анализ scopes.
 
-## Determine variable visibility
+## Определите видимость переменных
 
 ### Фрагмент 1
 
@@ -226,15 +226,15 @@ Stack trace показывает call path, но не заменяет анал�
 
 `baseUrl` declared in Global Scope. Он visible в Global Scope и может быть найден внутри `printBaseUrl` через outward lookup.
 
-Рассуждение:
+Объяснение:
 
 Function scope не имеет local `baseUrl`, поэтому lookup идет в parent Global Scope.
 
-Типичная ошибка:
+Распространённая ошибка:
 
 Считать, что функция видит только local variables.
 
-Automation QA connection:
+Связь с Automation QA:
 
 Helpers часто читают global stable configuration.
 
@@ -244,15 +244,15 @@ Helpers часто читают global stable configuration.
 
 `userName` visible inside `prepareUser` only.
 
-Рассуждение:
+Объяснение:
 
 Он declared in Function Scope.
 
-Типичная ошибка:
+Распространённая ошибка:
 
 Ожидать access к `userName` после `prepareUser()`.
 
-Automation QA connection:
+Связь с Automation QA:
 
 Temporary helper data не должна протекать в тест.
 
@@ -262,19 +262,19 @@ Temporary helper data не должна протекать в тест.
 
 `expectedStatus` visible inside block only.
 
-Рассуждение:
+Объяснение:
 
 `const` внутри `{ ... }` создает block-scoped identifier.
 
-Типичная ошибка:
+Распространённая ошибка:
 
 Читать `expectedStatus` after block.
 
-Automation QA connection:
+Связь с Automation QA:
 
 Temporary assertion values можно ограничивать block scope.
 
-## Identify Scope
+## Определите Scope
 
 Ответ:
 
@@ -318,19 +318,19 @@ Block Scope
 Function Scope: path found
 ```
 
-Рассуждение:
+Объяснение:
 
 Lookup starts from current block and moves outward only.
 
-Типичная ошибка:
+Распространённая ошибка:
 
 Искать `baseUrl` directly in Global without checking current and function scopes.
 
-Automation QA connection:
+Связь с Automation QA:
 
 Так строятся helpers, которые используют local path и outer config.
 
-## Predict output before running
+## Предскажите вывод перед запуском
 
 ### Задача 1
 
@@ -341,15 +341,15 @@ local
 global
 ```
 
-Рассуждение:
+Объяснение:
 
 Inside function local `status` shadows global `status`. Outside function lookup finds global `status`.
 
-Типичная ошибка:
+Распространённая ошибка:
 
 Ожидать два раза `global`.
 
-Automation QA connection:
+Связь с Automation QA:
 
 Shadowing может запутать expected status в тестах.
 
@@ -362,15 +362,15 @@ login
 active
 ```
 
-Рассуждение:
+Объяснение:
 
 Block can read outer `testName` and its own `expectedStatus`.
 
-Типичная ошибка:
+Распространённая ошибка:
 
 Думать, что block не видит global identifiers.
 
-Automation QA connection:
+Связь с Automation QA:
 
 Assertion block может читать test-level data.
 
@@ -382,19 +382,19 @@ Assertion block может читать test-level data.
 https://example.com/profile
 ```
 
-Рассуждение:
+Объяснение:
 
 Function scope has `path`; `baseUrl` found in Global Scope through outward lookup.
 
-Типичная ошибка:
+Распространённая ошибка:
 
 Считать `baseUrl` inaccessible because it is outside function.
 
-Automation QA connection:
+Связь с Automation QA:
 
 Page helpers часто соединяют global config and local route.
 
-## Debugging
+## Задачи на отладку
 
 ### Задача 1
 
@@ -402,15 +402,15 @@ Page helpers часто соединяют global config and local route.
 
 `userName` declared inside Function Scope and visible only there.
 
-Рассуждение:
+Объяснение:
 
 Global Scope cannot search inside `prepareUser` function scope.
 
-Типичная ошибка:
+Распространённая ошибка:
 
 Думать, что function call exports local variables.
 
-Automation QA connection:
+Связь с Automation QA:
 
 Helper должен return нужное значение, если тест должен его использовать. `return` будет изучаться позже подробнее.
 
@@ -420,15 +420,15 @@ Helper должен return нужное значение, если тест до
 
 Выводится `local`, потому что local `status` shadows global `status`.
 
-Рассуждение:
+Объяснение:
 
 Lookup starts in current function scope and stops at first match.
 
-Типичная ошибка:
+Распространённая ошибка:
 
 Игнорировать declaration inside function.
 
-Automation QA connection:
+Связь с Automation QA:
 
 Имена `status`, `response`, `user` лучше делать точнее, чтобы избегать accidental shadowing.
 
@@ -438,19 +438,19 @@ Automation QA connection:
 
 Global mutable state может сделать тесты зависимыми от порядка выполнения.
 
-Рассуждение:
+Объяснение:
 
 `testA` меняет global `currentUserName`, а `testB` читает текущее global value. Это связывает независимые сценарии.
 
-Типичная ошибка:
+Распространённая ошибка:
 
 Использовать global variable как shared scratchpad.
 
-Automation QA connection:
+Связь с Automation QA:
 
 Параллельные или независимые Playwright tests должны минимизировать shared mutable state.
 
-## QA-oriented tasks
+## QA-задачи
 
 ### Сценарий 1
 
@@ -458,15 +458,15 @@ Automation QA connection:
 
 `requestBody`, `normalizedEmail`, `responseStatus` должны оставаться helper-local, если тесту нужен только итог helper.
 
-Рассуждение:
+Объяснение:
 
 Scope скрывает implementation details и уменьшает поверхность ошибок.
 
-Типичная ошибка:
+Распространённая ошибка:
 
 Делать helper internals global для удобства debugging.
 
-Automation QA connection:
+Связь с Automation QA:
 
 Чистый helper проще переиспользовать и менять.
 
@@ -476,15 +476,15 @@ Automation QA connection:
 
 `authToken` не обязан быть visible в тесте, если тест использует только готовую страницу или session.
 
-Рассуждение:
+Объяснение:
 
 Fixture может скрывать setup details. Тест видит то, что нужно сценарию, а не весь механизм подготовки.
 
-Типичная ошибка:
+Распространённая ошибка:
 
 Раскрывать fixture internals в каждом тесте.
 
-Automation QA connection:
+Связь с Automation QA:
 
 Это повышает readability Playwright tests и снижает coupling.
 
@@ -494,19 +494,19 @@ Automation QA connection:
 
 Shadowing problematic, если reader ожидает test-level `expectedStatus`, но helper использует local identifier с тем же name.
 
-Рассуждение:
+Объяснение:
 
 Lookup берет nearest identifier, поэтому одинаковые names в nested scopes могут скрыть смысл.
 
-Типичная ошибка:
+Распространённая ошибка:
 
 Называть все status-like values одинаково.
 
-Automation QA connection:
+Связь с Automation QA:
 
 Лучше использовать precise names: `expectedUserStatus`, `apiResponseStatus`, `uiStatusText`.
 
-## Mini-project
+## Мини-проект
 
 Один из вариантов:
 
@@ -558,15 +558,15 @@ expectedStatus → visible inside testLogin and nested block
 actualStatus   → visible inside block only
 ```
 
-Рассуждение:
+Объяснение:
 
 Inner block can search outward to function and global scopes. Global Scope cannot read function-local or block-local identifiers.
 
-Типичная ошибка:
+Распространённая ошибка:
 
 Пытаться read `actualStatus` after the block.
 
-Automation QA connection:
+Связь с Automation QA:
 
 Это модель Playwright test: global config, test-local data, block-local assertion details.
 

@@ -8,15 +8,15 @@
 
 Conditionals exist because programs need to choose execution paths.
 
-Рассуждение:
+Объяснение:
 
 A test should not always continue after status `500`. It must decide based on evaluated result.
 
-Типичная ошибка:
+Распространённая ошибка:
 
 Think conditionals are only syntax for grouping code.
 
-Automation QA connection:
+Связь с Automation QA:
 
 Tests choose whether to validate body, retry, skip or report failure.
 
@@ -26,15 +26,15 @@ Tests choose whether to validate body, retry, skip or report failure.
 
 Execution path is the branch of code that actually runs after decision.
 
-Рассуждение:
+Объяснение:
 
 In `if / else`, one branch runs and the other is skipped.
 
-Типичная ошибка:
+Распространённая ошибка:
 
 Think JavaScript evaluates all branches and then chooses output.
 
-Automation QA connection:
+Связь с Automation QA:
 
 Only selected assertion path runs.
 
@@ -44,15 +44,15 @@ Only selected assertion path runs.
 
 JavaScript evaluates condition expression.
 
-Рассуждение:
+Объяснение:
 
 `statusCode === 200` becomes `true` or `false`.
 
-Типичная ошибка:
+Распространённая ошибка:
 
 Read condition as text instead of evaluated expression.
 
-Automation QA connection:
+Связь с Automation QA:
 
 Assertions depend on expression results.
 
@@ -62,15 +62,15 @@ Assertions depend on expression results.
 
 It means program uses evaluated result to choose path.
 
-Рассуждение:
+Объяснение:
 
 Boolean expressions are clearest for decisions.
 
-Типичная ошибка:
+Распространённая ошибка:
 
 Rely on unclear truthy/falsy values.
 
-Automation QA connection:
+Связь с Automation QA:
 
 Clear Boolean names improve test readability.
 
@@ -80,15 +80,15 @@ Clear Boolean names improve test readability.
 
 `else` provides alternative path when `if` condition is not selected.
 
-Рассуждение:
+Объяснение:
 
 It makes failure or fallback behavior explicit.
 
-Типичная ошибка:
+Распространённая ошибка:
 
 Omit else when failure path matters.
 
-Automation QA connection:
+Связь с Automation QA:
 
 Status error reporting belongs in else path.
 
@@ -98,15 +98,15 @@ Status error reporting belongs in else path.
 
 `else if` is useful for multiple related decisions in a chain.
 
-Рассуждение:
+Объяснение:
 
 Status code can be success, not found, server error or unexpected.
 
-Типичная ошибка:
+Распространённая ошибка:
 
 Write independent `if` statements when only one category should run.
 
-Automation QA connection:
+Связь с Automation QA:
 
 Response classification.
 
@@ -116,15 +116,15 @@ Response classification.
 
 Nested conditions are useful when inner decision only matters inside outer path.
 
-Рассуждение:
+Объяснение:
 
 Checking body fields makes sense only if status is successful.
 
-Типичная ошибка:
+Распространённая ошибка:
 
 Create deep nesting that hides decision path.
 
-Automation QA connection:
+Связь с Automation QA:
 
 Response validation often nests body checks inside status check.
 
@@ -134,15 +134,15 @@ Response validation often nests body checks inside status check.
 
 `switch` evaluates one expression and chooses matching case.
 
-Рассуждение:
+Объяснение:
 
 Environment selection is a good example.
 
-Типичная ошибка:
+Распространённая ошибка:
 
 Use switch for unrelated conditions.
 
-Automation QA connection:
+Связь с Automation QA:
 
 Config selection.
 
@@ -152,33 +152,33 @@ Config selection.
 
 `default` handles fallback when no case matches.
 
-Рассуждение:
+Объяснение:
 
 Unexpected environment should still have explicit behavior.
 
-Типичная ошибка:
+Распространённая ошибка:
 
 Forget fallback path.
 
-Automation QA connection:
+Связь с Automation QA:
 
 Prevents silent wrong config.
 
-### 10. Readability
+### 10. Читаемость
 
 Ответ:
 
 Readable conditional logic makes decisions visible.
 
-Рассуждение:
+Объяснение:
 
 Named expressions explain why branch exists.
 
-Типичная ошибка:
+Распространённая ошибка:
 
 Put too many checks into one long condition.
 
-Automation QA connection:
+Связь с Automation QA:
 
 Readable tests are easier to debug.
 
@@ -188,15 +188,15 @@ Readable tests are easier to debug.
 
 JavaScript evaluates expression and follows rules.
 
-Рассуждение:
+Объяснение:
 
 Branch choice is determined by result.
 
-Типичная ошибка:
+Распространённая ошибка:
 
 Explain unexpected branch as "random".
 
-Automation QA connection:
+Связь с Automation QA:
 
 Debug evaluated values, not guesses.
 
@@ -206,19 +206,19 @@ Debug evaluated values, not guesses.
 
 Operators produce results used by conditionals.
 
-Рассуждение:
+Объяснение:
 
 `statusCode === 200` is comparison operator result.
 
-Типичная ошибка:
+Распространённая ошибка:
 
 Separate operators and conditionals mentally.
 
-Automation QA connection:
+Связь с Automation QA:
 
 Validation conditions are built from operators.
 
-## Identify execution path
+## Определите execution path
 
 ### Задача 1
 
@@ -226,15 +226,15 @@ Validation conditions are built from operators.
 
 Expression: `statusCode === 200`. Result: `true`. Chosen path: if block. Skipped path: none.
 
-Рассуждение:
+Объяснение:
 
 `200 === 200` is true.
 
-Типичная ошибка:
+Распространённая ошибка:
 
 Ignore evaluated value.
 
-Automation QA connection:
+Связь с Automation QA:
 
 Success validation path runs.
 
@@ -244,15 +244,15 @@ Success validation path runs.
 
 Expression: `statusCode === 200`. Result: `false`. Chosen path: else block. Skipped path: if block.
 
-Рассуждение:
+Объяснение:
 
 `500 === 200` is false.
 
-Типичная ошибка:
+Распространённая ошибка:
 
 Think if block partially runs.
 
-Automation QA connection:
+Связь с Automation QA:
 
 Failure path should report status error.
 
@@ -262,19 +262,19 @@ Failure path should report status error.
 
 Switch expression: `environment`. Value: `'local'`. Chosen path: `case 'local'`. Skipped: other cases and default.
 
-Рассуждение:
+Объяснение:
 
 Switch matches one known case.
 
-Типичная ошибка:
+Распространённая ошибка:
 
 Expect default to run even after matching case.
 
-Automation QA connection:
+Связь с Automation QA:
 
 Environment config selection.
 
-## Predict the output before running
+## Предскажите вывод перед запуском
 
 ### Задача 1
 
@@ -284,15 +284,15 @@ Environment config selection.
 Not success
 ```
 
-Рассуждение:
+Объяснение:
 
 `404 === 200` is false, so else branch runs.
 
-Типичная ошибка:
+Распространённая ошибка:
 
 Read only variable name, not comparison.
 
-Automation QA connection:
+Связь с Automation QA:
 
 Non-200 status follows failure path.
 
@@ -304,15 +304,15 @@ Non-200 status follows failure path.
 Server error
 ```
 
-Рассуждение:
+Объяснение:
 
 First two conditions are false; `503 >= 500` is true.
 
-Типичная ошибка:
+Распространённая ошибка:
 
 Expect default after one false condition.
 
-Automation QA connection:
+Связь с Automation QA:
 
 Server error classification.
 
@@ -324,15 +324,15 @@ Server error classification.
 Missing id
 ```
 
-Рассуждение:
+Объяснение:
 
 Status is OK, so inner condition runs. `id` is not in empty object.
 
-Типичная ошибка:
+Распространённая ошибка:
 
 Skip inner decision.
 
-Automation QA connection:
+Связь с Automation QA:
 
 Body validation after successful status.
 
@@ -344,19 +344,19 @@ Body validation after successful status.
 Default
 ```
 
-Рассуждение:
+Объяснение:
 
 No case matches `'qa'`, so default branch runs.
 
-Типичная ошибка:
+Распространённая ошибка:
 
 Expect unmatched switch to do nothing when default exists.
 
-Automation QA connection:
+Связь с Automation QA:
 
 Fallback environment selection.
 
-## Code reading
+## Чтение кода
 
 Ответ:
 
@@ -380,19 +380,19 @@ if (isStatusOk && isFastEnough && hasUser) {
 }
 ```
 
-Рассуждение:
+Объяснение:
 
 Named expressions expose decisions.
 
-Типичная ошибка:
+Распространённая ошибка:
 
 Make one long condition and hide intent.
 
-Automation QA connection:
+Связь с Automation QA:
 
 Readable validation is easier to maintain.
 
-## Debugging tasks
+## Задачи на отладку
 
 ### Задача 1
 
@@ -410,15 +410,15 @@ if (statusCode === 200) {
 }
 ```
 
-Рассуждение:
+Объяснение:
 
 Operators matter: `=` and `===` perform different operations.
 
-Типичная ошибка:
+Распространённая ошибка:
 
 Use assignment in condition accidentally.
 
-Automation QA connection:
+Связь с Automation QA:
 
 Can make tests pass incorrectly.
 
@@ -436,15 +436,15 @@ if ('id' in responseBody) {
 }
 ```
 
-Рассуждение:
+Объяснение:
 
 Presence check and truthy check are different decisions.
 
-Типичная ошибка:
+Распространённая ошибка:
 
 Treat value truthiness as property existence.
 
-Automation QA connection:
+Связь с Automation QA:
 
 API IDs can be `0`.
 
@@ -465,19 +465,19 @@ if (isStatusOk && isFastEnough && hasUser && isUserActive) {
 }
 ```
 
-Рассуждение:
+Объяснение:
 
 Names explain decisions.
 
-Типичная ошибка:
+Распространённая ошибка:
 
 Compress all QA intent into one expression.
 
-Automation QA connection:
+Связь с Automation QA:
 
 Improves test review.
 
-## QA-oriented tasks
+## QA-задачи
 
 ### Сценарий 1
 
@@ -491,15 +491,15 @@ if (statusCode === 200) {
 }
 ```
 
-Рассуждение:
+Объяснение:
 
 Status decides validation path.
 
-Типичная ошибка:
+Распространённая ошибка:
 
 Validate body even after bad status.
 
-Automation QA connection:
+Связь с Automation QA:
 
 Basic API test flow.
 
@@ -515,15 +515,15 @@ if (statusCode >= 500) {
 }
 ```
 
-Рассуждение:
+Объяснение:
 
 Server error status chooses retry path.
 
-Типичная ошибка:
+Распространённая ошибка:
 
 Retry every non-200 status.
 
-Automation QA connection:
+Связь с Automation QA:
 
 Retry logic starts with condition.
 
@@ -544,15 +544,15 @@ switch (environment) {
 }
 ```
 
-Рассуждение:
+Объяснение:
 
 Switch chooses based on one value.
 
-Типичная ошибка:
+Распространённая ошибка:
 
 Forget default branch.
 
-Automation QA connection:
+Связь с Automation QA:
 
 Environment config selection.
 
@@ -568,19 +568,19 @@ if (responseType === 'user') {
 }
 ```
 
-Рассуждение:
+Объяснение:
 
 Response type chooses assertion path.
 
-Типичная ошибка:
+Распространённая ошибка:
 
 Run user assertions for every response.
 
-Automation QA connection:
+Связь с Automation QA:
 
 Dynamic response validation.
 
-## Mini-project
+## Мини-проект
 
 Возможное решение:
 
@@ -633,14 +633,14 @@ body has email          | true              | valid response        | required f
 environment is staging  | true              | staging config        | correct config selected
 ```
 
-Рассуждение:
+Объяснение:
 
 The code separates decisions into named expressions and then chooses paths.
 
-Типичная ошибка:
+Распространённая ошибка:
 
 Put all checks into one unreadable condition.
 
-Automation QA connection:
+Связь с Automation QA:
 
 This mirrors real API response validation.

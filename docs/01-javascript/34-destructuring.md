@@ -777,7 +777,7 @@ console.log(userName);
 console.log(userRole);
 ```
 
-### Пример 4. Common mistakes
+### Пример 4. Типичные ошибки
 
 ```javascript
 const user = {
@@ -1199,7 +1199,7 @@ response
     └── name
 ```
 
-### 10. Current JavaScript model
+### 10. Текущая модель JavaScript
 
 ```text
 Objects
@@ -1228,7 +1228,7 @@ payload
 └── role
 ```
 
-### 13. Readability
+### 13. Читаемость
 
 ```text
 response.status
@@ -1239,7 +1239,7 @@ response.durationMs
 const { status, body, durationMs } = response
 ```
 
-### 14. Common mistakes
+### 14. Типичные ошибки
 
 ```text
 name: userName
@@ -1290,7 +1290,7 @@ before: object with properties
 after:  same object with properties
 ```
 
-### 19. Bridge to Optional Chaining
+### 19. Переход к Optional Chaining
 
 ```text
 nested property
@@ -1302,7 +1302,7 @@ may be missing
 Optional Chaining
 ```
 
-### 20. Mental model summary
+### 20. Краткая ментальная модель
 
 ```text
 open folder
@@ -1415,7 +1415,7 @@ create variables
 continue execution
 ```
 
-### 30. Summary diagram
+### 30. Итоговая схема
 
 ```text
 Destructuring
@@ -1512,7 +1512,7 @@ Destructuring не создает новый object. Он создает variabl
 
 ---
 
-## Quick Check
+## Проверьте себя
 
 Ответьте без запуска кода.
 

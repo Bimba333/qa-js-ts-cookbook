@@ -938,7 +938,7 @@ Lexical Environment
 Hoisting
 ```
 
-### Bridge to TDZ
+### Переход к TDZ
 
 После этой главы остается важный вопрос:
 
@@ -1208,7 +1208,7 @@ examples/chapter-12/05-declaration-vs-initialization.js
 
 Показывает, что declaration и assignment — разные части.
 
-### Пример 6. Common mistakes
+### Пример 6. Типичные ошибки
 
 Файл:
 
@@ -1522,7 +1522,7 @@ let / const
 
 ---
 
-## Quick Check
+## Проверьте себя
 
 1. Почему Hoisting существует?
 

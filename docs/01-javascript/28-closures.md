@@ -969,7 +969,7 @@ JavaScript execution model
     └── next chapter
 ```
 
-Bridge to this:
+Переход к this:
 
 ```text
 Closure
@@ -1365,7 +1365,7 @@ function createStatusValidator(expectedStatus) {
 }
 ```
 
-Common mistakes:
+Типичные ошибки:
 
 ```text
 Global mutable state
@@ -1596,7 +1596,7 @@ Answer
 ├── code result
 ├── reasoning
 ├── common mistake
-└── Automation QA connection
+└── Связь с Automation QA
 ```
 
 ---
@@ -1663,7 +1663,7 @@ Closure не является магией. Function object удерживает
 * Closures полезны для factory functions, validators, configuration capture и QA helpers.
 * Следующая глава про `this` объяснит другой вопрос: не какие variables видны функции, а как определяется ее execution receiver.
 
-Mental model summary:
+Краткая ментальная модель:
 
 ```text
 Closure
@@ -1675,7 +1675,7 @@ Closure
 
 ---
 
-## Quick Check
+## Проверьте себя
 
 Ответьте без запуска кода:
 

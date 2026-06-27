@@ -8,15 +8,15 @@
 
 Variables существуют, чтобы программист мог работать с сохраненной информацией через понятные имена.
 
-Рассуждение:
+Объяснение:
 
 Memory хранит information, но код должен обращаться к ней читаемо. Identifier дает named access.
 
-Типичная ошибка:
+Распространённая ошибка:
 
 Думать, что variable нужна только для сокращения записи.
 
-Automation QA connection:
+Связь с Automation QA:
 
 В тестах variables дают имена configuration, test data, expected и actual values.
 
@@ -26,15 +26,15 @@ Automation QA connection:
 
 Variable лучше понимать как named access к stored information, а не как физическую коробку.
 
-Рассуждение:
+Объяснение:
 
 Модель коробки мешает понять reassignment, `const`, references и будущие темы про objects.
 
-Типичная ошибка:
+Распространённая ошибка:
 
 Считать, что value физически лежит "внутри variable".
 
-Automation QA connection:
+Связь с Automation QA:
 
 При debugging важно понимать, что `baseUrl` — имя доступа к текущей сохраненной информации.
 
@@ -44,15 +44,15 @@ Automation QA connection:
 
 Identifier — имя, которое используется в коде для доступа к информации.
 
-Рассуждение:
+Объяснение:
 
 В `const browserName = 'chromium'` identifier — `browserName`.
 
-Типичная ошибка:
+Распространённая ошибка:
 
 Путать identifier с value.
 
-Automation QA connection:
+Связь с Automation QA:
 
 Хорошие identifiers вроде `expectedStatus` и `actualStatus` делают assertions читаемыми.
 
@@ -62,15 +62,15 @@ Automation QA connection:
 
 Declaration регистрирует identifier.
 
-Рассуждение:
+Объяснение:
 
 `let testStatus;` сообщает engine, что имя `testStatus` существует.
 
-Типичная ошибка:
+Распространённая ошибка:
 
 Считать declaration записью meaningful value.
 
-Automation QA connection:
+Связь с Automation QA:
 
 Declaration без initialization может использоваться для значения, которое появится позже в setup.
 
@@ -80,15 +80,15 @@ Declaration без initialization может использоваться для
 
 Initialization дает initial value при declaration.
 
-Рассуждение:
+Объяснение:
 
 `const baseUrl = 'https://example.com'` одновременно объявляет `baseUrl` и дает ему initial value.
 
-Типичная ошибка:
+Распространённая ошибка:
 
 Не отличать initialization от later assignment.
 
-Automation QA connection:
+Связь с Automation QA:
 
 Большинство stable test data лучше initialized сразу через `const`.
 
@@ -98,15 +98,15 @@ Automation QA connection:
 
 Assignment записывает value в уже существующий named access.
 
-Рассуждение:
+Объяснение:
 
 После `let testStatus;` строка `testStatus = 'created';` является assignment.
 
-Типичная ошибка:
+Распространённая ошибка:
 
 Называть любое `=` initialization.
 
-Automation QA connection:
+Связь с Automation QA:
 
 Fixture может объявить status заранее и assignment-ить его после шага подготовки.
 
@@ -116,15 +116,15 @@ Fixture может объявить status заранее и assignment-ить �
 
 Reassignment — новое assignment для variable, у которой уже было value.
 
-Рассуждение:
+Объяснение:
 
 `testStatus = 'ready'` после `testStatus = 'created'` заменяет current value.
 
-Типичная ошибка:
+Распространённая ошибка:
 
 Ожидать, что read вернет старое value.
 
-Automation QA connection:
+Связь с Automation QA:
 
 Status сущности в тесте часто меняется: `created → active`.
 
@@ -134,15 +134,15 @@ Status сущности в тесте часто меняется: `created → 
 
 Declaration регистрирует имя. Assignment записывает значение.
 
-Рассуждение:
+Объяснение:
 
 Это разные операции engine: сначала имя должно существовать, затем с ним можно связать value.
 
-Типичная ошибка:
+Распространённая ошибка:
 
 Считать `let status;` и `status = 'ready';` одинаковыми действиями.
 
-Automation QA connection:
+Связь с Automation QA:
 
 При чтении setup-кода важно видеть, где имя создано, а где оно получило данные.
 
@@ -152,15 +152,15 @@ Automation QA connection:
 
 Это объявление identifier без initial meaningful value.
 
-Рассуждение:
+Объяснение:
 
 `let testStatus;` регистрирует имя, но programmer value еще не предоставлен. Reading дает `undefined`.
 
-Типичная ошибка:
+Распространённая ошибка:
 
 Ожидать пустую строку или `null`.
 
-Automation QA connection:
+Связь с Automation QA:
 
 Если helper возвращает `undefined`, причина может быть в том, что variable была declared, но не получила value.
 
@@ -170,15 +170,15 @@ Automation QA connection:
 
 Потому что `const` запрещает reassignment. Если не дать value сразу, его нельзя будет записать позже.
 
-Рассуждение:
+Объяснение:
 
 `const` должен получить initial value в declaration.
 
-Типичная ошибка:
+Распространённая ошибка:
 
 Писать `const userName;` и планировать assignment позже.
 
-Automation QA connection:
+Связь с Automation QA:
 
 Stable test data через `const` должна быть известна в момент объявления.
 
@@ -188,15 +188,15 @@ Stable test data через `const` должна быть известна в м
 
 `let` уместен, когда value должно измениться.
 
-Рассуждение:
+Объяснение:
 
 Если status, counter или temporary state меняется, `let` честно сообщает о reassignment.
 
-Типичная ошибка:
+Распространённая ошибка:
 
 Использовать `let` везде по привычке.
 
-Automation QA connection:
+Связь с Automation QA:
 
 `let retryCount` или `let setupStatus` читаются как значения, которые будут обновляться.
 
@@ -206,19 +206,19 @@ Automation QA connection:
 
 `var` имеет исторические особенности, а современный код обычно лучше выражает намерение через `const` и `let`.
 
-Рассуждение:
+Объяснение:
 
 `const` показывает отсутствие reassignment, `let` показывает возможность reassignment.
 
-Типичная ошибка:
+Распространённая ошибка:
 
 Считать `var`, `let`, `const` полными синонимами.
 
-Automation QA connection:
+Связь с Automation QA:
 
 В новых Playwright-проектах `const` и `let` улучшают читаемость test code.
 
-## Identify declaration / initialization / assignment
+## Определите declaration / initialization / assignment
 
 ### Фрагмент 1
 
@@ -234,15 +234,15 @@ console.log(baseUrl);
 └── read
 ```
 
-Рассуждение:
+Объяснение:
 
 `baseUrl` registered и сразу получает initial value.
 
-Типичная ошибка:
+Распространённая ошибка:
 
 Называть `console.log` assignment.
 
-Automation QA connection:
+Связь с Automation QA:
 
 Так обычно хранят stable configuration.
 
@@ -264,15 +264,15 @@ console.log(testStatus);
 └── read
 ```
 
-Рассуждение:
+Объяснение:
 
 Declaration и assignment находятся на разных строках.
 
-Типичная ошибка:
+Распространённая ошибка:
 
 Считать первую строку initialization.
 
-Automation QA connection:
+Связь с Automation QA:
 
 Так может выглядеть setup, где value появляется после отдельного шага.
 
@@ -298,19 +298,19 @@ console.log(retryCount);
 └── read
 ```
 
-Рассуждение:
+Объяснение:
 
 После initial value каждое новое assignment является reassignment.
 
-Типичная ошибка:
+Распространённая ошибка:
 
 Ожидать, что все прошлые values читаются через `retryCount`.
 
-Automation QA connection:
+Связь с Automation QA:
 
 Retry counters в тестах работают по такой модели.
 
-## Predict output before running
+## Предскажите вывод перед запуском
 
 ### Задача 1
 
@@ -320,15 +320,15 @@ Retry counters в тестах работают по такой модели.
 undefined
 ```
 
-Рассуждение:
+Объяснение:
 
 `let testStatus;` declared identifier без programmer-provided value.
 
-Типичная ошибка:
+Распространённая ошибка:
 
 Ожидать ошибку или пустую строку.
 
-Automation QA connection:
+Связь с Automation QA:
 
 `undefined` часто показывает, что test data не была initialized.
 
@@ -340,15 +340,15 @@ Automation QA connection:
 ready
 ```
 
-Рассуждение:
+Объяснение:
 
 `testStatus` initialized как `'created'`, затем reassignment-ится на `'ready'`.
 
-Типичная ошибка:
+Распространённая ошибка:
 
 Ожидать `created`.
 
-Automation QA connection:
+Связь с Automation QA:
 
 Status после setup может отличаться от initial status.
 
@@ -360,19 +360,19 @@ Status после setup может отличаться от initial status.
 https://example.com/login
 ```
 
-Рассуждение:
+Объяснение:
 
 `baseUrl` и `path` initialized, затем их values используются для initialization `loginUrl`.
 
-Типичная ошибка:
+Распространённая ошибка:
 
 Не заметить, что `loginUrl` хранит результат выражения.
 
-Automation QA connection:
+Связь с Automation QA:
 
 Так часто собирается URL для `page.goto` или API request.
 
-## Predict variable state
+## Предскажите состояние переменной
 
 Ответ:
 
@@ -390,19 +390,19 @@ Step | Operation                    | Current variable state
 finished
 ```
 
-Рассуждение:
+Объяснение:
 
 Read получает current value после последнего reassignment.
 
-Типичная ошибка:
+Распространённая ошибка:
 
 Записать `started` как итоговое значение.
 
-Automation QA connection:
+Связь с Automation QA:
 
 Setup status в fixture может меняться до того, как тест начнет основной сценарий.
 
-## Code reading
+## Чтение кода
 
 Ответ:
 
@@ -436,19 +436,19 @@ testStatus    → "ready"
 expectedTitle → "Dashboard"
 ```
 
-Рассуждение:
+Объяснение:
 
 Только `testStatus` меняется после initialization.
 
-Типичная ошибка:
+Распространённая ошибка:
 
 Считать `expectedTitle` изменяемым только потому, что он выводится позже.
 
-Automation QA connection:
+Связь с Automation QA:
 
 Так можно анализировать readable test setup перед assertions.
 
-## Debugging tasks
+## Задачи на отладку
 
 ### Задача 1
 
@@ -466,15 +466,15 @@ testStatus reassigned to "ready"
 read gives "ready"
 ```
 
-Рассуждение:
+Объяснение:
 
 `console.log` читает current value.
 
-Типичная ошибка:
+Распространённая ошибка:
 
 Запомнить первое value и игнорировать дальнейшие assignments.
 
-Automation QA connection:
+Связь с Automation QA:
 
 При падении проверки нужно смотреть все updates test state до assertion.
 
@@ -484,15 +484,15 @@ Automation QA connection:
 
 `const` должен быть initialized в момент declaration.
 
-Рассуждение:
+Объяснение:
 
 Later assignment для `const` невозможен, потому что `const` запрещает reassignment.
 
-Типичная ошибка:
+Распространённая ошибка:
 
 Использовать `const` как `let`, но "более строго".
 
-Automation QA connection:
+Связь с Automation QA:
 
 Если value появится только после async setup или helper call, нужно объявлять `const` там, где value уже доступно, или использовать другой дизайн.
 
@@ -502,19 +502,19 @@ Automation QA connection:
 
 Лучше `const`, потому что `baseUrl` не меняется.
 
-Рассуждение:
+Объяснение:
 
 `let` сообщает читателю, что reassignment возможен и ожидаем.
 
-Типичная ошибка:
+Распространённая ошибка:
 
 Использовать `let` по умолчанию.
 
-Automation QA connection:
+Связь с Automation QA:
 
 Configuration values должны выглядеть стабильными, если тест не должен их менять.
 
-## QA-oriented tasks
+## QA-задачи
 
 ### Сценарий 1
 
@@ -528,15 +528,15 @@ expected user status   → const
 actual user status     → const, если получен один раз
 ```
 
-Рассуждение:
+Объяснение:
 
 Configuration и expected values обычно не reassignment-ятся. Setup status меняется по ходу подготовки. Actual status может быть `const`, если он получен один раз и дальше только читается.
 
-Типичная ошибка:
+Распространённая ошибка:
 
 Использовать `let` для всего test data.
 
-Automation QA connection:
+Связь с Automation QA:
 
 Хороший выбор keyword делает тестовый сценарий легче читать.
 
@@ -554,15 +554,15 @@ const userName = buildUserName();
 └── initialize userName with helper result
 ```
 
-Рассуждение:
+Объяснение:
 
 Результат helper получает readable name.
 
-Типичная ошибка:
+Распространённая ошибка:
 
 Считать, что `userName` initialized до вызова helper.
 
-Automation QA connection:
+Связь с Automation QA:
 
 Так test data builders передают результаты в тест.
 
@@ -578,19 +578,19 @@ let status = 'created';
 status = 'active';
 ```
 
-Рассуждение:
+Объяснение:
 
 Status должен измениться, значит reassignment является частью сценария.
 
-Типичная ошибка:
+Распространённая ошибка:
 
 Использовать `const` и потом пытаться изменить status.
 
-Automation QA connection:
+Связь с Automation QA:
 
 Lifecycle сущностей в API/UI тестах часто требует явного изменения status.
 
-## Mini-project
+## Мини-проект
 
 Один из вариантов:
 
@@ -622,15 +622,15 @@ expectedStatus | const   | "ready"                 | no            | expected va
 actualStatus   | const   | current testStatus      | no            | captured once for comparison
 ```
 
-Рассуждение:
+Объяснение:
 
 `const` используется там, где named access не должен reassignment-иться. `let` используется для changing state.
 
-Типичная ошибка:
+Распространённая ошибка:
 
 Использовать `let` для `baseUrl`, `browserName`, `expectedStatus` и `actualStatus` без причины.
 
-Automation QA connection:
+Связь с Automation QA:
 
 Мини-проект повторяет структуру реального теста: configuration, changing setup state, expected и actual values.
 

@@ -8,7 +8,7 @@
 
 **Объяснение:** ordinary access tries to continue even when intermediate value is missing.
 
-**Типичная ошибка:** считать Optional Chaining default value mechanism.
+**Распространённая ошибка:** считать Optional Chaining default value mechanism.
 
 **Связь с Automation QA:** API responses often have optional nested fields.
 
@@ -18,7 +18,7 @@
 
 **Объяснение:** `user.profile.name` fails if `profile` is `undefined`.
 
-**Типичная ошибка:** think missing nested property always returns `undefined`; only the direct missing read does.
+**Распространённая ошибка:** think missing nested property always returns `undefined`; only the direct missing read does.
 
 **Связь с Automation QA:** flaky response shape can crash test before assertion.
 
@@ -28,7 +28,7 @@
 
 **Объяснение:** if current value is `null` or `undefined`, traversal stops.
 
-**Типичная ошибка:** place `?.` after the risky access.
+**Распространённая ошибка:** place `?.` after the risky access.
 
 **Связь с Automation QA:** put checkpoint before optional response levels.
 
@@ -38,7 +38,7 @@
 
 **Объяснение:** safe stop result is `undefined`.
 
-**Типичная ошибка:** expect empty string, `false` or default value.
+**Распространённая ошибка:** expect empty string, `false` or default value.
 
 **Связь с Automation QA:** helper can receive `undefined` and decide assertion behavior.
 
@@ -48,7 +48,7 @@
 
 **Объяснение:** Optional Chaining only returns `undefined` on safe stop. Fallback values are next chapter.
 
-**Типичная ошибка:** expect `config.retryPolicy?.retries` to become `0` or `3`.
+**Распространённая ошибка:** expect `config.retryPolicy?.retries` to become `0` or `3`.
 
 **Связь с Automation QA:** config defaults need separate logic.
 
@@ -58,7 +58,7 @@
 
 **Объяснение:** it only reads.
 
-**Типичная ошибка:** think missing path is created.
+**Распространённая ошибка:** think missing path is created.
 
 **Связь с Automation QA:** response object remains unchanged.
 
@@ -68,7 +68,7 @@
 
 **Объяснение:** if checkpoint fails, later properties are not read.
 
-**Типичная ошибка:** think JavaScript still evaluates full chain.
+**Распространённая ошибка:** think JavaScript still evaluates full chain.
 
 **Связь с Automation QA:** prevents crash while reading optional nested field.
 
@@ -78,7 +78,7 @@
 
 **Объяснение:** checkpoint protects only the access where it is placed.
 
-**Типичная ошибка:** put one `?.` too late.
+**Распространённая ошибка:** put one `?.` too late.
 
 **Связь с Automation QA:** optional `body`, `user`, `profile` may each need checkpoint.
 
@@ -88,7 +88,7 @@
 
 **Объяснение:** Optional Chaining can hide an invalid response shape by returning `undefined`.
 
-**Типичная ошибка:** use it everywhere.
+**Распространённая ошибка:** use it everywhere.
 
 **Связь с Automation QA:** required fields like `id` should usually be asserted clearly.
 
@@ -98,7 +98,7 @@
 
 **Объяснение:** these structures often have partially optional paths.
 
-**Типичная ошибка:** use Optional Chaining instead of schema validation.
+**Распространённая ошибка:** use Optional Chaining instead of schema validation.
 
 **Связь с Automation QA:** safe reading and validation are different steps.
 
@@ -112,7 +112,7 @@
 
 **Объяснение:** `profile` is neither `null` nor `undefined`, so chain continues to `name`.
 
-**Типичная ошибка:** assume `?.` always returns `undefined`.
+**Распространённая ошибка:** assume `?.` always returns `undefined`.
 
 **Связь с Automation QA:** optional access still returns actual value when checked levels are neither `null` nor `undefined`.
 
@@ -122,7 +122,7 @@
 
 **Объяснение:** `profile` is `undefined`, so `profile?.name` stops.
 
-**Типичная ошибка:** expect TypeError.
+**Распространённая ошибка:** expect TypeError.
 
 **Связь с Automation QA:** optional field can be safely absent.
 
@@ -132,7 +132,7 @@
 
 **Объяснение:** `settings` is `undefined`, so chain stops before reading `theme`.
 
-**Типичная ошибка:** expect default theme.
+**Распространённая ошибка:** expect default theme.
 
 **Связь с Automation QA:** defaults require next topic, not Optional Chaining alone.
 
@@ -150,7 +150,7 @@ Anna
 
 **Объяснение:** checked values in the full path are neither `null` nor `undefined`.
 
-**Типичная ошибка:** overthink `?.`; it continues normally when current value is neither `null` nor `undefined`.
+**Распространённая ошибка:** overthink `?.`; it continues normally when current value is neither `null` nor `undefined`.
 
 **Связь с Automation QA:** safe access works for successful full response too.
 
@@ -165,7 +165,7 @@ done
 
 **Объяснение:** `profile` missing, chain stops safely, execution continues.
 
-**Типичная ошибка:** expect crash.
+**Распространённая ошибка:** expect crash.
 
 **Связь с Automation QA:** test helper can continue to produce controlled assertion.
 
@@ -180,7 +180,7 @@ undefined
 
 **Объяснение:** `retryPolicy` missing. Optional chain returns `undefined`; config remains unchanged.
 
-**Типичная ошибка:** expect retryPolicy to be created.
+**Распространённая ошибка:** expect retryPolicy to be created.
 
 **Связь с Automation QA:** optional config read does not mutate config.
 
@@ -194,7 +194,7 @@ undefined
 
 **Объяснение:** `discount` is `null`, so optional chain stops.
 
-**Типичная ошибка:** think `?.` only handles `undefined`; it handles `null` too.
+**Распространённая ошибка:** think `?.` only handles `undefined`; it handles `null` too.
 
 **Связь с Automation QA:** nullable API fields are common.
 
@@ -218,7 +218,7 @@ console.log(name);
 
 **Объяснение:** `user` may be missing, so checkpoint must be before `.profile`.
 
-**Типичная ошибка:** place `?.` after risky level.
+**Распространённая ошибка:** place `?.` after risky level.
 
 **Связь с Automation QA:** response body may not include user in error cases.
 
@@ -244,7 +244,7 @@ undefined
 
 **Объяснение:** fallback values require Nullish Coalescing or another explicit default mechanism, studied next.
 
-**Типичная ошибка:** confuse safe traversal with fallback.
+**Распространённая ошибка:** confuse safe traversal with fallback.
 
 **Связь с Automation QA:** config defaults must be explicit.
 
@@ -262,7 +262,7 @@ console.log(role);
 
 **Объяснение:** `body` may be missing, so checkpoint must be there.
 
-**Типичная ошибка:** protect `user` but not `body`.
+**Распространённая ошибка:** protect `user` but not `body`.
 
 **Связь с Automation QA:** failed API responses may not have body.
 
@@ -279,7 +279,7 @@ const userTheme = response.body.user.settings?.theme;
 
 **Объяснение:** profile exists, settings may be missing.
 
-**Типичная ошибка:** use ordinary access for optional settings.
+**Распространённая ошибка:** use ordinary access for optional settings.
 
 **Связь с Automation QA:** optional user settings are common in profile APIs.
 
@@ -291,7 +291,7 @@ const retries = config.retryPolicy?.retries;
 
 **Объяснение:** if retryPolicy missing, `retries` is `undefined`.
 
-**Типичная ошибка:** expect default retry count.
+**Распространённая ошибка:** expect default retry count.
 
 **Связь с Automation QA:** fallback will be added with Nullish Coalescing later.
 
@@ -309,7 +309,7 @@ const city = payload.user?.address?.city;
 
 **Объяснение:** checkpoint belongs before missing level.
 
-**Типичная ошибка:** put `?.` only at final property.
+**Распространённая ошибка:** put `?.` only at final property.
 
 **Связь с Automation QA:** request payloads often omit optional address.
 
@@ -319,7 +319,7 @@ const city = payload.user?.address?.city;
 
 **Объяснение:** if `id` is required, missing `id` should be visible as test failure.
 
-**Типичная ошибка:** make required data silently optional.
+**Распространённая ошибка:** make required data silently optional.
 
 **Связь с Automation QA:** required contract fields should be validated explicitly.
 
@@ -335,13 +335,13 @@ after reporter
 
 **Объяснение:** `reporter.log` is missing, so optional method call stops safely and returns `undefined`. Execution continues.
 
-**Типичная ошибка:** expect TypeError.
+**Распространённая ошибка:** expect TypeError.
 
 **Связь с Automation QA:** optional reporter hooks can be called safely when configured.
 
 ---
 
-## 7. Mini-project
+## 7. Мини-проект
 
 Один из возможных вариант:
 
@@ -391,7 +391,7 @@ undefined
 
 **Объяснение:** chains stop at missing `profile`, `address` or `retryPolicy`. Optional Chaining returns `undefined`; it does not provide defaults.
 
-**Типичная ошибка:** expect `retries` to become some configured default.
+**Распространённая ошибка:** expect `retries` to become some configured default.
 
 **Связь с Automation QA:** realistic responses often have optional profile details and optional config sections.
 

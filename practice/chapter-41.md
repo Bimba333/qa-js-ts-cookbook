@@ -205,7 +205,7 @@ console.log(Object.keys(config));
 
 ---
 
-## 6. Mini-project
+## 6. Мини-проект
 
 Создайте small framework infrastructure object.
 

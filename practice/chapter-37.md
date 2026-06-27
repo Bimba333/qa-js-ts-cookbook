@@ -304,7 +304,7 @@ const expectedUser = {
 
 ---
 
-## 8. Mini-project
+## 8. Мини-проект
 
 Создайте один файл с QA scenario.
 

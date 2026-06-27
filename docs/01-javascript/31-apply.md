@@ -624,7 +624,7 @@ this chapter
 └── apply()     -> manual receiver + array/array-like arguments
 ```
 
-Summary diagram:
+Итоговая схема:
 
 ```text
 apply(receiver, [a, b, c])
@@ -712,7 +712,7 @@ Envelope
 
 ---
 
-### Mental model summary
+### Краткая ментальная модель
 
 ```text
 call()
@@ -726,7 +726,7 @@ apply()
 └── arguments as ordered argument list
 ```
 
-Readability:
+Читаемость:
 
 ```text
 Use call()
@@ -742,7 +742,7 @@ Use apply()
 
 ---
 
-### Current JavaScript model
+### Текущая модель JavaScript
 
 ```text
 Functions
@@ -759,7 +759,7 @@ Functions
     └── arguments as array or array-like list
 ```
 
-Bridge to bind():
+Переход к bind():
 
 ```text
 call()
@@ -1040,7 +1040,7 @@ apply()
 
 `apply()` полезен, когда arguments уже подготовлены как array или array-like ordered argument list.
 
-Practical usage:
+Практическое использование:
 
 ```text
 Test data array
@@ -1071,7 +1071,7 @@ const requestData = [200, '/users', '{"name":"Anna"}'];
 console.log(validateRequest.apply(config, requestData));
 ```
 
-Readability:
+Читаемость:
 
 ```text
 apply()
@@ -1253,7 +1253,7 @@ functionObject.apply(receiver, argumentsList)
 * `apply()` удобен, когда arguments уже собраны в array или array-like collection.
 * `bind()` будет изучаться дальше и решит другую задачу: создать новую function с выбранным receiver.
 
-Mental model summary:
+Краткая ментальная модель:
 
 ```text
 apply()
@@ -1265,7 +1265,7 @@ apply()
 
 ---
 
-## Quick Check
+## Проверьте себя
 
 Ответьте без запуска кода:
 

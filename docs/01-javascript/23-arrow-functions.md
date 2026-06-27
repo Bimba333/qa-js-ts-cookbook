@@ -528,7 +528,7 @@ Implicit return
 
 Важно не превращать implicit return в головоломку. Если короткая запись ухудшает читаемость, лучше использовать тело с `{}` и `return`.
 
-### Readability
+### Читаемость
 
 Arrow Function полезна, когда сокращение делает код яснее.
 
@@ -631,7 +631,7 @@ Functions
     └── shorter syntax for function object
 ```
 
-Value model remains:
+Модель values остается такой:
 
 ```text
 JavaScript values
@@ -647,7 +647,7 @@ JavaScript values
         └── can be created with arrow syntax
 ```
 
-Bridge to Parameters:
+Переход к Parameters:
 
 ```text
 Arrow Functions
@@ -976,7 +976,7 @@ Arrow Functions полезны, когда:
 5. Стало ли читателю проще?
 ```
 
-Readability rule:
+Правило читаемости:
 
 ```text
 Shorter
@@ -1127,7 +1127,7 @@ Arrow Function
 
 ---
 
-## Quick Check
+## Проверьте себя
 
 Ответьте без запуска кода.
 

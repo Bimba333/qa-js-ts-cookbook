@@ -715,7 +715,7 @@ console.log(profileName);
 console.log('execution continues');
 ```
 
-### Пример 4. Common mistakes
+### Пример 4. Типичные ошибки
 
 ```javascript
 const response = {
@@ -1083,7 +1083,7 @@ ordinary access -> TypeError
 optional access -> undefined
 ```
 
-### 9. Current JavaScript model
+### 9. Текущая модель JavaScript
 
 ```text
 Objects
@@ -1103,7 +1103,7 @@ apiResponse
         └── optional profile
 ```
 
-### 11. Readability
+### 11. Читаемость
 
 ```text
 safe traversal
@@ -1112,7 +1112,7 @@ safe traversal
 intent visible in property chain
 ```
 
-### 12. Common mistakes
+### 12. Типичные ошибки
 
 ```text
 ?. too late
@@ -1215,7 +1215,7 @@ checkpoint
 continue or stop
 ```
 
-### 21. Bridge to Nullish Coalescing
+### 21. Переход к Nullish Coalescing
 
 ```text
 optional chaining result
@@ -1274,7 +1274,7 @@ read optional field
 decide assertion
 ```
 
-### 27. Mental model summary
+### 27. Краткая ментальная модель
 
 ```text
 path inspection
@@ -1329,7 +1329,7 @@ undefined result
 variable receives undefined
 ```
 
-### 32. Summary diagram
+### 32. Итоговая схема
 
 ```text
 Optional Chaining
@@ -1421,7 +1421,7 @@ Optional Chaining is not a default value mechanism. It only performs safe traver
 
 ---
 
-## Quick Check
+## Проверьте себя
 
 Ответьте без запуска кода.
 

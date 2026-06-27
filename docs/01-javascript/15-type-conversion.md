@@ -234,7 +234,7 @@ const nextRetry = retriesFromEnv + 1;
 console.log(nextRetry);
 ```
 
-Result:
+Результат:
 
 ```text
 31
@@ -244,7 +244,7 @@ If you expected numeric addition, this is a bug. The operation did not receive t
 
 Conversion exists because JavaScript often tries to adapt values for operations.
 
-Mental model: translator.
+Ментальная модель: translator.
 
 ```text
 Operation speaks Number
@@ -561,14 +561,14 @@ Truthy examples
 └── {}
 ```
 
-Important:
+Важно:
 
 ```javascript
 console.log(Boolean('false'));
 console.log(Boolean('0'));
 ```
 
-Result:
+Результат:
 
 ```text
 true
@@ -595,7 +595,7 @@ const headlessFromEnv = 'false';
 console.log(Boolean(headlessFromEnv));
 ```
 
-Result:
+Результат:
 
 ```text
 true
@@ -622,7 +622,7 @@ Falsy values
 └── NaN
 ```
 
-Examples:
+Примеры:
 
 ```javascript
 console.log(Boolean(false));
@@ -835,7 +835,7 @@ Conversion needed?
 
 ## Ментальная модель
 
-### Translator
+### Переводчик
 
 Conversion is like translator:
 
@@ -846,7 +846,7 @@ Translator:         Number()
 Result:             Number value
 ```
 
-### Adapter
+### Адаптер
 
 Conversion is like adapter:
 
@@ -1021,7 +1021,7 @@ const retries = '3';
 console.log(retries + 1);
 ```
 
-Result:
+Результат:
 
 ```text
 31
@@ -1037,7 +1037,7 @@ const headless = 'false';
 console.log(Boolean(headless));
 ```
 
-Result:
+Результат:
 
 ```text
 true
@@ -1051,7 +1051,7 @@ const price = Number('not available');
 console.log(price);
 ```
 
-Result:
+Результат:
 
 ```text
 NaN
@@ -1261,7 +1261,7 @@ What happens when JavaScript compares two values?
 
 ---
 
-## Quick Check
+## Проверьте себя
 
 Ответьте без запуска кода.
 

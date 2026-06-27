@@ -73,6 +73,8 @@
 ## Раздел 5. Arrays
 
 * [Arrays](docs/01-javascript/44-arrays.md)
+* [push() and pop()](docs/01-javascript/45-push-pop.md)
+* [shift() and unshift()](docs/01-javascript/46-shift-unshift.md)
 
 > Остальные главы будут добавляться по мере написания.
 

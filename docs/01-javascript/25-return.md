@@ -225,15 +225,15 @@ Parameters
 Function body
 │
 ▼
-Return value
+Возвращаемое значение
 │
 ▼
 Caller
 ```
 
-### Return value
+### Возвращаемое значение
 
-Return value - это значение, которое функция отправляет вызывающему коду.
+Возвращаемое значение - это значение, которое функция отправляет вызывающему коду.
 
 ```javascript
 function isSuccessfulStatus(statusCode) {
@@ -332,7 +332,7 @@ return boundary
     ▼
 Outside
 │
-└── caller receives value
+└── вызывающий код receives value
 ```
 
 ### Returning immediately
@@ -446,7 +446,7 @@ function ends
 no explicit return
 │
 ▼
-caller receives undefined
+вызывающий код receives undefined
 ```
 
 Важно:
@@ -541,14 +541,14 @@ function isSuccessfulStatus(statusCode) {
 }
 ```
 
-Readability:
+Читаемость:
 
 ```text
 Good return
 │
 ├── clear function name
 ├── clear returned value
-└── clear caller usage
+└── clear вызывающий код usage
 ```
 
 ---
@@ -596,7 +596,7 @@ I evaluate statusCode === 200.
 I reach return.
 │
 ▼
-I send the value back to the caller.
+I send the value back to the вызывающий код.
 │
 ▼
 I stop executing this function.
@@ -637,7 +637,7 @@ Functions
     └── data leaves function
 ```
 
-Bridge to Rest Parameters:
+Переход к Rest Parameters:
 
 ```text
 Parameters
@@ -662,7 +662,7 @@ Rest Parameters
 
 ## Ментальная модель
 
-### Vending machine
+### Автомат с выдачей
 
 Функция похожа на автомат.
 
@@ -676,9 +676,9 @@ Machine works
 Machine gives output
 ```
 
-Arguments входят. Return value выходит.
+Arguments входят. Возвращаемое значение выходит.
 
-### Calculator
+### Калькулятор
 
 ```text
 Calculator
@@ -714,7 +714,7 @@ Response
 └── return value
 ```
 
-### Delivery service
+### Служба доставки
 
 ```text
 Caller sends package
@@ -726,7 +726,7 @@ Function processes package
 Function sends result back
 ```
 
-Mental model summary:
+Краткая ментальная модель:
 
 ```text
 Arguments enter the function.
@@ -741,7 +741,7 @@ Complete Return overview:
 ```text
 return
 │
-├── sends value to caller
+├── sends value to вызывающий код
 ├── stops function execution
 ├── can appear in one path
 ├── can appear in multiple paths
@@ -775,7 +775,7 @@ node examples/chapter-28/06-qa-example.js
 
 ### 02-return-value.js
 
-Показывает, как caller получает return value.
+Показывает, как вызывающий код получает return value.
 
 ### 03-multiple-return.js
 
@@ -801,7 +801,7 @@ node examples/chapter-28/06-qa-example.js
 
 `console.log()` выводит значение в консоль. Он не заменяет `return`.
 
-### Что получает caller, если в функции нет return?
+### Что получает вызывающий код, если в функции нет return?
 
 Caller получает `undefined`.
 
@@ -875,7 +875,7 @@ function isSuccessfulStatus(statusCode) {
 }
 ```
 
-Функция печатает результат, но caller получает `undefined`.
+Функция печатает результат, но вызывающий код получает `undefined`.
 
 Исправление:
 
@@ -916,7 +916,7 @@ function isSuccessfulStatus(statusCode) {
 isSuccessfulStatus(200);
 ```
 
-Результат возвращен, но caller его не использовал.
+Результат возвращен, но вызывающий код его не использовал.
 
 ### Ошибка 5. Неочевидные return paths
 
@@ -943,7 +943,7 @@ Function calculates value
 return sends value
 │
 ▼
-caller stores or checks value
+вызывающий код stores or checks value
 ```
 
 Практический чек-лист:
@@ -951,7 +951,7 @@ caller stores or checks value
 ```text
 1. Что функция получает?
 2. Что функция должна вычислить?
-3. Что caller должен получить?
+3. Что вызывающий код должен получить?
 4. Где находится return?
 5. Есть ли код после return?
 6. Не перепутан ли console.log с return?
@@ -973,7 +973,7 @@ boolean
 
 ## Использование в Automation QA
 
-### Validators returning boolean
+### Validators, возвращающие boolean
 
 ```javascript
 function isSuccessfulStatus(statusCode) {
@@ -1012,9 +1012,9 @@ const passed = isSuccessfulStatus(200);
 console.log(passed);
 ```
 
-Return value можно сохранить и использовать дальше.
+Возвращаемое значение можно сохранить и использовать дальше.
 
-### Returning parsed values
+### Возврат parsed values
 
 На высоком уровне helper может вернуть подготовленное значение:
 
@@ -1026,7 +1026,7 @@ function getUserEmail() {
 
 Подробная работа с parsed objects будет изучаться позже.
 
-### Returning locators
+### Возврат locators
 
 На высоком уровне helper может вернуть locator name:
 
@@ -1038,7 +1038,7 @@ function getProfileButtonName() {
 
 Настоящие Playwright locators будут изучаться позже.
 
-### Readable helper APIs
+### Читаемые helper APIs
 
 Хороший helper API показывает, что входит и что выходит.
 
@@ -1079,7 +1079,7 @@ console.log(value)
 
 return value
 │
-└── sends value back to caller
+└── sends value back to вызывающий код
 ```
 
 Следующая глава ответит:
@@ -1095,11 +1095,11 @@ return value
 ## Что нужно запомнить
 
 * `return` отправляет значение вызывающему коду.
-* Return value - значение, которое получает caller.
+* Возвращаемое значение - значение, которое получает вызывающий код.
 * `return` немедленно завершает выполнение функции.
 * Код после выполненного `return` не запускается.
 * Функция без explicit return возвращает `undefined`.
-* `console.log()` печатает значение, но не возвращает его caller.
+* `console.log()` печатает значение, но не возвращает его вызывающий код.
 * Функция может иметь один return statement.
 * Функция может иметь multiple return paths.
 * В Automation QA validators часто возвращают boolean.
@@ -1107,13 +1107,13 @@ return value
 
 ---
 
-## Quick Check
+## Проверьте себя
 
 Ответьте без запуска кода.
 
 1. Зачем существует `return`?
 2. Что такое return value?
-3. Что получает caller?
+3. Что получает вызывающий код?
 4. Что происходит после выполнения `return`?
 5. Что возвращает функция без explicit return?
 6. Чем `console.log()` отличается от `return`?

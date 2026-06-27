@@ -546,7 +546,7 @@ Question:
 
 > What object is `admin` referring to right now?
 
-Answer:
+Ответ:
 
 ```text
 The object that contains name: "Anna".
@@ -692,7 +692,7 @@ Question:
 
 > What object is `admin` referring to right now?
 
-Answer:
+Ответ:
 
 ```text
 Object A.
@@ -905,7 +905,7 @@ References
 Stack & Heap
 ```
 
-### Common mistakes diagram
+### Схема типичных ошибок
 
 ```text
 Mistake
@@ -921,7 +921,7 @@ Consequence
 └── admin.name update is visible through user.name
 ```
 
-### Bridge to Stack & Heap
+### Переход к Stack & Heap
 
 References explain behavior:
 
@@ -1279,7 +1279,7 @@ actualUser.name = 'Kate';
 console.log(expectedUser.name);
 ```
 
-Result:
+Результат:
 
 ```text
 Kate
@@ -1329,7 +1329,7 @@ function markAsAdmin(user) {
 }
 ```
 
-This helper changes the object it receives. Functions will be studied later, but the reference behavior is already visible: if caller and helper work with same object, mutation is shared.
+This helper changes the object it receives. Functions will be studied later, but the reference behavior is already visible: if вызывающий код and helper work with same object, mutation is shared.
 
 ### Ошибка 5. Hide shared mutable test data
 
@@ -1564,7 +1564,7 @@ The next chapter will explain Stack & Heap as the common conceptual memory model
 
 ---
 
-## Quick Check
+## Проверьте себя
 
 Ответьте без запуска кода.
 

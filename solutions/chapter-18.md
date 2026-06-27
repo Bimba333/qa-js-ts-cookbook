@@ -2,333 +2,333 @@
 
 ## Концептуальные вопросы
 
-### 1. Why type conversion exists
+### 1. Почему существует type conversion?
 
 Ответ:
 
-Type conversion exists because operations often expect one type but receive another.
+Type conversion существует потому, что операции часто ожидают один тип значения, а получают другой.
 
-Рассуждение:
+Объяснение:
 
-Values come from APIs, forms, env variables and code. Their types may not match operation expectation.
+Values приходят из API, форм, переменных окружения и кода. Их реальные types не всегда совпадают с тем, что ожидает операция.
 
-Типичная ошибка:
+Распространённая ошибка:
 
-Think conversion happens randomly.
+Считать, что conversion происходит случайно.
 
-Automation QA connection:
+Связь с Automation QA:
 
-Tests frequently receive strings where they need numbers or booleans.
+В тестах часто приходят строки там, где для проверки нужны numbers или booleans.
 
-### 2. Operation expectation
-
-Ответ:
-
-It means every operation works best with certain value types.
-
-Рассуждение:
-
-Subtraction expects numeric values. Text building expects string values. Conditions use Boolean conversion.
-
-Типичная ошибка:
-
-Look only at input values, not at operation.
-
-Automation QA connection:
-
-Assertions fail when expected type and actual type are different.
-
-### 3. Implicit conversion
+### 2. Что означает ожидание операции?
 
 Ответ:
 
-Implicit conversion is automatic conversion triggered by JavaScript operation.
+Это означает, что каждая операция лучше всего работает с определенными value types.
 
-Рассуждение:
+Объяснение:
 
-`'5' - 1` converts `'5'` to Number because subtraction expects Number.
+Вычитание ожидает numeric values. Построение текста ожидает string values. Условия используют Boolean conversion.
 
-Типичная ошибка:
+Распространённая ошибка:
 
-Assume implicit means random.
+Смотреть только на входные values и не учитывать операцию, которая с ними выполняется.
 
-Automation QA connection:
+Связь с Automation QA:
 
-Hidden implicit conversion can hide bugs in tests.
+Assertions часто падают именно потому, что expected type и actual type отличаются.
 
-### 4. Explicit conversion
-
-Ответ:
-
-Explicit conversion is conversion requested by programmer through `Number()`, `String()` or `Boolean()`.
-
-Рассуждение:
-
-It makes intent visible.
-
-Типичная ошибка:
-
-Rely on tricks like subtracting zero instead of clear conversion.
-
-Automation QA connection:
-
-Explicit conversion makes test setup easier to review.
-
-### 5. Why explicit conversion is better in tests
+### 3. Что такое implicit conversion?
 
 Ответ:
 
-It documents expected type and prevents hidden behavior.
+Implicit conversion — это автоматическое преобразование, которое запускает JavaScript-операция.
 
-Рассуждение:
+Объяснение:
 
-`Number(retriesFromEnv)` is clearer than relying on an operation to convert.
+`'5' - 1` преобразует `'5'` в Number, потому что вычитание ожидает Number.
 
-Типичная ошибка:
+Распространённая ошибка:
 
-Let assertion or operation perform conversion implicitly.
+Думать, что implicit означает "без правил".
 
-Automation QA connection:
+Связь с Automation QA:
 
-Readable tests fail with clearer reasons.
+Скрытая implicit conversion может маскировать ошибку в тесте.
 
-### 6. `Number()`
-
-Ответ:
-
-`Number()` converts value to Number or produces `NaN` if meaningful numeric conversion is impossible.
-
-Рассуждение:
-
-`Number('5')` gives `5`; `Number('abc')` gives `NaN`.
-
-Типичная ошибка:
-
-Assume every string can become useful number.
-
-Automation QA connection:
-
-Parsing API numeric fields needs validation.
-
-### 7. `NaN`
+### 4. Что такое explicit conversion?
 
 Ответ:
 
-`NaN` appears when Number conversion cannot produce meaningful numeric value.
+Explicit conversion — это преобразование, которое программист явно вызывает через `Number()`, `String()` или `Boolean()`.
 
-Рассуждение:
+Объяснение:
 
-`Number(undefined)` and `Number('abc')` are examples.
+Такой код показывает намерение явно.
 
-Типичная ошибка:
+Распространённая ошибка:
 
-Ignore `NaN` and continue numeric calculation.
+Использовать трюки вроде вычитания нуля вместо понятного преобразования.
 
-Automation QA connection:
+Связь с Automation QA:
 
-`NaN` often reveals wrong response field or wrong parsing.
+Explicit conversion делает test setup проще для ревью.
 
-### 8. `String()`
-
-Ответ:
-
-`String()` converts value to string representation.
-
-Рассуждение:
-
-`String(200)` becomes `'200'`; `String(null)` becomes `'null'`.
-
-Типичная ошибка:
-
-Think `null` becomes empty string.
-
-Automation QA connection:
-
-Useful when filling text fields or building readable logs.
-
-### 9. `Boolean()`
+### 5. Почему explicit conversion лучше в тестах?
 
 Ответ:
 
-`Boolean()` converts value according to truthy/falsy rules.
+Она документирует ожидаемый type и уменьшает риск скрытого поведения.
 
-Рассуждение:
+Объяснение:
 
-Non-empty strings are truthy; empty string is falsy.
+`Number(retriesFromEnv)` понятнее, чем надежда на то, что какая-то операция сама преобразует значение.
 
-Типичная ошибка:
+Распространённая ошибка:
 
-Expect `Boolean('false')` to be false.
+Позволять assertion или операции выполнять conversion неявно.
 
-Automation QA connection:
+Связь с Automation QA:
 
-Env variables like `'false'` need explicit parsing.
+Читаемые тесты падают с более понятной причиной.
 
-### 10. Truthy
-
-Ответ:
-
-Truthy value becomes `true` in Boolean conversion.
-
-Рассуждение:
-
-Examples: `'hello'`, `'false'`, `1`, `{}`, `[]`.
-
-Типичная ошибка:
-
-Treat truthy as semantically true.
-
-Automation QA connection:
-
-Non-empty UI text is truthy even if it says `"false"`.
-
-### 11. Falsy
+### 6. Что делает `Number()`?
 
 Ответ:
 
-Falsy value becomes `false` in Boolean conversion.
+`Number()` преобразует value в Number или возвращает `NaN`, если осмысленное numeric conversion невозможно.
 
-Рассуждение:
+Объяснение:
 
-Examples: `false`, `0`, `''`, `null`, `undefined`, `NaN`.
+`Number('5')` дает `5`; `Number('abc')` дает `NaN`.
 
-Типичная ошибка:
+Распространённая ошибка:
 
-Think all empty-looking values behave the same in every context.
+Считать, что каждая строка может стать полезным number.
 
-Automation QA connection:
+Связь с Automation QA:
 
-Missing API fields can become falsy through Boolean conversion.
+Парсинг numeric fields из API требует отдельной проверки.
 
-### 12. Conversion is not random
-
-Ответ:
-
-Conversion follows language rules based on what type operation expects.
-
-Рассуждение:
-
-Same value can be converted differently in different operations because operations expect different types.
-
-Типичная ошибка:
-
-Memorize outputs without understanding operation expectation.
-
-Automation QA connection:
-
-Understanding rules helps debug failures faster.
-
-### 13. Equality chapter
+### 7. Что означает `NaN`?
 
 Ответ:
 
-Equality has separate comparison rules and should be studied independently.
+`NaN` появляется, когда Number conversion не может получить осмысленное числовое значение.
 
-Рассуждение:
+Объяснение:
 
-Conversions may appear in comparisons, but equality algorithms are not this chapter's topic.
+`Number(undefined)` и `Number('abc')` — типичные примеры.
 
-Типичная ошибка:
+Распространённая ошибка:
 
-Mix conversion rules with equality behavior too early.
+Игнорировать `NaN` и продолжать numeric calculation.
 
-Automation QA connection:
+Связь с Automation QA:
 
-Assertions require careful comparison strategy.
+`NaN` часто показывает неправильное поле response или ошибку парсинга.
 
-## Identify conversions
+### 8. Что делает `String()`?
+
+Ответ:
+
+`String()` преобразует value в строковое представление.
+
+Объяснение:
+
+`String(200)` становится `'200'`; `String(null)` становится `'null'`.
+
+Распространённая ошибка:
+
+Думать, что `null` превращается в пустую строку.
+
+Связь с Automation QA:
+
+Это полезно при заполнении text fields и построении читаемых логов.
+
+### 9. Что делает `Boolean()`?
+
+Ответ:
+
+`Boolean()` преобразует value по правилам truthy/falsy.
+
+Объяснение:
+
+Непустые строки являются truthy; пустая строка является falsy.
+
+Распространённая ошибка:
+
+Ожидать, что `Boolean('false')` вернет `false`.
+
+Связь с Automation QA:
+
+Переменные окружения вроде `'false'` требуют явного semantic parsing.
+
+### 10. Что такое truthy?
+
+Ответ:
+
+Truthy value становится `true` при Boolean conversion.
+
+Объяснение:
+
+Примеры: `'hello'`, `'false'`, `1`, `{}`, `[]`.
+
+Распространённая ошибка:
+
+Считать truthy value семантически истинным.
+
+Связь с Automation QA:
+
+Непустой UI-текст является truthy, даже если в нем написано `"false"`.
+
+### 11. Что такое falsy?
+
+Ответ:
+
+Falsy value становится `false` при Boolean conversion.
+
+Объяснение:
+
+Примеры: `false`, `0`, `''`, `null`, `undefined`, `NaN`.
+
+Распространённая ошибка:
+
+Думать, что все "пустые на вид" values ведут себя одинаково в любом контексте.
+
+Связь с Automation QA:
+
+Отсутствующие API-поля могут стать falsy при Boolean conversion.
+
+### 12. Почему conversion не случайна?
+
+Ответ:
+
+Conversion следует правилам языка и зависит от того, какой type ожидает операция.
+
+Объяснение:
+
+Одно и то же value может преобразовываться по-разному в разных операциях, потому что операции ожидают разные types.
+
+Распространённая ошибка:
+
+Запоминать результаты без понимания ожиданий операции.
+
+Связь с Automation QA:
+
+Понимание правил ускоряет debugging.
+
+### 13. Почему equality изучается отдельно?
+
+Ответ:
+
+Equality имеет собственные правила сравнения и должна изучаться отдельно.
+
+Объяснение:
+
+Conversions могут появляться внутри сравнений, но equality algorithms не являются темой этой главы.
+
+Распространённая ошибка:
+
+Смешивать conversion rules и equality behavior слишком рано.
+
+Связь с Automation QA:
+
+Assertions требуют аккуратной стратегии сравнения.
+
+## Определите преобразования
 
 ### Задача 1
 
 Ответ:
 
-Explicit conversion. `Number()` expects numeric conversion. Result: `200`.
+Explicit conversion. `Number()` выполняет numeric conversion. Результат: `200`.
 
-Рассуждение:
+Объяснение:
 
-String `'200'` can become Number `200`.
+Строка `'200'` может стать Number `200`.
 
-Типичная ошибка:
+Распространённая ошибка:
 
-Keep status code as string when numeric assertion expects number.
+Оставить status code строкой, когда numeric assertion ожидает number.
 
-Automation QA connection:
+Связь с Automation QA:
 
-API may return status code as string.
+API может возвращать status code как string.
 
 ### Задача 2
 
 Ответ:
 
-Explicit conversion. `String()` expects string representation. Result: `'false'`.
+Explicit conversion. `String()` создает строковое представление. Результат: `'false'`.
 
-Рассуждение:
+Объяснение:
 
-Boolean false becomes string text `'false'`.
+Boolean false становится string text `'false'`.
 
-Типичная ошибка:
+Распространённая ошибка:
 
-Expect empty string.
+Ожидать пустую строку.
 
-Automation QA connection:
+Связь с Automation QA:
 
-Useful in logs and form fields.
+Это полезно в логах и form fields.
 
 ### Задача 3
 
 Ответ:
 
-Explicit conversion. `Boolean()` applies truthy/falsy rules. Result: `false`.
+Explicit conversion. `Boolean()` применяет truthy/falsy rules. Результат: `false`.
 
-Рассуждение:
+Объяснение:
 
-Empty string is falsy.
+Пустая строка является falsy.
 
-Типичная ошибка:
+Распространённая ошибка:
 
-Treat every string as truthy without checking empty string.
+Считать каждую строку truthy, не проверяя пустую строку.
 
-Automation QA connection:
+Связь с Automation QA:
 
-Empty form input can become false in Boolean conversion.
+Пустое поле формы может стать `false` при Boolean conversion.
 
 ### Задача 4
 
 Ответ:
 
-Implicit conversion. Subtraction expects Number. Result: `4`.
+Implicit conversion. Вычитание ожидает Number. Результат: `4`.
 
-Рассуждение:
+Объяснение:
 
-`'5'` becomes Number `5`.
+`'5'` становится Number `5`.
 
-Типичная ошибка:
+Распространённая ошибка:
 
-Expect string operation.
+Ожидать string operation.
 
-Automation QA connection:
+Связь с Automation QA:
 
-Numeric calculations from string API values may appear to work implicitly.
+Numeric calculations со строками из API могут казаться рабочими из-за implicit conversion.
 
 ### Задача 5
 
 Ответ:
 
-Implicit conversion. With string operand, `+` produces string concatenation here. Result: `'51'`.
+Implicit conversion. При string operand оператор `+` здесь создает string concatenation. Результат: `'51'`.
 
-Рассуждение:
+Объяснение:
 
-Number `1` is adapted to string context.
+Number `1` адаптируется к string context.
 
-Типичная ошибка:
+Распространённая ошибка:
 
-Expect numeric addition.
+Ожидать numeric addition.
 
-Automation QA connection:
+Связь с Automation QA:
 
-Bug with env values: `'3' + 1` becomes `'31'`.
+Баг с env values: `'3' + 1` превращается в `'31'`.
 
-## Predict the output before running
+## Предскажите вывод перед запуском
 
 ### Задача 1
 
@@ -342,17 +342,17 @@ NaN
 0
 ```
 
-Рассуждение:
+Объяснение:
 
-Numeric strings convert to numbers. Empty string and `null` convert to `0`. Non-numeric string and `undefined` produce `NaN`.
+Numeric strings преобразуются в numbers. Пустая строка и `null` преобразуются в `0`. Non-numeric string и `undefined` дают `NaN`.
 
-Типичная ошибка:
+Распространённая ошибка:
 
-Expect empty string to produce `NaN`.
+Ожидать, что пустая строка даст `NaN`.
 
-Automation QA connection:
+Связь с Automation QA:
 
-Input parsing should handle empty and invalid values intentionally.
+Input parsing должен осознанно обрабатывать пустые и некорректные values.
 
 ### Задача 2
 
@@ -365,17 +365,17 @@ null
 undefined
 ```
 
-Рассуждение:
+Объяснение:
 
-These are string representations, even if console output may not show quotes.
+Это string representations, даже если console output может не показывать кавычки.
 
-Типичная ошибка:
+Распространённая ошибка:
 
-Forget result type is String.
+Забыть, что результат имеет type String.
 
-Automation QA connection:
+Связь с Automation QA:
 
-String conversion is useful for UI text values.
+String conversion полезна для UI text values.
 
 ### Задача 3
 
@@ -390,17 +390,17 @@ true
 false
 ```
 
-Рассуждение:
+Объяснение:
 
-Non-empty strings are truthy. Empty string, zero and `NaN` are falsy.
+Непустые строки являются truthy. Пустая строка, zero и `NaN` являются falsy.
 
-Типичная ошибка:
+Распространённая ошибка:
 
-Expect `'false'` or `'0'` to be false.
+Ожидать, что `'false'` или `'0'` дадут `false`.
 
-Automation QA connection:
+Связь с Automation QA:
 
-Env strings are dangerous for Boolean conversion.
+Env strings опасны для Boolean conversion.
 
 ### Задача 4
 
@@ -412,19 +412,19 @@ Env strings are dangerous for Boolean conversion.
 10
 ```
 
-Рассуждение:
+Объяснение:
 
-`+` with string creates string result here. `-` and `*` expect Number.
+`+` со строкой здесь создает string result. `-` и `*` ожидают Number.
 
-Типичная ошибка:
+Распространённая ошибка:
 
-Assume all arithmetic-like operators behave same with strings.
+Считать, что все arithmetic-like operators одинаково работают со строками.
 
-Automation QA connection:
+Связь с Automation QA:
 
-Hidden conversion bugs often appear in calculations from API strings.
+Hidden conversion bugs часто появляются в расчетах из API strings.
 
-## Truthy / Falsy exercises
+## Упражнения на truthy и falsy
 
 Ответ:
 
@@ -451,29 +451,29 @@ undefined
 NaN
 ```
 
-Рассуждение:
+Объяснение:
 
-Boolean conversion follows fixed truthy/falsy rules.
+Boolean conversion следует фиксированным truthy/falsy rules.
 
-Типичная ошибка:
+Распространённая ошибка:
 
-Think empty array or empty object is falsy.
+Думать, что empty array или empty object являются falsy.
 
-Automation QA connection:
+Связь с Automation QA:
 
-Empty response objects or arrays are still truthy.
+Пустые response objects или arrays все равно являются truthy.
 
-## Code reading
+## Чтение кода
 
 Ответ:
 
-Hidden conversion: `retriesFromEnv + 1` creates string concatenation behavior.
+Hidden conversion: `retriesFromEnv + 1` создает string concatenation behavior.
 
 Explicit conversion: `Boolean(headlessFromEnv)`.
 
-Bug: `retryCount` becomes `'31'`; `headless` becomes `true`.
+Bug: `retryCount` становится `'31'`; `headless` становится `true`.
 
-Clearer version:
+Более понятный вариант:
 
 ```javascript
 const retriesFromEnv = '3';
@@ -491,27 +491,27 @@ console.log(retryCount);
 console.log(headless);
 ```
 
-Рассуждение:
+Объяснение:
 
-The config values are strings. They must be parsed according to intended type.
+Config values являются strings. Их нужно парсить в соответствии с ожидаемым type.
 
-Типичная ошибка:
+Распространённая ошибка:
 
-Use `Boolean('false')`.
+Использовать `Boolean('false')`.
 
-Automation QA connection:
+Связь с Automation QA:
 
-Environment parsing is a common source of test config bugs.
+Environment parsing — частый источник bugs в test config.
 
-## Debugging tasks
+## Задачи на отладку
 
 ### Задача 1
 
 Ответ:
 
-Problem: `retriesFromEnv` is String, and `+` produces string concatenation here.
+Проблема: `retriesFromEnv` — String, а `+` здесь выполняет string concatenation.
 
-Fix:
+Исправление:
 
 ```javascript
 const retriesFromEnv = '3';
@@ -520,25 +520,25 @@ const nextRetry = Number(retriesFromEnv) + 1;
 console.log(nextRetry);
 ```
 
-Рассуждение:
+Объяснение:
 
-Numeric addition expects Number values.
+Numeric addition ожидает Number values.
 
-Типичная ошибка:
+Распространённая ошибка:
 
-Assume numeric-looking string is Number.
+Считать, что строка, похожая на число, уже является Number.
 
-Automation QA connection:
+Связь с Automation QA:
 
-Env variables are strings.
+Env variables являются strings.
 
 ### Задача 2
 
 Ответ:
 
-`Boolean('false')` is `true` because `'false'` is non-empty string.
+`Boolean('false')` возвращает `true`, потому что `'false'` — непустая строка.
 
-Better parsing:
+Более точный parsing:
 
 ```javascript
 const headlessFromEnv = 'false';
@@ -550,41 +550,41 @@ const booleanTextMap = {
 const headless = booleanTextMap[headlessFromEnv];
 ```
 
-Рассуждение:
+Объяснение:
 
-Boolean conversion checks truthiness, not semantic meaning of text.
+Boolean conversion проверяет truthiness, а не смысл текста.
 
-Типичная ошибка:
+Распространённая ошибка:
 
-Treat string content `"false"` as Boolean false.
+Считать текст `"false"` Boolean false.
 
-Automation QA connection:
+Связь с Automation QA:
 
-Can invert browser launch settings in test runs.
+Такая ошибка может неожиданно изменить browser launch settings.
 
 ### Задача 3
 
 Ответ:
 
-Output:
+Вывод:
 
 ```text
 NaN
 ```
 
-Рассуждение:
+Объяснение:
 
-`'not available'` cannot be converted to meaningful Number.
+`'not available'` не может быть преобразовано в осмысленный Number.
 
-Типичная ошибка:
+Распространённая ошибка:
 
-Ignore invalid numeric field.
+Игнорировать некорректное numeric field.
 
-Automation QA connection:
+Связь с Automation QA:
 
-API response validation should catch invalid numeric data.
+API response validation должна ловить некорректные numeric data.
 
-## QA-oriented tasks
+## QA-задачи
 
 ### Сценарий 1
 
@@ -598,17 +598,17 @@ const response = {
 const statusCode = Number(response.statusCode);
 ```
 
-Рассуждение:
+Объяснение:
 
-Test expects numeric status code, but API field is String.
+Тест ожидает numeric status code, но API field является String.
 
-Типичная ошибка:
+Распространённая ошибка:
 
-Compare visually similar values without type awareness.
+Сравнивать визуально похожие values без учета type.
 
-Automation QA connection:
+Связь с Automation QA:
 
-API contract may represent numbers as strings.
+API contract может представлять numbers как strings.
 
 ### Сценарий 2
 
@@ -620,17 +620,17 @@ const age = Number(ageFromInput);
 const nextAge = age + 1;
 ```
 
-Рассуждение:
+Объяснение:
 
-Form values are often strings; numeric calculation expects Number.
+Form values часто являются strings; numeric calculation ожидает Number.
 
-Типичная ошибка:
+Распространённая ошибка:
 
-Use `ageFromInput + 1` and get `'301'`.
+Использовать `ageFromInput + 1` и получить `'301'`.
 
-Automation QA connection:
+Связь с Automation QA:
 
-UI automation often reads text input values.
+UI automation часто читает text input values.
 
 ### Сценарий 3
 
@@ -649,17 +649,17 @@ const booleanTextMap = {
 const headless = booleanTextMap[headlessFromEnv];
 ```
 
-Рассуждение:
+Объяснение:
 
-Retries needs Number. Headless needs explicit semantic parsing.
+Retries должен быть Number. Headless требует явного semantic parsing.
 
-Типичная ошибка:
+Распространённая ошибка:
 
-Use `Boolean(headlessFromEnv)`.
+Использовать `Boolean(headlessFromEnv)`.
 
-Automation QA connection:
+Связь с Automation QA:
 
-Correct config parsing prevents wrong browser mode and retry count.
+Корректный config parsing предотвращает неправильный browser mode и retry count.
 
 ### Сценарий 4
 
@@ -668,29 +668,29 @@ Correct config parsing prevents wrong browser mode and retry count.
 Checklist:
 
 ```text
-1. What source produced the value?
-2. What is the current type?
-3. What type does operation expect?
-4. Is conversion implicit or explicit?
-5. Can Number conversion produce NaN?
-6. Is Boolean conversion affected by non-empty strings?
-7. Are env variables parsed intentionally?
-8. Are form values converted before numeric operations?
+1. Какой источник создал value?
+2. Какой текущий type?
+3. Какой type ожидает операция?
+4. Conversion implicit или explicit?
+5. Может ли Number conversion дать NaN?
+6. Влияют ли непустые строки на Boolean conversion?
+7. Env variables парсятся осознанно?
+8. Form values преобразуются перед numeric operations?
 ```
 
-Рассуждение:
+Объяснение:
 
-Most conversion bugs come from mismatch between received type and expected operation type.
+Большинство conversion bugs появляются из-за несовпадения received type и expected operation type.
 
-Типичная ошибка:
+Распространённая ошибка:
 
-Debug final assertion without checking input types.
+Отлаживать финальный assertion, не проверив входные types.
 
-Automation QA connection:
+Связь с Automation QA:
 
-Useful for API, UI and Playwright config debugging.
+Это полезно для debugging API, UI и Playwright config.
 
-## Mini-project
+## Мини-проект
 
 Возможное решение:
 
@@ -721,25 +721,25 @@ console.log(typeof parsedConfig.timeoutMs);
 console.log(typeof parsedConfig.baseUrl);
 ```
 
-Report:
+Отчет:
 
 ```text
-Property  | Raw value             | Raw type | Parsed value          | Parsed type | Why conversion is needed
---------- | --------------------- | -------- | --------------------- | ----------- | -------------------------
-retries   | "3"                   | string   | 3                     | number      | retry count is numeric
-headless  | "false"               | string   | false                 | boolean     | browser mode is boolean
-timeoutMs | "5000"                | string   | 5000                  | number      | timeout calculation
-baseUrl   | "https://example.com" | string   | "https://example.com" | string      | URL remains text
+Property  | Raw value             | Raw type | Parsed value          | Parsed type | Почему нужна conversion
+--------- | --------------------- | -------- | --------------------- | ----------- | -----------------------
+retries   | "3"                   | string   | 3                     | number      | retry count числовой
+headless  | "false"               | string   | false                 | boolean     | browser mode boolean
+timeoutMs | "5000"                | string   | 5000                  | number      | timeout участвует в расчетах
+baseUrl   | "https://example.com" | string   | "https://example.com" | string      | URL остается текстом
 ```
 
-Рассуждение:
+Объяснение:
 
-Raw config simulates env values. Parsed config makes intended types explicit.
+Raw config имитирует env values. Parsed config делает ожидаемые types явными.
 
-Типичная ошибка:
+Распространённая ошибка:
 
-Use `Boolean(rawConfig.headless)` and get `true`.
+Использовать `Boolean(rawConfig.headless)` и получить `true`.
 
-Automation QA connection:
+Связь с Automation QA:
 
-This is the foundation of reliable framework configuration parsing.
+Это основа надежного framework configuration parsing.

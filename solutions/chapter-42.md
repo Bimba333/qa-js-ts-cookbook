@@ -8,7 +8,7 @@
 
 **Объяснение:** если 100 objects use same behavior, удобнее изменить behavior в одном месте.
 
-**Типичная ошибка:** думать только об экономии памяти. Важнее maintainability and consistency.
+**Распространённая ошибка:** думать только об экономии памяти. Важнее maintainability and consistency.
 
 **Связь с Automation QA:** Page Objects, API clients and validators часто имеют разные data, но одинаковые actions.
 
@@ -18,7 +18,7 @@
 
 **Объяснение:** если logic changes, one missed copy can create inconsistent behavior.
 
-**Типичная ошибка:** считать duplication harmless because code still runs.
+**Распространённая ошибка:** считать duplication harmless because code still runs.
 
 **Связь с Automation QA:** одинаковые validators in tests can diverge and produce flaky or misleading results.
 
@@ -28,7 +28,7 @@
 
 **Объяснение:** when property is missing on object, JavaScript can look in its prototype.
 
-**Типичная ошибка:** define prototype primarily as class or inheritance mechanism.
+**Распространённая ошибка:** define prototype primarily as class or inheritance mechanism.
 
 **Связь с Automation QA:** shared framework behavior can be modeled as shared object.
 
@@ -38,7 +38,7 @@
 
 **Объяснение:** inherited property is available to object but not copied into it.
 
-**Типичная ошибка:** think lookup copies property into object.
+**Распространённая ошибка:** think lookup copies property into object.
 
 **Связь с Automation QA:** Page Object may have own locator data and inherited shared actions.
 
@@ -48,7 +48,7 @@
 
 **Объяснение:** own properties have priority in lookup.
 
-**Типичная ошибка:** expect prototype method to override own method automatically.
+**Распространённая ошибка:** expect prototype method to override own method automatically.
 
 **Связь с Automation QA:** local test object settings can override shared defaults.
 
@@ -58,7 +58,7 @@
 
 **Объяснение:** this is prototype lookup. If property is not found there either, result can become `undefined` in this one-level model.
 
-**Типичная ошибка:** assume missing property immediately becomes `undefined`.
+**Распространённая ошибка:** assume missing property immediately becomes `undefined`.
 
 **Связь с Automation QA:** a helper may use a shared method even if the method is not visible directly in object literal.
 
@@ -68,7 +68,7 @@
 
 **Объяснение:** inheritance is a later architectural layer. Prototype begins with property lookup and shared behavior.
 
-**Типичная ошибка:** start from classes and lose the mechanism.
+**Распространённая ошибка:** start from classes and lose the mechanism.
 
 **Связь с Automation QA:** framework code is easier to understand when shared behavior is separated from object-specific data.
 
@@ -78,7 +78,7 @@
 
 **Объяснение:** prototype is shared. Putting changing user-specific data there makes ownership unclear.
 
-**Типичная ошибка:** store `currentUser`, `lastResponse` or `lastAction` in shared behavior object.
+**Распространённая ошибка:** store `currentUser`, `lastResponse` or `lastAction` in shared behavior object.
 
 **Связь с Automation QA:** shared mutable state is a common cause of flaky tests.
 
@@ -88,7 +88,7 @@
 
 **Объяснение:** this lets you inspect the shared behavior object.
 
-**Типичная ошибка:** expect it to return object's own properties.
+**Распространённая ошибка:** expect it to return object's own properties.
 
 **Связь с Automation QA:** useful for debugging framework objects and unexpected shared methods.
 
@@ -98,7 +98,7 @@
 
 **Объяснение:** `__proto__` is a detail of accessing prototype relation, not the reason Prototype exists.
 
-**Типичная ошибка:** start learning from `__proto__` and miss shared behavior.
+**Распространённая ошибка:** start learning from `__proto__` and miss shared behavior.
 
 **Связь с Automation QA:** practical debugging benefits more from understanding lookup than from memorizing special access forms.
 
@@ -116,7 +116,7 @@
 
 **Объяснение:** `Object.setPrototypeOf(user, userBehavior)` connects user to prototype object. Lookup can find `describe`, but property remains on prototype.
 
-**Типичная ошибка:** think inherited method becomes own method after first use.
+**Распространённая ошибка:** think inherited method becomes own method after first use.
 
 **Связь с Automation QA:** Page Object instance can use shared methods without storing each method directly.
 
@@ -130,7 +130,7 @@
 
 **Объяснение:** `baseUrl` differs per client. `describeRequest` can be reused.
 
-**Типичная ошибка:** put `baseUrl` into shared behavior object and accidentally share environment state.
+**Распространённая ошибка:** put `baseUrl` into shared behavior object and accidentally share environment state.
 
 **Связь с Automation QA:** API clients usually have own configuration and shared request helpers.
 
@@ -148,7 +148,7 @@
 
 **Объяснение:** method location and receiver are different concepts. Method is found in prototype; receiver is `loginPage` during ordinary invocation.
 
-**Типичная ошибка:** think `this` becomes `pageBehavior` because method is stored there.
+**Распространённая ошибка:** think `this` becomes `pageBehavior` because method is stored there.
 
 **Связь с Automation QA:** shared Page Object action can operate on each concrete page instance.
 
@@ -162,7 +162,7 @@
 
 **Объяснение:** own properties have priority over prototype properties.
 
-**Типичная ошибка:** expect prototype value to override own value.
+**Распространённая ошибка:** expect prototype value to override own value.
 
 **Связь с Automation QA:** test-specific config can override shared defaults.
 
@@ -186,7 +186,7 @@ read user.describe
 
 **Объяснение:** `describe` is inherited through prototype lookup, but `this` inside ordinary call is `user`.
 
-**Типичная ошибка:** separate lookup from invocation poorly and assume `this` points to prototype.
+**Распространённая ошибка:** separate lookup from invocation poorly and assume `this` points to prototype.
 
 **Связь с Automation QA:** shared validator methods can read instance-specific expected/actual values.
 
@@ -206,7 +206,7 @@ read item.missing
 
 **Объяснение:** in this one-level model there is no matching own or prototype property.
 
-**Типичная ошибка:** expect JavaScript to throw on every missing property. Simple property read returns `undefined`.
+**Распространённая ошибка:** expect JavaScript to throw on every missing property. Simple property read returns `undefined`.
 
 **Связь с Automation QA:** missing optional fields in response objects often produce `undefined`; assertions must account for that.
 
@@ -225,7 +225,7 @@ true
 
 **Объяснение:** `describe` is found in prototype. `this` is `user`, so method reads `user.name` and `user.role`. `Object.getPrototypeOf(user)` returns `behavior`.
 
-**Типичная ошибка:** expect `this.name` to be `undefined` because `behavior` has no `name`.
+**Распространённая ошибка:** expect `this.name` to be `undefined` because `behavior` has no `name`.
 
 **Связь с Automation QA:** shared behavior reads concrete client or page data through receiver.
 
@@ -239,7 +239,7 @@ own status
 
 **Объяснение:** own property `status` exists on `object`, so lookup does not need prototype `status`.
 
-**Типичная ошибка:** assume prototype value has higher priority.
+**Распространённая ошибка:** assume prototype value has higher priority.
 
 **Связь с Automation QA:** local runtime status can override shared default status.
 
@@ -254,7 +254,7 @@ Kate
 
 **Объяснение:** both objects find the same `describe` function object in the same prototype. During `secondUser.describe()`, receiver is `secondUser`, so `this.name` is `'Kate'`.
 
-**Типичная ошибка:** think each object gets its own method copy.
+**Распространённая ошибка:** think each object gets its own method copy.
 
 **Связь с Automation QA:** many Page Objects can use same shared action function with different page-specific data.
 
@@ -272,7 +272,7 @@ local method
 
 **Объяснение:** `user` has own `describe`. Lookup finds own property first and stops before prototype.
 
-**Типичная ошибка:** expect prototype method to win over own property.
+**Распространённая ошибка:** expect prototype method to win over own property.
 
 **Связь с Automation QA:** page-specific method can override shared framework behavior if it is defined directly on object.
 
@@ -289,7 +289,7 @@ none
 
 **Объяснение:** `setAction` is found in prototype. During `user.setAction('login')`, `this` is `user`. Assignment `this.lastAction = action` creates or updates own property on `user`, while `behavior.lastAction` remains `'none'`.
 
-**Типичная ошибка:** think assignment inside prototype method always changes prototype object.
+**Распространённая ошибка:** think assignment inside prototype method always changes prototype object.
 
 **Связь с Automation QA:** shared methods can update instance-specific state if receiver is the concrete object.
 
@@ -309,7 +309,7 @@ const behavior = {
 
 **Объяснение:** `name` and `role` without `this` are variable lookups, not property reads from receiver. Shared method should read data from current receiver.
 
-**Типичная ошибка:** forget that shared method does not automatically receive object fields as variables.
+**Распространённая ошибка:** forget that shared method does not automatically receive object fields as variables.
 
 **Связь с Automation QA:** shared helper methods must read instance/client/page data through explicit receiver or parameters.
 
@@ -347,7 +347,7 @@ console.log(productionClient.describeRequest('/users'));
 
 **Объяснение:** `baseUrl` is own per client. `describeRequest` is shared behavior.
 
-**Типичная ошибка:** duplicate `describeRequest` in every client.
+**Распространённая ошибка:** duplicate `describeRequest` in every client.
 
 **Связь с Automation QA:** this model fits API clients for different environments.
 
@@ -382,7 +382,7 @@ console.log(loginPage.describePage === profilePage.describePage);
 
 **Объяснение:** both pages use same method from `pageBehavior`.
 
-**Типичная ошибка:** store all page-specific locators in prototype instead of on each page object.
+**Распространённая ошибка:** store all page-specific locators in prototype instead of on each page object.
 
 **Связь с Automation QA:** Page Objects share actions but keep page-specific state.
 
@@ -394,7 +394,7 @@ console.log(loginPage.describePage === profilePage.describePage);
 
 **Объяснение:** even if production code uses classes, the underlying mental model still involves objects, shared methods and lookup.
 
-**Типичная ошибка:** think classes remove the need to understand prototypes.
+**Распространённая ошибка:** think classes remove the need to understand prototypes.
 
 **Связь с Automation QA:** debugging Page Object methods often requires knowing where method comes from.
 
@@ -424,7 +424,7 @@ formatError()
 
 **Объяснение:** configuration differs between clients; request behavior can be reused.
 
-**Типичная ошибка:** put environment-specific state in shared behavior object.
+**Распространённая ошибка:** put environment-specific state in shared behavior object.
 
 **Связь с Automation QA:** prevents tests for staging and production from accidentally sharing mutable data.
 
@@ -432,7 +432,7 @@ formatError()
 
 ---
 
-## 8. Mini-project
+## 8. Мини-проект
 
 **Ответ:**
 
@@ -482,7 +482,7 @@ true
 
 **Объяснение:** `expected` and `actual` are own properties because they differ per validator. `describeExpectation()` and `describeActual()` are shared because formatting logic is the same.
 
-**Типичная ошибка:** duplicate both methods in every validator object.
+**Распространённая ошибка:** duplicate both methods in every validator object.
 
 **Связь с Automation QA:** validators in a test framework often share reporting behavior while keeping expected/actual values per assertion.
 

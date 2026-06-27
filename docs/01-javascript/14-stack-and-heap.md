@@ -760,7 +760,7 @@ Real engine
 └── implementation-specific
 ```
 
-### Bridge to Type Conversion
+### Переход к Type Conversion
 
 Stack & Heap explains how we visualize values and object references.
 
@@ -776,7 +776,7 @@ Operation expects another type
 JavaScript may convert value
 ```
 
-Bridge to Equality and Type Conversion:
+Переход к Equality and Type Conversion:
 
 ```text
 Stack & Heap
@@ -1200,12 +1200,12 @@ Next chapter moves from memory visualization to value transformation: Type Conve
 * Direct object assignment shares reference.
 * Mutation changes shared object.
 * Reassignment changes what variable refers to.
-* Function parameters can refer to the same object as caller variables.
+* Function parameters can refer to the same object as вызывающий код variables.
 * Draw diagrams when debugging shared state in tests.
 
 ---
 
-## Quick Check
+## Проверьте себя
 
 Ответьте без запуска кода.
 
@@ -1217,7 +1217,7 @@ Next chapter moves from memory visualization to value transformation: Type Conve
 6. How do you draw object assignment?
 7. What changes in mutation?
 8. What changes in reassignment?
-9. Why can helper function mutate caller's object?
+9. Why can helper function mutate вызывающий код's object?
 10. How can memory diagrams help debug flaky tests?
 
 ---

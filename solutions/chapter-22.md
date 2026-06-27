@@ -8,15 +8,15 @@
 
 Loops exist to repeat an algorithm until a stopping condition is reached.
 
-Рассуждение:
+Объяснение:
 
 Validating 100 responses should not require 100 copied blocks.
 
-Типичная ошибка:
+Распространённая ошибка:
 
 Think loop is only shorter syntax.
 
-Automation QA connection:
+Связь с Automation QA:
 
 Tests often validate many items.
 
@@ -26,15 +26,15 @@ Tests often validate many items.
 
 Repeated execution means running the same body multiple times.
 
-Рассуждение:
+Объяснение:
 
 Each pass is controlled by condition and update.
 
-Типичная ошибка:
+Распространённая ошибка:
 
 Forget condition controls repetition.
 
-Automation QA connection:
+Связь с Automation QA:
 
 Response validation repeats per response.
 
@@ -44,15 +44,15 @@ Response validation repeats per response.
 
 Loop condition decides whether repetition continues.
 
-Рассуждение:
+Объяснение:
 
 When condition becomes false, loop stops.
 
-Типичная ошибка:
+Распространённая ошибка:
 
 Write condition that never becomes false.
 
-Automation QA connection:
+Связь с Automation QA:
 
 Retry loops need max attempts.
 
@@ -62,15 +62,15 @@ Retry loops need max attempts.
 
 Iteration is one pass through loop body.
 
-Рассуждение:
+Объяснение:
 
 If body runs three times, loop has three iterations.
 
-Типичная ошибка:
+Распространённая ошибка:
 
 Confuse iteration with loop itself.
 
-Automation QA connection:
+Связь с Automation QA:
 
 One iteration can validate one response.
 
@@ -80,15 +80,15 @@ One iteration can validate one response.
 
 Loop body contains repeated work.
 
-Рассуждение:
+Объяснение:
 
 In response validation, body checks current response.
 
-Типичная ошибка:
+Распространённая ошибка:
 
 Put initialization inside body accidentally.
 
-Automation QA connection:
+Связь с Automation QA:
 
 Body often contains assertion logic.
 
@@ -98,15 +98,15 @@ Body often contains assertion logic.
 
 Initialization prepares starting state.
 
-Рассуждение:
+Объяснение:
 
 Example: `let index = 0`.
 
-Типичная ошибка:
+Распространённая ошибка:
 
 Reinitialize counter inside body.
 
-Automation QA connection:
+Связь с Automation QA:
 
 Counters track attempts or response index.
 
@@ -116,15 +116,15 @@ Counters track attempts or response index.
 
 Update changes loop state after each iteration.
 
-Рассуждение:
+Объяснение:
 
 It moves loop toward stopping condition.
 
-Типичная ошибка:
+Распространённая ошибка:
 
 Forget update and create infinite loop.
 
-Automation QA connection:
+Связь с Automation QA:
 
 Retry attempts must increment.
 
@@ -134,15 +134,15 @@ Retry attempts must increment.
 
 `while` checks condition before each body execution.
 
-Рассуждение:
+Объяснение:
 
 If condition is false initially, body does not run.
 
-Типичная ошибка:
+Распространённая ошибка:
 
 Expect body to run once always.
 
-Automation QA connection:
+Связь с Automation QA:
 
 Useful when repetition count is unknown.
 
@@ -152,15 +152,15 @@ Useful when repetition count is unknown.
 
 It runs body once before checking condition.
 
-Рассуждение:
+Объяснение:
 
 Useful when action must happen at least once.
 
-Типичная ошибка:
+Распространённая ошибка:
 
 Use it when zero executions should be possible.
 
-Automation QA connection:
+Связь с Automation QA:
 
 Can model first request before deciding retry.
 
@@ -170,15 +170,15 @@ Can model first request before deciding retry.
 
 `for` organizes initialization, condition and update in one line.
 
-Рассуждение:
+Объяснение:
 
 It is clear for counter-based loops.
 
-Типичная ошибка:
+Распространённая ошибка:
 
 Overload `for` header with complex logic.
 
-Automation QA connection:
+Связь с Automation QA:
 
 Useful for validating arrays of responses by index.
 
@@ -188,15 +188,15 @@ Useful for validating arrays of responses by index.
 
 `break` exits loop immediately.
 
-Рассуждение:
+Объяснение:
 
 Use it when invalid response is found and no more checks are needed.
 
-Типичная ошибка:
+Распространённая ошибка:
 
 Think break only skips current iteration.
 
-Automation QA connection:
+Связь с Automation QA:
 
 Stop on first critical failure.
 
@@ -206,15 +206,15 @@ Stop on first critical failure.
 
 `continue` skips rest of current iteration and moves to next iteration.
 
-Рассуждение:
+Объяснение:
 
 Use it to skip invalid test data but keep processing others.
 
-Типичная ошибка:
+Распространённая ошибка:
 
 Think continue stops loop.
 
-Automation QA connection:
+Связь с Automation QA:
 
 Skip users with missing optional data.
 
@@ -224,15 +224,15 @@ Skip users with missing optional data.
 
 They happen when condition never becomes false.
 
-Рассуждение:
+Объяснение:
 
 Usually update is missing or moves wrong way.
 
-Типичная ошибка:
+Распространённая ошибка:
 
 Debug body and ignore condition/update relationship.
 
-Automation QA connection:
+Связь с Automation QA:
 
 Endless retries can hang test runs.
 
@@ -242,19 +242,19 @@ Endless retries can hang test runs.
 
 Use `for` for clear counter lifecycle, `while` for unknown repetition count, `do...while` when body must run once.
 
-Рассуждение:
+Объяснение:
 
 Choice depends on what is repeated and when condition is known.
 
-Типичная ошибка:
+Распространённая ошибка:
 
 Choose based only on habit.
 
-Automation QA connection:
+Связь с Automation QA:
 
 Different QA scenarios need different repetition models.
 
-## Identify loop lifecycle
+## Определите loop lifecycle
 
 ### Задача 1
 
@@ -270,15 +270,15 @@ Update: `attempt += 1`.
 
 Stopping condition: `attempt` becomes `4`, so `attempt <= 3` is false.
 
-Рассуждение:
+Объяснение:
 
 Each iteration prints current attempt and increments it.
 
-Типичная ошибка:
+Распространённая ошибка:
 
 Forget that condition is checked before body.
 
-Automation QA connection:
+Связь с Automation QA:
 
 Retry loop lifecycle.
 
@@ -296,15 +296,15 @@ Update: `index += 1`.
 
 Stopping condition: `index` becomes `3`.
 
-Рассуждение:
+Объяснение:
 
 It prints `0`, `1`, `2`.
 
-Типичная ошибка:
+Распространённая ошибка:
 
 Expect `3` to print.
 
-Automation QA connection:
+Связь с Automation QA:
 
 Array index validation.
 
@@ -322,19 +322,19 @@ Update: none in body.
 
 Stopping condition: after first body execution, condition is false.
 
-Рассуждение:
+Объяснение:
 
 `do...while` runs body once before condition check.
 
-Типичная ошибка:
+Распространённая ошибка:
 
 Expect zero executions because condition is false.
 
-Automation QA connection:
+Связь с Automation QA:
 
 First request may happen before retry decision.
 
-## Predict the output before running
+## Предскажите вывод перед запуском
 
 ### Задача 1
 
@@ -346,15 +346,15 @@ First request may happen before retry decision.
 2
 ```
 
-Рассуждение:
+Объяснение:
 
 Index starts at `0`, stops when it becomes `3`.
 
-Типичная ошибка:
+Распространённая ошибка:
 
 Include `3`.
 
-Automation QA connection:
+Связь с Automation QA:
 
 Three responses by index.
 
@@ -368,15 +368,15 @@ Three responses by index.
 3
 ```
 
-Рассуждение:
+Объяснение:
 
 When index is `2`, `continue` skips `console.log`.
 
-Типичная ошибка:
+Распространённая ошибка:
 
 Think continue stops entire loop.
 
-Automation QA connection:
+Связь с Automation QA:
 
 Skip invalid test data item.
 
@@ -390,15 +390,15 @@ Attempt 2
 Attempt 3
 ```
 
-Рассуждение:
+Объяснение:
 
 Break happens after logging attempt `3`.
 
-Типичная ошибка:
+Распространённая ошибка:
 
 Expect attempts 4 and 5.
 
-Automation QA connection:
+Связь с Automation QA:
 
 Stop after success or critical state.
 
@@ -410,19 +410,19 @@ Stop after success or critical state.
 5
 ```
 
-Рассуждение:
+Объяснение:
 
 `do...while` runs body once before condition check. Then `attempt` is `6`, condition `6 < 3` is false.
 
-Типичная ошибка:
+Распространённая ошибка:
 
 Expect no output.
 
-Automation QA connection:
+Связь с Automation QA:
 
 Action that must happen before retry decision.
 
-## Code reading
+## Чтение кода
 
 Ответ:
 
@@ -434,19 +434,19 @@ If status is not `200`, code prints invalid response and breaks.
 
 Invalid response prints at index `1`.
 
-Рассуждение:
+Объяснение:
 
 First response is valid, second has status `500`, so break stops before third.
 
-Типичная ошибка:
+Распространённая ошибка:
 
 Expect third response to be checked.
 
-Automation QA connection:
+Связь с Automation QA:
 
 Stop on first invalid API response.
 
-## Debugging tasks
+## Задачи на отладку
 
 ### Задача 1
 
@@ -465,15 +465,15 @@ while (attempt <= 3) {
 }
 ```
 
-Рассуждение:
+Объяснение:
 
 Condition stays true forever without update.
 
-Типичная ошибка:
+Распространённая ошибка:
 
 Look only at body output, not update.
 
-Automation QA connection:
+Связь с Automation QA:
 
 Endless retries hang test runs.
 
@@ -483,15 +483,15 @@ Endless retries hang test runs.
 
 Because condition is `index <= 3`, so values `0`, `1`, `2`, `3` all pass.
 
-Рассуждение:
+Объяснение:
 
 If you want three iterations from zero, use `index < 3`.
 
-Типичная ошибка:
+Распространённая ошибка:
 
 Off-by-one error.
 
-Automation QA connection:
+Связь с Automation QA:
 
 Can check one extra row or response.
 
@@ -510,19 +510,19 @@ Output:
 2
 ```
 
-Рассуждение:
+Объяснение:
 
 Index 3 reaches break before logging.
 
-Типичная ошибка:
+Распространённая ошибка:
 
 Confuse break and continue.
 
-Automation QA connection:
+Связь с Automation QA:
 
 Skip bad data vs stop on critical failure.
 
-## QA-oriented tasks
+## QA-задачи
 
 ### Сценарий 1
 
@@ -547,15 +547,15 @@ for (let index = 0; index < responses.length; index += 1) {
 }
 ```
 
-Рассуждение:
+Объяснение:
 
 Loop repeats validation and stops at first invalid response.
 
-Типичная ошибка:
+Распространённая ошибка:
 
 Continue after critical invalid response.
 
-Automation QA connection:
+Связь с Automation QA:
 
 Batch API validation.
 
@@ -571,15 +571,15 @@ for (let attempt = 1; attempt <= maxAttempts; attempt += 1) {
 }
 ```
 
-Рассуждение:
+Объяснение:
 
 Known number of attempts fits `for`.
 
-Типичная ошибка:
+Распространённая ошибка:
 
 Use condition that allows four attempts.
 
-Automation QA connection:
+Связь с Automation QA:
 
 Retry limit.
 
@@ -605,15 +605,15 @@ for (let index = 0; index < users.length; index += 1) {
 }
 ```
 
-Рассуждение:
+Объяснение:
 
 Empty email user is skipped; loop continues.
 
-Типичная ошибка:
+Распространённая ошибка:
 
 Use break and stop processing remaining users.
 
-Automation QA connection:
+Связь с Automation QA:
 
 Skip invalid test data while keeping valid cases.
 
@@ -631,19 +631,19 @@ update: attempt += 1
 stop: status becomes ready or max attempts reached
 ```
 
-Рассуждение:
+Объяснение:
 
 Polling repeats a check with a stopping condition.
 
-Типичная ошибка:
+Распространённая ошибка:
 
 Poll without max attempts.
 
-Automation QA connection:
+Связь с Automation QA:
 
 Avoid endless waits.
 
-## Mini-project
+## Мини-проект
 
 Возможное решение:
 
@@ -698,14 +698,14 @@ users      | 1         | email is empty            | skip user           | conti
 users      | 2         | email is not empty        | print user          | loop ends
 ```
 
-Рассуждение:
+Объяснение:
 
 First loop demonstrates `break`; second loop demonstrates `continue`.
 
-Типичная ошибка:
+Распространённая ошибка:
 
 Use `break` when invalid user should only be skipped.
 
-Automation QA connection:
+Связь с Automation QA:
 
 Real tests often stop on critical API failures but skip invalid optional data.

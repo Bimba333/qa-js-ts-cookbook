@@ -1285,7 +1285,7 @@ read user.describe
     └── found
 ```
 
-### 10. Current JavaScript model
+### 10. Текущая модель JavaScript
 
 ```text
 Object model
@@ -1314,7 +1314,7 @@ productionClient ──┼──► apiClientBehavior
 localClient ───────┘    └── describeRequest()
 ```
 
-### 13. Readability
+### 13. Читаемость
 
 ```text
 object
@@ -1323,7 +1323,7 @@ object
 └── link to shared behavior
 ```
 
-### 14. Common mistakes
+### 14. Типичные ошибки
 
 ```text
 prototype
@@ -1442,7 +1442,7 @@ behavior repository
 └── method C
 ```
 
-### 25. Bridge to Prototype Chain
+### 25. Переход к Prototype Chain
 
 ```text
 object
@@ -1453,7 +1453,7 @@ object
         what if not found here?
 ```
 
-### 26. Bridge to Classes
+### 26. Переход к Classes
 
 ```text
 Prototype understanding
@@ -1462,7 +1462,7 @@ Prototype understanding
 Classes later become easier
 ```
 
-### 27. Mental model summary
+### 27. Краткая ментальная модель
 
 ```text
 Object
@@ -1561,7 +1561,7 @@ many readers
 └── one library book
 ```
 
-### 36. Summary diagram
+### 36. Итоговая схема
 
 ```text
 Object
@@ -1660,7 +1660,7 @@ Prototype of prototype
 
 ---
 
-## Quick Check
+## Проверьте себя
 
 1. Why is duplicated behavior a problem?
 

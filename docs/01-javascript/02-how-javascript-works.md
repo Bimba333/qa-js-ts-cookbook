@@ -175,7 +175,7 @@ Runtime APIs
 └── console, process, files, timers
     │
     ▼
-Result
+Результат
 ```
 
 V8 — JavaScript Engine, используемый в Node.js и Chrome; он был представлен в предыдущей главе.
@@ -1176,7 +1176,7 @@ result
 
 ---
 
-## Quick Check
+## Проверьте себя
 
 1. Что происходит после команды `node app.js` до работы engine?
 

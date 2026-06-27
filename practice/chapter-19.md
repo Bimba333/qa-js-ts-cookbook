@@ -17,7 +17,7 @@
 11. What is special about `+0` and `-0`?
 12. What comparison strategy is recommended for tests?
 
-## Predict the output before running
+## Предскажите вывод перед запуском
 
 ### Задача 1
 
@@ -62,7 +62,7 @@ console.log(+0 === -0);
 console.log(Object.is(+0, -0));
 ```
 
-## Identify comparison strategy
+## Определите comparison strategy
 
 Для каждого сценария выберите comparison strategy:
 
@@ -92,7 +92,7 @@ Two objects have same expected shape and values.
 
 You intentionally want JavaScript conversion before comparison.
 
-## Code reading
+## Чтение кода
 
 Прочитайте код и ответьте:
 
@@ -109,7 +109,7 @@ console.log(expectedStatus === actualStatusFromApi);
 console.log(expectedStatus === Number(actualStatusFromApi));
 ```
 
-## Debugging tasks
+## Задачи на отладку
 
 ### Задача 1
 
@@ -151,7 +151,7 @@ console.log(price === NaN);
 console.log(Object.is(price, NaN));
 ```
 
-## QA-oriented tasks
+## QA-задачи
 
 ### Сценарий 1. API value comparison
 
@@ -193,7 +193,7 @@ Explain why `expected === actual` is not structure comparison.
 
 Create checklist for finding unsafe `==` in tests.
 
-## Mini-project
+## Мини-проект
 
 Создайте файл:
 

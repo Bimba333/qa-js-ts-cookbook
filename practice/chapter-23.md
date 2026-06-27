@@ -17,7 +17,7 @@
 11. How do you choose where to handle error?
 12. Why should tests not hide errors?
 
-## Identify execution flow
+## Определите execution flow
 
 Для каждого примера укажите:
 
@@ -63,7 +63,7 @@ try {
 }
 ```
 
-## Predict the output before running
+## Предскажите вывод перед запуском
 
 ### Задача 1
 
@@ -107,7 +107,7 @@ try {
 }
 ```
 
-## Code reading
+## Чтение кода
 
 Прочитайте код и ответьте:
 
@@ -127,7 +127,7 @@ try {
 }
 ```
 
-## Debugging tasks
+## Задачи на отладку
 
 ### Задача 1
 
@@ -162,7 +162,7 @@ try {
 console.log('Run test');
 ```
 
-## QA-oriented tasks
+## QA-задачи
 
 ### Сценарий 1. Status validation
 
@@ -199,7 +199,7 @@ API returned invalid JSON
 Temporary log file cannot be deleted
 ```
 
-## Mini-project
+## Мини-проект
 
 Создайте файл:
 

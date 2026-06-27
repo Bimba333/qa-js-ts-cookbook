@@ -8,11 +8,11 @@
 
 Rest Parameters нужны, чтобы функция могла принять неизвестное количество arguments.
 
-Рассуждение:
+Объяснение:
 
 Обычные parameters подходят, когда количество inputs известно. Rest parameter собирает remaining arguments в array.
 
-Типичная ошибка:
+Распространённая ошибка:
 
 Использовать rest везде, даже когда inputs fixed.
 
@@ -24,13 +24,13 @@ Helper может принять любое количество status codes и
 
 Ответ:
 
-Это ситуация, когда caller может передать один, несколько или ноль values.
+Это ситуация, когда вызывающий код может передать один, несколько или ноль values.
 
-Рассуждение:
+Объяснение:
 
 Функция не может заранее иметь отдельный parameter для каждого будущего argument.
 
-Типичная ошибка:
+Распространённая ошибка:
 
 Создавать много parameters вроде `status1`, `status2`, `status3`.
 
@@ -44,11 +44,11 @@ Helper может принять любое количество status codes и
 
 Это rest parameter с именем `statusCodes`.
 
-Рассуждение:
+Объяснение:
 
 Три точки в parameter list означают сбор remaining arguments.
 
-Типичная ошибка:
+Распространённая ошибка:
 
 Объяснять это через Spread.
 
@@ -62,11 +62,11 @@ Helper может принять любое количество status codes и
 
 Он собирает remaining arguments.
 
-Рассуждение:
+Объяснение:
 
 Если перед ним есть normal parameters, они получают свои positions, а rest собирает остаток.
 
-Типичная ошибка:
+Распространённая ошибка:
 
 Думать, что rest собирает все arguments всегда.
 
@@ -80,11 +80,11 @@ Helper может принять любое количество status codes и
 
 Потому что нужно одно значение, которое хранит много collected values.
 
-Рассуждение:
+Объяснение:
 
 Array - естественная форма для collection.
 
-Типичная ошибка:
+Распространённая ошибка:
 
 Ожидать строку или отдельные variables.
 
@@ -98,11 +98,11 @@ Collected test data удобно хранить как array.
 
 Внутри находятся collected arguments в порядке передачи.
 
-Рассуждение:
+Объяснение:
 
 `collect(200, 201)` дает `[200, 201]`.
 
-Типичная ошибка:
+Распространённая ошибка:
 
 Ожидать object или named values.
 
@@ -116,11 +116,11 @@ Collected test data удобно хранить как array.
 
 Rest array будет пустым: `[]`.
 
-Рассуждение:
+Объяснение:
 
 Rest parameter всегда получает array.
 
-Типичная ошибка:
+Распространённая ошибка:
 
 Ожидать `undefined`.
 
@@ -134,11 +134,11 @@ Flexible helper должен корректно читать empty collection.
 
 Потому что rest parameter собирает все оставшиеся arguments.
 
-Рассуждение:
+Объяснение:
 
 Если после него есть parameter, непонятно, что должно остаться для этого parameter.
 
-Типичная ошибка:
+Распространённая ошибка:
 
 Писать `(...items, last)`.
 
@@ -152,11 +152,11 @@ Helper signature должна быть предсказуемой.
 
 Когда количество inputs известно и имеет ясный смысл.
 
-Рассуждение:
+Объяснение:
 
 `compareStatus(actualStatus, expectedStatus)` читается лучше, чем `compareStatus(...statuses)`.
 
-Типичная ошибка:
+Распространённая ошибка:
 
 Делать API helper слишком гибким.
 
@@ -170,11 +170,11 @@ Helper signature должна быть предсказуемой.
 
 Rest parameter хранит collection, поэтому имя должно это показывать.
 
-Рассуждение:
+Объяснение:
 
 `statusCodes` понятнее, чем `statusCode`.
 
-Типичная ошибка:
+Распространённая ошибка:
 
 Назвать array singular name.
 
@@ -188,11 +188,11 @@ Rest parameter хранит collection, поэтому имя должно эт�
 
 Потому что эта глава объясняет только сбор incoming arguments.
 
-Рассуждение:
+Объяснение:
 
 Spread имеет другое направление и будет изучаться отдельно.
 
-Типичная ошибка:
+Распространённая ошибка:
 
 Запомнить "три точки" без понимания направления.
 
@@ -200,7 +200,7 @@ Spread имеет другое направление и будет изучат
 
 Четкая модель предотвращает ошибки в helper calls.
 
-## Identify collected arguments
+## Определите collected arguments
 
 ### Задача 1
 
@@ -212,11 +212,11 @@ Rest parameter: `statusCodes`.
 
 Rest array: `[200, 201, 204]`.
 
-Рассуждение:
+Объяснение:
 
 Все arguments собираются rest parameter.
 
-Типичная ошибка:
+Распространённая ошибка:
 
 Ожидать только первый value.
 
@@ -236,11 +236,11 @@ Rest parameter: `actualStatuses`.
 
 `actualStatuses = [200, 201, 204]`.
 
-Рассуждение:
+Объяснение:
 
 Первый argument идет в normal parameter, остальные - в rest array.
 
-Типичная ошибка:
+Распространённая ошибка:
 
 Включить первый argument в rest array.
 
@@ -260,11 +260,11 @@ Rest parameter: `otherMessages`.
 
 `otherMessages = ['validate', 'finish']`.
 
-Рассуждение:
+Объяснение:
 
 Rest собирает values после первого argument.
 
-Типичная ошибка:
+Распространённая ошибка:
 
 Думать, что rest всегда собирает абсолютно все values.
 
@@ -282,11 +282,11 @@ Logger может выделить первое сообщение и собра
 []
 ```
 
-Рассуждение:
+Объяснение:
 
 Arguments не переданы, rest array пустой.
 
-Типичная ошибка:
+Распространённая ошибка:
 
 Ожидать `undefined`.
 
@@ -302,11 +302,11 @@ Empty test data collection должна быть понятной.
 ['a']
 ```
 
-Рассуждение:
+Объяснение:
 
 Один argument собирается в array из одного элемента.
 
-Типичная ошибка:
+Распространённая ошибка:
 
 Ожидать просто `'a'`.
 
@@ -322,11 +322,11 @@ Empty test data collection должна быть понятной.
 ['b', 'c']
 ```
 
-Рассуждение:
+Объяснение:
 
 `firstValue` получает `'a'`, rest собирает remaining arguments.
 
-Типичная ошибка:
+Распространённая ошибка:
 
 Включить `'a'` в rest array.
 
@@ -344,11 +344,11 @@ Known value и remaining values часто имеют разный смысл.
 [ 200, 201 ]
 ```
 
-Рассуждение:
+Объяснение:
 
 Rest parameter собирает оба arguments.
 
-Типичная ошибка:
+Распространённая ошибка:
 
 Ожидать два отдельных вывода.
 
@@ -364,11 +364,11 @@ Statuses collected as array.
 []
 ```
 
-Рассуждение:
+Объяснение:
 
 Rest parameter получает empty array.
 
-Типичная ошибка:
+Распространённая ошибка:
 
 Ожидать `undefined`.
 
@@ -385,11 +385,11 @@ No statuses means empty collection.
 [ 200, 201 ]
 ```
 
-Рассуждение:
+Объяснение:
 
 Первый argument идет в `expectedStatus`, остальные - в `actualStatuses`.
 
-Типичная ошибка:
+Распространённая ошибка:
 
 Ожидать `[200, 200, 201]`.
 
@@ -406,11 +406,11 @@ start
 []
 ```
 
-Рассуждение:
+Объяснение:
 
 Первый argument получает `firstMessage`, remaining arguments отсутствуют.
 
-Типичная ошибка:
+Распространённая ошибка:
 
 Ожидать, что rest array содержит `'start'`.
 
@@ -432,11 +432,11 @@ Rest parameter не последний.
 function validateStatuses(expectedStatus, ...actualStatuses) {}
 ```
 
-Рассуждение:
+Объяснение:
 
 Rest должен собрать все remaining arguments, поэтому после него parameters быть не должно.
 
-Типичная ошибка:
+Распространённая ошибка:
 
 Ставить rest там, где хочется визуально.
 
@@ -458,11 +458,11 @@ function collectStatuses(...statusCodes) {
 }
 ```
 
-Рассуждение:
+Объяснение:
 
 Collection лучше называть во множественном числе.
 
-Типичная ошибка:
+Распространённая ошибка:
 
 Использовать singular name для array.
 
@@ -484,11 +484,11 @@ function compareStatus(actualStatus, expectedStatus) {
 }
 ```
 
-Рассуждение:
+Объяснение:
 
 Rest нужен для неизвестного количества values.
 
-Типичная ошибка:
+Распространённая ошибка:
 
 Использовать rest ради гибкости без причины.
 
@@ -502,11 +502,11 @@ Rest нужен для неизвестного количества values.
 
 Объяснение описывает Spread, а не Rest.
 
-Рассуждение:
+Объяснение:
 
 Rest собирает arguments в array. Spread будет изучаться позже.
 
-Типичная ошибка:
+Распространённая ошибка:
 
 Смешивать направление трех точек.
 
@@ -514,7 +514,7 @@ Rest собирает arguments в array. Spread будет изучаться �
 
 Правильная модель важна при чтении helper APIs.
 
-## QA-oriented tasks
+## QA-задачи
 
 ### Сценарий 1
 
@@ -529,11 +529,11 @@ function validateStatuses(expectedStatus, ...actualStatuses) {
 validateStatuses(200, 200, 201, 204);
 ```
 
-Рассуждение:
+Объяснение:
 
 `expectedStatus` получает первый argument, rest собирает остальные.
 
-Типичная ошибка:
+Распространённая ошибка:
 
 Поставить rest parameter первым.
 
@@ -555,11 +555,11 @@ logMessages('start', 'validate');
 logMessages('start', 'validate', 'finish');
 ```
 
-Рассуждение:
+Объяснение:
 
 Rest parameter собирает любое количество messages.
 
-Типичная ошибка:
+Распространённая ошибка:
 
 Ожидать строку вместо array.
 
@@ -580,11 +580,11 @@ const emails = collectUserEmails('a@example.com', 'b@example.com', 'c@example.co
 console.log(emails);
 ```
 
-Рассуждение:
+Объяснение:
 
 Rest parameter собирает emails в array и функция возвращает этот array.
 
-Типичная ошибка:
+Распространённая ошибка:
 
 Путать collection с одним email.
 
@@ -603,11 +603,11 @@ Collecting test data.
 ...message    → ...messages
 ```
 
-Рассуждение:
+Объяснение:
 
 Rest parameter хранит collection.
 
-Типичная ошибка:
+Распространённая ошибка:
 
 Оставить singular names.
 
@@ -657,11 +657,11 @@ collectUserEmails   | none              | userEmails     | a@example.com, b@exam
 collectLocatorNames | none              | locatorNames   | profile button, save button   | UI helper
 ```
 
-Рассуждение:
+Объяснение:
 
 Каждый rest parameter собирает incoming arguments в array.
 
-Типичная ошибка:
+Распространённая ошибка:
 
 Считать collected values отдельными variables, а не array.
 

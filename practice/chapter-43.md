@@ -321,7 +321,7 @@ Requirements:
 
 ---
 
-## 7. Mini-project
+## 7. Мини-проект
 
 Создайте small assertion infrastructure model.
 

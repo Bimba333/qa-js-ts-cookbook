@@ -13,7 +13,7 @@ Operand(s)
 Operator
 │
 ▼
-Result
+Результат
 ```
 
 Теперь появляется следующий вопрос:
@@ -416,7 +416,7 @@ statusCode === 200?
 
 Nested conditions are useful when second decision only matters inside first decision.
 
-Readability warning:
+Предупреждение о читаемости:
 
 ```text
 Too much nesting
@@ -557,7 +557,7 @@ if (isStatusOk && hasValidUser && isFastEnough) {
 }
 ```
 
-Readability example:
+Пример читаемости:
 
 ```text
 Named expressions
@@ -603,7 +603,7 @@ Input data
 Expression
 │
 ▼
-Result
+Результат
 │
 ▼
 Conditional
@@ -633,7 +633,7 @@ Conditionals
 └── choose execution path based on result
 ```
 
-Bridge to Loops:
+Переход к Loops:
 
 ```text
 Conditional
@@ -809,7 +809,7 @@ More nesting often makes decision path harder to read.
 
 `switch` is useful for choosing among known cases of one value.
 
-Common mistakes diagram:
+Схема типичных ошибок:
 
 ```text
 Mistake
@@ -1029,7 +1029,7 @@ What if the same decision has to be made many times?
 
 ---
 
-## Quick Check
+## Проверьте себя
 
 Ответьте без запуска кода.
 

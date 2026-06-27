@@ -365,19 +365,19 @@ Creation vs invocation:
 ```text
 Function creation
 │
-├── creates function object
-└── does not decide this forever
+├── создает function object
+└── не фиксирует this навсегда
 
 Function invocation
 │
-├── starts execution
-└── determines this for this call
+├── запускает выполнение
+└── определяет this для этого вызова
 ```
 
 Для обычного вызова вида `object.method()` ключевой вопрос для чтения кода:
 
 ```text
-Who is on the left side of the dot at call time?
+Кто находится слева от точки в момент вызова?
 ```
 
 Пример:
@@ -939,7 +939,7 @@ loginPage.open()
 
 ---
 
-### Mental model summary
+### Краткая ментальная модель
 
 ```text
 this
@@ -950,7 +950,7 @@ this
 └── receiver of current invocation
 ```
 
-Summary diagram:
+Итоговая схема:
 
 ```text
 Call expression
@@ -985,7 +985,7 @@ JavaScript function model
     └── current receiver
 ```
 
-Bridge to call/apply/bind:
+Переход к call/apply/bind:
 
 ```text
 Regular call
@@ -1244,7 +1244,7 @@ function createPrinter(prefix) {
 
 `this.name` приходит из receiver текущего вызова.
 
-Common mistakes:
+Типичные ошибки:
 
 ```text
 prefix
@@ -1491,7 +1491,7 @@ this
 
 ---
 
-## Quick Check
+## Проверьте себя
 
 Ответьте без запуска кода:
 

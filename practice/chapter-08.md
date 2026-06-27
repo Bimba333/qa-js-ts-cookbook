@@ -17,7 +17,7 @@
 11. Почему эта глава не объясняет Stack & Heap?
 12. Почему эта глава не объясняет Garbage Collector?
 
-## Identify stored values
+## Определите сохраненные значения
 
 Для каждого фрагмента выпишите identifiers и values, которые можно увидеть в коде.
 
@@ -49,7 +49,7 @@ pageTitle = 'Dashboard';
 console.log(pageTitle);
 ```
 
-## Predict the output before running
+## Предскажите вывод перед запуском
 
 Перед запуском предскажите вывод и memory state после каждой значимой строки.
 
@@ -83,7 +83,7 @@ console.log(environment);
 console.log(environment);
 ```
 
-## Predict memory state
+## Предскажите состояние памяти
 
 Для кода ниже заполните таблицу:
 
@@ -102,7 +102,7 @@ attempt = 3;
 console.log(attempt);
 ```
 
-## Code reading
+## Чтение кода
 
 Прочитайте код и объясните, какая информация temporary, а какая long-lived.
 
@@ -114,7 +114,7 @@ console.log(message);
 console.log(testName);
 ```
 
-## Small coding tasks
+## Небольшие задачи на код
 
 ### Задача 1
 
@@ -144,7 +144,7 @@ playground/memory-update.js
 * обновите status на `'done'`;
 * выведите итоговое значение.
 
-## Debugging tasks
+## Задачи на отладку
 
 ### Задача 1
 
@@ -174,7 +174,7 @@ console.log(baseUrl);
 
 Объясните, почему нужно искать строку update, а не только строку read.
 
-## QA-oriented tasks
+## QA-задачи
 
 ### Сценарий 1
 
@@ -205,7 +205,7 @@ Assertion сравнивает expected status с actual status.
 
 Опишите, какие values должны быть сохранены до сравнения.
 
-## Mini-project
+## Мини-проект
 
 Создайте файл:
 

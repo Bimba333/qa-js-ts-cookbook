@@ -20,7 +20,7 @@
 14. What does `in` check?
 15. Why does operator precedence exist?
 
-## Identify operator category
+## Определите operator category
 
 Для каждого выражения укажите:
 
@@ -65,7 +65,7 @@ typeof userName;
 retryCount += 1;
 ```
 
-## Predict the output before running
+## Предскажите вывод перед запуском
 
 ### Задача 1
 
@@ -119,7 +119,7 @@ console.log(2 + 3 * 4);
 console.log((2 + 3) * 4);
 ```
 
-## Code reading
+## Чтение кода
 
 Прочитайте код и ответьте:
 
@@ -144,7 +144,7 @@ console.log(isSuccess);
 console.log(hasId);
 ```
 
-## Debugging tasks
+## Задачи на отладку
 
 ### Задача 1
 
@@ -196,7 +196,7 @@ delete user.temporaryCode;
 console.log('temporaryCode' in user);
 ```
 
-## QA-oriented tasks
+## QA-задачи
 
 ### Сценарий 1. Assertion expression
 
@@ -239,7 +239,7 @@ const createdAt = new Date();
 
 Проверьте, что value is Date at runtime.
 
-## Mini-project
+## Мини-проект
 
 Создайте файл:
 

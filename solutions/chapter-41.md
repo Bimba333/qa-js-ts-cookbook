@@ -8,7 +8,7 @@
 
 **Объяснение:** two properties can have same value but different assignment, enumeration and property-definition rules.
 
-**Типичная ошибка:** think property is only key-value pair.
+**Распространённая ошибка:** think property is only key-value pair.
 
 **Связь с Automation QA:** framework config fields may need protection from accidental mutation.
 
@@ -18,7 +18,7 @@
 
 **Объяснение:** `writable`, `enumerable`, `configurable` are metadata fields.
 
-**Типичная ошибка:** treat metadata as business data.
+**Распространённая ошибка:** treat metadata as business data.
 
 **Связь с Automation QA:** internal run IDs may be metadata-like technical information.
 
@@ -28,7 +28,7 @@
 
 **Объяснение:** for data properties it includes `value`, `writable`, `enumerable`, `configurable`.
 
-**Типичная ошибка:** remember only `value`.
+**Распространённая ошибка:** remember only `value`.
 
 **Связь с Automation QA:** descriptors help infrastructure objects behave predictably.
 
@@ -38,7 +38,7 @@
 
 **Объяснение:** if `writable` is `false`, assignment cannot change value.
 
-**Типичная ошибка:** think `const` controls object property writes. It controls variable reassignment, not descriptor rules.
+**Распространённая ошибка:** think `const` controls object property writes. It controls variable reassignment, not descriptor rules.
 
 **Связь с Automation QA:** readonly baseUrl can prevent accidental environment switch.
 
@@ -48,7 +48,7 @@
 
 **Объяснение:** `Object.keys()` includes enumerable own properties.
 
-**Типичная ошибка:** think non-enumerable means inaccessible.
+**Распространённая ошибка:** think non-enumerable means inaccessible.
 
 **Связь с Automation QA:** internal metadata can be hidden from ordinary config listings.
 
@@ -58,7 +58,7 @@
 
 **Объяснение:** `configurable` controls whether the property definition itself may be changed. Deletion is one visible consequence of that rule.
 
-**Типичная ошибка:** confuse `writable` and `configurable`.
+**Распространённая ошибка:** confuse `writable` and `configurable`.
 
 **Связь с Automation QA:** important infrastructure properties can be protected from accidental definition changes, including deletion.
 
@@ -68,7 +68,7 @@
 
 **Объяснение:** value equality does not imply same metadata.
 
-**Типичная ошибка:** compare only visible value.
+**Распространённая ошибка:** compare only visible value.
 
 **Связь с Automation QA:** two configs may print same value but one is readonly.
 
@@ -78,7 +78,7 @@
 
 **Объяснение:** non-enumerable only affects enumeration.
 
-**Типичная ошибка:** use non-enumerable as security mechanism.
+**Распространённая ошибка:** use non-enumerable as security mechanism.
 
 **Связь с Automation QA:** internal IDs can be hidden from reports but not secured.
 
@@ -88,7 +88,7 @@
 
 **Объяснение:** business data is `baseUrl`; metadata is `writable: false`.
 
-**Типичная ошибка:** store domain meaning in descriptor flags.
+**Распространённая ошибка:** store domain meaning in descriptor flags.
 
 **Связь с Automation QA:** descriptor flags are infrastructure mechanics.
 
@@ -98,7 +98,7 @@
 
 **Объяснение:** these are framework-level concerns.
 
-**Типичная ошибка:** overuse descriptors in ordinary test data.
+**Распространённая ошибка:** overuse descriptors in ordinary test data.
 
 **Связь с Automation QA:** payloads and expected API data usually should remain plain objects.
 
@@ -117,7 +117,7 @@
 
 **Объяснение:** each operation checks a different rule.
 
-**Типичная ошибка:** expect one flag to control all behavior.
+**Распространённая ошибка:** expect one flag to control all behavior.
 
 **Связь с Automation QA:** stable framework config may be visible but readonly.
 
@@ -130,7 +130,7 @@
 
 **Объяснение:** `enumerable: false` hides from enumeration only.
 
-**Типичная ошибка:** think hidden means private.
+**Распространённая ошибка:** think hidden means private.
 
 **Связь с Automation QA:** internal metadata can be kept out of ordinary report fields.
 
@@ -140,7 +140,7 @@
 
 **Объяснение:** object literal creates ordinary data property.
 
-**Типичная ошибка:** assume `defineProperty` defaults are the same.
+**Распространённая ошибка:** assume `defineProperty` defaults are the same.
 
 **Связь с Automation QA:** ordinary test data should usually behave normally.
 
@@ -159,7 +159,7 @@ true
 
 **Объяснение:** object literal property is enumerable and writable by default.
 
-**Типичная ошибка:** think all descriptors are restrictive.
+**Распространённая ошибка:** think all descriptors are restrictive.
 
 **Связь с Automation QA:** ordinary config object properties are usually simple.
 
@@ -174,7 +174,7 @@ helper-001
 
 **Объяснение:** `internalId` is non-enumerable, but direct read works.
 
-**Типичная ошибка:** expect `undefined` for direct read.
+**Распространённая ошибка:** expect `undefined` for direct read.
 
 **Связь с Automation QA:** hidden internal metadata can still be available to framework code.
 
@@ -189,7 +189,7 @@ staging
 
 **Объяснение:** strict mode assignment to non-writable property throws; value remains unchanged.
 
-**Типичная ошибка:** expect silent failure in strict mode.
+**Распространённая ошибка:** expect silent failure in strict mode.
 
 **Связь с Automation QA:** readonly config can fail loudly if accidental mutation happens.
 
@@ -220,7 +220,7 @@ console.log(config.environment);
 
 **Объяснение:** assignment requires `writable: true`.
 
-**Типичная ошибка:** omit descriptor flags.
+**Распространённая ошибка:** omit descriptor flags.
 
 **Связь с Automation QA:** explicit descriptor rules reduce infrastructure surprises.
 
@@ -230,7 +230,7 @@ console.log(config.environment);
 
 **Объяснение:** `enumerable: false` only affects operations like `Object.keys()`.
 
-**Типичная ошибка:** use descriptors for privacy.
+**Распространённая ошибка:** use descriptors for privacy.
 
 **Связь с Automation QA:** internal values can be hidden from listings but still accessible.
 
@@ -252,7 +252,7 @@ console.log(Object.keys(config));
 
 **Объяснение:** `Object.keys()` requires `enumerable: true`.
 
-**Типичная ошибка:** set `writable` and forget `enumerable`.
+**Распространённая ошибка:** set `writable` and forget `enumerable`.
 
 **Связь с Automation QA:** visible config reports depend on enumerable properties.
 
@@ -275,7 +275,7 @@ Object.defineProperty(frameworkConfig, 'baseUrl', {
 
 **Объяснение:** baseUrl visible in keys but protected from reassignment and property-definition changes at high level. Deletion is one consequence of that protection.
 
-**Типичная ошибка:** forget `enumerable: true` and wonder why baseUrl is absent from keys.
+**Распространённая ошибка:** forget `enumerable: true` and wonder why baseUrl is absent from keys.
 
 **Связь с Automation QA:** environment URL should often be stable after setup.
 
@@ -292,7 +292,7 @@ Object.defineProperty(helper, 'internalRunId', {
 
 **Объяснение:** internalRunId does not appear in `Object.keys`.
 
-**Типичная ошибка:** think this makes it secure.
+**Распространённая ошибка:** think this makes it secure.
 
 **Связь с Automation QA:** framework internals can stay out of ordinary output.
 
@@ -306,7 +306,7 @@ console.log(descriptor);
 
 **Объяснение:** `value` is URL; `writable` controls assignment; `enumerable` controls keys; `configurable` controls whether the property definition itself may be changed. Deletion is one visible consequence.
 
-**Типичная ошибка:** read only `value`.
+**Распространённая ошибка:** read only `value`.
 
 **Связь с Automation QA:** descriptor inspection helps debug framework objects.
 
@@ -316,13 +316,13 @@ console.log(descriptor);
 
 **Объяснение:** equal values do not imply equal behavior rules.
 
-**Типичная ошибка:** judge property behavior by visible value only.
+**Распространённая ошибка:** judge property behavior by visible value only.
 
 **Связь с Automation QA:** same baseUrl string can be mutable in one config and readonly in another.
 
 ---
 
-## 6. Mini-project
+## 6. Мини-проект
 
 Один из возможных вариант:
 
@@ -371,7 +371,7 @@ console.log(Object.getOwnPropertyDescriptor(frameworkConfig, 'internalRunId'));
 
 **Объяснение:** `baseUrl` is readonly and visible. `timeout` is writable and visible. `internalRunId` is hidden from keys but readable directly.
 
-**Типичная ошибка:** expect `internalRunId` to be private.
+**Распространённая ошибка:** expect `internalRunId` to be private.
 
 **Связь с Automation QA:** this is realistic for framework config and internal run metadata.
 

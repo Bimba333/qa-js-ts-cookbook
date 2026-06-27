@@ -17,7 +17,7 @@
 11. Что означает ReferenceError before initialization?
 12. Чем TDZ ReferenceError отличается от missing identifier ReferenceError?
 
-## Identify TDZ
+## Определите TDZ
 
 Для каждого фрагмента укажите, где начинается TDZ и где заканчивается.
 
@@ -51,7 +51,7 @@ let retryCount;
 console.log(retryCount);
 ```
 
-## Predict output
+## Предскажите вывод
 
 Перед запуском предскажите вывод.
 
@@ -89,7 +89,7 @@ console.log(baseUrl);
 
 Ответьте также: что произойдет, если раскомментировать первую строку?
 
-## Determine identifier state
+## Определите identifier state
 
 Для кода ниже заполните таблицу:
 
@@ -122,7 +122,7 @@ readable
 undefined
 ```
 
-## Debugging tasks
+## Задачи на отладку
 
 ### Задача 1
 
@@ -156,7 +156,7 @@ let and const are not hoisted.
 
 Переформулируйте точнее.
 
-## QA-oriented tasks
+## QA-задачи
 
 ### Сценарий 1
 
@@ -188,7 +188,7 @@ var expectedStatus = 'active';
 
 Объясните, как TDZ помогает находить declaration order mistakes раньше.
 
-## Mini-project
+## Мини-проект
 
 Создайте файл:
 

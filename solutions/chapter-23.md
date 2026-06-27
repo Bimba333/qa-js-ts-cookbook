@@ -8,15 +8,15 @@
 
 Normal execution is the usual forward flow of program statements.
 
-Рассуждение:
+Объяснение:
 
 One operation succeeds, then next line can use its result.
 
-Типичная ошибка:
+Распространённая ошибка:
 
 Assume normal path continues even after critical failure.
 
-Automation QA connection:
+Связь с Automation QA:
 
 Successful API parsing allows response validation.
 
@@ -26,15 +26,15 @@ Successful API parsing allows response validation.
 
 Abnormal execution happens when error interrupts normal flow.
 
-Рассуждение:
+Объяснение:
 
 Invalid JSON prevents parsed object from existing.
 
-Типичная ошибка:
+Распространённая ошибка:
 
 Treat error as just another value.
 
-Automation QA connection:
+Связь с Automation QA:
 
 Test should not validate missing response body.
 
@@ -44,15 +44,15 @@ Test should not validate missing response body.
 
 Error is a signal that execution cannot continue normally as expected.
 
-Рассуждение:
+Объяснение:
 
 It changes execution path.
 
-Типичная ошибка:
+Распространённая ошибка:
 
 Think error handling means making failure disappear.
 
-Automation QA connection:
+Связь с Automation QA:
 
 Errors should explain test failure.
 
@@ -62,15 +62,15 @@ Errors should explain test failure.
 
 Runtime error happens while program is running.
 
-Рассуждение:
+Объяснение:
 
 `JSON.parse('not valid json')` fails during execution.
 
-Типичная ошибка:
+Распространённая ошибка:
 
 Confuse runtime error with syntax error.
 
-Automation QA connection:
+Связь с Automation QA:
 
 Runtime data from API can be invalid.
 
@@ -80,15 +80,15 @@ Runtime data from API can be invalid.
 
 Program stops because continuing normal path may be unsafe or impossible.
 
-Рассуждение:
+Объяснение:
 
 No parsed object means field validation cannot run correctly.
 
-Типичная ошибка:
+Распространённая ошибка:
 
 Continue after setup failure.
 
-Automation QA connection:
+Связь с Automation QA:
 
 Stopping test can be correct behavior.
 
@@ -98,15 +98,15 @@ Stopping test can be correct behavior.
 
 `throw` intentionally starts error path.
 
-Рассуждение:
+Объяснение:
 
 It interrupts normal execution.
 
-Типичная ошибка:
+Распространённая ошибка:
 
 Expect code after throw in same path to run.
 
-Automation QA connection:
+Связь с Automation QA:
 
 Throw clear error when API status is wrong.
 
@@ -116,15 +116,15 @@ Throw clear error when API status is wrong.
 
 `try` marks code where error may happen.
 
-Рассуждение:
+Объяснение:
 
 It creates a controlled area for possible failure.
 
-Типичная ошибка:
+Распространённая ошибка:
 
 Wrap too much unrelated code in one try.
 
-Automation QA connection:
+Связь с Automation QA:
 
 Parsing response body can be inside try.
 
@@ -134,15 +134,15 @@ Parsing response body can be inside try.
 
 `catch` handles error from try block.
 
-Рассуждение:
+Объяснение:
 
 It receives error and can log, recover or decide to stop.
 
-Типичная ошибка:
+Распространённая ошибка:
 
 Empty catch block.
 
-Automation QA connection:
+Связь с Automation QA:
 
 Catch can add clear failure context.
 
@@ -152,15 +152,15 @@ Catch can add clear failure context.
 
 `finally` runs after try/catch flow whether success or failure happened.
 
-Рассуждение:
+Объяснение:
 
 Useful for cleanup-like operations.
 
-Типичная ошибка:
+Распространённая ошибка:
 
 Think finally means operation succeeded.
 
-Automation QA connection:
+Связь с Automation QA:
 
 Cleanup temporary data.
 
@@ -170,15 +170,15 @@ Cleanup temporary data.
 
 If error is not handled locally, it moves conceptually to outer level.
 
-Рассуждение:
+Объяснение:
 
 Later functions will make this more visible.
 
-Типичная ошибка:
+Распространённая ошибка:
 
 Think every error must be caught immediately.
 
-Automation QA connection:
+Связь с Automation QA:
 
 Some errors should fail test framework directly.
 
@@ -188,15 +188,15 @@ Some errors should fail test framework directly.
 
 Handle error where meaningful action can be taken.
 
-Рассуждение:
+Объяснение:
 
 If current level cannot recover or improve message, let error propagate.
 
-Типичная ошибка:
+Распространённая ошибка:
 
 Catch every error too early.
 
-Automation QA connection:
+Связь с Automation QA:
 
 Setup failure should often stop the test.
 
@@ -206,19 +206,19 @@ Setup failure should often stop the test.
 
 Hidden errors make tests misleading.
 
-Рассуждение:
+Объяснение:
 
 A test that ignores setup failure may fail later with unclear message.
 
-Типичная ошибка:
+Распространённая ошибка:
 
 Catch and ignore.
 
-Automation QA connection:
+Связь с Automation QA:
 
 Reliable tests fail clearly.
 
-## Identify execution flow
+## Определите execution flow
 
 ### Задача 1
 
@@ -233,15 +233,15 @@ Invalid JSON
 After
 ```
 
-Рассуждение:
+Объяснение:
 
 Error jumps from failing operation to catch.
 
-Типичная ошибка:
+Распространённая ошибка:
 
 Expect `Parsed` to print.
 
-Automation QA connection:
+Связь с Automation QA:
 
 Validation after invalid JSON should not run.
 
@@ -259,15 +259,15 @@ Success
 Cleanup
 ```
 
-Рассуждение:
+Объяснение:
 
 Finally runs on success too.
 
-Типичная ошибка:
+Распространённая ошибка:
 
 Think finally only runs after errors.
 
-Automation QA connection:
+Связь с Automation QA:
 
 Cleanup after successful test setup.
 
@@ -283,19 +283,19 @@ Output before termination:
 Cleanup
 ```
 
-Рассуждение:
+Объяснение:
 
 Finally does not swallow error.
 
-Типичная ошибка:
+Распространённая ошибка:
 
 Think finally handles error.
 
-Automation QA connection:
+Связь с Automation QA:
 
 Cleanup can run even when test fails.
 
-## Predict the output before running
+## Предскажите вывод перед запуском
 
 ### Задача 1
 
@@ -307,15 +307,15 @@ B
 D
 ```
 
-Рассуждение:
+Объяснение:
 
 `throw` skips `console.log('C')`; catch prints error message.
 
-Типичная ошибка:
+Распространённая ошибка:
 
 Expect C to run.
 
-Automation QA connection:
+Связь с Automation QA:
 
 Validation after failed step does not run.
 
@@ -328,15 +328,15 @@ Start
 Finally
 ```
 
-Рассуждение:
+Объяснение:
 
 No error, so catch skipped. Finally still runs.
 
-Типичная ошибка:
+Распространённая ошибка:
 
 Expect catch to run always.
 
-Automation QA connection:
+Связь с Automation QA:
 
 Cleanup after success.
 
@@ -348,19 +348,19 @@ Cleanup after success.
 Stop test
 ```
 
-Рассуждение:
+Объяснение:
 
 Status is not 200, so error is thrown; body validation does not run.
 
-Типичная ошибка:
+Распространённая ошибка:
 
 Expect `Validate body` after throw.
 
-Automation QA connection:
+Связь с Automation QA:
 
 Stop validation after bad status.
 
-## Code reading
+## Чтение кода
 
 Ответ:
 
@@ -372,19 +372,19 @@ Field validation `console.log(body.id)` does not run.
 
 QA debugging should log that response body is invalid and ideally include safe context about operation/input.
 
-Рассуждение:
+Объяснение:
 
 No parsed body exists after parse error.
 
-Типичная ошибка:
+Распространённая ошибка:
 
 Try to validate fields after parse failure.
 
-Automation QA connection:
+Связь с Automation QA:
 
 Invalid JSON should produce clear test failure.
 
-## Debugging tasks
+## Задачи на отладку
 
 ### Задача 1
 
@@ -402,15 +402,15 @@ try {
 }
 ```
 
-Рассуждение:
+Объяснение:
 
 Catch should handle, not hide.
 
-Типичная ошибка:
+Распространённая ошибка:
 
 Empty catch.
 
-Automation QA connection:
+Связь с Automation QA:
 
 Hidden parsing failures make tests misleading.
 
@@ -426,15 +426,15 @@ Better:
 throw new Error('Expected status 200, received 500');
 ```
 
-Рассуждение:
+Объяснение:
 
 Useful error message includes expectation and actual state.
 
-Типичная ошибка:
+Распространённая ошибка:
 
 Throw generic message.
 
-Automation QA connection:
+Связь с Automation QA:
 
 Clear failure messages speed up debugging.
 
@@ -444,19 +444,19 @@ Clear failure messages speed up debugging.
 
 Continuing after setup failure is dangerous because test lacks required data.
 
-Рассуждение:
+Объяснение:
 
 Later failure may be misleading.
 
-Типичная ошибка:
+Распространённая ошибка:
 
 Ignore setup error to keep test running.
 
-Automation QA connection:
+Связь с Automation QA:
 
 Fail fast on critical setup failures.
 
-## QA-oriented tasks
+## QA-задачи
 
 ### Сценарий 1
 
@@ -474,15 +474,15 @@ try {
 }
 ```
 
-Рассуждение:
+Объяснение:
 
 Bad status interrupts normal validation path.
 
-Типичная ошибка:
+Распространённая ошибка:
 
 Continue to body validation.
 
-Automation QA connection:
+Связь с Automation QA:
 
 Status validation failure should be clear.
 
@@ -501,15 +501,15 @@ try {
 }
 ```
 
-Рассуждение:
+Объяснение:
 
 Parsing may fail, so try/catch gives controlled path.
 
-Типичная ошибка:
+Распространённая ошибка:
 
 Catch but do not log useful context.
 
-Automation QA connection:
+Связь с Automation QA:
 
 API parsing failures are common.
 
@@ -528,15 +528,15 @@ try {
 }
 ```
 
-Рассуждение:
+Объяснение:
 
 Finally runs after failure handling.
 
-Типичная ошибка:
+Распространённая ошибка:
 
 Put cleanup only after successful operation.
 
-Automation QA connection:
+Связь с Automation QA:
 
 Temporary data should be cleaned up.
 
@@ -551,19 +551,19 @@ API returned invalid JSON          → usually stop validation with clear error
 Temporary log file cannot be deleted → handle locally and log
 ```
 
-Рассуждение:
+Объяснение:
 
 Handle locally when recovery or useful logging is possible. Stop when test cannot continue meaningfully.
 
-Типичная ошибка:
+Распространённая ошибка:
 
 Treat all errors the same.
 
-Automation QA connection:
+Связь с Automation QA:
 
 Different failure severity requires different handling.
 
-## Mini-project
+## Мини-проект
 
 Возможное решение:
 
@@ -603,14 +603,14 @@ id validation     | print valid id           | throw missing id error      | cat
 finally           | cleanup runs             | cleanup also runs           | execution leaves controlled flow
 ```
 
-Рассуждение:
+Объяснение:
 
 Each risky operation has a clear failure path.
 
-Типичная ошибка:
+Распространённая ошибка:
 
 Put all failures behind generic `Failed`.
 
-Automation QA connection:
+Связь с Automation QA:
 
 This is a practical API validation pattern.

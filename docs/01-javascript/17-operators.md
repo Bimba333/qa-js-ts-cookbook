@@ -161,7 +161,7 @@ Value
 └── 3
 │
 ▼
-Result
+Результат
 │
 └── 5
 ```
@@ -175,7 +175,7 @@ Operands
 Operator
 │
 ▼
-Result
+Результат
 ```
 
 Главный вопрос:
@@ -209,7 +209,7 @@ Operand → Operator → Result:
 │       └────────── operator
 └────────────────── operand
 
-Result
+Результат
 │
 └── 5
 ```
@@ -250,7 +250,7 @@ Operand
 └── "Anna"
 │
 ▼
-Result
+Результат
 │
 └── "string"
 ```
@@ -300,7 +300,7 @@ Right operand
 └── 3
 │
 ▼
-Result
+Результат
 │
 └── 5
 ```
@@ -335,7 +335,7 @@ condition ? valueIfTrue : valueIfFalse
 │           └──────────────── second operand
 └──────────────────────────── first operand
 
-Result
+Результат
 │
 └── one of two values
 ```
@@ -395,7 +395,7 @@ Arithmetic operator
 Number-like result
 ```
 
-Examples:
+Примеры:
 
 ```text
 +  addition
@@ -443,7 +443,7 @@ Value B
 Boolean result
 ```
 
-Examples:
+Примеры:
 
 ```text
 ===  strict equality
@@ -572,7 +572,7 @@ const statusCode = '200';
 console.log(typeof statusCode);
 ```
 
-Result:
+Результат:
 
 ```text
 string
@@ -638,7 +638,7 @@ object
 Boolean result
 ```
 
-Result:
+Результат:
 
 ```text
 true
@@ -815,7 +815,7 @@ Program Control
 
 Operators are the first step toward control flow because conditionals depend on expression results.
 
-Bridge to Conditionals:
+Переход к Conditionals:
 
 ```text
 Operator result
@@ -831,7 +831,7 @@ Conditional chooses path
 
 ## Ментальная модель
 
-### Calculator
+### Калькулятор
 
 Arithmetic operator is like a calculator:
 
@@ -1011,7 +1011,7 @@ const retryCount = '3';
 console.log(retryCount + 1);
 ```
 
-Result:
+Результат:
 
 ```text
 31
@@ -1124,7 +1124,7 @@ Operand(s)
 Operator
 │
 ▼
-Result
+Результат
 ```
 
 Operators belong to categories:
@@ -1170,7 +1170,7 @@ The next chapter uses operator results to explain Conditionals.
 
 ---
 
-## Quick Check
+## Проверьте себя
 
 Ответьте без запуска кода.
 

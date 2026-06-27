@@ -293,7 +293,7 @@ console.log(false ?? true);
 console.log('' ?? 'default');
 ```
 
-Result:
+Результат:
 
 ```text
 0
@@ -617,7 +617,7 @@ const retries = config.retryPolicy?.retries ?? 2;
 console.log(retries);
 ```
 
-### Пример 5. Common mistakes
+### Пример 5. Типичные ошибки
 
 ```javascript
 const config = {
@@ -754,7 +754,7 @@ They solve different problems. Logical operators will be studied later. In this 
 const retries = 0 ?? 2;
 ```
 
-Result:
+Результат:
 
 ```text
 0
@@ -768,7 +768,7 @@ Result:
 const verbose = false ?? true;
 ```
 
-Result:
+Результат:
 
 ```text
 false
@@ -990,7 +990,7 @@ response optional field
 └── null/undefined -> fallback
 ```
 
-### 12. Readability
+### 12. Читаемость
 
 ```text
 value ?? fallback
@@ -998,7 +998,7 @@ value ?? fallback
 └── explicit missing-value policy
 ```
 
-### 13. Common mistakes
+### 13. Типичные ошибки
 
 ```text
 0 ?? 2
@@ -1019,7 +1019,7 @@ value ?? fallback
 └── broader logical behavior later
 ```
 
-### 15. Current JavaScript model
+### 15. Текущая модель JavaScript
 
 ```text
 Objects
@@ -1117,7 +1117,7 @@ safe traversal
 fallback selection
 ```
 
-### 25. Mental model summary
+### 25. Краткая ментальная модель
 
 ```text
 backup plan
@@ -1182,7 +1182,7 @@ nullish?
 final value
 ```
 
-### 31. Bridge to Object Methods
+### 31. Переход к Object Methods
 
 ```text
 objects store data
@@ -1191,7 +1191,7 @@ objects store data
 next: objects store behavior
 ```
 
-### 32. Summary diagram
+### 32. Итоговая схема
 
 ```text
 Current value
@@ -1288,7 +1288,7 @@ Is it null or undefined?
 
 ---
 
-## Quick Check
+## Проверьте себя
 
 Ответьте без запуска кода.
 

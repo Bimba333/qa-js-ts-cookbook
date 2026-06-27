@@ -16,7 +16,7 @@
 10. Почему эта глава еще не про callbacks?
 11. Как Function Expressions могут использоваться в Automation QA?
 
-## Identify declaration vs expression
+## Определите declaration vs expression
 
 Для каждого примера укажите, где Function Declaration, где Function Expression, и какое значение хранит переменная.
 
@@ -44,7 +44,7 @@ const cleanupTestData = function cleanup() {
 };
 ```
 
-## Identify stored function values
+## Определите сохраненный function objects
 
 ### Задача 1
 
@@ -58,9 +58,9 @@ openProfile();
 
 Ответьте:
 
-* какая переменная хранит function value;
-* где function value создается;
-* где function value вызывается.
+* какая переменная хранит function object;
+* где function object создается;
+* где function object вызывается.
 
 ### Задача 2
 
@@ -76,7 +76,7 @@ checkUser();
 
 Ответьте:
 
-* какие переменные связаны с function value;
+* какие переменные связаны с function object;
 * какая переменная используется для вызова;
 * почему тело выполняется.
 
@@ -165,13 +165,13 @@ const validateStatus = function () {
 };
 ```
 
-Рассуждение:
+Объяснение:
 
 ```text
 Строка с присваиванием сразу выполняет тело функции.
 ```
 
-## QA-oriented tasks
+## QA-задачи
 
 ### Сценарий 1. Reusable validator
 
@@ -207,7 +207,7 @@ function validateUserProfile() {
 
 ### Сценарий 4. Naming
 
-Подберите хорошие имена переменных для function values:
+Подберите хорошие имена переменных для function objects:
 
 ```text
 проверить статус ответа

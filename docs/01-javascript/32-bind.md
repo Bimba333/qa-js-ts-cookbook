@@ -891,7 +891,7 @@ bind()
 └── function now, result later
 ```
 
-### Пример 4. Common mistakes
+### Пример 4. Типичные ошибки
 
 ```javascript
 'use strict';
@@ -1208,7 +1208,7 @@ Need reusable prepared function?
 └── bind()
 ```
 
-Readability model:
+Модель читаемости:
 
 ```text
 Repeated .call(config, ...)
@@ -1427,7 +1427,7 @@ bind(config)
 configured function
 ```
 
-### 8. Current JavaScript model
+### 8. Текущая модель JavaScript
 
 ```text
 Functions
@@ -1504,7 +1504,7 @@ Function Execution Context
 └── this from bind()
 ```
 
-### 14. Common mistakes
+### 14. Типичные ошибки
 
 ```text
 bind()
@@ -1516,7 +1516,7 @@ returns function
 not result
 ```
 
-### 15. Readability
+### 15. Читаемость
 
 ```text
 many .call(config, ...)
@@ -1585,7 +1585,7 @@ bind()
 #1 !== #2
 ```
 
-### 21. Mental model summary
+### 21. Краткая ментальная модель
 
 ```text
 permanent badge
@@ -1615,7 +1615,7 @@ later invocation
 target function runs with receiver
 ```
 
-### 23. Bridge to object methods
+### 23. Переход к object methods
 
 ```text
 object method
@@ -1629,7 +1629,7 @@ receiver matters
 
 Objects will be studied in more detail in the next section.
 
-### 24. Bridge to callbacks
+### 24. Переход к callbacks
 
 ```text
 prepared function
@@ -1698,7 +1698,7 @@ this
 └── bind()
 ```
 
-### 30. Summary diagram
+### 30. Итоговая схема
 
 ```text
 Need receiver for one call?
@@ -1815,7 +1815,7 @@ bind() returns a function
 
 ---
 
-## Quick Check
+## Проверьте себя
 
 Ответьте без запуска кода.
 

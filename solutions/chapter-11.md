@@ -8,15 +8,15 @@
 
 Scope описывает правила видимости, но engine нужна структура, где хранятся identifiers и links outward.
 
-Рассуждение:
+Объяснение:
 
 Чтобы выполнить lookup, engine должен знать current identifiers и outer environment.
 
-Типичная ошибка:
+Распространённая ошибка:
 
 Думать, что Scope существует только как абстрактное правило без внутренней модели.
 
-Automation QA connection:
+Связь с Automation QA:
 
 Эта модель помогает понять, почему helper-local names не доступны тесту.
 
@@ -26,15 +26,15 @@ Automation QA connection:
 
 Lexical Environment — conceptual internal structure, которая содержит Environment Record и Outer Environment Reference.
 
-Рассуждение:
+Объяснение:
 
 Record хранит identifiers текущей области, outer reference связывает ее с внешней областью.
 
-Типичная ошибка:
+Распространённая ошибка:
 
 Учить Lexical Environment как сухое определение без связи со Scope.
 
-Automation QA connection:
+Связь с Automation QA:
 
 Помогает объяснять lookup configuration values inside helpers.
 
@@ -44,15 +44,15 @@ Automation QA connection:
 
 Environment Record хранит records identifiers текущего environment.
 
-Рассуждение:
+Объяснение:
 
 Если function имеет `path`, function Environment Record conceptually содержит `path`.
 
-Типичная ошибка:
+Распространённая ошибка:
 
 Считать Environment Record обычным JavaScript object.
 
-Automation QA connection:
+Связь с Automation QA:
 
 Helper local variables можно представить как records helper environment.
 
@@ -62,15 +62,15 @@ Helper local variables можно представить как records helper e
 
 Outer Environment Reference — link из current Lexical Environment к outer Lexical Environment.
 
-Рассуждение:
+Объяснение:
 
 Если identifier не найден current record, lookup follows outer reference.
 
-Типичная ошибка:
+Распространённая ошибка:
 
 Путать outer reference с Call Stack.
 
-Automation QA connection:
+Связь с Automation QA:
 
 Helper может read outer `baseUrl` because its environment has an outer link.
 
@@ -80,15 +80,15 @@ Helper может read outer `baseUrl` because its environment has an outer link
 
 Scope задает rules visibility, Lexical Environment реализует эти rules через records and outer links.
 
-Рассуждение:
+Объяснение:
 
 Scope Chain conceptually соответствует chain of linked environments.
 
-Типичная ошибка:
+Распространённая ошибка:
 
 Считать Scope и Lexical Environment полными синонимами.
 
-Automation QA connection:
+Связь с Automation QA:
 
 При debugging tests полезно разделять rule and structure.
 
@@ -98,15 +98,15 @@ Automation QA connection:
 
 Execution Context использует Lexical Environment для resolving identifiers during execution.
 
-Рассуждение:
+Объяснение:
 
 Active Execution Context имеет current Lexical Environment.
 
-Типичная ошибка:
+Распространённая ошибка:
 
 Считать Execution Context только Call Stack entry.
 
-Automation QA connection:
+Связь с Automation QA:
 
 При падении helper важно понимать не только active function, но и identifiers доступные внутри нее.
 
@@ -116,15 +116,15 @@ Automation QA connection:
 
 Variables создают identifiers, а Environment Record хранит records об этих identifiers.
 
-Рассуждение:
+Объяснение:
 
 `const userName = 'qa-user'` creates identifier record in current environment.
 
-Типичная ошибка:
+Распространённая ошибка:
 
 Думать, что variables живут вне environment.
 
-Automation QA connection:
+Связь с Automation QA:
 
 Test data variables become records in their test/helper environment.
 
@@ -134,15 +134,15 @@ Test data variables become records in their test/helper environment.
 
 Memory хранит information; Lexical Environment хранит named access records к этой information.
 
-Рассуждение:
+Объяснение:
 
 Это разные layers одной модели.
 
-Типичная ошибка:
+Распространённая ошибка:
 
 Называть Environment Record всей памятью программы.
 
-Automation QA connection:
+Связь с Automation QA:
 
 Помогает отличать "где хранится значение" от "как identifier resolved".
 
@@ -152,15 +152,15 @@ Automation QA connection:
 
 Call Stack показывает active Execution Context, а Lexical Environment explains identifier resolution inside that context.
 
-Рассуждение:
+Объяснение:
 
 Call Stack отвечает "что выполняется", Lexical Environment отвечает "как ищется имя".
 
-Типичная ошибка:
+Распространённая ошибка:
 
 Объяснять lookup порядком вызовов.
 
-Automation QA connection:
+Связь с Automation QA:
 
 Stack trace и environment lookup нужны вместе при debugging.
 
@@ -170,15 +170,15 @@ Stack trace и environment lookup нужны вместе при debugging.
 
 Scope Chain можно представить как chain of Lexical Environments, связанных через Outer Environment Reference.
 
-Рассуждение:
+Объяснение:
 
 Lookup moves from current record to outer record through links.
 
-Типичная ошибка:
+Распространённая ошибка:
 
 Думать, что engine scans whole file.
 
-Automation QA connection:
+Связь с Automation QA:
 
 Nested helpers читают outer configuration через predictable lookup path.
 
@@ -188,37 +188,37 @@ Nested helpers читают outer configuration через predictable lookup pa
 
 Lexical Environment — internal conceptual structure, not a regular JavaScript object.
 
-Рассуждение:
+Объяснение:
 
 Код не может напрямую получить Environment Record как обычный value.
 
-Типичная ошибка:
+Распространённая ошибка:
 
 Пытаться представить `environment.userName` as real code.
 
-Automation QA connection:
+Связь с Automation QA:
 
 Модель нужна для reasoning, not для написания API calls.
 
-### 12. Bridge to Hoisting
+### 12. Переход к Hoisting
 
 Ответ:
 
 Hoisting объяснит, когда declarations affect Environment Records before execution.
 
-Рассуждение:
+Объяснение:
 
 После понимания "где records хранятся" можно объяснять "когда records появляются".
 
-Типичная ошибка:
+Распространённая ошибка:
 
 Учить Hoisting как магическое поднятие строк.
 
-Automation QA connection:
+Связь с Automation QA:
 
 Понимание Hoisting помогает читать legacy helper code with `var` and function declarations.
 
-## Identify Lexical Environments
+## Определите Lexical Environments
 
 Ответ:
 
@@ -253,19 +253,19 @@ Outer Environment Reference
 └── Function Lexical Environment
 ```
 
-Рассуждение:
+Объяснение:
 
 Каждый level хранит свои identifiers and outer link.
 
-Типичная ошибка:
+Распространённая ошибка:
 
 Поместить `expectedStatus` в function record, игнорируя block.
 
-Automation QA connection:
+Связь с Automation QA:
 
 Так можно анализировать test scope, helper scope and assertion block data.
 
-## Predict identifier lookup
+## Предскажите поиск идентификатора
 
 ### Задача 1
 
@@ -284,15 +284,15 @@ Function Environment Record → not found
 Outer → Global Environment Record → found
 ```
 
-Рассуждение:
+Объяснение:
 
 Function local data and outer config resolved through different records.
 
-Типичная ошибка:
+Распространённая ошибка:
 
 Считать `baseUrl` local только потому, что function uses it.
 
-Automation QA connection:
+Связь с Automation QA:
 
 Page helpers часто используют local route and global base URL.
 
@@ -306,15 +306,15 @@ Page helpers часто используют local route and global base URL.
 Function Environment Record → status found
 ```
 
-Рассуждение:
+Объяснение:
 
 Local `status` shadows global `status`, lookup stops at current record.
 
-Типичная ошибка:
+Распространённая ошибка:
 
 Продолжить lookup до global status.
 
-Automation QA connection:
+Связь с Automation QA:
 
 Shadowing expected/actual status can confuse tests.
 
@@ -335,19 +335,19 @@ Block Environment Record → not found
 Outer → Global Environment Record → found
 ```
 
-Рассуждение:
+Объяснение:
 
 Block uses its local message and outer testName.
 
-Типичная ошибка:
+Распространённая ошибка:
 
 Думать, что block cannot read outer identifiers.
 
-Automation QA connection:
+Связь с Automation QA:
 
 Assertion block can read test-level data.
 
-## Predict output before running
+## Предскажите вывод перед запуском
 
 ### Задача 1
 
@@ -357,15 +357,15 @@ Assertion block can read test-level data.
 https://example.com/profile
 ```
 
-Рассуждение:
+Объяснение:
 
 `path` found in function record, `baseUrl` found through outer global environment.
 
-Типичная ошибка:
+Распространённая ошибка:
 
 Ожидать ReferenceError for `baseUrl`.
 
-Automation QA connection:
+Связь с Automation QA:
 
 Route helper can combine global base URL and local path.
 
@@ -378,19 +378,19 @@ inner
 outer
 ```
 
-Рассуждение:
+Объяснение:
 
 Inside function lookup finds local status. Outside function lookup finds global status.
 
-Типичная ошибка:
+Распространённая ошибка:
 
 Думать, что local status overwrites global status.
 
-Automation QA connection:
+Связь с Automation QA:
 
 Shadowing does not mutate outer test data.
 
-## Debugging
+## Задачи на отладку
 
 ### Задача 1
 
@@ -398,15 +398,15 @@ Shadowing does not mutate outer test data.
 
 `path` exists in Function Lexical Environment of `printUrl`, not in Global Lexical Environment.
 
-Рассуждение:
+Объяснение:
 
 Global code lookup starts in global record and cannot search inside function record.
 
-Типичная ошибка:
+Распространённая ошибка:
 
 Думать, что calling function exposes local records.
 
-Automation QA connection:
+Связь с Automation QA:
 
 Helper-local values must be returned or exposed intentionally if test needs them.
 
@@ -416,15 +416,15 @@ Helper-local values must be returned or exposed intentionally if test needs them
 
 Call Stack shows that `helper` is executing. Lexical Environment explains why `baseUrl` can be resolved.
 
-Рассуждение:
+Объяснение:
 
 Lookup uses helper environment and outer global environment.
 
-Типичная ошибка:
+Распространённая ошибка:
 
-Explaining all visibility through caller/callee order.
+Explaining all visibility through вызывающий код/callee order.
 
-Automation QA connection:
+Связь с Automation QA:
 
 Stack trace tells where execution is; environment model tells where identifier came from.
 
@@ -441,19 +441,19 @@ Function Record: status → "local"
 lookup stops
 ```
 
-Рассуждение:
+Объяснение:
 
 Outer global `status` remains, but is shadowed.
 
-Типичная ошибка:
+Распространённая ошибка:
 
 Think local declaration changes global status.
 
-Automation QA connection:
+Связь с Automation QA:
 
 Use precise names to avoid status shadowing in assertions.
 
-## QA-oriented tasks
+## QA-задачи
 
 ### Сценарий 1
 
@@ -471,15 +471,15 @@ Helper Function Lexical Environment
     └── outer test/module/global environment
 ```
 
-Рассуждение:
+Объяснение:
 
 These identifiers are helper-local records, so outside code does not access them directly.
 
-Типичная ошибка:
+Распространённая ошибка:
 
 Move helper internals to global variables for convenience.
 
-Automation QA connection:
+Связь с Automation QA:
 
 Isolation keeps helpers reusable and tests readable.
 
@@ -500,15 +500,15 @@ Helper Environment Record → not found
 Outer → Global/Config Environment Record → found
 ```
 
-Рассуждение:
+Объяснение:
 
 Nested helper can use local data and outer configuration through linked environments.
 
-Типичная ошибка:
+Распространённая ошибка:
 
 Treat all helper inputs as global.
 
-Automation QA connection:
+Связь с Automation QA:
 
 This explains route builders in Playwright frameworks.
 
@@ -530,19 +530,19 @@ helper record → outer records
 
 Both are needed: stack trace tells where code ran, environment model tells where names came from.
 
-Рассуждение:
+Объяснение:
 
 Runtime failure can depend on both call chain and resolved values.
 
-Типичная ошибка:
+Распространённая ошибка:
 
 Read only stack trace and ignore variables resolved in helper.
 
-Automation QA connection:
+Связь с Automation QA:
 
 This is common when wrong `baseUrl`, token or expected status is read inside helper.
 
-## Mini-project
+## Мини-проект
 
 Один из вариантов:
 
@@ -582,15 +582,15 @@ userName → Block Record → Function Record
 baseUrl  → Block Record → Function Record → Global Record
 ```
 
-Рассуждение:
+Объяснение:
 
 Block environment stores block-local `loginUrl`, function environment stores `userName`, global environment stores `baseUrl`.
 
-Типичная ошибка:
+Распространённая ошибка:
 
 Put all identifiers into one global record.
 
-Automation QA connection:
+Связь с Automation QA:
 
 This mirrors a real UI test: global config, test-local data, block-local composed URL.
 

@@ -10,7 +10,7 @@ Conditional makes one decision:
 Expression
 │
 ▼
-Result
+Результат
 │
 ▼
 Choose one path
@@ -175,7 +175,7 @@ Check condition
 
 Loops exist because programs often need to repeat an algorithm.
 
-Examples:
+Примеры:
 
 ```text
 Validate many API responses.
@@ -651,7 +651,7 @@ Loops
 └── repeat decisions/actions
 ```
 
-Bridge to Error Handling:
+Переход к Error Handling:
 
 ```text
 Loop body runs
@@ -1028,7 +1028,7 @@ What should happen if an error occurs during execution?
 
 ---
 
-## Quick Check
+## Проверьте себя
 
 Ответьте без запуска кода.
 

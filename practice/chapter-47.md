@@ -181,7 +181,7 @@ Explain:
 
 ---
 
-## 6. Mini-project
+## 6. Мини-проект
 
 Create small API response model.
 

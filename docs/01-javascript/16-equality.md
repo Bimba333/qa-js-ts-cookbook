@@ -249,7 +249,7 @@ Strict equality does not perform type conversion.
 console.log(5 === '5');
 ```
 
-Result:
+Результат:
 
 ```text
 false
@@ -292,7 +292,7 @@ Loose equality may perform conversion before comparison.
 console.log(5 == '5');
 ```
 
-Result:
+Результат:
 
 ```text
 true
@@ -389,7 +389,7 @@ value and type       value and type
 └──── compare ───────┘
 ```
 
-Examples:
+Примеры:
 
 ```text
 200 === 200          → true
@@ -421,7 +421,7 @@ const secondUser = {
 console.log(firstUser === secondUser);
 ```
 
-Result:
+Результат:
 
 ```text
 false
@@ -462,7 +462,7 @@ sameUser  ─────┘──► Object A
                     └── name: "Anna"
 ```
 
-Result:
+Результат:
 
 ```text
 true
@@ -656,7 +656,7 @@ Comparison operator
 └── Object.is()
     └── special exact semantics
 
-Result
+Результат
 │
 └── true / false
 ```
@@ -698,7 +698,7 @@ Loose equality
 └── possibly converted values
 ```
 
-### Bridge to Operators
+### Переход к Operators
 
 Equality operators are only one group of operators.
 
@@ -708,7 +708,7 @@ Next chapter expands the question:
 How do JavaScript operators transform, combine and evaluate values?
 ```
 
-Bridge to Operators:
+Переход к Operators:
 
 ```text
 Equality
@@ -739,7 +739,7 @@ Passport check
 
 If type differs, `===` says false.
 
-### Translator before comparison
+### Переводчик перед сравнением
 
 `==` is like translator before comparison:
 
@@ -915,7 +915,7 @@ const actualStatus = '200';
 console.log(expectedStatus == actualStatus);
 ```
 
-Result:
+Результат:
 
 ```text
 true
@@ -937,7 +937,7 @@ const actualUser = {
 console.log(expectedUser === actualUser);
 ```
 
-Result:
+Результат:
 
 ```text
 false
@@ -949,7 +949,7 @@ false
 console.log(NaN === NaN);
 ```
 
-Result:
+Результат:
 
 ```text
 false
@@ -1019,7 +1019,7 @@ const actualStatusCode = '200';
 console.log(expectedStatusCode === actualStatusCode);
 ```
 
-Result:
+Результат:
 
 ```text
 false
@@ -1133,7 +1133,7 @@ Use Object.is() for the few cases where its semantics are specifically needed.
 
 ---
 
-## Quick Check
+## Проверьте себя
 
 Ответьте без запуска кода.
 

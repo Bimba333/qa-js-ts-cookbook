@@ -17,7 +17,7 @@
 11. Когда уместен `let`?
 12. Почему `var` не является modern default?
 
-## Identify declaration / initialization / assignment
+## Определите declaration / initialization / assignment
 
 Для каждого фрагмента подпишите строки как:
 
@@ -58,7 +58,7 @@ retryCount = 2;
 console.log(retryCount);
 ```
 
-## Predict output before running
+## Предскажите вывод перед запуском
 
 Перед запуском предскажите вывод.
 
@@ -90,7 +90,7 @@ const loginUrl = baseUrl + path;
 console.log(loginUrl);
 ```
 
-## Predict variable state
+## Предскажите состояние переменной
 
 Для кода ниже заполните таблицу:
 
@@ -109,7 +109,7 @@ setupStatus = 'finished';
 console.log(setupStatus);
 ```
 
-## Code reading
+## Чтение кода
 
 Прочитайте код и ответьте:
 
@@ -130,7 +130,7 @@ console.log(testStatus);
 console.log(expectedTitle);
 ```
 
-## Debugging tasks
+## Задачи на отладку
 
 ### Задача 1
 
@@ -169,7 +169,7 @@ console.log(baseUrl);
 
 Почему здесь лучше использовать `const`?
 
-## QA-oriented tasks
+## QA-задачи
 
 ### Сценарий 1
 
@@ -208,7 +208,7 @@ status: active
 
 Какой keyword лучше использовать для `status` и почему?
 
-## Mini-project
+## Мини-проект
 
 Создайте файл:
 

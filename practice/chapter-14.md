@@ -17,7 +17,7 @@
 11. Что показывает `typeof`?
 12. Что означает immutability of primitive values?
 
-## Identify primitive types
+## Определите primitive types
 
 Для каждого value укажите primitive type.
 
@@ -31,7 +31,7 @@ const uniqueId = Symbol('id');
 const largeId = 9007199254740993n;
 ```
 
-## Predict typeof
+## Предскажите typeof
 
 Перед запуском предскажите результат.
 
@@ -45,7 +45,7 @@ console.log(typeof Symbol('id'));
 console.log(typeof 10n);
 ```
 
-## Code reading
+## Чтение кода
 
 Прочитайте код и ответьте:
 
@@ -64,7 +64,7 @@ const deletedAt = null;
 let responseTime;
 ```
 
-## Debugging tasks
+## Задачи на отладку
 
 ### Задача 1
 
@@ -105,7 +105,7 @@ typeof null is "object", so null is object.
 
 Исправьте объяснение.
 
-## QA-oriented tasks
+## QA-задачи
 
 ### Сценарий 1
 
@@ -138,7 +138,7 @@ const expectedId = '9007199254740993';
 
 Почему large ID часто хранится as String in tests?
 
-## Mini-project
+## Мини-проект
 
 Создайте файл:
 

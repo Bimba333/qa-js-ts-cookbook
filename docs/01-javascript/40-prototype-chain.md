@@ -684,7 +684,7 @@ own property
 └── wins over inherited property
 ```
 
-### Пример 4. Common mistakes
+### Пример 4. Типичные ошибки
 
 Файл:
 
@@ -1268,7 +1268,7 @@ pageBehavior
 frameworkBehavior
 ```
 
-### 19. Readability
+### 19. Читаемость
 
 ```text
 short chain
@@ -1280,7 +1280,7 @@ deep chain
 └── harder to debug
 ```
 
-### 20. Common mistakes
+### 20. Типичные ошибки
 
 ```text
 far property
@@ -1408,7 +1408,7 @@ lookup chain
 function object
 ```
 
-### 31. Mental model summary
+### 31. Краткая ментальная модель
 
 ```text
 Prototype Chain
@@ -1446,7 +1446,7 @@ prototype
 prototype chain
 ```
 
-### 34. Bridge to Classes
+### 34. Переход к Classes
 
 ```text
 Prototype Chain
@@ -1455,7 +1455,7 @@ Prototype Chain
 Classes later create objects with shared prototypes more conveniently
 ```
 
-### 35. Bridge to new
+### 35. Переход к new
 
 ```text
 object creation question
@@ -1482,7 +1482,7 @@ own describe()
 └── overrides inherited describe()
 ```
 
-### 38. Summary diagram
+### 38. Итоговая схема
 
 ```text
 Need property
@@ -1572,7 +1572,7 @@ Own properties have priority. Closer properties shadow farther properties. If lo
 
 ---
 
-## Quick Check
+## Проверьте себя
 
 1. What problem does Prototype Chain solve?
 

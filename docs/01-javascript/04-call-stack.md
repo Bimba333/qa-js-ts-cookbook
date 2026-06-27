@@ -776,7 +776,7 @@ Call Stack
 Call Stack
 │
 ├── Function Execution Context: current
-├── Function Execution Context: caller
+├── Function Execution Context: вызывающий код
 └── Global Execution Context
 ```
 
@@ -808,7 +808,7 @@ Runtime Interaction
 
 Предыдущая глава объяснила, что такое context. Эта глава объясняет, как engine управляет активными contexts.
 
-### Bridge to Memory chapter
+### Переход к Memory chapter
 
 Следующая крупная группа тем приведет к значениям, переменным и памяти.
 
@@ -1235,7 +1235,7 @@ Call Stack limit reached
 ```text
 Call Stack
 ├── current function
-├── caller function
+├── вызывающий код function
 └── Global
 ```
 
@@ -1369,7 +1369,7 @@ Call Stack работает по принципу last in — first out. Пос�
 
 ---
 
-## Quick Check
+## Проверьте себя
 
 1. Зачем нужен Call Stack?
 

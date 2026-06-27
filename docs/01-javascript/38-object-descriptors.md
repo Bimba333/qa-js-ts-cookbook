@@ -75,7 +75,7 @@ Object Descriptors describe these rules.
 * что property has key and value;
 * что assignment can update property value;
 * что `delete` can remove property на базовом уровне;
-* что object methods are properties with function values;
+* что object methods are properties with function objects;
 * что `Object` is a built-in object with useful methods;
 * что examples can intentionally demonstrate errors.
 
@@ -617,7 +617,7 @@ console.log(config.timeout);
 console.log(Object.keys(config));
 ```
 
-### Пример 5. Common mistakes
+### Пример 5. Типичные ошибки
 
 ```javascript
 const config = {};
@@ -941,7 +941,7 @@ operation
 must follow property contract
 ```
 
-### 11. Current JavaScript model
+### 11. Текущая модель JavaScript
 
 ```text
 Objects
@@ -1064,7 +1064,7 @@ API response
 └── usually plain data
 ```
 
-### 24. Common mistakes
+### 24. Типичные ошибки
 
 ```text
 defineProperty without flags
@@ -1073,7 +1073,7 @@ defineProperty without flags
 restrictive defaults
 ```
 
-### 25. Mental model summary
+### 25. Краткая ментальная модель
 
 ```text
 passport
@@ -1117,7 +1117,7 @@ list
 change property definition
 ```
 
-### 30. Bridge to Prototype
+### 30. Переход к Prototype
 
 ```text
 properties can exist elsewhere
@@ -1126,7 +1126,7 @@ properties can exist elsewhere
 Prototype
 ```
 
-### 31. Bridge to Classes
+### 31. Переход к Classes
 
 ```text
 classes create objects
@@ -1151,7 +1151,7 @@ state: environment = staging
 metadata: writable = false
 ```
 
-### 34. Summary diagram
+### 34. Итоговая схема
 
 ```text
 Property
@@ -1258,7 +1258,7 @@ Prototype
 
 ---
 
-## Quick Check
+## Проверьте себя
 
 Ответьте без запуска кода.
 

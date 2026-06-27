@@ -1,255 +1,319 @@
-# Практика: super
+# Практика: shift() and unshift()
 
-## Цели практики
+## Цель практики
 
-После выполнения заданий вы должны уметь:
+Закрепить модель:
 
-* объяснять, зачем существует `super`;
-* отличать override with `super` from override without `super`;
-* определять base behavior;
-* предсказывать result of `super.method()`;
-* понимать relationship between `super` and `this`;
-* применять `super` в Page Objects, API clients and validators.
+```text
+push/pop
+│
+└── изменяют конец
+
+shift/unshift
+│
+└── изменяют начало
+```
+
+Особое внимание:
+
+```text
+unshift()
+│
+├── добавляет новый первый элемент
+└── смещает существующие indexes вправо
+
+shift()
+│
+├── удаляет первый элемент
+├── возвращает удаленное value
+└── смещает оставшиеся indexes влево
+```
 
 ---
 
 ## 1. Концептуальные вопросы
 
-1. Why does `super` exist?
-2. What problem appears when derived method overrides base method?
-3. What does `super.method()` call?
-4. Does `super.method()` copy base method code?
-5. Why use `super` instead of copying base method code?
-6. What is the difference between `super` and `this`?
-7. What happens if override does not call `super`?
-8. When can override without `super` be intentional?
-9. Why is constructor `super()` not part of this chapter?
-10. How is `super` useful in Automation QA?
+Ответьте своими словами.
+
+1. Зачем существует `unshift()`?
+
+2. Зачем существует `shift()`?
+
+3. Что такое начало array?
+
+4. Что возвращает `shift()`?
+
+5. Почему `shift()` не то же самое, что `pop()`?
+
+6. Почему `unshift()` меняет indexes существующих elements?
+
+7. Почему `length` увеличивается после `unshift()`?
+
+8. Почему `length` уменьшается после `shift()`?
 
 ---
 
-## 2. Identify base behavior
+## 2. Чтение кода
 
-### Задание 2.1
+Прочитайте код.
 
 ```javascript
-class BasePage {
-  open(pageName) {
-    return `open ${pageName}`;
-  }
-}
+const requestTasks = ['GET /users', 'GET /orders'];
 
-class LoginPage extends BasePage {
-  open(pageName) {
-    const baseResult = super.open(pageName);
-    return `${baseResult} and focus form`;
-  }
-}
+requestTasks.unshift('POST /login');
+
+console.log(requestTasks[0]);
+console.log(requestTasks[1]);
+console.log(requestTasks.length);
 ```
 
 Ответьте:
 
-* What is the base behavior?
-* What is the derived-specific behavior?
-* What does `super.open(pageName)` call?
+1. Что хранится at index `0` после `unshift()`?
 
-### Задание 2.2
+2. Что произошло с `"GET /users"`?
 
-```javascript
-class BaseValidator {
-  formatFailure(expected, actual) {
-    return `expected ${expected}, actual ${actual}`;
-  }
-}
-
-class StatusValidator extends BaseValidator {
-  formatFailure(expected, actual) {
-    const message = super.formatFailure(expected, actual);
-    return `Status mismatch: ${message}`;
-  }
-}
-```
-
-Ответьте:
-
-* Which part is common formatting?
-* Which part is specialization?
+3. Чему равен `requestTasks.length`?
 
 ---
 
-## 3. Предскажите результат выполнения
+## 3. Предскажите вывод перед запуском
 
-### Задание 3.1
+Сначала предскажите результат без запуска.
 
 ```javascript
-class BasePage {
-  open(pageName) {
-    return `open ${pageName}`;
-  }
-}
+const tasks = ['setup', 'test', 'assert'];
 
-class LoginPage extends BasePage {
-  open(pageName) {
-    return `${super.open(pageName)} and focus form`;
-  }
-}
+const firstTask = tasks.shift();
 
-const page = new LoginPage();
-
-console.log(page.open('LoginPage'));
+console.log(firstTask);
+console.log(tasks[0]);
+console.log(tasks.length);
 ```
 
-### Задание 3.2
+Запишите:
+
+1. Первый вывод.
+
+2. Второй вывод.
+
+3. Третий вывод.
+
+---
+
+## 4. Определите length
+
+Для каждого шага укажите `length`.
 
 ```javascript
-class BaseReporter {
-  label(message) {
-    return `${this.prefix}: ${message}`;
-  }
-}
+const failures = [];
 
-class TestReporter extends BaseReporter {
-  label(message) {
-    return `${super.label(message)} [run]`;
-  }
-}
-
-const reporter = new TestReporter();
-reporter.prefix = 'QA';
-
-console.log(reporter.label('failed'));
+failures.unshift('missing title');
+failures.unshift('login failed');
+failures.shift();
 ```
 
-### Задание 3.3
+Заполните:
 
-```javascript
-class BasePage {
-  open(pageName) {
-    return `open ${pageName}`;
-  }
-}
-
-class LoginPage extends BasePage {
-  open(pageName) {
-    return `focus ${pageName}`;
-  }
-}
-
-const page = new LoginPage();
-
-console.log(page.open('LoginPage'));
+```text
+начальная length:
+после первого unshift:
+после второго unshift:
+после shift:
 ```
 
 ---
 
-## 4. Debugging tasks
+## 5. Определите изменения indexes
 
-### Задание 4.1
-
-```javascript
-class BasePage {
-  open(pageName) {
-    return `open ${pageName}`;
-  }
-}
-
-class LoginPage extends BasePage {
-  open(pageName) {
-    return `focus form on ${pageName}`;
-  }
-}
-```
-
-Автор хотел preserve base opening behavior and add login-specific behavior. Исправьте method.
-
-### Задание 4.2
+Есть array:
 
 ```javascript
-class BaseReporter {
-  label(message) {
-    return `${this.prefix}: ${message}`;
-  }
-}
-
-class TestReporter extends BaseReporter {
-  label(message) {
-    return `${super.label(message)} [test]`;
-  }
-}
-
-const reporter = new TestReporter();
-
-console.log(reporter.label('failed'));
+const tabs = ['Home', 'Users', 'Orders'];
 ```
 
-Объясните, why output contains `undefined`.
-
-### Задание 4.3
+После выполнения:
 
 ```javascript
-class BaseValidator {
-  formatFailure(expected, actual) {
-    return `expected ${expected}, actual ${actual}`;
-  }
-}
-
-class StatusValidator extends BaseValidator {
-  formatFailure(expected, actual) {
-    return super();
-  }
-}
+tabs.unshift('Login');
 ```
 
-Explain why this is wrong for this chapter and fix the method.
+Укажите новые indexes:
+
+```text
+Login:
+Home:
+Users:
+Orders:
+```
 
 ---
 
-## 5. QA-oriented tasks
+## 6. Предскажите вывод: shift vs pop
 
-### Задание 5.1
+Сначала предскажите результат без запуска.
 
-Create:
+```javascript
+const requests = ['POST /login', 'GET /users', 'GET /orders'];
 
-* `BasePage.open(pageName)`;
-* `LoginPage extends BasePage`;
-* `LoginPage.open(pageName)` that calls base open and adds login-specific behavior.
+const first = requests.shift();
+const last = requests.pop();
 
-### Задание 5.2
+console.log(first);
+console.log(last);
+console.log(requests);
+```
 
-Create:
-
-* `BaseApiClient.describeRequest(serviceName, endpoint)`;
-* `UsersClient extends BaseApiClient`;
-* `UsersClient.describeRequest(endpoint)` that calls base behavior and adds `[authenticated]`.
-
-### Задание 5.3
-
-Create:
-
-* `BaseValidator.formatFailure(expected, actual)`;
-* `StatusValidator extends BaseValidator`;
-* `StatusValidator.formatFailure(expected, actual)` that calls base formatting and adds status-specific prefix.
+Запишите вывод и финальный array.
 
 ---
 
-## 6. Mini-project
+## 7. Задача на отладку
 
-Create small QA framework model.
+Код должен взять first task.
 
-Requirements:
+Сейчас он берет неправильную task.
 
-1. Create `BasePage`.
-2. Add method `open(pageName)`.
-3. Add method `waitReady(pageName)`.
-4. Create `LoginPage extends BasePage`.
-5. Override `open(pageName)`.
-6. Inside override, call `super.open(pageName)`.
-7. Add login-specific behavior after base behavior.
-8. Create `ProfilePage extends BasePage`.
-9. Override `waitReady(pageName)`.
-10. Inside override, call `super.waitReady(pageName)`.
-11. Add profile-specific behavior.
-12. Print results.
-13. Explain which behavior is base and which is derived.
+```javascript
+const requestTasks = ['POST /login', 'GET /users', 'GET /orders'];
 
-Do not use constructor `super()`.
+const nextTask = requestTasks.pop();
+
+console.log(nextTask);
+```
+
+Исправьте код и объясните, почему исправление работает.
+
+---
+
+## 8. Задача на отладку: неверное предположение об индексе
+
+Код ожидает, что после `unshift()` старая first task все еще остается at index `0`.
+
+```javascript
+const requestTasks = ['GET /users', 'GET /orders'];
+
+requestTasks.unshift('POST /login');
+
+console.log(requestTasks[0]);
+```
+
+Объясните, почему предположение неверно.
+
+Затем выведите старую first task корректно.
+
+---
+
+## 9. Небольшая задача на код
+
+Создайте array `testSteps`:
+
+```text
+open page
+click submit
+check result
+```
+
+Затем добавьте step `"login"` в начало.
+
+Выведите:
+
+1. Весь array.
+
+2. Первый step.
+
+3. Length.
+
+---
+
+## 10. QA-задача: срочный request
+
+Есть requests:
+
+```javascript
+const requests = ['GET /profile', 'GET /orders'];
+```
+
+Добавьте срочный request:
+
+```text
+POST /auth/login
+```
+
+Так, чтобы он стал first request.
+
+Затем получите first request для выполнения.
+
+Выведите:
+
+1. Request для выполнения.
+
+2. Оставшиеся requests.
+
+---
+
+## 11. QA-задача: prioritized failures
+
+Есть failures:
+
+```javascript
+const failures = ['button text mismatch', 'missing footer'];
+```
+
+Добавьте `"login failed"` в начало.
+
+Затем удалите first failure и сохраните ее в `mostImportantFailure`.
+
+Выведите:
+
+1. `mostImportantFailure`.
+
+2. Оставшиеся failures.
+
+---
+
+## 12. Мини-проект
+
+Создайте небольшой request task processor.
+
+Требования:
+
+1. Создайте array `requestTasks` со значениями:
+
+```text
+GET /users
+GET /orders
+```
+
+2. Добавьте срочный setup request в начало:
+
+```text
+POST /login
+```
+
+3. Возьмите first request для выполнения.
+
+4. Добавьте еще один срочный request в начало:
+
+```text
+GET /health
+```
+
+5. Снова возьмите first request для выполнения.
+
+6. Выведите:
+
+```text
+первый выполненный request
+второй выполненный request
+оставшиеся tasks
+оставшаяся length
+```
+
+Перед запуском предскажите:
+
+1. Какой request выполнится первым?
+
+2. Какой request выполнится вторым?
+
+3. Что останется в array?

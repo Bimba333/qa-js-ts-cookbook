@@ -236,7 +236,7 @@ Received
 │
 └── invalid JSON
 
-Result
+Результат
 │
 └── error
 ```
@@ -494,7 +494,7 @@ Operation fails
 No local handling
 │
 ▼
-Error moves to caller / outer level
+Error moves to вызывающий код / outer level
 │
 ▼
 Handled there or program stops
@@ -515,7 +515,7 @@ Error happened
 Can this level recover meaningfully?
 │
 ├── yes → handle here
-└── no  → let caller / test framework handle
+└── no  → let вызывающий код / test framework handle
 ```
 
 In Automation QA:
@@ -642,7 +642,7 @@ Error Handling
 Functions
 ```
 
-Bridge to Functions:
+Переход к Functions:
 
 ```text
 Repeated or grouped behavior
@@ -833,7 +833,7 @@ Sometimes correct behavior is to stop.
 
 Handle errors where meaningful action can be taken.
 
-Common mistakes:
+Типичные ошибки:
 
 ```text
 Mistake
@@ -1061,7 +1061,7 @@ Functions are the next abstraction: they let us give names to reusable behavior 
 
 ---
 
-## Quick Check
+## Проверьте себя
 
 Ответьте без запуска кода.
 

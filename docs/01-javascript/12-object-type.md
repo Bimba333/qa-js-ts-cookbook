@@ -913,7 +913,7 @@ Request
 │
 └── property name: firstName
 
-Result
+Результат
 │
 └── property value: "Anna"
 ```
@@ -957,7 +957,7 @@ Code asks for
 │
 └── firstname
 
-Result
+Результат
 │
 └── undefined
 ```
@@ -1035,7 +1035,7 @@ Object chapter answers:
 What related information belongs together?
 ```
 
-### Bridge to References
+### Переход к References
 
 Object creates the next natural question.
 
@@ -1241,17 +1241,17 @@ Object now contains more information about the same entity.
 
 ### 05-delete-properties.js
 
-Этот пример показывает removing property at a high level:
+Этот пример показывает удаление property на высоком уровне:
 
 ```javascript
 delete user.temporaryCode;
 ```
 
-Property no longer belongs to object.
+Property больше не принадлежит object.
 
 ### 06-nested-object.js
 
-Этот пример показывает nested grouping:
+Этот пример показывает вложенную группировку:
 
 ```javascript
 const user = {
@@ -1265,29 +1265,29 @@ const user = {
 };
 ```
 
-Object contains grouped information, and some properties are also grouped objects.
+Object содержит grouped information, а некоторые properties сами являются grouped objects.
 
 ---
 
 ## Частые вопросы
 
-### Object and object are the same thing?
+### `Object` и `object` означают одно и то же?
 
-В тексте курса `Object` often refers to JavaScript Object Type. В обычном тексте `object` может означать конкретное object value.
+В тексте курса `Object` чаще всего означает JavaScript Object Type. В обычном тексте `object` может означать конкретное object value.
 
 ```text
 Object Type
 │
-└── category of JavaScript values
+└── категория JavaScript values
 
 object value
 │
-└── concrete value in code
+└── конкретное value в коде
 ```
 
 ### Почему `const user = {}` позволяет менять `user.age`?
 
-`const` protects the identifier from reassignment.
+`const` защищает identifier от reassignment.
 
 ```javascript
 const user = {
@@ -1297,11 +1297,11 @@ const user = {
 user.age = 31;
 ```
 
-This updates property inside object. Почему это возможно internally, будет объяснено в главе про References. Сейчас важно запомнить observable behavior: `const` is not the same as immutable object.
+Этот код обновляет property внутри object. Почему это возможно internally, будет объяснено в главе про References. Сейчас важно запомнить observable behavior: `const` не означает immutable object.
 
 ### Чем object отличается от JSON?
 
-JavaScript object is a runtime value in JavaScript program. JSON is a text data format often used in API communication.
+JavaScript object — это runtime value внутри JavaScript-программы. JSON — это текстовый формат данных, который часто используется в API-коммуникации.
 
 JSON will be studied later in API testing. Сейчас достаточно понимать, что API responses often look like object structures, but JSON itself is text before it is parsed.
 
@@ -1317,7 +1317,7 @@ const user = {
 console.log(user.role);
 ```
 
-Result:
+Результат:
 
 ```text
 undefined
@@ -1380,7 +1380,7 @@ Request
 │
 └── role
 
-Result
+Результат
 │
 └── undefined
 ```
@@ -1448,7 +1448,7 @@ const user = {
 console.log(user.firstname);
 ```
 
-Result:
+Результат:
 
 ```text
 undefined
@@ -1704,7 +1704,7 @@ Object Type
 └── grouped information
 ```
 
-Object contains properties:
+Object содержит properties:
 
 ```text
 Property
@@ -1713,18 +1713,18 @@ Property
 └── property value
 ```
 
-Object can be read, updated, extended and partially reduced:
+С object можно выполнять базовые операции:
 
 ```text
 Object operations
 │
-├── read property
-├── update property
-├── add property
-└── delete property
+├── прочитать property
+├── обновить property
+├── добавить property
+└── удалить property
 ```
 
-Nested objects represent grouped information inside grouped information:
+Nested objects представляют grouped information внутри grouped information:
 
 ```text
 user
@@ -1735,9 +1735,9 @@ user
     └── settings data
 ```
 
-Arrays and functions are also object values, but their details belong to later chapters.
+Arrays и functions тоже относятся к object values, но их детали будут разобраны в отдельных главах.
 
-The next chapter answers the next natural question:
+Следующая глава отвечает на следующий естественный вопрос:
 
 ```text
 If objects contain multiple values,
@@ -1765,7 +1765,7 @@ That is the topic of References.
 
 ---
 
-## Quick Check
+## Проверьте себя
 
 Ответьте без запуска кода.
 

@@ -435,7 +435,7 @@ Merge arrays:
 ▼
 204, 301
 
-Result
+Результат
 │
 └── [200, 201, 204, 301]
 ```
@@ -506,11 +506,11 @@ Nested level
 
 This chapter does not teach deep copy or `structuredClone`.
 
-### Readability
+### Читаемость
 
 Spread is useful when expansion is visible and meaningful.
 
-Readability:
+Читаемость:
 
 ```text
 Good
@@ -611,7 +611,7 @@ Functions
     └── expand one into many
 ```
 
-Bridge to Closures:
+Переход к Closures:
 
 ```text
 Spread
@@ -700,7 +700,7 @@ Delivery package
 unpacked into new object
 ```
 
-Mental model summary:
+Краткая ментальная модель:
 
 ```text
 Spread expands one collection.
@@ -1052,7 +1052,7 @@ Spread
 
 ---
 
-## Quick Check
+## Проверьте себя
 
 Ответьте без запуска кода.
 

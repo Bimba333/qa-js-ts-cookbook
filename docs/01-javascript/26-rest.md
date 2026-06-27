@@ -44,7 +44,7 @@ validateStatuses(200, 201, 204);
 
 * что arguments передаются при вызове функции;
 * что parameters получают arguments по позиции;
-* что `return` отправляет результат caller;
+* что `return` отправляет результат вызывающий код;
 * что array может хранить несколько значений на высоком уровне;
 * что helper должен иметь читаемую сигнатуру.
 
@@ -467,7 +467,7 @@ Unknown remaining inputs
 └── rest parameter
 ```
 
-### Readability
+### Читаемость
 
 Rest parameter должен быть назван как collection.
 
@@ -483,7 +483,7 @@ function validateStatuses(...statusCode) {}
 function validateStatuses(...statusCodes) {}
 ```
 
-Readability:
+Читаемость:
 
 ```text
 Singular name
@@ -585,7 +585,7 @@ Functions
     └── unknown number of inputs
 ```
 
-Bridge to Spread:
+Переход к Spread:
 
 ```text
 Rest Parameters
@@ -607,7 +607,7 @@ Spread будет изучаться в следующей главе. В это
 
 ## Ментальная модель
 
-### Basket
+### Корзина
 
 Rest parameter похож на корзину.
 
@@ -624,7 +624,7 @@ Basket
 └── [200, 201, 204]
 ```
 
-### Box
+### Коробка
 
 ```text
 Box: statusCodes
@@ -634,7 +634,7 @@ Box: statusCodes
 └── item 3: 204
 ```
 
-### Shopping bag
+### Пакет для покупок
 
 ```text
 At checkout
@@ -647,7 +647,7 @@ At checkout
 One shopping bag
 ```
 
-### Collection tray
+### Лоток для сбора
 
 ```text
 Incoming values
@@ -668,7 +668,7 @@ Mailbox: messages
 └── letter 3
 ```
 
-Mental model summary:
+Краткая ментальная модель:
 
 ```text
 Arguments arrive one by one.
@@ -1018,7 +1018,7 @@ arg1, arg2, arg3
 
 ---
 
-## Quick Check
+## Проверьте себя
 
 Ответьте без запуска кода.
 

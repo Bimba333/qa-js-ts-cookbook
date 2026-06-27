@@ -427,7 +427,7 @@ validateStagingResponse('/profile', 200, 200);
 
 ---
 
-## 9. Mini-project
+## 9. Мини-проект
 
 Создайте небольшой QA helper module в одном файле.
 

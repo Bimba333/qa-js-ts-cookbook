@@ -8,15 +8,15 @@
 
 Primitive values become insufficient when several values describe one entity and should be managed together.
 
-Рассуждение:
+Объяснение:
 
 `'Anna'`, `'Smith'`, `30` and `true` are useful separately, but in many programs they belong to one user. Object makes this relationship explicit.
 
-Типичная ошибка:
+Распространённая ошибка:
 
 Keep related values in separate variables and rely on reader's memory.
 
-Automation QA connection:
+Связь с Automation QA:
 
 API responses, test data and expected results usually describe entities, not isolated values.
 
@@ -26,15 +26,15 @@ API responses, test data and expected results usually describe entities, not iso
 
 Object Type allows JavaScript to represent grouped information as one value.
 
-Рассуждение:
+Объяснение:
 
 Instead of many unrelated primitive values, object can express one user, one config, one response, one test result.
 
-Типичная ошибка:
+Распространённая ошибка:
 
 Think object is only syntax convenience.
 
-Automation QA connection:
+Связь с Automation QA:
 
 Objects make expected and actual structures visible in tests.
 
@@ -44,15 +44,15 @@ Objects make expected and actual structures visible in tests.
 
 It means several properties belong to one conceptual entity.
 
-Рассуждение:
+Объяснение:
 
 In `user`, properties like `firstName`, `lastName` and `age` describe the same user.
 
-Типичная ошибка:
+Распространённая ошибка:
 
 Group values that are not conceptually related.
 
-Automation QA connection:
+Связь с Automation QA:
 
 Good test data objects reflect real domain entities: user, order, session, config.
 
@@ -62,15 +62,15 @@ Good test data objects reflect real domain entities: user, order, session, confi
 
 Property is one named piece of information inside object.
 
-Рассуждение:
+Объяснение:
 
 It consists of property name and property value.
 
-Типичная ошибка:
+Распространённая ошибка:
 
 Call every property a variable.
 
-Automation QA connection:
+Связь с Automation QA:
 
 Assertions often check object properties from API responses.
 
@@ -80,15 +80,15 @@ Assertions often check object properties from API responses.
 
 Property name is the name used to access information. Property value is the actual value under that name.
 
-Рассуждение:
+Объяснение:
 
 In `firstName: 'Anna'`, `firstName` is property name, `'Anna'` is property value.
 
-Типичная ошибка:
+Распространённая ошибка:
 
 Compare property names instead of values or use wrong property name.
 
-Automation QA connection:
+Связь с Automation QA:
 
 Wrong property name in test leads to `undefined` and failed checks.
 
@@ -98,15 +98,15 @@ Wrong property name in test leads to `undefined` and failed checks.
 
 `user` is variable identifier. `firstName` is property name inside object.
 
-Рассуждение:
+Объяснение:
 
 `user` gives access to whole object value. `firstName` names one piece of information inside that object.
 
-Типичная ошибка:
+Распространённая ошибка:
 
 Treat object property names as standalone variables.
 
-Automation QA connection:
+Связь с Automation QA:
 
 In assertions, `response.user.email` is a chain of object property reads, not separate variables.
 
@@ -116,15 +116,15 @@ In assertions, `response.user.email` is a chain of object property reads, not se
 
 Engine finds property name inside object and returns the corresponding property value.
 
-Рассуждение:
+Объяснение:
 
 For `user.firstName`, engine reads object `user`, then reads property `firstName`.
 
-Типичная ошибка:
+Распространённая ошибка:
 
 Think reading one property reads or copies the entire object.
 
-Automation QA connection:
+Связь с Automation QA:
 
 Most API checks read specific fields from a response object.
 
@@ -134,15 +134,15 @@ Most API checks read specific fields from a response object.
 
 At this level, reading missing property returns `undefined`.
 
-Рассуждение:
+Объяснение:
 
 If object has no property with requested name, there is no value under that property name.
 
-Типичная ошибка:
+Распространённая ошибка:
 
 Assume object is broken or that JavaScript will guess a similar property name.
 
-Automation QA connection:
+Связь с Automation QA:
 
 `undefined` in a test often means a typo or unexpected response structure.
 
@@ -152,15 +152,15 @@ Automation QA connection:
 
 Updating property changes value under an existing property name.
 
-Рассуждение:
+Объяснение:
 
 `user.age = 31` keeps property name `age`, but property value becomes `31`.
 
-Типичная ошибка:
+Распространённая ошибка:
 
 Confuse property update with identifier reassignment.
 
-Automation QA connection:
+Связь с Automation QA:
 
 Tests often update test data before sending it to API or helpers.
 
@@ -170,15 +170,15 @@ Tests often update test data before sending it to API or helpers.
 
 Adding property puts new named information into object.
 
-Рассуждение:
+Объяснение:
 
 If `role` did not exist, `user.role = 'admin'` expands object shape.
 
-Типичная ошибка:
+Распространённая ошибка:
 
 Add properties in many distant lines and make expected shape hard to see.
 
-Automation QA connection:
+Связь с Automation QA:
 
 Explicit object shapes make test data easier to review.
 
@@ -188,15 +188,15 @@ Explicit object shapes make test data easier to review.
 
 At a high level, deleting property removes it from object.
 
-Рассуждение:
+Объяснение:
 
 After `delete user.temporaryCode`, reading `user.temporaryCode` returns `undefined`.
 
-Типичная ошибка:
+Распространённая ошибка:
 
 Explain deletion through Garbage Collector too early.
 
-Automation QA connection:
+Связь с Automation QA:
 
 Tests may remove temporary fields before comparing sanitized objects.
 
@@ -206,15 +206,15 @@ Tests may remove temporary fields before comparing sanitized objects.
 
 Nested object is useful when grouped information contains smaller groups.
 
-Рассуждение:
+Объяснение:
 
 User may contain `profile`, `status`, `settings`. Each group has its own properties.
 
-Типичная ошибка:
+Распространённая ошибка:
 
 Flatten everything into one large object with unclear property names.
 
-Automation QA connection:
+Связь с Automation QA:
 
 API responses often contain nested objects.
 
@@ -224,15 +224,15 @@ API responses often contain nested objects.
 
 `const` prevents reassignment of identifier, but object properties can still be updated.
 
-Рассуждение:
+Объяснение:
 
 `const user = {}` protects `user` as identifier. It does not freeze object shape. References explain the internal reason later.
 
-Типичная ошибка:
+Распространённая ошибка:
 
 Think `const` makes object immutable.
 
-Automation QA connection:
+Связь с Automation QA:
 
 Playwright and test code often use `const` for objects whose properties may still be prepared or adjusted.
 
@@ -242,19 +242,19 @@ Playwright and test code often use `const` for objects whose properties may stil
 
 Arrays and functions are object values, but they have special behavior and need dedicated chapters.
 
-Рассуждение:
+Объяснение:
 
 This chapter focuses on plain object as grouped information.
 
-Типичная ошибка:
+Распространённая ошибка:
 
 Mix objects, arrays and functions before understanding properties.
 
-Automation QA connection:
+Связь с Automation QA:
 
 Tests use arrays for lists and functions for helpers, but object shape is the base for reading structured data.
 
-## Identify properties
+## Определите properties
 
 ### Задача 1
 
@@ -276,15 +276,15 @@ Grouped information:
 Basic information about one user.
 ```
 
-Рассуждение:
+Объяснение:
 
 All properties describe the same user entity.
 
-Типичная ошибка:
+Распространённая ошибка:
 
 Call `firstName`, `lastName`, `age` separate variables.
 
-Automation QA connection:
+Связь с Automation QA:
 
 This shape can be used as expected user profile.
 
@@ -308,15 +308,15 @@ Grouped information:
 Runtime or test execution configuration.
 ```
 
-Рассуждение:
+Объяснение:
 
 These values belong to one configuration object.
 
-Типичная ошибка:
+Распространённая ошибка:
 
 Spread configuration across unrelated variables.
 
-Automation QA connection:
+Связь с Automation QA:
 
 Test frameworks commonly use configuration objects.
 
@@ -346,15 +346,15 @@ Grouped information:
 Response metadata and response body.
 ```
 
-Рассуждение:
+Объяснение:
 
 `body` is nested grouped information inside response.
 
-Типичная ошибка:
+Распространённая ошибка:
 
 Miss nested structure and try to read `response.email`.
 
-Automation QA connection:
+Связь с Automation QA:
 
 API tests often distinguish response status and response body.
 
@@ -371,19 +371,19 @@ admin
 true
 ```
 
-Рассуждение:
+Объяснение:
 
 `user.profile.firstName` reads `user`, then `profile`, then `firstName`. The other lines follow the same nested property reading model.
 
-Типичная ошибка:
+Распространённая ошибка:
 
 Try to read `user.firstName`, although `firstName` is inside `profile`.
 
-Automation QA connection:
+Связь с Automation QA:
 
 Nested API response assertions require correct property path.
 
-## Predict the output before running
+## Предскажите вывод перед запуском
 
 ### Задача 1
 
@@ -395,15 +395,15 @@ Anna
 admin
 ```
 
-Рассуждение:
+Объяснение:
 
 `age` is updated from `30` to `31`. `role` is added as new property.
 
-Типичная ошибка:
+Распространённая ошибка:
 
 Think `const user` prevents `user.age = 31`.
 
-Automation QA connection:
+Связь с Automation QA:
 
 Test data objects may be updated before assertion or request.
 
@@ -416,15 +416,15 @@ Anna
 undefined
 ```
 
-Рассуждение:
+Объяснение:
 
 `temporaryCode` is removed from object. Reading a missing property returns `undefined` at this level.
 
-Типичная ошибка:
+Распространённая ошибка:
 
 Expect deleted property to keep old value.
 
-Automation QA connection:
+Связь с Automation QA:
 
 After sanitizing response objects, removed fields should not be used in assertions.
 
@@ -437,19 +437,19 @@ Anna
 undefined
 ```
 
-Рассуждение:
+Объяснение:
 
 Object has property `firstName`, not `firstname`. Property names are case-sensitive.
 
-Типичная ошибка:
+Распространённая ошибка:
 
 Miss case difference in property names.
 
-Automation QA connection:
+Связь с Automation QA:
 
 API field names are exact. `userId`, `userid` and `userID` are different names.
 
-## Code reading
+## Чтение кода
 
 Ответ:
 
@@ -459,19 +459,19 @@ API field names are exact. `userId`, `userid` and `userID` are different names.
 4. Nested objects: `profile` and `status`.
 5. Primitive values: `101`, `'Anna'`, `'Smith'`, `'admin'`, `true`, `null`.
 
-Рассуждение:
+Объяснение:
 
 The object groups expected user data and separates profile information from status information.
 
-Типичная ошибка:
+Распространённая ошибка:
 
 Treat nested structure as flat and expect `expectedUser.firstName`.
 
-Automation QA connection:
+Связь с Automation QA:
 
 Expected response objects often have nested domain groups.
 
-## Small coding tasks
+## Небольшие задачи на код
 
 ### Задача 1
 
@@ -488,15 +488,15 @@ const user = {
 console.log(user);
 ```
 
-Рассуждение:
+Объяснение:
 
 All values describe one user, so object is the natural grouping.
 
-Типичная ошибка:
+Распространённая ошибка:
 
 Create four separate variables.
 
-Automation QA connection:
+Связь с Automation QA:
 
 This can become expected profile data in a UI or API test.
 
@@ -516,15 +516,15 @@ console.log(config.retries);
 console.log(config.headless);
 ```
 
-Рассуждение:
+Объяснение:
 
 Each property is read by object name plus property name.
 
-Типичная ошибка:
+Распространённая ошибка:
 
 Try to read `baseUrl` without `config`.
 
-Automation QA connection:
+Связь с Automation QA:
 
 Configuration objects are common in test runners.
 
@@ -544,15 +544,15 @@ order.status = 'paid';
 console.log(order);
 ```
 
-Рассуждение:
+Объяснение:
 
 `status` remains same property name, but property value changes.
 
-Типичная ошибка:
+Распространённая ошибка:
 
 Create `newStatus` instead of updating object when the entity state changes.
 
-Automation QA connection:
+Связь с Automation QA:
 
 Tests often model order lifecycle through status changes.
 
@@ -571,19 +571,19 @@ testResult.durationMs = 350;
 console.log(testResult);
 ```
 
-Рассуждение:
+Объяснение:
 
 `durationMs` is additional information about the same test result.
 
-Типичная ошибка:
+Распространённая ошибка:
 
 Add unrelated information to object.
 
-Automation QA connection:
+Связь с Automation QA:
 
 Reports often use objects with test name, status and duration.
 
-## Debugging tasks
+## Задачи на отладку
 
 ### Задача 1
 
@@ -601,15 +601,15 @@ const user = {
 console.log(user.firstName);
 ```
 
-Рассуждение:
+Объяснение:
 
 Property names are exact and case-sensitive.
 
-Типичная ошибка:
+Распространённая ошибка:
 
 Assume JavaScript will match similar names.
 
-Automation QA connection:
+Связь с Automation QA:
 
 Field name typos are common in API and fixture debugging.
 
@@ -619,15 +619,15 @@ Field name typos are common in API and fixture debugging.
 
 Assertion fails because actual object has `userRole`, not `role`.
 
-Рассуждение:
+Объяснение:
 
 Reading `actualUser.role` returns `undefined`.
 
-Типичная ошибка:
+Распространённая ошибка:
 
 Look only at value `'admin'` and ignore property name mismatch.
 
-Automation QA connection:
+Связь с Automation QA:
 
 Expected and actual object structures must match, not only values.
 
@@ -641,15 +641,15 @@ Output is:
 undefined
 ```
 
-Рассуждение:
+Объяснение:
 
 `temporaryToken` was removed by `delete`. After that, object no longer has this property.
 
-Типичная ошибка:
+Распространённая ошибка:
 
 Use a property after removing it.
 
-Automation QA connection:
+Связь с Automation QA:
 
 Sanitized request or response objects should be checked after field removal.
 
@@ -670,19 +670,19 @@ const user = {
 };
 ```
 
-Рассуждение:
+Объяснение:
 
 Reader sees full grouped information immediately.
 
-Типичная ошибка:
+Распространённая ошибка:
 
 Build expected data gradually without reason.
 
-Automation QA connection:
+Связь с Automation QA:
 
 Expected objects in tests should be easy to inspect during review.
 
-## QA-oriented tasks
+## QA-задачи
 
 ### Сценарий 1. API response
 
@@ -697,15 +697,15 @@ const expectedUser = {
 };
 ```
 
-Рассуждение:
+Объяснение:
 
 Property names match API response fields, and values match expected primitives.
 
-Типичная ошибка:
+Распространённая ошибка:
 
 Rename `active` to `isActive` in expected object when API actually returns `active`.
 
-Automation QA connection:
+Связь с Automation QA:
 
 API contract checks require exact field names.
 
@@ -720,15 +720,15 @@ expectedUser.role
 actualUser.userRole
 ```
 
-Рассуждение:
+Объяснение:
 
 Both objects contain value `'admin'`, but under different property names.
 
-Типичная ошибка:
+Распространённая ошибка:
 
 Compare only visible values and ignore object shape.
 
-Automation QA connection:
+Связь с Automation QA:
 
 Structural mismatch often means API contract changed or expected data is outdated.
 
@@ -745,15 +745,15 @@ const browserConfig = {
 };
 ```
 
-Рассуждение:
+Объяснение:
 
 These settings belong to one browser configuration and should be passed or read together.
 
-Типичная ошибка:
+Распространённая ошибка:
 
 Keep related configuration values as separate variables across a file.
 
-Automation QA connection:
+Связь с Automation QA:
 
 Framework configuration is easier to maintain when related settings are grouped.
 
@@ -770,19 +770,19 @@ const expectedProfile = {
 };
 ```
 
-Рассуждение:
+Объяснение:
 
 Property names describe UI fields in code-friendly form. `isActive` represents "Active: Yes" as Boolean.
 
-Типичная ошибка:
+Распространённая ошибка:
 
 Store everything as strings exactly as UI text and lose semantic meaning.
 
-Automation QA connection:
+Связь с Automation QA:
 
 Expected profile object can be compared with parsed UI values.
 
-## Mini-project
+## Мини-проект
 
 Возможное решение:
 
@@ -838,14 +838,14 @@ Removed properties:
 settings.theme.
 ```
 
-Рассуждение:
+Объяснение:
 
 The object is organized by meaning: identity data, status data and settings data are separate nested groups inside one user profile.
 
-Типичная ошибка:
+Распространённая ошибка:
 
 Create one flat object with many unrelated-looking property names.
 
-Automation QA connection:
+Связь с Automation QA:
 
 This shape is close to real API response or expected user fixture in Playwright tests.

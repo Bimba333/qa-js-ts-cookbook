@@ -8,7 +8,7 @@
 
 **Объяснение:** lookup can repeat through several prototype levels.
 
-**Типичная ошибка:** think JavaScript checks only one prototype.
+**Распространённая ошибка:** think JavaScript checks only one prototype.
 
 **Связь с Automation QA:** framework helpers may find methods through several shared behavior layers.
 
@@ -18,7 +18,7 @@
 
 **Объяснение:** design inheritance is an architectural topic. Prototype Chain here is about "where does lookup go next?"
 
-**Типичная ошибка:** start from class hierarchy and miss actual property lookup.
+**Распространённая ошибка:** start from class hierarchy and miss actual property lookup.
 
 **Связь с Automation QA:** debugging Page Objects requires knowing where method was found, not drawing class diagrams first.
 
@@ -28,7 +28,7 @@
 
 **Объяснение:** own properties have first priority.
 
-**Типичная ошибка:** expect prototype property to be checked first.
+**Распространённая ошибка:** expect prototype property to be checked first.
 
 **Связь с Automation QA:** test-specific object data can override shared defaults.
 
@@ -38,7 +38,7 @@
 
 **Объяснение:** closer property wins.
 
-**Типичная ошибка:** think JavaScript still checks farther prototypes and compares values.
+**Распространённая ошибка:** think JavaScript still checks farther prototypes and compares values.
 
 **Связь с Automation QA:** local helper method can override shared behavior.
 
@@ -48,7 +48,7 @@
 
 **Объяснение:** this step repeats until property is found or chain ends.
 
-**Типичная ошибка:** expect immediate `undefined` after current object miss.
+**Распространённая ошибка:** expect immediate `undefined` after current object miss.
 
 **Связь с Automation QA:** API client methods can come from service-level or framework-level behavior.
 
@@ -58,7 +58,7 @@
 
 **Объяснение:** lookup has both a success stop and a final stop.
 
-**Типичная ошибка:** think JavaScript searches unrelated objects.
+**Распространённая ошибка:** think JavaScript searches unrelated objects.
 
 **Связь с Automation QA:** only linked framework layers participate in lookup.
 
@@ -68,7 +68,7 @@
 
 **Объяснение:** own `status` wins over prototype `status`.
 
-**Типичная ошибка:** think the farther property is removed.
+**Распространённая ошибка:** think the farther property is removed.
 
 **Связь с Automation QA:** local environment config may shadow shared default config.
 
@@ -78,7 +78,7 @@
 
 **Объяснение:** inherited property is checked only if own property is missing.
 
-**Типичная ошибка:** expect inherited defaults to override local values.
+**Распространённая ошибка:** expect inherited defaults to override local values.
 
 **Связь с Automation QA:** test-specific values should naturally override framework defaults.
 
@@ -88,7 +88,7 @@
 
 **Объяснение:** if property is not found earlier, lookup can reach `Object.prototype`.
 
-**Типичная ошибка:** begin learning chain from `Object.prototype` instead of lookup problem.
+**Распространённая ошибка:** begin learning chain from `Object.prototype` instead of lookup problem.
 
 **Связь с Automation QA:** understanding it helps explain why ordinary objects share some base behavior.
 
@@ -98,7 +98,7 @@
 
 **Объяснение:** every extra level adds a lookup place to inspect.
 
-**Типичная ошибка:** treat deeper chain as more advanced design.
+**Распространённая ошибка:** treat deeper chain as more advanced design.
 
 **Связь с Automation QA:** deep helper chains can make failed assertions harder to debug.
 
@@ -136,7 +136,7 @@ loginPage -> pageBehavior -> frameworkBehavior -> later prototypes -> not found 
 
 **Объяснение:** lookup starts from current object and continues through linked prototypes.
 
-**Типичная ошибка:** skip `pageBehavior` and jump straight to `frameworkBehavior`.
+**Распространённая ошибка:** skip `pageBehavior` and jump straight to `frameworkBehavior`.
 
 **Связь с Automation QA:** this is exactly how layered Page Object behavior can be debugged.
 
@@ -162,7 +162,7 @@ baseBehavior
 └── found
 ```
 
-**Типичная ошибка:** think empty `serviceBehavior` stops lookup.
+**Распространённая ошибка:** think empty `serviceBehavior` stops lookup.
 
 **Связь с Automation QA:** intermediate framework layers can be empty for some methods and still pass lookup upward.
 
@@ -180,7 +180,7 @@ baseBehavior
 
 **Объяснение:** `describeStatus` is found in prototype, but `this.status` starts lookup from receiver `testRun`, so own `status` wins.
 
-**Типичная ошибка:** expect `this.status` to read from `behavior`.
+**Распространённая ошибка:** expect `this.status` to read from `behavior`.
 
 **Связь с Automation QA:** shared validator methods read concrete assertion state from receiver.
 
@@ -194,7 +194,7 @@ baseBehavior
 
 **Объяснение:** lookup may continue past first prototype.
 
-**Типичная ошибка:** classify all callable methods as own methods.
+**Распространённая ошибка:** classify all callable methods as own methods.
 
 **Связь с Automation QA:** validators can have own data and shared validation/reporting behavior.
 
@@ -212,7 +212,7 @@ first
 
 **Объяснение:** `object` has no `value`, so lookup goes to `first`. `first.value` exists, so lookup stops before `second`.
 
-**Типичная ошибка:** expect `'second'` because it is farther in chain.
+**Распространённая ошибка:** expect `'second'` because it is farther in chain.
 
 **Связь с Automation QA:** nearest config layer wins over base defaults.
 
@@ -226,7 +226,7 @@ page
 
 **Объяснение:** `describe` is found in `pageBehavior`, so `frameworkBehavior.describe` is shadowed.
 
-**Типичная ошибка:** think framework-level behavior always wins.
+**Распространённая ошибка:** think framework-level behavior always wins.
 
 **Связь с Automation QA:** page-specific behavior can override generic framework behavior.
 
@@ -240,7 +240,7 @@ local
 
 **Объяснение:** method is found in prototype, but ordinary invocation receiver is `object`; `this.name` reads from `object`.
 
-**Типичная ошибка:** confuse method location with receiver.
+**Распространённая ошибка:** confuse method location with receiver.
 
 **Связь с Automation QA:** shared methods act on concrete Page Object or API client instance.
 
@@ -258,7 +258,7 @@ admin
 
 **Объяснение:** own `role` exists on `user`, so lookup stops before `sharedBehavior.role`.
 
-**Типичная ошибка:** expect prototype defaults to override local data.
+**Распространённая ошибка:** expect prototype defaults to override local data.
 
 **Связь с Automation QA:** local test data should usually have priority over shared defaults.
 
@@ -276,7 +276,7 @@ const frameworkBehavior = {
 
 **Объяснение:** `name` without `this` is variable lookup, not property lookup on receiver. The shared method should read from current receiver.
 
-**Типичная ошибка:** assume object properties automatically become local variables.
+**Распространённая ошибка:** assume object properties automatically become local variables.
 
 **Связь с Automation QA:** shared framework methods must use receiver data explicitly.
 
@@ -296,7 +296,7 @@ undefined()
 └── TypeError
 ```
 
-**Типичная ошибка:** think missing property read itself always throws.
+**Распространённая ошибка:** think missing property read itself always throws.
 
 **Связь с Automation QA:** errors often happen one step after lookup, when missing helper is invoked.
 
@@ -334,7 +334,7 @@ console.log(loginPage.formatError());
 
 **Объяснение:** `describePage` is found in first prototype. `formatError` is found in second prototype.
 
-**Типичная ошибка:** duplicate `formatError` on every page object.
+**Распространённая ошибка:** duplicate `formatError` on every page object.
 
 **Связь с Automation QA:** shared reporting behavior can be reused by all Page Objects.
 
@@ -370,7 +370,7 @@ console.log(usersClient.describeRequest(endpoint));
 
 **Объяснение:** own data lives on `usersClient`; service behavior is one level up; generic framework behavior is another level up.
 
-**Типичная ошибка:** put `baseUrl` into shared behavior and accidentally share environment state.
+**Распространённая ошибка:** put `baseUrl` into shared behavior and accidentally share environment state.
 
 **Связь с Automation QA:** API client layers often separate config, service actions and framework helpers.
 
@@ -380,7 +380,7 @@ console.log(usersClient.describeRequest(endpoint));
 
 **Объяснение:** each level can contain property with same name.
 
-**Типичная ошибка:** think more levels means better reuse.
+**Распространённая ошибка:** think more levels means better reuse.
 
 **Связь с Automation QA:** deep Page Object inheritance-style structures often make test failures harder to diagnose.
 
@@ -390,13 +390,13 @@ console.log(usersClient.describeRequest(endpoint));
 
 **Объяснение:** lookup has deterministic stopping rules.
 
-**Типичная ошибка:** think lookup searches all objects in memory.
+**Распространённая ошибка:** think lookup searches all objects in memory.
 
 **Связь с Automation QA:** only linked helper layers participate in method lookup.
 
 ---
 
-## 7. Mini-project
+## 7. Мини-проект
 
 **Ответ:**
 
@@ -465,7 +465,7 @@ reportingBehavior
 
 **Объяснение:** validation and reporting behavior are separated into two shared layers.
 
-**Типичная ошибка:** expect `formatFailure` to be found in `validatorBehavior`.
+**Распространённая ошибка:** expect `formatFailure` to be found in `validatorBehavior`.
 
 **Связь с Automation QA:** assertion frameworks often separate validation logic from reporting/error formatting.
 

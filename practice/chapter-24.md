@@ -174,7 +174,7 @@ function runEverything() {
 }
 ```
 
-## QA-oriented tasks
+## QA-задачи
 
 ### Сценарий 1. Переиспользуемая проверка
 
@@ -216,7 +216,7 @@ delete test user
 open profile page
 ```
 
-## Mini-project
+## Мини-проект
 
 Создайте файл:
 

@@ -791,7 +791,7 @@ Scope
 Lexical Environment
 ```
 
-### Bridge to Hoisting
+### Переход к Hoisting
 
 Следующий вопрос:
 
@@ -1039,7 +1039,7 @@ examples/chapter-11/05-lookup.js
 
 Показывает lookup local identifier и outer identifier.
 
-### Пример 6. Common mistakes
+### Пример 6. Типичные ошибки
 
 Файл:
 
@@ -1134,7 +1134,7 @@ Memory
 Неправильная модель:
 
 ```text
-Outer link follows the caller.
+Outer link follows the вызывающий код.
 ```
 
 Что произошло:
@@ -1392,7 +1392,7 @@ Execution Context использует Lexical Environment для resolving iden
 
 ---
 
-## Quick Check
+## Проверьте себя
 
 1. Почему Scope нужен внутренний механизм?
 

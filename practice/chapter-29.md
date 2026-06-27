@@ -16,7 +16,7 @@
 10. Почему имя rest parameter лучше писать во множественном числе?
 11. Почему Rest и Spread не нужно смешивать в этой главе?
 
-## Identify collected arguments
+## Определите collected arguments
 
 Для каждого примера укажите:
 
@@ -160,7 +160,7 @@ compareStatus(200, 200);
 Rest parameter распаковывает array в arguments.
 ```
 
-## QA-oriented tasks
+## QA-задачи
 
 ### Сценарий 1. Many status validator
 

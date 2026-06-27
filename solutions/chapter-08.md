@@ -8,15 +8,15 @@
 
 Memory нужна, чтобы программа могла сохранять информацию между шагами выполнения.
 
-Рассуждение:
+Объяснение:
 
 Если значение появилось на одной строке и используется на следующей, engine должен где-то сохранить эту информацию.
 
-Типичная ошибка:
+Распространённая ошибка:
 
 Думать, что JavaScript просто перечитывает предыдущие строки.
 
-Automation QA connection:
+Связь с Automation QA:
 
 Test data, tokens, URLs и expected values должны сохраняться между шагами теста.
 
@@ -26,15 +26,15 @@ Test data, tokens, URLs и expected values должны сохраняться �
 
 Value — конкретная информация, с которой работает программа.
 
-Рассуждение:
+Объяснение:
 
 `'passed'`, `2`, `true` можно сохранить, прочитать, вывести или использовать в вычислении.
 
-Типичная ошибка:
+Распространённая ошибка:
 
 Путать value с identifier.
 
-Automation QA connection:
+Связь с Automation QA:
 
 Expected status `'active'` или browser name `'chromium'` являются values, которые тест использует в проверках и настройках.
 
@@ -44,15 +44,15 @@ Expected status `'active'` или browser name `'chromium'` являются val
 
 Identifier — имя, через которое программа обращается к сохраненной информации.
 
-Рассуждение:
+Объяснение:
 
 В `const status = 'ready'` identifier — `status`, а value — `'ready'`.
 
-Типичная ошибка:
+Распространённая ошибка:
 
 Считать, что identifier и value являются одним объектом мышления.
 
-Automation QA connection:
+Связь с Automation QA:
 
 В тестах `baseUrl`, `userName`, `expectedStatus` — identifiers для доступа к сохраненным values.
 
@@ -62,15 +62,15 @@ Automation QA connection:
 
 Identifier — имя, value — данные. Одно имя может использоваться для чтения текущей сохраненной информации.
 
-Рассуждение:
+Объяснение:
 
 Если `status` обновлен с `'created'` на `'finished'`, identifier остался тем же, но читаемое value изменилось.
 
-Типичная ошибка:
+Распространённая ошибка:
 
 Ожидать старое значение только потому, что identifier не изменился.
 
-Automation QA connection:
+Связь с Automation QA:
 
 Это помогает искать ошибки, когда `baseUrl` или `token` были обновлены раньше, чем использованы в тесте.
 
@@ -80,15 +80,15 @@ Automation QA connection:
 
 Store value означает сохранить информацию так, чтобы программа могла использовать ее позже.
 
-Рассуждение:
+Объяснение:
 
 После `const browserName = 'chromium'` программа может прочитать `browserName` в следующих строках.
 
-Типичная ошибка:
+Распространённая ошибка:
 
 Думать, что сохранение происходит только в момент вывода.
 
-Automation QA connection:
+Связь с Automation QA:
 
 Fixture сохраняет подготовленные данные, которые тест читает позже.
 
@@ -98,15 +98,15 @@ Fixture сохраняет подготовленные данные, котор
 
 Read value означает получить сохраненную информацию по identifier и использовать ее в текущей операции.
 
-Рассуждение:
+Объяснение:
 
 В `console.log(browserName)` engine должен найти текущее value для `browserName`.
 
-Типичная ошибка:
+Распространённая ошибка:
 
 Не отличать чтение от хранения.
 
-Automation QA connection:
+Связь с Automation QA:
 
 Assertion читает actual и expected values перед сравнением.
 
@@ -116,15 +116,15 @@ Assertion читает actual и expected values перед сравнением
 
 Update value означает изменить сохраненную информацию, которую программа прочитает позже.
 
-Рассуждение:
+Объяснение:
 
 После `status = 'finished'` следующее чтение `status` даст `'finished'`.
 
-Типичная ошибка:
+Распространённая ошибка:
 
 Ожидать, что старое value продолжит читаться после update.
 
-Automation QA connection:
+Связь с Automation QA:
 
 Неправильный update config value может привести к запуску теста против неверного окружения.
 
@@ -134,15 +134,15 @@ Automation QA connection:
 
 Temporary information нужна на короткий момент вычисления. Long-lived information нужна нескольким последующим шагам.
 
-Рассуждение:
+Объяснение:
 
 Результат `'qa' + '-user'` может быть временным до сохранения, а `userName` может использоваться дальше.
 
-Типичная ошибка:
+Распространённая ошибка:
 
 Считать, что каждое промежуточное значение живет так же долго, как сохраненное.
 
-Automation QA connection:
+Связь с Automation QA:
 
 Собранный URL может быть temporary, а `baseUrl` часто является long-lived configuration data.
 
@@ -152,15 +152,15 @@ Automation QA connection:
 
 Execution Context является средой выполнения, а memory хранит информацию, нужную этому выполнению.
 
-Рассуждение:
+Объяснение:
 
 Function Execution Context может иметь информацию, которая нужна конкретному вызову функции.
 
-Типичная ошибка:
+Распространённая ошибка:
 
 Считать, что Execution Context — это только порядок строк.
 
-Automation QA connection:
+Связь с Automation QA:
 
 Helper function при вызове работает со своей информацией: подготовленными строками, статусами, промежуточными результатами.
 
@@ -170,15 +170,15 @@ Helper function при вызове работает со своей инфор�
 
 Call Stack показывает активный Execution Context, а memory показывает информацию, с которой этот context работает.
 
-Рассуждение:
+Объяснение:
 
 Engine выполняет верхний context и читает или обновляет информацию, нужную этому context.
 
-Типичная ошибка:
+Распространённая ошибка:
 
 Ожидать, что Call Stack сам хранит все values программы.
 
-Automation QA connection:
+Связь с Automation QA:
 
 Stack trace показывает путь вызовов, а memory model помогает понять, какие values были сохранены или обновлены на этом пути.
 
@@ -188,15 +188,15 @@ Stack trace показывает путь вызовов, а memory model пом
 
 Эта глава строит базовую концепцию хранения информации. Stack & Heap — более конкретная модель памяти, которая будет изучаться позже.
 
-Рассуждение:
+Объяснение:
 
 Если начать со Stack & Heap слишком рано, читатель будет запоминать термины без понимания, зачем программе память.
 
-Типичная ошибка:
+Распространённая ошибка:
 
 Пытаться объяснить каждое value через Stack & Heap до изучения типов и references.
 
-Automation QA connection:
+Связь с Automation QA:
 
 Для debugging тестов сначала достаточно понимать store, read и update.
 
@@ -206,19 +206,19 @@ Automation QA connection:
 
 Garbage Collector — механизм автоматического освобождения памяти, но сначала нужно понять, зачем данные вообще хранятся и когда становятся ненужными.
 
-Рассуждение:
+Объяснение:
 
 Эта глава рассматривает removing information только на высоком уровне.
 
-Типичная ошибка:
+Распространённая ошибка:
 
 Объяснять lifetime данных через Garbage Collector до понимания Execution Context и memory.
 
-Automation QA connection:
+Связь с Automation QA:
 
 В обычном debugging тестов важнее понять, какое значение было сохранено и прочитано, чем знать момент очистки памяти.
 
-## Identify stored values
+## Определите сохраненные значения
 
 ### Фрагмент 1
 
@@ -229,15 +229,15 @@ Identifier: testStatus
 Value: "passed"
 ```
 
-Рассуждение:
+Объяснение:
 
 `testStatus` — имя для доступа к сохраненной информации, `'passed'` — value.
 
-Типичная ошибка:
+Распространённая ошибка:
 
 Записать `console.log` как stored value.
 
-Automation QA connection:
+Связь с Automation QA:
 
 Так хранится expected test status.
 
@@ -253,15 +253,15 @@ Identifier: retryCount
 Value: 2
 ```
 
-Рассуждение:
+Объяснение:
 
 Обе строки создают named access к values, которые читаются позже.
 
-Типичная ошибка:
+Распространённая ошибка:
 
 Считать, что `console.log` создает новые values.
 
-Automation QA connection:
+Связь с Automation QA:
 
 Browser name и retry count часто встречаются в test configuration.
 
@@ -277,19 +277,19 @@ After update:
 pageTitle → "Dashboard"
 ```
 
-Рассуждение:
+Объяснение:
 
 Identifier остался тем же, но сохраненная информация изменилась.
 
-Типичная ошибка:
+Распространённая ошибка:
 
 Ожидать, что `pageTitle` хранит оба значения одновременно.
 
-Automation QA connection:
+Связь с Automation QA:
 
 Page title может измениться после navigation, и тест должен читать актуальное значение.
 
-## Predict the output before running
+## Предскажите вывод перед запуском
 
 ### Задача 1
 
@@ -309,15 +309,15 @@ update status → "finished"
 read status  → "finished"
 ```
 
-Рассуждение:
+Объяснение:
 
 Второй вывод получает обновленное value.
 
-Типичная ошибка:
+Распространённая ошибка:
 
 Ожидать два раза `created`.
 
-Automation QA connection:
+Связь с Automation QA:
 
 Так часто проявляются ошибки в test state, когда status меняется между steps.
 
@@ -338,15 +338,15 @@ store userName → "qa-user"
 read userName
 ```
 
-Рассуждение:
+Объяснение:
 
 Промежуточный результат используется для сохранения final value.
 
-Типичная ошибка:
+Распространённая ошибка:
 
 Не выделить temporary result.
 
-Automation QA connection:
+Связь с Automation QA:
 
 Так builders могут собирать test usernames.
 
@@ -367,19 +367,19 @@ read environment → "staging"
 read environment → "staging"
 ```
 
-Рассуждение:
+Объяснение:
 
 Value не обновлялось, поэтому оба чтения получают одно и то же.
 
-Типичная ошибка:
+Распространённая ошибка:
 
 Думать, что после первого чтения value исчезает.
 
-Automation QA connection:
+Связь с Automation QA:
 
 Config values часто читаются много раз в рамках одного запуска.
 
-## Predict memory state
+## Предскажите состояние памяти
 
 Ответ:
 
@@ -397,19 +397,19 @@ Step | Operation        | Memory state
 3
 ```
 
-Рассуждение:
+Объяснение:
 
 Каждый update меняет текущее значение, доступное для следующего read.
 
-Типичная ошибка:
+Распространённая ошибка:
 
 Думать, что все значения `1`, `2`, `3` одинаково доступны через один identifier.
 
-Automation QA connection:
+Связь с Automation QA:
 
 Retry counters и attempt numbers часто обновляются, поэтому важно читать актуальное состояние.
 
-## Code reading
+## Чтение кода
 
 Ответ:
 
@@ -422,19 +422,19 @@ Temporary:
 "Running test: " + testName промежуточно создает итоговую строку
 ```
 
-Рассуждение:
+Объяснение:
 
 `testName` читается при создании `message` и позже выводится. `message` сохраняет итоговую строку. Само соединение строк является временным шагом.
 
-Типичная ошибка:
+Распространённая ошибка:
 
 Считать `message` temporary только потому, что он создан через выражение.
 
-Automation QA connection:
+Связь с Automation QA:
 
 В отчетах тестов message может быть сохраненным значением, а сборка строки — временной операцией.
 
-## Small coding tasks
+## Небольшие задачи на код
 
 ### Задача 1
 
@@ -447,15 +447,15 @@ console.log(browserName);
 console.log(browserName);
 ```
 
-Рассуждение:
+Объяснение:
 
 `browserName` сохраняется один раз и читается два раза.
 
-Типичная ошибка:
+Распространённая ошибка:
 
 Создавать два разных identifiers вместо повторного read.
 
-Automation QA connection:
+Связь с Automation QA:
 
 Browser name может использоваться в нескольких местах setup-кода.
 
@@ -471,19 +471,19 @@ status = 'done';
 console.log(status);
 ```
 
-Рассуждение:
+Объяснение:
 
 Первый шаг сохраняет начальное value, второй обновляет его, третий читает итоговое состояние.
 
-Типичная ошибка:
+Распространённая ошибка:
 
 Ожидать вывод `new`.
 
-Automation QA connection:
+Связь с Automation QA:
 
 Test status или setup status часто обновляется по мере выполнения сценария.
 
-## Debugging tasks
+## Задачи на отладку
 
 ### Задача 1
 
@@ -497,15 +497,15 @@ update status → "finished"
 read status → "finished"
 ```
 
-Рассуждение:
+Объяснение:
 
 `console.log` читает текущее сохраненное value, а не первое value, которое когда-либо было связано с identifier.
 
-Типичная ошибка:
+Распространённая ошибка:
 
 Читать код только сверху и запоминать первое присваивание.
 
-Automation QA connection:
+Связь с Automation QA:
 
 Так можно ошибиться при анализе статуса сущности в API-тесте.
 
@@ -521,19 +521,19 @@ update baseUrl → prod
 read baseUrl → prod
 ```
 
-Рассуждение:
+Объяснение:
 
 Ошибка могла появиться раньше, чем неправильный URL был использован.
 
-Типичная ошибка:
+Распространённая ошибка:
 
 Искать проблему только в строке `console.log` или `page.goto`.
 
-Automation QA connection:
+Связь с Automation QA:
 
 В Playwright неправильный `baseUrl` часто проявляется в navigation step, но причина может быть в configuration setup.
 
-## QA-oriented tasks
+## QA-задачи
 
 ### Сценарий 1
 
@@ -546,15 +546,15 @@ Memory before login step
 └── password → prepared password
 ```
 
-Рассуждение:
+Объяснение:
 
 Login step должен прочитать оба values, подготовленные раньше.
 
-Типичная ошибка:
+Распространённая ошибка:
 
 Думать о login step отдельно от preparation step.
 
-Automation QA connection:
+Связь с Automation QA:
 
 Так устроены тесты, где данные создаются перед UI-действиями.
 
@@ -581,15 +581,15 @@ Step | Operation       | Memory
 4    | open page       | finalUrl is used
 ```
 
-Рассуждение:
+Объяснение:
 
 Чтобы найти причину, нужно понять, где неправильное value появилось впервые.
 
-Типичная ошибка:
+Распространённая ошибка:
 
 Исправлять Playwright action, хотя ошибка в сохраненном config value.
 
-Automation QA connection:
+Связь с Automation QA:
 
 Это типичный debugging flow для `page.goto`, API base URLs и test environments.
 
@@ -604,19 +604,19 @@ expectedStatus → expected value
 actualStatus   → value received from system
 ```
 
-Рассуждение:
+Объяснение:
 
 Assertion не может сравнить значения, если они не были получены или сохранены до проверки.
 
-Типичная ошибка:
+Распространённая ошибка:
 
 Считать assertion магическим действием, которое само знает expected и actual.
 
-Automation QA connection:
+Связь с Automation QA:
 
 Любая проверка API, UI или DB опирается на values, подготовленные или полученные раньше.
 
-## Mini-project
+## Мини-проект
 
 Один из вариантов:
 
@@ -647,15 +647,15 @@ update status → "ready"
 read status
 ```
 
-Рассуждение:
+Объяснение:
 
 `baseUrl` и `path` являются сохраненными values. Соединение строк создает temporary result. `loginUrl` сохраняет итоговый URL. `status` сначала имеет одно value, затем обновляется.
 
-Типичная ошибка:
+Распространённая ошибка:
 
 Не отличить temporary combine от сохраненного `loginUrl`.
 
-Automation QA connection:
+Связь с Automation QA:
 
 Мини-проект повторяет типичную структуру UI/API-теста: base URL, path, final URL, status подготовки.
 

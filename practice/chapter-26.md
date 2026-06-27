@@ -53,7 +53,7 @@ const compareStatus = function (actualStatus, expectedStatus) {
 };
 ```
 
-## Identify implicit return
+## Определите implicit return
 
 Для каждого примера укажите, используется explicit return или implicit return.
 
@@ -172,7 +172,7 @@ const compareStatus = actualStatus, expectedStatus => {
 const validateStatus = statusCode => statusCode === 200 ? 'ok' : 'fail';
 ```
 
-## QA-oriented tasks
+## QA-задачи
 
 ### Сценарий 1. Concise validator
 

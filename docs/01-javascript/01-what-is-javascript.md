@@ -288,7 +288,7 @@ JavaScript Engine
 └── execute code
     │
     ▼
-Result
+Результат
 ```
 
 Примеры engines:
@@ -945,7 +945,7 @@ Browser runtime предоставляет `window`, `document`, DOM и browser 
 
 ---
 
-## Quick Check
+## Проверьте себя
 
 1. Что такое JavaScript?
 

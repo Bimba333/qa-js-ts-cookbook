@@ -942,7 +942,7 @@ console.log(user['last login']);
 
 Bracket notation нужна для dynamic keys and keys that cannot be written after dot.
 
-### Пример 5. Common mistakes
+### Пример 5. Типичные ошибки
 
 ```javascript
 const user = {
@@ -1464,7 +1464,7 @@ object[expression]
 └── expression produces key
 ```
 
-### 13. Current JavaScript model
+### 13. Текущая модель JavaScript
 
 ```text
 Values
@@ -1513,7 +1513,7 @@ update
 delete
 ```
 
-### 17. Readability
+### 17. Читаемость
 
 ```text
 many related variables
@@ -1527,7 +1527,7 @@ one object
 entity is explicit
 ```
 
-### 18. Common mistakes
+### 18. Типичные ошибки
 
 ```text
 user.fieldName
@@ -1569,7 +1569,7 @@ look for key
 { id: 101 }
 ```
 
-### 22. Bridge to Destructuring
+### 22. Переход к Destructuring
 
 ```text
 object has properties
@@ -1581,7 +1581,7 @@ need convenient extraction
 Destructuring
 ```
 
-### 23. Bridge to Optional Chaining
+### 23. Переход к Optional Chaining
 
 ```text
 nested object
@@ -1603,7 +1603,7 @@ Object
 └── key: value
 ```
 
-### 25. Mental model summary
+### 25. Краткая ментальная модель
 
 ```text
 folder
@@ -1665,7 +1665,7 @@ update property
 delete property
 ```
 
-### 30. Summary diagram
+### 30. Итоговая схема
 
 ```text
 Object
@@ -1791,7 +1791,7 @@ destructuring
 
 ---
 
-## Quick Check
+## Проверьте себя
 
 Ответьте без запуска кода.
 

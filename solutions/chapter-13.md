@@ -8,15 +8,15 @@
 
 Temporal Dead Zone — период от начала scope до initialization `let` или `const`, когда identifier registered, но access forbidden.
 
-Рассуждение:
+Объяснение:
 
 Engine уже знает identifier, но он еще not initialized.
 
-Типичная ошибка:
+Распространённая ошибка:
 
 Считать TDZ физическим местом в памяти.
 
-Automation QA connection:
+Связь с Automation QA:
 
 Помогает читать ReferenceError in helper files.
 
@@ -26,15 +26,15 @@ Automation QA connection:
 
 TDZ prevents reading `let` and `const` before meaningful initialization.
 
-Рассуждение:
+Объяснение:
 
 Instead of silently returning `undefined`, code fails loudly.
 
-Типичная ошибка:
+Распространённая ошибка:
 
 Считать TDZ случайной странностью `let`.
 
-Automation QA connection:
+Связь с Automation QA:
 
 Ошибки declaration order в тестах становятся заметнее.
 
@@ -44,15 +44,15 @@ Automation QA connection:
 
 `let` and `const` are registered during Creation Phase, but not initialized.
 
-Рассуждение:
+Объяснение:
 
 Они hoisted in the sense of registration, but access is forbidden before initialization.
 
-Типичная ошибка:
+Распространённая ошибка:
 
 Объяснять поведение отсутствием registration.
 
-Automation QA connection:
+Связь с Automation QA:
 
 Точная формулировка помогает в code review and debugging.
 
@@ -62,15 +62,15 @@ Automation QA connection:
 
 Registration — создание identifier record in Environment Record.
 
-Рассуждение:
+Объяснение:
 
 This happens during Creation Phase.
 
-Типичная ошибка:
+Распространённая ошибка:
 
 Путать registration with initialization.
 
-Automation QA connection:
+Связь с Automation QA:
 
 Explains why engine can report identifier name in TDZ error.
 
@@ -80,15 +80,15 @@ Explains why engine can report identifier name in TDZ error.
 
 Initialization — момент, когда identifier получает first usable value.
 
-Рассуждение:
+Объяснение:
 
 For `let user;`, initialization happens when declaration line executes, with value `undefined`.
 
-Типичная ошибка:
+Распространённая ошибка:
 
 Думать, что initialization always means non-undefined value.
 
-Automation QA connection:
+Связь с Automation QA:
 
 Helps understand unset helper variables.
 
@@ -98,15 +98,15 @@ Helps understand unset helper variables.
 
 TDZ begins when scope starts and identifier is registered uninitialized.
 
-Рассуждение:
+Объяснение:
 
 For block `let/const`, TDZ begins when block scope is entered.
 
-Типичная ошибка:
+Распространённая ошибка:
 
 Считать TDZ начинающейся только на line before declaration.
 
-Automation QA connection:
+Связь с Automation QA:
 
 Block-level assertion data follows this rule.
 
@@ -116,15 +116,15 @@ Block-level assertion data follows this rule.
 
 TDZ ends when execution reaches declaration line and initialization happens.
 
-Рассуждение:
+Объяснение:
 
 After initialization, access becomes allowed.
 
-Типичная ошибка:
+Распространённая ошибка:
 
 Считать, что TDZ ends only after assigning non-empty value.
 
-Automation QA connection:
+Связь с Automation QA:
 
 `let value;` is readable after declaration, even if value is `undefined`.
 
@@ -134,15 +134,15 @@ Automation QA connection:
 
 `let` is registered during Creation Phase, remains uninitialized during TDZ, and initializes at declaration line.
 
-Рассуждение:
+Объяснение:
 
 `let user;` initializes with `undefined`; `let user = 'Anna'` initializes with `'Anna'`.
 
-Типичная ошибка:
+Распространённая ошибка:
 
 Expect `let` to behave like `var`.
 
-Automation QA connection:
+Связь с Automation QA:
 
 Useful for setup variables that receive value later.
 
@@ -152,15 +152,15 @@ Useful for setup variables that receive value later.
 
 `const` is registered during Creation Phase and initialized at declaration line with required value.
 
-Рассуждение:
+Объяснение:
 
 `const` cannot be declared without initialization.
 
-Типичная ошибка:
+Распространённая ошибка:
 
 Attempt to declare `const` first and assign later.
 
-Automation QA connection:
+Связь с Automation QA:
 
 Stable configuration should be declared before use.
 
@@ -170,15 +170,15 @@ Stable configuration should be declared before use.
 
 `var` is initialized with `undefined` during Creation Phase.
 
-Рассуждение:
+Объяснение:
 
 So it can be read before assignment line.
 
-Типичная ошибка:
+Распространённая ошибка:
 
 Thinking `var` is safer because it does not throw.
 
-Automation QA connection:
+Связь с Automation QA:
 
 `undefined` can hide declaration order bugs in old tests.
 
@@ -188,15 +188,15 @@ Automation QA connection:
 
 Это ошибка access to registered but uninitialized identifier.
 
-Рассуждение:
+Объяснение:
 
 Engine knows the identifier but refuses access while it is in TDZ.
 
-Типичная ошибка:
+Распространённая ошибка:
 
 Thinking identifier is missing.
 
-Automation QA connection:
+Связь с Automation QA:
 
 Error message tells you to check declaration order.
 
@@ -206,19 +206,19 @@ Error message tells you to check declaration order.
 
 TDZ ReferenceError: identifier exists but is uninitialized. Missing identifier: lookup cannot find identifier.
 
-Рассуждение:
+Объяснение:
 
 Both can be ReferenceError, but states differ.
 
-Типичная ошибка:
+Распространённая ошибка:
 
 Debug both cases the same way.
 
-Automation QA connection:
+Связь с Automation QA:
 
 TDZ suggests reorder declarations; missing identifier suggests wrong name/import/scope.
 
-## Identify TDZ
+## Определите TDZ
 
 ### Фрагмент 1
 
@@ -226,15 +226,15 @@ TDZ suggests reorder declarations; missing identifier suggests wrong name/import
 
 TDZ starts at beginning of scope and ends at `let userName = 'Anna';`.
 
-Рассуждение:
+Объяснение:
 
 After declaration line, `userName` initialized and readable.
 
-Типичная ошибка:
+Распространённая ошибка:
 
 Say `userName` does not exist before declaration.
 
-Automation QA connection:
+Связь с Automation QA:
 
 Same pattern happens in helper-local variables.
 
@@ -244,15 +244,15 @@ Same pattern happens in helper-local variables.
 
 TDZ for `status` starts when block is entered and ends at `const status = 'active';`.
 
-Рассуждение:
+Объяснение:
 
 Block scope controls TDZ for block-level `const`.
 
-Типичная ошибка:
+Распространённая ошибка:
 
 Start TDZ at global scope instead of block scope.
 
-Automation QA connection:
+Связь с Automation QA:
 
 Useful for block-scoped assertion values.
 
@@ -262,19 +262,19 @@ Useful for block-scoped assertion values.
 
 TDZ starts at scope beginning and ends at `let retryCount;`.
 
-Рассуждение:
+Объяснение:
 
 Declaration without assigned value still initializes with `undefined`.
 
-Типичная ошибка:
+Распространённая ошибка:
 
 Think TDZ continues because no meaningful value assigned.
 
-Automation QA connection:
+Связь с Automation QA:
 
 Retry counters can be declared first and assigned later.
 
-## Predict output
+## Предскажите вывод
 
 ### Задача 1
 
@@ -285,15 +285,15 @@ undefined
 Anna
 ```
 
-Рассуждение:
+Объяснение:
 
 `let userName;` ends TDZ and initializes with `undefined`; later assignment gives `'Anna'`.
 
-Типичная ошибка:
+Распространённая ошибка:
 
 Expect ReferenceError after `let userName;`.
 
-Automation QA connection:
+Связь с Automation QA:
 
 Setup variables can be intentionally initialized before later assignment.
 
@@ -306,15 +306,15 @@ undefined
 created
 ```
 
-Рассуждение:
+Объяснение:
 
 `var status` initialized with `undefined` during Creation Phase; assignment happens later.
 
-Типичная ошибка:
+Распространённая ошибка:
 
 Expect ReferenceError like `let`.
 
-Automation QA connection:
+Связь с Automation QA:
 
 Legacy code can silently continue with `undefined`.
 
@@ -334,19 +334,19 @@ If uncommented:
 ReferenceError before initialization
 ```
 
-Рассуждение:
+Объяснение:
 
 `const baseUrl` is in TDZ before declaration line.
 
-Типичная ошибка:
+Распространённая ошибка:
 
 Expect undefined.
 
-Automation QA connection:
+Связь с Automation QA:
 
 Config constants must be declared before building derived URLs.
 
-## Determine identifier state
+## Определите identifier state
 
 Ответ:
 
@@ -361,19 +361,19 @@ Line | Identifier | State
 9    | status     | readable
 ```
 
-Рассуждение:
+Объяснение:
 
 Creation Phase prepares all records, but states differ.
 
-Типичная ошибка:
+Распространённая ошибка:
 
 Mark `userName` as missing before line 3.
 
-Automation QA connection:
+Связь с Automation QA:
 
 State table helps debug ReferenceError in setup code.
 
-## Debugging tasks
+## Задачи на отладку
 
 ### Задача 1
 
@@ -381,15 +381,15 @@ State table helps debug ReferenceError in setup code.
 
 Engine knows `baseUrl`; it is registered in Environment Record. Error means access happened before initialization.
 
-Рассуждение:
+Объяснение:
 
 TDZ ReferenceError is about state, not absence.
 
-Типичная ошибка:
+Распространённая ошибка:
 
 Search for misspelling only, ignoring declaration order.
 
-Automation QA connection:
+Связь с Automation QA:
 
 In helper files, check whether derived constants are declared before dependencies.
 
@@ -406,17 +406,17 @@ const baseUrl = 'https://example.com';
 const loginUrl = baseUrl + '/login';
 ```
 
-Рассуждение:
+Объяснение:
 
 Dependency must be initialized before derived value.
 
-Типичная ошибка:
+Распространённая ошибка:
 
 Think `const baseUrl` will be available because it appears later in file.
 
-Automation QA connection:
+Связь с Automation QA:
 
-Common mistake in Playwright URL builders.
+Распространённая ошибка в Playwright URL builders.
 
 ### Задача 3
 
@@ -429,19 +429,19 @@ let and const are registered during Creation Phase,
 but access before initialization is forbidden.
 ```
 
-Рассуждение:
+Объяснение:
 
 This preserves Hoisting model and explains TDZ.
 
-Типичная ошибка:
+Распространённая ошибка:
 
 Use shortcut that contradicts Lexical Environment model.
 
-Automation QA connection:
+Связь с Automation QA:
 
 Precise language improves team debugging and mentoring.
 
-## QA-oriented tasks
+## QA-задачи
 
 ### Сценарий 1
 
@@ -456,15 +456,15 @@ const baseUrl = 'https://example.com';
 const loginUrl = baseUrl + '/login';
 ```
 
-Рассуждение:
+Объяснение:
 
 `baseUrl` is registered but in TDZ until declaration line executes.
 
-Типичная ошибка:
+Распространённая ошибка:
 
 Blame string concatenation instead of declaration order.
 
-Automation QA connection:
+Связь с Automation QA:
 
 URL builders should declare base config before derived URLs.
 
@@ -480,15 +480,15 @@ undefined
 
 This can hide a bug because test continues with missing expected value.
 
-Рассуждение:
+Объяснение:
 
 `var` is readable before assignment.
 
-Типичная ошибка:
+Распространённая ошибка:
 
 Treat undefined as valid expected status.
 
-Automation QA connection:
+Связь с Automation QA:
 
 Modern tests prefer `const` to fail earlier on ordering mistakes.
 
@@ -498,19 +498,19 @@ Modern tests prefer `const` to fail earlier on ordering mistakes.
 
 TDZ makes reads before initialization fail loudly. This helps find declaration order mistakes instead of silently using `undefined`.
 
-Рассуждение:
+Объяснение:
 
 `const` also communicates that value should not be reassigned.
 
-Типичная ошибка:
+Распространённая ошибка:
 
 Use `var` to avoid ReferenceError, hiding real issue.
 
-Automation QA connection:
+Связь с Automation QA:
 
 Fail-fast behavior is valuable in Playwright setup and helpers.
 
-## Mini-project
+## Мини-проект
 
 Один из вариантов:
 
@@ -549,15 +549,15 @@ Execution Phase
 └── read status → "created"
 ```
 
-Рассуждение:
+Объяснение:
 
 `baseUrl` and `userName` have TDZ before their declaration lines, but all reads in this project happen after initialization.
 
-Типичная ошибка:
+Распространённая ошибка:
 
 Put `console.log(baseUrl)` before `const baseUrl`.
 
-Automation QA connection:
+Связь с Automation QA:
 
 This mirrors test setup: config first, mutable setup value second, status after action.
 
