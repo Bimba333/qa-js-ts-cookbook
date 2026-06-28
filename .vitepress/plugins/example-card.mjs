@@ -46,6 +46,152 @@ function demoteHeadings(markdown) {
   return markdown.replace(/^(#{1,5})\s+/gm, '#$1 ')
 }
 
+function normalizeTitle(value) {
+  return value
+    .toLowerCase()
+    .replace(/перед запуском/g, '')
+    .replace(/[ё]/g, 'е')
+    .replace(/[^\p{L}\p{N}]+/gu, ' ')
+    .trim()
+}
+
+function splitByHeading(markdown, level) {
+  const marker = '#'.repeat(level)
+  const lines = markdown.split('\n')
+  const sections = []
+  let current = null
+
+  for (const line of lines) {
+    const match = line.match(new RegExp(`^${marker}\\s+(.+)$`))
+
+    if (match) {
+      if (current) {
+        sections.push(current)
+      }
+
+      current = {
+        title: match[1].trim(),
+        body: []
+      }
+
+      continue
+    }
+
+    if (current) {
+      current.body.push(line)
+    } else if (line.trim()) {
+      current = {
+        title: '',
+        body: [line]
+      }
+    }
+  }
+
+  if (current) {
+    sections.push(current)
+  }
+
+  return sections
+}
+
+function renderAnswerDetails(md, markdown, env) {
+  const rendered = md.render(markdown.trim(), {
+    ...env,
+    embeddedMarkdown: true
+  })
+
+  return `
+<details class="book-answer">
+  <summary>Ответ</summary>
+  <div class="book-answer__content">
+${rendered}
+  </div>
+</details>
+`
+}
+
+function mergeSectionWithAnswers(md, practiceSection, solutionSection, env) {
+  const practiceBody = practiceSection.body.join('\n').trimEnd()
+
+  if (!solutionSection) {
+    return `## ${practiceSection.title}\n\n${practiceBody}`.trimEnd()
+  }
+
+  const solutionBody = solutionSection.body.join('\n').trim()
+  const practiceTasks = splitByHeading(practiceBody, 3)
+  const solutionTasks = splitByHeading(solutionBody, 3)
+
+  if (!practiceTasks.length || !solutionTasks.length) {
+    return `## ${practiceSection.title}\n\n${practiceBody}\n\n${renderAnswerDetails(md, solutionBody, env)}`.trimEnd()
+  }
+
+  const solutionsByTitle = new Map(
+    solutionTasks
+      .filter(section => section.title)
+      .map(section => [normalizeTitle(section.title), section])
+  )
+  const used = new Set()
+  const merged = []
+
+  for (const task of practiceTasks) {
+    if (!task.title) {
+      merged.push(task.body.join('\n').trimEnd())
+      continue
+    }
+
+    const key = normalizeTitle(task.title)
+    const answer = solutionsByTitle.get(key)
+    const taskMarkdown = `### ${task.title}\n\n${task.body.join('\n').trimEnd()}`.trimEnd()
+
+    if (answer) {
+      used.add(key)
+      merged.push(`${taskMarkdown}\n\n${renderAnswerDetails(md, answer.body.join('\n'), env)}`)
+    } else {
+      merged.push(taskMarkdown)
+    }
+  }
+
+  const remainingAnswers = solutionTasks
+    .filter(section => section.title && !used.has(normalizeTitle(section.title)))
+    .map(section => `### ${section.title}\n\n${section.body.join('\n').trimEnd()}`.trimEnd())
+    .join('\n\n')
+
+  if (remainingAnswers.trim()) {
+    merged.push(renderAnswerDetails(md, remainingAnswers, env))
+  }
+
+  return `## ${practiceSection.title}\n\n${merged.filter(Boolean).join('\n\n')}`.trimEnd()
+}
+
+function solutionPathForPractice(filePath) {
+  return filePath.replace(/^practice\//, 'solutions/')
+}
+
+function mergePracticeWithAnswers(md, practiceMarkdown, solutionMarkdown, env) {
+  if (!solutionMarkdown) {
+    return practiceMarkdown
+  }
+
+  const practice = stripFirstHeading(practiceMarkdown)
+  const solution = stripFirstHeading(solutionMarkdown)
+  const practiceSections = splitByHeading(practice, 2)
+  const solutionSections = splitByHeading(solution, 2)
+  const solutionsByTitle = new Map(
+    solutionSections
+      .filter(section => section.title)
+      .map(section => [normalizeTitle(section.title), section])
+  )
+
+  return practiceSections
+    .map(section => mergeSectionWithAnswers(
+      md,
+      section,
+      solutionsByTitle.get(normalizeTitle(section.title)),
+      env
+    ))
+    .join('\n\n')
+}
+
 function markdownPathType(filePath) {
   if (filePath.startsWith('practice/')) return 'practice'
   if (filePath.startsWith('solutions/')) return 'solutions'
@@ -70,8 +216,19 @@ function renderEmbeddedMarkdown(md, filePath, type, env) {
     return ''
   }
 
-  const title = type === 'practice' ? '' : '<h2 id="решения">Решения</h2>'
-  const normalized = demoteHeadings(stripFirstHeading(markdown))
+  const solutionPath = type === 'practice' ? solutionPathForPractice(filePath) : ''
+  const solutionMarkdown = solutionPath ? readMarkdown(solutionPath) : ''
+  const sourceMarkdown = type === 'practice'
+    ? mergePracticeWithAnswers(md, markdown, solutionMarkdown, env)
+    : stripFirstHeading(markdown)
+  const title = ''
+  const normalized = demoteHeadings(sourceMarkdown)
+
+  if (solutionPath && solutionMarkdown) {
+    env.inlineSolutionPaths ||= new Set()
+    env.inlineSolutionPaths.add(solutionPath)
+  }
+
   const rendered = md.render(normalized, {
     ...env,
     embeddedMarkdown: true,
@@ -197,6 +354,8 @@ function renderNodeExampleCommands(md, content, env) {
 function shouldHideSupportParagraph(content) {
   return /^(Практика|Решения|Примеры) находятся в(?: отдельном)? файле:?$/.test(content.trim()) ||
     /^(Практика|Решения|Примеры) находится в(?: отдельном)? файле:?$/.test(content.trim()) ||
+    /^(Практика|Решения|Примеры) к этой главе находится в(?: отдельном)? файле:?$/.test(content.trim()) ||
+    /^(Практика|Решения|Примеры) к этой главе находятся в(?: отдельном)? файле:?$/.test(content.trim()) ||
     /^(Практика|Решения|Примеры) находятся в:?$/.test(content.trim()) ||
     /^(Практика|Решения|Примеры) находится в:?$/.test(content.trim()) ||
     /^Запуск:$/.test(content.trim())
@@ -332,6 +491,10 @@ export function exampleCardPlugin(md) {
 
     if (isMarkdownPath) {
       const type = markdownPathType(content)
+
+      if (type === 'solutions') {
+        return ''
+      }
 
       if (EMBED_TYPES.has(type)) {
         return renderEmbeddedMarkdown(md, content, type, env)

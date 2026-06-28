@@ -51,6 +51,38 @@
   line-height: 1.35;
 }
 
+.book-answer {
+  margin: 16px 0 24px;
+  border: 1px solid var(--vp-c-divider);
+  border-radius: 10px;
+  background: var(--vp-c-bg-soft);
+}
+
+.book-answer summary {
+  cursor: pointer;
+  padding: 12px 14px;
+  color: var(--vp-c-brand-1);
+  font-weight: 800;
+  user-select: none;
+}
+
+.book-answer summary:hover {
+  color: var(--vp-c-brand-2);
+}
+
+.book-answer__content {
+  padding: 0 14px 14px;
+  border-top: 1px solid var(--vp-c-divider);
+}
+
+.book-answer__content > :first-child {
+  margin-top: 14px;
+}
+
+.book-answer__content > :last-child {
+  margin-bottom: 0;
+}
+
 .code-runner {
   border: 1px solid var(--vp-c-divider);
   border-radius: 10px;
