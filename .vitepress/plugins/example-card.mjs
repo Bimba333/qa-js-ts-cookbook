@@ -195,8 +195,15 @@ function renderNodeExampleCommands(md, content, env) {
 }
 
 function shouldHideSupportParagraph(content) {
-  return /^(Практика|Решения|Примеры) находятся в:$/.test(content.trim()) ||
+  return /^(Практика|Решения|Примеры) находятся в(?: отдельном)? файле:?$/.test(content.trim()) ||
+    /^(Практика|Решения|Примеры) находится в(?: отдельном)? файле:?$/.test(content.trim()) ||
+    /^(Практика|Решения|Примеры) находятся в:?$/.test(content.trim()) ||
+    /^(Практика|Решения|Примеры) находится в:?$/.test(content.trim()) ||
     /^Запуск:$/.test(content.trim())
+}
+
+function isSupportHeading(content) {
+  return /^(Практика|Решения|Примеры)$/.test(content.trim())
 }
 
 function publicLabelForPath(value) {
@@ -251,6 +258,23 @@ export function exampleCardPlugin(md) {
         inline.content = ''
         inline.children = []
         close.hidden = true
+
+        const headingOpen = state.tokens[i - 3]
+        const headingInline = state.tokens[i - 2]
+        const headingClose = state.tokens[i - 1]
+
+        if (
+          headingOpen?.type === 'heading_open' &&
+          headingInline?.type === 'inline' &&
+          headingClose?.type === 'heading_close' &&
+          isSupportHeading(headingInline.content)
+        ) {
+          headingOpen.hidden = true
+          headingInline.hidden = true
+          headingInline.content = ''
+          headingInline.children = []
+          headingClose.hidden = true
+        }
       }
     }
   })

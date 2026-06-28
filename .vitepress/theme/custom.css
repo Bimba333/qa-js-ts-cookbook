@@ -165,6 +165,7 @@
 }
 
 .book-mermaid {
+  position: relative;
   display: flex;
   justify-content: center;
   max-width: 100%;
@@ -179,11 +180,39 @@
 .book-mermaid svg {
   display: block;
   max-width: none;
+  min-width: min(720px, 100%);
   height: auto;
 }
 
 .book-mermaid__canvas {
   flex: 0 0 auto;
+  max-width: 100%;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: inherit;
+}
+
+.book-mermaid__canvas--clickable {
+  cursor: zoom-in;
+}
+
+.book-mermaid__open {
+  position: sticky;
+  left: 100%;
+  z-index: 1;
+  align-self: flex-start;
+  flex: 0 0 auto;
+  cursor: pointer;
+  border: 1px solid var(--vp-c-divider);
+  border-radius: 8px;
+  padding: 6px 10px;
+  background: var(--vp-c-bg);
+  color: var(--vp-c-text-1);
+  font-size: 13px;
+  font-weight: 700;
+  line-height: 1;
+  white-space: nowrap;
 }
 
 .book-mermaid__error {
@@ -194,4 +223,88 @@
 .vp-doc .language-mermaid {
   max-width: 100%;
   overflow-x: auto;
+}
+
+.book-mermaid-viewer {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  display: flex;
+  padding: 24px;
+  background: rgb(0 0 0 / 72%);
+}
+
+.book-mermaid-viewer__panel {
+  display: flex;
+  flex-direction: column;
+  width: min(1400px, 100%);
+  height: min(920px, 100%);
+  margin: auto;
+  overflow: hidden;
+  border: 1px solid var(--vp-c-divider);
+  border-radius: 12px;
+  background: var(--vp-c-bg);
+  box-shadow: 0 24px 80px rgb(0 0 0 / 40%);
+}
+
+.book-mermaid-viewer__toolbar {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 8px;
+  padding: 12px;
+  border-bottom: 1px solid var(--vp-c-divider);
+  background: var(--vp-c-bg-soft);
+}
+
+.book-mermaid-viewer__toolbar button {
+  cursor: pointer;
+  border: 1px solid var(--vp-c-divider);
+  border-radius: 8px;
+  padding: 7px 10px;
+  background: var(--vp-c-bg);
+  color: var(--vp-c-text-1);
+  font-weight: 700;
+}
+
+.book-mermaid-viewer__toolbar span {
+  min-width: 56px;
+  color: var(--vp-c-text-2);
+  font-weight: 700;
+  text-align: center;
+}
+
+.book-mermaid-viewer__viewport {
+  flex: 1;
+  overflow: auto;
+  padding: 32px;
+}
+
+.book-mermaid-viewer__content {
+  display: flex;
+  justify-content: center;
+  width: max-content;
+  min-width: 100%;
+  transform-origin: top center;
+}
+
+.book-mermaid-viewer__content svg {
+  display: block;
+  max-width: none;
+  height: auto;
+}
+
+@media (max-width: 640px) {
+  .book-mermaid-viewer {
+    padding: 8px;
+  }
+
+  .book-mermaid-viewer__toolbar {
+    justify-content: flex-start;
+    overflow-x: auto;
+  }
+
+  .book-mermaid-viewer__viewport {
+    padding: 16px;
+  }
 }

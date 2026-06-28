@@ -16,18 +16,6 @@ const sections = [
     dir: 'docs/01-javascript',
     base: '/docs/01-javascript/',
     type: 'theory'
-  },
-  {
-    title: 'Практика',
-    dir: 'practice/01-javascript',
-    base: '/docs/01-javascript/',
-    type: 'practice'
-  },
-  {
-    title: 'Решения',
-    dir: 'solutions/01-javascript',
-    base: '/docs/01-javascript/',
-    type: 'solutions'
   }
 ]
 
