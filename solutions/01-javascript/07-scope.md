@@ -299,23 +299,22 @@ fullUrl
 
 Lookup path для `baseUrl` внутри блока:
 
-```text
-Block Scope
-│
-▼
-Function Scope
-│
-▼
-Global Scope: baseUrl found
+```mermaid
+flowchart TD
+    N1["Block Scope"]
+    N2["Function Scope"]
+    N3["Global Scope: baseUrl found"]
+    N1 --> N2
+    N2 --> N3
 ```
 
 Lookup path для `path` внутри блока:
 
-```text
-Block Scope
-│
-▼
-Function Scope: path found
+```mermaid
+flowchart TD
+    N1["Block Scope"]
+    N2["Function Scope: path found"]
+    N1 --> N2
 ```
 
 Объяснение:
@@ -533,29 +532,38 @@ console.log(baseUrl);
 
 Scope схема:
 
-```text
-Global Scope
-├── baseUrl
-└── testLogin
-    │
-    ▼
-    Function Scope: testLogin
-    ├── userName
-    └── expectedStatus
-        │
-        ▼
-        Block Scope
-        └── actualStatus
+```mermaid
+flowchart TD
+    N1["Global Scope"]
+    N2["baseUrl"]
+    N3["testLogin"]
+    N4["Function Scope: testLogin"]
+    N5["userName"]
+    N6["expectedStatus"]
+    N7["Block Scope"]
+    N8["actualStatus"]
+    N1 --> N2
+    N1 --> N3
+    N1 --> N4
+    N4 --> N5
+    N4 --> N6
+    N4 --> N7
+    N7 --> N8
 ```
 
 Visibility:
 
-```text
-baseUrl        → visible in Global, Function, Block through outward lookup
-testLogin      → visible in Global
-userName       → visible inside testLogin and nested block
-expectedStatus → visible inside testLogin and nested block
-actualStatus   → visible inside block only
+```mermaid
+flowchart TD
+    N1["baseUrl → visible in Global, Function, Block through outward lookup"]
+    N2["testLogin → visible in Global"]
+    N3["userName → visible inside testLogin and nested block"]
+    N4["expectedStatus → visible inside testLogin and nested block"]
+    N5["actualStatus → visible inside block only"]
+    N1 --> N2
+    N2 --> N3
+    N3 --> N4
+    N4 --> N5
 ```
 
 Объяснение:

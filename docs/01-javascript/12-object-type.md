@@ -4,20 +4,29 @@
 
 Предыдущая глава начала блок **Values and Types** и объяснила primitive значения:
 
-```text
-JavaScript Value
-│
-├── Primitive
-│   ├── Number
-│   ├── String
-│   ├── Boolean
-│   ├── Undefined
-│   ├── Null
-│   ├── Symbol
-│   └── BigInt
-│
-└── Object
-    └── текущая глава
+```mermaid
+flowchart TD
+    N1["JavaScript Value"]
+    N2["Primitive"]
+    N3["Number"]
+    N4["String"]
+    N5["Boolean"]
+    N6["Undefined"]
+    N7["Null"]
+    N8["Symbol"]
+    N9["BigInt"]
+    N10["Object"]
+    N11["текущая глава"]
+    N1 --> N2
+    N1 --> N3
+    N1 --> N4
+    N1 --> N5
+    N1 --> N6
+    N1 --> N7
+    N1 --> N8
+    N1 --> N9
+    N1 --> N10
+    N10 --> N11
 ```
 
 Primitive value представляет одно indivisible value:
@@ -145,11 +154,15 @@ const isActive = true;
 
 Все значения корректны:
 
-```text
-"Anna"  → String
-"Smith" → String
-30      → Number
-true    → Boolean
+```mermaid
+flowchart TD
+    N1["&quot;Anna&quot; → String"]
+    N2["&quot;Smith&quot; → String"]
+    N3["30 → Number"]
+    N4["true → Boolean"]
+    N1 --> N2
+    N2 --> N3
+    N3 --> N4
 ```
 
 Но в программе отсутствует важная идея:
@@ -165,17 +178,21 @@ isActive
 
 Диаграмма проблемы:
 
-```text
-Separate primitive values
-│
-├── firstName = "Anna"
-├── lastName  = "Smith"
-├── age       = 30
-└── isActive  = true
-
-Problem
-│
-└── Where is "one user"?
+```mermaid
+flowchart TD
+    N1["Separate primitive values"]
+    N2["firstName = &quot;Anna&quot;"]
+    N3["lastName = &quot;Smith&quot;"]
+    N4["age = 30"]
+    N5["isActive = true"]
+    N6["Problem"]
+    N7["Where is &quot;one user&quot;?"]
+    N1 --> N2
+    N1 --> N3
+    N1 --> N4
+    N1 --> N5
+    N1 --> N6
+    N6 --> N7
 ```
 
 Engine видит отдельные значения. Читатель понимает, что они связаны. Код пока не выражает эту связь.
@@ -193,13 +210,17 @@ const user = {
 
 Теперь программа говорит явно:
 
-```text
-user
-│
-├── firstName: "Anna"
-├── lastName:  "Smith"
-├── age:       30
-└── isActive:  true
+```mermaid
+flowchart TD
+    N1["user"]
+    N2["firstName: &quot;Anna&quot;"]
+    N3["lastName: &quot;Smith&quot;"]
+    N4["age: 30"]
+    N5["isActive: true"]
+    N1 --> N2
+    N1 --> N3
+    N1 --> N4
+    N1 --> N5
 ```
 
 Что information is grouped together right now?
@@ -231,36 +252,45 @@ const expectedUser = {
 
 Primitive value представляет одно indivisible value.
 
-```text
-Primitive
-│
-└── one value
+```mermaid
+flowchart TD
+    N1["Primitive"]
+    N2["one value"]
+    N1 --> N2
 ```
 
 Object value groups multiple related значения under one entity.
 
-```text
-Object
-│
-├── related value
-├── related value
-└── related value
+```mermaid
+flowchart TD
+    N1["Object"]
+    N2["related value"]
+    N3["related value"]
+    N4["related value"]
+    N1 --> N2
+    N1 --> N3
+    N1 --> N4
 ```
 
 Диаграмма Primitive vs Объект:
 
-```text
-Primitive value
-│
-└── "Anna"
-
-Object value
-│
-└── user
-    ├── firstName: "Anna"
-    ├── lastName:  "Smith"
-    ├── age:       30
-    └── isActive:  true
+```mermaid
+flowchart TD
+    N1["Primitive value"]
+    N2["&quot;Anna&quot;"]
+    N3["Object value"]
+    N4["user"]
+    N5["firstName: &quot;Anna&quot;"]
+    N6["lastName: &quot;Smith&quot;"]
+    N7["age: 30"]
+    N8["isActive: true"]
+    N1 --> N2
+    N1 --> N3
+    N3 --> N4
+    N4 --> N5
+    N4 --> N6
+    N4 --> N7
+    N4 --> N8
 ```
 
 Важно:
@@ -281,60 +311,72 @@ const isActive = true;
 
 Но они становятся неудобными, когда появляется entity:
 
-```text
-User
-│
-├── first name
-├── last name
-├── age
-├── active state
-└── role
+```mermaid
+flowchart TD
+    N1["User"]
+    N2["first name"]
+    N3["last name"]
+    N4["age"]
+    N5["active state"]
+    N6["role"]
+    N1 --> N2
+    N1 --> N3
+    N1 --> N4
+    N1 --> N5
+    N1 --> N6
 ```
 
 Если хранить все отдельно, связь существует только в голове программиста:
 
-```text
-Code
-│
-├── firstName
-├── lastName
-├── age
-└── isActive
-
-Reader must guess
-│
-└── these values belong to one user
+```mermaid
+flowchart TD
+    N1["Code"]
+    N2["firstName"]
+    N3["lastName"]
+    N4["age"]
+    N5["isActive"]
+    N6["Reader must guess"]
+    N7["these values belong to one user"]
+    N1 --> N2
+    N1 --> N3
+    N1 --> N4
+    N1 --> N5
+    N1 --> N6
+    N6 --> N7
 ```
 
 Object делает связь частью кода:
 
-```text
-Code
-│
-└── user
-    ├── firstName
-    ├── lastName
-    ├── age
-    └── isActive
-
-Reader sees
-│
-└── these values belong to one user
+```mermaid
+flowchart TD
+    N1["Code"]
+    N2["user"]
+    N3["firstName"]
+    N4["lastName"]
+    N5["age"]
+    N6["isActive"]
+    N7["Reader sees"]
+    N8["these values belong to one user"]
+    N1 --> N2
+    N2 --> N3
+    N2 --> N4
+    N2 --> N5
+    N2 --> N6
+    N1 --> N7
+    N7 --> N8
 ```
 
 Диаграмма why primitives become insufficient:
 
-```text
-More related information appears
-│
-▼
-Separate primitive values become hard to manage
-│
-▼
-Program needs one entity
-│
-▼
-Object groups related values
+```mermaid
+flowchart TD
+    N1["More related information appears"]
+    N2["Separate primitive values become hard to manage"]
+    N3["Program needs one entity"]
+    N4["Object groups related values"]
+    N1 --> N2
+    N2 --> N3
+    N3 --> N4
 ```
 
 ### Что такое Object value
@@ -353,41 +395,55 @@ const user = {
 
 Что information is grouped together right now?
 
-```text
-Information about one user:
-│
-├── first name
-├── last name
-└── age
+```mermaid
+flowchart TD
+    N1["Information about one user:"]
+    N2["first name"]
+    N3["last name"]
+    N4["age"]
+    N1 --> N2
+    N1 --> N3
+    N1 --> N4
 ```
 
 Object structure:
 
-```text
-Object value: user
-│
-├── property
-│   ├── name:  firstName
-│   └── value: "Anna"
-│
-├── property
-│   ├── name:  lastName
-│   └── value: "Smith"
-│
-└── property
-    ├── name:  age
-    └── value: 30
+```mermaid
+flowchart TD
+    N1["Object value: user"]
+    N2["property"]
+    N3["name: firstName"]
+    N4["value: &quot;Anna&quot;"]
+    N5["property"]
+    N6["name: lastName"]
+    N7["value: &quot;Smith&quot;"]
+    N8["property"]
+    N9["name: age"]
+    N10["value: 30"]
+    N1 --> N2
+    N1 --> N3
+    N1 --> N4
+    N1 --> N5
+    N1 --> N6
+    N1 --> N7
+    N1 --> N8
+    N8 --> N9
+    N8 --> N10
 ```
 
 Object полезен, потому что позволяет программе представить одну концептуальную сущность:
 
-```text
-Profile card
-│
-├── Name
-├── Age
-├── Status
-└── Role
+```mermaid
+flowchart TD
+    N1["Profile card"]
+    N2["Name"]
+    N3["Age"]
+    N4["Status"]
+    N5["Role"]
+    N1 --> N2
+    N1 --> N3
+    N1 --> N4
+    N1 --> N5
 ```
 
 В коде:
@@ -413,24 +469,28 @@ const user = {
 
 Диаграмма property:
 
-```text
-Property
-│
-├── property name
-│   └── firstName
-│
-└── property value
-    └── "Anna"
+```mermaid
+flowchart TD
+    N1["Property"]
+    N2["property name"]
+    N3["firstName"]
+    N4["property value"]
+    N5["&quot;Anna&quot;"]
+    N1 --> N2
+    N1 --> N3
+    N1 --> N4
+    N4 --> N5
 ```
 
 В object literal это выглядит так:
 
-```text
-firstName: "Anna"
-│          │
-│          └── property value
-│
-└── property name
+```mermaid
+flowchart TD
+    N1["firstName: &quot;Anna&quot;"]
+    N2["property value"]
+    N3["property name"]
+    N1 --> N2
+    N1 --> N3
 ```
 
 Property name отвечает:
@@ -465,14 +525,17 @@ lastName
 
 Ментальная модель dictionary:
 
-```text
-Dictionary
-│
-├── word:    firstName
-│   meaning: "Anna"
-│
-└── word:    lastName
-    meaning: "Smith"
+```mermaid
+flowchart TD
+    N1["Dictionary"]
+    N2["word: firstName"]
+    N3["meaning: &quot;Anna&quot;"]
+    N4["word: lastName"]
+    N5["meaning: &quot;Smith&quot;"]
+    N1 --> N2
+    N3 --> N4
+    N3 --> N5
+    N2 --> N3
 ```
 
 Property name is not the same thing as variable identifier.
@@ -485,14 +548,15 @@ const user = {
 
 Здесь:
 
-```text
-user
-│
-└── variable identifier
-
-firstName
-│
-└── property name inside object
+```mermaid
+flowchart TD
+    N1["user"]
+    N2["variable identifier"]
+    N3["firstName"]
+    N4["property name inside object"]
+    N1 --> N2
+    N1 --> N3
+    N3 --> N4
 ```
 
 ### Property значения
@@ -509,20 +573,26 @@ const user = {
 
 Property значения:
 
-```text
-"Anna" → String
-30     → Number
-true   → Boolean
+```mermaid
+flowchart TD
+    N1["&quot;Anna&quot; → String"]
+    N2["30 → Number"]
+    N3["true → Boolean"]
+    N1 --> N2
+    N2 --> N3
 ```
 
 Object может group primitive значения:
 
-```text
-user
-│
-├── firstName → String value
-├── age       → Number value
-└── isActive  → Boolean value
+```mermaid
+flowchart TD
+    N1["user"]
+    N2["firstName → String value"]
+    N3["age → Number value"]
+    N4["isActive → Boolean value"]
+    N1 --> N2
+    N1 --> N3
+    N1 --> N4
 ```
 
 Позже object может group other objects too. Nested objects are introduced conceptually in this chapter, but detailed internal поведение will be studied later.
@@ -543,29 +613,28 @@ console.log(user.age);
 
 Диаграмма reading property:
 
-```text
-user.firstName
-│
-├── find object value named user
-│
-├── look for property name firstName
-│
-└── read property value "Anna"
+```mermaid
+flowchart TD
+    N1["user.firstName"]
+    N2["find object value named user"]
+    N3["look for property name firstName"]
+    N4["read property value &quot;Anna&quot;"]
+    N1 --> N2
+    N1 --> N3
+    N1 --> N4
 ```
 
 Что engine делает прямо сейчас?
 
-```text
-Engine has Object value
-│
-▼
-Engine receives property name
-│
-▼
-Engine retrieves matching property value
-│
-▼
-Value is passed to console.log
+```mermaid
+flowchart TD
+    N1["Engine has Object value"]
+    N2["Engine receives property name"]
+    N3["Engine retrieves matching property value"]
+    N4["Value is passed to console.log"]
+    N1 --> N2
+    N2 --> N3
+    N3 --> N4
 ```
 
 Если property does not exist, result is `undefined`:
@@ -580,16 +649,19 @@ console.log(user.role);
 
 Концептуальный результат:
 
-```text
-user
-│
-└── firstName: "Anna"
-
-Lookup
-│
-└── role?
-    └── no such property
-        └── undefined
+```mermaid
+flowchart TD
+    N1["user"]
+    N2["firstName: &quot;Anna&quot;"]
+    N3["Lookup"]
+    N4["role?"]
+    N5["нет such property"]
+    N6["undefined"]
+    N1 --> N2
+    N1 --> N3
+    N3 --> N4
+    N4 --> N5
+    N5 --> N6
 ```
 
 Это не означает, что object исчез или сломался. Это означает: under requested property name, value was not found.
@@ -611,28 +683,32 @@ console.log(user.age);
 
 Диаграмма updating property:
 
-```text
-Before
-│
-└── user
-    └── age: 30
-
-Operation
-│
-└── user.age = 31
-
-After
-│
-└── user
-    └── age: 31
+```mermaid
+flowchart TD
+    N1["Before"]
+    N2["user"]
+    N3["age: 30"]
+    N4["Operation"]
+    N5["user.age = 31"]
+    N6["After"]
+    N7["user"]
+    N8["age: 31"]
+    N1 --> N2
+    N2 --> N3
+    N1 --> N4
+    N4 --> N5
+    N4 --> N6
+    N6 --> N7
+    N7 --> N8
 ```
 
 Что information is grouped together right now?
 
-```text
-Same user
-│
-└── updated age
+```mermaid
+flowchart TD
+    N1["Same user"]
+    N2["updated age"]
+    N1 --> N2
 ```
 
 Важно:
@@ -663,37 +739,42 @@ console.log(user.role);
 
 Диаграмма adding property:
 
-```text
-Before
-│
-└── user
-    └── firstName: "Anna"
-
-Operation
-│
-└── user.role = "admin"
-
-After
-│
-└── user
-    ├── firstName: "Anna"
-    └── role:      "admin"
+```mermaid
+flowchart TD
+    N1["Before"]
+    N2["user"]
+    N3["firstName: &quot;Anna&quot;"]
+    N4["Operation"]
+    N5["user.role = &quot;admin&quot;"]
+    N6["After"]
+    N7["user"]
+    N8["firstName: &quot;Anna&quot;"]
+    N9["role: &quot;admin&quot;"]
+    N1 --> N2
+    N2 --> N3
+    N1 --> N4
+    N4 --> N5
+    N4 --> N6
+    N6 --> N7
+    N7 --> N8
+    N7 --> N9
 ```
 
 Это полезно, когда информация появляется по шагам:
 
-```text
-Initial user data
-│
-└── firstName
-
-After login
-│
-└── role appears
-
-After API call
-│
-└── permissions appear
+```mermaid
+flowchart TD
+    N1["Initial user data"]
+    N2["firstName"]
+    N3["После: login"]
+    N4["role appears"]
+    N5["После: API call"]
+    N6["permissions appear"]
+    N1 --> N2
+    N1 --> N3
+    N3 --> N4
+    N3 --> N5
+    N5 --> N6
 ```
 
 Но adding properties should be used carefully. В test code чаще лучше создавать object with expected structure explicitly, чтобы reader сразу видел required shape.
@@ -715,31 +796,36 @@ console.log(user.temporaryCode);
 
 Диаграмма removing property:
 
-```text
-Before
-│
-└── user
-    ├── firstName:     "Anna"
-    └── temporaryCode: "1234"
-
-Operation
-│
-└── delete user.temporaryCode
-
-After
-│
-└── user
-    └── firstName: "Anna"
+```mermaid
+flowchart TD
+    N1["Before"]
+    N2["user"]
+    N3["firstName: &quot;Anna&quot;"]
+    N4["temporaryCode: &quot;1234&quot;"]
+    N5["Operation"]
+    N6["delete user.temporaryCode"]
+    N7["After"]
+    N8["user"]
+    N9["firstName: &quot;Anna&quot;"]
+    N1 --> N2
+    N2 --> N3
+    N2 --> N4
+    N1 --> N5
+    N5 --> N6
+    N5 --> N7
+    N7 --> N8
+    N8 --> N9
 ```
 
 At a high level, `delete` removes property from object. Это не глава про memory cleanup and Garbage Collector. Garbage Collector will be studied later.
 
 Что information is grouped together right now?
 
-```text
-User information remains
-│
-└── temporaryCode no longer belongs to this object
+```mermaid
+flowchart TD
+    N1["User information remains"]
+    N2["temporaryCode нет longer belongs to this object"]
+    N1 --> N2
 ```
 
 ### Nested objects
@@ -761,25 +847,32 @@ const user = {
 
 Диаграмма nested object:
 
-```text
-user
-│
-├── profile
-│   ├── firstName: "Anna"
-│   └── lastName:  "Smith"
-│
-└── settings
-    ├── theme:              "dark"
-    └── emailNotifications: true
+```mermaid
+flowchart TD
+    N1["user"]
+    N2["profile"]
+    N3["firstName: &quot;Anna&quot;"]
+    N4["lastName: &quot;Smith&quot;"]
+    N5["settings"]
+    N6["theme: &quot;dark&quot;"]
+    N7["emailNotifications: true"]
+    N1 --> N2
+    N1 --> N3
+    N1 --> N4
+    N1 --> N5
+    N5 --> N6
+    N5 --> N7
 ```
 
 Какая информация сгруппирована прямо сейчас?
 
-```text
-user
-│
-├── profile information
-└── settings information
+```mermaid
+flowchart TD
+    N1["user"]
+    N2["profile information"]
+    N3["settings information"]
+    N1 --> N2
+    N1 --> N3
 ```
 
 Reading nested property:
@@ -790,12 +883,15 @@ console.log(user.profile.firstName);
 
 Концептуально:
 
-```text
-user.profile.firstName
-│
-├── read user
-├── inside user read profile
-└── inside profile read firstName
+```mermaid
+flowchart TD
+    N1["user.profile.firstName"]
+    N2["read user"]
+    N3["inside user read profile"]
+    N4["inside profile read firstName"]
+    N1 --> N2
+    N1 --> N3
+    N1 --> N4
 ```
 
 Nested objects are common in API responses:
@@ -816,14 +912,19 @@ Nested objects are common in API responses:
 
 JavaScript has many object значения.
 
-```text
-Object Values
-│
-├── Plain Object
-├── Array
-├── Function
-├── Date
-└── other built-in objects
+```mermaid
+flowchart TD
+    N1["Object Values"]
+    N2["Plain Object"]
+    N3["Array"]
+    N4["Function"]
+    N5["Date"]
+    N6["other built-in objects"]
+    N1 --> N2
+    N1 --> N3
+    N1 --> N4
+    N1 --> N5
+    N1 --> N6
 ```
 
 Array is an object-like value for ordered collections. Functions are callable object значения. Date and other built-in objects provide specialized поведение.
@@ -832,17 +933,23 @@ Array is an object-like value for ordered collections. Functions are callable ob
 
 Диаграмма object hierarchy:
 
-```text
-JavaScript Value
-│
-├── Primitive
-│
-└── Object
-    ├── Plain Object
-    ├── Array
-    ├── Function
-    ├── Date
-    └── Other built-in objects
+```mermaid
+flowchart TD
+    N1["JavaScript Value"]
+    N2["Primitive"]
+    N3["Object"]
+    N4["Plain Object"]
+    N5["Array"]
+    N6["Function"]
+    N7["Date"]
+    N8["Other built-in objects"]
+    N1 --> N2
+    N1 --> N3
+    N3 --> N4
+    N3 --> N5
+    N3 --> N6
+    N3 --> N7
+    N3 --> N8
 ```
 
 ---
@@ -864,76 +971,72 @@ const user = {
 
 Он создает Object value with properties.
 
-```text
-Object literal
-│
-▼
-Create Object value
-│
-▼
-Add property firstName with value "Anna"
-│
-▼
-Add property age with value 30
-│
-▼
-Identifier user gives access to this Object value
+```mermaid
+flowchart TD
+    N1["Object literal"]
+    N2["Create Object value"]
+    N3["Add property firstName with value &quot;Anna&quot;"]
+    N4["Add property age with value 30"]
+    N5["Identifier user gives access to this Object value"]
+    N1 --> N2
+    N2 --> N3
+    N3 --> N4
+    N4 --> N5
 ```
 
 Object lifecycle:
 
-```text
-Create object
-│
-▼
-Fill with properties
-│
-▼
-Read properties
-│
-▼
-Update / add / remove properties
-│
-▼
-Use object in program
+```mermaid
+flowchart TD
+    N1["Create object"]
+    N2["Fill with properties"]
+    N3["Read properties"]
+    N4["Update / add / remove properties"]
+    N5["Use object in program"]
+    N1 --> N2
+    N2 --> N3
+    N3 --> N4
+    N4 --> N5
 ```
 
 ### Property lookup inside object
 
 Когда code reads `user.firstName`, engine does not read all properties. It looks for one property name.
 
-```text
-Object value: user
-│
-├── firstName: "Anna"
-├── lastName:  "Smith"
-└── age:       30
-
-Request
-│
-└── property name: firstName
-
-Результат
-│
-└── property value: "Anna"
+```mermaid
+flowchart TD
+    N1["Object value: user"]
+    N2["firstName: &quot;Anna&quot;"]
+    N3["lastName: &quot;Smith&quot;"]
+    N4["age: 30"]
+    N5["Request"]
+    N6["property name: firstName"]
+    N7["Результат"]
+    N8["property value: &quot;Anna&quot;"]
+    N1 --> N2
+    N1 --> N3
+    N1 --> N4
+    N1 --> N5
+    N5 --> N6
+    N5 --> N7
+    N7 --> N8
 ```
 
 Полный процесс поиска:
 
-```text
-Read user.firstName
-│
-▼
-Get Object value accessible through user
-│
-▼
-Search for property name "firstName"
-│
-▼
-Property exists?
-│
-├── yes → return property value
-└── no  → return undefined
+```mermaid
+flowchart TD
+    N1["Read user.firstName"]
+    N2["Get Object value accessible through user"]
+    N3["Search for property name &quot;firstName&quot;"]
+    N4["Property exists?"]
+    N5["да → вернуть property value"]
+    N6["нет → вернуть undefined"]
+    N1 --> N2
+    N2 --> N3
+    N3 --> N4
+    N4 --> N5
+    N4 --> N6
 ```
 
 This is the mechanism behind many beginner errors:
@@ -948,29 +1051,32 @@ console.log(user.firstname);
 
 `firstName` and `firstname` are different property names.
 
-```text
-Object has
-│
-└── firstName
-
-Code asks for
-│
-└── firstname
-
-Результат
-│
-└── undefined
+```mermaid
+flowchart TD
+    N1["Object has"]
+    N2["firstName"]
+    N3["Code asks for"]
+    N4["firstname"]
+    N5["Результат"]
+    N6["undefined"]
+    N1 --> N2
+    N1 --> N3
+    N3 --> N4
+    N3 --> N5
+    N5 --> N6
 ```
 
 ### Updating grouped information
 
 When property is updated, object still represents the same conceptual entity.
 
-```text
-user
-│
-├── firstName: "Anna"
-└── age:       30
+```mermaid
+flowchart TD
+    N1["user"]
+    N2["firstName: &quot;Anna&quot;"]
+    N3["age: 30"]
+    N1 --> N2
+    N1 --> N3
 ```
 
 После:
@@ -981,11 +1087,13 @@ user.age = 31
 
 Концептуальный объект:
 
-```text
-user
-│
-├── firstName: "Anna"
-└── age:       31
+```mermaid
+flowchart TD
+    N1["user"]
+    N2["firstName: &quot;Anna&quot;"]
+    N3["age: 31"]
+    N1 --> N2
+    N1 --> N3
 ```
 
 Какая информация сгруппирована прямо сейчас?
@@ -999,28 +1107,31 @@ but one property value changed.
 
 К этому моменту модель курса выглядит так:
 
-```text
-JavaScript Engine
-│
-├── executes code
-│
-├── creates Execution Context
-│
-├── uses Call Stack to manage active contexts
-│
-├── stores information in Memory
-│
-├── gives named access through Variables
-│
-├── controls visibility through Scope
-│
-├── registers identifiers through Lexical Environment
-│
-├── explains early access behavior through Hoisting and TDZ
-│
-└── now works with different kinds of Values
-    ├── Primitive
-    └── Object
+```mermaid
+flowchart TD
+    N1["JavaScript Engine"]
+    N2["выполняется code"]
+    N3["создает Execution Context"]
+    N4["uses Call Stack to manage active contexts"]
+    N5["stores information in Memory"]
+    N6["gives named access through Variables"]
+    N7["controls visibility through Scope"]
+    N8["registers identifiers through Lexical Environment"]
+    N9["explains early access behavior through Hoisting and TDZ"]
+    N10["now works with different kinds of Values"]
+    N11["Primitive"]
+    N12["Object"]
+    N1 --> N2
+    N1 --> N3
+    N1 --> N4
+    N1 --> N5
+    N1 --> N6
+    N1 --> N7
+    N1 --> N8
+    N1 --> N9
+    N1 --> N10
+    N10 --> N11
+    N10 --> N12
 ```
 
 Primitive chapter answered:
@@ -1039,35 +1150,37 @@ What related information belongs together?
 
 Object creates the next natural question.
 
-```text
-Primitive
-│
-└── one indivisible value
-
-Object
-│
-└── grouped information
+```mermaid
+flowchart TD
+    N1["Primitive"]
+    N2["one indivisible value"]
+    N3["Object"]
+    N4["grouped information"]
+    N1 --> N2
+    N1 --> N3
+    N3 --> N4
 ```
 
 But if Object value can contain multiple properties:
 
-```text
-Question
-│
-└── How does JavaScript work with such values internally?
+```mermaid
+flowchart TD
+    N1["Question"]
+    N2["How does JavaScript work with such values internally?"]
+    N1 --> N2
 ```
 
 This is the bridge to References:
 
-```text
-Object Type
-│
-└── groups information
-    │
-    ▼
-References
-│
-└── explain how JavaScript works with object values internally
+```mermaid
+flowchart TD
+    N1["Object Type"]
+    N2["groups information"]
+    N3["References"]
+    N4["explain how JavaScript works with object values internally"]
+    N1 --> N2
+    N1 --> N3
+    N3 --> N4
 ```
 
 References будут изучены в следующей главе. Эта глава намеренно останавливается до этого механизма.
@@ -1080,13 +1193,17 @@ References будут изучены в следующей главе. Эта г
 
 Object похож на folder with documents.
 
-```text
-Folder: user
-│
-├── document: firstName → "Anna"
-├── document: lastName  → "Smith"
-├── document: age       → 30
-└── document: isActive  → true
+```mermaid
+flowchart TD
+    N1["Folder: user"]
+    N2["document: firstName → &quot;Anna&quot;"]
+    N3["document: lastName → &quot;Smith&quot;"]
+    N4["document: age → 30"]
+    N5["document: isActive → true"]
+    N1 --> N2
+    N1 --> N3
+    N1 --> N4
+    N1 --> N5
 ```
 
 Каждый document имеет name и content. Вместе они относятся к одной folder.
@@ -1095,13 +1212,17 @@ Folder: user
 
 Object can be seen as a profile card:
 
-```text
-User Profile Card
-│
-├── First name: Anna
-├── Last name:  Smith
-├── Age:        30
-└── Active:     yes
+```mermaid
+flowchart TD
+    N1["User Profile Card"]
+    N2["First name: Anna"]
+    N3["Last name: Smith"]
+    N4["Age: 30"]
+    N5["Active: да"]
+    N1 --> N2
+    N1 --> N3
+    N1 --> N4
+    N1 --> N5
 ```
 
 Это особенно близко к API and UI testing. UI often displays profile card; API often returns profile object.
@@ -1125,13 +1246,17 @@ Property name is like key. Property value is like dictionary value.
 
 Object can represent one record:
 
-```text
-users table record
-│
-├── id:        101
-├── email:     "anna@example.com"
-├── role:      "admin"
-└── isActive:  true
+```mermaid
+flowchart TD
+    N1["users table record"]
+    N2["id: 101"]
+    N3["email: &quot;anna@example.com&quot;"]
+    N4["role: &quot;admin&quot;"]
+    N5["isActive: true"]
+    N1 --> N2
+    N1 --> N3
+    N1 --> N4
+    N1 --> N5
 ```
 
 In tests, this mental model helps compare expected object with API response or database row.
@@ -1140,13 +1265,17 @@ In tests, this mental model helps compare expected object with API response or d
 
 Object can also be temporary workspace:
 
-```text
-Temporary test data
-│
-├── email
-├── password
-├── expectedStatusCode
-└── expectedRole
+```mermaid
+flowchart TD
+    N1["Temporary test data"]
+    N2["email"]
+    N3["password"]
+    N4["expectedStatusCode"]
+    N5["expectedRole"]
+    N1 --> N2
+    N1 --> N3
+    N1 --> N4
+    N1 --> N5
 ```
 
 This is useful in helpers:
@@ -1275,14 +1404,15 @@ Object содержит grouped information, а некоторые properties с
 
 В тексте курса `Object` чаще всего означает JavaScript Object Type. В обычном тексте `object` может означать конкретное object value.
 
-```text
-Object Type
-│
-└── категория JavaScript values
-
-object value
-│
-└── конкретное value в коде
+```mermaid
+flowchart TD
+    N1["Object Type"]
+    N2["категория JavaScript values"]
+    N3["object value"]
+    N4["конкретное value в коде"]
+    N1 --> N2
+    N1 --> N3
+    N3 --> N4
 ```
 
 ### Почему `const user = {}` позволяет менять `user.age`?
@@ -1339,14 +1469,15 @@ Yes, arrays и functions относятся к object значениям в Java
 
 Object is one value that groups related properties.
 
-```text
-Wrong mental model
-│
-└── many separate variables
-
-Better mental model
-│
-└── one grouped value with properties
+```mermaid
+flowchart TD
+    N1["Wrong mental model"]
+    N2["many separate variables"]
+    N3["Better mental model"]
+    N4["one grouped value with properties"]
+    N1 --> N2
+    N1 --> N3
+    N3 --> N4
 ```
 
 ### Миф: `const` makes object immutable
@@ -1371,18 +1502,19 @@ user.age = 31; // works
 
 Missing property means requested property name was not found.
 
-```text
-Object
-│
-└── firstName
-
-Request
-│
-└── role
-
-Результат
-│
-└── undefined
+```mermaid
+flowchart TD
+    N1["Object"]
+    N2["firstName"]
+    N3["Request"]
+    N4["role"]
+    N5["Результат"]
+    N6["undefined"]
+    N1 --> N2
+    N1 --> N3
+    N3 --> N4
+    N3 --> N5
+    N5 --> N6
 ```
 
 ### Миф: Nested object must be understood through Stack & Heap immediately
@@ -1433,9 +1565,11 @@ const user = {
 
 Здесь:
 
-```text
-role    → property name
-"admin" → property value
+```mermaid
+flowchart TD
+    N1["role → property name"]
+    N2["&quot;admin&quot; → property value"]
+    N1 --> N2
 ```
 
 ### Ошибка 3. Ошибиться в регистре property name
@@ -1541,21 +1675,27 @@ Object makes expected structure visible.
 
 ### Complete object overview
 
-```text
-Object value
-│
-├── groups related information
-│
-├── contains properties
-│   ├── property name
-│   └── property value
-│
-├── supports reading
-├── supports updating
-├── supports adding
-├── supports deleting
-│
-└── can contain nested objects
+```mermaid
+flowchart TD
+    N1["Object value"]
+    N2["groups related information"]
+    N3["contains properties"]
+    N4["property name"]
+    N5["property value"]
+    N6["supports reading"]
+    N7["supports updating"]
+    N8["supports adding"]
+    N9["supports deleting"]
+    N10["can contain nested objects"]
+    N1 --> N2
+    N1 --> N3
+    N1 --> N4
+    N1 --> N5
+    N1 --> N6
+    N1 --> N7
+    N1 --> N8
+    N1 --> N9
+    N1 --> N10
 ```
 
 ---
@@ -1579,19 +1719,25 @@ const responseUser = {
 
 Диаграмма Automation QA object example:
 
-```text
-API response object
-│
-├── id:       101
-├── email:    "anna@example.com"
-├── role:     "admin"
-└── isActive: true
-
-Test checks
-│
-├── property exists
-├── property value is correct
-└── object shape matches expectation
+```mermaid
+flowchart TD
+    N1["API response object"]
+    N2["id: 101"]
+    N3["email: &quot;anna@example.com&quot;"]
+    N4["role: &quot;admin&quot;"]
+    N5["isActive: true"]
+    N6["Test checks"]
+    N7["property exists"]
+    N8["property value is correct"]
+    N9["object shape matches expectation"]
+    N1 --> N2
+    N1 --> N3
+    N1 --> N4
+    N1 --> N5
+    N1 --> N6
+    N6 --> N7
+    N6 --> N8
+    N6 --> N9
 ```
 
 ### JSON objects
@@ -1636,12 +1782,15 @@ const browserConfig = {
 
 Even before learning Playwright configuration deeply, the shape is understandable:
 
-```text
-browserConfig
-│
-├── headless
-├── viewportWidth
-└── viewportHeight
+```mermaid
+flowchart TD
+    N1["browserConfig"]
+    N2["headless"]
+    N3["viewportWidth"]
+    N4["viewportHeight"]
+    N1 --> N2
+    N1 --> N3
+    N1 --> N4
 ```
 
 ### Test data objects
@@ -1660,20 +1809,27 @@ Object keeps related вход значения together.
 
 Many test failures are not about one wrong primitive value. They are about wrong structure.
 
-```text
-Expected
-│
-└── user
-    ├── id
-    ├── email
-    └── role
-
-Actual
-│
-└── user
-    ├── id
-    ├── email
-    └── permissions
+```mermaid
+flowchart TD
+    N1["Expected"]
+    N2["user"]
+    N3["id"]
+    N4["email"]
+    N5["role"]
+    N6["Actual"]
+    N7["user"]
+    N8["id"]
+    N9["email"]
+    N10["permissions"]
+    N1 --> N2
+    N2 --> N3
+    N2 --> N4
+    N2 --> N5
+    N1 --> N6
+    N6 --> N7
+    N7 --> N8
+    N7 --> N9
+    N7 --> N10
 ```
 
 The tester must ask:
@@ -1694,45 +1850,56 @@ Primitive значения represent one indivisible value.
 
 Object значения group multiple related значения under one entity.
 
-```text
-Primitive Types
-│
-└── one value
-
-Object Type
-│
-└── grouped information
+```mermaid
+flowchart TD
+    N1["Primitive Types"]
+    N2["one value"]
+    N3["Object Type"]
+    N4["grouped information"]
+    N1 --> N2
+    N1 --> N3
+    N3 --> N4
 ```
 
 Object содержит properties:
 
-```text
-Property
-│
-├── property name
-└── property value
+```mermaid
+flowchart TD
+    N1["Property"]
+    N2["property name"]
+    N3["property value"]
+    N1 --> N2
+    N1 --> N3
 ```
 
 С object можно выполнять базовые операции:
 
-```text
-Object operations
-│
-├── прочитать property
-├── обновить property
-├── добавить property
-└── удалить property
+```mermaid
+flowchart TD
+    N1["Object operations"]
+    N2["прочитать property"]
+    N3["обновить property"]
+    N4["добавить property"]
+    N5["удалить property"]
+    N1 --> N2
+    N1 --> N3
+    N1 --> N4
+    N1 --> N5
 ```
 
 Nested objects представляют grouped information внутри grouped information:
 
-```text
-user
-│
-├── profile
-│   └── profile data
-└── settings
-    └── settings data
+```mermaid
+flowchart TD
+    N1["user"]
+    N2["profile"]
+    N3["profile data"]
+    N4["settings"]
+    N5["settings data"]
+    N1 --> N2
+    N1 --> N3
+    N1 --> N4
+    N4 --> N5
 ```
 
 Arrays и functions тоже относятся к object значения, но их детали будут разобраны в отдельных главах.

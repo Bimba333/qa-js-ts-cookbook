@@ -20,10 +20,11 @@
 
 Объяснение:
 
-```text
-object.method()
-│
-└── receiver comes from ordinary method call
+```mermaid
+flowchart TD
+    N1["object.method()"]
+    N2["receiver comes from ordinary method call"]
+    N1 --> N2
 ```
 
 Распространённая ошибка: считать это универсальным правилом для всех форм вызова.
@@ -38,10 +39,11 @@ object.method()
 
 Объяснение:
 
-```text
-functionObject.call(receiver)
-│
-└── receiver passed manually
+```mermaid
+flowchart TD
+    N1["functionObject.call(receiver)"]
+    N2["receiver passed manually"]
+    N1 --> N2
 ```
 
 Распространённая ошибка: ждать, что объект выполнения будет взят из object, где function была создана.
@@ -56,11 +58,13 @@ functionObject.call(receiver)
 
 Объяснение:
 
-```text
-validate.call(config, response)
-│
-├── config   -> this
-└── response -> first parameter
+```mermaid
+flowchart TD
+    N1["validate.call(config, response)"]
+    N2["config → this"]
+    N3["response → first parameter"]
+    N1 --> N2
+    N1 --> N3
 ```
 
 Распространённая ошибка: передать обычный function argument первым и случайно сделать его объект выполнения.
@@ -75,12 +79,15 @@ validate.call(config, response)
 
 Объяснение:
 
-```text
-format.call(client, 'GET', '/users')
-│
-├── client   -> this
-├── 'GET'    -> method
-└── '/users' -> path
+```mermaid
+flowchart TD
+    N1["format.call(client, 'GET', '/users')"]
+    N2["client → this"]
+    N3["'GET' → method"]
+    N4["'/users' → path"]
+    N1 --> N2
+    N1 --> N3
+    N1 --> N4
 ```
 
 Распространённая ошибка: думать, что все arguments `call()` становятся parameters.
@@ -107,14 +114,15 @@ format.call(client, 'GET', '/users')
 
 Объяснение:
 
-```text
-object.method(value)
-│
-└── JavaScript chooses receiver from ordinary call form
-
-method.call(object, value)
-│
-└── developer chooses receiver
+```mermaid
+flowchart TD
+    N1["object.method(value)"]
+    N2["JavaScript chooses receiver from ordinary вызвать form"]
+    N3["method.call(object, value)"]
+    N4["developer chooses receiver"]
+    N1 --> N2
+    N1 --> N3
+    N3 --> N4
 ```
 
 Распространённая ошибка: заменять все method calls на `call()` без причины.
@@ -151,11 +159,13 @@ Receiver выбирает разработчик через `call(service)`.
 
 Объяснение:
 
-```text
-printServiceName.call(service)
-│
-├── service -> this
-└── no normal arguments
+```mermaid
+flowchart TD
+    N1["printServiceName.call(service)"]
+    N2["service → this"]
+    N3["нет normal arguments"]
+    N1 --> N2
+    N1 --> N3
 ```
 
 Распространённая ошибка: думать, что `service` станет parameter. У функции нет parameters, а `service` становится `this`.
@@ -178,11 +188,13 @@ https://api.example.test/users
 
 Объяснение:
 
-```text
-buildUrl.call(apiClient, '/users')
-│
-├── apiClient -> this
-└── '/users'  -> path
+```mermaid
+flowchart TD
+    N1["buildUrl.call(apiClient, '/users')"]
+    N2["apiClient → this"]
+    N3["'/users' → path"]
+    N1 --> N2
+    N1 --> N3
 ```
 
 Распространённая ошибка: забыть, что normal arguments начинаются после объект выполнения.
@@ -219,9 +231,11 @@ assertions.statusMatches.call(assertions, response);
 
 Объяснение:
 
-```text
-assertions -> this
-response   -> response parameter
+```mermaid
+flowchart TD
+    N1["assertions → this"]
+    N2["response → response parameter"]
+    N1 --> N2
 ```
 
 Распространённая ошибка: поменять местами `assertions` и `response`.
@@ -243,14 +257,15 @@ response   -> response parameter
 
 Объяснение: каждый `call()` выбирает объект выполнения для одного invocation.
 
-```text
-getExpectedStatus.call(okConfig)
-│
-└── this -> okConfig
-
-getExpectedStatus.call(createdConfig)
-│
-└── this -> createdConfig
+```mermaid
+flowchart TD
+    N1["getExpectedStatus.call(okConfig)"]
+    N2["this → okConfig"]
+    N3["getExpectedStatus.call(createdConfig)"]
+    N4["this → createdConfig"]
+    N1 --> N2
+    N1 --> N3
+    N3 --> N4
 ```
 
 Распространённая ошибка: думать, что первый `call()` навсегда меняет function.
@@ -269,12 +284,15 @@ POST https://api.example.test/orders
 
 Объяснение:
 
-```text
-formatRequest.call(apiClient, 'POST', '/orders')
-│
-├── apiClient -> this
-├── 'POST'    -> method
-└── '/orders' -> path
+```mermaid
+flowchart TD
+    N1["formatRequest.call(apiClient, 'POST', '/orders')"]
+    N2["apiClient → this"]
+    N3["'POST' → method"]
+    N4["'/orders' → path"]
+    N1 --> N2
+    N1 --> N3
+    N1 --> N4
 ```
 
 Распространённая ошибка: забыть, что объект выполнения не передается в `method`.
@@ -293,23 +311,28 @@ true
 
 Объяснение:
 
-```text
-validateStatus.call(response, config)
-│
-├── response -> this
-└── config   -> response parameter
+```mermaid
+flowchart TD
+    N1["validateStatus.call(response, config)"]
+    N2["response → this"]
+    N3["config → response parameter"]
+    N1 --> N2
+    N1 --> N3
 ```
 
 Внутри:
 
-```text
-response.status === this.expectedStatus
-│
-├── response parameter is config
-│   └── config.status is undefined
-│
-└── this is original response
-    └── response.expectedStatus is undefined
+```mermaid
+flowchart TD
+    N1["response.status === this.expectedStatus"]
+    N2["response parameter is config"]
+    N3["config.status is undefined"]
+    N4["this is original response"]
+    N5["response.expectedStatus is undefined"]
+    N1 --> N2
+    N1 --> N3
+    N1 --> N4
+    N4 --> N5
 ```
 
 Обе стороны сравнения становятся `undefined`, поэтому результат неожиданно оказывается `true`.
@@ -340,18 +363,23 @@ true
 
 Ответ:
 
-```text
-apiClient.buildUrl('/users')
-│
-├── receiver selected by ordinary method call
-├── this -> apiClient
-└── path -> '/users'
-
-buildUrl.call(apiClient, '/orders')
-│
-├── receiver selected by developer
-├── this -> apiClient
-└── path -> '/orders'
+```mermaid
+flowchart TD
+    N1["apiClient.buildUrl('/users')"]
+    N2["receiver selected by ordinary method call"]
+    N3["this → apiClient"]
+    N4["path → '/users'"]
+    N5["buildUrl.call(apiClient, '/orders')"]
+    N6["receiver selected by developer"]
+    N7["this → apiClient"]
+    N8["path → '/orders'"]
+    N1 --> N2
+    N1 --> N3
+    N1 --> N4
+    N1 --> N5
+    N5 --> N6
+    N5 --> N7
+    N5 --> N8
 ```
 
 Объяснение: первый вызов использует ordinary invocation. Второй вызов использует manual объект выполнения selection.
@@ -422,9 +450,11 @@ true
 
 Объяснение:
 
-```text
-config   -> this
-response -> response parameter
+```mermaid
+flowchart TD
+    N1["config → this"]
+    N2["response → response parameter"]
+    N1 --> N2
 ```
 
 Распространённая ошибка: ставить data object на место объект выполнения.
@@ -557,17 +587,21 @@ true
 
 Схема:
 
-```text
-formatRequest.call(usersApiConfig, 'GET', '/users')
-│
-├── usersApiConfig -> this
-├── 'GET'          -> method
-└── '/users'       -> path
-
-statusMatches.call(okAssertionConfig, response)
-│
-├── okAssertionConfig -> this
-└── response          -> response parameter
+```mermaid
+flowchart TD
+    N1["formatRequest.call(usersApiConfig, 'GET', '/users')"]
+    N2["usersApiConfig → this"]
+    N3["'GET' → method"]
+    N4["'/users' → path"]
+    N5["statusMatches.call(okAssertionConfig, response)"]
+    N6["okAssertionConfig → this"]
+    N7["response → response parameter"]
+    N1 --> N2
+    N1 --> N3
+    N1 --> N4
+    N1 --> N5
+    N5 --> N6
+    N5 --> N7
 ```
 
 Объяснение: `call()` подходит, потому что function поведение общий, а объект выполнения configuration меняется.

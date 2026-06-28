@@ -4,14 +4,17 @@
 
 Предыдущая глава объяснила Lexical Environment:
 
-```text
-Lexical Environment
-│
-├── Environment Record
-│   └── identifier records
-│
-└── Outer Environment Reference
-    └── link to outer environment
+```mermaid
+flowchart TD
+    N1["Lexical Environment"]
+    N2["Environment Record"]
+    N3["identifier records"]
+    N4["Outer Environment Reference"]
+    N5["link to outer environment"]
+    N1 --> N2
+    N1 --> N3
+    N1 --> N4
+    N4 --> N5
 ```
 
 Теперь появляется следующий вопрос:
@@ -130,14 +133,13 @@ undefined
 
 Если думать, что JavaScript просто выполняет строки сверху вниз, возникает вопрос:
 
-```text
-Line 1 reads userName
-│
-▼
-Line 2 declares userName
-│
-▼
-Why is there no ReferenceError?
+```mermaid
+flowchart TD
+    N1["Line 1 reads userName"]
+    N2["Line 2 declares userName"]
+    N3["Why is there нет ReferenceError?"]
+    N1 --> N2
+    N2 --> N3
 ```
 
 Теперь похожий пример:
@@ -150,14 +152,15 @@ let userRole = 'admin';
 
 Если раскомментировать первую строку, код не выведет `undefined`. Он упадет с ошибкой доступа до initialization. Подробности Temporal Dead Zone будут в следующей главе; сейчас важен факт:
 
-```text
-var before line
-│
-└── observable result: undefined
-
-let before line
-│
-└── observable result: error
+```mermaid
+flowchart TD
+    N1["var before line"]
+    N2["наблюдаемый результат: undefined"]
+    N3["let before line"]
+    N4["наблюдаемый результат: error"]
+    N1 --> N2
+    N1 --> N3
+    N3 --> N4
 ```
 
 Еще один пример:
@@ -200,44 +203,47 @@ JavaScript moves declarations to the top.
 
 Она создает неправильную картину:
 
-```text
-Original source code
-│
-▼
-Engine rewrites source code
-│
-▼
-Declarations are moved upward
+```mermaid
+flowchart TD
+    N1["Original исходный код"]
+    N2["Engine rewrites исходный код"]
+    N3["Declarations are moved upward"]
+    N1 --> N2
+    N2 --> N3
 ```
 
 Так думать не нужно.
 
 Правильная модель:
 
-```text
-Source Code
-│
-└── stays in the same order
-
-Creation Phase
-│
-└── engine prepares declaration records
-
-Execution Phase
-│
-└── engine executes source code in original order
+```mermaid
+flowchart TD
+    N1["исходный код"]
+    N2["stays in the same order"]
+    N3["Creation Phase"]
+    N4["engine prepares declaration records"]
+    N5["выполнение Phase"]
+    N6["engine выполняется исходный код in original order"]
+    N1 --> N2
+    N1 --> N3
+    N3 --> N4
+    N3 --> N5
+    N5 --> N6
 ```
 
 Диаграмма Source Code:
 
-```text
-Source Code
-│
-├── line 1: console.log(userName)
-├── line 2:
-└── line 3: var userName = "Anna"
-
-Source code position never changes.
+```mermaid
+flowchart TD
+    N1["исходный код"]
+    N2["line 1: console.log(userName)"]
+    N3["line 2:"]
+    N4["line 3: var userName = &quot;Anna&quot;"]
+    N5["исходный код position never changes."]
+    N1 --> N2
+    N1 --> N3
+    N1 --> N4
+    N1 --> N5
 ```
 
 Hoisting — это не перемещение. Hoisting — это наблюдаемое поведение после подготовки.
@@ -296,62 +302,71 @@ Why do let/const fail before initialization?
 
 Execution Context создается в два крупных шага:
 
-```text
-Execution Context
-│
-├── Creation Phase
-└── Execution Phase
+```mermaid
+flowchart TD
+    N1["Execution Context"]
+    N2["Creation Phase"]
+    N3["выполнение Phase"]
+    N1 --> N2
+    N1 --> N3
 ```
 
 Creation Phase:
 
-```text
-Before running code lines
-│
-▼
-prepare Lexical Environment
-│
-▼
-register declarations
-│
-▼
-prepare rules for later execution
+```mermaid
+flowchart TD
+    N1["До: running code lines"]
+    N2["prepare Lexical Environment"]
+    N3["register declarations"]
+    N4["prepare rules for later выполнение"]
+    N1 --> N2
+    N2 --> N3
+    N3 --> N4
 ```
 
 Execution Phase:
 
-```text
-Run source code
-│
-▼
-line by line in original order
-│
-▼
-read / assign / call / compute
+```mermaid
+flowchart TD
+    N1["Run исходный код"]
+    N2["line by line in original order"]
+    N3["read / assign / call / compute"]
+    N1 --> N2
+    N2 --> N3
 ```
 
 Диаграмма Creation Phase:
 
-```text
-Creation Phase
-│
-├── scan declarations conceptually
-├── create / prepare Environment Records
-├── register function declarations
-├── register var declarations
-├── register let declarations
-└── register const declarations
+```mermaid
+flowchart TD
+    N1["Creation Phase"]
+    N2["scan declarations conceptually"]
+    N3["создать / prepare Environment Records"]
+    N4["register function declarations"]
+    N5["register var declarations"]
+    N6["register let declarations"]
+    N7["register const declarations"]
+    N1 --> N2
+    N1 --> N3
+    N1 --> N4
+    N1 --> N5
+    N1 --> N6
+    N1 --> N7
 ```
 
 Диаграмма Execution Phase:
 
-```text
-Execution Phase
-│
-├── execute line 1
-├── execute line 2
-├── execute line 3
-└── continue in source order
+```mermaid
+flowchart TD
+    N1["выполнение Phase"]
+    N2["выполнить line 1"]
+    N3["выполнить line 2"]
+    N4["выполнить line 3"]
+    N5["продолжить in source order"]
+    N1 --> N2
+    N1 --> N3
+    N1 --> N4
+    N1 --> N5
 ```
 
 Что engine подготовил до execution:
@@ -368,24 +383,28 @@ let/const bindings not initialized yet.
 
 Во время Creation Phase engine подготавливает Lexical Environment.
 
-```text
-Before Execution
-│
-▼
-Lexical Environment
-│
-└── Environment Record prepared
+```mermaid
+flowchart TD
+    N1["До: выполнение"]
+    N2["Lexical Environment"]
+    N3["Environment Record prepared"]
+    N1 --> N2
+    N2 --> N3
 ```
 
 Environment Record до выполнения:
 
-```text
-Environment Record
-│
-├── function printStatus → function object / callable binding
-├── var userName         → undefined
-├── let userRole         → registered but not initialized
-└── const baseUrl        → registered but not initialized
+```mermaid
+flowchart TD
+    N1["Environment Record"]
+    N2["function printStatus → function object / доступно для вызова binding"]
+    N3["var userName → undefined"]
+    N4["let userRole → registered but not initialized"]
+    N5["const baseUrl → registered but not initialized"]
+    N1 --> N2
+    N1 --> N3
+    N1 --> N4
+    N1 --> N5
 ```
 
 Это conceptual diagram, не спецификация.
@@ -411,49 +430,45 @@ function printStatus() {
 
 Creation Phase:
 
-```text
-Source contains:
-function printStatus() { ... }
-│
-▼
-Creation Phase
-│
-▼
-Environment Record
-└── printStatus → function
+```mermaid
+flowchart TD
+    N1["Source contains:"]
+    N2["function printStatus() { ... }"]
+    N3["Creation Phase"]
+    N4["Environment Record"]
+    N5["printStatus → function"]
+    N2 --> N3
+    N3 --> N4
+    N4 --> N5
+    N1 --> N2
 ```
 
 Execution Phase:
 
-```text
-line 1: printStatus()
-│
-▼
-lookup printStatus
-│
-▼
-function already registered
-│
-▼
-call function
+```mermaid
+flowchart TD
+    N1["line 1: printStatus()"]
+    N2["lookup printStatus"]
+    N3["function already registered"]
+    N4["вызвать function"]
+    N1 --> N2
+    N2 --> N3
+    N3 --> N4
 ```
 
 Диаграмма Function Declaration registration:
 
-```text
-Function Declaration
-│
-▼
-Creation Phase
-│
-▼
-register identifier
-│
-▼
-attach callable function
-│
-▼
-Execution can call it before source line
+```mermaid
+flowchart TD
+    N1["Function Declaration"]
+    N2["Creation Phase"]
+    N3["register identifier"]
+    N4["attach доступно для вызова function"]
+    N5["выполнение can вызвать it before source line"]
+    N1 --> N2
+    N2 --> N3
+    N3 --> N4
+    N4 --> N5
 ```
 
 Что engine подготовил до execution:
@@ -475,58 +490,60 @@ var userName = 'Anna';
 
 Creation Phase:
 
-```text
-var userName
-│
-▼
-Environment Record
-└── userName → undefined
+```mermaid
+flowchart TD
+    N1["var userName"]
+    N2["Environment Record"]
+    N3["userName → undefined"]
+    N1 --> N2
+    N2 --> N3
 ```
 
 Execution Phase:
 
-```text
-line 1: console.log(userName)
-│
-▼
-lookup userName
-│
-▼
-found userName → undefined
-│
-▼
-print undefined
-
-line 3: userName = "Anna"
-│
-▼
-assign "Anna"
+```mermaid
+flowchart TD
+    N1["line 1: console.log(userName)"]
+    N2["lookup userName"]
+    N3["found userName → undefined"]
+    N4["print undefined"]
+    N5["line 3: userName = &quot;Anna&quot;"]
+    N6["assign &quot;Anna&quot;"]
+    N1 --> N2
+    N2 --> N3
+    N3 --> N4
+    N4 --> N5
+    N5 --> N6
 ```
 
 Диаграмма var registration:
 
-```text
-Source Code
-│
-└── var userName = "Anna"
-
-Creation Phase
-│
-└── register userName with undefined
-
-Execution Phase
-│
-├── read userName → undefined
-└── assignment userName = "Anna"
+```mermaid
+flowchart TD
+    N1["исходный код"]
+    N2["var userName = &quot;Anna&quot;"]
+    N3["Creation Phase"]
+    N4["register userName with undefined"]
+    N5["выполнение Phase"]
+    N6["read userName → undefined"]
+    N7["assignment userName = &quot;Anna&quot;"]
+    N1 --> N2
+    N1 --> N3
+    N3 --> N4
+    N3 --> N5
+    N5 --> N6
+    N5 --> N7
 ```
 
 Здесь важно разделить declaration and initialization.
 
-```text
-var userName = "Anna"
-│
-├── declaration part handled in Creation Phase
-└── assignment part happens in Execution Phase
+```mermaid
+flowchart TD
+    N1["var userName = &quot;Anna&quot;"]
+    N2["declaration part handled in Creation Phase"]
+    N3["assignment part happens in выполнение Phase"]
+    N1 --> N2
+    N1 --> N3
 ```
 
 ### let registration
@@ -541,41 +558,45 @@ let userRole = 'admin';
 
 Creation Phase:
 
-```text
-let userRole
-│
-▼
-Environment Record
-└── userRole → registered, not initialized
+```mermaid
+flowchart TD
+    N1["let userRole"]
+    N2["Environment Record"]
+    N3["userRole → registered, not initialized"]
+    N1 --> N2
+    N2 --> N3
 ```
 
 Execution Phase:
 
-```text
-before line: let userRole = "admin"
-│
-└── access userRole fails
-
-line: let userRole = "admin"
-│
-└── initialize userRole with "admin"
+```mermaid
+flowchart TD
+    N1["before line: let userRole = &quot;admin&quot;"]
+    N2["access userRole fails"]
+    N3["line: let userRole = &quot;admin&quot;"]
+    N4["initialize userRole with &quot;admin&quot;"]
+    N1 --> N2
+    N1 --> N3
+    N3 --> N4
 ```
 
 Диаграмма let registration:
 
-```text
-Source Code
-│
-└── let userRole = "admin"
-
-Creation Phase
-│
-└── register userRole
-
-Execution Phase
-│
-├── before initialization: access fails
-└── declaration line: initialize with "admin"
+```mermaid
+flowchart TD
+    N1["исходный код"]
+    N2["let userRole = &quot;admin&quot;"]
+    N3["Creation Phase"]
+    N4["register userRole"]
+    N5["выполнение Phase"]
+    N6["before initialization: access fails"]
+    N7["declaration line: initialize with &quot;admin&quot;"]
+    N1 --> N2
+    N1 --> N3
+    N3 --> N4
+    N3 --> N5
+    N5 --> N6
+    N5 --> N7
 ```
 
 Подробный механизм TDZ будет в следующей главе. Сейчас нужно запомнить:
@@ -597,37 +618,41 @@ const baseUrl = 'https://example.com';
 
 Creation Phase:
 
-```text
-const baseUrl
-│
-▼
-Environment Record
-└── baseUrl → registered, not initialized
+```mermaid
+flowchart TD
+    N1["const baseUrl"]
+    N2["Environment Record"]
+    N3["baseUrl → registered, not initialized"]
+    N1 --> N2
+    N2 --> N3
 ```
 
 Execution Phase:
 
-```text
-line: const baseUrl = "https://example.com"
-│
-├── initialize baseUrl
-└── disallow reassignment after initialization
+```mermaid
+flowchart TD
+    N1["line: const baseUrl = &quot;https://example.com&quot;"]
+    N2["initialize baseUrl"]
+    N3["disallow reassignment after initialization"]
+    N1 --> N2
+    N1 --> N3
 ```
 
 Диаграмма const registration:
 
-```text
-Source Code
-│
-└── const baseUrl = "https://example.com"
-
-Creation Phase
-│
-└── register baseUrl
-
-Execution Phase
-│
-└── initialize baseUrl when declaration line runs
+```mermaid
+flowchart TD
+    N1["исходный код"]
+    N2["const baseUrl = &quot;https://example.com&quot;"]
+    N3["Creation Phase"]
+    N4["register baseUrl"]
+    N5["выполнение Phase"]
+    N6["initialize baseUrl when declaration line runs"]
+    N1 --> N2
+    N1 --> N3
+    N3 --> N4
+    N3 --> N5
+    N5 --> N6
 ```
 
 `const` must be initialized at declaration. Это уже было в главе Variables. Здесь важно другое: declaration record exists before execution, but usable value appears only at initialization line.
@@ -642,58 +667,63 @@ var userName = 'Anna';
 
 Разделение:
 
-```text
-Declaration
-│
-└── var userName
-
-Initialization / assignment
-│
-└── userName = "Anna"
+```mermaid
+flowchart TD
+    N1["Declaration"]
+    N2["var userName"]
+    N3["Initialization / assignment"]
+    N4["userName = &quot;Anna&quot;"]
+    N1 --> N2
+    N1 --> N3
+    N3 --> N4
 ```
 
 Диаграмма declaration vs initialization:
 
-```text
-Creation Phase
-│
-└── declaration affects Environment Record
-
-Execution Phase
-│
-└── initialization / assignment happens when line runs
+```mermaid
+flowchart TD
+    N1["Creation Phase"]
+    N2["declaration affects Environment Record"]
+    N3["выполнение Phase"]
+    N4["initialization / assignment happens when line runs"]
+    N1 --> N2
+    N1 --> N3
+    N3 --> N4
 ```
 
 Для function declaration:
 
-```text
-Creation Phase
-│
-└── function identifier registered with callable function
+```mermaid
+flowchart TD
+    N1["Creation Phase"]
+    N2["function identifier registered with доступно для вызова function"]
+    N1 --> N2
 ```
 
 Для `var`:
 
-```text
-Creation Phase
-│
-└── identifier registered with undefined
-
-Execution Phase
-│
-└── assignment happens on original line
+```mermaid
+flowchart TD
+    N1["Creation Phase"]
+    N2["identifier registered with undefined"]
+    N3["выполнение Phase"]
+    N4["assignment happens on original line"]
+    N1 --> N2
+    N1 --> N3
+    N3 --> N4
 ```
 
 Для `let` / `const`:
 
-```text
-Creation Phase
-│
-└── identifier registered but not initialized
-
-Execution Phase
-│
-└── initialization happens on original line
+```mermaid
+flowchart TD
+    N1["Creation Phase"]
+    N2["identifier registered but not initialized"]
+    N3["выполнение Phase"]
+    N4["initialization happens on original line"]
+    N1 --> N2
+    N1 --> N3
+    N3 --> N4
 ```
 
 ### Почему функции ведут себя иначе
@@ -710,47 +740,52 @@ function runTest() {
 
 До выполнения:
 
-```text
-Environment Record
-└── runTest → function
+```mermaid
+flowchart TD
+    N1["Environment Record"]
+    N2["runTest → function"]
+    N1 --> N2
 ```
 
 Then line 1 can call `runTest`.
 
 Это полезно, потому что function declarations описывают переиспользуемые действия:
 
-```text
-Function Declaration
-│
-└── complete callable unit
+```mermaid
+flowchart TD
+    N1["Function Declaration"]
+    N2["complete доступно для вызова unit"]
+    N1 --> N2
 ```
 
 `var userName = 'Anna'` is different:
 
-```text
-var declaration
-│
-└── name can be prepared
-
-assignment
-│
-└── value appears when execution reaches the line
+```mermaid
+flowchart TD
+    N1["var declaration"]
+    N2["name can be prepared"]
+    N3["assignment"]
+    N4["значение появляется, когда выполнение доходит до строки"]
+    N1 --> N2
+    N1 --> N3
+    N3 --> N4
 ```
 
 So:
 
-```text
-Function declaration
-│
-└── callable before line
-
-var
-│
-└── exists before line, value is undefined
-
-let / const
-│
-└── registered before line, unusable before initialization
+```mermaid
+flowchart TD
+    N1["Function declaration"]
+    N2["доступно для вызова before line"]
+    N3["var"]
+    N4["exists before line, value is undefined"]
+    N5["let / const"]
+    N6["registered before line, unusable before initialization"]
+    N1 --> N2
+    N1 --> N3
+    N3 --> N4
+    N3 --> N5
+    N5 --> N6
 ```
 
 ### Complete Creation Phase timeline
@@ -773,77 +808,71 @@ function printStatus() {
 
 Creation Phase временная шкала:
 
-```text
-Creation Phase starts
-│
-▼
-prepare Lexical Environment
-│
-▼
-create Environment Record
-│
-▼
-register function printStatus → function
-│
-▼
-register var userName → undefined
-│
-▼
-register let userRole → not initialized
-│
-▼
-register const baseUrl → not initialized
-│
-▼
-Creation Phase finished
+```mermaid
+flowchart TD
+    N1["Creation Phase starts"]
+    N2["prepare Lexical Environment"]
+    N3["создать Environment Record"]
+    N4["register function printStatus → function"]
+    N5["register var userName → undefined"]
+    N6["register let userRole → not initialized"]
+    N7["register const baseUrl → not initialized"]
+    N8["Creation Phase finished"]
+    N1 --> N2
+    N2 --> N3
+    N3 --> N4
+    N4 --> N5
+    N5 --> N6
+    N6 --> N7
+    N7 --> N8
 ```
 
 Environment Record до выполнения:
 
-```text
-Environment Record
-│
-├── printStatus → function
-├── userName    → undefined
-├── userRole    → registered, not initialized
-└── baseUrl     → registered, not initialized
+```mermaid
+flowchart TD
+    N1["Environment Record"]
+    N2["printStatus → function"]
+    N3["userName → undefined"]
+    N4["userRole → registered, not initialized"]
+    N5["baseUrl → registered, not initialized"]
+    N1 --> N2
+    N1 --> N3
+    N1 --> N4
+    N1 --> N5
 ```
 
 ### Execution timeline
 
 Execution выполняет source code в исходном порядке.
 
-```text
-Execution Phase starts
-│
-▼
-line 1: printStatus()
-│
-├── lookup printStatus
-│
-└── call function
-│
-▼
-line 3: console.log(userName)
-│
-├── lookup userName
-│
-└── read undefined
-│
-▼
-line 5: var userName = "Anna"
-│
-└── assign "Anna"
-│
-▼
-line 6: let userRole = "admin"
-│
-└── initialize userRole
-│
-▼
-line 7: const baseUrl = "https://example.com"
-│
-└── initialize baseUrl
+```mermaid
+flowchart TD
+    N1["выполнение Phase starts"]
+    N2["line 1: printStatus()"]
+    N3["lookup printStatus"]
+    N4["вызвать function"]
+    N5["line 3: console.log(userName)"]
+    N6["lookup userName"]
+    N7["read undefined"]
+    N8["line 5: var userName = &quot;Anna&quot;"]
+    N9["assign &quot;Anna&quot;"]
+    N10["line 6: let userRole = &quot;admin&quot;"]
+    N11["initialize userRole"]
+    N12["line 7: const baseUrl = &quot;https://example.com&quot;"]
+    N13["initialize baseUrl"]
+    N1 --> N2
+    N2 --> N3
+    N2 --> N4
+    N2 --> N5
+    N5 --> N6
+    N5 --> N7
+    N5 --> N8
+    N8 --> N9
+    N8 --> N10
+    N10 --> N11
+    N10 --> N12
+    N12 --> N13
 ```
 
 Execution временная шкала:
@@ -859,83 +888,71 @@ Prepared records are used.
 
 Ментальный фильм engine:
 
-```text
-"I received source code."
-│
-▼
-"I parse and prepare it."
-│
-▼
-"I create Execution Context."
-│
-▼
-"I enter Creation Phase."
-│
-▼
-"I prepare Lexical Environment."
-│
-▼
-"I fill Environment Record with declarations."
-│
-▼
-"I register functions as callable."
-│
-▼
-"I register var as undefined."
-│
-▼
-"I register let and const, but do not initialize them yet."
-│
-▼
-"Creation Phase is complete."
-│
-▼
-"I start Execution Phase."
-│
-▼
-"I execute source code in original order."
+```mermaid
+flowchart TD
+    N1["&quot;I received исходный код.&quot;"]
+    N2["&quot;I parse and prepare it.&quot;"]
+    N3["&quot;I создать Execution Context.&quot;"]
+    N4["&quot;I enter Creation Phase.&quot;"]
+    N5["&quot;I prepare Lexical Environment.&quot;"]
+    N6["&quot;I fill Environment Record with declarations.&quot;"]
+    N7["&quot;I register functions as доступно для вызова.&quot;"]
+    N8["&quot;I register var as undefined.&quot;"]
+    N9["&quot;I register let and const, but do not initialize them yet.&quot;"]
+    N10["&quot;Creation Phase is complete.&quot;"]
+    N11["&quot;I start выполнение Phase.&quot;"]
+    N12["&quot;I выполнить исходный код in original order.&quot;"]
+    N1 --> N2
+    N2 --> N3
+    N3 --> N4
+    N4 --> N5
+    N5 --> N6
+    N6 --> N7
+    N7 --> N8
+    N8 --> N9
+    N9 --> N10
+    N10 --> N11
+    N11 --> N12
 ```
 
 ### Текущее место в модели JavaScript
 
 Теперь модель курса выглядит так:
 
-```text
-Execution Context
-│
-├── Creation Phase
-│   └── prepares Lexical Environment
-│       └── registers declarations
-│
-└── Execution Phase
-    └── executes source code in original order
+```mermaid
+flowchart TD
+    N1["Execution Context"]
+    N2["Creation Phase"]
+    N3["prepares Lexical Environment"]
+    N4["registers declarations"]
+    N5["выполнение Phase"]
+    N6["выполняется исходный код in original order"]
+    N1 --> N2
+    N1 --> N3
+    N1 --> N4
+    N1 --> N5
+    N5 --> N6
 ```
 
 Full position:
 
-```text
-JavaScript Engine
-│
-▼
-Execution Context
-│
-▼
-Call Stack
-│
-▼
-Memory
-│
-▼
-Variables
-│
-▼
-Scope
-│
-▼
-Lexical Environment
-│
-▼
-Hoisting
+```mermaid
+flowchart TD
+    N1["JavaScript Engine"]
+    N2["Execution Context"]
+    N3["Call Stack"]
+    N4["Memory"]
+    N5["Variables"]
+    N6["Scope"]
+    N7["Lexical Environment"]
+    N8["Hoisting"]
+    N1 --> N2
+    N2 --> N3
+    N3 --> N4
+    N4 --> N5
+    N5 --> N6
+    N6 --> N7
+    N7 --> N8
 ```
 
 ### Переход к TDZ
@@ -951,18 +968,19 @@ why does accessing them before initialization throw an error?
 
 TDZ — период между registration `let` / `const` during Creation Phase and initialization during Execution Phase, когда access is not allowed. Подробная глава о TDZ будет следующей.
 
-```text
-Creation Phase
-│
-└── let/const registered
-
-Before initialization line
-│
-└── access fails
-
-Execution reaches declaration
-│
-└── initialization happens
+```mermaid
+flowchart TD
+    N1["Creation Phase"]
+    N2["let/const registered"]
+    N3["До: initialization line"]
+    N4["access fails"]
+    N5["выполнение reaches declaration"]
+    N6["initialization happens"]
+    N1 --> N2
+    N1 --> N3
+    N3 --> N4
+    N3 --> N5
+    N5 --> N6
 ```
 
 ---
@@ -973,70 +991,69 @@ Hoisting — observable result подготовки declarations.
 
 Внутренний механизм:
 
-```text
-Source Code
-│
-▼
-Execution Context creation
-│
-▼
-Creation Phase
-│
-▼
-Lexical Environment prepared
-│
-▼
-Environment Record filled with declaration records
-│
-▼
-Execution Phase starts
-│
-▼
-Source code runs in original order
+```mermaid
+flowchart TD
+    N1["исходный код"]
+    N2["создание Execution Context"]
+    N3["Creation Phase"]
+    N4["Lexical Environment prepared"]
+    N5["Environment Record filled with declaration records"]
+    N6["выполнение Phase starts"]
+    N7["исходный код runs in original order"]
+    N1 --> N2
+    N2 --> N3
+    N3 --> N4
+    N4 --> N5
+    N5 --> N6
+    N6 --> N7
 ```
 
 Для function declaration:
 
-```text
-Creation Phase
-│
-└── function identifier → callable function
+```mermaid
+flowchart TD
+    N1["Creation Phase"]
+    N2["function identifier → доступно для вызова function"]
+    N1 --> N2
 ```
 
 Для `var`:
 
-```text
-Creation Phase
-│
-└── var identifier → undefined
-
-Execution Phase
-│
-└── assignment on source line
+```mermaid
+flowchart TD
+    N1["Creation Phase"]
+    N2["var identifier → undefined"]
+    N3["выполнение Phase"]
+    N4["assignment on source line"]
+    N1 --> N2
+    N1 --> N3
+    N3 --> N4
 ```
 
 Для `let`:
 
-```text
-Creation Phase
-│
-└── let identifier → registered, not initialized
-
-Execution Phase
-│
-└── initialization on declaration line
+```mermaid
+flowchart TD
+    N1["Creation Phase"]
+    N2["let identifier → registered, not initialized"]
+    N3["выполнение Phase"]
+    N4["initialization on declaration line"]
+    N1 --> N2
+    N1 --> N3
+    N3 --> N4
 ```
 
 Для `const`:
 
-```text
-Creation Phase
-│
-└── const identifier → registered, not initialized
-
-Execution Phase
-│
-└── required initialization on declaration line
+```mermaid
+flowchart TD
+    N1["Creation Phase"]
+    N2["const identifier → registered, not initialized"]
+    N3["выполнение Phase"]
+    N4["required initialization on declaration line"]
+    N1 --> N2
+    N1 --> N3
+    N3 --> N4
 ```
 
 Что engine подготовил до execution started:
@@ -1056,81 +1073,97 @@ const identifiers in uninitialized state.
 
 Представьте класс до начала занятия.
 
-```text
-Before students arrive
-│
-├── teacher prepares seats
-├── writes names in registration list
-├── puts materials on some desks
-└── leaves some desks reserved but empty
+```mermaid
+flowchart TD
+    N1["До: students arrive"]
+    N2["teacher prepares seats"]
+    N3["writes names in registration list"]
+    N4["puts materials on some desks"]
+    N5["leaves some desks reserved but empty"]
+    N1 --> N2
+    N1 --> N3
+    N1 --> N4
+    N1 --> N5
 ```
 
 Execution — это когда students arrive and work begins.
 
-```text
-Preparation
-│
-└── classroom is prepared
-
-Execution
-│
-└── lesson actually starts
+```mermaid
+flowchart TD
+    N1["Preparation"]
+    N2["classroom is prepared"]
+    N3["выполнение"]
+    N4["lesson actually starts"]
+    N1 --> N2
+    N1 --> N3
+    N3 --> N4
 ```
 
 ### Filling a registration list
 
 Environment Record похож на registration list.
 
-```text
-Registration List before execution
-│
-├── printStatus → ready to use
-├── userName    → registered as undefined
-├── userRole    → reserved, not initialized
-└── baseUrl     → reserved, not initialized
+```mermaid
+flowchart TD
+    N1["Registration List before выполнение"]
+    N2["printStatus → ready to use"]
+    N3["userName → registered as undefined"]
+    N4["userRole → reserved, not initialized"]
+    N5["baseUrl → reserved, not initialized"]
+    N1 --> N2
+    N1 --> N3
+    N1 --> N4
+    N1 --> N5
 ```
 
 ### Reserving places before work starts
 
 `let` and `const` можно представить как reserved places:
 
-```text
-Reserved place
-│
-├── name is known
-└── value cannot be used yet
+```mermaid
+flowchart TD
+    N1["Reserved place"]
+    N2["name is known"]
+    N3["value cannot be used yet"]
+    N1 --> N2
+    N1 --> N3
 ```
 
 `var`:
 
-```text
-Reserved place
-│
-├── name is known
-└── default value: undefined
+```mermaid
+flowchart TD
+    N1["Reserved place"]
+    N2["name is known"]
+    N3["значение по умолчанию value: undefined"]
+    N1 --> N2
+    N1 --> N3
 ```
 
 Function Declaration:
 
-```text
-Prepared place
-│
-├── name is known
-└── function is ready to call
+```mermaid
+flowchart TD
+    N1["Prepared place"]
+    N2["name is known"]
+    N3["function is ready to call"]
+    N1 --> N2
+    N1 --> N3
 ```
 
 ### Preparation versus execution
 
 Главное разделение:
 
-```text
-Preparation
-│
-└── engine prepares records
-
-Execution
-│
-└── engine runs code lines
+```mermaid
+flowchart TD
+    N1["Preparation"]
+    N2["engine prepares records"]
+    N3["выполнение"]
+    N4["engine runs code lines"]
+    N1 --> N2
+    N1 --> N3
+    N3 --> N4
 ```
 
 Никогда не заменяйте это на:
@@ -1376,13 +1409,17 @@ runTest();
 
 Таблица анализа:
 
-```text
-Declaration                 | Creation Phase                 | Execution Phase
-----------------------------|--------------------------------|-------------------------------
-function printStatus() {}   | printStatus → function         | callable immediately
-var userName = "Anna"       | userName → undefined           | assign "Anna" on line
-let userRole = "admin"      | userRole registered            | initialize on line
-const baseUrl = "..."       | baseUrl registered             | initialize on line
+```mermaid
+flowchart TD
+    N1["Declaration | Creation Phase | выполнение Phase"]
+    N2["function printStatus() {} | printStatus → function | доступно для вызова immediately"]
+    N3["var userName = &quot;Anna&quot; | userName → undefined | assign &quot;Anna&quot; on line"]
+    N4["let userRole = &quot;admin&quot; | userRole registered | initialize on line"]
+    N5["const baseUrl = &quot;...&quot; | baseUrl registered | initialize on line"]
+    N1 --> N2
+    N2 --> N3
+    N3 --> N4
+    N4 --> N5
 ```
 
 Мини-чек-лист:
@@ -1430,11 +1467,13 @@ var environmentName = 'staging';
 
 В существующих test frameworks могут быть function declarations below usage.
 
-```text
-test runner setup
-│
-├── call helper
-└── helper declared later
+```mermaid
+flowchart TD
+    N1["test runner setup"]
+    N2["вызвать helper"]
+    N3["helper declared later"]
+    N1 --> N2
+    N1 --> N3
 ```
 
 Hoisting model помогает читать такой код without panic.
@@ -1478,18 +1517,19 @@ Source code остается в исходном порядке. Engine созд
 
 Разные declarations behave differently:
 
-```text
-function declaration
-│
-└── registered as callable function
-
-var
-│
-└── registered with undefined
-
-let / const
-│
-└── registered but not initialized
+```mermaid
+flowchart TD
+    N1["function declaration"]
+    N2["registered as доступно для вызова function"]
+    N3["var"]
+    N4["registered with undefined"]
+    N5["let / const"]
+    N6["registered but not initialized"]
+    N1 --> N2
+    N1 --> N3
+    N3 --> N4
+    N3 --> N5
+    N5 --> N6
 ```
 
 Следующая глава объяснит Temporal Dead Zone: почему `let` и `const` registered during Creation Phase, но access before initialization fails.

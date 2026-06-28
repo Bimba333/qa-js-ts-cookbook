@@ -51,9 +51,11 @@ const testCases = [
 
 Нужен не сам failed test, а ответ:
 
-```text
-true  -> есть хотя бы один failed test
-false -> failed tests нет
+```mermaid
+flowchart TD
+    N1["true → есть хотя бы один failed test"]
+    N2["false → failed tests нет"]
+    N1 --> N2
 ```
 
 ## Теория
@@ -74,11 +76,13 @@ Result — Boolean.
 
 Концептуальные шаги:
 
-```text
-check element
-│
-├── true  -> return true
-└── false -> check next element
+```mermaid
+flowchart TD
+    N1["check element"]
+    N2["true → вернуть true"]
+    N3["false → check next element"]
+    N1 --> N2
+    N1 --> N3
 ```
 
 Метод может остановиться на первом совпадении, потому что дальнейшие elements уже не изменят ответ.
@@ -87,14 +91,13 @@ check element
 
 Главная модель этой главы: **at least one match**.
 
-```text
-testCases
-│
-▼
-some()
-│
-▼
-true / false
+```mermaid
+flowchart TD
+    N1["testCases"]
+    N2["some()"]
+    N3["true / false"]
+    N1 --> N2
+    N2 --> N3
 ```
 
 Вопрос: "Есть ли хотя бы один?"

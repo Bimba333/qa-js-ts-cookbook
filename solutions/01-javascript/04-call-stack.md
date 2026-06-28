@@ -174,12 +174,17 @@ first finish
 
 Максимальное состояние Call Stack:
 
-```text
-Call Stack
-├── third
-├── second
-├── first
-└── Global
+```mermaid
+flowchart TD
+    N1["Call Stack"]
+    N2["third"]
+    N3["second"]
+    N4["first"]
+    N5["Global"]
+    N1 --> N2
+    N1 --> N3
+    N1 --> N4
+    N1 --> N5
 ```
 
 Порядок pop:
@@ -207,52 +212,72 @@ pop Global
 
 После старта:
 
-```text
-Call Stack
-└── Global
+```mermaid
+flowchart TD
+    N1["Call Stack"]
+    N2["Global"]
+    N1 --> N2
 ```
 
 После `loadConfig`:
 
-```text
-Call Stack
-├── loadConfig
-└── Global
+```mermaid
+flowchart TD
+    N1["Call Stack"]
+    N2["loadConfig"]
+    N3["Global"]
+    N1 --> N2
+    N1 --> N3
 ```
 
 После `readFilePath`:
 
-```text
-Call Stack
-├── readFilePath
-├── loadConfig
-└── Global
+```mermaid
+flowchart TD
+    N1["Call Stack"]
+    N2["readFilePath"]
+    N3["loadConfig"]
+    N4["Global"]
+    N1 --> N2
+    N1 --> N3
+    N1 --> N4
 ```
 
 После `normalizePath`:
 
-```text
-Call Stack
-├── normalizePath
-├── readFilePath
-├── loadConfig
-└── Global
+```mermaid
+flowchart TD
+    N1["Call Stack"]
+    N2["normalizePath"]
+    N3["readFilePath"]
+    N4["loadConfig"]
+    N5["Global"]
+    N1 --> N2
+    N1 --> N3
+    N1 --> N4
+    N1 --> N5
 ```
 
 После завершения `normalizePath`:
 
-```text
-Call Stack
-├── readFilePath
-├── loadConfig
-└── Global
+```mermaid
+flowchart TD
+    N1["Call Stack"]
+    N2["readFilePath"]
+    N3["loadConfig"]
+    N4["Global"]
+    N1 --> N2
+    N1 --> N3
+    N1 --> N4
 ```
 
 После завершения всех функций:
 
-```text
-Call Stack
-└── empty
+```mermaid
+flowchart TD
+    N1["Call Stack"]
+    N2["empty"]
+    N1 --> N2
 ```
 
 Объяснение:
@@ -315,13 +340,19 @@ Stack trace помогает понять не только где упало, �
 
 Call Stack в момент `assertHeader`:
 
-```text
-Call Stack
-├── assertHeader
-├── waitForLoaded
-├── profilePage.open
-├── test
-└── Global / runner context
+```mermaid
+flowchart TD
+    N1["Call Stack"]
+    N2["assertHeader"]
+    N3["waitForLoaded"]
+    N4["profilePage.open"]
+    N5["test"]
+    N6["Global / runner context"]
+    N1 --> N2
+    N1 --> N3
+    N1 --> N4
+    N1 --> N5
+    N1 --> N6
 ```
 
 Объяснение:
@@ -344,12 +375,17 @@ Page Object скрывает несколько внутренних вызов�
 
 Схема:
 
-```text
-Call Stack
-├── buildUserData
-├── createUser
-├── fixture
-└── test runner
+```mermaid
+flowchart TD
+    N1["Call Stack"]
+    N2["buildUserData"]
+    N3["createUser"]
+    N4["fixture"]
+    N5["test runner"]
+    N1 --> N2
+    N1 --> N3
+    N1 --> N4
+    N1 --> N5
 ```
 
 Объяснение:
@@ -424,12 +460,17 @@ pop Global
 
 Максимальный stack:
 
-```text
-Call Stack
-├── normalizeData
-├── prepareData
-├── startTest
-└── Global
+```mermaid
+flowchart TD
+    N1["Call Stack"]
+    N2["normalizeData"]
+    N3["prepareData"]
+    N4["startTest"]
+    N5["Global"]
+    N1 --> N2
+    N1 --> N3
+    N1 --> N4
+    N1 --> N5
 ```
 
 Объяснение:

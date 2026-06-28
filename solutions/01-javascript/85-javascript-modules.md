@@ -100,12 +100,17 @@
 
 Ответ:
 
-```text
-config.js     -> настройки окружения
-logger.js     -> вывод сообщений
-assertions.js -> функции проверок
-reporter.js   -> создание отчетов
-runner.js     -> сборка сценария запуска
+```mermaid
+flowchart TD
+    N1["config.js → настройки окружения"]
+    N2["logger.js → вывод сообщений"]
+    N3["assertions.js → функции проверок"]
+    N4["reporter.js → создание отчетов"]
+    N5["runner.js → сборка сценария запуска"]
+    N1 --> N2
+    N2 --> N3
+    N3 --> N4
+    N4 --> N5
 ```
 
 Объяснение: каждый файл имеет одну причину для изменения.
@@ -118,13 +123,17 @@ runner.js     -> сборка сценария запуска
 
 Ответ:
 
-```text
-runner.js
-│
-├── config.js
-├── logger.js
-├── reporter.js
-└── assertions.js
+```mermaid
+flowchart TD
+    N1["runner.js"]
+    N2["config.js"]
+    N3["logger.js"]
+    N4["reporter.js"]
+    N5["assertions.js"]
+    N1 --> N2
+    N1 --> N3
+    N1 --> N4
+    N1 --> N5
 ```
 
 Объяснение: `runner.js` собирает систему, а остальные модули не должны зависеть от него.

@@ -49,11 +49,13 @@ const testCases = [
 
 Нужна операция:
 
-```text
-all elements pass condition
-│
-├── yes -> true
-└── no  -> false
+```mermaid
+flowchart TD
+    N1["all elements pass condition"]
+    N2["да → true"]
+    N3["нет → false"]
+    N1 --> N2
+    N1 --> N3
 ```
 
 ## Теория
@@ -74,11 +76,13 @@ Result — Boolean.
 
 Концептуальные шаги:
 
-```text
-check element
-│
-├── true  -> check next element
-└── false -> return false
+```mermaid
+flowchart TD
+    N1["check element"]
+    N2["true → check next element"]
+    N3["false → вернуть false"]
+    N1 --> N2
+    N1 --> N3
 ```
 
 `every()` ищет не совпадение, а нарушение общего правила.
@@ -87,14 +91,13 @@ check element
 
 Главная модель этой главы: **all must match**.
 
-```text
-testCases
-│
-▼
-every()
-│
-▼
-true only if all match
+```mermaid
+flowchart TD
+    N1["testCases"]
+    N2["every()"]
+    N3["true only if all match"]
+    N1 --> N2
+    N2 --> N3
 ```
 
 Вопрос: "Все ли подходят?"

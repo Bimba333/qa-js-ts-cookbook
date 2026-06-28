@@ -4,11 +4,11 @@
 
 Предыдущая глава показала iterator:
 
-```text
-next()
-│
-▼
-{ value, done }
+```mermaid
+flowchart TD
+    N1["next()"]
+    N2["{ value, done }"]
+    N1 --> N2
 ```
 
 Такой механизм точный, но ручное создание iterator быстро становится многословным.
@@ -23,14 +23,13 @@ next()
 
 Если нужно выдавать тесты по одному, ручной iterator требует хранить индекс и возвращать `{ value, done }`:
 
-```text
-индекс
-│
-▼
-next()
-│
-▼
-вернуть value/done
+```mermaid
+flowchart TD
+    N1["индекс"]
+    N2["next()"]
+    N3["вернуть value/done"]
+    N1 --> N2
+    N2 --> N3
 ```
 
 Генератор позволяет записать ту же идею как последовательность выдачи:
@@ -70,40 +69,41 @@ console.log(entries.next());
 
 `yield` останавливает выполнение функции-генератора и отдает значение наружу.
 
-```text
-yield value
-│
-▼
-next() получает value
-│
-▼
-генератор ждет следующего next()
+```mermaid
+flowchart TD
+    N1["yield value"]
+    N2["next() получает value"]
+    N3["генератор ждет следующего next()"]
+    N1 --> N2
+    N2 --> N3
 ```
 
 ## Внутренний механизм
 
 Генератор хранит позицию между вызовами `next()`.
 
-```text
-next()
-│
-▼
-выполнять до первого yield
-│
-▼
-вернуть значение
-│
-▼
-пауза
+```mermaid
+flowchart TD
+    N1["next()"]
+    N2["выполнять до первого yield"]
+    N3["вернуть значение"]
+    N4["пауза"]
+    N1 --> N2
+    N2 --> N3
+    N3 --> N4
 ```
 
 Следующий `next()` продолжает с места остановки:
 
-```text
-next() #1 -> yield 'login'
-next() #2 -> yield 'checkout'
-next() #3 -> yield 'report'
-next() #4 -> done: true
+```mermaid
+flowchart TD
+    N1["next() #1 → yield 'login'"]
+    N2["next() #2 → yield 'checkout'"]
+    N3["next() #3 → yield 'report'"]
+    N4["next() #4 → done: true"]
+    N1 --> N2
+    N2 --> N3
+    N3 --> N4
 ```
 
 Поэтому генератор остается связан с той же моделью `next()`, `value` и `done`.
@@ -112,14 +112,13 @@ next() #4 -> done: true
 
 Главная модель главы:
 
-```text
-генератор
-│
-▼
-автоматически строит iterator
-│
-▼
-yield выдает значения по одному
+```mermaid
+flowchart TD
+    N1["генератор"]
+    N2["автоматически строит iterator"]
+    N3["yield выдает значения по одному"]
+    N1 --> N2
+    N2 --> N3
 ```
 
 Генератор похож на сценарий тестового отчета: каждая строка `yield` говорит, какой следующий элемент можно выдать.
@@ -203,14 +202,13 @@ solutions/01-javascript/83-generators.md
 
 Теперь мы знаем:
 
-```text
-Iterable
-│
-▼
-Iterator
-│
-▼
-Generator
+```mermaid
+flowchart TD
+    N1["Iterable"]
+    N2["Iterator"]
+    N3["Generator"]
+    N1 --> N2
+    N2 --> N3
 ```
 
 Следующий вопрос:

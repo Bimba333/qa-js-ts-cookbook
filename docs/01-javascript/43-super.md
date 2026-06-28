@@ -6,20 +6,17 @@
 
 Главная модель была такой:
 
-```text
-Shared behavior
-│
-▼
-Base class
-│
-▼
-extends
-│
-▼
-Derived class
-│
-▼
-Prototype lookup still works
+```mermaid
+flowchart TD
+    N1["Shared behavior"]
+    N2["Base class"]
+    N3["extends"]
+    N4["Derived class"]
+    N5["Prototype lookup still works"]
+    N1 --> N2
+    N2 --> N3
+    N3 --> N4
+    N4 --> N5
 ```
 
 Мы увидели, что derived class can reuse base class поведение:
@@ -40,12 +37,13 @@ console.log(loginPage.open('LoginPage'));
 
 Также мы увидели overriding:
 
-```text
-BasePage.open()
-│
-overridden by
-│
-LoginPage.open()
+```mermaid
+flowchart TD
+    N1["BasePage.open()"]
+    N2["overridden by"]
+    N3["LoginPage.open()"]
+    N1 --> N2
+    N2 --> N3
 ```
 
 Теперь появляется следующий вопрос:
@@ -54,16 +52,19 @@ LoginPage.open()
 
 Например:
 
-```text
-BasePage.open()
-│
-└── common opening procedure
-
-LoginPage.open()
-│
-└── common opening procedure
-    +
-    login-page-specific step
+```mermaid
+flowchart TD
+    N1["BasePage.open()"]
+    N2["common opening procedure"]
+    N3["LoginPage.open()"]
+    N4["common opening procedure"]
+    N5["+"]
+    N6["login-page-specific step"]
+    N1 --> N2
+    N1 --> N3
+    N3 --> N4
+    N3 --> N5
+    N3 --> N6
 ```
 
 Если просто override method, base method no longer runs for that call.
@@ -72,20 +73,17 @@ LoginPage.open()
 
 Главная модель главы:
 
-```text
-Derived method
-│
-▼
-overrides base method
-│
-▼
-super.method()
-│
-▼
-calls base behavior
-│
-▼
-derived method adds specific behavior
+```mermaid
+flowchart TD
+    N1["Derived method"]
+    N2["overrides base method"]
+    N3["super.method()"]
+    N4["calls base behavior"]
+    N5["derived method adds specific behavior"]
+    N1 --> N2
+    N2 --> N3
+    N3 --> N4
+    N4 --> N5
 ```
 
 Важно: `super` does not copy base code. `super` calls base поведение through the class relationship.
@@ -196,39 +194,41 @@ class LoginPage extends BasePage {
 
 Но common opening logic now duplicated conceptually:
 
-```text
-BasePage.open()
-│
-└── open page
-
-LoginPage.open()
-│
-└── open page + login-specific step
+```mermaid
+flowchart TD
+    N1["BasePage.open()"]
+    N2["open page"]
+    N3["LoginPage.open()"]
+    N4["open page + login-specific step"]
+    N1 --> N2
+    N1 --> N3
+    N3 --> N4
 ```
 
 Если base opening procedure changes, derived method must be updated manually.
 
 Мы хотим другой поток:
 
-```text
-LoginPage.open()
-│
-├── use BasePage.open()
-└── add login-specific behavior
+```mermaid
+flowchart TD
+    N1["LoginPage.open()"]
+    N2["use BasePage.open()"]
+    N3["add login-specific behavior"]
+    N1 --> N2
+    N1 --> N3
 ```
 
 Это не просто "доступ к родителю".
 
 Это поведение reuse inside override.
 
-```text
-Override
-│
-▼
-Использовать base behavior
-│
-▼
-Add specific behavior
+```mermaid
+flowchart TD
+    N1["Override"]
+    N2["Использовать base behavior"]
+    N3["Add specific behavior"]
+    N1 --> N2
+    N2 --> N3
 ```
 
 Для этого существует `super.method()`.
@@ -264,38 +264,44 @@ class LoginPage extends BasePage {
 
 Теперь:
 
-```text
-LoginPage.open()
-│
-├── calls BasePage.open()
-└── adds login-specific behavior
+```mermaid
+flowchart TD
+    N1["LoginPage.open()"]
+    N2["calls BasePage.open()"]
+    N3["adds login-specific behavior"]
+    N1 --> N2
+    N1 --> N3
 ```
 
 ### Override without `super`
 
-```text
-Derived method
-│
-└── replaces base behavior for this lookup
+```mermaid
+flowchart TD
+    N1["Derived method"]
+    N2["replaces base behavior for this lookup"]
+    N1 --> N2
 ```
 
 ### Override with `super`
 
-```text
-Derived method
-│
-├── calls base behavior
-└── adds more behavior
+```mermaid
+flowchart TD
+    N1["Derived method"]
+    N2["calls base behavior"]
+    N3["adds more behavior"]
+    N1 --> N2
+    N1 --> N3
 ```
 
 ### Base method call
 
 `super.open(pageName)` means:
 
-```text
-from derived method
-│
-call base method with this receiver
+```mermaid
+flowchart TD
+    N1["from derived method"]
+    N2["вызвать base method with this receiver"]
+    N1 --> N2
 ```
 
 It does not mean:
@@ -314,26 +320,30 @@ call BasePage behavior through class relationship
 
 Важно:
 
-```text
-loginPage.open()
-│
-├── derived method runs
-├── super.open(...) calls base method
-└── inside base method, this is still loginPage
+```mermaid
+flowchart TD
+    N1["loginPage.open()"]
+    N2["derived method runs"]
+    N3["super.open(...) calls base method"]
+    N4["inside base method, this is still loginPage"]
+    N1 --> N2
+    N1 --> N3
+    N1 --> N4
 ```
 
 `super` chooses where method is taken from.
 
 `this` still describes which object the method works with.
 
-```text
-super
-│
-└── where to find base method
-
-this
-│
-└── receiver object
+```mermaid
+flowchart TD
+    N1["super"]
+    N2["where to find base method"]
+    N3["this"]
+    N4["receiver object"]
+    N1 --> N2
+    N1 --> N3
+    N3 --> N4
 ```
 
 ### Relationship with prototype lookup
@@ -342,17 +352,15 @@ this
 
 High-level:
 
-```text
-Derived method
-│
-▼
-super.method()
-│
-▼
-base class behavior
-│
-▼
-called with same receiver
+```mermaid
+flowchart TD
+    N1["Derived method"]
+    N2["super.method()"]
+    N3["base class behavior"]
+    N4["called with same receiver"]
+    N1 --> N2
+    N2 --> N3
+    N3 --> N4
 ```
 
 The class relationship created by `extends` tells JavaScript where base поведение is.
@@ -373,92 +381,86 @@ loginPage.open('LoginPage');
 
 Шаг 1:
 
-```text
-Нужен method: open
-│
-▼
-Start from loginPage
+```mermaid
+flowchart TD
+    N1["Нужен method: open"]
+    N2["Start from loginPage"]
+    N1 --> N2
 ```
 
 Шаг 2:
 
-```text
-Lookup finds LoginPage.open()
-│
-▼
-derived method is selected
+```mermaid
+flowchart TD
+    N1["Lookup finds LoginPage.open()"]
+    N2["derived method is selected"]
+    N1 --> N2
 ```
 
 Шаг 3:
 
-```text
-Run LoginPage.open()
-│
-▼
-receiver is loginPage
+```mermaid
+flowchart TD
+    N1["Run LoginPage.open()"]
+    N2["receiver is loginPage"]
+    N1 --> N2
 ```
 
 Шаг 4:
 
-```text
-Inside LoginPage.open()
-│
-▼
-super.open('LoginPage')
+```mermaid
+flowchart TD
+    N1["Inside LoginPage.open()"]
+    N2["super.open('LoginPage')"]
+    N1 --> N2
 ```
 
 Шаг 5:
 
-```text
-super.open()
-│
-▼
-calls BasePage.open()
-│
-▼
-with same receiver
+```mermaid
+flowchart TD
+    N1["super.open()"]
+    N2["calls BasePage.open()"]
+    N3["with same receiver"]
+    N1 --> N2
+    N2 --> N3
 ```
 
 Шаг 6:
 
-```text
-BasePage.open()
-│
-▼
-returns common result
+```mermaid
+flowchart TD
+    N1["BasePage.open()"]
+    N2["возвращает common result"]
+    N1 --> N2
 ```
 
 Шаг 7:
 
-```text
-LoginPage.open()
-│
-▼
-adds specific behavior
-│
-▼
-returns final result
+```mermaid
+flowchart TD
+    N1["LoginPage.open()"]
+    N2["adds specific behavior"]
+    N3["возвращает final result"]
+    N1 --> N2
+    N2 --> N3
 ```
 
 Complete поток:
 
-```text
-loginPage.open()
-│
-▼
-LoginPage.open()
-│
-▼
-super.open()
-│
-▼
-BasePage.open()
-│
-▼
-back to LoginPage.open()
-│
-▼
-final result
+```mermaid
+flowchart TD
+    N1["loginPage.open()"]
+    N2["LoginPage.open()"]
+    N3["super.open()"]
+    N4["BasePage.open()"]
+    N5["back to LoginPage.open()"]
+    N6["final result"]
+    N1 --> N2
+    N2 --> N3
+    N3 --> N4
+    N4 --> N5
+    N5 --> N6
 ```
 
 ### Что происходит с `this`?
@@ -482,14 +484,15 @@ loginPage.prefix = 'page';
 
 Then `super.label('LoginPage')` still uses `this` as `loginPage`.
 
-```text
-super.label()
-│
-calls BasePage.label
-│
-but
-│
-this -> loginPage
+```mermaid
+flowchart TD
+    N1["super.label()"]
+    N2["calls BasePage.label"]
+    N3["but"]
+    N4["this → loginPage"]
+    N1 --> N2
+    N2 --> N3
+    N3 --> N4
 ```
 
 This is why `super` and `this` must not be confused.
@@ -500,72 +503,77 @@ This is why `super` and `this` must not be confused.
 
 `super` is like calling the base manual from specialized procedure.
 
-```text
-Specialized procedure
-│
-├── call base manual
-└── add special step
+```mermaid
+flowchart TD
+    N1["Specialized procedure"]
+    N2["вызвать base manual"]
+    N3["add special step"]
+    N1 --> N2
+    N1 --> N3
 ```
 
 Сначала использовать стандартную процедуру:
 
-```text
-Derived method
-│
-├── use standard base procedure
-└── extend it
+```mermaid
+flowchart TD
+    N1["Derived method"]
+    N2["use standard base procedure"]
+    N3["extend it"]
+    N1 --> N2
+    N1 --> N3
 ```
 
 Extend common recipe:
 
-```text
-common recipe
-│
-▼
-special recipe adds ingredient
+```mermaid
+flowchart TD
+    N1["common recipe"]
+    N2["special recipe adds ingredient"]
+    N1 --> N2
 ```
 
 Ask parent implementation:
 
-```text
-derived method
-│
-asks base method
-│
-then continues
+```mermaid
+flowchart TD
+    N1["derived method"]
+    N2["asks base method"]
+    N3["then continues"]
+    N1 --> N2
+    N2 --> N3
 ```
 
 Foundation and specialization:
 
-```text
-foundation
-│
-▼
-specialization
+```mermaid
+flowchart TD
+    N1["foundation"]
+    N2["specialization"]
+    N1 --> N2
 ```
 
 Central idea:
 
-```text
-Override
-│
-▼
-Использовать base behavior
-│
-▼
-Add specific behavior
+```mermaid
+flowchart TD
+    N1["Override"]
+    N2["Использовать base behavior"]
+    N3["Add specific behavior"]
+    N1 --> N2
+    N2 --> N3
 ```
 
 Это ментальные модели, а не формальные определения.
 
 The technical idea for this chapter:
 
-```text
-super.method()
-│
-calls base method
-│
-through class relationship
+```mermaid
+flowchart TD
+    N1["super.method()"]
+    N2["calls base method"]
+    N3["through class relationship"]
+    N1 --> N2
+    N2 --> N3
 ```
 
 ---
@@ -654,24 +662,26 @@ examples/01-javascript/chapter-43/06-qa-example.js
 
 `super.method()` calls base поведение. It does not copy method body into derived class.
 
-```text
-super.method()
-│
-└── call base behavior
+```mermaid
+flowchart TD
+    N1["super.method()"]
+    N2["вызвать base behavior"]
+    N1 --> N2
 ```
 
 ### `super` и `this` - одно и то же?
 
 Нет.
 
-```text
-super
-│
-└── where to find base method
-
-this
-│
-└── receiver object
+```mermaid
+flowchart TD
+    N1["super"]
+    N2["where to find base method"]
+    N3["this"]
+    N4["receiver object"]
+    N1 --> N2
+    N1 --> N3
+    N3 --> N4
 ```
 
 ### Почему нельзя просто скопировать base method code?
@@ -680,14 +690,15 @@ Copy creates duplication.
 
 If base поведение changes, copied code must be updated manually.
 
-```text
-copy
-│
-└── duplicated maintenance
-
-super
-│
-└── reuse base behavior
+```mermaid
+flowchart TD
+    N1["copy"]
+    N2["duplicated maintenance"]
+    N3["super"]
+    N4["reuse base behavior"]
+    N1 --> N2
+    N1 --> N3
+    N3 --> N4
 ```
 
 ### Это то же самое, что `super()` in constructor?
@@ -761,21 +772,22 @@ open(pageName) {
 
 Неправильная модель:
 
-```text
-super.open()
-│
-▼
-this = BasePage
+```mermaid
+flowchart TD
+    N1["super.open()"]
+    N2["this = BasePage"]
+    N1 --> N2
 ```
 
 Правильная модель:
 
-```text
-loginPage.open()
-│
-└── super.open()
-    │
-    └── this is still loginPage
+```mermaid
+flowchart TD
+    N1["loginPage.open()"]
+    N2["super.open()"]
+    N3["this is still loginPage"]
+    N1 --> N2
+    N2 --> N3
 ```
 
 ### Ошибка 3. Использовать `super`, когда нужна замена поведение
@@ -784,19 +796,22 @@ Sometimes derived method should fully replace base поведение.
 
 If so:
 
-```text
-override without super
-│
-can be intentional
+```mermaid
+flowchart TD
+    N1["override without super"]
+    N2["can be intentional"]
+    N1 --> N2
 ```
 
 The decision is semantic:
 
-```text
-reuse base behavior?
-│
-├── yes -> super.method()
-└── no  -> no super
+```mermaid
+flowchart TD
+    N1["reuse base behavior?"]
+    N2["да → super.method()"]
+    N3["нет → нет super"]
+    N1 --> N2
+    N1 --> N3
 ```
 
 ### Ошибка 4. Try to use `super()` here
@@ -805,18 +820,20 @@ reuse base behavior?
 
 Wrong direction for this chapter:
 
-```text
-constructor super()
-│
-└── future topic
+```mermaid
+flowchart TD
+    N1["constructor super()"]
+    N2["future topic"]
+    N1 --> N2
 ```
 
 Current topic:
 
-```text
-super.method()
-│
-└── call base behavior inside method
+```mermaid
+flowchart TD
+    N1["super.method()"]
+    N2["вызвать base behavior inside method"]
+    N1 --> N2
 ```
 
 ---
@@ -825,14 +842,15 @@ super.method()
 
 Используйте `super.method()`, когда:
 
-```text
-derived method
-│
-needs base behavior
-│
-plus
-│
-specific behavior
+```mermaid
+flowchart TD
+    N1["derived method"]
+    N2["needs base behavior"]
+    N3["plus"]
+    N4["specific behavior"]
+    N1 --> N2
+    N2 --> N3
+    N3 --> N4
 ```
 
 Good examples:
@@ -844,20 +862,22 @@ Good examples:
 
 Avoid `super` when:
 
-```text
-derived behavior
-│
-should fully replace base behavior
+```mermaid
+flowchart TD
+    N1["derived behavior"]
+    N2["should fully replace base behavior"]
+    N1 --> N2
 ```
 
 Правило читаемости:
 
-```text
-super.method()
-│
-should make behavior easier to follow
-│
-not hide important work
+```mermaid
+flowchart TD
+    N1["super.method()"]
+    N2["should make behavior easier to follow"]
+    N3["not hide important work"]
+    N1 --> N2
+    N2 --> N3
 ```
 
 ---
@@ -868,57 +888,66 @@ not hide important work
 
 Base page:
 
-```text
-BasePage.open()
-│
-└── common open behavior
+```mermaid
+flowchart TD
+    N1["BasePage.open()"]
+    N2["common open behavior"]
+    N1 --> N2
 ```
 
 Login page:
 
-```text
-LoginPage.open()
-│
-├── super.open()
-└── focus login form
+```mermaid
+flowchart TD
+    N1["LoginPage.open()"]
+    N2["super.open()"]
+    N3["focus login form"]
+    N1 --> N2
+    N1 --> N3
 ```
 
 ### API client
 
 Base API client:
 
-```text
-BaseApiClient.describeRequest()
-│
-└── common request description
+```mermaid
+flowchart TD
+    N1["BaseApiClient.describeRequest()"]
+    N2["common request description"]
+    N1 --> N2
 ```
 
 Users client:
 
-```text
-UsersClient.describeRequest()
-│
-├── super.describeRequest()
-└── add users service context
+```mermaid
+flowchart TD
+    N1["UsersClient.describeRequest()"]
+    N2["super.describeRequest()"]
+    N3["add users service context"]
+    N1 --> N2
+    N1 --> N3
 ```
 
 ### Validators
 
 Base validator:
 
-```text
-BaseValidator.formatFailure()
-│
-└── common expected/actual formatting
+```mermaid
+flowchart TD
+    N1["BaseValidator.formatFailure()"]
+    N2["common expected/actual formatting"]
+    N1 --> N2
 ```
 
 Status validator:
 
-```text
-StatusValidator.formatFailure()
-│
-├── super.formatFailure()
-└── add status-specific explanation
+```mermaid
+flowchart TD
+    N1["StatusValidator.formatFailure()"]
+    N2["super.formatFailure()"]
+    N3["add status-specific explanation"]
+    N1 --> N2
+    N1 --> N3
 ```
 
 ---
@@ -927,263 +956,286 @@ StatusValidator.formatFailure()
 
 ### 1. Зачем существует super
 
-```text
-override
-│
-but still need base behavior
-│
-▼
-super
+```mermaid
+flowchart TD
+    N1["override"]
+    N2["but still need base behavior"]
+    N3["super"]
+    N1 --> N2
+    N2 --> N3
 ```
 
 ### 2. Base method
 
-```text
-BasePage
-│
-└── open()
+```mermaid
+flowchart TD
+    N1["BasePage"]
+    N2["open()"]
+    N1 --> N2
 ```
 
 ### 3. Derived override
 
-```text
-LoginPage
-│
-└── open()
+```mermaid
+flowchart TD
+    N1["LoginPage"]
+    N2["open()"]
+    N1 --> N2
 ```
 
 ### 4. Reuse base поведение
 
-```text
-LoginPage.open()
-│
-└── calls BasePage.open()
+```mermaid
+flowchart TD
+    N1["LoginPage.open()"]
+    N2["calls BasePage.open()"]
+    N1 --> N2
 ```
 
 ### 5. Extend поведение
 
-```text
-base behavior
-│
-+
-│
-specific behavior
+```mermaid
+flowchart TD
+    N1["base behavior"]
+    N2["+"]
+    N3["specific behavior"]
+    N1 --> N2
+    N2 --> N3
 ```
 
 ### 6. `super.method()`
 
-```text
-super.open()
-│
-└── call base open()
+```mermaid
+flowchart TD
+    N1["super.open()"]
+    N2["вызвать base open()"]
+    N1 --> N2
 ```
 
 ### 7. Base call flow
 
-```text
-derived method
-│
-▼
-super.method()
-│
-▼
-base method
+```mermaid
+flowchart TD
+    N1["derived method"]
+    N2["super.method()"]
+    N3["base method"]
+    N1 --> N2
+    N2 --> N3
 ```
 
 ### 8. Derived method flow
 
-```text
-start derived
-│
-call base
-│
-add specific
-│
-return result
+```mermaid
+flowchart TD
+    N1["start derived"]
+    N2["вызвать base"]
+    N3["add specific"]
+    N4["вернуть result"]
+    N1 --> N2
+    N2 --> N3
+    N3 --> N4
 ```
 
 ### 9. Текущая модель JavaScript
 
-```text
-Classes
-│
-├── Inheritance
-└── super
+```mermaid
+flowchart TD
+    N1["Classes"]
+    N2["Inheritance"]
+    N3["super"]
+    N1 --> N2
+    N1 --> N3
 ```
 
 ### 10. Prototype lookup reminder
 
-```text
-derived behavior
-│
-▼
-base behavior
+```mermaid
+flowchart TD
+    N1["derived behavior"]
+    N2["base behavior"]
+    N1 --> N2
 ```
 
 ### 11. Receiver reminder
 
-```text
-loginPage.open()
-│
-└── receiver is loginPage
+```mermaid
+flowchart TD
+    N1["loginPage.open()"]
+    N2["receiver is loginPage"]
+    N1 --> N2
 ```
 
 ### 12. `this` inside base method
 
-```text
-super.open()
-│
-calls base method
-│
-but this -> loginPage
+```mermaid
+flowchart TD
+    N1["super.open()"]
+    N2["calls base method"]
+    N3["but this → loginPage"]
+    N1 --> N2
+    N2 --> N3
 ```
 
 ### 13. QA BasePage example
 
-```text
-BasePage.open()
-│
-└── common navigation
+```mermaid
+flowchart TD
+    N1["BasePage.open()"]
+    N2["common navigation"]
+    N1 --> N2
 ```
 
 ### 14. LoginPage example
 
-```text
-LoginPage.open()
-│
-├── super.open()
-└── focus login form
+```mermaid
+flowchart TD
+    N1["LoginPage.open()"]
+    N2["super.open()"]
+    N3["focus login form"]
+    N1 --> N2
+    N1 --> N3
 ```
 
 ### 15. API client example
 
-```text
-UsersClient.describeRequest()
-│
-├── super.describeRequest()
-└── add service name
+```mermaid
+flowchart TD
+    N1["UsersClient.describeRequest()"]
+    N2["super.describeRequest()"]
+    N3["add service name"]
+    N1 --> N2
+    N1 --> N3
 ```
 
 ### 16. Читаемость
 
-```text
-common behavior stays common
-│
-specific behavior stays specific
+```mermaid
+flowchart TD
+    N1["common behavior stays common"]
+    N2["specific behavior stays specific"]
+    N1 --> N2
 ```
 
 ### 17. Типичные ошибки
 
-```text
-override
-│
-└── forget super
+```mermaid
+flowchart TD
+    N1["override"]
+    N2["forget super"]
+    N1 --> N2
 ```
 
 ### 18. Override without super
 
-```text
-derived method
-│
-└── replaces base behavior
+```mermaid
+flowchart TD
+    N1["derived method"]
+    N2["replaces base behavior"]
+    N1 --> N2
 ```
 
 ### 19. Override with super
 
-```text
-derived method
-│
-├── base behavior
-└── specific behavior
+```mermaid
+flowchart TD
+    N1["derived method"]
+    N2["base behavior"]
+    N3["specific behavior"]
+    N1 --> N2
+    N1 --> N3
 ```
 
 ### 20. Method composition
 
-```text
-base result
-│
-▼
-derived result
+```mermaid
+flowchart TD
+    N1["base result"]
+    N2["derived result"]
+    N1 --> N2
 ```
 
 ### 21. Краткая ментальная модель
 
-```text
-Использовать base behavior
-│
-then add specialization
+```mermaid
+flowchart TD
+    N1["Использовать base behavior"]
+    N2["then add specialization"]
+    N1 --> N2
 ```
 
 ### 22. Complete super model
 
-```text
-Derived method
-│
-▼
-super.method()
-│
-▼
-Base method
-│
-▼
-Derived method continues
+```mermaid
+flowchart TD
+    N1["Derived method"]
+    N2["super.method()"]
+    N3["Base method"]
+    N4["Derived method continues"]
+    N1 --> N2
+    N2 --> N3
+    N3 --> N4
 ```
 
 ### 23. Base manual analogy
 
-```text
-special manual
-│
-calls
-│
-base manual
+```mermaid
+flowchart TD
+    N1["special manual"]
+    N2["calls"]
+    N3["base manual"]
+    N1 --> N2
+    N2 --> N3
 ```
 
 ### 24. Recipe analogy
 
-```text
-common recipe
-│
-▼
-special recipe extension
+```mermaid
+flowchart TD
+    N1["common recipe"]
+    N2["special recipe extension"]
+    N1 --> N2
 ```
 
 ### 25. Procedure analogy
 
-```text
-standard procedure
-│
-then
-│
-special step
+```mermaid
+flowchart TD
+    N1["standard procedure"]
+    N2["then"]
+    N3["special step"]
+    N1 --> N2
+    N2 --> N3
 ```
 
 ### 26. Object relationship
 
-```text
-loginPage
-│
-uses derived and base behavior
+```mermaid
+flowchart TD
+    N1["loginPage"]
+    N2["uses derived and base behavior"]
+    N1 --> N2
 ```
 
 ### 27. Class relationship
 
-```text
-LoginPage
-│
-extends
-│
-BasePage
+```mermaid
+flowchart TD
+    N1["LoginPage"]
+    N2["extends"]
+    N3["BasePage"]
+    N1 --> N2
+    N2 --> N3
 ```
 
 ### 28. Lookup relationship
 
-```text
-derived method
-│
-can refer to
-│
-base method
+```mermaid
+flowchart TD
+    N1["derived method"]
+    N2["can refer to"]
+    N3["base method"]
+    N1 --> N2
+    N2 --> N3
 ```
 
 ### 29. Receiver relationship
@@ -1195,75 +1247,77 @@ receiver: derived instance
 
 ### 30. Переход к constructor super
 
-```text
-super.method()
-│
-now
-│
-super() in constructors later
+```mermaid
+flowchart TD
+    N1["super.method()"]
+    N2["now"]
+    N3["super() in constructors later"]
+    N1 --> N2
+    N2 --> N3
 ```
 
 ### 31. Переход к advanced inheritance
 
-```text
-basic super
-│
-before
-│
-advanced inheritance details
+```mermaid
+flowchart TD
+    N1["basic super"]
+    N2["before"]
+    N3["advanced inheritance details"]
+    N1 --> N2
+    N2 --> N3
 ```
 
 ### 32. Framework example
 
-```text
-BaseFrameworkObject.log()
-│
-▼
-FeatureObject.log()
+```mermaid
+flowchart TD
+    N1["BaseFrameworkObject.log()"]
+    N2["FeatureObject.log()"]
+    N1 --> N2
 ```
 
 ### 33. Validation helper
 
-```text
-BaseValidator.formatFailure()
-│
-▼
-StatusValidator.formatFailure()
+```mermaid
+flowchart TD
+    N1["BaseValidator.formatFailure()"]
+    N2["StatusValidator.formatFailure()"]
+    N1 --> N2
 ```
 
 ### 34. Derived extension
 
-```text
-base
-│
-plus
-│
-derived addition
+```mermaid
+flowchart TD
+    N1["base"]
+    N2["plus"]
+    N3["derived addition"]
+    N1 --> N2
+    N2 --> N3
 ```
 
 ### 35. Принадлежность поведения
 
-```text
-common part -> base
-specific part -> derived
+```mermaid
+flowchart TD
+    N1["common part → base"]
+    N2["specific part → derived"]
+    N1 --> N2
 ```
 
 ### 36. Итоговая схема
 
-```text
-Derived method
-│
-▼
-overrides base method
-│
-▼
-super.method()
-│
-▼
-calls base behavior
-│
-▼
-adds specific behavior
+```mermaid
+flowchart TD
+    N1["Derived method"]
+    N2["overrides base method"]
+    N3["super.method()"]
+    N4["calls base behavior"]
+    N5["adds specific behavior"]
+    N1 --> N2
+    N2 --> N3
+    N3 --> N4
+    N4 --> N5
 ```
 
 ---
@@ -1274,22 +1328,24 @@ adds specific behavior
 
 Inheritance showed:
 
-```text
-Derived class
-│
-reuses
-│
-Base class behavior
+```mermaid
+flowchart TD
+    N1["Derived class"]
+    N2["reuses"]
+    N3["Base class behavior"]
+    N1 --> N2
+    N2 --> N3
 ```
 
 Overriding showed:
 
-```text
-Derived method
-│
-can replace
-│
-Base method
+```mermaid
+flowchart TD
+    N1["Derived method"]
+    N2["can replace"]
+    N3["Base method"]
+    N1 --> N2
+    N2 --> N3
 ```
 
 `super` отвечает:
@@ -1301,17 +1357,15 @@ but still reuse base behavior?
 
 Основная модель:
 
-```text
-Derived method
-│
-▼
-super.method()
-│
-▼
-base behavior
-│
-▼
-derived method adds specialization
+```mermaid
+flowchart TD
+    N1["Derived method"]
+    N2["super.method()"]
+    N3["base behavior"]
+    N4["derived method adds specialization"]
+    N1 --> N2
+    N2 --> N3
+    N3 --> N4
 ```
 
 `super` does not copy base code. It calls base поведение through the class relationship, while the объект выполнения model and prototype-chain mental model still matter.

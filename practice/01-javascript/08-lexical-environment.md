@@ -236,10 +236,13 @@ playground/lexical-environment-flow.js
 
 После кода нарисуйте:
 
-```text
-Block Lexical Environment
-└── Outer → Function Lexical Environment
-    └── Outer → Global Lexical Environment
+```mermaid
+flowchart TD
+    N1["Block Lexical Environment"]
+    N2["Outer → Function Lexical Environment"]
+    N3["Outer → Global Lexical Environment"]
+    N1 --> N2
+    N2 --> N3
 ```
 
 И подпишите Environment Record каждого level.

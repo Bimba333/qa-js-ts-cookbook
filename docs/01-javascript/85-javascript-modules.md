@@ -4,17 +4,15 @@
 
 Предыдущий модуль объяснил, как JavaScript проходит по данным:
 
-```text
-Iterable
-│
-▼
-Iterator
-│
-▼
-Generator
-│
-▼
-Custom iteration
+```mermaid
+flowchart TD
+    N1["Iterable"]
+    N2["Iterator"]
+    N3["Generator"]
+    N4["Custom iteration"]
+    N1 --> N2
+    N2 --> N3
+    N3 --> N4
 ```
 
 Теперь вопрос меняется. Мы уже умеем описывать данные, функции, объекты и последовательный обход. Но в реальном проекте весь этот код быстро перестает помещаться в один понятный файл.
@@ -29,32 +27,34 @@ Custom iteration
 
 Представим тестовый раннер в одном файле:
 
-```text
-runner.js
-│
-├── конфигурация
-├── логирование
-├── проверки
-├── отчеты
-└── запуск тестов
+```mermaid
+flowchart TD
+    N1["runner.js"]
+    N2["конфигурация"]
+    N3["логирование"]
+    N4["проверки"]
+    N5["отчеты"]
+    N6["запуск тестов"]
+    N1 --> N2
+    N1 --> N3
+    N1 --> N4
+    N1 --> N5
+    N1 --> N6
 ```
 
 Пока файл маленький, это терпимо. Но затем появляются новые окружения, новые проверки, новые форматы отчетов и больше тестовых сценариев.
 
-```text
-один большой файл
-│
-▼
-много разных причин для изменения
-│
-▼
-сложно читать
-│
-▼
-сложно переиспользовать
-│
-▼
-сложно тестировать отдельно
+```mermaid
+flowchart TD
+    N1["один большой файл"]
+    N2["много разных причин для изменения"]
+    N3["сложно читать"]
+    N4["сложно переиспользовать"]
+    N5["сложно тестировать отдельно"]
+    N1 --> N2
+    N2 --> N3
+    N3 --> N4
+    N4 --> N5
 ```
 
 Модули решают эту проблему через разделение ответственности.
@@ -73,14 +73,13 @@ runner.js
 
 Модуль в JavaScript — это файл, который имеет собственную границу и может явно отдавать наружу часть своего кода.
 
-```text
-file
-│
-▼
-module
-│
-▼
-своя ответственность
+```mermaid
+flowchart TD
+    N1["file"]
+    N2["module"]
+    N3["своя ответственность"]
+    N1 --> N2
+    N2 --> N3
 ```
 
 Чтобы сделать значение доступным другим модулям, используется `export`.
@@ -125,56 +124,65 @@ export default function log(message) {
 
 Не все, что находится внутри файла, автоматически доступно снаружи.
 
-```text
-module
-│
-├── private code
-│
-└── exported API
+```mermaid
+flowchart TD
+    N1["module"]
+    N2["private code"]
+    N3["exported API"]
+    N1 --> N2
+    N1 --> N3
 ```
 
 Другие модули видят только то, что было экспортировано.
 
-```text
-config.js
-│
-└── export baseUrl
-        │
-        ▼
-runner.js
-│
-└── import baseUrl
+```mermaid
+flowchart TD
+    N1["config.js"]
+    N2["export baseUrl"]
+    N3["runner.js"]
+    N4["import baseUrl"]
+    N1 --> N2
+    N1 --> N3
+    N3 --> N4
 ```
 
 Когда один модуль импортирует другой, между ними появляется зависимость.
 
-```text
-runner.js
-│
-├── imports config.js
-├── imports logger.js
-├── imports reporter.js
-└── imports assertions.js
+```mermaid
+flowchart TD
+    N1["runner.js"]
+    N2["imports config.js"]
+    N3["imports logger.js"]
+    N4["imports reporter.js"]
+    N5["imports assertions.js"]
+    N1 --> N2
+    N1 --> N3
+    N1 --> N4
+    N1 --> N5
 ```
 
 Набор таких связей образует dependency graph.
 
-```text
-runner.js
-│
-├── config.js
-├── logger.js
-├── reporter.js
-└── assertions.js
+```mermaid
+flowchart TD
+    N1["runner.js"]
+    N2["config.js"]
+    N3["logger.js"]
+    N4["reporter.js"]
+    N5["assertions.js"]
+    N1 --> N2
+    N1 --> N3
+    N1 --> N4
+    N1 --> N5
 ```
 
 Dependency graph помогает понять, от каких файлов зависит запуск программы.
 
-```text
-config.js changed
-        │
-        ▼
-runner.js may also need changes
+```mermaid
+flowchart TD
+    N1["config.js changed"]
+    N2["runner.js may also need changes"]
+    N1 --> N2
 ```
 
 Зависимости помогают разработчику понимать, какие части приложения может затронуть изменение. Если меняется модуль конфигурации, нужно проверить файлы, которые его импортируют.
@@ -183,17 +191,15 @@ runner.js may also need changes
 
 Главная модель главы:
 
-```text
-file
-│
-▼
-module
-│
-▼
-exports public API
-│
-▼
-other modules import it
+```mermaid
+flowchart TD
+    N1["file"]
+    N2["module"]
+    N3["exports public API"]
+    N4["other modules import it"]
+    N1 --> N2
+    N2 --> N3
+    N3 --> N4
 ```
 
 Модуль похож на отдельный инструмент в тестовом фреймворке: внутри может быть много деталей, но наружу он отдает только понятный интерфейс.

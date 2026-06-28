@@ -6,11 +6,11 @@
 
 Обычный вызов:
 
-```text
-Reporter.report()
-│
-▼
-this = Reporter
+```mermaid
+flowchart TD
+    N1["Reporter.report()"]
+    N2["this = Reporter"]
+    N1 --> N2
 ```
 
 Но иногда обычной формы вызова недостаточно. Метод может быть отделен от объекта, передан как обратный вызов или использоваться с другим объектом выполнения.
@@ -90,47 +90,46 @@ const boundFn = fn.bind(objectForThis);
 
 Главная разница:
 
-```text
-call/apply -> вызвать сейчас
-bind       -> создать новую функцию на потом
+```mermaid
+flowchart TD
+    N1["call/apply → вызвать сейчас"]
+    N2["bind → создать новую функцию на потом"]
+    N1 --> N2
 ```
 
 ## Внутренний механизм
 
 Для `call()`:
 
-```text
-report.call(Reporter, 'login', 'passed')
-│
-▼
-this = Reporter
-│
-▼
-функция выполняется сразу
+```mermaid
+flowchart TD
+    N1["report.call(Reporter, 'login', 'passed')"]
+    N2["this = Reporter"]
+    N3["функция выполняется сразу"]
+    N1 --> N2
+    N2 --> N3
 ```
 
 Для `apply()`:
 
-```text
-report.apply(Reporter, ['login', 'passed'])
-│
-▼
-this = Reporter
-│
-▼
-аргументы берутся из массива
+```mermaid
+flowchart TD
+    N1["report.apply(Reporter, ['login', 'passed'])"]
+    N2["this = Reporter"]
+    N3["аргументы берутся из массива"]
+    N1 --> N2
+    N2 --> N3
 ```
 
 Для `bind()`:
 
-```text
-report.bind(Reporter)
-│
-▼
-создается новая функция
-│
-▼
-позже она использует Reporter как this
+```mermaid
+flowchart TD
+    N1["report.bind(Reporter)"]
+    N2["создается новая функция"]
+    N3["позже она использует Reporter как this"]
+    N1 --> N2
+    N2 --> N3
 ```
 
 `bind()` особенно полезен, когда функция будет вызвана позже.
@@ -139,17 +138,22 @@ report.bind(Reporter)
 
 Главная модель главы:
 
-```text
-call/apply -> вызвать сразу
-bind       -> создать функцию на потом
+```mermaid
+flowchart TD
+    N1["call/apply → вызвать сразу"]
+    N2["bind → создать функцию на потом"]
+    N1 --> N2
 ```
 
-```text
-явный выбор объекта выполнения
-│
-├── call()
-├── apply()
-└── bind()
+```mermaid
+flowchart TD
+    N1["явный выбор объекта выполнения"]
+    N2["call()"]
+    N3["apply()"]
+    N4["bind()"]
+    N1 --> N2
+    N1 --> N3
+    N1 --> N4
 ```
 
 ## Практические примеры
@@ -248,10 +252,13 @@ solutions/01-javascript/67-call-apply-bind.md
 
 Теперь у нас есть три части:
 
-```text
-Closure -> сохраняет окружение
-this    -> зависит от вызова
-bind    -> фиксирует this для будущего вызова
+```mermaid
+flowchart TD
+    N1["Closure → сохраняет окружение"]
+    N2["this → зависит от вызова"]
+    N3["bind → фиксирует this для будущего вызова"]
+    N1 --> N2
+    N2 --> N3
 ```
 
 Следующая глава соединит их в практическом управлении контекстом.

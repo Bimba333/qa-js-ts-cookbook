@@ -17,23 +17,19 @@
 
 Рассмотрите цепочку:
 
-```text
-Переменная
-│
-▼
-Объект
-│
-▼
-Функция
-│
-▼
-Helper
-│
-▼
-Fixture
-│
-▼
-Framework architecture
+```mermaid
+flowchart TD
+    N1["Переменная"]
+    N2["Объект"]
+    N3["Функция"]
+    N4["Helper"]
+    N5["Fixture"]
+    N6["Framework architecture"]
+    N1 --> N2
+    N2 --> N3
+    N3 --> N4
+    N4 --> N5
+    N5 --> N6
 ```
 
 Ответьте:

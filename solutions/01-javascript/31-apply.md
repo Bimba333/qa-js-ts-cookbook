@@ -32,11 +32,13 @@
 
 Объяснение:
 
-```text
-fn.call(receiver, ...)
-fn.apply(receiver, ...)
-│
-└── receiver -> this
+```mermaid
+flowchart TD
+    N1["fn.call(receiver, ...)"]
+    N2["fn.apply(receiver, ...)"]
+    N3["receiver → this"]
+    N2 --> N3
+    N1 --> N2
 ```
 
 Распространённая ошибка: думать, что `apply()` сохраняет объект выполнения навсегда.
@@ -49,14 +51,15 @@ fn.apply(receiver, ...)
 
 Ответ:
 
-```text
-call(receiver, arg1, arg2)
-│
-└── arguments separately
-
-apply(receiver, [arg1, arg2])
-│
-└── arguments as one ordered argument list
+```mermaid
+flowchart TD
+    N1["call(receiver, arg1, arg2)"]
+    N2["arguments separately"]
+    N3["apply(receiver, [arg1, arg2])"]
+    N4["arguments as one ordered argument list"]
+    N1 --> N2
+    N1 --> N3
+    N3 --> N4
 ```
 
 Объяснение: `apply()` берет значения из array или array-like list по positions и передает их parameters.
@@ -73,10 +76,11 @@ apply(receiver, [arg1, arg2])
 
 Объяснение:
 
-```text
-functionObject.apply(receiver, values)
-│
-└── receiver -> this
+```mermaid
+flowchart TD
+    N1["functionObject.apply(receiver, values)"]
+    N2["receiver → this"]
+    N1 --> N2
 ```
 
 Распространённая ошибка: считать, что second argument влияет на `this`.
@@ -91,10 +95,13 @@ functionObject.apply(receiver, values)
 
 Объяснение:
 
-```text
-values[0] -> first parameter
-values[1] -> second parameter
-values[2] -> third parameter
+```mermaid
+flowchart TD
+    N1["values[0] → first parameter"]
+    N2["values[1] → second parameter"]
+    N3["values[2] → third parameter"]
+    N1 --> N2
+    N2 --> N3
 ```
 
 Распространённая ошибка: думать, что весь array попадает в первый parameter.
@@ -121,14 +128,15 @@ values[2] -> third parameter
 
 Объяснение:
 
-```text
-Already separate values
-│
-└── call()
-
-Already in array or array-like list
-│
-└── apply()
+```mermaid
+flowchart TD
+    N1["Already separate values"]
+    N2["call()"]
+    N3["Already in array or array-like list"]
+    N4["apply()"]
+    N1 --> N2
+    N1 --> N3
+    N3 --> N4
 ```
 
 Распространённая ошибка: использовать `apply()` везде механически.
@@ -149,10 +157,13 @@ GET https://api.example.test/users
 
 Сопоставление:
 
-```text
-apiClient       -> this
-requestParts[0] -> method
-requestParts[1] -> path
+```mermaid
+flowchart TD
+    N1["apiClient → this"]
+    N2["requestParts[0] → method"]
+    N3["requestParts[1] → path"]
+    N1 --> N2
+    N2 --> N3
 ```
 
 Объяснение: первый argument `apply()` выбирает объект выполнения. Второй argument содержит значения для parameters.
@@ -202,10 +213,13 @@ users-api: 200 /users
 
 Объяснение:
 
-```text
-serviceConfig -> this
-data[0]       -> status
-data[1]       -> path
+```mermaid
+flowchart TD
+    N1["serviceConfig → this"]
+    N2["data[0] → status"]
+    N3["data[1] → path"]
+    N1 --> N2
+    N2 --> N3
 ```
 
 Распространённая ошибка: перепутать объект выполнения и `data`.
@@ -224,11 +238,15 @@ true
 
 Объяснение:
 
-```text
-config           -> this
-responseParts[0] -> status
-responseParts[1] -> path
-responseParts[2] -> body
+```mermaid
+flowchart TD
+    N1["config → this"]
+    N2["responseParts[0] → status"]
+    N3["responseParts[1] → path"]
+    N4["responseParts[2] → body"]
+    N1 --> N2
+    N2 --> N3
+    N3 --> N4
 ```
 
 Все условия возвращают `true`.
@@ -269,11 +287,15 @@ formatRequest.apply(apiClient, ['POST', '/orders', '{"id":1}']);
 
 Объяснение:
 
-```text
-apiClient -> this
-array[0]  -> method
-array[1]  -> path
-array[2]  -> body
+```mermaid
+flowchart TD
+    N1["apiClient → this"]
+    N2["array[0] → method"]
+    N3["array[1] → path"]
+    N4["array[2] → body"]
+    N1 --> N2
+    N2 --> N3
+    N3 --> N4
 ```
 
 Распространённая ошибка: написать `apply(apiClient, 'POST', '/orders', body)`.
@@ -358,10 +380,13 @@ true
 
 Объяснение:
 
-```text
-config     -> this
-[response] -> argument list
-response   -> first parameter
+```mermaid
+flowchart TD
+    N1["config → this"]
+    N2["[response] → argument list"]
+    N3["response → first parameter"]
+    N1 --> N2
+    N2 --> N3
 ```
 
 Распространённая ошибка: поставить array with data на место объект выполнения.
@@ -488,20 +513,27 @@ true
 
 Сопоставление:
 
-```text
-buildRequest.apply(apiConfig, requestParts)
-│
-├── apiConfig       -> this
-├── requestParts[0] -> method
-├── requestParts[1] -> path
-└── requestParts[2] -> body
-
-validateRequest.apply(assertionConfig, responseParts)
-│
-├── assertionConfig -> this
-├── responseParts[0] -> status
-├── responseParts[1] -> path
-└── responseParts[2] -> body
+```mermaid
+flowchart TD
+    N1["buildRequest.apply(apiConfig, requestParts)"]
+    N2["apiConfig → this"]
+    N3["requestParts[0] → method"]
+    N4["requestParts[1] → path"]
+    N5["requestParts[2] → body"]
+    N6["validateRequest.apply(assertionConfig, responseParts)"]
+    N7["assertionConfig → this"]
+    N8["responseParts[0] → status"]
+    N9["responseParts[1] → path"]
+    N10["responseParts[2] → body"]
+    N1 --> N2
+    N1 --> N3
+    N1 --> N4
+    N1 --> N5
+    N1 --> N6
+    N6 --> N7
+    N6 --> N8
+    N6 --> N9
+    N6 --> N10
 ```
 
 Почему `apply()` удобен: arguments уже представлены arrays.

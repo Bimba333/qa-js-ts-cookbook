@@ -335,16 +335,17 @@ Engine сначала регистрирует имя, потом выполня
 
 Возможная схема:
 
-```text
-Test Context
-│
-└── Fixture Context
-    │
-    └── Helper Context
-        │
-        └── Utility Context
-            │
-            └── Runtime Error
+```mermaid
+flowchart TD
+    N1["Test Context"]
+    N2["Fixture Context"]
+    N3["Helper Context"]
+    N4["Utility Context"]
+    N5["Runtime Error"]
+    N1 --> N2
+    N2 --> N3
+    N3 --> N4
+    N4 --> N5
 ```
 
 Объяснение:
@@ -401,24 +402,27 @@ runScenario();
 
 Ожидаемая схема:
 
-```text
-Global Context
-│
-├── Creation Phase
-│   ├── register setupTestData
-│   └── register runScenario
-│
-└── Execution Phase
-    ├── console.log
-    └── call runScenario
-        │
-        ▼
-        runScenario Function Context
-        │
-        └── call setupTestData
-            │
-            ▼
-            setupTestData Function Context
+```mermaid
+flowchart TD
+    N1["Global Context"]
+    N2["Creation Phase"]
+    N3["register setupTestData"]
+    N4["register runScenario"]
+    N5["выполнение Phase"]
+    N6["console.log"]
+    N7["вызвать runScenario"]
+    N8["runScenario Function Context"]
+    N9["вызвать setupTestData"]
+    N10["setupTestData Function Context"]
+    N1 --> N2
+    N1 --> N3
+    N1 --> N4
+    N1 --> N5
+    N5 --> N6
+    N5 --> N7
+    N5 --> N8
+    N8 --> N9
+    N8 --> N10
 ```
 
 Объяснение:

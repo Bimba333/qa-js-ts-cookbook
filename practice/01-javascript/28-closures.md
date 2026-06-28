@@ -314,10 +314,11 @@ Returned function должна принимать `user` object и возвра�
 9. Проверьте helpers на нескольких объектах.
 10. Нарисуйте рядом с кодом ASCII-схему:
 
-```text
-validator function object
-│
-└── preserved lexical environment
+```mermaid
+flowchart TD
+    N1["validator function object"]
+    N2["preserved lexical environment"]
+    N1 --> N2
 ```
 
 Дополнительно объясните:

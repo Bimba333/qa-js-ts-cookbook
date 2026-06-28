@@ -122,16 +122,19 @@ Captured variable: `value`.
 
 Объяснение:
 
-```text
-createReader()
-│
-├── creates value
-├── creates readValue
-└── returns readValue
-
-reader()
-│
-└── reads value from preserved environment
+```mermaid
+flowchart TD
+    N1["createReader()"]
+    N2["создает value"]
+    N3["создает readValue"]
+    N4["возвращает readValue"]
+    N5["reader()"]
+    N6["reads value from preserved environment"]
+    N1 --> N2
+    N1 --> N3
+    N1 --> N4
+    N1 --> N5
+    N5 --> N6
 ```
 
 Распространённая ошибка: считать, что `value` исчезла сразу после `createReader()`.
@@ -154,12 +157,13 @@ true
 
 Объяснение:
 
-```text
-createValidator('admin')
-│
-└── expectedRole = 'admin'
-    │
-    └── captured by validateUser
+```mermaid
+flowchart TD
+    N1["createValidator('admin')"]
+    N2["expectedRole = 'admin'"]
+    N3["captured by validateUser"]
+    N1 --> N2
+    N2 --> N3
 ```
 
 Распространённая ошибка: искать `expectedRole` внутри object `user`.
@@ -201,14 +205,15 @@ createValidator('admin')
 
 Объяснение:
 
-```text
-first
-│
-└── count starts at 0
-
-second
-│
-└── count starts at 10
+```mermaid
+flowchart TD
+    N1["first"]
+    N2["count starts at 0"]
+    N3["second"]
+    N4["count starts at 10"]
+    N1 --> N2
+    N1 --> N3
+    N3 --> N4
 ```
 
 Каждый вызов `createCounter(start)` создает отдельное lexical environment.
@@ -227,38 +232,32 @@ second
 
 Ожидаемое время жизни без учета Closure:
 
-```text
-createTokenReader starts
-│
-▼
-token created
-│
-▼
-createTokenReader finishes
-│
-▼
-token expected to disappear
+```mermaid
+flowchart TD
+    N1["createTokenReader starts"]
+    N2["token created"]
+    N3["createTokenReader завершается"]
+    N4["token expected to disappear"]
+    N1 --> N2
+    N2 --> N3
+    N3 --> N4
 ```
 
 Фактическое время жизни:
 
-```text
-createTokenReader starts
-│
-▼
-token created
-│
-▼
-readToken function object created
-│
-▼
-readToken uses token
-│
-▼
-createTokenReader returns readToken
-│
-▼
-token remains available through preserved environment
+```mermaid
+flowchart TD
+    N1["createTokenReader starts"]
+    N2["token created"]
+    N3["readToken function object created"]
+    N4["readToken uses token"]
+    N5["createTokenReader возвращает readToken"]
+    N6["token remains available through preserved environment"]
+    N1 --> N2
+    N2 --> N3
+    N3 --> N4
+    N4 --> N5
+    N5 --> N6
 ```
 
 Объяснение: `token` нужен returned function, поэтому lexical environment с `token` сохраняется.
@@ -538,24 +537,25 @@ true
 
 Схема:
 
-```text
-validateOk
-│
-└── preserved lexical environment
-    │
-    └── expectedStatus = 200
-
-validateCreated
-│
-└── preserved lexical environment
-    │
-    └── expectedStatus = 201
-
-validateRequestId
-│
-└── preserved lexical environment
-    │
-    └── headerName = 'x-request-id'
+```mermaid
+flowchart TD
+    N1["validateOk"]
+    N2["preserved lexical environment"]
+    N3["expectedStatus = 200"]
+    N4["validateCreated"]
+    N5["preserved lexical environment"]
+    N6["expectedStatus = 201"]
+    N7["validateRequestId"]
+    N8["preserved lexical environment"]
+    N9["headerName = 'x-request-id'"]
+    N1 --> N2
+    N2 --> N3
+    N1 --> N4
+    N4 --> N5
+    N5 --> N6
+    N4 --> N7
+    N7 --> N8
+    N8 --> N9
 ```
 
 Объяснение: factory functions создают specialized helpers. Одни значения captured при создании helper, другие приходят позже как arguments.

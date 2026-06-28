@@ -38,12 +38,15 @@ Multiple variables can refer to the same object.
 
 Важно:
 
-```text
-Stack & Heap diagrams
-│
-├── help understand JavaScript behavior
-├── are useful mental maps
-└── are not exact descriptions of every JavaScript engine
+```mermaid
+flowchart TD
+    N1["Stack &amp; Heap diagrams"]
+    N2["help understand JavaScript behavior"]
+    N3["are useful mental maps"]
+    N4["are not exact descriptions of every JavaScript engine"]
+    N1 --> N2
+    N1 --> N3
+    N1 --> N4
 ```
 
 Главный вопрос этой главы:
@@ -156,12 +159,15 @@ then user sees updated property.
 
 С диаграммой:
 
-```text
-Stack-like area           Heap-like area
-───────────────           ──────────────
-user  ───────────────┐
-admin ───────────────┼──► Object A
-                     │    └── name: "Kate"
+```mermaid
+flowchart TD
+    N1["Stack-like area Heap-like area"]
+    N2["user ───────────────┐"]
+    N3["admin ───────────────┼ → Object A"]
+    N4["name: &quot;Kate&quot;"]
+    N1 --> N2
+    N2 --> N3
+    N3 --> N4
 ```
 
 Что эта диаграмма помогает понять?
@@ -193,19 +199,27 @@ Why did reassignment not change old object?
 
 Концептуальный обзор:
 
-```text
-Conceptual Memory Map
-│
-├── Stack-like area
-│   ├── local variable entries
-│   ├── primitive values in simple diagrams
-│   └── references to objects
-│
-└── Heap-like area
-    ├── object values
-    ├── arrays
-    ├── functions
-    └── nested object values
+```mermaid
+flowchart TD
+    N1["Conceptual Memory Map"]
+    N2["Stack-like area"]
+    N3["local variable entries"]
+    N4["primitive values in simple diagrams"]
+    N5["references to objects"]
+    N6["Heap-like area"]
+    N7["object values"]
+    N8["arrays"]
+    N9["функции"]
+    N10["nested object values"]
+    N1 --> N2
+    N1 --> N3
+    N1 --> N4
+    N1 --> N5
+    N1 --> N6
+    N6 --> N7
+    N6 --> N8
+    N6 --> N9
+    N6 --> N10
 ```
 
 Важно:
@@ -222,12 +236,15 @@ Stack in this chapter is a conceptual area where we draw active execution data: 
 
 Stack concept:
 
-```text
-Stack-like area
-│
-├── userName: "Anna"
-├── age: 30
-└── user: reference to Object A
+```mermaid
+flowchart TD
+    N1["Stack-like area"]
+    N2["userName: &quot;Anna&quot;"]
+    N3["age: 30"]
+    N4["user: reference to Object A"]
+    N1 --> N2
+    N1 --> N3
+    N1 --> N4
 ```
 
 Что помогает понять эта схема?
@@ -240,14 +257,15 @@ Which variables point to objects elsewhere in the diagram.
 
 This continues earlier chapters:
 
-```text
-Execution Context creates environment
-│
-Call Stack manages active contexts
-│
-Variables give named access
-│
-Stack diagram shows active names in a compact way
+```mermaid
+flowchart TD
+    N1["Execution Context создает environment"]
+    N2["Call Stack manages active contexts"]
+    N3["Variables give named access"]
+    N4["Stack diagram shows active names in a compact way"]
+    N1 --> N2
+    N2 --> N3
+    N3 --> N4
 ```
 
 Function call details are still high-level in this chapter. Execution Context and Call Stack internals were introduced earlier; here we only connect them to the conceptual memory picture.
@@ -258,16 +276,21 @@ Heap in this chapter is a conceptual area where we draw object значения.
 
 Heap concept:
 
-```text
-Heap-like area
-│
-├── Object A
-│   ├── name: "Anna"
-│   └── role: "user"
-│
-└── Object B
-    ├── name: "Kate"
-    └── role: "admin"
+```mermaid
+flowchart TD
+    N1["Heap-like area"]
+    N2["Object A"]
+    N3["name: &quot;Anna&quot;"]
+    N4["role: &quot;user&quot;"]
+    N5["Object B"]
+    N6["name: &quot;Kate&quot;"]
+    N7["role: &quot;admin&quot;"]
+    N1 --> N2
+    N1 --> N3
+    N1 --> N4
+    N1 --> N5
+    N5 --> N6
+    N5 --> N7
 ```
 
 Что помогает понять эта схема?
@@ -303,11 +326,13 @@ adminName = 'Kate';
 
 Концептуальная схема:
 
-```text
-Stack-like area
-│
-├── userName:  "Anna"
-└── adminName: "Kate"
+```mermaid
+flowchart TD
+    N1["Stack-like area"]
+    N2["userName: &quot;Anna&quot;"]
+    N3["adminName: &quot;Kate&quot;"]
+    N1 --> N2
+    N1 --> N3
 ```
 
 Что помогает понять эта схема?
@@ -319,20 +344,23 @@ Primitive assignment is shown as independent values in this model.
 
 Присваивание примитива:
 
-```text
-Step 1
-│
-└── userName: "Anna"
-
-Step 2: adminName = userName
-│
-├── userName:  "Anna"
-└── adminName: "Anna"
-
-Step 3: adminName = "Kate"
-│
-├── userName:  "Anna"
-└── adminName: "Kate"
+```mermaid
+flowchart TD
+    N1["Step 1"]
+    N2["userName: &quot;Anna&quot;"]
+    N3["Step 2: adminName = userName"]
+    N4["userName: &quot;Anna&quot;"]
+    N5["adminName: &quot;Anna&quot;"]
+    N6["Step 3: adminName = &quot;Kate&quot;"]
+    N7["userName: &quot;Anna&quot;"]
+    N8["adminName: &quot;Kate&quot;"]
+    N1 --> N2
+    N1 --> N3
+    N3 --> N4
+    N3 --> N5
+    N3 --> N6
+    N6 --> N7
+    N6 --> N8
 ```
 
 ### Object значения in the conceptual model
@@ -348,12 +376,15 @@ const user = {
 
 Концептуальная схема:
 
-```text
-Stack-like area           Heap-like area
-───────────────           ──────────────
-user ───────────────────► Object A
-                          ├── name: "Anna"
-                          └── role: "user"
+```mermaid
+flowchart TD
+    N1["Stack-like area Heap-like area"]
+    N2["user → Object A"]
+    N3["name: &quot;Anna&quot;"]
+    N4["role: &quot;user&quot;"]
+    N1 --> N2
+    N2 --> N3
+    N3 --> N4
 ```
 
 Что помогает понять эта схема?
@@ -368,24 +399,26 @@ Reference connects them.
 
 The core схема:
 
-```text
-Variable
-│
-▼
-Reference
-│
-▼
-Object
+```mermaid
+flowchart TD
+    N1["Variable"]
+    N2["Reference"]
+    N3["Object"]
+    N1 --> N2
+    N2 --> N3
 ```
 
 Expanded:
 
-```text
-Stack-like area           Heap-like area
-───────────────           ──────────────
-user ── reference ───────► Object A
-                          ├── name: "Anna"
-                          └── role: "user"
+```mermaid
+flowchart TD
+    N1["Stack-like area Heap-like area"]
+    N2["user ── reference → Object A"]
+    N3["name: &quot;Anna&quot;"]
+    N4["role: &quot;user&quot;"]
+    N1 --> N2
+    N2 --> N3
+    N3 --> N4
 ```
 
 Что помогает понять эта схема?
@@ -408,12 +441,15 @@ const admin = user;
 
 Object assignment схема:
 
-```text
-Stack-like area           Heap-like area
-───────────────           ──────────────
-user  ───────────────┐
-admin ───────────────┼──► Object A
-                     │    └── name: "Anna"
+```mermaid
+flowchart TD
+    N1["Stack-like area Heap-like area"]
+    N2["user ───────────────┐"]
+    N3["admin ───────────────┼ → Object A"]
+    N4["name: &quot;Anna&quot;"]
+    N1 --> N2
+    N2 --> N3
+    N3 --> N4
 ```
 
 Что помогает понять эта схема?
@@ -428,13 +464,17 @@ Both references lead to the same object.
 
 Shared object схема:
 
-```text
-Stack-like area           Heap-like area
-───────────────           ──────────────
-defaultUser ─────────┐
-testUser    ─────────┼──► Object A
-adminUser   ─────────┘    ├── email: "anna@example.com"
-                           └── role: "user"
+```mermaid
+flowchart TD
+    N1["Stack-like area Heap-like area"]
+    N2["defaultUser ─────────┐"]
+    N3["testUser ─────────┼ → Object A"]
+    N4["adminUser ─────────┘ ├── email: &quot;anna@example.com&quot;"]
+    N5["role: &quot;user&quot;"]
+    N1 --> N2
+    N3 --> N4
+    N2 --> N3
+    N4 --> N5
 ```
 
 Что помогает понять эта схема?
@@ -452,18 +492,23 @@ adminUser.role = 'admin';
 
 Mutation схема:
 
-```text
-Before
-│
-├── defaultUser ──┐
-└── adminUser   ──┼──► Object A
-                  │    └── role: "user"
-
-After adminUser.role = "admin"
-│
-├── defaultUser ──┐
-└── adminUser   ──┼──► Object A
-                  │    └── role: "admin"
+```mermaid
+flowchart TD
+    N1["Before"]
+    N2["defaultUser ──┐"]
+    N3["adminUser ──┼ → Object A"]
+    N4["role: &quot;user&quot;"]
+    N5["После: adminUser.role = &quot;admin&quot;"]
+    N6["defaultUser ──┐"]
+    N7["adminUser ──┼ → Object A"]
+    N8["role: &quot;admin&quot;"]
+    N1 --> N2
+    N1 --> N3
+    N1 --> N5
+    N5 --> N6
+    N5 --> N7
+    N3 --> N4
+    N7 --> N8
 ```
 
 Что помогает понять эта схема?
@@ -489,20 +534,25 @@ currentUser = {
 
 Reassignment схема:
 
-```text
-Before reassignment
-│
-├── currentUser ──┐
-└── firstUser   ──┼──► Object A
-                  │    └── name: "Anna"
-
-After reassignment
-│
-├── firstUser   ─────► Object A
-│                       └── name: "Anna"
-│
-└── currentUser ─────► Object B
-                        └── name: "Kate"
+```mermaid
+flowchart TD
+    N1["До: reassignment"]
+    N2["currentUser ──┐"]
+    N3["firstUser ──┼ → Object A"]
+    N4["name: &quot;Anna&quot;"]
+    N5["После: reassignment"]
+    N6["firstUser → Object A"]
+    N7["name: &quot;Anna&quot;"]
+    N8["currentUser → Object B"]
+    N9["name: &quot;Kate&quot;"]
+    N1 --> N2
+    N1 --> N3
+    N1 --> N5
+    N5 --> N6
+    N5 --> N7
+    N5 --> N8
+    N3 --> N4
+    N8 --> N9
 ```
 
 Что помогает понять эта схема?
@@ -531,23 +581,28 @@ updateRole(testUser);
 
 Function call high-level схема:
 
-```text
-Global active area        Heap-like area
-──────────────────        ──────────────
-testUser ───────────────► Object A
-                          └── role: "user"
-
-During updateRole(testUser)
-────────────────────────
-user ───────────────────► Object A
-                          └── role: "user"
+```mermaid
+flowchart TD
+    N1["Global active area Heap-like area"]
+    N2["testUser → Object A"]
+    N3["role: &quot;user&quot;"]
+    N4["During updateRole(testUser)"]
+    N5["user → Object A"]
+    N6["role: &quot;user&quot;"]
+    N1 --> N2
+    N2 --> N4
+    N4 --> N5
+    N2 --> N3
+    N5 --> N6
 ```
 
 After mutation:
 
-```text
-testUser ───────────────► Object A
-                          └── role: "admin"
+```mermaid
+flowchart TD
+    N1["testUser → Object A"]
+    N2["role: &quot;admin&quot;"]
+    N1 --> N2
 ```
 
 Что помогает понять эта схема?
@@ -573,12 +628,15 @@ const user = {
 
 Схема:
 
-```text
-Stack-like area           Heap-like area
-───────────────           ──────────────
-user ───────────────────► Object A
-                          └── profile ──► Object B
-                                          └── name: "Anna"
+```mermaid
+flowchart TD
+    N1["Stack-like area Heap-like area"]
+    N2["user → Object A"]
+    N3["profile → Object B"]
+    N4["name: &quot;Anna&quot;"]
+    N1 --> N2
+    N2 --> N3
+    N3 --> N4
 ```
 
 Что помогает понять эта схема?
@@ -603,14 +661,17 @@ const sameUser = firstUser;
 
 Схема:
 
-```text
-firstUser ──────────────► Object A
-                          └── name: "Anna"
-
-secondUser ─────────────► Object B
-                          └── name: "Anna"
-
-sameUser ───────────────► Object A
+```mermaid
+flowchart TD
+    N1["firstUser → Object A"]
+    N2["name: &quot;Anna&quot;"]
+    N3["secondUser → Object B"]
+    N4["name: &quot;Anna&quot;"]
+    N5["sameUser → Object A"]
+    N1 --> N3
+    N3 --> N5
+    N1 --> N2
+    N3 --> N4
 ```
 
 Что помогает понять эта схема?
@@ -639,42 +700,45 @@ console.log(user.name);
 
 Полная картина выполнения:
 
-```text
-1. Create object
-│
-▼
-Heap-like area
-└── Object A
-    └── name: "Anna"
-
-2. user refers to Object A
-│
-▼
-Stack-like area           Heap-like area
-user ───────────────────► Object A
-                          └── name: "Anna"
-
-3. admin receives same reference
-│
-▼
-user  ───────────────┐
-admin ───────────────┼──► Object A
-                     │    └── name: "Anna"
-
-4. admin.name = "Kate"
-│
-▼
-user  ───────────────┐
-admin ───────────────┼──► Object A
-                     │    └── name: "Kate"
-
-5. user.name
-│
-▼
-read name from Object A
-│
-▼
-"Kate"
+```mermaid
+flowchart TD
+    N1["1. Create object"]
+    N2["Heap-like area"]
+    N3["Object A"]
+    N4["name: &quot;Anna&quot;"]
+    N5["2. user refers to Object A"]
+    N6["Stack-like area Heap-like area"]
+    N7["user → Object A"]
+    N8["name: &quot;Anna&quot;"]
+    N9["3. admin receives same reference"]
+    N10["user ───────────────┐"]
+    N11["admin ───────────────┼ → Object A"]
+    N12["name: &quot;Anna&quot;"]
+    N13["4. admin.name = &quot;Kate&quot;"]
+    N14["user ───────────────┐"]
+    N15["admin ───────────────┼ → Object A"]
+    N16["name: &quot;Kate&quot;"]
+    N17["5. user.name"]
+    N18["read name from Object A"]
+    N19["&quot;Kate&quot;"]
+    N1 --> N2
+    N2 --> N3
+    N3 --> N4
+    N2 --> N5
+    N5 --> N6
+    N7 --> N9
+    N9 --> N10
+    N11 --> N13
+    N13 --> N14
+    N15 --> N17
+    N17 --> N18
+    N18 --> N19
+    N6 --> N7
+    N7 --> N8
+    N10 --> N11
+    N11 --> N12
+    N14 --> N15
+    N15 --> N16
 ```
 
 ---
@@ -685,44 +749,65 @@ read name from Object A
 
 Real engines are sophisticated:
 
-```text
-Real JavaScript engines
-│
-├── optimize code
-├── use internal representations
-├── may move data
-├── may inline or specialize operations
-└── do not have to match simple textbook diagrams literally
+```mermaid
+flowchart TD
+    N1["Real JavaScript engines"]
+    N2["optimize code"]
+    N3["use internal representations"]
+    N4["may move data"]
+    N5["may inline or specialize operations"]
+    N6["do not have to match simple textbook diagrams literally"]
+    N1 --> N2
+    N1 --> N3
+    N1 --> N4
+    N1 --> N5
+    N1 --> N6
 ```
 
 The model in this chapter is intentionally conceptual:
 
-```text
-Conceptual Stack & Heap model
-│
-├── explains observable behavior
-├── helps draw references
-├── helps debug shared mutation
-└── prepares for deeper memory management topics
+```mermaid
+flowchart TD
+    N1["Conceptual Stack &amp; Heap model"]
+    N2["explains observable behavior"]
+    N3["helps draw references"]
+    N4["helps debug shared mutation"]
+    N5["prepares for deeper memory management topics"]
+    N1 --> N2
+    N1 --> N3
+    N1 --> N4
+    N1 --> N5
 ```
 
 ### Текущее место в модели JavaScript
 
-```text
-JavaScript Engine
-│
-├── Runtime context
-├── Execution Context
-├── Call Stack
-├── Memory
-├── Variables
-├── Scope
-├── Lexical Environment
-├── Hoisting / TDZ
-├── Primitive Types
-├── Object Type
-├── References
-└── Stack & Heap conceptual diagrams
+```mermaid
+flowchart TD
+    N1["JavaScript Engine"]
+    N2["Runtime context"]
+    N3["Execution Context"]
+    N4["Call Stack"]
+    N5["Memory"]
+    N6["Variables"]
+    N7["Scope"]
+    N8["Lexical Environment"]
+    N9["Hoisting / TDZ"]
+    N10["Primitive Types"]
+    N11["Object Type"]
+    N12["References"]
+    N13["Stack &amp; Heap conceptual diagrams"]
+    N1 --> N2
+    N1 --> N3
+    N1 --> N4
+    N1 --> N5
+    N1 --> N6
+    N1 --> N7
+    N1 --> N8
+    N1 --> N9
+    N1 --> N10
+    N1 --> N11
+    N1 --> N12
+    N1 --> N13
 ```
 
 Что помогает понять эта схема?
@@ -734,30 +819,36 @@ We are learning a map for previously observed behavior.
 
 ### Myth vs reality
 
-```text
-Myth
-│
-└── "This exact Stack/Heap picture is how every engine stores everything."
-
-Reality
-│
-└── "This is a useful conceptual diagram for understanding behavior."
+```mermaid
+flowchart TD
+    N1["Myth"]
+    N2["&quot;This exact Stack/Heap picture is how every engine stores everything.&quot;"]
+    N3["Reality"]
+    N4["&quot;This is a useful conceptual diagram for understanding behavior.&quot;"]
+    N1 --> N2
+    N1 --> N3
+    N3 --> N4
 ```
 
 Myth vs reality схема:
 
-```text
-Simple diagram
-│
-├── good for reasoning
-├── good for debugging
-└── not exact implementation
-
-Real engine
-│
-├── more complex
-├── optimized
-└── implementation-specific
+```mermaid
+flowchart TD
+    N1["Simple diagram"]
+    N2["good for reasoning"]
+    N3["good for debugging"]
+    N4["not exact implementation"]
+    N5["Real engine"]
+    N6["more complex"]
+    N7["optimized"]
+    N8["implementation-specific"]
+    N1 --> N2
+    N1 --> N3
+    N1 --> N4
+    N1 --> N5
+    N5 --> N6
+    N5 --> N7
+    N5 --> N8
 ```
 
 ### Переход к Type Conversion
@@ -766,32 +857,30 @@ Stack & Heap explains how we visualize значения and object references.
 
 Next, the course shifts to another kind of поведение:
 
-```text
-Value exists
-│
-▼
-Operation expects another type
-│
-▼
-JavaScript may convert value
+```mermaid
+flowchart TD
+    N1["Value exists"]
+    N2["Operation expects another type"]
+    N3["JavaScript may convert value"]
+    N1 --> N2
+    N2 --> N3
 ```
 
 Переход к Equality and Type Conversion:
 
-```text
-Stack & Heap
-│
-└── Where do we draw values and references conceptually?
-    │
-    ▼
-Type Conversion
-│
-└── How do values transform between types?
-    │
-    ▼
-Equality
-│
-└── How does JavaScript compare values?
+```mermaid
+flowchart TD
+    N1["Stack &amp; Heap"]
+    N2["Where do we draw values and references conceptually?"]
+    N3["Type Conversion"]
+    N4["How do values transform between types?"]
+    N5["Equality"]
+    N6["How does JavaScript compare values?"]
+    N1 --> N2
+    N1 --> N3
+    N3 --> N4
+    N3 --> N5
+    N5 --> N6
 ```
 
 ---
@@ -802,18 +891,23 @@ Equality
 
 Stack-like area is like a desk. Heap-like area is like an archive.
 
-```text
-Desk
-│
-├── current notes
-├── active names
-└── sticky notes to folders
-
-Archive
-│
-├── folder: User A
-├── folder: Config
-└── folder: Payload
+```mermaid
+flowchart TD
+    N1["Desk"]
+    N2["current notes"]
+    N3["active names"]
+    N4["sticky notes to folders"]
+    N5["Archive"]
+    N6["folder: User A"]
+    N7["folder: Config"]
+    N8["folder: Payload"]
+    N1 --> N2
+    N1 --> N3
+    N1 --> N4
+    N1 --> N5
+    N5 --> N6
+    N5 --> N7
+    N5 --> N8
 ```
 
 Что помогает понять эта модель?
@@ -826,39 +920,49 @@ Notes point from desk to folders.
 
 ### Sticky notes pointing to folders
 
-```text
-Sticky note: user
-│
-└── points to folder "Object A"
-
-Folder Object A
-│
-├── name
-└── role
+```mermaid
+flowchart TD
+    N1["Sticky note: user"]
+    N2["points to folder &quot;Object A&quot;"]
+    N3["Folder Object A"]
+    N4["name"]
+    N5["role"]
+    N1 --> N2
+    N1 --> N3
+    N3 --> N4
+    N3 --> N5
 ```
 
 Multiple sticky notes can point to one folder:
 
-```text
-user note  ──┐
-admin note ──┼──► same folder
-test note  ──┘
+```mermaid
+flowchart TD
+    N1["user note ──┐"]
+    N2["admin note ──┼ → same folder"]
+    N3["test note ──┘"]
+    N1 --> N2
+    N2 --> N3
 ```
 
 ### Workspace and storage
 
-```text
-Workspace
-│
-├── currentUser
-├── expectedUser
-└── requestBody
-
-Storage
-│
-├── Object A
-├── Object B
-└── Object C
+```mermaid
+flowchart TD
+    N1["Workspace"]
+    N2["currentUser"]
+    N3["expectedUser"]
+    N4["requestBody"]
+    N5["Storage"]
+    N6["Object A"]
+    N7["Object B"]
+    N8["Object C"]
+    N1 --> N2
+    N1 --> N3
+    N1 --> N4
+    N1 --> N5
+    N5 --> N6
+    N5 --> N7
+    N5 --> N8
 ```
 
 The workspace shows what is active. Storage shows grouped objects.
@@ -867,25 +971,28 @@ The workspace shows what is active. Storage shows grouped objects.
 
 Reference is like an index card:
 
-```text
-Index card
-│
-├── label: currentUser
-└── points to: Object A
-
-Object A
-│
-└── actual grouped data
+```mermaid
+flowchart TD
+    N1["Index card"]
+    N2["label: currentUser"]
+    N3["points to: Object A"]
+    N4["Object A"]
+    N5["actual grouped data"]
+    N1 --> N2
+    N1 --> N3
+    N1 --> N4
+    N4 --> N5
 ```
 
 ### Концептуальная карта
 
 Best mental model:
 
-```text
-Stack & Heap diagram
-│
-└── map, not territory
+```mermaid
+flowchart TD
+    N1["Stack &amp; Heap diagram"]
+    N2["map, not territory"]
+    N1 --> N2
 ```
 
 The map helps navigate. It is not the full physical world.
@@ -1004,9 +1111,11 @@ Do not overclaim implementation.
 
 Неправильно:
 
-```text
-user  ──► Object A
-admin ──► Object B
+```mermaid
+flowchart TD
+    N1["user → Object A"]
+    N2["admin → Object B"]
+    N1 --> N2
 ```
 
 Для:
@@ -1017,9 +1126,11 @@ const admin = user;
 
 Лучше:
 
-```text
-user  ──┐
-admin ──┘──► Object A
+```mermaid
+flowchart TD
+    N1["user ──┐"]
+    N2["admin ──┘ → Object A"]
+    N1 --> N2
 ```
 
 ### Ошибка 3. Confuse reassignment with mutation
@@ -1095,10 +1206,13 @@ adminPayload.role = 'admin';
 
 Схема:
 
-```text
-defaultPayload ──┐
-adminPayload   ──┘──► Object A
-                       └── role: "admin"
+```mermaid
+flowchart TD
+    N1["defaultPayload ──┐"]
+    N2["adminPayload ──┘ → Object A"]
+    N3["role: &quot;admin&quot;"]
+    N1 --> N2
+    N2 --> N3
 ```
 
 This explains why default request body changed unexpectedly.
@@ -1107,9 +1221,11 @@ This explains why default request body changed unexpectedly.
 
 A fixture may return object. If test mutates it, another part of setup may observe changed состояние if same object is reused.
 
-```text
-fixtureData ──┐
-testData    ──┘──► Object A
+```mermaid
+flowchart TD
+    N1["fixtureData ──┐"]
+    N2["testData ──┘ → Object A"]
+    N1 --> N2
 ```
 
 ### Object reuse
@@ -1165,23 +1281,26 @@ They do not precisely describe every JavaScript engine.
 
 Core mental model:
 
-```text
-Stack-like area
-│
-└── active variable entries and references
-
-Heap-like area
-│
-└── object values in conceptual diagrams
+```mermaid
+flowchart TD
+    N1["Stack-like area"]
+    N2["active variable entries and references"]
+    N3["Heap-like area"]
+    N4["object values in conceptual diagrams"]
+    N1 --> N2
+    N1 --> N3
+    N3 --> N4
 ```
 
 Use this model as a map:
 
-```text
-Good map
-│
-├── helps navigate
-└── does not replace real territory
+```mermaid
+flowchart TD
+    N1["Good map"]
+    N2["helps navigate"]
+    N3["does not replace real territory"]
+    N1 --> N2
+    N1 --> N3
 ```
 
 Next chapter moves from memory visualization to value transformation: Type Conversion.

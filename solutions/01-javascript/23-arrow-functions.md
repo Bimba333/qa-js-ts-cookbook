@@ -658,11 +658,15 @@ Cleanup helper остается явным.
 
 Ответ:
 
-```text
-короткий validator, который возвращает boolean → implicit return
-длинная проверка из нескольких действий → block body with explicit steps
-helper с понятным именем и одним console.log → arrow with block body
-сложная проверка с условием → readable block body
+```mermaid
+flowchart TD
+    N1["короткий validator, который возвращает boolean → implicit return"]
+    N2["длинная проверка из нескольких действий → block body with explicit steps"]
+    N3["helper с понятным именем и одним console.log → arrow with block body"]
+    N4["сложная проверка с условием → readable block body"]
+    N1 --> N2
+    N2 --> N3
+    N3 --> N4
 ```
 
 Объяснение:

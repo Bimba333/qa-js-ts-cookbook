@@ -20,10 +20,11 @@
 
 Объяснение:
 
-```text
-apiClient.buildUrl('/users')
-│
-└── receiver: apiClient
+```mermaid
+flowchart TD
+    N1["apiClient.buildUrl('/users')"]
+    N2["receiver: apiClient"]
+    N1 --> N2
 ```
 
 Распространённая ошибка: путать объект выполнения с function object.
@@ -38,14 +39,15 @@ apiClient.buildUrl('/users')
 
 Объяснение:
 
-```text
-Function creation
-│
-└── creates function object
-
-Function invocation
-│
-└── determines this
+```mermaid
+flowchart TD
+    N1["Function creation"]
+    N2["создает function object"]
+    N3["Function invocation"]
+    N4["determines this"]
+    N1 --> N2
+    N1 --> N3
+    N3 --> N4
 ```
 
 Распространённая ошибка: искать `this` по месту объявления функции.
@@ -72,14 +74,15 @@ Function invocation
 
 Объяснение:
 
-```text
-object.method()
-│
-└── receiver: object
-
-functionName()
-│
-└── receiver: none
+```mermaid
+flowchart TD
+    N1["object.method()"]
+    N2["receiver: object"]
+    N3["functionName()"]
+    N4["receiver: none"]
+    N1 --> N2
+    N1 --> N3
+    N3 --> N4
 ```
 
 Распространённая ошибка: ожидать, что standalone call сохранит объект выполнения от прежнего object.
@@ -123,14 +126,15 @@ method();
 
 Ответ:
 
-```text
-Closure
-│
-└── which variables are available?
-
-this
-│
-└── who is the current receiver?
+```mermaid
+flowchart TD
+    N1["Closure"]
+    N2["which variables are available?"]
+    N3["this"]
+    N4["who is the current receiver?"]
+    N1 --> N2
+    N1 --> N3
+    N3 --> N4
 ```
 
 Объяснение: Closure связана с Lexical Environment, где function object был создан. `this` связан с тем, как function object был вызван.
@@ -180,14 +184,15 @@ second
 
 Объяснение:
 
-```text
-firstClient.printName()
-│
-└── this -> firstClient
-
-secondClient.printName()
-│
-└── this -> secondClient
+```mermaid
+flowchart TD
+    N1["firstClient.printName()"]
+    N2["this → firstClient"]
+    N3["secondClient.printName()"]
+    N4["this → secondClient"]
+    N1 --> N2
+    N1 --> N3
+    N3 --> N4
 ```
 
 Распространённая ошибка: думать, что функция навсегда привязана к `firstClient`, потому что была взята из `firstClient.printName`.
@@ -224,10 +229,11 @@ true
 
 Объяснение:
 
-```text
-response.isSuccessful()
-│
-└── this -> response
+```mermaid
+flowchart TD
+    N1["response.isSuccessful()"]
+    N2["this → response"]
+    N1 --> N2
 ```
 
 `this.status` равен `200`.
@@ -244,14 +250,15 @@ response.isSuccessful()
 
 Объяснение:
 
-```text
-const format = helper.format
-│
-└── function object extracted
-
-format('Failed')
-│
-└── receiver: none
+```mermaid
+flowchart TD
+    N1["const format = helper.format"]
+    N2["function object extracted"]
+    N3["format('Failed')"]
+    N4["receiver: none"]
+    N1 --> N2
+    N1 --> N3
+    N3 --> N4
 ```
 
 В strict mode `this` равен `undefined`, поэтому `this.prefix` вызывает ошибку.
@@ -278,14 +285,15 @@ admin: Anna
 
 Объяснение:
 
-```text
-createPrinter('admin')
-│
-└── printName function object references lexical environment with prefix
-
-user.print()
-│
-└── this -> user
+```mermaid
+flowchart TD
+    N1["createPrinter('admin')"]
+    N2["printName function object references lexical environment with prefix"]
+    N3["user.print()"]
+    N4["this → user"]
+    N1 --> N2
+    N1 --> N3
+    N3 --> N4
 ```
 
 Closure отвечает:
@@ -312,14 +320,15 @@ Who is the current receiver?
 
 Ответ:
 
-```text
-apiClient.buildUrl('/users')
-│
-└── receiver: apiClient
-
-buildUrl('/orders')
-│
-└── receiver: none
+```mermaid
+flowchart TD
+    N1["apiClient.buildUrl('/users')"]
+    N2["receiver: apiClient"]
+    N3["buildUrl('/orders')"]
+    N4["receiver: none"]
+    N1 --> N2
+    N1 --> N3
+    N3 --> N4
 ```
 
 Объяснение: в обычной модели `object.method()` первый вызов имеет объект выполнения `apiClient`. Второй вызов идет через standalone variable, поэтому объект выполнения не выбирается как object method объект выполнения.
@@ -514,14 +523,15 @@ users-api: expected 200, received 500
 
 Схема:
 
-```text
-responseHelper.formatError(response)
-│
-└── this -> responseHelper
-
-formatError(response)
-│
-└── this -> undefined in strict mode
+```mermaid
+flowchart TD
+    N1["responseHelper.formatError(response)"]
+    N2["this → responseHelper"]
+    N3["formatError(response)"]
+    N4["this → undefined in strict mode"]
+    N1 --> N2
+    N1 --> N3
+    N3 --> N4
 ```
 
 Объяснение: `responseHelper.formatError()` имеет объект выполнения. `formatError()` после извлечения вызывается как standalone function.

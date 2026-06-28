@@ -14,14 +14,13 @@ Scope answers:
 
 Мы уже умеем мысленно выполнять поиск:
 
-```text
-Current Scope
-│
-▼
-Parent Scope
-│
-▼
-Global Scope
+```mermaid
+flowchart TD
+    N1["Current Scope"]
+    N2["Parent Scope"]
+    N3["Global Scope"]
+    N1 --> N2
+    N2 --> N3
 ```
 
 Теперь появляется следующий вопрос:
@@ -137,39 +136,45 @@ https://example.com/login
 
 Из главы про Scope мы знаем:
 
-```text
-path
-│
-└── found in Function Scope
-
-baseUrl
-│
-└── not found in Function Scope
-    │
-    ▼
-    found in Global Scope
+```mermaid
+flowchart TD
+    N1["path"]
+    N2["found in Function Scope"]
+    N3["baseUrl"]
+    N4["not found in Function Scope"]
+    N5["found in Global Scope"]
+    N1 --> N2
+    N1 --> N3
+    N3 --> N4
+    N3 --> N5
 ```
 
 Теперь вопрос глубже:
 
-```text
-How does the engine remember:
-│
-├── Function Scope has path
-├── Global Scope has baseUrl
-└── Function Scope is connected to Global Scope?
+```mermaid
+flowchart TD
+    N1["How does the engine remember:"]
+    N2["Function Scope has path"]
+    N3["Global Scope has baseUrl"]
+    N4["Function Scope is connected to Global Scope?"]
+    N1 --> N2
+    N1 --> N3
+    N1 --> N4
 ```
 
 Если представить Scope только как правило, модель неполная. Правило должно быть реализовано какой-то внутренней структурой.
 
-```text
-Scope rule:
-"Search current scope, then outer scope."
-│
-▼
-Engine needs structure:
-"Where are current identifiers stored?"
-"Where is outer scope recorded?"
+```mermaid
+flowchart TD
+    N1["Scope rule:"]
+    N2["&quot;Search current scope, then outer scope.&quot;"]
+    N3["Engine needs structure:"]
+    N4["&quot;Where are current identifiers stored?&quot;"]
+    N5["&quot;Where is outer scope recorded?&quot;"]
+    N2 --> N3
+    N1 --> N2
+    N3 --> N4
+    N4 --> N5
 ```
 
 Главный вопрос главы:
@@ -191,14 +196,13 @@ Identifier not visible there.
 
 Но engine не может работать с абстрактным словом "видимость". Во время выполнения ему нужна конкретная внутренняя организация:
 
-```text
-Current code asks for identifier
-│
-▼
-Engine needs a record of current identifiers
-│
-▼
-If not found, engine needs a link to outer identifiers
+```mermaid
+flowchart TD
+    N1["Current code asks for identifier"]
+    N2["Engine needs a record of current identifiers"]
+    N3["If not found, engine needs a link to outer identifiers"]
+    N1 --> N2
+    N2 --> N3
 ```
 
 Без такой структуры engine не смог бы ответить:
@@ -229,18 +233,19 @@ buildLoginUrl();
 
 Во время выполнения `fullUrl` engine должен сделать поиск:
 
-```text
-fullUrl
-│
-└── current function information
-
-path
-│
-└── current function information
-
-baseUrl
-│
-└── outer global information
+```mermaid
+flowchart TD
+    N1["fullUrl"]
+    N2["current function information"]
+    N3["path"]
+    N4["current function information"]
+    N5["baseUrl"]
+    N6["outer global information"]
+    N1 --> N2
+    N1 --> N3
+    N3 --> N4
+    N3 --> N5
+    N5 --> N6
 ```
 
 Значит, для function execution у engine есть не только code и call stack frame. Ему нужна таблица local identifiers и ссылка outward.
@@ -253,24 +258,30 @@ Lexical Environment — концептуальная внутренняя стр
 
 Коротко:
 
-```text
-Lexical Environment
-│
-├── Environment Record
-└── Outer Environment Reference
+```mermaid
+flowchart TD
+    N1["Lexical Environment"]
+    N2["Environment Record"]
+    N3["Outer Environment Reference"]
+    N1 --> N2
+    N1 --> N3
 ```
 
 Overview:
 
-```text
-Lexical Environment
-│
-├── Environment Record
-│   ├── identifier: value/access info
-│   └── identifier: value/access info
-│
-└── Outer Environment Reference
-    └── link to outer Lexical Environment
+```mermaid
+flowchart TD
+    N1["Lexical Environment"]
+    N2["Environment Record"]
+    N3["identifier: value/access info"]
+    N4["identifier: value/access info"]
+    N5["Outer Environment Reference"]
+    N6["link to outer Lexical Environment"]
+    N1 --> N2
+    N1 --> N3
+    N1 --> N4
+    N1 --> N5
+    N5 --> N6
 ```
 
 Главная модель:
@@ -302,12 +313,15 @@ const testName = 'login';
 
 Концептуально:
 
-```text
-Global Lexical Environment
-│
-└── Environment Record
-    ├── baseUrl  → "https://example.com"
-    └── testName → "login"
+```mermaid
+flowchart TD
+    N1["Global Lexical Environment"]
+    N2["Environment Record"]
+    N3["baseUrl → &quot;https://example.com&quot;"]
+    N4["testName → &quot;login&quot;"]
+    N1 --> N2
+    N2 --> N3
+    N2 --> N4
 ```
 
 Для функции:
@@ -320,11 +334,13 @@ function buildLoginUrl() {
 
 Концептуально:
 
-```text
-Function Lexical Environment
-│
-└── Environment Record
-    └── path → "/login"
+```mermaid
+flowchart TD
+    N1["Function Lexical Environment"]
+    N2["Environment Record"]
+    N3["path → &quot;/login&quot;"]
+    N1 --> N2
+    N2 --> N3
 ```
 
 Environment Record — это не "объект, который вы можете вывести в console". Это conceptual model of internal records.
@@ -333,38 +349,43 @@ Environment Record — это не "объект, который вы может
 
 Outer Environment Reference — ссылка из текущего Lexical Environment на внешний Lexical Environment.
 
-```text
-Function Lexical Environment
-│
-├── Environment Record
-│   └── path → "/login"
-│
-└── Outer Environment Reference
-    └── Global Lexical Environment
+```mermaid
+flowchart TD
+    N1["Function Lexical Environment"]
+    N2["Environment Record"]
+    N3["path → &quot;/login&quot;"]
+    N4["Outer Environment Reference"]
+    N5["Global Lexical Environment"]
+    N1 --> N2
+    N1 --> N3
+    N1 --> N4
+    N4 --> N5
 ```
 
 Для global environment outer reference обычно указывает на отсутствие внешнего environment:
 
-```text
-Global Lexical Environment
-│
-├── Environment Record
-│   └── baseUrl → "https://example.com"
-│
-└── Outer Environment Reference
-    └── null
+```mermaid
+flowchart TD
+    N1["Global Lexical Environment"]
+    N2["Environment Record"]
+    N3["baseUrl → &quot;https://example.com&quot;"]
+    N4["Outer Environment Reference"]
+    N5["null"]
+    N1 --> N2
+    N1 --> N3
+    N1 --> N4
+    N4 --> N5
 ```
 
 Это и есть внутренняя основа outward lookup.
 
-```text
-Identifier not found here
-│
-▼
-Follow Outer Environment Reference
-│
-▼
-Search outer Environment Record
+```mermaid
+flowchart TD
+    N1["Identifier not found here"]
+    N2["Follow Outer Environment Reference"]
+    N3["Search outer Environment Record"]
+    N1 --> N2
+    N2 --> N3
 ```
 
 ### Linked environments
@@ -387,54 +408,62 @@ function buildLoginUrl() {
 
 Диаграмма:
 
-```text
-Block Lexical Environment
-│
-├── Record: fullUrl
-└── Outer → Function Lexical Environment
-             │
-             ├── Record: path
-             └── Outer → Global Lexical Environment
-                          │
-                          ├── Record: baseUrl, buildLoginUrl
-                          └── Outer → null
+```mermaid
+flowchart TD
+    N1["Block Lexical Environment"]
+    N2["Record: fullUrl"]
+    N3["Outer → Function Lexical Environment"]
+    N4["Record: path"]
+    N5["Outer → Global Lexical Environment"]
+    N6["Record: baseUrl, buildLoginUrl"]
+    N7["Outer → null"]
+    N1 --> N2
+    N1 --> N3
+    N1 --> N4
+    N1 --> N6
+    N4 --> N5
+    N6 --> N7
 ```
 
 Это linked folders:
 
-```text
-Folder: Block
-│
-└── link to Folder: Function
-    │
-    └── link to Folder: Global
+```mermaid
+flowchart TD
+    N1["Folder: Block"]
+    N2["link to Folder: Function"]
+    N3["link to Folder: Global"]
+    N1 --> N2
+    N2 --> N3
 ```
 
 Scope Chain из предыдущей главы теперь получает внутреннюю основу:
 
-```text
-Scope Chain
-│
-└── conceptual view
-
-Linked Lexical Environments
-│
-└── internal structure behind that view
+```mermaid
+flowchart TD
+    N1["Scope Chain"]
+    N2["conceptual view"]
+    N3["Linked Lexical Environments"]
+    N4["internal structure behind that view"]
+    N1 --> N2
+    N1 --> N3
+    N3 --> N4
 ```
 
 ### Relationship with Scope
 
 Scope — правило видимости. Lexical Environment — структура, которая позволяет это правило выполнять.
 
-```text
-Scope
-│
-└── "identifier is visible here"
-
-Lexical Environment
-│
-├── record stores identifiers here
-└── outer reference links to visible outer names
+```mermaid
+flowchart TD
+    N1["Scope"]
+    N2["&quot;identifier is visible here&quot;"]
+    N3["Lexical Environment"]
+    N4["record stores identifiers here"]
+    N5["outer reference links to visible outer names"]
+    N1 --> N2
+    N1 --> N3
+    N3 --> N4
+    N3 --> N5
 ```
 
 Пример:
@@ -455,55 +484,65 @@ Function can access outer global identifier.
 
 Lexical Environment explanation:
 
-```text
-Function Lexical Environment
-│
-└── Outer Reference → Global Lexical Environment
-                       └── Record has baseUrl
+```mermaid
+flowchart TD
+    N1["Function Lexical Environment"]
+    N2["Outer Reference → Global Lexical Environment"]
+    N3["Record has baseUrl"]
+    N1 --> N2
+    N2 --> N3
 ```
 
 ### Relationship with Execution Context
 
 Execution Context — рабочая среда выполнения. Lexical Environment — важная часть этой среды, связанная с identifiers и scope lookup.
 
-```text
-Execution Context
-│
-├── code execution state
-├── Lexical Environment
-└── other internal information
+```mermaid
+flowchart TD
+    N1["Execution Context"]
+    N2["code выполнение state"]
+    N3["Lexical Environment"]
+    N4["other internal information"]
+    N1 --> N2
+    N1 --> N3
+    N1 --> N4
 ```
 
 Для global execution:
 
-```text
-Global Execution Context
-│
-└── Global Lexical Environment
-    ├── Record: global identifiers
-    └── Outer: null
+```mermaid
+flowchart TD
+    N1["Global Execution Context"]
+    N2["Global Lexical Environment"]
+    N3["Record: global identifiers"]
+    N4["Outer: null"]
+    N1 --> N2
+    N2 --> N3
+    N2 --> N4
 ```
 
 Для function execution:
 
-```text
-Function Execution Context
-│
-└── Function Lexical Environment
-    ├── Record: function-local identifiers
-    └── Outer: lexical outer environment
+```mermaid
+flowchart TD
+    N1["Function Execution Context"]
+    N2["Function Lexical Environment"]
+    N3["Record: function-local identifiers"]
+    N4["Outer: lexical outer environment"]
+    N1 --> N2
+    N2 --> N3
+    N2 --> N4
 ```
 
 Что engine делает прямо сейчас:
 
-```text
-Active Execution Context
-│
-▼
-uses its Lexical Environment
-│
-▼
-resolves identifiers
+```mermaid
+flowchart TD
+    N1["Active Execution Context"]
+    N2["uses its Lexical Environment"]
+    N3["resolves identifiers"]
+    N1 --> N2
+    N2 --> N3
 ```
 
 ### Relationship with Variables
@@ -517,17 +556,19 @@ let status = 'created';
 
 Концептуально:
 
-```text
-Variable declarations
-│
-├── const userName
-└── let status
-        │
-        ▼
-Environment Record
-│
-├── userName → "Anna"
-└── status   → "created"
+```mermaid
+flowchart TD
+    N1["Variable declarations"]
+    N2["const userName"]
+    N3["let status"]
+    N4["Environment Record"]
+    N5["userName → &quot;Anna&quot;"]
+    N6["status → &quot;created&quot;"]
+    N1 --> N2
+    N1 --> N3
+    N1 --> N4
+    N4 --> N5
+    N4 --> N6
 ```
 
 При reassignment:
@@ -538,11 +579,13 @@ status = 'ready';
 
 Модель:
 
-```text
-Environment Record
-│
-├── userName → "Anna"
-└── status   → "ready"
+```mermaid
+flowchart TD
+    N1["Environment Record"]
+    N2["userName → &quot;Anna&quot;"]
+    N3["status → &quot;ready&quot;"]
+    N1 --> N2
+    N1 --> N3
 ```
 
 `const`, `let`, `var` имеют разные правила регистрации и доступа. Hoisting и TDZ объяснят часть этих различий позже.
@@ -551,28 +594,32 @@ Environment Record
 
 Memory хранит information. Lexical Environment хранит records named access к этой information.
 
-```text
-Memory
-│
-└── stores values / information
-
-Lexical Environment
-│
-└── records identifiers and how to access information
+```mermaid
+flowchart TD
+    N1["Memory"]
+    N2["stores values / information"]
+    N3["Lexical Environment"]
+    N4["records identifiers and how to access information"]
+    N1 --> N2
+    N1 --> N3
+    N3 --> N4
 ```
 
 Учебная схема:
 
-```text
-Environment Record
-│
-├── baseUrl  → stored information
-└── testName → stored information
-
-Memory
-│
-├── "https://example.com"
-└── "login"
+```mermaid
+flowchart TD
+    N1["Environment Record"]
+    N2["baseUrl → stored information"]
+    N3["testName → stored information"]
+    N4["Memory"]
+    N5["&quot;https://example.com&quot;"]
+    N6["&quot;login&quot;"]
+    N1 --> N2
+    N1 --> N3
+    N1 --> N4
+    N4 --> N5
+    N4 --> N6
 ```
 
 Это не физическая карта памяти. Это conceptual relationship: Lexical Environment помогает engine понять, какой identifier к какой stored information относится.
@@ -581,32 +628,41 @@ Memory
 
 Call Stack показывает active Execution Context.
 
-```text
-Call Stack
-├── Function Execution Context
-└── Global Execution Context
+```mermaid
+flowchart TD
+    N1["Call Stack"]
+    N2["Function Execution Context"]
+    N3["Global Execution Context"]
+    N1 --> N2
+    N1 --> N3
 ```
 
 Каждый relevant Execution Context имеет свою Lexical Environment information.
 
-```text
-Call Stack
-├── Function Execution Context
-│   └── Lexical Environment: function record + outer link
-└── Global Execution Context
-    └── Lexical Environment: global record
+```mermaid
+flowchart TD
+    N1["Call Stack"]
+    N2["Function Execution Context"]
+    N3["Lexical Environment: function record + outer link"]
+    N4["Global Execution Context"]
+    N5["Lexical Environment: global record"]
+    N1 --> N2
+    N1 --> N3
+    N1 --> N4
+    N4 --> N5
 ```
 
 Что важно:
 
-```text
-Call Stack
-│
-└── answers "what is executing now?"
-
-Lexical Environment
-│
-└── answers "how are identifiers resolved now?"
+```mermaid
+flowchart TD
+    N1["Call Stack"]
+    N2["answers &quot;what is executing now?&quot;"]
+    N3["Lexical Environment"]
+    N4["answers &quot;how are identifiers resolved now?&quot;"]
+    N1 --> N2
+    N1 --> N3
+    N3 --> N4
 ```
 
 Это разные механизмы, но они работают вместе во время execution.
@@ -628,68 +684,66 @@ function buildLoginUrl() {
 
 Lookup для `fullUrl`:
 
-```text
-Current Lexical Environment: buildLoginUrl
-│
-└── Environment Record has fullUrl
-    │
-    ▼
-    use fullUrl
+```mermaid
+flowchart TD
+    N1["Current Lexical Environment: buildLoginUrl"]
+    N2["Environment Record has fullUrl"]
+    N3["use fullUrl"]
+    N1 --> N2
+    N1 --> N3
 ```
 
 Lookup для `path`:
 
-```text
-Current Lexical Environment: buildLoginUrl
-│
-└── Environment Record has path
-    │
-    ▼
-    use path
+```mermaid
+flowchart TD
+    N1["Current Lexical Environment: buildLoginUrl"]
+    N2["Environment Record has path"]
+    N3["use path"]
+    N1 --> N2
+    N1 --> N3
 ```
 
 Lookup для `baseUrl`:
 
-```text
-Current Lexical Environment: buildLoginUrl
-│
-└── Record does not have baseUrl
-    │
-    ▼
-    Outer Environment Reference
-    │
-    ▼
-    Global Lexical Environment
-    │
-    └── Record has baseUrl
-        │
-        ▼
-        use baseUrl
+```mermaid
+flowchart TD
+    N1["Current Lexical Environment: buildLoginUrl"]
+    N2["Record does not have baseUrl"]
+    N3["Outer Environment Reference"]
+    N4["Global Lexical Environment"]
+    N5["Record has baseUrl"]
+    N6["use baseUrl"]
+    N1 --> N2
+    N1 --> N3
+    N1 --> N4
+    N4 --> N5
+    N4 --> N6
 ```
 
 Полный процесс поиска:
 
-```text
-Identifier requested
-│
-▼
-Current Lexical Environment
-│
-├── Environment Record has identifier?
-│   └── yes → use it
-│
-└── no
-    │
-    ▼
-    Outer Environment Reference
-    │
-    ▼
-    Outer Lexical Environment
-    │
-    ├── Environment Record has identifier?
-    │   └── yes → use it
-    │
-    └── no → continue outward or fail
+```mermaid
+flowchart TD
+    N1["Identifier requested"]
+    N2["Current Lexical Environment"]
+    N3["Environment Record has identifier?"]
+    N4["да → use it"]
+    N5["нет"]
+    N6["Outer Environment Reference"]
+    N7["Outer Lexical Environment"]
+    N8["Environment Record has identifier?"]
+    N9["да → use it"]
+    N10["нет → продолжить outward or fail"]
+    N1 --> N2
+    N2 --> N3
+    N2 --> N4
+    N2 --> N5
+    N2 --> N6
+    N2 --> N7
+    N7 --> N8
+    N7 --> N9
+    N7 --> N10
 ```
 
 ### Nested environments
@@ -714,81 +768,80 @@ function testLogin() {
 
 Схема:
 
-```text
-Block Lexical Environment
-│
-├── Record
-│   └── expectedStatus
-│
-└── Outer → Function Lexical Environment
-             │
-             ├── Record
-             │   └── userName
-             │
-             └── Outer → Global Lexical Environment
-                          │
-                          ├── Record
-                          │   ├── baseUrl
-                          │   └── testLogin
-                          │
-                          └── Outer → null
+```mermaid
+flowchart TD
+    N1["Block Lexical Environment"]
+    N2["Record"]
+    N3["expectedStatus"]
+    N4["Outer → Function Lexical Environment"]
+    N5["Record"]
+    N6["userName"]
+    N7["Outer → Global Lexical Environment"]
+    N8["Record"]
+    N9["baseUrl"]
+    N10["testLogin"]
+    N11["Outer → null"]
+    N1 --> N2
+    N1 --> N3
+    N1 --> N4
+    N1 --> N5
+    N1 --> N7
+    N1 --> N8
+    N1 --> N11
+    N5 --> N6
+    N8 --> N9
+    N9 --> N10
 ```
 
 This is the chain of records:
 
-```text
-expectedStatus record
-│
-▼
-userName record
-│
-▼
-baseUrl record
+```mermaid
+flowchart TD
+    N1["expectedStatus record"]
+    N2["userName record"]
+    N3["baseUrl record"]
+    N1 --> N2
+    N2 --> N3
 ```
 
 ### Текущее место главы в модели JavaScript
 
 Теперь модель выполнения стала глубже:
 
-```text
-Source Code
-│
-▼
-Engine preparation
-│
-▼
-Execution Context
-│
-├── Lexical Environment
-│   ├── Environment Record
-│   └── Outer Environment Reference
-│
-▼
-Call Stack manages active contexts
-│
-▼
-Identifier lookup uses Lexical Environments
+```mermaid
+flowchart TD
+    N1["исходный код"]
+    N2["Engine preparation"]
+    N3["Execution Context"]
+    N4["Lexical Environment"]
+    N5["Environment Record"]
+    N6["Outer Environment Reference"]
+    N7["Call Stack manages active contexts"]
+    N8["Identifier lookup uses Lexical Environments"]
+    N1 --> N2
+    N2 --> N3
+    N3 --> N4
+    N3 --> N5
+    N3 --> N6
+    N3 --> N7
+    N7 --> N8
 ```
 
 Цепочка курса:
 
-```text
-Execution Context
-│
-▼
-Call Stack
-│
-▼
-Memory
-│
-▼
-Variables
-│
-▼
-Scope
-│
-▼
-Lexical Environment
+```mermaid
+flowchart TD
+    N1["Execution Context"]
+    N2["Call Stack"]
+    N3["Memory"]
+    N4["Variables"]
+    N5["Scope"]
+    N6["Lexical Environment"]
+    N1 --> N2
+    N2 --> N3
+    N3 --> N4
+    N4 --> N5
+    N5 --> N6
 ```
 
 ### Переход к Hoisting
@@ -801,14 +854,15 @@ Lexical Environment
 
 Hoisting — поведение, связанное с тем, как declarations учитываются во время подготовки execution. В следующей главе мы увидим, что часть "магии" Hoisting становится понятнее, если помнить про creation phase и Lexical Environment.
 
-```text
-Lexical Environment
-│
-└── where identifier records are kept
-
-Hoisting
-│
-└── when and how declarations affect those records before execution
+```mermaid
+flowchart TD
+    N1["Lexical Environment"]
+    N2["where identifier records are kept"]
+    N3["Hoisting"]
+    N4["when and how declarations affect those records before выполнение"]
+    N1 --> N2
+    N1 --> N3
+    N3 --> N4
 ```
 
 ---
@@ -817,69 +871,62 @@ Hoisting
 
 Внутренний механизм главы можно представить так:
 
-```text
-Execution starts
-│
-▼
-Execution Context is active
-│
-▼
-Current Lexical Environment is available
-│
-▼
-Identifier appears in code
-│
-▼
-Engine checks Environment Record
-│
-▼
-If not found, follows Outer Environment Reference
-│
-▼
-Repeats until found or no outer environment
+```mermaid
+flowchart TD
+    N1["выполнение starts"]
+    N2["Execution Context is active"]
+    N3["Current Lexical Environment is available"]
+    N4["идентификатор появляется в коде"]
+    N5["Engine checks Environment Record"]
+    N6["If not found, follows Outer Environment Reference"]
+    N7["Repeats until found or нет outer environment"]
+    N1 --> N2
+    N2 --> N3
+    N3 --> N4
+    N4 --> N5
+    N5 --> N6
+    N6 --> N7
 ```
 
 Что structure inside engine is being used right now:
 
-```text
-Environment Record
-│
-└── stores current identifiers
-
-Outer Environment Reference
-│
-└── links to outer environment
-
-Lexical Environment
-│
-└── combines record + outer link
+```mermaid
+flowchart TD
+    N1["Environment Record"]
+    N2["stores current identifiers"]
+    N3["Outer Environment Reference"]
+    N4["links to outer environment"]
+    N5["Lexical Environment"]
+    N6["combines record + outer link"]
+    N1 --> N2
+    N1 --> N3
+    N3 --> N4
+    N3 --> N5
+    N5 --> N6
 ```
 
 Для shadowing:
 
-```text
-Current Environment Record has status
-│
-▼
-use current status
-│
-▼
-do not follow outer reference for status
+```mermaid
+flowchart TD
+    N1["Current Environment Record has status"]
+    N2["use current status"]
+    N3["do not follow outer reference for status"]
+    N1 --> N2
+    N2 --> N3
 ```
 
 Для missing identifier:
 
-```text
-Current Record: not found
-│
-▼
-Outer Record: not found
-│
-▼
-Global Record: not found
-│
-▼
-ReferenceError
+```mermaid
+flowchart TD
+    N1["Current Record: not found"]
+    N2["Outer Record: not found"]
+    N3["Global Record: not found"]
+    N4["ReferenceError"]
+    N1 --> N2
+    N2 --> N3
+    N3 --> N4
 ```
 
 ReferenceError — runtime error при обращении к identifier, который не найден в accessible environments. Error Handling будет изучаться позже.
@@ -892,56 +939,67 @@ ReferenceError — runtime error при обращении к identifier, кот
 
 Представьте office, где у каждого scope есть folder.
 
-```text
-Office
-│
-├── Folder: Global
-├── Folder: Function
-└── Folder: Block
+```mermaid
+flowchart TD
+    N1["Office"]
+    N2["Folder: Global"]
+    N3["Folder: Function"]
+    N4["Folder: Block"]
+    N1 --> N2
+    N1 --> N3
+    N1 --> N4
 ```
 
 В каждом folder лежит список identifiers.
 
-```text
-Folder: Function
-│
-├── path
-└── fullUrl
+```mermaid
+flowchart TD
+    N1["Folder: Function"]
+    N2["path"]
+    N3["fullUrl"]
+    N1 --> N2
+    N1 --> N3
 ```
 
 ### Registry of identifiers
 
 Environment Record — registry identifiers текущего folder.
 
-```text
-Environment Record
-│
-├── baseUrl
-├── testName
-└── buildLoginUrl
+```mermaid
+flowchart TD
+    N1["Environment Record"]
+    N2["baseUrl"]
+    N3["testName"]
+    N4["buildLoginUrl"]
+    N1 --> N2
+    N1 --> N3
+    N1 --> N4
 ```
 
 ### Linked folders
 
 Outer Environment Reference — link к outer folder.
 
-```text
-Folder: Block
-│
-└── linked to Folder: Function
-    │
-    └── linked to Folder: Global
+```mermaid
+flowchart TD
+    N1["Folder: Block"]
+    N2["linked to Folder: Function"]
+    N3["linked to Folder: Global"]
+    N1 --> N2
+    N2 --> N3
 ```
 
 ### Address book
 
 Lexical Environment похож на address book:
 
-```text
-Address Book
-│
-├── local entries
-└── address of parent book
+```mermaid
+flowchart TD
+    N1["Address Book"]
+    N2["local entries"]
+    N3["address of parent book"]
+    N1 --> N2
+    N1 --> N3
 ```
 
 Если entry нет в current address book, engine открывает parent address book.
@@ -950,31 +1008,32 @@ Address Book
 
 Lookup идет по chain of records.
 
-```text
-Record: Block
-│
-▼
-Record: Function
-│
-▼
-Record: Global
+```mermaid
+flowchart TD
+    N1["Record: Block"]
+    N2["Record: Function"]
+    N3["Record: Global"]
+    N1 --> N2
+    N2 --> N3
 ```
 
 Итоговая модель:
 
-```text
-Scope
-│
-└── rules of visibility
-
-Lexical Environment
-│
-├── Environment Record
-└── Outer Environment Reference
-
-Lookup
-│
-└── search records through outer links
+```mermaid
+flowchart TD
+    N1["Scope"]
+    N2["rules of visibility"]
+    N3["Lexical Environment"]
+    N4["Environment Record"]
+    N5["Outer Environment Reference"]
+    N6["Lookup"]
+    N7["search records through outer links"]
+    N1 --> N2
+    N1 --> N3
+    N3 --> N4
+    N3 --> N5
+    N3 --> N6
+    N6 --> N7
 ```
 
 ---
@@ -1119,14 +1178,15 @@ Environment Record хранит identifier records. Memory model шире и с�
 
 Исправленная модель:
 
-```text
-Environment Record
-│
-└── identifiers and access records
-
-Memory
-│
-└── stored information
+```mermaid
+flowchart TD
+    N1["Environment Record"]
+    N2["identifiers and access records"]
+    N3["Memory"]
+    N4["stored information"]
+    N1 --> N2
+    N1 --> N3
+    N3 --> N4
 ```
 
 ### Ошибка 2. Путать Outer Environment Reference и Call Stack
@@ -1143,14 +1203,15 @@ Outer Environment Reference связан с lexical nesting, а не прост�
 
 Исправленная модель:
 
-```text
-Call Stack
-│
-└── active execution order
-
-Outer Environment Reference
-│
-└── lexical outer link
+```mermaid
+flowchart TD
+    N1["Call Stack"]
+    N2["active выполнение order"]
+    N3["Outer Environment Reference"]
+    N4["lexical outer link"]
+    N1 --> N2
+    N1 --> N3
+    N3 --> N4
 ```
 
 ### Ошибка 3. Объяснять lookup поиском по всему файлу
@@ -1163,14 +1224,13 @@ Engine scans the whole file for matching name.
 
 Исправленная модель:
 
-```text
-Current Record
-│
-▼
-Outer Record
-│
-▼
-Global Record
+```mermaid
+flowchart TD
+    N1["Current Record"]
+    N2["Outer Record"]
+    N3["Global Record"]
+    N1 --> N2
+    N2 --> N3
 ```
 
 ### Ошибка 4. Углубляться в TDZ раньше времени
@@ -1205,12 +1265,15 @@ Hoisting and TDZ explain timing and access restrictions.
 
 Таблица анализа:
 
-```text
-Identifier | Current Environment | Found in Environment | Lookup path
------------|---------------------|----------------------|-------------------------
-fullUrl    | Block               | Block                | Block
-path       | Block               | Function             | Block → Function
-baseUrl    | Block               | Global               | Block → Function → Global
+```mermaid
+flowchart TD
+    N1["Identifier | Current Environment | Found in Environment | Lookup path"]
+    N2["fullUrl | Block | Block | Block"]
+    N3["path | Block | Function | Block → Function"]
+    N4["baseUrl | Block | Global | Block → Function → Global"]
+    N1 --> N2
+    N2 --> N3
+    N3 --> N4
 ```
 
 Мини-чек-лист:
@@ -1242,12 +1305,15 @@ function buildUserName() {
 
 Концептуальная модель:
 
-```text
-buildUserName Lexical Environment
-│
-└── Record
-    ├── prefix
-    └── userName
+```mermaid
+flowchart TD
+    N1["buildUserName Lexical Environment"]
+    N2["Record"]
+    N3["prefix"]
+    N4["userName"]
+    N1 --> N2
+    N2 --> N3
+    N2 --> N4
 ```
 
 Тест не должен access `prefix`, потому что он не находится в accessible outer environment теста.
@@ -1268,15 +1334,17 @@ function buildLoginUrl() {
 
 Lookup:
 
-```text
-Function Environment
-│
-├── path found here
-└── baseUrl not found
-    │
-    ▼
-    Global Environment
-    └── baseUrl found
+```mermaid
+flowchart TD
+    N1["Function Environment"]
+    N2["path found here"]
+    N3["baseUrl not found"]
+    N4["Global Environment"]
+    N5["baseUrl found"]
+    N1 --> N2
+    N1 --> N3
+    N1 --> N4
+    N4 --> N5
 ```
 
 Так nested helper может читать configuration, не передавая ее через global mutable состояние.
@@ -1285,14 +1353,15 @@ Function Environment
 
 Когда тест падает из-за неправильного identifier или unexpected value, полезно разделять:
 
-```text
-Stack trace
-│
-└── how execution got here
-
-Lexical Environment model
-│
-└── how identifiers are resolved here
+```mermaid
+flowchart TD
+    N1["Stack trace"]
+    N2["how выполнение got here"]
+    N3["Lexical Environment model"]
+    N4["how identifiers are resolved here"]
+    N1 --> N2
+    N1 --> N3
+    N3 --> N4
 ```
 
 Stack trace показывает call chain. Lexical Environment помогает понять, какой `status`, `baseUrl` или `userName` был найден lookup-ом.
@@ -1301,32 +1370,39 @@ Stack trace показывает call chain. Lexical Environment помогае�
 
 Playwright stack trace может привести в helper:
 
-```text
-test
-└── page object
-    └── helper
-        └── assertion utility
+```mermaid
+flowchart TD
+    N1["test"]
+    N2["page object"]
+    N3["helper"]
+    N4["assertion utility"]
+    N1 --> N2
+    N2 --> N3
+    N3 --> N4
 ```
 
 Но вопрос "какое значение прочитал helper?" требует Scope/Lexical Environment model:
 
-```text
-helper current environment
-│
-├── local identifiers
-└── outer configuration identifiers
+```mermaid
+flowchart TD
+    N1["helper current environment"]
+    N2["local identifiers"]
+    N3["outer configuration identifiers"]
+    N1 --> N2
+    N1 --> N3
 ```
 
 Для debugging нужно смотреть оба слоя:
 
-```text
-Call Stack path
-│
-└── where execution came from
-
-Environment lookup path
-│
-└── where identifier value came from
+```mermaid
+flowchart TD
+    N1["Call Stack path"]
+    N2["where выполнение came from"]
+    N3["Environment lookup path"]
+    N4["where identifier value came from"]
+    N1 --> N2
+    N1 --> N3
+    N3 --> N4
 ```
 
 ---
@@ -1337,29 +1413,30 @@ Scope объясняет rules visibility. Lexical Environment объясняе�
 
 Главная модель:
 
-```text
-Lexical Environment
-│
-├── Environment Record
-│   └── identifiers of current environment
-│
-└── Outer Environment Reference
-    └── link to outer environment
+```mermaid
+flowchart TD
+    N1["Lexical Environment"]
+    N2["Environment Record"]
+    N3["identifiers of current environment"]
+    N4["Outer Environment Reference"]
+    N5["link to outer environment"]
+    N1 --> N2
+    N1 --> N3
+    N1 --> N4
+    N4 --> N5
 ```
 
 Identifier lookup conceptually идет так:
 
-```text
-Current Environment Record
-│
-▼
-Outer Environment Reference
-│
-▼
-Outer Environment Record
-│
-▼
-continue outward or fail
+```mermaid
+flowchart TD
+    N1["Current Environment Record"]
+    N2["Outer Environment Reference"]
+    N3["Outer Environment Record"]
+    N4["продолжить outward or fail"]
+    N1 --> N2
+    N2 --> N3
+    N3 --> N4
 ```
 
 Execution Context использует Lexical Environment для resolving identifiers. Call Stack показывает active context, но не заменяет environment lookup. Variables создают identifiers, Environment Records хранят records об этих identifiers, а Memory хранит information, с которой программа работает.

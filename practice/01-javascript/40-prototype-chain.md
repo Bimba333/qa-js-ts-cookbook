@@ -270,14 +270,13 @@ console.log(object.missing());
 
 Создайте chain:
 
-```text
-loginPage
-│
-▼
-pageBehavior
-│
-▼
-frameworkBehavior
+```mermaid
+flowchart TD
+    N1["loginPage"]
+    N2["pageBehavior"]
+    N3["frameworkBehavior"]
+    N1 --> N2
+    N2 --> N3
 ```
 
 Требования:
@@ -291,14 +290,13 @@ frameworkBehavior
 
 Создайте API client chain:
 
-```text
-usersClient
-│
-▼
-serviceBehavior
-│
-▼
-frameworkBehavior
+```mermaid
+flowchart TD
+    N1["usersClient"]
+    N2["serviceBehavior"]
+    N3["frameworkBehavior"]
+    N1 --> N2
+    N2 --> N3
 ```
 
 Требования:

@@ -6,30 +6,28 @@
 
 Главная модель была такой:
 
-```text
-Need many similar objects
-│
-▼
-Class
-│
-▼
-Creates instances
-│
-▼
-Instances have own data
-│
-▼
-Methods are shared through prototype
+```mermaid
+flowchart TD
+    N1["Need many similar objects"]
+    N2["Class"]
+    N3["Creates instances"]
+    N4["Instances have own data"]
+    N5["Methods are shared through prototype"]
+    N1 --> N2
+    N2 --> N3
+    N3 --> N4
+    N4 --> N5
 ```
 
 Мы специально не представляли class как новую объектную модель.
 
 Главная мысль была:
 
-```text
-Classes
-│
-└── use prototypes
+```mermaid
+flowchart TD
+    N1["Classes"]
+    N2["use prototypes"]
+    N1 --> N2
 ```
 
 Теперь появляется следующий вопрос:
@@ -59,14 +57,13 @@ formatError()
 
 Class Inheritance отвечает:
 
-```text
-Common behavior
-│
-▼
-Base class
-│
-▼
-Derived classes reuse it
+```mermaid
+flowchart TD
+    N1["Common behavior"]
+    N2["Base class"]
+    N3["Derived classes reuse it"]
+    N1 --> N2
+    N2 --> N3
 ```
 
 Важно: inheritance does not replace prototypes. Inheritance builds on prototype lookup.
@@ -190,44 +187,53 @@ class ProfilePage {
 
 Но поведение duplicated:
 
-```text
-LoginPage
-│
-├── open()
-└── waitReady()
-
-ProfilePage
-│
-├── open()
-└── waitReady()
+```mermaid
+flowchart TD
+    N1["LoginPage"]
+    N2["open()"]
+    N3["waitReady()"]
+    N4["ProfilePage"]
+    N5["open()"]
+    N6["waitReady()"]
+    N1 --> N2
+    N1 --> N3
+    N1 --> N4
+    N4 --> N5
+    N4 --> N6
 ```
 
 Если изменится общая логика `waitReady()`, нужно обновить каждую class.
 
-```text
-duplicated class behavior
-│
-├── harder to update
-├── easier to make inconsistent
-├── noisy page classes
-└── fragile framework design
+```mermaid
+flowchart TD
+    N1["duplicated class behavior"]
+    N2["harder to update"]
+    N3["easier to make inconsistent"]
+    N4["noisy page classes"]
+    N5["fragile framework design"]
+    N1 --> N2
+    N1 --> N3
+    N1 --> N4
+    N1 --> N5
 ```
 
 Нужен общий place for common поведение:
 
-```text
-BasePage
-│
-├── open()
-└── waitReady()
-
-LoginPage
-│
-└── login()
-
-ProfilePage
-│
-└── updateProfile()
+```mermaid
+flowchart TD
+    N1["BasePage"]
+    N2["open()"]
+    N3["waitReady()"]
+    N4["LoginPage"]
+    N5["login()"]
+    N6["ProfilePage"]
+    N7["updateProfile()"]
+    N1 --> N2
+    N1 --> N3
+    N1 --> N4
+    N4 --> N5
+    N4 --> N6
+    N6 --> N7
 ```
 
 Inheritance lets derived classes reuse поведение from base class.
@@ -240,17 +246,15 @@ Class Inheritance is поведение reuse between classes.
 
 Главная модель:
 
-```text
-Common behavior
-│
-▼
-Base class
-│
-▼
-Derived class
-│
-▼
-Instances can use inherited methods
+```mermaid
+flowchart TD
+    N1["Common behavior"]
+    N2["Base class"]
+    N3["Derived class"]
+    N4["Instances can use inherited methods"]
+    N1 --> N2
+    N2 --> N3
+    N3 --> N4
 ```
 
 Base class contains общее поведение:
@@ -288,64 +292,65 @@ console.log(loginPage.login());
 
 Концептуально:
 
-```text
-loginPage instance
-│
-├── can use LoginPage methods
-└── can use BasePage methods
+```mermaid
+flowchart TD
+    N1["loginPage instance"]
+    N2["can use LoginPage methods"]
+    N3["can use BasePage methods"]
+    N1 --> N2
+    N1 --> N3
 ```
 
 ### `extends`
 
 `extends` creates relationship between classes.
 
-```text
-Derived class
-│
-extends
-│
-Base class
+```mermaid
+flowchart TD
+    N1["Derived class"]
+    N2["extends"]
+    N3["Base class"]
+    N1 --> N2
+    N2 --> N3
 ```
 
 It means:
 
-```text
-LoginPage
-│
-reuses behavior from
-│
-BasePage
+```mermaid
+flowchart TD
+    N1["LoginPage"]
+    N2["reuses behavior from"]
+    N3["BasePage"]
+    N1 --> N2
+    N2 --> N3
 ```
 
 Do not read `extends` as copying methods.
 
 More accurate model:
 
-```text
-extends
-│
-▼
-sets up class relationship
-│
-▼
-prototype lookup can find base methods
+```mermaid
+flowchart TD
+    N1["extends"]
+    N2["sets up class relationship"]
+    N3["prototype lookup can find base methods"]
+    N1 --> N2
+    N2 --> N3
 ```
 
 ### Inherited methods
 
 Inherited method is method available to derived class instance through the class/prototype relationship.
 
-```text
-loginPage.open()
-│
-▼
-not found on LoginPage method layer?
-│
-▼
-look in BasePage method layer
-│
-▼
-found
+```mermaid
+flowchart TD
+    N1["loginPage.open()"]
+    N2["not found on LoginPage method layer?"]
+    N3["look in BasePage method layer"]
+    N4["found"]
+    N1 --> N2
+    N2 --> N3
+    N3 --> N4
 ```
 
 This is why the previous chapters matter.
@@ -370,14 +375,13 @@ class LoginPage extends BasePage {
 
 Теперь:
 
-```text
-loginPage.open()
-│
-▼
-LoginPage method found first
-│
-▼
-BasePage open() is not used for this call
+```mermaid
+flowchart TD
+    N1["loginPage.open()"]
+    N2["LoginPage method found first"]
+    N3["BasePage open() is not used for this call"]
+    N1 --> N2
+    N2 --> N3
 ```
 
 This is overriding.
@@ -402,24 +406,24 @@ class LoginPage extends BasePage {}
 
 Модель высокого уровня:
 
-```text
-LoginPage
-│
-extends
-│
-BasePage
+```mermaid
+flowchart TD
+    N1["LoginPage"]
+    N2["extends"]
+    N3["BasePage"]
+    N1 --> N2
+    N2 --> N3
 ```
 
 This creates a relationship that allows method lookup to continue from derived class поведение to base class поведение.
 
-```text
-loginPage instance
-│
-▼
-LoginPage methods
-│
-▼
-BasePage methods
+```mermaid
+flowchart TD
+    N1["loginPage instance"]
+    N2["LoginPage methods"]
+    N3["BasePage methods"]
+    N1 --> N2
+    N2 --> N3
 ```
 
 If code calls:
@@ -430,30 +434,30 @@ loginPage.waitReady();
 
 Engine mentally follows:
 
-```text
-Need method: waitReady
-│
-▼
-Start from loginPage
-│
-▼
-Check LoginPage method layer
-│
-└── not found
-    │
-    ▼
-Check BasePage method layer
-│
-└── found
+```mermaid
+flowchart TD
+    N1["Need method: waitReady"]
+    N2["Start from loginPage"]
+    N3["Check LoginPage method layer"]
+    N4["not found"]
+    N5["Check BasePage method layer"]
+    N6["found"]
+    N1 --> N2
+    N2 --> N3
+    N3 --> N4
+    N3 --> N5
+    N5 --> N6
 ```
 
 Then call happens with the same объект выполнения rule:
 
-```text
-loginPage.waitReady()
-│
-├── method found in BasePage behavior
-└── receiver is loginPage
+```mermaid
+flowchart TD
+    N1["loginPage.waitReady()"]
+    N2["method found in BasePage behavior"]
+    N3["receiver is loginPage"]
+    N1 --> N2
+    N1 --> N3
 ```
 
 So inside inherited method:
@@ -466,11 +470,11 @@ waitReady() {
 
 `this` refers to the actual объект выполнения:
 
-```text
-this
-│
-▼
-loginPage
+```mermaid
+flowchart TD
+    N1["this"]
+    N2["loginPage"]
+    N1 --> N2
 ```
 
 Method location and объект выполнения are still different concepts.
@@ -481,12 +485,13 @@ The exact internal structure is more detailed than this chapter needs.
 
 But the important high-level connection is:
 
-```text
-extends
-│
-does not copy methods
-│
-builds on prototype lookup
+```mermaid
+flowchart TD
+    N1["extends"]
+    N2["does not copy methods"]
+    N3["builds on prototype lookup"]
+    N1 --> N2
+    N2 --> N3
 ```
 
 That is enough for this chapter.
@@ -497,74 +502,83 @@ That is enough for this chapter.
 
 Inheritance can be understood as shared manual.
 
-```text
-Base class
-│
-└── common manual
-
-Derived class
-│
-└── specialized manual
+```mermaid
+flowchart TD
+    N1["Base class"]
+    N2["common manual"]
+    N3["Derived class"]
+    N4["specialized manual"]
+    N1 --> N2
+    N1 --> N3
+    N3 --> N4
 ```
 
 When поведение is missing in specialized manual, JavaScript can use common manual.
 
-```text
-Need instruction
-│
-▼
-Derived class
-│
-├── found? use it
-└── not found?
-    │
-    ▼
-    Base class
+```mermaid
+flowchart TD
+    N1["Need instruction"]
+    N2["Derived class"]
+    N3["found? use it"]
+    N4["not found?"]
+    N5["Base class"]
+    N1 --> N2
+    N2 --> N3
+    N2 --> N4
+    N2 --> N5
 ```
 
 Other useful analogies:
 
-```text
-family recipe
-│
-├── common base recipe
-└── specialized variation
+```mermaid
+flowchart TD
+    N1["family recipe"]
+    N2["common base recipe"]
+    N3["specialized variation"]
+    N1 --> N2
+    N1 --> N3
 ```
 
-```text
-company handbook
-│
-├── common rules for all employees
-└── team-specific rules
+```mermaid
+flowchart TD
+    N1["company handbook"]
+    N2["common rules for all employees"]
+    N3["team-specific rules"]
+    N1 --> N2
+    N1 --> N3
 ```
 
-```text
-common base toolkit
-│
-├── open()
-├── waitReady()
-└── formatError()
+```mermaid
+flowchart TD
+    N1["common base toolkit"]
+    N2["open()"]
+    N3["waitReady()"]
+    N4["formatError()"]
+    N1 --> N2
+    N1 --> N3
+    N1 --> N4
 ```
 
-```text
-reusable training program
-│
-├── shared foundation
-└── specialized skills
+```mermaid
+flowchart TD
+    N1["reusable training program"]
+    N2["shared foundation"]
+    N3["specialized skills"]
+    N1 --> N2
+    N1 --> N3
 ```
 
 Это ментальные модели, а не формальные определения.
 
 The technical idea remains:
 
-```text
-extends
-│
-▼
-class relationship
-│
-▼
-prototype lookup still works
+```mermaid
+flowchart TD
+    N1["extends"]
+    N2["class relationship"]
+    N3["prototype lookup still works"]
+    N1 --> N2
+    N2 --> N3
 ```
 
 ---
@@ -653,12 +667,13 @@ examples/01-javascript/chapter-42/06-qa-example.js
 
 Более точная ментальная модель:
 
-```text
-extends
-│
-sets relationship
-│
-prototype lookup finds methods
+```mermaid
+flowchart TD
+    N1["extends"]
+    N2["sets relationship"]
+    N3["prototype lookup finds methods"]
+    N1 --> N2
+    N2 --> N3
 ```
 
 ### Inheritance заменяет Prototype Chain?
@@ -667,14 +682,13 @@ prototype lookup finds methods
 
 Inheritance builds on prototype lookup.
 
-```text
-Derived class instance
-│
-▼
-Derived behavior
-│
-▼
-Base behavior
+```mermaid
+flowchart TD
+    N1["Derived class instance"]
+    N2["Derived behavior"]
+    N3["Base behavior"]
+    N1 --> N2
+    N2 --> N3
 ```
 
 ### Нужно ли всегда использовать inheritance?
@@ -691,12 +705,13 @@ Composition vs inheritance будет отдельной темой позже.
 
 Следующая глава объяснит:
 
-```text
-derived method
-│
-calls
-│
-base method
+```mermaid
+flowchart TD
+    N1["derived method"]
+    N2["calls"]
+    N3["base method"]
+    N1 --> N2
+    N2 --> N3
 ```
 
 ### Можно ли override inherited method?
@@ -705,10 +720,11 @@ base method
 
 Derived class method with same name is found first.
 
-```text
-Derived method
-│
-└── wins over base method
+```mermaid
+flowchart TD
+    N1["Derived method"]
+    N2["wins over base method"]
+    N1 --> N2
 ```
 
 ---
@@ -739,42 +755,48 @@ Derived method
 
 Неправильная модель:
 
-```text
-BasePage.open()
-│
-copied into
-│
-LoginPage
+```mermaid
+flowchart TD
+    N1["BasePage.open()"]
+    N2["copied into"]
+    N3["LoginPage"]
+    N1 --> N2
+    N2 --> N3
 ```
 
 Что происходит:
 
-```text
-LoginPage instance
-│
-uses lookup
-│
-finds BasePage.open()
+```mermaid
+flowchart TD
+    N1["LoginPage instance"]
+    N2["uses lookup"]
+    N3["finds BasePage.open()"]
+    N1 --> N2
+    N2 --> N3
 ```
 
 Исправленная модель:
 
-```text
-reuse through lookup
-│
-not copy
+```mermaid
+flowchart TD
+    N1["reuse through lookup"]
+    N2["not copy"]
+    N1 --> N2
 ```
 
 ### Ошибка 2. Put page-specific поведение into base class
 
 Неправильный дизайн:
 
-```text
-BasePage
-│
-├── open()
-├── waitReady()
-└── login()
+```mermaid
+flowchart TD
+    N1["BasePage"]
+    N2["open()"]
+    N3["waitReady()"]
+    N4["login()"]
+    N1 --> N2
+    N1 --> N3
+    N1 --> N4
 ```
 
 Почему плохо:
@@ -783,15 +805,17 @@ BasePage
 
 Исправленная модель:
 
-```text
-BasePage
-│
-├── open()
-└── waitReady()
-
-LoginPage
-│
-└── login()
+```mermaid
+flowchart TD
+    N1["BasePage"]
+    N2["open()"]
+    N3["waitReady()"]
+    N4["LoginPage"]
+    N5["login()"]
+    N1 --> N2
+    N1 --> N3
+    N1 --> N4
+    N4 --> N5
 ```
 
 ### Ошибка 3. Override accidentally
@@ -824,20 +848,22 @@ class LoginPage extends BasePage {
 
 Неправильная модель:
 
-```text
-method found in BasePage
-│
-▼
-this = BasePage
+```mermaid
+flowchart TD
+    N1["method found in BasePage"]
+    N2["this = BasePage"]
+    N1 --> N2
 ```
 
 Правильная модель:
 
-```text
-loginPage.open()
-│
-├── method found through inheritance
-└── receiver is loginPage
+```mermaid
+flowchart TD
+    N1["loginPage.open()"]
+    N2["method found through inheritance"]
+    N3["receiver is loginPage"]
+    N1 --> N2
+    N1 --> N3
 ```
 
 ---
@@ -846,10 +872,11 @@ loginPage.open()
 
 Inheritance useful when:
 
-```text
-several classes
-│
-share same behavior
+```mermaid
+flowchart TD
+    N1["several classes"]
+    N2["share same behavior"]
+    N1 --> N2
 ```
 
 Примеры:
@@ -862,22 +889,24 @@ share same behavior
 
 Good inheritance:
 
-```text
-Base class
-│
-└── truly common behavior
-
-Derived class
-│
-└── specific behavior
+```mermaid
+flowchart TD
+    N1["Base class"]
+    N2["truly common behavior"]
+    N3["Derived class"]
+    N4["specific behavior"]
+    N1 --> N2
+    N1 --> N3
+    N3 --> N4
 ```
 
 Bad inheritance:
 
-```text
-Base class
-│
-└── everything that seemed convenient
+```mermaid
+flowchart TD
+    N1["Base class"]
+    N2["everything that seemed convenient"]
+    N1 --> N2
 ```
 
 Вопрос читаемости:
@@ -894,24 +923,28 @@ Base class
 
 Common page поведение:
 
-```text
-BasePage
-│
-├── open()
-├── waitReady()
-└── formatError()
+```mermaid
+flowchart TD
+    N1["BasePage"]
+    N2["open()"]
+    N3["waitReady()"]
+    N4["formatError()"]
+    N1 --> N2
+    N1 --> N3
+    N1 --> N4
 ```
 
 Specific pages:
 
-```text
-LoginPage extends BasePage
-│
-└── login()
-
-ProfilePage extends BasePage
-│
-└── updateProfile()
+```mermaid
+flowchart TD
+    N1["LoginPage extends BasePage"]
+    N2["login()"]
+    N3["ProfilePage extends BasePage"]
+    N4["updateProfile()"]
+    N1 --> N2
+    N1 --> N3
+    N3 --> N4
 ```
 
 This keeps common actions in one place.
@@ -920,34 +953,39 @@ This keeps common actions in one place.
 
 Common API поведение:
 
-```text
-BaseApiClient
-│
-├── buildUrl()
-└── describeRequest()
+```mermaid
+flowchart TD
+    N1["BaseApiClient"]
+    N2["buildUrl()"]
+    N3["describeRequest()"]
+    N1 --> N2
+    N1 --> N3
 ```
 
 Specific clients:
 
-```text
-UsersClient
-│
-└── userEndpoint()
-
-OrdersClient
-│
-└── orderEndpoint()
+```mermaid
+flowchart TD
+    N1["UsersClient"]
+    N2["userEndpoint()"]
+    N3["OrdersClient"]
+    N4["orderEndpoint()"]
+    N1 --> N2
+    N1 --> N3
+    N3 --> N4
 ```
 
 ### Reusable validators
 
 Base validator:
 
-```text
-BaseValidator
-│
-├── formatExpected()
-└── formatActual()
+```mermaid
+flowchart TD
+    N1["BaseValidator"]
+    N2["formatExpected()"]
+    N3["formatActual()"]
+    N1 --> N2
+    N1 --> N3
 ```
 
 Specific validators:
@@ -968,13 +1006,13 @@ The goal is to keep shared framework поведение explicit and readable.
 
 ### 1. Why inheritance exists
 
-```text
-many classes
-│
-└── same methods repeated
-    │
-    ▼
-    need shared behavior
+```mermaid
+flowchart TD
+    N1["many classes"]
+    N2["same methods repeated"]
+    N3["need shared behavior"]
+    N1 --> N2
+    N1 --> N3
 ```
 
 ### 2. Duplicated class methods
@@ -987,367 +1025,396 @@ OrdersPage.open()
 
 ### 3. Base class
 
-```text
-BasePage
-│
-├── open()
-└── waitReady()
+```mermaid
+flowchart TD
+    N1["BasePage"]
+    N2["open()"]
+    N3["waitReady()"]
+    N1 --> N2
+    N1 --> N3
 ```
 
 ### 4. Derived class
 
-```text
-LoginPage
-│
-└── login()
+```mermaid
+flowchart TD
+    N1["LoginPage"]
+    N2["login()"]
+    N1 --> N2
 ```
 
 ### 5. Shared поведение
 
-```text
-Base class
-│
-└── common methods
+```mermaid
+flowchart TD
+    N1["Base class"]
+    N2["common methods"]
+    N1 --> N2
 ```
 
 ### 6. extends
 
-```text
-LoginPage
-│
-extends
-│
-BasePage
+```mermaid
+flowchart TD
+    N1["LoginPage"]
+    N2["extends"]
+    N3["BasePage"]
+    N1 --> N2
+    N2 --> N3
 ```
 
 ### 7. Method reuse
 
-```text
-loginPage.open()
-│
-▼
-BasePage.open()
+```mermaid
+flowchart TD
+    N1["loginPage.open()"]
+    N2["BasePage.open()"]
+    N1 --> N2
 ```
 
 ### 8. Overriding
 
-```text
-BasePage.open()
-│
-shadowed by
-│
-LoginPage.open()
+```mermaid
+flowchart TD
+    N1["BasePage.open()"]
+    N2["shadowed by"]
+    N3["LoginPage.open()"]
+    N1 --> N2
+    N2 --> N3
 ```
 
 ### 9. Текущая модель JavaScript
 
-```text
-Objects
-│
-├── Prototype
-├── Prototype Chain
-├── Classes
-└── Class Inheritance
+```mermaid
+flowchart TD
+    N1["Objects"]
+    N2["Prototype"]
+    N3["Prototype Chain"]
+    N4["Classes"]
+    N5["Class Inheritance"]
+    N1 --> N2
+    N1 --> N3
+    N1 --> N4
+    N1 --> N5
 ```
 
 ### 10. Prototype reminder
 
-```text
-extends
-│
-└── prototype lookup still works
+```mermaid
+flowchart TD
+    N1["extends"]
+    N2["prototype lookup still works"]
+    N1 --> N2
 ```
 
 ### 11. QA Page Objects
 
-```text
-BasePage
-│
-├── LoginPage
-└── ProfilePage
+```mermaid
+flowchart TD
+    N1["BasePage"]
+    N2["LoginPage"]
+    N3["ProfilePage"]
+    N1 --> N2
+    N1 --> N3
 ```
 
 ### 12. API client hierarchy
 
-```text
-BaseApiClient
-│
-├── UsersClient
-└── OrdersClient
+```mermaid
+flowchart TD
+    N1["BaseApiClient"]
+    N2["UsersClient"]
+    N3["OrdersClient"]
+    N1 --> N2
+    N1 --> N3
 ```
 
 ### 13. Читаемость
 
-```text
-common behavior
-│
-└── one clear base class
+```mermaid
+flowchart TD
+    N1["common behavior"]
+    N2["one clear base class"]
+    N1 --> N2
 ```
 
 ### 14. Типичные ошибки
 
-```text
-base class
-│
-└── too much responsibility
+```mermaid
+flowchart TD
+    N1["base class"]
+    N2["too much responsibility"]
+    N1 --> N2
 ```
 
 ### 15. Method lookup
 
-```text
-instance
-│
-▼
-derived methods
-│
-▼
-base methods
+```mermaid
+flowchart TD
+    N1["instance"]
+    N2["derived methods"]
+    N3["base methods"]
+    N1 --> N2
+    N2 --> N3
 ```
 
 ### 16. Prototype behind extends
 
-```text
-extends
-│
-▼
-class relationship
-│
-▼
-prototype lookup
+```mermaid
+flowchart TD
+    N1["extends"]
+    N2["class relationship"]
+    N3["prototype lookup"]
+    N1 --> N2
+    N2 --> N3
 ```
 
 ### 17. Object creation
 
-```text
-new LoginPage()
-│
-▼
-instance
-│
-▼
-can use inherited methods
+```mermaid
+flowchart TD
+    N1["new LoginPage()"]
+    N2["instance"]
+    N3["can use inherited methods"]
+    N1 --> N2
+    N2 --> N3
 ```
 
 ### 18. Shared toolkit
 
-```text
-BasePage toolkit
-│
-├── open()
-└── waitReady()
+```mermaid
+flowchart TD
+    N1["BasePage toolkit"]
+    N2["open()"]
+    N3["waitReady()"]
+    N1 --> N2
+    N1 --> N3
 ```
 
 ### 19. Family recipe
 
-```text
-base recipe
-│
-└── page-specific variation
+```mermaid
+flowchart TD
+    N1["base recipe"]
+    N2["page-specific variation"]
+    N1 --> N2
 ```
 
 ### 20. Company handbook
 
-```text
-company handbook
-│
-└── team handbook
+```mermaid
+flowchart TD
+    N1["company handbook"]
+    N2["team handbook"]
+    N1 --> N2
 ```
 
 ### 21. Base responsibility
 
-```text
-Base class
-│
-└── common behavior only
+```mermaid
+flowchart TD
+    N1["Base class"]
+    N2["common behavior only"]
+    N1 --> N2
 ```
 
 ### 22. Derived responsibility
 
-```text
-Derived class
-│
-└── specific behavior
+```mermaid
+flowchart TD
+    N1["Derived class"]
+    N2["specific behavior"]
+    N1 --> N2
 ```
 
 ### 23. Override flow
 
-```text
-call method
-│
-▼
-check derived
-│
-▼
-found? stop
+```mermaid
+flowchart TD
+    N1["вызвать method"]
+    N2["check derived"]
+    N3["found? stop"]
+    N1 --> N2
+    N2 --> N3
 ```
 
 ### 24. Краткая ментальная модель
 
-```text
-Common behavior
-│
-▼
-Base class
-│
-▼
-Derived classes reuse it
+```mermaid
+flowchart TD
+    N1["Common behavior"]
+    N2["Base class"]
+    N3["Derived classes reuse it"]
+    N1 --> N2
+    N2 --> N3
 ```
 
 ### 25. Complete inheritance model
 
-```text
-Base class
-│
-├── shared methods
-│
-└── Derived class
-    └── specific methods
+```mermaid
+flowchart TD
+    N1["Base class"]
+    N2["shared methods"]
+    N3["Derived class"]
+    N4["specific methods"]
+    N1 --> N2
+    N1 --> N3
+    N3 --> N4
 ```
 
 ### 26. Object relationship
 
-```text
-instance
-│
-└── uses derived and base behavior
+```mermaid
+flowchart TD
+    N1["instance"]
+    N2["uses derived and base behavior"]
+    N1 --> N2
 ```
 
 ### 27. Class relationship
 
-```text
-Derived class
-│
-extends
-│
-Base class
+```mermaid
+flowchart TD
+    N1["Derived class"]
+    N2["extends"]
+    N3["Base class"]
+    N1 --> N2
+    N2 --> N3
 ```
 
 ### 28. Lookup reminder
 
-```text
-not found closer
-│
-▼
-look farther
+```mermaid
+flowchart TD
+    N1["not found closer"]
+    N2["look farther"]
+    N1 --> N2
 ```
 
 ### 29. Receiver reminder
 
-```text
-loginPage.open()
-│
-└── this is loginPage
+```mermaid
+flowchart TD
+    N1["loginPage.open()"]
+    N2["this is loginPage"]
+    N1 --> N2
 ```
 
 ### 30. Переход к super
 
-```text
-override method
-│
-▼
-next: call base method
+```mermaid
+flowchart TD
+    N1["override method"]
+    N2["next: вызвать base method"]
+    N1 --> N2
 ```
 
 ### 31. Переход к composition
 
-```text
-inheritance
-│
-not always best design
-│
-composition later
+```mermaid
+flowchart TD
+    N1["inheritance"]
+    N2["not always best design"]
+    N3["composition later"]
+    N1 --> N2
+    N2 --> N3
 ```
 
 ### 32. Framework example
 
-```text
-BaseFrameworkObject
-│
-├── Reporter
-└── ApiClient
+```mermaid
+flowchart TD
+    N1["BaseFrameworkObject"]
+    N2["Reporter"]
+    N3["ApiClient"]
+    N1 --> N2
+    N1 --> N3
 ```
 
 ### 33. Shared validator
 
-```text
-BaseValidator
-│
-├── StatusValidator
-└── RoleValidator
+```mermaid
+flowchart TD
+    N1["BaseValidator"]
+    N2["StatusValidator"]
+    N3["RoleValidator"]
+    N1 --> N2
+    N1 --> N3
 ```
 
 ### 34. Build hierarchy
 
-```text
-common
-│
-▼
-specific
+```mermaid
+flowchart TD
+    N1["common"]
+    N2["specific"]
+    N1 --> N2
 ```
 
 ### 35. Object evolution
 
-```text
-object methods
-│
-▼
-prototype
-│
-▼
-class
-│
-▼
-class inheritance
+```mermaid
+flowchart TD
+    N1["object methods"]
+    N2["prototype"]
+    N3["class"]
+    N4["class inheritance"]
+    N1 --> N2
+    N2 --> N3
+    N3 --> N4
 ```
 
 ### 36. Принадлежность поведения
 
-```text
-common behavior -> base
-specific behavior -> derived
+```mermaid
+flowchart TD
+    N1["common behavior → base"]
+    N2["specific behavior → derived"]
+    N1 --> N2
 ```
 
 ### 37. Prototype connection
 
-```text
-extends
-│
-└── does not remove prototypes
+```mermaid
+flowchart TD
+    N1["extends"]
+    N2["does not remove prototypes"]
+    N1 --> N2
 ```
 
 ### 38. Override lookup
 
-```text
-derived method exists
-│
-└── base method not reached
+```mermaid
+flowchart TD
+    N1["derived method exists"]
+    N2["base method not reached"]
+    N1 --> N2
 ```
 
 ### 39. Shared methods
 
-```text
-one base method
-│
-├── used by LoginPage
-└── used by ProfilePage
+```mermaid
+flowchart TD
+    N1["one base method"]
+    N2["used by LoginPage"]
+    N3["used by ProfilePage"]
+    N1 --> N2
+    N1 --> N3
 ```
 
 ### 40. Итоговая схема
 
-```text
-Shared behavior
-│
-▼
-Base class
-│
-▼
-extends
-│
-▼
-Derived class
-│
-▼
-Prototype lookup still works
+```mermaid
+flowchart TD
+    N1["Shared behavior"]
+    N2["Base class"]
+    N3["extends"]
+    N4["Derived class"]
+    N5["Prototype lookup still works"]
+    N1 --> N2
+    N2 --> N3
+    N3 --> N4
+    N4 --> N5
 ```
 
 ---
@@ -1370,20 +1437,17 @@ What if several classes need the same behavior?
 
 Основная модель:
 
-```text
-Shared behavior
-│
-▼
-Base class
-│
-▼
-extends
-│
-▼
-Derived class
-│
-▼
-Prototype lookup still works
+```mermaid
+flowchart TD
+    N1["Shared behavior"]
+    N2["Base class"]
+    N3["extends"]
+    N4["Derived class"]
+    N5["Prototype lookup still works"]
+    N1 --> N2
+    N2 --> N3
+    N3 --> N4
+    N4 --> N5
 ```
 
 Inheritance does not copy methods. It creates a relationship between classes, while the already-learned prototype mechanism continues to perform property lookup.

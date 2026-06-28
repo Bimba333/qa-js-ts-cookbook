@@ -6,11 +6,13 @@
 
 Главная модель была такой:
 
-```text
-Object
-│
-├── State
-└── Behavior
+```mermaid
+flowchart TD
+    N1["Object"]
+    N2["State"]
+    N3["Behavior"]
+    N1 --> N2
+    N1 --> N3
 ```
 
 До этого мы работали с properties как будто все они behave the same:
@@ -27,10 +29,11 @@ delete config.baseUrl;
 
 Выглядит так, будто property - это только:
 
-```text
-key
-│
-└── value
+```mermaid
+flowchart TD
+    N1["key"]
+    N2["значение"]
+    N1 --> N2
 ```
 
 Но в JavaScript property has more than value.
@@ -41,26 +44,32 @@ key
 
 Например:
 
-```text
-property A
-│
-├── value: "staging"
-└── can be changed
-
-property B
-│
-├── value: "staging"
-└── cannot be changed
+```mermaid
+flowchart TD
+    N1["property A"]
+    N2["value: &quot;staging&quot;"]
+    N3["can be changed"]
+    N4["property B"]
+    N5["value: &quot;staging&quot;"]
+    N6["cannot be changed"]
+    N1 --> N2
+    N1 --> N3
+    N1 --> N4
+    N4 --> N5
+    N4 --> N6
 ```
 
 Ответ:
 
-```text
-Property
-│
-├── Value
-└── Metadata
-    └── Rules
+```mermaid
+flowchart TD
+    N1["Property"]
+    N2["Value"]
+    N3["Metadata"]
+    N4["Rules"]
+    N1 --> N2
+    N1 --> N3
+    N3 --> N4
 ```
 
 Object Descriptors describe these rules.
@@ -169,21 +178,24 @@ Object.defineProperty(secondConfig, 'environment', {
 
 Обе properties выглядят похожими:
 
-```text
-firstConfig.environment  -> "staging"
-secondConfig.environment -> "staging"
+```mermaid
+flowchart TD
+    N1["firstConfig.environment → &quot;staging&quot;"]
+    N2["secondConfig.environment → &quot;staging&quot;"]
+    N1 --> N2
 ```
 
 Но поведение differs:
 
-```text
-firstConfig.environment
-│
-└── can be reassigned
-
-secondConfig.environment
-│
-└── cannot be reassigned
+```mermaid
+flowchart TD
+    N1["firstConfig.environment"]
+    N2["can be reassigned"]
+    N3["secondConfig.environment"]
+    N4["cannot be reassigned"]
+    N1 --> N2
+    N1 --> N3
+    N3 --> N4
 ```
 
 Вопрос:
@@ -192,13 +204,17 @@ secondConfig.environment
 
 Потому что у property есть hidden metadata:
 
-```text
-environment
-│
-├── value: "staging"
-├── writable: ?
-├── enumerable: ?
-└── configurable: ?
+```mermaid
+flowchart TD
+    N1["environment"]
+    N2["value: &quot;staging&quot;"]
+    N3["writable: ?"]
+    N4["enumerable: ?"]
+    N5["configurable: ?"]
+    N1 --> N2
+    N1 --> N3
+    N1 --> N4
+    N1 --> N5
 ```
 
 Descriptor is the metadata sheet for a property.
@@ -213,11 +229,13 @@ Object Descriptor describes property поведение.
 
 Главная идея:
 
-```text
-Property
-│
-├── Value
-└── Rules
+```mermaid
+flowchart TD
+    N1["Property"]
+    N2["Value"]
+    N3["Rules"]
+    N1 --> N2
+    N1 --> N3
 ```
 
 ### Why descriptors exist
@@ -257,13 +275,17 @@ Descriptors describe property поведение. They do not store business dat
 
 For data properties in this chapter:
 
-```text
-Descriptor
-│
-├── value
-├── writable
-├── enumerable
-└── configurable
+```mermaid
+flowchart TD
+    N1["Descriptor"]
+    N2["значение"]
+    N3["writable"]
+    N4["enumerable"]
+    N5["configurable"]
+    N1 --> N2
+    N1 --> N3
+    N1 --> N4
+    N1 --> N5
 ```
 
 We do not study accessors, getters and setters yet.
@@ -280,24 +302,26 @@ Object.defineProperty(config, 'environment', {
 
 Концептуально:
 
-```text
-property key: environment
-│
-└── value: "staging"
+```mermaid
+flowchart TD
+    N1["property key: environment"]
+    N2["value: &quot;staging&quot;"]
+    N1 --> N2
 ```
 
 ### `writable`
 
 `writable` controls whether property value can be changed through assignment.
 
-```text
-writable: true
-│
-└── assignment can change value
-
-writable: false
-│
-└── assignment cannot change value
+```mermaid
+flowchart TD
+    N1["writable: true"]
+    N2["assignment can change value"]
+    N3["writable: false"]
+    N4["assignment cannot change value"]
+    N1 --> N2
+    N1 --> N3
+    N3 --> N4
 ```
 
 Readonly property:
@@ -313,14 +337,15 @@ Object.defineProperty(config, 'environment', {
 
 `enumerable` controls whether property appears in common enumeration.
 
-```text
-enumerable: true
-│
-└── appears in Object.keys()
-
-enumerable: false
-│
-└── hidden from Object.keys()
+```mermaid
+flowchart TD
+    N1["enumerable: true"]
+    N2["appears in Object.keys()"]
+    N3["enumerable: false"]
+    N4["hidden from Object.keys()"]
+    N1 --> N2
+    N1 --> N3
+    N3 --> N4
 ```
 
 Hidden property in this chapter means non-enumerable property, not secret secure storage.
@@ -331,14 +356,15 @@ Hidden property in this chapter means non-enumerable property, not secret secure
 
 Удаление property - одно из практических следствий этого правила, потому что removing property also changes object structure.
 
-```text
-configurable: true
-│
-└── property definition can be changed
-
-configurable: false
-│
-└── property definition is locked down
+```mermaid
+flowchart TD
+    N1["configurable: true"]
+    N2["property definition can be changed"]
+    N3["configurable: false"]
+    N4["property definition is locked down"]
+    N1 --> N2
+    N1 --> N3
+    N3 --> N4
 ```
 
 Эта глава оставляет модель высокоуровневой. Точные детали спецификации более тонкие.
@@ -414,14 +440,15 @@ config.environment = 'production';
 
 Концептуальный поток:
 
-```text
-find property descriptor
-│
-▼
-check writable
-│
-├── true  -> update value
-└── false -> reject assignment
+```mermaid
+flowchart TD
+    N1["find property descriptor"]
+    N2["check writable"]
+    N3["true → update value"]
+    N4["false → reject assignment"]
+    N1 --> N2
+    N2 --> N3
+    N2 --> N4
 ```
 
 In strict mode, rejected assignment throws TypeError.
@@ -434,14 +461,15 @@ delete config.environment;
 
 Концептуальный поток:
 
-```text
-find property descriptor
-│
-▼
-check whether property definition may be changed
-│
-├── configurable: true  -> deletion can proceed
-└── configurable: false -> property stays
+```mermaid
+flowchart TD
+    N1["find property descriptor"]
+    N2["check whether property definition may be changed"]
+    N3["configurable: true → deletion can proceed"]
+    N4["configurable: false → property stays"]
+    N1 --> N2
+    N2 --> N3
+    N2 --> N4
 ```
 
 Deletion is shown here as one visible consequence of `configurable`, not as the whole meaning of the flag.
@@ -454,29 +482,26 @@ Object.keys(config);
 
 Концептуальный поток:
 
-```text
-look at own properties
-│
-▼
-include only enumerable: true
-│
-▼
-return keys
+```mermaid
+flowchart TD
+    N1["look at own properties"]
+    N2["include only enumerable: true"]
+    N3["вернуть keys"]
+    N1 --> N2
+    N2 --> N3
 ```
 
 ### Metadata flow
 
-```text
-operation
-│
-▼
-property descriptor
-│
-▼
-rules
-│
-▼
-decision
+```mermaid
+flowchart TD
+    N1["operation"]
+    N2["property descriptor"]
+    N3["rules"]
+    N4["decision"]
+    N1 --> N2
+    N2 --> N3
+    N3 --> N4
 ```
 
 Descriptors are not business data. They are the rule layer that controls how operations behave.
@@ -487,46 +512,56 @@ Descriptors are not business data. They are the rule layer that controls how ope
 
 Property passport:
 
-```text
-Property passport
-│
-├── name: environment
-├── value: staging
-├── can change value: no
-├── visible in list: yes
-└── can change definition: no
+```mermaid
+flowchart TD
+    N1["Property passport"]
+    N2["name: environment"]
+    N3["value: staging"]
+    N4["can change value: нет"]
+    N5["visible in list: да"]
+    N6["can change definition: нет"]
+    N1 --> N2
+    N1 --> N3
+    N1 --> N4
+    N1 --> N5
+    N1 --> N6
 ```
 
 Permissions card:
 
-```text
-Property permissions
-│
-├── write allowed?
-├── list allowed?
-└── definition change allowed?
+```mermaid
+flowchart TD
+    N1["Property permissions"]
+    N2["write allowed?"]
+    N3["list allowed?"]
+    N4["definition change allowed?"]
+    N1 --> N2
+    N1 --> N3
+    N1 --> N4
 ```
 
 Property contract:
 
-```text
-Property
-│
-▼
-has contract
-│
-▼
-operations must follow contract
+```mermaid
+flowchart TD
+    N1["Property"]
+    N2["has contract"]
+    N3["operations must follow contract"]
+    N1 --> N2
+    N2 --> N3
 ```
 
 Главная модель:
 
-```text
-Property
-│
-├── Value
-└── Metadata
-    └── Rules
+```mermaid
+flowchart TD
+    N1["Property"]
+    N2["Value"]
+    N3["Metadata"]
+    N4["Rules"]
+    N1 --> N2
+    N1 --> N3
+    N3 --> N4
 ```
 
 ---
@@ -701,12 +736,15 @@ Most application code does not need explicit descriptors. They are most useful f
 
 Реальность:
 
-```text
-Property
-│
-├── key
-├── value
-└── metadata rules
+```mermaid
+flowchart TD
+    N1["Property"]
+    N2["key"]
+    N3["значение"]
+    N4["metadata rules"]
+    N1 --> N2
+    N1 --> N3
+    N1 --> N4
 ```
 
 ### Миф: non-enumerable means private
@@ -808,10 +846,11 @@ Framework infrastructure may lock certain properties to avoid accidental mutatio
 
 Framework config sometimes must not be changed after setup:
 
-```text
-baseUrl
-│
-└── writable: false
+```mermaid
+flowchart TD
+    N1["baseUrl"]
+    N2["writable: false"]
+    N1 --> N2
 ```
 
 This protects important infrastructure значения from accidental reassignment.
@@ -820,10 +859,11 @@ This protects important infrastructure значения from accidental reassign
 
 Internal IDs or technical metadata can be non-enumerable:
 
-```text
-Object.keys(helper)
-│
-└── does not include internalRunId
+```mermaid
+flowchart TD
+    N1["Object.keys(helper)"]
+    N2["does not include internalRunId"]
+    N1 --> N2
 ```
 
 But this is not security. It is visibility control for normal enumeration.
@@ -844,233 +884,256 @@ Descriptors are more common in framework infrastructure than in ordinary test sc
 
 ### 1. Why descriptors exist
 
-```text
-same visible value
-│
-▼
-different behavior
-│
-▼
-hidden rules
+```mermaid
+flowchart TD
+    N1["same visible value"]
+    N2["different behavior"]
+    N3["hidden rules"]
+    N1 --> N2
+    N2 --> N3
 ```
 
 ### 2. Two identical-looking properties
 
-```text
-environment: "staging"
-environment: "staging"
-│
-▼
-different rules
+```mermaid
+flowchart TD
+    N1["environment: &quot;staging&quot;"]
+    N2["environment: &quot;staging&quot;"]
+    N3["different rules"]
+    N2 --> N3
+    N1 --> N2
 ```
 
 ### 3. Hidden metadata
 
-```text
-property
-│
-├── visible value
-└── hidden metadata
+```mermaid
+flowchart TD
+    N1["property"]
+    N2["visible value"]
+    N3["hidden metadata"]
+    N1 --> N2
+    N1 --> N3
 ```
 
 ### 4. Property structure
 
-```text
-Property
-│
-├── key
-├── value
-└── descriptor
+```mermaid
+flowchart TD
+    N1["Property"]
+    N2["key"]
+    N3["значение"]
+    N4["descriptor"]
+    N1 --> N2
+    N1 --> N3
+    N1 --> N4
 ```
 
 ### 5. Descriptor поля
 
-```text
-Descriptor
-│
-├── value
-├── writable
-├── enumerable
-└── configurable
+```mermaid
+flowchart TD
+    N1["Descriptor"]
+    N2["значение"]
+    N3["writable"]
+    N4["enumerable"]
+    N5["configurable"]
+    N1 --> N2
+    N1 --> N3
+    N1 --> N4
+    N1 --> N5
 ```
 
 ### 6. writable
 
-```text
-writable?
-│
-├── true -> assignment allowed
-└── false -> assignment blocked
+```mermaid
+flowchart TD
+    N1["writable?"]
+    N2["true → assignment allowed"]
+    N3["false → assignment blocked"]
+    N1 --> N2
+    N1 --> N3
 ```
 
 ### 7. enumerable
 
-```text
-enumerable?
-│
-├── true -> appears in Object.keys
-└── false -> hidden from Object.keys
+```mermaid
+flowchart TD
+    N1["enumerable?"]
+    N2["true → appears in Object.keys"]
+    N3["false → hidden from Object.keys"]
+    N1 --> N2
+    N1 --> N3
 ```
 
 ### 8. configurable
 
-```text
-configurable?
-│
-├── true -> definition can change
-└── false -> definition locked
+```mermaid
+flowchart TD
+    N1["configurable?"]
+    N2["true → definition can change"]
+    N3["false → definition locked"]
+    N1 --> N2
+    N1 --> N3
 ```
 
 ### 9. Property passport
 
-```text
-passport
-│
-├── value
-├── write permission
-├── list permission
-└── definition-change permission
+```mermaid
+flowchart TD
+    N1["passport"]
+    N2["значение"]
+    N3["write permission"]
+    N4["list permission"]
+    N5["definition-change permission"]
+    N1 --> N2
+    N1 --> N3
+    N1 --> N4
+    N1 --> N5
 ```
 
 ### 10. Property contract
 
-```text
-operation
-│
-▼
-must follow property contract
+```mermaid
+flowchart TD
+    N1["operation"]
+    N2["must follow property contract"]
+    N1 --> N2
 ```
 
 ### 11. Текущая модель JavaScript
 
-```text
-Objects
-│
-├── data
-├── methods
-└── descriptors
+```mermaid
+flowchart TD
+    N1["Objects"]
+    N2["data"]
+    N3["methods"]
+    N4["descriptors"]
+    N1 --> N2
+    N1 --> N3
+    N1 --> N4
 ```
 
 ### 12. Object.getOwnPropertyDescriptor()
 
-```text
-property key
-│
-▼
-descriptor object
+```mermaid
+flowchart TD
+    N1["property key"]
+    N2["descriptor object"]
+    N1 --> N2
 ```
 
 ### 13. Object.defineProperty()
 
-```text
-object + key + descriptor
-│
-▼
-property with rules
+```mermaid
+flowchart TD
+    N1["object + key + descriptor"]
+    N2["property with rules"]
+    N1 --> N2
 ```
 
 ### 14. Readonly property
 
-```text
-writable: false
-│
-▼
-assignment rejected
+```mermaid
+flowchart TD
+    N1["writable: false"]
+    N2["assignment rejected"]
+    N1 --> N2
 ```
 
 ### 15. Hidden property
 
-```text
-enumerable: false
-│
-▼
-not in Object.keys
+```mermaid
+flowchart TD
+    N1["enumerable: false"]
+    N2["not in Object.keys"]
+    N1 --> N2
 ```
 
 ### 16. Delete as consequence
 
-```text
-delete property attempt
-│
-▼
-check whether definition may change
+```mermaid
+flowchart TD
+    N1["delete property attempt"]
+    N2["check whether definition may change"]
+    N1 --> N2
 ```
 
 ### 17. Assignment attempt
 
-```text
-assign new value
-│
-▼
-check writable
+```mermaid
+flowchart TD
+    N1["assign new value"]
+    N2["check writable"]
+    N1 --> N2
 ```
 
 ### 18. Enumeration
 
-```text
-Object.keys
-│
-▼
-include enumerable properties
+```mermaid
+flowchart TD
+    N1["Object.keys"]
+    N2["include enumerable properties"]
+    N1 --> N2
 ```
 
 ### 19. Metadata flow
 
-```text
-operation
-│
-▼
-descriptor
-│
-▼
-decision
+```mermaid
+flowchart TD
+    N1["operation"]
+    N2["descriptor"]
+    N3["decision"]
+    N1 --> N2
+    N2 --> N3
 ```
 
 ### 20. Property lifecycle
 
-```text
-define property
-│
-▼
-set rules
-│
-▼
-operations follow rules
+```mermaid
+flowchart TD
+    N1["define property"]
+    N2["set rules"]
+    N3["operations follow rules"]
+    N1 --> N2
+    N2 --> N3
 ```
 
 ### 21. Object evolution
 
-```text
-simple object
-│
-▼
-properties with behavior rules
+```mermaid
+flowchart TD
+    N1["simple object"]
+    N2["properties with behavior rules"]
+    N1 --> N2
 ```
 
 ### 22. QA config object
 
-```text
-frameworkConfig
-│
-├── baseUrl readonly
-└── internalRunId hidden
+```mermaid
+flowchart TD
+    N1["frameworkConfig"]
+    N2["baseUrl readonly"]
+    N3["internalRunId hidden"]
+    N1 --> N2
+    N1 --> N3
 ```
 
 ### 23. API response preview
 
-```text
-API response
-│
-└── usually plain data
+```mermaid
+flowchart TD
+    N1["API response"]
+    N2["usually plain data"]
+    N1 --> N2
 ```
 
 ### 24. Типичные ошибки
 
-```text
-defineProperty without flags
-│
-▼
-restrictive defaults
+```mermaid
+flowchart TD
+    N1["defineProperty without flags"]
+    N2["restrictive defaults"]
+    N1 --> N2
 ```
 
 ### 25. Краткая ментальная модель
@@ -1083,30 +1146,35 @@ metadata sheet
 
 ### 26. Complete descriptor model
 
-```text
-Property
-│
-├── Value
-└── Metadata
-    └── Rules
+```mermaid
+flowchart TD
+    N1["Property"]
+    N2["Value"]
+    N3["Metadata"]
+    N4["Rules"]
+    N1 --> N2
+    N1 --> N3
+    N3 --> N4
 ```
 
 ### 27. Rules before operation
 
-```text
-before assignment/delete/list
-│
-▼
-check rules
+```mermaid
+flowchart TD
+    N1["before assignment/delete/list"]
+    N2["check rules"]
+    N1 --> N2
 ```
 
 ### 28. Operation decision
 
-```text
-rule allows?
-│
-├── yes -> perform operation
-└── no  -> reject/skip
+```mermaid
+flowchart TD
+    N1["rule allows?"]
+    N2["да → perform operation"]
+    N3["нет → reject/skip"]
+    N1 --> N2
+    N1 --> N3
 ```
 
 ### 29. Property permissions
@@ -1119,29 +1187,31 @@ change property definition
 
 ### 30. Переход к Prototype
 
-```text
-properties can exist elsewhere
-│
-▼
-Prototype
+```mermaid
+flowchart TD
+    N1["properties can exist elsewhere"]
+    N2["Prototype"]
+    N1 --> N2
 ```
 
 ### 31. Переход к Classes
 
-```text
-classes create objects
-│
-▼
-properties still have rules
+```mermaid
+flowchart TD
+    N1["classes создать objects"]
+    N2["properties still have rules"]
+    N1 --> N2
 ```
 
 ### 32. Internal metadata
 
-```text
-business data
-│
-≠
-metadata
+```mermaid
+flowchart TD
+    N1["business data"]
+    N2["≠"]
+    N3["metadata"]
+    N1 --> N2
+    N2 --> N3
 ```
 
 ### 33. State vs metadata
@@ -1153,14 +1223,19 @@ metadata: writable = false
 
 ### 34. Итоговая схема
 
-```text
-Property
-│
-├── Value
-└── Rules
-    ├── writable
-    ├── enumerable
-    └── configurable
+```mermaid
+flowchart TD
+    N1["Property"]
+    N2["Value"]
+    N3["Rules"]
+    N4["writable"]
+    N5["enumerable"]
+    N6["configurable"]
+    N1 --> N2
+    N1 --> N3
+    N3 --> N4
+    N3 --> N5
+    N3 --> N6
 ```
 
 ---
@@ -1207,12 +1282,15 @@ What rule controls this property?
 
 Object Descriptors расширяют модель object properties.
 
-```text
-Property
-│
-├── Value
-└── Metadata
-    └── Rules
+```mermaid
+flowchart TD
+    N1["Property"]
+    N2["Value"]
+    N3["Metadata"]
+    N4["Rules"]
+    N1 --> N2
+    N1 --> N3
+    N3 --> N4
 ```
 
 Descriptors describe property поведение. They do not represent business data.
@@ -1230,14 +1308,13 @@ We studied:
 
 Next chapter begins Prototype:
 
-```text
-many objects
-│
-▼
-shared behavior
-│
-▼
-Prototype
+```mermaid
+flowchart TD
+    N1["many objects"]
+    N2["shared behavior"]
+    N3["Prototype"]
+    N1 --> N2
+    N2 --> N3
 ```
 
 ---

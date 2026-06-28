@@ -66,9 +66,11 @@
 
 Ответ:
 
-```text
-smokePlan -> ['login', 'create order']
-testCases -> ['login', 'create order', 'discount', 'payment', 'logout']
+```mermaid
+flowchart TD
+    N1["smokePlan → ['login', 'создать order']"]
+    N2["testCases → ['login', 'создать order', 'discount', 'payment', 'logout']"]
+    N1 --> N2
 ```
 
 Объяснение: `slice(0, 2)` берет indexes `0` and `1`; index `2` не включается.

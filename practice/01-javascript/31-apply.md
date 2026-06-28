@@ -301,13 +301,17 @@ this.baseUrl
 
 Нарисуйте схему:
 
-```text
-function.apply(receiver, values)
-│
-├── receiver  -> this
-├── values[0] -> first parameter
-├── values[1] -> second parameter
-└── values[2] -> third parameter
+```mermaid
+flowchart TD
+    N1["function.apply(receiver, values)"]
+    N2["receiver → this"]
+    N3["values[0] → first parameter"]
+    N4["values[1] → second parameter"]
+    N5["values[2] → third parameter"]
+    N1 --> N2
+    N1 --> N3
+    N1 --> N4
+    N1 --> N5
 ```
 
 Дополнительно ответьте:

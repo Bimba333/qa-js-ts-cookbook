@@ -4,14 +4,15 @@
 
 Предыдущие главы объяснили две стороны функции:
 
-```text
-Parameters
-│
-└── данные входят в функцию
-
-Return
-│
-└── данные выходят из функции
+```mermaid
+flowchart TD
+    N1["Parameters"]
+    N2["данные входят в функцию"]
+    N3["Return"]
+    N4["данные выходят из функции"]
+    N1 --> N2
+    N1 --> N3
+    N3 --> N4
 ```
 
 Теперь появляется следующий вопрос:
@@ -126,9 +127,11 @@ function compareStatus(actualStatus, expectedStatus) {
 
 Эта функция знает заранее:
 
-```text
-Parameter 1 → actualStatus
-Parameter 2 → expectedStatus
+```mermaid
+flowchart TD
+    N1["Parameter 1 → actualStatus"]
+    N2["Parameter 2 → expectedStatus"]
+    N1 --> N2
 ```
 
 Но иногда количество arguments заранее неизвестно.
@@ -141,33 +144,32 @@ validateStatuses(200, 201, 204, 301, 404);
 
 Проблема:
 
-```text
-One helper
-│
-▼
-unknown number of arguments
-│
-▼
-need one receiving place
-│
-▼
-Rest Parameter
+```mermaid
+flowchart TD
+    N1["One helper"]
+    N2["unknown number of arguments"]
+    N3["need one receiving place"]
+    N4["Rest Parameter"]
+    N1 --> N2
+    N2 --> N3
+    N3 --> N4
 ```
 
 Зачем существуют Rest Parameters:
 
-```text
-Fixed parameters
-│
-└── good for known inputs
-
-Unknown arguments
-│
-└── need collection mechanism
-
-Rest parameter
-│
-└── collects remaining arguments
+```mermaid
+flowchart TD
+    N1["Fixed parameters"]
+    N2["good for known inputs"]
+    N3["Unknown arguments"]
+    N4["need collection mechanism"]
+    N5["Rest parameter"]
+    N6["collects remaining arguments"]
+    N1 --> N2
+    N1 --> N3
+    N3 --> N4
+    N3 --> N5
+    N5 --> N6
 ```
 
 ---
@@ -180,10 +182,11 @@ Rest Parameters существуют, чтобы функция могла пр�
 
 Фиксированные параметры:
 
-```text
-function validateStatus(statusCode)
-                        │
-                        └── one known value
+```mermaid
+flowchart TD
+    N1["function validateStatus(statusCode)"]
+    N2["one known value"]
+    N1 --> N2
 ```
 
 Unknown number of arguments:
@@ -196,17 +199,19 @@ validateStatuses(200, 201, 204)
 
 Rest collection:
 
-```text
-incoming arguments
-│
-├── 200
-├── 201
-└── 204
-    │
-    ▼
-rest parameter
-│
-└── [200, 201, 204]
+```mermaid
+flowchart TD
+    N1["incoming arguments"]
+    N2["200"]
+    N3["201"]
+    N4["204"]
+    N5["rest parameter"]
+    N6["[200, 201, 204]"]
+    N1 --> N2
+    N1 --> N3
+    N1 --> N4
+    N1 --> N5
+    N5 --> N6
 ```
 
 ### Синтаксис ...rest
@@ -221,19 +226,22 @@ function validateStatuses(...statusCodes) {
 
 Схема:
 
-```text
-...statusCodes
-│  │
-│  └── parameter name
-└── rest syntax
+```mermaid
+flowchart TD
+    N1["...statusCodes"]
+    N2["parameter name"]
+    N3["rest syntax"]
+    N1 --> N2
+    N1 --> N3
 ```
 
 Важно:
 
-```text
-...statusCodes
-│
-└── collect remaining arguments into array
+```mermaid
+flowchart TD
+    N1["...statusCodes"]
+    N2["collect remaining arguments into array"]
+    N1 --> N2
 ```
 
 Это не Spread syntax. Spread будет изучаться в следующей главе.
@@ -248,28 +256,32 @@ validateStatuses(200, 201, 204);
 
 Argument поток:
 
-```text
-200
-201
-204
-│
-▼
-...statusCodes
-│
-▼
-[200, 201, 204]
+```mermaid
+flowchart TD
+    N1["200"]
+    N2["201"]
+    N3["204"]
+    N4["...statusCodes"]
+    N5["[200, 201, 204]"]
+    N3 --> N4
+    N4 --> N5
+    N1 --> N2
+    N2 --> N3
 ```
 
 Rest array:
 
-```text
-statusCodes
-│
-└── array
-    │
-    ├── 200
-    ├── 201
-    └── 204
+```mermaid
+flowchart TD
+    N1["statusCodes"]
+    N2["array"]
+    N3["200"]
+    N4["201"]
+    N5["204"]
+    N1 --> N2
+    N2 --> N3
+    N2 --> N4
+    N2 --> N5
 ```
 
 Внутри функции `statusCodes` - обычное имя parameter, но значение в нем array.
@@ -286,21 +298,22 @@ function validateStatuses(...statusCodes) {
 
 Модель:
 
-```text
-Rest parameter
-│
-└── receives array
-    │
-    └── collected arguments
+```mermaid
+flowchart TD
+    N1["Rest parameter"]
+    N2["receives array"]
+    N3["collected arguments"]
+    N1 --> N2
+    N2 --> N3
 ```
 
 Эта глава не изучает array methods. Пока важно только понять форму данных:
 
-```text
-many arguments
-│
-▼
-one array
+```mermaid
+flowchart TD
+    N1["many arguments"]
+    N2["one array"]
+    N1 --> N2
 ```
 
 ### One rest parameter
@@ -315,22 +328,24 @@ function collectStatuses(...statusCodes) {
 
 One rest parameter:
 
-```text
-function collectStatuses(...statusCodes)
-                         │
-                         └── one rest parameter
+```mermaid
+flowchart TD
+    N1["function collectStatuses(...statusCodes)"]
+    N2["one rest parameter"]
+    N1 --> N2
 ```
 
 Не нужно добавлять второй rest parameter.
 
-```text
-Good
-│
-└── (...statusCodes)
-
-Bad
-│
-└── (...statusCodes, ...messages)
+```mermaid
+flowchart TD
+    N1["Good"]
+    N2["(...statusCodes)"]
+    N3["Bad"]
+    N4["(...statusCodes, ...messages)"]
+    N1 --> N2
+    N1 --> N3
+    N3 --> N4
 ```
 
 Второй вариант недопустим синтаксически.
@@ -348,26 +363,28 @@ function validateStatuses(expectedStatus, ...actualStatuses) {
 
 Rest position:
 
-```text
-expectedStatus
-│
-└── normal parameter
-
-...actualStatuses
-│
-└── rest parameter at the end
+```mermaid
+flowchart TD
+    N1["expectedStatus"]
+    N2["normal parameter"]
+    N3["...actualStatuses"]
+    N4["rest parameter at the end"]
+    N1 --> N2
+    N1 --> N3
+    N3 --> N4
 ```
 
 Почему в конце:
 
-```text
-normal parameters
-│
-└── receive known positions
-
-rest parameter
-│
-└── collects everything remaining
+```mermaid
+flowchart TD
+    N1["normal parameters"]
+    N2["receive known positions"]
+    N3["rest parameter"]
+    N4["collects everything remaining"]
+    N1 --> N2
+    N1 --> N3
+    N3 --> N4
 ```
 
 Если rest parameter не последний, JavaScript не сможет понять, что должно остаться для следующих parameters.
@@ -387,25 +404,31 @@ validateStatuses(200, 200, 201, 204);
 
 Parameter matching:
 
-```text
-Argument 1 → expectedStatus
-Arguments 2..n → actualStatuses
+```mermaid
+flowchart TD
+    N1["Argument 1 → expectedStatus"]
+    N2["Arguments 2..n → actualStatuses"]
+    N1 --> N2
 ```
 
 Схема:
 
-```text
-validateStatuses(200, 200, 201, 204)
-                 │    │    │    │
-                 │    └────┴────┴── collected by rest
-                 └── expectedStatus
+```mermaid
+flowchart TD
+    N1["validateStatuses(200, 200, 201, 204)"]
+    N2["──┴────┴── collected by rest"]
+    N3["expectedStatus"]
+    N1 --> N2
+    N2 --> N3
 ```
 
 Результат:
 
-```text
-expectedStatus  → 200
-actualStatuses  → [200, 201, 204]
+```mermaid
+flowchart TD
+    N1["expectedStatus → 200"]
+    N2["actualStatuses → [200, 201, 204]"]
+    N1 --> N2
 ```
 
 ### Zero collected значения
@@ -422,14 +445,13 @@ collectStatuses();
 
 Zero arguments:
 
-```text
-no incoming arguments
-│
-▼
-rest parameter
-│
-▼
-[]
+```mermaid
+flowchart TD
+    N1["нет incoming arguments"]
+    N2["rest parameter"]
+    N3["[]"]
+    N1 --> N2
+    N2 --> N3
 ```
 
 Это не `undefined`. Это empty array.
@@ -444,27 +466,32 @@ collectStatuses(200, 201, 204, 301, 404);
 
 Many arguments:
 
-```text
-200
-201
-204
-301
-404
-│
-▼
-[200, 201, 204, 301, 404]
+```mermaid
+flowchart TD
+    N1["200"]
+    N2["201"]
+    N3["204"]
+    N4["301"]
+    N5["404"]
+    N6["[200, 201, 204, 301, 404]"]
+    N5 --> N6
+    N1 --> N2
+    N2 --> N3
+    N3 --> N4
+    N4 --> N5
 ```
 
 Function вход model:
 
-```text
-Known inputs
-│
-└── normal parameters
-
-Unknown remaining inputs
-│
-└── rest parameter
+```mermaid
+flowchart TD
+    N1["Known inputs"]
+    N2["normal parameters"]
+    N3["Unknown remaining inputs"]
+    N4["rest parameter"]
+    N1 --> N2
+    N1 --> N3
+    N3 --> N4
 ```
 
 ### Читаемость
@@ -485,14 +512,15 @@ function validateStatuses(...statusCodes) {}
 
 Читаемость:
 
-```text
-Singular name
-│
-└── suggests one value
-
-Plural name
-│
-└── suggests collection
+```mermaid
+flowchart TD
+    N1["Singular name"]
+    N2["suggests one value"]
+    N3["Plural name"]
+    N4["suggests collection"]
+    N1 --> N2
+    N1 --> N3
+    N3 --> N4
 ```
 
 Хорошие имена:
@@ -512,93 +540,94 @@ locatorNames
 
 Жизненный цикл вызова:
 
-```text
-Function call starts
-│
-▼
-Arguments arrive one by one
-│
-▼
-Normal parameters receive known positions
-│
-▼
-Rest parameter collects remaining values
-│
-▼
-Function body executes
+```mermaid
+flowchart TD
+    N1["вызов функции starts"]
+    N2["Arguments arrive one by one"]
+    N3["Normal parameters receive known positions"]
+    N4["Rest parameter collects remaining values"]
+    N5["тело функции выполняется"]
+    N1 --> N2
+    N2 --> N3
+    N3 --> N4
+    N4 --> N5
 ```
 
 Rest collection временная шкала:
 
-```text
-Call: validateStatuses(200, 200, 201)
-│
-├── argument 1 goes to expectedStatus
-├── argument 2 goes into rest array
-└── argument 3 goes into rest array
+```mermaid
+flowchart TD
+    N1["Call: validateStatuses(200, 200, 201)"]
+    N2["argument 1 goes to expectedStatus"]
+    N3["argument 2 goes into rest array"]
+    N4["argument 3 goes into rest array"]
+    N1 --> N2
+    N1 --> N3
+    N1 --> N4
 ```
 
 Граница функции:
 
-```text
-Outside function
-│
-└── many separate arguments
-    │
-    ▼
-Function boundary
-    │
-    ▼
-Inside function
-│
-└── one array parameter
+```mermaid
+flowchart TD
+    N1["Outside function"]
+    N2["many separate arguments"]
+    N3["Function boundary"]
+    N4["Inside function"]
+    N5["one array parameter"]
+    N1 --> N2
+    N1 --> N3
+    N3 --> N4
+    N4 --> N5
 ```
 
 Что делает движок:
 
-```text
-I see validateStatuses(200, 200, 201).
-│
-▼
-I match first argument to expectedStatus.
-│
-▼
-I collect remaining arguments.
-│
-▼
-I create an array for actualStatuses.
-│
-▼
-I run the function body.
+```mermaid
+flowchart TD
+    N1["I see validateStatuses(200, 200, 201)."]
+    N2["I match first argument to expectedStatus."]
+    N3["I collect remaining arguments."]
+    N4["I создать an array for actualStatuses."]
+    N5["I run the тело функции."]
+    N1 --> N2
+    N2 --> N3
+    N3 --> N4
+    N4 --> N5
 ```
 
 Текущее место в модели JavaScript:
 
-```text
-Functions
-│
-├── Parameters
-│   └── known inputs
-├── Return
-│   └── output
-└── Rest Parameters
-    └── unknown number of inputs
+```mermaid
+flowchart TD
+    N1["Functions"]
+    N2["Parameters"]
+    N3["known inputs"]
+    N4["Return"]
+    N5["output"]
+    N6["Rest Parameters"]
+    N7["unknown number of inputs"]
+    N1 --> N2
+    N1 --> N3
+    N1 --> N4
+    N1 --> N5
+    N1 --> N6
+    N6 --> N7
 ```
 
 Переход к Spread:
 
-```text
-Rest Parameters
-│
-└── collect many arguments into array
-    │
-    ▼
-Next question
-│
-└── how to unpack array values?
-    │
-    ▼
-Spread
+```mermaid
+flowchart TD
+    N1["Rest Parameters"]
+    N2["collect many arguments into array"]
+    N3["Next question"]
+    N4["how to unpack array values?"]
+    N5["Spread"]
+    N1 --> N2
+    N1 --> N3
+    N3 --> N4
+    N3 --> N5
 ```
 
 Spread будет изучаться в следующей главе. В этой главе важно только направление Rest: many incoming arguments → one array.
@@ -611,61 +640,71 @@ Spread будет изучаться в следующей главе. В это
 
 Rest parameter похож на корзину.
 
-```text
-Arguments
-│
-├── 200
-├── 201
-└── 204
-    │
-    ▼
-Basket
-│
-└── [200, 201, 204]
+```mermaid
+flowchart TD
+    N1["Arguments"]
+    N2["200"]
+    N3["201"]
+    N4["204"]
+    N5["Basket"]
+    N6["[200, 201, 204]"]
+    N1 --> N2
+    N1 --> N3
+    N1 --> N4
+    N1 --> N5
+    N5 --> N6
 ```
 
 ### Коробка
 
-```text
-Box: statusCodes
-│
-├── item 1: 200
-├── item 2: 201
-└── item 3: 204
+```mermaid
+flowchart TD
+    N1["Box: statusCodes"]
+    N2["item 1: 200"]
+    N3["item 2: 201"]
+    N4["item 3: 204"]
+    N1 --> N2
+    N1 --> N3
+    N1 --> N4
 ```
 
 ### Пакет для покупок
 
-```text
-At checkout
-│
-├── item
-├── item
-└── item
-    │
-    ▼
-One shopping bag
+```mermaid
+flowchart TD
+    N1["At checkout"]
+    N2["item"]
+    N3["item"]
+    N4["item"]
+    N5["One shopping bag"]
+    N1 --> N2
+    N1 --> N3
+    N1 --> N4
+    N1 --> N5
 ```
 
 ### Лоток для сбора
 
-```text
-Incoming values
-│
-▼
-Collection tray
-│
-└── rest array
+```mermaid
+flowchart TD
+    N1["Incoming values"]
+    N2["Collection tray"]
+    N3["rest array"]
+    N1 --> N2
+    N2 --> N3
 ```
 
 ### Mailbox receiving many letters
 
-```text
-Mailbox: messages
-│
-├── letter 1
-├── letter 2
-└── letter 3
+```mermaid
+flowchart TD
+    N1["Mailbox: messages"]
+    N2["letter 1"]
+    N3["letter 2"]
+    N4["letter 3"]
+    N1 --> N2
+    N1 --> N3
+    N1 --> N4
 ```
 
 Краткая ментальная модель:
@@ -679,11 +718,13 @@ Collected values become one array.
 
 Complete Rest model:
 
-```text
-function helper(first, ...rest)
-│
-├── first argument → first
-└── remaining arguments → rest array
+```mermaid
+flowchart TD
+    N1["function helper(first, ...rest)"]
+    N2["first argument → first"]
+    N3["remaining arguments → rest array"]
+    N1 --> N2
+    N1 --> N3
 ```
 
 ---
@@ -789,14 +830,19 @@ Rest parameter собирает все remaining arguments в array.
 
 Схема типичных ошибок:
 
-```text
-Ошибка
-│
-├── поставить rest не последним
-├── ждать undefined вместо []
-├── назвать collection singular name
-├── объяснять Rest через Spread
-└── использовать rest там, где inputs fixed
+```mermaid
+flowchart TD
+    N1["Ошибка"]
+    N2["поставить rest не последним"]
+    N3["ждать undefined вместо []"]
+    N4["назвать collection singular name"]
+    N5["объяснять Rest через Spread"]
+    N6["использовать rest там, где inputs fixed"]
+    N1 --> N2
+    N1 --> N3
+    N1 --> N4
+    N1 --> N5
+    N1 --> N6
 ```
 
 ---
@@ -859,10 +905,11 @@ function compareStatus(actualStatus, expectedStatus) {}
 
 В этой главе модель простая:
 
-```text
-Rest
-│
-└── many arguments into one array
+```mermaid
+flowchart TD
+    N1["Rest"]
+    N2["many arguments into one array"]
+    N1 --> N2
 ```
 
 Spread будет позже.
@@ -912,14 +959,15 @@ function validateStatuses(expectedStatus, ...actualStatuses) {
 
 Пример QA-helper:
 
-```text
-expectedStatus
-│
-└── known value
-
-actualStatuses
-│
-└── collected actual values
+```mermaid
+flowchart TD
+    N1["expectedStatus"]
+    N2["known value"]
+    N3["actualStatuses"]
+    N4["collected actual values"]
+    N1 --> N2
+    N1 --> N3
+    N3 --> N4
 ```
 
 ### Collecting test data
@@ -934,14 +982,15 @@ function collectUserEmails(...userEmails) {
 
 Rest parameter делает API helper гибким, но не должен скрывать смысл.
 
-```text
-Good
-│
-└── logMessages(...messages)
-
-Questionable
-│
-└── validateEverything(...items)
+```mermaid
+flowchart TD
+    N1["Good"]
+    N2["logMessages(...messages)"]
+    N3["Questionable"]
+    N4["validateEverything(...items)"]
+    N1 --> N2
+    N1 --> N3
+    N3 --> N4
 ```
 
 ### Flexible logging helpers
@@ -983,14 +1032,13 @@ Rest Parameter collects all remaining arguments into one array.
 
 Ключевой поток:
 
-```text
-arg1, arg2, arg3
-│
-▼
-...rest
-│
-▼
-[arg1, arg2, arg3]
+```mermaid
+flowchart TD
+    N1["arg1, arg2, arg3"]
+    N2["...rest"]
+    N3["[arg1, arg2, arg3]"]
+    N1 --> N2
+    N2 --> N3
 ```
 
 Следующая глава ответит:

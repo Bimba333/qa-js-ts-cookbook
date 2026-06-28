@@ -4,30 +4,30 @@
 
 Предыдущие главы раздела Objects показали, что object может хранить related data:
 
-```text
-Object
-│
-▼
-one entity
-│
-▼
-many named properties
+```mermaid
+flowchart TD
+    N1["Object"]
+    N2["one entity"]
+    N3["many named properties"]
+    N1 --> N2
+    N2 --> N3
 ```
 
 Затем мы научились:
 
-```text
-Destructuring
-│
-└── extract selected properties
-
-Optional Chaining
-│
-└── safely read optional property paths
-
-Nullish Coalescing
-│
-└── choose fallback for null/undefined
+```mermaid
+flowchart TD
+    N1["Destructuring"]
+    N2["extract selected properties"]
+    N3["Optional Chaining"]
+    N4["safely read optional property paths"]
+    N5["Nullish Coalescing"]
+    N6["choose fallback for null/undefined"]
+    N1 --> N2
+    N1 --> N3
+    N3 --> N4
+    N3 --> N5
+    N5 --> N6
 ```
 
 Теперь появляется следующий вопрос:
@@ -48,23 +48,30 @@ const user = {
 
 Но поведение тоже может относиться к той же сущности:
 
-```text
-user
-│
-├── name
-├── email
-├── role
-├── rename()
-└── describe()
+```mermaid
+flowchart TD
+    N1["user"]
+    N2["name"]
+    N3["email"]
+    N4["role"]
+    N5["rename()"]
+    N6["describe()"]
+    N1 --> N2
+    N1 --> N3
+    N1 --> N4
+    N1 --> N5
+    N1 --> N6
 ```
 
 Главная модель главы:
 
-```text
-Object
-│
-├── State
-└── Behavior
+```mermaid
+flowchart TD
+    N1["Object"]
+    N2["State"]
+    N3["Behavior"]
+    N1 --> N2
+    N1 --> N3
 ```
 
 ---
@@ -176,17 +183,21 @@ function renameUser(user, newName) {
 
 Но поведение живет отдельно от entity:
 
-```text
-user data
-│
-├── name
-├── email
-└── role
-
-functions elsewhere
-│
-├── describeUser(user)
-└── renameUser(user, newName)
+```mermaid
+flowchart TD
+    N1["user data"]
+    N2["name"]
+    N3["email"]
+    N4["role"]
+    N5["functions elsewhere"]
+    N6["describeUser(user)"]
+    N7["renameUser(user, newName)"]
+    N1 --> N2
+    N1 --> N3
+    N1 --> N4
+    N1 --> N5
+    N5 --> N6
+    N5 --> N7
 ```
 
 Вопрос:
@@ -208,16 +219,21 @@ const user = {
 
 Теперь поведение относится к той же сущности:
 
-```text
-user
-│
-├── state
-│   ├── name
-│   ├── email
-│   └── role
-│
-└── behavior
-    └── describe()
+```mermaid
+flowchart TD
+    N1["user"]
+    N2["state"]
+    N3["name"]
+    N4["email"]
+    N5["role"]
+    N6["behavior"]
+    N7["describe()"]
+    N1 --> N2
+    N1 --> N3
+    N1 --> N4
+    N1 --> N5
+    N1 --> N6
+    N6 --> N7
 ```
 
 Главный вопрос главы:
@@ -234,33 +250,39 @@ Object method — это поведение, связанное с объект�
 
 Лучше:
 
-```text
-Method
-│
-▼
-поведение, относящееся к сущности
+```mermaid
+flowchart TD
+    N1["Method"]
+    N2["поведение, относящееся к сущности"]
+    N1 --> N2
 ```
 
 ### Why methods exist
 
 Objects started as data grouping:
 
-```text
-user
-│
-├── name
-├── email
-└── role
+```mermaid
+flowchart TD
+    N1["user"]
+    N2["name"]
+    N3["email"]
+    N4["role"]
+    N1 --> N2
+    N1 --> N3
+    N1 --> N4
 ```
 
 But entities often have actions:
 
-```text
-user
-│
-├── can describe itself
-├── can rename itself
-└── can check its role
+```mermaid
+flowchart TD
+    N1["user"]
+    N2["can describe itself"]
+    N3["can rename itself"]
+    N4["can check its role"]
+    N1 --> N2
+    N1 --> N3
+    N1 --> N4
 ```
 
 Methods позволяют объекту держать поведение рядом с данными, которые оно использует.
@@ -290,11 +312,13 @@ const user = {
 
 Модель:
 
-```text
-Object
-│
-├── State: role = 'admin'
-└── Behavior: isAdmin()
+```mermaid
+flowchart TD
+    N1["Object"]
+    N2["State: role = 'admin'"]
+    N3["Behavior: isAdmin()"]
+    N1 --> N2
+    N1 --> N3
 ```
 
 ### Method syntax
@@ -331,23 +355,24 @@ user.describe();
 
 This is вызов метода:
 
-```text
-object.method()
-│
-├── object -> receiver
-└── method -> function called
+```mermaid
+flowchart TD
+    N1["object.method()"]
+    N2["object → receiver"]
+    N3["method → function called"]
+    N1 --> N2
+    N1 --> N3
 ```
 
 This reconnects to the earlier chapter on `this`:
 
-```text
-ordinary object.method() invocation
-│
-▼
-receiver is object before dot
-│
-▼
-this inside method points to receiver
+```mermaid
+flowchart TD
+    N1["ordinary object.method() invocation"]
+    N2["receiver is object before dot"]
+    N3["this inside method points to receiver"]
+    N1 --> N2
+    N2 --> N3
 ```
 
 Это рабочая модель обычных вызовов методов в этой главе. Другие формы вызова уже разбирались в `call()`, `apply()` и `bind()`, а более глубокая механика вернётся в главах про Prototype.
@@ -404,10 +429,11 @@ account.getLabel();
 
 Напоминание про объект выполнения:
 
-```text
-account.getLabel()
-│
-└── this -> account
+```mermaid
+flowchart TD
+    N1["account.getLabel()"]
+    N2["this → account"]
+    N1 --> N2
 ```
 
 ### Arrow functions as methods
@@ -441,72 +467,77 @@ apiClient.buildUrl('/users');
 
 Концептуальный поток:
 
-```text
-1. Прочитать identifier apiClient
-2. Find property "buildUrl"
-3. Get function object stored in that property
-4. Вызвать её через apiClient
-5. Set receiver for this invocation
-6. Inside method: this -> apiClient
-7. Read this.baseUrl
-8. Return final URL
+```mermaid
+flowchart TD
+    N1["1. Прочитать identifier apiClient"]
+    N2["2. Find property &quot;buildUrl&quot;"]
+    N3["3. Get function object stored in that property"]
+    N4["4. Вызвать её через apiClient"]
+    N5["5. Set receiver for this invocation"]
+    N6["6. Inside method: this → apiClient"]
+    N7["7. Read this.baseUrl"]
+    N8["8. Return final URL"]
+    N1 --> N2
+    N2 --> N3
+    N3 --> N4
+    N4 --> N5
+    N5 --> N6
+    N6 --> N7
+    N7 --> N8
 ```
 
 ### Method lifecycle
 
-```text
-create object
-│
-▼
-store data properties
-│
-▼
-store method property
-│
-▼
-call object.method()
-│
-▼
-method executes with receiver
+```mermaid
+flowchart TD
+    N1["создать object"]
+    N2["store data properties"]
+    N3["store method property"]
+    N4["вызвать object.method()"]
+    N5["method выполняется with receiver"]
+    N1 --> N2
+    N2 --> N3
+    N3 --> N4
+    N4 --> N5
 ```
 
 ### Method execution
 
-```text
-object.method(args)
-│
-▼
-function execution starts
-│
-▼
-this points to receiver
-│
-▼
-method reads/uses object state
+```mermaid
+flowchart TD
+    N1["object.method(args)"]
+    N2["function выполнение starts"]
+    N3["this points to receiver"]
+    N4["method reads/uses object state"]
+    N1 --> N2
+    N2 --> N3
+    N3 --> N4
 ```
 
 ### Function vs method internally
 
 The function object itself remains a function object.
 
-```text
-function object
-│
-├── can be stored in variable
-├── can be stored in object property
-└── can be called
+```mermaid
+flowchart TD
+    N1["function object"]
+    N2["can be stored in variable"]
+    N3["can be stored in object property"]
+    N4["can be called"]
+    N1 --> N2
+    N1 --> N3
+    N1 --> N4
 ```
 
 На практике она становится method, когда используется как поведение объекта:
 
-```text
-свойство объекта содержит функцию
-│
-▼
-called as object.method()
-│
-▼
-вызов метода
+```mermaid
+flowchart TD
+    N1["свойство объекта содержит функцию"]
+    N2["called as object.method()"]
+    N3["вызов метода"]
+    N1 --> N2
+    N2 --> N3
 ```
 
 ### State change preview
@@ -535,56 +566,73 @@ rename(newName) {
 
 Employee profile:
 
-```text
-Employee profile
-│
-├── State
-│   ├── name
-│   └── role
-│
-└── Behavior
-    ├── describe()
-    └── promote()
+```mermaid
+flowchart TD
+    N1["Employee profile"]
+    N2["State"]
+    N3["name"]
+    N4["role"]
+    N5["Behavior"]
+    N6["describe()"]
+    N7["promote()"]
+    N1 --> N2
+    N1 --> N3
+    N1 --> N4
+    N1 --> N5
+    N5 --> N6
+    N5 --> N7
 ```
 
 Control panel:
 
-```text
-Device
-│
-├── state: power, mode
-└── buttons: turnOn(), changeMode()
+```mermaid
+flowchart TD
+    N1["Device"]
+    N2["state: power, mode"]
+    N3["buttons: turnOn(), changeMode()"]
+    N1 --> N2
+    N1 --> N3
 ```
 
 Game character:
 
-```text
-Character
-│
-├── health
-├── level
-├── move()
-└── takeDamage()
+```mermaid
+flowchart TD
+    N1["Character"]
+    N2["health"]
+    N3["level"]
+    N4["move()"]
+    N5["takeDamage()"]
+    N1 --> N2
+    N1 --> N3
+    N1 --> N4
+    N1 --> N5
 ```
 
 Bank account:
 
-```text
-Account
-│
-├── owner
-├── balance
-├── deposit()
-└── getBalance()
+```mermaid
+flowchart TD
+    N1["Account"]
+    N2["owner"]
+    N3["balance"]
+    N4["deposit()"]
+    N5["getBalance()"]
+    N1 --> N2
+    N1 --> N3
+    N1 --> N4
+    N1 --> N5
 ```
 
 Главная модель:
 
-```text
-Object
-│
-├── State
-└── Behavior
+```mermaid
+flowchart TD
+    N1["Object"]
+    N2["State"]
+    N3["Behavior"]
+    N1 --> N2
+    N1 --> N3
 ```
 
 ---
@@ -707,10 +755,11 @@ console.log(assertionHelper.formatStatus('checkout', 500, 200));
 
 Нет.
 
-```text
-method
-│
-└── обычная функция, используемая как поведение объекта
+```mermaid
+flowchart TD
+    N1["method"]
+    N2["обычная функция, используемая как поведение объекта"]
+    N1 --> N2
 ```
 
 ### Почему не говорить просто "function inside object"?
@@ -861,11 +910,13 @@ const config = {
 
 API client естественно владеет поведением для построения URL и описания запроса:
 
-```text
-apiClient
-│
-├── state: baseUrl
-└── behavior: buildUrl()
+```mermaid
+flowchart TD
+    N1["apiClient"]
+    N2["state: baseUrl"]
+    N3["behavior: buildUrl()"]
+    N1 --> N2
+    N1 --> N3
 ```
 
 ### Page Object preview
@@ -874,22 +925,26 @@ Page Object will be studied deeply later.
 
 High-level preview:
 
-```text
-LoginPage
-│
-├── state: locators
-└── behavior: login()
+```mermaid
+flowchart TD
+    N1["LoginPage"]
+    N2["state: locators"]
+    N3["behavior: login()"]
+    N1 --> N2
+    N1 --> N3
 ```
 
 ### Assertion helpers
 
 Assertion helper object can own suite name or reporting prefix:
 
-```text
-assertions
-│
-├── state: suite
-└── behavior: format result
+```mermaid
+flowchart TD
+    N1["assertions"]
+    N2["state: suite"]
+    N3["behavior: format result"]
+    N1 --> N2
+    N1 --> N3
 ```
 
 ### Request builders
@@ -906,237 +961,262 @@ Configuration object can expose methods that describe or normalize configuration
 
 ### 1. Why methods exist
 
-```text
-данные относятся к одной сущности
-│
-▼
-behavior uses that data
-│
-▼
-method относится к object
+```mermaid
+flowchart TD
+    N1["данные относятся к одной сущности"]
+    N2["behavior uses that data"]
+    N3["method относится к object"]
+    N1 --> N2
+    N2 --> N3
 ```
 
 ### 2. Data only
 
-```text
-user
-│
-├── name
-├── email
-└── role
+```mermaid
+flowchart TD
+    N1["user"]
+    N2["name"]
+    N3["email"]
+    N4["role"]
+    N1 --> N2
+    N1 --> N3
+    N1 --> N4
 ```
 
 ### 3. Data + поведение
 
-```text
-user
-│
-├── state
-└── methods
+```mermaid
+flowchart TD
+    N1["user"]
+    N2["state"]
+    N3["methods"]
+    N1 --> N2
+    N1 --> N3
 ```
 
 ### 4. Method call
 
-```text
-object.method()
-│
-▼
-execute behavior
+```mermaid
+flowchart TD
+    N1["object.method()"]
+    N2["выполнить behavior"]
+    N1 --> N2
 ```
 
 ### 5. Состояние и поведение
 
-```text
-Object
-│
-├── State
-└── Behavior
+```mermaid
+flowchart TD
+    N1["Object"]
+    N2["State"]
+    N3["Behavior"]
+    N1 --> N2
+    N1 --> N3
 ```
 
 ### 6. Object model
 
-```text
-entity
-│
-├── properties with data
-└── properties with functions
+```mermaid
+flowchart TD
+    N1["entity"]
+    N2["properties with data"]
+    N3["properties with functions"]
+    N1 --> N2
+    N1 --> N3
 ```
 
 ### 7. Текущая модель JavaScript
 
-```text
-Objects
-│
-├── properties
-├── safe access
-├── fallback values
-└── methods
+```mermaid
+flowchart TD
+    N1["Objects"]
+    N2["properties"]
+    N3["safe access"]
+    N4["fallback values"]
+    N5["methods"]
+    N1 --> N2
+    N1 --> N3
+    N1 --> N4
+    N1 --> N5
 ```
 
 ### 8. Method execution
 
-```text
-call method
-│
-▼
-create function execution
-│
-▼
-use receiver as this
+```mermaid
+flowchart TD
+    N1["вызвать method"]
+    N2["создать function выполнение"]
+    N3["use receiver as this"]
+    N1 --> N2
+    N2 --> N3
 ```
 
 ### 9. Receiver reminder
 
-```text
-apiClient.buildUrl()
-│
-└── receiver -> apiClient
+```mermaid
+flowchart TD
+    N1["apiClient.buildUrl()"]
+    N2["receiver → apiClient"]
+    N1 --> N2
 ```
 
 ### 10. this inside method
 
-```text
-this
-│
-└── current receiver
+```mermaid
+flowchart TD
+    N1["this"]
+    N2["current receiver"]
+    N1 --> N2
 ```
 
 ### 11. Function vs method
 
-```text
-function object
-│
-├── вызвана отдельно -> обычный вызов функции
-└── called through object -> method call
+```mermaid
+flowchart TD
+    N1["function object"]
+    N2["вызвана отдельно → обычный вызов функции"]
+    N3["called through object → method call"]
+    N1 --> N2
+    N1 --> N3
 ```
 
 ### 12. QA API client
 
-```text
-apiClient
-│
-├── baseUrl
-└── buildUrl()
+```mermaid
+flowchart TD
+    N1["apiClient"]
+    N2["baseUrl"]
+    N3["buildUrl()"]
+    N1 --> N2
+    N1 --> N3
 ```
 
 ### 13. Assertion helper object
 
-```text
-assertions
-│
-├── suite
-└── formatStatus()
+```mermaid
+flowchart TD
+    N1["assertions"]
+    N2["suite"]
+    N3["formatStatus()"]
+    N1 --> N2
+    N1 --> N3
 ```
 
 ### 14. Configuration object
 
-```text
-config
-│
-├── baseUrl
-├── timeout
-└── describe()
+```mermaid
+flowchart TD
+    N1["config"]
+    N2["baseUrl"]
+    N3["timeout"]
+    N4["describe()"]
+    N1 --> N2
+    N1 --> N3
+    N1 --> N4
 ```
 
 ### 15. Читаемость
 
-```text
-behavior near data
-│
-▼
-reader sees responsibility
+```mermaid
+flowchart TD
+    N1["behavior near data"]
+    N2["reader sees responsibility"]
+    N1 --> N2
 ```
 
 ### 16. Типичные ошибки
 
-```text
-detach method
-│
-▼
-receiver lost
+```mermaid
+flowchart TD
+    N1["detach method"]
+    N2["receiver lost"]
+    N1 --> N2
 ```
 
 ### 17. Method lifecycle
 
-```text
-define object
-│
-▼
-store method
-│
-▼
-call method
-│
-▼
-method returns result
+```mermaid
+flowchart TD
+    N1["define object"]
+    N2["store method"]
+    N3["вызвать method"]
+    N4["method возвращает result"]
+    N1 --> N2
+    N2 --> N3
+    N3 --> N4
 ```
 
 ### 18. Object responsibility
 
-```text
-object owns data
-│
-▼
-object owns related behavior
+```mermaid
+flowchart TD
+    N1["object owns data"]
+    N2["object owns related behavior"]
+    N1 --> N2
 ```
 
 ### 19. Принадлежность поведения
 
-```text
-behavior uses object state
-│
-▼
-поведение относится к object
+```mermaid
+flowchart TD
+    N1["behavior uses object state"]
+    N2["поведение относится к object"]
+    N1 --> N2
 ```
 
 ### 20. Complete object model
 
-```text
-Object
-│
-├── State
-│   └── data properties
-└── Behavior
-    └── methods
+```mermaid
+flowchart TD
+    N1["Object"]
+    N2["State"]
+    N3["data properties"]
+    N4["Behavior"]
+    N5["methods"]
+    N1 --> N2
+    N1 --> N3
+    N1 --> N4
+    N4 --> N5
 ```
 
 ### 21. Method invocation
 
-```text
-object.method(args)
-│
-├── receiver
-└── arguments
+```mermaid
+flowchart TD
+    N1["object.method(args)"]
+    N2["receiver"]
+    N3["arguments"]
+    N1 --> N2
+    N1 --> N3
 ```
 
 ### 22. State change preview
 
-```text
-method
-│
-▼
-updates property
-│
-▼
-state changes
+```mermaid
+flowchart TD
+    N1["method"]
+    N2["updates property"]
+    N3["state changes"]
+    N1 --> N2
+    N2 --> N3
 ```
 
 ### 23. Переход к descriptors
 
-```text
-properties can behave differently
-│
-▼
-Object Descriptors
+```mermaid
+flowchart TD
+    N1["properties can behave differently"]
+    N2["Object Descriptors"]
+    N1 --> N2
 ```
 
 ### 24. Переход к prototypes
 
-```text
-methods can be shared
-│
-▼
-Prototype later
+```mermaid
+flowchart TD
+    N1["methods can be shared"]
+    N2["Prototype later"]
+    N1 --> N2
 ```
 
 ### 25. Краткая ментальная модель
@@ -1149,67 +1229,77 @@ device buttons
 
 ### 26. Entity поведение
 
-```text
-entity
-│
-├── what it knows
-└── what it can do
+```mermaid
+flowchart TD
+    N1["entity"]
+    N2["what it knows"]
+    N3["what it can do"]
+    N1 --> N2
+    N1 --> N3
 ```
 
 ### 27. Device buttons
 
-```text
-device state
-│
-└── buttons operate on state
+```mermaid
+flowchart TD
+    N1["device state"]
+    N2["buttons operate on state"]
+    N1 --> N2
 ```
 
 ### 28. Game character
 
-```text
-character
-│
-├── health
-└── takeDamage()
+```mermaid
+flowchart TD
+    N1["character"]
+    N2["health"]
+    N3["takeDamage()"]
+    N1 --> N2
+    N1 --> N3
 ```
 
 ### 29. Bank account
 
-```text
-account
-│
-├── balance
-└── deposit()
+```mermaid
+flowchart TD
+    N1["account"]
+    N2["balance"]
+    N3["deposit()"]
+    N1 --> N2
+    N1 --> N3
 ```
 
 ### 30. QA Page Object preview
 
-```text
-Page Object
-│
-├── locators
-└── actions
+```mermaid
+flowchart TD
+    N1["Page Object"]
+    N2["locators"]
+    N3["actions"]
+    N1 --> N2
+    N1 --> N3
 ```
 
 ### 31. Object evolution
 
-```text
-data object
-│
-▼
-object with behavior
-│
-▼
-future: prototypes/classes
+```mermaid
+flowchart TD
+    N1["data object"]
+    N2["object with behavior"]
+    N3["future: prototypes/classes"]
+    N1 --> N2
+    N2 --> N3
 ```
 
 ### 32. Итоговая схема
 
-```text
-Object
-│
-├── State
-└── Behavior
+```mermaid
+flowchart TD
+    N1["Object"]
+    N2["State"]
+    N3["Behavior"]
+    N1 --> N2
+    N1 --> N3
 ```
 
 ---
@@ -1256,29 +1346,28 @@ solutions/01-javascript/37-object-methods.md
 
 Object Methods продолжают Objects section:
 
-```text
-Objects
-│
-▼
-Destructuring
-│
-▼
-Optional Chaining
-│
-▼
-Nullish Coalescing
-│
-▼
-Object Methods
+```mermaid
+flowchart TD
+    N1["Objects"]
+    N2["Destructuring"]
+    N3["Optional Chaining"]
+    N4["Nullish Coalescing"]
+    N5["Object Methods"]
+    N1 --> N2
+    N2 --> N3
+    N3 --> N4
+    N4 --> N5
 ```
 
 Главная модель:
 
-```text
-Object
-│
-├── State
-└── Behavior
+```mermaid
+flowchart TD
+    N1["Object"]
+    N2["State"]
+    N3["Behavior"]
+    N1 --> N2
+    N1 --> N3
 ```
 
 Method — это обычная функция, используемая как поведение объекта. Она вызывается как `object.method()`, и при обычном вызове метода `this` указывает на объект выполнения.

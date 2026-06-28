@@ -86,17 +86,15 @@
 
 Ответ:
 
-```text
-test data
-│
-▼
-request builder
-│
-▼
-api client
-│
-▼
-assertion
+```mermaid
+flowchart TD
+    N1["test data"]
+    N2["request builder"]
+    N3["api client"]
+    N4["assertion"]
+    N1 --> N2
+    N2 --> N3
+    N3 --> N4
 ```
 
 Ошибка формы данных становится дорогой, если проходит несколько слоев и проявляется только в assertion.
@@ -111,14 +109,15 @@ assertion
 
 Ответ:
 
-```text
-неправильная форма test data
-│
-неверные параметры helper-функции
-│
-небезопасный refactoring
-│
-ошибки между modules
+```mermaid
+flowchart TD
+    N1["неправильная форма test data"]
+    N2["неверные параметры helper-функции"]
+    N3["небезопасный refactoring"]
+    N4["ошибки между modules"]
+    N1 --> N2
+    N2 --> N3
+    N3 --> N4
 ```
 
 Объяснение: TypeScript должен помочь находить такие проблемы до запуска сценария.

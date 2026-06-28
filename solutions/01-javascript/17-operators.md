@@ -506,10 +506,13 @@ in      property presence
 
 Результаты:
 
-```text
-nextRetryCount → "31"
-isSuccess      → true
-hasId          → true
+```mermaid
+flowchart TD
+    N1["nextRetryCount → &quot;31&quot;"]
+    N2["isSuccess → true"]
+    N3["hasId → true"]
+    N1 --> N2
+    N2 --> N3
 ```
 
 Возможная проблема преобразования типа:

@@ -4,14 +4,13 @@
 
 Предыдущая глава объяснила Call Stack:
 
-```text
-a()
-│
-▼
-b()
-│
-▼
-c()
+```mermaid
+flowchart TD
+    N1["a()"]
+    N2["b()"]
+    N3["c()"]
+    N1 --> N2
+    N2 --> N3
 ```
 
 Call Stack показывает, какая функция выполняется сейчас. Но Execution Context должен хранить данные: локальные переменные, примитивные значения и ссылки на объекты.
@@ -81,77 +80,93 @@ JavaScript должен где-то хранить:
 
 В этой модели:
 
-```text
-Stack
-│
-├── активные Execution Context
-├── локальные примитивные значения
-└── ссылки на объекты
-
-Heap
-│
-└── объекты
+```mermaid
+flowchart TD
+    N1["Stack"]
+    N2["активные Execution Context"]
+    N3["локальные примитивные значения"]
+    N4["ссылки на объекты"]
+    N5["Heap"]
+    N6["объекты"]
+    N1 --> N2
+    N1 --> N3
+    N1 --> N4
+    N1 --> N5
+    N5 --> N6
 ```
 
 Stack удобно связывать с активным выполнением:
 
-```text
-Execution Context в Call Stack
-│
-├── локальные имена
-└── локальные значения/ссылки
+```mermaid
+flowchart TD
+    N1["Execution Context в Call Stack"]
+    N2["локальные имена"]
+    N3["локальные значения/ссылки"]
+    N1 --> N2
+    N1 --> N3
 ```
 
 Heap удобно связывать с хранением объектов:
 
-```text
-переменная user
-│
-▼
-ссылка
-│
-▼
-объект в Heap
+```mermaid
+flowchart TD
+    N1["переменная user"]
+    N2["ссылка"]
+    N3["объект в Heap"]
+    N1 --> N2
+    N2 --> N3
 ```
 
 ## Внутренний механизм
 
 Когда выполнение входит в `c()`, появляется Execution Context:
 
-```text
-Call Stack
-├── c context
-├── b context
-├── a context
-└── Global
+```mermaid
+flowchart TD
+    N1["Call Stack"]
+    N2["c context"]
+    N3["b context"]
+    N4["a context"]
+    N5["Global"]
+    N1 --> N2
+    N1 --> N3
+    N1 --> N4
+    N1 --> N5
 ```
 
 Внутри `c context` появляются локальные имена:
 
-```text
-c context
-│
-├── count -> 3
-└── user  -> ссылка
+```mermaid
+flowchart TD
+    N1["c context"]
+    N2["count → 3"]
+    N3["user → ссылка"]
+    N1 --> N2
+    N1 --> N3
 ```
 
 Объект живет в Heap:
 
-```text
-Heap
-└── объект
-    └── name: 'Anna'
+```mermaid
+flowchart TD
+    N1["Heap"]
+    N2["объект"]
+    N3["name: 'Anna'"]
+    N1 --> N2
+    N2 --> N3
 ```
 
 Связь:
 
-```text
-c context
-└── user
-    │
-    ▼
-    объект в Heap
-    └── name: 'Anna'
+```mermaid
+flowchart TD
+    N1["c context"]
+    N2["user"]
+    N3["объект в Heap"]
+    N4["name: 'Anna'"]
+    N1 --> N2
+    N1 --> N3
+    N3 --> N4
 ```
 
 Когда `c()` заканчивается, его Execution Context уходит из Call Stack. Если объект больше нигде не доступен по ссылке, позже он может быть очищен. Garbage Collector будет изучаться отдельно; здесь достаточно понимать время жизни данных.
@@ -165,11 +180,13 @@ Stack = активные вызовы и локальный доступ
 Heap  = объекты
 ```
 
-```text
-Execution Context функции
-│
-├── примитивное значение
-└── ссылка ──► объект в Heap
+```mermaid
+flowchart TD
+    N1["Execution Context функции"]
+    N2["примитивное значение"]
+    N3["ссылка → объект в Heap"]
+    N1 --> N2
+    N1 --> N3
 ```
 
 ## Примеры
@@ -202,17 +219,15 @@ Memory Model помогает понимать:
 
 QA-аналогия минимальная:
 
-```text
-объект с тестовыми данными
-│
-▼
-используется несколькими helpers
-│
-▼
-один helper меняет объект
-│
-▼
-другой helper видит измененные данные
+```mermaid
+flowchart TD
+    N1["объект с тестовыми данными"]
+    N2["используется несколькими helpers"]
+    N3["один helper меняет объект"]
+    N4["другой helper видит измененные данные"]
+    N1 --> N2
+    N2 --> N3
+    N3 --> N4
 ```
 
 Memory Model объясняет такие ошибки без мистики: helpers могут разделять ссылки на один и тот же объект.

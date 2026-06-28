@@ -205,17 +205,27 @@ playground/hoisting-movie.js
 
 После кода нарисуйте:
 
-```text
-Creation Phase
-├── function ...
-├── var ...
-├── let ...
-└── const ...
-
-Execution Phase
-├── call function
-├── read var
-├── assign var
-├── initialize let
-└── initialize const
+```mermaid
+flowchart TD
+    N1["Creation Phase"]
+    N2["function ..."]
+    N3["var ..."]
+    N4["let ..."]
+    N5["const ..."]
+    N6["выполнение Phase"]
+    N7["вызвать function"]
+    N8["read var"]
+    N9["assign var"]
+    N10["initialize let"]
+    N11["initialize const"]
+    N1 --> N2
+    N1 --> N3
+    N1 --> N4
+    N1 --> N5
+    N1 --> N6
+    N6 --> N7
+    N6 --> N8
+    N6 --> N9
+    N6 --> N10
+    N6 --> N11
 ```

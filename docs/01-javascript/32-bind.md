@@ -6,32 +6,35 @@
 
 Главная модель была такой:
 
-```text
-apply()
-│
-├── receiver выбирается явно
-└── arguments передаются одним array или array-like collection
+```mermaid
+flowchart TD
+    N1["apply()"]
+    N2["receiver выбирается явно"]
+    N3["arguments передаются одним array или array-like collection"]
+    N1 --> N2
+    N1 --> N3
 ```
 
 До этого `call()` показал другой вариант:
 
-```text
-call()
-│
-├── receiver выбирается явно
-└── arguments передаются отдельно
+```mermaid
+flowchart TD
+    N1["call()"]
+    N2["receiver выбирается явно"]
+    N3["arguments передаются отдельно"]
+    N1 --> N2
+    N1 --> N3
 ```
 
 Оба механизма делают invocation сразу.
 
-```text
-functionObject.call(receiver, arg1, arg2)
-│
-▼
-receiver выбран
-│
-▼
-function выполняется сейчас
+```mermaid
+flowchart TD
+    N1["functionObject.call(receiver, arg1, arg2)"]
+    N2["receiver выбран"]
+    N3["function выполняется сейчас"]
+    N1 --> N2
+    N2 --> N3
 ```
 
 Теперь появляется следующий вопрос:
@@ -40,17 +43,15 @@ function выполняется сейчас
 
 Или так:
 
-```text
-choose receiver
-│
-▼
-do not invoke yet
-│
-▼
-save prepared function
-│
-▼
-invoke later
+```mermaid
+flowchart TD
+    N1["choose receiver"]
+    N2["do not invoke yet"]
+    N3["save prepared function"]
+    N4["invoke later"]
+    N1 --> N2
+    N2 --> N3
+    N3 --> N4
 ```
 
 Для этого существует `bind()`.
@@ -61,16 +62,19 @@ invoke later
 
 Ответ:
 
-```text
-call()
-│
-├── chooses receiver
-└── invokes immediately
-
-bind()
-│
-├── chooses receiver
-└── creates a new function for later invocation
+```mermaid
+flowchart TD
+    N1["call()"]
+    N2["chooses receiver"]
+    N3["invokes immediately"]
+    N4["bind()"]
+    N5["chooses receiver"]
+    N6["создает a new function for later invocation"]
+    N1 --> N2
+    N1 --> N3
+    N1 --> N4
+    N4 --> N5
+    N4 --> N6
 ```
 
 ---
@@ -188,12 +192,15 @@ validateStatus.call(stagingConfig, '/profile', 200, 200);
 
 Но объект выполнения повторяется каждый раз:
 
-```text
-validateStatus.call(stagingConfig, ...)
-validateStatus.call(stagingConfig, ...)
-validateStatus.call(stagingConfig, ...)
-                 │
-                 └── same receiver again and again
+```mermaid
+flowchart TD
+    N1["validateStatus.call(stagingConfig, ...)"]
+    N2["validateStatus.call(stagingConfig, ...)"]
+    N3["validateStatus.call(stagingConfig, ...)"]
+    N4["same receiver again and again"]
+    N3 --> N4
+    N1 --> N2
+    N2 --> N3
 ```
 
 Проблема не в том, что `call()` плохой.
@@ -202,17 +209,15 @@ validateStatus.call(stagingConfig, ...)
 
 Проблема другая:
 
-```text
-Same receiver
-│
-▼
-many future invocations
-│
-▼
-repeating .call(receiver, ...)
-│
-▼
-noise in code
+```mermaid
+flowchart TD
+    N1["Same receiver"]
+    N2["many future invocations"]
+    N3["repeating .call(receiver, ...)"]
+    N4["noise in code"]
+    N1 --> N2
+    N2 --> N3
+    N3 --> N4
 ```
 
 Вопрос:
@@ -227,40 +232,34 @@ yes
 
 Зачем существует bind():
 
-```text
-Need explicit receiver
-│
-▼
-Need delayed invocation
-│
-▼
-Need reusable prepared function
-│
-▼
-bind()
+```mermaid
+flowchart TD
+    N1["Need explicit receiver"]
+    N2["Need delayed invocation"]
+    N3["Need reusable prepared function"]
+    N4["bind()"]
+    N1 --> N2
+    N2 --> N3
+    N3 --> N4
 ```
 
 Центральная мысль:
 
-```text
-call()
-│
-▼
-choose receiver
-│
-▼
-invoke now
-
-bind()
-│
-▼
-choose receiver
-│
-▼
-create new function
-│
-▼
-invoke later
+```mermaid
+flowchart TD
+    N1["call()"]
+    N2["choose receiver"]
+    N3["invoke now"]
+    N4["bind()"]
+    N5["choose receiver"]
+    N6["создать new function"]
+    N7["invoke later"]
+    N1 --> N2
+    N2 --> N3
+    N3 --> N4
+    N4 --> N5
+    N5 --> N6
+    N6 --> N7
 ```
 
 ---
@@ -277,17 +276,15 @@ const boundValidateStatus = validateStatus.bind(stagingConfig);
 
 Она создает новую function:
 
-```text
-validateStatus
-│
-▼
-.bind(stagingConfig)
-│
-▼
-new function
-│
-▼
-boundValidateStatus
+```mermaid
+flowchart TD
+    N1["validateStatus"]
+    N2[".bind(stagingConfig)"]
+    N3["new function"]
+    N4["boundValidateStatus"]
+    N1 --> N2
+    N2 --> N3
+    N3 --> N4
 ```
 
 Теперь новую function можно вызвать обычным образом:
@@ -299,14 +296,13 @@ boundValidateStatus('/orders', 201, 201);
 
 При каждом таком вызове объект выполнения уже известен:
 
-```text
-boundValidateStatus('/users', 200, 200)
-│
-▼
-uses fixed receiver
-│
-▼
-this -> stagingConfig
+```mermaid
+flowchart TD
+    N1["boundValidateStatus('/users', 200, 200)"]
+    N2["uses fixed receiver"]
+    N3["this → stagingConfig"]
+    N1 --> N2
+    N2 --> N3
 ```
 
 ### Что такое `bind()`
@@ -315,12 +311,15 @@ this -> stagingConfig
 
 Важно:
 
-```text
-bind()
-│
-├── does not call original function now
-├── returns a new function
-└── remembers selected receiver for future calls
+```mermaid
+flowchart TD
+    N1["bind()"]
+    N2["does not вызвать original function now"]
+    N3["возвращает a new function"]
+    N4["remembers selected receiver for future calls"]
+    N1 --> N2
+    N1 --> N3
+    N1 --> N4
 ```
 
 Синтаксис:
@@ -331,17 +330,15 @@ const boundFunction = originalFunction.bind(receiver);
 
 Модель:
 
-```text
-originalFunction
-│
-▼
-bind(receiver)
-│
-▼
-boundFunction
-│
-▼
-later invocation uses receiver
+```mermaid
+flowchart TD
+    N1["originalFunction"]
+    N2["bind(receiver)"]
+    N3["boundFunction"]
+    N4["later invocation uses receiver"]
+    N1 --> N2
+    N2 --> N3
+    N3 --> N4
 ```
 
 ### Что отличается от `call()`
@@ -352,17 +349,15 @@ later invocation uses receiver
 validateStatus.call(stagingConfig, '/users', 200, 200);
 ```
 
-```text
-Receiver selected
-│
-▼
-Arguments passed
-│
-▼
-Function executes immediately
-│
-▼
-Result returned now
+```mermaid
+flowchart TD
+    N1["Receiver selected"]
+    N2["Arguments passed"]
+    N3["Function выполняется immediately"]
+    N4["Result returned now"]
+    N1 --> N2
+    N2 --> N3
+    N3 --> N4
 ```
 
 `bind()`:
@@ -371,17 +366,15 @@ Result returned now
 const validateInStaging = validateStatus.bind(stagingConfig);
 ```
 
-```text
-Receiver selected
-│
-▼
-New function created
-│
-▼
-Nothing executed yet
-│
-▼
-Function can be called later
+```mermaid
+flowchart TD
+    N1["Receiver selected"]
+    N2["New function created"]
+    N3["Nothing executed yet"]
+    N4["Function can be called later"]
+    N1 --> N2
+    N2 --> N3
+    N3 --> N4
 ```
 
 ### Что отличается от `apply()`
@@ -392,22 +385,28 @@ Function can be called later
 validateStatus.apply(stagingConfig, ['/users', 200, 200]);
 ```
 
-```text
-apply()
-│
-├── receiver: stagingConfig
-├── arguments: array
-└── invocation: now
+```mermaid
+flowchart TD
+    N1["apply()"]
+    N2["receiver: stagingConfig"]
+    N3["arguments: array"]
+    N4["invocation: now"]
+    N1 --> N2
+    N1 --> N3
+    N1 --> N4
 ```
 
 `bind()` решает другую задачу:
 
-```text
-bind()
-│
-├── receiver: stagingConfig
-├── new function: yes
-└── invocation: later
+```mermaid
+flowchart TD
+    N1["bind()"]
+    N2["receiver: stagingConfig"]
+    N3["new function: да"]
+    N4["invocation: later"]
+    N1 --> N2
+    N1 --> N3
+    N1 --> N4
 ```
 
 ### Bound function
@@ -418,57 +417,56 @@ Function, созданная через `bind()`, часто называетс�
 
 Функция в JavaScript - это function object. `bind()` возвращает новый function object, который можно вызвать.
 
-```text
-JavaScript values
-│
-├── Primitive values
-│
-└── Object values
-    │
-    ├── Ordinary objects
-    └── Function objects
-        │
-        └── bound function is also a function object
+```mermaid
+flowchart TD
+    N1["JavaScript values"]
+    N2["Primitive values"]
+    N3["Object values"]
+    N4["Ordinary objects"]
+    N5["Function objects"]
+    N6["bound function is also a function object"]
+    N1 --> N2
+    N1 --> N3
+    N3 --> N4
+    N3 --> N5
+    N5 --> N6
 ```
 
 ### Привязанный объект выполнения
 
 Receiver, переданный в `bind()`, становится заранее выбранным объект выполнения для будущих вызовов.
 
-```text
-bind(stagingConfig)
-│
-▼
-fixed receiver
-│
-▼
-future invocation
-│
-▼
-this -> stagingConfig
+```mermaid
+flowchart TD
+    N1["bind(stagingConfig)"]
+    N2["fixed receiver"]
+    N3["future invocation"]
+    N4["this → stagingConfig"]
+    N1 --> N2
+    N2 --> N3
+    N3 --> N4
 ```
 
 Ментальная модель: постоянный badge.
 
-```text
-Function object
-│
-▼
-receives permanent badge
-│
-▼
-"I work with stagingConfig"
+```mermaid
+flowchart TD
+    N1["Function object"]
+    N2["receives permanent badge"]
+    N3["&quot;I work with stagingConfig&quot;"]
+    N1 --> N2
+    N2 --> N3
 ```
 
 ### Delayed invocation
 
 Delayed invocation означает:
 
-```text
-prepare function now
-│
-▼
-call it later
+```mermaid
+flowchart TD
+    N1["prepare function now"]
+    N2["вызвать it later"]
+    N1 --> N2
 ```
 
 Это особенно полезно, когда function нужно передать дальше, сохранить в переменной или использовать много раз.
@@ -487,17 +485,17 @@ console.log(validateUsers(200, 200));
 
 Высокоуровневая модель:
 
-```text
-bind(receiver, firstArgument)
-│
-▼
-new function remembers:
-│
-├── receiver
-└── first argument
-│
-▼
-later call supplies remaining arguments
+```mermaid
+flowchart TD
+    N1["bind(receiver, firstArgument)"]
+    N2["new function remembers:"]
+    N3["receiver"]
+    N4["first argument"]
+    N5["later вызвать supplies remaining arguments"]
+    N1 --> N2
+    N2 --> N3
+    N2 --> N4
+    N2 --> N5
 ```
 
 Подробные сценарии частичного применения arguments будут изучаться позже. Сейчас важно только увидеть, что `bind()` может подготовить function заранее.
@@ -520,14 +518,13 @@ function validateStatus(path, actualStatus, expectedStatus) {
 
 Концептуальное состояние:
 
-```text
-validateStatus
-│
-▼
-function object
-│
-▼
-can be invoked with different receivers
+```mermaid
+flowchart TD
+    N1["validateStatus"]
+    N2["function object"]
+    N3["can be invoked with different receivers"]
+    N1 --> N2
+    N2 --> N3
 ```
 
 ### Шаг 2. Вызывается `bind()`
@@ -538,14 +535,13 @@ const validateInStaging = validateStatus.bind(stagingConfig);
 
 Engine видит:
 
-```text
-function object
-│
-▼
-bind(receiver)
-│
-▼
-create another function object
+```mermaid
+flowchart TD
+    N1["function object"]
+    N2["bind(receiver)"]
+    N3["создать другой объект функции"]
+    N1 --> N2
+    N2 --> N3
 ```
 
 ### Шаг 3. Создается новая function
@@ -554,34 +550,34 @@ create another function object
 
 `bind()` не меняет исходную function.
 
-```text
-Before bind()
-
-validateStatus
-│
-▼
-original function object
-
-After bind()
-
-validateStatus
-│
-▼
-original function object
-
-validateInStaging
-│
-▼
-new bound function object
+```mermaid
+flowchart TD
+    N1["До: bind()"]
+    N2["validateStatus"]
+    N3["original function object"]
+    N4["После: bind()"]
+    N5["validateStatus"]
+    N6["original function object"]
+    N7["validateInStaging"]
+    N8["new bound function object"]
+    N1 --> N2
+    N2 --> N3
+    N3 --> N4
+    N4 --> N5
+    N5 --> N6
+    N6 --> N7
+    N7 --> N8
 ```
 
 ### Шаг 4. Receiver фиксируется в новой function
 
-```text
-bound function
-│
-├── target function -> validateStatus
-└── fixed receiver  -> stagingConfig
+```mermaid
+flowchart TD
+    N1["bound function"]
+    N2["target function → validateStatus"]
+    N3["fixed receiver → stagingConfig"]
+    N1 --> N2
+    N1 --> N3
 ```
 
 Это концептуальная схема. Мы не изучаем внутренние слоты ECMAScript и точную реализацию engine.
@@ -590,14 +586,13 @@ bound function
 
 После `bind()` тело исходной function еще не запускалось.
 
-```text
-validateStatus.bind(stagingConfig)
-│
-▼
-new function returned
-│
-▼
-function body not executed
+```mermaid
+flowchart TD
+    N1["validateStatus.bind(stagingConfig)"]
+    N2["new function returned"]
+    N3["тело функции not executed"]
+    N1 --> N2
+    N2 --> N3
 ```
 
 Это ответ на частую ошибку:
@@ -614,20 +609,17 @@ validateInStaging('/users', 200, 200);
 
 Теперь происходит invocation:
 
-```text
-validateInStaging(...)
-│
-▼
-uses target function validateStatus
-│
-▼
-uses fixed receiver stagingConfig
-│
-▼
-passes arguments
-│
-▼
-executes body
+```mermaid
+flowchart TD
+    N1["validateInStaging(...)"]
+    N2["uses target function validateStatus"]
+    N3["uses fixed receiver stagingConfig"]
+    N4["passes arguments"]
+    N5["выполняется body"]
+    N1 --> N2
+    N2 --> N3
+    N3 --> N4
+    N4 --> N5
 ```
 
 ### Execution Context revisit
@@ -636,30 +628,32 @@ executes body
 
 Но объект выполнения берется не из обычной формы вызова:
 
-```text
-Ordinary method call
-│
-▼
-receiver from object.method()
-
-Bound function call
-│
-▼
-receiver from bind()
+```mermaid
+flowchart TD
+    N1["Ordinary method call"]
+    N2["receiver from object.method()"]
+    N3["Bound вызов функции"]
+    N4["receiver from bind()"]
+    N1 --> N2
+    N2 --> N3
+    N3 --> N4
 ```
 
 Концептуальное выполнение:
 
-```text
-validateInStaging('/users', 200, 200)
-│
-▼
-Function Execution Context
-│
-├── this -> stagingConfig
-├── path -> '/users'
-├── actualStatus -> 200
-└── expectedStatus -> 200
+```mermaid
+flowchart TD
+    N1["validateInStaging('/users', 200, 200)"]
+    N2["Function Execution Context"]
+    N3["this → stagingConfig"]
+    N4["path → '/users'"]
+    N5["actualStatus → 200"]
+    N6["expectedStatus → 200"]
+    N1 --> N2
+    N2 --> N3
+    N2 --> N4
+    N2 --> N5
+    N2 --> N6
 ```
 
 ### Function identity
@@ -681,16 +675,15 @@ false
 
 Почему:
 
-```text
-first
-│
-▼
-bound function object #1
-
-second
-│
-▼
-bound function object #2
+```mermaid
+flowchart TD
+    N1["first"]
+    N2["bound function object #1"]
+    N3["second"]
+    N4["bound function object #2"]
+    N1 --> N2
+    N2 --> N3
+    N3 --> N4
 ```
 
 Receiver может быть тем же самым. Function objects все равно разные.
@@ -703,79 +696,74 @@ Receiver может быть тем же самым. Function objects все р�
 
 Обычная function:
 
-```text
-Remote control
-│
-▼
-needs receiver every time
+```mermaid
+flowchart TD
+    N1["Remote control"]
+    N2["needs receiver every time"]
+    N1 --> N2
 ```
 
 `call()`:
 
-```text
-Take remote
-│
-▼
-choose device now
-│
-▼
-press button now
+```mermaid
+flowchart TD
+    N1["Take remote"]
+    N2["choose device now"]
+    N3["press button now"]
+    N1 --> N2
+    N2 --> N3
 ```
 
 `bind()`:
 
-```text
-Take remote
-│
-▼
-configure device once
-│
-▼
-save configured remote
-│
-▼
-press button later many times
+```mermaid
+flowchart TD
+    N1["Take remote"]
+    N2["configure device once"]
+    N3["save configured remote"]
+    N4["press button later many times"]
+    N1 --> N2
+    N2 --> N3
+    N3 --> N4
 ```
 
 Еще одна модель: fixed driver.
 
-```text
-Car: function body
-Driver: receiver
-
-call()
-│
-▼
-assign driver for this trip only
-
-bind()
-│
-▼
-assign fixed driver to prepared route
+```mermaid
+flowchart TD
+    N1["Car: тело функции"]
+    N2["Driver: receiver"]
+    N3["call()"]
+    N4["assign driver for this trip only"]
+    N5["bind()"]
+    N6["assign fixed driver to prepared route"]
+    N2 --> N3
+    N3 --> N4
+    N4 --> N5
+    N5 --> N6
+    N1 --> N2
 ```
 
 Модель assigned employee:
 
-```text
-Task template
-│
-▼
-bind(employee)
-│
-▼
-prepared task
-│
-▼
-employee is known for every future execution
+```mermaid
+flowchart TD
+    N1["Task template"]
+    N2["bind(employee)"]
+    N3["prepared task"]
+    N4["employee is known for every future выполнение"]
+    N1 --> N2
+    N2 --> N3
+    N3 --> N4
 ```
 
 Главное не перепутать:
 
-```text
-bind() does not execute work
-│
-▼
-bind() prepares work
+```mermaid
+flowchart TD
+    N1["bind() does not выполнить work"]
+    N2["bind() prepares work"]
+    N1 --> N2
 ```
 
 ---
@@ -819,17 +807,15 @@ printStagingEnvironment();
 
 Что делает engine:
 
-```text
-printEnvironment.bind(stagingConfig)
-│
-▼
-create bound function
-│
-▼
-printStagingEnvironment()
-│
-▼
-this -> stagingConfig
+```mermaid
+flowchart TD
+    N1["printEnvironment.bind(stagingConfig)"]
+    N2["создать bound function"]
+    N3["printStagingEnvironment()"]
+    N4["this → stagingConfig"]
+    N1 --> N2
+    N2 --> N3
+    N3 --> N4
 ```
 
 ### Пример 2. Bound function
@@ -853,11 +839,13 @@ console.log(buildApiUrl('/orders'));
 
 Одна подготовленная function используется несколько раз.
 
-```text
-buildApiUrl
-│
-├── fixed receiver -> apiClient
-└── reusable calls -> many paths
+```mermaid
+flowchart TD
+    N1["buildApiUrl"]
+    N2["fixed receiver → apiClient"]
+    N3["reusable calls → many paths"]
+    N1 --> N2
+    N1 --> N3
 ```
 
 ### Пример 3. call vs bind
@@ -881,14 +869,15 @@ console.log(formatStagingStatus('/orders', 201));
 
 Сравнение:
 
-```text
-call()
-│
-└── result now
-
-bind()
-│
-└── function now, result later
+```mermaid
+flowchart TD
+    N1["call()"]
+    N2["результат сейчас"]
+    N3["bind()"]
+    N4["функция сейчас, результат позже"]
+    N1 --> N2
+    N1 --> N3
+    N3 --> N4
 ```
 
 ### Пример 4. Типичные ошибки
@@ -940,14 +929,13 @@ console.log(validateBillingStaging('/payments', 500, 200));
 
 QA смысл:
 
-```text
-One validator
-│
-▼
-one config bound once
-│
-▼
-many endpoint checks
+```mermaid
+flowchart TD
+    N1["One validator"]
+    N2["one config bound once"]
+    N3["many endpoint checks"]
+    N1 --> N2
+    N2 --> N3
 ```
 
 ### Пример 6. Reusable helper
@@ -979,14 +967,13 @@ console.log(createSmokeReportLine('checkout', 'failed'));
 
 Нет.
 
-```text
-bind()
-│
-▼
-returns new function
-│
-▼
-does not execute target function immediately
+```mermaid
+flowchart TD
+    N1["bind()"]
+    N2["возвращает new function"]
+    N3["does not выполнить target function immediately"]
+    N1 --> N2
+    N2 --> N3
 ```
 
 Вызов происходит позже, когда вызывается returned function.
@@ -995,14 +982,15 @@ does not execute target function immediately
 
 Нет.
 
-```text
-original function
-│
-└── remains original
-
-bound function
-│
-└── new function object
+```mermaid
+flowchart TD
+    N1["original function"]
+    N2["remains original"]
+    N3["bound function"]
+    N4["new function object"]
+    N1 --> N2
+    N1 --> N3
+    N3 --> N4
 ```
 
 ### Можно ли вызвать bound function много раз?
@@ -1011,23 +999,24 @@ bound function
 
 Именно поэтому `bind()` полезен:
 
-```text
-configure once
-│
-▼
-invoke many times
+```mermaid
+flowchart TD
+    N1["configure once"]
+    N2["invoke many times"]
+    N1 --> N2
 ```
 
 ### Чем `bind()` отличается от `call()`?
 
-```text
-call()
-│
-└── invoke immediately
-
-bind()
-│
-└── create function for later invocation
+```mermaid
+flowchart TD
+    N1["call()"]
+    N2["invoke immediately"]
+    N3["bind()"]
+    N4["создать function for later invocation"]
+    N1 --> N2
+    N1 --> N3
+    N3 --> N4
 ```
 
 ### Чем `bind()` отличается от `apply()`?
@@ -1044,14 +1033,13 @@ bind()
 
 Реальность:
 
-```text
-bind()
-│
-▼
-creates new function object
-│
-▼
-with fixed receiver
+```mermaid
+flowchart TD
+    N1["bind()"]
+    N2["создает new function object"]
+    N3["with fixed receiver"]
+    N1 --> N2
+    N2 --> N3
 ```
 
 Исходная function остается доступной как раньше.
@@ -1060,11 +1048,11 @@ with fixed receiver
 
 Реальность:
 
-```text
-bound function
-│
-▼
-uses receiver selected by bind()
+```mermaid
+flowchart TD
+    N1["bound function"]
+    N2["uses receiver selected by bind()"]
+    N1 --> N2
 ```
 
 В этой главе достаточно помнить: объект выполнения выбран заранее. Продвинутые особенности с constructors будут изучаться позже.
@@ -1077,14 +1065,13 @@ Detached function - один полезный сценарий.
 
 Более общая идея:
 
-```text
-bind()
-│
-▼
-explicit receiver selection
-│
-▼
-prepared for future calls
+```mermaid
+flowchart TD
+    N1["bind()"]
+    N2["explicit receiver selection"]
+    N3["prepared for future calls"]
+    N1 --> N2
+    N2 --> N3
 ```
 
 ---
@@ -1102,11 +1089,11 @@ console.log(result);
 
 Что произошло:
 
-```text
-result
-│
-▼
-function object
+```mermaid
+flowchart TD
+    N1["результат"]
+    N2["function object"]
+    N1 --> N2
 ```
 
 `result` - это function, а не результат выполнения validation.
@@ -1141,23 +1128,24 @@ validateInStaging('/users', 200, 200);
 
 Неправильная модель:
 
-```text
-original function
-│
-▼
-modified by bind()
+```mermaid
+flowchart TD
+    N1["original function"]
+    N2["modified by bind()"]
+    N1 --> N2
 ```
 
 Правильная модель:
 
-```text
-original function
-│
-└── unchanged
-
-bound function
-│
-└── new function
+```mermaid
+flowchart TD
+    N1["original function"]
+    N2["unchanged"]
+    N3["bound function"]
+    N4["new function"]
+    N1 --> N2
+    N1 --> N3
+    N3 --> N4
 ```
 
 ### Ошибка 4. Скрывать намерение
@@ -1181,11 +1169,11 @@ console.log(validateStatus.call(stagingConfig, '/users', 200, 200));
 
 `bind()` полезен, когда есть:
 
-```text
-same receiver
-│
-▼
-many future calls
+```mermaid
+flowchart TD
+    N1["same receiver"]
+    N2["many future calls"]
+    N1 --> N2
 ```
 
 Типичные случаи:
@@ -1198,29 +1186,28 @@ many future calls
 
 Сравнение:
 
-```text
-Need one invocation?
-│
-└── call() or apply()
-
-Need reusable prepared function?
-│
-└── bind()
+```mermaid
+flowchart TD
+    N1["Need one invocation?"]
+    N2["call() or apply()"]
+    N3["Need reusable prepared function?"]
+    N4["bind()"]
+    N1 --> N2
+    N1 --> N3
+    N3 --> N4
 ```
 
 Модель читаемости:
 
-```text
-Repeated .call(config, ...)
-│
-▼
-receiver noise
-│
-▼
-bind once
-│
-▼
-clear helper name
+```mermaid
+flowchart TD
+    N1["Repeated .call(config, ...)"]
+    N2["receiver noise"]
+    N3["bind once"]
+    N4["clear helper name"]
+    N1 --> N2
+    N2 --> N3
+    N3 --> N4
 ```
 
 Пример именования:
@@ -1259,29 +1246,30 @@ const validateStagingStatus = validateStatus.bind(staging);
 
 Модель:
 
-```text
-validateStatus
-│
-▼
-bind(staging)
-│
-▼
-validateStagingStatus
-│
-▼
-used across many tests
+```mermaid
+flowchart TD
+    N1["validateStatus"]
+    N2["bind(staging)"]
+    N3["validateStagingStatus"]
+    N4["used across many tests"]
+    N1 --> N2
+    N2 --> N3
+    N3 --> N4
 ```
 
 ### Assertion helpers
 
 Helper может использовать configuration:
 
-```text
-assert helper
-│
-├── suite name
-├── environment
-└── reporting prefix
+```mermaid
+flowchart TD
+    N1["assert helper"]
+    N2["suite name"]
+    N3["environment"]
+    N4["reporting prefix"]
+    N1 --> N2
+    N1 --> N3
+    N1 --> N4
 ```
 
 Вместо того чтобы передавать config каждый раз, можно подготовить bound helper.
@@ -1290,42 +1278,41 @@ assert helper
 
 API client method может зависеть от `baseUrl`.
 
-```text
-client method
-│
-▼
-needs receiver with baseUrl
-│
-▼
-bind(client)
-│
-▼
-safe reusable helper
+```mermaid
+flowchart TD
+    N1["client method"]
+    N2["needs receiver with baseUrl"]
+    N3["bind(client)"]
+    N4["safe reusable helper"]
+    N1 --> N2
+    N2 --> N3
+    N3 --> N4
 ```
 
 ### Page Object helpers
 
 В будущих главах про Automation QA мы будем изучать Page Object подробно. Сейчас достаточно одной идеи:
 
-```text
-method uses object state
-│
-▼
-detached usage can lose receiver
-│
-▼
-bind can prepare stable helper
+```mermaid
+flowchart TD
+    N1["method uses object state"]
+    N2["detached usage can lose receiver"]
+    N3["bind can prepare stable helper"]
+    N1 --> N2
+    N2 --> N3
 ```
 
 ### Configuration binding
 
 Для разных окружений можно подготовить разные helpers:
 
-```text
-validateResponse
-│
-├── bind(stagingConfig) -> validateStaging
-└── bind(prodConfig)    -> validateProd
+```mermaid
+flowchart TD
+    N1["validateResponse"]
+    N2["bind(stagingConfig) → validateStaging"]
+    N3["bind(prodConfig) → validateProd"]
+    N1 --> N2
+    N1 --> N3
 ```
 
 Это делает тестовый код выразительнее:
@@ -1341,374 +1328,390 @@ validateProd('/health', 200, 200)
 
 ### 1. Why bind() exists
 
-```text
-Same receiver
-│
-▼
-many future invocations
-│
-▼
-need prepared function
-│
-▼
-bind()
+```mermaid
+flowchart TD
+    N1["Same receiver"]
+    N2["many future invocations"]
+    N3["need prepared function"]
+    N4["bind()"]
+    N1 --> N2
+    N2 --> N3
+    N3 --> N4
 ```
 
 ### 2. call vs bind
 
-```text
-call()
-│
-├── select receiver
-└── invoke now
-
-bind()
-│
-├── select receiver
-└── return new function
+```mermaid
+flowchart TD
+    N1["call()"]
+    N2["select receiver"]
+    N3["invoke now"]
+    N4["bind()"]
+    N5["select receiver"]
+    N6["вернуть new function"]
+    N1 --> N2
+    N1 --> N3
+    N1 --> N4
+    N4 --> N5
+    N4 --> N6
 ```
 
 ### 3. apply vs bind
 
-```text
-apply()
-│
-├── receiver
-├── array arguments
-└── invoke now
-
-bind()
-│
-├── receiver
-└── invoke later
+```mermaid
+flowchart TD
+    N1["apply()"]
+    N2["receiver"]
+    N3["array arguments"]
+    N4["invoke now"]
+    N5["bind()"]
+    N6["receiver"]
+    N7["invoke later"]
+    N1 --> N2
+    N1 --> N3
+    N1 --> N4
+    N1 --> N5
+    N5 --> N6
+    N5 --> N7
 ```
 
 ### 4. New function creation
 
-```text
-original function
-│
-▼
-.bind(receiver)
-│
-▼
-new function object
+```mermaid
+flowchart TD
+    N1["original function"]
+    N2[".bind(receiver)"]
+    N3["new function object"]
+    N1 --> N2
+    N2 --> N3
 ```
 
 ### 5. Receiver fixing
 
-```text
-bound function
-│
-└── fixed receiver -> config
+```mermaid
+flowchart TD
+    N1["bound function"]
+    N2["fixed receiver → config"]
+    N1 --> N2
 ```
 
 ### 6. Delayed invocation
 
-```text
-bind now
-│
-▼
-store function
-│
-▼
-invoke later
+```mermaid
+flowchart TD
+    N1["bind now"]
+    N2["store function"]
+    N3["invoke later"]
+    N1 --> N2
+    N2 --> N3
 ```
 
 ### 7. Function factory
 
-```text
-function template
-│
-▼
-bind(config)
-│
-▼
-configured function
+```mermaid
+flowchart TD
+    N1["function template"]
+    N2["bind(config)"]
+    N3["configured function"]
+    N1 --> N2
+    N2 --> N3
 ```
 
 ### 8. Текущая модель JavaScript
 
-```text
-Functions
-│
-├── declaration
-├── expression
-├── arrow
-├── parameters
-├── return
-├── closure
-├── this
-├── call
-├── apply
-└── bind
+```mermaid
+flowchart TD
+    N1["Functions"]
+    N2["declaration"]
+    N3["expression"]
+    N4["arrow"]
+    N5["параметры"]
+    N6["return"]
+    N7["closure"]
+    N8["this"]
+    N9["call"]
+    N10["apply"]
+    N11["bind"]
+    N1 --> N2
+    N1 --> N3
+    N1 --> N4
+    N1 --> N5
+    N1 --> N6
+    N1 --> N7
+    N1 --> N8
+    N1 --> N9
+    N1 --> N10
+    N1 --> N11
 ```
 
 ### 9. Receiver timeline
 
-```text
-bind()
-│
-▼
-receiver selected
-│
-▼
-later call
-│
-▼
-receiver used
+```mermaid
+flowchart TD
+    N1["bind()"]
+    N2["receiver selected"]
+    N3["later call"]
+    N4["receiver used"]
+    N1 --> N2
+    N2 --> N3
+    N3 --> N4
 ```
 
 ### 10. Invocation timeline
 
-```text
-create bound function
-│
-▼
-wait
-│
-▼
-call bound function
-│
-▼
-execute target
+```mermaid
+flowchart TD
+    N1["создать bound function"]
+    N2["wait"]
+    N3["вызвать bound function"]
+    N4["выполнить target"]
+    N1 --> N2
+    N2 --> N3
+    N3 --> N4
 ```
 
 ### 11. Bound function
 
-```text
-bound function
-│
-├── target function
-├── fixed receiver
-└── future arguments
+```mermaid
+flowchart TD
+    N1["bound function"]
+    N2["target function"]
+    N3["fixed receiver"]
+    N4["future arguments"]
+    N1 --> N2
+    N1 --> N3
+    N1 --> N4
 ```
 
 ### 12. Receiver comparison
 
-```text
-ordinary call -> receiver from call form
-call()        -> receiver from first argument
-apply()       -> receiver from first argument
-bind()        -> receiver from earlier binding
+```mermaid
+flowchart TD
+    N1["ordinary call → receiver from вызвать form"]
+    N2["call() → receiver from first argument"]
+    N3["apply() → receiver from first argument"]
+    N4["bind() → receiver from earlier binding"]
+    N1 --> N2
+    N2 --> N3
+    N3 --> N4
 ```
 
 ### 13. Execution Context revisit
 
-```text
-boundFunction()
-│
-▼
-Function Execution Context
-│
-└── this from bind()
+```mermaid
+flowchart TD
+    N1["boundFunction()"]
+    N2["Function Execution Context"]
+    N3["this from bind()"]
+    N1 --> N2
+    N2 --> N3
 ```
 
 ### 14. Типичные ошибки
 
-```text
-bind()
-│
-▼
-returns function
-│
-▼
-not result
+```mermaid
+flowchart TD
+    N1["bind()"]
+    N2["возвращает function"]
+    N3["не результат"]
+    N1 --> N2
+    N2 --> N3
 ```
 
 ### 15. Читаемость
 
-```text
-many .call(config, ...)
-│
-▼
-bind once
-│
-▼
-named helper
+```mermaid
+flowchart TD
+    N1["many .call(config, ...)"]
+    N2["bind once"]
+    N3["named helper"]
+    N1 --> N2
+    N2 --> N3
 ```
 
 ### 16. QA helper example
 
-```text
-validateResponse
-│
-▼
-bind(stagingConfig)
-│
-▼
-validateStagingResponse
+```mermaid
+flowchart TD
+    N1["validateResponse"]
+    N2["bind(stagingConfig)"]
+    N3["validateStagingResponse"]
+    N1 --> N2
+    N2 --> N3
 ```
 
 ### 17. Reusable validator
 
-```text
-one validator
-│
-├── /users
-├── /orders
-└── /profile
+```mermaid
+flowchart TD
+    N1["one validator"]
+    N2["/users"]
+    N3["/orders"]
+    N4["/profile"]
+    N1 --> N2
+    N1 --> N3
+    N1 --> N4
 ```
 
 ### 18. Preconfigured helper
 
-```text
-helper
-│
-▼
-configuration saved by bind
-│
-▼
-ready helper
+```mermaid
+flowchart TD
+    N1["helper"]
+    N2["configuration saved by bind"]
+    N3["ready helper"]
+    N1 --> N2
+    N2 --> N3
 ```
 
 ### 19. Bound объект выполнения
 
-```text
-receiver
-│
-▼
-attached to returned function
-│
-▼
-used on invocation
+```mermaid
+flowchart TD
+    N1["receiver"]
+    N2["attached to возвращенная функция"]
+    N3["used on invocation"]
+    N1 --> N2
+    N2 --> N3
 ```
 
 ### 20. Function identity
 
-```text
-bind()
-│
-├── bound function #1
-└── bound function #2
-
-#1 !== #2
+```mermaid
+flowchart TD
+    N1["bind()"]
+    N2["bound function #1"]
+    N3["bound function #2"]
+    N4["#1 !== #2"]
+    N1 --> N2
+    N1 --> N3
+    N1 --> N4
 ```
 
 ### 21. Краткая ментальная модель
 
-```text
-permanent badge
-│
-▼
-fixed driver
-│
-▼
-saved configuration
+```mermaid
+flowchart TD
+    N1["permanent badge"]
+    N2["fixed driver"]
+    N3["saved configuration"]
+    N1 --> N2
+    N2 --> N3
 ```
 
 ### 22. Complete bind model
 
-```text
-original function
-│
-▼
-bind(receiver)
-│
-▼
-bound function
-│
-▼
-later invocation
-│
-▼
-target function runs with receiver
+```mermaid
+flowchart TD
+    N1["original function"]
+    N2["bind(receiver)"]
+    N3["bound function"]
+    N4["later invocation"]
+    N5["target function runs with receiver"]
+    N1 --> N2
+    N2 --> N3
+    N3 --> N4
+    N4 --> N5
 ```
 
 ### 23. Переход к object methods
 
-```text
-object method
-│
-▼
-function stored in property
-│
-▼
-receiver matters
+```mermaid
+flowchart TD
+    N1["object method"]
+    N2["function stored in property"]
+    N3["receiver matters"]
+    N1 --> N2
+    N2 --> N3
 ```
 
 Objects will be studied in more detail in the next section.
 
 ### 24. Переход к callbacks
 
-```text
-prepared function
-│
-▼
-can be passed somewhere
-│
-▼
-called later
+```mermaid
+flowchart TD
+    N1["prepared function"]
+    N2["can be passed somewhere"]
+    N3["called later"]
+    N1 --> N2
+    N2 --> N3
 ```
 
 Callbacks will be studied later.
 
 ### 25. Function lifecycle
 
-```text
-declare function
-│
-▼
-bind receiver
-│
-▼
-store bound function
-│
-▼
-invoke bound function
+```mermaid
+flowchart TD
+    N1["declare function"]
+    N2["bind receiver"]
+    N3["store bound function"]
+    N4["invoke bound function"]
+    N1 --> N2
+    N2 --> N3
+    N3 --> N4
 ```
 
 ### 26. Receiver persistence
 
-```text
-selected once
-│
-▼
-available for every future call
+```mermaid
+flowchart TD
+    N1["selected once"]
+    N2["available for every future call"]
+    N1 --> N2
 ```
 
 ### 27. One-time configuration
 
-```text
-configuration object
-│
-▼
-bind once
-│
-▼
-reuse many times
+```mermaid
+flowchart TD
+    N1["configuration object"]
+    N2["bind once"]
+    N3["reuse many times"]
+    N1 --> N2
+    N2 --> N3
 ```
 
 ### 28. call/apply/bind comparison
 
-```text
-call  -> receiver + separate args + now
-apply -> receiver + array args    + now
-bind  -> receiver + new function  + later
+```mermaid
+flowchart TD
+    N1["call → receiver + separate args + now"]
+    N2["apply → receiver + array args + now"]
+    N3["bind → receiver + new function + later"]
+    N1 --> N2
+    N2 --> N3
 ```
 
 ### 29. Complete объект выполнения picture
 
-```text
-this
-│
-├── ordinary invocation
-├── call()
-├── apply()
-└── bind()
+```mermaid
+flowchart TD
+    N1["this"]
+    N2["ordinary invocation"]
+    N3["call()"]
+    N4["apply()"]
+    N5["bind()"]
+    N1 --> N2
+    N1 --> N3
+    N1 --> N4
+    N1 --> N5
 ```
 
 ### 30. Итоговая схема
 
-```text
-Need receiver for one call?
-│
-├── separate args -> call()
-└── array args    -> apply()
-
-Need receiver for future calls?
-│
-└── bind()
+```mermaid
+flowchart TD
+    N1["Need receiver for one call?"]
+    N2["separate args → call()"]
+    N3["array args → apply()"]
+    N4["Need receiver for future calls?"]
+    N5["bind()"]
+    N1 --> N2
+    N1 --> N3
+    N1 --> N4
+    N4 --> N5
 ```
 
 ---
@@ -1744,11 +1747,13 @@ solutions/01-javascript/32-bind.md
 
 Не открывайте решения до самостоятельной попытки. В этой теме особенно важно самому различить:
 
-```text
-function returned by bind
-│
-≠
-result returned by function execution
+```mermaid
+flowchart TD
+    N1["function returned by bind"]
+    N2["≠"]
+    N3["result returned by function выполнение"]
+    N1 --> N2
+    N2 --> N3
 ```
 
 ---
@@ -1757,37 +1762,36 @@ result returned by function execution
 
 `bind()` завершает цепочку:
 
-```text
-this
-│
-▼
-call()
-│
-▼
-apply()
-│
-▼
-bind()
+```mermaid
+flowchart TD
+    N1["this"]
+    N2["call()"]
+    N3["apply()"]
+    N4["bind()"]
+    N1 --> N2
+    N2 --> N3
+    N3 --> N4
 ```
 
 Теперь модель объект выполнения стала полной на базовом уровне:
 
-```text
-Ordinary invocation
-│
-└── invocation form chooses receiver
-
-call()
-│
-└── developer chooses receiver and invokes now
-
-apply()
-│
-└── developer chooses receiver and passes arguments as array
-
-bind()
-│
-└── developer chooses receiver and creates function for later
+```mermaid
+flowchart TD
+    N1["Ordinary invocation"]
+    N2["invocation form chooses receiver"]
+    N3["call()"]
+    N4["developer chooses receiver and invokes now"]
+    N5["apply()"]
+    N6["developer chooses receiver and passes arguments as array"]
+    N7["bind()"]
+    N8["developer chooses receiver and создает function for later"]
+    N1 --> N2
+    N1 --> N3
+    N3 --> N4
+    N3 --> N5
+    N5 --> N6
+    N5 --> N7
+    N7 --> N8
 ```
 
 Главное отличие `bind()`:

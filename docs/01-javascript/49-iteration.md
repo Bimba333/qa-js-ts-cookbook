@@ -6,14 +6,13 @@
 
 Мы научились получать snapshot test cases:
 
-```text
-Array
-│
-▼
-slice()
-│
-▼
-copy
+```mermaid
+flowchart TD
+    N1["Array"]
+    N2["slice()"]
+    N3["copy"]
+    N1 --> N2
+    N2 --> N3
 ```
 
 Теперь появляется новая задача. Snapshot создан, но сам по себе он ничего не делает. Нужно пройти по каждому test case и подготовить выполнение.
@@ -81,17 +80,15 @@ console.log(testRun[3]);
 
 Нужен последовательный обход:
 
-```text
-Array
-│
-▼
-take first element
-│
-▼
-take next element
-│
-▼
-continue until array ends
+```mermaid
+flowchart TD
+    N1["Array"]
+    N2["take first element"]
+    N3["take next element"]
+    N4["продолжить until array ends"]
+    N1 --> N2
+    N2 --> N3
+    N3 --> N4
 ```
 
 ## Теория
@@ -108,20 +105,17 @@ for (const testCase of testRun) {
 
 Смысл:
 
-```text
-testRun
-│
-▼
-first element
-│
-▼
-testCase
-│
-▼
-body executes
-│
-▼
-next element
+```mermaid
+flowchart TD
+    N1["testRun"]
+    N2["first element"]
+    N3["testCase"]
+    N4["body выполняется"]
+    N5["next element"]
+    N1 --> N2
+    N2 --> N3
+    N3 --> N4
+    N4 --> N5
 ```
 
 На каждом шаге `testCase` получает current element.
@@ -130,35 +124,34 @@ next element
 
 Концептуальные шаги:
 
-```text
-Array
-│
-▼
-start iteration
-│
-▼
-read current element
-│
-▼
-assign to loop variable
-│
-▼
-execute loop body
-│
-▼
-move to next element
-│
-▼
-stop after last element
+```mermaid
+flowchart TD
+    N1["Array"]
+    N2["start iteration"]
+    N3["read текущий элемент"]
+    N4["assign to loop variable"]
+    N5["выполнить loop body"]
+    N6["move to next element"]
+    N7["stop after last element"]
+    N1 --> N2
+    N2 --> N3
+    N3 --> N4
+    N4 --> N5
+    N5 --> N6
+    N6 --> N7
 ```
 
 Для `testRun`:
 
-```text
-step 1 -> login smoke
-step 2 -> create order
-step 3 -> apply discount
-step 4 -> pay order
+```mermaid
+flowchart TD
+    N1["step 1 → login smoke"]
+    N2["step 2 → создать order"]
+    N3["step 3 → apply discount"]
+    N4["step 4 → pay order"]
+    N1 --> N2
+    N2 --> N3
+    N3 --> N4
 ```
 
 `for...of` хорошо подходит, когда нужен сам element, а не index.
@@ -167,17 +160,15 @@ step 4 -> pay order
 
 Главная модель этой главы: **iteration**.
 
-```text
-Array
-│
-▼
-walk through collection
-│
-▼
-one element at a time
-│
-▼
-until finished
+```mermaid
+flowchart TD
+    N1["Array"]
+    N2["walk through collection"]
+    N3["one element at a time"]
+    N4["until finished"]
+    N1 --> N2
+    N2 --> N3
+    N3 --> N4
 ```
 
 ## Практические примеры

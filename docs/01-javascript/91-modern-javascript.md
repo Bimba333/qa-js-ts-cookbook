@@ -4,20 +4,17 @@
 
 Предыдущий модуль завершил инженерный блок JavaScript:
 
-```text
-working solution
-│
-▼
-measure
-│
-▼
-find bottleneck
-│
-▼
-improve only the bottleneck
-│
-▼
-measure again
+```mermaid
+flowchart TD
+    N1["working solution"]
+    N2["measure"]
+    N3["find bottleneck"]
+    N4["improve only the bottleneck"]
+    N5["measure again"]
+    N1 --> N2
+    N2 --> N3
+    N3 --> N4
+    N4 --> N5
 ```
 
 Теперь важно собрать язык в одну картину. Мы уже изучили модули, функции, объекты, async/await, классы, итерацию и управление ошибками. В реальном проекте эти возможности почти никогда не живут отдельно.
@@ -44,20 +41,17 @@ test data
 
 Современный JavaScript помогает связать эти части без хаоса:
 
-```text
-modules
-│
-▼
-clear data access
-│
-▼
-async workflow
-│
-▼
-reusable helpers
-│
-▼
-maintainable test code
+```mermaid
+flowchart TD
+    N1["modules"]
+    N2["clear data access"]
+    N3["async workflow"]
+    N4["reusable helpers"]
+    N5["maintainable test code"]
+    N1 --> N2
+    N2 --> N3
+    N3 --> N4
+    N4 --> N5
 ```
 
 ## Теория
@@ -77,35 +71,30 @@ maintainable test code
 
 Главная идея:
 
-```text
-не отдельные фичи
-│
-▼
-единый стиль работы
-│
-▼
-понятный проект
+```mermaid
+flowchart TD
+    N1["не отдельные фичи"]
+    N2["единый стиль работы"]
+    N3["понятный проект"]
+    N1 --> N2
+    N2 --> N3
 ```
 
 ## Главная ментальная модель
 
-```text
-данные теста
-│
-▼
-safe access
-│
-▼
-helper
-│
-▼
-async operation
-│
-▼
-result
-│
-▼
-report
+```mermaid
+flowchart TD
+    N1["данные теста"]
+    N2["safe access"]
+    N3["helper"]
+    N4["async operation"]
+    N5["результат"]
+    N6["report"]
+    N1 --> N2
+    N2 --> N3
+    N3 --> N4
+    N4 --> N5
+    N5 --> N6
 ```
 
 Modern JavaScript — это не набор модных конструкций. Это способ соединять уже понятные механизмы так, чтобы код оставался читаемым.

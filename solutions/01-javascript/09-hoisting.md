@@ -334,23 +334,25 @@ This table is a practical way to read old JavaScript setup files.
 
 Ответ:
 
-```text
-console.log(environmentName);
-│
-└── read
-
-var environmentName = 'staging';
-│
-├── declaration: var environmentName
-└── assignment / initialization during execution: "staging"
-
-environmentName = 'production';
-│
-└── assignment / reassignment
-
-console.log(environmentName);
-│
-└── read
+```mermaid
+flowchart TD
+    N1["console.log(environmentName);"]
+    N2["чтение"]
+    N3["var environmentName = 'staging';"]
+    N4["declaration: var environmentName"]
+    N5["assignment / initialization during выполнение: &quot;staging&quot;"]
+    N6["environmentName = 'production';"]
+    N7["assignment / reassignment"]
+    N8["console.log(environmentName);"]
+    N9["чтение"]
+    N1 --> N2
+    N1 --> N3
+    N3 --> N4
+    N3 --> N5
+    N3 --> N6
+    N6 --> N7
+    N6 --> N8
+    N8 --> N9
 ```
 
 Объяснение:
@@ -391,15 +393,20 @@ Avoids wrong explanations in code reviews.
 
 Creation Phase:
 
-```text
-userName → undefined
+```mermaid
+flowchart LR
+    N1["userName"]
+    N2["undefined"]
+    N1 --> N2
 ```
 
 Execution Phase:
 
-```text
-console.log(userName) → undefined
-var userName = "Anna" → assignment
+```mermaid
+flowchart TD
+    N1["console.log(userName) → undefined"]
+    N2["var userName = &quot;Anna&quot; → assignment"]
+    N1 --> N2
 ```
 
 Объяснение:
@@ -520,24 +527,36 @@ function runSetup() {
 
 Creation Phase:
 
-```text
-runSetup        → function
-environmentName → undefined
-userRole        → registered, not initialized
-baseUrl         → registered, not initialized
+```mermaid
+flowchart TD
+    N1["runSetup → function"]
+    N2["environmentName → undefined"]
+    N3["userRole → registered, not initialized"]
+    N4["baseUrl → registered, not initialized"]
+    N1 --> N2
+    N2 --> N3
+    N3 --> N4
 ```
 
 Execution Phase:
 
-```text
-call runSetup → "setup"
-read environmentName → undefined
-assign environmentName → "staging"
-read environmentName → "staging"
-initialize userRole → "admin"
-initialize baseUrl → "https://example.com"
-read userRole
-read baseUrl
+```mermaid
+flowchart TD
+    N1["вызвать runSetup → &quot;setup&quot;"]
+    N2["read environmentName → undefined"]
+    N3["assign environmentName → &quot;staging&quot;"]
+    N4["read environmentName → &quot;staging&quot;"]
+    N5["initialize userRole → &quot;admin&quot;"]
+    N6["initialize baseUrl → &quot;https://example.com&quot;"]
+    N7["read userRole"]
+    N8["read baseUrl"]
+    N1 --> N2
+    N2 --> N3
+    N3 --> N4
+    N4 --> N5
+    N5 --> N6
+    N6 --> N7
+    N7 --> N8
 ```
 
 Объяснение:

@@ -6,17 +6,15 @@
 
 Главная модель была такой:
 
-```text
-Array
-│
-▼
-середина
-│
-▼
-splice()
-│
-▼
-исходный array изменен
+```mermaid
+flowchart TD
+    N1["Array"]
+    N2["середина"]
+    N3["splice()"]
+    N4["исходный array изменен"]
+    N1 --> N2
+    N2 --> N3
+    N3 --> N4
 ```
 
 Но не каждая операция со списком test cases должна менять исходный список.
@@ -71,26 +69,26 @@ const testCases = [
 
 Нужно запустить только первые два smoke-related tests:
 
-```text
-index 0 -> login smoke
-index 1 -> create order
+```mermaid
+flowchart TD
+    N1["index 0 → login smoke"]
+    N2["index 1 → создать order"]
+    N1 --> N2
 ```
 
 Но исходный regression plan должен остаться целым.
 
 Нужна операция:
 
-```text
-Array
-│
-▼
-выбрать диапазон
-│
-▼
-slice()
-│
-▼
-new array copy
+```mermaid
+flowchart TD
+    N1["Array"]
+    N2["выбрать диапазон"]
+    N3["slice()"]
+    N4["new array copy"]
+    N1 --> N2
+    N2 --> N3
+    N3 --> N4
 ```
 
 ## Теория
@@ -105,16 +103,15 @@ array.slice(startIndex, endIndex);
 
 Смысл:
 
-```text
-startIndex
-│
-▼
-с какой позиции начать copy
-
-endIndex
-│
-▼
-перед какой позицией остановиться
+```mermaid
+flowchart TD
+    N1["startIndex"]
+    N2["с какой позиции начать copy"]
+    N3["endIndex"]
+    N4["перед какой позицией остановиться"]
+    N1 --> N2
+    N2 --> N3
+    N3 --> N4
 ```
 
 `endIndex` не включается.
@@ -125,9 +122,11 @@ const smokeTests = testCases.slice(0, 2);
 
 Результат:
 
-```text
-index 0 -> login smoke
-index 1 -> create order
+```mermaid
+flowchart TD
+    N1["index 0 → login smoke"]
+    N2["index 1 → создать order"]
+    N1 --> N2
 ```
 
 Исходный `testCases` остается без изменений.
@@ -142,61 +141,62 @@ const smokeTests = testCases.slice(0, 2);
 
 он делает conceptual steps:
 
-```text
-Array
-│
-▼
-прочитать startIndex 0
-│
-▼
-прочитать elements до index 2
-│
-▼
-создать new array
-│
-▼
-поместить copied elements
-│
-▼
-вернуть new array
+```mermaid
+flowchart TD
+    N1["Array"]
+    N2["прочитать startIndex 0"]
+    N3["прочитать elements до index 2"]
+    N4["создать new array"]
+    N5["поместить copied elements"]
+    N6["вернуть new array"]
+    N1 --> N2
+    N2 --> N3
+    N3 --> N4
+    N4 --> N5
+    N5 --> N6
 ```
 
 Исходный array:
 
-```text
-testCases
-│
-├── login smoke
-├── create order
-├── apply discount
-├── pay order
-└── logout smoke
+```mermaid
+flowchart TD
+    N1["testCases"]
+    N2["login smoke"]
+    N3["создать order"]
+    N4["apply discount"]
+    N5["pay order"]
+    N6["logout smoke"]
+    N1 --> N2
+    N1 --> N3
+    N1 --> N4
+    N1 --> N5
+    N1 --> N6
 ```
 
 Новый array:
 
-```text
-smokeTests
-│
-├── login smoke
-└── create order
+```mermaid
+flowchart TD
+    N1["smokeTests"]
+    N2["login smoke"]
+    N3["создать order"]
+    N1 --> N2
+    N1 --> N3
 ```
 
 ## Главная ментальная модель
 
 Главная модель этой главы: **copying**.
 
-```text
-Array
-│
-▼
-slice()
-│
-▼
-copy selected elements
-│
-▼
-new array
+```mermaid
+flowchart TD
+    N1["Array"]
+    N2["slice()"]
+    N3["copy selected elements"]
+    N4["new array"]
+    N1 --> N2
+    N2 --> N3
+    N3 --> N4
 ```
 
 `slice()` не изменяет исходный array.
@@ -247,14 +247,13 @@ const paymentFlow = testCases.slice(2, 4);
 
 `slice()` не удаляет и не вставляет elements.
 
-```text
-slice()
-│
-▼
-copy
-│
-▼
-source unchanged
+```mermaid
+flowchart TD
+    N1["slice()"]
+    N2["copy"]
+    N3["source unchanged"]
+    N1 --> N2
+    N2 --> N3
 ```
 
 ### Ошибка 2. Думать, что `endIndex` включается
@@ -267,16 +266,15 @@ testCases.slice(0, 2);
 
 ### Ошибка 3. Путать `slice()` и `splice()`
 
-```text
-slice()
-│
-▼
-copy
-
-splice()
-│
-▼
-modify
+```mermaid
+flowchart TD
+    N1["slice()"]
+    N2["copy"]
+    N3["splice()"]
+    N4["modify"]
+    N1 --> N2
+    N2 --> N3
+    N3 --> N4
 ```
 
 ## Краткие итоги

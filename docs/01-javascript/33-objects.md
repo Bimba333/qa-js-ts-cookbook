@@ -6,11 +6,13 @@
 
 Главная модель была такой:
 
-```text
-bind()
-│
-├── chooses receiver
-└── creates function for later invocation
+```mermaid
+flowchart TD
+    N1["bind()"]
+    N2["chooses receiver"]
+    N3["создает function for later invocation"]
+    N1 --> N2
+    N1 --> N3
 ```
 
 В главах про `this`, `call()`, `apply()` и `bind()` мы постоянно видели objects:
@@ -23,10 +25,11 @@ const apiClient = {
 
 Там object был нужен как объект выполнения:
 
-```text
-apiClient
-│
-└── receiver for method invocation
+```mermaid
+flowchart TD
+    N1["apiClient"]
+    N2["receiver for method invocation"]
+    N1 --> N2
 ```
 
 Теперь мы начинаем новый раздел и возвращаемся к objects как к самостоятельной теме.
@@ -39,14 +42,13 @@ apiClient
 
 А как одну entity:
 
-```text
-Object
-│
-▼
-one entity
-│
-▼
-many named properties
+```mermaid
+flowchart TD
+    N1["Object"]
+    N2["one entity"]
+    N3["many named properties"]
+    N1 --> N2
+    N2 --> N3
 ```
 
 ---
@@ -148,33 +150,42 @@ const userEmail = 'anna@example.test';
 
 Но программа пока не говорит главного:
 
-```text
-userId
-userName
-userRole
-userActive
-userEmail
-│
-▼
-all describe one user
+```mermaid
+flowchart TD
+    N1["userId"]
+    N2["userName"]
+    N3["userRole"]
+    N4["userActive"]
+    N5["userEmail"]
+    N6["all describe one user"]
+    N5 --> N6
+    N1 --> N2
+    N2 --> N3
+    N3 --> N4
+    N4 --> N5
 ```
 
 Данные связаны, но связь выражена только в голове читателя.
 
 Проблема:
 
-```text
-Separate variables
-│
-├── userId
-├── userName
-├── userRole
-├── userActive
-└── userEmail
-
-Question
-│
-└── Where is the user?
+```mermaid
+flowchart TD
+    N1["Separate variables"]
+    N2["userId"]
+    N3["userName"]
+    N4["userRole"]
+    N5["userActive"]
+    N6["userEmail"]
+    N7["Question"]
+    N8["Where is the user?"]
+    N1 --> N2
+    N1 --> N3
+    N1 --> N4
+    N1 --> N5
+    N1 --> N6
+    N1 --> N7
+    N7 --> N8
 ```
 
 Object позволяет выразить эту связь явно:
@@ -191,26 +202,30 @@ const user = {
 
 Теперь в коде есть одна entity:
 
-```text
-user
-│
-├── id:     101
-├── name:   'Anna'
-├── role:   'admin'
-├── active: true
-└── email:  'anna@example.test'
+```mermaid
+flowchart TD
+    N1["user"]
+    N2["id: 101"]
+    N3["name: 'Anna'"]
+    N4["role: 'admin'"]
+    N5["active: true"]
+    N6["email: 'anna@example.test'"]
+    N1 --> N2
+    N1 --> N3
+    N1 --> N4
+    N1 --> N5
+    N1 --> N6
 ```
 
 Главное изменение:
 
-```text
-many related variables
-│
-▼
-one object
-│
-▼
-many named properties
+```mermaid
+flowchart TD
+    N1["many related variables"]
+    N2["one object"]
+    N3["many named properties"]
+    N1 --> N2
+    N2 --> N3
 ```
 
 Для Automation QA это не абстрактная тема. API responses, request payloads, user profiles, configuration objects and expected data almost always are objects.
@@ -223,25 +238,28 @@ many named properties
 
 Если данные описывают одну сущность, они должны быть сгруппированы:
 
-```text
-User profile
-│
-├── identity
-├── contact data
-├── role
-└── state
+```mermaid
+flowchart TD
+    N1["User profile"]
+    N2["identity"]
+    N3["contact data"]
+    N4["role"]
+    N5["state"]
+    N1 --> N2
+    N1 --> N3
+    N1 --> N4
+    N1 --> N5
 ```
 
 Object решает эту задачу:
 
-```text
-Object
-│
-▼
-one entity
-│
-▼
-named parts of information
+```mermaid
+flowchart TD
+    N1["Object"]
+    N2["one entity"]
+    N3["named parts of information"]
+    N1 --> N2
+    N2 --> N3
 ```
 
 ### Почему objects существуют
@@ -258,35 +276,42 @@ const environment = 'staging';
 
 В реальном коде значения образуют смысловые группы:
 
-```text
-API response
-│
-├── status
-├── body
-└── headers
-
-Test user
-│
-├── name
-├── role
-└── active
-
-Configuration
-│
-├── baseUrl
-├── timeout
-└── retries
+```mermaid
+flowchart TD
+    N1["API response"]
+    N2["status"]
+    N3["body"]
+    N4["headers"]
+    N5["Test user"]
+    N6["name"]
+    N7["role"]
+    N8["active"]
+    N9["Configuration"]
+    N10["baseUrl"]
+    N11["timeout"]
+    N12["retries"]
+    N1 --> N2
+    N1 --> N3
+    N1 --> N4
+    N1 --> N5
+    N5 --> N6
+    N5 --> N7
+    N5 --> N8
+    N5 --> N9
+    N9 --> N10
+    N9 --> N11
+    N9 --> N12
 ```
 
 Object нужен, чтобы такая группа стала одним value.
 
 Важно:
 
-```text
-Object is not just syntax
-│
-▼
-Object expresses relationship between values
+```mermaid
+flowchart TD
+    N1["Object is not just syntax"]
+    N2["Object expresses relationship between values"]
+    N1 --> N2
 ```
 
 ### Object literal
@@ -303,14 +328,13 @@ const user = {
 
 Модель:
 
-```text
-object literal
-│
-▼
-creates object value
-│
-▼
-variable user refers to that object
+```mermaid
+flowchart TD
+    N1["object literal"]
+    N2["создает object value"]
+    N3["variable user refers to that object"]
+    N1 --> N2
+    N2 --> N3
 ```
 
 В этой главе мы используем references только на высоком уровне. Подробности уже были в главе `References`.
@@ -321,21 +345,26 @@ Object состоит из properties.
 
 Property - это named part of an object.
 
-```text
-user
-│
-├── id property
-├── name property
-└── role property
+```mermaid
+flowchart TD
+    N1["user"]
+    N2["id property"]
+    N3["name property"]
+    N4["role property"]
+    N1 --> N2
+    N1 --> N3
+    N1 --> N4
 ```
 
 Каждая property имеет:
 
-```text
-Property
-│
-├── key
-└── value
+```mermaid
+flowchart TD
+    N1["Property"]
+    N2["key"]
+    N3["значение"]
+    N1 --> N2
+    N1 --> N3
 ```
 
 Пример:
@@ -348,9 +377,11 @@ const user = {
 
 Здесь:
 
-```text
-key   -> name
-value -> 'Anna'
+```mermaid
+flowchart TD
+    N1["key → name"]
+    N2["value → 'Anna'"]
+    N1 --> N2
 ```
 
 Не стоит сводить object только к фразе "key-value pairs". Такая фраза полезна, но неполна. Для чтения кода важнее видеть object как одну entity with named properties.
@@ -368,11 +399,13 @@ const response = {
 
 Keys:
 
-```text
-response
-│
-├── status
-└── ok
+```mermaid
+flowchart TD
+    N1["response"]
+    N2["status"]
+    N3["ok"]
+    N1 --> N2
+    N1 --> N3
 ```
 
 Key отвечает на вопрос:
@@ -383,9 +416,11 @@ Key отвечает на вопрос:
 
 Value - это информация, stored in property.
 
-```text
-response.status -> 200
-response.ok     -> true
+```mermaid
+flowchart TD
+    N1["response.status → 200"]
+    N2["response.ok → true"]
+    N1 --> N2
 ```
 
 Values могут быть разными:
@@ -401,10 +436,11 @@ const testResult = {
 
 На этом уровне достаточно понимать:
 
-```text
-Property value
-│
-└── any JavaScript value
+```mermaid
+flowchart TD
+    N1["Property value"]
+    N2["any JavaScript value"]
+    N1 --> N2
 ```
 
 Подробные главы про nested objects, arrays and methods будут позже.
@@ -419,12 +455,15 @@ console.log(user.name);
 
 Модель:
 
-```text
-user.name
-│
-├── find object referred by user
-├── look for property "name"
-└── read its value
+```mermaid
+flowchart TD
+    N1["user.name"]
+    N2["find object referred by user"]
+    N3["look for property &quot;name&quot;"]
+    N4["read its value"]
+    N1 --> N2
+    N1 --> N3
+    N1 --> N4
 ```
 
 Dot notation хорошо читается:
@@ -453,12 +492,15 @@ console.log(user[fieldName]);
 
 Модель:
 
-```text
-user[fieldName]
-│
-├── read fieldName -> 'role'
-├── look for property 'role'
-└── return value
+```mermaid
+flowchart TD
+    N1["user[fieldName]"]
+    N2["read fieldName → 'role'"]
+    N3["look for property 'role'"]
+    N4["возвращаемое значение"]
+    N1 --> N2
+    N1 --> N3
+    N1 --> N4
 ```
 
 Bracket notation required:
@@ -483,16 +525,15 @@ const role = user.role;
 
 Модель:
 
-```text
-user
-│
-├── role: 'admin'
-│
-▼
-read role
-│
-▼
-'admin'
+```mermaid
+flowchart TD
+    N1["user"]
+    N2["role: 'admin'"]
+    N3["read role"]
+    N4["'admin'"]
+    N1 --> N2
+    N1 --> N3
+    N3 --> N4
 ```
 
 Если property отсутствует, результатом будет `undefined`:
@@ -503,11 +544,11 @@ console.log(user.permissions);
 
 На этом этапе важно не пугаться:
 
-```text
-Missing property
-│
-▼
-undefined
+```mermaid
+flowchart TD
+    N1["значение отсутствует property"]
+    N2["undefined"]
+    N1 --> N2
 ```
 
 Optional Chaining будет изучаться позже. Он помогает безопаснее читать вложенные свойства, но сейчас мы не вводим эту тему.
@@ -522,18 +563,19 @@ user.lastLogin = '2026-06-26';
 
 Модель:
 
-```text
-Before
-│
-└── user has no lastLogin
-
-Write
-│
-└── user.lastLogin = '2026-06-26'
-
-After
-│
-└── user has lastLogin property
+```mermaid
+flowchart TD
+    N1["Before"]
+    N2["user has нет lastLogin"]
+    N3["Write"]
+    N4["user.lastLogin = '2026-06-26'"]
+    N5["After"]
+    N6["user has lastLogin property"]
+    N1 --> N2
+    N1 --> N3
+    N3 --> N4
+    N3 --> N5
+    N5 --> N6
 ```
 
 ### Updating properties
@@ -546,18 +588,19 @@ user.role = 'owner';
 
 Модель:
 
-```text
-Before
-│
-└── role: 'admin'
-
-Update
-│
-└── role = 'owner'
-
-After
-│
-└── role: 'owner'
+```mermaid
+flowchart TD
+    N1["Before"]
+    N2["role: 'admin'"]
+    N3["Update"]
+    N4["role = 'owner'"]
+    N5["After"]
+    N6["role: 'owner'"]
+    N1 --> N2
+    N1 --> N3
+    N3 --> N4
+    N3 --> N5
+    N5 --> N6
 ```
 
 ### Deleting properties
@@ -570,18 +613,19 @@ delete user.lastLogin;
 
 Модель:
 
-```text
-Before
-│
-└── lastLogin exists
-
-delete
-│
-└── remove property
-
-After
-│
-└── lastLogin is absent
+```mermaid
+flowchart TD
+    N1["Before"]
+    N2["lastLogin exists"]
+    N3["delete"]
+    N4["remove property"]
+    N5["After"]
+    N6["lastLogin is absent"]
+    N1 --> N2
+    N1 --> N3
+    N3 --> N4
+    N3 --> N5
+    N5 --> N6
 ```
 
 Мы не разбираем property descriptors and attributes. Они объясняют, почему не каждую property всегда можно удалить. Это будущая глава.
@@ -590,20 +634,17 @@ After
 
 Базовый lifecycle object в этой главе:
 
-```text
-create object
-│
-▼
-read properties
-│
-▼
-add properties
-│
-▼
-update properties
-│
-▼
-delete properties when needed
+```mermaid
+flowchart TD
+    N1["создать object"]
+    N2["read properties"]
+    N3["add properties"]
+    N4["update properties"]
+    N5["delete properties when needed"]
+    N1 --> N2
+    N2 --> N3
+    N3 --> N4
+    N4 --> N5
 ```
 
 Это не lifecycle memory management. Garbage Collector будет изучаться позже.
@@ -628,23 +669,21 @@ const user = {
 
 Концептуально происходит следующее:
 
-```text
-Object literal
-│
-▼
-create object value
-│
-▼
-create properties
-│
-├── id
-│
-├── name
-│
-└── role
-│
-▼
-user refers to object
+```mermaid
+flowchart TD
+    N1["Object literal"]
+    N2["создать object value"]
+    N3["создать properties"]
+    N4["id"]
+    N5["name"]
+    N6["role"]
+    N7["user refers to object"]
+    N1 --> N2
+    N2 --> N3
+    N3 --> N4
+    N3 --> N5
+    N3 --> N6
+    N3 --> N7
 ```
 
 ### Reading flow
@@ -655,17 +694,15 @@ user.name;
 
 Engine делает:
 
-```text
-read identifier user
-│
-▼
-get object value
-│
-▼
-look for property key "name"
-│
-▼
-return property value
+```mermaid
+flowchart TD
+    N1["read identifier user"]
+    N2["get object value"]
+    N3["look for property key &quot;name&quot;"]
+    N4["вернуть property value"]
+    N1 --> N2
+    N2 --> N3
+    N3 --> N4
 ```
 
 ### Writing flow
@@ -676,17 +713,15 @@ user.role = 'owner';
 
 Engine делает:
 
-```text
-read identifier user
-│
-▼
-get object value
-│
-▼
-find or create property "role"
-│
-▼
-store new value
+```mermaid
+flowchart TD
+    N1["read identifier user"]
+    N2["get object value"]
+    N3["find or создать property &quot;role&quot;"]
+    N4["store new value"]
+    N1 --> N2
+    N2 --> N3
+    N3 --> N4
 ```
 
 Если property существовала, value обновляется.
@@ -699,14 +734,13 @@ store new value
 user.email;
 ```
 
-```text
-dot notation
-│
-▼
-property key is written in code
-│
-▼
-"email"
+```mermaid
+flowchart TD
+    N1["dot notation"]
+    N2["property key is written in code"]
+    N3["&quot;email&quot;"]
+    N1 --> N2
+    N2 --> N3
 ```
 
 ### Bracket notation flow
@@ -717,31 +751,28 @@ const key = 'email';
 user[key];
 ```
 
-```text
-bracket notation
-│
-▼
-evaluate expression inside brackets
-│
-▼
-key -> 'email'
-│
-▼
-use 'email' as property key
+```mermaid
+flowchart TD
+    N1["bracket notation"]
+    N2["evaluate expression inside brackets"]
+    N3["key → 'email'"]
+    N4["use 'email' as property key"]
+    N1 --> N2
+    N2 --> N3
+    N3 --> N4
 ```
 
 ### Memory intuition
 
 На высоком уровне:
 
-```text
-variable user
-│
-▼
-refers to object value
-│
-▼
-object contains named properties
+```mermaid
+flowchart TD
+    N1["variable user"]
+    N2["refers to object value"]
+    N3["object contains named properties"]
+    N1 --> N2
+    N2 --> N3
 ```
 
 Это только intuition. В этой главе мы не рисуем precise engine implementation, property attributes, hidden classes or optimization details.
@@ -752,14 +783,17 @@ object contains named properties
 
 > Есть ли у этого object property с таким key?
 
-```text
-object
-│
-├── key exists
-│   └── return value
-│
-└── key does not exist
-    └── return undefined
+```mermaid
+flowchart TD
+    N1["объект"]
+    N2["key exists"]
+    N3["возвращаемое значение"]
+    N4["key does not exist"]
+    N5["вернуть undefined"]
+    N1 --> N2
+    N1 --> N3
+    N1 --> N4
+    N4 --> N5
 ```
 
 Prototype Chain тоже участвует в property lookup, но это будущая глава. Сейчас мы говорим только о собственных, очевидных properties object literal.
@@ -770,11 +804,11 @@ Object identity уже встречалась в главах про References 
 
 Здесь достаточно напомнить:
 
-```text
-Two objects with same properties
-│
-▼
-can still be different objects
+```mermaid
+flowchart TD
+    N1["Two objects with same properties"]
+    N2["can still be different objects"]
+    N1 --> N2
 ```
 
 Пример:
@@ -800,57 +834,67 @@ false
 
 Object удобно представлять как profile card.
 
-```text
-Profile card: user
-│
-├── id: 101
-├── name: Anna
-├── role: admin
-└── active: true
+```mermaid
+flowchart TD
+    N1["Profile card: user"]
+    N2["id: 101"]
+    N3["name: Anna"]
+    N4["role: admin"]
+    N5["active: true"]
+    N1 --> N2
+    N1 --> N3
+    N1 --> N4
+    N1 --> N5
 ```
 
 Одна карточка описывает одну entity.
 
 Другая модель: folder.
 
-```text
-Folder: test user
-│
-├── document: id
-├── document: name
-├── document: role
-└── document: active
+```mermaid
+flowchart TD
+    N1["Folder: test user"]
+    N2["document: id"]
+    N3["document: name"]
+    N4["document: role"]
+    N5["document: active"]
+    N1 --> N2
+    N1 --> N3
+    N1 --> N4
+    N1 --> N5
 ```
 
 Еще одна модель: cabinet with labeled boxes.
 
-```text
-Cabinet: config
-│
-├── box "baseUrl"
-├── box "timeout"
-└── box "retries"
+```mermaid
+flowchart TD
+    N1["Cabinet: config"]
+    N2["box &quot;baseUrl&quot;"]
+    N3["box &quot;timeout&quot;"]
+    N4["box &quot;retries&quot;"]
+    N1 --> N2
+    N1 --> N3
+    N1 --> N4
 ```
 
 Важное ограничение моделей:
 
-```text
-These models explain grouping
-│
-▼
-they do not describe exact engine storage
+```mermaid
+flowchart TD
+    N1["These models explain grouping"]
+    N2["they do not describe exact engine storage"]
+    N1 --> N2
 ```
 
 Главная модель:
 
-```text
-Object
-│
-▼
-one entity
-│
-▼
-many named properties
+```mermaid
+flowchart TD
+    N1["Object"]
+    N2["one entity"]
+    N3["many named properties"]
+    N1 --> N2
+    N2 --> N3
 ```
 
 ---
@@ -994,14 +1038,13 @@ Nested object показан только conceptually. Подробная ра�
 
 Лучше думать так:
 
-```text
-Object
-│
-▼
-one entity
-│
-▼
-many named properties
+```mermaid
+flowchart TD
+    N1["Object"]
+    N2["one entity"]
+    N3["many named properties"]
+    N1 --> N2
+    N2 --> N3
 ```
 
 Key-value view помогает читать property. Entity view помогает проектировать данные.
@@ -1010,18 +1053,20 @@ Key-value view помогает читать property. Entity view помога�
 
 `const` запрещает reassignment identifier.
 
-```text
-const user
-│
-└── cannot point to another value
+```mermaid
+flowchart TD
+    N1["const user"]
+    N2["cannot point to another value"]
+    N1 --> N2
 ```
 
 Но object properties можно изменять:
 
-```text
-user.name
-│
-└── property inside object can be updated
+```mermaid
+flowchart TD
+    N1["user.name"]
+    N2["property inside object can be updated"]
+    N1 --> N2
 ```
 
 Object freezing будет изучаться позже.
@@ -1030,11 +1075,11 @@ Object freezing будет изучаться позже.
 
 Reading missing property returns `undefined`.
 
-```text
-object has no key
-│
-▼
-undefined
+```mermaid
+flowchart TD
+    N1["object has нет key"]
+    N2["undefined"]
+    N1 --> N2
 ```
 
 ### Когда нужна bracket notation?
@@ -1061,11 +1106,11 @@ response[key];
 
 Object нужен там, где есть related data.
 
-```text
-Even three related values
-│
-▼
-can justify object
+```mermaid
+flowchart TD
+    N1["Even three related values"]
+    N2["can justify object"]
+    N1 --> N2
 ```
 
 ### Миф: dot notation и bracket notation делают разные вещи
@@ -1074,14 +1119,15 @@ can justify object
 
 Обе формы читают property by key. Разница в том, как key задается.
 
-```text
-dot
-│
-└── key written directly
-
-bracket
-│
-└── key comes from expression
+```mermaid
+flowchart TD
+    N1["dot"]
+    N2["key written directly"]
+    N3["bracket"]
+    N4["key comes from expression"]
+    N1 --> N2
+    N1 --> N3
+    N3 --> N4
 ```
 
 ### Миф: `delete` присваивает `undefined`
@@ -1090,11 +1136,13 @@ bracket
 
 `delete` удаляет property.
 
-```text
-property exists with undefined
-│
-≠
-property does not exist
+```mermaid
+flowchart TD
+    N1["property exists with undefined"]
+    N2["≠"]
+    N3["property does not exist"]
+    N1 --> N2
+    N2 --> N3
 ```
 
 Подробные способы проверять наличие property будут изучаться позже.
@@ -1135,10 +1183,11 @@ console.log(user.fieldName);
 
 Что произошло:
 
-```text
-user.fieldName
-│
-└── looks for key "fieldName"
+```mermaid
+flowchart TD
+    N1["user.fieldName"]
+    N2["looks for key &quot;fieldName&quot;"]
+    N1 --> N2
 ```
 
 Исправление:
@@ -1172,11 +1221,11 @@ user.email = 'anna@example.test';
 
 В тестовых данных иногда лучше явно создать нужный expected object, чем сначала создать лишнее поле и удалить его.
 
-```text
-clear test data
-│
-▼
-better assertions
+```mermaid
+flowchart TD
+    N1["clear test data"]
+    N2["better assertions"]
+    N1 --> N2
 ```
 
 Immutable patterns будут изучаться позже.
@@ -1199,12 +1248,15 @@ const config = {
 
 Модель:
 
-```text
-config
-│
-├── baseUrl
-├── timeout
-└── retries
+```mermaid
+flowchart TD
+    N1["config"]
+    N2["baseUrl"]
+    N3["timeout"]
+    N4["retries"]
+    N1 --> N2
+    N1 --> N3
+    N1 --> N4
 ```
 
 ### User profile
@@ -1280,13 +1332,17 @@ const testUser = {
 
 ### User profiles
 
-```text
-User profile
-│
-├── identity
-├── credentials
-├── role
-└── state
+```mermaid
+flowchart TD
+    N1["User profile"]
+    N2["identity"]
+    N3["credentials"]
+    N4["role"]
+    N5["state"]
+    N1 --> N2
+    N1 --> N3
+    N1 --> N4
+    N1 --> N5
 ```
 
 В тестах профили часто становятся fixtures. Fixtures будут подробно изучаться в Automation QA части курса.
@@ -1303,11 +1359,11 @@ const stagingConfig = {
 
 Configuration object делает setup читаемым:
 
-```text
-one environment
-│
-▼
-one config object
+```mermaid
+flowchart TD
+    N1["one environment"]
+    N2["one config object"]
+    N1 --> N2
 ```
 
 ### Request payloads
@@ -1323,14 +1379,15 @@ Payload как object помогает явно видеть, что отпра�
 
 ### Expected vs actual structure
 
-```text
-expectedUser
-│
-└── what test expects
-
-actualUser
-│
-└── what API returned
+```mermaid
+flowchart TD
+    N1["expectedUser"]
+    N2["what test expects"]
+    N3["actualUser"]
+    N4["what API returned"]
+    N1 --> N2
+    N1 --> N3
+    N3 --> N4
 ```
 
 Чем яснее object structure, тем проще писать assertions.
@@ -1341,343 +1398,362 @@ actualUser
 
 ### 1. Why objects exist
 
-```text
-Related data
-│
-▼
-needs one entity
-│
-▼
-Object
+```mermaid
+flowchart TD
+    N1["Related data"]
+    N2["needs one entity"]
+    N3["Object"]
+    N1 --> N2
+    N2 --> N3
 ```
 
 ### 2. Separate variables
 
-```text
-userId
-userName
-userRole
-userActive
-│
-▼
-many names, hidden relationship
+```mermaid
+flowchart TD
+    N1["userId"]
+    N2["userName"]
+    N3["userRole"]
+    N4["userActive"]
+    N5["many names, hidden relationship"]
+    N4 --> N5
+    N1 --> N2
+    N2 --> N3
+    N3 --> N4
 ```
 
 ### 3. Grouped data
 
-```text
-user
-│
-├── id
-├── name
-├── role
-└── active
+```mermaid
+flowchart TD
+    N1["user"]
+    N2["id"]
+    N3["name"]
+    N4["role"]
+    N5["active"]
+    N1 --> N2
+    N1 --> N3
+    N1 --> N4
+    N1 --> N5
 ```
 
 ### 4. Object literal
 
-```text
-{
-  key: value
-}
-│
-▼
-object value
+```mermaid
+flowchart TD
+    N1["{"]
+    N2["key: value"]
+    N3["}"]
+    N4["object value"]
+    N3 --> N4
+    N1 --> N2
+    N2 --> N3
 ```
 
 ### 5. Property structure
 
-```text
-Property
-│
-├── key
-└── value
+```mermaid
+flowchart TD
+    N1["Property"]
+    N2["key"]
+    N3["значение"]
+    N1 --> N2
+    N1 --> N3
 ```
 
 ### 6. Keys and значения
 
-```text
-name: 'Anna'
-│     │
-│     └── value
-└── key
+```mermaid
+flowchart TD
+    N1["name: 'Anna'"]
+    N2["значение"]
+    N3["key"]
+    N1 --> N2
+    N1 --> N3
 ```
 
 ### 7. Reading property
 
-```text
-user.name
-│
-▼
-read property "name"
-│
-▼
-'Anna'
+```mermaid
+flowchart TD
+    N1["user.name"]
+    N2["read property &quot;name&quot;"]
+    N3["'Anna'"]
+    N1 --> N2
+    N2 --> N3
 ```
 
 ### 8. Writing property
 
-```text
-user.email = value
-│
-▼
-write value into property
+```mermaid
+flowchart TD
+    N1["user.email = value"]
+    N2["write value into property"]
+    N1 --> N2
 ```
 
 ### 9. Updating property
 
-```text
-role: 'admin'
-│
-▼
-role = 'owner'
-│
-▼
-role: 'owner'
+```mermaid
+flowchart TD
+    N1["role: 'admin'"]
+    N2["role = 'owner'"]
+    N3["role: 'owner'"]
+    N1 --> N2
+    N2 --> N3
 ```
 
 ### 10. Deleting property
 
-```text
-property exists
-│
-▼
-delete property
-│
-▼
-property absent
+```mermaid
+flowchart TD
+    N1["property exists"]
+    N2["delete property"]
+    N3["property absent"]
+    N1 --> N2
+    N2 --> N3
 ```
 
 ### 11. Dot notation
 
-```text
-object.key
-│
-└── key written directly
+```mermaid
+flowchart TD
+    N1["object.key"]
+    N2["key written directly"]
+    N1 --> N2
 ```
 
 ### 12. Bracket notation
 
-```text
-object[expression]
-│
-└── expression produces key
+```mermaid
+flowchart TD
+    N1["object[expression]"]
+    N2["expression produces key"]
+    N1 --> N2
 ```
 
 ### 13. Текущая модель JavaScript
 
-```text
-Values
-│
-├── Primitive values
-└── Object values
-    │
-    └── Objects section begins here
+```mermaid
+flowchart TD
+    N1["Values"]
+    N2["Primitive values"]
+    N3["Object values"]
+    N4["Objects section begins here"]
+    N1 --> N2
+    N1 --> N3
+    N3 --> N4
 ```
 
 ### 14. QA test data object
 
-```text
-testUser
-│
-├── name
-├── email
-└── role
+```mermaid
+flowchart TD
+    N1["testUser"]
+    N2["name"]
+    N3["email"]
+    N4["role"]
+    N1 --> N2
+    N1 --> N3
+    N1 --> N4
 ```
 
 ### 15. API response object
 
-```text
-response
-│
-├── status
-├── headers
-└── body
+```mermaid
+flowchart TD
+    N1["response"]
+    N2["status"]
+    N3["headers"]
+    N4["body"]
+    N1 --> N2
+    N1 --> N3
+    N1 --> N4
 ```
 
 ### 16. Object lifecycle
 
-```text
-create
-│
-▼
-read
-│
-▼
-write
-│
-▼
-update
-│
-▼
-delete
+```mermaid
+flowchart TD
+    N1["create"]
+    N2["чтение"]
+    N3["запись"]
+    N4["update"]
+    N5["delete"]
+    N1 --> N2
+    N2 --> N3
+    N3 --> N4
+    N4 --> N5
 ```
 
 ### 17. Читаемость
 
-```text
-many related variables
-│
-▼
-reader reconstructs entity
-
-one object
-│
-▼
-entity is explicit
+```mermaid
+flowchart TD
+    N1["many related variables"]
+    N2["reader reconstructs entity"]
+    N3["one object"]
+    N4["entity is explicit"]
+    N1 --> N2
+    N2 --> N3
+    N3 --> N4
 ```
 
 ### 18. Типичные ошибки
 
-```text
-user.fieldName
-│
-└── key is literally "fieldName"
-
-user[fieldName]
-│
-└── key comes from variable
+```mermaid
+flowchart TD
+    N1["user.fieldName"]
+    N2["key is literally &quot;fieldName&quot;"]
+    N3["user[fieldName]"]
+    N4["key comes from variable"]
+    N1 --> N2
+    N1 --> N3
+    N3 --> N4
 ```
 
 ### 19. Memory intuition
 
-```text
-variable
-│
-▼
-refers to object
-│
-▼
-object has properties
+```mermaid
+flowchart TD
+    N1["variable"]
+    N2["refers to object"]
+    N3["object has properties"]
+    N1 --> N2
+    N2 --> N3
 ```
 
 ### 20. Property lookup
 
-```text
-look for key
-│
-├── found -> value
-└── absent -> undefined
+```mermaid
+flowchart TD
+    N1["look for key"]
+    N2["found → value"]
+    N3["absent → undefined"]
+    N1 --> N2
+    N1 --> N3
 ```
 
 ### 21. Object identity preview
 
-```text
-{ id: 101 }
-│
-≠
-{ id: 101 }
+```mermaid
+flowchart TD
+    N1["{ id: 101 }"]
+    N2["≠"]
+    N3["{ id: 101 }"]
+    N1 --> N2
+    N2 --> N3
 ```
 
 ### 22. Переход к Destructuring
 
-```text
-object has properties
-│
-▼
-need convenient extraction
-│
-▼
-Destructuring
+```mermaid
+flowchart TD
+    N1["object has properties"]
+    N2["need convenient extraction"]
+    N3["Destructuring"]
+    N1 --> N2
+    N2 --> N3
 ```
 
 ### 23. Переход к Optional Chaining
 
-```text
-nested object
-│
-▼
-property may be absent
-│
-▼
-Optional Chaining later
+```mermaid
+flowchart TD
+    N1["nested object"]
+    N2["property may be absent"]
+    N3["Optional Chaining later"]
+    N1 --> N2
+    N2 --> N3
 ```
 
 ### 24. Complete object model
 
-```text
-Object
-│
-├── key: value
-├── key: value
-└── key: value
+```mermaid
+flowchart TD
+    N1["Object"]
+    N2["key: value"]
+    N3["key: value"]
+    N4["key: value"]
+    N1 --> N2
+    N1 --> N3
+    N1 --> N4
 ```
 
 ### 25. Краткая ментальная модель
 
-```text
-folder
-│
-▼
-profile card
-│
-▼
-labeled boxes
+```mermaid
+flowchart TD
+    N1["folder"]
+    N2["profile card"]
+    N3["labeled boxes"]
+    N1 --> N2
+    N2 --> N3
 ```
 
 ### 26. Object as profile
 
-```text
-Profile: Anna
-│
-├── id
-├── email
-└── role
+```mermaid
+flowchart TD
+    N1["Profile: Anna"]
+    N2["id"]
+    N3["email"]
+    N4["role"]
+    N1 --> N2
+    N1 --> N3
+    N1 --> N4
 ```
 
 ### 27. Object as folder
 
-```text
-Folder: API test
-│
-├── request data
-├── expected data
-└── config data
+```mermaid
+flowchart TD
+    N1["Folder: API test"]
+    N2["request data"]
+    N3["expected data"]
+    N4["config data"]
+    N1 --> N2
+    N1 --> N3
+    N1 --> N4
 ```
 
 ### 28. Property access flow
 
-```text
-identifier
-│
-▼
-object
-│
-▼
-key
-│
-▼
-value
+```mermaid
+flowchart TD
+    N1["identifier"]
+    N2["объект"]
+    N3["key"]
+    N4["значение"]
+    N1 --> N2
+    N2 --> N3
+    N3 --> N4
 ```
 
 ### 29. Object evolution
 
-```text
-initial object
-│
-▼
-add property
-│
-▼
-update property
-│
-▼
-delete property
+```mermaid
+flowchart TD
+    N1["initial object"]
+    N2["add property"]
+    N3["update property"]
+    N4["delete property"]
+    N1 --> N2
+    N2 --> N3
+    N3 --> N4
 ```
 
 ### 30. Итоговая схема
 
-```text
-Object
-│
-▼
-one entity
-│
-▼
-many named properties
-│
-▼
-clearer program structure
+```mermaid
+flowchart TD
+    N1["Object"]
+    N2["one entity"]
+    N3["many named properties"]
+    N4["clearer program structure"]
+    N1 --> N2
+    N2 --> N3
+    N3 --> N4
 ```
 
 ---
@@ -1726,14 +1802,13 @@ which data belongs together
 
 Главная модель:
 
-```text
-Object
-│
-▼
-one entity
-│
-▼
-many named properties
+```mermaid
+flowchart TD
+    N1["Object"]
+    N2["one entity"]
+    N3["many named properties"]
+    N1 --> N2
+    N2 --> N3
 ```
 
 Objects нужны не потому, что JavaScript любит braces.
@@ -1763,14 +1838,13 @@ expected data
 
 Следующая глава объяснит Destructuring:
 
-```text
-object has properties
-│
-▼
-need convenient extraction
-│
-▼
-destructuring
+```mermaid
+flowchart TD
+    N1["object has properties"]
+    N2["need convenient extraction"]
+    N3["destructuring"]
+    N1 --> N2
+    N2 --> N3
 ```
 
 ---

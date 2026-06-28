@@ -227,10 +227,13 @@ playground/scope-test-flow.js
 
 После кода нарисуйте:
 
-```text
-Global Scope
-└── Function Scope
-    └── Block Scope
+```mermaid
+flowchart TD
+    N1["Global Scope"]
+    N2["Function Scope"]
+    N3["Block Scope"]
+    N1 --> N2
+    N2 --> N3
 ```
 
 И подпишите, где visible каждый identifier.

@@ -100,9 +100,11 @@ staging
 
 Ответ:
 
-```text
-new-playwright-framework -> ES Modules
-legacy-api-tests         -> CommonJS
+```mermaid
+flowchart TD
+    N1["new-playwright-framework → ES Modules"]
+    N2["legacy-api-tests → CommonJS"]
+    N1 --> N2
 ```
 
 Объяснение: новый проект чаще использует современный стандарт, а старый Node.js-проект часто сохраняет CommonJS.

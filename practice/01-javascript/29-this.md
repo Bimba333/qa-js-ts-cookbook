@@ -294,12 +294,13 @@ Method должна использовать `this.expectedStatus`.
 
 Нарисуйте схему:
 
-```text
-responseHelper.method()
-│
-└── this -> responseHelper
-
-detachedMethod()
-│
-└── this -> ?
+```mermaid
+flowchart TD
+    N1["responseHelper.method()"]
+    N2["this → responseHelper"]
+    N3["detachedMethod()"]
+    N4["this → ?"]
+    N1 --> N2
+    N1 --> N3
+    N3 --> N4
 ```

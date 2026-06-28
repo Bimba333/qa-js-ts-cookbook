@@ -96,11 +96,15 @@
 
 Ответ:
 
-```text
-logs              -> logBuffer
-screenshots       -> массив артефактов или отчет
-cached test data  -> Map / объект cache
-temporary reports -> currentReport / history
+```mermaid
+flowchart TD
+    N1["logs → logBuffer"]
+    N2["screenshots → массив артефактов или отчет"]
+    N3["cached test data → Map / объект cache"]
+    N4["temporary reports → currentReport / history"]
+    N1 --> N2
+    N2 --> N3
+    N3 --> N4
 ```
 
 Объяснение: каждую группу данных удерживает конкретная ссылка или коллекция.

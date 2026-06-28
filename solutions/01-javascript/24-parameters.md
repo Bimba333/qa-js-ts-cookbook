@@ -555,11 +555,15 @@ Locator value передается в helper.
 
 Ответ:
 
-```text
-a, b   → actualStatus, expectedStatus
-x      → userEmail
-v      → locatorName
-data   → userProfile
+```mermaid
+flowchart TD
+    N1["a, b → actualStatus, expectedStatus"]
+    N2["x → userEmail"]
+    N3["v → locatorName"]
+    N4["data → userProfile"]
+    N1 --> N2
+    N2 --> N3
+    N3 --> N4
 ```
 
 Объяснение:

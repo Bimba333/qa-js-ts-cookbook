@@ -90,11 +90,15 @@
 
 Ответ:
 
-```text
-логи + скриншот                 -> Promise.all()
-итог всех загрузок              -> Promise.allSettled()
-самый быстрый health check      -> Promise.race()
-первый успешный endpoint        -> Promise.any()
+```mermaid
+flowchart TD
+    N1["логи + скриншот → Promise.all()"]
+    N2["итог всех загрузок → Promise.allSettled()"]
+    N3["самый быстрый health check → Promise.race()"]
+    N4["первый успешный endpoint → Promise.any()"]
+    N1 --> N2
+    N2 --> N3
+    N3 --> N4
 ```
 
 Объяснение: выбор метода зависит от нужной стратегии ожидания.

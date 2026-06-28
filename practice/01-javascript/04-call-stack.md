@@ -86,11 +86,15 @@ node examples/01-javascript/chapter-04/05-stack-trace.js
 
 Playwright-тест вызывает метод Page Объект:
 
-```text
-test
-└── profilePage.open()
-    └── waitForLoaded()
-        └── assertHeader()
+```mermaid
+flowchart TD
+    N1["test"]
+    N2["profilePage.open()"]
+    N3["waitForLoaded()"]
+    N4["assertHeader()"]
+    N1 --> N2
+    N2 --> N3
+    N3 --> N4
 ```
 
 Нарисуйте Call Stack в момент выполнения `assertHeader`.

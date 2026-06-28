@@ -224,11 +224,13 @@ Memory maps help debug Playwright fixtures and shared configs.
 
 Ответ:
 
-```text
-Stack-like area
-│
-├── userName:  "Anna"
-└── adminName: "Kate"
+```mermaid
+flowchart TD
+    N1["Stack-like area"]
+    N2["userName: &quot;Anna&quot;"]
+    N3["adminName: &quot;Kate&quot;"]
+    N1 --> N2
+    N1 --> N3
 ```
 
 Объяснение:
@@ -247,11 +249,15 @@ Primitive expected значения are usually simple to reason about.
 
 Ответ:
 
-```text
-Stack-like area           Heap-like area
-user  ───────────────┐
-admin ───────────────┘──► Object A
-                          └── name: "Anna"
+```mermaid
+flowchart TD
+    N1["Stack-like area Heap-like area"]
+    N2["user ───────────────┐"]
+    N3["admin ───────────────┘ → Object A"]
+    N4["name: &quot;Anna&quot;"]
+    N1 --> N2
+    N2 --> N3
+    N3 --> N4
 ```
 
 Объяснение:
@@ -270,12 +276,15 @@ Direct assignment of payload creates shared object.
 
 Ответ:
 
-```text
-oldUser     ───────► Object A
-                    └── name: "Anna"
-
-currentUser ───────► Object B
-                    └── name: "Kate"
+```mermaid
+flowchart TD
+    N1["oldUser → Object A"]
+    N2["name: &quot;Anna&quot;"]
+    N3["currentUser → Object B"]
+    N4["name: &quot;Kate&quot;"]
+    N1 --> N3
+    N1 --> N2
+    N3 --> N4
 ```
 
 Объяснение:
@@ -294,11 +303,15 @@ Think reassignment updates Object A.
 
 Ответ:
 
-```text
-Stack-like area           Heap-like area
-user ───────────────────► Object A
-                          └── profile ──► Object B
-                                          └── name: "Anna"
+```mermaid
+flowchart TD
+    N1["Stack-like area Heap-like area"]
+    N2["user → Object A"]
+    N3["profile → Object B"]
+    N4["name: &quot;Anna&quot;"]
+    N1 --> N2
+    N2 --> N3
+    N3 --> N4
 ```
 
 Объяснение:
@@ -440,10 +453,13 @@ Use suitable assertions for object structure.
 
 Схема:
 
-```text
-defaultPayload ──┐
-requestPayload ──┘──► Object A
-                      └── role: "admin"
+```mermaid
+flowchart TD
+    N1["defaultPayload ──┐"]
+    N2["requestPayload ──┘ → Object A"]
+    N3["role: &quot;admin&quot;"]
+    N1 --> N2
+    N2 --> N3
 ```
 
 Bug: `requestPayload` is not a new object. It refers to same object as `defaultPayload`.
@@ -510,10 +526,13 @@ Use deep equality or поле assertions where appropriate.
 
 Risk схема:
 
-```text
-fixture defaultUser ──┐
-test local user    ───┘──► Object A
-                           └── role: changed by test
+```mermaid
+flowchart TD
+    N1["fixture defaultUser ──┐"]
+    N2["test local user ───┘ → Object A"]
+    N3["role: changed by test"]
+    N1 --> N2
+    N2 --> N3
 ```
 
 Объяснение:
@@ -546,14 +565,19 @@ const adminPayload = {
 
 Схема:
 
-```text
-defaultPayload ─────► Object A
-                      ├── email: "anna@example.com"
-                      └── role: "user"
-
-adminPayload ───────► Object B
-                      ├── email: "anna@example.com"
-                      └── role: "admin"
+```mermaid
+flowchart TD
+    N1["defaultPayload → Object A"]
+    N2["email: &quot;anna@example.com&quot;"]
+    N3["role: &quot;user&quot;"]
+    N4["adminPayload → Object B"]
+    N5["email: &quot;anna@example.com&quot;"]
+    N6["role: &quot;admin&quot;"]
+    N1 --> N4
+    N1 --> N2
+    N2 --> N3
+    N4 --> N5
+    N5 --> N6
 ```
 
 Объяснение:

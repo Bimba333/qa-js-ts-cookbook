@@ -6,17 +6,15 @@
 
 Главная модель была такой:
 
-```text
-Array
-│
-▼
-forEach()
-│
-▼
-same action for each element
-│
-▼
-side effect
+```mermaid
+flowchart TD
+    N1["Array"]
+    N2["forEach()"]
+    N3["same action for each element"]
+    N4["side effect"]
+    N1 --> N2
+    N2 --> N3
+    N3 --> N4
 ```
 
 `forEach()` удобен, когда нужно выполнить действие: вывести log, зарегистрировать test case, отправить команду.
@@ -75,14 +73,13 @@ T-3: pay order
 
 Нужна операция другого типа:
 
-```text
-input array
-│
-▼
-transform each element
-│
-▼
-output array
+```mermaid
+flowchart TD
+    N1["input array"]
+    N2["transform each element"]
+    N3["output array"]
+    N1 --> N2
+    N2 --> N3
 ```
 
 ## Теория
@@ -99,17 +96,15 @@ const result = array.map(function (element) {
 
 Смысл:
 
-```text
-element
-│
-▼
-callback
-│
-▼
-return value
-│
-▼
-new array element
+```mermaid
+flowchart TD
+    N1["element"]
+    N2["callback"]
+    N3["возвращаемое значение"]
+    N4["new array element"]
+    N1 --> N2
+    N2 --> N3
+    N3 --> N4
 ```
 
 Если нужен выходной массив, результат `map()` нужно сохранить.
@@ -118,38 +113,32 @@ new array element
 
 Концептуальные шаги:
 
-```text
-source array
-│
-▼
-create empty result array
-│
-▼
-take first element
-│
-▼
-call callback
-│
-▼
-put returned value into result array
-│
-▼
-repeat for each element
-│
-▼
-return result array
+```mermaid
+flowchart TD
+    N1["source array"]
+    N2["создать empty result array"]
+    N3["take first element"]
+    N4["вызвать callback"]
+    N5["put возвращённое значение into result array"]
+    N6["repeat for each element"]
+    N7["вернуть result array"]
+    N1 --> N2
+    N2 --> N3
+    N3 --> N4
+    N4 --> N5
+    N5 --> N6
+    N6 --> N7
 ```
 
 Для test cases:
 
-```text
-{ id: 'T-1', title: 'login smoke' }
-│
-▼
-return 'T-1: login smoke'
-│
-▼
-result[0]
+```mermaid
+flowchart TD
+    N1["{ id: 'T-1', title: 'login smoke' }"]
+    N2["вернуть 'T-1: login smoke'"]
+    N3["result[0]"]
+    N1 --> N2
+    N2 --> N3
 ```
 
 Исходный `testCases` остается тем же array с теми же objects. `map()` создает новый array для transformed значения.
@@ -158,29 +147,26 @@ result[0]
 
 Главная модель этой главы: **вход -> transformed выходной массив**.
 
-```text
-input array
-│
-▼
-map()
-│
-▼
-transform each element
-│
-▼
-new output array
+```mermaid
+flowchart TD
+    N1["input array"]
+    N2["map()"]
+    N3["transform each element"]
+    N4["new output array"]
+    N1 --> N2
+    N2 --> N3
+    N3 --> N4
 ```
 
 Количество elements обычно сохраняется, а форма данных меняется:
 
-```text
-3 input elements
-│
-▼
-map()
-│
-▼
-3 output elements
+```mermaid
+flowchart TD
+    N1["3 input elements"]
+    N2["map()"]
+    N3["3 output elements"]
+    N1 --> N2
+    N2 --> N3
 ```
 
 ## Практические примеры
@@ -235,14 +221,13 @@ const ciPayload = testCases.map(function (testCase) {
 
 Если callback ничего не возвращает, `map()` положит `undefined` в новый array.
 
-```text
-callback returns nothing
-│
-▼
-undefined
-│
-▼
-result array
+```mermaid
+flowchart TD
+    N1["callback возвращает nothing"]
+    N2["undefined"]
+    N3["result array"]
+    N1 --> N2
+    N2 --> N3
 ```
 
 ### Ошибка 3. Ожидать изменение исходного array

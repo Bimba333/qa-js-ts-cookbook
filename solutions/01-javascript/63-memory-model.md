@@ -125,11 +125,15 @@ a();
 
 Объяснение:
 
-```text
-c context
-├── count -> 3
-├── user -> ссылка ──► объект в Heap
-└── sameUser ───────► тот же объект в Heap
+```mermaid
+flowchart TD
+    N1["c context"]
+    N2["count → 3"]
+    N3["user → ссылка → объект в Heap"]
+    N4["sameUser → тот же объект в Heap"]
+    N1 --> N2
+    N1 --> N3
+    N1 --> N4
 ```
 
 Ошибка: рисовать два объекта в Heap.

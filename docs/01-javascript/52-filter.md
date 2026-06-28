@@ -6,14 +6,13 @@
 
 Главная модель была такой:
 
-```text
-input array
-│
-▼
-map()
-│
-▼
-transformed output array
+```mermaid
+flowchart TD
+    N1["input array"]
+    N2["map()"]
+    N3["transformed output array"]
+    N1 --> N2
+    N2 --> N3
 ```
 
 `map()` меняет форму каждого element и обычно сохраняет количество elements.
@@ -65,17 +64,15 @@ CI pipeline должен перезапустить только failed tests.
 
 Нужна операция:
 
-```text
-input array
-│
-▼
-check each element
-│
-▼
-keep matching elements
-│
-▼
-subset array
+```mermaid
+flowchart TD
+    N1["input array"]
+    N2["check each element"]
+    N3["keep matching elements"]
+    N4["subset array"]
+    N1 --> N2
+    N2 --> N3
+    N3 --> N4
 ```
 
 ## Теория
@@ -92,14 +89,15 @@ const result = array.filter(function (element) {
 
 Смысл:
 
-```text
-element
-│
-▼
-condition
-│
-├── true  -> keep
-└── false -> skip
+```mermaid
+flowchart TD
+    N1["element"]
+    N2["condition"]
+    N3["true → keep"]
+    N4["false → skip"]
+    N1 --> N2
+    N2 --> N3
+    N2 --> N4
 ```
 
 Callback для `filter()` часто называют predicate: function, которая отвечает "подходит ли element?".
@@ -108,23 +106,21 @@ Callback для `filter()` часто называют predicate: function, ко
 
 Концептуальные шаги:
 
-```text
-source array
-│
-▼
-create empty result array
-│
-▼
-take element
-│
-▼
-call predicate
-│
-├── true  -> add element to result
-└── false -> do not add element
-│
-▼
-return subset array
+```mermaid
+flowchart TD
+    N1["source array"]
+    N2["создать empty result array"]
+    N3["take element"]
+    N4["вызвать predicate"]
+    N5["true → add element to result"]
+    N6["false → do not add element"]
+    N7["вернуть subset array"]
+    N1 --> N2
+    N2 --> N3
+    N3 --> N4
+    N4 --> N5
+    N4 --> N6
+    N4 --> N7
 ```
 
 Важно: `filter()` не меняет сами test case objects. Он выбирает references на elements, которые уже были в исходный массив. Подробности references изучались раньше; здесь достаточно помнить, что `filter()` выбирает элементы, а не превращает их.
@@ -133,29 +129,26 @@ return subset array
 
 Главная модель этой главы: **вход -> reduced subset array**.
 
-```text
-input array
-│
-▼
-filter()
-│
-▼
-condition for each element
-│
-▼
-subset array
+```mermaid
+flowchart TD
+    N1["input array"]
+    N2["filter()"]
+    N3["condition for each element"]
+    N4["subset array"]
+    N1 --> N2
+    N2 --> N3
+    N3 --> N4
 ```
 
 Количество elements может уменьшиться, а shape каждого выбранного element остается тем же:
 
-```text
-4 input elements
-│
-▼
-filter failed
-│
-▼
-1 output element
+```mermaid
+flowchart TD
+    N1["4 input elements"]
+    N2["filter failed"]
+    N3["1 output element"]
+    N1 --> N2
+    N2 --> N3
 ```
 
 ## Практические примеры

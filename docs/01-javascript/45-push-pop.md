@@ -6,20 +6,17 @@
 
 Главная модель была такой:
 
-```text
-Many values
-│
-▼
-Array
-│
-▼
-Ordered positions
-│
-▼
-Indexes
-│
-▼
-Read values
+```mermaid
+flowchart TD
+    N1["Many values"]
+    N2["Array"]
+    N3["Ordered positions"]
+    N4["Indexes"]
+    N5["Read values"]
+    N1 --> N2
+    N2 --> N3
+    N3 --> N4
+    N4 --> N5
 ```
 
 Мы научились читать и заменять elements by index:
@@ -40,47 +37,47 @@ users[1] = 'Kate Updated';
 
 Например, API возвращает new users one by one:
 
-```text
-current users
-│
-└── Anna
-
-new user
-│
-└── Kate
+```mermaid
+flowchart TD
+    N1["current users"]
+    N2["Anna"]
+    N3["new user"]
+    N4["Kate"]
+    N1 --> N2
+    N1 --> N3
+    N3 --> N4
 ```
 
 Нужно добавить Kate в конец collection.
 
 Позже последний user нужно убрать:
 
-```text
-current users
-│
-├── Anna
-└── Kate
-
-remove last user
+```mermaid
+flowchart TD
+    N1["current users"]
+    N2["Anna"]
+    N3["Kate"]
+    N4["remove last user"]
+    N1 --> N2
+    N1 --> N3
+    N1 --> N4
 ```
 
 Эта глава отвечает:
 
-```text
-Array
-│
-▼
-Add to end
-│
-▼
-push()
-
-Array
-│
-▼
-Remove from end
-│
-▼
-pop()
+```mermaid
+flowchart TD
+    N1["Array"]
+    N2["Add to end"]
+    N3["push()"]
+    N4["Array"]
+    N5["Remove from end"]
+    N6["pop()"]
+    N1 --> N2
+    N2 --> N3
+    N3 --> N4
+    N4 --> N5
+    N5 --> N6
 ```
 
 ---
@@ -191,23 +188,19 @@ const users = ['Anna', 'Kate'];
 
 Нужна операция:
 
-```text
-текущий array
-│
-▼
-нужен новый последний element
-│
-▼
-push()
-│
-▼
-element добавлен
-│
-▼
-array теперь содержит на один element больше
-│
-▼
-length увеличивается
+```mermaid
+flowchart TD
+    N1["текущий array"]
+    N2["нужен новый последний element"]
+    N3["push()"]
+    N4["element добавлен"]
+    N5["array теперь содержит на один element больше"]
+    N6["length увеличивается"]
+    N1 --> N2
+    N2 --> N3
+    N3 --> N4
+    N4 --> N5
+    N5 --> N6
 ```
 
 Для этого используется `push()`.
@@ -228,23 +221,19 @@ const users = ['Anna', 'Kate'];
 
 Для этого используется `pop()`.
 
-```text
-нужно удалить последний element
-│
-▼
-pop()
-│
-▼
-element удален
-│
-▼
-array теперь содержит на один element меньше
-│
-▼
-length уменьшается
-│
-▼
-удаленное value возвращается
+```mermaid
+flowchart TD
+    N1["нужно удалить последний element"]
+    N2["pop()"]
+    N3["element удален"]
+    N4["array теперь содержит на один element меньше"]
+    N5["length уменьшается"]
+    N6["удаленное value возвращается"]
+    N1 --> N2
+    N2 --> N3
+    N3 --> N4
+    N4 --> N5
+    N5 --> N6
 ```
 
 ---
@@ -263,25 +252,31 @@ users.push('Kate');
 
 До:
 
-```text
-index 0 -> "Anna"
-length  -> 1
+```mermaid
+flowchart TD
+    N1["index 0 → &quot;Anna&quot;"]
+    N2["length → 1"]
+    N1 --> N2
 ```
 
 После:
 
-```text
-index 0 -> "Anna"
-index 1 -> "Kate"
-length  -> 2
+```mermaid
+flowchart TD
+    N1["index 0 → &quot;Anna&quot;"]
+    N2["index 1 → &quot;Kate&quot;"]
+    N3["length → 2"]
+    N1 --> N2
+    N2 --> N3
 ```
 
 Важно:
 
-```text
-push()
-│
-└── changes existing array
+```mermaid
+flowchart TD
+    N1["push()"]
+    N2["changes existing array"]
+    N1 --> N2
 ```
 
 We are not discussing immutability yet.
@@ -317,17 +312,22 @@ const removedUser = users.pop();
 
 До:
 
-```text
-index 0 -> "Anna"
-index 1 -> "Kate"
-length  -> 2
+```mermaid
+flowchart TD
+    N1["index 0 → &quot;Anna&quot;"]
+    N2["index 1 → &quot;Kate&quot;"]
+    N3["length → 2"]
+    N1 --> N2
+    N2 --> N3
 ```
 
 После:
 
-```text
-index 0 -> "Anna"
-length  -> 1
+```mermaid
+flowchart TD
+    N1["index 0 → &quot;Anna&quot;"]
+    N2["length → 1"]
+    N1 --> N2
 ```
 
 Возвращаемое значение:
@@ -338,11 +338,13 @@ length  -> 1
 
 Важно:
 
-```text
-pop()
-│
-├── changes existing array
-└── returns removed last element
+```mermaid
+flowchart TD
+    N1["pop()"]
+    N2["changes existing array"]
+    N3["возвращает removed last element"]
+    N1 --> N2
+    N1 --> N3
 ```
 
 ### Why `pop()` exists
@@ -370,38 +372,42 @@ How do we remove and get the last element?
 
 Because the array now contains one more element, `length` increases.
 
-```text
-before push:  one element  -> length 1
-after push:   two elements -> length 2
+```mermaid
+flowchart TD
+    N1["before push: one element → length 1"]
+    N2["after push: two elements → length 2"]
+    N1 --> N2
 ```
 
 `pop()` removes the last element.
 
 Because the array now contains one fewer element, `length` decreases.
 
-```text
-before pop:  two elements -> length 2
-after pop:   one element  -> length 1
+```mermaid
+flowchart TD
+    N1["before pop: two elements → length 2"]
+    N2["after pop: one element → length 1"]
+    N1 --> N2
 ```
 
 ### Stack intuition
 
 High-level only:
 
-```text
-last added
-│
-▼
-first removed
+```mermaid
+flowchart TD
+    N1["last added"]
+    N2["first removed"]
+    N1 --> N2
 ```
 
 This is similar to stack of plates:
 
-```text
-put plate on top
-│
-▼
-take plate from top
+```mermaid
+flowchart TD
+    N1["put plate on top"]
+    N2["take plate from top"]
+    N1 --> N2
 ```
 
 We do not study formal Stack data structure here. This is only intuition for adding/removing from the end.
@@ -425,52 +431,51 @@ new value: "Kate"
 
 Поток:
 
-```text
-Step 1
-│
-▼
-Find current length
+```mermaid
+flowchart TD
+    N1["Step 1"]
+    N2["Find current length"]
+    N1 --> N2
 ```
 
-```text
-Step 2
-│
-▼
-Use length as next index
+```mermaid
+flowchart TD
+    N1["Step 2"]
+    N2["Use length as next index"]
+    N1 --> N2
 ```
 
-```text
-Step 3
-│
-▼
-Store new value at the end
+```mermaid
+flowchart TD
+    N1["Step 3"]
+    N2["Store new value at the end"]
+    N1 --> N2
 ```
 
-```text
-Step 4
-│
-▼
-Array now contains one more element
-│
-▼
-length is larger
+```mermaid
+flowchart TD
+    N1["Step 4"]
+    N2["Array now contains one more element"]
+    N3["length is larger"]
+    N1 --> N2
+    N2 --> N3
 ```
 
 Пример:
 
-```text
-before
-│
-├── length: 1
-└── next index: 1
-
-push("Kate")
-│
-▼
-users[1] = "Kate"
-│
-▼
-length: 2
+```mermaid
+flowchart TD
+    N1["before"]
+    N2["length: 1"]
+    N3["next index: 1"]
+    N4["push(&quot;Kate&quot;)"]
+    N5["users[1] = &quot;Kate&quot;"]
+    N6["length: 2"]
+    N1 --> N2
+    N1 --> N3
+    N1 --> N4
+    N4 --> N5
+    N5 --> N6
 ```
 
 When JavaScript executes:
@@ -481,42 +486,41 @@ const removed = users.pop();
 
 Engine:
 
-```text
-Step 1
-│
-▼
-Find last index: length - 1
+```mermaid
+flowchart TD
+    N1["Step 1"]
+    N2["Find last index: length - 1"]
+    N1 --> N2
 ```
 
-```text
-Step 2
-│
-▼
-Read value at last index
+```mermaid
+flowchart TD
+    N1["Step 2"]
+    N2["Read value at last index"]
+    N1 --> N2
 ```
 
-```text
-Step 3
-│
-▼
-Remove last element
+```mermaid
+flowchart TD
+    N1["Step 3"]
+    N2["Remove last element"]
+    N1 --> N2
 ```
 
-```text
-Step 4
-│
-▼
-Array now contains one fewer element
-│
-▼
-length is smaller
+```mermaid
+flowchart TD
+    N1["Step 4"]
+    N2["Array now contains one fewer element"]
+    N3["length is smaller"]
+    N1 --> N2
+    N2 --> N3
 ```
 
-```text
-Step 5
-│
-▼
-Return removed value
+```mermaid
+flowchart TD
+    N1["Step 5"]
+    N2["Return removed value"]
+    N1 --> N2
 ```
 
 If array is empty:
@@ -528,9 +532,11 @@ const removed = items.pop();
 
 Результат:
 
-```text
-removed -> undefined
-length  -> 0
+```mermaid
+flowchart TD
+    N1["removed → undefined"]
+    N2["length → 0"]
+    N1 --> N2
 ```
 
 No element existed to remove.
@@ -541,95 +547,100 @@ No element existed to remove.
 
 Growing bookshelf:
 
-```text
-bookshelf
-│
-├── book 0
-└── add book 1 at end
+```mermaid
+flowchart TD
+    N1["bookshelf"]
+    N2["book 0"]
+    N3["add book 1 at end"]
+    N1 --> N2
+    N1 --> N3
 ```
 
 Stack of plates:
 
-```text
-top
-│
-├── last plate
-└── pop removes this one
+```mermaid
+flowchart TD
+    N1["top"]
+    N2["last plate"]
+    N3["pop removes this one"]
+    N1 --> N2
+    N1 --> N3
 ```
 
 Train gaining last car:
 
-```text
-train
-│
-├── car 0
-└── push -> add car 1 at end
+```mermaid
+flowchart TD
+    N1["train"]
+    N2["car 0"]
+    N3["push → add car 1 at end"]
+    N1 --> N2
+    N1 --> N3
 ```
 
 Train losing last car:
 
-```text
-train
-│
-├── car 0
-└── pop -> remove last car
+```mermaid
+flowchart TD
+    N1["train"]
+    N2["car 0"]
+    N3["pop → remove last car"]
+    N1 --> N2
+    N1 --> N3
 ```
 
 Notebook with new last page:
 
-```text
-notebook
-│
-├── page 0
-└── add page 1
+```mermaid
+flowchart TD
+    N1["notebook"]
+    N2["page 0"]
+    N3["add page 1"]
+    N1 --> N2
+    N1 --> N3
 ```
 
 Expandable list:
 
-```text
-list
-│
-├── adds at end
-└── removes from end
+```mermaid
+flowchart TD
+    N1["list"]
+    N2["adds at end"]
+    N3["removes from end"]
+    N1 --> N2
+    N1 --> N3
 ```
 
 Центральная модель:
 
-```text
-Array
-│
-▼
-push()
-│
-▼
-element добавлен в конец
-│
-▼
-появился новый последний element
-│
-▼
-array теперь содержит на один element больше
-│
-▼
-length увеличивается
+```mermaid
+flowchart TD
+    N1["Array"]
+    N2["push()"]
+    N3["element добавлен в конец"]
+    N4["появился новый последний element"]
+    N5["array теперь содержит на один element больше"]
+    N6["length увеличивается"]
+    N1 --> N2
+    N2 --> N3
+    N3 --> N4
+    N4 --> N5
+    N5 --> N6
 ```
 
-```text
-Array
-│
-▼
-pop()
-│
-▼
-последний element удален
-│
-▼
-array теперь содержит на один element меньше
-│
-▼
-length уменьшается
-│
-└── удаленное value возвращается
+```mermaid
+flowchart TD
+    N1["Array"]
+    N2["pop()"]
+    N3["последний element удален"]
+    N4["array теперь содержит на один element меньше"]
+    N5["length уменьшается"]
+    N6["удаленное value возвращается"]
+    N1 --> N2
+    N2 --> N3
+    N3 --> N4
+    N4 --> N5
+    N5 --> N6
 ```
 
 ---
@@ -718,10 +729,11 @@ examples/01-javascript/chapter-45/06-qa-example.js
 
 In this chapter model:
 
-```text
-push()
-│
-└── changes existing array
+```mermaid
+flowchart TD
+    N1["push()"]
+    N2["changes existing array"]
+    N1 --> N2
 ```
 
 Immutability will be discussed later.
@@ -730,34 +742,35 @@ Immutability will be discussed later.
 
 Нет.
 
-```text
-pop()
-│
-├── changes existing array
-└── returns removed value
+```mermaid
+flowchart TD
+    N1["pop()"]
+    N2["changes existing array"]
+    N3["возвращает removed value"]
+    N1 --> N2
+    N1 --> N3
 ```
 
 ### Что возвращает `pop()`?
 
 Removed last element.
 
-```text
-["Anna", "Kate"].pop()
-│
-▼
-"Kate"
+```mermaid
+flowchart TD
+    N1["[&quot;Anna&quot;, &quot;Kate&quot;].pop()"]
+    N2["&quot;Kate&quot;"]
+    N1 --> N2
 ```
 
 ### What happens when pop from empty array?
 
-```text
-[]
-│
-▼
-pop()
-│
-▼
-undefined
+```mermaid
+flowchart TD
+    N1["[]"]
+    N2["pop()"]
+    N3["undefined"]
+    N1 --> N2
+    N2 --> N3
 ```
 
 Array remains empty.
@@ -809,50 +822,55 @@ console.log(result.length);
 
 Исправленная модель:
 
-```text
-users
-│
-└── changed array
-
-result
-│
-└── removed value
+```mermaid
+flowchart TD
+    N1["users"]
+    N2["changed array"]
+    N3["результат"]
+    N4["removed value"]
+    N1 --> N2
+    N1 --> N3
+    N3 --> N4
 ```
 
 ### Ошибка 2. Forget that original array changes
 
 Неправильная модель:
 
-```text
-users.push("Kate")
-│
-└── returns separate new array
+```mermaid
+flowchart TD
+    N1["users.push(&quot;Kate&quot;)"]
+    N2["возвращает separate new array"]
+    N1 --> N2
 ```
 
 Правильная модель:
 
-```text
-users
-│
-└── now contains Kate at the end
+```mermaid
+flowchart TD
+    N1["users"]
+    N2["now contains Kate at the end"]
+    N1 --> N2
 ```
 
 ### Ошибка 3. Expect `pop()` to remove first element
 
 Неправильно:
 
-```text
-pop()
-│
-└── removes first element
+```mermaid
+flowchart TD
+    N1["pop()"]
+    N2["removes first element"]
+    N1 --> N2
 ```
 
 Правильно:
 
-```text
-pop()
-│
-└── removes last element
+```mermaid
+flowchart TD
+    N1["pop()"]
+    N2["removes last element"]
+    N1 --> N2
 ```
 
 ### Ошибка 4. Ignore empty array
@@ -889,20 +907,22 @@ last request in simple history
 
 Читаемость:
 
-```text
-responses.push(response)
-│
-clearly means
-│
-append response to collection
+```mermaid
+flowchart TD
+    N1["responses.push(response)"]
+    N2["clearly means"]
+    N3["append response to collection"]
+    N1 --> N2
+    N2 --> N3
 ```
 
-```text
-const lastResponse = responses.pop()
-│
-clearly means
-│
-remove and use last response
+```mermaid
+flowchart TD
+    N1["const lastResponse = responses.pop()"]
+    N2["clearly means"]
+    N3["remove and use last response"]
+    N1 --> N2
+    N2 --> N3
 ```
 
 ---
@@ -920,11 +940,13 @@ responses.push('GET /orders -> 200');
 
 Ментальная модель:
 
-```text
-responses
-│
-├── first response
-└── second response
+```mermaid
+flowchart TD
+    N1["responses"]
+    N2["first response"]
+    N3["second response"]
+    N1 --> N2
+    N1 --> N3
 ```
 
 ### Failed assertions
@@ -945,12 +967,15 @@ one failure collected
 
 ### Executed requests
 
-```text
-executedRequests
-│
-├── request 0
-├── request 1
-└── request 2
+```mermaid
+flowchart TD
+    N1["executedRequests"]
+    N2["request 0"]
+    N3["request 1"]
+    N4["request 2"]
+    N1 --> N2
+    N1 --> N3
+    N1 --> N4
 ```
 
 `pop()` can retrieve last executed request in simple history model.
@@ -959,24 +984,28 @@ executedRequests
 
 На высоком уровне:
 
-```text
-last visited page
-│
-can be treated like
-│
-last item in collection
+```mermaid
+flowchart TD
+    N1["last visited page"]
+    N2["can be treated like"]
+    N3["last item in collection"]
+    N1 --> N2
+    N2 --> N3
 ```
 
 We are not implementing browser history here.
 
 ### Collected test results
 
-```text
-testResults
-│
-├── result 0
-├── result 1
-└── result 2
+```mermaid
+flowchart TD
+    N1["testResults"]
+    N2["result 0"]
+    N3["result 1"]
+    N4["result 2"]
+    N1 --> N2
+    N1 --> N3
+    N1 --> N4
 ```
 
 `push()` is natural when results appear one after another.
@@ -987,175 +1016,194 @@ testResults
 
 ### 1. Why push exists
 
-```text
-array has values
-│
-new value arrives
-│
-▼
-need add to end
+```mermaid
+flowchart TD
+    N1["array has values"]
+    N2["new value arrives"]
+    N3["need add to end"]
+    N1 --> N2
+    N2 --> N3
 ```
 
 ### 2. Why pop exists
 
-```text
-array has values
-│
-last value needed
-│
-▼
-remove from end
+```mermaid
+flowchart TD
+    N1["array has values"]
+    N2["last value needed"]
+    N3["remove from end"]
+    N1 --> N2
+    N2 --> N3
 ```
 
 ### 3. Array growth
 
-```text
-[A]
-│
-push B
-▼
-[A, B]
+```mermaid
+flowchart TD
+    N1["[A]"]
+    N2["push B"]
+    N3["[A, B]"]
+    N1 --> N2
+    N2 --> N3
 ```
 
 ### 4. Array shrink
 
-```text
-[A, B]
-│
-pop
-▼
-[A]
+```mermaid
+flowchart TD
+    N1["[A, B]"]
+    N2["pop"]
+    N3["[A]"]
+    N1 --> N2
+    N2 --> N3
 ```
 
 ### 5. Before push
 
-```text
-index 0 -> A
-length 1
+```mermaid
+flowchart TD
+    N1["index 0 → A"]
+    N2["length 1"]
+    N1 --> N2
 ```
 
 ### 6. After push
 
-```text
-index 0 -> A
-index 1 -> B
-length 2
+```mermaid
+flowchart TD
+    N1["index 0 → A"]
+    N2["index 1 → B"]
+    N3["length 2"]
+    N1 --> N2
+    N2 --> N3
 ```
 
 ### 7. Before pop
 
-```text
-index 0 -> A
-index 1 -> B
-length 2
+```mermaid
+flowchart TD
+    N1["index 0 → A"]
+    N2["index 1 → B"]
+    N3["length 2"]
+    N1 --> N2
+    N2 --> N3
 ```
 
 ### 8. After pop
 
-```text
-index 0 -> A
-length 1
+```mermaid
+flowchart TD
+    N1["index 0 → A"]
+    N2["length 1"]
+    N1 --> N2
 ```
 
 ### 9. Element count growth
 
-```text
-one element
-│
-push
-▼
-two elements
-│
-▼
-length reflects new count
+```mermaid
+flowchart TD
+    N1["one element"]
+    N2["push"]
+    N3["two elements"]
+    N4["length reflects new count"]
+    N1 --> N2
+    N2 --> N3
+    N3 --> N4
 ```
 
 ### 10. Element count shrink
 
-```text
-two elements
-│
-pop
-▼
-one element
-│
-▼
-length reflects new count
+```mermaid
+flowchart TD
+    N1["two elements"]
+    N2["pop"]
+    N3["one element"]
+    N4["length reflects new count"]
+    N1 --> N2
+    N2 --> N3
+    N3 --> N4
 ```
 
 ### 11. Возвращаемое значение pop
 
-```text
-[A, B].pop()
-│
-▼
-B
+```mermaid
+flowchart TD
+    N1["[A, B].pop()"]
+    N2["B"]
+    N1 --> N2
 ```
 
 ### 12. Текущая модель JavaScript
 
-```text
-Arrays
-│
-├── indexes
-├── length
-└── push/pop
+```mermaid
+flowchart TD
+    N1["Arrays"]
+    N2["indexes"]
+    N3["length"]
+    N4["push/pop"]
+    N1 --> N2
+    N1 --> N3
+    N1 --> N4
 ```
 
 ### 13. Stack intuition
 
-```text
-last added
-│
-▼
-first removed
+```mermaid
+flowchart TD
+    N1["last added"]
+    N2["first removed"]
+    N1 --> N2
 ```
 
 ### 14. QA failed assertions
 
-```text
-failedAssertions
-│
-push failure
-▼
-contains failure
+```mermaid
+flowchart TD
+    N1["failedAssertions"]
+    N2["push failure"]
+    N3["contains failure"]
+    N1 --> N2
+    N2 --> N3
 ```
 
 ### 15. API users
 
-```text
-users
-│
-push new user
-▼
-new last user
+```mermaid
+flowchart TD
+    N1["users"]
+    N2["push new user"]
+    N3["new last user"]
+    N1 --> N2
+    N2 --> N3
 ```
 
 ### 16. Test queue preview
 
-```text
-beginning operations
-│
-next chapter
+```mermaid
+flowchart TD
+    N1["beginning operations"]
+    N2["next chapter"]
+    N1 --> N2
 ```
 
 ### 17. Читаемость
 
-```text
-array.push(value)
-│
-▼
-append value
+```mermaid
+flowchart TD
+    N1["array.push(value)"]
+    N2["append value"]
+    N1 --> N2
 ```
 
 ### 18. Типичные ошибки
 
-```text
-pop()
-│
-returns removed value
-│
-not array
+```mermaid
+flowchart TD
+    N1["pop()"]
+    N2["возвращает removed value"]
+    N3["not array"]
+    N1 --> N2
+    N2 --> N3
 ```
 
 ### 19. Bookshelf analogy
@@ -1167,10 +1215,11 @@ book 1 <- new last book
 
 ### 20. Plate stack
 
-```text
-top plate
-│
-pop removes top
+```mermaid
+flowchart TD
+    N1["top plate"]
+    N2["pop removes top"]
+    N1 --> N2
 ```
 
 ### 21. Train analogy
@@ -1189,105 +1238,114 @@ last page removed
 
 ### 23. Complete push model
 
-```text
-Array
-│
-▼
-Need new last element
-│
-▼
-push(value)
-│
-▼
-value становится последним element
-│
-▼
-array теперь содержит на один element больше
-│
-▼
-length увеличивается
+```mermaid
+flowchart TD
+    N1["Array"]
+    N2["Need new last element"]
+    N3["push(value)"]
+    N4["value становится последним element"]
+    N5["array теперь содержит на один element больше"]
+    N6["length увеличивается"]
+    N1 --> N2
+    N2 --> N3
+    N3 --> N4
+    N4 --> N5
+    N5 --> N6
 ```
 
 ### 24. Полная модель pop
 
-```text
-Array
-│
-▼
-Нужно удалить последний element
-│
-▼
-pop()
-│
-▼
-последний element удален
-│
-▼
-array теперь содержит на один element меньше
-│
-▼
-length уменьшается
-│
-└── удаленное value возвращается
+```mermaid
+flowchart TD
+    N1["Array"]
+    N2["Нужно удалить последний element"]
+    N3["pop()"]
+    N4["последний element удален"]
+    N5["array теперь содержит на один element меньше"]
+    N6["length уменьшается"]
+    N7["удаленное value возвращается"]
+    N1 --> N2
+    N2 --> N3
+    N3 --> N4
+    N4 --> N5
+    N5 --> N6
+    N6 --> N7
 ```
 
 ### 25. Element lifecycle
 
-```text
-not in array
-│
-push
-▼
-in array
-│
-pop
-▼
-removed
+```mermaid
+flowchart TD
+    N1["not in array"]
+    N2["push"]
+    N3["in array"]
+    N4["pop"]
+    N5["removed"]
+    N1 --> N2
+    N2 --> N3
+    N3 --> N4
+    N4 --> N5
 ```
 
 ### 26. Last element
 
-```text
-length - 1
-│
-▼
-last index
+```mermaid
+flowchart TD
+    N1["length - 1"]
+    N2["last index"]
+    N1 --> N2
 ```
 
 ### 27. Push flow
 
-```text
-find length
-│
-use as next index
-│
-store value
+```mermaid
+flowchart TD
+    N1["find length"]
+    N2["use as next index"]
+    N3["store value"]
+    N1 --> N2
+    N2 --> N3
 ```
 
 ### 28. Pop flow
 
-```text
-find last index
-│
-read value
-│
-remove element
-│
-return value
+```mermaid
+flowchart TD
+    N1["find last index"]
+    N2["read value"]
+    N3["remove element"]
+    N4["возвращаемое значение"]
+    N1 --> N2
+    N2 --> N3
+    N3 --> N4
 ```
 
 ### 29. Length timeline
 
-```text
-0 -> push -> 1 -> push -> 2 -> pop -> 1
+```mermaid
+flowchart LR
+    N1["0"]
+    N2["push"]
+    N3["1"]
+    N4["push"]
+    N5["2"]
+    N6["pop"]
+    N7["1"]
+    N1 --> N2
+    N2 --> N3
+    N3 --> N4
+    N4 --> N5
+    N5 --> N6
+    N6 --> N7
 ```
 
 ### 30. Ordered collection reminder
 
-```text
-order stays
-│
-new values added at end
+```mermaid
+flowchart TD
+    N1["order stays"]
+    N2["new values added at end"]
+    N1 --> N2
 ```
 
 ### 31. Краткая ментальная модель
@@ -1299,73 +1357,87 @@ pop removes from end
 
 ### 32. Переход к shift()
 
-```text
-end operations now
-│
-beginning operations next
+```mermaid
+flowchart TD
+    N1["end operations now"]
+    N2["beginning operations next"]
+    N1 --> N2
 ```
 
 ### 33. Переход к loops
 
-```text
-arrays with many elements
-│
-later: repeat over them
+```mermaid
+flowchart TD
+    N1["arrays with many elements"]
+    N2["later: repeat over them"]
+    N1 --> N2
 ```
 
 ### 34. QA framework example
 
-```text
-testResults.push(result)
-│
-collect result
+```mermaid
+flowchart TD
+    N1["testResults.push(result)"]
+    N2["collect result"]
+    N1 --> N2
 ```
 
 ### 35. API response growth
 
-```text
-responses
-│
-push new response
+```mermaid
+flowchart TD
+    N1["responses"]
+    N2["push new response"]
+    N1 --> N2
 ```
 
 ### 36. Removed value
 
-```text
-const removed = array.pop()
-│
-removed is last element
+```mermaid
+flowchart TD
+    N1["const removed = array.pop()"]
+    N2["removed is last element"]
+    N1 --> N2
 ```
 
 ### 37. Array evolution
 
-```text
-[]
-│
-push A
-▼
-[A]
-│
-push B
-▼
-[A, B]
+```mermaid
+flowchart TD
+    N1["[]"]
+    N2["push A"]
+    N3["[A]"]
+    N4["push B"]
+    N5["[A, B]"]
+    N1 --> N2
+    N2 --> N3
+    N3 --> N4
+    N4 --> N5
 ```
 
 ### 38. Итоговая схема
 
-```text
-Array
-│
-├── push()
-│   ├── add to end
-│   ├── array has one more element
-│   └── length reflects new count
-│
-└── pop()
-    ├── remove from end
-    ├── array has one fewer element
-    ├── return removed value
-    └── length reflects new count
+```mermaid
+flowchart TD
+    N1["Array"]
+    N2["push()"]
+    N3["add to end"]
+    N4["array has one more element"]
+    N5["length reflects new count"]
+    N6["pop()"]
+    N7["remove from end"]
+    N8["array has one fewer element"]
+    N9["вернуть removed value"]
+    N10["length reflects new count"]
+    N1 --> N2
+    N1 --> N3
+    N1 --> N4
+    N1 --> N5
+    N1 --> N6
+    N6 --> N7
+    N6 --> N8
+    N6 --> N9
+    N6 --> N10
 ```
 
 ---
@@ -1382,46 +1454,38 @@ How can array grow or shrink?
 
 `push()`:
 
-```text
-Array
-│
-▼
-need new last element
-│
-▼
-push()
-│
-▼
-one new last element
-│
-▼
-array now contains one more element
-│
-▼
-length increases
+```mermaid
+flowchart TD
+    N1["Array"]
+    N2["need new last element"]
+    N3["push()"]
+    N4["one new last element"]
+    N5["array now contains one more element"]
+    N6["length increases"]
+    N1 --> N2
+    N2 --> N3
+    N3 --> N4
+    N4 --> N5
+    N5 --> N6
 ```
 
 `pop()`:
 
-```text
-Array
-│
-▼
-need removed last element
-│
-▼
-pop()
-│
-▼
-last element removed
-│
-▼
-array now contains one fewer element
-│
-▼
-length decreases
-│
-└── removed value returned
+```mermaid
+flowchart TD
+    N1["Array"]
+    N2["need removed last element"]
+    N3["pop()"]
+    N4["last element removed"]
+    N5["array now contains one fewer element"]
+    N6["length decreases"]
+    N7["removed value returned"]
+    N1 --> N2
+    N2 --> N3
+    N3 --> N4
+    N4 --> N5
+    N5 --> N6
+    N6 --> N7
 ```
 
 Both methods change the existing array.

@@ -4,15 +4,15 @@
 
 Предыдущая глава объяснила, как данные входят в функцию.
 
-```text
-Function call
-│
-└── arguments
-    │
-    ▼
-Function definition
-│
-└── parameters
+```mermaid
+flowchart TD
+    N1["вызов функции"]
+    N2["arguments"]
+    N3["Function definition"]
+    N4["параметры"]
+    N1 --> N2
+    N1 --> N3
+    N3 --> N4
 ```
 
 Теперь появляется следующий вопрос:
@@ -29,11 +29,13 @@ function isSuccessfulStatus(statusCode) {
 
 Внутри функции есть проверка. Но вызывающий код не получает ответ.
 
-```text
-Caller
-│
-├── calls function
-└── needs result
+```mermaid
+flowchart TD
+    N1["Caller"]
+    N2["calls function"]
+    N3["нужен результат"]
+    N1 --> N2
+    N1 --> N3
 ```
 
 Главный вопрос этой главы:
@@ -155,29 +157,26 @@ undefined?
 
 Зачем существует return:
 
-```text
-Function receives input
-│
-▼
-Function performs work
-│
-▼
-Caller needs answer
-│
-▼
-return sends answer back
+```mermaid
+flowchart TD
+    N1["Function receives input"]
+    N2["Function performs work"]
+    N3["Caller needs answer"]
+    N4["вернуть sends answer back"]
+    N1 --> N2
+    N2 --> N3
+    N3 --> N4
 ```
 
 Функции - это не только переиспользуемые алгоритмы. Часто это переиспользуемые преобразования данных.
 
-```text
-input
-│
-▼
-function
-│
-▼
-output
+```mermaid
+flowchart TD
+    N1["input"]
+    N2["функция"]
+    N3["output"]
+    N1 --> N2
+    N2 --> N3
 ```
 
 Главный вопрос:
@@ -194,41 +193,37 @@ output
 
 Без `return`:
 
-```text
-Function does work
-│
-▼
-Caller receives no explicit result
+```mermaid
+flowchart TD
+    N1["Function does work"]
+    N2["Вызывающий код получает нет explicit result"]
+    N1 --> N2
 ```
 
 С `return`:
 
-```text
-Function does work
-│
-▼
-return value
-│
-▼
-Caller receives result
+```mermaid
+flowchart TD
+    N1["Function does work"]
+    N2["возвращаемое значение"]
+    N3["Вызывающий код получает result"]
+    N1 --> N2
+    N2 --> N3
 ```
 
 Function вход/вывод:
 
-```text
-Arguments
-│
-▼
-Parameters
-│
-▼
-Function body
-│
-▼
-Возвращаемое значение
-│
-▼
-Caller
+```mermaid
+flowchart TD
+    N1["Arguments"]
+    N2["Parameters"]
+    N3["тело функции"]
+    N4["Возвращаемое значение"]
+    N5["Caller"]
+    N1 --> N2
+    N2 --> N3
+    N3 --> N4
+    N4 --> N5
 ```
 
 ### Возвращаемое значение
@@ -243,12 +238,13 @@ function isSuccessfulStatus(statusCode) {
 
 Схема:
 
-```text
-return statusCode === 200
-│
-└── return value
-    │
-    └── true or false
+```mermaid
+flowchart TD
+    N1["вернуть statusCode === 200"]
+    N2["возвращаемое значение"]
+    N3["true or false"]
+    N1 --> N2
+    N2 --> N3
 ```
 
 Вызов:
@@ -259,14 +255,13 @@ const result = isSuccessfulStatus(200);
 
 Схема:
 
-```text
-isSuccessfulStatus(200)
-│
-▼
-return true
-│
-▼
-result receives true
+```mermaid
+flowchart TD
+    N1["isSuccessfulStatus(200)"]
+    N2["вернуть true"]
+    N3["result receives true"]
+    N1 --> N2
+    N2 --> N3
 ```
 
 ### Returning data
@@ -281,20 +276,17 @@ function compareStatus(actualStatus, expectedStatus) {
 
 Data поток:
 
-```text
-200, 200
-│
-▼
-actualStatus, expectedStatus
-│
-▼
-actualStatus === expectedStatus
-│
-▼
-true
-│
-▼
-return value
+```mermaid
+flowchart TD
+    N1["200, 200"]
+    N2["actualStatus, expectedStatus"]
+    N3["actualStatus === expectedStatus"]
+    N4["true"]
+    N5["возвращаемое значение"]
+    N1 --> N2
+    N2 --> N3
+    N3 --> N4
+    N4 --> N5
 ```
 
 `return` делает результат доступным снаружи функции.
@@ -303,36 +295,32 @@ return value
 
 Функция имеет границу.
 
-```text
-Outside function
-│
-▼
-function call
-│
-▼
-Inside function
-│
-▼
-return
-│
-▼
-Outside function receives result
+```mermaid
+flowchart TD
+    N1["Outside function"]
+    N2["вызов функции"]
+    N3["Inside function"]
+    N4["return"]
+    N5["Внешний код получает result"]
+    N1 --> N2
+    N2 --> N3
+    N3 --> N4
+    N4 --> N5
 ```
 
 Return boundary:
 
-```text
-Inside
-│
-└── calculated value
-    │
-    ▼
-return boundary
-    │
-    ▼
-Outside
-│
-└── вызывающий код receives value
+```mermaid
+flowchart TD
+    N1["Inside"]
+    N2["calculated value"]
+    N3["вернуть boundary"]
+    N4["Outside"]
+    N5["вызывающий код receives value"]
+    N1 --> N2
+    N1 --> N3
+    N3 --> N4
+    N4 --> N5
 ```
 
 ### Returning immediately
@@ -348,17 +336,15 @@ function validateStatus(statusCode) {
 
 Execution stops:
 
-```text
-Line before return
-│
-▼
-return value
-│
-▼
-function exits
-│
-▼
-lines after return are skipped
+```mermaid
+flowchart TD
+    N1["Line before return"]
+    N2["возвращаемое значение"]
+    N3["function exits"]
+    N4["lines after вернуть are skipped"]
+    N1 --> N2
+    N2 --> N3
+    N3 --> N4
 ```
 
 После `return` тело функции дальше не выполняется.
@@ -367,12 +353,15 @@ lines after return are skipped
 
 Это не рекомендация стиля, а механизм выполнения.
 
-```text
-Function body
-│
-├── step 1
-├── return
-└── step 2 is unreachable
+```mermaid
+flowchart TD
+    N1["тело функции"]
+    N2["step 1"]
+    N3["return"]
+    N4["step 2 is unreachable"]
+    N1 --> N2
+    N1 --> N3
+    N1 --> N4
 ```
 
 Пример:
@@ -391,11 +380,13 @@ function getStatusMessage(statusCode) {
 
 Return path:
 
-```text
-statusCode === 200
-│
-├── true  → return 'OK'     → exit function
-└── false → return 'Not OK' → exit function
+```mermaid
+flowchart TD
+    N1["statusCode === 200"]
+    N2["true → вернуть 'OK' → exit function"]
+    N3["false → вернуть 'Not OK' → exit function"]
+    N1 --> N2
+    N1 --> N3
 ```
 
 ### Function without explicit return
@@ -412,16 +403,15 @@ function logStatus(statusCode) {
 
 Function without return:
 
-```text
-Function body
-│
-└── console.log(statusCode)
-    │
-    ▼
-prints to console
-    │
-    ▼
-no explicit return value
+```mermaid
+flowchart TD
+    N1["тело функции"]
+    N2["console.log(statusCode)"]
+    N3["prints to console"]
+    N4["нет explicit возвращаемое значение"]
+    N1 --> N2
+    N1 --> N3
+    N3 --> N4
 ```
 
 ### Implicit undefined
@@ -439,26 +429,26 @@ console.log(result);
 
 Implicit undefined:
 
-```text
-function ends
-│
-▼
-no explicit return
-│
-▼
-вызывающий код receives undefined
+```mermaid
+flowchart TD
+    N1["function ends"]
+    N2["нет explicit return"]
+    N3["вызывающий код receives undefined"]
+    N1 --> N2
+    N2 --> N3
 ```
 
 Важно:
 
-```text
-console.log(value)
-│
-└── prints value
-
-return value
-│
-└── sends value back
+```mermaid
+flowchart TD
+    N1["console.log(value)"]
+    N2["prints value"]
+    N3["возвращаемое значение"]
+    N4["sends value back"]
+    N1 --> N2
+    N1 --> N3
+    N3 --> N4
 ```
 
 ### Одна инструкция return
@@ -473,14 +463,13 @@ function isSuccessfulStatus(statusCode) {
 
 One return:
 
-```text
-input
-│
-▼
-calculation
-│
-▼
-one return value
+```mermaid
+flowchart TD
+    N1["input"]
+    N2["calculation"]
+    N3["one возвращаемое значение"]
+    N1 --> N2
+    N2 --> N3
 ```
 
 Это удобно для простых преобразований.
@@ -501,21 +490,26 @@ function getStatusMessage(statusCode) {
 
 Multiple возвращает:
 
-```text
-Condition
-│
-├── path A → return 'Success'
-└── path B → return 'Failure'
+```mermaid
+flowchart TD
+    N1["Condition"]
+    N2["path A → вернуть 'Success'"]
+    N3["path B → вернуть 'Failure'"]
+    N1 --> N2
+    N1 --> N3
 ```
 
 Важно, чтобы каждый путь был понятен.
 
-```text
-Readable return paths
-│
-├── clear condition
-├── clear returned value
-└── no hidden work after return
+```mermaid
+flowchart TD
+    N1["Readable вернуть paths"]
+    N2["clear condition"]
+    N3["clear возвращённое значение"]
+    N4["нет hidden work after return"]
+    N1 --> N2
+    N1 --> N3
+    N1 --> N4
 ```
 
 ### Readability of return
@@ -543,12 +537,15 @@ function isSuccessfulStatus(statusCode) {
 
 Читаемость:
 
-```text
-Good return
-│
-├── clear function name
-├── clear returned value
-└── clear вызывающий код usage
+```mermaid
+flowchart TD
+    N1["Good return"]
+    N2["clear function name"]
+    N3["clear возвращённое значение"]
+    N4["clear вызывающий код usage"]
+    N1 --> N2
+    N1 --> N3
+    N1 --> N4
 ```
 
 ---
@@ -559,103 +556,101 @@ Good return
 
 Function lifecycle:
 
-```text
-Function is called
-│
-▼
-Arguments enter
-│
-▼
-Parameters receive values
-│
-▼
-Body executes
-│
-▼
-return sends result
-│
-▼
-Function exits
+```mermaid
+flowchart TD
+    N1["Function is called"]
+    N2["Arguments enter"]
+    N3["Parameters receive values"]
+    N4["Body выполняется"]
+    N5["вернуть sends result"]
+    N6["Function exits"]
+    N1 --> N2
+    N2 --> N3
+    N3 --> N4
+    N4 --> N5
+    N5 --> N6
 ```
 
 Что делает движок:
 
-```text
-I reach isSuccessfulStatus(200).
-│
-▼
-I pass 200 into statusCode.
-│
-▼
-I execute the body.
-│
-▼
-I evaluate statusCode === 200.
-│
-▼
-I reach return.
-│
-▼
-I send the value back to the вызывающий код.
-│
-▼
-I stop executing this function.
+```mermaid
+flowchart TD
+    N1["I reach isSuccessfulStatus(200)."]
+    N2["I pass 200 into statusCode."]
+    N3["I выполнить the body."]
+    N4["I evaluate statusCode === 200."]
+    N5["I reach return."]
+    N6["I send the value back to the вызывающий код."]
+    N7["I stop executing this function."]
+    N1 --> N2
+    N2 --> N3
+    N3 --> N4
+    N4 --> N5
+    N5 --> N6
+    N6 --> N7
 ```
 
 Complete вход/вывод model:
 
-```text
-Caller
-│
-├── sends arguments
-│
-▼
-Function
-│
-├── receives parameters
-├── performs work
-├── creates result
-└── returns value
-│
-▼
-Caller
-│
-└── receives return value
+```mermaid
+flowchart TD
+    N1["Caller"]
+    N2["sends arguments"]
+    N3["Function"]
+    N4["receives parameters"]
+    N5["performs work"]
+    N6["создает result"]
+    N7["возвращает value"]
+    N8["Caller"]
+    N9["receives возвращаемое значение"]
+    N1 --> N2
+    N1 --> N3
+    N3 --> N4
+    N3 --> N5
+    N3 --> N6
+    N3 --> N7
+    N3 --> N8
+    N8 --> N9
 ```
 
 Текущее место в модели JavaScript:
 
-```text
-Functions
-│
-├── Function Declaration
-├── Function Expression
-├── Arrow Functions
-├── Parameters
-│   └── data enters function
-└── Return
-    └── data leaves function
+```mermaid
+flowchart TD
+    N1["Functions"]
+    N2["Function Declaration"]
+    N3["Function Expression"]
+    N4["Arrow Functions"]
+    N5["Parameters"]
+    N6["data enters function"]
+    N7["Return"]
+    N8["data leaves function"]
+    N1 --> N2
+    N1 --> N3
+    N1 --> N4
+    N1 --> N5
+    N1 --> N6
+    N1 --> N7
+    N7 --> N8
 ```
 
 Переход к Rest Parameters:
 
-```text
-Parameters
-│
-└── known number of inputs
-    │
-    ▼
-Return
-│
-└── output from function
-    │
-    ▼
-Next question
-│
-└── unknown number of arguments
-    │
-    ▼
-Rest Parameters
+```mermaid
+flowchart TD
+    N1["Parameters"]
+    N2["known number of inputs"]
+    N3["Return"]
+    N4["output from function"]
+    N5["Next question"]
+    N6["unknown number of arguments"]
+    N7["Rest Parameters"]
+    N1 --> N2
+    N1 --> N3
+    N3 --> N4
+    N3 --> N5
+    N5 --> N6
+    N5 --> N7
 ```
 
 ---
@@ -666,64 +661,65 @@ Rest Parameters
 
 Функция похожа на автомат.
 
-```text
-Insert input
-│
-▼
-Machine works
-│
-▼
-Machine gives output
+```mermaid
+flowchart TD
+    N1["Insert input"]
+    N2["Machine works"]
+    N3["Machine gives output"]
+    N1 --> N2
+    N2 --> N3
 ```
 
 Arguments входят. Возвращаемое значение выходит.
 
 ### Калькулятор
 
-```text
-Calculator
-│
-├── receives numbers
-├── calculates
-└── returns result
+```mermaid
+flowchart TD
+    N1["Calculator"]
+    N2["receives numbers"]
+    N3["calculates"]
+    N4["возвращает result"]
+    N1 --> N2
+    N1 --> N3
+    N1 --> N4
 ```
 
 Если калькулятор только показывает число на экране, это похоже на `console.log`. Если он отдает число другой части программы, это похоже на `return`.
 
 ### Input/вывод machine
 
-```text
-Input
-│
-▼
-Function
-│
-▼
-Output
+```mermaid
+flowchart TD
+    N1["Input"]
+    N2["Function"]
+    N3["Output"]
+    N1 --> N2
+    N2 --> N3
 ```
 
 ### Request/response
 
-```text
-Request
-│
-└── function call with arguments
-
-Response
-│
-└── return value
+```mermaid
+flowchart TD
+    N1["Request"]
+    N2["вызов функции with arguments"]
+    N3["Response"]
+    N4["возвращаемое значение"]
+    N1 --> N2
+    N1 --> N3
+    N3 --> N4
 ```
 
 ### Служба доставки
 
-```text
-Caller sends package
-│
-▼
-Function processes package
-│
-▼
-Function sends result back
+```mermaid
+flowchart TD
+    N1["Caller sends package"]
+    N2["Function processes package"]
+    N3["Функция отправляет результат обратно"]
+    N1 --> N2
+    N2 --> N3
 ```
 
 Краткая ментальная модель:
@@ -738,14 +734,19 @@ Execution stops immediately after return.
 
 Complete Return overview:
 
-```text
-return
-│
-├── sends value to вызывающий код
-├── stops function execution
-├── can appear in one path
-├── can appear in multiple paths
-└── differs from console.log()
+```mermaid
+flowchart TD
+    N1["return"]
+    N2["sends value to вызывающий код"]
+    N3["stops function выполнение"]
+    N4["can appear in one path"]
+    N5["can appear in multiple paths"]
+    N6["differs from console.log()"]
+    N1 --> N2
+    N1 --> N3
+    N1 --> N4
+    N1 --> N5
+    N1 --> N6
 ```
 
 ---
@@ -851,14 +852,19 @@ Async return связан с Promise и будет изучаться позже
 
 Схема типичных ошибок:
 
-```text
-Ошибка
-│
-├── путать console.log и return
-├── забыть return
-├── писать код после return
-├── не сохранить return value
-└── сделать return paths неочевидными
+```mermaid
+flowchart TD
+    N1["Ошибка"]
+    N2["путать console.log и return"]
+    N3["забыть return"]
+    N4["писать код после return"]
+    N5["не сохранить возвращаемое значение"]
+    N6["сделать вернуть paths неочевидными"]
+    N1 --> N2
+    N1 --> N3
+    N1 --> N4
+    N1 --> N5
+    N1 --> N6
 ```
 
 ---
@@ -922,12 +928,15 @@ isSuccessfulStatus(200);
 
 Если в функции много условий и много return, читатель должен легко понимать, какой путь выполнится.
 
-```text
-Readable returns
-│
-├── clear condition
-├── clear value
-└── no hidden side effects
+```mermaid
+flowchart TD
+    N1["Readable returns"]
+    N2["clear condition"]
+    N3["clear value"]
+    N4["нет hidden side effects"]
+    N1 --> N2
+    N1 --> N3
+    N1 --> N4
 ```
 
 ---
@@ -936,14 +945,13 @@ Readable returns
 
 `return` нужен, когда результат функции должен быть использован дальше.
 
-```text
-Function calculates value
-│
-▼
-return sends value
-│
-▼
-вызывающий код stores or checks value
+```mermaid
+flowchart TD
+    N1["Function calculates value"]
+    N2["вернуть sends value"]
+    N3["вызывающий код stores or checks value"]
+    N1 --> N2
+    N2 --> N3
 ```
 
 Практический чек-лист:
@@ -959,14 +967,13 @@ return sends value
 
 Функция как преобразование:
 
-```text
-statusCode
-│
-▼
-isSuccessfulStatus
-│
-▼
-boolean
+```mermaid
+flowchart TD
+    N1["statusCode"]
+    N2["isSuccessfulStatus"]
+    N3["boolean"]
+    N1 --> N2
+    N2 --> N3
 ```
 
 ---
@@ -983,14 +990,13 @@ function isSuccessfulStatus(statusCode) {
 
 QA-валидатор:
 
-```text
-statusCode
-│
-▼
-validator
-│
-▼
-boolean result
+```mermaid
+flowchart TD
+    N1["statusCode"]
+    N2["validator"]
+    N3["булев результат"]
+    N1 --> N2
+    N2 --> N3
 ```
 
 ### Helper functions
@@ -1042,10 +1048,13 @@ function getProfileButtonName() {
 
 Хороший helper API показывает, что входит и что выходит.
 
-```text
-isSuccessfulStatus(statusCode) → boolean
-getUserEmail()                → string
-getStatusMessage(statusCode)  → string
+```mermaid
+flowchart TD
+    N1["isSuccessfulStatus(statusCode) → boolean"]
+    N2["getUserEmail() → string"]
+    N3["getStatusMessage(statusCode) → string"]
+    N1 --> N2
+    N2 --> N3
 ```
 
 Async helpers, Promise и async return будут изучаться позже.
@@ -1072,14 +1081,15 @@ Execution stops immediately after return.
 
 Критическое различие:
 
-```text
-console.log(value)
-│
-└── prints value
-
-return value
-│
-└── sends value back to вызывающий код
+```mermaid
+flowchart TD
+    N1["console.log(value)"]
+    N2["prints value"]
+    N3["возвращаемое значение"]
+    N4["sends value back to вызывающий код"]
+    N1 --> N2
+    N1 --> N3
+    N3 --> N4
 ```
 
 Следующая глава ответит:

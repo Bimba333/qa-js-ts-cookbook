@@ -326,11 +326,13 @@ this.baseUrl + path
 9. Для каждого вызова подпишите, кто выбирает объект выполнения.
 10. Нарисуйте схему:
 
-```text
-function.call(receiver, argument)
-│
-├── receiver -> this
-└── argument -> parameter
+```mermaid
+flowchart TD
+    N1["function.call(receiver, argument)"]
+    N2["receiver → this"]
+    N3["argument → parameter"]
+    N1 --> N2
+    N1 --> N3
 ```
 
 Дополнительно объясните:

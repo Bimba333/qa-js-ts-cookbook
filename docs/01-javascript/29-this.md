@@ -6,15 +6,15 @@
 
 Главная модель была такой:
 
-```text
-Function object
-│
-▼
-holds reference to
-│
-▼
-Lexical Environment
-where it was created
+```mermaid
+flowchart TD
+    N1["Function object"]
+    N2["holds reference to"]
+    N3["Lexical Environment"]
+    N4["where it was created"]
+    N1 --> N2
+    N2 --> N3
+    N3 --> N4
 ```
 
 Closure отвечает на вопрос:
@@ -90,11 +90,13 @@ admin.printName();
 
 Главная мысль главы:
 
-```text
-Function creation
-│
-≠
-Function invocation
+```mermaid
+flowchart TD
+    N1["Function creation"]
+    N2["≠"]
+    N3["Function invocation"]
+    N1 --> N2
+    N2 --> N3
 ```
 
 `this` определяется во время invocation.
@@ -167,38 +169,43 @@ localClient.printName();
 
 Function object один:
 
-```text
-apiClient.printName
-│
-└── same function object
-
-localClient.printName
-│
-└── same function object
+```mermaid
+flowchart TD
+    N1["apiClient.printName"]
+    N2["same function object"]
+    N3["localClient.printName"]
+    N4["same function object"]
+    N1 --> N2
+    N1 --> N3
+    N3 --> N4
 ```
 
 Но вызовы разные:
 
-```text
-apiClient.printName()
-│
-└── receiver is apiClient
-
-localClient.printName()
-│
-└── receiver is localClient
+```mermaid
+flowchart TD
+    N1["apiClient.printName()"]
+    N2["receiver is apiClient"]
+    N3["localClient.printName()"]
+    N4["receiver is localClient"]
+    N1 --> N2
+    N1 --> N3
+    N3 --> N4
 ```
 
 Same function, different invocation:
 
-```text
-Same code
-│
-├── called as apiClient.printName()
-│   └── this -> apiClient
-│
-└── called as localClient.printName()
-    └── this -> localClient
+```mermaid
+flowchart TD
+    N1["Same code"]
+    N2["called as apiClient.printName()"]
+    N3["this → apiClient"]
+    N4["called as localClient.printName()"]
+    N5["this → localClient"]
+    N1 --> N2
+    N1 --> N3
+    N1 --> N4
+    N4 --> N5
 ```
 
 Если думать, что `this` определяется там, где функция была создана, этот пример невозможно объяснить.
@@ -209,17 +216,15 @@ Same code
 
 Зачем существует `this`:
 
-```text
-One reusable function
-│
-▼
-can work for different objects
-│
-▼
-needs current receiver
-│
-▼
-this
+```mermaid
+flowchart TD
+    N1["One reusable function"]
+    N2["can work for different objects"]
+    N3["needs current receiver"]
+    N4["this"]
+    N1 --> N2
+    N2 --> N3
+    N3 --> N4
 ```
 
 ---
@@ -256,26 +261,28 @@ const response = {
 
 `this` решает другую задачу:
 
-```text
-method body
-│
-└── needs current object
-    │
-    ▼
-    this points to current receiver
+```mermaid
+flowchart TD
+    N1["method body"]
+    N2["needs current object"]
+    N3["this points to current receiver"]
+    N1 --> N2
+    N1 --> N3
 ```
 
 Receiver model:
 
-```text
-object.method()
-│
-├── object  -> receiver
-└── method  -> function object
-
-inside method
-│
-└── this -> receiver
+```mermaid
+flowchart TD
+    N1["object.method()"]
+    N2["object → receiver"]
+    N3["method → function object"]
+    N4["inside method"]
+    N5["this → receiver"]
+    N1 --> N2
+    N1 --> N3
+    N1 --> N4
+    N4 --> N5
 ```
 
 `this` нужен, чтобы один function object мог работать с тем object, для которого он вызван.
@@ -294,45 +301,52 @@ apiClient.printName();
 
 объект выполнения:
 
-```text
-apiClient.printName()
-│
-├── apiClient -> receiver
-└── printName -> function object
+```mermaid
+flowchart TD
+    N1["apiClient.printName()"]
+    N2["apiClient → receiver"]
+    N3["printName → function object"]
+    N1 --> N2
+    N1 --> N3
 ```
 
 Current объект выполнения:
 
-```text
-Current function call
-│
-└── has current receiver
-    │
-    └── available as this
+```mermaid
+flowchart TD
+    N1["Current вызов функции"]
+    N2["has current receiver"]
+    N3["available as this"]
+    N1 --> N2
+    N2 --> N3
 ```
 
 Важно:
 
-```text
-Function object
-│
-└── does not permanently belong to one object
-
-Function invocation
-│
-└── selects receiver for this call
+```mermaid
+flowchart TD
+    N1["Function object"]
+    N2["does not permanently belong to one object"]
+    N3["Function invocation"]
+    N4["selects receiver for this call"]
+    N1 --> N2
+    N1 --> N3
+    N3 --> N4
 ```
 
 Один function object может быть property разных objects.
 
-```text
-same function object
-│
-├── user.printName()
-│   └── this -> user
-│
-└── admin.printName()
-    └── this -> admin
+```mermaid
+flowchart TD
+    N1["same function object"]
+    N2["user.printName()"]
+    N3["this → user"]
+    N4["admin.printName()"]
+    N5["this → admin"]
+    N1 --> N2
+    N1 --> N3
+    N1 --> N4
+    N4 --> N5
 ```
 
 ---
@@ -347,31 +361,32 @@ this is determined by invocation
 
 Invocation determines `this`:
 
-```text
-How function is called
-│
-▼
-receiver is selected
-│
-▼
-this receives receiver
-│
-▼
-function body executes
+```mermaid
+flowchart TD
+    N1["How function is called"]
+    N2["receiver is selected"]
+    N3["this receives receiver"]
+    N4["тело функции выполняется"]
+    N1 --> N2
+    N2 --> N3
+    N3 --> N4
 ```
 
 Creation vs invocation:
 
-```text
-Function creation
-│
-├── создает function object
-└── не фиксирует this навсегда
-
-Function invocation
-│
-├── запускает выполнение
-└── определяет this для этого вызова
+```mermaid
+flowchart TD
+    N1["Function creation"]
+    N2["создает function object"]
+    N3["не фиксирует this навсегда"]
+    N4["Function invocation"]
+    N5["запускает выполнение"]
+    N6["определяет this для этого вызова"]
+    N1 --> N2
+    N1 --> N3
+    N1 --> N4
+    N4 --> N5
+    N4 --> N6
 ```
 
 Для обычного вызова вида `object.method()` ключевой вопрос для чтения кода:
@@ -386,13 +401,13 @@ Function invocation
 client.printName();
 ```
 
-```text
-client.printName()
-│
-└── left side before dot is client
-    │
-    ▼
-    this -> client
+```mermaid
+flowchart TD
+    N1["client.printName()"]
+    N2["left side before dot is client"]
+    N3["this → client"]
+    N1 --> N2
+    N1 --> N3
 ```
 
 Это не универсальное правило для всех форм вызова в JavaScript. Сейчас мы строим базовую модель объект выполнения для обычных вызовов `object.method()` и standalone calls. Другие формы вызова будут изучаться в следующих главах.
@@ -415,33 +430,37 @@ printThis();
 
 Глобальный вызов:
 
-```text
-printThis()
-│
-├── no object before dot
-└── no receiver
+```mermaid
+flowchart TD
+    N1["printThis()"]
+    N2["нет object before dot"]
+    N3["нет receiver"]
+    N1 --> N2
+    N1 --> N3
 ```
 
 В strict mode:
 
-```text
-No receiver
-│
-▼
-this -> undefined
+```mermaid
+flowchart TD
+    N1["нет receiver"]
+    N2["this → undefined"]
+    N1 --> N2
 ```
 
 В старом non-strict поведении `this` мог указывать на global object. В этом курсе мы строим современную практическую модель и будем избегать зависимости от non-strict поведения.
 
 Global invocation схема:
 
-```text
-Function call
-│
-└── printThis()
-    │
-    ├── receiver: none
-    └── this: undefined in strict mode
+```mermaid
+flowchart TD
+    N1["вызов функции"]
+    N2["printThis()"]
+    N3["receiver: none"]
+    N4["this: undefined in strict mode"]
+    N1 --> N2
+    N2 --> N3
+    N2 --> N4
 ```
 
 ---
@@ -463,46 +482,52 @@ user.printName();
 
 Object method:
 
-```text
-user
-│
-├── name: 'Anna'
-└── printName: function object
+```mermaid
+flowchart TD
+    N1["user"]
+    N2["name: 'Anna'"]
+    N3["printName: function object"]
+    N1 --> N2
+    N1 --> N3
 ```
 
 Вызов метода:
 
-```text
-user.printName()
-│
-├── receiver: user
-└── this inside function: user
+```mermaid
+flowchart TD
+    N1["user.printName()"]
+    N2["receiver: user"]
+    N3["this inside function: user"]
+    N1 --> N2
+    N1 --> N3
 ```
 
 Current object:
 
-```text
-Inside printName
-│
-├── this.name
-│
-└── means user.name for this invocation
+```mermaid
+flowchart TD
+    N1["Inside printName"]
+    N2["this.name"]
+    N3["means user.name for this invocation"]
+    N1 --> N2
+    N1 --> N3
 ```
 
 Same code, different объект выполнения:
 
-```text
-printName body
-│
-└── console.log(this.name)
-
-user.printName()
-│
-└── this.name -> user.name
-
-admin.printName()
-│
-└── this.name -> admin.name
+```mermaid
+flowchart TD
+    N1["printName body"]
+    N2["console.log(this.name)"]
+    N3["user.printName()"]
+    N4["this.name → user.name"]
+    N5["admin.printName()"]
+    N6["this.name → admin.name"]
+    N1 --> N2
+    N1 --> N3
+    N3 --> N4
+    N3 --> N5
+    N5 --> N6
 ```
 
 ---
@@ -528,50 +553,50 @@ printClientName();
 
 Method extraction:
 
-```text
-apiClient.printName
-│
-└── function object copied into variable
+```mermaid
+flowchart TD
+    N1["apiClient.printName"]
+    N2["function object copied into variable"]
+    N1 --> N2
 ```
 
 Function reference:
 
-```text
-printClientName
-│
-└── references same function object
+```mermaid
+flowchart TD
+    N1["printClientName"]
+    N2["references same function object"]
+    N1 --> N2
 ```
 
 Потерянный объект выполнения:
 
-```text
-apiClient.printName()
-│
-└── receiver: apiClient
-
-printClientName()
-│
-└── receiver: none
+```mermaid
+flowchart TD
+    N1["apiClient.printName()"]
+    N2["receiver: apiClient"]
+    N3["printClientName()"]
+    N4["receiver: none"]
+    N1 --> N2
+    N1 --> N3
+    N3 --> N4
 ```
 
 В strict mode `this` будет `undefined`, поэтому попытка прочитать `this.name` приведет к ошибке.
 
 Detached function схема:
 
-```text
-Object property access
-│
-▼
-function object extracted
-│
-▼
-called without object
-│
-▼
-receiver lost
-│
-▼
-this is undefined in strict mode
+```mermaid
+flowchart TD
+    N1["Object property access"]
+    N2["function object extracted"]
+    N3["called without object"]
+    N4["receiver lost"]
+    N5["this is undefined in strict mode"]
+    N1 --> N2
+    N2 --> N3
+    N3 --> N4
+    N4 --> N5
 ```
 
 Это одна из самых частых ошибок в JavaScript.
@@ -584,24 +609,28 @@ Arrow Functions ведут себя с `this` иначе, но в этой гл�
 
 Достаточно зафиксировать:
 
-```text
-Regular function
-│
-└── this depends on invocation
-
-Arrow function
-│
-└── this is not determined by its own invocation
+```mermaid
+flowchart TD
+    N1["Regular function"]
+    N2["this depends on invocation"]
+    N3["Arrow function"]
+    N4["this is not determined by its own invocation"]
+    N1 --> N2
+    N1 --> N3
+    N3 --> N4
 ```
 
 Arrow function preview:
 
-```text
-Arrow Function
-│
-├── useful compact syntax
-├── has special this behavior
-└── detailed mechanics later
+```mermaid
+flowchart TD
+    N1["Arrow Function"]
+    N2["useful compact syntax"]
+    N3["has special this behavior"]
+    N4["detailed mechanics later"]
+    N1 --> N2
+    N1 --> N3
+    N1 --> N4
 ```
 
 Не используйте Arrow Function как "просто короткую method syntax" для object methods, если внутри нужен `this`.
@@ -618,50 +647,52 @@ Arrow Function
 
 В главах раньше мы смотрели на:
 
-```text
-Function Execution Context
-│
-├── local identifiers
-├── parameters
-└── link to lexical environment
+```mermaid
+flowchart TD
+    N1["Function Execution Context"]
+    N2["local identifiers"]
+    N3["параметры"]
+    N4["link to lexical environment"]
+    N1 --> N2
+    N1 --> N3
+    N1 --> N4
 ```
 
 Теперь добавляем еще один вопрос:
 
-```text
-Function Execution Context
-│
-├── variables available through Lexical Environment
-└── this value for current invocation
+```mermaid
+flowchart TD
+    N1["Function Execution Context"]
+    N2["variables available through Lexical Environment"]
+    N3["this value for current invocation"]
+    N1 --> N2
+    N1 --> N3
 ```
 
 Execution Context revisit:
 
-```text
-Function call starts
-│
-▼
-receiver is determined for this invocation form
-│
-▼
-Function Execution Context is created
-│
-▼
-this value is available during execution
+```mermaid
+flowchart TD
+    N1["вызов функции starts"]
+    N2["receiver is determined for this invocation form"]
+    N3["Function Execution Context is created"]
+    N4["this value is available during выполнение"]
+    N1 --> N2
+    N2 --> N3
+    N3 --> N4
 ```
 
 Важно: `this` не ищется как обычная variable через Scope Chain.
 
 `this` поиск:
 
-```text
-Need this
-│
-▼
-Use this value of current function invocation
-│
-▼
-Do not search outer scopes like normal identifier
+```mermaid
+flowchart TD
+    N1["Need this"]
+    N2["Use this value of current function invocation"]
+    N3["Do not search outer scopes like normal identifier"]
+    N1 --> N2
+    N2 --> N3
 ```
 
 ---
@@ -676,65 +707,64 @@ client.printStatus();
 
 Invocation поток:
 
-```text
-1. Evaluate client
-   │
-   ▼
-2. Read property printStatus
-   │
-   ▼
-3. Get function object
-   │
-   ▼
-4. Call function as method of client
-   │
-   ▼
-5. For this ordinary method call, receiver is client
-   │
-   ▼
-6. Execute function body
-   │
-   ▼
-7. Inside body this -> client
+```mermaid
+flowchart TD
+    N1["1. Evaluate client"]
+    N2["2. Read property printStatus"]
+    N3["3. Get function object"]
+    N4["4. Call function as method of client"]
+    N5["5. For this ordinary method call, receiver is client"]
+    N6["6. Execute тело функции"]
+    N7["7. Inside body this → client"]
+    N1 --> N2
+    N2 --> N3
+    N3 --> N4
+    N4 --> N5
+    N5 --> N6
+    N6 --> N7
 ```
 
 Выбор объекта выполнения:
 
-```text
-For ordinary calls in this chapter
-│
-├── object.method()
-│   └── receiver: object
-│
-└── functionName()
-    └── receiver: none
+```mermaid
+flowchart TD
+    N1["For ordinary calls in this chapter"]
+    N2["object.method()"]
+    N3["receiver: object"]
+    N4["functionName()"]
+    N5["receiver: none"]
+    N1 --> N2
+    N1 --> N3
+    N1 --> N4
+    N4 --> N5
 ```
 
 Other invocation forms:
 
-```text
-call / apply / bind / new / classes
-│
-└── later chapters
+```mermaid
+flowchart TD
+    N1["call / apply / bind / new / classes"]
+    N2["later chapters"]
+    N1 --> N2
 ```
 
 Полная картина выполнения:
 
-```text
-client.printStatus()
-│
-▼
-receiver selected: client
-│
-▼
-Function Execution Context
-│
-├── this -> client
-├── parameters
-└── local identifiers
-│
-▼
-function body executes
+```mermaid
+flowchart TD
+    N1["client.printStatus()"]
+    N2["receiver selected: client"]
+    N3["Function Execution Context"]
+    N4["this → client"]
+    N5["параметры"]
+    N6["local identifiers"]
+    N7["тело функции выполняется"]
+    N1 --> N2
+    N2 --> N3
+    N3 --> N4
+    N3 --> N5
+    N3 --> N6
+    N3 --> N7
 ```
 
 ---
@@ -747,26 +777,28 @@ Closures и `this` часто путают, потому что обе темы 
 
 Closure vs `this`:
 
-```text
-Closure
-│
-└── Which variables can the function access?
-
-this
-│
-└── Who is the current receiver of this call?
+```mermaid
+flowchart TD
+    N1["Closure"]
+    N2["Which variables can the function access?"]
+    N3["this"]
+    N4["Who is the current receiver of this call?"]
+    N1 --> N2
+    N1 --> N3
+    N3 --> N4
 ```
 
 Environment vs объект выполнения:
 
-```text
-Lexical Environment
-│
-└── determined by where function was created
-
-this
-│
-└── determined by how function is invoked
+```mermaid
+flowchart TD
+    N1["Lexical Environment"]
+    N2["determined by where function was created"]
+    N3["this"]
+    N4["determined by how function is invoked"]
+    N1 --> N2
+    N1 --> N3
+    N3 --> N4
 ```
 
 Пример:
@@ -781,14 +813,15 @@ function createPrinter(prefix) {
 
 Внутри `printName` есть две разные зависимости:
 
-```text
-prefix
-│
-└── comes from Closure
-
-this.name
-│
-└── comes from current receiver
+```mermaid
+flowchart TD
+    N1["prefix"]
+    N2["comes from Closure"]
+    N3["this.name"]
+    N4["comes from current receiver"]
+    N1 --> N2
+    N1 --> N3
+    N3 --> N4
 ```
 
 Одна функция может одновременно использовать Closure и `this`, но механизмы разные.
@@ -799,36 +832,39 @@ this.name
 
 Временная шкала:
 
-```text
-T1  Function object is created
-│
-T2  Function may get Lexical Environment reference
-│
-T3  Function is stored as object property
-│
-T4  Later object.method() is called
-│
-T5  Receiver is selected from call expression
-│
-T6  this value is set for this invocation
-│
-T7  Function body executes
+```mermaid
+flowchart TD
+    N1["T1 Function object is created"]
+    N2["T2 Function may get Lexical Environment reference"]
+    N3["T3 Function is stored as object property"]
+    N4["T4 Later object.method() is called"]
+    N5["T5 Receiver is selected from вызвать expression"]
+    N6["T6 this value is set for this invocation"]
+    N7["T7 тело функции выполняется"]
+    N1 --> N2
+    N2 --> N3
+    N3 --> N4
+    N4 --> N5
+    N5 --> N6
+    N6 --> N7
 ```
 
 Function creation:
 
-```text
-Create function object
-│
-└── does not permanently choose this
+```mermaid
+flowchart TD
+    N1["Create function object"]
+    N2["does not permanently choose this"]
+    N1 --> N2
 ```
 
 Вызов функции:
 
-```text
-Call function
-│
-└── chooses this for this call
+```mermaid
+flowchart TD
+    N1["Call function"]
+    N2["chooses this for this call"]
+    N1 --> N2
 ```
 
 Это центральная граница главы.
@@ -843,29 +879,33 @@ Call function
 
 Current context card:
 
-```text
-Function call
-│
-├── function object
-└── receiver card
-    │
-    └── this
+```mermaid
+flowchart TD
+    N1["вызов функции"]
+    N2["function object"]
+    N3["receiver card"]
+    N4["this"]
+    N1 --> N2
+    N1 --> N3
+    N3 --> N4
 ```
 
 Для `apiClient.request()`:
 
-```text
-receiver card
-│
-└── apiClient
+```mermaid
+flowchart TD
+    N1["receiver card"]
+    N2["apiClient"]
+    N1 --> N2
 ```
 
 Для `request()`:
 
-```text
-receiver card
-│
-└── none
+```mermaid
+flowchart TD
+    N1["receiver card"]
+    N2["none"]
+    N1 --> N2
 ```
 
 ---
@@ -874,30 +914,35 @@ receiver card
 
 Модель "current owner" полезна, если не понимать ее буквально.
 
-```text
-object.method()
-│
-└── object is current owner for this call
+```mermaid
+flowchart TD
+    N1["object.method()"]
+    N2["object is current owner for this call"]
+    N1 --> N2
 ```
 
 Функция не принадлежит object навсегда.
 
-```text
-Function object
-│
-├── can be stored in user
-├── can be stored in admin
-└── can be called without object
+```mermaid
+flowchart TD
+    N1["Function object"]
+    N2["can be stored in user"]
+    N3["can be stored in admin"]
+    N4["can be called without object"]
+    N1 --> N2
+    N1 --> N3
+    N1 --> N4
 ```
 
 Active object:
 
-```text
-Call expression
-│
-└── chooses active object
-    │
-    └── this
+```mermaid
+flowchart TD
+    N1["Call expression"]
+    N2["chooses active object"]
+    N3["this"]
+    N1 --> N2
+    N2 --> N3
 ```
 
 ---
@@ -906,33 +951,35 @@ Call expression
 
 Еще одна модель:
 
-```text
-method body
-│
-└── says "this"
-    │
-    ▼
-    "the object speaking right now"
+```mermaid
+flowchart TD
+    N1["method body"]
+    N2["says &quot;this&quot;"]
+    N3["&quot;the object speaking right now&quot;"]
+    N1 --> N2
+    N1 --> N3
 ```
 
 Current speaker:
 
-```text
-user.sayName()
-│
-└── speaker: user
-
-admin.sayName()
-│
-└── speaker: admin
+```mermaid
+flowchart TD
+    N1["user.sayName()"]
+    N2["speaker: user"]
+    N3["admin.sayName()"]
+    N4["speaker: admin"]
+    N1 --> N2
+    N1 --> N3
+    N3 --> N4
 ```
 
 Эта модель помогает читать Page Object methods:
 
-```text
-loginPage.open()
-│
-└── this -> loginPage
+```mermaid
+flowchart TD
+    N1["loginPage.open()"]
+    N2["this → loginPage"]
+    N1 --> N2
 ```
 
 Но помните: если method extracted, speaker теряется.
@@ -941,60 +988,74 @@ loginPage.open()
 
 ### Краткая ментальная модель
 
-```text
-this
-│
-├── not where function was created
-├── not the function itself
-├── not always the object where function is stored
-└── receiver of current invocation
+```mermaid
+flowchart TD
+    N1["this"]
+    N2["not where function was created"]
+    N3["not the function itself"]
+    N4["not always the object where function is stored"]
+    N5["receiver of current invocation"]
+    N1 --> N2
+    N1 --> N3
+    N1 --> N4
+    N1 --> N5
 ```
 
 Итоговая схема:
 
-```text
-Call expression
-│
-▼
-receiver selection
-│
-▼
-this value
-│
-▼
-function body
+```mermaid
+flowchart TD
+    N1["Call expression"]
+    N2["receiver selection"]
+    N3["this value"]
+    N4["тело функции"]
+    N1 --> N2
+    N2 --> N3
+    N3 --> N4
 ```
 
 ---
 
 ### Текущее место в модели JavaScript
 
-```text
-JavaScript function model
-│
-├── Function Declaration
-├── Function Expression
-├── Arrow Functions
-├── Parameters
-├── Return
-├── Rest
-├── Spread
-├── Closures
-│   └── lexical variables
-└── this
-    └── current receiver
+```mermaid
+flowchart TD
+    N1["JavaScript function model"]
+    N2["Function Declaration"]
+    N3["Function Expression"]
+    N4["Arrow Functions"]
+    N5["Parameters"]
+    N6["Return"]
+    N7["Rest"]
+    N8["Spread"]
+    N9["Closures"]
+    N10["lexical variables"]
+    N11["this"]
+    N12["current receiver"]
+    N1 --> N2
+    N1 --> N3
+    N1 --> N4
+    N1 --> N5
+    N1 --> N6
+    N1 --> N7
+    N1 --> N8
+    N1 --> N9
+    N1 --> N10
+    N1 --> N11
+    N11 --> N12
 ```
 
 Переход к call/apply/bind:
 
-```text
-Regular call
-│
-└── receiver comes from the ordinary invocation form studied here
-
-call / apply / bind
-│
-└── will let us control receiver manually
+```mermaid
+flowchart TD
+    N1["Regular call"]
+    N2["receiver comes from the ordinary invocation form studied here"]
+    N3["call / apply / bind"]
+    N4["will let us control receiver manually"]
+    N1 --> N2
+    N1 --> N3
+    N3 --> N4
 ```
 
 ---
@@ -1032,12 +1093,13 @@ showReceiver();
 
 Глобальный вызов:
 
-```text
-showReceiver()
-│
-└── no receiver
-    │
-    └── this -> undefined
+```mermaid
+flowchart TD
+    N1["showReceiver()"]
+    N2["нет receiver"]
+    N3["this → undefined"]
+    N1 --> N2
+    N2 --> N3
 ```
 
 ---
@@ -1057,10 +1119,11 @@ apiClient.printName();
 
 Вызов метода:
 
-```text
-apiClient.printName()
-│
-└── this -> apiClient
+```mermaid
+flowchart TD
+    N1["apiClient.printName()"]
+    N2["this → apiClient"]
+    N1 --> N2
 ```
 
 ---
@@ -1111,14 +1174,15 @@ console.log(apiClient.getName());
 
 Нет.
 
-```text
-Closure
-│
-└── variables from Lexical Environment
-
-this
-│
-└── receiver of current invocation
+```mermaid
+flowchart TD
+    N1["Closure"]
+    N2["variables from Lexical Environment"]
+    N3["this"]
+    N4["receiver of current invocation"]
+    N1 --> N2
+    N1 --> N3
+    N3 --> N4
 ```
 
 ### this указывает на функцию?
@@ -1145,28 +1209,30 @@ this
 
 Реальность:
 
-```text
-Function creation
-│
-└── does not fix this
-
-Function invocation
-│
-└── determines this
+```mermaid
+flowchart TD
+    N1["Function creation"]
+    N2["does not fix this"]
+    N3["Function invocation"]
+    N4["determines this"]
+    N1 --> N2
+    N1 --> N3
+    N3 --> N4
 ```
 
 ### Миф 2. this и Scope Chain работают одинаково
 
 Реальность:
 
-```text
-identifier lookup
-│
-└── uses Scope Chain
-
-this
-│
-└── uses receiver of current invocation
+```mermaid
+flowchart TD
+    N1["identifier lookup"]
+    N2["uses Scope Chain"]
+    N3["this"]
+    N4["uses receiver of current invocation"]
+    N1 --> N2
+    N1 --> N3
+    N3 --> N4
 ```
 
 ### Миф 3. Arrow Functions - лучший метод для object methods
@@ -1198,26 +1264,26 @@ log('Request failed');
 
 Что произошло:
 
-```text
-helper.log()
-│
-└── receiver: helper
-
-log()
-│
-└── receiver: none
+```mermaid
+flowchart TD
+    N1["helper.log()"]
+    N2["receiver: helper"]
+    N3["log()"]
+    N4["receiver: none"]
+    N1 --> N2
+    N1 --> N3
+    N3 --> N4
 ```
 
 Почему это произошло:
 
-```text
-function object was detached
-│
-▼
-called without object
-│
-▼
-this became undefined in strict mode
+```mermaid
+flowchart TD
+    N1["function object was detached"]
+    N2["called without object"]
+    N3["this became undefined in strict mode"]
+    N1 --> N2
+    N2 --> N3
 ```
 
 Исправленный вариант в рамках уже изученного:
@@ -1246,14 +1312,15 @@ function createPrinter(prefix) {
 
 Типичные ошибки:
 
-```text
-prefix
-│
-└── lexical environment
-
-this
-│
-└── current receiver
+```mermaid
+flowchart TD
+    N1["prefix"]
+    N2["lexical environment"]
+    N3["this"]
+    N4["current receiver"]
+    N1 --> N2
+    N1 --> N3
+    N3 --> N4
 ```
 
 ---
@@ -1271,12 +1338,13 @@ const user = {
 
 Что произошло:
 
-```text
-apiClient.getName()
-│
-└── method-like call
-    │
-    └── but arrow does not receive this this way
+```mermaid
+flowchart TD
+    N1["apiClient.getName()"]
+    N2["method-like call"]
+    N3["but arrow does not receive this this way"]
+    N1 --> N2
+    N2 --> N3
 ```
 
 Исправленный вариант:
@@ -1307,24 +1375,28 @@ const response = {
 
 Практическая модель:
 
-```text
-response
-│
-├── data: status
-└── behavior: isSuccessful()
-    │
-    └── uses this.status
+```mermaid
+flowchart TD
+    N1["response"]
+    N2["data: status"]
+    N3["behavior: isSuccessful()"]
+    N4["uses this.status"]
+    N1 --> N2
+    N1 --> N3
+    N3 --> N4
 ```
 
 `this` делает method reusable внутри object model:
 
-```text
-object
-│
-├── state
-└── method
-    │
-    └── reads current receiver state
+```mermaid
+flowchart TD
+    N1["объект"]
+    N2["state"]
+    N3["method"]
+    N4["reads current receiver state"]
+    N1 --> N2
+    N1 --> N3
+    N3 --> N4
 ```
 
 В обычном прикладном коде это встречается в clients, builders, validators и page objects.
@@ -1337,22 +1409,26 @@ object
 
 Page Object часто хранит locators, page reference и methods.
 
-```text
-LoginPage
-│
-├── page
-├── usernameInput
-└── open()
-    │
-    └── this.page
+```mermaid
+flowchart TD
+    N1["LoginPage"]
+    N2["page"]
+    N3["usernameInput"]
+    N4["open()"]
+    N5["this.page"]
+    N1 --> N2
+    N1 --> N3
+    N1 --> N4
+    N4 --> N5
 ```
 
 Если method вызывается как `loginPage.open()`, объект выполнения - `loginPage`.
 
-```text
-loginPage.open()
-│
-└── this -> loginPage
+```mermaid
+flowchart TD
+    N1["loginPage.open()"]
+    N2["this → loginPage"]
+    N1 --> N2
 ```
 
 Если method detached, объект выполнения может потеряться.
@@ -1372,11 +1448,13 @@ const apiClient = {
 
 QA object example:
 
-```text
-apiClient.buildUrl('/users')
-│
-├── receiver: apiClient
-└── this.baseUrl -> apiClient.baseUrl
+```mermaid
+flowchart TD
+    N1["apiClient.buildUrl('/users')"]
+    N2["receiver: apiClient"]
+    N3["this.baseUrl → apiClient.baseUrl"]
+    N1 --> N2
+    N1 --> N3
 ```
 
 Это помогает держать configuration и поведение рядом.
@@ -1387,13 +1465,15 @@ apiClient.buildUrl('/users')
 
 Helper object:
 
-```text
-assertions
-│
-├── expectedStatus
-└── validateStatus()
-    │
-    └── this.expectedStatus
+```mermaid
+flowchart TD
+    N1["assertions"]
+    N2["expectedStatus"]
+    N3["validateStatus()"]
+    N4["this.expectedStatus"]
+    N1 --> N2
+    N1 --> N3
+    N3 --> N4
 ```
 
 Понимание `this` помогает:
@@ -1446,32 +1526,30 @@ Who is the current receiver?
 
 Полная модель:
 
-```text
-Function object exists
-│
-▼
-Function is invoked
-│
-▼
-Invocation form selects receiver
-│
-▼
-this is set for this call
-│
-▼
-Function body executes
+```mermaid
+flowchart TD
+    N1["Function object exists"]
+    N2["Function is invoked"]
+    N3["Invocation form selects receiver"]
+    N4["this is set for this call"]
+    N5["тело функции выполняется"]
+    N1 --> N2
+    N2 --> N3
+    N3 --> N4
+    N4 --> N5
 ```
 
 Closure и `this` решают разные задачи:
 
-```text
-Closure
-│
-└── which variables are available?
-
-this
-│
-└── who is the current receiver?
+```mermaid
+flowchart TD
+    N1["Closure"]
+    N2["which variables are available?"]
+    N3["this"]
+    N4["who is the current receiver?"]
+    N1 --> N2
+    N1 --> N3
+    N3 --> N4
 ```
 
 Следующая глава про `call()` покажет, как выбрать объект выполнения вручную.

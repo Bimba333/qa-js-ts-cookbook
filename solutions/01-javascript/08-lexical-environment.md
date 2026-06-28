@@ -224,33 +224,43 @@ Hoisting объяснит, когда declarations affect Environment Records be
 
 Global Lexical Environment:
 
-```text
-Environment Record
-├── baseUrl
-└── testLogin
-
-Outer Environment Reference
-└── null
+```mermaid
+flowchart TD
+    N1["Environment Record"]
+    N2["baseUrl"]
+    N3["testLogin"]
+    N4["Outer Environment Reference"]
+    N5["null"]
+    N1 --> N2
+    N1 --> N3
+    N1 --> N4
+    N4 --> N5
 ```
 
 Function Lexical Environment для `testLogin`:
 
-```text
-Environment Record
-└── userName
-
-Outer Environment Reference
-└── Global Lexical Environment
+```mermaid
+flowchart TD
+    N1["Environment Record"]
+    N2["userName"]
+    N3["Outer Environment Reference"]
+    N4["Global Lexical Environment"]
+    N1 --> N2
+    N1 --> N3
+    N3 --> N4
 ```
 
 Block Lexical Environment:
 
-```text
-Environment Record
-└── expectedStatus
-
-Outer Environment Reference
-└── Function Lexical Environment
+```mermaid
+flowchart TD
+    N1["Environment Record"]
+    N2["expectedStatus"]
+    N3["Outer Environment Reference"]
+    N4["Function Lexical Environment"]
+    N1 --> N2
+    N1 --> N3
+    N3 --> N4
 ```
 
 Объяснение:
@@ -273,15 +283,20 @@ Outer Environment Reference
 
 `path`:
 
-```text
-Function Environment Record → found
+```mermaid
+flowchart LR
+    N1["Function Environment Record"]
+    N2["found"]
+    N1 --> N2
 ```
 
 `baseUrl`:
 
-```text
-Function Environment Record → not found
-Outer → Global Environment Record → found
+```mermaid
+flowchart TD
+    N1["Function Environment Record → not found"]
+    N2["Outer → Global Environment Record → found"]
+    N1 --> N2
 ```
 
 Объяснение:
@@ -302,8 +317,11 @@ Page helpers часто используют local route and global base URL.
 
 `status inside printStatus`:
 
-```text
-Function Environment Record → status found
+```mermaid
+flowchart LR
+    N1["Function Environment Record"]
+    N2["status found"]
+    N1 --> N2
 ```
 
 Объяснение:
@@ -324,15 +342,20 @@ Shadowing expected/actual status can confuse tests.
 
 `message`:
 
-```text
-Block Environment Record → found
+```mermaid
+flowchart LR
+    N1["Block Environment Record"]
+    N2["found"]
+    N1 --> N2
 ```
 
 `testName`:
 
-```text
-Block Environment Record → not found
-Outer → Global Environment Record → found
+```mermaid
+flowchart TD
+    N1["Block Environment Record → not found"]
+    N2["Outer → Global Environment Record → found"]
+    N1 --> N2
 ```
 
 Объяснение:
@@ -434,11 +457,11 @@ Stack trace tells where execution is; environment model tells where identifier c
 
 Inside `checkStatus`, current Environment Record has local `status`.
 
-```text
-Function Record: status → "local"
-│
-▼
-lookup stops
+```mermaid
+flowchart TD
+    N1["Function Record: status → &quot;local&quot;"]
+    N2["lookup stops"]
+    N1 --> N2
 ```
 
 Объяснение:
@@ -459,16 +482,21 @@ Use precise names to avoid status shadowing in assertions.
 
 Ответ:
 
-```text
-Helper Function Lexical Environment
-│
-├── Environment Record
-│   ├── requestBody
-│   ├── normalizedEmail
-│   └── responseStatus
-│
-└── Outer Environment Reference
-    └── outer test/module/global environment
+```mermaid
+flowchart TD
+    N1["Helper Function Lexical Environment"]
+    N2["Environment Record"]
+    N3["requestBody"]
+    N4["normalizedEmail"]
+    N5["responseStatus"]
+    N6["Outer Environment Reference"]
+    N7["outer test/module/global environment"]
+    N1 --> N2
+    N1 --> N3
+    N1 --> N4
+    N1 --> N5
+    N1 --> N6
+    N6 --> N7
 ```
 
 Объяснение:
@@ -489,15 +517,20 @@ Isolation keeps helpers reusable and tests readable.
 
 `path` поиск:
 
-```text
-Helper Environment Record → found
+```mermaid
+flowchart LR
+    N1["Helper Environment Record"]
+    N2["found"]
+    N1 --> N2
 ```
 
 `baseUrl` поиск:
 
-```text
-Helper Environment Record → not found
-Outer → Global/Config Environment Record → found
+```mermaid
+flowchart TD
+    N1["Helper Environment Record → not found"]
+    N2["Outer → Global/Config Environment Record → found"]
+    N1 --> N2
 ```
 
 Объяснение:
@@ -518,14 +551,22 @@ This explains route builders in Playwright frameworks.
 
 Stack trace shows execution path:
 
-```text
-test → page object → helper
+```mermaid
+flowchart LR
+    N1["test"]
+    N2["page object"]
+    N3["helper"]
+    N1 --> N2
+    N2 --> N3
 ```
 
 Lexical Environment model shows identifier resolution path:
 
-```text
-helper record → outer records
+```mermaid
+flowchart LR
+    N1["helper record"]
+    N2["outer records"]
+    N1 --> N2
 ```
 
 Both are needed: stack trace tells where code ran, environment model tells where names came from.
@@ -564,22 +605,32 @@ testLogin();
 
 Схема:
 
-```text
-Block Lexical Environment
-├── Record: loginUrl
-└── Outer → Function Lexical Environment
-    ├── Record: userName
-    └── Outer → Global Lexical Environment
-        ├── Record: baseUrl, testLogin
-        └── Outer → null
+```mermaid
+flowchart TD
+    N1["Block Lexical Environment"]
+    N2["Record: loginUrl"]
+    N3["Outer → Function Lexical Environment"]
+    N4["Record: userName"]
+    N5["Outer → Global Lexical Environment"]
+    N6["Record: baseUrl, testLogin"]
+    N7["Outer → null"]
+    N1 --> N2
+    N1 --> N3
+    N3 --> N4
+    N3 --> N5
+    N5 --> N6
+    N5 --> N7
 ```
 
 Lookup:
 
-```text
-loginUrl → Block Record
-userName → Block Record → Function Record
-baseUrl  → Block Record → Function Record → Global Record
+```mermaid
+flowchart TD
+    N1["loginUrl → Block Record"]
+    N2["userName → Block Record → Function Record"]
+    N3["baseUrl → Block Record → Function Record → Global Record"]
+    N1 --> N2
+    N2 --> N3
 ```
 
 Объяснение:

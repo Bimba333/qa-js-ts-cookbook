@@ -532,21 +532,33 @@ console.log(status);
 
 Временная шкала:
 
-```text
-Creation Phase
-├── baseUrl → uninitialized
-├── userName → uninitialized
-└── status → undefined
-
-Execution Phase
-├── initialize baseUrl
-├── initialize userName with undefined
-├── read userName → undefined
-├── assign userName → "Anna"
-├── read baseUrl → "https://example.com"
-├── read userName → "Anna"
-├── assign status → "created"
-└── read status → "created"
+```mermaid
+flowchart TD
+    N1["Creation Phase"]
+    N2["baseUrl → uninitialized"]
+    N3["userName → uninitialized"]
+    N4["status → undefined"]
+    N5["выполнение Phase"]
+    N6["initialize baseUrl"]
+    N7["initialize userName with undefined"]
+    N8["read userName → undefined"]
+    N9["assign userName → &quot;Anna&quot;"]
+    N10["read baseUrl → &quot;https://example.com&quot;"]
+    N11["read userName → &quot;Anna&quot;"]
+    N12["assign status → &quot;created&quot;"]
+    N13["read status → &quot;created&quot;"]
+    N1 --> N2
+    N1 --> N3
+    N1 --> N4
+    N1 --> N5
+    N5 --> N6
+    N5 --> N7
+    N5 --> N8
+    N5 --> N9
+    N5 --> N10
+    N5 --> N11
+    N5 --> N12
+    N5 --> N13
 ```
 
 Объяснение:

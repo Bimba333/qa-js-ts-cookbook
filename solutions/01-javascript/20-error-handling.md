@@ -544,11 +544,15 @@ Temporary data should be cleaned up.
 
 Ответ:
 
-```text
-Invalid optional screenshot cleanup → handle locally and log
-Login setup failed                 → let test stop / throw clear error
-API returned invalid JSON          → usually stop validation with clear error
-Temporary log file cannot be deleted → handle locally and log
+```mermaid
+flowchart TD
+    N1["Invalid optional screenshot cleanup → handle locally and log"]
+    N2["Login setup failed → let test stop / throw clear error"]
+    N3["API returned invalid JSON → usually stop validation with clear error"]
+    N4["Temporary log file cannot be deleted → handle locally and log"]
+    N1 --> N2
+    N2 --> N3
+    N3 --> N4
 ```
 
 Объяснение:

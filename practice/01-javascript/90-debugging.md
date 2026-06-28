@@ -60,11 +60,11 @@ if (actualStatus !== expectedStatus) {
 
 Опишите план debugging для flaky Playwright-теста:
 
-```text
-тест иногда падает в CI
-│
-▼
-локально проходит
+```mermaid
+flowchart TD
+    N1["тест иногда падает в CI"]
+    N2["локально проходит"]
+    N1 --> N2
 ```
 
 План должен включать:

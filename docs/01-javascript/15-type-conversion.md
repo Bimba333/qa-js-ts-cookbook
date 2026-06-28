@@ -4,17 +4,15 @@
 
 Предыдущие главы построили основу блока **Values and Types**:
 
-```text
-Primitive Types
-│
-▼
-Object Type
-│
-▼
-References
-│
-▼
-Stack & Heap
+```mermaid
+flowchart TD
+    N1["Primitive Types"]
+    N2["Object Type"]
+    N3["References"]
+    N4["Stack &amp; Heap"]
+    N1 --> N2
+    N2 --> N3
+    N3 --> N4
 ```
 
 Мы уже понимаем:
@@ -171,32 +169,32 @@ console.log('5' - 1);
 
 Секрет не в том, что JavaScript "случайно" выбирает поведение. Секрет в operation expectation.
 
-```text
-Operation
-│
-├── expects particular type
-│
-├── receives another type
-│
-└── conversion may happen
+```mermaid
+flowchart TD
+    N1["Operation"]
+    N2["expects particular type"]
+    N3["receives another type"]
+    N4["conversion may happen"]
+    N1 --> N2
+    N1 --> N3
+    N1 --> N4
 ```
 
 Conversion overview:
 
-```text
-Value enters operation
-│
-▼
-Operation expects a type
-│
-▼
-Value already matches?
-│
-├── yes → use value
-└── no  → convert value
-        │
-        ▼
-      use converted value
+```mermaid
+flowchart TD
+    N1["Value enters operation"]
+    N2["Operation expects a type"]
+    N3["Value already matches?"]
+    N4["да → использовать значение"]
+    N5["нет → convert value"]
+    N6["use converted value"]
+    N1 --> N2
+    N2 --> N3
+    N3 --> N4
+    N3 --> N5
+    N3 --> N6
 ```
 
 Главный вопрос:
@@ -211,16 +209,23 @@ Value already matches?
 
 JavaScript receives значения from many sources:
 
-```text
-Source
-│
-├── code literals
-├── user input
-├── forms
-├── environment variables
-├── API responses
-├── JSON
-└── browser APIs
+```mermaid
+flowchart TD
+    N1["Source"]
+    N2["code literals"]
+    N3["user input"]
+    N4["forms"]
+    N5["environment variables"]
+    N6["API responses"]
+    N7["JSON"]
+    N8["browser APIs"]
+    N1 --> N2
+    N1 --> N3
+    N1 --> N4
+    N1 --> N5
+    N1 --> N6
+    N1 --> N7
+    N1 --> N8
 ```
 
 These значения do not always have the type your operation expects.
@@ -246,14 +251,15 @@ Conversion существует, потому что JavaScript часто пы�
 
 Ментальная модель: translator.
 
-```text
-Operation speaks Number
-│
-Value arrives as String
-│
-Translator converts String to Number
-│
-Operation continues
+```mermaid
+flowchart TD
+    N1["Operation speaks Number"]
+    N2["Value arrives as String"]
+    N3["Translator converts String to Number"]
+    N4["Operation continues"]
+    N1 --> N2
+    N2 --> N3
+    N3 --> N4
 ```
 
 ### Implicit conversion
@@ -268,20 +274,17 @@ The `-` operation expects numeric поведение.
 
 Implicit conversion схема:
 
-```text
-"5"        1
-│          │
-▼          ▼
-String     Number
-│
-▼
-converted to Number 5
-│
-▼
-5 - 1
-│
-▼
-4
+```mermaid
+flowchart TD
+    N1["&quot;5&quot; 1"]
+    N2["String Number"]
+    N3["converted to Number 5"]
+    N4["5 - 1"]
+    N5["4"]
+    N1 --> N2
+    N2 --> N3
+    N3 --> N4
+    N4 --> N5
 ```
 
 Какой тип ожидает эта операция?
@@ -305,20 +308,17 @@ console.log(retries + 1);
 
 Explicit conversion схема:
 
-```text
-"3"
-│
-▼
-Number("3")
-│
-▼
-3
-│
-▼
-3 + 1
-│
-▼
-4
+```mermaid
+flowchart TD
+    N1["&quot;3&quot;"]
+    N2["Number(&quot;3&quot;)"]
+    N3["3"]
+    N4["3 + 1"]
+    N5["4"]
+    N1 --> N2
+    N2 --> N3
+    N3 --> N4
+    N4 --> N5
 ```
 
 Какой тип ожидает эта операция?
@@ -329,14 +329,15 @@ Numeric addition expects Number values.
 
 Explicit conversion обычно лучше в тестах, потому что документирует намерение.
 
-```text
-Hidden intent
-│
-└── "3" - 0
-
-Clear intent
-│
-└── Number("3")
+```mermaid
+flowchart TD
+    N1["Hidden intent"]
+    N2["&quot;3&quot; - 0"]
+    N3["Clear intent"]
+    N4["Number(&quot;3&quot;)"]
+    N1 --> N2
+    N1 --> N3
+    N3 --> N4
 ```
 
 ### Number conversion
@@ -355,53 +356,62 @@ console.log(Number(undefined));
 
 Number conversion схема:
 
-```text
-Input value
-│
-▼
-Number(value)
-│
-▼
-Number result or NaN
+```mermaid
+flowchart TD
+    N1["Input value"]
+    N2["Number(value)"]
+    N3["Number result or NaN"]
+    N1 --> N2
+    N2 --> N3
 ```
 
 Частые результаты:
 
-```text
-Number("5")        → 5
-Number("5.5")      → 5.5
-Number("")         → 0
-Number(true)       → 1
-Number(false)      → 0
-Number(null)       → 0
-Number(undefined)  → NaN
-Number("abc")      → NaN
+```mermaid
+flowchart TD
+    N1["Number(&quot;5&quot;) → 5"]
+    N2["Number(&quot;5.5&quot;) → 5.5"]
+    N3["Number(&quot;&quot;) → 0"]
+    N4["Number(true) → 1"]
+    N5["Number(false) → 0"]
+    N6["Number(null) → 0"]
+    N7["Number(undefined) → NaN"]
+    N8["Number(&quot;abc&quot;) → NaN"]
+    N1 --> N2
+    N2 --> N3
+    N3 --> N4
+    N4 --> N5
+    N5 --> N6
+    N6 --> N7
+    N7 --> N8
 ```
 
 Operation expects Number:
 
-```text
-Numeric operation
-│
-├── subtraction
-├── multiplication
-├── division
-└── numeric calculation
+```mermaid
+flowchart TD
+    N1["Numeric operation"]
+    N2["subtraction"]
+    N3["multiplication"]
+    N4["division"]
+    N5["numeric calculation"]
+    N1 --> N2
+    N1 --> N3
+    N1 --> N4
+    N1 --> N5
 ```
 
 Схема:
 
-```text
-Operation expects Number
-│
-▼
-Received String "10"
-│
-▼
-Convert to Number 10
-│
-▼
-Continue operation
+```mermaid
+flowchart TD
+    N1["Operation expects Number"]
+    N2["Received String &quot;10&quot;"]
+    N3["Convert to Number 10"]
+    N4["продолжить operation"]
+    N1 --> N2
+    N2 --> N3
+    N3 --> N4
 ```
 
 ### NaN during conversion
@@ -415,19 +425,17 @@ console.log(Number(undefined));
 
 NaN схема:
 
-```text
-Value
-│
-└── "abc"
-    │
-    ▼
-Number("abc")
-│
-▼
-No meaningful numeric result
-│
-▼
-NaN
+```mermaid
+flowchart TD
+    N1["Value"]
+    N2["&quot;abc&quot;"]
+    N3["Number(&quot;abc&quot;)"]
+    N4["нет meaningful numeric result"]
+    N5["NaN"]
+    N1 --> N2
+    N1 --> N3
+    N3 --> N4
+    N4 --> N5
 ```
 
 Какой тип ожидает эта операция?
@@ -438,14 +446,15 @@ Number conversion expects value that can become a Number.
 
 In Automation QA, `NaN` often means test parsed wrong поле:
 
-```text
-Expected numeric price
-│
-Received "not available"
-│
-Number("not available")
-│
-NaN
+```mermaid
+flowchart TD
+    N1["Expected numeric price"]
+    N2["Received &quot;not available&quot;"]
+    N3["Number(&quot;not available&quot;)"]
+    N4["NaN"]
+    N1 --> N2
+    N2 --> N3
+    N3 --> N4
 ```
 
 ### String conversion
@@ -462,50 +471,56 @@ console.log(String(undefined));
 
 String conversion схема:
 
-```text
-Input value
-│
-▼
-String(value)
-│
-▼
-String result
+```mermaid
+flowchart TD
+    N1["Input value"]
+    N2["String(value)"]
+    N3["String result"]
+    N1 --> N2
+    N2 --> N3
 ```
 
 Частые результаты:
 
-```text
-String(5)          → "5"
-String(true)       → "true"
-String(false)      → "false"
-String(null)       → "null"
-String(undefined)  → "undefined"
+```mermaid
+flowchart TD
+    N1["String(5) → &quot;5&quot;"]
+    N2["String(true) → &quot;true&quot;"]
+    N3["String(false) → &quot;false&quot;"]
+    N4["String(null) → &quot;null&quot;"]
+    N5["String(undefined) → &quot;undefined&quot;"]
+    N1 --> N2
+    N2 --> N3
+    N3 --> N4
+    N4 --> N5
 ```
 
 Operation expects String:
 
-```text
-Text operation
-│
-├── building message
-├── logging readable value
-├── filling form field
-└── creating URL parameter
+```mermaid
+flowchart TD
+    N1["Text operation"]
+    N2["building message"]
+    N3["logging readable value"]
+    N4["filling form field"]
+    N5["creating URL parameter"]
+    N1 --> N2
+    N1 --> N3
+    N1 --> N4
+    N1 --> N5
 ```
 
 Схема:
 
-```text
-Operation expects String
-│
-▼
-Received Number 200
-│
-▼
-String(200)
-│
-▼
-"200"
+```mermaid
+flowchart TD
+    N1["Operation expects String"]
+    N2["Received Number 200"]
+    N3["String(200)"]
+    N4["&quot;200&quot;"]
+    N1 --> N2
+    N2 --> N3
+    N3 --> N4
 ```
 
 ### Boolean conversion
@@ -522,23 +537,22 @@ console.log(Boolean(null));
 
 Boolean conversion схема:
 
-```text
-Input value
-│
-▼
-Boolean(value)
-│
-▼
-true or false
+```mermaid
+flowchart TD
+    N1["Input value"]
+    N2["Boolean(value)"]
+    N3["true or false"]
+    N1 --> N2
+    N2 --> N3
 ```
 
 Boolean conversion используется, когда операция ожидает значение, похожее на условие.
 
-```text
-Condition expects Boolean-like decision
-│
-▼
-Value converted to true or false
+```mermaid
+flowchart TD
+    N1["Condition expects Boolean-like decision"]
+    N2["Value converted to true or false"]
+    N1 --> N2
 ```
 
 Detailed conditionals will be studied later. Here we only need conversion model.
@@ -549,16 +563,23 @@ Truthy value is a value that becomes `true` in Boolean conversion.
 
 Truthy значения схема:
 
-```text
-Truthy examples
-│
-├── "hello"
-├── "0"
-├── "false"
-├── 1
-├── -1
-├── []
-└── {}
+```mermaid
+flowchart TD
+    N1["Truthy examples"]
+    N2["&quot;hello&quot;"]
+    N3["&quot;0&quot;"]
+    N4["&quot;false&quot;"]
+    N5["1"]
+    N6["-1"]
+    N7["[]"]
+    N8["{}"]
+    N1 --> N2
+    N1 --> N3
+    N1 --> N4
+    N1 --> N5
+    N1 --> N6
+    N1 --> N7
+    N1 --> N8
 ```
 
 Важно:
@@ -577,14 +598,13 @@ true
 
 Why?
 
-```text
-Non-empty string
-│
-▼
-Boolean conversion
-│
-▼
-true
+```mermaid
+flowchart TD
+    N1["Non-empty string"]
+    N2["Boolean conversion"]
+    N3["true"]
+    N1 --> N2
+    N2 --> N3
 ```
 
 This matters for environment variables:
@@ -609,17 +629,25 @@ Falsy value is a value that becomes `false` in Boolean conversion.
 
 Falsy значения схема:
 
-```text
-Falsy values
-│
-├── false
-├── 0
-├── -0
-├── 0n
-├── ""
-├── null
-├── undefined
-└── NaN
+```mermaid
+flowchart TD
+    N1["Falsy values"]
+    N2["false"]
+    N3["0"]
+    N4["-0"]
+    N5["0n"]
+    N6["&quot;&quot;"]
+    N7["null"]
+    N8["undefined"]
+    N9["NaN"]
+    N1 --> N2
+    N1 --> N3
+    N1 --> N4
+    N1 --> N5
+    N1 --> N6
+    N1 --> N7
+    N1 --> N8
+    N1 --> N9
 ```
 
 Примеры:
@@ -649,17 +677,15 @@ console.log('Total: ' + 5);
 
 Концептуальная цепочка:
 
-```text
-String operation
-│
-▼
-Number 5 converted to String "5"
-│
-▼
-"Total: " + "5"
-│
-▼
-"Total: 5"
+```mermaid
+flowchart TD
+    N1["String operation"]
+    N2["Number 5 converted to String &quot;5&quot;"]
+    N3["&quot;Total: &quot; + &quot;5&quot;"]
+    N4["&quot;Total: 5&quot;"]
+    N1 --> N2
+    N2 --> N3
+    N3 --> N4
 ```
 
 Another chain:
@@ -670,20 +696,17 @@ console.log(Number(String(5)));
 
 Схема:
 
-```text
-5
-│
-▼
-String(5)
-│
-▼
-"5"
-│
-▼
-Number("5")
-│
-▼
-5
+```mermaid
+flowchart TD
+    N1["5"]
+    N2["String(5)"]
+    N3["&quot;5&quot;"]
+    N4["Number(&quot;5&quot;)"]
+    N5["5"]
+    N1 --> N2
+    N2 --> N3
+    N3 --> N4
+    N4 --> N5
 ```
 
 Эта глава оставляет цепочки преобразований высокоуровневыми. Детали спецификации операторов здесь не нужны.
@@ -719,116 +742,112 @@ At a conceptual level, conversion follows a decision flow.
 
 Conversion decision поток:
 
-```text
-Operation begins
-│
-▼
-Operation expects type
-│
-▼
-Value has expected type?
-│
-├── yes
-│   └── use value directly
-│
-└── no
-    └── convert value according to rules
-        │
-        ▼
-      use converted value
+```mermaid
+flowchart TD
+    N1["Operation begins"]
+    N2["Operation expects type"]
+    N3["Value has expected type?"]
+    N4["да"]
+    N5["использовать значение directly"]
+    N6["нет"]
+    N7["convert value according to rules"]
+    N8["use converted value"]
+    N1 --> N2
+    N2 --> N3
+    N3 --> N4
+    N3 --> N5
+    N3 --> N6
+    N6 --> N7
+    N3 --> N8
 ```
 
 ### Implicit mechanism
 
 Implicit conversion is triggered by operation.
 
-```text
-"5" - 1
-│
-▼
-Subtraction expects Number
-│
-▼
-"5" converted to 5
-│
-▼
-5 - 1
-│
-▼
-4
+```mermaid
+flowchart TD
+    N1["&quot;5&quot; - 1"]
+    N2["Subtraction expects Number"]
+    N3["&quot;5&quot; converted to 5"]
+    N4["5 - 1"]
+    N5["4"]
+    N1 --> N2
+    N2 --> N3
+    N3 --> N4
+    N4 --> N5
 ```
 
 ### Explicit mechanism
 
 Explicit conversion is triggered by programmer.
 
-```text
-Number("5")
-│
-▼
-Programmer asks for Number conversion
-│
-▼
-Conversion rules are applied
-│
-▼
-5
+```mermaid
+flowchart TD
+    N1["Number(&quot;5&quot;)"]
+    N2["Programmer asks for Number conversion"]
+    N3["Conversion rules are applied"]
+    N4["5"]
+    N1 --> N2
+    N2 --> N3
+    N3 --> N4
 ```
 
 ### Текущее место в модели JavaScript
 
-```text
-JavaScript model so far
-│
-├── Values have types
-├── Objects can be referenced
-├── Stack & Heap diagrams visualize references
-└── Type Conversion adapts values for operations
+```mermaid
+flowchart TD
+    N1["JavaScript model so far"]
+    N2["Values have types"]
+    N3["Objects can be referenced"]
+    N4["Stack &amp; Heap diagrams visualize references"]
+    N5["Type Conversion adapts values for operations"]
+    N1 --> N2
+    N1 --> N3
+    N1 --> N4
+    N1 --> N5
 ```
 
 Current position схема:
 
-```text
-Primitive Types
-│
-▼
-Object Type
-│
-▼
-References
-│
-▼
-Stack & Heap
-│
-▼
-Type Conversion
+```mermaid
+flowchart TD
+    N1["Primitive Types"]
+    N2["Object Type"]
+    N3["References"]
+    N4["Stack &amp; Heap"]
+    N5["Type Conversion"]
+    N1 --> N2
+    N2 --> N3
+    N3 --> N4
+    N4 --> N5
 ```
 
 ### Complete conversion picture
 
-```text
-Input value
-│
-├── has current type
-│
-▼
-Operation
-│
-├── expects Number / String / Boolean
-│
-▼
-Conversion needed?
-│
-├── no → use value
-└── yes
-    ├── implicit conversion
-    └── explicit conversion
-        │
-        ▼
-      converted value
-        │
-        ▼
-      operation result
+```mermaid
+flowchart TD
+    N1["Input value"]
+    N2["has current type"]
+    N3["Operation"]
+    N4["expects Number / String / Boolean"]
+    N5["Conversion needed?"]
+    N6["нет → использовать значение"]
+    N7["да"]
+    N8["implicit conversion"]
+    N9["explicit conversion"]
+    N10["converted value"]
+    N11["operation result"]
+    N1 --> N2
+    N1 --> N3
+    N3 --> N4
+    N3 --> N5
+    N5 --> N6
+    N5 --> N7
+    N7 --> N8
+    N7 --> N9
+    N5 --> N10
+    N5 --> N11
 ```
 
 ---
@@ -888,14 +907,17 @@ Conversion rate matters. JavaScript conversion rules matter too.
 
 JavaScript tries to be flexible:
 
-```text
-Value from form
-Value from API
-Value from env
-Value from code
-│
-▼
-Operations need usable types
+```mermaid
+flowchart TD
+    N1["Value from form"]
+    N2["Value from API"]
+    N3["Value from env"]
+    N4["Value from code"]
+    N5["Operations need usable types"]
+    N4 --> N5
+    N1 --> N2
+    N2 --> N3
+    N3 --> N4
 ```
 
 Flexibility is useful, but hidden conversion can create bugs.
@@ -1138,19 +1160,17 @@ const statusCode = Number(response.statusCode);
 
 Automation QA example схема:
 
-```text
-API response field
-│
-└── "200" as String
-    │
-    ▼
-Test expects Number
-│
-▼
-Number("200")
-│
-▼
-200
+```mermaid
+flowchart TD
+    N1["API response field"]
+    N2["&quot;200&quot; as String"]
+    N3["Test expects Number"]
+    N4["Number(&quot;200&quot;)"]
+    N5["200"]
+    N1 --> N2
+    N1 --> N3
+    N3 --> N4
+    N4 --> N5
 ```
 
 ### Comparing JSON значения
@@ -1219,22 +1239,28 @@ It is not random.
 
 Main conversion forms:
 
-```text
-Type Conversion
-│
-├── Implicit
-│   └── operation triggers conversion
-│
-└── Explicit
-    └── programmer calls Number(), String(), Boolean()
+```mermaid
+flowchart TD
+    N1["Type Conversion"]
+    N2["Implicit"]
+    N3["operation triggers conversion"]
+    N4["Explicit"]
+    N5["programmer calls Number(), String(), Boolean()"]
+    N1 --> N2
+    N1 --> N3
+    N1 --> N4
+    N4 --> N5
 ```
 
 Важные категории:
 
-```text
-Number conversion → may produce NaN
-String conversion → produces text representation
-Boolean conversion → uses truthy/falsy rules
+```mermaid
+flowchart TD
+    N1["Number conversion → may produce NaN"]
+    N2["String conversion → produces text representation"]
+    N3["Boolean conversion → uses truthy/falsy rules"]
+    N1 --> N2
+    N2 --> N3
 ```
 
 Next chapter explains Equality:

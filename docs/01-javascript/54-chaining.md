@@ -89,17 +89,15 @@ Chaining возможен, когда result одного step подходит 
 
 Главная модель этой главы: **pipeline of transformations**.
 
-```text
-source test cases
-│
-▼
-step 1: select needed tests
-│
-▼
-step 2: format selected tests
-│
-▼
-report data
+```mermaid
+flowchart TD
+    N1["source test cases"]
+    N2["step 1: select needed tests"]
+    N3["step 2: format selected tests"]
+    N4["report data"]
+    N1 --> N2
+    N2 --> N3
+    N3 --> N4
 ```
 
 ## Практические примеры

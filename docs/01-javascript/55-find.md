@@ -4,14 +4,13 @@
 
 Предыдущий модуль показал processing pipeline:
 
-```text
-test cases
-│
-▼
-transform / select / aggregate
-│
-▼
-report data
+```mermaid
+flowchart TD
+    N1["test cases"]
+    N2["transform / select / aggregate"]
+    N3["report data"]
+    N1 --> N2
+    N2 --> N3
 ```
 
 Теперь задача меняется. Иногда pipeline не должен строить новый список или summary. Иногда нужно найти один конкретный test case и принять решение по нему.
@@ -61,14 +60,13 @@ CI получил failure для `T-2`. Нужно найти именно эт�
 
 Нужна операция:
 
-```text
-array
-│
-▼
-check elements one by one
-│
-▼
-return first matching element
+```mermaid
+flowchart TD
+    N1["array"]
+    N2["check elements one by one"]
+    N3["вернуть first matching element"]
+    N1 --> N2
+    N2 --> N3
 ```
 
 ## Теория
@@ -91,14 +89,15 @@ const found = array.find(function (element) {
 
 Концептуальные шаги:
 
-```text
-start with first element
-│
-▼
-check condition
-│
-├── true  -> return this element
-└── false -> move to next element
+```mermaid
+flowchart TD
+    N1["start with first element"]
+    N2["check condition"]
+    N3["true → вернуть this element"]
+    N4["false → move to next element"]
+    N1 --> N2
+    N2 --> N3
+    N2 --> N4
 ```
 
 Как только `find()` нашел первый matching element, дальнейшие elements уже не нужны для ответа.
@@ -107,14 +106,13 @@ check condition
 
 Главная модель этой главы: **first matching element**.
 
-```text
-testCases
-│
-▼
-find()
-│
-▼
-first match
+```mermaid
+flowchart TD
+    N1["testCases"]
+    N2["find()"]
+    N3["first match"]
+    N1 --> N2
+    N2 --> N3
 ```
 
 `find()` отвечает на вопрос: "Где первый element, который подходит?"

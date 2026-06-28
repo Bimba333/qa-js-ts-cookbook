@@ -74,12 +74,17 @@ changed@example.com
 
 Модель:
 
-```text
-testUser ───────┐
-                ├──► Object in Heap
-userFromHelper ─┘    {
-                      email: 'changed@example.com'
-                    }
+```mermaid
+flowchart TD
+    N1["testUser ───────┐"]
+    N2["объект в Heap"]
+    N3["userFromHelper ─┘ {"]
+    N4["email: 'changed@example.com'"]
+    N5["}"]
+    N1 --> N2
+    N2 --> N3
+    N3 --> N4
+    N4 --> N5
 ```
 
 В Automation QA такая ситуация опасна, если helper изменяет общий объект тестовых данных. Один тест может подготовить данные, второй получит уже измененный объект, и падение будет выглядеть случайным.

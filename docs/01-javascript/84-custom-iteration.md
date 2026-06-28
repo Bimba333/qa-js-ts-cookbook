@@ -4,14 +4,13 @@
 
 Предыдущие главы собрали цепочку:
 
-```text
-Iterable
-│
-▼
-Iterator
-│
-▼
-Generator
+```mermaid
+flowchart TD
+    N1["Iterable"]
+    N2["Iterator"]
+    N3["Generator"]
+    N1 --> N2
+    N2 --> N3
 ```
 
 Теперь можно применить ее к собственным объектам.
@@ -48,13 +47,13 @@ for (const test of testSuite) {
 
 Чтобы объект стал iterable, у него должен быть метод `Symbol.iterator`.
 
-```text
-свой объект
-│
-└── Symbol.iterator()
-    │
-    ▼
-    iterator
+```mermaid
+flowchart TD
+    N1["свой объект"]
+    N2["Symbol.iterator()"]
+    N3["iterator"]
+    N1 --> N2
+    N1 --> N3
 ```
 
 Есть два практических способа:
@@ -68,41 +67,37 @@ for (const test of testSuite) {
 
 Когда `for...of` получает собственный объект, процесс тот же:
 
-```text
-for...of testSuite
-│
-▼
-testSuite[Symbol.iterator]()
-│
-▼
-получить iterator
-│
-▼
-вызывать next()
-│
-▼
-получать тесты по одному
+```mermaid
+flowchart TD
+    N1["for...of testSuite"]
+    N2["testSuite[Symbol.iterator]()"]
+    N3["получить iterator"]
+    N4["вызывать next()"]
+    N5["получать тесты по одному"]
+    N1 --> N2
+    N2 --> N3
+    N3 --> N4
+    N4 --> N5
 ```
 
 Ручной iterator:
 
-```text
-Symbol.iterator
-│
-▼
-вернуть объект с next()
+```mermaid
+flowchart TD
+    N1["Symbol.iterator"]
+    N2["вернуть объект с next()"]
+    N1 --> N2
 ```
 
 Iterator на основе generator:
 
-```text
-Symbol.iterator
-│
-▼
-generator
-│
-▼
-yield значения
+```mermaid
+flowchart TD
+    N1["Symbol.iterator"]
+    N2["generator"]
+    N3["yield значения"]
+    N1 --> N2
+    N2 --> N3
 ```
 
 Оба подхода подчиняются одному правилу: `Symbol.iterator` должен дать JavaScript объект, из которого можно получать значения.
@@ -111,17 +106,15 @@ yield значения
 
 Главная модель главы:
 
-```text
-свой объект
-│
-▼
-реализует Symbol.iterator
-│
-▼
-становится iterable
-│
-▼
-работает с for...of
+```mermaid
+flowchart TD
+    N1["свой объект"]
+    N2["реализует Symbol.iterator"]
+    N3["становится iterable"]
+    N4["работает с for...of"]
+    N1 --> N2
+    N2 --> N3
+    N3 --> N4
 ```
 
 Custom iteration — это не магия, а явно заданное правило обхода.
@@ -209,17 +202,15 @@ Custom iteration позволяет собственным объектам ра
 
 Теперь вся цепочка выглядит так:
 
-```text
-Object
-│
-▼
-Symbol.iterator
-│
-▼
-Iterator
-│
-▼
-for...of
+```mermaid
+flowchart TD
+    N1["Object"]
+    N2["Symbol.iterator"]
+    N3["Iterator"]
+    N4["for...of"]
+    N1 --> N2
+    N2 --> N3
+    N3 --> N4
 ```
 
 После этого `for...of` перестает быть магией. Это обычный механизм языка, построенный вокруг `Symbol.iterator`, `next()`, `value` и `done`.

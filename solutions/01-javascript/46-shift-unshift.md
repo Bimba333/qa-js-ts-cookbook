@@ -152,10 +152,13 @@ Array хранит одно value на каждой упорядоченной �
 
 Ответ:
 
-```text
-requestTasks[0] -> POST /login
-requestTasks[1] -> GET /users
-length          -> 3
+```mermaid
+flowchart TD
+    N1["requestTasks[0] → POST /login"]
+    N2["requestTasks[1] → GET /users"]
+    N3["length → 3"]
+    N1 --> N2
+    N2 --> N3
 ```
 
 Объяснение:

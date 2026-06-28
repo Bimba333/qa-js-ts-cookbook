@@ -64,17 +64,15 @@ const testData = {
 
 Опишите проблему в большом test framework:
 
-```text
-test data
-│
-▼
-request builder
-│
-▼
-api client
-│
-▼
-assertion
+```mermaid
+flowchart TD
+    N1["test data"]
+    N2["request builder"]
+    N3["api client"]
+    N4["assertion"]
+    N1 --> N2
+    N2 --> N3
+    N3 --> N4
 ```
 
 Где ошибка формы данных может стать дорогой?

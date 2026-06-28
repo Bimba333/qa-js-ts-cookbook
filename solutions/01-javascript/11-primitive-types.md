@@ -222,14 +222,21 @@ Helps reason about expected значения in tests.
 
 Ответ:
 
-```text
-statusCode   → Number
-userName     → String
-isActive     → Boolean
-deletedAt    → Null
-responseBody → Undefined before assignment
-uniqueId     → Symbol
-largeId      → BigInt
+```mermaid
+flowchart TD
+    N1["statusCode → Number"]
+    N2["userName → String"]
+    N3["isActive → Boolean"]
+    N4["deletedAt → Null"]
+    N5["responseBody → Undefined before assignment"]
+    N6["uniqueId → Symbol"]
+    N7["largeId → BigInt"]
+    N1 --> N2
+    N2 --> N3
+    N3 --> N4
+    N4 --> N5
+    N5 --> N6
+    N6 --> N7
 ```
 
 Объяснение:
@@ -276,33 +283,47 @@ Expect `typeof null` to be `"null"`.
 
 Number:
 
-```text
-expectedStatusCode → 200
+```mermaid
+flowchart LR
+    N1["expectedStatusCode"]
+    N2["200"]
+    N1 --> N2
 ```
 
 String:
 
-```text
-actualStatusCode → "200"
-expectedUserName → "Anna"
+```mermaid
+flowchart TD
+    N1["actualStatusCode → &quot;200&quot;"]
+    N2["expectedUserName → &quot;Anna&quot;"]
+    N1 --> N2
 ```
 
 Boolean:
 
-```text
-isUserActive → true
+```mermaid
+flowchart LR
+    N1["isUserActive"]
+    N2["true"]
+    N1 --> N2
 ```
 
 Intentional absence:
 
-```text
-deletedAt → null
+```mermaid
+flowchart LR
+    N1["deletedAt"]
+    N2["null"]
+    N1 --> N2
 ```
 
 Missing / not assigned:
 
-```text
-responseTime → undefined before assignment
+```mermaid
+flowchart LR
+    N1["responseTime"]
+    N2["undefined до присваивания"]
+    N1 --> N2
 ```
 
 Объяснение:
@@ -379,11 +400,15 @@ Avoid wrong assertions based only on `typeof`.
 
 Ответ:
 
-```text
-expectedName      → "Anna" → String
-expectedAge       → 30 → Number
-expectedActive    → true → Boolean
-expectedDeletedAt → null → Null
+```mermaid
+flowchart TD
+    N1["expectedName → &quot;Anna&quot; → String"]
+    N2["expectedAge → 30 → Number"]
+    N3["expectedActive → true → Boolean"]
+    N4["expectedDeletedAt → null → Null"]
+    N1 --> N2
+    N2 --> N3
+    N3 --> N4
 ```
 
 Объяснение:

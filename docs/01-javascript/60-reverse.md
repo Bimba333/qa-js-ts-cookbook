@@ -6,14 +6,13 @@
 
 Главная модель была такой:
 
-```text
-same elements
-│
-▼
-sort()
-│
-▼
-different order
+```mermaid
+flowchart TD
+    N1["same elements"]
+    N2["sort()"]
+    N3["different order"]
+    N1 --> N2
+    N2 --> N3
 ```
 
 Теперь порядок уже существует. Иногда нужно не строить новый order, а просто перевернуть текущий: посмотреть последние failures первыми, прочитать execution sequence в обратном направлении или подготовить обратный rerun order.
@@ -62,14 +61,13 @@ const testCases = [
 
 Нужна операция:
 
-```text
-first -> last
-│
-▼
-reverse()
-│
-▼
-last -> first
+```mermaid
+flowchart TD
+    N1["first → last"]
+    N2["reverse()"]
+    N3["last → first"]
+    N1 --> N2
+    N2 --> N3
 ```
 
 ## Теория
@@ -84,11 +82,11 @@ array.reverse();
 
 Важное поведение: `reverse()` mutates исходный массив.
 
-```text
-reverse()
-│
-▼
-same array, opposite order
+```mermaid
+flowchart TD
+    N1["reverse()"]
+    N2["same array, opposite order"]
+    N1 --> N2
 ```
 
 `reverse()` не смотрит на `id`, `status` или `priority`. Он просто переворачивает текущий порядок.
@@ -97,22 +95,25 @@ same array, opposite order
 
 Observable model:
 
-```text
-before
-│
-├── first
-├── middle
-└── last
-
-reverse()
-│
-▼
-
-after
-│
-├── last
-├── middle
-└── first
+```mermaid
+flowchart TD
+    N1["before"]
+    N2["first"]
+    N3["middle"]
+    N4["last"]
+    N5["reverse()"]
+    N6["after"]
+    N7["last"]
+    N8["middle"]
+    N9["first"]
+    N1 --> N2
+    N1 --> N3
+    N1 --> N4
+    N1 --> N5
+    N5 --> N6
+    N6 --> N7
+    N6 --> N8
+    N6 --> N9
 ```
 
 Это текущий порядок, прочитанный в обратном направлении.
@@ -121,14 +122,13 @@ after
 
 Главная модель этой главы: **flipping order**.
 
-```text
-current order
-│
-▼
-reverse()
-│
-▼
-opposite order
+```mermaid
+flowchart TD
+    N1["current order"]
+    N2["reverse()"]
+    N3["opposite order"]
+    N1 --> N2
+    N2 --> N3
 ```
 
 Главное: `reverse()` не сортирует. Он только инвертирует уже существующий порядок.
@@ -199,9 +199,11 @@ testCases.reverse();
 
 Теперь мы умеем управлять order:
 
-```text
-sort()    -> задать порядок
-reverse() -> инвертировать текущий порядок
+```mermaid
+flowchart TD
+    N1["sort() → задать порядок"]
+    N2["reverse() → инвертировать текущий порядок"]
+    N1 --> N2
 ```
 
 Дальше раздел Arrays продолжит разбирать способы получать и преобразовывать данные без лишней ручной работы.

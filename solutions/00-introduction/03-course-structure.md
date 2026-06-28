@@ -48,23 +48,19 @@ L0 — вводный уровень. На этом уровне главная 
 
 Цепочка:
 
-```text
-Переменная
-│
-▼
-Объект
-│
-▼
-Функция
-│
-▼
-Helper
-│
-▼
-Fixture
-│
-▼
-Framework architecture
+```mermaid
+flowchart TD
+    N1["Переменная"]
+    N2["Объект"]
+    N3["Функция"]
+    N4["Helper"]
+    N5["Fixture"]
+    N6["Framework architecture"]
+    N1 --> N2
+    N2 --> N3
+    N3 --> N4
+    N4 --> N5
+    N5 --> N6
 ```
 
 Объект может храниться в переменной. Функция может принимать объект и возвращать результат. Helper является функцией, которая решает повторяемую задачу. Fixture может использовать helper для подготовки состояния. Framework architecture определяет, где должны находиться helpers, fixtures и связанные модули.
@@ -104,17 +100,15 @@ https://api.example.com/users/user-7
 
 Как пример может вырасти:
 
-```text
-buildUserEndpoint()
-│
-▼
-helper для endpoint
-│
-▼
-метод API client
-│
-▼
-API-тест пользователя
+```mermaid
+flowchart TD
+    N1["buildUserEndpoint()"]
+    N2["helper для endpoint"]
+    N3["метод API client"]
+    N4["API-тест пользователя"]
+    N1 --> N2
+    N2 --> N3
+    N3 --> N4
 ```
 
 ## Написание кода
@@ -160,17 +154,15 @@ Playwright-тесты используют JavaScript и часто TypeScript. 
 
 Надежный порядок:
 
-```text
-JavaScript
-│
-▼
-TypeScript
-│
-▼
-Playwright и Automation QA
-│
-▼
-Framework architecture
+```mermaid
+flowchart TD
+    N1["JavaScript"]
+    N2["TypeScript"]
+    N3["Playwright и Automation QA"]
+    N4["Framework architecture"]
+    N1 --> N2
+    N2 --> N3
+    N3 --> N4
 ```
 
 ## QA-задачи
@@ -201,25 +193,35 @@ Framework architecture
 
 Один из возможных вариантов схемы:
 
-```text
-Test
-│
-├── fixture
-│   ├── function
-│   └── TypeScript type
-│
-├── helper
-│   ├── parameters
-│   └── return value
-│
-├── API client
-│   ├── object
-│   ├── Promise
-│   └── async / await
-│
-└── assertion
-    ├── expected value
-    └── actual value
+```mermaid
+flowchart TD
+    N1["Test"]
+    N2["fixture"]
+    N3["функция"]
+    N4["TypeScript type"]
+    N5["helper"]
+    N6["параметры"]
+    N7["возвращаемое значение"]
+    N8["API client"]
+    N9["объект"]
+    N10["Promise"]
+    N11["async / await"]
+    N12["assertion"]
+    N13["ожидаемое значение"]
+    N14["фактическое значение"]
+    N1 --> N2
+    N1 --> N3
+    N1 --> N4
+    N1 --> N5
+    N1 --> N6
+    N1 --> N7
+    N1 --> N8
+    N1 --> N9
+    N1 --> N10
+    N1 --> N11
+    N1 --> N12
+    N12 --> N13
+    N12 --> N14
 ```
 
 Схема показывает, что тестовый код использует несколько слоев курса одновременно.
@@ -228,38 +230,43 @@ Test
 
 Один из возможных вариантов карты:
 
-```text
-Введение
-│
-├── как учиться
-├── структура репозитория
-└── рабочее окружение
-    │
-    ▼
-JavaScript
-│
-├── values
-├── functions
-└── async
-    │
-    ▼
-TypeScript
-│
-├── types
-├── interfaces
-└── generics
-    │
-    ▼
-Automation QA
-│
-├── Playwright
-├── API testing
-└── fixtures
-    │
-    ▼
-Финальный проект
-│
-└── Automation Framework
+```mermaid
+flowchart TD
+    N1["Введение"]
+    N2["как учиться"]
+    N3["структура репозитория"]
+    N4["рабочее окружение"]
+    N5["JavaScript"]
+    N6["значения"]
+    N7["функции"]
+    N8["async"]
+    N9["TypeScript"]
+    N10["types"]
+    N11["interfaces"]
+    N12["generics"]
+    N13["Automation QA"]
+    N14["Playwright"]
+    N15["API testing"]
+    N16["fixtures"]
+    N17["Финальный проект"]
+    N18["Automation Framework"]
+    N1 --> N2
+    N1 --> N3
+    N1 --> N4
+    N1 --> N5
+    N5 --> N6
+    N5 --> N7
+    N5 --> N8
+    N5 --> N9
+    N9 --> N10
+    N9 --> N11
+    N9 --> N12
+    N9 --> N13
+    N13 --> N14
+    N13 --> N15
+    N13 --> N16
+    N13 --> N17
+    N17 --> N18
 ```
 
 QA-задача, которая требует нескольких частей:

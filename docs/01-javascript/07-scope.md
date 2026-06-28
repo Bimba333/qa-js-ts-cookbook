@@ -8,10 +8,11 @@
 
 Variables дают named access к сохраненной информации:
 
-```text
-Variable
-│
-└── named access to stored information
+```mermaid
+flowchart TD
+    N1["Variable"]
+    N2["named access to stored information"]
+    N1 --> N2
 ```
 
 Но после variables сразу появляется следующий вопрос:
@@ -44,26 +45,27 @@ prepareUser();
 
 Общая цепочка теперь такая:
 
-```text
-Execution Context
-│
-└── создает среду выполнения
-
-Call Stack
-│
-└── управляет активным context
-
-Memory
-│
-└── хранит информацию во время выполнения
-
-Variables
-│
-└── объясняют, как появляются имена
-
-Scope
-│
-└── объясняет, где эти имена видимы
+```mermaid
+flowchart TD
+    N1["Execution Context"]
+    N2["создает среду выполнения"]
+    N3["Call Stack"]
+    N4["управляет активным context"]
+    N5["Memory"]
+    N6["хранит информацию во время выполнения"]
+    N7["Variables"]
+    N8["объясняют, как появляются имена"]
+    N9["Scope"]
+    N10["объясняет, где эти имена видимы"]
+    N1 --> N2
+    N1 --> N3
+    N3 --> N4
+    N3 --> N5
+    N5 --> N6
+    N5 --> N7
+    N7 --> N8
+    N7 --> N9
+    N9 --> N10
 ```
 
 Lexical Environment объяснит внутренний механизм Scope в следующей главе. Сейчас мы строим внешнюю, но точную mental model: какие identifiers engine может access прямо сейчас.
@@ -194,19 +196,23 @@ Some identifiers are not visible here.
 
 Пока не нужно определение. Нужно почувствовать проблему:
 
-```text
-Program has many names
-│
-├── baseUrl
-├── userName
-├── expectedStatus
-└── actualStatus
-
-Current line wants one name
-│
-▼
-Engine must decide:
-Can this name be accessed from here?
+```mermaid
+flowchart TD
+    N1["Program has many names"]
+    N2["baseUrl"]
+    N3["userName"]
+    N4["expectedStatus"]
+    N5["actualStatus"]
+    N6["Current line wants one name"]
+    N7["Engine must decide:"]
+    N8["Can this name be accessed from here?"]
+    N1 --> N2
+    N1 --> N3
+    N1 --> N4
+    N1 --> N5
+    N1 --> N6
+    N6 --> N7
+    N7 --> N8
 ```
 
 Scope существует потому, что программе нужны границы видимости имен.
@@ -219,13 +225,17 @@ Scope существует потому, что программе нужны г
 
 Если бы все identifiers были видимы везде, программа быстро стала бы опасной.
 
-```text
-All names visible everywhere
-│
-├── helper can accidentally change test variable
-├── test can accidentally rely on helper-local detail
-├── same names collide
-└── code becomes hard to reason about
+```mermaid
+flowchart TD
+    N1["All names visible everywhere"]
+    N2["helper can accidentally change test variable"]
+    N3["test can accidentally rely on helper-local detail"]
+    N4["same names collide"]
+    N5["code becomes hard to reason about"]
+    N1 --> N2
+    N1 --> N3
+    N1 --> N4
+    N1 --> N5
 ```
 
 Представим тестовый проект:
@@ -247,14 +257,13 @@ console.log(status);
 
 Что должен решить engine:
 
-```text
-Current line asks for status
-│
-▼
-Which status is visible here?
-│
-▼
-Which value should be read?
+```mermaid
+flowchart TD
+    N1["Current line asks for status"]
+    N2["Which status is visible here?"]
+    N3["Which value should be read?"]
+    N1 --> N2
+    N2 --> N3
 ```
 
 ### Что такое Scope
@@ -263,10 +272,11 @@ Which value should be read?
 
 Scope — область программы, в которой identifier видим и может быть использован.
 
-```text
-Scope
-│
-└── rules of identifier visibility
+```mermaid
+flowchart TD
+    N1["Scope"]
+    N2["rules of identifier visibility"]
+    N1 --> N2
 ```
 
 Главная формула главы:
@@ -281,14 +291,15 @@ Scope answers:
 
 Scope не создает value сам по себе. Scope определяет, где name можно использовать для доступа к value.
 
-```text
-Variable
-│
-└── name exists
-
-Scope
-│
-└── name is visible here or not visible here
+```mermaid
+flowchart TD
+    N1["Variable"]
+    N2["name exists"]
+    N3["Scope"]
+    N4["name is visible here or not visible here"]
+    N1 --> N2
+    N1 --> N3
+    N3 --> N4
 ```
 
 Что engine делает прямо сейчас:
@@ -316,20 +327,22 @@ function printBaseUrl() {
 
 Диаграмма:
 
-```text
-Global Scope
-│
-├── baseUrl
-└── printBaseUrl
+```mermaid
+flowchart TD
+    N1["Global Scope"]
+    N2["baseUrl"]
+    N3["printBaseUrl"]
+    N1 --> N2
+    N1 --> N3
 ```
 
 Что видно в Global Scope:
 
-```text
-Global line
-│
-▼
-can access global identifiers
+```mermaid
+flowchart TD
+    N1["Global line"]
+    N2["can access global identifiers"]
+    N1 --> N2
 ```
 
 Пример:
@@ -342,14 +355,15 @@ console.log(testName);
 
 Схема:
 
-```text
-Global Scope
-│
-└── testName → "login"
-
-console.log(testName)
-│
-└── lookup finds testName in Global Scope
+```mermaid
+flowchart TD
+    N1["Global Scope"]
+    N2["testName → &quot;login&quot;"]
+    N3["console.log(testName)"]
+    N4["lookup finds testName in Global Scope"]
+    N1 --> N2
+    N1 --> N3
+    N3 --> N4
 ```
 
 Global Scope удобен для stable configuration в маленьких примерах, но в больших тестовых проектах global mutable состояние часто создает проблемы. Это будет разобрано в Automation QA разделе главы.
@@ -372,26 +386,28 @@ prepareUser();
 
 Диаграмма:
 
-```text
-Global Scope
-│
-└── prepareUser
-    │
-    ▼
-    Function Scope: prepareUser
-    └── userName
+```mermaid
+flowchart TD
+    N1["Global Scope"]
+    N2["prepareUser"]
+    N3["Function Scope: prepareUser"]
+    N4["userName"]
+    N1 --> N2
+    N1 --> N3
+    N3 --> N4
 ```
 
 Снаружи функции `userName` не видим:
 
-```text
-Global Scope
-│
-└── no userName here
-
-Function Scope
-│
-└── userName exists here
+```mermaid
+flowchart TD
+    N1["Global Scope"]
+    N2["нет userName here"]
+    N3["Function Scope"]
+    N4["userName exists here"]
+    N1 --> N2
+    N1 --> N3
+    N3 --> N4
 ```
 
 Что engine делает прямо сейчас:
@@ -427,11 +443,13 @@ if (true) {
 
 Диаграмма:
 
-```text
-Global Scope
-│
-└── Block Scope
-    └── expectedStatus
+```mermaid
+flowchart TD
+    N1["Global Scope"]
+    N2["Block Scope"]
+    N3["expectedStatus"]
+    N1 --> N2
+    N2 --> N3
 ```
 
 Снаружи блока identifier не видим:
@@ -468,86 +486,89 @@ buildLoginUrl();
 
 Диаграмма nested scopes:
 
-```text
-Global Scope
-│
-├── baseUrl
-└── buildLoginUrl
-    │
-    ▼
-    Function Scope
-    │
-    └── path
-        │
-        ▼
-        Block Scope
-        └── fullUrl
+```mermaid
+flowchart TD
+    N1["Global Scope"]
+    N2["baseUrl"]
+    N3["buildLoginUrl"]
+    N4["Function Scope"]
+    N5["path"]
+    N6["Block Scope"]
+    N7["fullUrl"]
+    N1 --> N2
+    N1 --> N3
+    N1 --> N4
+    N4 --> N5
+    N4 --> N6
+    N6 --> N7
 ```
 
 Внутренний scope может использовать identifiers из внешних scopes:
 
-```text
-Block Scope wants fullUrl
-│
-└── found in Block Scope
-
-Block Scope wants path
-│
-└── not in Block Scope
-    │
-    ▼
-    found in Function Scope
-
-Block Scope wants baseUrl
-│
-└── not in Block Scope
-    │
-    ▼
-    not in Function Scope
-    │
-    ▼
-    found in Global Scope
+```mermaid
+flowchart TD
+    N1["Block Scope wants fullUrl"]
+    N2["found in Block Scope"]
+    N3["Block Scope wants path"]
+    N4["not in Block Scope"]
+    N5["found in Function Scope"]
+    N6["Block Scope wants baseUrl"]
+    N7["not in Block Scope"]
+    N8["not in Function Scope"]
+    N9["found in Global Scope"]
+    N1 --> N2
+    N1 --> N3
+    N3 --> N4
+    N3 --> N5
+    N3 --> N6
+    N6 --> N7
+    N6 --> N8
+    N6 --> N9
 ```
 
 ### Parent and child scopes
 
 Вложенный scope можно назвать child scope. Внешний scope — parent scope.
 
-```text
-Parent Scope
-│
-└── Child Scope
-    │
-    └── Nested Child Scope
+```mermaid
+flowchart TD
+    N1["Parent Scope"]
+    N2["Child Scope"]
+    N3["Nested Child Scope"]
+    N1 --> N2
+    N2 --> N3
 ```
 
 В примере:
 
-```text
-Global Scope
-│
-└── parent for Function Scope
-
-Function Scope
-│
-├── child of Global Scope
-└── parent for Block Scope
-
-Block Scope
-│
-└── child of Function Scope
+```mermaid
+flowchart TD
+    N1["Global Scope"]
+    N2["parent for Function Scope"]
+    N3["Function Scope"]
+    N4["child of Global Scope"]
+    N5["parent for Block Scope"]
+    N6["Block Scope"]
+    N7["child of Function Scope"]
+    N1 --> N2
+    N1 --> N3
+    N3 --> N4
+    N3 --> N5
+    N3 --> N6
+    N6 --> N7
 ```
 
 Модель rooms inside a building:
 
-```text
-Building
-│
-└── Global room
-    │
-    └── Function room
-        │
-        └── Block room
+```mermaid
+flowchart TD
+    N1["Building"]
+    N2["Global room"]
+    N3["Function room"]
+    N4["Block room"]
+    N1 --> N2
+    N2 --> N3
+    N3 --> N4
 ```
 
 Внутренняя комната может выйти взглядом наружу к parent rooms. Внешняя комната не видит private notes, лежащие внутри child room.
@@ -556,33 +577,35 @@ Building
 
 Scope можно представить как комнаты с дверями.
 
-```text
-Global Room
-│
-└── door to Function Room
-    │
-    └── door to Block Room
+```mermaid
+flowchart TD
+    N1["Global Room"]
+    N2["door to Function Room"]
+    N3["door to Block Room"]
+    N1 --> N2
+    N2 --> N3
 ```
 
 Когда engine находится внутри Block Room, он может искать наружу:
 
-```text
-Block Room
-│
-▼
-Function Room
-│
-▼
-Global Room
+```mermaid
+flowchart TD
+    N1["Block Room"]
+    N2["Function Room"]
+    N3["Global Room"]
+    N1 --> N2
+    N2 --> N3
 ```
 
 Но поиск не идет внутрь sibling или child rooms, в которых текущий код не находится.
 
-```text
-Current room: Global
-│
-├── cannot inspect Function local names
-└── cannot inspect Block local names
+```mermaid
+flowchart TD
+    N1["Current room: Global"]
+    N2["cannot inspect Function local names"]
+    N3["cannot inspect Block local names"]
+    N1 --> N2
+    N1 --> N3
 ```
 
 Это ключевой принцип:
@@ -607,20 +630,24 @@ function createUser() {
 
 Диаграмма:
 
-```text
-Function local workspace: createUser
-│
-├── userName
-└── userRole
+```mermaid
+flowchart TD
+    N1["Function local workspace: createUser"]
+    N2["userName"]
+    N3["userRole"]
+    N1 --> N2
+    N1 --> N3
 ```
 
 Эти identifiers помогают функции выполнить работу, но не становятся автоматически видимыми для всей программы.
 
-```text
-Local workspace
-│
-├── useful inside function
-└── hidden from outside code
+```mermaid
+flowchart TD
+    N1["Local workspace"]
+    N2["useful inside function"]
+    N3["hidden from outside code"]
+    N1 --> N2
+    N1 --> N3
 ```
 
 Для Automation QA это особенно важно: helper-local variables должны оставаться деталями helper.
@@ -629,17 +656,15 @@ Local workspace
 
 Scope Chain — цепочка scopes, по которой engine ищет identifier.
 
-```text
-Current Scope
-│
-▼
-Parent Scope
-│
-▼
-Parent of Parent
-│
-▼
-Global Scope
+```mermaid
+flowchart TD
+    N1["Current Scope"]
+    N2["Parent Scope"]
+    N3["Parent of Parent"]
+    N4["Global Scope"]
+    N1 --> N2
+    N2 --> N3
+    N3 --> N4
 ```
 
 Это концептуальная модель. Lexical Environment internals объяснят, как engine представляет эту связь внутри, в следующей главе.
@@ -660,23 +685,24 @@ printLoginUrl();
 
 Lookup для `path`:
 
-```text
-Current Scope: printLoginUrl
-│
-└── path found
+```mermaid
+flowchart TD
+    N1["Current Scope: printLoginUrl"]
+    N2["path found"]
+    N1 --> N2
 ```
 
 Lookup для `baseUrl`:
 
-```text
-Current Scope: printLoginUrl
-│
-└── baseUrl not found
-    │
-    ▼
-Global Scope
-│
-└── baseUrl found
+```mermaid
+flowchart TD
+    N1["Current Scope: printLoginUrl"]
+    N2["baseUrl not found"]
+    N3["Global Scope"]
+    N4["baseUrl found"]
+    N1 --> N2
+    N1 --> N3
+    N3 --> N4
 ```
 
 ### Identifier lookup
@@ -695,28 +721,27 @@ Identifier lookup — процесс поиска visible identifier.
 
 Полный lookup process:
 
-```text
-Identifier requested: userName
-│
-▼
-Current Scope
-│
-├── found? yes → use current identifier
-│
-└── found? no
-    │
-    ▼
-    Parent Scope
-    │
-    ├── found? yes → use parent identifier
-    │
-    └── found? no
-        │
-        ▼
-        Global Scope
-        │
-        ├── found? yes → use global identifier
-        └── found? no → ReferenceError
+```mermaid
+flowchart TD
+    N1["Identifier requested: userName"]
+    N2["Current Scope"]
+    N3["found? да → use current identifier"]
+    N4["found? нет"]
+    N5["Parent Scope"]
+    N6["found? да → use parent identifier"]
+    N7["found? нет"]
+    N8["Global Scope"]
+    N9["found? да → use global identifier"]
+    N10["found? нет → ReferenceError"]
+    N1 --> N2
+    N2 --> N3
+    N2 --> N4
+    N2 --> N5
+    N5 --> N6
+    N5 --> N7
+    N5 --> N8
+    N8 --> N9
+    N8 --> N10
 ```
 
 ReferenceError — runtime error, который возникает, когда код обращается к identifier, который не найден в доступной цепочке. Error Handling будет изучаться позже.
@@ -747,25 +772,26 @@ global
 
 Диаграмма shadowing:
 
-```text
-Global Scope
-│
-└── status → "global"
-    │
-    ▼
-    Function Scope
-    └── status → "local"
+```mermaid
+flowchart TD
+    N1["Global Scope"]
+    N2["status → &quot;global&quot;"]
+    N3["Function Scope"]
+    N4["status → &quot;local&quot;"]
+    N1 --> N2
+    N1 --> N3
+    N3 --> N4
 ```
 
 Когда engine находится внутри function scope:
 
-```text
-lookup status
-│
-▼
-Function Scope
-│
-└── found local status
+```mermaid
+flowchart TD
+    N1["lookup status"]
+    N2["Function Scope"]
+    N3["found local status"]
+    N1 --> N2
+    N2 --> N3
 ```
 
 Поиск останавливается на ближайшем найденном identifier. Внешний `status` не исчезает, но он shadowed внутри функции.
@@ -798,14 +824,15 @@ How long is this information needed or active?
 
 Диаграмма:
 
-```text
-Variable lifetime
-│
-└── when information exists / remains relevant
-
-Variable visibility
-│
-└── where identifier can be used
+```mermaid
+flowchart TD
+    N1["Variable lifetime"]
+    N2["when information exists / remains relevant"]
+    N3["Variable visibility"]
+    N4["where identifier can be used"]
+    N1 --> N2
+    N1 --> N3
+    N3 --> N4
 ```
 
 Пример:
@@ -822,14 +849,15 @@ prepareUser();
 
 `userName` visible внутри function scope. Снаружи оно не visible.
 
-```text
-Inside prepareUser
-│
-└── userName visible
-
-Outside prepareUser
-│
-└── userName not visible
+```mermaid
+flowchart TD
+    N1["Inside prepareUser"]
+    N2["userName visible"]
+    N3["Outside prepareUser"]
+    N4["userName not visible"]
+    N1 --> N2
+    N1 --> N3
+    N3 --> N4
 ```
 
 Точные детали lifetime и memory cleanup будут связаны с будущими темами про Lexical Environment, Closures и Garbage Collector. Сейчас важна граница: visibility — это вопрос "где можно обратиться к имени".
@@ -838,32 +866,43 @@ Outside prepareUser
 
 Execution Context — рабочая среда выполнения. Scope определяет, какие identifiers видимы для кода в этой среде.
 
-```text
-Execution Context
-│
-├── current code is running
-├── current scope is known
-└── identifier lookup follows scope chain
+```mermaid
+flowchart TD
+    N1["Execution Context"]
+    N2["current code is running"]
+    N3["current scope is known"]
+    N4["identifier lookup follows scope chain"]
+    N1 --> N2
+    N1 --> N3
+    N1 --> N4
 ```
 
 Когда вызывается функция:
 
-```text
-Function Execution Context
-│
-├── function body runs
-├── function scope is current
-└── outer scopes can be searched conceptually
+```mermaid
+flowchart TD
+    N1["Function Execution Context"]
+    N2["тело функции runs"]
+    N3["function scope is current"]
+    N4["outer scopes can be searched conceptually"]
+    N1 --> N2
+    N1 --> N3
+    N1 --> N4
 ```
 
 Диаграмма:
 
-```text
-Call Stack
-├── Function Execution Context
-│   └── Current Scope: function
-└── Global Execution Context
-    └── Global Scope
+```mermaid
+flowchart TD
+    N1["Call Stack"]
+    N2["Function Execution Context"]
+    N3["Current Scope: function"]
+    N4["Global Execution Context"]
+    N5["Global Scope"]
+    N1 --> N2
+    N1 --> N3
+    N1 --> N4
+    N4 --> N5
 ```
 
 Lexical Environment объяснит внутреннюю структуру этой связи позже. Сейчас достаточно понимать: execution happens somewhere, and that "somewhere" has visible identifiers.
@@ -872,14 +911,13 @@ Lexical Environment объяснит внутреннюю структуру э�
 
 Variables создают identifiers. Scope определяет, где identifiers видимы.
 
-```text
-Variable declaration
-│
-▼
-identifier appears
-│
-▼
-Scope determines visibility
+```mermaid
+flowchart TD
+    N1["Variable declaration"]
+    N2["появляется идентификатор"]
+    N3["Scope determines visibility"]
+    N1 --> N2
+    N2 --> N3
 ```
 
 Пример:
@@ -892,22 +930,24 @@ function testLogin() {
 }
 ```
 
-```text
-Variable
-│
-└── userName is declared
-
-Scope
-│
-└── userName visible inside testLogin
+```mermaid
+flowchart TD
+    N1["Variable"]
+    N2["userName is declared"]
+    N3["Scope"]
+    N4["userName visible inside testLogin"]
+    N1 --> N2
+    N1 --> N3
+    N3 --> N4
 ```
 
 Снаружи:
 
-```text
-Global Scope
-│
-└── userName not visible
+```mermaid
+flowchart TD
+    N1["Global Scope"]
+    N2["userName not visible"]
+    N1 --> N2
 ```
 
 ### Переход к Lexical Environment
@@ -928,14 +968,15 @@ Then parent of parent.
 
 Lexical Environment — внутренняя структура, которая помогает engine хранить identifiers текущей области и ссылку на outer environment. Это будет следующая глава.
 
-```text
-Scope
-│
-└── rules of visibility
-
-Lexical Environment
-│
-└── internal mechanism behind those rules
+```mermaid
+flowchart TD
+    N1["Scope"]
+    N2["rules of visibility"]
+    N3["Lexical Environment"]
+    N4["internal mechanism behind those rules"]
+    N1 --> N2
+    N1 --> N3
+    N3 --> N4
 ```
 
 ---
@@ -946,51 +987,49 @@ Lexical Environment
 
 Когда engine встречает identifier:
 
-```text
-Identifier appears in code
-│
-▼
-Engine asks:
-"What identifiers can I access right now?"
-│
-▼
-Check current scope
-│
-▼
-If not found, search parent scope
-│
-▼
-Continue outward
-│
-▼
-Use first matching identifier
+```mermaid
+flowchart TD
+    N1["идентификатор появляется в коде"]
+    N2["Engine asks:"]
+    N3["&quot;What identifiers can I access right now?&quot;"]
+    N4["проверить текущий Scope"]
+    N5["If not found, search parent scope"]
+    N6["продолжить outward"]
+    N7["Use first matching identifier"]
+    N1 --> N2
+    N3 --> N4
+    N4 --> N5
+    N5 --> N6
+    N6 --> N7
+    N2 --> N3
 ```
 
 Для nested scopes:
 
-```text
-Block Scope
-│
-├── local identifiers
-└── parent → Function Scope
-              │
-              ├── local identifiers
-              └── parent → Global Scope
+```mermaid
+flowchart TD
+    N1["Block Scope"]
+    N2["local identifiers"]
+    N3["parent → Function Scope"]
+    N4["local identifiers"]
+    N5["parent → Global Scope"]
+    N1 --> N2
+    N1 --> N3
+    N1 --> N4
+    N4 --> N5
 ```
 
 Для shadowing:
 
-```text
-lookup status
-│
-▼
-Current Scope has status
-│
-▼
-use current status
-│
-▼
-do not continue to outer status
+```mermaid
+flowchart TD
+    N1["lookup status"]
+    N2["Current Scope has status"]
+    N3["use current status"]
+    N4["do not продолжить to outer status"]
+    N1 --> N2
+    N2 --> N3
+    N3 --> N4
 ```
 
 Что engine делает прямо сейчас:
@@ -1010,64 +1049,69 @@ Engine stops at the first visible matching identifier.
 
 Scope — это комнаты внутри здания.
 
-```text
-Building
-│
-└── Global Room
-    │
-    └── Function Room
-        │
-        └── Block Room
+```mermaid
+flowchart TD
+    N1["Building"]
+    N2["Global Room"]
+    N3["Function Room"]
+    N4["Block Room"]
+    N1 --> N2
+    N2 --> N3
+    N3 --> N4
 ```
 
 Identifiers — записи, лежащие в комнатах.
 
-```text
-Global Room
-│
-└── baseUrl
-
-Function Room
-│
-└── userName
-
-Block Room
-│
-└── expectedStatus
+```mermaid
+flowchart TD
+    N1["Global Room"]
+    N2["baseUrl"]
+    N3["Function Room"]
+    N4["userName"]
+    N5["Block Room"]
+    N6["expectedStatus"]
+    N1 --> N2
+    N1 --> N3
+    N3 --> N4
+    N3 --> N5
+    N5 --> N6
 ```
 
 ### Doors between rooms
 
 Из внутренней комнаты можно смотреть наружу.
 
-```text
-Block Room
-│
-▼
-Function Room
-│
-▼
-Global Room
+```mermaid
+flowchart TD
+    N1["Block Room"]
+    N2["Function Room"]
+    N3["Global Room"]
+    N1 --> N2
+    N2 --> N3
 ```
 
 Из внешней комнаты нельзя автоматически смотреть внутрь child room.
 
-```text
-Global Room
-│
-└── cannot inspect Function Room local names
+```mermaid
+flowchart TD
+    N1["Global Room"]
+    N2["cannot inspect Function Room local names"]
+    N1 --> N2
 ```
 
 ### Local workspace
 
 Функция имеет local workspace.
 
-```text
-Helper local workspace
-│
-├── requestBody
-├── responseStatus
-└── normalizedUser
+```mermaid
+flowchart TD
+    N1["Helper local workspace"]
+    N2["requestBody"]
+    N3["responseStatus"]
+    N4["normalizedUser"]
+    N1 --> N2
+    N1 --> N3
+    N1 --> N4
 ```
 
 Эти names помогают helper, но не должны загрязнять весь тест.
@@ -1076,12 +1120,13 @@ Helper local workspace
 
 Nested scopes — вложенные комнаты.
 
-```text
-test scope
-│
-└── helper scope
-    │
-    └── block scope
+```mermaid
+flowchart TD
+    N1["test scope"]
+    N2["helper scope"]
+    N3["block scope"]
+    N1 --> N2
+    N2 --> N3
 ```
 
 Чем глубже текущий код, тем больше outer scopes он может conceptually search.
@@ -1090,10 +1135,11 @@ test scope
 
 Parent scope — внешняя область.
 
-```text
-Child Scope
-│
-└── can search Parent Scope
+```mermaid
+flowchart TD
+    N1["Child Scope"]
+    N2["can search Parent Scope"]
+    N1 --> N2
 ```
 
 ### Searching outward only
@@ -1327,14 +1373,13 @@ Inside function `status` refers to local identifier.
 
 Исправленная модель:
 
-```text
-Current Scope has status
-│
-▼
-use local status
-│
-▼
-do not read global status
+```mermaid
+flowchart TD
+    N1["Current Scope has status"]
+    N2["use local status"]
+    N3["do not read global status"]
+    N1 --> N2
+    N2 --> N3
 ```
 
 ### Ошибка 4. Использовать global mutable состояние в тестах
@@ -1415,27 +1460,32 @@ function buildUserName() {
 
 `prefix` и `userName` — helper-local variables. Test code не должен зависеть от них напрямую.
 
-```text
-Test Scope
-│
-└── calls helper
-    │
-    ▼
-    Helper Scope
-    ├── prefix
-    └── userName
+```mermaid
+flowchart TD
+    N1["Test Scope"]
+    N2["calls helper"]
+    N3["Helper Scope"]
+    N4["prefix"]
+    N5["userName"]
+    N1 --> N2
+    N1 --> N3
+    N3 --> N4
+    N3 --> N5
 ```
 
 ### Fixture-local variables
 
 Fixture может иметь local setup значения:
 
-```text
-Fixture Scope
-│
-├── authToken
-├── userId
-└── setupStatus
+```mermaid
+flowchart TD
+    N1["Fixture Scope"]
+    N2["authToken"]
+    N3["userId"]
+    N4["setupStatus"]
+    N1 --> N2
+    N1 --> N3
+    N1 --> N4
 ```
 
 Если эти значения не нужны тесту напрямую, они должны оставаться внутри fixture logic.
@@ -1454,11 +1504,13 @@ function testLogin() {
 }
 ```
 
-```text
-testLogin Scope
-│
-├── userName
-└── expectedStatus
+```mermaid
+flowchart TD
+    N1["testLogin Scope"]
+    N2["userName"]
+    N3["expectedStatus"]
+    N1 --> N2
+    N1 --> N3
 ```
 
 Такой код проще читать и безопаснее менять.
@@ -1481,12 +1533,15 @@ function testB() {
 
 Проблема:
 
-```text
-Global mutable state
-│
-├── can be changed by many places
-├── makes tests dependent on order
-└── complicates debugging
+```mermaid
+flowchart TD
+    N1["Global mutable state"]
+    N2["can be changed by many places"]
+    N3["makes tests dependent on order"]
+    N4["complicates debugging"]
+    N1 --> N2
+    N1 --> N3
+    N1 --> N4
 ```
 
 Лучше держать данные ближе к месту использования:
@@ -1501,22 +1556,23 @@ helper-local temporary data
 
 Scope помогает делать тесты читаемыми:
 
-```text
-Global configuration
-│
-└── stable values
-
-Fixture scope
-│
-└── setup details
-
-Test scope
-│
-└── scenario data
-
-Helper scope
-│
-└── implementation details
+```mermaid
+flowchart TD
+    N1["Global configuration"]
+    N2["stable values"]
+    N3["Fixture scope"]
+    N4["setup details"]
+    N5["Test scope"]
+    N6["scenario data"]
+    N7["Helper scope"]
+    N8["implementation details"]
+    N1 --> N2
+    N1 --> N3
+    N3 --> N4
+    N3 --> N5
+    N5 --> N6
+    N5 --> N7
+    N7 --> N8
 ```
 
 Читатель понимает, где искать identifier и почему он не должен быть доступен везде.
@@ -1569,14 +1625,13 @@ Global Scope видим из многих мест через outward lookup, н
 
 Scope Chain — концептуальный путь поиска identifier:
 
-```text
-Current Scope
-│
-▼
-Parent Scope
-│
-▼
-Global Scope
+```mermaid
+flowchart TD
+    N1["Current Scope"]
+    N2["Parent Scope"]
+    N3["Global Scope"]
+    N1 --> N2
+    N2 --> N3
 ```
 
 Engine ищет outward only и останавливается на первом найденном matching identifier. Поэтому shadowing не удаляет outer variable, а скрывает ее внутри inner scope.

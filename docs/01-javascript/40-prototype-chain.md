@@ -6,29 +6,32 @@
 
 Главная модель была такой:
 
-```text
-Need property
-│
-▼
-Current object
-│
-├── found?
-│   └── use it
-│
-└── not found?
-    │
-    ▼
-    Look in Prototype
+```mermaid
+flowchart TD
+    N1["Need property"]
+    N2["Current object"]
+    N3["found?"]
+    N4["use it"]
+    N5["not found?"]
+    N6["Look in Prototype"]
+    N1 --> N2
+    N2 --> N3
+    N2 --> N4
+    N2 --> N5
+    N2 --> N6
 ```
 
 Prototype был представлен как обычный object, который может быть shared source of properties. На практике мы чаще всего использовали его для общее поведение:
 
-```text
-object
-│
-├── own data
-└── prototype
-    └── shared methods
+```mermaid
+flowchart TD
+    N1["объект"]
+    N2["own data"]
+    N3["prototype"]
+    N4["shared methods"]
+    N1 --> N2
+    N1 --> N3
+    N3 --> N4
 ```
 
 Теперь появляется следующий вопрос:
@@ -37,15 +40,15 @@ object
 
 Например:
 
-```text
-object
-│
-└── property not found
-    │
-    ▼
-prototype
-│
-└── property still not found
+```mermaid
+flowchart TD
+    N1["объект"]
+    N2["property not found"]
+    N3["prototype"]
+    N4["property still not found"]
+    N1 --> N2
+    N1 --> N3
+    N3 --> N4
 ```
 
 JavaScript не останавливается на слове "prototype" как на магической стене. Если у prototype тоже есть свой prototype, lookup может продолжиться.
@@ -54,23 +57,19 @@ JavaScript не останавливается на слове "prototype" ка�
 
 Главная модель главы:
 
-```text
-Need property
-│
-▼
-Current object
-│
-▼
-Not found
-│
-▼
-Next prototype
-│
-▼
-Repeat
-│
-▼
-Found or undefined
+```mermaid
+flowchart TD
+    N1["Need property"]
+    N2["Current object"]
+    N3["Not found"]
+    N4["Next prototype"]
+    N5["Repeat"]
+    N6["Found or undefined"]
+    N1 --> N2
+    N2 --> N3
+    N3 --> N4
+    N4 --> N5
+    N5 --> N6
 ```
 
 Важно: Prototype Chain в этой главе - это lookup algorithm, not inheritance hierarchy.
@@ -179,28 +178,33 @@ const pageBehavior = {
 
 Связь:
 
-```text
-loginPage
-│
-└── prototype ──► pageBehavior
+```mermaid
+flowchart TD
+    N1["loginPage"]
+    N2["prototype → pageBehavior"]
+    N1 --> N2
 ```
 
 Если JavaScript ищет `describePage`, все понятно:
 
-```text
-loginPage.describePage
-│
-├── loginPage: not found
-└── pageBehavior: found
+```mermaid
+flowchart TD
+    N1["loginPage.describePage"]
+    N2["loginPage: not found"]
+    N3["pageBehavior: found"]
+    N1 --> N2
+    N1 --> N3
 ```
 
 Но что если нужен method, которого нет и в `pageBehavior`?
 
-```text
-loginPage.formatError
-│
-├── loginPage: not found
-└── pageBehavior: not found
+```mermaid
+flowchart TD
+    N1["loginPage.formatError"]
+    N2["loginPage: not found"]
+    N3["pageBehavior: not found"]
+    N1 --> N2
+    N1 --> N3
 ```
 
 Вопрос:
@@ -209,14 +213,13 @@ loginPage.formatError
 
 Если `pageBehavior` itself has prototype, JavaScript может продолжить поиск там:
 
-```text
-loginPage
-│
-▼
-pageBehavior
-│
-▼
-frameworkBehavior
+```mermaid
+flowchart TD
+    N1["loginPage"]
+    N2["pageBehavior"]
+    N3["frameworkBehavior"]
+    N1 --> N2
+    N2 --> N3
 ```
 
 Это уже chain.
@@ -237,28 +240,26 @@ Prototype Chain - это последовательность objects, по ко
 
 Начинаем с действия:
 
-```text
-Read property
-│
-▼
-Where is the next lookup step?
+```mermaid
+flowchart TD
+    N1["Read property"]
+    N2["Where is the next lookup step?"]
+    N1 --> N2
 ```
 
 Если property не найдена на current object, engine переходит к prototype.
 
 Если property не найдена на prototype, engine переходит к prototype of that prototype.
 
-```text
-object
-│
-▼
-prototype
-│
-▼
-prototype of prototype
-│
-▼
-...
+```mermaid
+flowchart TD
+    N1["объект"]
+    N2["prototype"]
+    N3["prototype of prototype"]
+    N4["..."]
+    N1 --> N2
+    N2 --> N3
+    N3 --> N4
 ```
 
 Так появляется chain.
@@ -267,55 +268,54 @@ prototype of prototype
 
 Упрощенная модель:
 
-```text
-Need property
-│
-▼
-Check current object
-│
-├── found
-│   └── return value
-│
-└── not found
-    │
-    ▼
-    Move to next prototype
-    │
-    ▼
-    Repeat
+```mermaid
+flowchart TD
+    N1["Need property"]
+    N2["Check current object"]
+    N3["found"]
+    N4["возвращаемое значение"]
+    N5["not found"]
+    N6["Move to next prototype"]
+    N7["Repeat"]
+    N1 --> N2
+    N2 --> N3
+    N2 --> N4
+    N2 --> N5
+    N2 --> N6
+    N2 --> N7
 ```
 
 Если JavaScript дошел до конца chain and property was not found:
 
-```text
-not found anywhere
-│
-▼
-undefined
+```mermaid
+flowchart TD
+    N1["not found anywhere"]
+    N2["undefined"]
+    N1 --> N2
 ```
 
 ### `Object.prototype`
 
 Most ordinary objects eventually lead to `Object.prototype`.
 
-```text
-ordinary object
-│
-▼
-some prototype
-│
-▼
-Object.prototype
+```mermaid
+flowchart TD
+    N1["ordinary object"]
+    N2["some prototype"]
+    N3["Object.prototype"]
+    N1 --> N2
+    N2 --> N3
 ```
 
 `Object.prototype` contains common properties available to many ordinary objects.
 
 В этой главе не нужно запоминать его полный набор properties. Важно понять место:
 
-```text
-Object.prototype
-│
-└── near the end of ordinary object lookup
+```mermaid
+flowchart TD
+    N1["Object.prototype"]
+    N2["near the end of ordinary object lookup"]
+    N1 --> N2
 ```
 
 Если property не найдена и там, lookup ends.
@@ -326,75 +326,80 @@ Object.prototype
 
 Концептуально:
 
-```text
-object
-│
-▼
-prototype
-│
-▼
-Object.prototype
-│
-▼
-end
+```mermaid
+flowchart TD
+    N1["объект"]
+    N2["prototype"]
+    N3["Object.prototype"]
+    N4["end"]
+    N1 --> N2
+    N2 --> N3
+    N3 --> N4
 ```
 
 Когда next prototype больше нет, JavaScript stops searching.
 
 Именно поэтому missing property becomes `undefined`.
 
-```text
-Search ended
-│
-└── no property found
-    │
-    ▼
-    undefined
+```mermaid
+flowchart TD
+    N1["Search ended"]
+    N2["нет property found"]
+    N3["undefined"]
+    N1 --> N2
+    N1 --> N3
 ```
 
 ### Own property priority
 
 Если property найдена на current object, JavaScript не идет дальше.
 
-```text
-object.status
-│
-├── object has own status
-└── stop lookup
+```mermaid
+flowchart TD
+    N1["object.status"]
+    N2["object has own status"]
+    N3["stop lookup"]
+    N1 --> N2
+    N1 --> N3
 ```
 
 Prototype value с тем же name не используется.
 
-```text
-object
-│
-└── status: "own"
-
-prototype
-│
-└── status: "shared"
-
-result: "own"
+```mermaid
+flowchart TD
+    N1["объект"]
+    N2["status: &quot;own&quot;"]
+    N3["prototype"]
+    N4["status: &quot;shared&quot;"]
+    N5["результат: &quot;own&quot;"]
+    N1 --> N2
+    N1 --> N3
+    N3 --> N4
+    N3 --> N5
 ```
 
 ### Shadowing
 
 Shadowing happens when a property on a closer object hides property with same name later in chain.
 
-```text
-current object
-│
-└── name: "local"
-
-prototype
-│
-└── name: "shared"
+```mermaid
+flowchart TD
+    N1["current object"]
+    N2["name: &quot;local&quot;"]
+    N3["prototype"]
+    N4["name: &quot;shared&quot;"]
+    N1 --> N2
+    N1 --> N3
+    N3 --> N4
 ```
 
 Lookup result:
 
-```text
-name -> "local"
+```mermaid
+flowchart LR
+    N1["name"]
+    N2["&quot;local&quot;"]
+    N1 --> N2
 ```
 
 Prototype property still exists.
@@ -405,27 +410,28 @@ It is just not reached for this lookup.
 
 Property overriding is practical effect of shadowing:
 
-```text
-shared method in prototype
-│
-but
-│
-own method with same name exists
-│
-▼
-own method wins
+```mermaid
+flowchart TD
+    N1["shared method in prototype"]
+    N2["but"]
+    N3["own method with same name exists"]
+    N4["own method wins"]
+    N1 --> N2
+    N2 --> N3
+    N3 --> N4
 ```
 
 Например, shared `describe()` можно override directly on one object:
 
-```text
-generic describe()
-│
-└── in prototype
-
-special describe()
-│
-└── own property
+```mermaid
+flowchart TD
+    N1["generic describe()"]
+    N2["in prototype"]
+    N3["special describe()"]
+    N4["own property"]
+    N1 --> N2
+    N1 --> N3
+    N3 --> N4
 ```
 
 Lookup chooses special one.
@@ -436,20 +442,17 @@ Lookup chooses special one.
 
 Рассмотрим chain from QA example:
 
-```text
-loginPage
-│
-▼
-pageBehavior
-│
-▼
-frameworkBehavior
-│
-▼
-Object.prototype
-│
-▼
-end
+```mermaid
+flowchart TD
+    N1["loginPage"]
+    N2["pageBehavior"]
+    N3["frameworkBehavior"]
+    N4["Object.prototype"]
+    N5["end"]
+    N1 --> N2
+    N2 --> N3
+    N3 --> N4
+    N4 --> N5
 ```
 
 Engine receives:
@@ -461,40 +464,40 @@ start object: loginPage
 
 Step by step:
 
-```text
-Step 1
-│
-▼
-Check loginPage own properties
-│
-└── formatError not found
+```mermaid
+flowchart TD
+    N1["Step 1"]
+    N2["Check loginPage own properties"]
+    N3["formatError not found"]
+    N1 --> N2
+    N2 --> N3
 ```
 
-```text
-Step 2
-│
-▼
-Move to pageBehavior
-│
-└── formatError not found
+```mermaid
+flowchart TD
+    N1["Step 2"]
+    N2["Move to pageBehavior"]
+    N3["formatError not found"]
+    N1 --> N2
+    N2 --> N3
 ```
 
-```text
-Step 3
-│
-▼
-Move to frameworkBehavior
-│
-└── formatError found
+```mermaid
+flowchart TD
+    N1["Step 3"]
+    N2["Move to frameworkBehavior"]
+    N3["formatError found"]
+    N1 --> N2
+    N2 --> N3
 ```
 
 Lookup stops immediately:
 
-```text
-found
-│
-▼
-return property value
+```mermaid
+flowchart TD
+    N1["found"]
+    N2["вернуть property value"]
+    N1 --> N2
 ```
 
 If returned value is a function and call form is:
@@ -505,12 +508,13 @@ loginPage.formatError();
 
 объект выполнения reminder:
 
-```text
-method found in frameworkBehavior
-│
-but ordinary call is loginPage.formatError()
-│
-therefore receiver is loginPage
+```mermaid
+flowchart TD
+    N1["method found in frameworkBehavior"]
+    N2["but ordinary вызвать is loginPage.formatError()"]
+    N3["therefore receiver is loginPage"]
+    N1 --> N2
+    N2 --> N3
 ```
 
 The method location does not automatically become объект выполнения.
@@ -526,18 +530,20 @@ This connects Prototype Chain with the previous chapters about `this`.
 
 JavaScript stops for two reasons:
 
-```text
-Reason 1
-│
-└── property found
+```mermaid
+flowchart TD
+    N1["Reason 1"]
+    N2["property found"]
+    N1 --> N2
 ```
 
 or:
 
-```text
-Reason 2
-│
-└── chain ended
+```mermaid
+flowchart TD
+    N1["Reason 2"]
+    N2["chain ended"]
+    N1 --> N2
 ```
 
 It does not keep searching after a found property because lookup has a clear priority rule:
@@ -548,10 +554,11 @@ closer property wins
 
 It does not search forever because every chain has an end.
 
-```text
-end reached
-│
-└── return undefined for simple property read
+```mermaid
+flowchart TD
+    N1["end reached"]
+    N2["вернуть undefined for simple property read"]
+    N1 --> N2
 ```
 
 ---
@@ -562,26 +569,26 @@ Prototype Chain можно представить как chain of libraries.
 
 Вы ищете instruction:
 
-```text
-Need instruction
-│
-▼
-Local shelf
-│
-├── found? use it
-└── not found? go to next library
+```mermaid
+flowchart TD
+    N1["Need instruction"]
+    N2["Local shelf"]
+    N3["found? use it"]
+    N4["not found? go to next library"]
+    N1 --> N2
+    N2 --> N3
+    N2 --> N4
 ```
 
 Если в первой библиотеке нет нужной книги, вы идете в следующую:
 
-```text
-local library
-│
-▼
-city library
-│
-▼
-central archive
+```mermaid
+flowchart TD
+    N1["local library"]
+    N2["city library"]
+    N3["central archive"]
+    N1 --> N2
+    N2 --> N3
 ```
 
 Если нашли, поиск заканчивается.
@@ -590,36 +597,46 @@ central archive
 
 Другие mental models:
 
-```text
-chain of managers
-│
-├── ask direct manager
-├── ask senior manager
-└── ask department head
+```mermaid
+flowchart TD
+    N1["chain of managers"]
+    N2["ask direct manager"]
+    N3["ask senior manager"]
+    N4["ask department head"]
+    N1 --> N2
+    N1 --> N3
+    N1 --> N4
 ```
 
-```text
-asking one colleague after another
-│
-├── colleague A
-├── colleague B
-└── colleague C
+```mermaid
+flowchart TD
+    N1["asking one colleague after another"]
+    N2["colleague A"]
+    N3["colleague B"]
+    N4["colleague C"]
+    N1 --> N2
+    N1 --> N3
+    N1 --> N4
 ```
 
-```text
-linked instruction manuals
-│
-├── object manual
-├── shared manual
-└── base manual
+```mermaid
+flowchart TD
+    N1["linked instruction manuals"]
+    N2["object manual"]
+    N3["shared manual"]
+    N4["base manual"]
+    N1 --> N2
+    N1 --> N3
+    N1 --> N4
 ```
 
 Главная мысль:
 
-```text
-Prototype Chain
-│
-└── repeated lookup path
+```mermaid
+flowchart TD
+    N1["Prototype Chain"]
+    N2["repeated lookup path"]
+    N1 --> N2
 ```
 
 ---
@@ -648,14 +665,13 @@ examples/01-javascript/chapter-40/01-basic-chain.js
 
 Показывает:
 
-```text
-object
-│
-▼
-first prototype
-│
-▼
-second prototype
+```mermaid
+flowchart TD
+    N1["объект"]
+    N2["first prototype"]
+    N3["second prototype"]
+    N1 --> N2
+    N2 --> N3
 ```
 
 ### Пример 2. Property lookup
@@ -678,10 +694,11 @@ examples/01-javascript/chapter-40/03-shadowing.js
 
 Показывает:
 
-```text
-own property
-│
-└── wins over inherited property
+```mermaid
+flowchart TD
+    N1["own property"]
+    N2["wins over inherited property"]
+    N1 --> N2
 ```
 
 ### Пример 4. Типичные ошибки
@@ -724,11 +741,11 @@ examples/01-javascript/chapter-40/06-qa-example.js
 
 В этой главе Prototype Chain is lookup algorithm.
 
-```text
-Need property
-│
-▼
-Where to search next?
+```mermaid
+flowchart TD
+    N1["Need property"]
+    N2["Where to search next?"]
+    N1 --> N2
 ```
 
 Inheritance as architecture will appear later. Здесь важно понять search path.
@@ -737,14 +754,13 @@ Inheritance as architecture will appear later. Здесь важно понят�
 
 Потому что lookup follows only one connected chain.
 
-```text
-object
-│
-▼
-its prototype
-│
-▼
-next prototype
+```mermaid
+flowchart TD
+    N1["объект"]
+    N2["its prototype"]
+    N3["next prototype"]
+    N1 --> N2
+    N2 --> N3
 ```
 
 Unrelated objects are not searched.
@@ -753,10 +769,11 @@ Unrelated objects are not searched.
 
 Because lookup starts from current object.
 
-```text
-closer object
-│
-└── higher priority
+```mermaid
+flowchart TD
+    N1["closer object"]
+    N2["higher priority"]
+    N1 --> N2
 ```
 
 Это делает local override predictable.
@@ -765,13 +782,13 @@ closer object
 
 Because lookup ended without finding property.
 
-```text
-searched whole chain
-│
-└── not found
-    │
-    ▼
-    undefined
+```mermaid
+flowchart TD
+    N1["searched whole chain"]
+    N2["not found"]
+    N3["undefined"]
+    N1 --> N2
+    N1 --> N3
 ```
 
 ### Что такое `Object.prototype`?
@@ -788,25 +805,28 @@ searched whole chain
 
 Реальность: lookup reads through the chain. It does not copy properties into object.
 
-```text
-lookup
-│
-≠
-copy
+```mermaid
+flowchart TD
+    N1["lookup"]
+    N2["≠"]
+    N3["copy"]
+    N1 --> N2
+    N2 --> N3
 ```
 
 ### Миф: самый дальний prototype важнее
 
 Реальность: closer property wins.
 
-```text
-object
-│
-└── first priority
-
-prototype
-│
-└── second priority
+```mermaid
+flowchart TD
+    N1["объект"]
+    N2["first priority"]
+    N3["prototype"]
+    N4["second priority"]
+    N1 --> N2
+    N1 --> N3
+    N3 --> N4
 ```
 
 ### Миф: Prototype Chain нужен только для classes
@@ -825,75 +845,79 @@ prototype
 
 Неправильная модель:
 
-```text
-prototype.status
-│
-└── wins over object.status
+```mermaid
+flowchart TD
+    N1["prototype.status"]
+    N2["wins over object.status"]
+    N1 --> N2
 ```
 
 Что происходит:
 
-```text
-object.status found first
-│
-└── lookup stops
+```mermaid
+flowchart TD
+    N1["object.status found first"]
+    N2["lookup stops"]
+    N1 --> N2
 ```
 
 Исправленная модель:
 
-```text
-own property priority
-│
-└── closer property wins
+```mermaid
+flowchart TD
+    N1["own property priority"]
+    N2["closer property wins"]
+    N1 --> N2
 ```
 
 ### Ошибка 2. Думать, что method объект выполнения is where method was found
 
 Неправильная модель:
 
-```text
-method found in frameworkBehavior
-│
-▼
-this = frameworkBehavior
+```mermaid
+flowchart TD
+    N1["method found in frameworkBehavior"]
+    N2["this = frameworkBehavior"]
+    N1 --> N2
 ```
 
 Что происходит при ordinary call:
 
-```text
-loginPage.formatError()
-│
-├── method found through chain
-└── receiver is loginPage
+```mermaid
+flowchart TD
+    N1["loginPage.formatError()"]
+    N2["method found through chain"]
+    N3["receiver is loginPage"]
+    N1 --> N2
+    N1 --> N3
 ```
 
 Исправленная модель:
 
-```text
-lookup location
-│
-≠
-receiver
+```mermaid
+flowchart TD
+    N1["lookup location"]
+    N2["≠"]
+    N3["receiver"]
+    N1 --> N2
+    N2 --> N3
 ```
 
 ### Ошибка 3. Делать слишком глубокие chains
 
 Неправильный дизайн:
 
-```text
-object
-│
-▼
-level 1
-│
-▼
-level 2
-│
-▼
-level 3
-│
-▼
-level 4
+```mermaid
+flowchart TD
+    N1["объект"]
+    N2["level 1"]
+    N3["level 2"]
+    N4["level 3"]
+    N5["level 4"]
+    N1 --> N2
+    N2 --> N3
+    N3 --> N4
+    N4 --> N5
 ```
 
 Что произошло:
@@ -912,18 +936,20 @@ prefer shallow, readable object relationships
 
 Неправильное ожидание:
 
-```text
-object.missing
-│
-└── throw error
+```mermaid
+flowchart TD
+    N1["object.значение отсутствует"]
+    N2["throw error"]
+    N1 --> N2
 ```
 
 Реальность:
 
-```text
-object.missing
-│
-└── undefined
+```mermaid
+flowchart TD
+    N1["object.значение отсутствует"]
+    N2["undefined"]
+    N1 --> N2
 ```
 
 Ошибка появится later if code tries to use `undefined` incorrectly.
@@ -934,23 +960,24 @@ object.missing
 
 Prototype Chain помогает читать код, где поведение organized in layers.
 
-```text
-specific object
-│
-├── specific state
-└── lookup to shared behavior
+```mermaid
+flowchart TD
+    N1["specific object"]
+    N2["specific state"]
+    N3["lookup to shared behavior"]
+    N1 --> N2
+    N1 --> N3
 ```
 
 Например:
 
-```text
-loginPage
-│
-▼
-pageBehavior
-│
-▼
-frameworkBehavior
+```mermaid
+flowchart TD
+    N1["loginPage"]
+    N2["pageBehavior"]
+    N3["frameworkBehavior"]
+    N1 --> N2
+    N2 --> N3
 ```
 
 Такая модель может быть полезной, если нужно:
@@ -965,14 +992,15 @@ frameworkBehavior
 
 Readable code matters:
 
-```text
-short clear chain
-│
-└── easier to debug
-
-deep unclear chain
-│
-└── harder to maintain
+```mermaid
+flowchart TD
+    N1["short clear chain"]
+    N2["easier to debug"]
+    N3["deep unclear chain"]
+    N4["harder to maintain"]
+    N1 --> N2
+    N1 --> N3
+    N3 --> N4
 ```
 
 ---
@@ -983,21 +1011,21 @@ deep unclear chain
 
 Page Objects may have layers:
 
-```text
-loginPage
-│
-├── own: page name, selectors
-│
-▼
-pageBehavior
-│
-├── open()
-└── assertLoaded()
-│
-▼
-frameworkBehavior
-│
-└── formatError()
+```mermaid
+flowchart TD
+    N1["loginPage"]
+    N2["own: page name, selectors"]
+    N3["pageBehavior"]
+    N4["open()"]
+    N5["assertLoaded()"]
+    N6["frameworkBehavior"]
+    N7["formatError()"]
+    N1 --> N2
+    N1 --> N3
+    N3 --> N4
+    N3 --> N5
+    N3 --> N6
+    N6 --> N7
 ```
 
 Lookup explains why `loginPage.formatError()` can work even if `formatError` is not own property.
@@ -1006,45 +1034,45 @@ Lookup explains why `loginPage.formatError()` can work even if `formatError` is 
 
 API clients often combine:
 
-```text
-client-specific config
-│
-service-level behavior
-│
-framework-level helpers
+```mermaid
+flowchart TD
+    N1["client-specific config"]
+    N2["service-level behavior"]
+    N3["framework-level helpers"]
+    N1 --> N2
+    N2 --> N3
 ```
 
 Example model:
 
-```text
-usersClient
-│
-├── own baseUrl
-├── own serviceName
-│
-▼
-serviceBehavior
-│
-└── buildEndpoint()
-│
-▼
-frameworkBehavior
-│
-└── describeRequest()
+```mermaid
+flowchart TD
+    N1["usersClient"]
+    N2["own baseUrl"]
+    N3["own serviceName"]
+    N4["serviceBehavior"]
+    N5["buildEndpoint()"]
+    N6["frameworkBehavior"]
+    N7["describeRequest()"]
+    N1 --> N2
+    N1 --> N3
+    N1 --> N4
+    N4 --> N5
+    N4 --> N6
+    N6 --> N7
 ```
 
 ### Assertion infrastructure
 
 Assertion helpers may share:
 
-```text
-specific validator
-│
-▼
-validator behavior
-│
-▼
-reporting behavior
+```mermaid
+flowchart TD
+    N1["specific validator"]
+    N2["validator behavior"]
+    N3["reporting behavior"]
+    N1 --> N2
+    N2 --> N3
 ```
 
 This can help reuse formatting and error reporting.
@@ -1053,24 +1081,24 @@ This can help reuse formatting and error reporting.
 
 If method exists but not directly in object:
 
-```text
-method is callable
-│
-but
-│
-not visible as own property
+```mermaid
+flowchart TD
+    N1["method is доступно для вызова"]
+    N2["but"]
+    N3["not visible as own property"]
+    N1 --> N2
+    N2 --> N3
 ```
 
 Prototype Chain gives the mental route:
 
-```text
-start from object
-│
-▼
-walk prototypes
-│
-▼
-find method location
+```mermaid
+flowchart TD
+    N1["start from object"]
+    N2["walk prototypes"]
+    N3["find method location"]
+    N1 --> N2
+    N2 --> N3
 ```
 
 ---
@@ -1079,51 +1107,48 @@ find method location
 
 ### 1. Why Prototype Chain exists
 
-```text
-Object
-│
-└── not found
-    │
-    ▼
-Prototype
-│
-└── not found
-    │
-    ▼
-Need next lookup step
+```mermaid
+flowchart TD
+    N1["Object"]
+    N2["not found"]
+    N3["Prototype"]
+    N4["not found"]
+    N5["Need next lookup step"]
+    N1 --> N2
+    N1 --> N3
+    N3 --> N4
+    N3 --> N5
 ```
 
 ### 2. Lookup continuation
 
-```text
-not found here
-│
-▼
-try next prototype
+```mermaid
+flowchart TD
+    N1["not found here"]
+    N2["try next prototype"]
+    N1 --> N2
 ```
 
 ### 3. Multiple prototype levels
 
-```text
-object
-│
-▼
-prototype A
-│
-▼
-prototype B
+```mermaid
+flowchart TD
+    N1["объект"]
+    N2["prototype A"]
+    N3["prototype B"]
+    N1 --> N2
+    N2 --> N3
 ```
 
 ### 4. Property search
 
-```text
-property name
-│
-▼
-search current object
-│
-▼
-search next prototype
+```mermaid
+flowchart TD
+    N1["property name"]
+    N2["search current object"]
+    N3["search next prototype"]
+    N1 --> N2
+    N2 --> N3
 ```
 
 ### 5. Lookup timeline
@@ -1137,367 +1162,365 @@ t4 result
 
 ### 6. Current object
 
-```text
-current object
-│
-└── first lookup step
+```mermaid
+flowchart TD
+    N1["current object"]
+    N2["first lookup step"]
+    N1 --> N2
 ```
 
 ### 7. First prototype
 
-```text
-current object
-│
-▼
-first prototype
+```mermaid
+flowchart TD
+    N1["current object"]
+    N2["first prototype"]
+    N1 --> N2
 ```
 
 ### 8. Second prototype
 
-```text
-first prototype
-│
-▼
-second prototype
+```mermaid
+flowchart TD
+    N1["first prototype"]
+    N2["second prototype"]
+    N1 --> N2
 ```
 
 ### 9. Object.prototype
 
-```text
-ordinary object
-│
-▼
-Object.prototype
+```mermaid
+flowchart TD
+    N1["ordinary object"]
+    N2["Object.prototype"]
+    N1 --> N2
 ```
 
 ### 10. End of chain
 
-```text
-Object.prototype
-│
-▼
-end
+```mermaid
+flowchart TD
+    N1["Object.prototype"]
+    N2["end"]
+    N1 --> N2
 ```
 
 ### 11. Property found
 
-```text
-search
-│
-▼
-found
-│
-▼
-stop
+```mermaid
+flowchart TD
+    N1["search"]
+    N2["found"]
+    N3["stop"]
+    N1 --> N2
+    N2 --> N3
 ```
 
 ### 12. Property missing
 
-```text
-search all chain
-│
-▼
-not found
-│
-▼
-undefined
+```mermaid
+flowchart TD
+    N1["search all chain"]
+    N2["not found"]
+    N3["undefined"]
+    N1 --> N2
+    N2 --> N3
 ```
 
 ### 13. Shadowing
 
-```text
-object.name: "local"
-│
-shadows
-│
-prototype.name: "shared"
+```mermaid
+flowchart TD
+    N1["object.name: &quot;local&quot;"]
+    N2["shadows"]
+    N3["prototype.name: &quot;shared&quot;"]
+    N1 --> N2
+    N2 --> N3
 ```
 
 ### 14. Own property priority
 
-```text
-own property
-│
-└── wins first
+```mermaid
+flowchart TD
+    N1["own property"]
+    N2["wins first"]
+    N1 --> N2
 ```
 
 ### 15. Shared поведение
 
-```text
-object
-│
-▼
-prototype
-│
-└── shared method
+```mermaid
+flowchart TD
+    N1["объект"]
+    N2["prototype"]
+    N3["shared method"]
+    N1 --> N2
+    N2 --> N3
 ```
 
 ### 16. QA framework example
 
-```text
-test helper
-│
-▼
-validator behavior
-│
-▼
-reporting behavior
+```mermaid
+flowchart TD
+    N1["test helper"]
+    N2["validator behavior"]
+    N3["reporting behavior"]
+    N1 --> N2
+    N2 --> N3
 ```
 
 ### 17. API client example
 
-```text
-usersClient
-│
-▼
-serviceBehavior
-│
-▼
-frameworkBehavior
+```mermaid
+flowchart TD
+    N1["usersClient"]
+    N2["serviceBehavior"]
+    N3["frameworkBehavior"]
+    N1 --> N2
+    N2 --> N3
 ```
 
 ### 18. Page Object example
 
-```text
-loginPage
-│
-▼
-pageBehavior
-│
-▼
-frameworkBehavior
+```mermaid
+flowchart TD
+    N1["loginPage"]
+    N2["pageBehavior"]
+    N3["frameworkBehavior"]
+    N1 --> N2
+    N2 --> N3
 ```
 
 ### 19. Читаемость
 
-```text
-short chain
-│
-└── readable
-
-deep chain
-│
-└── harder to debug
+```mermaid
+flowchart TD
+    N1["short chain"]
+    N2["readable"]
+    N3["deep chain"]
+    N4["harder to debug"]
+    N1 --> N2
+    N1 --> N3
+    N3 --> N4
 ```
 
 ### 20. Типичные ошибки
 
-```text
-far property
-│
-does not beat
-│
-near property
+```mermaid
+flowchart TD
+    N1["far property"]
+    N2["does not beat"]
+    N3["near property"]
+    N1 --> N2
+    N2 --> N3
 ```
 
 ### 21. Escalation analogy
 
-```text
-ask first person
-│
-▼
-ask next person
-│
-▼
-ask final person
+```mermaid
+flowchart TD
+    N1["ask first person"]
+    N2["ask next person"]
+    N3["ask final person"]
+    N1 --> N2
+    N2 --> N3
 ```
 
 ### 22. Library analogy
 
-```text
-local library
-│
-▼
-city library
-│
-▼
-central archive
+```mermaid
+flowchart TD
+    N1["local library"]
+    N2["city library"]
+    N3["central archive"]
+    N1 --> N2
+    N2 --> N3
 ```
 
 ### 23. Manager analogy
 
-```text
-team lead
-│
-▼
-manager
-│
-▼
-director
+```mermaid
+flowchart TD
+    N1["team lead"]
+    N2["manager"]
+    N3["director"]
+    N1 --> N2
+    N2 --> N3
 ```
 
 ### 24. Complete lookup model
 
-```text
-Need property
-│
-▼
-Current object
-│
-├── found -> use it
-└── not found -> next prototype
+```mermaid
+flowchart TD
+    N1["Need property"]
+    N2["Current object"]
+    N3["found → use it"]
+    N4["not found → next prototype"]
+    N1 --> N2
+    N2 --> N3
+    N2 --> N4
 ```
 
 ### 25. Object relationship
 
-```text
-object
-│
-└── prototype link
-    │
-    ▼
-    next object
+```mermaid
+flowchart TD
+    N1["объект"]
+    N2["prototype link"]
+    N3["next object"]
+    N1 --> N2
+    N1 --> N3
 ```
 
 ### 26. Search flow
 
-```text
-start
-│
-▼
-check
-│
-▼
-move
-│
-▼
-check
+```mermaid
+flowchart TD
+    N1["начало"]
+    N2["check"]
+    N3["move"]
+    N4["check"]
+    N1 --> N2
+    N2 --> N3
+    N3 --> N4
 ```
 
 ### 27. Undefined result
 
-```text
-end reached
-│
-└── no property
-    │
-    ▼
-    undefined
+```mermaid
+flowchart TD
+    N1["end reached"]
+    N2["нет property"]
+    N3["undefined"]
+    N1 --> N2
+    N1 --> N3
 ```
 
 ### 28. Принадлежность свойства
 
-```text
-own
-│
-└── stored here
-
-inherited
-│
-└── found later
+```mermaid
+flowchart TD
+    N1["own"]
+    N2["stored here"]
+    N3["inherited"]
+    N4["found later"]
+    N1 --> N2
+    N1 --> N3
+    N3 --> N4
 ```
 
 ### 29. Receiver reminder
 
-```text
-object.method()
-│
-├── method found anywhere in chain
-└── receiver is object
+```mermaid
+flowchart TD
+    N1["object.method()"]
+    N2["method found anywhere in chain"]
+    N3["receiver is object"]
+    N1 --> N2
+    N1 --> N3
 ```
 
 ### 30. Method lookup
 
-```text
-method name
-│
-▼
-lookup chain
-│
-▼
-function object
+```mermaid
+flowchart TD
+    N1["method name"]
+    N2["lookup chain"]
+    N3["function object"]
+    N1 --> N2
+    N2 --> N3
 ```
 
 ### 31. Краткая ментальная модель
 
-```text
-Prototype Chain
-│
-└── escalation path for property search
+```mermaid
+flowchart TD
+    N1["Prototype Chain"]
+    N2["escalation path for property search"]
+    N1 --> N2
 ```
 
 ### 32. Complete chain
 
-```text
-object
-│
-▼
-prototype A
-│
-▼
-prototype B
-│
-▼
-Object.prototype
-│
-▼
-end
+```mermaid
+flowchart TD
+    N1["объект"]
+    N2["prototype A"]
+    N3["prototype B"]
+    N4["Object.prototype"]
+    N5["end"]
+    N1 --> N2
+    N2 --> N3
+    N3 --> N4
+    N4 --> N5
 ```
 
 ### 33. Object evolution
 
-```text
-own methods
-│
-▼
-prototype
-│
-▼
-prototype chain
+```mermaid
+flowchart TD
+    N1["own methods"]
+    N2["prototype"]
+    N3["prototype chain"]
+    N1 --> N2
+    N2 --> N3
 ```
 
 ### 34. Переход к Classes
 
-```text
-Prototype Chain
-│
-▼
-Classes later create objects with shared prototypes more conveniently
+```mermaid
+flowchart TD
+    N1["Prototype Chain"]
+    N2["Classes later создать objects with shared prototypes more conveniently"]
+    N1 --> N2
 ```
 
 ### 35. Переход к new
 
-```text
-object creation question
-│
-▼
-how to set prototype conveniently?
+```mermaid
+flowchart TD
+    N1["object creation question"]
+    N2["how to set prototype conveniently?"]
+    N1 --> N2
 ```
 
 ### 36. Internal lookup
 
-```text
-engine
-│
-├── property name
-├── current object
-└── next prototype pointer
+```mermaid
+flowchart TD
+    N1["engine"]
+    N2["property name"]
+    N3["current object"]
+    N4["next prototype pointer"]
+    N1 --> N2
+    N1 --> N3
+    N1 --> N4
 ```
 
 ### 37. Property override
 
-```text
-own describe()
-│
-└── overrides inherited describe()
+```mermaid
+flowchart TD
+    N1["own describe()"]
+    N2["overrides inherited describe()"]
+    N1 --> N2
 ```
 
 ### 38. Итоговая схема
 
-```text
-Need property
-│
-▼
-Current object
-│
-├── Found? use it
-└── Not found
-    │
-    ▼
-    Next prototype
-    │
-    ▼
-    Repeat until found or undefined
+```mermaid
+flowchart TD
+    N1["Need property"]
+    N2["Current object"]
+    N3["Found? use it"]
+    N4["Not found"]
+    N5["Next prototype"]
+    N6["Repeat until found or undefined"]
+    N1 --> N2
+    N2 --> N3
+    N2 --> N4
+    N2 --> N5
+    N2 --> N6
 ```
 
 ## Итоги
@@ -1506,40 +1529,39 @@ Prototype Chain продолжает модель Prototype.
 
 Prototype отвечал:
 
-```text
-Missing property?
-│
-▼
-Look in Prototype
+```mermaid
+flowchart TD
+    N1["значение отсутствует property?"]
+    N2["Look in Prototype"]
+    N1 --> N2
 ```
 
 Prototype Chain отвечает:
 
-```text
-Prototype also missing?
-│
-▼
-Continue to next prototype
+```mermaid
+flowchart TD
+    N1["Prototype also значение отсутствует?"]
+    N2["продолжить to next prototype"]
+    N1 --> N2
 ```
 
 Это не скрытая магия и не обязательная class hierarchy.
 
 Это lookup algorithm:
 
-```text
-Need property
-│
-▼
-Current object
-│
-├── Found? use it
-└── Not found
-    │
-    ▼
-    Next prototype
-    │
-    ▼
-    Repeat
+```mermaid
+flowchart TD
+    N1["Need property"]
+    N2["Current object"]
+    N3["Found? use it"]
+    N4["Not found"]
+    N5["Next prototype"]
+    N6["Repeat"]
+    N1 --> N2
+    N2 --> N3
+    N2 --> N4
+    N2 --> N5
+    N2 --> N6
 ```
 
 Own properties have priority. Closer properties shadow farther properties. If lookup reaches the end of chain without result, simple property read returns `undefined`.

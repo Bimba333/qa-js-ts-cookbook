@@ -163,3 +163,35 @@
 .vp-doc {
   max-width: 100%;
 }
+
+.book-mermaid {
+  display: flex;
+  justify-content: center;
+  max-width: 100%;
+  margin: 24px 0;
+  padding: 16px;
+  overflow-x: auto;
+  border: 1px solid var(--vp-c-divider);
+  border-radius: 10px;
+  background: var(--vp-c-bg-soft);
+}
+
+.book-mermaid svg {
+  display: block;
+  max-width: none;
+  height: auto;
+}
+
+.book-mermaid__canvas {
+  flex: 0 0 auto;
+}
+
+.book-mermaid__error {
+  color: var(--vp-c-danger-1);
+  font-weight: 700;
+}
+
+.vp-doc .language-mermaid {
+  max-width: 100%;
+  overflow-x: auto;
+}

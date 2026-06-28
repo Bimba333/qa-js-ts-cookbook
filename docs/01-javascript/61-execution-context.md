@@ -13,17 +13,15 @@ reverse()
 
 Дальше модуль будет идти как одна система:
 
-```text
-Execution Context
-│
-▼
-Call Stack
-│
-▼
-Memory Model
-│
-▼
-Hoisting + TDZ
+```mermaid
+flowchart TD
+    N1["Execution Context"]
+    N2["Call Stack"]
+    N3["Memory Model"]
+    N4["Hoisting + TDZ"]
+    N1 --> N2
+    N2 --> N3
+    N3 --> N4
 ```
 
 ## Главный вопрос
@@ -96,26 +94,24 @@ Execution Context — это единица запуска кода. Это ср
 
 Когда запускается файл, сначала создается глобальный Execution Context:
 
-```text
-JavaScript-файл
-│
-▼
-Global Execution Context
-│
-▼
-код верхнего уровня может выполняться
+```mermaid
+flowchart TD
+    N1["JavaScript-файл"]
+    N2["Global Execution Context"]
+    N3["код верхнего уровня может выполняться"]
+    N1 --> N2
+    N2 --> N3
 ```
 
 Когда происходит вызов функции, создается Function Execution Context:
 
-```text
-вызов функции
-│
-▼
-Function Execution Context
-│
-▼
-тело функции может выполняться
+```mermaid
+flowchart TD
+    N1["вызов функции"]
+    N2["Function Execution Context"]
+    N3["тело функции может выполняться"]
+    N1 --> N2
+    N2 --> N3
 ```
 
 Важно: объявление функции не означает выполнение. Тело функции начнет выполняться только после вызова.
@@ -124,53 +120,50 @@ Function Execution Context
 
 Для нашего сквозного примера последовательность выглядит так:
 
-```text
-программа запускается
-│
-▼
-создается Global Execution Context
-│
-▼
-функции a, b, c доступны для вызова
-│
-▼
-происходит вызов a()
-│
-▼
-создается Execution Context для a()
+```mermaid
+flowchart TD
+    N1["программа запускается"]
+    N2["создается Global Execution Context"]
+    N3["функции a, b, c доступны для вызова"]
+    N4["происходит вызов a()"]
+    N5["создается Execution Context для a()"]
+    N1 --> N2
+    N2 --> N3
+    N3 --> N4
+    N4 --> N5
 ```
 
 Затем `a()` вызывает `b()`:
 
-```text
-тело a()
-│
-▼
-вызов b()
-│
-▼
-создается Execution Context для b()
+```mermaid
+flowchart TD
+    N1["тело a()"]
+    N2["вызов b()"]
+    N3["создается Execution Context для b()"]
+    N1 --> N2
+    N2 --> N3
 ```
 
 Затем `b()` вызывает `c()`:
 
-```text
-тело b()
-│
-▼
-вызов c()
-│
-▼
-создается Execution Context для c()
+```mermaid
+flowchart TD
+    N1["тело b()"]
+    N2["вызов c()"]
+    N3["создается Execution Context для c()"]
+    N1 --> N2
+    N2 --> N3
 ```
 
 Внутри `c()` появляется локальное значение:
 
-```text
-c() context
-│
-├── message
-└── console.log(message)
+```mermaid
+flowchart TD
+    N1["c() context"]
+    N2["message"]
+    N3["console.log(message)"]
+    N1 --> N2
+    N1 --> N3
 ```
 
 В этой главе важно только одно: перед выполнением кода JavaScript создает единицу запуска, в которой этот код может выполняться.
@@ -179,14 +172,13 @@ c() context
 
 Главная модель главы: **единица запуска выполнения**.
 
-```text
-код должен выполниться
-│
-▼
-создается Execution Context
-│
-▼
-у кода есть среда выполнения
+```mermaid
+flowchart TD
+    N1["код должен выполниться"]
+    N2["создается Execution Context"]
+    N3["у кода есть среда выполнения"]
+    N1 --> N2
+    N2 --> N3
 ```
 
 Execution Context можно представить как рабочую область для выполнения кода. Это не объект, который вы создаете руками, а модель того, что JavaScript подготавливает перед выполнением.
@@ -225,14 +217,13 @@ Execution Context нужен не для того, чтобы писать сп�
 
 В Automation QA похожая идея видна в тестовом раннере:
 
-```text
-тестовый файл
-│
-▼
-раннер готовит выполнение
-│
-▼
-тестовая функция выполняется
+```mermaid
+flowchart TD
+    N1["тестовый файл"]
+    N2["раннер готовит выполнение"]
+    N3["тестовая функция выполняется"]
+    N1 --> N2
+    N2 --> N3
 ```
 
 Не нужно перегружать аналогию. Достаточно помнить: как тестовый раннер создает среду для выполнения теста, так JavaScript создает Execution Context для выполняемого кода.
@@ -280,14 +271,13 @@ Execution Context — это единица запуска, которую JavaS
 
 Теперь понятно, что вызовы функций создают новые Execution Context.
 
-```text
-Вызов функции
-│
-▼
-JavaScript создает Function Execution Context
-│
-▼
-Этот Execution Context дальше управляется через Call Stack
+```mermaid
+flowchart TD
+    N1["Вызов функции"]
+    N2["JavaScript создает Function Execution Context"]
+    N3["Этот Execution Context дальше управляется через Call Stack"]
+    N1 --> N2
+    N2 --> N3
 ```
 
 Следующий вопрос:

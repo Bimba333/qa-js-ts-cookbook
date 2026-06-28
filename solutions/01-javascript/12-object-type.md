@@ -264,10 +264,13 @@ Object name: `user`.
 
 Свойства:
 
-```text
-firstName → "Anna"
-lastName  → "Smith"
-age       → 30
+```mermaid
+flowchart TD
+    N1["firstName → &quot;Anna&quot;"]
+    N2["lastName → &quot;Smith&quot;"]
+    N3["age → 30"]
+    N1 --> N2
+    N2 --> N3
 ```
 
 Сгруппированная информация:
@@ -296,10 +299,13 @@ Object name: `config`.
 
 Свойства:
 
-```text
-baseUrl  → "https://example.com"
-retries  → 2
-headless → true
+```mermaid
+flowchart TD
+    N1["baseUrl → &quot;https://example.com&quot;"]
+    N2["retries → 2"]
+    N3["headless → true"]
+    N1 --> N2
+    N2 --> N3
 ```
 
 Сгруппированная информация:
@@ -328,16 +334,20 @@ Object name: `response`.
 
 Свойства:
 
-```text
-statusCode → 200
-body       → object
+```mermaid
+flowchart TD
+    N1["statusCode → 200"]
+    N2["body → object"]
+    N1 --> N2
 ```
 
 Nested `body` properties:
 
-```text
-id    → 101
-email → "anna@example.com"
+```mermaid
+flowchart TD
+    N1["id → 101"]
+    N2["email → &quot;anna@example.com&quot;"]
+    N1 --> N2
 ```
 
 Сгруппированная информация:

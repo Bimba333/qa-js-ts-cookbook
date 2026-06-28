@@ -4,13 +4,13 @@
 
 Предыдущая глава объяснила Rest Parameters.
 
-```text
-Rest
-│
-└── many incoming arguments
-    │
-    ▼
-    one array
+```mermaid
+flowchart TD
+    N1["Rest"]
+    N2["many incoming arguments"]
+    N3["one array"]
+    N1 --> N2
+    N1 --> N3
 ```
 
 Теперь появляется обратный вопрос:
@@ -139,29 +139,26 @@ const statuses = [200, 201, 204];
 
 Проблема:
 
-```text
-Function expects many values
-│
-▼
-Data exists as one array
-│
-▼
-Need to expand array
-│
-▼
-Spread
+```mermaid
+flowchart TD
+    N1["Function expects many values"]
+    N2["Data exists as one array"]
+    N3["Need to expand array"]
+    N4["Spread"]
+    N1 --> N2
+    N2 --> N3
+    N3 --> N4
 ```
 
 Зачем существует Spread:
 
-```text
-One collection
-│
-▼
-many individual values are needed
-│
-▼
-Spread expands collection
+```mermaid
+flowchart TD
+    N1["One collection"]
+    N2["many individual values are needed"]
+    N3["Spread expands collection"]
+    N1 --> N2
+    N2 --> N3
 ```
 
 Главный вопрос:
@@ -178,46 +175,50 @@ Spread expands collection
 
 Rest:
 
-```text
-many arguments
-│
-▼
-one array
+```mermaid
+flowchart TD
+    N1["many arguments"]
+    N2["one array"]
+    N1 --> N2
 ```
 
 Spread:
 
-```text
-one array
-│
-▼
-many values
+```mermaid
+flowchart TD
+    N1["one array"]
+    N2["many values"]
+    N1 --> N2
 ```
 
 Complete Rest ↔ Spread picture:
 
-```text
-Rest
-│
-├── function f(...values)
-└── collects values into array
-
-Spread
-│
-├── f(...values)
-└── expands array into values
+```mermaid
+flowchart TD
+    N1["Rest"]
+    N2["function f(...values)"]
+    N3["collects values into array"]
+    N4["Spread"]
+    N5["f(...values)"]
+    N6["expands array into values"]
+    N1 --> N2
+    N1 --> N3
+    N1 --> N4
+    N4 --> N5
+    N4 --> N6
 ```
 
 Одинаковые три точки не означают одну универсальную операцию. Значение зависит от места в коде.
 
-```text
-Parameter list
-│
-└── Rest collects
-
-Function call / array / object literal
-│
-└── Spread expands
+```mermaid
+flowchart TD
+    N1["Parameter list"]
+    N2["Rest collects"]
+    N3["вызов функции / array / object literal"]
+    N4["Spread expands"]
+    N1 --> N2
+    N1 --> N3
+    N3 --> N4
 ```
 
 ### Зачем существует Spread
@@ -226,22 +227,24 @@ Spread нужен, когда одно collection value должно раскр�
 
 Collection expansion:
 
-```text
-[200, 201, 204]
-│
-▼
-200
-201
-204
+```mermaid
+flowchart TD
+    N1["[200, 201, 204]"]
+    N2["200"]
+    N3["201"]
+    N4["204"]
+    N1 --> N2
+    N2 --> N3
+    N3 --> N4
 ```
 
 Spread direction:
 
-```text
-one collection
-│
-▼
-many individual values
+```mermaid
+flowchart TD
+    N1["one collection"]
+    N2["many individual values"]
+    N1 --> N2
 ```
 
 Это обратное направление относительно Rest.
@@ -258,16 +261,15 @@ console.log(...statuses);
 
 Array expansion:
 
-```text
-statuses
-│
-└── [200, 201, 204]
-    │
-    ▼
-...statuses
-    │
-    ▼
-200, 201, 204
+```mermaid
+flowchart TD
+    N1["statuses"]
+    N2["[200, 201, 204]"]
+    N3["...statuses"]
+    N4["200, 201, 204"]
+    N1 --> N2
+    N1 --> N3
+    N3 --> N4
 ```
 
 Spread не изменяет сам array. Он раскрывает его значения в текущем месте.
@@ -288,31 +290,33 @@ validateThreeStatuses(...statuses);
 
 Function call:
 
-```text
-validateThreeStatuses(...statuses)
-                      │
-                      ▼
-validateThreeStatuses(200, 201, 204)
+```mermaid
+flowchart TD
+    N1["validateThreeStatuses(...statuses)"]
+    N2["validateThreeStatuses(200, 201, 204)"]
+    N1 --> N2
 ```
 
 Вызов функции:
 
-```text
-Array values expand
-│
-▼
-Arguments appear separately
-│
-▼
-Parameters receive by position
+```mermaid
+flowchart TD
+    N1["Array values expand"]
+    N2["Arguments appear separately"]
+    N3["Parameters receive by position"]
+    N1 --> N2
+    N2 --> N3
 ```
 
 Parameters still receive значения by position.
 
-```text
-200 → firstStatus
-201 → secondStatus
-204 → thirdStatus
+```mermaid
+flowchart TD
+    N1["200 → firstStatus"]
+    N2["201 → secondStatus"]
+    N3["204 → thirdStatus"]
+    N1 --> N2
+    N2 --> N3
 ```
 
 ### Expanding object properties
@@ -332,28 +336,28 @@ const adminUser = {
 
 Object expansion:
 
-```text
-baseUser
-│
-└── { role: 'user' }
-    │
-    ▼
-...baseUser
-    │
-    ▼
-role: 'user'
+```mermaid
+flowchart TD
+    N1["baseUser"]
+    N2["{ role: 'user' }"]
+    N3["...baseUser"]
+    N4["role: 'user'"]
+    N1 --> N2
+    N1 --> N3
+    N3 --> N4
 ```
 
 Object spread expands properties, not function arguments.
 
-```text
-Array spread in call
-│
-└── expands values into arguments
-
-Object spread in object literal
-│
-└── expands properties into object
+```mermaid
+flowchart TD
+    N1["Array spread in call"]
+    N2["expands values into arguments"]
+    N3["Object spread in object literal"]
+    N4["expands properties into object"]
+    N1 --> N2
+    N1 --> N3
+    N3 --> N4
 ```
 
 ### Copying arrays
@@ -367,16 +371,15 @@ const copiedStatuses = [...statuses];
 
 Copy array:
 
-```text
-statuses
-│
-└── [200, 201]
-    │
-    ▼
-[...statuses]
-    │
-    ▼
-new array with same top-level values
+```mermaid
+flowchart TD
+    N1["statuses"]
+    N2["[200, 201]"]
+    N3["[...statuses]"]
+    N4["new array with same top-level values"]
+    N1 --> N2
+    N1 --> N3
+    N3 --> N4
 ```
 
 Это shallow copy. Deep copy будет отдельной темой.
@@ -397,16 +400,15 @@ const copiedPayload = {
 
 Copy object:
 
-```text
-basePayload
-│
-└── { role: 'user' }
-    │
-    ▼
-{ ...basePayload }
-    │
-    ▼
-new object with same top-level properties
+```mermaid
+flowchart TD
+    N1["basePayload"]
+    N2["{ role: 'user' }"]
+    N3["{ ...basePayload }"]
+    N4["new object with same top-level properties"]
+    N1 --> N2
+    N1 --> N3
+    N3 --> N4
 ```
 
 Again: this is shallow copy.
@@ -424,20 +426,19 @@ const allStatuses = [...smokeStatuses, ...regressionStatuses];
 
 Merge arrays:
 
-```text
-[200, 201]
-│
-▼
-200, 201
-
-[204, 301]
-│
-▼
-204, 301
-
-Результат
-│
-└── [200, 201, 204, 301]
+```mermaid
+flowchart TD
+    N1["[200, 201]"]
+    N2["200, 201"]
+    N3["[204, 301]"]
+    N4["204, 301"]
+    N5["Результат"]
+    N6["[200, 201, 204, 301]"]
+    N1 --> N2
+    N2 --> N3
+    N3 --> N4
+    N4 --> N5
+    N5 --> N6
 ```
 
 ### Combining objects
@@ -461,23 +462,22 @@ const config = {
 
 Merge objects:
 
-```text
-baseConfig properties
-│
-▼
-localConfig properties
-│
-▼
-new object
+```mermaid
+flowchart TD
+    N1["baseConfig properties"]
+    N2["localConfig properties"]
+    N3["new object"]
+    N1 --> N2
+    N2 --> N3
 ```
 
 If the same property appears later, later value wins at this high level.
 
-```text
-{ role: 'user', role: 'admin' }
-│
-▼
-role is 'admin'
+```mermaid
+flowchart TD
+    N1["{ role: 'user', role: 'admin' }"]
+    N2["role is 'admin'"]
+    N1 --> N2
 ```
 
 Advanced object merging will be studied later.
@@ -486,22 +486,24 @@ Advanced object merging will be studied later.
 
 Shallow copy means top-level container is new, but nested objects are not deeply copied.
 
-```text
-New outer array/object
-│
-└── same nested object references at deeper levels
+```mermaid
+flowchart TD
+    N1["New outer array/object"]
+    N2["same nested object references at deeper levels"]
+    N1 --> N2
 ```
 
 Shallow copy:
 
-```text
-Top level
-│
-└── copied
-
-Nested level
-│
-└── not deeply copied here
+```mermaid
+flowchart TD
+    N1["Top level"]
+    N2["copied"]
+    N3["Nested level"]
+    N4["not deeply copied here"]
+    N1 --> N2
+    N1 --> N3
+    N3 --> N4
 ```
 
 Эта глава не учит deep copy или `structuredClone`.
@@ -512,14 +514,15 @@ Spread is useful when expansion is visible and meaningful.
 
 Читаемость:
 
-```text
-Good
-│
-└── validateThreeStatuses(...statuses)
-
-Questionable
-│
-└── too many spreads in one expression
+```mermaid
+flowchart TD
+    N1["Good"]
+    N2["validateThreeStatuses(...statuses)"]
+    N3["Questionable"]
+    N4["too many spreads in one expression"]
+    N1 --> N2
+    N1 --> N3
+    N3 --> N4
 ```
 
 Spread should answer:
@@ -535,96 +538,96 @@ Where are values expanded into?
 
 Spread is contextual.
 
-```text
-... inside function parameter list
-│
-└── Rest
-
-... inside function call
-│
-└── Spread
-
-... inside array literal
-│
-└── Spread
-
-... inside object literal
-│
-└── Spread
+```mermaid
+flowchart TD
+    N1["... inside function parameter list"]
+    N2["Rest"]
+    N3["... inside вызов функции"]
+    N4["Spread"]
+    N5["... inside array literal"]
+    N6["Spread"]
+    N7["... inside object literal"]
+    N8["Spread"]
+    N1 --> N2
+    N1 --> N3
+    N3 --> N4
+    N3 --> N5
+    N5 --> N6
+    N5 --> N7
+    N7 --> N8
 ```
 
 Spread lifecycle:
 
-```text
-Engine reaches ...statuses
-│
-▼
-reads collection
-│
-▼
-expands top-level values
-│
-▼
-places values into current context
+```mermaid
+flowchart TD
+    N1["Engine reaches ...statuses"]
+    N2["reads collection"]
+    N3["expands top-level values"]
+    N4["places values into current context"]
+    N1 --> N2
+    N2 --> N3
+    N3 --> N4
 ```
 
 Data expansion:
 
-```text
-Collection
-│
-▼
-Spread
-│
-▼
-Individual values
-│
-▼
-Current context receives them
+```mermaid
+flowchart TD
+    N1["Collection"]
+    N2["Spread"]
+    N3["Individual values"]
+    N4["Current context receives them"]
+    N1 --> N2
+    N2 --> N3
+    N3 --> N4
 ```
 
 Function invocation with spread:
 
-```text
-statuses = [200, 201, 204]
-│
-▼
-validate(...statuses)
-│
-▼
-validate(200, 201, 204)
-│
-▼
-parameters receive values
+```mermaid
+flowchart TD
+    N1["statuses = [200, 201, 204]"]
+    N2["validate(...statuses)"]
+    N3["validate(200, 201, 204)"]
+    N4["parameters receive values"]
+    N1 --> N2
+    N2 --> N3
+    N3 --> N4
 ```
 
 Текущее место в модели JavaScript:
 
-```text
-Functions
-│
-├── Parameters
-├── Return
-├── Rest
-│   └── collect many into one
-└── Spread
-    └── expand one into many
+```mermaid
+flowchart TD
+    N1["Functions"]
+    N2["Parameters"]
+    N3["Return"]
+    N4["Rest"]
+    N5["collect many into one"]
+    N6["Spread"]
+    N7["expand one into many"]
+    N1 --> N2
+    N1 --> N3
+    N1 --> N4
+    N1 --> N5
+    N1 --> N6
+    N6 --> N7
 ```
 
 Переход к Closures:
 
-```text
-Spread
-│
-└── values are moved into calls and objects
-    │
-    ▼
-Next question
-│
-└── how can function remember data after execution?
-    │
-    ▼
-Closures
+```mermaid
+flowchart TD
+    N1["Spread"]
+    N2["values are moved into calls and objects"]
+    N3["Next question"]
+    N4["how can function remember data after выполнение?"]
+    N5["Closures"]
+    N1 --> N2
+    N1 --> N3
+    N3 --> N4
+    N3 --> N5
 ```
 
 ---
@@ -633,71 +636,75 @@ Closures
 
 ### Opening a box
 
-```text
-Box
-│
-└── [200, 201, 204]
-    │
-    ▼
-open box
-    │
-    ▼
-200
-201
-204
+```mermaid
+flowchart TD
+    N1["Box"]
+    N2["[200, 201, 204]"]
+    N3["open box"]
+    N4["200"]
+    N5["201"]
+    N6["204"]
+    N1 --> N2
+    N1 --> N3
+    N3 --> N4
+    N4 --> N5
+    N5 --> N6
 ```
 
 ### Unpacking luggage
 
-```text
-Suitcase
-│
-├── shirt
-├── shoes
-└── jacket
-    │
-    ▼
-unpacked items
+```mermaid
+flowchart TD
+    N1["Suitcase"]
+    N2["shirt"]
+    N3["shoes"]
+    N4["jacket"]
+    N5["unpacked items"]
+    N1 --> N2
+    N1 --> N3
+    N1 --> N4
+    N1 --> N5
 ```
 
 ### Emptying a basket
 
 Basket opening:
 
-```text
-Basket
-│
-├── value 1
-├── value 2
-└── value 3
-    │
-    ▼
-individual values
+```mermaid
+flowchart TD
+    N1["Basket"]
+    N2["value 1"]
+    N3["value 2"]
+    N4["value 3"]
+    N5["individual values"]
+    N1 --> N2
+    N1 --> N3
+    N1 --> N4
+    N1 --> N5
 ```
 
 ### Dealing cards
 
-```text
-Deck
-│
-└── [card1, card2, card3]
-    │
-    ▼
-deal cards
-    │
-    ▼
-card1, card2, card3
+```mermaid
+flowchart TD
+    N1["Deck"]
+    N2["[card1, card2, card3]"]
+    N3["deal cards"]
+    N4["card1, card2, card3"]
+    N1 --> N2
+    N1 --> N3
+    N3 --> N4
 ```
 
 ### Unpacking a delivery
 
-```text
-Delivery package
-│
-└── object properties
-    │
-    ▼
-unpacked into new object
+```mermaid
+flowchart TD
+    N1["Delivery package"]
+    N2["object properties"]
+    N3["unpacked into new object"]
+    N1 --> N2
+    N1 --> N3
 ```
 
 Краткая ментальная модель:
@@ -712,17 +719,15 @@ Spread expands.
 
 Complete Spread model:
 
-```text
-Collection
-│
-▼
-...
-│
-▼
-expanded values/properties
-│
-▼
-new context
+```mermaid
+flowchart TD
+    N1["Collection"]
+    N2["..."]
+    N3["expanded values/properties"]
+    N4["new context"]
+    N1 --> N2
+    N2 --> N3
+    N3 --> N4
 ```
 
 ---
@@ -828,14 +833,19 @@ Object spread выполняет top-level merge. Advanced object merging буд
 
 Схема типичных ошибок:
 
-```text
-Ошибка
-│
-├── путать Rest и Spread
-├── ожидать deep copy
-├── забыть порядок object properties
-├── делать слишком длинные spread expressions
-└── воспринимать ... как одну универсальную операцию
+```mermaid
+flowchart TD
+    N1["Ошибка"]
+    N2["путать Rest и Spread"]
+    N3["ожидать deep copy"]
+    N4["забыть порядок object properties"]
+    N5["делать слишком длинные spread expressions"]
+    N6["воспринимать ... как одну универсальную операцию"]
+    N1 --> N2
+    N1 --> N3
+    N1 --> N4
+    N1 --> N5
+    N1 --> N6
 ```
 
 ---
@@ -858,9 +868,11 @@ collect(...values);
 
 Direction:
 
-```text
-Rest   → many into one
-Spread → one into many
+```mermaid
+flowchart TD
+    N1["Rest → many into one"]
+    N2["Spread → one into many"]
+    N1 --> N2
 ```
 
 ### Ошибка 2. Ожидать deep copy
@@ -888,12 +900,15 @@ Later value wins.
 
 Если expression трудно читать, лучше разбить на несколько шагов.
 
-```text
-Readable setup
-│
-├── base payload
-├── overrides
-└── final payload
+```mermaid
+flowchart TD
+    N1["Readable setup"]
+    N2["base payload"]
+    N3["overrides"]
+    N4["final payload"]
+    N1 --> N2
+    N1 --> N3
+    N1 --> N4
 ```
 
 ### Ошибка 5. Использовать Spread там, где проще передать значения явно
@@ -906,12 +921,17 @@ Readable setup
 
 Spread полезен, когда нужно:
 
-```text
-array → arguments
-array → new array
-object → new object
-many arrays → one array
-many objects → one object
+```mermaid
+flowchart TD
+    N1["array → arguments"]
+    N2["array → new array"]
+    N3["object → new object"]
+    N4["many arrays → one array"]
+    N5["many objects → one object"]
+    N1 --> N2
+    N2 --> N3
+    N3 --> N4
+    N4 --> N5
 ```
 
 Практический чек-лист:
@@ -983,17 +1003,15 @@ validateThreeStatuses(...statuses);
 
 Пример QA-helper:
 
-```text
-base test data
-│
-▼
-spread into new object
-│
-▼
-scenario-specific override
-│
-▼
-final payload
+```mermaid
+flowchart TD
+    N1["base test data"]
+    N2["spread into new object"]
+    N3["scenario-specific override"]
+    N4["final payload"]
+    N1 --> N2
+    N2 --> N3
+    N3 --> N4
 ```
 
 Spread helps compose data, but test setup must remain readable.
@@ -1017,14 +1035,15 @@ Spread expands one collection into many values.
 
 Complete Rest ↔ Spread picture:
 
-```text
-Rest
-│
-└── values → array
-
-Spread
-│
-└── array/object → values/properties
+```mermaid
+flowchart TD
+    N1["Rest"]
+    N2["values → array"]
+    N3["Spread"]
+    N4["array/object → values/properties"]
+    N1 --> N2
+    N1 --> N3
+    N3 --> N4
 ```
 
 Следующая глава ответит:

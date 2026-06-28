@@ -86,11 +86,15 @@
 
 Ответ:
 
-```text
-login      -> page object или auth helper
-test data  -> data builder
-assertion  -> assertion helper
-report     -> reporter module
+```mermaid
+flowchart TD
+    N1["login → page object или auth helper"]
+    N2["test data → data builder"]
+    N3["assertion → assertion helper"]
+    N4["report → reporter module"]
+    N1 --> N2
+    N2 --> N3
+    N3 --> N4
 ```
 
 Объяснение: каждая часть получает отдельную ответственность.

@@ -4,24 +4,28 @@
 
 В предыдущих главах была собрана первая рабочая модель JavaScript:
 
-```text
-JavaScript Engine
-│
-├── подготавливает код
-├── создает Execution Context
-└── выполняет код внутри Runtime
+```mermaid
+flowchart TD
+    N1["JavaScript Engine"]
+    N2["подготавливает код"]
+    N3["создает Execution Context"]
+    N4["выполняет код внутри Runtime"]
+    N1 --> N2
+    N1 --> N3
+    N1 --> N4
 ```
 
 Затем появилась модель Call Stack:
 
-```text
-Execution Context
-│
-└── рабочая среда выполнения
-
-Call Stack
-│
-└── управляет активными Execution Contexts
+```mermaid
+flowchart TD
+    N1["Execution Context"]
+    N2["рабочая среда выполнения"]
+    N3["Call Stack"]
+    N4["управляет активными Execution Contexts"]
+    N1 --> N2
+    N1 --> N3
+    N3 --> N4
 ```
 
 Теперь возникает следующий естественный вопрос:
@@ -128,17 +132,15 @@ passed
 
 Вопрос:
 
-```text
-Line 1
-│
-▼
-value appears
-│
-▼
-Line 2
-│
-▼
-value is still available
+```mermaid
+flowchart TD
+    N1["Line 1"]
+    N2["значение появляется"]
+    N3["Line 2"]
+    N4["value is still available"]
+    N1 --> N2
+    N2 --> N3
+    N3 --> N4
 ```
 
 Почему значение не исчезло после первой строки?
@@ -161,27 +163,30 @@ console.log(retryCount);
 
 Вопрос:
 
-```text
-retryCount было связано с 1
-│
-▼
-retryCount стало связано с 2
-│
-▼
-console.log читает новое значение
+```mermaid
+flowchart TD
+    N1["retryCount было связано с 1"]
+    N2["retryCount стало связано с 2"]
+    N3["console.log читает новое значение"]
+    N1 --> N2
+    N2 --> N3
 ```
 
 Где engine хранит эту связь? Как он понимает, что нужно прочитать именно последнее значение?
 
 Если убрать memory из модели, программа становится невозможной.
 
-```text
-Program without memory
-│
-├── sees value
-├── immediately loses value
-├── cannot read it later
-└── cannot update it
+```mermaid
+flowchart TD
+    N1["Program without memory"]
+    N2["sees value"]
+    N3["immediately loses value"]
+    N4["cannot read it later"]
+    N5["cannot update it"]
+    N1 --> N2
+    N1 --> N3
+    N1 --> N4
+    N1 --> N5
 ```
 
 Такая программа могла бы выполнять только одноразовые действия, где каждый шаг никак не связан с предыдущим.
@@ -200,17 +205,15 @@ Program without memory
 
 Представим программу, которая не умеет ничего сохранять.
 
-```text
-Step 1: receive value "admin"
-│
-▼
-Step 2: value disappeared
-│
-▼
-Step 3: need value "admin"
-│
-▼
-Error in mental model: nothing to read
+```mermaid
+flowchart TD
+    N1["Step 1: receive value &quot;admin&quot;"]
+    N2["Step 2: value disappeared"]
+    N3["Step 3: need value &quot;admin&quot;"]
+    N4["Error in mental model: nothing to read"]
+    N1 --> N2
+    N2 --> N3
+    N3 --> N4
 ```
 
 Такая модель не может объяснить даже простое поведение:
@@ -242,20 +245,17 @@ Memory нужна, чтобы программа могла:
 * выполнять проверки;
 * строить более сложное поведение из простых шагов.
 
-```text
-Input
-│
-▼
-store information
-│
-▼
-read information
-│
-▼
-use information
-│
-▼
-produce result
+```mermaid
+flowchart TD
+    N1["Input"]
+    N2["store information"]
+    N3["read information"]
+    N4["use information"]
+    N5["получить результат"]
+    N1 --> N2
+    N2 --> N3
+    N3 --> N4
+    N4 --> N5
 ```
 
 Без memory программа не может иметь состояние.
@@ -273,14 +273,19 @@ State — это информация, которая описывает тек�
 * информацию, нужную текущему Execution Context;
 * результаты, которые используются позже.
 
-```text
-Memory during execution
-│
-├── value: "qa-user"
-├── identifier: userName
-├── relation: userName → "qa-user"
-├── temporary result: "qa-" + "user"
-└── context information
+```mermaid
+flowchart TD
+    N1["Memory during выполнение"]
+    N2["value: &quot;qa-user&quot;"]
+    N3["identifier: userName"]
+    N4["relation: userName → &quot;qa-user&quot;"]
+    N5["temporary результат: &quot;qa-&quot; + &quot;user&quot;"]
+    N6["context information"]
+    N1 --> N2
+    N1 --> N3
+    N1 --> N4
+    N1 --> N5
+    N1 --> N6
 ```
 
 Эта схема концептуальная. Она не описывает физическое устройство V8 или конкретные области памяти. Реальная реализация engine сложнее. Для обучения сейчас важнее другое: engine должен уметь хранить, находить и обновлять информацию.
@@ -300,10 +305,11 @@ null
 
 Primitive Types будут изучаться позже. Сейчас достаточно понимать:
 
-```text
-Value
-│
-└── конкретная информация, которую программа может сохранить и использовать
+```mermaid
+flowchart TD
+    N1["Value"]
+    N2["конкретная информация, которую программа может сохранить и использовать"]
+    N1 --> N2
 ```
 
 Программа не работает с пустыми словами. Она работает с значения.
@@ -334,17 +340,15 @@ console.log(status);
 
 `status` — identifier. Он помогает engine найти нужную информацию.
 
-```text
-Identifier
-│
-▼
-status
-│
-▼
-stored value
-│
-▼
-"ready"
+```mermaid
+flowchart TD
+    N1["Identifier"]
+    N2["status"]
+    N3["stored value"]
+    N4["&quot;ready&quot;"]
+    N1 --> N2
+    N2 --> N3
+    N3 --> N4
 ```
 
 Identifier не является самим value. Это имя, через которое программа получает доступ к value.
@@ -357,14 +361,15 @@ status и "ready" воспринимаются как одно и то же
 
 Исправленная модель:
 
-```text
-status
-│
-└── имя
-
-"ready"
-│
-└── значение
+```mermaid
+flowchart TD
+    N1["status"]
+    N2["имя"]
+    N3["&quot;ready&quot;"]
+    N4["значение"]
+    N1 --> N2
+    N1 --> N3
+    N3 --> N4
 ```
 
 Variables будут изучаться в следующей главе. Там будет подробно разобрано, как identifiers создаются через declarations и как получают значения через initialization и assignment.
@@ -375,30 +380,38 @@ Variables будут изучаться в следующей главе. Там
 
 Это не физическая схема engine. Это учебная модель.
 
-```text
-Memory
-│
-├── location #1: "ready"
-├── location #2: 3
-└── location #3: true
+```mermaid
+flowchart TD
+    N1["Memory"]
+    N2["location #1: &quot;ready&quot;"]
+    N3["location #2: 3"]
+    N4["location #3: true"]
+    N1 --> N2
+    N1 --> N3
+    N1 --> N4
 ```
 
 Location — концептуальное место, где хранится информация.
 
 Если добавить identifier, модель становится такой:
 
-```text
-Identifier table
-│
-├── status     → location #1
-├── retryCount → location #2
-└── isLoggedIn → location #3
-
-Memory
-│
-├── location #1: "ready"
-├── location #2: 3
-└── location #3: true
+```mermaid
+flowchart TD
+    N1["Identifier table"]
+    N2["status → location #1"]
+    N3["retryCount → location #2"]
+    N4["isLoggedIn → location #3"]
+    N5["Memory"]
+    N6["location #1: &quot;ready&quot;"]
+    N7["location #2: 3"]
+    N8["location #3: true"]
+    N1 --> N2
+    N1 --> N3
+    N1 --> N4
+    N1 --> N5
+    N5 --> N6
+    N5 --> N7
+    N5 --> N8
 ```
 
 Важно: это не глава про references. Сейчас стрелка означает только учебную связь "по этому имени engine может найти сохраненную информацию". References как отдельный механизм будут изучаться позже.
@@ -413,35 +426,38 @@ const browserName = 'chromium';
 
 Концептуально:
 
-```text
-Source code
-│
-▼
-const browserName = "chromium"
-│
-▼
-store value
-│
-▼
-Identifier: browserName
-│
-▼
-Stored value: "chromium"
+```mermaid
+flowchart TD
+    N1["исходный код"]
+    N2["const browserName = &quot;chromium&quot;"]
+    N3["store value"]
+    N4["Identifier: browserName"]
+    N5["Stored value: &quot;chromium&quot;"]
+    N1 --> N2
+    N2 --> N3
+    N3 --> N4
+    N4 --> N5
 ```
 
 Диаграмма хранения:
 
-```text
-Before
-Memory
-└── empty for browserName
-
-Store
-browserName = "chromium"
-
-After
-Memory
-└── browserName → "chromium"
+```mermaid
+flowchart TD
+    N1["Before"]
+    N2["Memory"]
+    N3["empty for browserName"]
+    N4["Store"]
+    N5["browserName = &quot;chromium&quot;"]
+    N6["After"]
+    N7["Memory"]
+    N8["browserName → &quot;chromium&quot;"]
+    N2 --> N3
+    N2 --> N4
+    N5 --> N6
+    N7 --> N8
+    N1 --> N2
+    N4 --> N5
+    N6 --> N7
 ```
 
 Что происходит внутри engine прямо сейчас:
@@ -464,35 +480,30 @@ console.log(browserName);
 
 Концептуально:
 
-```text
-console.log(browserName)
-│
-▼
-need value for browserName
-│
-▼
-read memory
-│
-▼
-"chromium"
-│
-▼
-pass value to console.log
+```mermaid
+flowchart TD
+    N1["console.log(browserName)"]
+    N2["need value for browserName"]
+    N3["read memory"]
+    N4["&quot;chromium&quot;"]
+    N5["pass value to console.log"]
+    N1 --> N2
+    N2 --> N3
+    N3 --> N4
+    N4 --> N5
 ```
 
 Диаграмма чтения:
 
-```text
-Identifier
-│
-▼
-browserName
-│
-▼
-Memory lookup
-│
-▼
-"chromium"
+```mermaid
+flowchart TD
+    N1["Identifier"]
+    N2["browserName"]
+    N3["Memory lookup"]
+    N4["&quot;chromium&quot;"]
+    N1 --> N2
+    N2 --> N3
+    N3 --> N4
 ```
 
 Если value не был сохранен или identifier недоступен, программа не сможет корректно прочитать информацию. Подробности доступности имен относятся к Scope и будут изучаться позже.
@@ -511,29 +522,32 @@ console.log(attempt);
 
 Концептуально:
 
-```text
-Initial memory
-└── attempt → 1
-
-Update
-└── attempt = 2
-
-After update
-└── attempt → 2
+```mermaid
+flowchart TD
+    N1["Initial memory"]
+    N2["attempt → 1"]
+    N3["Update"]
+    N4["attempt = 2"]
+    N5["После: update"]
+    N6["attempt → 2"]
+    N1 --> N2
+    N1 --> N3
+    N3 --> N4
+    N3 --> N5
+    N5 --> N6
 ```
 
 Важно: эта глава не объясняет различия между `let`, `const` и `var`. Следующая глава будет посвящена variables и покажет, почему одни identifiers можно переназначать, а другие нельзя.
 
 Сейчас важна механика:
 
-```text
-write old value
-│
-▼
-read or replace stored information
-│
-▼
-future reads see updated information
+```mermaid
+flowchart TD
+    N1["write old value"]
+    N2["read or replace stored information"]
+    N3["future reads see updated information"]
+    N1 --> N2
+    N2 --> N3
 ```
 
 Что происходит внутри engine прямо сейчас:
@@ -550,17 +564,15 @@ Engine обновляет сохраненную информацию.
 
 Когда Execution Context завершает работу, часть информации, которая была нужна только этому context, больше не нужна программе.
 
-```text
-Function Execution Context starts
-│
-▼
-temporary information appears
-│
-▼
-function finishes
-│
-▼
-temporary information is no longer needed
+```mermaid
+flowchart TD
+    N1["Function Execution Context starts"]
+    N2["появляется временная информация"]
+    N3["function завершается"]
+    N4["temporary information is нет longer needed"]
+    N1 --> N2
+    N2 --> N3
+    N3 --> N4
 ```
 
 Это высокоуровневая модель. Garbage Collector — механизм автоматического освобождения памяти в JavaScript engines; он будет изучаться позже. В этой главе важно только понять:
@@ -575,17 +587,15 @@ Some data becomes unnecessary.
 
 Lifetime — период, в течение которого информация нужна программе.
 
-```text
-Data appears
-│
-▼
-Data is used
-│
-▼
-Data may be updated
-│
-▼
-Data is no longer needed
+```mermaid
+flowchart TD
+    N1["данные появляются"]
+    N2["Data is used"]
+    N3["Data may be updated"]
+    N4["Data is нет longer needed"]
+    N1 --> N2
+    N2 --> N3
+    N3 --> N4
 ```
 
 Пример:
@@ -602,23 +612,19 @@ printUserName();
 
 Концептуально:
 
-```text
-call printUserName()
-│
-▼
-Function Execution Context appears
-│
-▼
-userName stored for this execution
-│
-▼
-console.log reads userName
-│
-▼
-function finishes
-│
-▼
-information for this execution is no longer active
+```mermaid
+flowchart TD
+    N1["вызвать printUserName()"]
+    N2["Function Execution Context appears"]
+    N3["userName stored for this выполнение"]
+    N4["console.log reads userName"]
+    N5["function завершается"]
+    N6["information for this выполнение is нет longer active"]
+    N1 --> N2
+    N2 --> N3
+    N3 --> N4
+    N4 --> N5
+    N5 --> N6
 ```
 
 Scope и Lexical Environment объяснят, где именно identifier доступен. Сейчас важно только lifetime: не вся информация нужна всей программе.
@@ -635,27 +641,32 @@ console.log(message);
 
 Концептуально:
 
-```text
-"Status: "
-│
-├── temporary combine
-│   └── "Status: passed"
-│
-└── store final value as message
+```mermaid
+flowchart TD
+    N1["&quot;Status: &quot;"]
+    N2["temporary combine"]
+    N3["&quot;Status: passed&quot;"]
+    N4["store final value as message"]
+    N1 --> N2
+    N1 --> N3
+    N1 --> N4
 ```
 
 Диаграмма temporary data:
 
-```text
-Temporary workspace
-│
-├── value A: "Status: "
-├── value B: "passed"
-└── temporary result: "Status: passed"
-        │
-        ▼
-Stored memory
-└── message → "Status: passed"
+```mermaid
+flowchart TD
+    N1["Temporary workspace"]
+    N2["value A: &quot;Status: &quot;"]
+    N3["value B: &quot;passed&quot;"]
+    N4["temporary результат: &quot;Status: passed&quot;"]
+    N5["Stored memory"]
+    N6["message → &quot;Status: passed&quot;"]
+    N1 --> N2
+    N1 --> N3
+    N1 --> N4
+    N1 --> N5
+    N5 --> N6
 ```
 
 Temporary workspace — учебная модель места, где engine держит промежуточную информацию во время текущего шага. Это не отдельная физическая область, которую нужно запоминать как термин.
@@ -674,23 +685,30 @@ console.log(baseUrl);
 
 Концептуально:
 
-```text
-baseUrl stored once
-│
-├── read in step 1
-├── read in step 2
-└── read in step 3
+```mermaid
+flowchart TD
+    N1["baseUrl stored once"]
+    N2["read in step 1"]
+    N3["read in step 2"]
+    N4["read in step 3"]
+    N1 --> N2
+    N1 --> N3
+    N1 --> N4
 ```
 
 Диаграмма long-lived data:
 
-```text
-Program timeline
-│
-├── store baseUrl
-├── use baseUrl
-├── use baseUrl again
-└── use baseUrl later
+```mermaid
+flowchart TD
+    N1["Program timeline"]
+    N2["store baseUrl"]
+    N3["use baseUrl"]
+    N4["use baseUrl again"]
+    N5["use baseUrl later"]
+    N1 --> N2
+    N1 --> N3
+    N1 --> N4
+    N1 --> N5
 ```
 
 Long-lived не означает "навсегда". Это означает "дольше, чем один момент выполнения".
@@ -699,54 +717,46 @@ Long-lived не означает "навсегда". Это означает "д
 
 Теперь соберем временная шкала:
 
-```text
-Program starts
-│
-▼
-Global Execution Context appears
-│
-▼
-Memory for global execution is prepared
-│
-▼
-store value
-│
-▼
-read value
-│
-▼
-update value
-│
-▼
-call function
-│
-▼
-function gets its own execution information
-│
-▼
-function finishes
-│
-▼
-temporary information is no longer active
-│
-▼
-program ends
+```mermaid
+flowchart TD
+    N1["программа начинается"]
+    N2["Global Execution Context appears"]
+    N3["Memory for global выполнение is prepared"]
+    N4["store value"]
+    N5["read value"]
+    N6["update value"]
+    N7["вызвать function"]
+    N8["function gets its own выполнение information"]
+    N9["function завершается"]
+    N10["temporary information is нет longer active"]
+    N11["program ends"]
+    N1 --> N2
+    N2 --> N3
+    N3 --> N4
+    N4 --> N5
+    N5 --> N6
+    N6 --> N7
+    N7 --> N8
+    N8 --> N9
+    N9 --> N10
+    N10 --> N11
 ```
 
 Это не замена Call Stack. Это следующий слой модели.
 
-```text
-Execution Context
-│
-└── where code runs
-
-Call Stack
-│
-└── which context is active
-
-Memory
-│
-└── what information is stored while code runs
+```mermaid
+flowchart TD
+    N1["Execution Context"]
+    N2["where code runs"]
+    N3["Call Stack"]
+    N4["which context is active"]
+    N5["Memory"]
+    N6["what information is stored while code runs"]
+    N1 --> N2
+    N1 --> N3
+    N3 --> N4
+    N3 --> N5
+    N5 --> N6
 ```
 
 ### Memory during function execution
@@ -765,31 +775,32 @@ printStatus();
 
 Концептуально:
 
-```text
-Call Stack
-├── printStatus Context
-└── Global Context
-
-Memory for printStatus execution
-└── status → "ready"
+```mermaid
+flowchart TD
+    N1["Call Stack"]
+    N2["printStatus Context"]
+    N3["Global Context"]
+    N4["Memory for printStatus выполнение"]
+    N5["status → &quot;ready&quot;"]
+    N1 --> N2
+    N1 --> N3
+    N1 --> N4
+    N4 --> N5
 ```
 
 Когда функция выполняется, engine хранит информацию, которая нужна для текущего function execution.
 
-```text
-enter function
-│
-▼
-prepare function execution information
-│
-▼
-store local values
-│
-▼
-read local values
-│
-▼
-leave function
+```mermaid
+flowchart TD
+    N1["enter function"]
+    N2["prepare function выполнение information"]
+    N3["store local values"]
+    N4["read local values"]
+    N5["leave function"]
+    N1 --> N2
+    N2 --> N3
+    N3 --> N4
+    N4 --> N5
 ```
 
 Слово "local" здесь используется на бытовом уровне: информация нужна конкретному выполнению функции. Формальная тема Scope будет изучаться позже.
@@ -798,32 +809,41 @@ leave function
 
 Execution Context — рабочая среда. Memory — информация, с которой эта среда работает.
 
-```text
-Execution Context
-│
-├── code is executing here
-├── engine knows current execution state
-└── memory-related information is available here
+```mermaid
+flowchart TD
+    N1["Execution Context"]
+    N2["code is executing here"]
+    N3["engine knows current выполнение state"]
+    N4["memory-related information is available here"]
+    N1 --> N2
+    N1 --> N3
+    N1 --> N4
 ```
 
 Более полезная схема:
 
-```text
-Global Execution Context
-│
-├── current code
-├── identifiers
-└── stored values
+```mermaid
+flowchart TD
+    N1["Global Execution Context"]
+    N2["current code"]
+    N3["identifiers"]
+    N4["stored values"]
+    N1 --> N2
+    N1 --> N3
+    N1 --> N4
 ```
 
 Для function execution:
 
-```text
-Function Execution Context
-│
-├── current function body
-├── identifiers for this execution
-└── values needed by this execution
+```mermaid
+flowchart TD
+    N1["Function Execution Context"]
+    N2["current тело функции"]
+    N3["identifiers for this выполнение"]
+    N4["values needed by this выполнение"]
+    N1 --> N2
+    N1 --> N3
+    N1 --> N4
 ```
 
 Это концептуальная модель. В будущих главах она будет уточнена через Variables, Scope, Lexical Environment, Primitive Types, Object Type, References и Stack & Heap.
@@ -844,72 +864,79 @@ What information is available for execution?
 
 Вместе:
 
-```text
-Call Stack
-├── Function Context: prepareUser
-│   └── memory info: userName, userRole
-└── Global Context
-    └── memory info: baseUrl
+```mermaid
+flowchart TD
+    N1["Call Stack"]
+    N2["Function Context: prepareUser"]
+    N3["memory info: userName, userRole"]
+    N4["Global Context"]
+    N5["memory info: baseUrl"]
+    N1 --> N2
+    N1 --> N3
+    N1 --> N4
+    N4 --> N5
 ```
 
 Engine выполняет верхний context и работает с информацией, которая нужна этому context.
 
-```text
-Top of Call Stack
-│
-▼
-Active Execution Context
-│
-▼
-Read / store / update information
+```mermaid
+flowchart TD
+    N1["Top of Call Stack"]
+    N2["Active Execution Context"]
+    N3["Read / store / update information"]
+    N1 --> N2
+    N2 --> N3
 ```
 
 ### Warehouse
 
 Первая ментальная модель — склад.
 
-```text
-Warehouse
-│
-├── shelf: userName
-│   └── box: "Anna"
-│
-├── shelf: retryCount
-│   └── box: 2
-│
-└── shelf: isAuthorized
-    └── box: true
+```mermaid
+flowchart TD
+    N1["Warehouse"]
+    N2["shelf: userName"]
+    N3["box: &quot;Anna&quot;"]
+    N4["shelf: retryCount"]
+    N5["box: 2"]
+    N6["shelf: isAuthorized"]
+    N7["box: true"]
+    N1 --> N2
+    N1 --> N3
+    N1 --> N4
+    N1 --> N5
+    N1 --> N6
+    N6 --> N7
 ```
 
 Когда программа сохраняет value, она кладет информацию на склад. Когда читает value, она идет к нужной полке.
 
 Модель полезна тем, что отделяет:
 
-```text
-label on shelf
-│
-└── identifier
-
-content in box
-│
-└── value
+```mermaid
+flowchart TD
+    N1["label on shelf"]
+    N2["identifier"]
+    N3["content in box"]
+    N4["значение"]
+    N1 --> N2
+    N1 --> N3
+    N3 --> N4
 ```
 
 ### Labeled shelves
 
 Identifiers можно представить как подписи на полках.
 
-```text
-Shelf label
-│
-▼
-apiToken
-│
-▼
-Stored content
-│
-▼
-"token-123"
+```mermaid
+flowchart TD
+    N1["Shelf label"]
+    N2["apiToken"]
+    N3["Stored content"]
+    N4["&quot;token-123&quot;"]
+    N1 --> N2
+    N2 --> N3
+    N3 --> N4
 ```
 
 Если подпись есть, engine может найти содержимое. Если подписи нет или она недоступна в текущем месте выполнения, engine не сможет использовать значение. Почему identifier может быть недоступен, объяснит глава про Scope.
@@ -926,14 +953,13 @@ Box #103: "webkit"
 
 Identifier помогает найти нужную коробку:
 
-```text
-browserName
-│
-▼
-Box #101
-│
-▼
-"chromium"
+```mermaid
+flowchart TD
+    N1["browserName"]
+    N2["Box #101"]
+    N3["&quot;chromium&quot;"]
+    N1 --> N2
+    N2 --> N3
 ```
 
 Эта модель готовит к будущей теме references, но не объясняет ее. References будут отдельной главой.
@@ -942,12 +968,15 @@ Box #101
 
 Еще одна модель — блокнот записей.
 
-```text
-Notebook
-│
-├── testStatus: "passed"
-├── retryCount: 2
-└── browserName: "chromium"
+```mermaid
+flowchart TD
+    N1["Notebook"]
+    N2["testStatus: &quot;passed&quot;"]
+    N3["retryCount: 2"]
+    N4["browserName: &quot;chromium&quot;"]
+    N1 --> N2
+    N1 --> N3
+    N1 --> N4
 ```
 
 Когда значение обновляется, запись меняется:
@@ -966,12 +995,15 @@ retryCount: 2
 
 Не вся информация достойна отдельной долгой записи.
 
-```text
-Temporary workspace
-│
-├── calculate intermediate value
-├── use it immediately
-└── discard when no longer needed
+```mermaid
+flowchart TD
+    N1["Temporary workspace"]
+    N2["calculate intermediate value"]
+    N3["use it immediately"]
+    N4["discard when нет longer needed"]
+    N1 --> N2
+    N1 --> N3
+    N1 --> N4
 ```
 
 Например:
@@ -982,14 +1014,13 @@ console.log('User: ' + 'Anna');
 
 Концептуально:
 
-```text
-Temporary result: "User: Anna"
-│
-▼
-console.log receives it
-│
-▼
-temporary result is no longer needed
+```mermaid
+flowchart TD
+    N1["Temporary результат: &quot;User: Anna&quot;"]
+    N2["console.log receives it"]
+    N3["временный результат больше не нужен"]
+    N1 --> N2
+    N2 --> N3
 ```
 
 Это помогает не думать, что каждое промежуточное значение обязательно становится долгоживущей записью программы.
@@ -1000,18 +1031,23 @@ temporary result is no longer needed
 
 Следующая глава объяснит, как программист управляет этой memory через variables.
 
-```text
-Memory
-│
-├── values exist
-├── identifiers name information
-└── stored information can be read and updated
-
-Variables
-│
-├── declare identifier
-├── initialize with value
-└── assign new value when allowed
+```mermaid
+flowchart TD
+    N1["Memory"]
+    N2["values exist"]
+    N3["identifiers name information"]
+    N4["stored information can be read and updated"]
+    N5["Variables"]
+    N6["declare identifier"]
+    N7["initialize with value"]
+    N8["assign new value when allowed"]
+    N1 --> N2
+    N1 --> N3
+    N1 --> N4
+    N1 --> N5
+    N5 --> N6
+    N5 --> N7
+    N5 --> N8
 ```
 
 Ключевой переход:
@@ -1030,59 +1066,62 @@ Variables answer:
 
 Внутренний механизм этой главы можно описать как цикл работы с информацией.
 
-```text
-Need information
-│
-▼
-create or receive value
-│
-▼
-store value if needed later
-│
-▼
-read value when identifier is used
-│
-▼
-update stored information if program asks
-│
-▼
-stop keeping information when it is no longer needed
+```mermaid
+flowchart TD
+    N1["Need information"]
+    N2["создать or receive value"]
+    N3["store value if needed later"]
+    N4["read value when identifier is used"]
+    N5["update stored information if program asks"]
+    N6["stop keeping information when it is нет longer needed"]
+    N1 --> N2
+    N2 --> N3
+    N3 --> N4
+    N4 --> N5
+    N5 --> N6
 ```
 
 Engine постоянно делает три базовые операции:
 
-```text
-write
-│
-├── store information
-│
-▼
-read
-│
-├── retrieve information
-│
-▼
-update
-│
-└── change current stored information
+```mermaid
+flowchart TD
+    N1["запись"]
+    N2["store information"]
+    N3["чтение"]
+    N4["retrieve information"]
+    N5["update"]
+    N6["change current stored information"]
+    N1 --> N2
+    N1 --> N3
+    N3 --> N4
+    N3 --> N5
+    N5 --> N6
 ```
 
 Для синхронного кода это происходит внутри активного Execution Context.
 
-```text
-Call Stack
-├── active Function Context
-│   └── engine works with information needed here
-└── previous Context
+```mermaid
+flowchart TD
+    N1["Call Stack"]
+    N2["active Function Context"]
+    N3["engine works with information needed here"]
+    N4["previous Context"]
+    N1 --> N2
+    N1 --> N3
+    N1 --> N4
 ```
 
 Что происходит внутри engine прямо сейчас:
 
-```text
-If code creates data → engine stores information.
-If code uses identifier → engine reads information.
-If code changes data → engine updates information.
-If execution ends → some information is no longer active.
+```mermaid
+flowchart TD
+    N1["If code создает data → engine stores information."]
+    N2["If code uses identifier → engine reads information."]
+    N3["If code changes data → engine updates information."]
+    N4["If выполнение ends → some information is нет longer active."]
+    N1 --> N2
+    N2 --> N3
+    N3 --> N4
 ```
 
 Важно не перепрыгивать вперед. В этой главе не нужно знать, где физически лежит value, как устроены references и когда именно работает Garbage Collector. Пока достаточно модели "engine хранит информацию, чтобы программа могла продолжать осмысленное выполнение".
@@ -1095,72 +1134,82 @@ If execution ends → some information is no longer active.
 
 ### Warehouse
 
-```text
-Memory as warehouse
-│
-├── information is stored
-├── information can be found
-└── information can be replaced
+```mermaid
+flowchart TD
+    N1["Memory as warehouse"]
+    N2["information is stored"]
+    N3["information can be found"]
+    N4["information can be replaced"]
+    N1 --> N2
+    N1 --> N3
+    N1 --> N4
 ```
 
 ### Labeled shelves
 
-```text
-Identifier
-│
-▼
-Shelf label
-│
-▼
-Stored value
+```mermaid
+flowchart TD
+    N1["Identifier"]
+    N2["Shelf label"]
+    N3["Stored value"]
+    N1 --> N2
+    N2 --> N3
 ```
 
 ### Numbered storage boxes
 
-```text
-Identifier table
-│
-└── points conceptually to storage box
-
-Storage box
-│
-└── contains value
+```mermaid
+flowchart TD
+    N1["Identifier table"]
+    N2["points conceptually to storage box"]
+    N3["Storage box"]
+    N4["contains value"]
+    N1 --> N2
+    N1 --> N3
+    N3 --> N4
 ```
 
 ### Notebook with records
 
-```text
-Current records
-│
-├── userName: "Anna"
-├── attempt: 2
-└── status: "ready"
+```mermaid
+flowchart TD
+    N1["Current records"]
+    N2["userName: &quot;Anna&quot;"]
+    N3["attempt: 2"]
+    N4["status: &quot;ready&quot;"]
+    N1 --> N2
+    N1 --> N3
+    N1 --> N4
 ```
 
 ### Temporary workspace
 
-```text
-Temporary workspace
-│
-├── short calculation
-├── immediate usage
-└── no long lifetime
+```mermaid
+flowchart TD
+    N1["Temporary workspace"]
+    N2["short calculation"]
+    N3["immediate usage"]
+    N4["нет long lifetime"]
+    N1 --> N2
+    N1 --> N3
+    N1 --> N4
 ```
 
 Главная итоговая модель:
 
-```text
-Execution Context
-│
-└── creates the execution environment
-
-Call Stack
-│
-└── manages which context is active
-
-Memory
-│
-└── stores everything the engine needs while the program runs
+```mermaid
+flowchart TD
+    N1["Execution Context"]
+    N2["создает the выполнение environment"]
+    N3["Call Stack"]
+    N4["manages which context is active"]
+    N5["Memory"]
+    N6["stores everything the engine needs while the program runs"]
+    N1 --> N2
+    N1 --> N3
+    N3 --> N4
+    N3 --> N5
+    N5 --> N6
 ```
 
 ---
@@ -1305,14 +1354,13 @@ console.log remembers previous values
 
 Исправленная модель:
 
-```text
-identifier
-│
-▼
-read stored value
-│
-▼
-pass value to console.log
+```mermaid
+flowchart TD
+    N1["identifier"]
+    N2["read stored value"]
+    N3["pass value to console.log"]
+    N1 --> N2
+    N2 --> N3
 ```
 
 ### Ошибка 2. Не отличать storing от reading
@@ -1332,11 +1380,11 @@ Both lines do the same thing
 
 Исправленная модель:
 
-```text
-store
-│
-▼
-read
+```mermaid
+flowchart TD
+    N1["store"]
+    N2["чтение"]
+    N1 --> N2
 ```
 
 ### Ошибка 3. Ожидать старое значение после update
@@ -1401,12 +1449,15 @@ After function finishes, that execution information is no longer active.
 
 Для простого кода можно вести таблицу:
 
-```text
-Step | Operation | Memory
------|-----------|---------------------
-1    | store     | status → "created"
-2    | update    | status → "finished"
-3    | read      | status → "finished"
+```mermaid
+flowchart TD
+    N1["Step | Operation | Memory"]
+    N2["1 | store | status → &quot;created&quot;"]
+    N3["2 | update | status → &quot;finished&quot;"]
+    N4["3 | read | status → &quot;finished&quot;"]
+    N1 --> N2
+    N2 --> N3
+    N3 --> N4
 ```
 
 Эта таблица особенно полезна перед тем, как запускать код. Она заставляет сначала построить mental model, а потом проверить себя через execution.
@@ -1437,14 +1488,13 @@ console.log(userName);
 
 Концептуально:
 
-```text
-prepare test data
-│
-▼
-store userName
-│
-▼
-later step reads userName
+```mermaid
+flowchart TD
+    N1["prepare test data"]
+    N2["store userName"]
+    N3["later step reads userName"]
+    N1 --> N2
+    N2 --> N3
 ```
 
 Без memory тест не мог бы подготовить данные и использовать их в следующих действиях.
@@ -1465,14 +1515,13 @@ console.log(userName);
 
 `return` будет подробно изучаться позже. Сейчас важна идея: результат helper должен быть сохранен, иначе следующий шаг не сможет его использовать.
 
-```text
-helper creates result
-│
-▼
-test stores result
-│
-▼
-later assertion reads result
+```mermaid
+flowchart TD
+    N1["helper создает result"]
+    N2["тест сохраняет результат"]
+    N3["последующая проверка читает результат"]
+    N1 --> N2
+    N2 --> N3
 ```
 
 ### Values survive between assertions
@@ -1492,17 +1541,15 @@ Memory объясняет, почему одно и то же expected value д�
 
 Когда Playwright-тест падает, причина часто связана не с самим кликом или assertion, а с тем, какое значение было сохранено раньше.
 
-```text
-fixture stores baseUrl
-│
-▼
-test reads baseUrl
-│
-▼
-helper builds page URL
-│
-▼
-Playwright opens wrong URL
+```mermaid
+flowchart TD
+    N1["fixture stores baseUrl"]
+    N2["test reads baseUrl"]
+    N3["helper builds page URL"]
+    N4["Playwright opens wrong URL"]
+    N1 --> N2
+    N2 --> N3
+    N3 --> N4
 ```
 
 Если URL неправильный, нужно смотреть не только на `page.goto`, но и на место, где значение было сохранено или обновлено.
@@ -1511,12 +1558,15 @@ Playwright opens wrong URL
 
 Fixture часто подготавливает long-lived data для теста:
 
-```text
-fixture
-│
-├── create user
-├── store userName
-└── test reads userName
+```mermaid
+flowchart TD
+    N1["fixture"]
+    N2["создать user"]
+    N3["store userName"]
+    N4["test reads userName"]
+    N1 --> N2
+    N1 --> N3
+    N1 --> N4
 ```
 
 Memory model помогает понять, почему ошибка в подготовленных данных проявляется позже, в другом слое test framework.
@@ -1529,18 +1579,19 @@ Memory нужна любой программе, потому что выпол�
 
 В этой главе memory рассматривалась концептуально. Мы не изучали Stack & Heap, references, Garbage Collector, Scope или Lexical Environment. Вместо этого была построена базовая модель:
 
-```text
-Value
-│
-└── информация, с которой работает программа
-
-Identifier
-│
-└── имя, по которому программа обращается к информации
-
-Memory
-│
-└── концептуальное хранилище информации во время выполнения
+```mermaid
+flowchart TD
+    N1["Value"]
+    N2["информация, с которой работает программа"]
+    N3["Identifier"]
+    N4["имя, по которому программа обращается к информации"]
+    N5["Memory"]
+    N6["концептуальное хранилище информации во время выполнения"]
+    N1 --> N2
+    N1 --> N3
+    N3 --> N4
+    N3 --> N5
+    N5 --> N6
 ```
 
 Теперь общая модель JavaScript стала такой:
@@ -1613,8 +1664,11 @@ practice/01-javascript/05-memory.md
 
 Перед выполнением практики запустите примеры из `examples/01-javascript/chapter-05/` и для каждого файла составьте таблицу:
 
-```text
-identifier → current value
+```mermaid
+flowchart LR
+    N1["identifier"]
+    N2["current value"]
+    N1 --> N2
 ```
 
 ---

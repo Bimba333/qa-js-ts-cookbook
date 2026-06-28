@@ -351,23 +351,29 @@ Playwright-тест может читать переменные окружен�
 
 Возможная схема:
 
-```text
-Playwright test
-│
-├── Node.js context
-│   ├── process
-│   ├── fs
-│   └── Playwright API
-│
-└── controls
-    │
-    ▼
-Browser page
-│
-├── Browser context
-│   ├── window
-│   ├── document
-│   └── DOM
+```mermaid
+flowchart TD
+    N1["Playwright test"]
+    N2["Node.js context"]
+    N3["process"]
+    N4["fs"]
+    N5["Playwright API"]
+    N6["controls"]
+    N7["Browser page"]
+    N8["Browser context"]
+    N9["window"]
+    N10["document"]
+    N11["DOM"]
+    N1 --> N2
+    N1 --> N3
+    N1 --> N4
+    N1 --> N5
+    N1 --> N6
+    N1 --> N7
+    N7 --> N8
+    N7 --> N9
+    N7 --> N10
+    N7 --> N11
 ```
 
 Объяснение:

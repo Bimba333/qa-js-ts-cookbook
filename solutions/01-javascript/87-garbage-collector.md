@@ -96,20 +96,17 @@
 
 Ответ:
 
-```text
-создать отчет
-│
-▼
-отчет reachable через currentReport
-│
-▼
-загрузить отчет
-│
-▼
-currentReport = null
-│
-▼
-если других ссылок нет, отчет может стать кандидатом на сборку
+```mermaid
+flowchart TD
+    N1["создать отчет"]
+    N2["отчет reachable через currentReport"]
+    N3["загрузить отчет"]
+    N4["currentReport = null"]
+    N5["если других ссылок нет, отчет может стать кандидатом на сборку"]
+    N1 --> N2
+    N2 --> N3
+    N3 --> N4
+    N4 --> N5
 ```
 
 Объяснение: объект становится кандидатом на сборку только после исчезновения всех путей к нему.
@@ -122,26 +119,30 @@ currentReport = null
 
 Ответ:
 
-```text
-runner
-│
-├── currentReport
-│       └── logs
-│
-└── config
+```mermaid
+flowchart TD
+    N1["runner"]
+    N2["currentReport"]
+    N3["logs"]
+    N4["config"]
+    N1 --> N2
+    N1 --> N3
+    N1 --> N4
 ```
 
 После `runner.currentReport = null`:
 
-```text
-runner
-│
-├── currentReport: null
-└── config
-
-old report
-│
-└── logs
+```mermaid
+flowchart TD
+    N1["runner"]
+    N2["currentReport: null"]
+    N3["config"]
+    N4["old report"]
+    N5["logs"]
+    N1 --> N2
+    N1 --> N3
+    N1 --> N4
+    N4 --> N5
 ```
 
 Объяснение: если на `old report` нет других ссылок, он и его `logs` могут стать недостижимыми.

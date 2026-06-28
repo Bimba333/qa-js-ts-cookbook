@@ -112,26 +112,52 @@
 
 `loginPage.name`:
 
-```text
-loginPage -> found
+```mermaid
+flowchart LR
+    N1["loginPage"]
+    N2["found"]
+    N1 --> N2
 ```
 
 `loginPage.describePage`:
 
-```text
-loginPage -> pageBehavior -> found
+```mermaid
+flowchart LR
+    N1["loginPage"]
+    N2["pageBehavior"]
+    N3["found"]
+    N1 --> N2
+    N2 --> N3
 ```
 
 `loginPage.formatError`:
 
-```text
-loginPage -> pageBehavior -> frameworkBehavior -> found
+```mermaid
+flowchart LR
+    N1["loginPage"]
+    N2["pageBehavior"]
+    N3["frameworkBehavior"]
+    N4["found"]
+    N1 --> N2
+    N2 --> N3
+    N3 --> N4
 ```
 
 `loginPage.missingProperty`:
 
-```text
-loginPage -> pageBehavior -> frameworkBehavior -> later prototypes -> not found -> undefined
+```mermaid
+flowchart LR
+    N1["loginPage"]
+    N2["pageBehavior"]
+    N3["frameworkBehavior"]
+    N4["later prototypes"]
+    N5["not found"]
+    N6["undefined"]
+    N1 --> N2
+    N2 --> N3
+    N3 --> N4
+    N4 --> N5
+    N5 --> N6
 ```
 
 **Объяснение:** lookup starts from current object and continues through linked prototypes.
@@ -146,20 +172,19 @@ loginPage -> pageBehavior -> frameworkBehavior -> later prototypes -> not found 
 
 **Объяснение:**
 
-```text
-client
-│
-└── not found
-    │
-    ▼
-serviceBehavior
-│
-└── not found
-    │
-    ▼
-baseBehavior
-│
-└── found
+```mermaid
+flowchart TD
+    N1["client"]
+    N2["not found"]
+    N3["serviceBehavior"]
+    N4["not found"]
+    N5["baseBehavior"]
+    N6["found"]
+    N1 --> N2
+    N1 --> N3
+    N3 --> N4
+    N3 --> N5
+    N5 --> N6
 ```
 
 **Распространённая ошибка:** think empty `serviceBehavior` stops lookup.
@@ -286,14 +311,15 @@ const frameworkBehavior = {
 
 **Объяснение:**
 
-```text
-object.missing
-│
-└── undefined
-
-undefined()
-│
-└── TypeError
+```mermaid
+flowchart TD
+    N1["object.значение отсутствует"]
+    N2["undefined"]
+    N3["undefined()"]
+    N4["TypeError"]
+    N1 --> N2
+    N1 --> N3
+    N3 --> N4
 ```
 
 **Распространённая ошибка:** think missing property read itself always throws.
@@ -447,20 +473,19 @@ RoleValidator: expected admin, actual viewer
 
 Lookup for `statusValidator.formatFailure`:
 
-```text
-statusValidator
-│
-└── not found
-    │
-    ▼
-validatorBehavior
-│
-└── not found
-    │
-    ▼
-reportingBehavior
-│
-└── found
+```mermaid
+flowchart TD
+    N1["statusValidator"]
+    N2["not found"]
+    N3["validatorBehavior"]
+    N4["not found"]
+    N5["reportingBehavior"]
+    N6["found"]
+    N1 --> N2
+    N1 --> N3
+    N3 --> N4
+    N3 --> N5
+    N5 --> N6
 ```
 
 **Объяснение:** validation and reporting поведение are separated into two shared layers.

@@ -6,26 +6,28 @@
 
 Главная модель была такой:
 
-```text
-Ordinary invocation
-│
-▼
-JavaScript chooses receiver from ordinary invocation form
-
-call()
-│
-▼
-Developer chooses receiver explicitly
+```mermaid
+flowchart TD
+    N1["Ordinary invocation"]
+    N2["JavaScript chooses receiver from ordinary invocation form"]
+    N3["call()"]
+    N4["Developer chooses receiver explicitly"]
+    N1 --> N2
+    N2 --> N3
+    N3 --> N4
 ```
 
 В `call()` объект выполнения передается первым argument:
 
-```text
-functionObject.call(receiver, arg1, arg2)
-│
-├── receiver -> this
-├── arg1     -> first parameter
-└── arg2     -> second parameter
+```mermaid
+flowchart TD
+    N1["functionObject.call(receiver, arg1, arg2)"]
+    N2["receiver → this"]
+    N3["arg1 → first parameter"]
+    N4["arg2 → second parameter"]
+    N1 --> N2
+    N1 --> N3
+    N1 --> N4
 ```
 
 Теперь появляется следующий вопрос:
@@ -52,14 +54,15 @@ const requestParts = ['POST', '/users', '{"name":"Anna"}'];
 
 Ответ:
 
-```text
-Receiver selection
-│
-└── same as call()
-
-Argument passing
-│
-└── different
+```mermaid
+flowchart TD
+    N1["Receiver selection"]
+    N2["same as call()"]
+    N3["Argument passing"]
+    N4["different"]
+    N1 --> N2
+    N1 --> N3
+    N3 --> N4
 ```
 
 ---
@@ -154,12 +157,15 @@ function formatRequest(method, path, body) {
 
 Она ожидает три отдельных arguments:
 
-```text
-formatRequest(method, path, body)
-│
-├── method
-├── path
-└── body
+```mermaid
+flowchart TD
+    N1["formatRequest(method, path, body)"]
+    N2["method"]
+    N3["path"]
+    N4["body"]
+    N1 --> N2
+    N1 --> N3
+    N1 --> N4
 ```
 
 Но test data уже подготовлены как array:
@@ -170,12 +176,15 @@ const requestParts = ['POST', '/users', '{"name":"Anna"}'];
 
 Packaged arguments:
 
-```text
-requestParts
-│
-├── [0] 'POST'
-├── [1] '/users'
-└── [2] '{"name":"Anna"}'
+```mermaid
+flowchart TD
+    N1["requestParts"]
+    N2["[0] 'POST'"]
+    N3["[1] '/users'"]
+    N4["[2] '{&quot;name&quot;:&quot;Anna&quot;}'"]
+    N1 --> N2
+    N1 --> N3
+    N1 --> N4
 ```
 
 Через `call()` пришлось бы вручную распаковать значения:
@@ -188,44 +197,41 @@ formatRequest.call(apiClient, requestParts[0], requestParts[1], requestParts[2])
 
 Проблема:
 
-```text
-Function expects separate arguments
-│
-▼
-Data already exists as one array
-│
-▼
-Need to pass array items as arguments
-│
-▼
-apply()
+```mermaid
+flowchart TD
+    N1["Function expects separate arguments"]
+    N2["Data already exists as one array"]
+    N3["Need to pass array items as arguments"]
+    N4["apply()"]
+    N1 --> N2
+    N2 --> N3
+    N3 --> N4
 ```
 
 Зачем существует apply():
 
-```text
-Receiver is still needed
-│
-▼
-Arguments are already in an array
-│
-▼
-Need manual invocation with ordered argument list
-│
-▼
-apply()
+```mermaid
+flowchart TD
+    N1["Receiver is still needed"]
+    N2["Arguments are already in an array"]
+    N3["Need manual invocation with ordered argument list"]
+    N4["apply()"]
+    N1 --> N2
+    N2 --> N3
+    N3 --> N4
 ```
 
 Центральная мысль:
 
-```text
-call()
-│
-└── arguments separately
-
-apply()
-│
-└── arguments as one ordered argument list
+```mermaid
+flowchart TD
+    N1["call()"]
+    N2["arguments separately"]
+    N3["apply()"]
+    N4["arguments as one ordered argument list"]
+    N1 --> N2
+    N1 --> N3
+    N3 --> N4
 ```
 
 ---
@@ -242,49 +248,54 @@ formatRequest.apply(apiClient, requestParts);
 
 Полная модель apply():
 
-```text
-functionObject.apply(receiver, argumentsList)
-│
-├── receiver       -> this
-└── argumentsList  -> values for parameters
+```mermaid
+flowchart TD
+    N1["functionObject.apply(receiver, argumentsList)"]
+    N2["receiver → this"]
+    N3["argumentsList → values for parameters"]
+    N1 --> N2
+    N1 --> N3
 ```
 
 Объект выполнения тот же:
 
-```text
-call(receiver, ...)
-│
-└── receiver -> this
-
-apply(receiver, ...)
-│
-└── receiver -> this
+```mermaid
+flowchart TD
+    N1["call(receiver, ...)"]
+    N2["receiver → this"]
+    N3["apply(receiver, ...)"]
+    N4["receiver → this"]
+    N1 --> N2
+    N1 --> N3
+    N3 --> N4
 ```
 
 Arguments differ:
 
-```text
-call(receiver, arg1, arg2, arg3)
-│
-└── arguments passed separately
-
-apply(receiver, [arg1, arg2, arg3])
-│
-└── arguments passed as one ordered argument list
+```mermaid
+flowchart TD
+    N1["call(receiver, arg1, arg2, arg3)"]
+    N2["arguments passed separately"]
+    N3["apply(receiver, [arg1, arg2, arg3])"]
+    N4["arguments passed as one ordered argument list"]
+    N1 --> N2
+    N1 --> N3
+    N3 --> N4
 ```
 
 `apply()` решает не новую проблему объект выполнения.
 
 Он решает проблему формы arguments.
 
-```text
-Receiver problem
-│
-└── already solved by call()
-
-Argument packaging problem
-│
-└── solved by apply()
+```mermaid
+flowchart TD
+    N1["Receiver problem"]
+    N2["already solved by call()"]
+    N3["Argument packaging problem"]
+    N4["solved by apply()"]
+    N1 --> N2
+    N1 --> N3
+    N3 --> N4
 ```
 
 ---
@@ -307,23 +318,26 @@ console.log(getBaseUrl.apply(apiClient));
 
 Receiver поток:
 
-```text
-getBaseUrl.apply(apiClient)
-│
-├── getBaseUrl -> function object
-└── apiClient  -> this
+```mermaid
+flowchart TD
+    N1["getBaseUrl.apply(apiClient)"]
+    N2["getBaseUrl → function object"]
+    N3["apiClient → this"]
+    N1 --> N2
+    N1 --> N3
 ```
 
 Same объект выполнения:
 
-```text
-getBaseUrl.call(apiClient)
-│
-└── this -> apiClient
-
-getBaseUrl.apply(apiClient)
-│
-└── this -> apiClient
+```mermaid
+flowchart TD
+    N1["getBaseUrl.call(apiClient)"]
+    N2["this → apiClient"]
+    N3["getBaseUrl.apply(apiClient)"]
+    N4["this → apiClient"]
+    N1 --> N2
+    N1 --> N3
+    N3 --> N4
 ```
 
 Главный вопрос для объект выполнения:
@@ -334,10 +348,11 @@ Who becomes this?
 
 Ответ одинаковый:
 
-```text
-first argument of call/apply
-│
-└── receiver
+```mermaid
+flowchart TD
+    N1["first argument of call/apply"]
+    N2["receiver"]
+    N1 --> N2
 ```
 
 ---
@@ -362,35 +377,41 @@ console.log(formatRequest.apply(apiClient, requestParts));
 
 Array to parameters:
 
-```text
-requestParts
-│
-├── [0] 'POST'          -> method
-├── [1] '/users'        -> path
-└── [2] '{"name":"Anna"}' -> body
+```mermaid
+flowchart TD
+    N1["requestParts"]
+    N2["[0] 'POST' → method"]
+    N3["[1] '/users' → path"]
+    N4["[2] '{&quot;name&quot;:&quot;Anna&quot;}' → body"]
+    N1 --> N2
+    N1 --> N3
+    N1 --> N4
 ```
 
 Сопоставление параметров:
 
-```text
-formatRequest.apply(apiClient, requestParts)
-│
-├── apiClient       -> this
-├── requestParts[0] -> method
-├── requestParts[1] -> path
-└── requestParts[2] -> body
+```mermaid
+flowchart TD
+    N1["formatRequest.apply(apiClient, requestParts)"]
+    N2["apiClient → this"]
+    N3["requestParts[0] → method"]
+    N4["requestParts[1] → path"]
+    N5["requestParts[2] → body"]
+    N1 --> N2
+    N1 --> N3
+    N1 --> N4
+    N1 --> N5
 ```
 
 Array expansion concept:
 
-```text
-One array
-│
-▼
-values are taken by position
-│
-▼
-parameters receive separate values
+```mermaid
+flowchart TD
+    N1["One array"]
+    N2["values are taken by position"]
+    N3["parameters receive separate values"]
+    N1 --> N2
+    N2 --> N3
 ```
 
 Мы не объясняем Spread syntax заново. В современном JavaScript часто встречаются альтернативные формы передачи array значения, но в этой главе важно понять сам механизм `apply()`.
@@ -403,29 +424,35 @@ parameters receive separate values
 
 На высоком уровне:
 
-```text
-Array-like collection
-│
-├── has indexed values
-└── has length
+```mermaid
+flowchart TD
+    N1["Array-like collection"]
+    N2["has indexed values"]
+    N3["has length"]
+    N1 --> N2
+    N1 --> N3
 ```
 
 Array-like collections:
 
-```text
-array-like value
-│
-├── [0] first value
-├── [1] second value
-└── length
+```mermaid
+flowchart TD
+    N1["array-like value"]
+    N2["[0] first value"]
+    N3["[1] second value"]
+    N4["length"]
+    N1 --> N2
+    N1 --> N3
+    N1 --> N4
 ```
 
 Мы не разбираем `arguments` object internals. Это отдельная тема. Сейчас достаточно понимать:
 
-```text
-apply()
-│
-└── expects an array or array-like ordered argument list
+```mermaid
+flowchart TD
+    N1["apply()"]
+    N2["expects an array or array-like ordered argument list"]
+    N1 --> N2
 ```
 
 ---
@@ -458,40 +485,45 @@ validateRequest.apply(config, requestData);
 
 call/apply comparison:
 
-```text
-call(config, 200, '/users', body)
-│
-├── config -> this
-└── arguments listed one by one
-
-apply(config, requestData)
-│
-├── config -> this
-└── arguments taken from requestData
+```mermaid
+flowchart TD
+    N1["call(config, 200, '/users', body)"]
+    N2["config → this"]
+    N3["arguments listed one by one"]
+    N4["apply(config, requestData)"]
+    N5["config → this"]
+    N6["arguments taken from requestData"]
+    N1 --> N2
+    N1 --> N3
+    N1 --> N4
+    N4 --> N5
+    N4 --> N6
 ```
 
 Different argument passing:
 
-```text
-call()
-│
-└── separate arguments
-
-apply()
-│
-└── arguments as array or array-like list
+```mermaid
+flowchart TD
+    N1["call()"]
+    N2["separate arguments"]
+    N3["apply()"]
+    N4["arguments as array or array-like list"]
+    N1 --> N2
+    N1 --> N3
+    N3 --> N4
 ```
 
 Объект выполнения тот же:
 
-```text
-call(config, ...)
-│
-└── this -> config
-
-apply(config, ...)
-│
-└── this -> config
+```mermaid
+flowchart TD
+    N1["call(config, ...)"]
+    N2["this → config"]
+    N3["apply(config, ...)"]
+    N4["this → config"]
+    N1 --> N2
+    N1 --> N3
+    N3 --> N4
 ```
 
 ---
@@ -508,56 +540,56 @@ formatRequest.apply(apiClient, requestParts);
 
 Жизненный цикл вызова:
 
-```text
-1. Read function object: formatRequest
-   │
-   ▼
-2. Read apply method
-   │
-   ▼
-3. Receive first argument: apiClient
-   │
-   ▼
-4. Use apiClient as receiver
-   │
-   ▼
-5. Receive second argument: requestParts
-   │
-   ▼
-6. Take values from requestParts by position
-   │
-   ▼
-7. Start function execution
-   │
-   ▼
-8. Parameters receive extracted values
+```mermaid
+flowchart TD
+    N1["1. Read function object: formatRequest"]
+    N2["2. Read apply method"]
+    N3["3. Receive first argument: apiClient"]
+    N4["4. Use apiClient as receiver"]
+    N5["5. Receive second argument: requestParts"]
+    N6["6. Take values from requestParts by position"]
+    N7["7. Start function выполнение"]
+    N8["8. Parameters receive extracted values"]
+    N1 --> N2
+    N2 --> N3
+    N3 --> N4
+    N4 --> N5
+    N5 --> N6
+    N6 --> N7
+    N7 --> N8
 ```
 
 Выполнение функции:
 
-```text
-Function Execution Context
-│
-├── this   -> apiClient
-├── method -> requestParts[0]
-├── path   -> requestParts[1]
-└── body   -> requestParts[2]
+```mermaid
+flowchart TD
+    N1["Function Execution Context"]
+    N2["this → apiClient"]
+    N3["method → requestParts[0]"]
+    N4["path → requestParts[1]"]
+    N5["body → requestParts[2]"]
+    N1 --> N2
+    N1 --> N3
+    N1 --> N4
+    N1 --> N5
 ```
 
 Receiver поток:
 
-```text
-apply(apiClient, requestParts)
-│
-└── apiClient -> this
+```mermaid
+flowchart TD
+    N1["apply(apiClient, requestParts)"]
+    N2["apiClient → this"]
+    N1 --> N2
 ```
 
 Arguments поток:
 
-```text
-apply(apiClient, requestParts)
-│
-└── requestParts -> parameters by position
+```mermaid
+flowchart TD
+    N1["apply(apiClient, requestParts)"]
+    N2["requestParts → parameters by position"]
+    N1 --> N2
 ```
 
 ---
@@ -566,28 +598,31 @@ apply(apiClient, requestParts)
 
 Как и `call()`, `apply()` вызывается у function object.
 
-```text
-functionObject.apply(...)
-│
-└── functionObject is what will execute
+```mermaid
+flowchart TD
+    N1["functionObject.apply(...)"]
+    N2["functionObject is what will execute"]
+    N1 --> N2
 ```
 
 Объект функции:
 
-```text
-formatRequest
-│
-└── function object
-    │
-    └── has apply available
+```mermaid
+flowchart TD
+    N1["formatRequest"]
+    N2["function object"]
+    N3["has apply available"]
+    N1 --> N2
+    N2 --> N3
 ```
 
 Мы не углубляемся в prototype mechanics. Prototype будет изучаться позже. Сейчас важно только:
 
-```text
-Function objects
-│
-└── can be invoked through apply()
+```mermaid
+flowchart TD
+    N1["Function objects"]
+    N2["can be invoked through apply()"]
+    N1 --> N2
 ```
 
 ---
@@ -596,43 +631,51 @@ Function objects
 
 Временная шкала:
 
-```text
-T1  Function object exists
-│
-T2  Receiver object exists
-│
-T3  Arguments array exists
-│
-T4  apply(receiver, argumentsList) is called
-│
-T5  Receiver becomes this
-│
-T6  Array values map to parameters
-│
-T7  Function body executes
-│
-T8  Function returns result
+```mermaid
+flowchart TD
+    N1["T1 Function object exists"]
+    N2["T2 Receiver object exists"]
+    N3["T3 Arguments array exists"]
+    N4["T4 apply(receiver, argumentsList) is called"]
+    N5["T5 Receiver becomes this"]
+    N6["T6 Array values map to parameters"]
+    N7["T7 тело функции выполняется"]
+    N8["T8 Function возвращает result"]
+    N1 --> N2
+    N2 --> N3
+    N3 --> N4
+    N4 --> N5
+    N5 --> N6
+    N6 --> N7
+    N7 --> N8
 ```
 
 Complete объект выполнения model:
 
-```text
-this chapter
-│
-├── this        -> receiver concept
-├── call()      -> manual receiver + separate arguments
-└── apply()     -> manual receiver + array/array-like arguments
+```mermaid
+flowchart TD
+    N1["this chapter"]
+    N2["this → receiver concept"]
+    N3["call() → manual receiver + separate arguments"]
+    N4["apply() → manual receiver + array/array-like arguments"]
+    N1 --> N2
+    N1 --> N3
+    N1 --> N4
 ```
 
 Итоговая схема:
 
-```text
-apply(receiver, [a, b, c])
-│
-├── receiver -> this
-├── a        -> first parameter
-├── b        -> second parameter
-└── c        -> third parameter
+```mermaid
+flowchart TD
+    N1["apply(receiver, [a, b, c])"]
+    N2["receiver → this"]
+    N3["a → first parameter"]
+    N4["b → second parameter"]
+    N5["c → third parameter"]
+    N1 --> N2
+    N1 --> N3
+    N1 --> N4
+    N1 --> N5
 ```
 
 ---
@@ -643,12 +686,15 @@ apply(receiver, [a, b, c])
 
 Представьте, что arguments уже лежат на подносе.
 
-```text
-Tray
-│
-├── method
-├── path
-└── body
+```mermaid
+flowchart TD
+    N1["Tray"]
+    N2["method"]
+    N3["path"]
+    N4["body"]
+    N1 --> N2
+    N1 --> N3
+    N1 --> N4
 ```
 
 `call()` требует передавать items по одному.
@@ -665,14 +711,13 @@ apply(receiver, tray)
 
 Tray model:
 
-```text
-Prepared tray
-│
-▼
-apply receives tray
-│
-▼
-function parameters receive items by position
+```mermaid
+flowchart TD
+    N1["Prepared tray"]
+    N2["apply receives tray"]
+    N3["function parameters receive items by position"]
+    N1 --> N2
+    N2 --> N3
 ```
 
 ---
@@ -681,61 +726,71 @@ function parameters receive items by position
 
 `apply()` можно представить как delivery box.
 
-```text
-Delivery box
-│
-├── item 0
-├── item 1
-└── item 2
+```mermaid
+flowchart TD
+    N1["Delivery box"]
+    N2["item 0"]
+    N3["item 1"]
+    N4["item 2"]
+    N1 --> N2
+    N1 --> N3
+    N1 --> N4
 ```
 
 Function получает не box целиком в первый parameter, а items из box по positions.
 
-```text
-apply(receiver, box)
-│
-├── box[0] -> parameter 1
-├── box[1] -> parameter 2
-└── box[2] -> parameter 3
+```mermaid
+flowchart TD
+    N1["apply(receiver, box)"]
+    N2["box[0] → parameter 1"]
+    N3["box[1] → parameter 2"]
+    N4["box[2] → parameter 3"]
+    N1 --> N2
+    N1 --> N3
+    N1 --> N4
 ```
 
 Envelope containing arguments:
 
-```text
-Envelope
-│
-└── contains prepared argument list
-    │
-    ▼
-    apply opens it for function call
+```mermaid
+flowchart TD
+    N1["Envelope"]
+    N2["contains prepared argument list"]
+    N3["apply opens it for вызов функции"]
+    N1 --> N2
+    N1 --> N3
 ```
 
 ---
 
 ### Краткая ментальная модель
 
-```text
-call()
-│
-├── receiver
-└── arguments separately
-
-apply()
-│
-├── receiver
-└── arguments as ordered argument list
+```mermaid
+flowchart TD
+    N1["call()"]
+    N2["receiver"]
+    N3["arguments separately"]
+    N4["apply()"]
+    N5["receiver"]
+    N6["arguments as ordered argument list"]
+    N1 --> N2
+    N1 --> N3
+    N1 --> N4
+    N4 --> N5
+    N4 --> N6
 ```
 
 Читаемость:
 
-```text
-Use call()
-│
-└── when arguments are already separate
-
-Use apply()
-│
-└── when arguments are already in array or array-like list
+```mermaid
+flowchart TD
+    N1["Use call()"]
+    N2["when arguments are already separate"]
+    N3["Use apply()"]
+    N4["when arguments are already in array or array-like list"]
+    N1 --> N2
+    N1 --> N3
+    N3 --> N4
 ```
 
 Не нужно превращать `apply()` в механическую замену `call()`. Выбор зависит от формы данных.
@@ -744,35 +799,42 @@ Use apply()
 
 ### Текущая модель JavaScript
 
-```text
-Functions
-│
-├── this
-│   └── current receiver
-│
-├── call()
-│   ├── manual receiver
-│   └── arguments separately
-│
-└── apply()
-    ├── manual receiver
-    └── arguments as array or array-like list
+```mermaid
+flowchart TD
+    N1["Functions"]
+    N2["this"]
+    N3["current receiver"]
+    N4["call()"]
+    N5["manual receiver"]
+    N6["arguments separately"]
+    N7["apply()"]
+    N8["manual receiver"]
+    N9["arguments as array or array-like list"]
+    N1 --> N2
+    N1 --> N3
+    N1 --> N4
+    N1 --> N5
+    N1 --> N6
+    N1 --> N7
+    N7 --> N8
+    N7 --> N9
 ```
 
 Переход к bind():
 
-```text
-call()
-│
-└── invoke immediately with chosen receiver
-
-apply()
-│
-└── invoke immediately with chosen receiver and array/array-like arguments
-
-bind()
-│
-└── next chapter: create a new function with chosen receiver
+```mermaid
+flowchart TD
+    N1["call()"]
+    N2["invoke immediately with chosen receiver"]
+    N3["apply()"]
+    N4["invoke immediately with chosen receiver and array/array-like arguments"]
+    N5["bind()"]
+    N6["next chapter: создать a new function with chosen receiver"]
+    N1 --> N2
+    N1 --> N3
+    N3 --> N4
+    N3 --> N5
+    N5 --> N6
 ```
 
 ---
@@ -812,10 +874,11 @@ console.log(getBaseUrl.apply(apiClient));
 
 Receiver:
 
-```text
-getBaseUrl.apply(apiClient)
-│
-└── this -> apiClient
+```mermaid
+flowchart TD
+    N1["getBaseUrl.apply(apiClient)"]
+    N2["this → apiClient"]
+    N1 --> N2
 ```
 
 ---
@@ -838,10 +901,13 @@ console.log(formatRequest.apply(apiClient, requestParts));
 
 Сопоставление параметров:
 
-```text
-requestParts[0] -> method
-requestParts[1] -> path
-requestParts[2] -> body
+```mermaid
+flowchart TD
+    N1["requestParts[0] → method"]
+    N2["requestParts[1] → path"]
+    N3["requestParts[2] → body"]
+    N1 --> N2
+    N2 --> N3
 ```
 
 ---
@@ -863,14 +929,15 @@ console.log(buildUrl.apply(apiClient, ['/users']));
 
 Разница:
 
-```text
-call(apiClient, '/users')
-│
-└── argument separately
-
-apply(apiClient, ['/users'])
-│
-└── argument inside array
+```mermaid
+flowchart TD
+    N1["call(apiClient, '/users')"]
+    N2["argument separately"]
+    N3["apply(apiClient, ['/users'])"]
+    N4["argument inside array"]
+    N1 --> N2
+    N1 --> N3
+    N3 --> N4
 ```
 
 ---
@@ -881,11 +948,13 @@ apply(apiClient, ['/users'])
 
 Нет. Receiver selection такая же, как у `call()`.
 
-```text
-call(receiver, ...)
-apply(receiver, ...)
-│
-└── receiver -> this
+```mermaid
+flowchart TD
+    N1["call(receiver, ...)"]
+    N2["apply(receiver, ...)"]
+    N3["receiver → this"]
+    N2 --> N3
+    N1 --> N2
 ```
 
 Разница в arguments.
@@ -898,11 +967,13 @@ apply(receiver, ...)
 
 Нет. Array используется как ordered argument list.
 
-```text
-apply(receiver, [a, b])
-│
-├── a -> first parameter
-└── b -> second parameter
+```mermaid
+flowchart TD
+    N1["apply(receiver, [a, b])"]
+    N2["a → first parameter"]
+    N3["b → second parameter"]
+    N1 --> N2
+    N1 --> N3
 ```
 
 ### Можно ли использовать apply() без arguments?
@@ -929,11 +1000,13 @@ fn.apply(receiver);
 
 Реальность:
 
-```text
-Receiver selection
-│
-├── call()  -> first argument
-└── apply() -> first argument
+```mermaid
+flowchart TD
+    N1["Receiver selection"]
+    N2["call() → first argument"]
+    N3["apply() → first argument"]
+    N1 --> N2
+    N1 --> N3
 ```
 
 ### Миф 3. apply() всегда делает код сложнее
@@ -962,10 +1035,11 @@ buildUrl.apply(apiClient, '/users');
 
 Что произошло:
 
-```text
-Second argument of apply()
-│
-└── should be array or array-like ordered argument list
+```mermaid
+flowchart TD
+    N1["Second argument of apply()"]
+    N2["should be array or array-like ordered argument list"]
+    N1 --> N2
 ```
 
 Исправленный вариант:
@@ -996,9 +1070,11 @@ validateStatus.apply([response], config);
 
 Что произошло:
 
-```text
-[response] -> this
-config     -> expected argument list
+```mermaid
+flowchart TD
+    N1["[response] → this"]
+    N2["config → expected argument list"]
+    N1 --> N2
 ```
 
 Исправленный вариант:
@@ -1028,10 +1104,11 @@ getBaseUrl();
 
 Второй вызов снова ordinary standalone invocation.
 
-```text
-apply()
-│
-└── one invocation only
+```mermaid
+flowchart TD
+    N1["apply()"]
+    N2["one invocation only"]
+    N1 --> N2
 ```
 
 ---
@@ -1042,14 +1119,13 @@ apply()
 
 Практическое использование:
 
-```text
-Test data array
-│
-▼
-apply(receiver, values)
-│
-▼
-function receives separate parameters
+```mermaid
+flowchart TD
+    N1["Test data array"]
+    N2["apply(receiver, values)"]
+    N3["function receives separate parameters"]
+    N1 --> N2
+    N2 --> N3
 ```
 
 Пример:
@@ -1073,14 +1149,15 @@ console.log(validateRequest.apply(config, requestData));
 
 Читаемость:
 
-```text
-apply()
-│
-└── clearer when arguments are already collected
-
-call()
-│
-└── clearer when arguments are already separate
+```mermaid
+flowchart TD
+    N1["apply()"]
+    N2["clearer when arguments are already collected"]
+    N3["call()"]
+    N4["clearer when arguments are already separate"]
+    N1 --> N2
+    N1 --> N3
+    N3 --> N4
 ```
 
 ---
@@ -1108,13 +1185,17 @@ const responseParts = [200, '/users', '{"name":"Anna"}'];
 
 Пример QA-helper:
 
-```text
-validateResponse.apply(assertionConfig, responseParts)
-│
-├── assertionConfig -> this
-├── responseParts[0] -> status
-├── responseParts[1] -> path
-└── responseParts[2] -> body
+```mermaid
+flowchart TD
+    N1["validateResponse.apply(assertionConfig, responseParts)"]
+    N2["assertionConfig → this"]
+    N3["responseParts[0] → status"]
+    N4["responseParts[1] → path"]
+    N5["responseParts[2] → body"]
+    N1 --> N2
+    N1 --> N3
+    N1 --> N4
+    N1 --> N5
 ```
 
 ---
@@ -1123,11 +1204,13 @@ validateResponse.apply(assertionConfig, responseParts)
 
 Request formatter:
 
-```text
-formatRequest.apply(apiClient, requestParts)
-│
-├── apiClient -> this.baseUrl
-└── requestParts -> method, path, body
+```mermaid
+flowchart TD
+    N1["formatRequest.apply(apiClient, requestParts)"]
+    N2["apiClient → this.baseUrl"]
+    N3["requestParts → method, path, body"]
+    N1 --> N2
+    N1 --> N3
 ```
 
 Это полезно, когда data provider уже подготовил array значения для helper.
@@ -1138,14 +1221,15 @@ formatRequest.apply(apiClient, requestParts)
 
 `apply()` помогает разделить:
 
-```text
-Configuration
-│
-└── receiver / this
-
-Test data array
-│
-└── ordered argument list
+```mermaid
+flowchart TD
+    N1["Configuration"]
+    N2["receiver / this"]
+    N3["Test data array"]
+    N4["ordered argument list"]
+    N1 --> N2
+    N1 --> N3
+    N3 --> N4
 ```
 
 Для Automation QA это важно в:
@@ -1186,14 +1270,15 @@ solutions/01-javascript/31-apply.md
 
 В решениях важно отдельно отслеживать:
 
-```text
-receiver
-│
-└── first argument of apply()
-
-parameters
-│
-└── values from second argument array or array-like list
+```mermaid
+flowchart TD
+    N1["receiver"]
+    N2["first argument of apply()"]
+    N3["параметры"]
+    N4["values from second argument array or array-like list"]
+    N1 --> N2
+    N1 --> N3
+    N3 --> N4
 ```
 
 ---
@@ -1204,37 +1289,43 @@ parameters
 
 Выбор объекта выполнения:
 
-```text
-call()
-│
-└── first argument -> this
-
-apply()
-│
-└── first argument -> this
+```mermaid
+flowchart TD
+    N1["call()"]
+    N2["first argument → this"]
+    N3["apply()"]
+    N4["first argument → this"]
+    N1 --> N2
+    N1 --> N3
+    N3 --> N4
 ```
 
 Разница:
 
-```text
-call()
-│
-└── arguments separately
-
-apply()
-│
-└── arguments as one ordered argument list
+```mermaid
+flowchart TD
+    N1["call()"]
+    N2["arguments separately"]
+    N3["apply()"]
+    N4["arguments as one ordered argument list"]
+    N1 --> N2
+    N1 --> N3
+    N3 --> N4
 ```
 
 Полная модель apply():
 
-```text
-functionObject.apply(receiver, argumentsList)
-│
-├── receiver         -> this
-├── argumentsList[0] -> first parameter
-├── argumentsList[1] -> second parameter
-└── argumentsList[2] -> third parameter
+```mermaid
+flowchart TD
+    N1["functionObject.apply(receiver, argumentsList)"]
+    N2["receiver → this"]
+    N3["argumentsList[0] → first parameter"]
+    N4["argumentsList[1] → second parameter"]
+    N5["argumentsList[2] → third parameter"]
+    N1 --> N2
+    N1 --> N3
+    N1 --> N4
+    N1 --> N5
 ```
 
 Следующая глава про `bind()` ответит:
@@ -1255,12 +1346,15 @@ functionObject.apply(receiver, argumentsList)
 
 Краткая ментальная модель:
 
-```text
-apply()
-│
-├── manual receiver
-├── immediate invocation
-└── ordered argument list
+```mermaid
+flowchart TD
+    N1["apply()"]
+    N2["manual receiver"]
+    N3["immediate invocation"]
+    N4["ordered argument list"]
+    N1 --> N2
+    N1 --> N3
+    N1 --> N4
 ```
 
 ---

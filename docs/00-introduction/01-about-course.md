@@ -59,19 +59,29 @@ Automation QA часто начинается с инструментов.
 
 Под промышленной автоматизацией здесь понимается не один тестовый файл с несколькими сценариями, а полноценная система:
 
-```text
-Automation Framework
-│
-├── UI tests
-├── API tests
-├── gRPC checks
-├── Database verification
-├── Fixtures
-├── Helpers
-├── Assertions
-├── Test data builders
-├── Configuration
-└── Reporting
+```mermaid
+flowchart TD
+    N1["Automation Framework"]
+    N2["UI tests"]
+    N3["API tests"]
+    N4["gRPC checks"]
+    N5["Database verification"]
+    N6["Fixtures"]
+    N7["Helpers"]
+    N8["Assertions"]
+    N9["Test data builders"]
+    N10["Configuration"]
+    N11["Reporting"]
+    N1 --> N2
+    N1 --> N3
+    N1 --> N4
+    N1 --> N5
+    N1 --> N6
+    N1 --> N7
+    N1 --> N8
+    N1 --> N9
+    N1 --> N10
+    N1 --> N11
 ```
 
 Такая система строится не на одном инструменте. Она строится на языке программирования. Поэтому курс начинает движение с фундамента.
@@ -131,15 +141,19 @@ user.name = 'Maria';
 
 Более точная модель выглядит так:
 
-```text
-user
- │
- │ хранит ссылку
- ▼
-Object in Heap
-{
-  name: 'Anna'
-}
+```mermaid
+flowchart TD
+    N1["user"]
+    N2["хранит ссылку"]
+    N3["объект в Heap"]
+    N4["{"]
+    N5["name: 'Anna'"]
+    N6["}"]
+    N1 --> N2
+    N2 --> N3
+    N3 --> N4
+    N4 --> N5
+    N5 --> N6
 ```
 
 Переменная `user` хранит ссылку на объект. `const` защищает саму связь между именем `user` и ссылкой. Объект, на который указывает ссылка, остается изменяемым, если не используются специальные механизмы вроде `Object.freeze`.
@@ -164,18 +178,17 @@ TypeScript расширяет JavaScript системой типов, но по�
 
 Упрощенная схема выглядит так:
 
-```text
-TypeScript source
-│
-├── Type checking
-│
-├── Compilation
-│
-▼
-JavaScript output
-│
-▼
-JavaScript Runtime
+```mermaid
+flowchart TD
+    N1["исходный код TypeScript"]
+    N2["проверка типов"]
+    N3["компиляция"]
+    N4["JavaScript-код на выходе"]
+    N5["JavaScript Runtime"]
+    N1 --> N2
+    N1 --> N3
+    N1 --> N4
+    N4 --> N5
 ```
 
 Если инженер не понимает JavaScript, TypeScript начинает восприниматься как самостоятельная магическая среда. Это приводит к ошибкам.
@@ -193,17 +206,15 @@ type User = {
 
 Поэтому порядок курса принципиален:
 
-```text
-JavaScript fundamentals
-│
-▼
-Runtime behavior
-│
-▼
-TypeScript type system
-│
-▼
-Automation QA architecture
+```mermaid
+flowchart TD
+    N1["основы JavaScript"]
+    N2["поведение Runtime"]
+    N3["система типов TypeScript"]
+    N4["архитектура Automation QA"]
+    N1 --> N2
+    N2 --> N3
+    N3 --> N4
 ```
 
 Сначала нужно понять, как выполняется JavaScript. Только после этого можно правильно понять, что TypeScript проверяет, чего не проверяет и где проходят границы его ответственности.
@@ -241,68 +252,74 @@ Automation QA architecture
 
 Общая зависимость тем выглядит так:
 
-```text
-Введение
-│
-▼
-JavaScript fundamentals
-│
-├── Engine
-├── Runtime
-├── Execution Context
-├── Scope
-├── Stack / Heap
-├── Functions
-├── Objects
-└── Async JavaScript
-│
-▼
-TypeScript
-│
-├── Type checking
-├── Type inference
-├── Generics
-├── Utility types
-└── Type erasure
-│
-▼
-Automation QA
-│
-├── Playwright
-├── API testing
-├── gRPC
-├── Database testing
-└── Framework architecture
-│
-▼
-Финальный проект
+```mermaid
+flowchart TD
+    N1["Введение"]
+    N2["основы JavaScript"]
+    N3["Engine"]
+    N4["Runtime"]
+    N5["Execution Context"]
+    N6["Scope"]
+    N7["Stack / Heap"]
+    N8["Functions"]
+    N9["Objects"]
+    N10["Async JavaScript"]
+    N11["TypeScript"]
+    N12["проверка типов"]
+    N13["Type inference"]
+    N14["Generics"]
+    N15["Utility types"]
+    N16["Type erasure"]
+    N17["Automation QA"]
+    N18["Playwright"]
+    N19["API testing"]
+    N20["gRPC"]
+    N21["Database testing"]
+    N22["Framework architecture"]
+    N23["Финальный проект"]
+    N1 --> N2
+    N2 --> N3
+    N2 --> N4
+    N2 --> N5
+    N2 --> N6
+    N2 --> N7
+    N2 --> N8
+    N2 --> N9
+    N2 --> N10
+    N2 --> N11
+    N11 --> N12
+    N11 --> N13
+    N11 --> N14
+    N11 --> N15
+    N11 --> N16
+    N11 --> N17
+    N17 --> N18
+    N17 --> N19
+    N17 --> N20
+    N17 --> N21
+    N17 --> N22
+    N17 --> N23
 ```
 
 Внутри каждой главы материал проходит один и тот же цикл:
 
-```text
-Проблема
-│
-▼
-Механизм
-│
-▼
-Синтаксис
-│
-▼
-Минимальный пример
-│
-▼
-Практический пример
-│
-▼
-Automation QA пример
-│
-▼
-Типичные ошибки
-│
-▼
-Практика
+```mermaid
+flowchart TD
+    N1["Проблема"]
+    N2["Механизм"]
+    N3["Синтаксис"]
+    N4["Минимальный пример"]
+    N5["Практический пример"]
+    N6["Automation QA пример"]
+    N7["Типичные ошибки"]
+    N8["Практика"]
+    N1 --> N2
+    N2 --> N3
+    N3 --> N4
+    N4 --> N5
+    N5 --> N6
+    N6 --> N7
+    N7 --> N8
 ```
 
 Этот цикл нужен для того, чтобы знание не оставалось абстрактным. Если тема объяснена только теоретически, ее сложно применить. Если тема показана только на коде, ее легко скопировать, но трудно перенести в другую задачу.
@@ -323,11 +340,15 @@ Automation QA пример
 
 Верхний слой — архитектура фреймворка. Здесь отдельные знания превращаются в систему.
 
-```text
-Framework Architecture
-└── Automation QA practices
-    └── TypeScript type system
-        └── JavaScript runtime model
+```mermaid
+flowchart TD
+    N1["Framework Architecture"]
+    N2["Automation QA practices"]
+    N3["система типов TypeScript"]
+    N4["JavaScript runtime model"]
+    N1 --> N2
+    N2 --> N3
+    N3 --> N4
 ```
 
 Если нижний слой слабый, верхние слои становятся нестабильными. Можно написать тест, который работает сегодня, но сложно объяснить, почему он иногда падает. Можно создать helper, который удобен в одном файле, но ломается при переиспользовании. Можно добавить типы, которые выглядят строго, но не защищают runtime.
@@ -367,13 +388,19 @@ updated@example.com
 
 Внутренняя модель:
 
-```text
-expectedUser ─┐
-              ├──► Object in Heap
-actualUser ───┘    {
-                    id: 'user-1',
-                    email: 'updated@example.com'
-                  }
+```mermaid
+flowchart TD
+    N1["expectedUser ─┐"]
+    N2["объект в Heap"]
+    N3["actualUser ───┘ {"]
+    N4["id: 'user-1',"]
+    N5["email: 'updated@example.com'"]
+    N6["}"]
+    N1 --> N2
+    N2 --> N3
+    N3 --> N4
+    N4 --> N5
+    N5 --> N6
 ```
 
 Почему это важно для Automation QA:
@@ -398,16 +425,17 @@ async function getUser(): Promise<UserResponse> {
 
 Внутренняя модель:
 
-```text
-TypeScript type
-│
-│ используется компилятором
-▼
-JavaScript после компиляции
-│
-│ типов уже нет
-▼
-Runtime получает реальный JSON
+```mermaid
+flowchart TD
+    N1["TypeScript type"]
+    N2["используется компилятором"]
+    N3["JavaScript после компиляции"]
+    N4["типов уже нет"]
+    N5["Runtime получает реальный JSON"]
+    N1 --> N2
+    N2 --> N3
+    N3 --> N4
+    N4 --> N5
 ```
 
 Почему это важно для Automation QA:
@@ -430,14 +458,13 @@ expect(user.email).toBeDefined();
 
 Неправильный подход:
 
-```text
-Сразу изучить Playwright API
-│
-▼
-Копировать готовые примеры
-│
-▼
-Писать тесты без понимания JavaScript
+```mermaid
+flowchart TD
+    N1["Сразу изучить Playwright API"]
+    N2["Копировать готовые примеры"]
+    N3["Писать тесты без понимания JavaScript"]
+    N1 --> N2
+    N2 --> N3
 ```
 
 Что произошло:
@@ -450,17 +477,15 @@ Playwright использует JavaScript и TypeScript. Асинхроннос
 
 Исправленный подход:
 
-```text
-JavaScript fundamentals
-│
-▼
-TypeScript
-│
-▼
-Playwright и Automation QA
-│
-▼
-Framework architecture
+```mermaid
+flowchart TD
+    N1["основы JavaScript"]
+    N2["TypeScript"]
+    N3["Playwright и Automation QA"]
+    N4["Framework architecture"]
+    N1 --> N2
+    N2 --> N3
+    N3 --> N4
 ```
 
 ### Ошибка 2. Запоминать формулировки вместо механизма
@@ -541,22 +566,23 @@ expect(order.total).toBeGreaterThan(0);
 
 Репозиторий поддерживает этот порядок:
 
-```text
-docs/
-│
-├── теория и объяснения
-│
-examples/
-│
-├── минимальные примеры кода
-│
-practice/
-│
-├── задания без ответов
-│
-solutions/
-│
-└── решения с объяснениями
+```mermaid
+flowchart TD
+    N1["docs/"]
+    N2["теория и объяснения"]
+    N3["examples/"]
+    N4["минимальные примеры кода"]
+    N5["practice/"]
+    N6["задания без ответов"]
+    N7["solutions/"]
+    N8["решения с объяснениями"]
+    N1 --> N2
+    N1 --> N3
+    N3 --> N4
+    N3 --> N5
+    N5 --> N6
+    N5 --> N7
+    N7 --> N8
 ```
 
 Главы находятся в `docs/`. Они объясняют механизм и дают контекст.
@@ -596,17 +622,25 @@ test('user can open profile page', async ({ page }) => {
 
 Но внутри такого теста уже присутствуют фундаментальные темы:
 
-```text
-test(...)
-│
-├── function / callback
-├── async function
-├── destructuring
-├── object fixture: { page }
-├── Promise
-├── await
-├── assertion
-└── runtime interaction with browser
+```mermaid
+flowchart TD
+    N1["test(...)"]
+    N2["function / callback"]
+    N3["async function"]
+    N4["destructuring"]
+    N5["object fixture: { page }"]
+    N6["Promise"]
+    N7["await"]
+    N8["assertion"]
+    N9["взаимодействие Runtime с браузером"]
+    N1 --> N2
+    N1 --> N3
+    N1 --> N4
+    N1 --> N5
+    N1 --> N6
+    N1 --> N7
+    N1 --> N8
+    N1 --> N9
 ```
 
 Если эти темы не изучены, тест выглядит как набор команд. Если темы понятны, тест становится читаемой программой с предсказуемым поведением.

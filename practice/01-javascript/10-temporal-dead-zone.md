@@ -209,16 +209,25 @@ playground/tdz-test-flow.js
 
 После кода нарисуйте временная шкала:
 
-```text
-Creation Phase
-├── baseUrl → uninitialized
-├── userName → uninitialized
-└── status → undefined
-
-Execution Phase
-├── initialize baseUrl
-├── initialize userName with undefined
-├── assign userName
-├── assign status
-└── read initialized identifiers
+```mermaid
+flowchart TD
+    N1["Creation Phase"]
+    N2["baseUrl → uninitialized"]
+    N3["userName → uninitialized"]
+    N4["status → undefined"]
+    N5["выполнение Phase"]
+    N6["initialize baseUrl"]
+    N7["initialize userName with undefined"]
+    N8["assign userName"]
+    N9["assign status"]
+    N10["read initialized identifiers"]
+    N1 --> N2
+    N1 --> N3
+    N1 --> N4
+    N1 --> N5
+    N5 --> N6
+    N5 --> N7
+    N5 --> N8
+    N5 --> N9
+    N5 --> N10
 ```

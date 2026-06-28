@@ -4,17 +4,15 @@
 
 Предыдущая глава объяснила модуль как файл с ответственностью:
 
-```text
-file
-│
-▼
-module
-│
-▼
-exports public API
-│
-▼
-other modules import it
+```mermaid
+flowchart TD
+    N1["file"]
+    N2["module"]
+    N3["exports public API"]
+    N4["other modules import it"]
+    N1 --> N2
+    N2 --> N3
+    N3 --> N4
 ```
 
 Теперь нужно понять, почему в JavaScript есть не один синтаксис модулей.
@@ -43,14 +41,15 @@ const { baseUrl } = require('./config.cjs');
 
 Разница в том, что они принадлежат разным module systems.
 
-```text
-одна задача
-│
-▼
-использовать код из другого файла
-│
-├── ES Modules
-└── CommonJS
+```mermaid
+flowchart TD
+    N1["одна задача"]
+    N2["использовать код из другого файла"]
+    N3["ES Modules"]
+    N4["CommonJS"]
+    N1 --> N2
+    N2 --> N3
+    N2 --> N4
 ```
 
 ## Теория
@@ -87,47 +86,48 @@ const { baseUrl } = require('./config.cjs');
 
 Ментально обе системы можно представить одинаково:
 
-```text
-module A
-│
-▼
-exports value
-│
-▼
-module B
-│
-▼
-imports value
+```mermaid
+flowchart TD
+    N1["module A"]
+    N2["exports value"]
+    N3["module B"]
+    N4["imports value"]
+    N1 --> N2
+    N2 --> N3
+    N3 --> N4
 ```
 
 Но синтаксис отличается.
 
-```text
-JavaScript ecosystem
-│
-├── ES Modules
-│       └── современный стандарт
-│
-└── CommonJS
-        └── историческая модульная система Node.js
+```mermaid
+flowchart TD
+    N1["JavaScript ecosystem"]
+    N2["ES Modules"]
+    N3["современный стандарт"]
+    N4["CommonJS"]
+    N5["историческая модульная система Node.js"]
+    N1 --> N2
+    N1 --> N3
+    N1 --> N4
+    N4 --> N5
 ```
 
 ES Modules:
 
-```text
-export
-│
-▼
-import
+```mermaid
+flowchart TD
+    N1["export"]
+    N2["import"]
+    N1 --> N2
 ```
 
 CommonJS:
 
-```text
-module.exports
-│
-▼
-require()
+```mermaid
+flowchart TD
+    N1["module.exports"]
+    N2["require()"]
+    N1 --> N2
 ```
 
 В этой главе не нужно углубляться во вспомогательные инструменты или внутренние детали Node.js. Важно понимать практическую картину: при чтении проекта нужно распознать, какая module system используется.
@@ -136,14 +136,17 @@ require()
 
 Главная модель главы:
 
-```text
-JavaScript ecosystem
-│
-├── ES Modules
-│       └── современный стандарт
-│
-└── CommonJS
-        └── историческая модульная система Node.js
+```mermaid
+flowchart TD
+    N1["JavaScript ecosystem"]
+    N2["ES Modules"]
+    N3["современный стандарт"]
+    N4["CommonJS"]
+    N5["историческая модульная система Node.js"]
+    N1 --> N2
+    N1 --> N3
+    N1 --> N4
+    N4 --> N5
 ```
 
 Если вы видите `import` / `export`, перед вами ES Modules.
@@ -228,17 +231,15 @@ JavaScript имеет несколько module systems из-за истории
 
 Теперь написанная часть JavaScript дошла до модулей:
 
-```text
-данные
-│
-▼
-итерация
-│
-▼
-модули
-│
-▼
-module systems
+```mermaid
+flowchart TD
+    N1["данные"]
+    N2["итерация"]
+    N3["модули"]
+    N4["module systems"]
+    N1 --> N2
+    N2 --> N3
+    N3 --> N4
 ```
 
 Теперь мы понимаем, как организуется код в крупных проектах. Следующие главы продолжают изучение современных возможностей JavaScript.

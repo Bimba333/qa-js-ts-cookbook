@@ -577,11 +577,15 @@ Test data helpers должны возвращать данные, если вы�
 
 Ответ:
 
-```text
-isSuccessfulStatus(statusCode) → boolean
-getUserEmail() → string
-getProfileButtonName() → string
-getStatusMessage(statusCode) → string
+```mermaid
+flowchart TD
+    N1["isSuccessfulStatus(statusCode) → boolean"]
+    N2["getUserEmail() → string"]
+    N3["getProfileButtonName() → string"]
+    N4["getStatusMessage(statusCode) → string"]
+    N1 --> N2
+    N2 --> N3
+    N3 --> N4
 ```
 
 Объяснение:

@@ -174,14 +174,19 @@
 
 **Ответ:**
 
-```text
-read user.describe
-│
-├── check user own properties
-│   └── describe not found
-├── check userBehavior
-│   └── describe found
-└── call found function with receiver user
+```mermaid
+flowchart TD
+    N1["read user.describe"]
+    N2["check user own properties"]
+    N3["describe not found"]
+    N4["check userBehavior"]
+    N5["describe found"]
+    N6["вызвать found function with receiver user"]
+    N1 --> N2
+    N1 --> N3
+    N1 --> N4
+    N1 --> N5
+    N1 --> N6
 ```
 
 **Объяснение:** `describe` is inherited through prototype lookup, but `this` inside ordinary call is `user`.
@@ -194,14 +199,19 @@ read user.describe
 
 **Ответ:**
 
-```text
-read item.missing
-│
-├── item own properties
-│   └── not found
-├── behavior properties
-│   └── not found
-└── result: undefined
+```mermaid
+flowchart TD
+    N1["read item.значение отсутствует"]
+    N2["item own properties"]
+    N3["not found"]
+    N4["behavior properties"]
+    N5["not found"]
+    N6["результат: undefined"]
+    N1 --> N2
+    N1 --> N3
+    N1 --> N4
+    N1 --> N5
+    N1 --> N6
 ```
 
 **Объяснение:** in this one-level model there is no matching own or prototype property.

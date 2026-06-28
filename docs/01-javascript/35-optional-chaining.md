@@ -6,17 +6,15 @@
 
 Главная модель была такой:
 
-```text
-Object
-│
-▼
-many named properties
-│
-▼
-extract required values
-│
-▼
-new variables
+```mermaid
+flowchart TD
+    N1["Object"]
+    N2["many named properties"]
+    N3["extract required values"]
+    N4["new variables"]
+    N1 --> N2
+    N2 --> N3
+    N3 --> N4
 ```
 
 Destructuring удобно извлекает значения из existing properties.
@@ -31,23 +29,30 @@ response.body.user.profile.name
 
 И она работает, если весь путь существует:
 
-```text
-response
-│
-└── body
-    └── user
-        └── profile
-            └── name
+```mermaid
+flowchart TD
+    N1["response"]
+    N2["body"]
+    N3["user"]
+    N4["profile"]
+    N5["name"]
+    N1 --> N2
+    N2 --> N3
+    N3 --> N4
+    N4 --> N5
 ```
 
 Но в реальном API response часть пути может отсутствовать:
 
-```text
-response
-│
-└── body
-    └── user
-        └── profile is missing
+```mermaid
+flowchart TD
+    N1["response"]
+    N2["body"]
+    N3["user"]
+    N4["profile is значение отсутствует"]
+    N1 --> N2
+    N2 --> N3
+    N3 --> N4
 ```
 
 Главный вопрос этой главы:
@@ -56,26 +61,28 @@ response
 
 Optional Chaining отвечает:
 
-```text
-Object path
-│
-▼
-check current value
-│
-▼
-is null or undefined?
-│
-├── yes -> stop safely -> undefined
-└── no  -> continue
+```mermaid
+flowchart TD
+    N1["путь объекта"]
+    N2["check текущее значение"]
+    N3["is null or undefined?"]
+    N4["да → остановиться безопасно → undefined"]
+    N5["нет → продолжить"]
+    N1 --> N2
+    N2 --> N3
+    N3 --> N4
+    N3 --> N5
 ```
 
 Важно сразу:
 
-```text
-Optional Chaining
-│
-≠
-default value
+```mermaid
+flowchart TD
+    N1["Optional Chaining"]
+    N2["≠"]
+    N3["значение по умолчанию value"]
+    N1 --> N2
+    N2 --> N3
 ```
 
 Optional Chaining не выбирает fallback value. Он только safely traverses a property chain and returns `undefined` when traversal cannot continue.
@@ -184,13 +191,17 @@ console.log(responseWithProfile.body.user.profile.name);
 
 Путь существует:
 
-```text
-responseWithProfile
-│
-└── body
-    └── user
-        └── profile
-            └── name
+```mermaid
+flowchart TD
+    N1["responseWithProfile"]
+    N2["body"]
+    N3["user"]
+    N4["profile"]
+    N5["name"]
+    N1 --> N2
+    N2 --> N3
+    N3 --> N4
+    N4 --> N5
 ```
 
 Но другой response может не содержать `profile`:
@@ -211,17 +222,15 @@ console.log(responseWithoutProfile.body.user.profile.name);
 
 Проблема:
 
-```text
-responseWithoutProfile.body.user.profile
-│
-▼
-undefined
-│
-▼
-try to read .name from undefined
-│
-▼
-TypeError
+```mermaid
+flowchart TD
+    N1["responseWithoutProfile.body.user.profile"]
+    N2["undefined"]
+    N3["try to read .name from undefined"]
+    N4["TypeError"]
+    N1 --> N2
+    N2 --> N3
+    N3 --> N4
 ```
 
 Вопрос:
@@ -258,20 +267,17 @@ response.body.user.profile.name
 
 читает каждый уровень без safety checkpoint:
 
-```text
-read response
-│
-▼
-read body
-│
-▼
-read user
-│
-▼
-read profile
-│
-▼
-read name
+```mermaid
+flowchart TD
+    N1["read response"]
+    N2["read body"]
+    N3["read user"]
+    N4["read profile"]
+    N5["read name"]
+    N1 --> N2
+    N2 --> N3
+    N3 --> N4
+    N4 --> N5
 ```
 
 Если intermediate level is `undefined`, следующий property access throws.
@@ -284,25 +290,28 @@ response.body.user.profile?.name
 
 Модель:
 
-```text
-read profile
-│
-├── neither null nor undefined -> read name
-└── null/undefined -> stop and return undefined
+```mermaid
+flowchart TD
+    N1["read profile"]
+    N2["neither null nor undefined → read name"]
+    N3["null/undefined → stop and вернуть undefined"]
+    N1 --> N2
+    N1 --> N3
 ```
 
 ### Operator `?.`
 
 `?.` означает:
 
-```text
-before reading next property
-│
-▼
-check current value
-│
-├── null or undefined -> stop safely
-└── otherwise -> continue
+```mermaid
+flowchart TD
+    N1["before reading next property"]
+    N2["check текущее значение"]
+    N3["null or undefined → остановиться безопасно"]
+    N4["иначе → продолжить"]
+    N1 --> N2
+    N2 --> N3
+    N2 --> N4
 ```
 
 Пример:
@@ -313,16 +322,19 @@ const city = user.profile?.address?.city;
 
 Каждый `?.` ставит checkpoint.
 
-```text
-profile?
-│
-├── neither null nor undefined -> address?
-└── null/undefined -> undefined
-
-address?
-│
-├── neither null nor undefined -> city
-└── null/undefined -> undefined
+```mermaid
+flowchart TD
+    N1["profile?"]
+    N2["neither null nor undefined → address?"]
+    N3["null/undefined → undefined"]
+    N4["address?"]
+    N5["neither null nor undefined → city"]
+    N6["null/undefined → undefined"]
+    N1 --> N2
+    N1 --> N3
+    N1 --> N4
+    N4 --> N5
+    N4 --> N6
 ```
 
 ### Nested properties
@@ -355,14 +367,13 @@ const email = response.body.user.profile?.email;
 
 Short-circuiting означает early stop.
 
-```text
-current value is null or undefined
-│
-▼
-do not evaluate rest of chain
-│
-▼
-return undefined
+```mermaid
+flowchart TD
+    N1["текущее значение is null or undefined"]
+    N2["do not evaluate rest of chain"]
+    N3["вернуть undefined"]
+    N1 --> N2
+    N2 --> N3
 ```
 
 Пример:
@@ -377,26 +388,26 @@ const name = response.body.user.profile?.name;
 
 Optional Chaining returns `undefined` when it stops safely.
 
-```text
-missing level
-│
-▼
-safe stop
-│
-▼
-undefined
+```mermaid
+flowchart TD
+    N1["значение отсутствует level"]
+    N2["safe stop"]
+    N3["undefined"]
+    N1 --> N2
+    N2 --> N3
 ```
 
 Это не default value.
 
-```text
-Optional Chaining
-│
-└── returns undefined
-
-Default value
-│
-└── future topic with Nullish Coalescing
+```mermaid
+flowchart TD
+    N1["Optional Chaining"]
+    N2["возвращает undefined"]
+    N3["значение по умолчанию value"]
+    N4["future topic with Nullish Coalescing"]
+    N1 --> N2
+    N1 --> N3
+    N3 --> N4
 ```
 
 ### Comparison with ordinary access
@@ -407,14 +418,13 @@ Ordinary access:
 response.body.user.profile.name;
 ```
 
-```text
-profile is undefined
-│
-▼
-read .name from undefined
-│
-▼
-TypeError
+```mermaid
+flowchart TD
+    N1["profile is undefined"]
+    N2["read .name from undefined"]
+    N3["TypeError"]
+    N1 --> N2
+    N2 --> N3
 ```
 
 Optional Chaining:
@@ -423,14 +433,13 @@ Optional Chaining:
 response.body.user.profile?.name;
 ```
 
-```text
-profile is undefined
-│
-▼
-stop safely
-│
-▼
-undefined
+```mermaid
+flowchart TD
+    N1["profile is undefined"]
+    N2["остановиться безопасно"]
+    N3["undefined"]
+    N1 --> N2
+    N2 --> N3
 ```
 
 ### Optional method call preview
@@ -443,15 +452,15 @@ reporter.log?.('test passed');
 
 High-level meaning:
 
-```text
-if reporter.log is neither null nor undefined
-│
-▼
-call it
-│
-else
-▼
-return undefined
+```mermaid
+flowchart TD
+    N1["if reporter.log is neither null nor undefined"]
+    N2["вызвать it"]
+    N3["else"]
+    N4["вернуть undefined"]
+    N1 --> N2
+    N2 --> N3
+    N3 --> N4
 ```
 
 Эта глава только предварительно показывает optional method calls. Продвинутые формы вызова здесь не изучаются.
@@ -468,73 +477,89 @@ const city = response.body.user.profile?.address?.city;
 
 Концептуальный поток engine:
 
-```text
-1. Read response
-2. Read body
-3. Read user
-4. Read profile
-5. Check profile for null/undefined
-6. If null/undefined -> result undefined
-7. If neither null nor undefined -> read address
-8. Check address for null/undefined
-9. If null/undefined -> result undefined
-10. If neither null nor undefined -> read city
+```mermaid
+flowchart TD
+    N1["1. Read response"]
+    N2["2. Read body"]
+    N3["3. Read user"]
+    N4["4. Read profile"]
+    N5["5. Check profile for null/undefined"]
+    N6["6. If null/undefined → result undefined"]
+    N7["7. If neither null nor undefined → read address"]
+    N8["8. Check address for null/undefined"]
+    N9["9. If null/undefined → result undefined"]
+    N10["10. If neither null nor undefined → read city"]
+    N1 --> N2
+    N2 --> N3
+    N3 --> N4
+    N4 --> N5
+    N5 --> N6
+    N6 --> N7
+    N7 --> N8
+    N8 --> N9
+    N9 --> N10
 ```
 
 ### Property access flow
 
-```text
-current value
-│
-▼
-optional checkpoint?
-│
-├── null/undefined -> stop
-└── neither null nor undefined -> continue
+```mermaid
+flowchart TD
+    N1["текущее значение"]
+    N2["optional checkpoint?"]
+    N3["null/undefined → stop"]
+    N4["neither null nor undefined → продолжить"]
+    N1 --> N2
+    N2 --> N3
+    N2 --> N4
 ```
 
 ### Existing path
 
-```text
-response
-│
-└── body exists
-    └── user exists
-        └── profile exists
-            └── name exists
-                │
-                ▼
-              'Anna'
+```mermaid
+flowchart TD
+    N1["response"]
+    N2["body exists"]
+    N3["user exists"]
+    N4["profile exists"]
+    N5["name exists"]
+    N6["'Anna'"]
+    N1 --> N2
+    N2 --> N3
+    N3 --> N4
+    N4 --> N5
+    N3 --> N6
 ```
 
 ### Missing path
 
-```text
-response
-│
-└── body exists
-    └── user exists
-        └── profile missing
-            │
-            ▼
-       optional checkpoint stops
-            │
-            ▼
-        undefined
+```mermaid
+flowchart TD
+    N1["response"]
+    N2["body exists"]
+    N3["user exists"]
+    N4["profile значение отсутствует"]
+    N5["optional checkpoint stops"]
+    N6["undefined"]
+    N1 --> N2
+    N2 --> N3
+    N3 --> N4
+    N1 --> N5
+    N5 --> N6
 ```
 
 ### Object unchanged
 
 Optional Chaining only reads.
 
-```text
-before optional chaining
-│
-└── object structure
-
-after optional chaining
-│
-└── same object structure
+```mermaid
+flowchart TD
+    N1["before optional chaining"]
+    N2["object structure"]
+    N3["after optional chaining"]
+    N4["same object structure"]
+    N1 --> N2
+    N1 --> N3
+    N3 --> N4
 ```
 
 It does not add missing properties.
@@ -569,28 +594,28 @@ The variable receives the result of traversal.
 
 Представьте hallway with doors:
 
-```text
-Door: body
-│
-▼
-Door: user
-│
-▼
-Door: profile
-│
-▼
-Door: name
+```mermaid
+flowchart TD
+    N1["Door: body"]
+    N2["Door: user"]
+    N3["Door: profile"]
+    N4["Door: name"]
+    N1 --> N2
+    N2 --> N3
+    N3 --> N4
 ```
 
 Ordinary access идет вперед и ожидает, что каждая дверь существует.
 
 Optional Chaining ставит checkpoint:
 
-```text
-arrive at door value
-│
-├── null/undefined -> stop safely
-└── otherwise      -> continue
+```mermaid
+flowchart TD
+    N1["arrive at door value"]
+    N2["null/undefined → остановиться безопасно"]
+    N3["иначе → продолжить"]
+    N1 --> N2
+    N1 --> N3
 ```
 
 Staircase model:
@@ -605,46 +630,41 @@ Step 5: name
 
 If a step is missing:
 
-```text
-do not fall
-│
-▼
-stop
-│
-▼
-undefined
+```mermaid
+flowchart TD
+    N1["do not fall"]
+    N2["stop"]
+    N3["undefined"]
+    N1 --> N2
+    N2 --> N3
 ```
 
 Bridge segments:
 
-```text
-segment value is neither null nor undefined
-│
-▼
-walk forward
-
-segment value is null or undefined
-│
-▼
-stop before crossing
+```mermaid
+flowchart TD
+    N1["segment value is neither null nor undefined"]
+    N2["walk forward"]
+    N3["segment value is null or undefined"]
+    N4["stop before crossing"]
+    N1 --> N2
+    N2 --> N3
+    N3 --> N4
 ```
 
 Главная модель:
 
-```text
-Read property
-│
-▼
-If current value is neither null nor undefined
-│
-▼
-Continue
-│
-▼
-If current value is null or undefined, stop safely
-│
-▼
-Return undefined
+```mermaid
+flowchart TD
+    N1["Read property"]
+    N2["If текущее значение is neither null nor undefined"]
+    N3["продолжить"]
+    N4["If текущее значение is null or undefined, остановиться безопасно"]
+    N5["Return undefined"]
+    N1 --> N2
+    N2 --> N3
+    N3 --> N4
+    N4 --> N5
 ```
 
 ---
@@ -775,11 +795,11 @@ console.log(userTheme);
 
 Нет.
 
-```text
-missing path
-│
-▼
-undefined
+```mermaid
+flowchart TD
+    N1["значение отсутствует path"]
+    N2["undefined"]
+    N1 --> N2
 ```
 
 Default value будет темой следующей главы: Nullish Coalescing.
@@ -794,11 +814,11 @@ Default value будет темой следующей главы: Nullish Coale
 
 Потому что `?.` tells JavaScript:
 
-```text
-if current value is null or undefined
-│
-▼
-stop traversal safely
+```mermaid
+flowchart TD
+    N1["if текущее значение is null or undefined"]
+    N2["stop traversal safely"]
+    N1 --> N2
 ```
 
 ### Нужно ли ставить `?.` на каждом уровне?
@@ -889,11 +909,11 @@ Default value будет изучаться в Nullish Coalescing.
 
 Если property must exist, Optional Chaining может замаскировать проблему.
 
-```text
-required data missing
-│
-▼
-test should fail clearly
+```mermaid
+flowchart TD
+    N1["required data значение отсутствует"]
+    N2["test should fail clearly"]
+    N1 --> N2
 ```
 
 Use Optional Chaining for truly optional paths.
@@ -944,14 +964,15 @@ The helper can safely read optional поле and then decide what assertion shou
 
 Some API поля appear only for specific users:
 
-```text
-admin user
-│
-└── permissions
-
-regular user
-│
-└── no permissions field
+```mermaid
+flowchart TD
+    N1["admin user"]
+    N2["permissions"]
+    N3["regular user"]
+    N4["нет permissions field"]
+    N1 --> N2
+    N1 --> N3
+    N3 --> N4
 ```
 
 Optional Chaining:
@@ -990,14 +1011,15 @@ Useful when поле is optional.
 
 Optional Chaining can make helper robust, but it must not hide required data bugs.
 
-```text
-optional field
-│
-└── safe access is appropriate
-
-required field
-│
-└── missing value should fail clearly
+```mermaid
+flowchart TD
+    N1["optional field"]
+    N2["safe access is appropriate"]
+    N3["required field"]
+    N4["значение отсутствует value should fail clearly"]
+    N1 --> N2
+    N1 --> N3
+    N3 --> N4
 ```
 
 ---
@@ -1006,338 +1028,356 @@ required field
 
 ### 1. Why Optional Chaining exists
 
-```text
-nested property path
-│
-▼
-some level may be missing
-│
-▼
-need safe traversal
+```mermaid
+flowchart TD
+    N1["nested property path"]
+    N2["some level may be значение отсутствует"]
+    N3["need safe traversal"]
+    N1 --> N2
+    N2 --> N3
 ```
 
 ### 2. Nested object
 
-```text
-response
-│
-└── body
-    └── user
-        └── profile
-            └── name
+```mermaid
+flowchart TD
+    N1["response"]
+    N2["body"]
+    N3["user"]
+    N4["profile"]
+    N5["name"]
+    N1 --> N2
+    N2 --> N3
+    N3 --> N4
+    N4 --> N5
 ```
 
 ### 3. Missing intermediate object
 
-```text
-response
-│
-└── body
-    └── user
-        └── profile missing
+```mermaid
+flowchart TD
+    N1["response"]
+    N2["body"]
+    N3["user"]
+    N4["profile значение отсутствует"]
+    N1 --> N2
+    N2 --> N3
+    N3 --> N4
 ```
 
 ### 4. Property access flow
 
-```text
-read level
-│
-▼
-read next level
-│
-▼
-read next level
+```mermaid
+flowchart TD
+    N1["read level"]
+    N2["read next level"]
+    N3["read next level"]
+    N1 --> N2
+    N2 --> N3
 ```
 
 ### 5. Safe stopping
 
-```text
-missing level
-│
-▼
-stop safely
+```mermaid
+flowchart TD
+    N1["значение отсутствует level"]
+    N2["остановиться безопасно"]
+    N1 --> N2
 ```
 
 ### 6. Undefined result
 
-```text
-safe stop
-│
-▼
-undefined
+```mermaid
+flowchart TD
+    N1["safe stop"]
+    N2["undefined"]
+    N1 --> N2
 ```
 
 ### 7. Short-circuit
 
-```text
-checkpoint fails
-│
-▼
-rest of chain skipped
+```mermaid
+flowchart TD
+    N1["checkpoint fails"]
+    N2["rest of chain skipped"]
+    N1 --> N2
 ```
 
 ### 8. Comparison with ordinary access
 
-```text
-ordinary access -> TypeError
-optional access -> undefined
+```mermaid
+flowchart TD
+    N1["ordinary access → TypeError"]
+    N2["optional access → undefined"]
+    N1 --> N2
 ```
 
 ### 9. Текущая модель JavaScript
 
-```text
-Objects
-│
-├── properties
-├── destructuring
-└── optional chaining
+```mermaid
+flowchart TD
+    N1["Objects"]
+    N2["properties"]
+    N3["destructuring"]
+    N4["optional chaining"]
+    N1 --> N2
+    N1 --> N3
+    N1 --> N4
 ```
 
 ### 10. QA API response
 
-```text
-apiResponse
-│
-└── body
-    └── user
-        └── optional profile
+```mermaid
+flowchart TD
+    N1["apiResponse"]
+    N2["body"]
+    N3["user"]
+    N4["optional profile"]
+    N1 --> N2
+    N2 --> N3
+    N3 --> N4
 ```
 
 ### 11. Читаемость
 
-```text
-safe traversal
-│
-▼
-intent visible in property chain
+```mermaid
+flowchart TD
+    N1["safe traversal"]
+    N2["intent visible in property chain"]
+    N1 --> N2
 ```
 
 ### 12. Типичные ошибки
 
-```text
-?. too late
-│
-▼
-earlier missing level still throws
+```mermaid
+flowchart TD
+    N1["?. too late"]
+    N2["earlier значение отсутствует level still throws"]
+    N1 --> N2
 ```
 
 ### 13. Optional method call preview
 
-```text
-method value is null or undefined?
-│
-├── yes -> undefined
-└── no  -> call
+```mermaid
+flowchart TD
+    N1["method value is null or undefined?"]
+    N2["да → undefined"]
+    N3["нет → call"]
+    N1 --> N2
+    N1 --> N3
 ```
 
 ### 14. Object traversal
 
-```text
-object
-│
-▼
-property
-│
-▼
-property
-│
-▼
-value
+```mermaid
+flowchart TD
+    N1["объект"]
+    N2["property"]
+    N3["property"]
+    N4["значение"]
+    N1 --> N2
+    N2 --> N3
+    N3 --> N4
 ```
 
 ### 15. Existing path
 
-```text
-all checked levels are neither null nor undefined
-│
-▼
-final value returned
+```mermaid
+flowchart TD
+    N1["all checked levels are neither null nor undefined"]
+    N2["final value returned"]
+    N1 --> N2
 ```
 
 ### 16. Missing path
 
-```text
-checked level is null or undefined
-│
-▼
-undefined returned
+```mermaid
+flowchart TD
+    N1["checked level is null or undefined"]
+    N2["undefined returned"]
+    N1 --> N2
 ```
 
 ### 17. Checkpoint model
 
-```text
-current value
-│
-├── null/undefined -> stop
-└── otherwise -> continue
+```mermaid
+flowchart TD
+    N1["текущее значение"]
+    N2["null/undefined → stop"]
+    N3["иначе → продолжить"]
+    N1 --> N2
+    N1 --> N3
 ```
 
 ### 18. Hallway analogy
 
-```text
-door value is neither null nor undefined
-│
-▼
-walk through
-
-door value is null or undefined
-│
-▼
-stop
+```mermaid
+flowchart TD
+    N1["door value is neither null nor undefined"]
+    N2["walk through"]
+    N3["door value is null or undefined"]
+    N4["stop"]
+    N1 --> N2
+    N2 --> N3
+    N3 --> N4
 ```
 
 ### 19. Staircase analogy
 
-```text
-step value is neither null nor undefined
-│
-▼
-go up
-
-step value is null or undefined
-│
-▼
-stop safely
+```mermaid
+flowchart TD
+    N1["step value is neither null nor undefined"]
+    N2["go up"]
+    N3["step value is null or undefined"]
+    N4["остановиться безопасно"]
+    N1 --> N2
+    N2 --> N3
+    N3 --> N4
 ```
 
 ### 20. Execution timeline
 
-```text
-read response
-│
-▼
-read body
-│
-▼
-checkpoint
-│
-▼
-continue or stop
+```mermaid
+flowchart TD
+    N1["read response"]
+    N2["read body"]
+    N3["checkpoint"]
+    N4["продолжить or stop"]
+    N1 --> N2
+    N2 --> N3
+    N3 --> N4
 ```
 
 ### 21. Переход к Nullish Coalescing
 
-```text
-optional chaining result
-│
-▼
-undefined
-│
-▼
-need fallback value
+```mermaid
+flowchart TD
+    N1["optional chaining result"]
+    N2["undefined"]
+    N3["need fallback value"]
+    N1 --> N2
+    N2 --> N3
 ```
 
 ### 22. Object unchanged
 
-```text
-read safely
-│
-▼
-object remains unchanged
+```mermaid
+flowchart TD
+    N1["read safely"]
+    N2["object remains unchanged"]
+    N1 --> N2
 ```
 
 ### 23. Safe access
 
-```text
-?. 
-│
-└── safe access checkpoint
+```mermaid
+flowchart TD
+    N1["?."]
+    N2["safe access checkpoint"]
+    N1 --> N2
 ```
 
 ### 24. Variable assignment
 
-```text
-optional chain result
-│
-▼
-assigned to variable
+```mermaid
+flowchart TD
+    N1["optional chain result"]
+    N2["assigned to variable"]
+    N1 --> N2
 ```
 
 ### 25. API payload example
 
-```text
-payload
-│
-└── discount?
-    └── promoCode?
+```mermaid
+flowchart TD
+    N1["payload"]
+    N2["discount?"]
+    N3["promoCode?"]
+    N1 --> N2
+    N2 --> N3
 ```
 
 ### 26. Assertion helper
 
-```text
-helper
-│
-▼
-read optional field
-│
-▼
-decide assertion
+```mermaid
+flowchart TD
+    N1["helper"]
+    N2["read optional field"]
+    N3["decide assertion"]
+    N1 --> N2
+    N2 --> N3
 ```
 
 ### 27. Краткая ментальная модель
 
-```text
-path inspection
-│
-▼
-checkpoint
-│
-▼
-safe stop
+```mermaid
+flowchart TD
+    N1["path inspection"]
+    N2["checkpoint"]
+    N3["safe stop"]
+    N1 --> N2
+    N2 --> N3
 ```
 
 ### 28. Complete Optional Chaining model
 
-```text
-Object path
-│
-▼
-Check current value
-│
-├── null/undefined -> undefined
-└── otherwise -> continue
+```mermaid
+flowchart TD
+    N1["путь объекта"]
+    N2["проверка текущего значения"]
+    N3["null/undefined → undefined"]
+    N4["иначе → продолжить"]
+    N1 --> N2
+    N2 --> N3
+    N2 --> N4
 ```
 
 ### 29. Property chain
 
-```text
-a
-│
-└── b
-    └── c
-        └── d
+```mermaid
+flowchart TD
+    N1["a"]
+    N2["b"]
+    N3["c"]
+    N4["d"]
+    N1 --> N2
+    N2 --> N3
+    N3 --> N4
 ```
 
 ### 30. Early stop
 
-```text
-a.b missing
-│
-▼
-do not read c.d
+```mermaid
+flowchart TD
+    N1["a.b значение отсутствует"]
+    N2["do not read c.d"]
+    N1 --> N2
 ```
 
 ### 31. Undefined propagation
 
-```text
-missing checkpoint
-│
-▼
-undefined result
-│
-▼
-variable receives undefined
+```mermaid
+flowchart TD
+    N1["значение отсутствует checkpoint"]
+    N2["undefined result"]
+    N3["variable receives undefined"]
+    N1 --> N2
+    N2 --> N3
 ```
 
 ### 32. Итоговая схема
 
-```text
-Optional Chaining
-│
-├── checks whether current value is null or undefined
-├── continues if it is neither null nor undefined
-├── stops safely if it is null or undefined
-└── returns undefined
+```mermaid
+flowchart TD
+    N1["Optional Chaining"]
+    N2["checks whether текущее значение is null or undefined"]
+    N3["continues if it is neither null nor undefined"]
+    N4["stops safely if it is null or undefined"]
+    N5["возвращает undefined"]
+    N1 --> N2
+    N1 --> N3
+    N1 --> N4
+    N1 --> N5
 ```
 
 ---
@@ -1380,26 +1420,26 @@ solutions/01-javascript/35-optional-chaining.md
 
 Optional Chaining продолжает раздел Objects:
 
-```text
-Objects
-│
-▼
-Destructuring
-│
-▼
-Optional Chaining
+```mermaid
+flowchart TD
+    N1["Objects"]
+    N2["Destructuring"]
+    N3["Optional Chaining"]
+    N1 --> N2
+    N2 --> N3
 ```
 
 Главная модель:
 
-```text
-Object path
-│
-▼
-Check current value
-│
-├── null/undefined -> stop safely -> undefined
-└── otherwise -> continue
+```mermaid
+flowchart TD
+    N1["путь объекта"]
+    N2["проверка текущего значения"]
+    N3["null/undefined → остановиться безопасно → undefined"]
+    N4["иначе → продолжить"]
+    N1 --> N2
+    N2 --> N3
+    N2 --> N4
 ```
 
 Optional Chaining is not a default value mechanism. It only performs safe traversal.

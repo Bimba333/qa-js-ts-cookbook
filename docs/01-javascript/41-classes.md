@@ -6,35 +6,37 @@
 
 Сначала Object Methods:
 
-```text
-Object
-│
-├── State
-└── Behavior
+```mermaid
+flowchart TD
+    N1["Object"]
+    N2["State"]
+    N3["Behavior"]
+    N1 --> N2
+    N1 --> N3
 ```
 
 Затем Prototype:
 
-```text
-Many objects
-│
-▼
-One shared behavior
+```mermaid
+flowchart TD
+    N1["Many objects"]
+    N2["One shared behavior"]
+    N1 --> N2
 ```
 
 Затем Prototype Chain:
 
-```text
-Need property
-│
-▼
-Current object
-│
-├── Found? use it
-└── Not found
-    │
-    ▼
-    Next prototype
+```mermaid
+flowchart TD
+    N1["Need property"]
+    N2["Current object"]
+    N3["Found? use it"]
+    N4["Not found"]
+    N5["Next prototype"]
+    N1 --> N2
+    N2 --> N3
+    N2 --> N4
+    N2 --> N5
 ```
 
 Теперь появляется следующий практический вопрос:
@@ -43,31 +45,30 @@ Current object
 
 Вручную это возможно:
 
-```text
-create object
-│
-add own data
-│
-connect prototype
-│
-repeat many times
+```mermaid
+flowchart TD
+    N1["создать object"]
+    N2["add own data"]
+    N3["connect prototype"]
+    N4["repeat many times"]
+    N1 --> N2
+    N2 --> N3
+    N3 --> N4
 ```
 
 Но repeated setup быстро становится шумным.
 
 Classes дают более удобную форму для этой задачи:
 
-```text
-Need many similar objects
-│
-▼
-Class
-│
-▼
-Creates objects
-│
-▼
-Objects still use prototypes
+```mermaid
+flowchart TD
+    N1["Need many similar objects"]
+    N2["Class"]
+    N3["Creates objects"]
+    N4["Objects still use prototypes"]
+    N1 --> N2
+    N2 --> N3
+    N3 --> N4
 ```
 
 Важно: classes do not replace prototypes. Classes use prototypes.
@@ -197,36 +198,45 @@ AdminPage
 
 Для каждого object повторяется setup:
 
-```text
-create object
-│
-add name
-│
-add url
-│
-connect prototype
+```mermaid
+flowchart TD
+    N1["создать object"]
+    N2["add name"]
+    N3["add url"]
+    N4["connect prototype"]
+    N1 --> N2
+    N2 --> N3
+    N3 --> N4
 ```
 
 Проблема:
 
-```text
-manual creation
-│
-├── repetitive
-├── easy to forget setup step
-├── noisy
-└── harder to read as architecture
+```mermaid
+flowchart TD
+    N1["manual creation"]
+    N2["repetitive"]
+    N3["easy to forget setup step"]
+    N4["noisy"]
+    N5["harder to read as architecture"]
+    N1 --> N2
+    N1 --> N3
+    N1 --> N4
+    N1 --> N5
 ```
 
 Нужен object recipe:
 
-```text
-Page object recipe
-│
-├── receive name
-├── receive url
-├── create object
-└── attach shared methods
+```mermaid
+flowchart TD
+    N1["Page object recipe"]
+    N2["receive name"]
+    N3["receive url"]
+    N4["создать object"]
+    N5["attach shared methods"]
+    N1 --> N2
+    N1 --> N3
+    N1 --> N4
+    N1 --> N5
 ```
 
 Class gives this recipe a language-level form.
@@ -239,14 +249,17 @@ Class is a convenient syntax for creating similar objects with shared prototype 
 
 Главная модель:
 
-```text
-Class
-│
-├── constructor
-│   └── prepares own data
-│
-└── methods
-    └── shared through prototype
+```mermaid
+flowchart TD
+    N1["Class"]
+    N2["constructor"]
+    N3["prepares own data"]
+    N4["methods"]
+    N5["shared through prototype"]
+    N1 --> N2
+    N1 --> N3
+    N1 --> N4
+    N4 --> N5
 ```
 
 Class declaration:
@@ -274,35 +287,32 @@ const loginPage = new PageObject('LoginPage', '/login');
 
 Что важно сейчас:
 
-```text
-new PageObject(...)
-│
-▼
-creates object
-│
-▼
-runs constructor
-│
-▼
-own data appears on instance
-│
-▼
-methods are available through prototype lookup
+```mermaid
+flowchart TD
+    N1["new PageObject(...)"]
+    N2["создает object"]
+    N3["runs constructor"]
+    N4["own data appears on instance"]
+    N5["methods are available through prototype lookup"]
+    N1 --> N2
+    N2 --> N3
+    N3 --> N4
+    N4 --> N5
 ```
 
 ### Constructor
 
 Constructor is special method that runs when new instance is created.
 
-```text
-new PageObject('LoginPage', '/login')
-│
-▼
-constructor receives values
-│
-▼
-this.name = name
-this.url = url
+```mermaid
+flowchart TD
+    N1["new PageObject('LoginPage', '/login')"]
+    N2["constructor receives values"]
+    N3["this.name = name"]
+    N4["this.url = url"]
+    N1 --> N2
+    N2 --> N3
+    N3 --> N4
 ```
 
 Constructor отвечает:
@@ -313,11 +323,11 @@ Constructor отвечает:
 
 Instance is object created from class.
 
-```text
-Class
-│
-▼
-instance
+```mermaid
+flowchart TD
+    N1["Class"]
+    N2["instance"]
+    N1 --> N2
 ```
 
 Например:
@@ -329,27 +339,32 @@ const profilePage = new PageObject('ProfilePage', '/profile');
 
 Each instance has own data:
 
-```text
-loginPage
-│
-├── name: "LoginPage"
-└── url: "/login"
-
-profilePage
-│
-├── name: "ProfilePage"
-└── url: "/profile"
+```mermaid
+flowchart TD
+    N1["loginPage"]
+    N2["name: &quot;LoginPage&quot;"]
+    N3["url: &quot;/login&quot;"]
+    N4["profilePage"]
+    N5["name: &quot;ProfilePage&quot;"]
+    N6["url: &quot;/profile&quot;"]
+    N1 --> N2
+    N1 --> N3
+    N1 --> N4
+    N4 --> N5
+    N4 --> N6
 ```
 
 But methods are shared:
 
-```text
-PageObject methods
-│
-└── describePage()
-    │
-    ├── used by loginPage
-    └── used by profilePage
+```mermaid
+flowchart TD
+    N1["PageObject methods"]
+    N2["describePage()"]
+    N3["used by loginPage"]
+    N4["used by profilePage"]
+    N1 --> N2
+    N2 --> N3
+    N2 --> N4
 ```
 
 ### Relationship with prototypes
@@ -358,25 +373,26 @@ Class does not remove prototype lookup.
 
 Модель высокого уровня:
 
-```text
-loginPage
-│
-├── own data
-│
-└── prototype ──► PageObject.prototype
-                  │
-                  └── describePage()
+```mermaid
+flowchart TD
+    N1["loginPage"]
+    N2["own data"]
+    N3["prototype → PageObject.prototype"]
+    N4["describePage()"]
+    N1 --> N2
+    N1 --> N3
+    N1 --> N4
 ```
 
 You do not need to manually write `PageObject.prototype` in this chapter.
 
 But you must understand the relationship:
 
-```text
-class method
-│
-▼
-available through prototype lookup
+```mermaid
+flowchart TD
+    N1["class method"]
+    N2["available through prototype lookup"]
+    N1 --> N2
 ```
 
 This is why classes fit naturally after Prototype and Prototype Chain.
@@ -393,50 +409,54 @@ const loginPage = new PageObject('LoginPage', '/login');
 
 Mentally:
 
-```text
-Step 1
-│
-▼
-Create a new object
+```mermaid
+flowchart TD
+    N1["Step 1"]
+    N2["Create a new object"]
+    N1 --> N2
 ```
 
-```text
-Step 2
-│
-▼
-Connect object to PageObject prototype
+```mermaid
+flowchart TD
+    N1["Step 2"]
+    N2["Connect object to PageObject prototype"]
+    N1 --> N2
 ```
 
-```text
-Step 3
-│
-▼
-Run constructor with this = new object
+```mermaid
+flowchart TD
+    N1["Step 3"]
+    N2["Run constructor with this = new object"]
+    N1 --> N2
 ```
 
-```text
-Step 4
-│
-▼
-Constructor writes own data
+```mermaid
+flowchart TD
+    N1["Step 4"]
+    N2["Constructor writes own data"]
+    N1 --> N2
 ```
 
-```text
-Step 5
-│
-▼
-Variable receives created instance
+```mermaid
+flowchart TD
+    N1["Step 5"]
+    N2["Variable receives created instance"]
+    N1 --> N2
 ```
 
 After creation:
 
-```text
-loginPage
-│
-├── own: name
-├── own: url
-└── prototype
-    └── describePage()
+```mermaid
+flowchart TD
+    N1["loginPage"]
+    N2["own: name"]
+    N3["own: url"]
+    N4["prototype"]
+    N5["describePage()"]
+    N1 --> N2
+    N1 --> N3
+    N1 --> N4
+    N4 --> N5
 ```
 
 When code calls:
@@ -447,27 +467,28 @@ loginPage.describePage();
 
 Lookup still works:
 
-```text
-Need describePage
-│
-▼
-Check loginPage
-│
-└── not found as own property
-    │
-    ▼
-Check PageObject prototype
-│
-└── found
+```mermaid
+flowchart TD
+    N1["Need describePage"]
+    N2["Check loginPage"]
+    N3["not found as own property"]
+    N4["Check PageObject prototype"]
+    N5["found"]
+    N1 --> N2
+    N2 --> N3
+    N2 --> N4
+    N4 --> N5
 ```
 
 Напоминание про объект выполнения:
 
-```text
-loginPage.describePage()
-│
-├── method found through prototype
-└── receiver is loginPage
+```mermaid
+flowchart TD
+    N1["loginPage.describePage()"]
+    N2["method found through prototype"]
+    N3["receiver is loginPage"]
+    N1 --> N2
+    N1 --> N3
 ```
 
 Inside method:
@@ -478,14 +499,15 @@ return `${this.name}: ${this.url}`;
 
 `this.name` reads from instance:
 
-```text
-this
-│
-▼
-loginPage
-│
-├── name
-└── url
+```mermaid
+flowchart TD
+    N1["this"]
+    N2["loginPage"]
+    N3["name"]
+    N4["url"]
+    N1 --> N2
+    N2 --> N3
+    N2 --> N4
 ```
 
 This is the same model from `this`, Prototype and Prototype Chain chapters.
@@ -498,12 +520,13 @@ Class syntax is often described as syntactic sugar over prototype-based object c
 
 Значение:
 
-```text
-class
-│
-does not create a separate object model
-│
-uses prototype mechanism underneath
+```mermaid
+flowchart TD
+    N1["class"]
+    N2["does not создать a separate object model"]
+    N3["uses prototype mechanism underneath"]
+    N1 --> N2
+    N2 --> N3
 ```
 
 Do not reduce the whole chapter to this phrase. It is useful only after you understand what repetitive work class removes.
@@ -520,70 +543,81 @@ Class is an object recipe.
 
 Они помогают понять назначение classes:
 
-```text
-need many similar objects
-│
-▼
-use one creation form
+```mermaid
+flowchart TD
+    N1["need many similar objects"]
+    N2["use one creation form"]
+    N1 --> N2
 ```
 
 Но это не формальное определение class в JavaScript.
 
 Мы используем эти аналогии, чтобы увидеть проблему repeated object creation and the role of class syntax. Внутренние детали языка здесь не раскрываются и будут появляться только тогда, когда станут нужны для следующих тем.
 
-```text
-Class
-│
-└── recipe for similar objects
+```mermaid
+flowchart TD
+    N1["Class"]
+    N2["recipe for similar objects"]
+    N1 --> N2
 ```
 
 Factory blueprint:
 
-```text
-Blueprint
-│
-├── what data each object gets
-└── what shared methods objects can use
+```mermaid
+flowchart TD
+    N1["Blueprint"]
+    N2["what data each object gets"]
+    N3["what shared methods objects can use"]
+    N1 --> N2
+    N1 --> N3
 ```
 
 Cookie cutter:
 
-```text
-cookie cutter
-│
-├── same shape
-└── many cookies
+```mermaid
+flowchart TD
+    N1["cookie cutter"]
+    N2["same shape"]
+    N3["many cookies"]
+    N1 --> N2
+    N1 --> N3
 ```
 
 Building template:
 
-```text
-template
-│
-├── common plan
-└── individual buildings
+```mermaid
+flowchart TD
+    N1["template"]
+    N2["common plan"]
+    N3["individual buildings"]
+    N1 --> N2
+    N1 --> N3
 ```
 
 Production line:
 
-```text
-production line
-│
-├── input data
-├── create object
-└── output instance
+```mermaid
+flowchart TD
+    N1["production line"]
+    N2["input data"]
+    N3["создать object"]
+    N4["output instance"]
+    N1 --> N2
+    N1 --> N3
+    N1 --> N4
 ```
 
 Важное различие:
 
-```text
-Class
-│
-└── template
-
-Instance
-│
-└── actual object
+```mermaid
+flowchart TD
+    N1["Class"]
+    N2["template"]
+    N3["Instance"]
+    N4["actual object"]
+    N1 --> N2
+    N1 --> N3
+    N3 --> N4
 ```
 
 ---
@@ -672,11 +706,11 @@ examples/01-javascript/chapter-41/06-qa-example.js
 
 Class does not replace prototype. Class uses prototype.
 
-```text
-class method
-│
-▼
-available through prototype lookup
+```mermaid
+flowchart TD
+    N1["class method"]
+    N2["available through prototype lookup"]
+    N1 --> N2
 ```
 
 ### JavaScript стал class-based language?
@@ -697,11 +731,13 @@ Advanced constructor поведение будет изучаться позже
 
 Модель высокого уровня:
 
-```text
-instances
-│
-├── own data
-└── shared methods through prototype
+```mermaid
+flowchart TD
+    N1["instances"]
+    N2["own data"]
+    N3["shared methods through prototype"]
+    N1 --> N2
+    N1 --> N3
 ```
 
 ### Нужно ли всегда использовать classes?
@@ -788,32 +824,39 @@ describePage() {
 
 Неправильная модель:
 
-```text
-instance
-│
-└── own method copy
+```mermaid
+flowchart TD
+    N1["instance"]
+    N2["own method copy"]
+    N1 --> N2
 ```
 
 Правильная модель:
 
-```text
-instance
-│
-└── prototype
-    └── method
+```mermaid
+flowchart TD
+    N1["instance"]
+    N2["prototype"]
+    N3["method"]
+    N1 --> N2
+    N2 --> N3
 ```
 
 ### Ошибка 4. Перегружать constructor
 
 Неправильная модель:
 
-```text
-constructor
-│
-├── create object
-├── send API request
-├── read files
-└── assert result
+```mermaid
+flowchart TD
+    N1["constructor"]
+    N2["создать object"]
+    N3["send API request"]
+    N4["read files"]
+    N5["assert result"]
+    N1 --> N2
+    N1 --> N3
+    N1 --> N4
+    N1 --> N5
 ```
 
 Почему плохо:
@@ -822,10 +865,11 @@ Instance creation becomes unpredictable.
 
 Исправленная модель:
 
-```text
-constructor
-│
-└── initialize object data
+```mermaid
+flowchart TD
+    N1["constructor"]
+    N2["initialize object data"]
+    N1 --> N2
 ```
 
 ---
@@ -834,12 +878,15 @@ constructor
 
 Use class when:
 
-```text
-many similar objects
-│
-├── same structure
-├── similar own data
-└── shared behavior
+```mermaid
+flowchart TD
+    N1["many similar objects"]
+    N2["same structure"]
+    N3["similar own data"]
+    N4["shared behavior"]
+    N1 --> N2
+    N1 --> N3
+    N1 --> N4
 ```
 
 Примеры:
@@ -853,22 +900,24 @@ many similar objects
 
 Do not use class only because it looks serious.
 
-```text
-single simple object
-│
-└── object literal may be enough
+```mermaid
+flowchart TD
+    N1["single simple object"]
+    N2["object literal may be enough"]
+    N1 --> N2
 ```
 
 Good class design:
 
-```text
-constructor
-│
-└── clear data initialization
-
-methods
-│
-└── meaningful behavior
+```mermaid
+flowchart TD
+    N1["constructor"]
+    N2["clear data initialization"]
+    N3["methods"]
+    N4["meaningful behavior"]
+    N1 --> N2
+    N1 --> N3
+    N3 --> N4
 ```
 
 ---
@@ -879,16 +928,21 @@ methods
 
 Page Objects are natural class candidates:
 
-```text
-class LoginPage
-│
-├── own data
-│   ├── page
-│   └── url
-│
-└── methods
-    ├── open()
-    └── login()
+```mermaid
+flowchart TD
+    N1["class LoginPage"]
+    N2["own data"]
+    N3["page"]
+    N4["url"]
+    N5["methods"]
+    N6["open()"]
+    N7["login()"]
+    N1 --> N2
+    N1 --> N3
+    N1 --> N4
+    N1 --> N5
+    N5 --> N6
+    N5 --> N7
 ```
 
 This creates readable test code:
@@ -901,23 +955,28 @@ const loginPage = new LoginPage('/login');
 
 API client class can keep environment config as own data:
 
-```text
-ApiClient instance
-│
-├── own baseUrl
-└── shared request methods
+```mermaid
+flowchart TD
+    N1["ApiClient instance"]
+    N2["own baseUrl"]
+    N3["shared request methods"]
+    N1 --> N2
+    N1 --> N3
 ```
 
 ### Reusable validators
 
 Validator class:
 
-```text
-StatusValidator
-│
-├── expected
-├── actual
-└── isValid()
+```mermaid
+flowchart TD
+    N1["StatusValidator"]
+    N2["expected"]
+    N3["actual"]
+    N4["isValid()"]
+    N1 --> N2
+    N1 --> N3
+    N1 --> N4
 ```
 
 ### Request builders
@@ -946,23 +1005,24 @@ But they should still be small and readable.
 
 ### 1. Why classes exist
 
-```text
-many similar objects
-│
-└── repeated setup
-    │
-    ▼
-    class
+```mermaid
+flowchart TD
+    N1["many similar objects"]
+    N2["repeated setup"]
+    N3["class"]
+    N1 --> N2
+    N1 --> N3
 ```
 
 ### 2. Manual creation
 
-```text
-create object
-│
-set data
-│
-connect prototype
+```mermaid
+flowchart TD
+    N1["создать object"]
+    N2["set data"]
+    N3["connect prototype"]
+    N1 --> N2
+    N2 --> N3
 ```
 
 ### 3. Repeated setup
@@ -975,349 +1035,381 @@ object C setup
 
 ### 4. Class template
 
-```text
-Class
-│
-├── constructor
-└── methods
+```mermaid
+flowchart TD
+    N1["Class"]
+    N2["constructor"]
+    N3["methods"]
+    N1 --> N2
+    N1 --> N3
 ```
 
 ### 5. Instance creation
 
-```text
-Class
-│
-▼
-new instance
+```mermaid
+flowchart TD
+    N1["Class"]
+    N2["new instance"]
+    N1 --> N2
 ```
 
 ### 6. Constructor
 
-```text
-constructor
-│
-└── initializes own data
+```mermaid
+flowchart TD
+    N1["constructor"]
+    N2["initializes own data"]
+    N1 --> N2
 ```
 
 ### 7. Methods
 
-```text
-class methods
-│
-└── shared behavior
+```mermaid
+flowchart TD
+    N1["class methods"]
+    N2["shared behavior"]
+    N1 --> N2
 ```
 
 ### 8. Prototype reminder
 
-```text
-instance
-│
-└── prototype
-    └── class methods
+```mermaid
+flowchart TD
+    N1["instance"]
+    N2["prototype"]
+    N3["class methods"]
+    N1 --> N2
+    N2 --> N3
 ```
 
 ### 9. Текущая модель JavaScript
 
-```text
-Objects
-│
-├── Prototype
-├── Prototype Chain
-└── Classes
+```mermaid
+flowchart TD
+    N1["Objects"]
+    N2["Prototype"]
+    N3["Prototype Chain"]
+    N4["Classes"]
+    N1 --> N2
+    N1 --> N3
+    N1 --> N4
 ```
 
 ### 10. Object creation flow
 
-```text
-new Class(args)
-│
-▼
-create object
-│
-▼
-run constructor
+```mermaid
+flowchart TD
+    N1["new Class(args)"]
+    N2["создать object"]
+    N3["run constructor"]
+    N1 --> N2
+    N2 --> N3
 ```
 
 ### 11. QA Page Object example
 
-```text
-LoginPage instance
-│
-├── own url
-└── shared methods
+```mermaid
+flowchart TD
+    N1["LoginPage instance"]
+    N2["own url"]
+    N3["shared methods"]
+    N1 --> N2
+    N1 --> N3
 ```
 
 ### 12. API client example
 
-```text
-ApiClient
-│
-├── baseUrl
-└── request()
+```mermaid
+flowchart TD
+    N1["ApiClient"]
+    N2["baseUrl"]
+    N3["request()"]
+    N1 --> N2
+    N1 --> N3
 ```
 
 ### 13. Test user example
 
-```text
-TestUser
-│
-├── email
-├── role
-└── describe()
+```mermaid
+flowchart TD
+    N1["TestUser"]
+    N2["email"]
+    N3["role"]
+    N4["describe()"]
+    N1 --> N2
+    N1 --> N3
+    N1 --> N4
 ```
 
 ### 14. Читаемость
 
-```text
-Class name
-│
-└── communicates object purpose
+```mermaid
+flowchart TD
+    N1["Class name"]
+    N2["communicates object purpose"]
+    N1 --> N2
 ```
 
 ### 15. Типичные ошибки
 
-```text
-class without new
-│
-└── error
+```mermaid
+flowchart TD
+    N1["class without new"]
+    N2["error"]
+    N1 --> N2
 ```
 
 ### 16. Blueprint analogy
 
-```text
-blueprint
-│
-└── many buildings
+```mermaid
+flowchart TD
+    N1["blueprint"]
+    N2["many buildings"]
+    N1 --> N2
 ```
 
 ### 17. Cookie cutter analogy
 
-```text
-cutter
-│
-└── many cookies
+```mermaid
+flowchart TD
+    N1["cutter"]
+    N2["many cookies"]
+    N1 --> N2
 ```
 
 ### 18. Factory analogy
 
-```text
-factory
-│
-└── production output
+```mermaid
+flowchart TD
+    N1["factory"]
+    N2["production output"]
+    N1 --> N2
 ```
 
 ### 19. Recipe analogy
 
-```text
-recipe
-│
-└── prepared object
+```mermaid
+flowchart TD
+    N1["recipe"]
+    N2["prepared object"]
+    N1 --> N2
 ```
 
 ### 20. Constructor flow
 
-```text
-arguments
-│
-▼
-constructor
-│
-▼
-own properties
+```mermaid
+flowchart TD
+    N1["arguments"]
+    N2["constructor"]
+    N3["own properties"]
+    N1 --> N2
+    N2 --> N3
 ```
 
 ### 21. Instance lifecycle
 
-```text
-create
-│
-initialize
-│
-use methods
+```mermaid
+flowchart TD
+    N1["create"]
+    N2["initialize"]
+    N3["use methods"]
+    N1 --> N2
+    N2 --> N3
 ```
 
 ### 22. Shared methods
 
-```text
-method
-│
-├── instance A
-└── instance B
+```mermaid
+flowchart TD
+    N1["method"]
+    N2["instance A"]
+    N3["instance B"]
+    N1 --> N2
+    N1 --> N3
 ```
 
 ### 23. Own data
 
-```text
-instance
-│
-├── own name
-└── own url
+```mermaid
+flowchart TD
+    N1["instance"]
+    N2["own name"]
+    N3["own url"]
+    N1 --> N2
+    N1 --> N3
 ```
 
 ### 24. Prototype behind class
 
-```text
-class method
-│
-▼
-prototype
+```mermaid
+flowchart TD
+    N1["class method"]
+    N2["prototype"]
+    N1 --> N2
 ```
 
 ### 25. Class to prototype
 
-```text
-Class
-│
-└── prototype with methods
+```mermaid
+flowchart TD
+    N1["Class"]
+    N2["prototype with methods"]
+    N1 --> N2
 ```
 
 ### 26. Object relationship
 
-```text
-instance
-│
-└── linked to class prototype
+```mermaid
+flowchart TD
+    N1["instance"]
+    N2["linked to class prototype"]
+    N1 --> N2
 ```
 
 ### 27. Краткая ментальная модель
 
-```text
-Class
-│
-▼
-Object template
-│
-▼
-Many similar objects
+```mermaid
+flowchart TD
+    N1["Class"]
+    N2["Object template"]
+    N3["Many similar objects"]
+    N1 --> N2
+    N2 --> N3
 ```
 
 ### 28. Complete class model
 
-```text
-Class
-│
-├── constructor -> own data
-└── methods -> prototype
+```mermaid
+flowchart TD
+    N1["Class"]
+    N2["constructor → own data"]
+    N3["methods → prototype"]
+    N1 --> N2
+    N1 --> N3
 ```
 
 ### 29. Build process
 
-```text
-input values
-│
-▼
-constructor
-│
-▼
-instance
+```mermaid
+flowchart TD
+    N1["input values"]
+    N2["constructor"]
+    N3["instance"]
+    N1 --> N2
+    N2 --> N3
 ```
 
 ### 30. Receiver reminder
 
-```text
-instance.method()
-│
-└── receiver is instance
+```mermaid
+flowchart TD
+    N1["instance.method()"]
+    N2["receiver is instance"]
+    N1 --> N2
 ```
 
 ### 31. Constructor execution
 
-```text
-new
-│
-▼
-constructor runs
+```mermaid
+flowchart TD
+    N1["new"]
+    N2["constructor runs"]
+    N1 --> N2
 ```
 
 ### 32. Shared поведение reuse
 
-```text
-one method
-│
-└── many instances
+```mermaid
+flowchart TD
+    N1["one method"]
+    N2["many instances"]
+    N1 --> N2
 ```
 
 ### 33. Переход к Inheritance
 
-```text
-Class
-│
-▼
-next: reuse behavior between classes
+```mermaid
+flowchart TD
+    N1["Class"]
+    N2["next: reuse behavior between classes"]
+    N1 --> N2
 ```
 
 ### 34. Переход к extends
 
-```text
-next chapter
-│
-└── extends
+```mermaid
+flowchart TD
+    N1["next chapter"]
+    N2["extends"]
+    N1 --> N2
 ```
 
 ### 35. Object evolution
 
-```text
-object literal
-│
-▼
-prototype
-│
-▼
-class
+```mermaid
+flowchart TD
+    N1["object literal"]
+    N2["prototype"]
+    N3["class"]
+    N1 --> N2
+    N2 --> N3
 ```
 
 ### 36. Production line
 
-```text
-same class
-│
-├── object 1
-├── object 2
-└── object 3
+```mermaid
+flowchart TD
+    N1["same class"]
+    N2["object 1"]
+    N3["object 2"]
+    N4["object 3"]
+    N1 --> N2
+    N1 --> N3
+    N1 --> N4
 ```
 
 ### 37. Object identity
 
-```text
-instance A
-│
-≠
-instance B
+```mermaid
+flowchart TD
+    N1["instance A"]
+    N2["≠"]
+    N3["instance B"]
+    N1 --> N2
+    N2 --> N3
 ```
 
 ### 38. Prototype lookup still works
 
-```text
-instance method call
-│
-▼
-prototype lookup
+```mermaid
+flowchart TD
+    N1["instance method call"]
+    N2["prototype lookup"]
+    N1 --> N2
 ```
 
 ### 39. Hidden prototype
 
-```text
-class syntax
-│
-└── prototype mechanism underneath
+```mermaid
+flowchart TD
+    N1["class syntax"]
+    N2["prototype mechanism underneath"]
+    N1 --> N2
 ```
 
 ### 40. Итоговая схема
 
-```text
-Need many similar objects
-│
-▼
-Class
-│
-▼
-Creates instances
-│
-▼
-Instances have own data
-│
-▼
-Methods are shared through prototype
+```mermaid
+flowchart TD
+    N1["Need many similar objects"]
+    N2["Class"]
+    N3["Creates instances"]
+    N4["Instances have own data"]
+    N5["Methods are shared through prototype"]
+    N1 --> N2
+    N2 --> N3
+    N3 --> N4
+    N4 --> N5
 ```
 
 ---
@@ -1328,20 +1420,20 @@ Classes appear after Prototype and Prototype Chain naturally.
 
 Prototype showed:
 
-```text
-many objects
-│
-▼
-shared behavior
+```mermaid
+flowchart TD
+    N1["many objects"]
+    N2["shared behavior"]
+    N1 --> N2
 ```
 
 Prototype Chain showed:
 
-```text
-method lookup
-│
-▼
-through prototypes
+```mermaid
+flowchart TD
+    N1["method lookup"]
+    N2["through prototypes"]
+    N1 --> N2
 ```
 
 Classes answer:
@@ -1352,14 +1444,17 @@ How to create many similar objects more conveniently?
 
 Class gives object creation a readable template:
 
-```text
-Class
-│
-├── constructor
-│   └── own data
-│
-└── methods
-    └── shared through prototype
+```mermaid
+flowchart TD
+    N1["Class"]
+    N2["constructor"]
+    N3["own data"]
+    N4["methods"]
+    N5["shared through prototype"]
+    N1 --> N2
+    N1 --> N3
+    N1 --> N4
+    N4 --> N5
 ```
 
 Classes do not replace prototypes. Classes use prototypes.

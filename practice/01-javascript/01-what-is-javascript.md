@@ -141,13 +141,15 @@ ReferenceError: document is not defined
 
 Составьте ASCII-схему:
 
-```text
-Playwright test
-│
-...
-Browser page
-│
-...
+```mermaid
+flowchart TD
+    N1["Playwright test"]
+    N2["..."]
+    N3["Browser page"]
+    N4["..."]
+    N1 --> N2
+    N3 --> N4
+    N2 --> N3
 ```
 
 Покажите, где находится Node.js context, где browser context и какие API доступны в каждом.

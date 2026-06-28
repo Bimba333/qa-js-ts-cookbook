@@ -72,14 +72,24 @@ Error: Failure inside c
 
 Сравните:
 
-```text
-test -> helper -> assertion
+```mermaid
+flowchart LR
+    N1["test"]
+    N2["helper"]
+    N3["assertion"]
+    N1 --> N2
+    N2 --> N3
 ```
 
 и:
 
-```text
-a -> b -> c
+```mermaid
+flowchart LR
+    N1["a"]
+    N2["b"]
+    N3["c"]
+    N1 --> N2
+    N2 --> N3
 ```
 
 Что в этой аналогии соответствует верхнему Execution Context?

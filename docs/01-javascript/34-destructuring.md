@@ -6,14 +6,13 @@
 
 Главная модель была такой:
 
-```text
-Object
-│
-▼
-one entity
-│
-▼
-many named properties
+```mermaid
+flowchart TD
+    N1["Object"]
+    N2["one entity"]
+    N3["many named properties"]
+    N1 --> N2
+    N2 --> N3
 ```
 
 Например:
@@ -42,40 +41,43 @@ const userRole = user.role;
 
 Это работает. Но когда таких извлечений много, код начинает шуметь:
 
-```text
-user.name
-user.role
-user.active
-user.email
-│
-▼
-same object repeated again and again
+```mermaid
+flowchart TD
+    N1["user.name"]
+    N2["user.role"]
+    N3["user.active"]
+    N4["user.email"]
+    N5["same object repeated again and again"]
+    N4 --> N5
+    N1 --> N2
+    N2 --> N3
+    N3 --> N4
 ```
 
 Destructuring отвечает на этот вопрос.
 
 Главная модель главы:
 
-```text
-Object
-│
-▼
-many named properties
-│
-▼
-extract required values
-│
-▼
-new variables
+```mermaid
+flowchart TD
+    N1["Object"]
+    N2["many named properties"]
+    N3["extract required values"]
+    N4["new variables"]
+    N1 --> N2
+    N2 --> N3
+    N3 --> N4
 ```
 
 Важно сразу:
 
-```text
-Destructuring
-│
-≠
-creating a new object
+```mermaid
+flowchart TD
+    N1["Destructuring"]
+    N2["≠"]
+    N3["creating a new object"]
+    N1 --> N2
+    N2 --> N3
 ```
 
 Destructuring читает existing properties and creates variables from them.
@@ -189,15 +191,15 @@ const body = response.body;
 
 Он понятен, но повторяет `response`:
 
-```text
-response.status
-response.body
-│
-▼
-same source object
-│
-▼
-manual extraction
+```mermaid
+flowchart TD
+    N1["response.status"]
+    N2["response.body"]
+    N3["same source object"]
+    N4["manual extraction"]
+    N2 --> N3
+    N3 --> N4
+    N1 --> N2
 ```
 
 Если properties больше, шум растет:
@@ -220,19 +222,23 @@ const { status, body, durationMs } = response;
 
 Модель:
 
-```text
-response object
-│
-├── status
-├── body
-└── durationMs
-│
-▼
-destructuring
-│
-├── const status
-├── const body
-└── const durationMs
+```mermaid
+flowchart TD
+    N1["response object"]
+    N2["status"]
+    N3["body"]
+    N4["durationMs"]
+    N5["destructuring"]
+    N6["const status"]
+    N7["const body"]
+    N8["const durationMs"]
+    N1 --> N2
+    N1 --> N3
+    N1 --> N4
+    N1 --> N5
+    N5 --> N6
+    N5 --> N7
+    N5 --> N8
 ```
 
 Что важно:
@@ -249,14 +255,13 @@ Destructuring не "разбирает" object физически и не соз
 
 Destructuring нужен, когда object содержит много named properties, а текущему участку кода нужны только некоторые из них.
 
-```text
-Object with many properties
-│
-▼
-current code needs selected values
-│
-▼
-destructuring extracts them into variables
+```mermaid
+flowchart TD
+    N1["Object with many properties"]
+    N2["current code needs selected values"]
+    N3["destructuring extracts them into variables"]
+    N1 --> N2
+    N2 --> N3
 ```
 
 ### Object destructuring syntax
@@ -269,17 +274,19 @@ const { name, role } = user;
 
 Это означает:
 
-```text
-from object user
-│
-├── read property "name"
-└── read property "role"
-│
-▼
-create variables
-│
-├── name
-└── role
+```mermaid
+flowchart TD
+    N1["from object user"]
+    N2["read property &quot;name&quot;"]
+    N3["read property &quot;role&quot;"]
+    N4["создать variables"]
+    N5["name"]
+    N6["role"]
+    N1 --> N2
+    N1 --> N3
+    N1 --> N4
+    N4 --> N5
+    N4 --> N6
 ```
 
 Эквивалент без destructuring:
@@ -305,11 +312,11 @@ const { name } = user;
 
 Модель:
 
-```text
-property key "name"
-│
-▼
-variable name
+```mermaid
+flowchart TD
+    N1["property key &quot;name&quot;"]
+    N2["variable name"]
+    N1 --> N2
 ```
 
 Это не случайность. Matching происходит by property name.
@@ -331,14 +338,13 @@ const { name, role } = user;
 
 Порядок properties в object здесь не является основой matching.
 
-```text
-pattern asks for "name"
-│
-▼
-object has "name"
-│
-▼
-name = 'Anna'
+```mermaid
+flowchart TD
+    N1["pattern asks for &quot;name&quot;"]
+    N2["object has &quot;name&quot;"]
+    N3["name = 'Anna'"]
+    N1 --> N2
+    N2 --> N3
 ```
 
 ### Missing property
@@ -353,23 +359,22 @@ console.log(email);
 
 Модель:
 
-```text
-pattern asks for "email"
-│
-▼
-object has no "email"
-│
-▼
-email = undefined
+```mermaid
+flowchart TD
+    N1["pattern asks for &quot;email&quot;"]
+    N2["object has нет &quot;email&quot;"]
+    N3["email = undefined"]
+    N1 --> N2
+    N2 --> N3
 ```
 
 Это продолжает правило из предыдущей главы:
 
-```text
-reading missing property
-│
-▼
-undefined
+```mermaid
+flowchart TD
+    N1["reading значение отсутствует property"]
+    N2["undefined"]
+    N1 --> N2
 ```
 
 ### Default значения
@@ -382,11 +387,13 @@ const { role = 'guest' } = user;
 
 Модель:
 
-```text
-read user.role
-│
-├── value exists -> use value
-└── value is undefined -> use default
+```mermaid
+flowchart TD
+    N1["read user.role"]
+    N2["value exists → использовать значение"]
+    N3["value is undefined → use значение по умолчанию"]
+    N1 --> N2
+    N1 --> N3
 ```
 
 Пример:
@@ -409,14 +416,13 @@ guest
 
 Default value не добавляет property в object.
 
-```text
-default value
-│
-▼
-affects created variable
-│
-▼
-does not modify source object
+```mermaid
+flowchart TD
+    N1["значение по умолчанию value"]
+    N2["affects created variable"]
+    N3["does not modify source object"]
+    N1 --> N2
+    N2 --> N3
 ```
 
 ### Renaming variables
@@ -431,23 +437,24 @@ const { name: userName } = user;
 
 Модель:
 
-```text
-property key "name"
-│
-▼
-read value
-│
-▼
-create variable userName
+```mermaid
+flowchart TD
+    N1["property key &quot;name&quot;"]
+    N2["read value"]
+    N3["создать variable userName"]
+    N1 --> N2
+    N2 --> N3
 ```
 
 Важно:
 
-```text
-name: userName
-│
-├── name     -> property key
-└── userName -> new variable
+```mermaid
+flowchart TD
+    N1["name: userName"]
+    N2["name → property key"]
+    N3["userName → new variable"]
+    N1 --> N2
+    N1 --> N3
 ```
 
 Это частое место ошибок.
@@ -475,14 +482,15 @@ const {
 
 Высокоуровневая модель:
 
-```text
-response
-│
-└── body
-    └── name
-│
-▼
-extract name
+```mermaid
+flowchart TD
+    N1["response"]
+    N2["body"]
+    N3["name"]
+    N4["extract name"]
+    N1 --> N2
+    N2 --> N3
+    N1 --> N4
 ```
 
 В этой главе nested destructuring только preview. Deep nested patterns can become hard to read, and optional chaining will be studied next.
@@ -497,29 +505,28 @@ const { name } = user;
 
 После этой строки:
 
-```text
-user object
-│
-└── unchanged
-
-name variable
-│
-└── created from user.name
+```mermaid
+flowchart TD
+    N1["user object"]
+    N2["unchanged"]
+    N3["name variable"]
+    N4["created from user.name"]
+    N1 --> N2
+    N1 --> N3
+    N3 --> N4
 ```
 
 Destructuring:
 
-```text
-reads existing properties
-│
-▼
-creates variables
-│
-▼
-does not create a new object
-│
-▼
-does not remove properties
+```mermaid
+flowchart TD
+    N1["reads existing properties"]
+    N2["создает variables"]
+    N3["does not создать a new object"]
+    N4["does not remove properties"]
+    N1 --> N2
+    N2 --> N3
+    N3 --> N4
 ```
 
 ---
@@ -549,20 +556,17 @@ const { status, body } = response;
 
 ### Extraction flow
 
-```text
-source object
-│
-▼
-destructuring pattern
-│
-▼
-property lookup by name
-│
-▼
-variable creation
-│
-▼
-values assigned to variables
+```mermaid
+flowchart TD
+    N1["source object"]
+    N2["destructuring pattern"]
+    N3["property lookup by name"]
+    N4["variable creation"]
+    N5["values assigned to variables"]
+    N1 --> N2
+    N2 --> N3
+    N3 --> N4
+    N4 --> N5
 ```
 
 ### Variable mapping
@@ -573,15 +577,15 @@ const { name: userName } = user;
 
 Сопоставление:
 
-```text
-source property
-│
-└── "name"
-    │
-    ▼
-target variable
-│
-└── userName
+```mermaid
+flowchart TD
+    N1["source property"]
+    N2["&quot;name&quot;"]
+    N3["target variable"]
+    N4["userName"]
+    N1 --> N2
+    N1 --> N3
+    N3 --> N4
 ```
 
 ### Default value flow
@@ -592,26 +596,30 @@ const { timeout = 5000 } = config;
 
 Концептуально:
 
-```text
-read config.timeout
-│
-├── not undefined -> timeout = actual value
-└── undefined     -> timeout = 5000
+```mermaid
+flowchart TD
+    N1["read config.timeout"]
+    N2["not undefined → timeout = actual value"]
+    N3["undefined → timeout = 5000"]
+    N1 --> N2
+    N1 --> N3
 ```
 
 ### Existing object vs new variables
 
 Очень важно отделить source object от created variables:
 
-```text
-Source
-│
-└── response object
-
-Created
-│
-├── status variable
-└── body variable
+```mermaid
+flowchart TD
+    N1["Source"]
+    N2["response object"]
+    N3["Created"]
+    N4["status variable"]
+    N5["body variable"]
+    N1 --> N2
+    N1 --> N3
+    N3 --> N4
+    N3 --> N5
 ```
 
 Destructuring не создает:
@@ -630,16 +638,19 @@ new variables
 
 Если переменная ссылалась на object до destructuring, она продолжает ссылаться на тот же object после destructuring.
 
-```text
-before destructuring
-│
-└── response -> object
-
-after destructuring
-│
-├── response -> same object
-├── status   -> value from response.status
-└── body     -> value from response.body
+```mermaid
+flowchart TD
+    N1["before destructuring"]
+    N2["response → object"]
+    N3["after destructuring"]
+    N4["response → same object"]
+    N5["status → value from response.status"]
+    N6["body → value from response.body"]
+    N1 --> N2
+    N1 --> N3
+    N3 --> N4
+    N3 --> N5
+    N3 --> N6
 ```
 
 Это важно для понимания тестовых данных. Destructuring не делает защитную копию object.
@@ -650,64 +661,69 @@ after destructuring
 
 Представьте folder с документами:
 
-```text
-Folder: response
-│
-├── document: status
-├── document: body
-└── document: durationMs
+```mermaid
+flowchart TD
+    N1["Folder: response"]
+    N2["document: status"]
+    N3["document: body"]
+    N4["document: durationMs"]
+    N1 --> N2
+    N1 --> N3
+    N1 --> N4
 ```
 
 Destructuring - это не создание новой папки.
 
 Это выбор нужных documents:
 
-```text
-open folder
-│
-▼
-take selected labeled documents
-│
-▼
-put them on desk as variables
+```mermaid
+flowchart TD
+    N1["open folder"]
+    N2["take selected labeled documents"]
+    N3["put them on desk as variables"]
+    N1 --> N2
+    N2 --> N3
 ```
 
 Еще одна модель: profile card.
 
-```text
-Profile card
-│
-├── id
-├── name
-├── role
-└── active
+```mermaid
+flowchart TD
+    N1["Profile card"]
+    N2["id"]
+    N3["name"]
+    N4["role"]
+    N5["active"]
+    N1 --> N2
+    N1 --> N3
+    N1 --> N4
+    N1 --> N5
 ```
 
 Destructuring:
 
-```text
-select fields
-│
-├── name
-└── role
-│
-▼
-create local variables
+```mermaid
+flowchart TD
+    N1["select fields"]
+    N2["name"]
+    N3["role"]
+    N4["создать local variables"]
+    N1 --> N2
+    N1 --> N3
+    N1 --> N4
 ```
 
 Главная модель:
 
-```text
-Object
-│
-▼
-many named properties
-│
-▼
-take only required properties
-│
-▼
-variables for current code
+```mermaid
+flowchart TD
+    N1["Object"]
+    N2["many named properties"]
+    N3["take only required properties"]
+    N4["variables for current code"]
+    N1 --> N2
+    N2 --> N3
+    N3 --> N4
 ```
 
 ---
@@ -843,14 +859,13 @@ console.log(durationMs);
 
 Нет.
 
-```text
-destructuring
-│
-▼
-reads properties
-│
-▼
-creates variables
+```mermaid
+flowchart TD
+    N1["destructuring"]
+    N2["reads properties"]
+    N3["создает variables"]
+    N1 --> N2
+    N2 --> N3
 ```
 
 Source object остается тем же.
@@ -859,14 +874,15 @@ Source object остается тем же.
 
 Нет.
 
-```text
-object before
-│
-└── same properties
-
-object after
-│
-└── same properties
+```mermaid
+flowchart TD
+    N1["object before"]
+    N2["same properties"]
+    N3["object after"]
+    N4["same properties"]
+    N1 --> N2
+    N1 --> N3
+    N3 --> N4
 ```
 
 ### Почему variable name должен совпадать с property key?
@@ -891,11 +907,11 @@ const { role: userRole } = user;
 
 Variable получит `undefined`, если нет default value.
 
-```text
-missing property
-│
-▼
-undefined
+```mermaid
+flowchart TD
+    N1["значение отсутствует property"]
+    N2["undefined"]
+    N1 --> N2
 ```
 
 ---
@@ -908,11 +924,11 @@ undefined
 
 Destructuring выражает намерение:
 
-```text
-from this object
-│
-▼
-I need these properties
+```mermaid
+flowchart TD
+    N1["from this object"]
+    N2["I need these properties"]
+    N1 --> N2
 ```
 
 Краткость - следствие, но не главная идея.
@@ -923,11 +939,13 @@ I need these properties
 
 Object остается unchanged.
 
-```text
-extract value
-│
-≠
-remove property
+```mermaid
+flowchart TD
+    N1["extract value"]
+    N2["≠"]
+    N3["remove property"]
+    N1 --> N2
+    N2 --> N3
 ```
 
 ### Миф: destructuring создает новый object
@@ -936,11 +954,11 @@ remove property
 
 Создаются variables, not a new object.
 
-```text
-const { status } = response
-│
-▼
-variable status
+```mermaid
+flowchart TD
+    N1["const { status } = response"]
+    N2["variable status"]
+    N1 --> N2
 ```
 
 ### Миф: порядок properties определяет matching
@@ -1060,14 +1078,15 @@ const { status, body } = apiResponse;
 
 Модель:
 
-```text
-apiResponse
-│
-├── status
-└── body
-│
-▼
-variables for assertions
+```mermaid
+flowchart TD
+    N1["apiResponse"]
+    N2["status"]
+    N3["body"]
+    N4["variables for assertions"]
+    N1 --> N2
+    N1 --> N3
+    N1 --> N4
 ```
 
 ### Reading config значения
@@ -1107,180 +1126,193 @@ Parameter destructuring будет отдельной темой позже. С�
 
 ### 1. Why destructuring exists
 
-```text
-Object has many properties
-│
-▼
-current code needs a few
-│
-▼
-destructuring
+```mermaid
+flowchart TD
+    N1["Object has many properties"]
+    N2["current code needs a few"]
+    N3["destructuring"]
+    N1 --> N2
+    N2 --> N3
 ```
 
 ### 2. Object before extraction
 
-```text
-response
-│
-├── status
-├── body
-└── durationMs
+```mermaid
+flowchart TD
+    N1["response"]
+    N2["status"]
+    N3["body"]
+    N4["durationMs"]
+    N1 --> N2
+    N1 --> N3
+    N1 --> N4
 ```
 
 ### 3. Needed properties
 
-```text
-needed now
-│
-├── status
-└── body
+```mermaid
+flowchart TD
+    N1["needed now"]
+    N2["status"]
+    N3["body"]
+    N1 --> N2
+    N1 --> N3
 ```
 
 ### 4. Destructuring process
 
-```text
-object
-│
-▼
-pattern
-│
-▼
-property values
-│
-▼
-variables
+```mermaid
+flowchart TD
+    N1["объект"]
+    N2["pattern"]
+    N3["property values"]
+    N4["variables"]
+    N1 --> N2
+    N2 --> N3
+    N3 --> N4
 ```
 
 ### 5. Property matching
 
-```text
-{ status }
-│
-▼
-look for property "status"
+```mermaid
+flowchart TD
+    N1["{ status }"]
+    N2["look for property &quot;status&quot;"]
+    N1 --> N2
 ```
 
 ### 6. Variable creation
 
-```text
-property value
-│
-▼
-new variable
+```mermaid
+flowchart TD
+    N1["property value"]
+    N2["new variable"]
+    N1 --> N2
 ```
 
 ### 7. Default значения
 
-```text
-property missing
-│
-▼
-undefined
-│
-▼
-use default
+```mermaid
+flowchart TD
+    N1["property значение отсутствует"]
+    N2["undefined"]
+    N3["use значение по умолчанию"]
+    N1 --> N2
+    N2 --> N3
 ```
 
 ### 8. Renaming
 
-```text
-name: userName
-│     │
-│     └── variable
-└── property key
+```mermaid
+flowchart TD
+    N1["name: userName"]
+    N2["variable"]
+    N3["property key"]
+    N1 --> N2
+    N1 --> N3
 ```
 
 ### 9. Nested object preview
 
-```text
-response
-│
-└── body
-    └── name
+```mermaid
+flowchart TD
+    N1["response"]
+    N2["body"]
+    N3["name"]
+    N1 --> N2
+    N2 --> N3
 ```
 
 ### 10. Текущая модель JavaScript
 
-```text
-Objects
-│
-├── object literals
-└── destructuring
+```mermaid
+flowchart TD
+    N1["Objects"]
+    N2["object literals"]
+    N3["destructuring"]
+    N1 --> N2
+    N1 --> N3
 ```
 
 ### 11. QA response object
 
-```text
-apiResponse
-│
-├── status
-├── body
-└── durationMs
+```mermaid
+flowchart TD
+    N1["apiResponse"]
+    N2["status"]
+    N3["body"]
+    N4["durationMs"]
+    N1 --> N2
+    N1 --> N3
+    N1 --> N4
 ```
 
 ### 12. API payload
 
-```text
-payload
-│
-├── name
-├── email
-└── role
+```mermaid
+flowchart TD
+    N1["payload"]
+    N2["name"]
+    N3["email"]
+    N4["role"]
+    N1 --> N2
+    N1 --> N3
+    N1 --> N4
 ```
 
 ### 13. Читаемость
 
-```text
-response.status
-response.body
-response.durationMs
-│
-▼
-const { status, body, durationMs } = response
+```mermaid
+flowchart TD
+    N1["response.status"]
+    N2["response.body"]
+    N3["response.durationMs"]
+    N4["const { status, body, durationMs } = response"]
+    N3 --> N4
+    N1 --> N2
+    N2 --> N3
 ```
 
 ### 14. Типичные ошибки
 
-```text
-name: userName
-│
-└── does not create name variable
+```mermaid
+flowchart TD
+    N1["name: userName"]
+    N2["does not создать name variable"]
+    N1 --> N2
 ```
 
 ### 15. Missing property
 
-```text
-ask for email
-│
-▼
-object has no email
-│
-▼
-email = undefined
+```mermaid
+flowchart TD
+    N1["ask for email"]
+    N2["object has нет email"]
+    N3["email = undefined"]
+    N1 --> N2
+    N2 --> N3
 ```
 
 ### 16. Extraction flow
 
-```text
-source
-│
-▼
-lookup
-│
-▼
-value
-│
-▼
-variable
+```mermaid
+flowchart TD
+    N1["source"]
+    N2["lookup"]
+    N3["значение"]
+    N4["variable"]
+    N1 --> N2
+    N2 --> N3
+    N3 --> N4
 ```
 
 ### 17. Variable mapping
 
-```text
-source key
-│
-▼
-target variable
+```mermaid
+flowchart TD
+    N1["source key"]
+    N2["target variable"]
+    N1 --> N2
 ```
 
 ### 18. Object unchanged
@@ -1292,138 +1324,146 @@ after:  same object with properties
 
 ### 19. Переход к Optional Chaining
 
-```text
-nested property
-│
-▼
-may be missing
-│
-▼
-Optional Chaining
+```mermaid
+flowchart TD
+    N1["nested property"]
+    N2["may be значение отсутствует"]
+    N3["Optional Chaining"]
+    N1 --> N2
+    N2 --> N3
 ```
 
 ### 20. Краткая ментальная модель
 
-```text
-open folder
-│
-▼
-select documents
-│
-▼
-place on desk
+```mermaid
+flowchart TD
+    N1["open folder"]
+    N2["select documents"]
+    N3["place on desk"]
+    N1 --> N2
+    N2 --> N3
 ```
 
 ### 21. Complete destructuring model
 
-```text
-Object
-│
-▼
-many named properties
-│
-▼
-extract required values
-│
-▼
-variables
+```mermaid
+flowchart TD
+    N1["Object"]
+    N2["many named properties"]
+    N3["extract required values"]
+    N4["variables"]
+    N1 --> N2
+    N2 --> N3
+    N3 --> N4
 ```
 
 ### 22. Folder analogy
 
-```text
-Folder
-│
-├── status document
-├── body document
-└── duration document
+```mermaid
+flowchart TD
+    N1["Folder"]
+    N2["status document"]
+    N3["body document"]
+    N4["duration document"]
+    N1 --> N2
+    N1 --> N3
+    N1 --> N4
 ```
 
 ### 23. Property selection
 
-```text
-select
-│
-├── status
-└── body
+```mermaid
+flowchart TD
+    N1["select"]
+    N2["status"]
+    N3["body"]
+    N1 --> N2
+    N1 --> N3
 ```
 
 ### 24. Object identity unchanged
 
-```text
-response -> same object
-│
-├── before destructuring
-└── after destructuring
+```mermaid
+flowchart TD
+    N1["response → same object"]
+    N2["before destructuring"]
+    N3["after destructuring"]
+    N1 --> N2
+    N1 --> N3
 ```
 
 ### 25. Existing object vs new variables
 
-```text
-existing object
-│
-▼
-new variables
+```mermaid
+flowchart TD
+    N1["existing object"]
+    N2["new variables"]
+    N1 --> N2
 ```
 
 ### 26. Matching by property name
 
-```text
-pattern key
-│
-▼
-object key
-│
-▼
-match
+```mermaid
+flowchart TD
+    N1["pattern key"]
+    N2["object key"]
+    N3["match"]
+    N1 --> N2
+    N2 --> N3
 ```
 
 ### 27. Default value flow
 
-```text
-value undefined?
-│
-├── yes -> default
-└── no  -> actual value
+```mermaid
+flowchart TD
+    N1["value undefined?"]
+    N2["да → значение по умолчанию"]
+    N3["нет → actual value"]
+    N1 --> N2
+    N1 --> N3
 ```
 
 ### 28. QA expected data
 
-```text
-expectedUser
-│
-├── name
-└── role
-│
-▼
-expectedName
-expectedRole
+```mermaid
+flowchart TD
+    N1["expectedUser"]
+    N2["name"]
+    N3["role"]
+    N4["expectedName"]
+    N5["expectedRole"]
+    N1 --> N2
+    N1 --> N3
+    N1 --> N4
+    N4 --> N5
 ```
 
 ### 29. Extraction timeline
 
-```text
-read object
-│
-▼
-match properties
-│
-▼
-create variables
-│
-▼
-continue execution
+```mermaid
+flowchart TD
+    N1["read object"]
+    N2["match properties"]
+    N3["создать variables"]
+    N4["продолжить выполнение"]
+    N1 --> N2
+    N2 --> N3
+    N3 --> N4
 ```
 
 ### 30. Итоговая схема
 
-```text
-Destructuring
-│
-├── reads existing object
-├── extracts selected values
-├── creates variables
-└── leaves object unchanged
+```mermaid
+flowchart TD
+    N1["Destructuring"]
+    N2["reads existing object"]
+    N3["extracts selected values"]
+    N4["создает variables"]
+    N5["leaves object unchanged"]
+    N1 --> N2
+    N1 --> N3
+    N1 --> N4
+    N1 --> N5
 ```
 
 ---
@@ -1466,31 +1506,28 @@ solutions/01-javascript/34-destructuring.md
 
 Destructuring продолжает тему Objects.
 
-```text
-Objects
-│
-▼
-group related data
-
-Destructuring
-│
-▼
-extract selected values from object
+```mermaid
+flowchart TD
+    N1["Objects"]
+    N2["group related data"]
+    N3["Destructuring"]
+    N4["extract selected values from object"]
+    N1 --> N2
+    N2 --> N3
+    N3 --> N4
 ```
 
 Главная модель:
 
-```text
-Object
-│
-▼
-many named properties
-│
-▼
-extract required values
-│
-▼
-object remains unchanged
+```mermaid
+flowchart TD
+    N1["Object"]
+    N2["many named properties"]
+    N3["extract required values"]
+    N4["object remains unchanged"]
+    N1 --> N2
+    N2 --> N3
+    N3 --> N4
 ```
 
 Destructuring не создает новый object. Он создает variables from existing properties.

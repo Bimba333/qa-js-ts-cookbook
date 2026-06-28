@@ -4,11 +4,11 @@
 
 Предыдущая глава показала, что JavaScript создает Execution Context:
 
-```text
-программа запускается
-│
-▼
-создается Execution Context
+```mermaid
+flowchart TD
+    N1["программа запускается"]
+    N2["создается Execution Context"]
+    N1 --> N2
 ```
 
 Но в нашем примере функции вызывают друг друга:
@@ -91,17 +91,15 @@ Call Stack — это стек вызовов функций.
 
 Когда функция завершается, ее Execution Context снимается с Call Stack.
 
-```text
-вызов функции
-│
-▼
-поместить Execution Context наверх
-│
-▼
-функция завершается
-│
-▼
-снять Execution Context
+```mermaid
+flowchart TD
+    N1["вызов функции"]
+    N2["поместить Execution Context наверх"]
+    N3["функция завершается"]
+    N4["снять Execution Context"]
+    N1 --> N2
+    N2 --> N3
+    N3 --> N4
 ```
 
 JavaScript выполняет Execution Context, который находится наверху.
@@ -112,60 +110,83 @@ Call Stack хранит Execution Context активных вызовов фун
 
 Старт программы:
 
-```text
-Call Stack
-└── Global
+```mermaid
+flowchart TD
+    N1["Call Stack"]
+    N2["Global"]
+    N1 --> N2
 ```
 
 Вызов `a()`:
 
-```text
-Call Stack
-├── a
-└── Global
+```mermaid
+flowchart TD
+    N1["Call Stack"]
+    N2["a"]
+    N3["Global"]
+    N1 --> N2
+    N1 --> N3
 ```
 
 `a()` вызывает `b()`:
 
-```text
-Call Stack
-├── b
-├── a
-└── Global
+```mermaid
+flowchart TD
+    N1["Call Stack"]
+    N2["b"]
+    N3["a"]
+    N4["Global"]
+    N1 --> N2
+    N1 --> N3
+    N1 --> N4
 ```
 
 `b()` вызывает `c()`:
 
-```text
-Call Stack
-├── c
-├── b
-├── a
-└── Global
+```mermaid
+flowchart TD
+    N1["Call Stack"]
+    N2["c"]
+    N3["b"]
+    N4["a"]
+    N5["Global"]
+    N1 --> N2
+    N1 --> N3
+    N1 --> N4
+    N1 --> N5
 ```
 
 `c()` завершается:
 
-```text
-Call Stack
-├── b
-├── a
-└── Global
+```mermaid
+flowchart TD
+    N1["Call Stack"]
+    N2["b"]
+    N3["a"]
+    N4["Global"]
+    N1 --> N2
+    N1 --> N3
+    N1 --> N4
 ```
 
 `b()` завершается:
 
-```text
-Call Stack
-├── a
-└── Global
+```mermaid
+flowchart TD
+    N1["Call Stack"]
+    N2["a"]
+    N3["Global"]
+    N1 --> N2
+    N1 --> N3
 ```
 
 `a()` завершается:
 
-```text
-Call Stack
-└── Global
+```mermaid
+flowchart TD
+    N1["Call Stack"]
+    N2["Global"]
+    N1 --> N2
 ```
 
 Программа завершается, когда выполнение глобального кода закончено и синхронной работы больше не осталось.
@@ -174,12 +195,15 @@ Call Stack
 
 Главная модель главы: **стек вызовов функций**.
 
-```text
-верх
-│
-├── текущая функция
-├── вызывающая функция
-└── предыдущая вызывающая функция
+```mermaid
+flowchart TD
+    N1["верх"]
+    N2["текущая функция"]
+    N3["вызывающая функция"]
+    N4["предыдущая вызывающая функция"]
+    N1 --> N2
+    N1 --> N3
+    N1 --> N4
 ```
 
 Последняя вызванная функция завершается первой.
@@ -216,17 +240,15 @@ Call Stack помогает понимать порядок выполнения
 
 Минимальная QA-аналогия:
 
-```text
-тестовый раннер
-│
-▼
-тестовая функция
-│
-▼
-helper-функция
-│
-▼
-assertion helper
+```mermaid
+flowchart TD
+    N1["тестовый раннер"]
+    N2["тестовая функция"]
+    N3["helper-функция"]
+    N4["assertion helper"]
+    N1 --> N2
+    N2 --> N3
+    N3 --> N4
 ```
 
 Если assertion helper падает, stack trace показывает цепочку вызывающих функций. Это не новая тема, а прямое применение Call Stack.

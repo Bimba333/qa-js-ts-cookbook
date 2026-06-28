@@ -4,42 +4,46 @@
 
 Предыдущая глава объяснила Spread.
 
-```text
-Spread
-│
-└── раскрывает одну collection
-    │
-    ▼
-    в много отдельных значений
+```mermaid
+flowchart TD
+    N1["Spread"]
+    N2["раскрывает одну collection"]
+    N3["в много отдельных значений"]
+    N1 --> N2
+    N1 --> N3
 ```
 
 Теперь мы возвращаемся к функциям и к модели выполнения JavaScript.
 
 К этому моменту уже известно:
 
-```text
-Execution Context
-│
-├── создает среду выполнения
-│
-├── имеет Creation Phase
-│
-└── имеет Execution Phase
-
-Scope
-│
-└── отвечает за видимость identifiers
-
-Lexical Environment
-│
-├── хранит identifiers
-└── связывает окружение с outer environment
-
-Function
-│
-├── получает arguments через parameters
-├── выполняет body
-└── может вернуть value через return
+```mermaid
+flowchart TD
+    N1["Execution Context"]
+    N2["создает среду выполнения"]
+    N3["имеет Creation Phase"]
+    N4["имеет выполнение Phase"]
+    N5["Scope"]
+    N6["отвечает за видимость identifiers"]
+    N7["Lexical Environment"]
+    N8["хранит identifiers"]
+    N9["связывает окружение с outer environment"]
+    N10["Function"]
+    N11["получает arguments через parameters"]
+    N12["выполняет body"]
+    N13["может вернуть value через return"]
+    N1 --> N2
+    N1 --> N3
+    N1 --> N4
+    N1 --> N5
+    N5 --> N6
+    N5 --> N7
+    N7 --> N8
+    N7 --> N9
+    N7 --> N10
+    N10 --> N11
+    N10 --> N12
+    N10 --> N13
 ```
 
 Теперь появляется один из самых важных вопросов JavaScript:
@@ -151,47 +155,48 @@ console.log(validateSuccess(200));
 
 Функция `createStatusValidator()` уже завершилась.
 
-```text
-createStatusValidator()
-│
-├── created expectedStatus
-├── returned validateStatus
-└── finished
+```mermaid
+flowchart TD
+    N1["createStatusValidator()"]
+    N2["created expectedStatus"]
+    N3["returned validateStatus"]
+    N4["finished"]
+    N1 --> N2
+    N1 --> N3
+    N1 --> N4
 ```
 
 Но `validateStatus()` все еще может прочитать `expectedStatus`.
 
-```text
-validateSuccess(200)
-│
-└── reads expectedStatus
+```mermaid
+flowchart TD
+    N1["validateSuccess(200)"]
+    N2["reads expectedStatus"]
+    N1 --> N2
 ```
 
 Ожидание читателя:
 
-```text
-Function finished
-│
-▼
-local variables disappeared
-│
-▼
-expectedStatus should be unavailable
+```mermaid
+flowchart TD
+    N1["Function finished"]
+    N2["local variables disappeared"]
+    N3["expectedStatus should be unavailable"]
+    N1 --> N2
+    N2 --> N3
 ```
 
 Фактическое поведение:
 
-```text
-Function finished
-│
-▼
-returned function still needs expectedStatus
-│
-▼
-Function object holds reference to required environment
-│
-▼
-expectedStatus is still available
+```mermaid
+flowchart TD
+    N1["Function finished"]
+    N2["возвращенная функция still needs expectedStatus"]
+    N3["Function object holds reference to required environment"]
+    N4["expectedStatus is still available"]
+    N1 --> N2
+    N2 --> N3
+    N3 --> N4
 ```
 
 Главный вопрос:
@@ -208,54 +213,54 @@ Closure отвечает именно на этот вопрос.
 
 Обычная функция выполняется так:
 
-```text
-Function call
-│
-▼
-Function Execution Context created
-│
-▼
-Local identifiers prepared
-│
-▼
-Function body executed
-│
-▼
-Function returns
-│
-▼
-Execution Context removed from Call Stack
+```mermaid
+flowchart TD
+    N1["вызов функции"]
+    N2["Function Execution Context created"]
+    N3["Local identifiers prepared"]
+    N4["тело функции executed"]
+    N5["Function returns"]
+    N6["Execution Context removed from Call Stack"]
+    N1 --> N2
+    N2 --> N3
+    N3 --> N4
+    N4 --> N5
+    N5 --> N6
 ```
 
 Выполнение функции:
 
-```text
-Call Stack
-│
-├── Global Execution Context
-└── createStatusValidator()
+```mermaid
+flowchart TD
+    N1["Call Stack"]
+    N2["Global Execution Context"]
+    N3["createStatusValidator()"]
+    N1 --> N2
+    N1 --> N3
 ```
 
 Function finishes:
 
-```text
-Call Stack
-│
-└── Global Execution Context
+```mermaid
+flowchart TD
+    N1["Call Stack"]
+    N2["Global Execution Context"]
+    N1 --> N2
 ```
 
 После завершения функции ее Execution Context больше не активен.
 
 Но важно не смешивать две идеи:
 
-```text
-Execution Context finished
-│
-└── active execution stopped
-
-Returned function object
-│
-└── may still reference its Lexical Environment
+```mermaid
+flowchart TD
+    N1["Execution Context finished"]
+    N2["active выполнение stopped"]
+    N3["Returned function object"]
+    N4["may still reference its Lexical Environment"]
+    N1 --> N2
+    N1 --> N3
+    N3 --> N4
 ```
 
 Execution Context отвечает за выполнение.
@@ -286,49 +291,50 @@ console.log(readMessage());
 
 Reader expectation:
 
-```text
-outer() finished
-│
-▼
-message disappeared
-│
-▼
-inner() cannot read message
+```mermaid
+flowchart TD
+    N1["outer() finished"]
+    N2["message disappeared"]
+    N3["inner() cannot read message"]
+    N1 --> N2
+    N2 --> N3
 ```
 
 Фактическое поведение:
 
-```text
-outer() finished
-│
-▼
-inner function object still exists
-│
-▼
-inner references message
-│
-▼
-message is still reachable through environment reference
+```mermaid
+flowchart TD
+    N1["outer() finished"]
+    N2["inner function object still exists"]
+    N3["inner references message"]
+    N4["message is still reachable through environment reference"]
+    N1 --> N2
+    N2 --> N3
+    N3 --> N4
 ```
 
 Вот момент, где рождается Closure.
 
-```text
-inner function object
-│
-├── function body
-└── reference to outer lexical environment
+```mermaid
+flowchart TD
+    N1["inner function object"]
+    N2["тело функции"]
+    N3["reference to outer lexical environment"]
+    N1 --> N2
+    N1 --> N3
 ```
 
 Closure creation:
 
-```text
-outer Lexical Environment
-│
-├── message: 'Saved value'
-└── inner function object
-    │
-    └── holds reference to this environment
+```mermaid
+flowchart TD
+    N1["outer Lexical Environment"]
+    N2["message: 'Saved value'"]
+    N3["inner function object"]
+    N4["holds reference to this environment"]
+    N1 --> N2
+    N1 --> N3
+    N3 --> N4
 ```
 
 Closure - это не отдельная синтаксическая конструкция.
@@ -343,15 +349,15 @@ Closure - это не отдельная синтаксическая конст
 
 Closure - это поведение function object, который удерживает ссылку на Lexical Environment, где он был создан.
 
-```text
-Function object
-│
-▼
-holds reference to
-│
-▼
-Lexical Environment
-where it was created
+```mermaid
+flowchart TD
+    N1["Function object"]
+    N2["holds reference to"]
+    N3["Lexical Environment"]
+    N4["where it was created"]
+    N1 --> N2
+    N2 --> N3
+    N3 --> N4
 ```
 
 Более практичная формулировка:
@@ -360,30 +366,36 @@ where it was created
 
 Важно:
 
-```text
-Closure is not:
-│
-├── special syntax
-├── copy of all variables
-├── hidden global variable
-└── magic memory leak
-
-Closure is:
-│
-└── function object that holds reference to needed lexical environment
+```mermaid
+flowchart TD
+    N1["Closure is not:"]
+    N2["special syntax"]
+    N3["copy of all variables"]
+    N4["hidden global variable"]
+    N5["magic memory leak"]
+    N6["Closure is:"]
+    N7["function object that holds reference to needed lexical environment"]
+    N1 --> N2
+    N1 --> N3
+    N1 --> N4
+    N1 --> N5
+    N1 --> N6
+    N6 --> N7
 ```
 
 Миф -> Реальность:
 
-```text
-Миф
-│
-└── Closure копирует значения внутрь функции
-
-Реальность
-│
-└── function object держит ссылку на environment,
-    где эти identifiers находятся
+```mermaid
+flowchart TD
+    N1["Миф"]
+    N2["Closure копирует значения внутрь функции"]
+    N3["Реальность"]
+    N4["function object держит ссылку на environment,"]
+    N5["где эти identifiers находятся"]
+    N1 --> N2
+    N1 --> N3
+    N3 --> N4
+    N3 --> N5
 ```
 
 ---
@@ -392,53 +404,60 @@ Closure is:
 
 В главе про Lexical Environment мы видели:
 
-```text
-Lexical Environment
-│
-├── Environment Record
-│   └── identifiers
-│
-└── Outer Environment Reference
-    └── ссылка на внешнее окружение
+```mermaid
+flowchart TD
+    N1["Lexical Environment"]
+    N2["Environment Record"]
+    N3["identifiers"]
+    N4["Outer Environment Reference"]
+    N5["ссылка на внешнее окружение"]
+    N1 --> N2
+    N1 --> N3
+    N1 --> N4
+    N4 --> N5
 ```
 
 Теперь эта модель становится особенно важной.
 
 Когда функция создается, она создается не в пустоте.
 
-```text
-Global Lexical Environment
-│
-└── createStatusValidator function object
-
-createStatusValidator Lexical Environment
-│
-├── expectedStatus
-└── validateStatus function object
+```mermaid
+flowchart TD
+    N1["Global Lexical Environment"]
+    N2["createStatusValidator function object"]
+    N3["createStatusValidator Lexical Environment"]
+    N4["expectedStatus"]
+    N5["validateStatus function object"]
+    N1 --> N2
+    N1 --> N3
+    N3 --> N4
+    N3 --> N5
 ```
 
 Функция `validateStatus` была создана внутри `createStatusValidator`.
 
 Значит, ее lexical position выглядит так:
 
-```text
-Global Scope
-│
-└── createStatusValidator Scope
-    │
-    └── validateStatus Scope
+```mermaid
+flowchart TD
+    N1["Global Scope"]
+    N2["createStatusValidator Scope"]
+    N3["validateStatus Scope"]
+    N1 --> N2
+    N2 --> N3
 ```
 
 Scope Chain revisit:
 
-```text
-validateStatus()
-│
-├── search in own environment
-│
-├── search in createStatusValidator environment
-│
-└── search in global environment
+```mermaid
+flowchart TD
+    N1["validateStatus()"]
+    N2["search in own environment"]
+    N3["search in createStatusValidator environment"]
+    N4["search in global environment"]
+    N1 --> N2
+    N1 --> N3
+    N1 --> N4
 ```
 
 Closure появляется потому, что `validateStatus` удерживает доступ к outer environment, где лежит `expectedStatus`.
@@ -449,44 +468,43 @@ Closure появляется потому, что `validateStatus` удержи�
 
 Функция ищет identifier так же, как раньше:
 
-```text
-Need expectedStatus
-│
-▼
-Search local environment
-│
-▼
-Not found
-│
-▼
-Search outer environment
-│
-▼
-Found
+```mermaid
+flowchart TD
+    N1["Need expectedStatus"]
+    N2["Search local environment"]
+    N3["Not found"]
+    N4["Search outer environment"]
+    N5["Found"]
+    N1 --> N2
+    N2 --> N3
+    N3 --> N4
+    N4 --> N5
 ```
 
 Outer scope:
 
-```text
-createStatusValidator()
-│
-├── expectedStatus = 200
-│
-└── validateStatus()
-    │
-    └── can read expectedStatus
+```mermaid
+flowchart TD
+    N1["createStatusValidator()"]
+    N2["expectedStatus = 200"]
+    N3["validateStatus()"]
+    N4["can read expectedStatus"]
+    N1 --> N2
+    N1 --> N3
+    N3 --> N4
 ```
 
 После завершения `createStatusValidator()` меняется не правило поиска, а lifetime нужного environment.
 
-```text
-Before return
-│
-└── validateStatus uses outer expectedStatus
-
-After return
-│
-└── validateStatus still uses outer expectedStatus
+```mermaid
+flowchart TD
+    N1["До: return"]
+    N2["validateStatus uses outer expectedStatus"]
+    N3["После: return"]
+    N4["validateStatus still uses outer expectedStatus"]
+    N1 --> N2
+    N1 --> N3
+    N3 --> N4
 ```
 
 Главный вопрос остается тем же:
@@ -518,72 +536,70 @@ console.log(validateOk(404));
 
 Complete Closure model:
 
-```text
-1. Global code starts
-   │
-   ▼
-2. createValidator function object exists
-   │
-   ▼
-3. createValidator(200) is called
-   │
-   ▼
-4. Function Execution Context is created
-   │
-   ▼
-5. expectedStatus receives 200
-   │
-   ▼
-6. validate function object is created inside
-   │
-   ▼
-7. validate holds reference to outer lexical environment
-   │
-   ▼
-8. createValidator returns validate
-   │
-   ▼
-9. createValidator execution finishes
-   │
-   ▼
-10. validateOk stores returned function object
-    │
-    ▼
-11. validateOk(200) is called later
-    │
-    ▼
-12. validate reads expectedStatus through environment reference
+```mermaid
+flowchart TD
+    N1["1. Global code starts"]
+    N2["2. createValidator function object exists"]
+    N3["3. createValidator(200) is called"]
+    N4["4. Function Execution Context is created"]
+    N5["5. expectedStatus receives 200"]
+    N6["6. validate function object is created inside"]
+    N7["7. validate holds reference to outer lexical environment"]
+    N8["8. createValidator возвращает validate"]
+    N9["9. createValidator выполнение завершается"]
+    N10["10. validateOk stores возвращенная функция object"]
+    N11["11. validateOk(200) is called later"]
+    N12["12. validate reads expectedStatus through environment reference"]
+    N1 --> N2
+    N2 --> N3
+    N3 --> N4
+    N4 --> N5
+    N5 --> N6
+    N6 --> N7
+    N7 --> N8
+    N8 --> N9
+    N9 --> N10
+    N10 --> N11
+    N11 --> N12
 ```
 
 Execution Context revisit:
 
-```text
-createValidator Execution Context
-│
-├── parameter expectedStatus = 200
-├── creates validate function object
-└── returns validate
+```mermaid
+flowchart TD
+    N1["createValidator Execution Context"]
+    N2["parameter expectedStatus = 200"]
+    N3["создает validate function object"]
+    N4["возвращает validate"]
+    N1 --> N2
+    N1 --> N3
+    N1 --> N4
 ```
 
 Function returned:
 
-```text
-createValidator()
-│
-└── returns function object
-    │
-    ├── name: validate
-    └── reference to outer environment
+```mermaid
+flowchart TD
+    N1["createValidator()"]
+    N2["возвращает function object"]
+    N3["name: validate"]
+    N4["reference to outer environment"]
+    N1 --> N2
+    N2 --> N3
+    N2 --> N4
 ```
 
 Returned function called later:
 
-```text
-validateOk(200)
-│
-├── actualStatus = 200
-├── expectedStatus found through outer environment reference
-└── returns true
+```mermaid
+flowchart TD
+    N1["validateOk(200)"]
+    N2["actualStatus = 200"]
+    N3["expectedStatus found through outer environment reference"]
+    N4["возвращает true"]
+    N1 --> N2
+    N1 --> N3
+    N1 --> N4
 ```
 
 ---
@@ -594,51 +610,56 @@ Closure не означает, что JavaScript сохраняет весь Cal
 
 Call Stack interaction:
 
-```text
-Call Stack during createValidator()
-│
-├── Global Execution Context
-└── createValidator Execution Context
-
-Call Stack after return
-│
-└── Global Execution Context
+```mermaid
+flowchart TD
+    N1["Call Stack during createValidator()"]
+    N2["Global Execution Context"]
+    N3["createValidator Execution Context"]
+    N4["Call Stack after return"]
+    N5["Global Execution Context"]
+    N1 --> N2
+    N1 --> N3
+    N1 --> N4
+    N4 --> N5
 ```
 
 Сохраняется не "активный вызов функции".
 
 Function object удерживает ссылку на нужное lexical environment.
 
-```text
-Execution Context
-│
-└── no longer active
-
-Lexical Environment needed by closure
-│
-└── still reachable through function reference
+```mermaid
+flowchart TD
+    N1["Execution Context"]
+    N2["нет longer active"]
+    N3["Lexical Environment needed by closure"]
+    N4["still reachable through function reference"]
+    N1 --> N2
+    N1 --> N3
+    N3 --> N4
 ```
 
 Интуитивная модель памяти:
 
-```text
-validateOk
-│
-└── function object
-    │
-    ├── code: return actualStatus === expectedStatus
-    └── environment link
-        │
-        └── expectedStatus = 200
+```mermaid
+flowchart TD
+    N1["validateOk"]
+    N2["function object"]
+    N3["code: вернуть actualStatus === expectedStatus"]
+    N4["environment link"]
+    N5["expectedStatus = 200"]
+    N1 --> N2
+    N2 --> N3
+    N2 --> N4
+    N4 --> N5
 ```
 
 Мы не углубляемся в Garbage Collector. Важно только одно:
 
-```text
-If function still needs environment
-│
-▼
-environment cannot be discarded
+```mermaid
+flowchart TD
+    N1["If function still needs environment"]
+    N2["environment cannot be discarded"]
+    N1 --> N2
 ```
 
 Garbage Collector будет изучаться позже. Сейчас достаточно понимать: пока function object доступен и ему нужен outer environment, это окружение остается достижимым через ссылку function object.
@@ -649,64 +670,62 @@ Garbage Collector будет изучаться позже. Сейчас дос�
 
 Обычная локальная переменная:
 
-```text
-Function starts
-│
-▼
-local variable created
-│
-▼
-function finishes
-│
-▼
-variable no longer needed
+```mermaid
+flowchart TD
+    N1["Function starts"]
+    N2["local variable created"]
+    N3["function завершается"]
+    N4["variable нет longer needed"]
+    N1 --> N2
+    N2 --> N3
+    N3 --> N4
 ```
 
 Captured variable:
 
-```text
-Function starts
-│
-▼
-local variable created
-│
-▼
-inner function uses it
-│
-▼
-inner function returned
-│
-▼
-outer function finishes
-│
-▼
-variable still needed through function reference
-│
-▼
-environment remains reachable
+```mermaid
+flowchart TD
+    N1["Function starts"]
+    N2["local variable created"]
+    N3["inner function uses it"]
+    N4["inner function returned"]
+    N5["outer function завершается"]
+    N6["variable still needed through function reference"]
+    N7["environment remains reachable"]
+    N1 --> N2
+    N2 --> N3
+    N3 --> N4
+    N4 --> N5
+    N5 --> N6
+    N6 --> N7
 ```
 
 Ожидаемое время жизни vs Фактическое время жизни:
 
-```text
-Expected
-│
-└── variable lives until outer function finishes
-
-Actual with Closure
-│
-└── variable lives while returned function can still use it
+```mermaid
+flowchart TD
+    N1["Expected"]
+    N2["variable lives until outer function завершается"]
+    N3["Actual with Closure"]
+    N4["variable lives while возвращенная функция can still use it"]
+    N1 --> N2
+    N1 --> N3
+    N3 --> N4
 ```
 
 Data reachability:
 
-```text
-expectedStatus
-│
-├── created during createValidator(200)
-├── captured by validate
-├── reachable after createValidator finishes
-└── read when validateOk is called
+```mermaid
+flowchart TD
+    N1["expectedStatus"]
+    N2["created during createValidator(200)"]
+    N3["captured by validate"]
+    N4["reachable after createValidator завершается"]
+    N5["read when validateOk is called"]
+    N1 --> N2
+    N1 --> N3
+    N1 --> N4
+    N1 --> N5
 ```
 
 ---
@@ -735,49 +754,49 @@ console.log(secondCounter());
 
 Multiple counters:
 
-```text
-createCounter(0)
-│
-└── closure A
-    │
-    └── count = 0
-
-createCounter(10)
-│
-└── closure B
-    │
-    └── count = 10
+```mermaid
+flowchart TD
+    N1["createCounter(0)"]
+    N2["closure A"]
+    N3["count = 0"]
+    N4["createCounter(10)"]
+    N5["closure B"]
+    N6["count = 10"]
+    N1 --> N2
+    N2 --> N3
+    N1 --> N4
+    N4 --> N5
+    N5 --> N6
 ```
 
 Independent closures:
 
-```text
-firstCounter()
-│
-└── uses environment A
-    │
-    └── count: 0 -> 1 -> 2
-
-secondCounter()
-│
-└── uses environment B
-    │
-    └── count: 10 -> 11
+```mermaid
+flowchart TD
+    N1["firstCounter()"]
+    N2["uses environment A"]
+    N3["count: 0 → 1 → 2"]
+    N4["secondCounter()"]
+    N5["uses environment B"]
+    N6["count: 10 → 11"]
+    N1 --> N2
+    N2 --> N3
+    N1 --> N4
+    N4 --> N5
+    N5 --> N6
 ```
 
 Они не делят один `count`, потому что каждый вызов `createCounter()` создает новое lexical environment.
 
-```text
-One function definition
-│
-▼
-many function calls
-│
-▼
-many lexical environments
-│
-▼
-many independent closures
+```mermaid
+flowchart TD
+    N1["One function definition"]
+    N2["many function calls"]
+    N3["many lexical environments"]
+    N4["many independent closures"]
+    N1 --> N2
+    N2 --> N3
+    N3 --> N4
 ```
 
 ---
@@ -786,47 +805,49 @@ many independent closures
 
 Closure временная шкала:
 
-```text
-T1  createCounter function object exists
-│
-T2  createCounter(0) called
-│
-T3  count created with value 0
-│
-T4  increment function object created
-│
-T5  increment captures access to count
-│
-T6  createCounter returns increment
-│
-T7  createCounter finishes
-│
-T8  count is still needed
-│
-T9  firstCounter() called
-│
-T10 firstCounter reads and updates count
+```mermaid
+flowchart TD
+    N1["T1 createCounter function object exists"]
+    N2["T2 createCounter(0) called"]
+    N3["T3 count created with value 0"]
+    N4["T4 increment function object created"]
+    N5["T5 increment captures access to count"]
+    N6["T6 createCounter возвращает increment"]
+    N7["T7 createCounter завершается"]
+    N8["T8 count is still needed"]
+    N9["T9 firstCounter() called"]
+    N10["T10 firstCounter reads and updates count"]
+    N1 --> N2
+    N2 --> N3
+    N3 --> N4
+    N4 --> N5
+    N5 --> N6
+    N6 --> N7
+    N7 --> N8
+    N8 --> N9
+    N9 --> N10
 ```
 
 Environment lifetime:
 
-```text
-createCounter environment
-│
-├── active while createCounter runs
-└── remains reachable because increment references it
+```mermaid
+flowchart TD
+    N1["createCounter environment"]
+    N2["active while createCounter runs"]
+    N3["remains reachable because increment references it"]
+    N1 --> N2
+    N1 --> N3
 ```
 
 Closure lifetime:
 
-```text
-Returned function exists
-│
-▼
-function object holds environment reference
-│
-▼
-returned function can read captured variables
+```mermaid
+flowchart TD
+    N1["Returned function exists"]
+    N2["function object holds environment reference"]
+    N3["возвращенная функция can read captured variables"]
+    N1 --> N2
+    N2 --> N3
 ```
 
 ---
@@ -841,34 +862,39 @@ returned function can read captured variables
 
 Backpack analogy:
 
-```text
-Function object
-│
-├── code
-└── backpack
-    │
-    └── access to outer variables
+```mermaid
+flowchart TD
+    N1["Function object"]
+    N2["code"]
+    N3["backpack"]
+    N4["access to outer variables"]
+    N1 --> N2
+    N1 --> N3
+    N3 --> N4
 ```
 
 Когда функция вызывается позже:
 
-```text
-function called later
-│
-├── uses its own parameters
-└── opens backpack when outer variable is needed
+```mermaid
+flowchart TD
+    N1["function called later"]
+    N2["uses its own parameters"]
+    N3["opens backpack when outer variable is needed"]
+    N1 --> N2
+    N1 --> N3
 ```
 
 Эта модель полезна, но ее нужно понимать аккуратно:
 
-```text
-Backpack means
-│
-└── reference to lexical environment
-
-Backpack does not mean
-│
-└── copied values snapshot
+```mermaid
+flowchart TD
+    N1["Backpack means"]
+    N2["reference to lexical environment"]
+    N3["Backpack does not mean"]
+    N4["copied values snapshot"]
+    N1 --> N2
+    N1 --> N3
+    N3 --> N4
 ```
 
 ---
@@ -877,35 +903,39 @@ Backpack does not mean
 
 Другая модель - linked room.
 
-```text
-Outer function room
-│
-├── expectedStatus
-└── inner function was created here
+```mermaid
+flowchart TD
+    N1["Outer function room"]
+    N2["expectedStatus"]
+    N3["inner function was created here"]
+    N1 --> N2
+    N1 --> N3
 ```
 
 Когда outer function завершилась, комната не уничтожается, если inner function все еще может туда вернуться за нужным identifier.
 
 Remembered room:
 
-```text
-inner function
-│
-└── has a link to room where it was created
-    │
-    └── can read variables from that room
+```mermaid
+flowchart TD
+    N1["inner function"]
+    N2["has a link to room where it was created"]
+    N3["can read variables from that room"]
+    N1 --> N2
+    N2 --> N3
 ```
 
 Invisible link:
 
-```text
-validateOk
-│
-└── function object
-    │
-    └── invisible link
-        │
-        └── createValidator environment
+```mermaid
+flowchart TD
+    N1["validateOk"]
+    N2["function object"]
+    N3["invisible link"]
+    N4["createValidator environment"]
+    N1 --> N2
+    N2 --> N3
+    N3 --> N4
 ```
 
 ---
@@ -914,30 +944,35 @@ validateOk
 
 Closure можно представить как notebook с записями, которые функция может использовать позже.
 
-```text
-Notebook
-│
-├── expectedStatus: 200
-└── baseUrl: 'https://api.example.test'
+```mermaid
+flowchart TD
+    N1["Notebook"]
+    N2["expectedStatus: 200"]
+    N3["baseUrl: 'https://api.example.test'"]
+    N1 --> N2
+    N1 --> N3
 ```
 
 Объект функции:
 
-```text
-validator
-│
-├── receives actualStatus
-└── reads expectedStatus from notebook
+```mermaid
+flowchart TD
+    N1["validator"]
+    N2["receives actualStatus"]
+    N3["reads expectedStatus from notebook"]
+    N1 --> N2
+    N1 --> N3
 ```
 
 Notebook помогает понять, почему helper factory удобна в тестах:
 
-```text
-createApiValidator(baseUrl)
-│
-└── returns validator
-    │
-    └── has access to baseUrl through environment reference
+```mermaid
+flowchart TD
+    N1["createApiValidator(baseUrl)"]
+    N2["возвращает validator"]
+    N3["has access to baseUrl through environment reference"]
+    N1 --> N2
+    N2 --> N3
 ```
 
 ---
@@ -946,39 +981,58 @@ createApiValidator(baseUrl)
 
 Текущее место в модели JavaScript:
 
-```text
-JavaScript execution model
-│
-├── Engine and Runtime
-├── Execution Context
-├── Call Stack
-├── Memory
-├── Variables
-├── Scope
-├── Lexical Environment
-├── Functions
-│   ├── Declaration
-│   ├── Expression
-│   ├── Arrow Functions
-│   ├── Parameters
-│   ├── Return
-│   ├── Rest
-│   ├── Spread
-│   └── Closures
-└── this
-    └── next chapter
+```mermaid
+flowchart TD
+    N1["JavaScript выполнение model"]
+    N2["Engine and Runtime"]
+    N3["Execution Context"]
+    N4["Call Stack"]
+    N5["Memory"]
+    N6["Variables"]
+    N7["Scope"]
+    N8["Lexical Environment"]
+    N9["Functions"]
+    N10["Declaration"]
+    N11["Expression"]
+    N12["Arrow Functions"]
+    N13["Parameters"]
+    N14["Return"]
+    N15["Rest"]
+    N16["Spread"]
+    N17["Closures"]
+    N18["this"]
+    N19["next chapter"]
+    N1 --> N2
+    N1 --> N3
+    N1 --> N4
+    N1 --> N5
+    N1 --> N6
+    N1 --> N7
+    N1 --> N8
+    N1 --> N9
+    N1 --> N10
+    N1 --> N11
+    N1 --> N12
+    N1 --> N13
+    N1 --> N14
+    N1 --> N15
+    N1 --> N16
+    N1 --> N17
+    N1 --> N18
+    N18 --> N19
 ```
 
 Переход к this:
 
-```text
-Closure
-│
-└── explains how function keeps access to lexical environment
-
-this
-│
-└── will explain how function receives execution receiver/context
+```mermaid
+flowchart TD
+    N1["Closure"]
+    N2["explains how function keeps access to lexical environment"]
+    N3["this"]
+    N4["will explain how function receives выполнение receiver/context"]
+    N1 --> N2
+    N1 --> N3
+    N3 --> N4
 ```
 
 Closure отвечает:
@@ -1032,21 +1086,26 @@ console.log(readMessage());
 
 Что происходит:
 
-```text
-createMessageReader()
-│
-├── creates message
-├── creates readMessage
-├── readMessage uses message
-└── returns readMessage
+```mermaid
+flowchart TD
+    N1["createMessageReader()"]
+    N2["создает message"]
+    N3["создает readMessage"]
+    N4["readMessage uses message"]
+    N5["возвращает readMessage"]
+    N1 --> N2
+    N1 --> N3
+    N1 --> N4
+    N1 --> N5
 ```
 
 Позже:
 
-```text
-readMessage()
-│
-└── reads message through environment reference
+```mermaid
+flowchart TD
+    N1["readMessage()"]
+    N2["reads message through environment reference"]
+    N1 --> N2
 ```
 
 ---
@@ -1072,14 +1131,15 @@ console.log(counter());
 
 Complete counter picture:
 
-```text
-counter
-│
-└── increment function object
-    │
-    └── reference to lexical environment
-        │
-        └── count: 0 -> 1 -> 2 -> 3
+```mermaid
+flowchart TD
+    N1["counter"]
+    N2["increment function object"]
+    N3["reference to lexical environment"]
+    N4["count: 0 → 1 → 2 → 3"]
+    N1 --> N2
+    N2 --> N3
+    N3 --> N4
 ```
 
 `count` не становится global variable. Он остается доступным только через returned function.
@@ -1109,14 +1169,15 @@ console.log(largeCounter());
 
 Independent environment picture:
 
-```text
-smallCounter
-│
-└── count starts at 0
-
-largeCounter
-│
-└── count starts at 100
+```mermaid
+flowchart TD
+    N1["smallCounter"]
+    N2["count starts at 0"]
+    N3["largeCounter"]
+    N4["count starts at 100"]
+    N1 --> N2
+    N1 --> N3
+    N3 --> N4
 ```
 
 Каждый вызов `createCounter()` создает отдельное lexical environment.
@@ -1141,18 +1202,19 @@ console.log(readGuestName());
 
 Интуитивная модель памяти:
 
-```text
-readAdminName
-│
-└── environment A
-    │
-    └── userName = 'Anna'
-
-readGuestName
-│
-└── environment B
-    │
-    └── userName = 'Ivan'
+```mermaid
+flowchart TD
+    N1["readAdminName"]
+    N2["environment A"]
+    N3["userName = 'Anna'"]
+    N4["readGuestName"]
+    N5["environment B"]
+    N6["userName = 'Ivan'"]
+    N1 --> N2
+    N2 --> N3
+    N1 --> N4
+    N4 --> N5
+    N5 --> N6
 ```
 
 Это концептуальная модель, а не описание внутренней памяти конкретного engine.
@@ -1181,18 +1243,19 @@ console.log(validateCreated(response));
 
 Пример QA-helper:
 
-```text
-createStatusValidator(200)
-│
-└── returns validator
-    │
-    └── reaches expectedStatus = 200 through environment reference
-
-createStatusValidator(201)
-│
-└── returns validator
-    │
-    └── reaches expectedStatus = 201 through environment reference
+```mermaid
+flowchart TD
+    N1["createStatusValidator(200)"]
+    N2["возвращает validator"]
+    N3["reaches expectedStatus = 200 through environment reference"]
+    N4["createStatusValidator(201)"]
+    N5["возвращает validator"]
+    N6["reaches expectedStatus = 201 through environment reference"]
+    N1 --> N2
+    N2 --> N3
+    N1 --> N4
+    N4 --> N5
+    N5 --> N6
 ```
 
 Так можно создавать читаемые validators без дублирования expected значения в каждом тесте.
@@ -1205,14 +1268,15 @@ createStatusValidator(201)
 
 Нет. Полезнее думать так: function object удерживает ссылку на lexical environment, где лежат нужные identifiers.
 
-```text
-Not a copy
-│
-└── not a frozen snapshot
-
-Access to environment
-│
-└── reference held by function object
+```mermaid
+flowchart TD
+    N1["Not a copy"]
+    N2["not a frozen snapshot"]
+    N3["Access to environment"]
+    N4["reference held by function object"]
+    N1 --> N2
+    N1 --> N3
+    N3 --> N4
 ```
 
 ### Closure появляется только при return function?
@@ -1223,14 +1287,15 @@ Access to environment
 
 Нет. Captured variable не становится global variable.
 
-```text
-Global variable
-│
-└── accessible from global scope
-
-Captured variable
-│
-└── accessible through function that captured it
+```mermaid
+flowchart TD
+    N1["Global variable"]
+    N2["accessible from global scope"]
+    N3["Captured variable"]
+    N4["accessible through function that captured it"]
+    N1 --> N2
+    N1 --> N3
+    N3 --> N4
 ```
 
 ### Closure всегда плохо влияет на память?
@@ -1245,40 +1310,41 @@ Captured variable
 
 Реальность: Closures встречаются в обычном JavaScript-коде постоянно, особенно в helper creators, validators и factory functions.
 
-```text
-Factory function
-│
-└── returns configured helper
-    │
-    └── closure is already involved
+```mermaid
+flowchart TD
+    N1["Factory function"]
+    N2["возвращает configured helper"]
+    N3["closure is already involved"]
+    N1 --> N2
+    N2 --> N3
 ```
 
 ### Миф 2. Closure хранит копию всех переменных outer function
 
 Реальность: правильнее мыслить через ссылку function object на нужное lexical environment.
 
-```text
-Not:
-│
-└── copy all values
-
-Better model:
-│
-└── function object references environment it needs
+```mermaid
+flowchart TD
+    N1["Not:"]
+    N2["copy all values"]
+    N3["Better model:"]
+    N4["function object references environment it needs"]
+    N1 --> N2
+    N1 --> N3
+    N3 --> N4
 ```
 
 ### Миф 3. Closure делает код непредсказуемым
 
 Реальность: Closure предсказуема, если вручную отслеживать:
 
-```text
-Where function was created
-│
-▼
-What outer identifiers it uses
-│
-▼
-Which environment is referenced
+```mermaid
+flowchart TD
+    N1["Where function was created"]
+    N2["What outer identifiers it uses"]
+    N3["Which environment is referenced"]
+    N1 --> N2
+    N2 --> N3
 ```
 
 Closure становится сложной только тогда, когда разработчик пытается запомнить определение вместо того, чтобы рисовать environment.
@@ -1291,29 +1357,29 @@ Closure становится сложной только тогда, когда 
 
 Неправильная модель:
 
-```text
-outer function finished
-│
-▼
-all local data must disappear
+```mermaid
+flowchart TD
+    N1["outer function finished"]
+    N2["all local data must disappear"]
+    N1 --> N2
 ```
 
 Что произошло:
 
-```text
-inner function still references outer variable
-│
-▼
-environment remains reachable through function reference
+```mermaid
+flowchart TD
+    N1["inner function still references outer variable"]
+    N2["environment remains reachable through function reference"]
+    N1 --> N2
 ```
 
 Исправленная модель:
 
-```text
-outer function execution finished
-│
-▼
-needed lexical environment may still be reachable
+```mermaid
+flowchart TD
+    N1["outer function выполнение finished"]
+    N2["needed lexical environment may still be reachable"]
+    N1 --> N2
 ```
 
 ---
@@ -1335,10 +1401,11 @@ function createCounter() {
 
 Фактическое поведение:
 
-```text
-same reachable variable
-│
-└── updated on every call
+```mermaid
+flowchart TD
+    N1["same reachable variable"]
+    N2["updated on every call"]
+    N1 --> N2
 ```
 
 ---
@@ -1367,14 +1434,15 @@ function createStatusValidator(expectedStatus) {
 
 Типичные ошибки:
 
-```text
-Global mutable state
-│
-└── many tests can accidentally affect it
-
-Closure factory
-│
-└── each validator references its own environment
+```mermaid
+flowchart TD
+    N1["Global mutable state"]
+    N2["many tests can accidentally affect it"]
+    N3["Closure factory"]
+    N4["each validator references its own environment"]
+    N1 --> N2
+    N1 --> N3
+    N3 --> N4
 ```
 
 ---
@@ -1403,14 +1471,13 @@ Closure полезна, когда нужно создать функцию, к�
 
 Factory function:
 
-```text
-input configuration
-│
-▼
-create specialized function
-│
-▼
-use specialized function later
+```mermaid
+flowchart TD
+    N1["input configuration"]
+    N2["создать specialized function"]
+    N3["use specialized function later"]
+    N1 --> N2
+    N2 --> N3
 ```
 
 Пример:
@@ -1431,14 +1498,15 @@ logUi('Button clicked');
 
 Complete practical picture:
 
-```text
-createPrefixLogger('API')
-│
-└── logMessage reaches prefix = 'API'
-
-createPrefixLogger('UI')
-│
-└── logMessage reaches prefix = 'UI'
+```mermaid
+flowchart TD
+    N1["createPrefixLogger('API')"]
+    N2["logMessage reaches prefix = 'API'"]
+    N3["createPrefixLogger('UI')"]
+    N4["logMessage reaches prefix = 'UI'"]
+    N1 --> N2
+    N1 --> N3
+    N3 --> N4
 ```
 
 Closure помогает:
@@ -1467,12 +1535,13 @@ function createHeaderValidator(expectedHeaderName) {
 
 QA factory:
 
-```text
-createHeaderValidator('x-request-id')
-│
-└── returns validator
-    │
-    └── references environment with header name
+```mermaid
+flowchart TD
+    N1["createHeaderValidator('x-request-id')"]
+    N2["возвращает validator"]
+    N3["references environment with header name"]
+    N1 --> N2
+    N2 --> N3
 ```
 
 ---
@@ -1492,16 +1561,19 @@ const validateCreated = createResponseValidator(201);
 
 Automation QA object:
 
-```text
-response
-│
-├── status
-├── body
-└── headers
-
-validator closure
-│
-└── reaches expected status through environment reference
+```mermaid
+flowchart TD
+    N1["response"]
+    N2["status"]
+    N3["body"]
+    N4["headers"]
+    N5["validator closure"]
+    N6["reaches expected status through environment reference"]
+    N1 --> N2
+    N1 --> N3
+    N1 --> N4
+    N1 --> N5
+    N5 --> N6
 ```
 
 Такой подход полезен для REST API проверок, где один и тот же алгоритм применяется к разным expected значения.
@@ -1524,14 +1596,15 @@ console.log(buildStagingUrl('/users'));
 
 Configuration capture:
 
-```text
-baseUrl
-│
-└── captured once
-
-path
-│
-└── provided on every call
+```mermaid
+flowchart TD
+    N1["baseUrl"]
+    N2["captured once"]
+    N3["path"]
+    N4["provided on every call"]
+    N1 --> N2
+    N1 --> N3
+    N3 --> N4
 ```
 
 Это удобно для helpers, которые должны помнить environment configuration.
@@ -1542,12 +1615,13 @@ path
 
 В Playwright locator factories часто строятся вокруг контекста страницы или selector prefix, к которым helper получает доступ через environment reference. Подробно Playwright будет изучаться позже, но сама идея Closure уже понятна.
 
-```text
-createLocator(prefix)
-│
-└── returns function
-    │
-    └── holds reference to environment with prefix
+```mermaid
+flowchart TD
+    N1["createLocator(prefix)"]
+    N2["возвращает function"]
+    N3["holds reference to environment with prefix"]
+    N1 --> N2
+    N2 --> N3
 ```
 
 Важно: callbacks, async поведение и event listeners будут разобраны позже. Здесь достаточно понять: Closure позволяет helper иметь доступ к данным из Lexical Environment, где он был создан.
@@ -1572,10 +1646,11 @@ solutions/01-javascript/28-closures.md
 
 Сначала решите задания самостоятельно. Для Closures особенно важно не угадывать ответ, а вручную рисовать environment:
 
-```text
-function object
-│
-└── reference to lexical environment
+```mermaid
+flowchart TD
+    N1["function object"]
+    N2["reference to lexical environment"]
+    N1 --> N2
 ```
 
 ---
@@ -1590,13 +1665,17 @@ solutions/01-javascript/28-closures.md
 
 В решениях важно смотреть не только на итоговый код, но и на reasoning: для Closures главный навык - объяснять, почему function object все еще имеет доступ к конкретному lexical environment.
 
-```text
-Answer
-│
-├── code result
-├── reasoning
-├── common mistake
-└── Связь с Automation QA
+```mermaid
+flowchart TD
+    N1["Answer"]
+    N2["code result"]
+    N3["reasoning"]
+    N4["common mistake"]
+    N5["Связь с Automation QA"]
+    N1 --> N2
+    N1 --> N3
+    N1 --> N4
+    N1 --> N5
 ```
 
 ---
@@ -1607,45 +1686,38 @@ Closure объясняет, почему функция может исполь�
 
 Главная идея:
 
-```text
-Function object
-│
-▼
-holds reference to
-│
-▼
-Lexical Environment
-where it was created
+```mermaid
+flowchart TD
+    N1["Function object"]
+    N2["holds reference to"]
+    N3["Lexical Environment"]
+    N4["where it was created"]
+    N1 --> N2
+    N2 --> N3
+    N3 --> N4
 ```
 
 Полная картина:
 
-```text
-Outer function called
-│
-▼
-Outer Lexical Environment created
-│
-▼
-Inner function object created
-│
-▼
-Inner function uses outer identifiers
-│
-▼
-Outer function returns inner function
-│
-▼
-Outer execution finishes
-│
-▼
-Returned function keeps environment reachable
-│
-▼
-Returned function is called later
-│
-▼
-Outer variables are still accessible
+```mermaid
+flowchart TD
+    N1["Outer function called"]
+    N2["Outer Lexical Environment created"]
+    N3["Inner function object created"]
+    N4["Inner function uses outer identifiers"]
+    N5["Outer function возвращает inner function"]
+    N6["Outer выполнение завершается"]
+    N7["Returned function keeps environment reachable"]
+    N8["Returned function is called later"]
+    N9["Outer variables are still accessible"]
+    N1 --> N2
+    N2 --> N3
+    N3 --> N4
+    N4 --> N5
+    N5 --> N6
+    N6 --> N7
+    N7 --> N8
+    N8 --> N9
 ```
 
 Closure не является магией. Function object удерживает ссылку на Lexical Environment, где он был создан, потому что продолжает использовать identifiers из этого окружения.
@@ -1665,12 +1737,15 @@ Closure не является магией. Function object удерживает
 
 Краткая ментальная модель:
 
-```text
-Closure
-│
-├── function object
-├── code to execute
-└── reference to lexical environment
+```mermaid
+flowchart TD
+    N1["Closure"]
+    N2["function object"]
+    N3["code to execute"]
+    N4["reference to lexical environment"]
+    N1 --> N2
+    N1 --> N3
+    N1 --> N4
 ```
 
 ---

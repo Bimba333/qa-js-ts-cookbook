@@ -6,25 +6,32 @@
 
 Главная модель была такой:
 
-```text
-Property
-│
-├── Value
-└── Rules
-    ├── writable
-    ├── enumerable
-    └── configurable
+```mermaid
+flowchart TD
+    N1["Property"]
+    N2["Value"]
+    N3["Rules"]
+    N4["writable"]
+    N5["enumerable"]
+    N6["configurable"]
+    N1 --> N2
+    N1 --> N3
+    N3 --> N4
+    N3 --> N5
+    N3 --> N6
 ```
 
 Теперь мы возвращаемся к поведение.
 
 В главе про Object Methods мы видели, что object может хранить methods:
 
-```text
-Object
-│
-├── State
-└── Behavior
+```mermaid
+flowchart TD
+    N1["Object"]
+    N2["State"]
+    N3["Behavior"]
+    N1 --> N2
+    N1 --> N3
 ```
 
 Но появляется новый вопрос:
@@ -33,12 +40,17 @@ Object
 
 Представьте 1000 user objects:
 
-```text
-user1 -> login(), logout(), rename()
-user2 -> login(), logout(), rename()
-user3 -> login(), logout(), rename()
-...
-user1000 -> login(), logout(), rename()
+```mermaid
+flowchart TD
+    N1["user1 → login(), logout(), rename()"]
+    N2["user2 → login(), logout(), rename()"]
+    N3["user3 → login(), logout(), rename()"]
+    N4["..."]
+    N5["user1000 → login(), logout(), rename()"]
+    N1 --> N2
+    N2 --> N3
+    N3 --> N4
+    N4 --> N5
 ```
 
 Data у каждого user своя.
@@ -47,11 +59,11 @@ Behavior одинаковый.
 
 Prototype отвечает именно на этот вопрос:
 
-```text
-Many objects
-│
-▼
-One shared behavior
+```mermaid
+flowchart TD
+    N1["Many objects"]
+    N2["One shared behavior"]
+    N1 --> N2
 ```
 
 В этой главе Prototype рассматривается как практический механизм sharing поведение. Мы не будем подробно изучать Prototype Chain, `constructor.prototype`, classes, `new` или inheritance. Эти темы идут позже.
@@ -177,10 +189,11 @@ Max  / viewer
 
 Но method одинаковый:
 
-```text
-describe()
-│
-└── same algorithm repeated
+```mermaid
+flowchart TD
+    N1["describe()"]
+    N2["same algorithm repeated"]
+    N1 --> N2
 ```
 
 Проблема не в том, что код не работает.
@@ -189,13 +202,17 @@ describe()
 
 Проблема в другом:
 
-```text
-duplicated behavior
-│
-├── harder to update
-├── easier to make inconsistent
-├── noisy objects
-└── poor framework design
+```mermaid
+flowchart TD
+    N1["duplicated behavior"]
+    N2["harder to update"]
+    N3["easier to make inconsistent"]
+    N4["noisy objects"]
+    N5["poor framework design"]
+    N1 --> N2
+    N1 --> N3
+    N1 --> N4
+    N1 --> N5
 ```
 
 Если завтра формат описания изменится, нужно найти каждую копию:
@@ -211,16 +228,19 @@ Max.describe()
 
 Нам нужен один shared place:
 
-```text
-user behavior
-│
-└── describe()
-
-user objects
-│
-├── Anna data
-├── Kate data
-└── Max data
+```mermaid
+flowchart TD
+    N1["user behavior"]
+    N2["describe()"]
+    N3["user objects"]
+    N4["Anna data"]
+    N5["Kate data"]
+    N6["Max data"]
+    N1 --> N2
+    N1 --> N3
+    N3 --> N4
+    N3 --> N5
+    N3 --> N6
 ```
 
 Prototype дает такой shared place.
@@ -233,15 +253,19 @@ Prototype - это object, который может использоватьс�
 
 Главная идея:
 
-```text
-Object
-│
-├── Own properties
-│   ├── own data
-│   └── own methods if needed
-│
-└── Prototype
-    └── shared properties
+```mermaid
+flowchart TD
+    N1["Object"]
+    N2["Own properties"]
+    N3["own data"]
+    N4["own methods if needed"]
+    N5["Prototype"]
+    N6["shared properties"]
+    N1 --> N2
+    N1 --> N3
+    N1 --> N4
+    N1 --> N5
+    N5 --> N6
 ```
 
 Важно:
@@ -256,26 +280,30 @@ Prototype is an object.
 
 Так как prototype - обычный object, он может содержать любые properties:
 
-```text
-prototype object
-│
-├── data property
-├── method property
-└── any other ordinary property
+```mermaid
+flowchart TD
+    N1["prototype object"]
+    N2["data property"]
+    N3["method property"]
+    N4["any other ordinary property"]
+    N1 --> N2
+    N1 --> N3
+    N1 --> N4
 ```
 
 Но на практике prototype чаще всего используют именно для общее поведение.
 
 Причина простая: data обычно отличается у каждого конкретного object, а поведение часто повторяется.
 
-```text
-Own object
-│
-└── object-specific data
-
-Prototype
-│
-└── commonly shared behavior
+```mermaid
+flowchart TD
+    N1["Own object"]
+    N2["object-specific data"]
+    N3["Prototype"]
+    N4["commonly shared behavior"]
+    N1 --> N2
+    N1 --> N3
+    N3 --> N4
 ```
 
 Поэтому в этой главе examples deliberately focus on methods.
@@ -286,54 +314,56 @@ Prototype
 
 В нашем основном примере prototype содержит общее поведение:
 
-```text
-prototype object
-│
-├── describe()
-├── rename()
-└── canAccess()
+```mermaid
+flowchart TD
+    N1["prototype object"]
+    N2["describe()"]
+    N3["rename()"]
+    N4["canAccess()"]
+    N1 --> N2
+    N1 --> N3
+    N1 --> N4
 ```
 
 Другие objects могут быть связаны с этим prototype:
 
-```text
-userAnna
-│
-├── name: "Anna"
-├── role: "admin"
-└── prototype ─────► userBehavior
-                    │
-                    └── describe()
+```mermaid
+flowchart TD
+    N1["userAnna"]
+    N2["name: &quot;Anna&quot;"]
+    N3["role: &quot;admin&quot;"]
+    N4["prototype → userBehavior"]
+    N5["describe()"]
+    N1 --> N2
+    N1 --> N3
+    N1 --> N4
+    N1 --> N5
 ```
 
 Когда JavaScript читает property, он сначала смотрит в сам object:
 
-```text
-read userAnna.name
-│
-▼
-look in userAnna
-│
-▼
-found own property
+```mermaid
+flowchart TD
+    N1["read userAnna.name"]
+    N2["look in userAnna"]
+    N3["found own property"]
+    N1 --> N2
+    N2 --> N3
 ```
 
 Если property не найдена, JavaScript может посмотреть в prototype:
 
-```text
-read userAnna.describe
-│
-▼
-look in userAnna
-│
-▼
-not found
-│
-▼
-look in prototype
-│
-▼
-found shared method
+```mermaid
+flowchart TD
+    N1["read userAnna.describe"]
+    N2["look in userAnna"]
+    N3["not found"]
+    N4["look in prototype"]
+    N5["found shared method"]
+    N1 --> N2
+    N2 --> N3
+    N3 --> N4
+    N4 --> N5
 ```
 
 В этой главе мы ограничиваемся одним prototype level. Полный Prototype Chain будет изучаться в следующей главе.
@@ -350,30 +380,35 @@ const user = {
 
 `name` is own property:
 
-```text
-user
-│
-└── own property: name
+```mermaid
+flowchart TD
+    N1["user"]
+    N2["own property: name"]
+    N1 --> N2
 ```
 
 ### Inherited property
 
 Inherited property - property, которую object получает через prototype lookup.
 
-```text
-user
-│
-├── own property: name
-└── prototype
-    └── inherited method: describe()
+```mermaid
+flowchart TD
+    N1["user"]
+    N2["own property: name"]
+    N3["prototype"]
+    N4["inherited method: describe()"]
+    N1 --> N2
+    N1 --> N3
+    N3 --> N4
 ```
 
 Термин "inherited" здесь означает:
 
-```text
-not stored directly on object
-│
-but available through prototype lookup
+```mermaid
+flowchart TD
+    N1["not stored directly on object"]
+    N2["but available through prototype lookup"]
+    N1 --> N2
 ```
 
 Это не значит, что мы уже изучаем inheritance как архитектурную тему. Inheritance будет обсуждаться позже вместе с Prototype Chain and Classes.
@@ -388,11 +423,11 @@ const prototype = Object.getPrototypeOf(user);
 
 Ментально:
 
-```text
-Object.getPrototypeOf(user)
-│
-▼
-show the shared behavior object
+```mermaid
+flowchart TD
+    N1["Object.getPrototypeOf(user)"]
+    N2["show the shared behavior object"]
+    N1 --> N2
 ```
 
 ### `Object.setPrototypeOf()`
@@ -407,10 +442,11 @@ Object.setPrototypeOf(user, userBehavior);
 
 Ментально:
 
-```text
-user
-│
-└── prototype link ───► userBehavior
+```mermaid
+flowchart TD
+    N1["user"]
+    N2["prototype link → userBehavior"]
+    N1 --> N2
 ```
 
 Важно: в production code `Object.setPrototypeOf()` применяют осторожно. Он меняет связь уже существующего object and can make code harder to reason about. Более устойчивые способы создания объектов с нужным prototype будут изучаться позже.
@@ -438,46 +474,48 @@ Target object: user
 
 Дальше:
 
-```text
-Step 1
-│
-▼
-Look inside user own properties
-│
-▼
-describe not found
+```mermaid
+flowchart TD
+    N1["Step 1"]
+    N2["Look inside user own properties"]
+    N3["describe not found"]
+    N1 --> N2
+    N2 --> N3
 ```
 
 Затем:
 
-```text
-Step 2
-│
-▼
-Look inside user's prototype
-│
-▼
-describe found
+```mermaid
+flowchart TD
+    N1["Step 2"]
+    N2["Look inside user's prototype"]
+    N3["describe found"]
+    N1 --> N2
+    N2 --> N3
 ```
 
 После этого method вызывается как обычный method:
 
-```text
-user.describe()
-│
-├── function found in prototype
-└── receiver is still user
+```mermaid
+flowchart TD
+    N1["user.describe()"]
+    N2["function found in prototype"]
+    N3["receiver is still user"]
+    N1 --> N2
+    N1 --> N3
 ```
 
 Это важный момент.
 
 Method может быть stored in prototype, но ordinary invocation still uses object before dot as объект выполнения:
 
-```text
-user.describe()
-│
-├── method location: prototype
-└── receiver: user
+```mermaid
+flowchart TD
+    N1["user.describe()"]
+    N2["method location: prototype"]
+    N3["receiver: user"]
+    N1 --> N2
+    N1 --> N3
 ```
 
 Поэтому inside method:
@@ -490,50 +528,64 @@ describe() {
 
 `this` points to `user` при обычном вызове `user.describe()`.
 
-```text
-shared method
-│
-▼
-uses this
-│
-▼
-reads data from actual receiver
+```mermaid
+flowchart TD
+    N1["shared method"]
+    N2["uses this"]
+    N3["reads data from actual receiver"]
+    N1 --> N2
+    N2 --> N3
 ```
 
 Так одна function object может работать с разными objects:
 
-```text
-Anna object ──┐
-              ├── uses same describe()
-Kate object ──┘
+```mermaid
+flowchart TD
+    N1["Anna object ──┐"]
+    N2["uses same describe()"]
+    N3["Kate object ──┘"]
+    N1 --> N2
+    N2 --> N3
 ```
 
 ### Что делает engine прямо сейчас?
 
 Для чтения `user.describe`:
 
-```text
-Engine
-│
-├── receives property name: "describe"
-├── checks own properties of user
-├── does not find it
-├── follows prototype link
-├── checks prototype properties
-├── finds function object
-└── returns it as property value
+```mermaid
+flowchart TD
+    N1["Engine"]
+    N2["receives property name: &quot;describe&quot;"]
+    N3["checks own properties of user"]
+    N4["does not find it"]
+    N5["follows prototype link"]
+    N6["checks prototype properties"]
+    N7["finds function object"]
+    N8["возвращает it as property value"]
+    N1 --> N2
+    N1 --> N3
+    N1 --> N4
+    N1 --> N5
+    N1 --> N6
+    N1 --> N7
+    N1 --> N8
 ```
 
 Для вызова `user.describe()`:
 
-```text
-Engine
-│
-├── finds function through lookup
-├── sees ordinary method invocation
-├── chooses user as receiver
-├── creates Function Execution Context
-└── executes shared function with this = user
+```mermaid
+flowchart TD
+    N1["Engine"]
+    N2["finds function through lookup"]
+    N3["sees ordinary method invocation"]
+    N4["chooses user as receiver"]
+    N5["создает Function Execution Context"]
+    N6["выполняется shared function with this = user"]
+    N1 --> N2
+    N1 --> N3
+    N1 --> N4
+    N1 --> N5
+    N1 --> N6
 ```
 
 Мы пока не разбираем, что будет, если prototype itself has another prototype. Это Prototype Chain, следующая глава.
@@ -546,95 +598,112 @@ Prototype удобно представить как shared toolbox.
 
 Каждый object хранит свои данные:
 
-```text
-userAnna
-│
-├── name: "Anna"
-└── role: "admin"
+```mermaid
+flowchart TD
+    N1["userAnna"]
+    N2["name: &quot;Anna&quot;"]
+    N3["role: &quot;admin&quot;"]
+    N1 --> N2
+    N1 --> N3
 ```
 
 Но tools лежат в общей комнате:
 
-```text
-shared toolbox
-│
-├── describe()
-├── rename()
-└── canAccess()
+```mermaid
+flowchart TD
+    N1["shared toolbox"]
+    N2["describe()"]
+    N3["rename()"]
+    N4["canAccess()"]
+    N1 --> N2
+    N1 --> N3
+    N1 --> N4
 ```
 
 Object не копирует каждый tool внутрь себя.
 
 Он knows where shared toolbox is:
 
-```text
-userAnna
-│
-└── link to shared toolbox
+```mermaid
+flowchart TD
+    N1["userAnna"]
+    N2["link to shared toolbox"]
+    N1 --> N2
 ```
 
 Если нужен own data:
 
-```text
-look in userAnna
-│
-└── found name
+```mermaid
+flowchart TD
+    N1["look in userAnna"]
+    N2["found name"]
+    N1 --> N2
 ```
 
 Если нужен общее поведение:
 
-```text
-look in userAnna
-│
-└── not found describe
-    │
-    ▼
-    look in shared toolbox
-    │
-    └── found describe()
+```mermaid
+flowchart TD
+    N1["look in userAnna"]
+    N2["not found describe"]
+    N3["look in shared toolbox"]
+    N4["found describe()"]
+    N1 --> N2
+    N1 --> N3
+    N3 --> N4
 ```
 
 Другие mental models:
 
-```text
-library
-│
-├── many readers
-└── one shared book of instructions
+```mermaid
+flowchart TD
+    N1["library"]
+    N2["many readers"]
+    N3["one shared book of instructions"]
+    N1 --> N2
+    N1 --> N3
 ```
 
-```text
-central instruction manual
-│
-├── object A reads instruction
-├── object B reads instruction
-└── object C reads instruction
+```mermaid
+flowchart TD
+    N1["central instruction manual"]
+    N2["object A reads instruction"]
+    N3["object B reads instruction"]
+    N4["object C reads instruction"]
+    N1 --> N2
+    N1 --> N3
+    N1 --> N4
 ```
 
-```text
-blueprint shelf
-│
-├── shared method A
-├── shared method B
-└── shared method C
+```mermaid
+flowchart TD
+    N1["blueprint shelf"]
+    N2["shared method A"]
+    N3["shared method B"]
+    N4["shared method C"]
+    N1 --> N2
+    N1 --> N3
+    N1 --> N4
 ```
 
 Главное:
 
-```text
-Prototype
-│
-└── place for shared behavior
+```mermaid
+flowchart TD
+    N1["Prototype"]
+    N2["place for shared behavior"]
+    N1 --> N2
 ```
 
 Не начинайте с мысли "Prototype is inheritance".
 
 В этой главе точнее:
 
-```text
-Prototype
-│
-└── shared behavior repository
+```mermaid
+flowchart TD
+    N1["Prototype"]
+    N2["shared behavior repository"]
+    N1 --> N2
 ```
 
 ---
@@ -663,10 +732,11 @@ examples/01-javascript/chapter-39/01-duplicated-methods.js
 
 Идея:
 
-```text
-many objects
-│
-└── same method copied many times
+```mermaid
+flowchart TD
+    N1["many objects"]
+    N2["same method copied many times"]
+    N1 --> N2
 ```
 
 Такой код работает, но плохо масштабируется.
@@ -681,14 +751,15 @@ examples/01-javascript/chapter-39/02-shared-method.js
 
 Идея:
 
-```text
-object data
-│
-└── own properties
-
-shared behavior
-│
-└── prototype method
+```mermaid
+flowchart TD
+    N1["object data"]
+    N2["own properties"]
+    N3["shared behavior"]
+    N4["prototype method"]
+    N1 --> N2
+    N1 --> N3
+    N3 --> N4
 ```
 
 ### Пример 3. Property lookup
@@ -701,11 +772,13 @@ examples/01-javascript/chapter-39/03-property-lookup.js
 
 Идея:
 
-```text
-read property
-│
-├── first: own object
-└── then: prototype
+```mermaid
+flowchart TD
+    N1["read property"]
+    N2["first: own object"]
+    N3["then: prototype"]
+    N1 --> N2
+    N1 --> N3
 ```
 
 ### Пример 4. Типичные ошибки
@@ -718,10 +791,11 @@ examples/01-javascript/chapter-39/04-common-mistakes.js
 
 Идея:
 
-```text
-shared prototype object
-│
-└── should not store per-user changing state
+```mermaid
+flowchart TD
+    N1["shared prototype object"]
+    N2["should not store per-user changing state"]
+    N1 --> N2
 ```
 
 ### Пример 5. Page Object preview
@@ -734,11 +808,13 @@ examples/01-javascript/chapter-39/05-page-object-preview.js
 
 Идея:
 
-```text
-Page Object instances
-│
-├── own page name
-└── shared actions
+```mermaid
+flowchart TD
+    N1["Page Object instances"]
+    N2["own page name"]
+    N3["shared actions"]
+    N1 --> N2
+    N1 --> N3
 ```
 
 ### Пример 6. QA example
@@ -751,11 +827,13 @@ examples/01-javascript/chapter-39/06-qa-example.js
 
 Идея:
 
-```text
-API clients
-│
-├── own baseUrl
-└── shared request description behavior
+```mermaid
+flowchart TD
+    N1["API clients"]
+    N2["own baseUrl"]
+    N3["shared request description behavior"]
+    N1 --> N2
+    N1 --> N3
 ```
 
 ---
@@ -774,10 +852,11 @@ Class будет изучаться позже как синтаксис и мо
 
 Prototype не виден как обычная own property, но его можно получить через `Object.getPrototypeOf()`.
 
-```text
-object
-│
-└── prototype link
+```mermaid
+flowchart TD
+    N1["объект"]
+    N2["prototype link"]
+    N1 --> N2
 ```
 
 Главная мысль: prototype is connected to object, but not stored as ordinary data property like `name`.
@@ -788,23 +867,26 @@ object
 
 Prototype - обычный object, поэтому он может содержать любые properties.
 
-```text
-Prototype
-│
-├── data property
-└── method property
+```mermaid
+flowchart TD
+    N1["Prototype"]
+    N2["data property"]
+    N3["method property"]
+    N1 --> N2
+    N1 --> N3
 ```
 
 Но practical convention usually differs:
 
-```text
-object
-│
-└── own data
-
-prototype
-│
-└── shared behavior
+```mermaid
+flowchart TD
+    N1["объект"]
+    N2["own data"]
+    N3["prototype"]
+    N4["shared behavior"]
+    N1 --> N2
+    N1 --> N3
+    N3 --> N4
 ```
 
 В этой главе акцент сделан на methods, потому что именно общее поведение чаще всего объясняет, зачем Prototype нужен в реальном коде.
@@ -821,10 +903,11 @@ prototype
 
 Memory intuition полезна:
 
-```text
-one shared function
-│
-instead of many copied functions
+```mermaid
+flowchart TD
+    N1["one shared function"]
+    N2["instead of many copied functions"]
+    N1 --> N2
 ```
 
 Но главная польза шире:
@@ -844,12 +927,13 @@ user.describe();
 
 объект выполнения is `user`.
 
-```text
-method found in prototype
-│
-but
-│
-receiver is user
+```mermaid
+flowchart TD
+    N1["method found in prototype"]
+    N2["but"]
+    N3["receiver is user"]
+    N1 --> N2
+    N2 --> N3
 ```
 
 Другие формы вызова уже изучались в главах про `call()`, `apply()` and `bind()`.
@@ -868,29 +952,30 @@ receiver is user
 
 Реальность: property is not copied during lookup.
 
-```text
-object
-│
-└── missing property
-    │
-    ▼
-    prototype
-    │
-    └── property found there
+```mermaid
+flowchart TD
+    N1["объект"]
+    N2["значение отсутствует property"]
+    N3["prototype"]
+    N4["property found there"]
+    N1 --> N2
+    N1 --> N3
+    N3 --> N4
 ```
 
 ### Миф: Prototype should store all data
 
 Реальность: prototype is good for общее поведение. Per-object changing состояние should usually remain own data.
 
-```text
-own object
-│
-└── user-specific state
-
-prototype
-│
-└── shared behavior
+```mermaid
+flowchart TD
+    N1["own object"]
+    N2["user-specific state"]
+    N3["prototype"]
+    N4["shared behavior"]
+    N1 --> N2
+    N1 --> N3
+    N3 --> N4
 ```
 
 ### Миф: Prototype Chain нужно знать сразу
@@ -916,10 +1001,11 @@ const userBehavior = {
 
 Что произошло:
 
-```text
-lastLogin looks like user-specific state
-│
-but placed in shared behavior object
+```mermaid
+flowchart TD
+    N1["lastLogin looks like user-specific state"]
+    N2["but placed in shared behavior object"]
+    N1 --> N2
 ```
 
 Почему это опасно:
@@ -937,52 +1023,57 @@ const user = {
 };
 ```
 
-```text
-user-specific data
-│
-└── own property
+```mermaid
+flowchart TD
+    N1["user-specific data"]
+    N2["own property"]
+    N1 --> N2
 ```
 
 ### Ошибка 2. Думать, что inherited property стала own property
 
 Неправильная модель:
 
-```text
-user.describe()
-│
-└── describe copied into user
+```mermaid
+flowchart TD
+    N1["user.describe()"]
+    N2["describe copied into user"]
+    N1 --> N2
 ```
 
 Что происходит на самом деле:
 
-```text
-user
-│
-└── no own describe
-    │
-    ▼
-    prototype
-    │
-    └── describe found
+```mermaid
+flowchart TD
+    N1["user"]
+    N2["нет own describe"]
+    N3["prototype"]
+    N4["describe found"]
+    N1 --> N2
+    N1 --> N3
+    N3 --> N4
 ```
 
 Исправленная модель:
 
-```text
-lookup
-│
-≠
-copy
+```mermaid
+flowchart TD
+    N1["lookup"]
+    N2["≠"]
+    N3["copy"]
+    N1 --> N2
+    N2 --> N3
 ```
 
 ### Ошибка 3. Начинать изучение Prototype с `__proto__`
 
 Неправильный подход:
 
-```text
-Prototype
-│
-└── start with __proto__
+```mermaid
+flowchart TD
+    N1["Prototype"]
+    N2["start with __proto__"]
+    N1 --> N2
 ```
 
 Почему это мешает:
@@ -993,34 +1084,35 @@ Prototype
 
 Исправленный подход:
 
-```text
-duplicated methods
-│
-▼
-shared behavior
-│
-▼
-prototype object
+```mermaid
+flowchart TD
+    N1["duplicated methods"]
+    N2["shared behavior"]
+    N3["prototype object"]
+    N1 --> N2
+    N2 --> N3
 ```
 
 ### Ошибка 4. Путать объект выполнения and method location
 
 Неправильная модель:
 
-```text
-method stored in prototype
-│
-▼
-this is prototype
+```mermaid
+flowchart TD
+    N1["method stored in prototype"]
+    N2["this is prototype"]
+    N1 --> N2
 ```
 
 Правильная модель для ordinary invocation:
 
-```text
-user.describe()
-│
-├── method found in prototype
-└── receiver is user
+```mermaid
+flowchart TD
+    N1["user.describe()"]
+    N2["method found in prototype"]
+    N3["receiver is user"]
+    N1 --> N2
+    N1 --> N3
 ```
 
 ---
@@ -1029,11 +1121,13 @@ user.describe()
 
 Prototype полезен, когда:
 
-```text
-many objects
-│
-├── different data
-└── same behavior
+```mermaid
+flowchart TD
+    N1["many objects"]
+    N2["different data"]
+    N3["same behavior"]
+    N1 --> N2
+    N1 --> N3
 ```
 
 Типичные случаи:
@@ -1046,46 +1140,52 @@ many objects
 
 Пример без prototype:
 
-```text
-clientA
-│
-├── baseUrl
-└── describeRequest()
-
-clientB
-│
-├── baseUrl
-└── describeRequest()
+```mermaid
+flowchart TD
+    N1["clientA"]
+    N2["baseUrl"]
+    N3["describeRequest()"]
+    N4["clientB"]
+    N5["baseUrl"]
+    N6["describeRequest()"]
+    N1 --> N2
+    N1 --> N3
+    N1 --> N4
+    N4 --> N5
+    N4 --> N6
 ```
 
 Пример with общее поведение:
 
-```text
-clientA ──┐
-          ├── prototype ──► apiClientBehavior
-clientB ──┘                 └── describeRequest()
+```mermaid
+flowchart TD
+    N1["clientA ──┐"]
+    N2["prototype → apiClientBehavior"]
+    N3["clientB ──┘ └── describeRequest()"]
+    N1 --> N3
+    N1 --> N2
 ```
 
 Это улучшает maintainability:
 
-```text
-change shared method once
-│
-▼
-all linked objects use updated behavior
+```mermaid
+flowchart TD
+    N1["change shared method once"]
+    N2["all linked objects use updated behavior"]
+    N1 --> N2
 ```
 
 Но Prototype не нужно применять везде.
 
 Если object один и поведение уникален, own method может быть читаемее.
 
-```text
-one object
-│
-└── unique behavior
-    │
-    ▼
-    own method is fine
+```mermaid
+flowchart TD
+    N1["one object"]
+    N2["unique behavior"]
+    N3["own method is fine"]
+    N1 --> N2
+    N1 --> N3
 ```
 
 ---
@@ -1098,25 +1198,32 @@ one object
 
 Page Objects часто имеют:
 
-```text
-LoginPage
-│
-├── own data
-│   ├── page
-│   └── locators
-│
-└── shared behavior
-    ├── open()
-    ├── login()
-    └── assertLoaded()
+```mermaid
+flowchart TD
+    N1["LoginPage"]
+    N2["own data"]
+    N3["page"]
+    N4["locators"]
+    N5["shared behavior"]
+    N6["open()"]
+    N7["login()"]
+    N8["assertLoaded()"]
+    N1 --> N2
+    N1 --> N3
+    N1 --> N4
+    N1 --> N5
+    N5 --> N6
+    N5 --> N7
+    N5 --> N8
 ```
 
 Пока мы не изучаем classes, но idea уже видна:
 
-```text
-many page objects
-│
-└── shared page behavior
+```mermaid
+flowchart TD
+    N1["many page objects"]
+    N2["shared page behavior"]
+    N1 --> N2
 ```
 
 ### API clients
@@ -1139,11 +1246,13 @@ validateStatus()
 
 Prototype помогает понять, почему поведение can live in shared place:
 
-```text
-API client objects
-│
-├── own configuration
-└── shared request behavior
+```mermaid
+flowchart TD
+    N1["API client objects"]
+    N2["own configuration"]
+    N3["shared request behavior"]
+    N1 --> N2
+    N1 --> N3
 ```
 
 ### Assertion helpers
@@ -1158,26 +1267,30 @@ businessValidator
 
 могут использовать common поведение:
 
-```text
-shared assertion behavior
-│
-├── formatError()
-├── describeExpected()
-└── describeActual()
+```mermaid
+flowchart TD
+    N1["shared assertion behavior"]
+    N2["formatError()"]
+    N3["describeExpected()"]
+    N4["describeActual()"]
+    N1 --> N2
+    N1 --> N3
+    N1 --> N4
 ```
 
 ### Framework utilities
 
 В framework code важно отделять:
 
-```text
-per-test state
-│
-└── own properties
-
-shared utility behavior
-│
-└── prototype or shared object
+```mermaid
+flowchart TD
+    N1["per-test state"]
+    N2["own properties"]
+    N3["shared utility behavior"]
+    N4["prototype or shared object"]
+    N1 --> N2
+    N1 --> N3
+    N3 --> N4
 ```
 
 Это помогает избегать случайного shared mutable состояние.
@@ -1188,390 +1301,454 @@ shared utility behavior
 
 ### 1. Why Prototype exists
 
-```text
-Many objects
-│
-├── same method A
-├── same method A
-├── same method A
-└── same method A
-        │
-        ▼
-Need shared behavior
+```mermaid
+flowchart TD
+    N1["Many objects"]
+    N2["same method A"]
+    N3["same method A"]
+    N4["same method A"]
+    N5["same method A"]
+    N6["Need shared behavior"]
+    N1 --> N2
+    N1 --> N3
+    N1 --> N4
+    N1 --> N5
+    N1 --> N6
 ```
 
 ### 2. Duplicated methods
 
-```text
-userAnna
-│
-└── describe()
-
-userKate
-│
-└── describe()
-
-userMax
-│
-└── describe()
+```mermaid
+flowchart TD
+    N1["userAnna"]
+    N2["describe()"]
+    N3["userKate"]
+    N4["describe()"]
+    N5["userMax"]
+    N6["describe()"]
+    N1 --> N2
+    N1 --> N3
+    N3 --> N4
+    N3 --> N5
+    N5 --> N6
 ```
 
 ### 3. Shared methods
 
-```text
-userAnna ──┐
-userKate ──┼──► userBehavior
-userMax  ──┘    └── describe()
+```mermaid
+flowchart TD
+    N1["userAnna ──┐"]
+    N2["userKate ──┼ → userBehavior"]
+    N3["userMax ──┘ └── describe()"]
+    N2 --> N3
+    N1 --> N2
 ```
 
 ### 4. Object before prototype
 
-```text
-user
-│
-├── name
-├── role
-└── describe()
+```mermaid
+flowchart TD
+    N1["user"]
+    N2["name"]
+    N3["role"]
+    N4["describe()"]
+    N1 --> N2
+    N1 --> N3
+    N1 --> N4
 ```
 
 ### 5. Object after prototype
 
-```text
-user
-│
-├── name
-├── role
-└── prototype ──► behavior
-                  └── describe()
+```mermaid
+flowchart TD
+    N1["user"]
+    N2["name"]
+    N3["role"]
+    N4["prototype → behavior"]
+    N5["describe()"]
+    N1 --> N2
+    N1 --> N3
+    N1 --> N4
+    N4 --> N5
 ```
 
 ### 6. Prototype object
 
-```text
-prototype object
-│
-├── shared method
-├── shared method
-└── shared method
+```mermaid
+flowchart TD
+    N1["prototype object"]
+    N2["shared method"]
+    N3["shared method"]
+    N4["shared method"]
+    N1 --> N2
+    N1 --> N3
+    N1 --> N4
 ```
 
 ### 7. Own properties
 
-```text
-user
-│
-├── own: name
-└── own: role
+```mermaid
+flowchart TD
+    N1["user"]
+    N2["own: name"]
+    N3["own: role"]
+    N1 --> N2
+    N1 --> N3
 ```
 
 ### 8. Shared поведение
 
-```text
-behavior
-│
-├── describe()
-├── rename()
-└── canAccess()
+```mermaid
+flowchart TD
+    N1["behavior"]
+    N2["describe()"]
+    N3["rename()"]
+    N4["canAccess()"]
+    N1 --> N2
+    N1 --> N3
+    N1 --> N4
 ```
 
 ### 9. Property lookup
 
-```text
-read user.describe
-│
-├── user own properties
-│   └── not found
-└── prototype
-    └── found
+```mermaid
+flowchart TD
+    N1["read user.describe"]
+    N2["user own properties"]
+    N3["not found"]
+    N4["prototype"]
+    N5["found"]
+    N1 --> N2
+    N1 --> N3
+    N1 --> N4
+    N4 --> N5
 ```
 
 ### 10. Текущая модель JavaScript
 
-```text
-Object model
-│
-├── properties
-├── descriptors
-├── methods
-└── prototype
-    └── shared behavior
+```mermaid
+flowchart TD
+    N1["Object model"]
+    N2["properties"]
+    N3["descriptors"]
+    N4["methods"]
+    N5["prototype"]
+    N6["shared behavior"]
+    N1 --> N2
+    N1 --> N3
+    N1 --> N4
+    N1 --> N5
+    N5 --> N6
 ```
 
 ### 11. QA Page Objects
 
-```text
-LoginPage ──┐
-ProfilePage ┼──► pageBehavior
-OrdersPage ─┘    ├── open()
-                 └── assertLoaded()
+```mermaid
+flowchart TD
+    N1["LoginPage ──┐"]
+    N2["ProfilePage ┼ → pageBehavior"]
+    N3["OrdersPage ─┘ ├── open()"]
+    N4["assertLoaded()"]
+    N2 --> N3
+    N1 --> N2
+    N3 --> N4
 ```
 
 ### 12. API client sharing
 
-```text
-stagingClient ─────┐
-productionClient ──┼──► apiClientBehavior
-localClient ───────┘    └── describeRequest()
+```mermaid
+flowchart TD
+    N1["stagingClient ─────┐"]
+    N2["productionClient ──┼ → apiClientBehavior"]
+    N3["localClient ───────┘ └── describeRequest()"]
+    N2 --> N3
+    N1 --> N2
 ```
 
 ### 13. Читаемость
 
-```text
-object
-│
-├── business data
-└── link to shared behavior
+```mermaid
+flowchart TD
+    N1["объект"]
+    N2["business data"]
+    N3["link to shared behavior"]
+    N1 --> N2
+    N1 --> N3
 ```
 
 ### 14. Типичные ошибки
 
-```text
-prototype
-│
-├── shared method        OK
-└── user-specific state  risky
+```mermaid
+flowchart TD
+    N1["prototype"]
+    N2["shared method OK"]
+    N3["user-specific state risky"]
+    N1 --> N2
+    N1 --> N3
 ```
 
 ### 15. Property search
 
-```text
-property name
-│
-▼
-object
-│
-▼
-prototype
+```mermaid
+flowchart TD
+    N1["property name"]
+    N2["объект"]
+    N3["prototype"]
+    N1 --> N2
+    N2 --> N3
 ```
 
 ### 16. Missing property
 
-```text
-object
-│
-└── not found
-    │
-    ▼
-prototype
-│
-└── not found
-    │
-    ▼
-undefined
+```mermaid
+flowchart TD
+    N1["объект"]
+    N2["not found"]
+    N3["prototype"]
+    N4["not found"]
+    N5["undefined"]
+    N1 --> N2
+    N1 --> N3
+    N3 --> N4
+    N3 --> N5
 ```
 
 ### 17. Prototype lookup
 
-```text
-lookup
-│
-├── own first
-└── prototype second
+```mermaid
+flowchart TD
+    N1["lookup"]
+    N2["own first"]
+    N3["prototype second"]
+    N1 --> N2
+    N1 --> N3
 ```
 
 ### 18. Memory intuition
 
-```text
-Without prototype
-│
-├── many copies of same behavior
-│
-▼
-With prototype
-│
-└── one shared function
+```mermaid
+flowchart TD
+    N1["Without prototype"]
+    N2["many copies of same behavior"]
+    N3["With prototype"]
+    N4["one shared function"]
+    N1 --> N2
+    N1 --> N3
+    N3 --> N4
 ```
 
 ### 19. Shared function
 
-```text
-describe()
-│
-├── used by userAnna
-├── used by userKate
-└── used by userMax
+```mermaid
+flowchart TD
+    N1["describe()"]
+    N2["used by userAnna"]
+    N3["used by userKate"]
+    N4["used by userMax"]
+    N1 --> N2
+    N1 --> N3
+    N1 --> N4
 ```
 
 ### 20. Object relationship
 
-```text
-object
-│
-└── has prototype link
-    │
-    ▼
-    prototype object
+```mermaid
+flowchart TD
+    N1["объект"]
+    N2["has prototype link"]
+    N3["prototype object"]
+    N1 --> N2
+    N1 --> N3
 ```
 
 ### 21. Method location
 
-```text
-user.describe()
-│
-├── location: prototype
-└── receiver: user
+```mermaid
+flowchart TD
+    N1["user.describe()"]
+    N2["location: prototype"]
+    N3["receiver: user"]
+    N1 --> N2
+    N1 --> N3
 ```
 
 ### 22. Object evolution
 
-```text
-separate data
-│
-▼
-object with own methods
-│
-▼
-object with shared prototype behavior
+```mermaid
+flowchart TD
+    N1["separate data"]
+    N2["object with own methods"]
+    N3["object with shared prototype behavior"]
+    N1 --> N2
+    N2 --> N3
 ```
 
 ### 23. Prototype object again
 
-```text
-Prototype
-│
-└── ordinary object used as shared source
+```mermaid
+flowchart TD
+    N1["Prototype"]
+    N2["ordinary object used as shared source"]
+    N1 --> N2
 ```
 
 ### 24. Shared repository
 
-```text
-behavior repository
-│
-├── method A
-├── method B
-└── method C
+```mermaid
+flowchart TD
+    N1["behavior repository"]
+    N2["method A"]
+    N3["method B"]
+    N4["method C"]
+    N1 --> N2
+    N1 --> N3
+    N1 --> N4
 ```
 
 ### 25. Переход к Prototype Chain
 
-```text
-object
-│
-└── prototype
-    │
-    └── next question:
-        what if not found here?
+```mermaid
+flowchart TD
+    N1["объект"]
+    N2["prototype"]
+    N3["next question:"]
+    N4["what if not found here?"]
+    N1 --> N2
+    N2 --> N3
+    N2 --> N4
 ```
 
 ### 26. Переход к Classes
 
-```text
-Prototype understanding
-│
-▼
-Classes later become easier
+```mermaid
+flowchart TD
+    N1["Prototype understanding"]
+    N2["Classes later become easier"]
+    N1 --> N2
 ```
 
 ### 27. Краткая ментальная модель
 
-```text
-Object
-│
-├── own data
-└── shared toolbox
+```mermaid
+flowchart TD
+    N1["Object"]
+    N2["own data"]
+    N3["shared toolbox"]
+    N1 --> N2
+    N1 --> N3
 ```
 
 ### 28. Complete prototype model
 
-```text
-Object
-│
-├── own properties
-│
-└── prototype link
-    │
-    ▼
-    Prototype object
-    │
-    └── shared behavior
+```mermaid
+flowchart TD
+    N1["Object"]
+    N2["own properties"]
+    N3["prototype link"]
+    N4["Prototype object"]
+    N5["shared behavior"]
+    N1 --> N2
+    N1 --> N3
+    N1 --> N4
+    N4 --> N5
 ```
 
 ### 29. Lookup timeline
 
-```text
-read property
-│
-├── check object
-├── check prototype
-└── return value or undefined
+```mermaid
+flowchart TD
+    N1["read property"]
+    N2["check object"]
+    N3["check prototype"]
+    N4["возвращаемое значение or undefined"]
+    N1 --> N2
+    N1 --> N3
+    N1 --> N4
 ```
 
 ### 30. Принадлежность свойства
 
-```text
-own property
-│
-└── stored on object
-
-inherited property
-│
-└── found through prototype
+```mermaid
+flowchart TD
+    N1["own property"]
+    N2["stored on object"]
+    N3["inherited property"]
+    N4["found through prototype"]
+    N1 --> N2
+    N1 --> N3
+    N3 --> N4
 ```
 
 ### 31. Shared состояние warning
 
-```text
-prototype
-│
-└── shared place
-    │
-    ▼
-avoid per-object changing state here
+```mermaid
+flowchart TD
+    N1["prototype"]
+    N2["shared place"]
+    N3["avoid per-object changing state here"]
+    N1 --> N2
+    N1 --> N3
 ```
 
 ### 32. Function reuse
 
-```text
-one function object
-│
-├── receiver A
-├── receiver B
-└── receiver C
+```mermaid
+flowchart TD
+    N1["one function object"]
+    N2["receiver A"]
+    N3["receiver B"]
+    N4["receiver C"]
+    N1 --> N2
+    N1 --> N3
+    N1 --> N4
 ```
 
 ### 33. Object vs prototype
 
-```text
-object
-│
-└── specific data
-
-prototype
-│
-└── shared behavior
+```mermaid
+flowchart TD
+    N1["объект"]
+    N2["specific data"]
+    N3["prototype"]
+    N4["shared behavior"]
+    N1 --> N2
+    N1 --> N3
+    N3 --> N4
 ```
 
 ### 34. Shared поведение flow
 
-```text
-call method
-│
-▼
-lookup finds prototype method
-│
-▼
-execute with actual receiver
+```mermaid
+flowchart TD
+    N1["вызвать method"]
+    N2["lookup finds prototype method"]
+    N3["выполнить with actual receiver"]
+    N1 --> N2
+    N2 --> N3
 ```
 
 ### 35. Library analogy
 
-```text
-many readers
-│
-└── one library book
+```mermaid
+flowchart TD
+    N1["many readers"]
+    N2["one library book"]
+    N1 --> N2
 ```
 
 ### 36. Итоговая схема
 
-```text
-Object
-│
-├── Own data
-├── Own methods if needed
-└── Missing property?
-    │
-    ▼
-    Look in Prototype
+```mermaid
+flowchart TD
+    N1["Object"]
+    N2["Own data"]
+    N3["Own methods if needed"]
+    N4["значение отсутствует property?"]
+    N5["Look in Prototype"]
+    N1 --> N2
+    N1 --> N3
+    N1 --> N4
+    N1 --> N5
 ```
 
 ## Итоги
@@ -1580,22 +1757,26 @@ Prototype появляется не из желания усложнить JavaS
 
 Он решает конкретную проблему:
 
-```text
-many objects
-│
-└── same behavior
+```mermaid
+flowchart TD
+    N1["many objects"]
+    N2["same behavior"]
+    N1 --> N2
 ```
 
 Без Prototype одинаковые methods приходится хранить directly inside every object. Это создает duplication and maintenance cost.
 
 Prototype дает shared object, в котором может жить common поведение:
 
-```text
-object
-│
-├── own data
-└── prototype
-    └── shared properties
+```mermaid
+flowchart TD
+    N1["объект"]
+    N2["own data"]
+    N3["prototype"]
+    N4["shared properties"]
+    N1 --> N2
+    N1 --> N3
+    N3 --> N4
 ```
 
 Когда JavaScript читает property, он сначала проверяет own properties. Если property не найдена, engine смотрит в prototype.
@@ -1606,30 +1787,30 @@ Prototype can contain any properties because it is an ordinary object.
 
 Главная модель главы:
 
-```text
-Object
-│
-├── Own data
-├── Own methods if needed
-└── Missing property?
-    │
-    ▼
-    Look in Prototype
+```mermaid
+flowchart TD
+    N1["Object"]
+    N2["Own data"]
+    N3["Own methods if needed"]
+    N4["значение отсутствует property?"]
+    N5["Look in Prototype"]
+    N1 --> N2
+    N1 --> N3
+    N1 --> N4
+    N1 --> N5
 ```
 
 Следующая глава расширит эту модель:
 
-```text
-Object
-│
-▼
-Prototype
-│
-▼
-Prototype of prototype
-│
-▼
-...
+```mermaid
+flowchart TD
+    N1["Object"]
+    N2["Prototype"]
+    N3["Prototype of prototype"]
+    N4["..."]
+    N1 --> N2
+    N2 --> N3
+    N3 --> N4
 ```
 
 Это будет Prototype Chain.

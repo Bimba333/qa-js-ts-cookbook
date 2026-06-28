@@ -73,20 +73,22 @@ log('start test');
 
 Для обычного вызова метода:
 
-```text
-object.method()
-│
-▼
-this = object
+```mermaid
+flowchart TD
+    N1["object.method()"]
+    N2["this = object"]
+    N1 --> N2
 ```
 
 Это правило относится к обычному вызову метода, который рассматривается в этой главе. Другие формы вызова будут изучаться дальше.
 
 `this` не является Closure. Closure связан с местом создания функции. `this` связан с тем, как функция вызвана.
 
-```text
-Closure -> где функция создана
-this    -> как функция вызвана
+```mermaid
+flowchart TD
+    N1["Closure → где функция создана"]
+    N2["this → как функция вызвана"]
+    N1 --> N2
 ```
 
 ## Внутренний механизм
@@ -106,14 +108,13 @@ Reporter.report('login');
 
 JavaScript видит форму вызова:
 
-```text
-Reporter.report(...)
-│
-▼
-объект выполнения = Reporter
-│
-▼
-this = Reporter
+```mermaid
+flowchart TD
+    N1["Reporter.report(...)"]
+    N2["объект выполнения = Reporter"]
+    N3["this = Reporter"]
+    N1 --> N2
+    N2 --> N3
 ```
 
 Если метод отделить:
@@ -125,35 +126,33 @@ report('login');
 
 вызов уже не имеет объекта выполнения перед точкой.
 
-```text
-report(...)
-│
-▼
-нет объекта перед точкой
-│
-▼
-this не будет Reporter
+```mermaid
+flowchart TD
+    N1["report(...)"]
+    N2["нет объекта перед точкой"]
+    N3["this не будет Reporter"]
+    N1 --> N2
+    N2 --> N3
 ```
 
 ## Главная ментальная модель
 
 Главная модель главы: **`this` зависит от формы вызова функции**.
 
-```text
-object.method()
-│
-▼
-this = object
+```mermaid
+flowchart TD
+    N1["object.method()"]
+    N2["this = object"]
+    N1 --> N2
 ```
 
-```text
-method saved separately
-│
-▼
-object is no longer part of call
-│
-▼
-this changes
+```mermaid
+flowchart TD
+    N1["method saved separately"]
+    N2["object is нет longer part of call"]
+    N3["this changes"]
+    N1 --> N2
+    N2 --> N3
 ```
 
 ## Практические примеры

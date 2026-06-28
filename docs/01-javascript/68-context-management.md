@@ -4,14 +4,13 @@
 
 Предыдущие главы собрали три механизма:
 
-```text
-Closures
-│
-▼
-this
-│
-▼
-call(), apply(), bind()
+```mermaid
+flowchart TD
+    N1["Closures"]
+    N2["this"]
+    N3["call(), apply(), bind()"]
+    N1 --> N2
+    N2 --> N3
 ```
 
 Теперь нужно увидеть, как они работают вместе в инженерном коде.
@@ -67,25 +66,25 @@ TestRunner
 
 Правило выбора:
 
-```text
-нужно сохранить данные из внешней функции
-│
-▼
-Closure
+```mermaid
+flowchart TD
+    N1["нужно сохранить данные из внешней функции"]
+    N2["Closure"]
+    N1 --> N2
 ```
 
-```text
-метод работает с данными своего объекта
-│
-▼
-this
+```mermaid
+flowchart TD
+    N1["метод работает с данными своего объекта"]
+    N2["this"]
+    N1 --> N2
 ```
 
-```text
-метод будет вызван позже без объекта перед точкой
-│
-▼
-bind()
+```mermaid
+flowchart TD
+    N1["метод будет вызван позже без объекта перед точкой"]
+    N2["bind()"]
+    N1 --> N2
 ```
 
 `call()` и `apply()` полезны, когда нужно выполнить функцию сразу с явно выбранным `this`.
@@ -94,20 +93,17 @@ bind()
 
 Соберем схему:
 
-```text
-createFramework(configuration)
-│
-▼
-Closure сохраняет доступ к configuration
-│
-▼
-Reporter.report использует this
-│
-▼
-bind сохраняет Reporter как this
-│
-▼
-TestRunner может вызвать сохраненный обратный вызов позже
+```mermaid
+flowchart TD
+    N1["createFramework(configuration)"]
+    N2["Closure сохраняет доступ к configuration"]
+    N3["Reporter.report использует this"]
+    N4["bind сохраняет Reporter как this"]
+    N5["TestRunner может вызвать сохраненный обратный вызов позже"]
+    N1 --> N2
+    N2 --> N3
+    N3 --> N4
+    N4 --> N5
 ```
 
 Ключевая разница:
@@ -134,12 +130,15 @@ this выбирает объект выполнения
 bind сохраняет объект выполнения
 ```
 
-```text
-вспомогательная функция фреймворка
-│
-├── помнит configuration через Closure
-├── читает данные объекта через this
-└── сохраняет this через bind при передаче дальше
+```mermaid
+flowchart TD
+    N1["вспомогательная функция фреймворка"]
+    N2["помнит configuration через Closure"]
+    N3["читает данные объекта через this"]
+    N4["сохраняет this через bind при передаче дальше"]
+    N1 --> N2
+    N1 --> N3
+    N1 --> N4
 ```
 
 ## Практические примеры
@@ -163,20 +162,17 @@ node examples/01-javascript/chapter-68/04-complete-flow.js
 
 Практический поток:
 
-```text
-Configuration
-│
-▼
-createFramework(configuration)
-│
-▼
-Logger помнит configuration через Closure
-│
-▼
-Reporter формирует отчет через this
-│
-▼
-TestRunner получает привязанную функцию отчета
+```mermaid
+flowchart TD
+    N1["Configuration"]
+    N2["createFramework(configuration)"]
+    N3["Logger помнит configuration через Closure"]
+    N4["Reporter формирует отчет через this"]
+    N5["TestRunner получает привязанную функцию отчета"]
+    N1 --> N2
+    N2 --> N3
+    N3 --> N4
+    N4 --> N5
 ```
 
 Такой код легче сопровождать, потому что видно:
@@ -255,13 +251,17 @@ solutions/01-javascript/68-context-management.md
 
 Модуль завершает более полную модель поведения функции:
 
-```text
-Поведение функции
-│
-├── параметры
-├── Closure
-├── this
-└── форма вызова
+```mermaid
+flowchart TD
+    N1["Поведение функции"]
+    N2["параметры"]
+    N3["Closure"]
+    N4["this"]
+    N5["форма вызова"]
+    N1 --> N2
+    N1 --> N3
+    N1 --> N4
+    N1 --> N5
 ```
 
 Параметры передают данные в вызов, Closure сохраняет доступ к окружению, `this` выбирает объект выполнения, а форма вызова определяет, как функция будет выполнена.

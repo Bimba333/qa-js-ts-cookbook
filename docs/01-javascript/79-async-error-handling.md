@@ -4,14 +4,13 @@
 
 Предыдущая глава показала `async` и `await`:
 
-```text
-async function
-│
-▼
-await Promise
-│
-▼
-продолжить после результата
+```mermaid
+flowchart TD
+    N1["async function"]
+    N2["await Promise"]
+    N3["продолжить после результата"]
+    N1 --> N2
+    N2 --> N3
 ```
 
 Теперь нужно понять, что происходит, если асинхронная операция завершается ошибкой.
@@ -26,17 +25,15 @@ await Promise
 
 В тестовом фреймворке ошибка может возникнуть на любом шаге:
 
-```text
-подготовить окружение
-│
-▼
-login
-│
-▼
-выполнить тесты
-│
-▼
-загрузить отчет
+```mermaid
+flowchart TD
+    N1["подготовить окружение"]
+    N2["login"]
+    N3["выполнить тесты"]
+    N4["загрузить отчет"]
+    N1 --> N2
+    N2 --> N3
+    N3 --> N4
 ```
 
 Если загрузка отчета упала, код должен:
@@ -75,35 +72,35 @@ try {
 
 Упрощенная модель:
 
-```text
-await Promise
-│
-├── Promise успешен -> вернуть значение
-└── Promise rejected -> перейти в catch
+```mermaid
+flowchart TD
+    N1["await Promise"]
+    N2["Promise успешен → вернуть значение"]
+    N3["Promise rejected → перейти в catch"]
+    N1 --> N2
+    N1 --> N3
 ```
 
 Если ошибка не обработана внутри текущей `async`-функции, она распространяется наружу как rejected Promise этой функции.
 
-```text
-async function generateReport()
-│
-▼
-await collectLogs()
-│
-▼
-collectLogs rejected
-│
-▼
-generateReport возвращает rejected Promise
+```mermaid
+flowchart TD
+    N1["async function generateReport()"]
+    N2["await collectLogs()"]
+    N3["collectLogs rejected"]
+    N4["generateReport возвращает rejected Promise"]
+    N1 --> N2
+    N2 --> N3
+    N3 --> N4
 ```
 
-```text
-ошибка
-│
-▼
-не обработана
-│
-└─ async-функция возвращает rejected Promise
+```mermaid
+flowchart TD
+    N1["ошибка"]
+    N2["не обработана"]
+    N3["async-функция возвращает rejected Promise"]
+    N1 --> N2
+    N2 --> N3
 ```
 
 Это позволяет обрабатывать ошибку на более высоком уровне.
@@ -112,14 +109,13 @@ generateReport возвращает rejected Promise
 
 Главная модель главы:
 
-```text
-асинхронная ошибка
-│
-▼
-rejected Promise
-│
-▼
-catch() или try/catch
+```mermaid
+flowchart TD
+    N1["асинхронная ошибка"]
+    N2["rejected Promise"]
+    N3["catch() или try/catch"]
+    N1 --> N2
+    N2 --> N3
 ```
 
 ## Практические примеры

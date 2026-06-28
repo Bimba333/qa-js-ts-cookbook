@@ -60,11 +60,11 @@ function optimizeSlowTest(test) {
 
 Опишите, как исследовать медленный Playwright suite:
 
-```text
-suite медленный
-│
-▼
-?
+```mermaid
+flowchart TD
+    N1["suite медленный"]
+    N2["?"]
+    N1 --> N2
 ```
 
 Добавьте шаги:

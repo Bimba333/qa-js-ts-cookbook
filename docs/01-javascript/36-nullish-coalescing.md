@@ -6,14 +6,15 @@
 
 Главная модель была такой:
 
-```text
-Object path
-│
-▼
-Check current value
-│
-├── null/undefined -> stop safely -> undefined
-└── otherwise -> continue
+```mermaid
+flowchart TD
+    N1["путь объекта"]
+    N2["проверка текущего значения"]
+    N3["null/undefined → остановиться безопасно → undefined"]
+    N4["иначе → продолжить"]
+    N1 --> N2
+    N2 --> N3
+    N2 --> N4
 ```
 
 Optional Chaining safely traverses nested properties, but it does not choose a fallback value.
@@ -26,14 +27,13 @@ const retries = config.retryPolicy?.retries;
 
 Если `retryPolicy` отсутствует:
 
-```text
-config.retryPolicy
-│
-▼
-undefined
-│
-▼
-retries = undefined
+```mermaid
+flowchart TD
+    N1["config.retryPolicy"]
+    N2["undefined"]
+    N3["retries = undefined"]
+    N1 --> N2
+    N2 --> N3
 ```
 
 Теперь появляется следующий вопрос:
@@ -42,14 +42,15 @@ retries = undefined
 
 Nullish Coalescing отвечает:
 
-```text
-Current value
-│
-▼
-Is it null or undefined?
-│
-├── yes -> use fallback
-└── no  -> keep current value
+```mermaid
+flowchart TD
+    N1["текущее значение"]
+    N2["Is it null or undefined?"]
+    N3["да → использовать значение по умолчанию"]
+    N4["нет → keep текущее значение"]
+    N1 --> N2
+    N2 --> N3
+    N2 --> N4
 ```
 
 Главная мысль главы:
@@ -158,23 +159,22 @@ const retries = config.retryPolicy?.retries;
 
 Optional Chaining безопасно остановится:
 
-```text
-config.retryPolicy
-│
-▼
-undefined
-│
-▼
-retries = undefined
+```mermaid
+flowchart TD
+    N1["config.retryPolicy"]
+    N2["undefined"]
+    N3["retries = undefined"]
+    N1 --> N2
+    N2 --> N3
 ```
 
 Но helper не может работать с `undefined`. Ему нужен конкретный fallback:
 
-```text
-if retries is missing
-│
-▼
-use 2
+```mermaid
+flowchart TD
+    N1["if retries is значение отсутствует"]
+    N2["use 2"]
+    N1 --> N2
 ```
 
 Можно написать:
@@ -185,28 +185,28 @@ const retries = config.retryPolicy?.retries ?? 2;
 
 Модель:
 
-```text
-config.retryPolicy?.retries
-│
-▼
-undefined
-│
-▼
-is null or undefined?
-│
-├── yes -> 2
-└── no  -> keep original value
+```mermaid
+flowchart TD
+    N1["config.retryPolicy?.retries"]
+    N2["undefined"]
+    N3["is null or undefined?"]
+    N4["да → 2"]
+    N5["нет → оставить исходное значение"]
+    N1 --> N2
+    N2 --> N3
+    N3 --> N4
+    N3 --> N5
 ```
 
 Теперь `retries` becomes `2`.
 
 Важно:
 
-```text
-0 ?? 2
-│
-▼
-0
+```mermaid
+flowchart TD
+    N1["0 ?? 2"]
+    N2["0"]
+    N1 --> N2
 ```
 
 `0` is not `null` and not `undefined`.
@@ -219,11 +219,13 @@ Nullish Coalescing exists because not every value that looks "empty" means "abse
 
 В JavaScript:
 
-```text
-null
-undefined
-│
-└── nullish values
+```mermaid
+flowchart TD
+    N1["null"]
+    N2["undefined"]
+    N3["nullish values"]
+    N2 --> N3
+    N1 --> N2
 ```
 
 `??` asks exactly one question:
@@ -240,11 +242,13 @@ Is the value false-like?
 
 We will not study truthy/falsy or logical operators here. The only distinction in this chapter is:
 
-```text
-null or undefined
-│
-vs
-everything else
+```mermaid
+flowchart TD
+    N1["null or undefined"]
+    N2["vs"]
+    N3["everything else"]
+    N1 --> N2
+    N2 --> N3
 ```
 
 ### Syntax
@@ -255,14 +259,15 @@ const result = value ?? fallback;
 
 Значение:
 
-```text
-value
-│
-▼
-is null or undefined?
-│
-├── yes -> fallback
-└── no  -> value
+```mermaid
+flowchart TD
+    N1["значение"]
+    N2["is null or undefined?"]
+    N3["да → fallback"]
+    N4["нет → value"]
+    N1 --> N2
+    N2 --> N3
+    N2 --> N4
 ```
 
 ### Nullish значения
@@ -313,36 +318,39 @@ const timeout = config.timeout ?? 5000;
 
 Модель:
 
-```text
-config.timeout
-│
-├── null/undefined -> 5000
-└── otherwise      -> config.timeout
+```mermaid
+flowchart TD
+    N1["config.timeout"]
+    N2["null/undefined → 5000"]
+    N3["иначе → config.timeout"]
+    N1 --> N2
+    N1 --> N3
 ```
 
 ### Evaluation order
 
 JavaScript evaluates left side first:
 
-```text
-left expression
-│
-▼
-is result null or undefined?
-│
-├── yes -> evaluate/use right side
-└── no  -> keep left result
+```mermaid
+flowchart TD
+    N1["left expression"]
+    N2["is result null or undefined?"]
+    N3["да → evaluate/use right side"]
+    N4["нет → keep left result"]
+    N1 --> N2
+    N2 --> N3
+    N2 --> N4
 ```
 
 ### Short-circuiting
 
 If left side is not `null` and not `undefined`, fallback is not needed.
 
-```text
-left value is available
-│
-▼
-right side is skipped
+```mermaid
+flowchart TD
+    N1["left value is available"]
+    N2["right side is skipped"]
+    N1 --> N2
 ```
 
 This is short-circuiting at a high level.
@@ -357,17 +365,15 @@ const retries = config.retryPolicy?.retries ?? 2;
 
 Two-step model:
 
-```text
-Optional Chaining
-│
-▼
-safe traversal result
-│
-▼
-Nullish Coalescing
-│
-▼
-fallback if result is null/undefined
+```mermaid
+flowchart TD
+    N1["Optional Chaining"]
+    N2["safe traversal result"]
+    N3["Nullish Coalescing"]
+    N4["fallback if result is null/undefined"]
+    N1 --> N2
+    N2 --> N3
+    N3 --> N4
 ```
 
 Optional Chaining отвечает:
@@ -421,64 +427,67 @@ const timeout = config.timeout ?? 5000;
 
 Концептуальный поток engine:
 
-```text
-1. Evaluate config.timeout
-2. Get value
-3. Check: is value null or undefined?
-4. If yes -> use 5000
-5. If no  -> use original value
-6. Assign result to timeout
+```mermaid
+flowchart TD
+    N1["1. Evaluate config.timeout"]
+    N2["2. Get value"]
+    N3["3. Check: is value null or undefined?"]
+    N4["4. If да → use 5000"]
+    N5["5. If нет → use original value"]
+    N6["6. Assign result to timeout"]
+    N1 --> N2
+    N2 --> N3
+    N3 --> N4
+    N4 --> N5
+    N5 --> N6
 ```
 
 ### Value inspection
 
-```text
-current value
-│
-▼
-is null or undefined?
-│
-├── yes -> fallback
-└── no  -> original value
+```mermaid
+flowchart TD
+    N1["текущее значение"]
+    N2["is null or undefined?"]
+    N3["да → fallback"]
+    N4["нет → original value"]
+    N1 --> N2
+    N2 --> N3
+    N2 --> N4
 ```
 
 ### Undefined path
 
-```text
-config.timeout
-│
-▼
-undefined
-│
-▼
-fallback used
+```mermaid
+flowchart TD
+    N1["config.timeout"]
+    N2["undefined"]
+    N3["fallback used"]
+    N1 --> N2
+    N2 --> N3
 ```
 
 ### Null path
 
-```text
-response.body.middleName
-│
-▼
-null
-│
-▼
-fallback used
+```mermaid
+flowchart TD
+    N1["response.body.middleName"]
+    N2["null"]
+    N3["fallback used"]
+    N1 --> N2
+    N2 --> N3
 ```
 
 ### Existing value path
 
-```text
-config.retries
-│
-▼
-0
-│
-▼
-0 is neither null nor undefined
-│
-▼
-0 preserved
+```mermaid
+flowchart TD
+    N1["config.retries"]
+    N2["0"]
+    N3["0 is neither null nor undefined"]
+    N4["0 preserved"]
+    N1 --> N2
+    N2 --> N3
+    N3 --> N4
 ```
 
 ### Variable assignment
@@ -489,17 +498,15 @@ const retries = config.retryPolicy?.retries ?? 2;
 
 Engine conceptual поток:
 
-```text
-safe traversal result
-│
-▼
-nullish check
-│
-▼
-final result
-│
-▼
-assign to retries
+```mermaid
+flowchart TD
+    N1["safe traversal result"]
+    N2["nullish check"]
+    N3["final result"]
+    N4["assign to retries"]
+    N1 --> N2
+    N2 --> N3
+    N3 --> N4
 ```
 
 Source object remains unchanged.
@@ -510,49 +517,52 @@ Source object remains unchanged.
 
 Представьте backup plan.
 
-```text
-Primary value
-│
-▼
-is it null or undefined?
-│
-├── yes -> backup plan
-└── no  -> primary value
+```mermaid
+flowchart TD
+    N1["Primary value"]
+    N2["is it null or undefined?"]
+    N3["да → backup plan"]
+    N4["нет → primary value"]
+    N1 --> N2
+    N2 --> N3
+    N2 --> N4
 ```
 
 Spare key model:
 
-```text
-main key exists as usable value
-│
-▼
-use main key
-
-main key is null/undefined
-│
-▼
-use spare key
+```mermaid
+flowchart TD
+    N1["main key exists as usable value"]
+    N2["use main key"]
+    N3["main key is null/undefined"]
+    N4["use spare key"]
+    N1 --> N2
+    N2 --> N3
+    N3 --> N4
 ```
 
 Fallback box:
 
-```text
-box with value
-│
-├── null/undefined -> open fallback box
-└── other value    -> keep box value
+```mermaid
+flowchart TD
+    N1["box with value"]
+    N2["null/undefined → открыть запасной вариант"]
+    N3["другое значение → keep box value"]
+    N1 --> N2
+    N1 --> N3
 ```
 
 Главная модель:
 
-```text
-Current value
-│
-▼
-Is it null or undefined?
-│
-├── yes -> use fallback
-└── no  -> keep current value
+```mermaid
+flowchart TD
+    N1["текущее значение"]
+    N2["Is it null or undefined?"]
+    N3["да → использовать значение по умолчанию"]
+    N4["нет → keep текущее значение"]
+    N1 --> N2
+    N2 --> N3
+    N2 --> N4
 ```
 
 ---
@@ -688,14 +698,15 @@ NaN
 
 Нет.
 
-```text
-Optional Chaining
-│
-└── safe traversal
-
-Nullish Coalescing
-│
-└── fallback selection
+```mermaid
+flowchart TD
+    N1["Optional Chaining"]
+    N2["safe traversal"]
+    N3["Nullish Coalescing"]
+    N4["fallback selection"]
+    N1 --> N2
+    N1 --> N3
+    N3 --> N4
 ```
 
 ### `??` меняет source object?
@@ -789,11 +800,11 @@ console.log(config.timeout);
 
 If API поле is required, fallback can hide a contract problem.
 
-```text
-required field missing
-│
-▼
-test should fail clearly
+```mermaid
+flowchart TD
+    N1["required field значение отсутствует"]
+    N2["test should fail clearly"]
+    N1 --> N2
 ```
 
 ---
@@ -881,326 +892,334 @@ Helper receives a stable value without changing source response.
 
 ### 1. Why ?? exists
 
-```text
-safe read result
-│
-▼
-may be null/undefined
-│
-▼
-need fallback value
+```mermaid
+flowchart TD
+    N1["safe read result"]
+    N2["may be null/undefined"]
+    N3["need fallback value"]
+    N1 --> N2
+    N2 --> N3
 ```
 
 ### 2. Optional Chaining → ??
 
-```text
-?. 
-│
-▼
-undefined
-│
-▼
-??
-│
-▼
-fallback
+```mermaid
+flowchart TD
+    N1["?."]
+    N2["undefined"]
+    N3["??"]
+    N4["fallback"]
+    N1 --> N2
+    N2 --> N3
+    N3 --> N4
 ```
 
 ### 3. Value inspection
 
-```text
-current value
-│
-▼
-is null or undefined?
+```mermaid
+flowchart TD
+    N1["текущее значение"]
+    N2["is null or undefined?"]
+    N1 --> N2
 ```
 
 ### 4. Fallback decision
 
-```text
-null/undefined
-│
-├── yes -> fallback
-└── no  -> current value
+```mermaid
+flowchart TD
+    N1["null/undefined"]
+    N2["да → fallback"]
+    N3["нет → текущее значение"]
+    N1 --> N2
+    N1 --> N3
 ```
 
 ### 5. Null
 
-```text
-null
-│
-▼
-use fallback
+```mermaid
+flowchart TD
+    N1["null"]
+    N2["использовать значение по умолчанию"]
+    N1 --> N2
 ```
 
 ### 6. Undefined
 
-```text
-undefined
-│
-▼
-use fallback
+```mermaid
+flowchart TD
+    N1["undefined"]
+    N2["использовать значение по умолчанию"]
+    N1 --> N2
 ```
 
 ### 7. Existing value
 
-```text
-0 / false / ''
-│
-▼
-keep value
+```mermaid
+flowchart TD
+    N1["0 / false / ''"]
+    N2["keep value"]
+    N1 --> N2
 ```
 
 ### 8. Evaluation flow
 
-```text
-evaluate left
-│
-▼
-nullish check
-│
-▼
-choose result
+```mermaid
+flowchart TD
+    N1["evaluate left"]
+    N2["nullish check"]
+    N3["choose result"]
+    N1 --> N2
+    N2 --> N3
 ```
 
 ### 9. Short-circuit
 
-```text
-left is not null/undefined
-│
-▼
-right side not needed
+```mermaid
+flowchart TD
+    N1["left is not null/undefined"]
+    N2["right side not needed"]
+    N1 --> N2
 ```
 
 ### 10. QA configuration
 
-```text
-config.timeout
-│
-├── value -> use value
-└── undefined -> default
+```mermaid
+flowchart TD
+    N1["config.timeout"]
+    N2["value → использовать значение"]
+    N3["undefined → значение по умолчанию"]
+    N1 --> N2
+    N1 --> N3
 ```
 
 ### 11. API response
 
-```text
-response optional field
-│
-├── present -> value
-└── null/undefined -> fallback
+```mermaid
+flowchart TD
+    N1["response optional field"]
+    N2["значение есть → value"]
+    N3["null/undefined → fallback"]
+    N1 --> N2
+    N1 --> N3
 ```
 
 ### 12. Читаемость
 
-```text
-value ?? fallback
-│
-└── explicit missing-value policy
+```mermaid
+flowchart TD
+    N1["value ?? fallback"]
+    N2["explicit значение отсутствует-value policy"]
+    N1 --> N2
 ```
 
 ### 13. Типичные ошибки
 
-```text
-0 ?? 2
-│
-▼
-0
+```mermaid
+flowchart TD
+    N1["0 ?? 2"]
+    N2["0"]
+    N1 --> N2
 ```
 
 ### 14. || preview
 
-```text
-??
-│
-└── null/undefined only
-
-||
-│
-└── broader logical behavior later
+```mermaid
+flowchart TD
+    N1["??"]
+    N2["null/undefined only"]
+    N3["broader logical behavior later"]
+    N1 --> N2
+    N1 --> N3
 ```
 
 ### 15. Текущая модель JavaScript
 
-```text
-Objects
-│
-├── Destructuring
-├── Optional Chaining
-└── Nullish Coalescing
+```mermaid
+flowchart TD
+    N1["Objects"]
+    N2["Destructuring"]
+    N3["Optional Chaining"]
+    N4["Nullish Coalescing"]
+    N1 --> N2
+    N1 --> N3
+    N1 --> N4
 ```
 
 ### 16. Complete ?? model
 
-```text
-value
-│
-▼
-null or undefined?
-│
-├── yes -> fallback
-└── no  -> value
+```mermaid
+flowchart TD
+    N1["значение"]
+    N2["null or undefined?"]
+    N3["да → fallback"]
+    N4["нет → value"]
+    N1 --> N2
+    N2 --> N3
+    N2 --> N4
 ```
 
 ### 17. Reserve value
 
-```text
-primary value absent
-│
-▼
-reserve value
+```mermaid
+flowchart TD
+    N1["primary value absent"]
+    N2["reserve value"]
+    N1 --> N2
 ```
 
 ### 18. Backup plan
 
-```text
-main plan unavailable
-│
-▼
-backup plan
+```mermaid
+flowchart TD
+    N1["main plan unavailable"]
+    N2["backup plan"]
+    N1 --> N2
 ```
 
 ### 19. Decision tree
 
-```text
-check value
-│
-├── null
-├── undefined
-└── other
+```mermaid
+flowchart TD
+    N1["check value"]
+    N2["null"]
+    N3["undefined"]
+    N4["other"]
+    N1 --> N2
+    N1 --> N3
+    N1 --> N4
 ```
 
 ### 20. Variable assignment
 
-```text
-chosen result
-│
-▼
-assigned to variable
+```mermaid
+flowchart TD
+    N1["chosen result"]
+    N2["assigned to variable"]
+    N1 --> N2
 ```
 
 ### 21. Fallback timeline
 
-```text
-read value
-│
-▼
-inspect
-│
-▼
-choose fallback or original
+```mermaid
+flowchart TD
+    N1["read value"]
+    N2["inspect"]
+    N3["choose fallback or original"]
+    N1 --> N2
+    N2 --> N3
 ```
 
 ### 22. Automation QA config
 
-```text
-retryPolicy?.retries
-│
-▼
-?? 2
+```mermaid
+flowchart TD
+    N1["retryPolicy?.retries"]
+    N2["?? 2"]
+    N1 --> N2
 ```
 
 ### 23. Optional API поле
 
-```text
-profile?.address?.city
-│
-▼
-?? 'unknown'
+```mermaid
+flowchart TD
+    N1["profile?.address?.city"]
+    N2["?? 'unknown'"]
+    N1 --> N2
 ```
 
 ### 24. Chaining with ?.
 
-```text
-safe traversal
-│
-▼
-fallback selection
+```mermaid
+flowchart TD
+    N1["safe traversal"]
+    N2["fallback selection"]
+    N1 --> N2
 ```
 
 ### 25. Краткая ментальная модель
 
-```text
-backup plan
-│
-spare key
-│
-reserve value
+```mermaid
+flowchart TD
+    N1["backup plan"]
+    N2["spare key"]
+    N3["reserve value"]
+    N1 --> N2
+    N2 --> N3
 ```
 
 ### 26. Existing value preserved
 
-```text
-false
-│
-▼
-kept
+```mermaid
+flowchart TD
+    N1["false"]
+    N2["kept"]
+    N1 --> N2
 ```
 
 ### 27. Nullish значения only
 
-```text
-null
-undefined
-│
-▼
-fallback
+```mermaid
+flowchart TD
+    N1["null"]
+    N2["undefined"]
+    N3["fallback"]
+    N2 --> N3
+    N1 --> N2
 ```
 
 ### 28. Safe traversal + fallback
 
-```text
-?. reads safely
-│
-▼
-?? fills only null/undefined
+```mermaid
+flowchart TD
+    N1["?. reads safely"]
+    N2["?? fills only null/undefined"]
+    N1 --> N2
 ```
 
 ### 29. Undefined path
 
-```text
-missing property
-│
-▼
-undefined
-│
-▼
-fallback
+```mermaid
+flowchart TD
+    N1["значение отсутствует property"]
+    N2["undefined"]
+    N3["fallback"]
+    N1 --> N2
+    N2 --> N3
 ```
 
 ### 30. Complete flow
 
-```text
-expression
-│
-▼
-result
-│
-▼
-nullish?
-│
-▼
-final value
+```mermaid
+flowchart TD
+    N1["expression"]
+    N2["результат"]
+    N3["nullish?"]
+    N4["final value"]
+    N1 --> N2
+    N2 --> N3
+    N3 --> N4
 ```
 
 ### 31. Переход к Object Methods
 
-```text
-objects store data
-│
-▼
-next: objects store behavior
+```mermaid
+flowchart TD
+    N1["objects store data"]
+    N2["next: objects store behavior"]
+    N1 --> N2
 ```
 
 ### 32. Итоговая схема
 
-```text
-Current value
-│
-▼
-Is it null or undefined?
-│
-├── Yes -> Use fallback
-└── No  -> Keep current value
+```mermaid
+flowchart TD
+    N1["текущее значение"]
+    N2["Is it null or undefined?"]
+    N3["да → использовать значение по умолчанию"]
+    N4["нет → Keep текущее значение"]
+    N1 --> N2
+    N2 --> N3
+    N2 --> N4
 ```
 
 ---
@@ -1243,32 +1262,30 @@ solutions/01-javascript/36-nullish-coalescing.md
 
 Nullish Coalescing продолжает Optional Chaining.
 
-```text
-Optional Chaining
-│
-▼
-safe traversal
-│
-▼
-result may be undefined
-│
-▼
-Nullish Coalescing
-│
-▼
-fallback only for null/undefined
+```mermaid
+flowchart TD
+    N1["Optional Chaining"]
+    N2["safe traversal"]
+    N3["result may be undefined"]
+    N4["Nullish Coalescing"]
+    N5["fallback only for null/undefined"]
+    N1 --> N2
+    N2 --> N3
+    N3 --> N4
+    N4 --> N5
 ```
 
 Главная модель:
 
-```text
-Current value
-│
-▼
-Is it null or undefined?
-│
-├── Yes -> Use fallback
-└── No  -> Keep current value
+```mermaid
+flowchart TD
+    N1["текущее значение"]
+    N2["Is it null or undefined?"]
+    N3["да → использовать значение по умолчанию"]
+    N4["нет → Keep текущее значение"]
+    N1 --> N2
+    N2 --> N3
+    N2 --> N4
 ```
 
 ---

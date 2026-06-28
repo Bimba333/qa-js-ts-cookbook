@@ -86,9 +86,11 @@
 
 Ответ:
 
-```text
-testCases -> ['login', 'new checkout', 'payment', 'logout']
-removed   -> ['old checkout']
+```mermaid
+flowchart TD
+    N1["testCases → ['login', 'new checkout', 'payment', 'logout']"]
+    N2["removed → ['old checkout']"]
+    N1 --> N2
 ```
 
 Объяснение: operation начинается с index `1`, удаляет один element и вставляет `new checkout`. `payment` остается на index `2` только потому, что один element был удален и один element был вставлен. Состояние array все равно изменилось: на index `1` теперь находится другой test case. Если бы количество удаленных и вставленных elements отличалось, indexes справа изменились бы.
@@ -110,10 +112,13 @@ removed   -> ['old checkout']
 
 После операции состояние меняется:
 
-```text
-before: index 2 -> pay order
-after:  index 2 -> apply discount
-        index 3 -> pay order
+```mermaid
+flowchart TD
+    N1["before: index 2 → pay order"]
+    N2["after: index 2 → apply discount"]
+    N3["index 3 → pay order"]
+    N1 --> N2
+    N2 --> N3
 ```
 
 Распространённая ошибка: ожидать, что `pay order` будет удален, или продолжать считать, что он находится на index `2`.

@@ -269,12 +269,15 @@ Browser name и retry count часто встречаются в test configurat
 
 Ответ:
 
-```text
-Initial state:
-pageTitle → "Login"
-
-After update:
-pageTitle → "Dashboard"
+```mermaid
+flowchart TD
+    N1["Initial state:"]
+    N2["pageTitle → &quot;Login&quot;"]
+    N3["После: update:"]
+    N4["pageTitle → &quot;Dashboard&quot;"]
+    N2 --> N3
+    N1 --> N2
+    N3 --> N4
 ```
 
 Объяснение:
@@ -302,11 +305,15 @@ finished
 
 Memory временная шкала:
 
-```text
-store status → "created"
-read status  → "created"
-update status → "finished"
-read status  → "finished"
+```mermaid
+flowchart TD
+    N1["store status → &quot;created&quot;"]
+    N2["read status → &quot;created&quot;"]
+    N3["update status → &quot;finished&quot;"]
+    N4["read status → &quot;finished&quot;"]
+    N1 --> N2
+    N2 --> N3
+    N3 --> N4
 ```
 
 Объяснение:
@@ -331,11 +338,15 @@ qa-user
 
 Memory временная шкала:
 
-```text
-store prefix → "qa"
-temporary combine "qa" + "-user" → "qa-user"
-store userName → "qa-user"
-read userName
+```mermaid
+flowchart TD
+    N1["store prefix → &quot;qa&quot;"]
+    N2["temporary combine &quot;qa&quot; + &quot;-user&quot; → &quot;qa-user&quot;"]
+    N3["store userName → &quot;qa-user&quot;"]
+    N4["read userName"]
+    N1 --> N2
+    N2 --> N3
+    N3 --> N4
 ```
 
 Объяснение:
@@ -361,10 +372,13 @@ staging
 
 Memory временная шкала:
 
-```text
-store environment → "staging"
-read environment → "staging"
-read environment → "staging"
+```mermaid
+flowchart TD
+    N1["store environment → &quot;staging&quot;"]
+    N2["read environment → &quot;staging&quot;"]
+    N3["read environment → &quot;staging&quot;"]
+    N1 --> N2
+    N2 --> N3
 ```
 
 Объяснение:
@@ -383,12 +397,17 @@ Config значения часто читаются много раз в рам�
 
 Ответ:
 
-```text
-Step | Operation        | Memory state
-1    | store attempt    | attempt → 1
-2    | update attempt   | attempt → 2
-3    | update attempt   | attempt → 3
-4    | read attempt     | attempt → 3
+```mermaid
+flowchart TD
+    N1["Step | Operation | Memory state"]
+    N2["1 | store attempt | attempt → 1"]
+    N3["2 | update attempt | attempt → 2"]
+    N4["3 | update attempt | attempt → 3"]
+    N5["4 | read attempt | attempt → 3"]
+    N1 --> N2
+    N2 --> N3
+    N3 --> N4
+    N4 --> N5
 ```
 
 Вывод:
@@ -413,13 +432,17 @@ Retry counters и attempt numbers часто обновляются, поэто�
 
 Ответ:
 
-```text
-Long-lived:
-testName → "checkout"
-message  → "Running test: checkout"
-
-Temporary:
-"Running test: " + testName промежуточно создает итоговую строку
+```mermaid
+flowchart TD
+    N1["Long-lived:"]
+    N2["testName → &quot;checkout&quot;"]
+    N3["message → &quot;Running test: checkout&quot;"]
+    N4["Temporary:"]
+    N5["&quot;Running test: &quot; + testName промежуточно создает итоговую строку"]
+    N3 --> N4
+    N1 --> N2
+    N2 --> N3
+    N4 --> N5
 ```
 
 Объяснение:
@@ -491,10 +514,13 @@ Test status или setup status часто обновляется по мере 
 
 Инженер не учел update.
 
-```text
-store status → "created"
-update status → "finished"
-read status → "finished"
+```mermaid
+flowchart TD
+    N1["store status → &quot;created&quot;"]
+    N2["update status → &quot;finished&quot;"]
+    N3["read status → &quot;finished&quot;"]
+    N1 --> N2
+    N2 --> N3
 ```
 
 Объяснение:
@@ -515,10 +541,13 @@ read status → "finished"
 
 Нужно искать строку update, потому что read только показывает текущее состояние.
 
-```text
-store baseUrl → staging
-update baseUrl → prod
-read baseUrl → prod
+```mermaid
+flowchart TD
+    N1["store baseUrl → staging"]
+    N2["update baseUrl → prod"]
+    N3["read baseUrl → prod"]
+    N1 --> N2
+    N2 --> N3
 ```
 
 Объяснение:
@@ -539,11 +568,13 @@ read baseUrl → prod
 
 Ответ:
 
-```text
-Memory before login step
-│
-├── userName → prepared user name
-└── password → prepared password
+```mermaid
+flowchart TD
+    N1["Memory before login step"]
+    N2["userName → prepared user name"]
+    N3["password → prepared password"]
+    N1 --> N2
+    N1 --> N3
 ```
 
 Объяснение:
@@ -573,12 +604,17 @@ Stack trace показывает цепочку вызовов, но не зам
 
 Таблица:
 
-```text
-Step | Operation       | Memory
-1    | store baseUrl   | baseUrl → ?
-2    | read baseUrl    | baseUrl → ?
-3    | build final URL | finalUrl → ?
-4    | open page       | finalUrl is used
+```mermaid
+flowchart TD
+    N1["Step | Operation | Memory"]
+    N2["1 | store baseUrl | baseUrl → ?"]
+    N3["2 | read baseUrl | baseUrl → ?"]
+    N4["3 | build final URL | finalUrl → ?"]
+    N5["4 | open page | finalUrl is used"]
+    N1 --> N2
+    N2 --> N3
+    N3 --> N4
+    N4 --> N5
 ```
 
 Объяснение:
@@ -599,9 +635,11 @@ Step | Operation       | Memory
 
 До сравнения должны быть доступны:
 
-```text
-expectedStatus → expected value
-actualStatus   → value received from system
+```mermaid
+flowchart TD
+    N1["expectedStatus → expected value"]
+    N2["actualStatus → value received from system"]
+    N1 --> N2
 ```
 
 Объяснение:
@@ -636,15 +674,23 @@ console.log(status);
 
 Временная шкала:
 
-```text
-store baseUrl → "https://example.com"
-store path → "/login"
-temporary combine baseUrl + path → "https://example.com/login"
-store loginUrl → "https://example.com/login"
-read loginUrl
-store status → "created"
-update status → "ready"
-read status
+```mermaid
+flowchart TD
+    N1["store baseUrl → &quot;https://example.com&quot;"]
+    N2["store path → &quot;/login&quot;"]
+    N3["temporary combine baseUrl + path → &quot;https://example.com/login&quot;"]
+    N4["store loginUrl → &quot;https://example.com/login&quot;"]
+    N5["read loginUrl"]
+    N6["store status → &quot;created&quot;"]
+    N7["update status → &quot;ready&quot;"]
+    N8["read status"]
+    N1 --> N2
+    N2 --> N3
+    N3 --> N4
+    N4 --> N5
+    N5 --> N6
+    N6 --> N7
+    N7 --> N8
 ```
 
 Объяснение:

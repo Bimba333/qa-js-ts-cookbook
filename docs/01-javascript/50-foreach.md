@@ -6,26 +6,24 @@
 
 Главная модель была такой:
 
-```text
-Array
-│
-▼
-walk through collection
-│
-▼
-one element at a time
+```mermaid
+flowchart TD
+    N1["Array"]
+    N2["walk through collection"]
+    N3["one element at a time"]
+    N1 --> N2
+    N2 --> N3
 ```
 
 Теперь мы хотим выразить похожую идею через array method:
 
-```text
-Array
-│
-▼
-for each element
-│
-▼
-execute same action
+```mermaid
+flowchart TD
+    N1["Array"]
+    N2["for each element"]
+    N3["выполнить same action"]
+    N1 --> N2
+    N2 --> N3
 ```
 
 ## Главный вопрос
@@ -72,11 +70,11 @@ const testRun = [
 
 Нужно для каждого test case выполнить одинаковое действие: зарегистрировать запуск.
 
-```text
-test case
-│
-▼
-log execution
+```mermaid
+flowchart TD
+    N1["test case"]
+    N2["log выполнение"]
+    N1 --> N2
 ```
 
 Можно использовать `for...of`.
@@ -103,17 +101,15 @@ array.forEach(function (element) {
 
 Смысл:
 
-```text
-Array
-│
-▼
-take element
-│
-▼
-call function with element
-│
-▼
-repeat for next element
+```mermaid
+flowchart TD
+    N1["Array"]
+    N2["take element"]
+    N3["вызвать function with element"]
+    N4["repeat for next element"]
+    N1 --> N2
+    N2 --> N3
+    N3 --> N4
 ```
 
 `forEach()` обычно используют для side effects:
@@ -128,52 +124,45 @@ repeat for next element
 
 Концептуальные шаги:
 
-```text
-Array
-│
-▼
-start from first element
-│
-▼
-pass element into function
-│
-▼
-execute action
-│
-▼
-move to next element
-│
-▼
-finish after last element
+```mermaid
+flowchart TD
+    N1["Array"]
+    N2["start from first element"]
+    N3["pass element into function"]
+    N4["выполнить action"]
+    N5["move to next element"]
+    N6["finish after last element"]
+    N1 --> N2
+    N2 --> N3
+    N3 --> N4
+    N4 --> N5
+    N5 --> N6
 ```
 
 Важно: `forEach()` не создает новый array с результатами.
 
-```text
-forEach()
-│
-▼
-execute side effect
-│
-▼
-return value is not used as new collection
+```mermaid
+flowchart TD
+    N1["forEach()"]
+    N2["выполнить side effect"]
+    N3["возвращаемое значение is not used as new collection"]
+    N1 --> N2
+    N2 --> N3
 ```
 
 ## Главная ментальная модель
 
 Главная модель этой главы: **side-effect execution**.
 
-```text
-Array
-│
-▼
-forEach()
-│
-▼
-same action for each element
-│
-▼
-side effect
+```mermaid
+flowchart TD
+    N1["Array"]
+    N2["forEach()"]
+    N3["same action for each element"]
+    N4["side effect"]
+    N1 --> N2
+    N2 --> N3
+    N3 --> N4
 ```
 
 ## Практические примеры

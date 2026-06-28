@@ -222,6 +222,14 @@ function sanitizeRepositoryPaths(content) {
     .replace(/^playground\/$/gm, 'Песочница')
 }
 
+function renderMermaid(md, content) {
+  const sourceB64 = Buffer.from(content, 'utf8').toString('base64')
+
+  return `
+<MermaidChart source-b64="${sourceB64}" />
+`
+}
+
 export function exampleCardPlugin(md) {
   const defaultFence = md.renderer.rules.fence
   const defaultCodeInline = md.renderer.rules.code_inline
@@ -276,6 +284,11 @@ export function exampleCardPlugin(md) {
   md.renderer.rules.fence = (tokens, idx, options, env, self) => {
     const token = tokens[idx]
     const content = token.content.trim()
+
+    if (token.info.trim() === 'mermaid') {
+      return renderMermaid(md, token.content)
+    }
+
     const nodeCommandExamples = renderNodeExampleCommands(md, content, env)
 
     if (nodeCommandExamples !== null) {

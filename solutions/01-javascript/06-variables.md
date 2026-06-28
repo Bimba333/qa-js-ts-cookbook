@@ -224,14 +224,15 @@ Stable test data через `const` должна быть известна в м
 
 Ответ:
 
-```text
-const baseUrl = 'https://example.com';
-│
-└── declaration + initialization
-
-console.log(baseUrl);
-│
-└── read
+```mermaid
+flowchart TD
+    N1["const baseUrl = 'https://example.com';"]
+    N2["declaration + initialization"]
+    N3["console.log(baseUrl);"]
+    N4["чтение"]
+    N1 --> N2
+    N1 --> N3
+    N3 --> N4
 ```
 
 Объяснение:
@@ -250,18 +251,19 @@ console.log(baseUrl);
 
 Ответ:
 
-```text
-let testStatus;
-│
-└── declaration without initialization
-
-testStatus = 'created';
-│
-└── assignment
-
-console.log(testStatus);
-│
-└── read
+```mermaid
+flowchart TD
+    N1["let testStatus;"]
+    N2["declaration without initialization"]
+    N3["testStatus = 'created';"]
+    N4["assignment"]
+    N5["console.log(testStatus);"]
+    N6["чтение"]
+    N1 --> N2
+    N1 --> N3
+    N3 --> N4
+    N3 --> N5
+    N5 --> N6
 ```
 
 Объяснение:
@@ -280,22 +282,23 @@ Declaration и assignment находятся на разных строках.
 
 Ответ:
 
-```text
-let retryCount = 0;
-│
-└── declaration + initialization
-
-retryCount = 1;
-│
-└── reassignment
-
-retryCount = 2;
-│
-└── reassignment
-
-console.log(retryCount);
-│
-└── read
+```mermaid
+flowchart TD
+    N1["let retryCount = 0;"]
+    N2["declaration + initialization"]
+    N3["retryCount = 1;"]
+    N4["reassignment"]
+    N5["retryCount = 2;"]
+    N6["reassignment"]
+    N7["console.log(retryCount);"]
+    N8["чтение"]
+    N1 --> N2
+    N1 --> N3
+    N3 --> N4
+    N3 --> N5
+    N5 --> N6
+    N5 --> N7
+    N7 --> N8
 ```
 
 Объяснение:
@@ -376,12 +379,17 @@ https://example.com/login
 
 Ответ:
 
-```text
-Step | Operation                    | Current variable state
-1    | declaration                  | setupStatus → undefined
-2    | assignment                   | setupStatus → "started"
-3    | reassignment                 | setupStatus → "finished"
-4    | read                         | setupStatus → "finished"
+```mermaid
+flowchart TD
+    N1["Step | Operation | Current variable state"]
+    N2["1 | declaration | setupStatus → undefined"]
+    N3["2 | assignment | setupStatus → &quot;started&quot;"]
+    N4["3 | reassignment | setupStatus → &quot;finished&quot;"]
+    N5["4 | read | setupStatus → &quot;finished&quot;"]
+    N1 --> N2
+    N2 --> N3
+    N3 --> N4
+    N4 --> N5
 ```
 
 Вывод:
@@ -416,24 +424,33 @@ expectedTitle
 
 Initialized сразу:
 
-```text
-browserName → "chromium"
-testStatus → "created"
-expectedTitle → "Dashboard"
+```mermaid
+flowchart TD
+    N1["browserName → &quot;chromium&quot;"]
+    N2["testStatus → &quot;created&quot;"]
+    N3["expectedTitle → &quot;Dashboard&quot;"]
+    N1 --> N2
+    N2 --> N3
 ```
 
 Переназначение:
 
-```text
-testStatus → "ready"
+```mermaid
+flowchart LR
+    N1["testStatus"]
+    N2["&quot;ready&quot;"]
+    N1 --> N2
 ```
 
 Values в конце:
 
-```text
-browserName   → "chromium"
-testStatus    → "ready"
-expectedTitle → "Dashboard"
+```mermaid
+flowchart TD
+    N1["browserName → &quot;chromium&quot;"]
+    N2["testStatus → &quot;ready&quot;"]
+    N3["expectedTitle → &quot;Dashboard&quot;"]
+    N1 --> N2
+    N2 --> N3
 ```
 
 Объяснение:
@@ -456,14 +473,13 @@ expectedTitle → "Dashboard"
 
 Инженер не учел reassignment.
 
-```text
-testStatus initialized with "created"
-│
-▼
-testStatus reassigned to "ready"
-│
-▼
-read gives "ready"
+```mermaid
+flowchart TD
+    N1["testStatus initialized with &quot;created&quot;"]
+    N2["testStatus reassigned to &quot;ready&quot;"]
+    N3["read gives &quot;ready&quot;"]
+    N1 --> N2
+    N2 --> N3
 ```
 
 Объяснение:
@@ -520,12 +536,17 @@ Configuration значения должны выглядеть стабильн�
 
 Ответ:
 
-```text
-baseUrl                → const
-browserName            → const
-current setup status   → let
-expected user status   → const
-actual user status     → const, если получен один раз
+```mermaid
+flowchart TD
+    N1["baseUrl → const"]
+    N2["browserName → const"]
+    N3["current setup status → let"]
+    N4["expected user status → const"]
+    N5["actual user status → const, если получен один раз"]
+    N1 --> N2
+    N2 --> N3
+    N3 --> N4
+    N4 --> N5
 ```
 
 Объяснение:
@@ -546,12 +567,15 @@ Configuration и expected значения обычно не reassignment-ятс
 
 Для `userName` происходит declaration + initialization.
 
-```text
-const userName = buildUserName();
-│
-├── declare userName
-├── call helper
-└── initialize userName with helper result
+```mermaid
+flowchart TD
+    N1["const userName = buildUserName();"]
+    N2["declare userName"]
+    N3["вызвать helper"]
+    N4["initialize userName with helper result"]
+    N1 --> N2
+    N1 --> N3
+    N1 --> N4
 ```
 
 Объяснение:

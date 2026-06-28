@@ -60,14 +60,13 @@ const testCases = [
 
 Нужна операция:
 
-```text
-unordered test cases
-│
-▼
-sort()
-│
-▼
-ordered test cases
+```mermaid
+flowchart TD
+    N1["unordered test cases"]
+    N2["sort()"]
+    N3["ordered test cases"]
+    N1 --> N2
+    N2 --> N3
 ```
 
 ## Теория
@@ -82,11 +81,11 @@ array.sort(compareFunction);
 
 Важное поведение: `sort()` mutates исходный массив.
 
-```text
-sort()
-│
-▼
-same array, ordered elements
+```mermaid
+flowchart TD
+    N1["sort()"]
+    N2["same array, ordered elements"]
+    N1 --> N2
 ```
 
 Если вызвать `sort()` без функции сравнения, JavaScript сортирует значения как строки. Для objects почти всегда нужно явно описывать порядок через функцию сравнения.
@@ -103,25 +102,26 @@ testCases.sort(function (firstTest, secondTest) {
 
 Для этой главы не важен конкретный algorithm. Достаточно observable model:
 
-```text
-source array
-│
-▼
-compare elements
-│
-▼
-reorder by rule
-│
-▼
-same array, new order
+```mermaid
+flowchart TD
+    N1["source array"]
+    N2["compare elements"]
+    N3["reorder by rule"]
+    N4["same array, new order"]
+    N1 --> N2
+    N2 --> N3
+    N3 --> N4
 ```
 
 Compare function говорит JavaScript, какой element должен идти раньше.
 
-```text
-negative number -> first before second
-positive number -> second before first
-0               -> order is equal for this comparison
+```mermaid
+flowchart TD
+    N1["negative number → first before second"]
+    N2["positive number → second before first"]
+    N3["0 → order is equal for this comparison"]
+    N1 --> N2
+    N2 --> N3
 ```
 
 Этого достаточно для практической работы с отчетами.
@@ -130,14 +130,13 @@ positive number -> second before first
 
 Главная модель этой главы: **ordering elements**.
 
-```text
-same elements
-│
-▼
-sort()
-│
-▼
-different order
+```mermaid
+flowchart TD
+    N1["same elements"]
+    N2["sort()"]
+    N3["different order"]
+    N1 --> N2
+    N2 --> N3
 ```
 
 Главное: `sort()` не выбирает и не преобразует test cases. Он меняет порядок.

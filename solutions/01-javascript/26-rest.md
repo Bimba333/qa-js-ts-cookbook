@@ -596,11 +596,15 @@ Collecting test data.
 
 Ответ:
 
-```text
-...statusCode → ...statusCodes
-...email      → ...emails или ...userEmails
-...locator    → ...locators или ...locatorNames
-...message    → ...messages
+```mermaid
+flowchart TD
+    N1["...statusCode → ...statusCodes"]
+    N2["...email → ...emails или ...userEmails"]
+    N3["...locator → ...locators или ...locatorNames"]
+    N4["...message → ...messages"]
+    N1 --> N2
+    N2 --> N3
+    N3 --> N4
 ```
 
 Объяснение:

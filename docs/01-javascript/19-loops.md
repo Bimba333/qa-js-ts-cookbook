@@ -6,14 +6,13 @@
 
 Conditional makes one decision:
 
-```text
-Expression
-│
-▼
-Результат
-│
-▼
-Choose one path
+```mermaid
+flowchart TD
+    N1["Expression"]
+    N2["Результат"]
+    N3["Choose one path"]
+    N1 --> N2
+    N2 --> N3
 ```
 
 Теперь появляется следующий вопрос:
@@ -143,24 +142,28 @@ until all responses are checked
 
 Зачем существуют loops:
 
-```text
-Repeated work
-│
-├── same action
-├── different item / step
-└── stopping condition
+```mermaid
+flowchart TD
+    N1["Repeated work"]
+    N2["same action"]
+    N3["different item / step"]
+    N4["stopping condition"]
+    N1 --> N2
+    N1 --> N3
+    N1 --> N4
 ```
 
 Repetition overview:
 
-```text
-Start
-│
-▼
-Check condition
-│
-├── true  → run body → update → check again
-└── false → stop loop
+```mermaid
+flowchart TD
+    N1["Start"]
+    N2["Check condition"]
+    N3["true → run body → update → check again"]
+    N4["false → stop loop"]
+    N1 --> N2
+    N2 --> N3
+    N2 --> N4
 ```
 
 Главный вопрос:
@@ -195,10 +198,11 @@ check response 3
 
 With loop:
 
-```text
-for each step
-│
-└── run same validation algorithm
+```mermaid
+flowchart TD
+    N1["for each step"]
+    N2["run same validation algorithm"]
+    N1 --> N2
 ```
 
 Loop = repeated execution until stopping condition is reached.
@@ -209,22 +213,21 @@ Every loop has a lifecycle.
 
 Loop lifecycle схема:
 
-```text
-Initialization
-│
-▼
-Condition
-│
-├── false → stop
-└── true
-    │
-    ▼
-    Body
-    │
-    ▼
-    Update
-    │
-    └── back to Condition
+```mermaid
+flowchart TD
+    N1["Initialization"]
+    N2["Condition"]
+    N3["false → stop"]
+    N4["true"]
+    N5["Body"]
+    N6["Update"]
+    N7["back to Condition"]
+    N1 --> N2
+    N2 --> N3
+    N2 --> N4
+    N2 --> N5
+    N2 --> N6
+    N6 --> N7
 ```
 
 Four core parts:
@@ -246,14 +249,13 @@ let responseIndex = 0;
 
 Initialization схема:
 
-```text
-Before loop starts
-│
-▼
-Create starting value
-│
-▼
-responseIndex = 0
+```mermaid
+flowchart TD
+    N1["До: loop starts"]
+    N2["Create starting value"]
+    N3["responseIndex = 0"]
+    N1 --> N2
+    N2 --> N3
 ```
 
 Что повторяется?
@@ -273,11 +275,13 @@ responseIndex < totalResponses
 
 Condition схема:
 
-```text
-Evaluate condition
-│
-├── true  → run loop body
-└── false → stop loop
+```mermaid
+flowchart TD
+    N1["Evaluate condition"]
+    N2["true → run loop body"]
+    N3["false → stop loop"]
+    N1 --> N2
+    N1 --> N3
 ```
 
 Loop decision:
@@ -296,13 +300,17 @@ console.log('Validate response');
 
 Body схема:
 
-```text
-Loop body
-│
-└── repeated algorithm
-    ├── read current item
-    ├── validate it
-    └── report result
+```mermaid
+flowchart TD
+    N1["Loop body"]
+    N2["repeated algorithm"]
+    N3["read current item"]
+    N4["validate it"]
+    N5["report result"]
+    N1 --> N2
+    N2 --> N3
+    N2 --> N4
+    N2 --> N5
 ```
 
 Что повторяется?
@@ -321,17 +329,15 @@ responseIndex += 1;
 
 Update схема:
 
-```text
-After body
-│
-▼
-Update state
-│
-▼
-responseIndex changes
-│
-▼
-Condition can eventually become false
+```mermaid
+flowchart TD
+    N1["После: body"]
+    N2["Update state"]
+    N3["responseIndex changes"]
+    N4["Condition can eventually become false"]
+    N1 --> N2
+    N2 --> N3
+    N3 --> N4
 ```
 
 Without update, loop may never stop.
@@ -342,22 +348,27 @@ One iteration is one complete pass through loop body.
 
 Iteration временная шкала:
 
-```text
-Iteration 1
-│
-├── condition true
-├── body runs
-└── update
-
-Iteration 2
-│
-├── condition true
-├── body runs
-└── update
-
-Stop
-│
-└── condition false
+```mermaid
+flowchart TD
+    N1["Iteration 1"]
+    N2["condition true"]
+    N3["body runs"]
+    N4["update"]
+    N5["Iteration 2"]
+    N6["condition true"]
+    N7["body runs"]
+    N8["update"]
+    N9["Stop"]
+    N10["condition false"]
+    N1 --> N2
+    N1 --> N3
+    N1 --> N4
+    N1 --> N5
+    N5 --> N6
+    N5 --> N7
+    N5 --> N8
+    N5 --> N9
+    N9 --> N10
 ```
 
 Iteration отвечает:
@@ -382,16 +393,21 @@ while (responseIndex < totalResponses) {
 
 `while` схема:
 
-```text
-while condition
-│
-├── true
-│   ├── run body
-│   ├── update
-│   └── check condition again
-│
-└── false
-    └── exit loop
+```mermaid
+flowchart TD
+    N1["while condition"]
+    N2["true"]
+    N3["run body"]
+    N4["update"]
+    N5["check condition again"]
+    N6["false"]
+    N7["exit loop"]
+    N1 --> N2
+    N1 --> N3
+    N1 --> N4
+    N1 --> N5
+    N1 --> N6
+    N6 --> N7
 ```
 
 Используйте `while`, когда количество повторений заранее неизвестно.
@@ -411,17 +427,17 @@ do {
 
 `do...while` схема:
 
-```text
-Run body once
-│
-▼
-Update
-│
-▼
-Check condition
-│
-├── true  → repeat
-└── false → stop
+```mermaid
+flowchart TD
+    N1["Run body once"]
+    N2["Update"]
+    N3["Check condition"]
+    N4["true → repeat"]
+    N5["false → stop"]
+    N1 --> N2
+    N2 --> N3
+    N3 --> N4
+    N3 --> N5
 ```
 
 Key idea:
@@ -456,14 +472,15 @@ for (
 
 Expanded lifecycle:
 
-```text
-let responseIndex = 0
-│
-▼
-responseIndex < 3?
-│
-├── true  → body → responseIndex += 1 → condition again
-└── false → exit
+```mermaid
+flowchart TD
+    N1["let responseIndex = 0"]
+    N2["responseIndex &lt; 3?"]
+    N3["true → body → responseIndex += 1 → condition again"]
+    N4["false → exit"]
+    N1 --> N2
+    N2 --> N3
+    N2 --> N4
 ```
 
 Используйте `for`, когда у loop есть понятный counter-like lifecycle.
@@ -484,14 +501,15 @@ for (let attempt = 1; attempt <= 3; attempt += 1) {
 
 `break` схема:
 
-```text
-Loop running
-│
-▼
-Condition inside body
-│
-├── break reached → exit loop now
-└── no break      → continue normal lifecycle
+```mermaid
+flowchart TD
+    N1["Loop running"]
+    N2["Condition inside body"]
+    N3["break reached → exit loop now"]
+    N4["нет break → продолжить normal lifecycle"]
+    N1 --> N2
+    N2 --> N3
+    N2 --> N4
 ```
 
 Используйте `break`, когда loop нашёл нужное или должен остановиться раньше.
@@ -512,17 +530,15 @@ for (let responseIndex = 0; responseIndex < 3; responseIndex += 1) {
 
 `continue` схема:
 
-```text
-Current iteration
-│
-▼
-continue reached
-│
-▼
-skip rest of body
-│
-▼
-go to update / next condition check
+```mermaid
+flowchart TD
+    N1["Current iteration"]
+    N2["продолжить reached"]
+    N3["skip rest of body"]
+    N4["go to update / next condition check"]
+    N1 --> N2
+    N2 --> N3
+    N3 --> N4
 ```
 
 Используйте `continue`, когда текущий item нужно пропустить, но loop должен продолжаться.
@@ -541,20 +557,17 @@ while (attempt <= 3) {
 
 Infinite loop схема:
 
-```text
-attempt = 1
-│
-▼
-attempt <= 3 is true
-│
-▼
-body runs
-│
-▼
-attempt is still 1
-│
-▼
-condition true again forever
+```mermaid
+flowchart TD
+    N1["attempt = 1"]
+    N2["attempt &lt;= 3 is true"]
+    N3["body runs"]
+    N4["attempt is still 1"]
+    N5["condition true again forever"]
+    N1 --> N2
+    N2 --> N3
+    N3 --> N4
+    N4 --> N5
 ```
 
 Avoid it by ensuring update changes loop состояние:
@@ -567,17 +580,19 @@ attempt += 1;
 
 Choosing loop type:
 
-```text
-Known counter range?
-│
-├── yes → for
-└── no
-    │
-    ▼
-    Need to run body at least once?
-    │
-    ├── yes → do...while
-    └── no  → while
+```mermaid
+flowchart TD
+    N1["Known counter range?"]
+    N2["да → for"]
+    N3["нет"]
+    N4["Need to run body at least once?"]
+    N5["да → do...while"]
+    N6["нет → while"]
+    N1 --> N2
+    N1 --> N3
+    N1 --> N4
+    N4 --> N5
+    N4 --> N6
 ```
 
 This is a guideline, not a law.
@@ -590,78 +605,74 @@ Future chapters will introduce `for...of`, `for...in`, array iteration methods a
 
 На концептуальном уровне:
 
-```text
-Loop starts
-│
-▼
-Initialize state
-│
-▼
-Evaluate condition
-│
-▼
-If true, execute body
-│
-▼
-Update state
-│
-▼
-Evaluate condition again
-│
-▼
-Stop when condition is false
+```mermaid
+flowchart TD
+    N1["Loop starts"]
+    N2["Initialize state"]
+    N3["Evaluate condition"]
+    N4["If true, выполнить body"]
+    N5["Update state"]
+    N6["Evaluate condition again"]
+    N7["Stop when condition is false"]
+    N1 --> N2
+    N2 --> N3
+    N3 --> N4
+    N4 --> N5
+    N5 --> N6
+    N6 --> N7
 ```
 
 Complete loop picture:
 
-```text
-Initialization
-│
-▼
-Condition
-│
-├── false
-│   └── exit loop
-│
-└── true
-    │
-    ▼
-    Body
-    │
-    ├── normal execution
-    ├── break    → exit loop
-    └── continue → next iteration
-    │
-    ▼
-    Update
-    │
-    └── back to condition
+```mermaid
+flowchart TD
+    N1["Initialization"]
+    N2["Condition"]
+    N3["false"]
+    N4["exit loop"]
+    N5["true"]
+    N6["Body"]
+    N7["normal выполнение"]
+    N8["break → exit loop"]
+    N9["продолжить → next iteration"]
+    N10["Update"]
+    N11["back to condition"]
+    N1 --> N2
+    N2 --> N3
+    N2 --> N4
+    N2 --> N5
+    N2 --> N6
+    N6 --> N7
+    N6 --> N8
+    N6 --> N9
+    N2 --> N10
+    N10 --> N11
 ```
 
 Текущее место в модели JavaScript:
 
-```text
-Conditionals
-│
-└── make one decision
-    │
-    ▼
-Loops
-│
-└── repeat decisions/actions
+```mermaid
+flowchart TD
+    N1["Conditionals"]
+    N2["make one decision"]
+    N3["Loops"]
+    N4["repeat decisions/actions"]
+    N1 --> N2
+    N1 --> N3
+    N3 --> N4
 ```
 
 Переход к Error Handling:
 
-```text
-Loop body runs
-│
-▼
-Something can fail
-│
-▼
-Next chapter:
-What should happen if an error occurs during execution?
+```mermaid
+flowchart TD
+    N1["Loop body runs"]
+    N2["Something can fail"]
+    N3["Next chapter:"]
+    N4["What should happen if an error occurs during выполнение?"]
+    N1 --> N2
+    N2 --> N3
+    N3 --> N4
 ```
 
 ---
@@ -670,62 +681,69 @@ What should happen if an error occurs during execution?
 
 ### Factory conveyor
 
-```text
-Item enters conveyor
-│
-▼
-Inspection step repeats
-│
-▼
-Next item
+```mermaid
+flowchart TD
+    N1["Item enters conveyor"]
+    N2["Inspection step repeats"]
+    N3["Next item"]
+    N1 --> N2
+    N2 --> N3
 ```
 
 Loop is the conveyor that keeps processing items until there are no more items.
 
 ### Checklist
 
-```text
-Checklist
-│
-├── item 1 checked
-├── item 2 checked
-├── item 3 checked
-└── stop when list ends
+```mermaid
+flowchart TD
+    N1["Checklist"]
+    N2["item 1 checked"]
+    N3["item 2 checked"]
+    N4["item 3 checked"]
+    N5["stop when list ends"]
+    N1 --> N2
+    N1 --> N3
+    N1 --> N4
+    N1 --> N5
 ```
 
 ### Assembly line
 
-```text
-Same operation
-│
-├── applied to item A
-├── applied to item B
-└── applied to item C
+```mermaid
+flowchart TD
+    N1["Same operation"]
+    N2["applied to item A"]
+    N3["applied to item B"]
+    N4["applied to item C"]
+    N1 --> N2
+    N1 --> N3
+    N1 --> N4
 ```
 
 ### Repeated inspection
 
 QA loop:
 
-```text
-Response 1 → validate
-Response 2 → validate
-Response 3 → validate
+```mermaid
+flowchart TD
+    N1["Response 1 → validate"]
+    N2["Response 2 → validate"]
+    N3["Response 3 → validate"]
+    N1 --> N2
+    N2 --> N3
 ```
 
 ### Security gate checking many visitors
 
-```text
-Visitor arrives
-│
-▼
-Check badge
-│
-▼
-Allow or reject
-│
-▼
-Next visitor
+```mermaid
+flowchart TD
+    N1["Visitor arrives"]
+    N2["Check badge"]
+    N3["Allow or reject"]
+    N4["Next visitor"]
+    N1 --> N2
+    N2 --> N3
+    N3 --> N4
 ```
 
 Loop = repeated execution until stopping condition is reached.
@@ -867,9 +885,11 @@ Condition moves away from stopping.
 
 ### Ошибка 4. Confuse `break` and `continue`
 
-```text
-break    → stop loop
-continue → skip current iteration
+```mermaid
+flowchart TD
+    N1["break → stop loop"]
+    N2["продолжить → skip current iteration"]
+    N1 --> N2
 ```
 
 ### Ошибка 5. Put too much logic inside one loop
@@ -915,12 +935,15 @@ for (let index = 0; index < responses.length; index += 1) {
 
 QA validation example:
 
-```text
-responses
-│
-├── response 0 → validate
-├── response 1 → validate
-└── response 2 → validate
+```mermaid
+flowchart TD
+    N1["responses"]
+    N2["response 0 → validate"]
+    N3["response 1 → validate"]
+    N4["response 2 → validate"]
+    N1 --> N2
+    N1 --> N3
+    N1 --> N4
 ```
 
 ### Checking table rows
@@ -937,20 +960,26 @@ Detailed DOM and Playwright APIs will be studied later.
 
 ### Processing test data
 
-```text
-user 1 → create test data
-user 2 → create test data
-user 3 → create test data
+```mermaid
+flowchart TD
+    N1["user 1 → создать test data"]
+    N2["user 2 → создать test data"]
+    N3["user 3 → создать test data"]
+    N1 --> N2
+    N2 --> N3
 ```
 
 ### Polling until condition changes
 
 Polling means repeat check until status changes or max attempts reached.
 
-```text
-attempt 1 → status pending
-attempt 2 → status pending
-attempt 3 → status ready
+```mermaid
+flowchart TD
+    N1["attempt 1 → status pending"]
+    N2["attempt 2 → status pending"]
+    N3["attempt 3 → status ready"]
+    N1 --> N2
+    N2 --> N3
 ```
 
 Asynchronous polling will be studied later.
@@ -976,15 +1005,21 @@ What if the same decision or action must happen many times?
 
 Основная модель:
 
-```text
-A loop repeats an algorithm.
-Each iteration evaluates whether repetition should continue.
-Every loop consists of:
-│
-├── initialization
-├── condition
-├── body
-└── update
+```mermaid
+flowchart TD
+    N1["A loop repeats an algorithm."]
+    N2["Each iteration evaluates whether repetition should продолжить."]
+    N3["Every loop consists of:"]
+    N4["initialization"]
+    N5["condition"]
+    N6["body"]
+    N7["update"]
+    N3 --> N4
+    N3 --> N5
+    N3 --> N6
+    N3 --> N7
+    N1 --> N2
+    N2 --> N3
 ```
 
 Main loop forms:
@@ -997,9 +1032,11 @@ for
 
 Control tools:
 
-```text
-break    → stop loop
-continue → skip current iteration
+```mermaid
+flowchart TD
+    N1["break → stop loop"]
+    N2["продолжить → skip current iteration"]
+    N1 --> N2
 ```
 
 Next chapter explains Error Handling:

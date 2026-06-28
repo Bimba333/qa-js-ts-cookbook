@@ -125,9 +125,11 @@ playground/context-simulation.js
 
 Цель мини-проекта — не сложный код, а ментальная симуляция:
 
-```text
-Global Context
-│
-└── runScenario Context
-    └── setupTestData Context
+```mermaid
+flowchart TD
+    N1["Global Context"]
+    N2["runScenario Context"]
+    N3["setupTestData Context"]
+    N1 --> N2
+    N2 --> N3
 ```
