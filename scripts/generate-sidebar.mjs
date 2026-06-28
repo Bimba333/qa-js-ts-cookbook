@@ -1,4 +1,3 @@
-cat > scripts/generate-sidebar.mjs <<'EOF'
 import fs from 'node:fs'
 import path from 'node:path'
 
