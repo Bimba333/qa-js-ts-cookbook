@@ -1,13 +1,15 @@
 {
-  "name": "js-ts-qa-book",
+  "name": "qa-javascript-book",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "private": true,
+  "type": "module",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "docs:sidebar": "node scripts/generate-sidebar.mjs",
+    "docs:dev": "npm run docs:sidebar && vitepress dev .",
+    "docs:build": "npm run docs:sidebar && vitepress build .",
+    "docs:preview": "vitepress preview ."
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "type": "commonjs"
+  "devDependencies": {
+    "vitepress": "^1.6.4"
+  }
 }
