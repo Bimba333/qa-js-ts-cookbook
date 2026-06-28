@@ -25,22 +25,3 @@ markdown_extensions:
       alternate_style: true
   - toc:
       permalink: true
-
-nav:
-  - Введение:
-      - О курсе: 00-introduction/01-about-course.md
-      - Как учиться: 00-introduction/02-how-to-study.md
-      - Структура курса: 00-introduction/03-course-structure.md
-      - Среда разработки: 00-introduction/04-development-environment.md
-
-  - JavaScript:
-      - 01. Что такое JavaScript: 01-javascript/01-what-is-javascript.md
-      - 02. Как работает JavaScript: 01-javascript/02-how-javascript-works.md
-      - 03. Контекст выполнения: 01-javascript/03-execution-context.md
-      - 04. Call Stack: 01-javascript/04-call-stack.md
-      - 05. Память: 01-javascript/05-memory.md
-      - 06. Переменные: 01-javascript/06-variables.md
-      - 07. Scope: 01-javascript/07-scope.md
-      - 08. Lexical Environment: 01-javascript/08-lexical-environment.md
-      - 09. Hoisting: 01-javascript/09-hoisting.md
-      - 10. Temporal Dead Zone: 01-javascript/10-temporal-dead-zone.md
