@@ -4,60 +4,60 @@
 
 ### 1. Зачем JavaScript нужен Call Stack?
 
-Ответ: чтобы управлять active function calls.
+Ответ: чтобы управлять активными вызовами функций.
 
-Объяснение: stack remembers current function and callers.
+Объяснение: Call Stack помнит текущую функцию и вызывающие функции.
 
-Ошибка: думать, что nested calls complete without return tracking.
+Ошибка: думать, что вложенные вызовы завершаются без отслеживания возврата.
 
-QA связь: stack trace in tests shows helper call chain.
+QA связь: stack trace в тестах показывает цепочку вызовов helpers.
 
-### 2. Что происходит со stack при function call?
+### 2. Что происходит с Call Stack при вызове функции?
 
-Ответ: new frame is pushed on top.
+Ответ: новый Execution Context помещается наверх.
 
-Объяснение: called function becomes current execution.
+Объяснение: вызванная функция становится текущим выполнением.
 
-Ошибка: считать, что caller disappears.
+Ошибка: считать, что вызывающая функция исчезает.
 
-QA связь: test waits while helper runs.
+QA связь: тест ожидает, пока helper выполняется.
 
 ### 3. Что происходит со stack, когда function завершается?
 
-Ответ: its frame is popped.
+Ответ: ее Execution Context снимается с Call Stack.
 
-Объяснение: execution returns to caller.
+Объяснение: выполнение возвращается к вызывающей функции.
 
-Ошибка: забыть return flow.
+Ошибка: забыть поток возврата.
 
-QA связь: after helper finishes, test continues.
+QA связь: после завершения helper тест продолжается.
 
 ### 4. Почему после `c()` JavaScript возвращается в `b()`?
 
-Ответ: because `b()` is the caller below `c()` on Call Stack.
+Ответ: потому что `b()` — вызывающая функция под `c()` в Call Stack.
 
-Объяснение: when `c` frame pops, `b` frame becomes top.
+Объяснение: когда Execution Context `c` снимается, Execution Context `b` становится верхним.
 
-Ошибка: ожидать jump to global immediately.
+Ошибка: ожидать немедленный переход к глобальному коду.
 
-QA связь: assertion helper returns to test helper, not directly to runner.
+QA связь: assertion helper возвращается к test helper, а не сразу к раннеру.
 
-### 5. Что означает правило: выполняется top frame?
+### 5. Что означает правило: выполняется верхний Execution Context?
 
-Ответ: JavaScript executes only the function frame at the top of Call Stack.
+Ответ: JavaScript выполняет только Execution Context наверху Call Stack.
 
-Объяснение: synchronous execution has one current frame.
+Объяснение: у синхронного выполнения есть один текущий Execution Context.
 
-Ошибка: думать, что `a`, `b`, `c` run simultaneously.
+Ошибка: думать, что `a`, `b`, `c` выполняются одновременно.
 
-QA связь: synchronous test helper chain executes step by step.
+QA связь: синхронная цепочка test helpers выполняется шаг за шагом.
 
 ## Чтение кода
 
 Ответ:
 
 ```text
-top
+верх
 │
 ├── c
 ├── b
@@ -65,11 +65,11 @@ top
 └── Global
 ```
 
-Объяснение: `a()` called `b()`, and `b()` called `c()`.
+Объяснение: `a()` вызвала `b()`, а `b()` вызвала `c()`.
 
-Ошибка: draw `a` on top while `c` is executing.
+Ошибка: рисовать `a` наверху, когда выполняется `c`.
 
-QA связь: top stack frame is where the current failure usually happens.
+QA связь: верхний Execution Context обычно показывает место текущего сбоя.
 
 ## Предскажите результат выполнения
 
@@ -84,31 +84,31 @@ leave b
 leave a
 ```
 
-Объяснение: calls go down into nested functions; completion returns back outward.
+Объяснение: вызовы идут внутрь вложенных функций; завершение возвращается обратно наружу.
 
-Ошибка: print all enter lines and then forget leave order.
+Ошибка: напечатать все строки `enter`, а затем забыть порядок `leave`.
 
-QA связь: setup helper completes before caller continues.
+QA связь: setup helper завершается до того, как вызывающий код продолжит работу.
 
-## Debugging
+## Отладка
 
-Ответ: error happened in `c`; calls came through `b`, then `a`.
+Ответ: ошибка возникла в `c`; выполнение пришло туда через `b`, затем через `a`.
 
-Объяснение: stack trace top shows error location, lower lines show callers.
+Объяснение: верх stack trace показывает место ошибки, нижние строки показывают вызывающие функции.
 
 Ошибка: fixing `a` when bug is inside `c`.
 
-QA связь: Playwright helper stack traces are read the same way.
+QA связь: stack traces helpers в Playwright читаются так же.
 
-## QA analogy
+## QA-аналогия
 
-Ответ: top stack frame corresponds to currently running assertion/helper.
+Ответ: верхний Execution Context соответствует текущему assertion/helper.
 
-Объяснение: if assertion runs now, test and helper wait below it.
+Объяснение: если сейчас выполняется assertion, тест и helper ждут ниже.
 
-Ошибка: reading stack as chronological list only.
+Ошибка: читать stack только как хронологический список.
 
-QA связь: current failing helper is usually near the top.
+QA связь: текущий падающий helper обычно находится ближе к верху.
 
 ## Мини-сценарий
 
@@ -138,9 +138,9 @@ a();
 Объяснение:
 
 ```text
-push a -> push b -> push c -> pop c -> pop b -> pop a
+поместить a -> поместить b -> поместить c -> снять c -> снять b -> снять a
 ```
 
-Ошибка: pop caller before callee.
+Ошибка: снимать вызывающую функцию раньше вызванной.
 
-QA связь: nested helpers finish in reverse order of calls.
+QA связь: вложенные helpers завершаются в порядке, обратном вызовам.

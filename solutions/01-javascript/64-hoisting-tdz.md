@@ -4,63 +4,63 @@
 
 ### 1. Почему hoisting не означает перемещение строк кода?
 
-Ответ: because hoisting is preparation of declarations.
+Ответ: потому что Hoisting — это подготовка объявлений.
 
-Объяснение: source code order stays the same; environment is prepared before execution.
+Объяснение: порядок исходного кода остается тем же; среда выполнения подготавливается до выполнения.
 
-Ошибка: imagine JavaScript physically moves declarations.
+Ошибка: представлять, что JavaScript физически перемещает объявления.
 
-QA связь: setup availability is not the same as moving test lines.
+QA связь: доступность подготовки — не то же самое, что перемещение строк теста.
 
-### 2. Почему function declaration можно вызвать до строки declaration?
+### 2. Почему объявление функции можно вызвать до строки объявления?
 
-Ответ: function declaration is registered as callable during Creation Phase.
+Ответ: объявление функции регистрируется во время Creation Phase как функция, которую можно вызвать.
 
-Объяснение: by Execution Phase, name already points to function.
+Объяснение: к Execution Phase имя уже указывает на функцию.
 
-Ошибка: apply `let` TDZ behavior to function declarations.
+Ошибка: применять поведение TDZ для `let` к объявлениям функций.
 
-QA связь: helper declarations can be called earlier, though readability may suffer.
+QA связь: объявления helpers можно вызвать раньше, хотя читаемость может пострадать.
 
-### 3. Что получает `var` during Creation Phase?
+### 3. Что получает `var` во время Creation Phase?
 
-Ответ: initial value `undefined`.
+Ответ: начальное значение `undefined`.
 
-Объяснение: reading before assignment returns `undefined`.
+Объяснение: чтение до присваивания возвращает `undefined`.
 
-Ошибка: expect ReferenceError for `var`.
+Ошибка: ожидать ReferenceError для `var`.
 
-QA связь: `undefined` can hide setup order bugs.
+QA связь: `undefined` может скрывать ошибки порядка подготовки.
 
-### 4. В каком state находятся `let` и `const` до initialization?
+### 4. В каком состоянии находятся `let` и `const` до инициализации?
 
-Ответ: registered but inaccessible.
+Ответ: зарегистрированы, но недоступны.
 
-Объяснение: this period is TDZ.
+Объяснение: этот период называется TDZ.
 
-Ошибка: say they are not hoisted.
+Ошибка: говорить, что они не участвуют в Hoisting.
 
-QA связь: config declared with `const` must be initialized before helper reads it.
+QA связь: конфигурация, объявленная через `const`, должна быть инициализирована до чтения helper.
 
-### 5. Чем `undefined` before assignment отличается от TDZ?
+### 5. Чем `undefined` до присваивания отличается от TDZ?
 
-Ответ: `undefined` is accessible value; TDZ forbids access.
+Ответ: `undefined` — доступное значение; TDZ запрещает доступ.
 
-Объяснение: `var` returns `undefined`; `let`/`const` throw ReferenceError before initialization.
+Объяснение: `var` возвращает `undefined`; `let`/`const` выбрасывают ReferenceError до инициализации.
 
-Ошибка: treat both as same missing value.
+Ошибка: считать это одним и тем же отсутствующим значением.
 
-QA связь: ReferenceError gives clearer setup order failure.
+QA связь: ReferenceError яснее показывает ошибку порядка подготовки.
 
 ## Чтение кода
 
-Ответ: `a`, `b`, and `c` are function declarations registered during Creation Phase.
+Ответ: `a`, `b` и `c` — объявления функций, зарегистрированные во время Creation Phase.
 
-Объяснение: when Execution Phase reaches `a()`, `a` is already callable.
+Объяснение: когда Execution Phase доходит до `a()`, `a` уже можно вызвать.
 
-Ошибка: think lines are moved above `a()`.
+Ошибка: думать, что строки перемещаются выше `a()`.
 
-QA связь: helper availability can be prepared before test execution line.
+QA связь: доступность helper может быть подготовлена до строки выполнения теста.
 
 ## Предскажите результат выполнения
 
@@ -71,31 +71,31 @@ undefined
 inside c
 ```
 
-Объяснение: `var value` is registered with `undefined`, then assignment stores `'inside c'`.
+Объяснение: `var value` регистрируется со значением `undefined`, затем присваивание сохраняет `'inside c'`.
 
-Ошибка: expect ReferenceError.
+Ошибка: ожидать ReferenceError.
 
-QA связь: `var` can hide missing initialization in old helper code.
+QA связь: `var` может скрывать отсутствующую инициализацию в старом коде helper.
 
-## Debugging
+## Отладка
 
-Ответ: `message` is in TDZ at `console.log(message)`.
+Ответ: `message` находится в TDZ в момент `console.log(message)`.
 
-Объяснение: identifier exists, but initialization line has not executed yet.
+Объяснение: идентификатор существует, но строка инициализации еще не выполнилась.
 
-Ошибка: say JavaScript does not know this name.
+Ошибка: говорить, что JavaScript не знает это имя.
 
-QA связь: reading `const` test data before initialization fails early.
+QA связь: чтение тестовых данных из `const` до инициализации быстро падает.
 
-## QA analogy
+## QA-аналогия
 
-Ответ: `const baseUrl` is registered but inaccessible until initialization.
+Ответ: `const baseUrl` зарегистрирован, но недоступен до инициализации.
 
-Объяснение: function declarations become callable; `const` does not become readable before its line.
+Объяснение: объявления функций становятся доступными для вызова; `const` не становится доступным для чтения до своей строки.
 
-Ошибка: treat all declarations as same kind of hoisting.
+Ошибка: считать все объявления одинаковыми с точки зрения Hoisting.
 
-QA связь: initialize test config before helper reads it.
+QA связь: инициализируйте тестовую конфигурацию до того, как helper ее читает.
 
 ## Мини-сценарий
 
@@ -109,22 +109,22 @@ function run() {
 }
 ```
 
-Lifecycle: function declaration registered as callable before execution.
+Жизненный цикл: объявление функции зарегистрировано как доступное для вызова до выполнения.
 
 ```javascript
 console.log(status);
 var status = 'ready';
 ```
 
-Lifecycle: `status` registered with `undefined`, then assigned.
+Жизненный цикл: `status` зарегистрирован со значением `undefined`, затем получает значение.
 
 ```javascript
 let safeStatus = 'ready';
 console.log(safeStatus);
 ```
 
-Lifecycle: `safeStatus` becomes accessible after initialization.
+Жизненный цикл: `safeStatus` становится доступен после инициализации.
 
-Ошибка: describe `let` as "not hoisted".
+Ошибка: описывать `let` как "не участвует в Hoisting".
 
-QA связь: safe setup order reduces test helper failures.
+QA связь: безопасный порядок подготовки уменьшает падения тестовых helpers.

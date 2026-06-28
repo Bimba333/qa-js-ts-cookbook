@@ -9,7 +9,7 @@ sort()
 reverse()
 ```
 
-Там мы управляли array order. Теперь уровень меняется: нас интересует не метод массива, а сам запуск JavaScript-кода.
+Там мы управляли порядком массива. Теперь уровень меняется: нас интересует не метод массива, а сам запуск JavaScript-кода.
 
 Дальше модуль будет идти как одна система:
 
@@ -37,11 +37,11 @@ Hoisting + TDZ
 Для этой главы нужно понимать:
 
 * что JavaScript выполняет код последовательно;
-* что function body выполняется только после вызова;
-* что variables дают доступ к values;
-* что раньше уже были изучены functions, variables и objects.
+* что тело функции выполняется только после вызова;
+* что переменные дают доступ к значениям;
+* что раньше уже были изучены функции, переменные и объекты.
 
-Не требуется знать внутреннее устройство конкретного engine. Эта глава строит conceptual model.
+Не требуется знать внутреннее устройство конкретного движка. Эта глава строит концептуальную модель.
 
 ## Цели обучения
 
@@ -49,8 +49,8 @@ Hoisting + TDZ
 
 * зачем нужен Execution Context;
 * что создается перед выполнением кода;
-* чем global execution отличается от function execution;
-* почему function call создает отдельную среду выполнения;
+* чем выполнение на уровне файла отличается от выполнения функции;
+* почему вызов функции создает отдельную среду выполнения;
 * как эта тема готовит Call Stack.
 
 ## Мотивация
@@ -74,7 +74,7 @@ function a() {
 a();
 ```
 
-Видимый output простой:
+Видимый вывод простой:
 
 ```text
 inside c
@@ -84,87 +84,87 @@ inside c
 
 * какой код выполняется на верхнем уровне;
 * что такое `a`, `b` и `c`;
-* когда выполнять body функции `a`;
-* где появится local value `message`;
-* что создать при вызове каждой function.
+* когда выполнять тело функции `a`;
+* где появится локальное значение `message`;
+* что создать при вызове каждой функции.
 
 Execution Context отвечает на первый слой этих вопросов.
 
 ## Теория
 
-Execution Context — это conceptual unit execution. Это среда, в которой JavaScript выполняет код.
+Execution Context — это единица запуска кода. Это среда, в которой JavaScript выполняет код.
 
-Когда запускается файл, сначала создается Global Execution Context:
+Когда запускается файл, сначала создается глобальный Execution Context:
 
 ```text
-JavaScript file
+JavaScript-файл
 │
 ▼
 Global Execution Context
 │
 ▼
-top-level code can run
+код верхнего уровня может выполняться
 ```
 
-Когда вызывается function, создается Function Execution Context:
+Когда происходит вызов функции, создается Function Execution Context:
 
 ```text
-function call
+вызов функции
 │
 ▼
 Function Execution Context
 │
 ▼
-function body can run
+тело функции может выполняться
 ```
 
-Важно: function declaration не означает execution. Function body начнет выполняться только после call.
+Важно: объявление функции не означает выполнение. Тело функции начнет выполняться только после вызова.
 
 ## Внутренний механизм
 
-Для нашего сквозного примера sequence выглядит так:
+Для нашего сквозного примера последовательность выглядит так:
 
 ```text
-program starts
+программа запускается
 │
 ▼
-Global Execution Context is created
+создается Global Execution Context
 │
 ▼
-functions a, b, c are available as callable functions
+функции a, b, c доступны для вызова
 │
 ▼
-a() is called
+происходит вызов a()
 │
 ▼
-Execution Context for a() is created
+создается Execution Context для a()
 ```
 
 Затем `a()` вызывает `b()`:
 
 ```text
-a() body
+тело a()
 │
 ▼
-b() call
+вызов b()
 │
 ▼
-Execution Context for b() is created
+создается Execution Context для b()
 ```
 
 Затем `b()` вызывает `c()`:
 
 ```text
-b() body
+тело b()
 │
 ▼
-c() call
+вызов c()
 │
 ▼
-Execution Context for c() is created
+создается Execution Context для c()
 ```
 
-Внутри `c()` появляется local value:
+Внутри `c()` появляется локальное значение:
 
 ```text
 c() context
@@ -173,23 +173,23 @@ c() context
 └── console.log(message)
 ```
 
-В этой главе важно только одно: перед выполнением кода JavaScript создает execution unit, в котором этот код может выполняться.
+В этой главе важно только одно: перед выполнением кода JavaScript создает единицу запуска, в которой этот код может выполняться.
 
 ## Главная ментальная модель
 
-Главная модель главы: **execution start unit**.
+Главная модель главы: **единица запуска выполнения**.
 
 ```text
-code wants to run
+код должен выполниться
 │
 ▼
-Execution Context is created
+создается Execution Context
 │
 ▼
-code has an execution environment
+у кода есть среда выполнения
 ```
 
-Execution Context можно представить как рабочую область для выполнения кода. Это не объект, который вы создаете руками, а модель того, что JavaScript подготавливает перед execution.
+Execution Context можно представить как рабочую область для выполнения кода. Это не объект, который вы создаете руками, а модель того, что JavaScript подготавливает перед выполнением.
 
 ## Примеры
 
@@ -212,44 +212,44 @@ node examples/01-javascript/chapter-61/04-context-per-call.js
 
 ## Практическое использование
 
-Execution Context нужен не для того, чтобы писать специальный syntax. Он нужен для чтения поведения программы.
+Execution Context нужен не для того, чтобы писать специальный синтаксис. Он нужен для чтения поведения программы.
 
 Он помогает понять:
 
-* почему function body не выполняется до call;
-* почему local variables появляются только во время function execution;
-* почему следующий вызов той же function получает новую execution unit;
-* почему ошибка внутри function должна рассматриваться в контексте конкретного call.
+* почему тело функции не выполняется до вызова;
+* почему локальные переменные появляются только во время выполнения функции;
+* почему следующий вызов той же функции получает новую единицу запуска;
+* почему ошибка внутри функции должна рассматриваться в контексте конкретного вызова.
 
 ## Использование в Automation QA
 
-В Automation QA похожая идея видна в test runner:
+В Automation QA похожая идея видна в тестовом раннере:
 
 ```text
-test file
+тестовый файл
 │
 ▼
-runner prepares execution
+раннер готовит выполнение
 │
 ▼
-test function runs
+тестовая функция выполняется
 ```
 
-Не нужно перегружать аналогию. Достаточно помнить: как test runner создает среду для test execution, так JavaScript создает Execution Context для running code.
+Не нужно перегружать аналогию. Достаточно помнить: как тестовый раннер создает среду для выполнения теста, так JavaScript создает Execution Context для выполняемого кода.
 
 ## Распространённые ошибки
 
-### Ошибка 1. Думать, что function declaration сразу выполняет function body
+### Ошибка 1. Думать, что объявление функции сразу выполняет тело функции
 
-Declaration делает function available. Execution starts only after call.
+Объявление делает функцию доступной. Выполнение начинается только после вызова.
 
 ### Ошибка 2. Смешивать Global Execution Context и Function Execution Context
 
-Top-level code и function body выполняются в разных execution units.
+Код верхнего уровня и тело функции выполняются в разных единицах запуска.
 
-### Ошибка 3. Искать детали конкретного engine
+### Ошибка 3. Искать детали конкретного движка
 
-В этой главе нужна conceptual model, а не детали устройства конкретного JavaScript engine.
+В этой главе нужна концептуальная модель, а не детали устройства конкретного движка JavaScript.
 
 ## Практика
 
@@ -267,21 +267,31 @@ solutions/01-javascript/61-execution-context.md
 
 ## Краткие итоги
 
-Execution Context — это execution unit, который JavaScript создает перед выполнением кода.
+Execution Context — это единица запуска, которую JavaScript создает перед выполнением кода.
 
 Главное:
 
-* file execution starts with Global Execution Context;
-* function call creates Function Execution Context;
-* function body runs only after invocation;
+* выполнение файла начинается с Global Execution Context;
+* вызов функции создает Function Execution Context;
+* тело функции выполняется только после вызова;
 * Execution Context отвечает на вопрос: где сейчас выполняется код?
 
 ## Переход к следующей главе
 
-Теперь понятно, что function calls создают новые execution contexts.
+Теперь понятно, что вызовы функций создают новые Execution Context.
+
+```text
+Вызов функции
+│
+▼
+JavaScript создает Function Execution Context
+│
+▼
+Этот Execution Context дальше управляется через Call Stack
+```
 
 Следующий вопрос:
 
-> Если contexts становится несколько, как JavaScript понимает, какой выполняется сейчас?
+> Если Execution Context становится несколько, как JavaScript понимает, какой выполняется сейчас?
 
 Ответ ведет к Call Stack.

@@ -2,65 +2,65 @@
 
 ## Концептуальные вопросы
 
-### 1. Зачем программе memory во время execution?
+### 1. Зачем программе нужна память во время выполнения?
 
-Ответ: to keep values available between operations.
+Ответ: чтобы значения оставались доступными между операциями.
 
-Объяснение: without memory, variables and objects could not be read later.
+Объяснение: без памяти переменные и объекты нельзя было бы прочитать позже.
 
-Ошибка: treating each line as isolated.
+Ошибка: считать каждую строку изолированной.
 
-QA связь: test data must stay available across test steps.
+QA связь: тестовые данные должны оставаться доступными между шагами теста.
 
-### 2. Что в conceptual model хранится на Stack?
+### 2. Что в этой модели хранится на Stack?
 
-Ответ: active frames, local primitive values and references.
+Ответ: активные Execution Context, локальные примитивные значения и ссылки.
 
-Объяснение: Stack follows active function calls.
+Объяснение: Stack следует за активными вызовами функций.
 
-Ошибка: put long-lived object contents directly into stack frame.
+Ошибка: помещать содержимое долгоживущего объекта прямо в Execution Context на Stack.
 
-QA связь: helper-local values belong to active helper execution.
+QA связь: локальные значения helper относятся к активному выполнению этого helper.
 
-### 3. Что в conceptual model хранится в Heap?
+### 3. Что в этой модели хранится в Heap?
 
-Ответ: object values.
+Ответ: объекты.
 
-Объяснение: objects can be referenced from variables and shared between calls.
+Объяснение: на объекты можно ссылаться из переменных и разделять их между вызовами.
 
-Ошибка: думать, что variable contains entire object.
+Ошибка: думать, что переменная содержит весь объект.
 
-QA связь: shared test data object can be seen by multiple helpers.
+QA связь: общий объект с тестовыми данными может быть виден нескольким helpers.
 
-### 4. Почему variable with object value удобно рисовать как reference?
+### 4. Почему переменную со значением-объектом удобно рисовать как ссылку?
 
-Ответ: because multiple variables can point to same object.
+Ответ: потому что несколько переменных могут указывать на один объект.
 
-Объяснение: mutation through one variable is visible through another.
+Объяснение: изменение через одну переменную видно через другую.
 
-Ошибка: expecting object copy on assignment.
+Ошибка: ожидать копию объекта при присваивании.
 
-QA связь: payload mutation bugs often come from shared references.
+QA связь: ошибки изменения тела запроса часто появляются из-за общих ссылок.
 
-### 5. Почему Stack/Heap model не нужно считать точным описанием engine internals?
+### 5. Почему Stack/Heap model не нужно считать точным описанием устройства движка?
 
-Ответ: it is a practical conceptual model.
+Ответ: это практическая учебная модель.
 
-Объяснение: real engines may optimize storage, but observable behavior is explained well by this model.
+Объяснение: реальные движки могут хранить данные сложнее, но наблюдаемое поведение хорошо объясняется этой моделью.
 
-Ошибка: treating diagram as physical memory map.
+Ошибка: считать диаграмму физической картой памяти.
 
-QA связь: debugging needs behavior model, not engine internals.
+QA связь: для отладки нужна модель поведения, а не внутренности движка.
 
 ## Чтение кода
 
-Ответ: `c` frame is on Call Stack. `count` is local primitive value in that frame. Object `{ name: 'Anna' }` is represented in Heap. `user` keeps reference to that object.
+Ответ: Execution Context `c` находится в Call Stack. `count` — локальное примитивное значение в этом Execution Context. Объект `{ name: 'Anna' }` представлен в Heap. `user` хранит ссылку на этот объект.
 
-Объяснение: primitive and object values are modeled differently.
+Объяснение: примитивные значения и объекты в этой модели изображаются по-разному.
 
-Ошибка: say `user` directly contains whole object.
+Ошибка: говорить, что `user` напрямую содержит весь объект.
 
-QA связь: test helper may keep reference to a shared test data object.
+QA связь: test helper может хранить ссылку на общий объект с тестовыми данными.
 
 ## Предскажите результат выполнения
 
@@ -70,31 +70,31 @@ QA связь: test helper may keep reference to a shared test data object.
 active
 ```
 
-Объяснение: `sameUser` and `user` refer to the same object.
+Объяснение: `sameUser` и `user` ссылаются на один объект.
 
-Ошибка: expect `created`.
+Ошибка: ожидать `created`.
 
-QA связь: second helper can mutate data seen by first helper.
+QA связь: второй helper может изменить данные, которые видит первый helper.
 
-## Debugging
+## Отладка
 
-Ответ: `sameUser` is not a separate copy; it refers to same Heap object.
+Ответ: `sameUser` — не отдельная копия; она ссылается на тот же объект в Heap.
 
-Объяснение: assignment copies reference, not object contents.
+Объяснение: присваивание копирует ссылку, а не содержимое объекта.
 
-Ошибка: expecting independent object after assignment.
+Ошибка: ожидать независимый объект после присваивания.
 
-QA связь: shared payload mutation can break later assertions.
+QA связь: изменение общего тела запроса может сломать последующие проверки.
 
-## QA analogy
+## QA-аналогия
 
-Ответ: both helpers can hold references to same test data object.
+Ответ: оба helper могут хранить ссылки на один объект с тестовыми данными.
 
-Объяснение: if one helper mutates property, another reference sees changed object.
+Объяснение: если один helper меняет свойство, другая ссылка видит измененный объект.
 
-Ошибка: assume every helper gets deep copy automatically.
+Ошибка: считать, что каждый helper автоматически получает глубокую копию.
 
-QA связь: copy test data explicitly when isolation matters.
+QA связь: копируйте тестовые данные явно, если важна изоляция.
 
 ## Мини-сценарий
 
@@ -126,12 +126,12 @@ a();
 Объяснение:
 
 ```text
-c frame
+c context
 ├── count -> 3
-├── user -> reference ──► Heap object
-└── sameUser ───────────► same Heap object
+├── user -> ссылка ──► объект в Heap
+└── sameUser ───────► тот же объект в Heap
 ```
 
-Ошибка: draw two heap objects.
+Ошибка: рисовать два объекта в Heap.
 
-QA связь: two helpers may accidentally share one mutable object.
+QA связь: два helper могут случайно разделять один изменяемый объект.

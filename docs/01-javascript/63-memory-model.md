@@ -14,36 +14,36 @@ b()
 c()
 ```
 
-Call Stack показывает, какая function выполняется сейчас. Но execution frame должен хранить данные: local variables, primitive values, references to objects.
+Call Stack показывает, какая функция выполняется сейчас. Но Execution Context должен хранить данные: локальные переменные, примитивные значения и ссылки на объекты.
 
-Теперь вопрос не в order execution, а в storage.
+Теперь вопрос не в порядке выполнения, а в хранении данных.
 
 ## Главный вопрос
 
-> Где values и objects хранятся во время выполнения?
+> Где значения и объекты хранятся во время выполнения?
 
-Ответ этой главы: в conceptual Memory Model, который удобно объяснять через Stack и Heap.
+Ответ этой главы: в Memory Model, которую удобно объяснять через Stack и Heap.
 
 ## Предварительные требования
 
 Для этой главы нужно понимать:
 
-* что Call Stack управляет function calls;
-* что variables дают named access to values;
-* что primitive values и object values ведут себя по-разному;
-* что references уже объяснялись раньше.
+* что Call Stack управляет вызовами функций;
+* что переменные дают именованный доступ к значениям;
+* что примитивные значения и объекты ведут себя по-разному;
+* что ссылки уже объяснялись раньше.
 
-Это не глава о precise engine implementation. Stack/Heap здесь используются как practical conceptual model.
+Stack/Heap здесь используются как учебная модель. Реальные движки могут хранить данные сложнее, но для понимания поведения JavaScript эта модель достаточно точна.
 
 ## Цели обучения
 
 После главы вы будете понимать:
 
-* зачем программе memory;
-* как stack связан с active calls;
-* зачем heap нужен для objects;
-* почему primitive values и object references удобно рисовать по-разному;
-* как memory model помогает понять mutation.
+* зачем программе нужна память;
+* как Stack связан с активными вызовами;
+* зачем Heap нужен для объектов;
+* почему примитивные значения и ссылки на объекты удобно рисовать по-разному;
+* как Memory Model помогает понять изменение объектов.
 
 ## Мотивация
 
@@ -71,107 +71,105 @@ a();
 
 JavaScript должен где-то хранить:
 
-* number `3`;
-* name `count`;
-* object `{ name: 'Anna' }`;
-* reference from `user` to that object;
-* active function calls.
+* число `3`;
+* имя `count`;
+* объект `{ name: 'Anna' }`;
+* ссылку от `user` к этому объекту;
+* активные вызовы функций.
 
 ## Теория
 
-В conceptual model:
+В этой модели:
 
 ```text
 Stack
 │
-├── active function frames
-├── local primitive values
-└── references to objects
+├── активные Execution Context
+├── локальные примитивные значения
+└── ссылки на объекты
 
 Heap
 │
-└── object values
+└── объекты
 ```
 
-Stack удобно связывать с active execution:
+Stack удобно связывать с активным выполнением:
 
 ```text
-Call Stack frame
+Execution Context в Call Stack
 │
-├── local names
-└── local values/references
+├── локальные имена
+└── локальные значения/ссылки
 ```
 
-Heap удобно связывать с object storage:
+Heap удобно связывать с хранением объектов:
 
 ```text
-user variable
+переменная user
 │
 ▼
-reference
+ссылка
 │
 ▼
-object in Heap
+объект в Heap
 ```
-
-Важно: это учебная модель. Реальные engines могут хранить данные сложнее. Для понимания JavaScript behavior эта модель достаточно точна.
 
 ## Внутренний механизм
 
-Когда execution входит в `c()`, появляется frame:
+Когда выполнение входит в `c()`, появляется Execution Context:
 
 ```text
 Call Stack
-├── c frame
-├── b frame
-├── a frame
+├── c context
+├── b context
+├── a context
 └── Global
 ```
 
-Внутри `c frame` появляются local names:
+Внутри `c context` появляются локальные имена:
 
 ```text
-c frame
+c context
 │
 ├── count -> 3
-└── user  -> reference
+└── user  -> ссылка
 ```
 
-Object value живет в Heap:
+Объект живет в Heap:
 
 ```text
 Heap
-└── object
+└── объект
     └── name: 'Anna'
 ```
 
 Связь:
 
 ```text
-c frame
+c context
 └── user
     │
     ▼
-    Heap object
+    объект в Heap
     └── name: 'Anna'
 ```
 
-Когда `c()` заканчивается, its frame leaves the stack. Если object больше нигде не reachable, позже он может быть cleaned up. Garbage Collector будет изучаться отдельно; здесь достаточно понимать lifetime concept.
+Когда `c()` заканчивается, его Execution Context уходит из Call Stack. Если объект больше нигде не доступен по ссылке, позже он может быть очищен. Garbage Collector будет изучаться отдельно; здесь достаточно понимать время жизни данных.
 
 ## Главная ментальная модель
 
-Главная модель главы: **memory split: stack/heap**.
+Главная модель главы: **разделение памяти на Stack и Heap**.
 
 ```text
-Stack = active calls and local access
-Heap  = object values
+Stack = активные вызовы и локальный доступ
+Heap  = объекты
 ```
 
 ```text
-function frame
+Execution Context функции
 │
-├── primitive value
-└── reference ──► object in Heap
+├── примитивное значение
+└── ссылка ──► объект в Heap
 ```
 
 ## Примеры
@@ -195,43 +193,43 @@ node examples/01-javascript/chapter-63/04-a-b-c-memory.js
 
 Memory Model помогает понимать:
 
-* почему primitive reassignment does not mutate old value;
-* почему object mutation видна через reference;
-* почему local variables исчезают после function execution;
-* почему shared object can be changed from different places.
+* почему переназначение примитива не изменяет старое значение;
+* почему изменение объекта видно через ссылку;
+* почему локальные переменные исчезают после выполнения функции;
+* почему общий объект можно изменить из разных мест.
 
 ## Использование в Automation QA
 
 QA-аналогия минимальная:
 
 ```text
-test data object
+объект с тестовыми данными
 │
 ▼
-shared between helpers
+используется несколькими helpers
 │
 ▼
-one helper mutates object
+один helper меняет объект
 │
 ▼
-another helper sees changed data
+другой helper видит измененные данные
 ```
 
-Memory Model объясняет такие баги без мистики: helpers can share references to the same object.
+Memory Model объясняет такие ошибки без мистики: helpers могут разделять ссылки на один и тот же объект.
 
 ## Распространённые ошибки
 
-### Ошибка 1. Считать Stack и Heap точной схемой engine internals
+### Ошибка 1. Считать Stack и Heap точной схемой устройства движка
 
-Это practical model, not full implementation.
+Диаграммы не описывают реализацию полностью.
 
-### Ошибка 2. Думать, что variable contains object itself
+### Ошибка 2. Думать, что переменная содержит сам объект
 
-В conceptual model variable keeps reference to object in Heap.
+В этой модели переменная хранит ссылку на объект в Heap.
 
-### Ошибка 3. Забывать про lifetime frame
+### Ошибка 3. Забывать про время жизни Execution Context
 
-Local variables существуют во время execution соответствующей function.
+Локальные переменные существуют во время выполнения соответствующей функции.
 
 ## Практика
 
@@ -249,22 +247,22 @@ solutions/01-javascript/63-memory-model.md
 
 ## Краткие итоги
 
-Memory Model объясняет, где values live during execution.
+Memory Model объясняет, где значения живут во время выполнения.
 
 Главное:
 
-* Call Stack frames связаны with active function calls;
-* primitive values удобно рисовать near frame;
-* objects удобно рисовать in Heap;
-* variables can hold references to objects;
-* this model explains shared mutation.
+* Execution Context в Call Stack связан с активным вызовом функции;
+* примитивные значения удобно рисовать рядом с этим Execution Context;
+* объекты удобно рисовать в Heap;
+* переменные могут хранить ссылки на объекты;
+* эта модель объясняет совместное изменение объекта.
 
 ## Переход к следующей главе
 
-Теперь понятно, где живут values.
+Теперь понятно, где живут значения.
 
 Следующий вопрос:
 
-> Почему некоторые variables ведут себя странно before declaration?
+> Почему некоторые переменные ведут себя странно до строки объявления?
 
 Ответ ведет к Hoisting + TDZ.

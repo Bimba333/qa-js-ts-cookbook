@@ -3,10 +3,10 @@
 ## Концептуальные вопросы
 
 1. Почему hoisting не означает перемещение строк кода?
-2. Почему function declaration можно вызвать до строки declaration?
-3. Что получает `var` during Creation Phase?
-4. В каком state находятся `let` и `const` до initialization?
-5. Чем `undefined` before assignment отличается от TDZ?
+2. Почему объявление функции можно вызвать до строки объявления?
+3. Что получает `var` во время Creation Phase?
+4. В каком состоянии находятся `let` и `const` до инициализации?
+5. Чем `undefined` до присваивания отличается от TDZ?
 
 ## Чтение кода
 
@@ -26,7 +26,7 @@ function c() {
 }
 ```
 
-Объясните, почему вызов `a()` работает before function declarations.
+Объясните, почему вызов `a()` работает до объявлений функций.
 
 ## Предскажите результат выполнения
 
@@ -42,9 +42,9 @@ function c() {
 c();
 ```
 
-Сначала запишите output без запуска.
+Сначала запишите вывод без запуска.
 
-## Debugging
+## Отладка
 
 Найдите причину ошибки:
 
@@ -58,20 +58,20 @@ function c() {
 c();
 ```
 
-Объясните state `message` в момент `console.log(message)`.
+Объясните состояние `message` в момент `console.log(message)`.
 
-## QA analogy
+## QA-аналогия
 
 В test helper читается `baseUrl`, но `const baseUrl = ...` находится ниже.
 
-Почему это не то же самое, что function declaration hoisting?
+Почему это не то же самое, что Hoisting объявления функции?
 
 ## Мини-сценарий
 
 Напишите три коротких примера:
 
-* function declaration called before declaration line;
-* `var` read before assignment;
-* safe `let` usage after initialization.
+* объявление функции вызвано до строки объявления;
+* `var` читается до присваивания;
+* безопасное использование `let` после инициализации.
 
-После каждого примера подпишите lifecycle identifier.
+После каждого примера подпишите жизненный цикл идентификатора.

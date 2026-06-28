@@ -4,7 +4,7 @@
 
 1. Что создается, когда JavaScript начинает выполнять файл?
 2. Когда создается Function Execution Context?
-3. Почему function declaration не означает немедленное выполнение function body?
+3. Почему объявление функции не означает немедленное выполнение тела функции?
 4. Чем Global Execution Context отличается от Function Execution Context?
 5. Как Execution Context связан с примером `a() -> b() -> c()`?
 
@@ -29,10 +29,10 @@ a();
 
 Опишите:
 
-* какой context создается при запуске файла;
-* какой context создается при вызове `a()`;
-* какой context создается при вызове `b()`;
-* какой context создается при вызове `c()`.
+* какой Execution Context создается при запуске файла;
+* какой Execution Context создается при вызове `a()`;
+* какой Execution Context создается при вызове `b()`;
+* какой Execution Context создается при вызове `c()`.
 
 ## Предскажите результат выполнения
 
@@ -46,11 +46,11 @@ a();
 console.log('after');
 ```
 
-Сначала запишите output без запуска.
+Сначала запишите вывод без запуска.
 
-## Debugging
+## Отладка
 
-Автор ожидал, что `message` будет доступен outside function:
+Автор ожидал, что `message` будет доступен вне функции:
 
 ```javascript
 function c() {
@@ -63,13 +63,13 @@ console.log(message);
 
 Объясните, почему это не работает через модель Execution Context.
 
-## QA analogy
+## QA-аналогия
 
 Коротко сопоставьте:
 
 ```text
-test runner creates test execution
-JavaScript creates Execution Context
+тестовый раннер создает выполнение теста
+JavaScript создает Execution Context
 ```
 
 Не расширяйте аналогию. Укажите только, в чем они похожи.
@@ -80,7 +80,7 @@ JavaScript creates Execution Context
 
 * `a()` вызывает `b()`;
 * `b()` вызывает `c()`;
-* `c()` создает local variable `message`;
+* `c()` создает локальную переменную `message`;
 * `c()` печатает `message`.
 
-После кода подпишите, какой function call создает какой Function Execution Context.
+После кода подпишите, какой вызов функции создает какой Function Execution Context.

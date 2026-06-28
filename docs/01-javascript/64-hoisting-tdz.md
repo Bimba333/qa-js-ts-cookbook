@@ -5,15 +5,15 @@
 Предыдущая глава объяснила Memory Model:
 
 ```text
-Stack = active frames
-Heap  = object values
+Stack = активные Execution Context
+Heap  = объекты
 ```
 
-Теперь можно объяснить странное поведение variables до declaration. JavaScript подготавливает execution environment before line-by-line execution, но разные declarations получают разное initial state.
+Теперь можно объяснить странное поведение переменных до строки объявления. JavaScript подготавливает среду выполнения до построчного выполнения, но разные объявления получают разное начальное состояние.
 
 ## Главный вопрос
 
-> Почему variables behave unexpectedly before declaration?
+> Почему переменные ведут себя неожиданно до строки объявления?
 
 Ответ этой главы: из-за Hoisting и Temporal Dead Zone.
 
@@ -21,22 +21,22 @@ Heap  = object values
 
 Для этой главы нужно понимать:
 
-* что Execution Context создается before execution;
-* что Call Stack запускает function frames;
-* что Memory Model хранит names, values и references;
+* что Execution Context создается перед выполнением;
+* что Call Stack запускает Execution Context функций;
+* что Memory Model хранит имена, значения и ссылки;
 * чем `var`, `let` и `const` отличаются в обычном коде.
 
-Specification details не нужны. Эта глава объясняет practical lifecycle variables.
+Детали спецификации не нужны. Эта глава объясняет практический жизненный цикл переменных.
 
 ## Цели обучения
 
 После главы вы будете понимать:
 
-* почему hoisting is preparation, not code movement;
-* почему function declarations доступны before call line;
-* почему `var` reads as `undefined` before assignment;
-* почему `let` и `const` находятся в TDZ before initialization;
-* как читать ReferenceError before initialization.
+* почему Hoisting — это подготовка, а не перемещение кода;
+* почему объявления функций доступны до строки вызова;
+* почему `var` читается как `undefined` до присваивания;
+* почему `let` и `const` находятся в TDZ до инициализации;
+* как читать ReferenceError до инициализации.
 
 ## Мотивация
 
@@ -59,38 +59,38 @@ function c() {
 }
 ```
 
-Вызов `a()` работает, хотя function declaration находится ниже.
+Вызов `a()` работает, хотя объявление функции находится ниже.
 
-Но чтение `message` before `let message` causes ReferenceError.
+Но чтение `message` до строки `let message` вызывает ReferenceError.
 
 Вопрос:
 
-> Почему одна часть кода работает before declaration, а другая падает?
+> Почему одна часть кода работает до объявления, а другая падает?
 
 ## Теория
 
-Hoisting — это подготовка declarations during Creation Phase. Это не перемещение строк.
+Hoisting — это подготовка объявлений во время Creation Phase. Это не перемещение строк.
 
 ```text
 Creation Phase
 │
 ▼
-register declarations
+зарегистрировать объявления
 │
 ▼
 Execution Phase
 │
 ▼
-run code line by line
+выполнять код построчно
 ```
 
-Function declarations:
+Объявления функций:
 
 ```text
 function a() {}
 │
 ▼
-registered as callable function
+зарегистрирована как функция, которую можно вызвать
 ```
 
 `var`:
@@ -99,7 +99,7 @@ registered as callable function
 var value
 │
 ▼
-registered with undefined
+зарегистрирована со значением undefined
 ```
 
 `let` и `const`:
@@ -108,17 +108,17 @@ registered with undefined
 let value / const value
 │
 ▼
-registered
+зарегистрирована
 │
 ▼
-inaccessible until initialization
+недоступна до инициализации
 ```
 
-TDZ is the period between registration and initialization where access is forbidden.
+TDZ — это период между регистрацией и инициализацией, когда доступ к переменной запрещен.
 
 ## Внутренний механизм
 
-Для function declarations:
+Для объявлений функций:
 
 ```javascript
 a();
@@ -128,19 +128,19 @@ function a() {
 }
 ```
 
-Conceptual lifecycle:
+Жизненный цикл:
 
 ```text
 Creation Phase
 │
 ▼
-a registered as function
+a зарегистрирована как функция
 │
 ▼
 Execution Phase
 │
 ▼
-a() can run
+a() можно вызвать
 ```
 
 Для `var`:
@@ -150,13 +150,13 @@ console.log(value);
 var value = 'ready';
 ```
 
-Conceptual lifecycle:
+Жизненный цикл:
 
 ```text
 Creation Phase
 │
 ▼
-value registered as undefined
+value зарегистрирована как undefined
 │
 ▼
 Execution Phase
@@ -172,54 +172,54 @@ console.log(value);
 let value = 'ready';
 ```
 
-Conceptual lifecycle:
+Жизненный цикл:
 
 ```text
 Creation Phase
 │
 ▼
-value registered but uninitialized
+value зарегистрирована, но не инициализирована
 │
 ▼
-Execution before declaration line
+выполнение до строки объявления
 │
 ▼
 ReferenceError
 ```
 
-State timeline:
+Последовательность состояний:
 
 ```text
-registered
+зарегистрирована
 │
 ▼
 TDZ
 │
 ▼
-initialization line
+строка инициализации
 │
 ▼
-accessible value
+доступное значение
 ```
 
 ## Главная ментальная модель
 
-Главная модель главы: **variable lifecycle before/after declaration**.
+Главная модель главы: **жизненный цикл переменной до и после объявления**.
 
 ```text
-before execution
+до выполнения
 │
 ▼
-identifier may already be registered
+идентификатор уже может быть зарегистрирован
 │
 ▼
-access depends on declaration kind
+доступ зависит от вида объявления
 ```
 
 ```text
-function declaration -> callable
+function declaration -> можно вызвать
 var                  -> undefined
-let / const          -> TDZ until initialization
+let / const          -> TDZ до инициализации
 ```
 
 ## Примеры
@@ -239,46 +239,46 @@ node examples/01-javascript/chapter-64/03-tdz-caught.js
 node examples/01-javascript/chapter-64/04-a-b-c-hoisting.js
 ```
 
-Все examples valid and runnable. TDZ example catches the error intentionally.
+Все примеры валидны и запускаются. Пример с TDZ намеренно перехватывает ошибку.
 
 ## Практическое использование
 
 Hoisting + TDZ помогают объяснять:
 
-* why calling a function declaration before its line works;
-* why `var` can hide setup order bugs with `undefined`;
-* why `let`/`const` fail early before initialization;
-* why declaration order matters inside functions.
+* почему вызов объявления функции до его строки работает;
+* почему `var` может скрывать ошибки порядка подготовки через `undefined`;
+* почему `let`/`const` падают до инициализации;
+* почему порядок объявлений внутри функций важен.
 
 ## Использование в Automation QA
 
-QA-аналогия здесь нужна только как warning:
+QA-аналогия здесь нужна только как предупреждение:
 
 ```text
-helper reads test data
+helper читает тестовые данные
 │
 ▼
-test data declared later with const
+тестовые данные объявлены ниже через const
 │
 ▼
 ReferenceError
 ```
 
-Правило для tests простое: initialize configuration and test data before reading them.
+Правило для тестов простое: инициализируйте конфигурацию и тестовые данные до чтения.
 
 ## Распространённые ошибки
 
 ### Ошибка 1. Говорить, что `let` и `const` не hoisted
 
-Они registered, но inaccessible before initialization.
+Они зарегистрированы, но недоступны до инициализации.
 
 ### Ошибка 2. Представлять hoisting как перемещение строк
 
-Source code не переезжает. Подготавливается execution environment.
+Исходный код не переезжает. Подготавливается среда выполнения.
 
 ### Ошибка 3. Путать `undefined` и TDZ
 
-`var` before assignment gives `undefined`. `let`/`const` before initialization throw ReferenceError.
+`var` до присваивания дает `undefined`. `let`/`const` до инициализации выбрасывают ReferenceError.
 
 ## Практика
 
@@ -296,15 +296,22 @@ solutions/01-javascript/64-hoisting-tdz.md
 
 ## Краткие итоги
 
-Hoisting + TDZ объясняют variable lifecycle before execution reaches declaration line.
+Hoisting + TDZ объясняют жизненный цикл переменной до того, как выполнение дойдет до строки объявления.
+
+| Вид объявления | До строки объявления |
+|----------------|----------------------|
+| function declaration | можно вызвать |
+| var | значение undefined |
+| let | TDZ |
+| const | TDZ |
 
 Главное:
 
-* hoisting is preparation;
-* function declarations become callable;
-* `var` starts as `undefined`;
-* `let` and `const` are in TDZ before initialization;
-* TDZ means identifier exists but access is forbidden.
+* Hoisting — это подготовка;
+* объявления функций становятся доступными для вызова;
+* `var` начинает со значения `undefined`;
+* `let` и `const` находятся в TDZ до инициализации;
+* TDZ означает, что идентификатор существует, но доступ запрещен.
 
 ## Переход к следующей главе
 
@@ -323,4 +330,4 @@ Memory Model
 Hoisting + TDZ
 ```
 
-Теперь можно читать JavaScript-code как execution system, а не как набор независимых строк.
+Теперь можно читать JavaScript-код как систему выполнения, а не как набор независимых строк.

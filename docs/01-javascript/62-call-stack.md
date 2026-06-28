@@ -5,24 +5,24 @@
 Предыдущая глава показала, что JavaScript создает Execution Context:
 
 ```text
-program starts
+программа запускается
 │
 ▼
-Execution Context is created
+создается Execution Context
 ```
 
-Но в нашем примере functions вызывают друг друга:
+Но в нашем примере функции вызывают друг друга:
 
 ```javascript
 a();
 // a -> b -> c
 ```
 
-Теперь нужно понять, как JavaScript управляет несколькими active function calls.
+Теперь нужно понять, как JavaScript управляет несколькими активными вызовами функций.
 
 ## Главный вопрос
 
-> Как functions выполняются step by step?
+> Как функции выполняются шаг за шагом?
 
 Ответ этой главы: через Call Stack.
 
@@ -30,21 +30,21 @@ a();
 
 Для этой главы нужно понимать:
 
-* что function call создает Function Execution Context;
-* что function body выполняется после invocation;
-* что synchronous code выполняется последовательно;
+* что вызов функции создает Function Execution Context;
+* что тело функции выполняется после вызова;
+* что синхронный код выполняется последовательно;
 * что `a()`, `b()`, `c()` образуют цепочку вызовов.
 
-В этой главе рассматривается только обычное последовательное выполнение function calls.
+В этой главе рассматривается только обычное последовательное выполнение вызовов функций.
 
 ## Цели обучения
 
 После главы вы будете понимать:
 
 * зачем нужен Call Stack;
-* что происходит при входе в function;
-* что происходит при выходе из function;
-* почему JavaScript возвращается в caller;
+* что происходит при входе в функцию;
+* что происходит при выходе из функции;
+* почему JavaScript возвращается в вызывающую функцию;
 * как читать простую stack trace.
 
 ## Мотивация
@@ -69,7 +69,7 @@ function a() {
 a();
 ```
 
-Output:
+Вывод:
 
 ```text
 c
@@ -85,26 +85,28 @@ a
 
 ## Теория
 
-Call Stack — это stack of function calls.
+Call Stack — это стек вызовов функций.
 
-Когда вызывается function, JavaScript помещает ее execution frame наверх stack.
+Когда вызывается функция, JavaScript помещает ее Execution Context наверх Call Stack.
 
-Когда function завершается, frame снимается со stack.
+Когда функция завершается, ее Execution Context снимается с Call Stack.
 
 ```text
-function call
+вызов функции
 │
 ▼
-push frame
+поместить Execution Context наверх
 │
 ▼
-function finishes
+функция завершается
 │
 ▼
-pop frame
+снять Execution Context
 ```
 
-JavaScript выполняет frame, который находится наверху.
+JavaScript выполняет Execution Context, который находится наверху.
+
+Call Stack хранит Execution Context активных вызовов функций. Он не хранит сами объявления функций. Объявление функции описывает, что можно вызвать; Call Stack показывает, какой вызов выполняется сейчас и куда нужно вернуться после завершения.
 
 ## Внутренний механизм
 
@@ -166,21 +168,21 @@ Call Stack
 └── Global
 ```
 
-Program ends when global execution finishes and no synchronous work remains.
+Программа завершается, когда выполнение глобального кода закончено и синхронной работы больше не осталось.
 
 ## Главная ментальная модель
 
-Главная модель главы: **stack of function calls**.
+Главная модель главы: **стек вызовов функций**.
 
 ```text
-top
+верх
 │
-├── current function
-├── caller
-└── previous caller
+├── текущая функция
+├── вызывающая функция
+└── предыдущая вызывающая функция
 ```
 
-Last called function finishes first.
+Последняя вызванная функция завершается первой.
 
 ## Примеры
 
@@ -201,47 +203,47 @@ node examples/01-javascript/chapter-62/04-stack-trace.js
 
 ## Практическое использование
 
-Call Stack помогает понимать execution order.
+Call Stack помогает понимать порядок выполнения.
 
 Практически это нужно, когда:
 
-* function calls вложены друг в друга;
-* error появляется внутри helper;
-* нужно понять, почему output идет в определенном порядке;
-* stack trace показывает несколько function names.
+* вызовы функций вложены друг в друга;
+* ошибка появляется внутри helper;
+* нужно понять, почему вывод идет в определенном порядке;
+* stack trace показывает несколько имен функций.
 
 ## Использование в Automation QA
 
 Минимальная QA-аналогия:
 
 ```text
-test runner
+тестовый раннер
 │
 ▼
-test function
+тестовая функция
 │
 ▼
-helper function
+helper-функция
 │
 ▼
 assertion helper
 ```
 
-Если assertion helper падает, stack trace показывает chain callers. Это не новая тема, а прямое применение Call Stack.
+Если assertion helper падает, stack trace показывает цепочку вызывающих функций. Это не новая тема, а прямое применение Call Stack.
 
 ## Распространённые ошибки
 
-### Ошибка 1. Читать calls сверху вниз как завершение
+### Ошибка 1. Читать вызовы сверху вниз как порядок завершения
 
-Выполнение идет внутрь calls, но завершение идет обратно.
+Выполнение идет внутрь вызовов, но завершение идет обратно.
 
-### Ошибка 2. Думать, что functions выполняются одновременно
+### Ошибка 2. Думать, что функции выполняются одновременно
 
-В synchronous code JavaScript выполняет только top stack frame.
+В синхронном коде JavaScript выполняет только верхний Execution Context.
 
 ### Ошибка 3. Игнорировать stack trace
 
-Stack trace показывает путь, по которому execution пришел к ошибке.
+Stack trace показывает путь, по которому выполнение пришло к ошибке.
 
 ## Практика
 
@@ -259,21 +261,21 @@ solutions/01-javascript/62-call-stack.md
 
 ## Краткие итоги
 
-Call Stack управляет order function execution.
+Call Stack управляет порядком выполнения функций.
 
 Главное:
 
-* function call pushes frame;
-* function finish pops frame;
-* JavaScript выполняет top frame;
-* Call Stack объясняет return to caller.
+* вызов функции помещает Execution Context наверх;
+* завершение функции снимает Execution Context;
+* JavaScript выполняет верхний Execution Context;
+* Call Stack объясняет возврат к вызывающей функции.
 
 ## Переход к следующей главе
 
-Теперь понятно, как JavaScript управляет execution flow.
+Теперь понятно, как JavaScript управляет потоком выполнения.
 
 Следующий вопрос:
 
-> Где values и objects живут во время этих calls?
+> Где значения и объекты живут во время этих вызовов?
 
 Ответ ведет к Memory Model.

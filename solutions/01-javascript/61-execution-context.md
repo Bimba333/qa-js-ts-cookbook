@@ -6,61 +6,61 @@
 
 Ответ: Global Execution Context.
 
-Объяснение: это execution unit для top-level code.
+Объяснение: это единица запуска для кода верхнего уровня.
 
 Ошибка: думать, что файл выполняется без подготовки.
 
-QA связь: как test runner готовит test execution, JavaScript готовит execution environment.
+QA связь: как тестовый раннер готовит выполнение теста, JavaScript готовит среду выполнения.
 
 ### 2. Когда создается Function Execution Context?
 
-Ответ: при function call.
+Ответ: при вызове функции.
 
-Объяснение: function body выполняется только после invocation.
+Объяснение: тело функции выполняется только после вызова.
 
-Ошибка: считать, что function declaration already executes body.
+Ошибка: считать, что объявление функции уже выполняет тело.
 
-QA связь: helper body runs only when helper is called.
+QA связь: тело helper выполняется только тогда, когда helper вызван.
 
-### 3. Почему function declaration не означает немедленное выполнение function body?
+### 3. Почему объявление функции не означает немедленное выполнение тела функции?
 
-Ответ: declaration only makes function available.
+Ответ: объявление только делает функцию доступной.
 
-Объяснение: execution starts at call expression, например `a()`.
+Объяснение: выполнение начинается в выражении вызова, например `a()`.
 
-Ошибка: смешивать declaration and invocation.
+Ошибка: смешивать объявление и вызов.
 
-QA связь: declared helper does nothing until test calls it.
+QA связь: объявленный helper ничего не делает, пока тест его не вызовет.
 
 ### 4. Чем Global Execution Context отличается от Function Execution Context?
 
-Ответ: Global Context belongs to file-level code; Function Context belongs to one function call.
+Ответ: Global Execution Context относится к коду файла; Function Execution Context относится к одному вызову функции.
 
-Объяснение: each call gets its own execution unit.
+Объяснение: каждый вызов получает свою единицу запуска.
 
-Ошибка: считать, что все code runs in one identical context.
+Ошибка: считать, что весь код выполняется в одном и том же контексте.
 
-QA связь: test-level setup and helper-local data live at different levels.
+QA связь: подготовка на уровне теста и локальные данные helper живут на разных уровнях.
 
 ### 5. Как Execution Context связан с примером `a() -> b() -> c()`?
 
-Ответ: calls `a`, `b`, `c` each create Function Execution Context.
+Ответ: вызовы `a`, `b`, `c` создают отдельные Function Execution Context.
 
-Объяснение: every called function needs an environment to run its body.
+Объяснение: каждой вызванной функции нужна среда для выполнения тела.
 
-Ошибка: видеть только output and ignore function execution units.
+Ошибка: видеть только вывод и игнорировать единицы запуска функций.
 
-QA связь: helper chains create nested execution steps.
+QA связь: цепочки helpers создают вложенные шаги выполнения.
 
 ## Чтение кода
 
-Ответ: при запуске файла создается Global Execution Context. При `a()` создается context for `a`; внутри него call `b()` creates context for `b`; внутри `b()` call `c()` creates context for `c`.
+Ответ: при запуске файла создается Global Execution Context. При `a()` создается Execution Context для `a`; внутри него вызов `b()` создает Execution Context для `b`; внутри `b()` вызов `c()` создает Execution Context для `c`.
 
-Объяснение: function context appears at invocation time.
+Объяснение: Function Execution Context появляется во время вызова.
 
-Ошибка: думать, что contexts for all functions are fully executing immediately at file load.
+Ошибка: думать, что контексты всех функций начинают выполняться сразу при загрузке файла.
 
-QA связь: helper chain executes only when test reaches calls.
+QA связь: цепочка helpers выполняется только тогда, когда тест доходит до вызовов.
 
 ## Предскажите результат выполнения
 
@@ -72,31 +72,31 @@ a
 after
 ```
 
-Объяснение: top-level code logs `before`, then call `a()` runs function body, then execution returns and logs `after`.
+Объяснение: код верхнего уровня печатает `before`, затем вызов `a()` выполняет тело функции, затем выполнение возвращается и печатает `after`.
 
-Ошибка: ожидать `a` before `before`.
+Ошибка: ожидать `a` до `before`.
 
-QA связь: test steps run in written execution order, except when a step calls helper body.
+QA связь: шаги теста выполняются в записанном порядке, кроме момента, когда шаг вызывает тело helper.
 
-## Debugging
+## Отладка
 
-Ответ: `message` belongs to Function Execution Context of `c()`, so it is not available outside.
+Ответ: `message` принадлежит Function Execution Context функции `c()`, поэтому недоступен снаружи.
 
-Объяснение: local variable exists inside function execution environment.
+Объяснение: локальная переменная существует внутри среды выполнения функции.
 
-Ошибка: ожидать local value at global level.
+Ошибка: ожидать локальное значение на глобальном уровне.
 
-QA связь: helper-local data should be returned or passed if caller needs it.
+QA связь: локальные данные helper нужно вернуть или передать, если они нужны вызывающему коду.
 
-## QA analogy
+## QA-аналогия
 
-Ответ: both describe prepared execution environment.
+Ответ: обе идеи описывают подготовленную среду выполнения.
 
-Объяснение: test runner prepares test execution; JavaScript prepares code execution.
+Объяснение: тестовый раннер готовит выполнение теста; JavaScript готовит выполнение кода.
 
 Ошибка: растягивать аналогию дальше подготовки execution.
 
-QA связь: useful only to understand preparation before running.
+QA связь: аналогия полезна только для понимания подготовки перед выполнением.
 
 ## Мини-сценарий
 
@@ -119,8 +119,8 @@ function a() {
 a();
 ```
 
-Объяснение: `a()` creates context for `a`, `b()` creates context for `b`, `c()` creates context for `c`.
+Объяснение: `a()` создает Execution Context для `a`, `b()` создает Execution Context для `b`, `c()` создает Execution Context для `c`.
 
-Ошибка: считать, что `message` belongs to all contexts.
+Ошибка: считать, что `message` принадлежит всем контекстам.
 
-QA связь: local helper data belongs to a specific helper call.
+QA связь: локальные данные helper принадлежат конкретному вызову helper.
