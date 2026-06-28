@@ -43,15 +43,30 @@ export function exampleCardPlugin(md) {
 
     if (isMarkdownPath) {
       const href = `/qa-javascript-book/${content.replace(/\.md$/, '')}`
-      const title = titleFromMarkdown(content)
 
-      return `
+    let title = 'Открыть'
+
+    if (content.startsWith('practice/')) {
+      title = 'Практика к главе'
+    }
+
+    if (content.startsWith('solutions/')) {
+      title = 'Решение к главе'
+    }
+
+    if (content.startsWith('docs/')) {
+      title = content.includes('00-introduction')
+        ? 'Открыть раздел'
+        : 'Открыть главу'
+    }
+
+    return `
 <div class="book-link-card">
-  <div class="book-link-card__title">${md.utils.escapeHtml(title)}</div>
+  <div class="book-link-card__title">${title}</div>
   <a class="book-link-card__button" href="${href}">Открыть</a>
 </div>
 `
-    }
+}
 
     if (isExamplePath) {
       const absPath = path.join(process.cwd(), content)
