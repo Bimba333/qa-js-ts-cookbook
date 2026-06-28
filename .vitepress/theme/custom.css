@@ -100,3 +100,28 @@
 .code-runner__error {
   color: #ff8f8f;
 }
+
+.code-runner {
+  max-width: 100%;
+  overflow: hidden;
+}
+
+.code-runner__code {
+  display: block;
+  max-width: 100%;
+  overflow-x: auto;
+  white-space: pre-wrap;
+  word-break: break-word;
+  box-sizing: border-box;
+}
+
+.code-runner__code code {
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+.VPDoc .content,
+.VPDoc .content-container,
+.vp-doc {
+  max-width: 100%;
+}
