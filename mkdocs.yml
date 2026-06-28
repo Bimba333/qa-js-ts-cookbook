@@ -2,8 +2,11 @@ site_name: JavaScript & TypeScript for QA Automation
 
 theme:
   name: material
+  language: ru
 
 nav:
-  - Главная: index.md
+  - Введение:
+      - О курсе: 00-introduction/01-about-course.md
+
   - JavaScript:
-      - Глава 1: docs/01-what-is-javascript.md
+      - Что такое JavaScript: 01-javascript/01-what-is-javascript.md
