@@ -1,0 +1,9 @@
+site_name: JavaScript & TypeScript for QA Automation
+
+theme:
+  name: material
+
+nav:
+  - Главная: index.md
+  - JavaScript:
+      - Глава 1: docs/01-what-is-javascript.md
