@@ -22,8 +22,6 @@ export default defineConfig({
 
     nav: [
       { text: 'Теория', link: '/docs/00-introduction/01-about-course' },
-      { text: 'Практика', link: '/practice/01-javascript/01-what-is-javascript' },
-      { text: 'Решения', link: '/solutions/01-javascript/01-what-is-javascript' },
       { text: 'GitHub', link: 'https://github.com/Bimba333/qa-javascript-book' }
     ],
 

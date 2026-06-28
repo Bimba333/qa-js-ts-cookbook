@@ -1,9 +1,16 @@
 .book-link-card {
   border: 1px solid var(--vp-c-divider);
-  border-radius: 14px;
+  border-radius: 10px;
   padding: 16px;
   margin: 16px 0;
   background: var(--vp-c-bg-soft);
+}
+
+.book-link-card__eyebrow {
+  margin-bottom: 6px;
+  color: var(--vp-c-text-2);
+  font-size: 13px;
+  font-weight: 700;
 }
 
 .book-link-card__title {
@@ -22,9 +29,31 @@
   font-weight: 700;
 }
 
+.book-embedded {
+  margin: 32px 0;
+  padding-top: 24px;
+  border-top: 1px solid var(--vp-c-divider);
+}
+
+.book-embedded > h2 {
+  margin-top: 0;
+}
+
+.vp-doc h2#практика + p {
+  display: none;
+}
+
+.book-embedded__heading {
+  margin: 24px 0 12px;
+  color: var(--vp-c-text-1);
+  font-size: 20px;
+  font-weight: 800;
+  line-height: 1.35;
+}
+
 .code-runner {
   border: 1px solid var(--vp-c-divider);
-  border-radius: 14px;
+  border-radius: 10px;
   padding: 16px;
   margin: 20px 0;
   background: var(--vp-c-bg-soft);
@@ -99,6 +128,15 @@
 
 .code-runner__error {
   color: #ff8f8f;
+}
+
+.code-runner__iframe {
+  position: absolute;
+  width: 0;
+  height: 0;
+  border: 0;
+  opacity: 0;
+  pointer-events: none;
 }
 
 .code-runner {

@@ -20,13 +20,13 @@ const sections = [
   {
     title: 'Практика',
     dir: 'practice/01-javascript',
-    base: '/practice/01-javascript/',
+    base: '/docs/01-javascript/',
     type: 'practice'
   },
   {
     title: 'Решения',
     dir: 'solutions/01-javascript',
-    base: '/solutions/01-javascript/',
+    base: '/docs/01-javascript/',
     type: 'solutions'
   }
 ]
@@ -90,7 +90,7 @@ function readItems(section) {
     .sort((a, b) => a.localeCompare(b, undefined, { numeric: true }))
     .map(file => ({
       text: titleFor(section, file),
-      link: `${section.base}${file.replace(/\.md$/, '')}`
+      link: `${section.base}${file.replace(/\.md$/, '')}${section.type === 'practice' ? '#практика' : section.type === 'solutions' ? '#решения' : ''}`
     }))
 }
 

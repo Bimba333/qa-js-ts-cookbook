@@ -417,387 +417,387 @@ export const sidebar = [
     "items": [
       {
         "text": "Практика. Глава 1. Что такое JavaScript",
-        "link": "/practice/01-javascript/01-what-is-javascript"
+        "link": "/docs/01-javascript/01-what-is-javascript#практика"
       },
       {
         "text": "Практика. Глава 2. Как выполняется JavaScript",
-        "link": "/practice/01-javascript/02-how-javascript-works"
+        "link": "/docs/01-javascript/02-how-javascript-works#практика"
       },
       {
         "text": "Практика. Глава 3. Execution Context",
-        "link": "/practice/01-javascript/03-execution-context"
+        "link": "/docs/01-javascript/03-execution-context#практика"
       },
       {
         "text": "Практика. Глава 4. Call Stack",
-        "link": "/practice/01-javascript/04-call-stack"
+        "link": "/docs/01-javascript/04-call-stack#практика"
       },
       {
         "text": "Практика. Глава 5. Memory",
-        "link": "/practice/01-javascript/05-memory"
+        "link": "/docs/01-javascript/05-memory#практика"
       },
       {
         "text": "Практика. Глава 6. Variables",
-        "link": "/practice/01-javascript/06-variables"
+        "link": "/docs/01-javascript/06-variables#практика"
       },
       {
         "text": "Практика. Глава 7. Scope",
-        "link": "/practice/01-javascript/07-scope"
+        "link": "/docs/01-javascript/07-scope#практика"
       },
       {
         "text": "Практика. Глава 8. Lexical Environment",
-        "link": "/practice/01-javascript/08-lexical-environment"
+        "link": "/docs/01-javascript/08-lexical-environment#практика"
       },
       {
         "text": "Практика. Глава 9. Hoisting",
-        "link": "/practice/01-javascript/09-hoisting"
+        "link": "/docs/01-javascript/09-hoisting#практика"
       },
       {
         "text": "Практика. Глава 10. Temporal Dead Zone",
-        "link": "/practice/01-javascript/10-temporal-dead-zone"
+        "link": "/docs/01-javascript/10-temporal-dead-zone#практика"
       },
       {
         "text": "Практика. Глава 11. Primitive Types",
-        "link": "/practice/01-javascript/11-primitive-types"
+        "link": "/docs/01-javascript/11-primitive-types#практика"
       },
       {
         "text": "Практика. Глава 12. Object Type",
-        "link": "/practice/01-javascript/12-object-type"
+        "link": "/docs/01-javascript/12-object-type#практика"
       },
       {
         "text": "Практика. Глава 13. References",
-        "link": "/practice/01-javascript/13-references"
+        "link": "/docs/01-javascript/13-references#практика"
       },
       {
         "text": "Практика. Глава 14. Stack & Heap",
-        "link": "/practice/01-javascript/14-stack-and-heap"
+        "link": "/docs/01-javascript/14-stack-and-heap#практика"
       },
       {
         "text": "Практика. Глава 15. Type Conversion",
-        "link": "/practice/01-javascript/15-type-conversion"
+        "link": "/docs/01-javascript/15-type-conversion#практика"
       },
       {
         "text": "Практика. Глава 16. Equality",
-        "link": "/practice/01-javascript/16-equality"
+        "link": "/docs/01-javascript/16-equality#практика"
       },
       {
         "text": "Практика. Глава 17. Operators",
-        "link": "/practice/01-javascript/17-operators"
+        "link": "/docs/01-javascript/17-operators#практика"
       },
       {
         "text": "Практика. Глава 18. Conditionals",
-        "link": "/practice/01-javascript/18-conditionals"
+        "link": "/docs/01-javascript/18-conditionals#практика"
       },
       {
         "text": "Практика. Глава 19. Loops",
-        "link": "/practice/01-javascript/19-loops"
+        "link": "/docs/01-javascript/19-loops#практика"
       },
       {
         "text": "Практика. Глава 20. Error Handling",
-        "link": "/practice/01-javascript/20-error-handling"
+        "link": "/docs/01-javascript/20-error-handling#практика"
       },
       {
         "text": "Практика. Глава 21. Function Declaration",
-        "link": "/practice/01-javascript/21-function-declaration"
+        "link": "/docs/01-javascript/21-function-declaration#практика"
       },
       {
         "text": "Практика. Глава 22. Function Expression",
-        "link": "/practice/01-javascript/22-function-expression"
+        "link": "/docs/01-javascript/22-function-expression#практика"
       },
       {
         "text": "Практика. Глава 23. Arrow Functions",
-        "link": "/practice/01-javascript/23-arrow-functions"
+        "link": "/docs/01-javascript/23-arrow-functions#практика"
       },
       {
         "text": "Практика. Глава 24. Parameters",
-        "link": "/practice/01-javascript/24-parameters"
+        "link": "/docs/01-javascript/24-parameters#практика"
       },
       {
         "text": "Практика. Глава 25. Return",
-        "link": "/practice/01-javascript/25-return"
+        "link": "/docs/01-javascript/25-return#практика"
       },
       {
         "text": "Практика. Глава 26. Rest Parameters",
-        "link": "/practice/01-javascript/26-rest"
+        "link": "/docs/01-javascript/26-rest#практика"
       },
       {
         "text": "Практика. Глава 27. Spread",
-        "link": "/practice/01-javascript/27-spread"
+        "link": "/docs/01-javascript/27-spread#практика"
       },
       {
         "text": "Практика. Глава 28. Closures",
-        "link": "/practice/01-javascript/28-closures"
+        "link": "/docs/01-javascript/28-closures#практика"
       },
       {
         "text": "Практика. Глава 29. this",
-        "link": "/practice/01-javascript/29-this"
+        "link": "/docs/01-javascript/29-this#практика"
       },
       {
         "text": "Практика. Глава 30. call()",
-        "link": "/practice/01-javascript/30-call"
+        "link": "/docs/01-javascript/30-call#практика"
       },
       {
         "text": "Практика. Глава 31. apply()",
-        "link": "/practice/01-javascript/31-apply"
+        "link": "/docs/01-javascript/31-apply#практика"
       },
       {
         "text": "Практика. Глава 32. bind()",
-        "link": "/practice/01-javascript/32-bind"
+        "link": "/docs/01-javascript/32-bind#практика"
       },
       {
         "text": "Практика. Глава 33. Objects",
-        "link": "/practice/01-javascript/33-objects"
+        "link": "/docs/01-javascript/33-objects#практика"
       },
       {
         "text": "Практика. Глава 34. Destructuring",
-        "link": "/practice/01-javascript/34-destructuring"
+        "link": "/docs/01-javascript/34-destructuring#практика"
       },
       {
         "text": "Практика. Глава 35. Optional Chaining",
-        "link": "/practice/01-javascript/35-optional-chaining"
+        "link": "/docs/01-javascript/35-optional-chaining#практика"
       },
       {
         "text": "Практика. Глава 36. Nullish Coalescing",
-        "link": "/practice/01-javascript/36-nullish-coalescing"
+        "link": "/docs/01-javascript/36-nullish-coalescing#практика"
       },
       {
         "text": "Практика. Глава 37. Object Methods",
-        "link": "/practice/01-javascript/37-object-methods"
+        "link": "/docs/01-javascript/37-object-methods#практика"
       },
       {
         "text": "Практика. Глава 38. Object Descriptors",
-        "link": "/practice/01-javascript/38-object-descriptors"
+        "link": "/docs/01-javascript/38-object-descriptors#практика"
       },
       {
         "text": "Практика. Глава 39. Prototype",
-        "link": "/practice/01-javascript/39-prototype"
+        "link": "/docs/01-javascript/39-prototype#практика"
       },
       {
         "text": "Практика. Глава 40. Prototype Chain",
-        "link": "/practice/01-javascript/40-prototype-chain"
+        "link": "/docs/01-javascript/40-prototype-chain#практика"
       },
       {
         "text": "Практика. Глава 41. Classes",
-        "link": "/practice/01-javascript/41-classes"
+        "link": "/docs/01-javascript/41-classes#практика"
       },
       {
         "text": "Практика. Глава 42. Class Inheritance",
-        "link": "/practice/01-javascript/42-class-inheritance"
+        "link": "/docs/01-javascript/42-class-inheritance#практика"
       },
       {
         "text": "Практика. Глава 43. super",
-        "link": "/practice/01-javascript/43-super"
+        "link": "/docs/01-javascript/43-super#практика"
       },
       {
         "text": "Практика. Глава 44. Arrays",
-        "link": "/practice/01-javascript/44-arrays"
+        "link": "/docs/01-javascript/44-arrays#практика"
       },
       {
         "text": "Практика. Глава 45. push() and pop()",
-        "link": "/practice/01-javascript/45-push-pop"
+        "link": "/docs/01-javascript/45-push-pop#практика"
       },
       {
         "text": "Практика. Глава 46. shift() and unshift()",
-        "link": "/practice/01-javascript/46-shift-unshift"
+        "link": "/docs/01-javascript/46-shift-unshift#практика"
       },
       {
         "text": "Практика. Глава 47. splice()",
-        "link": "/practice/01-javascript/47-splice"
+        "link": "/docs/01-javascript/47-splice#практика"
       },
       {
         "text": "Практика. Глава 48. slice()",
-        "link": "/practice/01-javascript/48-slice"
+        "link": "/docs/01-javascript/48-slice#практика"
       },
       {
         "text": "Практика. Глава 49. Iteration",
-        "link": "/practice/01-javascript/49-iteration"
+        "link": "/docs/01-javascript/49-iteration#практика"
       },
       {
         "text": "Практика. Глава 50. forEach()",
-        "link": "/practice/01-javascript/50-foreach"
+        "link": "/docs/01-javascript/50-foreach#практика"
       },
       {
         "text": "Практика. Глава 51. map()",
-        "link": "/practice/01-javascript/51-map"
+        "link": "/docs/01-javascript/51-map#практика"
       },
       {
         "text": "Практика. Глава 52. filter()",
-        "link": "/practice/01-javascript/52-filter"
+        "link": "/docs/01-javascript/52-filter#практика"
       },
       {
         "text": "Практика. Глава 53. reduce()",
-        "link": "/practice/01-javascript/53-reduce"
+        "link": "/docs/01-javascript/53-reduce#практика"
       },
       {
         "text": "Практика. Глава 54. Chaining basics",
-        "link": "/practice/01-javascript/54-chaining"
+        "link": "/docs/01-javascript/54-chaining#практика"
       },
       {
         "text": "Практика. Глава 55. find()",
-        "link": "/practice/01-javascript/55-find"
+        "link": "/docs/01-javascript/55-find#практика"
       },
       {
         "text": "Практика. Глава 56. some()",
-        "link": "/practice/01-javascript/56-some"
+        "link": "/docs/01-javascript/56-some#практика"
       },
       {
         "text": "Практика. Глава 57. every()",
-        "link": "/practice/01-javascript/57-every"
+        "link": "/docs/01-javascript/57-every#практика"
       },
       {
         "text": "Практика. Глава 58. includes()",
-        "link": "/practice/01-javascript/58-includes"
+        "link": "/docs/01-javascript/58-includes#практика"
       },
       {
         "text": "Практика. Глава 59. sort()",
-        "link": "/practice/01-javascript/59-sort"
+        "link": "/docs/01-javascript/59-sort#практика"
       },
       {
         "text": "Практика. Глава 60. reverse()",
-        "link": "/practice/01-javascript/60-reverse"
+        "link": "/docs/01-javascript/60-reverse#практика"
       },
       {
         "text": "Практика. Глава 61. Execution Context",
-        "link": "/practice/01-javascript/61-execution-context"
+        "link": "/docs/01-javascript/61-execution-context#практика"
       },
       {
         "text": "Практика. Глава 62. Call Stack",
-        "link": "/practice/01-javascript/62-call-stack"
+        "link": "/docs/01-javascript/62-call-stack#практика"
       },
       {
         "text": "Практика. Глава 63. Memory Model",
-        "link": "/practice/01-javascript/63-memory-model"
+        "link": "/docs/01-javascript/63-memory-model#практика"
       },
       {
         "text": "Практика. Глава 64. Hoisting + TDZ",
-        "link": "/practice/01-javascript/64-hoisting-tdz"
+        "link": "/docs/01-javascript/64-hoisting-tdz#практика"
       },
       {
         "text": "Практика. Глава 65. Closures",
-        "link": "/practice/01-javascript/65-closures"
+        "link": "/docs/01-javascript/65-closures#практика"
       },
       {
         "text": "Практика. Глава 66. this",
-        "link": "/practice/01-javascript/66-this"
+        "link": "/docs/01-javascript/66-this#практика"
       },
       {
         "text": "Практика. Глава 67. call(), apply(), bind()",
-        "link": "/practice/01-javascript/67-call-apply-bind"
+        "link": "/docs/01-javascript/67-call-apply-bind#практика"
       },
       {
         "text": "Практика. Глава 68. Практическое управление контекстом",
-        "link": "/practice/01-javascript/68-context-management"
+        "link": "/docs/01-javascript/68-context-management#практика"
       },
       {
         "text": "Практика. Глава 69. Synchronous Execution",
-        "link": "/practice/01-javascript/69-synchronous-execution"
+        "link": "/docs/01-javascript/69-synchronous-execution#практика"
       },
       {
         "text": "Практика. Глава 70. Asynchronous Programming",
-        "link": "/practice/01-javascript/70-asynchronous-programming"
+        "link": "/docs/01-javascript/70-asynchronous-programming#практика"
       },
       {
         "text": "Практика. Глава 71. Callback",
-        "link": "/practice/01-javascript/71-callback"
+        "link": "/docs/01-javascript/71-callback#практика"
       },
       {
         "text": "Практика. Глава 72. Promise",
-        "link": "/practice/01-javascript/72-promise"
+        "link": "/docs/01-javascript/72-promise#практика"
       },
       {
         "text": "Практика. Глава 73. Event Loop",
-        "link": "/practice/01-javascript/73-event-loop"
+        "link": "/docs/01-javascript/73-event-loop#практика"
       },
       {
         "text": "Практика. Глава 74. Web APIs",
-        "link": "/practice/01-javascript/74-web-apis"
+        "link": "/docs/01-javascript/74-web-apis#практика"
       },
       {
         "text": "Практика. Глава 75. Microtasks",
-        "link": "/practice/01-javascript/75-microtasks"
+        "link": "/docs/01-javascript/75-microtasks#практика"
       },
       {
         "text": "Практика. Глава 76. Macrotasks",
-        "link": "/practice/01-javascript/76-macrotasks"
+        "link": "/docs/01-javascript/76-macrotasks#практика"
       },
       {
         "text": "Практика. Глава 77. Promise API",
-        "link": "/practice/01-javascript/77-promise-api"
+        "link": "/docs/01-javascript/77-promise-api#практика"
       },
       {
         "text": "Практика. Глава 78. async и await",
-        "link": "/practice/01-javascript/78-async-await"
+        "link": "/docs/01-javascript/78-async-await#практика"
       },
       {
         "text": "Практика. Глава 79. Error Handling in Asynchronous Code",
-        "link": "/practice/01-javascript/79-async-error-handling"
+        "link": "/docs/01-javascript/79-async-error-handling#практика"
       },
       {
         "text": "Практика. Глава 80. Parallel Asynchronous Operations",
-        "link": "/practice/01-javascript/80-parallel-async"
+        "link": "/docs/01-javascript/80-parallel-async#практика"
       },
       {
         "text": "Практика. Глава 81. Iterable Protocol",
-        "link": "/practice/01-javascript/81-iterable-protocol"
+        "link": "/docs/01-javascript/81-iterable-protocol#практика"
       },
       {
         "text": "Практика. Глава 82. Iterators",
-        "link": "/practice/01-javascript/82-iterators"
+        "link": "/docs/01-javascript/82-iterators#практика"
       },
       {
         "text": "Практика. Глава 83. Generators",
-        "link": "/practice/01-javascript/83-generators"
+        "link": "/docs/01-javascript/83-generators#практика"
       },
       {
         "text": "Практика. Глава 84. Custom Iteration",
-        "link": "/practice/01-javascript/84-custom-iteration"
+        "link": "/docs/01-javascript/84-custom-iteration#практика"
       },
       {
         "text": "Практика. Глава 85. JavaScript Modules",
-        "link": "/practice/01-javascript/85-javascript-modules"
+        "link": "/docs/01-javascript/85-javascript-modules#практика"
       },
       {
         "text": "Практика. Глава 86. Module Systems",
-        "link": "/practice/01-javascript/86-module-systems"
+        "link": "/docs/01-javascript/86-module-systems#практика"
       },
       {
         "text": "Практика. Глава 87. Garbage Collector",
-        "link": "/practice/01-javascript/87-garbage-collector"
+        "link": "/docs/01-javascript/87-garbage-collector#практика"
       },
       {
         "text": "Практика. Глава 88. Memory Management",
-        "link": "/practice/01-javascript/88-memory-management"
+        "link": "/docs/01-javascript/88-memory-management#практика"
       },
       {
         "text": "Практика. Глава 89. Performance",
-        "link": "/practice/01-javascript/89-performance"
+        "link": "/docs/01-javascript/89-performance#практика"
       },
       {
         "text": "Практика. Глава 90. Debugging",
-        "link": "/practice/01-javascript/90-debugging"
+        "link": "/docs/01-javascript/90-debugging#практика"
       },
       {
         "text": "Практика. Глава 91. Modern JavaScript Features",
-        "link": "/practice/01-javascript/91-modern-javascript"
+        "link": "/docs/01-javascript/91-modern-javascript#практика"
       },
       {
         "text": "Практика. Глава 92. JavaScript Best Practices",
-        "link": "/practice/01-javascript/92-javascript-best-practices"
+        "link": "/docs/01-javascript/92-javascript-best-practices#практика"
       },
       {
         "text": "Практика. Глава 93. Error Objects",
-        "link": "/practice/01-javascript/93-error-objects"
+        "link": "/docs/01-javascript/93-error-objects#практика"
       },
       {
         "text": "Практика. Глава 94. JSON",
-        "link": "/practice/01-javascript/94-json"
+        "link": "/docs/01-javascript/94-json#практика"
       },
       {
         "text": "Практика. Глава 95. Date",
-        "link": "/practice/01-javascript/95-date"
+        "link": "/docs/01-javascript/95-date#практика"
       },
       {
         "text": "Практика. Глава 96. Почему появился TypeScript",
-        "link": "/practice/01-javascript/96-why-typescript"
+        "link": "/docs/01-javascript/96-why-typescript#практика"
       }
     ]
   },
@@ -807,387 +807,387 @@ export const sidebar = [
     "items": [
       {
         "text": "Решения. Глава 1. Что такое JavaScript",
-        "link": "/solutions/01-javascript/01-what-is-javascript"
+        "link": "/docs/01-javascript/01-what-is-javascript#решения"
       },
       {
         "text": "Решения. Глава 2. Как выполняется JavaScript",
-        "link": "/solutions/01-javascript/02-how-javascript-works"
+        "link": "/docs/01-javascript/02-how-javascript-works#решения"
       },
       {
         "text": "Решения. Глава 3. Execution Context",
-        "link": "/solutions/01-javascript/03-execution-context"
+        "link": "/docs/01-javascript/03-execution-context#решения"
       },
       {
         "text": "Решения. Глава 4. Call Stack",
-        "link": "/solutions/01-javascript/04-call-stack"
+        "link": "/docs/01-javascript/04-call-stack#решения"
       },
       {
         "text": "Решения. Глава 5. Memory",
-        "link": "/solutions/01-javascript/05-memory"
+        "link": "/docs/01-javascript/05-memory#решения"
       },
       {
         "text": "Решения. Глава 6. Variables",
-        "link": "/solutions/01-javascript/06-variables"
+        "link": "/docs/01-javascript/06-variables#решения"
       },
       {
         "text": "Решения. Глава 7. Scope",
-        "link": "/solutions/01-javascript/07-scope"
+        "link": "/docs/01-javascript/07-scope#решения"
       },
       {
         "text": "Решения. Глава 8. Lexical Environment",
-        "link": "/solutions/01-javascript/08-lexical-environment"
+        "link": "/docs/01-javascript/08-lexical-environment#решения"
       },
       {
         "text": "Решения. Глава 9. Hoisting",
-        "link": "/solutions/01-javascript/09-hoisting"
+        "link": "/docs/01-javascript/09-hoisting#решения"
       },
       {
         "text": "Решения. Глава 10. Temporal Dead Zone",
-        "link": "/solutions/01-javascript/10-temporal-dead-zone"
+        "link": "/docs/01-javascript/10-temporal-dead-zone#решения"
       },
       {
         "text": "Решения. Глава 11. Primitive Types",
-        "link": "/solutions/01-javascript/11-primitive-types"
+        "link": "/docs/01-javascript/11-primitive-types#решения"
       },
       {
         "text": "Решения. Глава 12. Object Type",
-        "link": "/solutions/01-javascript/12-object-type"
+        "link": "/docs/01-javascript/12-object-type#решения"
       },
       {
         "text": "Решения. Глава 13. References",
-        "link": "/solutions/01-javascript/13-references"
+        "link": "/docs/01-javascript/13-references#решения"
       },
       {
         "text": "Решения. Глава 14. Stack & Heap",
-        "link": "/solutions/01-javascript/14-stack-and-heap"
+        "link": "/docs/01-javascript/14-stack-and-heap#решения"
       },
       {
         "text": "Решения. Глава 15. Type Conversion",
-        "link": "/solutions/01-javascript/15-type-conversion"
+        "link": "/docs/01-javascript/15-type-conversion#решения"
       },
       {
         "text": "Решения. Глава 16. Equality",
-        "link": "/solutions/01-javascript/16-equality"
+        "link": "/docs/01-javascript/16-equality#решения"
       },
       {
         "text": "Решения. Глава 17. Operators",
-        "link": "/solutions/01-javascript/17-operators"
+        "link": "/docs/01-javascript/17-operators#решения"
       },
       {
         "text": "Решения. Глава 18. Conditionals",
-        "link": "/solutions/01-javascript/18-conditionals"
+        "link": "/docs/01-javascript/18-conditionals#решения"
       },
       {
         "text": "Решения. Глава 19. Loops",
-        "link": "/solutions/01-javascript/19-loops"
+        "link": "/docs/01-javascript/19-loops#решения"
       },
       {
         "text": "Решения. Глава 20. Error Handling",
-        "link": "/solutions/01-javascript/20-error-handling"
+        "link": "/docs/01-javascript/20-error-handling#решения"
       },
       {
         "text": "Решения. Глава 21. Function Declaration",
-        "link": "/solutions/01-javascript/21-function-declaration"
+        "link": "/docs/01-javascript/21-function-declaration#решения"
       },
       {
         "text": "Решения. Глава 22. Function Expression",
-        "link": "/solutions/01-javascript/22-function-expression"
+        "link": "/docs/01-javascript/22-function-expression#решения"
       },
       {
         "text": "Решения. Глава 23. Arrow Functions",
-        "link": "/solutions/01-javascript/23-arrow-functions"
+        "link": "/docs/01-javascript/23-arrow-functions#решения"
       },
       {
         "text": "Решения. Глава 24. Parameters",
-        "link": "/solutions/01-javascript/24-parameters"
+        "link": "/docs/01-javascript/24-parameters#решения"
       },
       {
         "text": "Решения. Глава 25. Return",
-        "link": "/solutions/01-javascript/25-return"
+        "link": "/docs/01-javascript/25-return#решения"
       },
       {
         "text": "Решения. Глава 26. Rest Parameters",
-        "link": "/solutions/01-javascript/26-rest"
+        "link": "/docs/01-javascript/26-rest#решения"
       },
       {
         "text": "Решения. Глава 27. Spread",
-        "link": "/solutions/01-javascript/27-spread"
+        "link": "/docs/01-javascript/27-spread#решения"
       },
       {
         "text": "Решения. Глава 28. Closures",
-        "link": "/solutions/01-javascript/28-closures"
+        "link": "/docs/01-javascript/28-closures#решения"
       },
       {
         "text": "Решения. Глава 29. this",
-        "link": "/solutions/01-javascript/29-this"
+        "link": "/docs/01-javascript/29-this#решения"
       },
       {
         "text": "Решения. Глава 30. call()",
-        "link": "/solutions/01-javascript/30-call"
+        "link": "/docs/01-javascript/30-call#решения"
       },
       {
         "text": "Решения. Глава 31. apply()",
-        "link": "/solutions/01-javascript/31-apply"
+        "link": "/docs/01-javascript/31-apply#решения"
       },
       {
         "text": "Решения. Глава 32. bind()",
-        "link": "/solutions/01-javascript/32-bind"
+        "link": "/docs/01-javascript/32-bind#решения"
       },
       {
         "text": "Решения. Глава 33. Objects",
-        "link": "/solutions/01-javascript/33-objects"
+        "link": "/docs/01-javascript/33-objects#решения"
       },
       {
         "text": "Решения. Глава 34. Destructuring",
-        "link": "/solutions/01-javascript/34-destructuring"
+        "link": "/docs/01-javascript/34-destructuring#решения"
       },
       {
         "text": "Решения. Глава 35. Optional Chaining",
-        "link": "/solutions/01-javascript/35-optional-chaining"
+        "link": "/docs/01-javascript/35-optional-chaining#решения"
       },
       {
         "text": "Решения. Глава 36. Nullish Coalescing",
-        "link": "/solutions/01-javascript/36-nullish-coalescing"
+        "link": "/docs/01-javascript/36-nullish-coalescing#решения"
       },
       {
         "text": "Решения. Глава 37. Object Methods",
-        "link": "/solutions/01-javascript/37-object-methods"
+        "link": "/docs/01-javascript/37-object-methods#решения"
       },
       {
         "text": "Решения. Глава 38. Object Descriptors",
-        "link": "/solutions/01-javascript/38-object-descriptors"
+        "link": "/docs/01-javascript/38-object-descriptors#решения"
       },
       {
         "text": "Решения. Глава 39. Prototype",
-        "link": "/solutions/01-javascript/39-prototype"
+        "link": "/docs/01-javascript/39-prototype#решения"
       },
       {
         "text": "Решения. Глава 40. Prototype Chain",
-        "link": "/solutions/01-javascript/40-prototype-chain"
+        "link": "/docs/01-javascript/40-prototype-chain#решения"
       },
       {
         "text": "Решения. Глава 41. Classes",
-        "link": "/solutions/01-javascript/41-classes"
+        "link": "/docs/01-javascript/41-classes#решения"
       },
       {
         "text": "Решения. Глава 42. Class Inheritance",
-        "link": "/solutions/01-javascript/42-class-inheritance"
+        "link": "/docs/01-javascript/42-class-inheritance#решения"
       },
       {
         "text": "Решения. Глава 43. super",
-        "link": "/solutions/01-javascript/43-super"
+        "link": "/docs/01-javascript/43-super#решения"
       },
       {
         "text": "Решения. Глава 44. Arrays",
-        "link": "/solutions/01-javascript/44-arrays"
+        "link": "/docs/01-javascript/44-arrays#решения"
       },
       {
         "text": "Решения. Глава 45. push() and pop()",
-        "link": "/solutions/01-javascript/45-push-pop"
+        "link": "/docs/01-javascript/45-push-pop#решения"
       },
       {
         "text": "Решения. Глава 46. shift() and unshift()",
-        "link": "/solutions/01-javascript/46-shift-unshift"
+        "link": "/docs/01-javascript/46-shift-unshift#решения"
       },
       {
         "text": "Решения. Глава 47. splice()",
-        "link": "/solutions/01-javascript/47-splice"
+        "link": "/docs/01-javascript/47-splice#решения"
       },
       {
         "text": "Решения. Глава 48. slice()",
-        "link": "/solutions/01-javascript/48-slice"
+        "link": "/docs/01-javascript/48-slice#решения"
       },
       {
         "text": "Решения. Глава 49. Iteration",
-        "link": "/solutions/01-javascript/49-iteration"
+        "link": "/docs/01-javascript/49-iteration#решения"
       },
       {
         "text": "Решения. Глава 50. forEach()",
-        "link": "/solutions/01-javascript/50-foreach"
+        "link": "/docs/01-javascript/50-foreach#решения"
       },
       {
         "text": "Решения. Глава 51. map()",
-        "link": "/solutions/01-javascript/51-map"
+        "link": "/docs/01-javascript/51-map#решения"
       },
       {
         "text": "Решения. Глава 52. filter()",
-        "link": "/solutions/01-javascript/52-filter"
+        "link": "/docs/01-javascript/52-filter#решения"
       },
       {
         "text": "Решения. Глава 53. reduce()",
-        "link": "/solutions/01-javascript/53-reduce"
+        "link": "/docs/01-javascript/53-reduce#решения"
       },
       {
         "text": "Решения. Глава 54. Chaining basics",
-        "link": "/solutions/01-javascript/54-chaining"
+        "link": "/docs/01-javascript/54-chaining#решения"
       },
       {
         "text": "Решения. Глава 55. find()",
-        "link": "/solutions/01-javascript/55-find"
+        "link": "/docs/01-javascript/55-find#решения"
       },
       {
         "text": "Решения. Глава 56. some()",
-        "link": "/solutions/01-javascript/56-some"
+        "link": "/docs/01-javascript/56-some#решения"
       },
       {
         "text": "Решения. Глава 57. every()",
-        "link": "/solutions/01-javascript/57-every"
+        "link": "/docs/01-javascript/57-every#решения"
       },
       {
         "text": "Решения. Глава 58. includes()",
-        "link": "/solutions/01-javascript/58-includes"
+        "link": "/docs/01-javascript/58-includes#решения"
       },
       {
         "text": "Решения. Глава 59. sort()",
-        "link": "/solutions/01-javascript/59-sort"
+        "link": "/docs/01-javascript/59-sort#решения"
       },
       {
         "text": "Решения. Глава 60. reverse()",
-        "link": "/solutions/01-javascript/60-reverse"
+        "link": "/docs/01-javascript/60-reverse#решения"
       },
       {
         "text": "Решения. Глава 61. Execution Context",
-        "link": "/solutions/01-javascript/61-execution-context"
+        "link": "/docs/01-javascript/61-execution-context#решения"
       },
       {
         "text": "Решения. Глава 62. Call Stack",
-        "link": "/solutions/01-javascript/62-call-stack"
+        "link": "/docs/01-javascript/62-call-stack#решения"
       },
       {
         "text": "Решения. Глава 63. Memory Model",
-        "link": "/solutions/01-javascript/63-memory-model"
+        "link": "/docs/01-javascript/63-memory-model#решения"
       },
       {
         "text": "Решения. Глава 64. Hoisting + TDZ",
-        "link": "/solutions/01-javascript/64-hoisting-tdz"
+        "link": "/docs/01-javascript/64-hoisting-tdz#решения"
       },
       {
         "text": "Решения. Глава 65. Closures",
-        "link": "/solutions/01-javascript/65-closures"
+        "link": "/docs/01-javascript/65-closures#решения"
       },
       {
         "text": "Решения. Глава 66. this",
-        "link": "/solutions/01-javascript/66-this"
+        "link": "/docs/01-javascript/66-this#решения"
       },
       {
         "text": "Решения. Глава 67. call(), apply(), bind()",
-        "link": "/solutions/01-javascript/67-call-apply-bind"
+        "link": "/docs/01-javascript/67-call-apply-bind#решения"
       },
       {
         "text": "Решения. Глава 68. Практическое управление контекстом",
-        "link": "/solutions/01-javascript/68-context-management"
+        "link": "/docs/01-javascript/68-context-management#решения"
       },
       {
         "text": "Решения. Глава 69. Synchronous Execution",
-        "link": "/solutions/01-javascript/69-synchronous-execution"
+        "link": "/docs/01-javascript/69-synchronous-execution#решения"
       },
       {
         "text": "Решения. Глава 70. Asynchronous Programming",
-        "link": "/solutions/01-javascript/70-asynchronous-programming"
+        "link": "/docs/01-javascript/70-asynchronous-programming#решения"
       },
       {
         "text": "Решения. Глава 71. Callback",
-        "link": "/solutions/01-javascript/71-callback"
+        "link": "/docs/01-javascript/71-callback#решения"
       },
       {
         "text": "Решения. Глава 72. Promise",
-        "link": "/solutions/01-javascript/72-promise"
+        "link": "/docs/01-javascript/72-promise#решения"
       },
       {
         "text": "Решения. Глава 73. Event Loop",
-        "link": "/solutions/01-javascript/73-event-loop"
+        "link": "/docs/01-javascript/73-event-loop#решения"
       },
       {
         "text": "Решения. Глава 74. Web APIs",
-        "link": "/solutions/01-javascript/74-web-apis"
+        "link": "/docs/01-javascript/74-web-apis#решения"
       },
       {
         "text": "Решения. Глава 75. Microtasks",
-        "link": "/solutions/01-javascript/75-microtasks"
+        "link": "/docs/01-javascript/75-microtasks#решения"
       },
       {
         "text": "Решения. Глава 76. Macrotasks",
-        "link": "/solutions/01-javascript/76-macrotasks"
+        "link": "/docs/01-javascript/76-macrotasks#решения"
       },
       {
         "text": "Решения. Глава 77. Promise API",
-        "link": "/solutions/01-javascript/77-promise-api"
+        "link": "/docs/01-javascript/77-promise-api#решения"
       },
       {
         "text": "Решения. Глава 78. async и await",
-        "link": "/solutions/01-javascript/78-async-await"
+        "link": "/docs/01-javascript/78-async-await#решения"
       },
       {
         "text": "Решения. Глава 79. Error Handling in Asynchronous Code",
-        "link": "/solutions/01-javascript/79-async-error-handling"
+        "link": "/docs/01-javascript/79-async-error-handling#решения"
       },
       {
         "text": "Решения. Глава 80. Parallel Asynchronous Operations",
-        "link": "/solutions/01-javascript/80-parallel-async"
+        "link": "/docs/01-javascript/80-parallel-async#решения"
       },
       {
         "text": "Решения. Глава 81. Iterable Protocol",
-        "link": "/solutions/01-javascript/81-iterable-protocol"
+        "link": "/docs/01-javascript/81-iterable-protocol#решения"
       },
       {
         "text": "Решения. Глава 82. Iterators",
-        "link": "/solutions/01-javascript/82-iterators"
+        "link": "/docs/01-javascript/82-iterators#решения"
       },
       {
         "text": "Решения. Глава 83. Generators",
-        "link": "/solutions/01-javascript/83-generators"
+        "link": "/docs/01-javascript/83-generators#решения"
       },
       {
         "text": "Решения. Глава 84. Custom Iteration",
-        "link": "/solutions/01-javascript/84-custom-iteration"
+        "link": "/docs/01-javascript/84-custom-iteration#решения"
       },
       {
         "text": "Решения. Глава 85. JavaScript Modules",
-        "link": "/solutions/01-javascript/85-javascript-modules"
+        "link": "/docs/01-javascript/85-javascript-modules#решения"
       },
       {
         "text": "Решения. Глава 86. Module Systems",
-        "link": "/solutions/01-javascript/86-module-systems"
+        "link": "/docs/01-javascript/86-module-systems#решения"
       },
       {
         "text": "Решения. Глава 87. Garbage Collector",
-        "link": "/solutions/01-javascript/87-garbage-collector"
+        "link": "/docs/01-javascript/87-garbage-collector#решения"
       },
       {
         "text": "Решения. Глава 88. Memory Management",
-        "link": "/solutions/01-javascript/88-memory-management"
+        "link": "/docs/01-javascript/88-memory-management#решения"
       },
       {
         "text": "Решения. Глава 89. Performance",
-        "link": "/solutions/01-javascript/89-performance"
+        "link": "/docs/01-javascript/89-performance#решения"
       },
       {
         "text": "Решения. Глава 90. Debugging",
-        "link": "/solutions/01-javascript/90-debugging"
+        "link": "/docs/01-javascript/90-debugging#решения"
       },
       {
         "text": "Решения. Глава 91. Modern JavaScript Features",
-        "link": "/solutions/01-javascript/91-modern-javascript"
+        "link": "/docs/01-javascript/91-modern-javascript#решения"
       },
       {
         "text": "Решения. Глава 92. JavaScript Best Practices",
-        "link": "/solutions/01-javascript/92-javascript-best-practices"
+        "link": "/docs/01-javascript/92-javascript-best-practices#решения"
       },
       {
         "text": "Решения. Глава 93. Error Objects",
-        "link": "/solutions/01-javascript/93-error-objects"
+        "link": "/docs/01-javascript/93-error-objects#решения"
       },
       {
         "text": "Решения. Глава 94. JSON",
-        "link": "/solutions/01-javascript/94-json"
+        "link": "/docs/01-javascript/94-json#решения"
       },
       {
         "text": "Решения. Глава 95. Date",
-        "link": "/solutions/01-javascript/95-date"
+        "link": "/docs/01-javascript/95-date#решения"
       },
       {
         "text": "Решения. Глава 96. Почему появился TypeScript",
-        "link": "/solutions/01-javascript/96-why-typescript"
+        "link": "/docs/01-javascript/96-why-typescript#решения"
       }
     ]
   }
