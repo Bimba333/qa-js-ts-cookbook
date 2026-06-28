@@ -113,6 +113,12 @@
 * [Iterators](docs/01-javascript/82-iterators.md)
 * [Generators](docs/01-javascript/83-generators.md)
 * [Custom Iteration](docs/01-javascript/84-custom-iteration.md)
+* [JavaScript Modules](docs/01-javascript/85-javascript-modules.md)
+* [Module Systems](docs/01-javascript/86-module-systems.md)
+* [Garbage Collector](docs/01-javascript/87-garbage-collector.md)
+* [Memory Management](docs/01-javascript/88-memory-management.md)
+* [Performance](docs/01-javascript/89-performance.md)
+* [Debugging](docs/01-javascript/90-debugging.md)
 
 > Остальные главы будут добавляться по мере написания.
 

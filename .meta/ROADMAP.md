@@ -643,7 +643,7 @@
 
 Главы **1–45** считаются утверждёнными и больше не изменяются.
 
-Данная часть продолжает JavaScript и завершает первую часть курса.
+Данная часть синхронизирована с фактически написанными JavaScript-главами до главы **86**.
 
 ---
 
@@ -775,17 +775,32 @@
 
 **Главный вопрос**
 
+> Как объединять преобразования массива в цепочку?
+
+Темы:
+
+* Chaining
+* Последовательные преобразования
+* map() + filter()
+* Читаемость цепочек
+
+---
+
+## 55. find()
+
+**Главный вопрос**
+
 > Как найти первый подходящий элемент?
 
 Темы:
 
 * Predicate
+* Первый подходящий элемент
 * undefined
-* Отличие от filter()
 
 ---
 
-## 55. some()
+## 56. some()
 
 **Главный вопрос**
 
@@ -798,7 +813,7 @@
 
 ---
 
-## 56. every()
+## 57. every()
 
 **Главный вопрос**
 
@@ -807,11 +822,26 @@
 Темы:
 
 * Проверка всей коллекции
+* Булев результат
 * Раннее завершение
 
 ---
 
-## 57. sort()
+## 58. includes()
+
+**Главный вопрос**
+
+> Как проверить, есть ли значение в массиве?
+
+Темы:
+
+* includes()
+* Проверка наличия значения
+* Простые массивы
+
+---
+
+## 59. sort()
 
 **Главный вопрос**
 
@@ -819,206 +849,149 @@
 
 Темы:
 
-* Лексикографическая сортировка
+* Сортировка
 * Compare Function
-* Сортировка чисел
 * Изменение исходного массива
 
 ---
 
-## 58. Searching
+## 60. reverse()
 
 **Главный вопрос**
 
-> Как искать значения в массиве?
+> Как инвертировать порядок массива?
 
 Темы:
 
-* includes()
-* indexOf()
-* lastIndexOf()
-* findIndex()
+* Обратный порядок
+* Изменение исходного массива
+* Практическое использование
 
 ---
 
-## 59. Immutable Operations
+# Раздел 6. Execution Model Revisited
+
+---
+
+## 61. Execution Context
 
 **Главный вопрос**
 
-> Как изменить массив, не изменяя исходный?
+> Как JavaScript начинает выполнять код?
 
 Темы:
 
-* toSorted()
-* toReversed()
-* toSpliced()
-* with()
+* Execution Context
+* Создание среды выполнения
+* Глобальный и функциональный контекст
 
 ---
 
-# Раздел 6. Collections
-
----
-
-## 60. Map
+## 62. Call Stack
 
 **Главный вопрос**
 
-> Когда Object перестаёт быть удобным?
+> Как функции выполняются шаг за шагом?
 
 Темы:
 
-* Key → Value
-* Любые типы ключей
-* Основные операции
+* Stack of function calls
+* Push
+* Pop
+* Активный вызов
 
 ---
 
-## 61. Set
+## 63. Memory Model
 
 **Главный вопрос**
 
-> Как хранить только уникальные значения?
+> Где хранятся значения и объекты?
 
 Темы:
 
-* Уникальность
-* Добавление
-* Удаление
-* Проверка существования
+* Stack
+* Heap
+* Примитивы
+* Объекты
+* References
 
 ---
 
-## 62. WeakMap
+## 64. Hoisting + TDZ
 
 **Главный вопрос**
 
-> Почему иногда данные должны исчезать автоматически?
+> Почему переменные ведут себя неожиданно до объявления?
 
 Темы:
 
-* Weak References
-* Ограничения
-* Практическое применение
+* Hoisting
+* Temporal Dead Zone
+* var
+* let
+* const
 
 ---
 
-## 63. WeakSet
+# Раздел 7. Function Context
+
+---
+
+## 65. Closures
 
 **Главный вопрос**
 
-> Когда нужна коллекция объектов без удержания их в памяти?
+> Как функция помнит данные после выполнения внешней функции?
 
 Темы:
 
-* Weak References
-* Ограничения
-* Использование
+* Closure
+* Lexical Environment
+* Сохраненный доступ к окружению
 
 ---
 
-## 64. Choosing the Right Collection
+## 66. this
 
 **Главный вопрос**
 
-> Как выбрать правильную структуру данных?
+> Как JavaScript определяет объект выполнения?
 
 Темы:
 
-* Object vs Map
-* Array vs Set
-* Map vs Object
-* Set vs Array
-* Практические рекомендации
+* this
+* Форма вызова
+* object.method()
 
 ---
 
-# Раздел 7. Modules
-
----
-
-## 65. Why Modules
+## 67. call(), apply(), bind()
 
 **Главный вопрос**
 
-> Почему большой проект нельзя хранить в одном файле?
+> Как явно управлять объектом выполнения функции?
 
 Темы:
 
-* Масштабирование
-* Повторное использование
-* Разделение ответственности
+* call()
+* apply()
+* bind()
+* Привязанная функция
 
 ---
 
-## 66. export
+## 68. Practical Context Management
 
 **Главный вопрос**
 
-> Как сделать код доступным другим модулям?
+> Как управлять контекстом функции в реальном коде?
 
 Темы:
 
-* Named Export
-* Default Export
-* Практические рекомендации
-
----
-
-## 67. import
-
-**Главный вопрос**
-
-> Как использовать код из других файлов?
-
-Темы:
-
-* Named Import
-* Default Import
-* Aliases
-
----
-
-## 68. ES Modules
-
-**Главный вопрос**
-
-> Как работает современная модульная система JavaScript?
-
-Темы:
-
-* Module Scope
-* Live Bindings
-* Практика
-
----
-
-## 69. CommonJS
-
-**Главный вопрос**
-
-> Почему существует require()?
-
-Темы:
-
-* module.exports
-* require()
-* Node.js
-
----
-
-## 70. Module Resolution
-
-**Главный вопрос**
-
-> Как JavaScript находит импортируемые файлы?
-
-Темы:
-
-* Relative Paths
-* Absolute Paths
-* package.json
-* node_modules
+* Потеря this
+* Helper methods
+* Практические сценарии Automation QA
 
 ---
 
@@ -1026,67 +999,124 @@
 
 ---
 
-## 71. Why Async Exists
+## 69. Synchronous Execution
 
 **Главный вопрос**
 
-> Почему JavaScript вообще понадобилась асинхронность?
+> Как выполняется синхронный JavaScript?
 
 Темы:
 
-* Blocking
-* Waiting
-* Non-blocking
+* Последовательное выполнение
+* Блокирующие операции
+* Порядок строк
 
 ---
 
-## 72. Callbacks
+## 70. Asynchronous Programming
 
 **Главный вопрос**
 
-> Как JavaScript решал асинхронность раньше?
+> Почему JavaScript нужна асинхронность?
+
+Темы:
+
+* Операция начинается сейчас
+* Результат появляется позже
+* Среда выполнения
+
+---
+
+## 71. Callback
+
+**Главный вопрос**
+
+> Как передать действие, которое выполнится позже?
 
 Темы:
 
 * Callback
-* Callback Hell
-* Практические проблемы
+* Обратный вызов
+* callback(error, result)
 
 ---
 
-## 73. Promise
+## 72. Promise
 
 **Главный вопрос**
 
-> Как Promise упрощает работу с асинхронностью?
+> Как представить будущий результат операции?
 
 Темы:
 
 * Promise
-* resolve
-* reject
+* Будущий результат
+* then()
+* catch()
 
 ---
 
-## 74. Promise States
+## 73. Event Loop
 
 **Главный вопрос**
 
-> Какие состояния проходит Promise?
+> Как JavaScript координирует асинхронное выполнение?
 
 Темы:
 
-* pending
-* fulfilled
-* rejected
+* Event Loop
+* Call Stack
+* Очереди задач
 
 ---
 
-## 75. Promise Chaining
+## 74. Web APIs
 
 **Главный вопрос**
 
-> Как выполнять асинхронные операции последовательно?
+> Откуда JavaScript получает дополнительные возможности среды выполнения?
+
+Темы:
+
+* Web APIs
+* Runtime APIs
+* Среда выполнения
+
+---
+
+## 75. Microtasks
+
+**Главный вопрос**
+
+> Почему Promise-обработчики выполняются раньше таймеров?
+
+Темы:
+
+* Microtask Queue
+* Promise.then()
+* queueMicrotask()
+
+---
+
+## 76. Macrotasks
+
+**Главный вопрос**
+
+> Какие задачи выполняются после Microtasks?
+
+Темы:
+
+* Macrotask Queue
+* Timers
+* Runtime Environment
+
+---
+
+## 77. Promise API
+
+**Главный вопрос**
+
+> Как работать с Promise-объектами?
 
 Темы:
 
@@ -1096,216 +1126,234 @@
 
 ---
 
-## 76. Promise API
+## 78. async and await
 
 **Главный вопрос**
 
-> Как работать сразу с несколькими Promise?
+> Почему появились async и await?
+
+Темы:
+
+* async
+* await
+* Возвращаемый Promise
+
+---
+
+## 79. Error Handling in Asynchronous Code
+
+**Главный вопрос**
+
+> Как обрабатывать асинхронные ошибки?
+
+Темы:
+
+* rejected Promise
+* try/catch
+* Error propagation
+
+---
+
+## 80. Parallel Asynchronous Operations
+
+**Главный вопрос**
+
+> Когда асинхронную работу нужно запускать вместе?
 
 Темы:
 
 * Promise.all()
 * Promise.allSettled()
-* Promise.any()
 * Promise.race()
+* Promise.any()
 
 ---
 
-## 77. async
-
-**Главный вопрос**
-
-> Что делает ключевое слово async?
-
-Темы:
-
-* Async Function
-* Возвращаемое значение
+# Раздел 9. Iteration Protocols
 
 ---
 
-## 78. await
+## 81. Iterable Protocol
 
 **Главный вопрос**
 
-> Как дождаться результата Promise?
+> Почему for...of работает с массивами, но не работает с обычными объектами?
 
 Темы:
 
-* await
-* Последовательность выполнения
-* Ограничения использования
+* Iterable Protocol
+* Symbol.iterator
+* Array
+* String
+* Map
+* Set
 
 ---
 
-## 79. async / await
+## 82. Iterators
 
 **Главный вопрос**
 
-> Почему async/await делает код проще?
+> Что на самом деле происходит внутри for...of?
 
 Темы:
 
-* Переписывание Promise Chains
-* Обработка ошибок
+* Iterator
+* next()
+* value
+* done
 
 ---
 
-## 80. Event Loop
+## 83. Generators
 
 **Главный вопрос**
 
-> Как JavaScript выполняет асинхронный код?
+> Почему появились генераторы?
 
 Темы:
 
-* Event Loop
-* Call Stack
-* Queue
+* function*
+* yield
+* Объект-генератор
+* Iterator Protocol
 
 ---
 
-## 81. Microtasks
+## 84. Custom Iteration
 
 **Главный вопрос**
 
-> Почему Promise выполняются раньше таймеров?
+> Как сделать собственный объект iterable?
 
 Темы:
 
-* Microtask Queue
-* Promise Jobs
+* Symbol.iterator
+* Custom iterable object
+* Generator-based iterator
+* Manual iterator
 
 ---
 
-## 82. Macrotasks
+# Раздел 10. Modules
+
+---
+
+## 85. JavaScript Modules
 
 **Главный вопрос**
 
-> Какие задачи выполняются после Microtasks?
+> Почему JavaScript-код нужно разделять на модули?
 
 Темы:
 
+* Module as responsibility unit
+* export
+* import
+* Named Export
+* Default Export
+* Dependency Graph
+
+---
+
+## 86. Module Systems
+
+**Главный вопрос**
+
+> Почему в JavaScript существуют разные module systems?
+
+Темы:
+
+* ES Modules
+* import / export
+* CommonJS
+* require()
+* module.exports
+* Practical comparison
+
+---
+
+# Раздел 11. Memory Management
+
+---
+
+## 87. Garbage Collector
+
+**Главный вопрос**
+
+> Почему JavaScript со временем не занимает всю память?
+
+Темы:
+
+* Automatic Memory Management
+* Reachable Object
+* Unreachable Object
+* References
+* Garbage Collector
+* Runtime decides collection time
+
+---
+
+## 88. Memory Management
+
+**Главный вопрос**
+
+> Если в JavaScript есть Garbage Collector, почему memory leaks все еще происходят?
+
+Темы:
+
+* Long-lived References
+* Accidental Globals
+* Closures
+* Event Listeners
 * Timers
-* I/O
-* UI Events
+* Caches
+* Memory Hygiene
 
 ---
 
-## 83. Timers
+# Раздел 12. Engineering Practice
+
+---
+
+## 89. Performance
 
 **Главный вопрос**
 
-> Как работают setTimeout() и setInterval()?
+> Как писать эффективный JavaScript без преждевременной оптимизации?
 
 Темы:
 
-* Delay
-* Interval
-* Очередь задач
+* Readability First
+* Measure Before Optimizing
+* Bottleneck
+* Avoiding Unnecessary Work
+* Avoiding Duplicate Calculations
+* Practical Optimization Priorities
 
 ---
 
-## 84. Fetch
+## 90. Debugging
 
 **Главный вопрос**
 
-> Как получать данные из сети?
+> Как профессиональные разработчики находят bugs?
 
 Темы:
 
-* fetch()
-* Response
-* JSON
-
----
-
-## 85. AbortController
-
-**Главный вопрос**
-
-> Как отменить HTTP-запрос?
-
-Темы:
-
-* AbortController
-* AbortSignal
-* Timeout
-
----
-
-# Раздел 9. Advanced JavaScript
-
----
-
-## 86. Iterators
-
-**Главный вопрос**
-
-> Как JavaScript проходит по коллекциям?
-
----
-
-## 87. Generators
-
-**Главный вопрос**
-
-> Как функция может останавливаться и продолжать выполнение?
-
----
-
-## 88. Symbols (Advanced)
-
-**Главный вопрос**
-
-> Для чего нужны уникальные идентификаторы?
-
----
-
-## 89. Memory Management
-
-**Главный вопрос**
-
-> Как управлять памятью эффективно?
-
----
-
-## 90. Garbage Collector
-
-**Главный вопрос**
-
-> Как JavaScript освобождает память?
-
----
-
-## 91. Performance
-
-**Главный вопрос**
-
-> Как находить и устранять узкие места?
-
----
-
-## 92. Debugging
-
-**Главный вопрос**
-
-> Как искать сложные ошибки в JavaScript?
-
-Темы:
-
-* Chrome DevTools
+* Reproduce
+* Isolate
+* Inspect Assumptions
+* console.log()
 * Breakpoints
-* Watch
-* Call Stack
-* Network
-* Sources
+* Stack Trace
+* Verify Fix
 
 ---
 
 # Статус
 
-После завершения главы **92** заканчивается вся часть **JavaScript**.
+Фактически написанная JavaScript-часть синхронизирована до главы **90**.
 
 Следующая часть ROADMAP начинается с **TypeScript** (глава **93**).
 
@@ -1319,7 +1367,7 @@
 
 # Продолжение Part II
 
-Главы **1–92** считаются завершённой частью курса JavaScript.
+Главы **1–90** считаются текущей фактически написанной частью JavaScript.
 
 Данная часть полностью посвящена **TypeScript**.
 
@@ -2459,4 +2507,3 @@ FROZEN
 * не изменяется нумерация глав;
 * новые главы не добавляются между существующими;
 * развитие курса осуществляется только внутри уже утверждённых глав.
-
