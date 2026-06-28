@@ -24,11 +24,11 @@ repeat
 
 Но остается последний вопрос раздела:
 
-> What happens when execution cannot continue normally?
+> Что происходит, когда выполнение не может продолжаться нормально?
 
 Например, тест requests user profile. Server returns invalid JSON.
 
-Question:
+Вопрос:
 
 ```text
 Should program continue as if data is valid?
@@ -39,7 +39,7 @@ Should it clean up resources?
 
 Главный вопрос этой главы:
 
-> What happens to execution now?
+> Что теперь происходит с выполнением?
 
 ---
 
@@ -72,7 +72,7 @@ Should it clean up resources?
 
 Уровень сложности: **L3**.
 
-Error handling is not about hiding failures. It is about deciding what should happen when normal execution is interrupted.
+Error handling не про скрытие failures. Он про решение, что должно произойти, когда normal execution прерывается.
 
 ---
 
@@ -96,7 +96,7 @@ docs/01-javascript/20-error-handling.md
 docs/01-javascript/21-function-declaration.md
 ```
 
-Следующая глава begins Functions: the next abstraction for grouping reusable behavior.
+Следующая глава begins Functions: the next abstraction for grouping reusable поведение.
 
 ---
 
@@ -123,7 +123,7 @@ docs/01-javascript/21-function-declaration.md
 
 Начнем with real QA problem.
 
-Test requests user profile. Server returns:
+Test requests user profile. Server возвращает:
 
 ```text
 { "id": 101, "name": "Anna"
@@ -137,7 +137,7 @@ Program tries to parse it:
 JSON.parse('{ "id": 101, "name": "Anna"');
 ```
 
-Question:
+Вопрос:
 
 ```text
 Should program continue?
@@ -175,7 +175,7 @@ Runtime error
 Normal path is interrupted
 ```
 
-What happens to execution now?
+Что теперь происходит с выполнением?
 
 That is the purpose of error handling.
 
@@ -187,7 +187,7 @@ That is the purpose of error handling.
 
 Normal execution means code can continue step by step.
 
-Normal execution diagram:
+Normal execution схема:
 
 ```text
 Step 1
@@ -202,7 +202,7 @@ Step 3
 Finish
 ```
 
-Example:
+Пример:
 
 ```javascript
 const rawBody = '{ "id": 101 }';
@@ -223,7 +223,7 @@ Result is available
 Next line can use result
 ```
 
-### What an error is
+### Что такое error
 
 An error is a signal that normal execution cannot continue as expected.
 
@@ -241,13 +241,13 @@ Received
 └── error
 ```
 
-Error is not just "bad output". It changes execution flow.
+Error is not just "bad вывод". It changes execution flow.
 
 ### Abnormal execution
 
-Abnormal execution happens when operation fails and normal path is interrupted.
+Abnormal execution происходит, когда операция падает и normal path прерывается.
 
-Abnormal execution diagram:
+Abnormal execution схема:
 
 ```text
 Step 1
@@ -262,7 +262,7 @@ Error occurs
 Normal path stops
 ```
 
-What happens to execution now?
+Что теперь происходит с выполнением?
 
 ```text
 Either error is handled
@@ -277,7 +277,7 @@ Runtime error happens while program is running.
 JSON.parse('not valid json');
 ```
 
-Runtime error diagram:
+Runtime error схема:
 
 ```text
 Program is running
@@ -292,9 +292,9 @@ Runtime error is produced
 Normal execution is interrupted
 ```
 
-This chapter does not explain stack trace internals. Stack traces will be studied later when debugging gets deeper.
+Эта глава не объясняет внутреннее устройство stack trace. Stack traces будут изучены позже, когда отладка станет глубже.
 
-### Why programs stop
+### Почему программы останавливаются
 
 If an error is not handled, JavaScript cannot safely continue the normal path.
 
@@ -332,7 +332,7 @@ if (statusCode !== 200) {
 }
 ```
 
-`throw` diagram:
+`throw` схема:
 
 ```text
 Code detects invalid state
@@ -347,13 +347,13 @@ normal path is interrupted
 error path begins
 ```
 
-What happens to execution now?
+Что теперь происходит с выполнением?
 
 ```text
 Statements after throw in the same normal path do not run.
 ```
 
-Custom Error classes are a future topic. This chapter uses built-in `Error`.
+Custom Error classes — будущая тема. Эта глава использует встроенный `Error`.
 
 ### `try`
 
@@ -366,7 +366,7 @@ try {
 }
 ```
 
-`try` diagram:
+`try` схема:
 
 ```text
 try block
@@ -391,7 +391,7 @@ try {
 }
 ```
 
-`catch` diagram:
+`catch` схема:
 
 ```text
 try block
@@ -406,7 +406,7 @@ try block
     controlled error handling
 ```
 
-What happens to execution now?
+Что теперь происходит с выполнением?
 
 ```text
 Error is handled by catch block.
@@ -427,7 +427,7 @@ try {
 }
 ```
 
-`finally` diagram:
+`finally` схема:
 
 ```text
 try succeeds
@@ -448,7 +448,7 @@ At a high level, `finally` is used for cleanup-like work.
 
 ### try/catch flow
 
-Try/catch flow:
+Try/catch поток:
 
 ```text
 Enter try
@@ -485,7 +485,7 @@ catch or outer handler
 
 If current place does not handle error, error propagates upward conceptually.
 
-Error propagation diagram:
+Error propagation схема:
 
 ```text
 Operation fails
@@ -558,7 +558,7 @@ validate id does not run
 catch handles
 ```
 
-What happens to execution now?
+Что теперь происходит с выполнением?
 
 ```text
 Execution jumps from failing operation to error handling path.
@@ -568,7 +568,7 @@ Execution jumps from failing operation to error handling path.
 
 ## Внутренний механизм
 
-Conceptually:
+Концептуально:
 
 ```text
 Normal execution flows forward.
@@ -621,7 +621,7 @@ finally
 continue or stop
 ```
 
-Current position in JavaScript model:
+Текущее место в модели JavaScript:
 
 ```text
 Values
@@ -654,7 +654,7 @@ Needs a name and reusable boundary
 Functions
 ```
 
-Functions will make error propagation easier to understand because errors often move across function boundaries.
+Functions сделают error propagation понятнее, потому что errors часто проходят через границы функций.
 
 ---
 
@@ -787,7 +787,7 @@ Shows API validation scenario.
 
 ### Should every error be caught?
 
-No. Catch errors when current level can handle them meaningfully. Otherwise let them fail the test or propagate.
+Нет. Ловите errors, когда текущий уровень может осмысленно их обработать. Иначе дайте им уронить тест или распространиться дальше.
 
 ### Is catch for ignoring errors?
 
@@ -801,7 +801,7 @@ No. `finally` runs after success or failure. It does not mean operation succeede
 
 In test frameworks, assertion failures are represented as failures/errors. Framework-specific mechanics will be studied later.
 
-### How do async errors work?
+### Как работают async errors?
 
 Async error handling, Promise rejection and Event Loop interaction will be studied later.
 
@@ -819,9 +819,9 @@ Error handling decides what to do with errors.
 
 Реальность:
 
-Sometimes correct behavior is to stop.
+Sometimes correct поведение is to stop.
 
-### Миф: finally runs only when there is an error
+### Миф: finally выполняется только когда есть error
 
 Реальность:
 
@@ -878,7 +878,7 @@ If setup created temporary data, cleanup may be needed even after error.
 throw new Error('Failed');
 ```
 
-Better:
+Лучше:
 
 ```javascript
 throw new Error('Expected status 200, received 500');
@@ -897,7 +897,7 @@ cleanup must happen
 error message should be improved
 ```
 
-Practical checklist:
+Практический чек-лист:
 
 ```text
 1. What operation can fail?
@@ -914,7 +914,7 @@ Practical checklist:
 
 ### Assertion failures
 
-Assertions fail when expected condition is not met. Test frameworks handle those failures. Framework specifics come later.
+Assertions падают, когда expected condition не выполнено. Test frameworks обрабатывают такие failures. Детали framework будут позже.
 
 ### API validation
 
@@ -1002,7 +1002,7 @@ Can test still validate target behavior?
 
 Error Handling completes the Program Control section.
 
-Core model:
+Основная модель:
 
 ```text
 Programs execute normally until an error interrupts execution.
@@ -1040,7 +1040,7 @@ Error Handling
 Functions
 ```
 
-Functions are the next abstraction: they let us give names to reusable behavior and create clearer boundaries for execution and errors.
+Functions are the next abstraction: they let us give names to reusable поведение and create clearer boundaries for execution and errors.
 
 ---
 
@@ -1056,7 +1056,7 @@ Functions are the next abstraction: they let us give names to reusable behavior 
 * Errors can propagate conceptually to outer levels.
 * Do not catch errors just to hide them.
 * In QA, errors should produce useful failure information.
-* Cleanup often belongs in `finally`.
+* Cleanup часто относится к `finally`.
 * Functions are the next abstraction after program control.
 
 ---
@@ -1065,16 +1065,16 @@ Functions are the next abstraction: they let us give names to reusable behavior 
 
 Ответьте без запуска кода.
 
-1. What is normal execution?
-2. What is abnormal execution?
-3. What is runtime error?
-4. Why can program stop after error?
-5. What does `throw` do?
-6. What does `try` mark?
-7. What does `catch` do?
-8. What does `finally` guarantee at a high level?
+1. Что такое normal execution?
+2. Что такое abnormal execution?
+3. Что такое runtime error?
+4. Почему программа может остановиться после error?
+5. Что делает `throw`?
+6. Что отмечает `try`?
+7. Что делает `catch`?
+8. Что гарантирует `finally` на высоком уровне?
 9. When should error be handled locally?
-10. How does this chapter lead to Functions?
+10. Как эта глава ведёт к Functions?
 
 ---
 
@@ -1086,7 +1086,7 @@ Functions are the next abstraction: they let us give names to reusable behavior 
 practice/01-javascript/20-error-handling.md
 ```
 
-Сначала решайте predict output задания без запуска. Главная цель - понять execution flow: normal path, error path, catch, finally.
+Сначала решайте predict вывод задания без запуска. Главная цель - понять execution поток: normal path, error path, catch, finally.
 
 ---
 

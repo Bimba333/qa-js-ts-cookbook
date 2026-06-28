@@ -37,7 +37,7 @@ key
 
 Главный вопрос этой главы:
 
-> Почему две properties с похожими values могут behave differently?
+> Почему две properties с похожими значения могут behave differently?
 
 Например:
 
@@ -97,7 +97,7 @@ Object Descriptors describe these rules.
 
 Уровень сложности: **L4**.
 
-Object Descriptors важны потому, что они меняют представление о property. Property is not only business data. It also has metadata that controls behavior.
+Object Descriptors важны потому, что они меняют представление о property. Property is not only business data. It also has metadata that controls поведение.
 
 ---
 
@@ -123,7 +123,7 @@ docs/01-javascript/39-prototype.md
 
 Следующая глава ответит:
 
-> Where do methods come from when many objects share the same behavior?
+> Where do methods come from when many objects share the same поведение?
 
 ---
 
@@ -134,7 +134,7 @@ docs/01-javascript/39-prototype.md
 * зачем descriptors существуют;
 * почему property is value plus rules;
 * что такое property metadata;
-* что означает descriptor field `value`;
+* что означает descriptor поле `value`;
 * что контролирует `writable`;
 * что контролирует `enumerable`;
 * что контролирует `configurable`;
@@ -174,7 +174,7 @@ firstConfig.environment  -> "staging"
 secondConfig.environment -> "staging"
 ```
 
-Но behavior differs:
+Но поведение differs:
 
 ```text
 firstConfig.environment
@@ -188,7 +188,7 @@ secondConfig.environment
 
 Вопрос:
 
-> Why can two properties with equal values behave differently?
+> Why can two properties with equal значения behave differently?
 
 Потому что у property есть hidden metadata:
 
@@ -207,7 +207,7 @@ Descriptor is the metadata sheet for a property.
 
 ## Теория
 
-Object Descriptor describes property behavior.
+Object Descriptor describes property поведение.
 
 Не API является главным.
 
@@ -251,9 +251,9 @@ enumerable: true
 configurable: false
 ```
 
-Descriptors describe property behavior. They do not store business data beyond the `value` field itself.
+Descriptors describe property поведение. They do not store business data beyond the `value` поле itself.
 
-### Descriptor fields
+### Descriptor поля
 
 For data properties in this chapter:
 
@@ -278,7 +278,7 @@ Object.defineProperty(config, 'environment', {
 });
 ```
 
-Conceptually:
+Концептуально:
 
 ```text
 property key: environment
@@ -341,7 +341,7 @@ configurable: false
 └── property definition is locked down
 ```
 
-This chapter keeps the model high-level. The exact specification details are more nuanced.
+Эта глава оставляет модель высокоуровневой. Точные детали спецификации более тонкие.
 
 ### Object.getOwnPropertyDescriptor()
 
@@ -351,7 +351,7 @@ After understanding why descriptors exist, API becomes meaningful.
 const descriptor = Object.getOwnPropertyDescriptor(config, 'environment');
 ```
 
-It answers:
+It отвечает:
 
 ```text
 What rules control this property?
@@ -370,7 +370,7 @@ Object.defineProperty(config, 'environment', {
 });
 ```
 
-It answers:
+It отвечает:
 
 ```text
 Create this property with these rules.
@@ -380,9 +380,9 @@ Create this property with these rules.
 
 Properties created by object literal are usually writable, enumerable and configurable.
 
-Properties created by `Object.defineProperty()` have restrictive defaults when fields are omitted.
+Properties created by `Object.defineProperty()` have restrictive defaults when поля are omitted.
 
-Example:
+Пример:
 
 ```javascript
 Object.defineProperty(config, 'internalId', {
@@ -390,7 +390,7 @@ Object.defineProperty(config, 'internalId', {
 });
 ```
 
-Conceptual defaults:
+Концептуальные значения по умолчанию:
 
 ```text
 writable: false
@@ -412,7 +412,7 @@ When JavaScript performs an operation on property, it checks rules.
 config.environment = 'production';
 ```
 
-Conceptual flow:
+Концептуальный поток:
 
 ```text
 find property descriptor
@@ -432,7 +432,7 @@ In strict mode, rejected assignment throws TypeError.
 delete config.environment;
 ```
 
-Conceptual flow:
+Концептуальный поток:
 
 ```text
 find property descriptor
@@ -452,7 +452,7 @@ Deletion is shown here as one visible consequence of `configurable`, not as the 
 Object.keys(config);
 ```
 
-Conceptual flow:
+Концептуальный поток:
 
 ```text
 look at own properties
@@ -630,7 +630,7 @@ console.log(Object.keys(config));
 console.log(Object.getOwnPropertyDescriptor(config, 'environment'));
 ```
 
-Omitted descriptor fields are not the same as object literal defaults.
+Omitted descriptor поля are not the same as object literal defaults.
 
 ### Пример 6. QA example
 
@@ -669,7 +669,7 @@ console.log(frameworkConfig.baseUrl);
 
 ### Descriptor stores business data?
 
-Descriptor describes property behavior. The `value` field contains property value, but descriptor itself is metadata about the property.
+Descriptor describes property поведение. The `value` поле contains property value, but descriptor itself is metadata about the property.
 
 ### Hidden property is secure?
 
@@ -719,7 +719,7 @@ Non-enumerable means hidden from enumeration, not private.
 
 Реальность:
 
-It defines value plus behavior rules.
+It defines value plus поведение rules.
 
 ### Миф: descriptors are business data
 
@@ -741,7 +741,7 @@ Object.defineProperty(config, 'environment', {
 
 This creates restrictive property by default.
 
-Fix:
+Исправление:
 
 ```javascript
 Object.defineProperty(config, 'environment', {
@@ -814,7 +814,7 @@ baseUrl
 └── writable: false
 ```
 
-This protects important infrastructure values from accidental reassignment.
+This protects important infrastructure значения from accidental reassignment.
 
 ### Hidden framework internals
 
@@ -883,7 +883,7 @@ Property
 └── descriptor
 ```
 
-### 5. Descriptor fields
+### 5. Descriptor поля
 
 ```text
 Descriptor
@@ -1215,7 +1215,7 @@ Property
     └── Rules
 ```
 
-Descriptors describe property behavior. They do not represent business data.
+Descriptors describe property поведение. They do not represent business data.
 
 We studied:
 
@@ -1246,7 +1246,7 @@ Prototype
 
 * Property is not only value.
 * Property has metadata.
-* Descriptor describes property behavior.
+* Descriptor describes property поведение.
 * `writable` controls assignment.
 * `enumerable` controls visibility in enumeration.
 * `configurable` controls whether the property definition itself may be changed.
@@ -1267,7 +1267,7 @@ Prototype
 3. What does `writable` control?
 4. What does `enumerable` control?
 5. What does `configurable` control?
-6. Why can two properties with equal values behave differently?
+6. Why can two properties with equal значения behave differently?
 7. Does non-enumerable mean private?
 8. Why can `Object.defineProperty()` surprise beginners?
 9. Where can descriptors be useful in Automation QA?

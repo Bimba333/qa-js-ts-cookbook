@@ -36,7 +36,7 @@ function выполняется сейчас
 
 Теперь появляется следующий вопрос:
 
-> Что делать, если receiver нужно выбрать один раз, а function вызвать позже?
+> Что делать, если объект выполнения нужно выбрать один раз, а function вызвать позже?
 
 Или так:
 
@@ -81,11 +81,11 @@ bind()
 
 * что function object можно хранить в переменной;
 * что `this` определяется формой invocation;
-* что обычный `object.method()` выбирает receiver из формы вызова;
-* что `call()` позволяет явно выбрать receiver;
+* что обычный `object.method()` выбирает объект выполнения из формы вызова;
+* что `call()` позволяет явно выбрать объект выполнения;
 * что `apply()` отличается от `call()` способом передачи arguments;
 * что функция начинает выполнение только при invocation;
-* что один function object можно использовать с разными receivers.
+* что один function object можно использовать с разными объект выполненияs.
 
 Не требуется знать constructors with `bind`, `new`, classes, decorators, polyfills или внутреннее устройство `Function.prototype.bind`. Эти темы будут изучаться позже.
 
@@ -105,7 +105,7 @@ bind()
 
 Уровень сложности: **L4**.
 
-`bind()` сложен не синтаксисом. Сложность в том, что он не вызывает функцию сразу. Он создает новую function, у которой receiver уже выбран заранее.
+`bind()` сложен не синтаксисом. Сложность в том, что он не вызывает функцию сразу. Он создает новую function, у которой объект выполнения уже выбран заранее.
 
 ---
 
@@ -129,7 +129,7 @@ docs/01-javascript/32-bind.md
 docs/01-javascript/33-objects.md
 ```
 
-Следующая глава начнет новый раздел и вернется к object values уже глубже:
+Следующая глава начнет новый раздел и вернется к object значения уже глубже:
 
 > Как устроены objects как основная форма группировки данных и поведения?
 
@@ -142,7 +142,7 @@ docs/01-javascript/33-objects.md
 * зачем существует `bind()`;
 * почему `bind()` не выполняет function сразу;
 * что `bind()` создает новую function;
-* что receiver в bound function выбран заранее;
+* что объект выполнения в bound function выбран заранее;
 * чем `bind()` отличается от `call()` и `apply()`;
 * как работает delayed invocation;
 * зачем нужна reusable bound function;
@@ -176,7 +176,7 @@ const stagingConfig = {
 };
 ```
 
-Через `call()` можно явно выбрать receiver:
+Через `call()` можно явно выбрать объект выполнения:
 
 ```javascript
 validateStatus.call(stagingConfig, '/users', 200, 200);
@@ -186,7 +186,7 @@ validateStatus.call(stagingConfig, '/profile', 200, 200);
 
 Это работает.
 
-Но receiver повторяется каждый раз:
+Но объект выполнения повторяется каждый раз:
 
 ```text
 validateStatus.call(stagingConfig, ...)
@@ -198,7 +198,7 @@ validateStatus.call(stagingConfig, ...)
 
 Проблема не в том, что `call()` плохой.
 
-`call()` отлично подходит, когда receiver нужен для одного конкретного invocation.
+`call()` отлично подходит, когда объект выполнения нужен для одного конкретного invocation.
 
 Проблема другая:
 
@@ -217,7 +217,7 @@ noise in code
 
 Вопрос:
 
-> Можно ли выбрать receiver один раз и получить function, которую потом удобно вызывать?
+> Можно ли выбрать объект выполнения один раз и получить function, которую потом удобно вызывать?
 
 `bind()` отвечает:
 
@@ -225,7 +225,7 @@ noise in code
 yes
 ```
 
-Why bind() exists:
+Зачем существует bind():
 
 ```text
 Need explicit receiver
@@ -297,7 +297,7 @@ boundValidateStatus('/users', 200, 200);
 boundValidateStatus('/orders', 201, 201);
 ```
 
-При каждом таком вызове receiver уже известен:
+При каждом таком вызове объект выполнения уже известен:
 
 ```text
 boundValidateStatus('/users', 200, 200)
@@ -311,7 +311,7 @@ this -> stagingConfig
 
 ### Что такое `bind()`
 
-`bind()` - это method function object, который создает новую function с заранее выбранным receiver.
+`bind()` - это method function object, который создает новую function с заранее выбранным объект выполнения.
 
 Важно:
 
@@ -431,9 +431,9 @@ JavaScript values
         └── bound function is also a function object
 ```
 
-### Fixed receiver
+### Привязанный объект выполнения
 
-Receiver, переданный в `bind()`, становится заранее выбранным receiver для будущих вызовов.
+Receiver, переданный в `bind()`, становится заранее выбранным объект выполнения для будущих вызовов.
 
 ```text
 bind(stagingConfig)
@@ -477,7 +477,7 @@ call it later
 
 ### Partial arguments
 
-`bind()` может заранее фиксировать не только receiver, но и первые arguments.
+`bind()` может заранее фиксировать не только объект выполнения, но и первые arguments.
 
 ```javascript
 const validateUsers = validateStatus.bind(stagingConfig, '/users');
@@ -518,7 +518,7 @@ function validateStatus(path, actualStatus, expectedStatus) {
 }
 ```
 
-Conceptual state:
+Концептуальное состояние:
 
 ```text
 validateStatus
@@ -634,7 +634,7 @@ executes body
 
 Когда bound function вызывается, JavaScript все равно создает Execution Context для выполнения function.
 
-Но receiver берется не из обычной формы вызова:
+Но объект выполнения берется не из обычной формы вызова:
 
 ```text
 Ordinary method call
@@ -648,7 +648,7 @@ Bound function call
 receiver from bind()
 ```
 
-Conceptual execution:
+Концептуальное выполнение:
 
 ```text
 validateInStaging('/users', 200, 200)
@@ -1056,7 +1056,7 @@ with fixed receiver
 
 Исходная function остается доступной как раньше.
 
-### Миф: после `bind()` receiver можно легко заменить обычным вызовом
+### Миф: после `bind()` объект выполнения можно легко заменить обычным вызовом
 
 Реальность:
 
@@ -1067,7 +1067,7 @@ bound function
 uses receiver selected by bind()
 ```
 
-В этой главе достаточно помнить: receiver выбран заранее. Продвинутые особенности с constructors будут изучаться позже.
+В этой главе достаточно помнить: объект выполнения выбран заранее. Продвинутые особенности с constructors будут изучаться позже.
 
 ### Миф: `bind()` нужен только для detached functions
 
@@ -1162,7 +1162,7 @@ bound function
 
 ### Ошибка 4. Скрывать намерение
 
-Иногда `bind()` ухудшает читаемость, если receiver нужен только один раз.
+Иногда `bind()` ухудшает читаемость, если объект выполнения нужен только один раз.
 
 ```javascript
 const once = validateStatus.bind(stagingConfig);
@@ -1193,7 +1193,7 @@ many future calls
 * заранее настроенный formatter;
 * reusable validator;
 * helper, привязанный к configuration object;
-* function, которую нужно передать дальше без потери receiver;
+* function, которую нужно передать дальше без потери объект выполнения;
 * подготовленная операция для конкретной среды.
 
 Сравнение:
@@ -1562,7 +1562,7 @@ configuration saved by bind
 ready helper
 ```
 
-### 19. Bound receiver
+### 19. Bound объект выполнения
 
 ```text
 receiver
@@ -1687,7 +1687,7 @@ apply -> receiver + array args    + now
 bind  -> receiver + new function  + later
 ```
 
-### 29. Complete receiver picture
+### 29. Complete объект выполнения picture
 
 ```text
 this
@@ -1770,7 +1770,7 @@ apply()
 bind()
 ```
 
-Теперь модель receiver стала полной на базовом уровне:
+Теперь модель объект выполнения стала полной на базовом уровне:
 
 ```text
 Ordinary invocation
@@ -1802,13 +1802,13 @@ bind() returns a function
 
 ## Что нужно запомнить
 
-* `bind()` нужен для явного выбора receiver заранее.
+* `bind()` нужен для явного выбора объект выполнения заранее.
 * `bind()` создает новую function.
 * `bind()` не вызывает исходную function немедленно.
 * Bound function можно вызвать позже.
 * Receiver в bound function выбран заранее.
 * `call()` и `apply()` выполняют invocation сразу.
-* `bind()` удобен, когда один receiver нужен для многих будущих вызовов.
+* `bind()` удобен, когда один объект выполнения нужен для многих будущих вызовов.
 * `bind()` не изменяет original function.
 * Каждый вызов `bind()` создает новый function object.
 * Partial arguments возможны, но в этой главе это только высокоуровневая идея.
@@ -1823,9 +1823,9 @@ bind() returns a function
 2. Выполняет ли `bind()` исходную function сразу?
 3. Чем `bind()` отличается от `call()`?
 4. Чем `bind()` отличается от `apply()`?
-5. Почему два вызова `sameFunction.bind(receiver)` создают разные values?
+5. Почему два вызова `sameFunction.bind(объект выполнения)` создают разные значения?
 6. Когда `bind()` улучшает читаемость?
-7. Почему receiver в bound function считается заранее выбранным?
+7. Почему объект выполнения в bound function считается заранее выбранным?
 8. Что произойдет, если вызвать `bind()` и не сохранить результат?
 9. Как `bind()` может помочь в Automation QA helper?
 10. Какая следующая тема логически продолжает этот раздел?

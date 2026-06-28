@@ -9,7 +9,7 @@
 * определять `length` after operations;
 * понимать return value of `pop()`;
 * видеть, что existing array changes;
-* применять `push()` and `pop()` in QA scenarios.
+* применять `push()` и `pop()` в QA-сценариях.
 
 ---
 
@@ -111,7 +111,7 @@ const last = requests.pop();
 
 ---
 
-## 4. Debugging tasks
+## 4. Задания на отладку
 
 ### Задание 4.1
 
@@ -151,7 +151,7 @@ console.log(users[0]);
 
 ---
 
-## 5. QA-oriented tasks
+## 5. QA-задачи
 
 ### Задание 5.1
 
@@ -176,7 +176,7 @@ Print removed failure and remaining length.
 
 ### Задание 5.3
 
-Create `executedRequests` array with two values.
+Create `executedRequests` array with two значения.
 
 Remove last request.
 
@@ -188,7 +188,7 @@ Explain why returned value is useful.
 
 Create small test result collector.
 
-Requirements:
+Требования:
 
 1. Create empty `testResults` array.
 2. Add three results with `push()`.

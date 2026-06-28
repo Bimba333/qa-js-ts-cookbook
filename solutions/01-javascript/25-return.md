@@ -128,7 +128,7 @@ JavaScript возвращает `undefined`, если функция ничег�
 
 Так появляются неочевидные `undefined` в helper results.
 
-### 8. One return statement
+### 8. Одна инструкция return
 
 Ответ:
 
@@ -186,7 +186,7 @@ Return paths должны быть читаемыми, чтобы вызываю
 
 Ответ:
 
-Функция может принимать input и возвращать output.
+Функция может принимать вход и возвращать вывод.
 
 Объяснение:
 
@@ -200,7 +200,7 @@ Return paths должны быть читаемыми, чтобы вызываю
 
 Многие helpers преобразуют response data в проверяемые значения.
 
-## Определите return values
+## Определите return значения
 
 ### Задача 1
 
@@ -464,7 +464,7 @@ Caller может использовать только return value.
 
 Распространённая ошибка:
 
-Путать human-visible output и program-visible result.
+Путать human-visible вывод и program-visible result.
 
 Связь с Automation QA:
 

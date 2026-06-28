@@ -10,7 +10,7 @@
 
 **Распространённая ошибка:** think JavaScript checks only one prototype.
 
-**Связь с Automation QA:** framework helpers may find methods through several shared behavior layers.
+**Связь с Automation QA:** framework helpers may find methods through several общее поведение layers.
 
 ### 1.2 Why is Prototype Chain a lookup algorithm, not an inheritance hierarchy?
 
@@ -38,9 +38,9 @@
 
 **Объяснение:** closer property wins.
 
-**Распространённая ошибка:** think JavaScript still checks farther prototypes and compares values.
+**Распространённая ошибка:** think JavaScript still checks farther prototypes and сравнивает значения.
 
-**Связь с Automation QA:** local helper method can override shared behavior.
+**Связь с Automation QA:** local helper method can override общее поведение.
 
 ### 1.5 What happens when property is not found on current object?
 
@@ -50,7 +50,7 @@
 
 **Распространённая ошибка:** expect immediate `undefined` after current object miss.
 
-**Связь с Automation QA:** API client methods can come from service-level or framework-level behavior.
+**Связь с Automation QA:** API client methods can come from service-level or framework-level поведение.
 
 ### 1.6 Why does JavaScript stop searching?
 
@@ -78,9 +78,9 @@
 
 **Объяснение:** inherited property is checked only if own property is missing.
 
-**Распространённая ошибка:** expect inherited defaults to override local values.
+**Распространённая ошибка:** expect inherited defaults to override local значения.
 
-**Связь с Automation QA:** test-specific values should naturally override framework defaults.
+**Связь с Automation QA:** test-specific значения should naturally override framework defaults.
 
 ### 1.9 What role does `Object.prototype` play?
 
@@ -88,9 +88,9 @@
 
 **Объяснение:** if property is not found earlier, lookup can reach `Object.prototype`.
 
-**Распространённая ошибка:** begin learning chain from `Object.prototype` instead of lookup problem.
+**Распространённая ошибка:** begin learning chain from `Object.prototype` вместо lookup problem.
 
-**Связь с Automation QA:** understanding it helps explain why ordinary objects share some base behavior.
+**Связь с Automation QA:** understanding it helps explain why ordinary objects share some base поведение.
 
 ### 1.10 Why can deep chains hurt readability?
 
@@ -138,7 +138,7 @@ loginPage -> pageBehavior -> frameworkBehavior -> later prototypes -> not found 
 
 **Распространённая ошибка:** skip `pageBehavior` and jump straight to `frameworkBehavior`.
 
-**Связь с Automation QA:** this is exactly how layered Page Object behavior can be debugged.
+**Связь с Automation QA:** this is exactly how layered Page Object поведение can be debugged.
 
 ### 2.2
 
@@ -178,11 +178,11 @@ baseBehavior
 * Inherited property: `describeStatus`.
 * Winning `status`: own `'local'`.
 
-**Объяснение:** `describeStatus` is found in prototype, but `this.status` starts lookup from receiver `testRun`, so own `status` wins.
+**Объяснение:** `describeStatus` is found in prototype, but `this.status` starts lookup from объект выполнения `testRun`, so own `status` wins.
 
-**Распространённая ошибка:** expect `this.status` to read from `behavior`.
+**Распространённая ошибка:** expect `this.status` to read from `поведение`.
 
-**Связь с Automation QA:** shared validator methods read concrete assertion state from receiver.
+**Связь с Automation QA:** shared validator methods read concrete assertion состояние from объект выполнения.
 
 ### 3.2
 
@@ -196,7 +196,7 @@ baseBehavior
 
 **Распространённая ошибка:** classify all callable methods as own methods.
 
-**Связь с Automation QA:** validators can have own data and shared validation/reporting behavior.
+**Связь с Automation QA:** validators can have own data and shared validation/reporting поведение.
 
 ---
 
@@ -226,9 +226,9 @@ page
 
 **Объяснение:** `describe` is found in `pageBehavior`, so `frameworkBehavior.describe` is shadowed.
 
-**Распространённая ошибка:** think framework-level behavior always wins.
+**Распространённая ошибка:** think framework-level поведение always wins.
 
-**Связь с Automation QA:** page-specific behavior can override generic framework behavior.
+**Связь с Automation QA:** page-specific поведение can override generic framework поведение.
 
 ### 4.3
 
@@ -238,19 +238,19 @@ page
 local
 ```
 
-**Объяснение:** method is found in prototype, but ordinary invocation receiver is `object`; `this.name` reads from `object`.
+**Объяснение:** method is found in prototype, but ordinary invocation объект выполнения is `object`; `this.name` reads from `object`.
 
-**Распространённая ошибка:** confuse method location with receiver.
+**Распространённая ошибка:** confuse method location with объект выполнения.
 
 **Связь с Automation QA:** shared methods act on concrete Page Object or API client instance.
 
 ---
 
-## 5. Debugging tasks
+## 5. Задания на отладку
 
 ### 5.1
 
-**Ответ:** output is:
+**Ответ:** вывод is:
 
 ```text
 admin
@@ -274,11 +274,11 @@ const frameworkBehavior = {
 };
 ```
 
-**Объяснение:** `name` without `this` is variable lookup, not property lookup on receiver. The shared method should read from current receiver.
+**Объяснение:** `name` without `this` is variable lookup, not property lookup on объект выполнения. The shared method should read from current объект выполнения.
 
 **Распространённая ошибка:** assume object properties automatically become local variables.
 
-**Связь с Automation QA:** shared framework methods must use receiver data explicitly.
+**Связь с Automation QA:** shared framework methods must use объект выполнения data explicitly.
 
 ### 5.3
 
@@ -302,7 +302,7 @@ undefined()
 
 ---
 
-## 6. QA-oriented tasks
+## 6. QA-задачи
 
 ### 6.1
 
@@ -336,7 +336,7 @@ console.log(loginPage.formatError());
 
 **Распространённая ошибка:** duplicate `formatError` on every page object.
 
-**Связь с Automation QA:** shared reporting behavior can be reused by all Page Objects.
+**Связь с Automation QA:** shared reporting поведение can be reused by all Page Objects.
 
 ### 6.2
 
@@ -368,9 +368,9 @@ const endpoint = usersClient.buildEndpoint('42');
 console.log(usersClient.describeRequest(endpoint));
 ```
 
-**Объяснение:** own data lives on `usersClient`; service behavior is one level up; generic framework behavior is another level up.
+**Объяснение:** own data lives on `usersClient`; service поведение is one level up; generic framework поведение is another level up.
 
-**Распространённая ошибка:** put `baseUrl` into shared behavior and accidentally share environment state.
+**Распространённая ошибка:** put `baseUrl` into общее поведение and accidentally share environment состояние.
 
 **Связь с Automation QA:** API client layers often separate config, service actions and framework helpers.
 
@@ -436,7 +436,7 @@ console.log(roleValidator.isValid());
 console.log(roleValidator.formatFailure());
 ```
 
-Possible output:
+Возможный вывод:
 
 ```text
 false
@@ -463,10 +463,10 @@ reportingBehavior
 └── found
 ```
 
-**Объяснение:** validation and reporting behavior are separated into two shared layers.
+**Объяснение:** validation and reporting поведение are separated into two shared layers.
 
 **Распространённая ошибка:** expect `formatFailure` to be found in `validatorBehavior`.
 
 **Связь с Automation QA:** assertion frameworks often separate validation logic from reporting/error formatting.
 
-**Возможное улучшение:** keep the chain shallow and document where shared behavior lives.
+**Возможное улучшение:** keep the chain shallow and document where общее поведение lives.

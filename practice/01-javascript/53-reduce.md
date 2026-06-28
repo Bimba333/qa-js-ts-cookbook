@@ -52,7 +52,7 @@ console.log(ids);
 
 Сначала запишите ответ без запуска.
 
-## Debugging
+## Отладка
 
 Автор хотел собрать ids в array.
 
@@ -71,7 +71,7 @@ console.log(ids);
 
 Что не так? Исправьте код.
 
-## QA scenario
+## QA-сценарий
 
 Соберите status summary:
 

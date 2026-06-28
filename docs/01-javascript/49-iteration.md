@@ -48,7 +48,7 @@ copy
 
 ## Мотивация
 
-Есть snapshot:
+Есть снимок:
 
 ```javascript
 const testRun = [
@@ -98,7 +98,7 @@ continue until array ends
 
 Iteration — это последовательный обход elements collection.
 
-`for...of` читает values из array:
+`for...of` читает значения из array:
 
 ```javascript
 for (const testCase of testRun) {
@@ -128,7 +128,7 @@ next element
 
 ## Внутренний механизм
 
-Conceptual steps:
+Концептуальные шаги:
 
 ```text
 Array
@@ -216,7 +216,7 @@ for (const testCase of testRun) {
 }
 ```
 
-Такой код читается как workflow: пройти по каждому test case.
+Такой код читается как workпоток: пройти по каждому test case.
 
 ## Распространённые ошибки
 

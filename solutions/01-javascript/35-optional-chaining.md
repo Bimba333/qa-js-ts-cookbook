@@ -10,7 +10,7 @@
 
 **Распространённая ошибка:** считать Optional Chaining default value mechanism.
 
-**Связь с Automation QA:** API responses often have optional nested fields.
+**Связь с Automation QA:** API responses often have optional nested поля.
 
 ### 1.2 Почему ordinary access can throw TypeError?
 
@@ -32,7 +32,7 @@
 
 **Связь с Automation QA:** put checkpoint before optional response levels.
 
-### 1.4 Why return undefined instead of throwing?
+### 1.4 Why return undefined вместо throwing?
 
 **Ответ:** because `?.` explicitly tells JavaScript to stop safely when the current value is `null` or `undefined`.
 
@@ -40,13 +40,13 @@
 
 **Распространённая ошибка:** expect empty string, `false` or default value.
 
-**Связь с Automation QA:** helper can receive `undefined` and decide assertion behavior.
+**Связь с Automation QA:** helper can receive `undefined` and decide assertion поведение.
 
 ### 1.5 Задает ли fallback value?
 
 **Ответ:** нет.
 
-**Объяснение:** Optional Chaining only returns `undefined` on safe stop. Fallback values are next chapter.
+**Объяснение:** Optional Chaining only returns `undefined` on safe stop. Fallback значения are next chapter.
 
 **Распространённая ошибка:** expect `config.retryPolicy?.retries` to become `0` or `3`.
 
@@ -70,7 +70,7 @@
 
 **Распространённая ошибка:** think JavaScript still evaluates full chain.
 
-**Связь с Automation QA:** prevents crash while reading optional nested field.
+**Связь с Automation QA:** prevents crash while reading optional nested поле.
 
 ### 1.8 На каких levels ставить `?.`?
 
@@ -84,21 +84,21 @@
 
 ### 1.9 Когда может быть вреден?
 
-**Ответ:** when field is required and missing data should fail loudly.
+**Ответ:** when поле is required and missing data should fail loudly.
 
 **Объяснение:** Optional Chaining can hide an invalid response shape by returning `undefined`.
 
 **Распространённая ошибка:** use it everywhere.
 
-**Связь с Automation QA:** required fields like `id` should usually be asserted clearly.
+**Связь с Automation QA:** required поля like `id` should usually be asserted clearly.
 
 ### 1.10 Где полезен в Automation QA?
 
-**Ответ:** optional API fields, nested response objects, optional config, payload validation and assertion helpers.
+**Ответ:** optional API поля, nested response objects, optional config, payload validation and assertion helpers.
 
 **Объяснение:** these structures often have partially optional paths.
 
-**Распространённая ошибка:** use Optional Chaining instead of schema validation.
+**Распространённая ошибка:** use Optional Chaining вместо schema validation.
 
 **Связь с Automation QA:** safe reading and validation are different steps.
 
@@ -124,7 +124,7 @@
 
 **Распространённая ошибка:** expect TypeError.
 
-**Связь с Automation QA:** optional field can be safely absent.
+**Связь с Automation QA:** optional поле can be safely absent.
 
 ### 2.3
 
@@ -148,7 +148,7 @@
 Anna
 ```
 
-**Объяснение:** checked values in the full path are neither `null` nor `undefined`.
+**Объяснение:** checked значения in the full path are neither `null` nor `undefined`.
 
 **Распространённая ошибка:** overthink `?.`; it continues normally when current value is neither `null` nor `undefined`.
 
@@ -196,11 +196,11 @@ undefined
 
 **Распространённая ошибка:** think `?.` only handles `undefined`; it handles `null` too.
 
-**Связь с Automation QA:** nullable API fields are common.
+**Связь с Automation QA:** nullable API поля are common.
 
 ---
 
-## 4. Debugging tasks
+## 4. Задания на отладку
 
 ### 4.1
 
@@ -226,7 +226,7 @@ console.log(name);
 
 **Ответ:** `config.timeout?.value` can only safely read `value` if `timeout` is neither `null` nor `undefined`. It does not provide default `5000`.
 
-Correct explanation code:
+Код с правильным объяснением:
 
 ```javascript
 const config = {};
@@ -236,13 +236,13 @@ const timeout = config.timeout?.value;
 console.log(timeout);
 ```
 
-Output remains:
+Вывод остается:
 
 ```text
 undefined
 ```
 
-**Объяснение:** fallback values require Nullish Coalescing or another explicit default mechanism, studied next.
+**Объяснение:** fallback значения require Nullish Coalescing or another explicit default mechanism, studied next.
 
 **Распространённая ошибка:** confuse safe traversal with fallback.
 
@@ -268,7 +268,7 @@ console.log(role);
 
 ---
 
-## 5. QA-oriented tasks
+## 5. QA-задачи
 
 ### 5.1
 
@@ -307,7 +307,7 @@ If `user` can also be missing:
 const city = payload.user?.address?.city;
 ```
 
-**Объяснение:** checkpoint belongs before missing level.
+**Объяснение:** checkpoint должен стоять перед отсутствующим уровнем.
 
 **Распространённая ошибка:** put `?.` only at final property.
 
@@ -321,7 +321,7 @@ const city = payload.user?.address?.city;
 
 **Распространённая ошибка:** make required data silently optional.
 
-**Связь с Automation QA:** required contract fields should be validated explicitly.
+**Связь с Automation QA:** required contract поля should be validated explicitly.
 
 ---
 
@@ -379,7 +379,7 @@ console.log(secondCity);
 console.log(retries);
 ```
 
-Expected output:
+Ожидаемый вывод:
 
 ```text
 Anna
@@ -395,16 +395,16 @@ undefined
 
 **Связь с Automation QA:** realistic responses often have optional profile details and optional config sections.
 
-**Возможное улучшение:** after studying Nullish Coalescing, add explicit fallback values.
+**Возможное улучшение:** after studying Nullish Coalescing, add explicit fallback значения.
 
 ---
 
 ## 8. Контрольные вопросы
 
 1. It returns `undefined`.
-2. Code continues because `?.` stops traversal safely instead of throwing.
+2. Code continues because `?.` stops traversal safely вместо throwing.
 3. `?.` must stand before the level that may be missing.
 4. Safe access only reads safely; validation decides whether missing data is acceptable.
-5. Nullish Coalescing is needed for fallback values.
+5. Nullish Coalescing is needed for fallback значения.
 
 **Общий вывод:** Optional Chaining is safe traversal, not validation and not default value selection.

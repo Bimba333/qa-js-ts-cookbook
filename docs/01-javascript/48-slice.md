@@ -233,7 +233,7 @@ Subset for smoke pipeline:
 const smokePlan = testCases.slice(0, 2);
 ```
 
-Subset for payment-related flow:
+Subset for payment-related поток:
 
 ```javascript
 const paymentFlow = testCases.slice(2, 4);
@@ -286,7 +286,7 @@ modify
 Он:
 
 * возвращает new array;
-* не изменяет source array;
+* не изменяет исходный массив;
 * берет elements от `startIndex` до `endIndex`;
 * не включает `endIndex`.
 

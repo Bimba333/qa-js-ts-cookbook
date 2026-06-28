@@ -116,7 +116,7 @@ docs/01-javascript/09-hoisting.md
 docs/01-javascript/11-primitive-types.md
 ```
 
-Следующая глава начнет раздел о values and types. Функции как отдельная большая тема будут изучаться позже в разделе Functions; в этой главе function declarations используются только как уже знакомое сравнение с `let`, `const` и `var`.
+Следующая глава начнет раздел о значения and types. Функции как отдельная большая тема будут изучаться позже в разделе Functions; в этой главе function declarations используются только как уже знакомое сравнение с `let`, `const` и `var`.
 
 ---
 
@@ -299,7 +299,7 @@ Before initialization
 └── access is forbidden
 ```
 
-То есть проблема не в том, что identifier неизвестен. Проблема в его state.
+То есть проблема не в том, что identifier неизвестен. Проблема в его состояние.
 
 ```text
 Identifier state
@@ -341,7 +341,7 @@ TDZ is not about code movement.
 TDZ is about identifier state before initialization.
 ```
 
-### Why TDZ exists
+### Почему существует TDZ
 
 TDZ exists to prevent reading `let` and `const` before the program has explicitly initialized them.
 
@@ -373,7 +373,7 @@ const baseUrl = 'https://example.com';
 
 Если `baseUrl` нужен до declaration line, программа должна явно показать проблему, а не silently return `undefined`.
 
-Что state identifier прямо сейчас:
+Что состояние identifier прямо сейчас:
 
 ```text
 baseUrl
@@ -391,7 +391,7 @@ Registration:
 Engine creates identifier record.
 ```
 
-Initialization:
+Инициализация:
 
 ```text
 Engine gives identifier its first usable value.
@@ -420,7 +420,7 @@ Environment Record
 └── user → "Anna"
 ```
 
-TDZ exists between these two states.
+TDZ существует между этими двумя состояниями.
 
 ```text
 Registered
@@ -434,7 +434,7 @@ Initialized
 
 ### When TDZ begins
 
-TDZ begins when the scope containing the `let` or `const` declaration is entered.
+TDZ начинается, когда выполнение входит в scope, содержащий объявление `let` или `const`.
 
 Для global scope:
 
@@ -444,7 +444,7 @@ TDZ begins when the scope containing the `let` or `const` declaration is entered
 let user = 'Anna';
 ```
 
-Timeline:
+Временная шкала:
 
 ```text
 Global scope starts
@@ -472,7 +472,7 @@ if (true) {
 }
 ```
 
-Timeline:
+Временная шкала:
 
 ```text
 Block scope entered
@@ -489,7 +489,7 @@ status initialized
 
 ### When TDZ ends
 
-TDZ ends when execution reaches the declaration and initialization happens.
+TDZ заканчивается, когда выполнение доходит до объявления и происходит initialization.
 
 ```javascript
 let user = 'Anna';
@@ -497,7 +497,7 @@ let user = 'Anna';
 console.log(user);
 ```
 
-Timeline:
+Временная шкала:
 
 ```text
 Before declaration line
@@ -513,7 +513,7 @@ After declaration line
 └── user readable
 ```
 
-What state is this identifier in right now:
+В каком состоянии этот identifier прямо сейчас:
 
 ```text
 Line before declaration
@@ -636,9 +636,9 @@ const
 └── reassignment forbidden after initialization
 ```
 
-### Why var behaves differently
+### Почему var ведёт себя иначе
 
-`var` behaves differently because Creation Phase initializes it with `undefined`.
+`var` ведёт себя иначе, потому что Creation Phase инициализирует его значением `undefined`.
 
 ```javascript
 console.log(user);
@@ -701,7 +701,7 @@ let user = 'Anna';
 ReferenceError: Cannot access 'user' before initialization
 ```
 
-Что state identifier прямо сейчас:
+Что состояние identifier прямо сейчас:
 
 ```text
 user
@@ -781,7 +781,7 @@ const role = 'admin';
 var status = 'created';
 ```
 
-Before execution:
+До выполнения:
 
 ```text
 Environment Record
@@ -817,9 +817,9 @@ Environment Record
 └── status → "created"
 ```
 
-### Identifier state transitions
+### Identifier состояние transitions
 
-Identifier state transitions:
+Identifier состояние transitions:
 
 ```text
 let / const
@@ -831,7 +831,7 @@ let / const
 └── access allowed
 ```
 
-For `var`:
+Для `var`:
 
 ```text
 var
@@ -913,7 +913,7 @@ line: var status = "created"
 console.log reads initialized identifiers
 ```
 
-### Current position in JavaScript model
+### Текущее место в модели JavaScript
 
 Текущая позиция:
 
@@ -953,7 +953,7 @@ They become usable after initialization.
 
 ### Переход к Functions
 
-Следующая большая группа тем постепенно приведет к values, types, operators and functions. Functions will later explain how parameters, return values and function calls create more situations where Scope and Lexical Environment matter.
+Следующая большая группа тем постепенно приведет к значения, types, operators and functions. Functions will later explain how parameters, return значения and function calls create more situations where Scope and Lexical Environment matter.
 
 Мост:
 
@@ -1001,7 +1001,7 @@ identifier initialized
 access allowed
 ```
 
-What state is this identifier in right now:
+В каком состоянии этот identifier прямо сейчас:
 
 ```text
 Before declaration line
@@ -1017,7 +1017,7 @@ After declaration line
 └── initialized + readable
 ```
 
-For `var`:
+Для `var`:
 
 ```text
 Creation Phase
@@ -1033,7 +1033,7 @@ After assignment
 └── readable as assigned value
 ```
 
-TDZ is not a place in memory. It is a period of execution where an identifier has a restricted state.
+TDZ is not a place in memory. It is a period of execution where an identifier has a restricted состояние.
 
 ---
 
@@ -1235,7 +1235,7 @@ examples/01-javascript/chapter-10/06-common-mistakes.js
 
 ### TDZ есть только в global scope?
 
-Нет. TDZ applies to `let` / `const` in their scope: global, function or block.
+Нет. TDZ применяется к `let` / `const` в их scope: global, function или block.
 
 ---
 
@@ -1251,7 +1251,7 @@ examples/01-javascript/chapter-10/06-common-mistakes.js
 
 Реальность:
 
-В TDZ engine знает identifier, но запрещает доступ because it is uninitialized.
+В TDZ engine знает identifier, но запрещает доступ потому что он не инициализирован.
 
 ### Миф 3. TDZ — это физическая зона в памяти
 
@@ -1392,7 +1392,7 @@ Use let only when state changes.
 
 ### Почему modern Playwright code prefers const
 
-В тестах values often should not be reassigned:
+В тестах значения often should not be reassigned:
 
 ```javascript
 const baseUrl = 'https://example.com';
@@ -1406,7 +1406,7 @@ This identifier is initialized here.
 This identifier will not be reassigned.
 ```
 
-TDZ помогает: access before initialization fails loudly instead of silently returning `undefined`.
+TDZ помогает: access before initialization fails loudly вместо silently returning `undefined`.
 
 ### Interpreting ReferenceError correctly
 
@@ -1469,7 +1469,7 @@ actions
 assertions
 ```
 
-Так reader and engine see initialized values before access.
+Так reader and engine see initialized значения before access.
 
 ---
 
@@ -1485,9 +1485,9 @@ The engine already knows about it.
 Access is temporarily forbidden until initialization.
 ```
 
-TDZ begins when the scope starts and the identifier is registered but not initialized. TDZ ends when execution reaches the declaration line and initialization happens.
+TDZ начинается, когда scope стартует и identifier зарегистрирован, но ещё не инициализирован. TDZ заканчивается, когда выполнение доходит до строки объявления и происходит initialization.
 
-`var` behaves differently because it is initialized with `undefined` during Creation Phase.
+`var` ведёт себя иначе, потому что инициализируется значением `undefined` во время Creation Phase.
 
 ```text
 var
@@ -1507,9 +1507,9 @@ Do not say `let` and `const` are "not hoisted." A more precise model is: they ar
 
 ✓ TDZ is a period, not a physical place.
 
-✓ TDZ starts when the scope starts.
+✓ TDZ начинается при старте scope.
 
-✓ TDZ ends when initialization happens.
+✓ TDZ заканчивается при initialization.
 
 ✓ `let` and `const` are registered during Creation Phase.
 
@@ -1519,7 +1519,7 @@ Do not say `let` and `const` are "not hoisted." A more precise model is: they ar
 
 ✓ `var` is initialized with `undefined` during Creation Phase.
 
-✓ `let user;` ends TDZ when the declaration line executes.
+✓ `let user;` завершает TDZ, когда выполняется строка объявления.
 
 ✓ `const` must be initialized at declaration.
 
@@ -1559,7 +1559,7 @@ Do not say `let` and `const` are "not hoisted." A more precise model is: they ar
 practice/01-javascript/10-temporal-dead-zone.md
 ```
 
-Перед практикой запустите примеры из `examples/01-javascript/chapter-10/` и для каждого identifier выпишите state: registered, uninitialized, initialized, readable.
+Перед практикой запустите примеры из `examples/01-javascript/chapter-10/` и для каждого identifier выпишите состояние: registered, uninitialized, initialized, readable.
 
 ---
 
@@ -1571,4 +1571,4 @@ practice/01-javascript/10-temporal-dead-zone.md
 solutions/01-javascript/10-temporal-dead-zone.md
 ```
 
-Открывайте решения после самостоятельной попытки. В этой главе важно сравнивать не только output, но и state identifier на каждой строке.
+Открывайте решения после самостоятельной попытки. В этой главе важно сравнивать не только вывод, но и состояние identifier на каждой строке.

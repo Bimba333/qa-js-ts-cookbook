@@ -52,9 +52,9 @@
 * [Spread](docs/01-javascript/27-spread.md)
 * [Closures](docs/01-javascript/28-closures.md)
 * [this](docs/01-javascript/29-this.md)
-* [call](docs/01-javascript/30-call.md)
-* [apply](docs/01-javascript/31-apply.md)
-* [bind](docs/01-javascript/32-bind.md)
+* [call()](docs/01-javascript/30-call.md)
+* [apply()](docs/01-javascript/31-apply.md)
+* [bind()](docs/01-javascript/32-bind.md)
 
 ## Раздел 4. Objects
 
@@ -73,8 +73,8 @@
 ## Раздел 5. Arrays
 
 * [Arrays](docs/01-javascript/44-arrays.md)
-* [push() and pop()](docs/01-javascript/45-push-pop.md)
-* [shift() and unshift()](docs/01-javascript/46-shift-unshift.md)
+* [push() / pop()](docs/01-javascript/45-push-pop.md)
+* [shift() / unshift()](docs/01-javascript/46-shift-unshift.md)
 * [splice()](docs/01-javascript/47-splice.md)
 * [slice()](docs/01-javascript/48-slice.md)
 * [Iteration](docs/01-javascript/49-iteration.md)
@@ -89,14 +89,23 @@
 * [includes()](docs/01-javascript/58-includes.md)
 * [sort()](docs/01-javascript/59-sort.md)
 * [reverse()](docs/01-javascript/60-reverse.md)
+
+## Раздел 6. Execution Model Revisited
+
 * [Execution Context](docs/01-javascript/61-execution-context.md)
 * [Call Stack](docs/01-javascript/62-call-stack.md)
 * [Memory Model](docs/01-javascript/63-memory-model.md)
 * [Hoisting + TDZ](docs/01-javascript/64-hoisting-tdz.md)
+
+## Раздел 7. Function Context
+
 * [Closures](docs/01-javascript/65-closures.md)
 * [this](docs/01-javascript/66-this.md)
 * [call(), apply(), bind()](docs/01-javascript/67-call-apply-bind.md)
 * [Practical Context Management](docs/01-javascript/68-context-management.md)
+
+## Раздел 8. Async JavaScript
+
 * [Synchronous Execution](docs/01-javascript/69-synchronous-execution.md)
 * [Asynchronous Programming](docs/01-javascript/70-asynchronous-programming.md)
 * [Callback](docs/01-javascript/71-callback.md)
@@ -109,18 +118,39 @@
 * [async and await](docs/01-javascript/78-async-await.md)
 * [Error Handling in Asynchronous Code](docs/01-javascript/79-async-error-handling.md)
 * [Parallel Asynchronous Operations](docs/01-javascript/80-parallel-async.md)
+
+## Раздел 9. Iteration Protocols
+
 * [Iterable Protocol](docs/01-javascript/81-iterable-protocol.md)
 * [Iterators](docs/01-javascript/82-iterators.md)
 * [Generators](docs/01-javascript/83-generators.md)
 * [Custom Iteration](docs/01-javascript/84-custom-iteration.md)
+
+## Раздел 10. Modules
+
 * [JavaScript Modules](docs/01-javascript/85-javascript-modules.md)
 * [Module Systems](docs/01-javascript/86-module-systems.md)
+
+## Раздел 11. Memory Management
+
 * [Garbage Collector](docs/01-javascript/87-garbage-collector.md)
 * [Memory Management](docs/01-javascript/88-memory-management.md)
+
+## Раздел 12. Engineering Practice
+
 * [Performance](docs/01-javascript/89-performance.md)
 * [Debugging](docs/01-javascript/90-debugging.md)
 
-> Остальные главы будут добавляться по мере написания.
+## Раздел 13. JavaScript Conclusion
+
+* [Modern JavaScript Features](docs/01-javascript/91-modern-javascript.md)
+* [JavaScript Best Practices](docs/01-javascript/92-javascript-best-practices.md)
+* [Error Objects](docs/01-javascript/93-error-objects.md)
+* [JSON](docs/01-javascript/94-json.md)
+* [Date](docs/01-javascript/95-date.md)
+* [Почему появился TypeScript](docs/01-javascript/96-why-typescript.md)
+
+> Раздел JavaScript завершен.
 
 ---
 

@@ -6,11 +6,11 @@
 
 Ответ:
 
-They help visualize primitive values, object values, references, sharing, mutation and reassignment.
+They help visualize primitive значения, object значения, references, sharing, mutation and reassignment.
 
 Объяснение:
 
-The diagram turns invisible reference behavior into a map.
+The diagram turns invisible reference поведение into a map.
 
 Распространённая ошибка:
 
@@ -18,7 +18,7 @@ Think the diagram is valuable only if it is exact engine implementation.
 
 Связь с Automation QA:
 
-Diagrams help debug shared request bodies and fixture state.
+Diagrams help debug shared request bodies and fixture состояние.
 
 ### 2. Not exact engine implementation
 
@@ -36,13 +36,13 @@ Teach simplified diagrams as physical truth.
 
 Связь с Automation QA:
 
-For debugging tests, behavior model is more useful than engine internals.
+For debugging tests, поведение model is more useful than engine internals.
 
 ### 3. Stack-like area
 
 Ответ:
 
-It is where diagrams show active variable entries, primitive values and references.
+It is where diagrams show active variable entries, primitive значения and references.
 
 Объяснение:
 
@@ -60,7 +60,7 @@ Useful to track variables in a test or helper.
 
 Ответ:
 
-It is where diagrams show object values.
+It is where diagrams show object значения.
 
 Объяснение:
 
@@ -74,7 +74,7 @@ Say every object is physically stored exactly as drawn.
 
 Useful to see shared payload objects.
 
-### 5. Primitive values
+### 5. Primitive значения
 
 Ответ:
 
@@ -86,13 +86,13 @@ This explains why primitive reassignment does not mutate another variable.
 
 Распространённая ошибка:
 
-Apply object sharing behavior to primitives.
+Apply object sharing поведение to primitives.
 
 Связь с Automation QA:
 
-Primitive expected values are not mutated like shared objects.
+Primitive expected значения are not mutated like shared objects.
 
-### 6. Object values
+### 6. Object значения
 
 Ответ:
 
@@ -144,7 +144,7 @@ Use both words interchangeably.
 
 Связь с Automation QA:
 
-Debugging needs to know whether helper mutated data or variable was reassigned.
+Отладка требует понимать whether helper mutated data or variable was reassigned.
 
 ### 9. Two variables, one object
 
@@ -168,7 +168,7 @@ Common source of shared test data bugs.
 
 Ответ:
 
-Two object literals create two different object values, even if properties look identical.
+Two object literals create two different object значения, even if properties look identical.
 
 Объяснение:
 
@@ -204,7 +204,7 @@ Helpers can mutate payloads.
 
 Ответ:
 
-Diagrams show hidden shared state and where mutation happens.
+Diagrams show hidden shared состояние and where mutation happens.
 
 Объяснение:
 
@@ -241,7 +241,7 @@ Draw reference sharing for primitives.
 
 Связь с Automation QA:
 
-Primitive expected values are usually simple to reason about.
+Primitive expected значения are usually simple to reason about.
 
 ### Задача 2
 
@@ -288,7 +288,7 @@ Think reassignment updates Object A.
 
 Связь с Automation QA:
 
-Important when preserving original test data.
+Важно при сохранении исходных тестовых данных.
 
 ### Задача 4
 
@@ -307,7 +307,7 @@ Nested object is also represented as object value in the conceptual map.
 
 Распространённая ошибка:
 
-Draw nested object as primitive field.
+Draw nested object as primitive поле.
 
 Связь с Automation QA:
 
@@ -341,7 +341,7 @@ Objects created: 2. No shared object. No mutation. No reassignment.
 
 Объяснение:
 
-Two object literals create two object values.
+Two object literals create two object значения.
 
 Распространённая ошибка:
 
@@ -438,7 +438,7 @@ Use suitable assertions for object structure.
 
 Ответ:
 
-Diagram:
+Схема:
 
 ```text
 defaultPayload ──┐
@@ -464,7 +464,7 @@ This causes request data leaks between tests.
 
 Ответ:
 
-Output:
+Вывод:
 
 ```text
 true
@@ -500,7 +500,7 @@ Expect same properties to be enough.
 
 Связь с Automation QA:
 
-Use deep equality or field assertions where appropriate.
+Use deep equality or поле assertions where appropriate.
 
 ## QA-задачи
 
@@ -508,7 +508,7 @@ Use deep equality or field assertions where appropriate.
 
 Ответ:
 
-Risk diagram:
+Risk схема:
 
 ```text
 fixture defaultUser ──┐
@@ -518,7 +518,7 @@ test local user    ───┘──► Object A
 
 Объяснение:
 
-If fixture returns shared object and test mutates it, shared state changes.
+If fixture returns shared object and test mutates it, shared состояние changes.
 
 Распространённая ошибка:
 
@@ -544,7 +544,7 @@ const adminPayload = {
 };
 ```
 
-Diagram:
+Схема:
 
 ```text
 defaultPayload ─────► Object A
@@ -566,13 +566,13 @@ Use `const adminPayload = defaultPayload`.
 
 Связь с Automation QA:
 
-Safe payload variants reduce shared state risk.
+Safe payload variants reduce shared состояние risk.
 
 ### Сценарий 3
 
 Ответ:
 
-Checklist:
+Чек-лист:
 
 ```text
 1. Draw variables used in test.
@@ -627,7 +627,7 @@ console.log(sharedPayload);
 console.log(safePayload);
 ```
 
-Conceptual table:
+Концептуальная таблица:
 
 ```text
 Variable       | Heap-like object | Shared?                       | QA risk

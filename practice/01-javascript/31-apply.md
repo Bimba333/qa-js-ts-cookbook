@@ -4,15 +4,15 @@
 
 1. Зачем существует `apply()`?
 
-2. Какую проблему решает `apply()`: receiver или arguments?
+2. Какую проблему решает `apply()`: объект выполнения или arguments?
 
 3. Что общего у `call()` и `apply()`?
 
 4. Чем отличается передача arguments в `call()` и `apply()`?
 
-5. Что становится `this` в `functionObject.apply(receiver, argumentsList)`?
+5. Что становится `this` в `functionObject.apply(объект выполнения, argumentsList)`?
 
-6. Как values из array попадают в parameters?
+6. Как значения из array попадают в parameters?
 
 7. Что такое array-like collection на высоком уровне?
 
@@ -24,7 +24,7 @@
 
 ### Задание 1
 
-Определите receiver и parameters.
+Определите объект выполнения и parameters.
 
 ```javascript
 function formatRequest(method, path) {
@@ -68,7 +68,7 @@ buildUrl.apply(apiClient, ['/users']);
 
 Ответьте:
 
-* одинаковый ли receiver;
+* одинаковый ли объект выполнения;
 * одинаковый ли результат;
 * что отличается.
 
@@ -218,7 +218,7 @@ console.log(buildUrl.apply(apiClient, '/users'));
 
 ### Задание 9
 
-Код должен вернуть `true`, но receiver и array со списком arguments перепутаны.
+Код должен вернуть `true`, но объект выполнения и array со списком arguments перепутаны.
 
 ```javascript
 function validateStatus(response) {
@@ -244,7 +244,7 @@ console.log(validateStatus.apply([response], config));
 
 ### Задание 10
 
-Создайте function `validateResponse(status, path, body)`.
+Создайте функцию `validateResponse(status, path, body)`.
 
 Она должна использовать:
 
@@ -261,7 +261,7 @@ this.expectedPath
 
 ### Задание 11
 
-Создайте function `formatRequest(method, path, body)`.
+Создайте функцию `formatRequest(method, path, body)`.
 
 Она должна использовать:
 
@@ -288,16 +288,16 @@ this.baseUrl
 
 Требования:
 
-1. Создайте function `buildRequest(method, path, body)`.
+1. Создайте функцию `buildRequest(method, path, body)`.
 2. Function должна использовать `this.baseUrl`.
-3. Создайте function `validateRequest(status, path, body)`.
+3. Создайте функцию `validateRequest(status, path, body)`.
 4. Function должна использовать `this.expectedStatus` и `this.expectedPath`.
-5. Создайте object `apiConfig`.
-6. Создайте object `assertionConfig`.
+5. Создайте объект `apiConfig`.
+6. Создайте объект `assertionConfig`.
 7. Создайте array `requestParts`.
 8. Создайте array `responseParts`.
 9. Вызовите обе functions через `apply()`.
-10. Для каждого вызова подпишите receiver и parameter mapping.
+10. Для каждого вызова подпишите объект выполнения и parameter mapping.
 
 Нарисуйте схему:
 
@@ -314,4 +314,4 @@ function.apply(receiver, values)
 
 * почему `apply()` удобен в этой задаче;
 * где `call()` был бы читаемее;
-* почему receiver handling не отличается от `call()`.
+* почему объект выполнения handling не отличается от `call()`.

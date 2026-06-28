@@ -116,7 +116,7 @@ console.log(setupStatus);
 1. Какие identifiers объявлены?
 2. Какие variables initialized сразу?
 3. Где происходит reassignment?
-4. Какие values читаются в конце?
+4. Какие значения читаются в конце?
 
 ```javascript
 const browserName = 'chromium';

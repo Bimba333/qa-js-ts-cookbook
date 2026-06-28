@@ -89,7 +89,7 @@ console.log(baseUrl);
 
 Ответьте также: что произойдет, если раскомментировать первую строку?
 
-## Определите identifier state
+## Определите identifier состояние
 
 Для кода ниже заполните таблицу:
 
@@ -111,7 +111,7 @@ console.log(role);
 console.log(status);
 ```
 
-Используйте states:
+Используйте состояния:
 
 ```text
 registered
@@ -207,7 +207,7 @@ playground/tdz-test-flow.js
 * `var status = 'created'`;
 * вывод `status`.
 
-После кода нарисуйте timeline:
+После кода нарисуйте временная шкала:
 
 ```text
 Creation Phase

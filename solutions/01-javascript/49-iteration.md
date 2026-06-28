@@ -60,13 +60,13 @@
 
 Распространённая ошибка: ждать автоматического запуска тестов.
 
-Связь с Automation QA: runner behavior пишется внутри body или вызываемой function.
+Связь с Automation QA: runner поведение пишется внутри body или вызываемой function.
 
 ## Чтение кода
 
 Ответ: body выполнится три раза; `testCase` получит `login`, затем `create order`, затем `payment`; `testRun` не изменится.
 
-Объяснение: `for...of` проходит по values array.
+Объяснение: `for...of` проходит по значения array.
 
 Распространённая ошибка: думать, что выводятся indexes.
 
@@ -88,7 +88,7 @@ done
 
 Связь с Automation QA: post-run action выполняется после завершения обхода.
 
-## Debugging
+## Отладка
 
 Ответ:
 
@@ -109,7 +109,7 @@ for (const testCase of testRun) {
 
 Связь с Automation QA: reports обычно выводят readable title, а не весь object.
 
-## QA scenario
+## QA-сценарий
 
 Ответ:
 

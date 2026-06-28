@@ -175,7 +175,7 @@ console.log(configName);
 var configName = 'local';
 ```
 
-Какой output ожидается и почему?
+Какой вывод ожидается и почему?
 
 ### Сценарий 3
 

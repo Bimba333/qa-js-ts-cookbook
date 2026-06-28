@@ -86,7 +86,7 @@ false
 
 Связь с Automation QA: condition должна соответствовать gate rule.
 
-## Debugging
+## Отладка
 
 Ответ:
 
@@ -102,7 +102,7 @@ const hasFailedTests = testCases.some(function (testCase) {
 
 Связь с Automation QA: неправильный Boolean может пропустить failed tests.
 
-## QA scenario
+## QA-сценарий
 
 Ответ:
 

@@ -138,7 +138,7 @@ docs/01-javascript/46-shift-unshift.md
 
 Начнем с реальной задачи.
 
-Тестовый фреймворк хранит request tasks:
+Тестовый фреймворк хранит request tспрашивает:
 
 ```javascript
 const requestTasks = [
@@ -281,7 +281,7 @@ unshift()
 setup task перед обычными задачами
 ```
 
-`unshift()` answers:
+`unshift()` отвечает:
 
 ```text
 Как добавить новый первый element?
@@ -345,7 +345,7 @@ shift()
 забрать первую задачу из простого списка
 ```
 
-`shift()` answers:
+`shift()` отвечает:
 
 ```text
 Как удалить и получить первый element?
@@ -643,7 +643,7 @@ length    -> 0
 следующий элемент становится первым
 ```
 
-Central model:
+Центральная модель:
 
 ```text
 Array

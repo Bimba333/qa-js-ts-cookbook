@@ -1,3 +1,6 @@
+// EDUCATIONAL INVALID EXAMPLE
+// Файл намеренно выбрасывает ошибку, чтобы показать stack trace.
+
 function testScenario() {
   createUser();
 }

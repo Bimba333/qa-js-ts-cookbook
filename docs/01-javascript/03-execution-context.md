@@ -623,7 +623,7 @@ Execution Phase
 └── interact with runtime
 ```
 
-Statement — инструкция программы; подробно statements будут разбираться постепенно.
+Statement — инструкция программы; подробно инструкции будут разбираться постепенно.
 
 Что engine делает прямо сейчас:
 
@@ -843,7 +843,7 @@ Engine выполняет код внутри context.
 Если код обращается к console, runtime выводит результат.
 ```
 
-### Current chapter position in JavaScript model
+### Текущее место главы в модели JavaScript
 
 Теперь общая модель стала глубже:
 
@@ -1364,7 +1364,7 @@ Runtime API
 
 Execution Context напрямую помогает в Automation QA.
 
-### Debugging Playwright tests
+### Отладка Playwright tests
 
 Playwright-тест — это JavaScript или TypeScript-код, который выполняется в Node.js context и управляет браузером.
 

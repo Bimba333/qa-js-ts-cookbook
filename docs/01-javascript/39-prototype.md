@@ -16,7 +16,7 @@ Property
     └── configurable
 ```
 
-Теперь мы возвращаемся к behavior.
+Теперь мы возвращаемся к поведение.
 
 В главе про Object Methods мы видели, что object может хранить methods:
 
@@ -29,7 +29,7 @@ Object
 
 Но появляется новый вопрос:
 
-> Если много объектов нуждаются в одинаковом behavior, должен ли каждый object хранить собственную копию method?
+> Если много объектов нуждаются в одинаковом поведение, должен ли каждый object хранить собственную копию method?
 
 Представьте 1000 user objects:
 
@@ -54,7 +54,7 @@ Many objects
 One shared behavior
 ```
 
-В этой главе Prototype рассматривается как практический механизм sharing behavior. Мы не будем подробно изучать Prototype Chain, `constructor.prototype`, classes, `new` или inheritance. Эти темы идут позже.
+В этой главе Prototype рассматривается как практический механизм sharing поведение. Мы не будем подробно изучать Prototype Chain, `constructor.prototype`, classes, `new` или inheritance. Эти темы идут позже.
 
 ---
 
@@ -65,8 +65,8 @@ One shared behavior
 * что object stores related data;
 * что object property has key and value;
 * что method is property with function object value;
-* что обычный вызов `object.method()` выбирает receiver из формы вызова;
-* что `this` внутри обычного method call связан с receiver;
+* что обычный вызов `object.method()` выбирает объект выполнения из формы вызова;
+* что `this` внутри обычного method call связан с объект выполнения;
 * что descriptor describes own property rules;
 * что `Object` содержит встроенные helper methods.
 
@@ -129,7 +129,7 @@ docs/01-javascript/40-prototype-chain.md
 * как JavaScript ищет property через object and prototype;
 * как `Object.getPrototypeOf()` помогает увидеть prototype;
 * зачем существует `Object.setPrototypeOf()` на высоком уровне;
-* почему Prototype прежде всего about shared behavior;
+* почему Prototype прежде всего about общее поведение;
 * почему не стоит начинать изучение Prototype с inheritance;
 * как Prototype связан с Page Objects, API clients and framework utilities.
 
@@ -264,9 +264,9 @@ prototype object
 └── any other ordinary property
 ```
 
-Но на практике prototype чаще всего используют именно для shared behavior.
+Но на практике prototype чаще всего используют именно для общее поведение.
 
-Причина простая: data обычно отличается у каждого конкретного object, а behavior часто повторяется.
+Причина простая: data обычно отличается у каждого конкретного object, а поведение часто повторяется.
 
 ```text
 Own object
@@ -284,7 +284,7 @@ Prototype
 
 Это наиболее частый и полезный способ его применения.
 
-В нашем основном примере prototype содержит shared behavior:
+В нашем основном примере prototype содержит общее поведение:
 
 ```text
 prototype object
@@ -471,7 +471,7 @@ user.describe()
 
 Это важный момент.
 
-Method может быть stored in prototype, но ordinary invocation still uses object before dot as receiver:
+Method может быть stored in prototype, но ordinary invocation still uses object before dot as объект выполнения:
 
 ```text
 user.describe()
@@ -581,7 +581,7 @@ look in userAnna
 └── found name
 ```
 
-Если нужен shared behavior:
+Если нужен общее поведение:
 
 ```text
 look in userAnna
@@ -807,7 +807,7 @@ prototype
 └── shared behavior
 ```
 
-В этой главе акцент сделан на methods, потому что именно shared behavior чаще всего объясняет, зачем Prototype нужен в реальном коде.
+В этой главе акцент сделан на methods, потому что именно общее поведение чаще всего объясняет, зачем Prototype нужен в реальном коде.
 
 ### Нужно ли использовать `__proto__`?
 
@@ -830,7 +830,7 @@ instead of many copied functions
 Но главная польза шире:
 
 * меньше дублирования;
-* единое место для behavior;
+* единое место для поведение;
 * более читаемая архитектура;
 * проще обновлять shared logic.
 
@@ -842,7 +842,7 @@ instead of many copied functions
 user.describe();
 ```
 
-receiver is `user`.
+объект выполнения is `user`.
 
 ```text
 method found in prototype
@@ -862,7 +862,7 @@ receiver is user
 
 Реальность: Prototype exists independently of classes.
 
-В этой главе Prototype is about sharing behavior between objects.
+В этой главе Prototype is about sharing поведение between objects.
 
 ### Миф: inherited property copied into object
 
@@ -881,7 +881,7 @@ object
 
 ### Миф: Prototype should store all data
 
-Реальность: prototype is good for shared behavior. Per-object changing state should usually remain own data.
+Реальность: prototype is good for общее поведение. Per-object changing состояние should usually remain own data.
 
 ```text
 own object
@@ -901,7 +901,7 @@ prototype
 
 ## Типичные ошибки
 
-### Ошибка 1. Хранить per-object state в prototype
+### Ошибка 1. Хранить per-object состояние в prototype
 
 Неправильный код:
 
@@ -925,7 +925,7 @@ but placed in shared behavior object
 Почему это опасно:
 
 * читатель кода ожидает shared methods in prototype;
-* changing state in shared object can confuse ownership;
+* Изменение состояния в общем объекте может запутать принадлежность;
 * framework objects become harder to debug.
 
 Исправленный вариант:
@@ -988,7 +988,7 @@ Prototype
 Почему это мешает:
 
 * внимание уходит в деталь доступа;
-* теряется главная проблема duplicated behavior;
+* теряется главная проблема duplicated поведение;
 * сложнее понять, зачем механизм существует.
 
 Исправленный подход:
@@ -1003,7 +1003,7 @@ shared behavior
 prototype object
 ```
 
-### Ошибка 4. Путать receiver and method location
+### Ошибка 4. Путать объект выполнения and method location
 
 Неправильная модель:
 
@@ -1038,7 +1038,7 @@ many objects
 
 Типичные случаи:
 
-* common object behavior;
+* common object поведение;
 * framework utilities;
 * shared validators;
 * objects created from same pattern;
@@ -1058,7 +1058,7 @@ clientB
 └── describeRequest()
 ```
 
-Пример with shared behavior:
+Пример with общее поведение:
 
 ```text
 clientA ──┐
@@ -1077,7 +1077,7 @@ all linked objects use updated behavior
 
 Но Prototype не нужно применять везде.
 
-Если object один и behavior уникален, own method может быть читаемее.
+Если object один и поведение уникален, own method может быть читаемее.
 
 ```text
 one object
@@ -1121,7 +1121,7 @@ many page objects
 
 ### API clients
 
-API clients часто различаются state:
+API clients часто различаются состояние:
 
 ```text
 stagingClient.baseUrl
@@ -1129,7 +1129,7 @@ productionClient.baseUrl
 localClient.baseUrl
 ```
 
-Но behavior одинаковый:
+Но поведение одинаковый:
 
 ```text
 buildUrl()
@@ -1137,7 +1137,7 @@ describeRequest()
 validateStatus()
 ```
 
-Prototype помогает понять, почему behavior can live in shared place:
+Prototype помогает понять, почему поведение can live in shared place:
 
 ```text
 API client objects
@@ -1156,7 +1156,7 @@ schemaValidator
 businessValidator
 ```
 
-могут использовать common behavior:
+могут использовать common поведение:
 
 ```text
 shared assertion behavior
@@ -1180,7 +1180,7 @@ shared utility behavior
 └── prototype or shared object
 ```
 
-Это помогает избегать случайного shared mutable state.
+Это помогает избегать случайного shared mutable состояние.
 
 ---
 
@@ -1264,7 +1264,7 @@ user
 └── own: role
 ```
 
-### 8. Shared behavior
+### 8. Shared поведение
 
 ```text
 behavior
@@ -1496,7 +1496,7 @@ read property
 └── return value or undefined
 ```
 
-### 30. Property ownership
+### 30. Принадлежность свойства
 
 ```text
 own property
@@ -1508,7 +1508,7 @@ inherited property
 └── found through prototype
 ```
 
-### 31. Shared state warning
+### 31. Shared состояние warning
 
 ```text
 prototype
@@ -1541,7 +1541,7 @@ prototype
 └── shared behavior
 ```
 
-### 34. Shared behavior flow
+### 34. Shared поведение flow
 
 ```text
 call method
@@ -1588,7 +1588,7 @@ many objects
 
 Без Prototype одинаковые methods приходится хранить directly inside every object. Это создает duplication and maintenance cost.
 
-Prototype дает shared object, в котором может жить common behavior:
+Prototype дает shared object, в котором может жить common поведение:
 
 ```text
 object
@@ -1602,7 +1602,7 @@ object
 
 Prototype can contain any properties because it is an ordinary object.
 
-В practical code его чаще всего используют for shared methods, because methods are the behavior that many objects can reuse safely.
+В practical code его чаще всего используют for shared methods, because methods are the поведение that many objects can reuse safely.
 
 Главная модель главы:
 
@@ -1648,11 +1648,11 @@ Prototype of prototype
 
 ✓ Lookup сначала проверяет object, затем prototype.
 
-✓ Method can be found in prototype, while receiver can still be original object.
+✓ Method can be found in prototype, while объект выполнения can still be original object.
 
 ✓ Prototype не копирует method into every object.
 
-✓ Per-object state should usually remain own property.
+✓ Per-object состояние should usually remain own property.
 
 ✓ `Object.getPrototypeOf()` показывает prototype object.
 
@@ -1662,7 +1662,7 @@ Prototype of prototype
 
 ## Проверьте себя
 
-1. Why is duplicated behavior a problem?
+1. Why is duplicated поведение a problem?
 
 2. What kind of value is a prototype?
 
@@ -1672,11 +1672,11 @@ Prototype of prototype
 
 5. What happens if property is not found on object?
 
-6. Why is Prototype about sharing behavior, not primarily inheritance?
+6. Why is Prototype about sharing поведение, not primarily inheritance?
 
-7. If method is found in prototype during `user.describe()`, what is the receiver?
+7. If method is found in prototype during `user.describe()`, what is the объект выполнения?
 
-8. Why should per-object state usually not live in prototype?
+8. Why should per-object состояние usually not live in prototype?
 
 9. What does `Object.getPrototypeOf()` return?
 

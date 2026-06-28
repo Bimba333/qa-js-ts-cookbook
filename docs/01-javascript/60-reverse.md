@@ -31,9 +31,9 @@ different order
 * что array имеет order;
 * что `sort()` может изменить этот order;
 * что test execution order важен для CI analysis;
-* что destructive array methods меняют source array.
+* что destructive array methods меняют исходный массив.
 
-Не требуется знать внутреннее устройство array methods. В этой главе важна модель: inversion of current order.
+Не требуется знать внутреннее устройство array methods. В этой главе важна модель: inversion of текущий порядок.
 
 ## Цели обучения
 
@@ -74,7 +74,7 @@ last -> first
 
 ## Теория
 
-`reverse()` инвертирует current order array.
+`reverse()` инвертирует текущий порядок массива.
 
 Общая форма:
 
@@ -82,7 +82,7 @@ last -> first
 array.reverse();
 ```
 
-Важное поведение: `reverse()` mutates source array.
+Важное поведение: `reverse()` mutates исходный массив.
 
 ```text
 reverse()
@@ -91,7 +91,7 @@ reverse()
 same array, opposite order
 ```
 
-`reverse()` не смотрит на `id`, `status` или `priority`. Он просто переворачивает current order.
+`reverse()` не смотрит на `id`, `status` или `priority`. Он просто переворачивает текущий порядок.
 
 ## Внутренний механизм
 
@@ -115,7 +115,7 @@ after
 └── first
 ```
 
-Это current order, прочитанный в обратном направлении.
+Это текущий порядок, прочитанный в обратном направлении.
 
 ## Главная ментальная модель
 
@@ -175,11 +175,11 @@ testCases.reverse();
 
 ### Ошибка 1. Ожидать новый array
 
-`reverse()` меняет current array. Если нужен original order, его нужно сохранить отдельно.
+`reverse()` меняет current array. Если нужен исходный порядок, его нужно сохранить отдельно.
 
 ### Ошибка 2. Думать, что `reverse()` сортирует
 
-`reverse()` не знает, какой order "правильный". Он только инвертирует current order.
+`reverse()` не знает, какой order "правильный". Он только инвертирует текущий порядок.
 
 ### Ошибка 3. Переворачивать shared array без причины
 
@@ -187,11 +187,11 @@ testCases.reverse();
 
 ## Краткие итоги
 
-`reverse()` инвертирует current order array.
+`reverse()` инвертирует текущий порядок массива.
 
 Важно запомнить:
 
-* `reverse()` инвертирует current order;
+* `reverse()` инвертирует текущий порядок;
 * он не сортирует;
 * он полезен для debugging order и reverse analysis.
 

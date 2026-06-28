@@ -27,7 +27,7 @@ includes()
 
 * что array хранит ordered elements;
 * что порядок elements влияет на чтение отчета;
-* что test case object имеет fields `id`, `title`, `status`, `priority`;
+* что test case object имеет поля `id`, `title`, `status`, `priority`;
 * что array methods могут изменять исходный array.
 
 Не требуется знать внутреннее устройство сортировки. В этой главе важна модель: ordering by rule.
@@ -39,8 +39,8 @@ includes()
 * зачем существует `sort()`;
 * что `sort()` упорядочивает elements по rule;
 * как `sort()` влияет на current array;
-* почему default sort is string-based;
-* зачем нужен compare function;
+* почему сортировка по умолчанию is string-based;
+* зачем нужна функция сравнения;
 * как применять `sort()` для приоритизации отчета.
 
 ## Мотивация
@@ -80,7 +80,7 @@ ordered test cases
 array.sort(compareFunction);
 ```
 
-Важное поведение: `sort()` mutates source array.
+Важное поведение: `sort()` mutates исходный массив.
 
 ```text
 sort()
@@ -89,7 +89,7 @@ sort()
 same array, ordered elements
 ```
 
-Если вызвать `sort()` без compare function, JavaScript сортирует values как strings. Для objects почти всегда нужно явно описывать порядок через compare function.
+Если вызвать `sort()` без функции сравнения, JavaScript сортирует значения как строки. Для objects почти всегда нужно явно описывать порядок через функцию сравнения.
 
 Пример сортировки ids:
 
@@ -186,13 +186,13 @@ testCases.sort(function (firstTest, secondTest) {
 
 ### Ошибка 1. Ожидать новый array
 
-`sort()` меняет current array. Если нужен original order, его нужно сохранить отдельно.
+`sort()` меняет current array. Если нужен исходный порядок, его нужно сохранить отдельно.
 
-### Ошибка 2. Полагаться на default sort для objects
+### Ошибка 2. Полагаться на сортировка по умолчанию для объектов
 
-Для test case objects нужен compare function.
+Для test case objects нужна функция сравнения.
 
-### Ошибка 3. Делать compare function нечитаемой
+### Ошибка 3. Делать функцию сравнения нечитаемой
 
 Если порядок важен для CI, лучше явно назвать priority order или status order.
 
@@ -203,9 +203,9 @@ testCases.sort(function (firstTest, secondTest) {
 Важно запомнить:
 
 * `sort()` задает order по rule;
-* default sort is string-based;
-* для objects обычно нужен compare function;
-* sorting order должен быть понятен из кода.
+* сортировка по умолчанию is string-based;
+* для объектов обычно нужна функция сравнения;
+* sorting порядок должен быть понятен из кода.
 
 ## Переход к следующей главе
 

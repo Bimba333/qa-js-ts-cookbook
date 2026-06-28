@@ -22,7 +22,7 @@ testRun.forEach(function (testCase) {
 Ответьте:
 
 * сколько раз вызовется function;
-* какие values получит `testCase`;
+* какие значения получит `testCase`;
 * что делает этот код как side effect.
 
 ## Предскажите результат выполнения
@@ -39,7 +39,7 @@ console.log(result);
 
 Сначала запишите ответ без запуска.
 
-## Debugging
+## Отладка
 
 Автор ожидал получить новый array из titles.
 
@@ -55,9 +55,9 @@ console.log(titles);
 
 Объясните проблему. Не используйте `map()`: эта тема будет позже.
 
-## QA scenario
+## QA-сценарий
 
-Есть prepared test run:
+Есть подготовленный тестовый запуск:
 
 ```javascript
 const testRun = [

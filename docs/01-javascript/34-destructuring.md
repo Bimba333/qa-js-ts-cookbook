@@ -148,11 +148,11 @@ docs/01-javascript/35-optional-chaining.md
 
 * зачем существует destructuring;
 * почему destructuring удобен при работе с objects;
-* что destructuring извлекает values из existing properties;
+* что destructuring извлекает значения из existing properties;
 * как object destructuring создает variables;
 * как происходит matching by property name;
 * что destructuring не меняет исходный object;
-* как работают default values;
+* как работают default значения;
 * зачем нужно renaming;
 * что такое nested destructuring на высоком уровне;
 * какие ошибки встречаются чаще всего;
@@ -164,7 +164,7 @@ docs/01-javascript/35-optional-chaining.md
 
 Начнем с проблемы.
 
-Есть API response:
+Есть API-ответ:
 
 ```javascript
 const response = {
@@ -241,7 +241,7 @@ destructuring
 response remains the same object
 ```
 
-Destructuring не "разбирает" object физически и не создает новый object. Он создает variables from existing property values.
+Destructuring не "разбирает" object физически и не создает новый object. Он создает variables from existing property значения.
 
 ---
 
@@ -372,7 +372,7 @@ reading missing property
 undefined
 ```
 
-### Default values
+### Default значения
 
 Default value используется, если extracted value is `undefined`:
 
@@ -571,7 +571,7 @@ values assigned to variables
 const { name: userName } = user;
 ```
 
-Mapping:
+Сопоставление:
 
 ```text
 source property
@@ -590,7 +590,7 @@ target variable
 const { timeout = 5000 } = config;
 ```
 
-Conceptually:
+Концептуально:
 
 ```text
 read config.timeout
@@ -746,7 +746,7 @@ console.log(status);
 console.log(body);
 ```
 
-### Пример 2. Default values
+### Пример 2. Default значения
 
 ```javascript
 const config = {
@@ -984,7 +984,7 @@ console.log(config.timeout);
 
 `config.timeout` is still `undefined`.
 
-Default value belongs to created variable.
+Значение по умолчанию относится к созданной переменной.
 
 ### Ошибка 3. Использовать deep nested destructuring там, где страдает читаемость
 
@@ -1024,7 +1024,7 @@ const { status, body } = response;
 
 Так тест сразу показывает, что важны `status` and `body`.
 
-### Config values
+### Config значения
 
 ```javascript
 const { baseUrl, timeout = 5000 } = config;
@@ -1032,13 +1032,13 @@ const { baseUrl, timeout = 5000 } = config;
 
 Это удобно для setup code.
 
-### Expected user data
+### Ожидаемые данные пользователя
 
 ```javascript
 const { name, role } = expectedUser;
 ```
 
-Код фокусируется on values required for assertion.
+Код фокусируется on значения required for assertion.
 
 ### Payload processing
 
@@ -1046,7 +1046,7 @@ const { name, role } = expectedUser;
 const { email, role } = payload;
 ```
 
-Так helper clearly selects required payload fields.
+Так helper clearly selects required payload поля.
 
 ---
 
@@ -1070,7 +1070,7 @@ apiResponse
 variables for assertions
 ```
 
-### Reading config values
+### Reading config значения
 
 ```javascript
 const { baseUrl, retries = 2 } = stagingConfig;
@@ -1078,7 +1078,7 @@ const { baseUrl, retries = 2 } = stagingConfig;
 
 Default value помогает задать fallback for local variable, не меняя config object.
 
-### Expected user data
+### Ожидаемые данные пользователя
 
 ```javascript
 const { name: expectedName, role: expectedRole } = expectedUser;
@@ -1093,7 +1093,7 @@ expectedRole
 
 ### Assertion helpers
 
-Helper может извлечь только нужные fields from response object:
+Helper может извлечь только нужные поля from response object:
 
 ```javascript
 const { status, body } = response;
@@ -1169,7 +1169,7 @@ property value
 new variable
 ```
 
-### 7. Default values
+### 7. Default значения
 
 ```text
 property missing
@@ -1458,7 +1458,7 @@ practice/01-javascript/34-destructuring.md
 solutions/01-javascript/34-destructuring.md
 ```
 
-Не открывайте решения до самостоятельной попытки. Главный навык этой главы - видеть, какие values are extracted and which variables are created.
+Не открывайте решения до самостоятельной попытки. Главный навык этой главы - видеть, какие значения are extracted and which variables are created.
 
 ---
 
@@ -1499,7 +1499,7 @@ Destructuring не создает новый object. Он создает variabl
 
 ## Что нужно запомнить
 
-* Destructuring извлекает values from object properties.
+* Destructuring извлекает значения from object properties.
 * Destructuring создает variables.
 * Source object не меняется.
 * Object destructuring matches by property name.

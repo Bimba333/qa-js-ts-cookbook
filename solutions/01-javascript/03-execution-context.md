@@ -440,4 +440,4 @@ Global Context
 * нарисовать contexts для собственного Playwright helper;
 * взять один stack trace и отметить, какие функции в нем создавали contexts;
 * повторить примеры после главы про Call Stack;
-* сравнить behavior function declaration с function expression после изучения функций.
+* сравнить поведение function declaration с function expression после изучения функций.

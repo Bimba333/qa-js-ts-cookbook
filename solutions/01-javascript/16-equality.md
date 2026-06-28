@@ -2,15 +2,15 @@
 
 ## Концептуальные вопросы
 
-### 1. Why equality is needed
+### 1. Зачем нужно equality
 
 Ответ:
 
-Equality is needed to decide whether two values match according to a chosen comparison rule.
+Equality is needed to decide whether two значения match according to a chosen comparison rule.
 
 Объяснение:
 
-Programs compare API values, user roles, status codes, parsed configuration and object identity.
+Programs compare API значения, user roles, status codes, parsed configuration and object identity.
 
 Распространённая ошибка:
 
@@ -42,7 +42,7 @@ Choosing wrong operator can hide bugs.
 
 Ответ:
 
-`==` asks: can these values become comparable?
+`==` спрашивает: can these значения become comparable?
 
 Объяснение:
 
@@ -60,7 +60,7 @@ Use `==` accidentally.
 
 Ответ:
 
-`===` asks: are these already the same type and value?
+`===` спрашивает: are these already the same type and value?
 
 Объяснение:
 
@@ -68,7 +68,7 @@ It never performs type conversion.
 
 Распространённая ошибка:
 
-Expect `5 === '5'` to be true because values look similar.
+Expect `5 === '5'` to be true because значения look similar.
 
 Связь с Automation QA:
 
@@ -78,7 +78,7 @@ Strict equality reveals type mismatches.
 
 Ответ:
 
-`Object.is()` asks whether values are the same according to its exact comparison rules.
+`Object.is()` asks whether значения are the same according to its exact comparison rules.
 
 Объяснение:
 
@@ -86,7 +86,7 @@ It differs from `===` for `NaN` and `+0` / `-0`.
 
 Распространённая ошибка:
 
-Use it everywhere instead of knowing why it is needed.
+Use it everywhere вместо knowing why it is needed.
 
 Связь с Automation QA:
 
@@ -96,7 +96,7 @@ Useful for explicit edge-case checks.
 
 Ответ:
 
-Because it may convert values before comparison.
+Because it may convert значения before comparison.
 
 Объяснение:
 
@@ -122,7 +122,7 @@ If types differ, result is false.
 
 Распространённая ошибка:
 
-Parse after comparison instead of before.
+Parse after comparison вместо before.
 
 Связь с Automation QA:
 
@@ -150,7 +150,7 @@ Use framework structure matchers for response object shape.
 
 Ответ:
 
-They are not equal by identity if they are different object values.
+They are not equal by identity if they are different object значения.
 
 Объяснение:
 
@@ -180,7 +180,7 @@ Check NaN with strict equality.
 
 Связь с Automation QA:
 
-Parsed invalid numeric fields may become `NaN`.
+Parsed invalid числовые поля may become `NaN`.
 
 ### 11. +0 and -0
 
@@ -255,7 +255,7 @@ false
 
 Объяснение:
 
-Loose equality can convert values. Strict equality does not.
+Loose equality can convert значения. Strict equality does not.
 
 Распространённая ошибка:
 
@@ -263,7 +263,7 @@ Use `==` and accidentally accept wrong type.
 
 Связь с Automation QA:
 
-Falsy-like values can create misleading test passes.
+Falsy-like значения can create misleading test passes.
 
 ### Задача 3
 
@@ -315,7 +315,7 @@ Use explicit edge-case checks when needed.
 
 Ответ:
 
-If contract expects Number, use `===` and fail on string, or explicitly parse only if contract allows string input. For strict contract validation, `===`.
+If contract expects Number, use `===` and fail on string, or explicitly parse only if contract allows string вход. For strict contract validation, `===`.
 
 Объяснение:
 
@@ -363,7 +363,7 @@ Check NaN with strict equality.
 
 Связь с Automation QA:
 
-Invalid parsed API fields can become `NaN`.
+Invalid parsed API поля can become `NaN`.
 
 ### Сценарий 4
 
@@ -391,7 +391,7 @@ Use `==` only if conversion is intentionally desired and documented.
 
 Объяснение:
 
-Loose equality asks whether values can become comparable.
+Loose equality asks whether значения can become comparable.
 
 Распространённая ошибка:
 
@@ -429,7 +429,7 @@ This is common in API response validation.
 
 Problem: `==` converts `'200'` to comparable numeric value, so test passes.
 
-Fix:
+Исправление:
 
 ```javascript
 const expectedStatus = 200;
@@ -478,7 +478,7 @@ Testing framework matchers are needed for object structure.
 
 Ответ:
 
-`price === NaN` is false because `NaN` is special. `Object.is(price, NaN)` is true because `Object.is()` treats `NaN` values as same.
+`price === NaN` is false because `NaN` is special. `Object.is(price, NaN)` is true because `Object.is()` treats `NaN` значения as same.
 
 Объяснение:
 
@@ -490,7 +490,7 @@ Check invalid number with strict equality.
 
 Связь с Automation QA:
 
-Useful when validating parsed numeric API fields.
+Useful when validating parsed numeric API поля.
 
 ## QA-задачи
 
@@ -543,17 +543,17 @@ Let `==` perform hidden conversion.
 
 Связь с Automation QA:
 
-Parsed values should be compared strictly.
+Parsed значения should be compared strictly.
 
 ### Сценарий 3
 
 Ответ:
 
-`expected === actual` checks whether both variables refer to same object. It does not compare fields.
+`expected === actual` checks whether both variables refer to same object. It does not compare поля.
 
 Объяснение:
 
-The objects are separate object values.
+The objects are separate object значения.
 
 Распространённая ошибка:
 
@@ -567,7 +567,7 @@ Real object assertions need framework matchers later.
 
 Ответ:
 
-Checklist:
+Чек-лист:
 
 ```text
 1. Search for == in tests.
@@ -624,7 +624,7 @@ const actual = {
 console.log(expected === actual);
 ```
 
-Report:
+Отчёт:
 
 ```text
 Comparison                     | Result | What exactly is compared            | QA meaning

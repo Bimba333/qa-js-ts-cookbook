@@ -66,7 +66,7 @@ Function
 * что `return` завершает выполнение функции и отправляет value обратно;
 * что function body выполняется только после invocation.
 
-Не требуется знать `this`, modules, private class fields, WeakMap privacy, Garbage Collector internals, React hooks, event listeners или async closures. Эти темы будут изучаться позже.
+Не требуется знать `this`, modules, private class поля, WeakMap privacy, Garbage Collector internals, React hooks, event listeners или async closures. Эти темы будут изучаться позже.
 
 ---
 
@@ -179,7 +179,7 @@ local variables disappeared
 expectedStatus should be unavailable
 ```
 
-Actual behavior:
+Фактическое поведение:
 
 ```text
 Function finished
@@ -227,7 +227,7 @@ Function returns
 Execution Context removed from Call Stack
 ```
 
-Function execution:
+Выполнение функции:
 
 ```text
 Call Stack
@@ -296,7 +296,7 @@ message disappeared
 inner() cannot read message
 ```
 
-Actual behavior:
+Фактическое поведение:
 
 ```text
 outer() finished
@@ -619,7 +619,7 @@ Lexical Environment needed by closure
 └── still reachable through function reference
 ```
 
-Memory intuition:
+Интуитивная модель памяти:
 
 ```text
 validateOk
@@ -686,7 +686,7 @@ variable still needed through function reference
 environment remains reachable
 ```
 
-Expected lifetime vs Actual lifetime:
+Ожидаемое время жизни vs Фактическое время жизни:
 
 ```text
 Expected
@@ -784,7 +784,7 @@ many independent closures
 
 ### Closure timeline
 
-Closure timeline:
+Closure временная шкала:
 
 ```text
 T1  createCounter function object exists
@@ -921,7 +921,7 @@ Notebook
 └── baseUrl: 'https://api.example.test'
 ```
 
-Function object:
+Объект функции:
 
 ```text
 validator
@@ -942,7 +942,7 @@ createApiValidator(baseUrl)
 
 ---
 
-### Current position in JavaScript model
+### Текущее место в модели JavaScript
 
 Текущее место в модели JavaScript:
 
@@ -1139,7 +1139,7 @@ console.log(readAdminName());
 console.log(readGuestName());
 ```
 
-Memory intuition:
+Интуитивная модель памяти:
 
 ```text
 readAdminName
@@ -1159,7 +1159,7 @@ readGuestName
 
 ---
 
-### QA example
+### QA-пример
 
 ```javascript
 function createStatusValidator(expectedStatus) {
@@ -1179,7 +1179,7 @@ console.log(validateSuccess(response));
 console.log(validateCreated(response));
 ```
 
-QA helper example:
+Пример QA-helper:
 
 ```text
 createStatusValidator(200)
@@ -1195,7 +1195,7 @@ createStatusValidator(201)
     └── reaches expectedStatus = 201 through environment reference
 ```
 
-Так можно создавать читаемые validators без дублирования expected values в каждом тесте.
+Так можно создавать читаемые validators без дублирования expected значения в каждом тесте.
 
 ---
 
@@ -1333,7 +1333,7 @@ function createCounter() {
 
 Если бы Closure хранила копию, `count` каждый раз был бы `0`.
 
-Actual behavior:
+Фактическое поведение:
 
 ```text
 same reachable variable
@@ -1343,7 +1343,7 @@ same reachable variable
 
 ---
 
-### Ошибка 3. Создавать общий state случайно
+### Ошибка 3. Создавать общий состояние случайно
 
 ```javascript
 let sharedStatus = 200;
@@ -1353,7 +1353,7 @@ function validateStatus(actualStatus) {
 }
 ```
 
-Это не factory. Это global mutable state.
+Это не factory. Это global mutable состояние.
 
 Более контролируемый вариант:
 
@@ -1445,7 +1445,7 @@ Closure помогает:
 
 * создавать specialized helpers;
 * избегать лишних global variables;
-* хранить configuration рядом с behavior;
+* хранить configuration рядом с поведение;
 * делать код выразительнее;
 * уменьшать дублирование.
 
@@ -1504,7 +1504,7 @@ validator closure
 └── reaches expected status through environment reference
 ```
 
-Такой подход полезен для REST API проверок, где один и тот же алгоритм применяется к разным expected values.
+Такой подход полезен для REST API проверок, где один и тот же алгоритм применяется к разным expected значения.
 
 ---
 
@@ -1550,7 +1550,7 @@ createLocator(prefix)
     └── holds reference to environment with prefix
 ```
 
-Важно: callbacks, async behavior и event listeners будут разобраны позже. Здесь достаточно понять: Closure позволяет helper иметь доступ к данным из Lexical Environment, где он был создан.
+Важно: callbacks, async поведение и event listeners будут разобраны позже. Здесь достаточно понять: Closure позволяет helper иметь доступ к данным из Lexical Environment, где он был создан.
 
 ---
 
@@ -1661,7 +1661,7 @@ Closure не является магией. Function object удерживает
 * Closure не копирует значения как frozen snapshot.
 * Каждый вызов factory function может создать независимое lexical environment.
 * Closures полезны для factory functions, validators, configuration capture и QA helpers.
-* Следующая глава про `this` объяснит другой вопрос: не какие variables видны функции, а как определяется ее execution receiver.
+* Следующая глава про `this` объяснит другой вопрос: не какие variables видны функции, а как определяется ее execution объект выполнения.
 
 Краткая ментальная модель:
 

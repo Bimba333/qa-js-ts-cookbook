@@ -50,7 +50,7 @@ const statuses = [200, 201, 204];
 * что object хранит properties;
 * что references и shallow copy уже были объяснены на концептуальном уровне.
 
-Не требуется знать deep copy, `structuredClone`, recursion, destructuring with rest, immutable state management, React patterns или advanced object merging. Эти темы будут изучаться позже.
+Не требуется знать deep copy, `structuredClone`, recursion, destructuring with rest, immutable состояние management, React patterns или advanced object merging. Эти темы будут изучаться позже.
 
 ---
 
@@ -104,7 +104,7 @@ docs/01-javascript/28-closures.md
 
 * зачем существует Spread syntax;
 * чем Spread отличается от Rest;
-* как раскрывать array values;
+* как раскрывать array значения;
 * как раскрывать object properties;
 * как использовать Spread в function call;
 * как копировать arrays на высоком уровне;
@@ -152,7 +152,7 @@ Need to expand array
 Spread
 ```
 
-Why Spread exists:
+Зачем существует Spread:
 
 ```text
 One collection
@@ -246,7 +246,7 @@ many individual values
 
 Это обратное направление относительно Rest.
 
-### Expanding array values
+### Expanding array значения
 
 Array можно раскрыть через `...`.
 
@@ -295,7 +295,7 @@ validateThreeStatuses(...statuses)
 validateThreeStatuses(200, 201, 204)
 ```
 
-Function invocation:
+Вызов функции:
 
 ```text
 Array values expand
@@ -307,7 +307,7 @@ Arguments appear separately
 Parameters receive by position
 ```
 
-Parameters still receive values by position.
+Parameters still receive значения by position.
 
 ```text
 200 → firstStatus
@@ -504,7 +504,7 @@ Nested level
 └── not deeply copied here
 ```
 
-This chapter does not teach deep copy or `structuredClone`.
+Эта глава не учит deep copy или `structuredClone`.
 
 ### Читаемость
 
@@ -598,7 +598,7 @@ validate(200, 201, 204)
 parameters receive values
 ```
 
-Current position in JavaScript model:
+Текущее место в модели JavaScript:
 
 ```text
 Functions
@@ -776,7 +776,7 @@ node examples/01-javascript/chapter-27/06-qa-example.js
 
 ### Spread и Rest - это одно и то же?
 
-Нет. Rest собирает values. Spread раскрывает collection.
+Нет. Rest собирает значения. Spread раскрывает collection.
 
 ### Почему у них одинаковые три точки?
 
@@ -794,7 +794,7 @@ node examples/01-javascript/chapter-27/06-qa-example.js
 
 На высоком уровне later property value overwrites earlier property value.
 
-### Нужно ли сейчас знать React или immutable state?
+### Нужно ли сейчас знать React или immutable состояние?
 
 Нет. Эти patterns будут изучаться отдельно, если понадобятся.
 
@@ -896,9 +896,9 @@ Readable setup
 └── final payload
 ```
 
-### Ошибка 5. Использовать Spread там, где проще передать values явно
+### Ошибка 5. Использовать Spread там, где проще передать значения явно
 
-Если values уже отдельные и их мало, явный вызов может быть понятнее.
+Если значения уже отдельные и их мало, явный вызов может быть понятнее.
 
 ---
 
@@ -981,7 +981,7 @@ validateThreeStatuses(...statuses);
 
 ### Readable test setup
 
-QA helper example:
+Пример QA-helper:
 
 ```text
 base test data
@@ -1002,7 +1002,7 @@ Spread helps compose data, but test setup must remain readable.
 
 ## Итоги
 
-Spread answers:
+Spread отвечает:
 
 ```text
 How can one collection become many values?
@@ -1040,9 +1040,9 @@ Spread
 ## Что нужно запомнить
 
 * Spread раскрывает collection.
-* Rest собирает values, Spread раскрывает values.
+* Rest собирает значения, Spread раскрывает значения.
 * В function call array spread становится separate arguments.
-* В array literal Spread раскрывает array values.
+* В array literal Spread раскрывает array значения.
 * В object literal Spread раскрывает properties.
 * Spread copy - shallow copy на этом уровне.
 * При object merge later properties override earlier properties.

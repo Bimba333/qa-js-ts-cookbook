@@ -154,7 +154,7 @@ need one receiving place
 Rest Parameter
 ```
 
-Why Rest Parameters exist:
+Зачем существуют Rest Parameters:
 
 ```text
 Fixed parameters
@@ -178,7 +178,7 @@ Rest parameter
 
 Rest Parameters существуют, чтобы функция могла принять неизвестное количество arguments.
 
-Fixed parameters:
+Фиксированные параметры:
 
 ```text
 function validateStatus(statusCode)
@@ -246,7 +246,7 @@ function validateStatuses(...statusCodes) {
 validateStatuses(200, 201, 204);
 ```
 
-Argument flow:
+Argument поток:
 
 ```text
 200
@@ -408,7 +408,7 @@ expectedStatus  → 200
 actualStatuses  → [200, 201, 204]
 ```
 
-### Zero collected values
+### Zero collected значения
 
 Rest parameter может собрать ноль значений.
 
@@ -455,7 +455,7 @@ Many arguments:
 [200, 201, 204, 301, 404]
 ```
 
-Function input model:
+Function вход model:
 
 ```text
 Known inputs
@@ -510,7 +510,7 @@ locatorNames
 
 На концептуальном уровне rest parameter работает после обычного positional matching.
 
-Invocation lifecycle:
+Жизненный цикл вызова:
 
 ```text
 Function call starts
@@ -528,7 +528,7 @@ Rest parameter collects remaining values
 Function body executes
 ```
 
-Rest collection timeline:
+Rest collection временная шкала:
 
 ```text
 Call: validateStatuses(200, 200, 201)
@@ -538,7 +538,7 @@ Call: validateStatuses(200, 200, 201)
 └── argument 3 goes into rest array
 ```
 
-Function boundary:
+Граница функции:
 
 ```text
 Outside function
@@ -572,7 +572,7 @@ I create an array for actualStatuses.
 I run the function body.
 ```
 
-Current position in JavaScript model:
+Текущее место в модели JavaScript:
 
 ```text
 Functions
@@ -757,7 +757,7 @@ node examples/01-javascript/chapter-26/06-qa-example.js
 
 ### Нужно ли знать array methods?
 
-Пока нет. В этой главе важно понять сбор values в array.
+Пока нет. В этой главе важно понять сбор значения в array.
 
 ---
 
@@ -847,7 +847,7 @@ function collectStatuses(...statusCode) {}
 function collectStatuses(...statusCodes) {}
 ```
 
-### Ошибка 4. Использовать rest для fixed inputs
+### Ошибка 4. Использовать rest для fixed входs
 
 Если функция всегда получает `actualStatus` и `expectedStatus`, обычные parameters читаются лучше.
 
@@ -901,7 +901,7 @@ validateStatuses(expectedStatus, ...actualStatuses)
 
 ## Использование в Automation QA
 
-### Validators receiving many values
+### Validators receiving many значения
 
 ```javascript
 function validateStatuses(expectedStatus, ...actualStatuses) {
@@ -910,7 +910,7 @@ function validateStatuses(expectedStatus, ...actualStatuses) {
 }
 ```
 
-QA helper example:
+Пример QA-helper:
 
 ```text
 expectedStatus
@@ -1008,10 +1008,10 @@ arg1, arg2, arg3
 * Rest parameter собирает remaining arguments.
 * Синтаксис rest parameter: `...name`.
 * Rest parameter получает array.
-* Если values нет, rest parameter получает `[]`.
+* Если значения нет, rest parameter получает `[]`.
 * Rest parameter должен быть последним.
-* Обычные parameters получают known values.
-* Rest parameter получает unknown remaining values.
+* Обычные parameters получают known значения.
+* Rest parameter получает unknown remaining значения.
 * Имя rest parameter должно звучать как collection.
 * В Automation QA Rest полезен для flexible helpers и logging utilities.
 * Spread syntax, destructuring, `arguments` object, callbacks и TypeScript tuple rest types будут позже.

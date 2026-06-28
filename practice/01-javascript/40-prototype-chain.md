@@ -202,7 +202,7 @@ console.log(object.getName());
 
 ---
 
-## 5. Debugging tasks
+## 5. Задания на отладку
 
 ### Задание 5.1
 
@@ -264,7 +264,7 @@ console.log(object.missing());
 
 ---
 
-## 6. QA-oriented tasks
+## 6. QA-задачи
 
 ### Задание 6.1
 
@@ -280,7 +280,7 @@ pageBehavior
 frameworkBehavior
 ```
 
-Requirements:
+Требования:
 
 * `loginPage` has own `name`;
 * `pageBehavior` has `describePage()`;
@@ -301,7 +301,7 @@ serviceBehavior
 frameworkBehavior
 ```
 
-Requirements:
+Требования:
 
 * `usersClient` has own `baseUrl` and `serviceName`;
 * `serviceBehavior` has `buildEndpoint(id)`;
@@ -325,7 +325,7 @@ Requirements:
 
 Создайте small assertion infrastructure model.
 
-Requirements:
+Требования:
 
 1. `reportingBehavior` contains `formatFailure()`.
 2. `validatorBehavior` contains `isValid()`.

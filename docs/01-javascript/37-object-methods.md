@@ -32,7 +32,7 @@ Nullish Coalescing
 
 Теперь появляется следующий вопрос:
 
-> Может ли object хранить behavior, связанное с его data?
+> Может ли object хранить поведение, связанное с его data?
 
 Например, есть user:
 
@@ -44,9 +44,9 @@ const user = {
 };
 ```
 
-Data already belongs together.
+Данные уже относятся к одной сущности.
 
-Но behavior тоже может belong to the same entity:
+Но поведение тоже может относиться к той же сущности:
 
 ```text
 user
@@ -74,12 +74,12 @@ Object
 Для этой главы нужно понимать:
 
 * что object stores related data;
-* что property has key and value;
+* что property имеет key и value;
 * что property value can be any JavaScript value;
 * что function object можно хранить в variable;
 * что `this` определяется при invocation;
-* что ordinary `object.method()` invocation выбирает receiver из формы вызова;
-* что `call()`, `apply()` and `bind()` связаны с receiver selection.
+* что обычный вызов `object.method()` выбирает объект выполнения из формы вызова;
+* что `call()`, `apply()` и `bind()` связаны с выбором объекта выполнения.
 
 Не требуется знать descriptors, prototypes, classes, inheritance, `Object.create()`, method borrowing, `super` или arrow functions as methods in depth. Эти темы будут изучаться позже.
 
@@ -99,7 +99,7 @@ Object
 
 Уровень сложности: **L3-L4**.
 
-Object methods кажутся простыми, но они связывают несколько важных идей: objects, functions, properties, receiver and `this`.
+Object methods кажутся простыми, но они связывают несколько важных идей: объекты, функции, свойства, объект выполнения и `this`.
 
 ---
 
@@ -134,15 +134,15 @@ docs/01-javascript/38-object-descriptors.md
 После изучения этой главы вы будете понимать:
 
 * зачем существуют object methods;
-* почему behavior может belong to object;
-* как method связан с object state;
+* почему поведение может относиться к объекту;
+* как method связан с состоянием объекта;
 * как выглядит method syntax;
-* как calling method differs from calling ordinary function;
-* как method invocation связан с `this`;
-* почему method is still an ordinary function;
+* чем вызов метода отличается от вызова обычной функции;
+* как вызов метода связан с `this`;
+* почему method остается обычной функцией;
 * почему не стоит определять method только как "function inside object";
 * какие ошибки встречаются чаще всего;
-* как object methods используются in Automation QA.
+* как object methods используются в Automation QA.
 
 ---
 
@@ -160,7 +160,7 @@ const user = {
 };
 ```
 
-И есть behavior:
+И есть поведение:
 
 ```javascript
 function describeUser(user) {
@@ -174,7 +174,7 @@ function renameUser(user, newName) {
 
 Такой код работает.
 
-Но behavior живет отдельно от entity:
+Но поведение живет отдельно от entity:
 
 ```text
 user data
@@ -191,9 +191,9 @@ functions elsewhere
 
 Вопрос:
 
-> Почему behavior, который работает только с user, живет отдельно от user?
+> Почему поведение, которое работает только с user, живет отдельно от user?
 
-Object method позволяет показать ownership:
+Object method позволяет показать принадлежность:
 
 ```javascript
 const user = {
@@ -206,7 +206,7 @@ const user = {
 };
 ```
 
-Теперь behavior belongs to the same entity:
+Теперь поведение относится к той же сущности:
 
 ```text
 user
@@ -222,13 +222,13 @@ user
 
 Главный вопрос главы:
 
-> Why does this behavior belong to this object?
+> Почему это поведение относится к этому объекту?
 
 ---
 
 ## Теория
 
-Object method is behavior associated with an object.
+Object method — это поведение, связанное с объектом.
 
 Но важно не начинать и не заканчивать определением "method is a function inside object". Это слишком механическое описание.
 
@@ -238,7 +238,7 @@ Object method is behavior associated with an object.
 Method
 │
 ▼
-behavior that belongs to an entity
+поведение, относящееся к сущности
 ```
 
 ### Why methods exist
@@ -263,11 +263,11 @@ user
 └── can check its role
 ```
 
-Methods let object expose behavior near the data it uses.
+Methods позволяют объекту держать поведение рядом с данными, которые оно использует.
 
-### State and behavior
+### Состояние и поведение
 
-State is data stored in object:
+Состояние — это данные, сохранённые в объекте:
 
 ```javascript
 const user = {
@@ -288,7 +288,7 @@ const user = {
 };
 ```
 
-Model:
+Модель:
 
 ```text
 Object
@@ -329,7 +329,7 @@ In this chapter we use method syntax because it expresses intention clearly.
 user.describe();
 ```
 
-This is method invocation:
+This is вызов метода:
 
 ```text
 object.method()
@@ -350,11 +350,11 @@ receiver is object before dot
 this inside method points to receiver
 ```
 
-This is the working model for ordinary method calls in this chapter. Other invocation forms were studied in `call()`, `apply()` and `bind()`, and deeper mechanics will return in Prototype chapters.
+Это рабочая модель обычных вызовов методов в этой главе. Другие формы вызова уже разбирались в `call()`, `apply()` и `bind()`, а более глубокая механика вернётся в главах про Prototype.
 
-### Methods vs ordinary functions
+### Methods и обычные функции
 
-Ordinary function:
+Обычная функция:
 
 ```javascript
 function describeUser(user) {
@@ -378,13 +378,13 @@ Difference is not that method is a magical new kind of function.
 Важно:
 
 ```text
-Methods are ordinary functions.
+Methods — это обычные функции.
 They become methods because they are accessed and called through an object.
 ```
 
 ### Relationship with `this`
 
-Inside method, `this` lets behavior read the current receiver's state:
+Внутри method `this` позволяет поведению читать состояние текущего объекта выполнения:
 
 ```javascript
 const account = {
@@ -396,13 +396,13 @@ const account = {
 };
 ```
 
-Method call:
+Вызов метода:
 
 ```javascript
 account.getLabel();
 ```
 
-Receiver reminder:
+Напоминание про объект выполнения:
 
 ```text
 account.getLabel()
@@ -412,12 +412,12 @@ account.getLabel()
 
 ### Arrow functions as methods
 
-Arrow functions have special `this` behavior. This course already introduced arrow functions and `this` separately, but this chapter does not teach arrow methods in depth.
+Arrow functions имеют особое поведение `this`. Курс уже отдельно вводил arrow functions и `this`, но эта глава не разбирает методы-стрелки глубоко.
 
-For now:
+Пока достаточно правила:
 
 ```text
-Use regular method syntax for object methods.
+Используйте обычный синтаксис метода для object methods.
 ```
 
 Detailed edge cases come later.
@@ -439,13 +439,13 @@ const apiClient = {
 apiClient.buildUrl('/users');
 ```
 
-Conceptual flow:
+Концептуальный поток:
 
 ```text
-1. Read identifier apiClient
+1. Прочитать identifier apiClient
 2. Find property "buildUrl"
 3. Get function object stored in that property
-4. Call it through apiClient
+4. Вызвать её через apiClient
 5. Set receiver for this invocation
 6. Inside method: this -> apiClient
 7. Read this.baseUrl
@@ -497,21 +497,21 @@ function object
 └── can be called
 ```
 
-It becomes a method in practical terms when used as behavior of an object:
+На практике она становится method, когда используется как поведение объекта:
 
 ```text
-object property contains function
+свойство объекта содержит функцию
 │
 ▼
 called as object.method()
 │
 ▼
-method invocation
+вызов метода
 ```
 
 ### State change preview
 
-Some methods only read state:
+Некоторые методы только читают состояние:
 
 ```javascript
 describe() {
@@ -519,7 +519,7 @@ describe() {
 }
 ```
 
-Some methods update state:
+Некоторые методы изменяют состояние:
 
 ```javascript
 rename(newName) {
@@ -527,7 +527,7 @@ rename(newName) {
 }
 ```
 
-This chapter only previews state-changing methods. Object descriptors, immutability patterns and deeper property behavior will be studied later.
+Эта глава только предварительно показывает методы, изменяющие состояние. Object descriptors, паттерны неизменяемости и более глубокое поведение свойств будут изучаться позже.
 
 ---
 
@@ -710,30 +710,30 @@ console.log(assertionHelper.formatStatus('checkout', 500, 200));
 ```text
 method
 │
-└── ordinary function used as object behavior
+└── обычная функция, используемая как поведение объекта
 ```
 
 ### Почему не говорить просто "function inside object"?
 
-Потому что такая фраза описывает форму, но не объясняет ownership.
+Потому что такая фраза описывает форму, но не объясняет принадлежность поведения.
 
-Better question:
+Более точный вопрос:
 
 ```text
-Why does this behavior belong to this object?
+Почему это поведение относится к этому объекту?
 ```
 
 ### Method всегда использует `this`?
 
-Нет. Method может не использовать `this`, but many useful methods read or update object state through `this`.
+Нет. Method может не использовать `this`, но многие полезные методы читают или изменяют состояние объекта через `this`.
 
 ### Можно ли использовать arrow function as method?
 
-Синтаксически можно хранить arrow function in property, but arrow functions have different `this` behavior. This chapter recommends regular method syntax. Details later.
+Синтаксически можно хранить arrow function в свойстве, но у arrow functions другое поведение `this`. В этой главе рекомендуется обычный синтаксис метода. Детали будут позже.
 
 ### Method может менять object?
 
-Да, если method assigns to object properties through `this` or another reference. This chapter shows the idea but does not go deep into descriptors or immutability.
+Да, если method присваивает значения свойствам объекта через `this` или другую ссылку. Эта глава показывает идею, но не уходит глубоко в descriptors или неизменяемость.
 
 ---
 
@@ -743,31 +743,31 @@ Why does this behavior belong to this object?
 
 Реальность:
 
-Methods are ordinary functions used through objects.
+Methods — это обычные функции, используемые через объекты.
 
-### Миф: method belongs to object only because it is written inside braces
+### Миф: method относится к объекту только потому, что записан внутри фигурных скобок
 
 Реальность:
 
-The important design idea is behavior ownership. Syntax should express that ownership.
+Важная проектная идея — принадлежность поведения. Синтаксис должен выражать эту принадлежность.
 
 ### Миф: every object should have methods
 
 Реальность:
 
-Some objects should be pure data: payloads, expected data, simple configs. Methods are useful when behavior naturally belongs to entity.
+Некоторые объекты должны оставаться чистыми данными: payload, expected data, простые config-объекты. Methods полезны, когда поведение естественно относится к сущности.
 
 ### Миф: `this` is always obvious
 
 Реальность:
 
-For ordinary `object.method()` calls the receiver model is clear. Other invocation forms were covered in `call()`, `apply()` and `bind()`.
+Для обычных вызовов `object.method()` модель объекта выполнения понятна. Другие формы вызова уже разбирались в `call()`, `apply()` и `bind()`.
 
 ---
 
 ## Типичные ошибки
 
-### Ошибка 1. Отделять behavior that belongs to object
+### Ошибка 1. Отделять поведение, которое относится к объекту
 
 ```javascript
 function buildUrl(client, path) {
@@ -775,7 +775,7 @@ function buildUrl(client, path) {
 }
 ```
 
-If behavior belongs to API client, method can be clearer:
+Если поведение относится к API client, method может быть понятнее:
 
 ```javascript
 const apiClient = {
@@ -790,25 +790,25 @@ const apiClient = {
 
 Not every function should become method.
 
-If behavior does not need object state, ordinary function may be simpler.
+Если поведению не нужно состояние объекта, обычная функция может быть проще.
 
-### Ошибка 3. Detached method loses receiver
+### Ошибка 3. Detached method loses объект выполнения
 
 ```javascript
 const buildUrl = apiClient.buildUrl;
 ```
 
-Now function object is detached. If called as `buildUrl('/users')`, ordinary receiver is gone. This was studied in `this`, `call()` and `bind()`.
+Теперь function object отделён. Если вызвать `buildUrl('/users')`, обычный объект выполнения будет потерян. Это разбиралось в главах `this`, `call()` и `bind()`.
 
 ### Ошибка 4. Использовать arrow function for method without understanding `this`
 
-Use regular method syntax until arrow `this` behavior is fully clear.
+Use regular method syntax until arrow `this` поведение is fully clear.
 
 ---
 
 ## Практическое использование
 
-### Entity behavior
+### Entity поведение
 
 ```javascript
 const user = {
@@ -859,7 +859,7 @@ const config = {
 
 ### API client objects
 
-API client naturally owns behavior for URL building and request description:
+API client естественно владеет поведением для построения URL и описания запроса:
 
 ```text
 apiClient
@@ -894,7 +894,7 @@ assertions
 
 ### Request builders
 
-Request builder object can own base payload and behavior for building requests.
+Request builder object может владеть базовым payload и поведением для построения запросов.
 
 ### Configuration helpers
 
@@ -907,13 +907,13 @@ Configuration object can expose methods that describe or normalize configuration
 ### 1. Why methods exist
 
 ```text
-data belongs together
+данные относятся к одной сущности
 │
 ▼
 behavior uses that data
 │
 ▼
-method belongs to object
+method относится к object
 ```
 
 ### 2. Data only
@@ -926,7 +926,7 @@ user
 └── role
 ```
 
-### 3. Data + behavior
+### 3. Data + поведение
 
 ```text
 user
@@ -944,7 +944,7 @@ object.method()
 execute behavior
 ```
 
-### 5. State and behavior
+### 5. Состояние и поведение
 
 ```text
 Object
@@ -1006,7 +1006,7 @@ this
 ```text
 function object
 │
-├── called alone -> ordinary function call
+├── вызвана отдельно -> обычный вызов функции
 └── called through object -> method call
 ```
 
@@ -1080,13 +1080,13 @@ object owns data
 object owns related behavior
 ```
 
-### 19. Behavior ownership
+### 19. Принадлежность поведения
 
 ```text
 behavior uses object state
 │
 ▼
-behavior belongs to object
+поведение относится к object
 ```
 
 ### 20. Complete object model
@@ -1147,7 +1147,7 @@ control panel
 device buttons
 ```
 
-### 26. Entity behavior
+### 26. Entity поведение
 
 ```text
 entity
@@ -1247,7 +1247,7 @@ solutions/01-javascript/37-object-methods.md
 Не открывайте решения до самостоятельной попытки. Главный вопрос практики:
 
 ```text
-Why should this behavior belong to the object?
+Почему это поведение должно относиться к объекту?
 ```
 
 ---
@@ -1281,21 +1281,21 @@ Object
 └── Behavior
 ```
 
-Method is ordinary function used as object behavior. It is called as `object.method()`, and in ordinary method invocation `this` points to receiver.
+Method — это обычная функция, используемая как поведение объекта. Она вызывается как `object.method()`, и при обычном вызове метода `this` указывает на объект выполнения.
 
 ---
 
 ## Что нужно запомнить
 
-* Object can store state and behavior.
-* Method represents behavior belonging to one entity.
-* Method is an ordinary function used through an object.
+* Object может хранить состояние и поведение.
+* Method представляет поведение, относящееся к одной сущности.
+* Method — это обычная функция, используемая через объект.
 * Do not define method only as "function inside object".
-* Ordinary `object.method()` invocation sets receiver from object before dot.
-* `this` inside regular method usually reads or updates receiver state.
-* Detached method can lose receiver.
-* Use regular method syntax unless arrow `this` behavior is intentionally needed.
-* In Automation QA, methods appear in API clients, assertion helpers, request builders and Page Objects.
+* Ordinary `object.method()` invocation sets объект выполнения from object before dot.
+* `this` inside regular method usually reads or updates объект выполнения состояние.
+* Detached method can lose объект выполнения.
+* Use regular method syntax unless arrow `this` поведение is intentionally needed.
+* В Automation QA methods встречаются в API clients, assertion helpers, request builders и Page Objects.
 * Object Descriptors are next: they explain why properties can behave differently.
 
 ---
@@ -1305,12 +1305,12 @@ Method is ordinary function used as object behavior. It is called as `object.met
 Ответьте без запуска кода.
 
 1. Зачем существуют object methods?
-2. Что такое object state?
-3. Что такое object behavior?
+2. Что такое состояние объекта?
+3. Что такое object поведение?
 4. Почему method не стоит определять только как "function inside object"?
-5. Чем method отличается от ordinary function на уровне invocation?
-6. Как `this` связан с ordinary method call?
+5. Чем method отличается от обычной функции на уровне вызова?
+6. Как `this` связан с обычным вызовом метода?
 7. Почему detached method может быть проблемой?
-8. Когда behavior should belong to object?
+8. Когда поведение должно относиться к объекту?
 9. Где object methods используются в Automation QA?
 10. Какая следующая тема логически продолжает Object Methods?

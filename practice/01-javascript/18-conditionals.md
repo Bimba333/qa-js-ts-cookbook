@@ -4,14 +4,14 @@
 
 Ответьте своими словами.
 
-1. Why do conditionals exist?
+1. Почему существуют conditionals?
 2. What does it mean that program chooses execution path?
 3. What happens before `if` chooses a branch?
 4. What is Boolean decision making?
-5. What does `else` add?
+5. Что добавляет `else`?
 6. When is `else if` useful?
 7. When are nested conditions useful?
-8. What does `switch` evaluate?
+8. Что вычисляет `switch`?
 9. What does `default` branch do?
 10. Why should conditional logic be readable?
 11. Why does JavaScript not randomly choose branches?
@@ -133,7 +133,7 @@ switch (environment) {
 
 Прочитайте код и ответьте:
 
-1. What decision is the program making?
+1. Какое решение принимает программа?
 2. Which expression is evaluated first?
 3. Which path runs?
 4. How could names improve readability?
@@ -196,14 +196,14 @@ if (statusCode === 200 && responseTimeMs < 500 && hasUserId && !isDeleted) {
 
 ### Сценарий 1. Status code validation
 
-Напишите conditional:
+Напишите условие:
 
 * if status is 200, print `Validate body`;
 * otherwise print `Report status error`.
 
 ### Сценарий 2. Retry decision
 
-Напишите conditional:
+Напишите условие:
 
 * if status is 500 or greater, print `Retry may be needed`;
 * otherwise print `No retry`.
@@ -218,7 +218,7 @@ Use `switch` for:
 
 ### Сценарий 4. Choosing assertions
 
-If `responseType` is `user`, print `Assert user fields`; otherwise print `Assert generic response`.
+If `responseType` is `user`, print `Assert user поля`; otherwise print `Assert generic response`.
 
 ## Мини-проект
 
@@ -230,7 +230,7 @@ playground/conditional-response-check.js
 
 В нем:
 
-1. Создайте object `response`:
+1. Создайте объект `response`:
    * `statusCode`;
    * `responseTimeMs`;
    * `body`.

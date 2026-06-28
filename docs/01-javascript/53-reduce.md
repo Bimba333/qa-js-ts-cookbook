@@ -22,7 +22,7 @@ subset array
 
 ## Главный вопрос
 
-> Как агрегировать множество values в один result?
+> Как агрегировать множество значения в один result?
 
 Ответ этой главы: использовать `reduce()`.
 
@@ -117,7 +117,7 @@ next accumulator
 
 ## Внутренний механизм
 
-Conceptual steps:
+Концептуальные шаги:
 
 ```text
 initial value
@@ -163,7 +163,7 @@ T-2 failed
 
 ## Главная ментальная модель
 
-Главная модель этой главы: **input -> single accumulated result**.
+Главная модель этой главы: **вход -> single accumulated result**.
 
 ```text
 input array

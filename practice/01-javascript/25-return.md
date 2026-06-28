@@ -11,12 +11,12 @@
 5. Что получает вызывающий код, если explicit return отсутствует?
 6. Чем `console.log()` отличается от `return`?
 7. Что значит implicit `undefined`?
-8. Что такое one return statement?
+8. Что такое одна инструкция return?
 9. Что такое multiple return paths?
 10. Почему return paths должны быть читаемыми?
 11. Почему функции можно рассматривать как transformations of data?
 
-## Определите return values
+## Определите return значения
 
 Для каждого примера укажите:
 
@@ -186,7 +186,7 @@ function getStatusMessage(statusCode) {
 
 ### Сценарий 1. Boolean validator
 
-Создайте function `isSuccessfulStatus(actualStatus, expectedStatus)`.
+Создайте функцию `isSuccessfulStatus(actualStatus, expectedStatus)`.
 
 Функция должна вернуть результат сравнения.
 
@@ -194,7 +194,7 @@ function getStatusMessage(statusCode) {
 
 ### Сценарий 2. Message helper
 
-Создайте function `getStatusMessage(statusCode)`.
+Создайте функцию `getStatusMessage(statusCode)`.
 
 Если status code равен `200`, верните `Status is successful`.
 
@@ -236,12 +236,12 @@ playground/return-qa-helpers.js
 
 В нем:
 
-1. Создайте function `isSuccessfulStatus(actualStatus, expectedStatus)`.
-2. Создайте function `getStatusMessage(statusCode)`.
-3. Создайте function `getUserEmail()`.
-4. Создайте function `printUserEmail()`.
+1. Создайте функцию `isSuccessfulStatus(actualStatus, expectedStatus)`.
+2. Создайте функцию `getStatusMessage(statusCode)`.
+3. Создайте функцию `getUserEmail()`.
+4. Создайте функцию `printUserEmail()`.
 5. Покажите разницу между `return` и `console.log()`.
-6. Сохраните return values в переменные.
+6. Сохраните return значения в переменные.
 7. Добавьте отчет:
 
 ```text

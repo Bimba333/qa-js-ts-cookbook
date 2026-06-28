@@ -16,7 +16,7 @@ invocation form selects receiver
 this is set for this call
 ```
 
-Для обычного вызова `object.method()` receiver обычно выбирается из формы вызова.
+Для обычного вызова `object.method()` объект выполнения обычно выбирается из формы вызова.
 
 ```text
 apiClient.buildUrl('/users')
@@ -24,7 +24,7 @@ apiClient.buildUrl('/users')
 └── receiver -> apiClient
 ```
 
-Но detached function теряет receiver:
+Но detached function теряет объект выполнения:
 
 ```javascript
 'use strict';
@@ -51,13 +51,13 @@ buildUrl('/users')
 
 Теперь появляется следующий вопрос:
 
-> Можно ли выбрать receiver вручную?
+> Можно ли выбрать объект выполнения вручную?
 
 Да. Для этого существует `call()`.
 
 Главный вопрос главы:
 
-> Кто выбирает receiver теперь?
+> Кто выбирает объект выполнения теперь?
 
 ---
 
@@ -68,8 +68,8 @@ buildUrl('/users')
 * что function object можно хранить в переменной;
 * что object может хранить methods;
 * что `this` определяется во время invocation;
-* что обычный вызов `object.method()` выбирает receiver из формы вызова;
-* что detached function теряет receiver;
+* что обычный вызов `object.method()` выбирает объект выполнения из формы вызова;
+* что detached function теряет объект выполнения;
 * что parameters получают arguments по позиции;
 * что `return` отправляет результат из функции.
 
@@ -91,7 +91,7 @@ buildUrl('/users')
 
 Уровень сложности: **L4**.
 
-`call()` выглядит как небольшой method, но концептуально это важный поворот: receiver выбирает не форма обычного вызова, а разработчик.
+`call()` выглядит как небольшой method, но концептуально это важный поворот: объект выполнения выбирает не форма обычного вызова, а разработчик.
 
 ---
 
@@ -126,12 +126,12 @@ docs/01-javascript/31-apply.md
 После изучения этой главы вы будете понимать:
 
 * зачем существует `call()`;
-* что такое manual receiver selection;
-* как `call(receiver)` выбирает `this`;
+* что такое manual объект выполнения selection;
+* как `call(объект выполнения)` выбирает `this`;
 * как передавать arguments через `call()`;
 * как `call()` заменяет ordinary invocation;
 * как `call()` помогает в ситуации с detached function;
-* как один function object использовать с разными receivers;
+* как один function object использовать с разными объект выполненияs;
 * какие ошибки чаще всего встречаются;
 * когда `call()` улучшает читаемость;
 * как `call()` может применяться в Automation QA.
@@ -140,7 +140,7 @@ docs/01-javascript/31-apply.md
 
 ## Мотивация
 
-Начнем с проблемы, где необходимость явного выбора receiver видна особенно хорошо.
+Начнем с проблемы, где необходимость явного выбора объект выполнения видна особенно хорошо.
 
 Есть helper object:
 
@@ -173,7 +173,7 @@ apiClient.buildUrl('/users')
 const buildUrl = apiClient.buildUrl;
 ```
 
-то обычный вызов теряет receiver:
+то обычный вызов теряет объект выполнения:
 
 ```javascript
 buildUrl('/users');
@@ -194,7 +194,7 @@ buildUrl('/users')
 receiver: none
 ```
 
-Lost receiver:
+Потерянный объект выполнения:
 
 ```text
 Function object still exists
@@ -208,7 +208,7 @@ this is undefined in strict mode
 
 Вопрос:
 
-> Если ordinary invocation не выбрала receiver, можем ли мы выбрать его сами?
+> Если ordinary invocation не выбрала объект выполнения, можем ли мы выбрать его сами?
 
 `call()` отвечает:
 
@@ -216,7 +216,7 @@ this is undefined in strict mode
 yes
 ```
 
-Manual receiver selection:
+Явный выбор объекта выполнения:
 
 ```text
 Ordinary invocation
@@ -234,7 +234,7 @@ call()
 
 ### Зачем существует call()
 
-`call()` существует для ручного вызова function object с явно указанным receiver.
+`call()` существует для ручного вызова function object с явно указанным объект выполнения.
 
 Обычный вызов:
 
@@ -266,7 +266,7 @@ buildUrl.call(apiClient, '/users')
 └── argument: '/users'
 ```
 
-Why `call()` exists:
+Зачем существует `call()`:
 
 ```text
 Function object exists
@@ -297,7 +297,7 @@ Developer chooses receiver
 
 ---
 
-### call(receiver)
+### call(объект выполнения)
 
 Минимальная форма:
 
@@ -349,7 +349,7 @@ With call
 
 Главный вопрос:
 
-> Кто выбирает receiver теперь?
+> Кто выбирает объект выполнения теперь?
 
 Ответ:
 
@@ -361,7 +361,7 @@ developer
 
 ### Passing arguments
 
-`call()` выбирает receiver первым argument.
+`call()` выбирает объект выполнения первым argument.
 
 Остальные arguments передаются в вызываемую function.
 
@@ -377,7 +377,7 @@ const apiClient = {
 console.log(buildUrl.call(apiClient, '/users'));
 ```
 
-Passing arguments:
+Передача аргументов:
 
 ```text
 buildUrl.call(apiClient, '/users')
@@ -400,7 +400,7 @@ const usersApi = {
 console.log(formatRequest.call(usersApi, 'GET', '/users'));
 ```
 
-Arguments flow:
+Arguments поток:
 
 ```text
 formatRequest.call(usersApi, 'GET', '/users')
@@ -426,7 +426,7 @@ Remaining call arguments
 
 ### Replacing ordinary invocation
 
-`call()` может выразить тот же receiver, что и обычный method call.
+`call()` может выразить тот же объект выполнения, что и обычный method call.
 
 ```javascript
 apiClient.buildUrl('/users');
@@ -472,7 +472,7 @@ method.call(object, argument)
 
 Это не значит, что обычные method calls нужно заменять на `call()`. Обычно `object.method()` читается лучше.
 
-`call()` нужен, когда receiver нужно выбрать явно.
+`call()` нужен, когда объект выполнения нужно выбрать явно.
 
 ---
 
@@ -507,7 +507,7 @@ const buildUrl = apiClient.buildUrl;
 console.log(buildUrl.call(apiClient, '/users'));
 ```
 
-Explicit receiver selection:
+Явный выбор объекта выполнения:
 
 ```text
 Detached function
@@ -523,7 +523,7 @@ Manual receiver selection
     └── receiver selected explicitly
 ```
 
-Receiver flow:
+Receiver поток:
 
 ```text
 buildUrl
@@ -537,7 +537,7 @@ call(apiClient, '/users')
 └── path -> '/users'
 ```
 
-`call()` не приклеивает receiver к функции навсегда.
+`call()` не приклеивает объект выполнения к функции навсегда.
 
 ```text
 call()
@@ -545,13 +545,13 @@ call()
 └── chooses receiver for one invocation
 ```
 
-Следующий вызов может выбрать другой receiver.
+Следующий вызов может выбрать другой объект выполнения.
 
 ---
 
-### Same function, different receiver
+### Same function, different объект выполнения
 
-Один function object можно вызвать с разными receivers.
+Один function object можно вызвать с разными объект выполненияs.
 
 ```javascript
 function buildUrl(path) {
@@ -570,7 +570,7 @@ console.log(buildUrl.call(usersApi, '/list'));
 console.log(buildUrl.call(ordersApi, '/list'));
 ```
 
-Same function, different receiver:
+Same function, different объект выполнения:
 
 ```text
 buildUrl.call(usersApi, '/list')
@@ -582,7 +582,7 @@ buildUrl.call(ordersApi, '/list')
 └── this -> ordersApi
 ```
 
-Function object:
+Объект функции:
 
 ```text
 buildUrl function object
@@ -591,7 +591,7 @@ buildUrl function object
 └── can be called with ordersApi
 ```
 
-Это особенно полезно, когда behavior общий, а configuration хранится в разных objects.
+Это особенно полезно, когда поведение общий, а configuration хранится в разных objects.
 
 ---
 
@@ -599,7 +599,7 @@ buildUrl function object
 
 ### Что происходит при call()
 
-В обычном method call receiver выбирается из формы invocation, которую мы изучали в предыдущей главе.
+В обычном method call объект выполнения выбирается из формы invocation, которую мы изучали в предыдущей главе.
 
 ```text
 apiClient.buildUrl('/users')
@@ -607,7 +607,7 @@ apiClient.buildUrl('/users')
 └── ordinary method call selects apiClient
 ```
 
-При `call()` receiver передается явно.
+При `call()` объект выполнения передается явно.
 
 ```text
 buildUrl.call(apiClient, '/users')
@@ -684,7 +684,7 @@ call()
 └── arguments passed after receiver
 ```
 
-Receiver selection:
+Выбор объекта выполнения:
 
 ```text
 object.method()
@@ -696,7 +696,7 @@ function.call(receiver)
 └── receiver comes from developer
 ```
 
-Manual receiver selection:
+Явный выбор объекта выполнения:
 
 ```text
 Developer
@@ -713,13 +713,13 @@ function executes with this object as this
 
 Именно поэтому вопрос главы звучит так:
 
-> Кто выбирает receiver теперь?
+> Кто выбирает объект выполнения теперь?
 
 ---
 
 ### Timeline
 
-Timeline:
+Временная шкала:
 
 ```text
 T1  Function object exists
@@ -739,7 +739,7 @@ T7  this inside original function points to receiver
 T8  function returns result
 ```
 
-Manual invocation timeline:
+Manual invocation временная шкала:
 
 ```text
 detached function
@@ -757,7 +757,7 @@ body executes
 result returned
 ```
 
-Complete call() model:
+Полная модель call():
 
 ```text
 Function object
@@ -781,7 +781,7 @@ function body executes
 
 ### Ручное управление
 
-Обычный вызов похож на автоматический выбор receiver.
+Обычный вызов похож на автоматический выбор объект выполнения.
 
 ```text
 object.method()
@@ -815,7 +815,7 @@ call()
 
 ### Remote control
 
-Представьте function object как устройство, а receiver как выбранный target.
+Представьте function object как устройство, а объект выполнения как выбранный target.
 
 ```text
 Remote control
@@ -907,7 +907,7 @@ function executes
 
 ---
 
-### Current position in JavaScript model
+### Текущее место в модели JavaScript
 
 ```text
 Functions
@@ -1002,7 +1002,7 @@ const buildUrl = apiClient.buildUrl;
 console.log(buildUrl.call(apiClient, '/users'));
 ```
 
-Explicit receiver selection:
+Явный выбор объекта выполнения:
 
 ```text
 buildUrl
@@ -1030,7 +1030,7 @@ const apiClient = {
 console.log(formatRequest.call(apiClient, 'GET', '/users'));
 ```
 
-Passing arguments:
+Передача аргументов:
 
 ```text
 formatRequest.call(apiClient, 'GET', '/users')
@@ -1058,7 +1058,7 @@ call()
 
 ### call() меняет this навсегда?
 
-Нет. `call()` выбирает receiver только для одного invocation.
+Нет. `call()` выбирает объект выполнения только для одного invocation.
 
 ```text
 first call()
@@ -1074,15 +1074,15 @@ second call()
 
 Нет. Первый argument `call()` становится `this`.
 
-Обычные parameters получают arguments, которые идут после receiver.
+Обычные parameters получают arguments, которые идут после объект выполнения.
 
 ### Нужно ли заменять все method calls на call()?
 
-Нет. Если обычный `object.method()` читается ясно, он обычно лучше. `call()` нужен, когда receiver надо выбрать явно.
+Нет. Если обычный `object.method()` читается ясно, он обычно лучше. `call()` нужен, когда объект выполнения надо выбрать явно.
 
 ### Чем call() отличается от apply()?
 
-Обе темы связаны с ручным receiver. В этой главе изучается `call()`, где arguments передаются по одному. `apply()` будет изучаться в следующей главе.
+Обе темы связаны с ручным объект выполнения. В этой главе изучается `call()`, где arguments передаются по одному. `apply()` будет изучаться в следующей главе.
 
 ---
 
@@ -1090,7 +1090,7 @@ second call()
 
 ### Миф 1. call() нужен только для исправления ошибок
 
-Реальность: `call()` является общим механизмом явного выбора receiver. Detached function - один из случаев, где этот механизм особенно заметен.
+Реальность: `call()` является общим механизмом явного выбора объект выполнения. Detached function - один из случаев, где этот механизм особенно заметен.
 
 ### Миф 2. call() permanently привязывает this
 
@@ -1102,7 +1102,7 @@ call()
 └── one invocation only
 ```
 
-Постоянное связывание receiver будет изучаться позже в главе `bind()`.
+Постоянное связывание объект выполнения будет изучаться позже в главе `bind()`.
 
 ### Миф 3. call() и apply() - одно и то же
 
@@ -1112,7 +1112,7 @@ call()
 
 ## Типичные ошибки
 
-### Ошибка 1. Забыть первый argument receiver
+### Ошибка 1. Забыть первый argument объект выполнения
 
 Неправильный код:
 
@@ -1152,7 +1152,7 @@ buildUrl.call(apiClient, '/users');
 
 ---
 
-### Ошибка 2. Думать, что call() сохраняет receiver навсегда
+### Ошибка 2. Думать, что call() сохраняет объект выполнения навсегда
 
 ```javascript
 function getBaseUrl() {
@@ -1167,7 +1167,7 @@ getBaseUrl.call(apiClient);
 getBaseUrl();
 ```
 
-Первый вызов выбирает receiver manually.
+Первый вызов выбирает объект выполнения manually.
 
 Второй вызов снова standalone.
 
@@ -1183,7 +1183,7 @@ getBaseUrl()
 
 ---
 
-### Ошибка 3. Путать receiver и normal arguments
+### Ошибка 3. Путать объект выполнения и normal arguments
 
 ```javascript
 function validateStatus(response) {
@@ -1227,7 +1227,7 @@ call(receiver, arg1)
 
 ## Практическое использование
 
-`call()` полезен, когда function object уже есть, но receiver нужно выбрать явно.
+`call()` полезен, когда function object уже есть, но объект выполнения нужно выбрать явно.
 
 Практическое использование:
 
@@ -1299,7 +1299,7 @@ const serverErrorConfig = {
 };
 ```
 
-QA helper example:
+Пример QA-helper:
 
 ```text
 statusMatches.call(okConfig, response)
@@ -1317,7 +1317,7 @@ statusMatches.call(serverErrorConfig, response)
 
 ### API client methods
 
-Если API client method оказался detached, `call()` позволяет явно выбрать нужный config object как receiver.
+Если API client method оказался detached, `call()` позволяет явно выбрать нужный config object как объект выполнения.
 
 ```text
 buildUrl.call(stagingClient, '/users')
@@ -1394,7 +1394,7 @@ Who chooses the receiver?
 solutions/01-javascript/30-call.md
 ```
 
-В решениях важно смотреть не только на результат, но и на receiver flow:
+В решениях важно смотреть не только на результат, но и на объект выполнения поток:
 
 ```text
 call(receiver, arg1, arg2)
@@ -1408,7 +1408,7 @@ call(receiver, arg1, arg2)
 
 ## Итоги
 
-`call()` вводит ручной выбор receiver.
+`call()` вводит ручной выбор объект выполнения.
 
 Итоговая модель:
 
@@ -1424,7 +1424,7 @@ call()
 Developer chooses receiver explicitly
 ```
 
-Complete call() model:
+Полная модель call():
 
 ```text
 functionObject.call(receiver, arg1, arg2)
@@ -1435,7 +1435,7 @@ functionObject.call(receiver, arg1, arg2)
 └── arg2           -> second parameter
 ```
 
-`call()` вызывает function immediately и выбирает receiver только для этого invocation.
+`call()` вызывает function immediately и выбирает объект выполнения только для этого invocation.
 
 Следующая глава про `apply()` покажет похожую идею, но arguments будут передаваться иначе.
 
@@ -1446,10 +1446,10 @@ functionObject.call(receiver, arg1, arg2)
 * `call()` вызывает function object immediately.
 * Первый argument `call()` становится `this`.
 * Остальные arguments передаются в function parameters.
-* `call()` выбирает receiver только для одного invocation.
+* `call()` выбирает объект выполнения только для одного invocation.
 * `call()` помогает в ситуации с detached function, но не сводится к ней.
 * `call()` не заменяет обычные method calls там, где `object.method()` читается лучше.
-* `apply()` будет изучаться в следующей главе и продолжит тему manual receiver selection.
+* `apply()` будет изучаться в следующей главе и продолжит тему manual объект выполнения selection.
 
 Краткая ментальная модель:
 
@@ -1467,9 +1467,9 @@ call()
 
 Ответьте без запуска кода:
 
-1. Кто выбирает receiver при ordinary invocation?
-2. Кто выбирает receiver при `call()`?
+1. Кто выбирает объект выполнения при ordinary invocation?
+2. Кто выбирает объект выполнения при `call()`?
 3. Что становится `this` в `buildUrl.call(apiClient, '/users')`?
 4. Что получает parameter `path` в `buildUrl.call(apiClient, '/users')`?
-5. Почему `call()` не сохраняет receiver навсегда?
+5. Почему `call()` не сохраняет объект выполнения навсегда?
 6. Почему `apply()` логически продолжает эту тему?

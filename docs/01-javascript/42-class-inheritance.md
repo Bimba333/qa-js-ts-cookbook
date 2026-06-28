@@ -34,7 +34,7 @@ Classes
 
 Теперь появляется следующий вопрос:
 
-> Что если несколько classes нуждаются в одинаковом behavior?
+> Что если несколько classes нуждаются в одинаковом поведение?
 
 Например, в Automation QA есть разные page classes:
 
@@ -81,11 +81,11 @@ Derived classes reuse it
 * что class methods are shared through prototype lookup;
 * что Prototype Chain is lookup algorithm;
 * что own property or closer method wins;
-* что method location and receiver are different concepts;
-* что ordinary `object.method()` call uses object before dot as receiver;
+* что method location and объект выполнения are different concepts;
+* что ordinary `object.method()` call uses object before dot as объект выполнения;
 * что class mental models are pedagogical analogies, not formal definitions.
 
-Не требуется знать `super`, constructor inheritance, private fields, static members, `instanceof`, mixins, composition vs inheritance or advanced prototype internals. Эти темы будут изучаться позже.
+Не требуется знать `super`, constructor inheritance, private поля, static members, `instanceof`, mixins, composition vs inheritance or advanced prototype internals. Эти темы будут изучаться позже.
 
 ---
 
@@ -103,7 +103,7 @@ Derived classes reuse it
 
 Уровень сложности: **L4**.
 
-Class Inheritance легко превратить в разговор о большой архитектуре. В этой главе мы держим фокус уже: duplicated class methods and behavior reuse through prototype lookup.
+Class Inheritance легко превратить в разговор о большой архитектуре. В этой главе мы держим фокус уже: duplicated class methods and поведение reuse through prototype lookup.
 
 ---
 
@@ -129,7 +129,7 @@ docs/01-javascript/43-super.md
 
 Следующая глава ответит:
 
-> How can a derived class call behavior from its base class?
+> How can a derived class call поведение from its base class?
 
 ---
 
@@ -138,7 +138,7 @@ docs/01-javascript/43-super.md
 После изучения этой главы вы будете понимать:
 
 * зачем inheritance существует;
-* какую проблему решает duplicated class behavior;
+* какую проблему решает duplicated class поведение;
 * что такое base class;
 * что такое derived class;
 * зачем нужен `extends`;
@@ -188,7 +188,7 @@ class ProfilePage {
 
 Код работает.
 
-Но behavior duplicated:
+Но поведение duplicated:
 
 ```text
 LoginPage
@@ -213,7 +213,7 @@ duplicated class behavior
 └── fragile framework design
 ```
 
-Нужен общий place for common behavior:
+Нужен общий place for common поведение:
 
 ```text
 BasePage
@@ -230,13 +230,13 @@ ProfilePage
 └── updateProfile()
 ```
 
-Inheritance lets derived classes reuse behavior from base class.
+Inheritance lets derived classes reuse поведение from base class.
 
 ---
 
 ## Теория
 
-Class Inheritance is behavior reuse between classes.
+Class Inheritance is поведение reuse between classes.
 
 Главная модель:
 
@@ -253,7 +253,7 @@ Derived class
 Instances can use inherited methods
 ```
 
-Base class contains shared behavior:
+Base class contains общее поведение:
 
 ```javascript
 class BasePage {
@@ -286,7 +286,7 @@ console.log(loginPage.open());
 console.log(loginPage.login());
 ```
 
-Conceptually:
+Концептуально:
 
 ```text
 loginPage instance
@@ -368,7 +368,7 @@ class LoginPage extends BasePage {
 }
 ```
 
-Now:
+Теперь:
 
 ```text
 loginPage.open()
@@ -388,7 +388,7 @@ It follows the same priority idea:
 closer method wins
 ```
 
-We do not explain `super` in this chapter. Calling base behavior from overridden method is the next chapter.
+We do not explain `super` in this chapter. Calling base поведение from overridden method is the next chapter.
 
 ---
 
@@ -400,7 +400,7 @@ When JavaScript sees:
 class LoginPage extends BasePage {}
 ```
 
-High-level model:
+Модель высокого уровня:
 
 ```text
 LoginPage
@@ -410,7 +410,7 @@ extends
 BasePage
 ```
 
-This creates a relationship that allows method lookup to continue from derived class behavior to base class behavior.
+This creates a relationship that allows method lookup to continue from derived class поведение to base class поведение.
 
 ```text
 loginPage instance
@@ -447,7 +447,7 @@ Check BasePage method layer
 └── found
 ```
 
-Then call happens with the same receiver rule:
+Then call happens with the same объект выполнения rule:
 
 ```text
 loginPage.waitReady()
@@ -464,7 +464,7 @@ waitReady() {
 }
 ```
 
-`this` refers to the actual receiver:
+`this` refers to the actual объект выполнения:
 
 ```text
 this
@@ -473,7 +473,7 @@ this
 loginPage
 ```
 
-Method location and receiver are still different concepts.
+Method location and объект выполнения are still different concepts.
 
 ### Prototype reminder
 
@@ -507,7 +507,7 @@ Derived class
 └── specialized manual
 ```
 
-When behavior is missing in specialized manual, JavaScript can use common manual.
+When поведение is missing in specialized manual, JavaScript can use common manual.
 
 ```text
 Need instruction
@@ -553,7 +553,7 @@ reusable training program
 └── specialized skills
 ```
 
-These are mental models, not formal definitions.
+Это ментальные модели, а не формальные определения.
 
 The technical idea remains:
 
@@ -641,7 +641,7 @@ examples/01-javascript/chapter-42/05-page-object.js
 examples/01-javascript/chapter-42/06-qa-example.js
 ```
 
-Показывает base API client behavior reused by service clients.
+Показывает base API client поведение reused by service clients.
 
 ---
 
@@ -651,7 +651,7 @@ examples/01-javascript/chapter-42/06-qa-example.js
 
 Нет.
 
-Better mental model:
+Более точная ментальная модель:
 
 ```text
 extends
@@ -681,13 +681,13 @@ Base behavior
 
 Нет.
 
-Inheritance полезен when there is real shared behavior between classes. Если общего behavior мало, inheritance может усложнить код.
+Inheritance полезен when there is real общее поведение between classes. Если общего поведение мало, inheritance может усложнить код.
 
 Composition vs inheritance будет отдельной темой позже.
 
 ### Почему `super` не объясняется здесь?
 
-Потому что сначала нужно понять simple behavior reuse.
+Потому что сначала нужно понять simple поведение reuse.
 
 Следующая глава объяснит:
 
@@ -721,7 +721,7 @@ Derived method
 
 ### Миф: base class should contain everything
 
-Реальность: base class should contain common behavior only.
+Реальность: base class should contain common поведение only.
 
 ### Миф: overriding removes base method
 
@@ -765,7 +765,7 @@ reuse through lookup
 not copy
 ```
 
-### Ошибка 2. Put page-specific behavior into base class
+### Ошибка 2. Put page-specific поведение into base class
 
 Неправильный дизайн:
 
@@ -820,7 +820,7 @@ class LoginPage extends BasePage {
 
 Если accidental, method name should be changed.
 
-### Ошибка 4. Forget receiver
+### Ошибка 4. Forget объект выполнения
 
 Неправильная модель:
 
@@ -855,7 +855,7 @@ share same behavior
 Примеры:
 
 * base page actions;
-* common API client behavior;
+* common API client поведение;
 * shared validator formatting;
 * framework reporting helpers;
 * common test data builders.
@@ -884,7 +884,7 @@ Base class
 
 > Does the hierarchy explain the domain, or only hide duplicated code?
 
-This chapter does not compare inheritance with composition in depth. That discussion belongs later.
+Эта глава не сравнивает inheritance и composition глубоко. Это обсуждение будет позже.
 
 ---
 
@@ -892,7 +892,7 @@ This chapter does not compare inheritance with composition in depth. That discus
 
 ### BasePage
 
-Common page behavior:
+Common page поведение:
 
 ```text
 BasePage
@@ -918,7 +918,7 @@ This keeps common actions in one place.
 
 ### API base client
 
-Common API behavior:
+Common API поведение:
 
 ```text
 BaseApiClient
@@ -960,7 +960,7 @@ SchemaValidator
 
 The goal is not to build deep hierarchies.
 
-The goal is to keep shared framework behavior explicit and readable.
+The goal is to keep shared framework поведение explicit and readable.
 
 ---
 
@@ -1002,7 +1002,7 @@ LoginPage
 └── login()
 ```
 
-### 5. Shared behavior
+### 5. Shared поведение
 
 ```text
 Base class
@@ -1300,7 +1300,7 @@ class
 class inheritance
 ```
 
-### 36. Behavior ownership
+### 36. Принадлежность поведения
 
 ```text
 common behavior -> base
@@ -1362,13 +1362,13 @@ Classes answered:
 How to create many similar objects conveniently?
 ```
 
-Class Inheritance answers:
+Class Inheritance отвечает:
 
 ```text
 What if several classes need the same behavior?
 ```
 
-The core model:
+Основная модель:
 
 ```text
 Shared behavior
@@ -1388,17 +1388,17 @@ Prototype lookup still works
 
 Inheritance does not copy methods. It creates a relationship between classes, while the already-learned prototype mechanism continues to perform property lookup.
 
-The next chapter will explain `super`: how a derived class can call behavior from its base class.
+The next chapter will explain `super`: how a derived class can call поведение from its base class.
 
 ---
 
 ## Что нужно запомнить
 
-✓ Inheritance reuses behavior between classes.
+✓ Inheritance reuses поведение between classes.
 
-✓ Base class contains common behavior.
+✓ Base class contains common поведение.
 
-✓ Derived class contains specific behavior.
+✓ Derived class contains specific поведение.
 
 ✓ `extends` creates relationship between classes.
 
@@ -1420,9 +1420,9 @@ The next chapter will explain `super`: how a derived class can call behavior fro
 
 1. What problem does class inheritance solve?
 
-2. What behavior belongs in a base class?
+2. Какое поведение относится к base class?
 
-3. What behavior belongs in a derived class?
+3. Какое поведение относится к derived class?
 
 4. Does `extends` copy methods?
 
@@ -1432,7 +1432,7 @@ The next chapter will explain `super`: how a derived class can call behavior fro
 
 7. Which method wins if derived and base class define the same name?
 
-8. What is the receiver during `loginPage.open()`?
+8. What is the объект выполнения during `loginPage.open()`?
 
 9. Why can copying identical methods into every class be a bad idea?
 
@@ -1458,4 +1458,4 @@ practice/01-javascript/42-class-inheritance.md
 solutions/01-javascript/42-class-inheritance.md
 ```
 
-Сначала выполните практику самостоятельно. Затем сравните reasoning, not only final answer.
+Сначала выполните практику самостоятельно. Затем сравните ход рассуждения, а не только итоговый ответ.

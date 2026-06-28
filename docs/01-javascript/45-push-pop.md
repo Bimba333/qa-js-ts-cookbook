@@ -140,7 +140,7 @@ docs/01-javascript/46-shift-unshift.md
 
 Следующая глава ответит:
 
-> How can arrays change at the beginning instead of the end?
+> How can arrays change at the beginning вместо the end?
 
 ---
 
@@ -165,7 +165,7 @@ docs/01-javascript/46-shift-unshift.md
 
 Начнем с growing collection.
 
-Есть array:
+Есть массив:
 
 ```javascript
 const users = ['Anna'];
@@ -214,7 +214,7 @@ length увеличивается
 
 Теперь обратная ситуация.
 
-Есть array:
+Есть массив:
 
 ```javascript
 const users = ['Anna', 'Kate'];
@@ -261,14 +261,14 @@ const users = ['Anna'];
 users.push('Kate');
 ```
 
-Before:
+До:
 
 ```text
 index 0 -> "Anna"
 length  -> 1
 ```
 
-After:
+После:
 
 ```text
 index 0 -> "Anna"
@@ -299,7 +299,7 @@ new request executed
 new test result recorded
 ```
 
-`push()` answers:
+`push()` отвечает:
 
 ```text
 How do we add a new last element?
@@ -315,7 +315,7 @@ const users = ['Anna', 'Kate'];
 const removedUser = users.pop();
 ```
 
-Before:
+До:
 
 ```text
 index 0 -> "Anna"
@@ -323,7 +323,7 @@ index 1 -> "Kate"
 length  -> 2
 ```
 
-After:
+После:
 
 ```text
 index 0 -> "Anna"
@@ -358,7 +358,7 @@ take last executed request
 remove last temporary value
 ```
 
-`pop()` answers:
+`pop()` отвечает:
 
 ```text
 How do we remove and get the last element?
@@ -456,7 +456,7 @@ Array now contains one more element
 length is larger
 ```
 
-Example:
+Пример:
 
 ```text
 before
@@ -593,7 +593,7 @@ list
 └── removes from end
 ```
 
-Central model:
+Центральная модель:
 
 ```text
 Array
@@ -764,7 +764,7 @@ Array remains empty.
 
 ### Is this a stack?
 
-At a high level, adding/removing from the end resembles stack behavior.
+At a high level, adding/removing from the end resembles stack поведение.
 
 But formal stacks are not the topic of this chapter.
 
@@ -774,7 +774,7 @@ But formal stacks are not the topic of this chapter.
 
 ### Миф: `push()` returns the added element
 
-Реальность: this chapter focuses on adding elements to the end. The key learning goal is that the array receives one more element, and only then `length` reflects the new count. Do not rely on guessed return values.
+Реальность: this chapter focuses on adding elements to the end. The key learning goal is that the array receives one more element, and only then `length` reflects the new count. Do not rely on guessed return значения.
 
 ### Миф: `pop()` returns the changed array
 
@@ -839,7 +839,7 @@ users
 
 ### Ошибка 3. Expect `pop()` to remove first element
 
-Wrong:
+Неправильно:
 
 ```text
 pop()
@@ -847,7 +847,7 @@ pop()
 └── removes first element
 ```
 
-Correct:
+Правильно:
 
 ```text
 pop()
@@ -957,7 +957,7 @@ executedRequests
 
 ### Browser history high level
 
-At a high level:
+На высоком уровне:
 
 ```text
 last visited page
@@ -1374,7 +1374,7 @@ Array
 
 The previous chapter introduced arrays as ordered collections.
 
-This chapter answered:
+Эта глава ответила:
 
 ```text
 How can array grow or shrink?
@@ -1426,7 +1426,7 @@ length decreases
 
 Both methods change the existing array.
 
-The next chapter will explain `shift()` and `unshift()`: changing arrays at the beginning instead of the end.
+The next chapter will explain `shift()` and `unshift()`: changing arrays at the beginning вместо the end.
 
 ---
 
@@ -1496,4 +1496,4 @@ practice/01-javascript/45-push-pop.md
 solutions/01-javascript/45-push-pop.md
 ```
 
-Сначала выполните практику самостоятельно. Затем сравните reasoning, not only final answer.
+Сначала выполните практику самостоятельно. Затем сравните ход рассуждения, а не только итоговый ответ.

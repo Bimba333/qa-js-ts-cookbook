@@ -47,7 +47,7 @@ console.log(result);
 
 Сначала запишите ответ без запуска.
 
-## Debugging
+## Отладка
 
 Автор хотел получить array titles.
 
@@ -66,11 +66,11 @@ console.log(titles);
 
 Что не так? Исправьте код.
 
-## QA scenario
+## QA-сценарий
 
 Создайте `ciPayload` из `testCases`.
 
-Каждый output element должен иметь shape:
+Каждый вывод element должен иметь shape:
 
 ```javascript
 {
@@ -86,7 +86,7 @@ console.log(titles);
 
 Требования:
 
-* создать array `testCases` из четырех objects с fields `id`, `title`, `status`, `priority`;
+* создать array `testCases` из четырех objects с поля `id`, `title`, `status`, `priority`;
 * через `map()` получить array строк отчета;
 * через второй `map()` получить array objects для CI;
 * вывести оба результата;

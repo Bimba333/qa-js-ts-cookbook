@@ -30,10 +30,10 @@ transformed output array
 
 Для этой главы нужно понимать:
 
-* что `map()` создает новый array transformed values;
+* что `map()` создает новый array transformed значения;
 * что callback может возвращать value;
 * что condition может давать `true` или `false`;
-* что test case может иметь fields `status` и `priority`.
+* что test case может иметь поля `status` и `priority`.
 
 Не требуется знать следующие array methods. Они будут изучаться в следующих главах.
 
@@ -106,7 +106,7 @@ Callback для `filter()` часто называют predicate: function, ко
 
 ## Внутренний механизм
 
-Conceptual steps:
+Концептуальные шаги:
 
 ```text
 source array
@@ -127,11 +127,11 @@ call predicate
 return subset array
 ```
 
-Важно: `filter()` не меняет сами test case objects. Он выбирает references на elements, которые уже были в source array. Подробности references изучались раньше; здесь достаточно помнить, что `filter()` выбирает элементы, а не превращает их.
+Важно: `filter()` не меняет сами test case objects. Он выбирает references на elements, которые уже были в исходный массив. Подробности references изучались раньше; здесь достаточно помнить, что `filter()` выбирает элементы, а не превращает их.
 
 ## Главная ментальная модель
 
-Главная модель этой главы: **input -> reduced subset array**.
+Главная модель этой главы: **вход -> reduced subset array**.
 
 ```text
 input array
@@ -202,7 +202,7 @@ const highPriorityTests = testCases.filter(function (testCase) {
 
 Callback должен отвечать, оставить element или нет.
 
-### Ошибка 2. Ожидать transformed values
+### Ошибка 2. Ожидать transformed значения
 
 `filter()` выбирает elements. Он не превращает их в строки отчета. Для transformation используется `map()`.
 

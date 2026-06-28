@@ -20,7 +20,7 @@
 
 Распространённая ошибка: передать function вместо value.
 
-Связь с Automation QA: actual status проверяется against allowed values.
+Связь с Automation QA: actual status проверяется against allowed значения.
 
 ### 3. Что возвращает `includes()`?
 
@@ -40,13 +40,13 @@
 
 Распространённая ошибка: усложнять проверку там, где нужен простой presence check.
 
-Связь с Automation QA: списки allowed values обычно simple arrays.
+Связь с Automation QA: списки allowed значения обычно simple arrays.
 
 ### 5. Почему `includes()` не подходит для поиска object by condition?
 
-Ответ: он не проверяет fields object через callback.
+Ответ: он не проверяет поля object через callback.
 
-Объяснение: object condition требует проверки field, а не simple value.
+Объяснение: object condition требует проверки поле, а не simple value.
 
 Распространённая ошибка: пытаться искать object по похожему shape.
 
@@ -54,7 +54,7 @@
 
 ### 6. Почему порядок `allowedValues.includes(actualValue)` читается лучше?
 
-Ответ: потому что код читается как "список разрешенных values содержит фактическое value".
+Ответ: потому что код читается как "список разрешенных значения содержит фактическое value".
 
 Объяснение: source of truth находится слева, проверяемое value — внутри вызова.
 
@@ -86,7 +86,7 @@ false
 
 Связь с Automation QA: invalid priority должен быть найден validation rule.
 
-## Debugging
+## Отладка
 
 Ответ:
 
@@ -103,9 +103,9 @@ console.log(isValid);
 
 Распространённая ошибка: вызывать `includes()` на actual string и передавать array.
 
-Связь с Automation QA: validation читается как "allowed values include actual value".
+Связь с Automation QA: validation читается как "allowed значения include actual value".
 
-## QA scenario
+## QA-сценарий
 
 Ответ:
 
@@ -156,4 +156,4 @@ console.log(allValuesAreAllowed);
 
 Распространённая ошибка: пытаться решить object validation только через `includes()`.
 
-Связь с Automation QA: whitelist validation защищает CI от неожиданных metadata values.
+Связь с Automation QA: whitelist validation защищает CI от неожиданных metadata значения.

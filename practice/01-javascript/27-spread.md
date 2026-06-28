@@ -180,7 +180,7 @@ const payload = { ...base, ...user, ...override, role: 'admin' };
 
 ### Сценарий 3. Compose helper arguments
 
-Создайте function `validateThreeStatuses(firstStatus, secondStatus, thirdStatus)`.
+Создайте функцию `validateThreeStatuses(firstStatus, secondStatus, thirdStatus)`.
 
 Создайте array `statuses`.
 
@@ -208,7 +208,7 @@ playground/spread-qa-setup.js
 4. Создайте `regressionStatuses`.
 5. Объедините statuses через array spread.
 6. Создайте helper `validateThreeStatuses`.
-7. Передайте первые три status values через Spread.
+7. Передайте первые три status значения через Spread.
 8. Добавьте отчет:
 
 ```text

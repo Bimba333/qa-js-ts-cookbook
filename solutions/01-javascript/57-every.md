@@ -86,7 +86,7 @@ true
 
 Связь с Automation QA: если empty run запрещен, нужна дополнительная проверка length.
 
-## Debugging
+## Отладка
 
 Ответ:
 
@@ -102,7 +102,7 @@ const allHavePriority = testCases.every(function (testCase) {
 
 Связь с Automation QA: metadata validation должна быть явной.
 
-## QA scenario
+## QA-сценарий
 
 Ответ:
 

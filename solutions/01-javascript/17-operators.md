@@ -6,7 +6,7 @@
 
 Ответ:
 
-Operator is a language action performed on operand values that produces a result.
+Operator is a language action performed on operand значения that produces a result.
 
 Объяснение:
 
@@ -90,7 +90,7 @@ Expect every operator to have two operands.
 
 Связь с Automation QA:
 
-`typeof` is useful for debugging API values.
+`typeof` is useful for debugging API значения.
 
 ### 6. Binary operator
 
@@ -150,7 +150,7 @@ Used for totals, timeouts, retries.
 
 Ответ:
 
-They compare values and usually produce Boolean result.
+They compare значения and usually produce Boolean result.
 
 Объяснение:
 
@@ -168,7 +168,7 @@ Assertions depend on comparisons.
 
 Ответ:
 
-They combine or evaluate condition-like values.
+They combine or evaluate condition-like значения.
 
 Объяснение:
 
@@ -186,7 +186,7 @@ Used to combine validation checks.
 
 Ответ:
 
-They store or update values.
+They store or update значения.
 
 Объяснение:
 
@@ -216,7 +216,7 @@ Call `typeof` a function.
 
 Связь с Automation QA:
 
-Useful for debugging response field types.
+Useful for debugging response поле types.
 
 ### 13. `delete`
 
@@ -266,7 +266,7 @@ Precedence decides operation order when expression has multiple operators.
 
 Распространённая ошибка:
 
-Rely on memory instead of using parentheses.
+Rely on memory вместо using parentheses.
 
 Связь с Automation QA:
 
@@ -326,7 +326,7 @@ Explain short-circuit before understanding operator category.
 
 Связь с Automation QA:
 
-Used to combine validation states.
+Used to combine validation состояния.
 
 ### Задача 4
 
@@ -344,7 +344,7 @@ Write `typeof(userName)` and think it is a normal function call.
 
 Связь с Automation QA:
 
-Debugging API value types.
+Отладка типов API-значений.
 
 ### Задача 5
 
@@ -362,7 +362,7 @@ Expect it to check property value.
 
 Связь с Automation QA:
 
-Response field existence check.
+Response поле existence check.
 
 ### Задача 6
 
@@ -439,7 +439,7 @@ true
 
 Объяснение:
 
-`&&` needs both condition-like values true. `||` accepts one true. `!false` becomes true.
+`&&` needs both condition-like значения true. `||` accepts one true. `!false` becomes true.
 
 Распространённая ошибка:
 
@@ -465,7 +465,7 @@ false
 
 Распространённая ошибка:
 
-Expect `in` to check value instead of presence.
+Expect `in` to check value вместо presence.
 
 Связь с Automation QA:
 
@@ -504,7 +504,7 @@ Operators:
 in      property presence
 ```
 
-Results:
+Результаты:
 
 ```text
 nextRetryCount → "31"
@@ -512,7 +512,7 @@ isSuccess      → true
 hasId          → true
 ```
 
-Possible type conversion issue:
+Возможная проблема преобразования типа:
 
 ```text
 retryCountFromEnv + 1
@@ -528,7 +528,7 @@ Assume numeric-looking string behaves as number.
 
 Связь с Automation QA:
 
-Environment variables often arrive as strings.
+Environment variables often arrive как строки.
 
 ## Задачи на отладку
 
@@ -538,7 +538,7 @@ Environment variables often arrive as strings.
 
 Operator: `+`. With string operand, operation produces string concatenation here.
 
-Fix:
+Исправление:
 
 ```javascript
 const retryCount = '3';
@@ -555,7 +555,7 @@ Ignore operand type.
 
 Связь с Automation QA:
 
-Parsing config values.
+Parsing config значения.
 
 ### Задача 2
 
@@ -633,7 +633,7 @@ Comparison operators produce Booleans; logical operator combines them.
 
 Распространённая ошибка:
 
-Combine raw values without explicit checks.
+Combine raw значения without explicit checks.
 
 Связь с Automation QA:
 
@@ -659,7 +659,7 @@ Assume value is number because it looks numeric.
 
 Связь с Automation QA:
 
-Debugging API responses.
+Отладка API-ответов.
 
 ### Сценарий 3
 
@@ -707,7 +707,7 @@ Use `typeof` for Date and expect `"date"`.
 
 Связь с Automation QA:
 
-Runtime validation of values returned by helpers.
+Runtime validation of значения returned by helpers.
 
 ## Мини-проект
 
@@ -745,7 +745,7 @@ console.log(isValidResponse);
 console.log(hasRoleAfterDelete);
 ```
 
-Report:
+Отчёт:
 
 ```text
 Expression                       | Operator category        | Result | QA meaning

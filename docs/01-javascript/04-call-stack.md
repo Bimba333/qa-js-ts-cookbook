@@ -411,7 +411,7 @@ function greet() {
 greet();
 ```
 
-Lifecycle:
+Жизненный цикл:
 
 ```text
 Program starts
@@ -1271,7 +1271,7 @@ test
 
 Если читать только последнюю строку, можно пропустить реальную причину. Иногда ошибка проявилась в utility, но вызвана неверными данными из fixture.
 
-### Debugging helper chains
+### Отладка helper chains
 
 Helper может вызвать другой helper.
 

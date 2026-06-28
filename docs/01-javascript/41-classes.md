@@ -80,13 +80,13 @@ Objects still use prototypes
 
 * что object can contain own data;
 * что methods are function object properties;
-* что ordinary method invocation chooses receiver from call form;
+* что обычный вызов метода выбирает объект выполнения из формы вызова;
 * что prototype is ordinary object used as shared source of properties;
 * что Prototype Chain is lookup algorithm;
 * что own property wins over inherited property;
-* что method location and receiver are different concepts.
+* что method location and объект выполнения are different concepts.
 
-Не требуется знать inheritance, `extends`, `super`, private fields, static members, decorators, `instanceof`, advanced constructor behavior or transpilation. Эти темы будут изучаться позже.
+Не требуется знать inheritance, `extends`, `super`, private поля, static members, decorators, `instanceof`, advanced constructor поведение or transpilation. Эти темы будут изучаться позже.
 
 ---
 
@@ -130,7 +130,7 @@ docs/01-javascript/42-class-inheritance.md
 
 Следующая глава ответит:
 
-> Как one class can reuse behavior from another class?
+> Как one class can reuse поведение from another class?
 
 ---
 
@@ -157,7 +157,7 @@ docs/01-javascript/42-class-inheritance.md
 
 Начнем с проблемы.
 
-Есть Page Object:
+Есть Page Объект:
 
 ```javascript
 const loginPage = {
@@ -166,7 +166,7 @@ const loginPage = {
 };
 ```
 
-Есть shared behavior:
+Есть общее поведение:
 
 ```javascript
 const pageBehavior = {
@@ -270,7 +270,7 @@ class PageObject {
 const loginPage = new PageObject('LoginPage', '/login');
 ```
 
-В этой главе `new` рассматривается только как syntax for creating class instance. Advanced behavior of `new` will be studied later.
+В этой главе `new` рассматривается только как syntax for creating class instance. Advanced поведение of `new` will be studied later.
 
 Что важно сейчас:
 
@@ -305,7 +305,7 @@ this.name = name
 this.url = url
 ```
 
-Constructor answers:
+Constructor отвечает:
 
 > What own data should each new object receive?
 
@@ -320,7 +320,7 @@ Class
 instance
 ```
 
-For example:
+Например:
 
 ```javascript
 const loginPage = new PageObject('LoginPage', '/login');
@@ -356,7 +356,7 @@ PageObject methods
 
 Class does not remove prototype lookup.
 
-High-level model:
+Модель высокого уровня:
 
 ```text
 loginPage
@@ -461,7 +461,7 @@ Check PageObject prototype
 └── found
 ```
 
-Receiver reminder:
+Напоминание про объект выполнения:
 
 ```text
 loginPage.describePage()
@@ -496,7 +496,7 @@ After the mental model is clear, we can say the common phrase:
 
 Class syntax is often described as syntactic sugar over prototype-based object creation.
 
-Meaning:
+Значение:
 
 ```text
 class
@@ -574,7 +574,7 @@ production line
 └── output instance
 ```
 
-Important distinction:
+Важное различие:
 
 ```text
 Class
@@ -689,13 +689,13 @@ available through prototype lookup
 
 Constructor has special role during instance creation. It runs when the new instance is created and prepares own data.
 
-Advanced constructor behavior будет изучаться позже.
+Advanced constructor поведение будет изучаться позже.
 
 ### Methods inside class copied into every instance?
 
 Нет.
 
-High-level model:
+Модель высокого уровня:
 
 ```text
 instances
@@ -1229,7 +1229,7 @@ new
 constructor runs
 ```
 
-### 32. Shared behavior reuse
+### 32. Shared поведение reuse
 
 ```text
 one method
@@ -1364,7 +1364,7 @@ Class
 
 Classes do not replace prototypes. Classes use prototypes.
 
-The next chapter will explain class inheritance: how one class can reuse behavior from another class.
+The next chapter will explain class inheritance: how one class can reuse поведение from another class.
 
 ---
 
@@ -1384,7 +1384,7 @@ The next chapter will explain class inheritance: how one class can reuse behavio
 
 ✓ Classes use prototypes.
 
-✓ `this` inside method refers to receiver during ordinary invocation.
+✓ `this` inside method refers to объект выполнения during ordinary invocation.
 
 ✓ Use classes when repeated object creation becomes clearer.
 
@@ -1434,4 +1434,4 @@ practice/01-javascript/41-classes.md
 solutions/01-javascript/41-classes.md
 ```
 
-Сначала выполните практику самостоятельно. Затем сравните reasoning, not only final answer.
+Сначала выполните практику самостоятельно. Затем сравните ход рассуждения, а не только итоговый ответ.

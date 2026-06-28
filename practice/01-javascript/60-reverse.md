@@ -3,7 +3,7 @@
 ## Концептуальные вопросы
 
 1. Что именно инвертирует `reverse()`?
-2. Чем inversion of current order отличается от ordering by rule?
+2. Чем inversion of текущий порядок отличается от ordering by rule?
 3. Что произойдет, если вызвать `reverse()` два раза?
 4. Почему reverse shared array может быть опасен?
 5. Когда reverse view полезен для debugging?
@@ -42,7 +42,7 @@ console.log(testIds);
 
 Сначала запишите ответ без запуска.
 
-## Debugging
+## Отладка
 
 Автор думал, что `reverse()` создаст новый array.
 
@@ -54,9 +54,9 @@ console.log(testIds);
 console.log(reversedIds);
 ```
 
-Объясните проблему. Исправьте код так, чтобы сохранить original order.
+Объясните проблему. Исправьте код так, чтобы сохранить исходного порядка.
 
-## QA scenario
+## QA-сценарий
 
 Есть ordered execution list. Переверните его для анализа последних executed tests первыми.
 
@@ -67,8 +67,8 @@ console.log(reversedIds);
 Требования:
 
 * создать array `testCases` из пяти objects;
-* вывести original order ids;
+* вывести исходный порядок ids;
 * перевернуть порядок;
 * вывести reversed order ids;
 * отсортировать по id и затем перевернуть;
-* объяснить, где `reverse()` изменил source array.
+* объяснить, где `reverse()` изменил исходный массив.

@@ -8,8 +8,8 @@
 2. Почему эта глава не описывает exact engine implementation?
 3. Что означает Stack-like area in conceptual diagrams?
 4. Что означает Heap-like area in conceptual diagrams?
-5. Как в этой модели обычно рисуют primitive values?
-6. Как в этой модели обычно рисуют object values?
+5. Как в этой модели обычно рисуют primitive значения?
+6. Как в этой модели обычно рисуют object значения?
 7. Что показывает arrow from variable to object?
 8. Чем mutation отличается от reassignment на диаграмме?
 9. Почему two variables can point to one object?
@@ -67,7 +67,7 @@ const user = {
 
 Для каждого примера укажите:
 
-* сколько object values создано;
+* сколько object значения создано;
 * какие variables refer to same object;
 * где есть mutation;
 * где есть reassignment.
@@ -218,7 +218,7 @@ console.log(expected === actual);
 
 ### Сценарий 2. Payload preparation
 
-Есть object:
+Есть объект:
 
 ```javascript
 const defaultPayload = {
@@ -251,10 +251,10 @@ playground/stack-heap-map.js
 2. Создайте `sharedPayload` через direct assignment.
 3. Измените `sharedPayload.role`.
 4. Создайте `safePayload` через object spread with different role.
-5. Создайте function `addTrackingId(payload)`, которая добавляет property.
+5. Создайте функцию `addTrackingId(payload)`, которая добавляет property.
 6. Вызовите function with `safePayload`.
 7. Выведите all three objects.
-8. После кода нарисуйте conceptual diagram:
+8. После кода нарисуйте conceptual схема:
 
 ```text
 Variable | Stack-like entry | Heap-like object | Shared? | QA risk

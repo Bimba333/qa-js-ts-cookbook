@@ -5,7 +5,7 @@
 Ответьте своими словами.
 
 1. Почему type conversion exists?
-2. Что означает вопрос: "What type does this operation expect?"
+2. Что означает вопрос: "Какой тип ожидает эта операция?"
 3. Что такое implicit conversion?
 4. Что такое explicit conversion?
 5. Почему explicit conversion часто лучше в тестах?
@@ -98,7 +98,7 @@ console.log('5' * 2);
 
 ## Упражнения на truthy и falsy
 
-Разделите values на truthy and falsy.
+Разделите значения на truthy and falsy.
 
 ```javascript
 false;
@@ -181,7 +181,7 @@ console.log(price);
 
 ### Сценарий 1. API returns string status code
 
-API response:
+API-ответ:
 
 ```json
 {
@@ -191,7 +191,7 @@ API response:
 
 Тест ожидает numeric status code. Напишите conversion and explain why.
 
-### Сценарий 2. Form values
+### Сценарий 2. Form значения
 
 UI form returns age as string:
 
@@ -226,12 +226,12 @@ playground/type-conversion-report.js
 
 В нем:
 
-1. Создайте object `rawConfig`:
+1. Создайте объект `rawConfig`:
    * `retries: '3'`;
    * `headless: 'false'`;
    * `timeoutMs: '5000'`;
    * `baseUrl: 'https://example.com'`.
-2. Создайте object `parsedConfig`:
+2. Создайте объект `parsedConfig`:
    * `retries` as Number;
    * `headless` as Boolean using explicit string check;
    * `timeoutMs` as Number;

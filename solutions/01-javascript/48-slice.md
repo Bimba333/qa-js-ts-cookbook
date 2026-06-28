@@ -16,7 +16,7 @@
 
 Ответ: нет.
 
-Объяснение: source array остается в прежнем состоянии.
+Объяснение: исходный массив остается в прежнем состоянии.
 
 Распространённая ошибка: ждать, что selected elements исчезнут.
 
@@ -92,7 +92,7 @@ testCases -> ['login', 'create order', 'discount', 'payment', 'logout']
 
 Связь с Automation QA: source plan не уменьшается после copy.
 
-## Debugging
+## Отладка
 
 Ответ:
 
@@ -109,7 +109,7 @@ console.log(smoke);
 
 Связь с Automation QA: лишний test case может попасть в быстрый smoke pipeline.
 
-## QA scenario
+## QA-сценарий
 
 Ответ:
 

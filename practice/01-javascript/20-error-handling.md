@@ -4,13 +4,13 @@
 
 Ответьте своими словами.
 
-1. What is normal execution?
-2. What is abnormal execution?
+1. Что такое normal execution?
+2. Что такое abnormal execution?
 3. What is an error?
-4. What is runtime error?
-5. Why can program stop after error?
-6. What does `throw` do?
-7. What does `try` mark?
+4. Что такое runtime error?
+5. Почему программа может остановиться после error?
+6. Что делает `throw`?
+7. Что отмечает `try`?
 8. What does `catch` handle?
 9. What does `finally` do at a high level?
 10. What is error propagation conceptually?
@@ -113,7 +113,7 @@ try {
 
 1. What operation can fail?
 2. What happens if parsing fails?
-3. Does field validation run after parsing error?
+3. Does поле validation run after parsing error?
 4. What should be logged for QA debugging?
 
 ```javascript
@@ -166,14 +166,14 @@ console.log('Run test');
 
 ### Сценарий 1. Status validation
 
-Напишите code:
+Напишите код:
 
 * if status is not 200, throw clear error;
 * catch error and log message.
 
 ### Сценарий 2. JSON parsing
 
-Напишите code:
+Напишите код:
 
 * parse raw body inside try;
 * log `body.id` if parsing succeeds;
@@ -181,7 +181,7 @@ console.log('Run test');
 
 ### Сценарий 3. Cleanup
 
-Напишите code:
+Напишите код:
 
 * print `Create temporary user`;
 * simulate failure with throw;

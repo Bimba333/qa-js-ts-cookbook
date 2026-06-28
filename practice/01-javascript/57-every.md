@@ -45,7 +45,7 @@ console.log(result);
 
 Сначала запишите ответ без запуска.
 
-## Debugging
+## Отладка
 
 Автор хотел проверить, что все tests имеют priority.
 
@@ -59,7 +59,7 @@ console.log(allHavePriority);
 
 Что не так? Исправьте код.
 
-## QA scenario
+## QA-сценарий
 
 Создайте Boolean `canRelease`, который равен `true` только если все tests имеют `status: 'passed'`.
 

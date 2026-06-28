@@ -82,7 +82,7 @@ console.log(currentUser.name);
 Для каждого примера ответьте:
 
 * какие variables refer to object;
-* сколько object values создано;
+* сколько object значения создано;
 * какие variables refer to same object;
 * что изменится после updates.
 

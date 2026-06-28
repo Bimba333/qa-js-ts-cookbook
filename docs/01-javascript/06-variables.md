@@ -52,7 +52,7 @@ Variables
 * что JavaScript выполняется engine;
 * что Execution Context является рабочей средой выполнения;
 * что Call Stack показывает активный Execution Context;
-* что memory хранит values и связанную с ними информацию;
+* что memory хранит значения и связанную с ними информацию;
 * что identifier — имя, через которое программа обращается к сохраненной информации.
 
 Не требуется знать Hoisting, Temporal Dead Zone, Scope, Closures или Lexical Environment. Если эти темы появляются в тексте, они объясняются одной фразой и будут подробно разобраны в отдельных главах.
@@ -566,7 +566,7 @@ assigned: "ready"
 now: "ready"
 ```
 
-Важно: один identifier не означает, что через него одновременно читаются все прошлые values.
+Важно: один identifier не означает, что через него одновременно читаются все прошлые значения.
 
 ```text
 Read after reassignment
@@ -773,7 +773,7 @@ var mainly for reading legacy code
 * `const` — когда named access не должен переназначаться;
 * `var` — старый механизм, который остается в языке для совместимости.
 
-Timeline:
+Временная шкала:
 
 ```text
 Early JavaScript
@@ -1286,7 +1286,7 @@ Variable лучше понимать как named access к stored information.
 
 Реальность:
 
-`const` запрещает reassignment identifier. Сложные values и mutability будут изучаться позже в главах про objects и references.
+`const` запрещает reassignment identifier. Сложные значения и mutability будут изучаться позже в главах про objects и references.
 
 ### Миф 3. Declaration и assignment — одно и то же
 
@@ -1474,7 +1474,7 @@ Avoid var
 
 ### Storing configuration
 
-Configuration values обычно не должны reassignment-иться внутри теста.
+Configuration значения обычно не должны reassignment-иться внутри теста.
 
 ```javascript
 const baseUrl = 'https://example.com';
@@ -1510,7 +1510,7 @@ let userStatus = 'created';
 userStatus = 'activated';
 ```
 
-### Expected vs actual values
+### Expected vs actual значения
 
 В assertions часто полезно явно разделять expected и actual.
 
@@ -1580,7 +1580,7 @@ let setupStatus
 └── reader expects updates
 ```
 
-### Why choosing `let` vs `const` improves readability
+### Почему выбор `let` или `const` улучшает читаемость
 
 `const` сообщает:
 
@@ -1714,4 +1714,4 @@ read
 solutions/01-javascript/06-variables.md
 ```
 
-Открывайте решения после самостоятельной попытки. В этой главе важно сравнивать не только вывод программы, но и список операций, которые engine выполняет с identifiers и values.
+Открывайте решения после самостоятельной попытки. В этой главе важно сравнивать не только вывод программы, но и список операций, которые engine выполняет с identifiers и значения.

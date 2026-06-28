@@ -3,8 +3,8 @@
 ## Концептуальные вопросы
 
 1. Какой ordering rule нужен, чтобы отсортировать test cases по `id`?
-2. Почему default sort может поставить `T-10` перед `T-2`?
-3. Когда нужен compare function?
+2. Почему сортировка по умолчанию может поставить `T-10` перед `T-2`?
+3. Когда нужна функция сравнения?
 4. Какой order нужен, чтобы high priority tests оказались выше?
 5. Что произойдет с current array после вызова `sort()`?
 
@@ -43,7 +43,7 @@ console.log(testIds);
 
 Сначала запишите ответ без запуска.
 
-## Debugging
+## Отладка
 
 Автор хотел отсортировать high priority tests выше.
 
@@ -61,7 +61,7 @@ console.log(testCases);
 
 Что не так? Исправьте код через explicit priority order.
 
-## QA scenario
+## QA-сценарий
 
 Отсортируйте test cases по status: failed first, skipped second, passed last.
 
@@ -76,4 +76,4 @@ console.log(testCases);
 * отсортировать по `priority`;
 * отсортировать по `status`;
 * после каждой сортировки вывести порядок ids;
-* явно показать, что `sort()` изменяет source array.
+* явно показать, что `sort()` изменяет исходный массив.

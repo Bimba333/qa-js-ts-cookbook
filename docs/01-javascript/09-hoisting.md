@@ -178,7 +178,7 @@ ready
 
 Функцию можно вызвать до строки объявления.
 
-Значит, разные declarations affect execution до того, как engine reaches their line. Но source code не двигается.
+Значит, разные declarations влияют на выполнение до того, как engine доходит до их строки. Но source code не двигается.
 
 Главный вопрос главы:
 
@@ -240,13 +240,13 @@ Source Code
 Source code position never changes.
 ```
 
-Hoisting — это не movement. Hoisting — это observed behavior после preparation.
+Hoisting — это не перемещение. Hoisting — это наблюдаемое поведение после подготовки.
 
 ### Что программист наблюдает
 
 Программист видит три разных поведения.
 
-Function declaration:
+Function Declaration:
 
 ```javascript
 printStatus();
@@ -377,7 +377,7 @@ Lexical Environment
 └── Environment Record prepared
 ```
 
-Environment Record before execution:
+Environment Record до выполнения:
 
 ```text
 Environment Record
@@ -696,9 +696,9 @@ Execution Phase
 └── initialization happens on original line
 ```
 
-### Why functions behave differently
+### Почему функции ведут себя иначе
 
-Function declarations behave differently because during Creation Phase engine prepares a callable binding for them.
+Function declarations ведут себя иначе, потому что во время Creation Phase engine подготавливает для них вызываемый binding.
 
 ```javascript
 runTest();
@@ -708,7 +708,7 @@ function runTest() {
 }
 ```
 
-Before execution:
+До выполнения:
 
 ```text
 Environment Record
@@ -717,7 +717,7 @@ Environment Record
 
 Then line 1 can call `runTest`.
 
-This is useful because function declarations describe reusable actions:
+Это полезно, потому что function declarations описывают переиспользуемые действия:
 
 ```text
 Function Declaration
@@ -771,7 +771,7 @@ function printStatus() {
 }
 ```
 
-Creation Phase timeline:
+Creation Phase временная шкала:
 
 ```text
 Creation Phase starts
@@ -798,7 +798,7 @@ register const baseUrl → not initialized
 Creation Phase finished
 ```
 
-Environment Record before execution:
+Environment Record до выполнения:
 
 ```text
 Environment Record
@@ -811,7 +811,7 @@ Environment Record
 
 ### Execution timeline
 
-Execution runs source code in original order.
+Execution выполняет source code в исходном порядке.
 
 ```text
 Execution Phase starts
@@ -846,7 +846,7 @@ line 7: const baseUrl = "https://example.com"
 └── initialize baseUrl
 ```
 
-Execution timeline:
+Execution временная шкала:
 
 ```text
 Source code order is preserved.
@@ -896,7 +896,7 @@ Prepared records are used.
 "I execute source code in original order."
 ```
 
-### Current position in JavaScript model
+### Текущее место в модели JavaScript
 
 Теперь модель курса выглядит так:
 
@@ -1110,7 +1110,7 @@ Reserved place
 └── default value: undefined
 ```
 
-Function declaration:
+Function Declaration:
 
 ```text
 Prepared place
@@ -1166,7 +1166,7 @@ examples/01-javascript/chapter-09/
 examples/01-javascript/chapter-09/01-function-hoisting.js
 ```
 
-Показывает, что function declaration can be called before its line because Creation Phase prepared it.
+Показывает, что function declaration можно вызвать до её строки, потому что Creation Phase подготовила её.
 
 ### Пример 2. var hoisting
 
@@ -1176,9 +1176,9 @@ examples/01-javascript/chapter-09/01-function-hoisting.js
 examples/01-javascript/chapter-09/02-var-hoisting.js
 ```
 
-Показывает, что `var` is registered with `undefined` before assignment line.
+Показывает, что `var` регистрируется со значением `undefined` до строки присваивания.
 
-### Пример 3. let behavior
+### Пример 3. поведение let
 
 Файл:
 
@@ -1186,9 +1186,9 @@ examples/01-javascript/chapter-09/02-var-hoisting.js
 examples/01-javascript/chapter-09/03-let-behavior.js
 ```
 
-Показывает safe access после initialization и содержит закомментированную строку, которая будет разобрана в следующей главе про TDZ.
+Показывает безопасный доступ после initialization и содержит закомментированную строку, которая будет разобрана в следующей главе про TDZ.
 
-### Пример 4. const behavior
+### Пример 4. поведение const
 
 Файл:
 
@@ -1256,13 +1256,13 @@ Source code stays in place. Engine prepares declaration records before execution
 
 Реальность:
 
-Function declarations, `var`, `let` and `const` have different preparation behavior.
+Function declarations, `var`, `let` и `const` имеют разное поведение при подготовке.
 
 ### Миф 3. `var a = 5` полностью выполняется до первой строки
 
 Реальность:
 
-Declaration part is prepared. Assignment `a = 5` happens when execution reaches the line.
+Declaration part подготавливается. Assignment `a = 5` происходит, когда выполнение доходит до строки.
 
 ### Миф 4. Hoisting — это редкая странность
 
@@ -1412,9 +1412,9 @@ function runSetup() {
 }
 ```
 
-Это работает не потому, что code moved. Function declaration was prepared during Creation Phase.
+Это работает не потому, что код переместился. Function declaration была подготовлена во время Creation Phase.
 
-### Debugging old helper files
+### Отладка старых helper-файлов
 
 Legacy code часто использует `var`:
 
@@ -1424,7 +1424,7 @@ console.log(environmentName);
 var environmentName = 'staging';
 ```
 
-Если output is `undefined`, проблема не в `console.log`. Engine prepared `environmentName` as `undefined`, but assignment happens later.
+Если вывод равен `undefined`, проблема не в `console.log`. Engine подготовил `environmentName` как `undefined`, но присваивание происходит позже.
 
 ### Understanding function declarations in frameworks
 
@@ -1516,7 +1516,7 @@ let / const
 
 ✓ Declaration and initialization are different operations.
 
-✓ Execution Phase runs code in original order.
+✓ Execution Phase выполняет код в исходном порядке.
 
 ✓ TDZ explains `let` / `const` access before initialization in the next chapter.
 
@@ -1566,4 +1566,4 @@ practice/01-javascript/09-hoisting.md
 solutions/01-javascript/09-hoisting.md
 ```
 
-Открывайте решения после самостоятельной попытки. В этой главе важно сравнивать не только output, но и то, что было prepared before execution.
+Открывайте решения после самостоятельной попытки. В этой главе важно сравнивать не только вывод, но и то, что было подготовлено до выполнения.

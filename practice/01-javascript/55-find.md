@@ -48,7 +48,7 @@ console.log(result);
 
 Сначала запишите ответ без запуска.
 
-## Debugging
+## Отладка
 
 Автор хотел вывести title test case `T-99`.
 
@@ -62,7 +62,7 @@ console.log(targetTest.title);
 
 Что не так? Исправьте код так, чтобы он был безопасным.
 
-## QA scenario
+## QA-сценарий
 
 Найдите первый high priority test case и выведите его `id` и `title`.
 

@@ -72,7 +72,7 @@ if (actualStatus !== expectedStatus) {
 * воспроизведение;
 * проверку test data;
 * проверку API response;
-* проверку UI state;
+* проверку UI состояние;
 * чтение stack trace;
 * проверку исправления.
 

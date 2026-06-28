@@ -30,7 +30,7 @@
 
 **Распространённая ошибка:** put heavy test actions or assertions into constructor.
 
-**Связь с Automation QA:** constructor can store `page`, `baseUrl`, config or expected values.
+**Связь с Automation QA:** constructor can store `page`, `baseUrl`, config or expected значения.
 
 ### 1.4 What is an instance?
 
@@ -64,7 +64,7 @@
 
 ### 1.7 Why is class useful for Page Objects?
 
-**Ответ:** Page Objects often share structure and behavior.
+**Ответ:** Page Objects often share structure and поведение.
 
 **Объяснение:** class makes repeated page object creation readable and consistent.
 
@@ -86,7 +86,7 @@
 
 **Ответ:** because object creation should stay predictable.
 
-**Объяснение:** constructor should usually initialize object state; heavy actions make instances hard to create and test.
+**Объяснение:** constructor should usually initialize object состояние; heavy actions make instances hard to create and test.
 
 **Распространённая ошибка:** send requests or assert inside constructor.
 
@@ -96,15 +96,15 @@
 
 **Ответ:** Class Inheritance.
 
-**Объяснение:** after creating objects with shared prototype behavior, next question is how one class can reuse behavior from another class.
+**Объяснение:** after creating objects with shared prototype поведение, next question is how one class can reuse поведение from another class.
 
 **Распространённая ошибка:** start using `extends` before understanding basic class/prototype relationship.
 
-**Связь с Automation QA:** shared base Page Object behavior will be easier to discuss after this chapter.
+**Связь с Automation QA:** shared base Page Object поведение will be easier to discuss after this chapter.
 
 ---
 
-## 2. Identify constructor behavior
+## 2. Identify constructor поведение
 
 ### 2.1
 
@@ -127,11 +127,11 @@
 * Different data: `baseUrl`.
 * It fits constructor because each client instance needs its own configuration.
 
-**Объяснение:** shared methods can remain on class prototype, while `baseUrl` belongs to each instance.
+**Объяснение:** общие methods могут оставаться на class prototype, а `baseUrl` относится к каждому instance.
 
 **Распространённая ошибка:** store environment-specific `baseUrl` as shared method data.
 
-**Связь с Automation QA:** staging and production clients should not accidentally share mutable environment state.
+**Связь с Automation QA:** staging and production clients should not accidentally share mutable environment состояние.
 
 ---
 
@@ -149,7 +149,7 @@ anna@example.test [admin]
 
 **Распространённая ошибка:** think `describe()` receives constructor arguments directly.
 
-**Связь с Automation QA:** test user objects can format readable debug output.
+**Связь с Automation QA:** test user objects can format readable debug вывод.
 
 ### 3.2
 
@@ -173,15 +173,15 @@ true
 false
 ```
 
-**Объяснение:** `200 === 201` is false. Constructor stores values as own properties.
+**Объяснение:** `200 === 201` is false. Constructor stores значения as own properties.
 
-**Распространённая ошибка:** confuse expected and actual values.
+**Распространённая ошибка:** confuse expected and actual значения.
 
 **Связь с Automation QA:** validators often compare expected and actual test results.
 
 ---
 
-## 4. Debugging tasks
+## 4. Задания на отладку
 
 ### 4.1
 
@@ -233,7 +233,7 @@ class ApiClient {
 
 ---
 
-## 5. QA-oriented tasks
+## 5. QA-задачи
 
 ### 5.1
 
@@ -316,7 +316,7 @@ console.log(validator.isValid());
 console.log(validator.describe());
 ```
 
-**Объяснение:** expected/actual are own data; validation and description are shared behavior.
+**Объяснение:** expected/actual are own data; validation and description are общее поведение.
 
 **Распространённая ошибка:** make `expected` and `actual` shared data.
 
@@ -362,7 +362,7 @@ console.log(productionClient.describeRequest('/users'));
 console.log(stagingClient.describeRequest === productionClient.describeRequest);
 ```
 
-Possible output:
+Возможный вывод:
 
 ```text
 staging: https://staging.example.test/users

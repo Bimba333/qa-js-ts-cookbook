@@ -87,7 +87,7 @@ output array
 
 ## Теория
 
-`map()` вызывает function для каждого element и собирает return values в новый array.
+`map()` вызывает function для каждого element и собирает return значения в новый array.
 
 Общая форма:
 
@@ -112,11 +112,11 @@ return value
 new array element
 ```
 
-Если нужен output array, результат `map()` нужно сохранить.
+Если нужен выходной массив, результат `map()` нужно сохранить.
 
 ## Внутренний механизм
 
-Conceptual steps:
+Концептуальные шаги:
 
 ```text
 source array
@@ -152,11 +152,11 @@ return 'T-1: login smoke'
 result[0]
 ```
 
-Исходный `testCases` остается тем же array с теми же objects. `map()` создает новый array для transformed values.
+Исходный `testCases` остается тем же array с теми же objects. `map()` создает новый array для transformed значения.
 
 ## Главная ментальная модель
 
-Главная модель этой главы: **input -> transformed output array**.
+Главная модель этой главы: **вход -> transformed выходной массив**.
 
 ```text
 input array
@@ -251,7 +251,7 @@ result array
 
 ## Краткие итоги
 
-`map()` проходит по source array, берет return value callback и собирает новый output array.
+`map()` проходит по исходный массив, берет return value callback и собирает новый выходной массив.
 
 Главное: используйте `map()`, когда нужен результат преобразования, а не только действие для каждого element.
 

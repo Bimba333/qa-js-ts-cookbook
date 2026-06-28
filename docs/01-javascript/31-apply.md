@@ -18,7 +18,7 @@ call()
 Developer chooses receiver explicitly
 ```
 
-В `call()` receiver передается первым argument:
+В `call()` объект выполнения передается первым argument:
 
 ```text
 functionObject.call(receiver, arg1, arg2)
@@ -68,12 +68,12 @@ Argument passing
 
 Для этой главы нужно понимать:
 
-* что `this` - receiver текущего invocation;
-* что `call()` позволяет явно выбрать receiver;
+* что `this` - объект выполнения текущего invocation;
+* что `call()` позволяет явно выбрать объект выполнения;
 * что первый argument `call()` становится `this`;
 * что остальные arguments в `call()` передаются в parameters по позиции;
-* что array хранит values по порядку;
-* что parameters получают values по позиции.
+* что array хранит значения по порядку;
+* что parameters получают значения по позиции.
 
 Не требуется знать Spread syntax replacement, `Reflect.apply()`, `bind()`, constructors, classes, `arguments` object internals или proxies. Эти темы будут изучаться позже.
 
@@ -93,7 +93,7 @@ Argument passing
 
 Уровень сложности: **L4**.
 
-`apply()` легко запомнить как "`call()`, но с array". Но для понимания этого мало. Важно увидеть проблему: receiver выбирается так же, а arguments уже лежат в одном ordered argument list.
+`apply()` легко запомнить как "`call()`, но с array". Но для понимания этого мало. Важно увидеть проблему: объект выполнения выбирается так же, а arguments уже лежат в одном ordered argument list.
 
 ---
 
@@ -119,7 +119,7 @@ docs/01-javascript/32-bind.md
 
 Следующая глава ответит:
 
-> Как создать новую function с заранее выбранным receiver?
+> Как создать новую function с заранее выбранным объект выполнения?
 
 ---
 
@@ -129,8 +129,8 @@ docs/01-javascript/32-bind.md
 
 * зачем существует `apply()`;
 * почему `apply()` решает проблему передачи arguments;
-* почему receiver selection у `call()` и `apply()` одинаковый;
-* как array values попадают в parameters;
+* почему объект выполнения selection у `call()` и `apply()` одинаковый;
+* как array значения попадают в parameters;
 * что такое array-like collections на высоком уровне;
 * чем `call()` отличается от `apply()`;
 * когда `apply()` может быть удобнее `call()`;
@@ -178,7 +178,7 @@ requestParts
 └── [2] '{"name":"Anna"}'
 ```
 
-Через `call()` пришлось бы вручную распаковать values:
+Через `call()` пришлось бы вручную распаковать значения:
 
 ```javascript
 formatRequest.call(apiClient, requestParts[0], requestParts[1], requestParts[2]);
@@ -201,7 +201,7 @@ Need to pass array items as arguments
 apply()
 ```
 
-Why apply() exists:
+Зачем существует apply():
 
 ```text
 Receiver is still needed
@@ -234,13 +234,13 @@ apply()
 
 ### Зачем существует apply()
 
-`apply()` существует для вызова function object с явно выбранным receiver и arguments, переданными как array или array-like collection.
+`apply()` существует для вызова function object с явно выбранным объект выполнения и arguments, переданными как array или array-like collection.
 
 ```javascript
 formatRequest.apply(apiClient, requestParts);
 ```
 
-Complete apply() model:
+Полная модель apply():
 
 ```text
 functionObject.apply(receiver, argumentsList)
@@ -249,7 +249,7 @@ functionObject.apply(receiver, argumentsList)
 └── argumentsList  -> values for parameters
 ```
 
-Receiver identical:
+Объект выполнения тот же:
 
 ```text
 call(receiver, ...)
@@ -273,7 +273,7 @@ apply(receiver, [arg1, arg2, arg3])
 └── arguments passed as one ordered argument list
 ```
 
-`apply()` решает не новую проблему receiver.
+`apply()` решает не новую проблему объект выполнения.
 
 Он решает проблему формы arguments.
 
@@ -305,7 +305,7 @@ const apiClient = {
 console.log(getBaseUrl.apply(apiClient));
 ```
 
-Receiver flow:
+Receiver поток:
 
 ```text
 getBaseUrl.apply(apiClient)
@@ -314,7 +314,7 @@ getBaseUrl.apply(apiClient)
 └── apiClient  -> this
 ```
 
-Same receiver:
+Same объект выполнения:
 
 ```text
 getBaseUrl.call(apiClient)
@@ -326,7 +326,7 @@ getBaseUrl.apply(apiClient)
 └── this -> apiClient
 ```
 
-Главный вопрос для receiver:
+Главный вопрос для объект выполнения:
 
 ```text
 Who becomes this?
@@ -370,7 +370,7 @@ requestParts
 └── [2] '{"name":"Anna"}' -> body
 ```
 
-Parameter mapping:
+Сопоставление параметров:
 
 ```text
 formatRequest.apply(apiClient, requestParts)
@@ -393,7 +393,7 @@ values are taken by position
 parameters receive separate values
 ```
 
-Мы не объясняем Spread syntax заново. В современном JavaScript часто встречаются альтернативные формы передачи array values, но в этой главе важно понять сам механизм `apply()`.
+Мы не объясняем Spread syntax заново. В современном JavaScript часто встречаются альтернативные формы передачи array значения, но в этой главе важно понять сам механизм `apply()`.
 
 ---
 
@@ -482,7 +482,7 @@ apply()
 └── arguments as array or array-like list
 ```
 
-Receiver identical:
+Объект выполнения тот же:
 
 ```text
 call(config, ...)
@@ -506,7 +506,7 @@ apply(config, ...)
 formatRequest.apply(apiClient, requestParts);
 ```
 
-Invocation lifecycle:
+Жизненный цикл вызова:
 
 ```text
 1. Read function object: formatRequest
@@ -533,7 +533,7 @@ Invocation lifecycle:
 8. Parameters receive extracted values
 ```
 
-Function execution:
+Выполнение функции:
 
 ```text
 Function Execution Context
@@ -544,7 +544,7 @@ Function Execution Context
 └── body   -> requestParts[2]
 ```
 
-Receiver flow:
+Receiver поток:
 
 ```text
 apply(apiClient, requestParts)
@@ -552,7 +552,7 @@ apply(apiClient, requestParts)
 └── apiClient -> this
 ```
 
-Arguments flow:
+Arguments поток:
 
 ```text
 apply(apiClient, requestParts)
@@ -572,7 +572,7 @@ functionObject.apply(...)
 └── functionObject is what will execute
 ```
 
-Function object:
+Объект функции:
 
 ```text
 formatRequest
@@ -594,7 +594,7 @@ Function objects
 
 ### Timeline
 
-Timeline:
+Временная шкала:
 
 ```text
 T1  Function object exists
@@ -614,7 +614,7 @@ T7  Function body executes
 T8  Function returns result
 ```
 
-Complete receiver model:
+Complete объект выполнения model:
 
 ```text
 this chapter
@@ -836,7 +836,7 @@ const requestParts = ['POST', '/users', '{"name":"Anna"}'];
 console.log(formatRequest.apply(apiClient, requestParts));
 ```
 
-Parameter mapping:
+Сопоставление параметров:
 
 ```text
 requestParts[0] -> method
@@ -861,7 +861,7 @@ console.log(buildUrl.call(apiClient, '/users'));
 console.log(buildUrl.apply(apiClient, ['/users']));
 ```
 
-Difference:
+Разница:
 
 ```text
 call(apiClient, '/users')
@@ -877,7 +877,7 @@ apply(apiClient, ['/users'])
 
 ## Частые вопросы
 
-### apply() решает новую проблему receiver?
+### apply() решает новую проблему объект выполнения?
 
 Нет. Receiver selection такая же, как у `call()`.
 
@@ -892,7 +892,7 @@ apply(receiver, ...)
 
 ### apply() устарел?
 
-Нет. В современном JavaScript часто есть альтернативные способы передавать values из array, но `apply()` остается важным механизмом языка и помогает понять Function API.
+Нет. В современном JavaScript часто есть альтернативные способы передавать значения из array, но `apply()` остается важным механизмом языка и помогает понять Function API.
 
 ### apply() передает array как первый parameter?
 
@@ -907,7 +907,7 @@ apply(receiver, [a, b])
 
 ### Можно ли использовать apply() без arguments?
 
-Да, если function не ожидает arguments или если нужно только явно выбрать receiver.
+Да, если function не ожидает arguments или если нужно только явно выбрать объект выполнения.
 
 ```javascript
 fn.apply(receiver);
@@ -915,7 +915,7 @@ fn.apply(receiver);
 
 ### Чем apply() отличается от bind()?
 
-`apply()` вызывает function immediately. `bind()` будет изучаться в следующей главе и создаст новую function с выбранным receiver.
+`apply()` вызывает function immediately. `bind()` будет изучаться в следующей главе и создаст новую function с выбранным объект выполнения.
 
 ---
 
@@ -923,9 +923,9 @@ fn.apply(receiver);
 
 ### Миф 1. apply() существует только как старая версия Spread
 
-Реальность: `apply()` - самостоятельный механизм manual invocation с receiver и ordered argument list. Современные альтернативы существуют, но они не отменяют полезность модели `apply()`.
+Реальность: `apply()` - самостоятельный механизм manual invocation с объект выполнения и ordered argument list. Современные альтернативы существуют, но они не отменяют полезность модели `apply()`.
 
-### Миф 2. apply() меняет receiver иначе, чем call()
+### Миф 2. apply() меняет объект выполнения иначе, чем call()
 
 Реальность:
 
@@ -976,7 +976,7 @@ buildUrl.apply(apiClient, ['/users']);
 
 ---
 
-### Ошибка 2. Перепутать receiver и arguments array
+### Ошибка 2. Перепутать объект выполнения и arguments array
 
 ```javascript
 function validateStatus(response) {
@@ -1009,7 +1009,7 @@ validateStatus.apply(config, [response]);
 
 ---
 
-### Ошибка 3. Думать, что apply() сохраняет receiver
+### Ошибка 3. Думать, что apply() сохраняет объект выполнения
 
 ```javascript
 function getBaseUrl() {
@@ -1024,7 +1024,7 @@ getBaseUrl.apply(apiClient);
 getBaseUrl();
 ```
 
-Первый вызов выбирает receiver.
+Первый вызов выбирает объект выполнения.
 
 Второй вызов снова ordinary standalone invocation.
 
@@ -1106,7 +1106,7 @@ const assertionConfig = {
 const responseParts = [200, '/users', '{"name":"Anna"}'];
 ```
 
-QA helper example:
+Пример QA-helper:
 
 ```text
 validateResponse.apply(assertionConfig, responseParts)
@@ -1130,7 +1130,7 @@ formatRequest.apply(apiClient, requestParts)
 └── requestParts -> method, path, body
 ```
 
-Это полезно, когда data provider уже подготовил array values для helper.
+Это полезно, когда data provider уже подготовил array значения для helper.
 
 ---
 
@@ -1202,7 +1202,7 @@ parameters
 
 `apply()` продолжает тему `call()`.
 
-Receiver selection:
+Выбор объекта выполнения:
 
 ```text
 call()
@@ -1214,7 +1214,7 @@ apply()
 └── first argument -> this
 ```
 
-Difference:
+Разница:
 
 ```text
 call()
@@ -1226,7 +1226,7 @@ apply()
 └── arguments as one ordered argument list
 ```
 
-Complete apply() model:
+Полная модель apply():
 
 ```text
 functionObject.apply(receiver, argumentsList)
@@ -1239,7 +1239,7 @@ functionObject.apply(receiver, argumentsList)
 
 Следующая глава про `bind()` ответит:
 
-> Как создать новую function с заранее выбранным receiver?
+> Как создать новую function с заранее выбранным объект выполнения?
 
 ---
 
@@ -1251,7 +1251,7 @@ functionObject.apply(receiver, argumentsList)
 * Receiver selection у `call()` и `apply()` одинаковый.
 * Главное отличие - способ передачи arguments.
 * `apply()` удобен, когда arguments уже собраны в array или array-like collection.
-* `bind()` будет изучаться дальше и решит другую задачу: создать новую function с выбранным receiver.
+* `bind()` будет изучаться дальше и решит другую задачу: создать новую function с выбранным объект выполнения.
 
 Краткая ментальная модель:
 
@@ -1271,7 +1271,7 @@ apply()
 
 1. Что общего у `call()` и `apply()`?
 2. Что отличается у `call()` и `apply()`?
-3. Что становится `this` в `fn.apply(config, values)`?
+3. Что становится `this` в `fn.apply(config, значения)`?
 4. Откуда берутся normal parameters при `apply()`?
 5. Когда `apply()` удобнее `call()`?
 6. Почему `bind()` логически следует после `apply()`?

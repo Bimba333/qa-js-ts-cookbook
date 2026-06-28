@@ -18,7 +18,7 @@
 ## 1. Концептуальные вопросы
 
 1. Why do arrays exist?
-2. Why use an array instead of many variables?
+2. Why use an array вместо many variables?
 3. What is an ordered collection?
 4. What is an index?
 5. Why is first element at index `0`?
@@ -103,7 +103,7 @@ console.log(pages[pages.length - 1]);
 
 ---
 
-## 4. Debugging tasks
+## 4. Задания на отладку
 
 ### Задание 4.1
 
@@ -144,7 +144,7 @@ console.log(failedAssertions.length);
 
 ---
 
-## 5. QA-oriented tasks
+## 5. QA-задачи
 
 ### Задание 5.1
 
@@ -185,7 +185,7 @@ Explain:
 
 Create small API response model.
 
-Requirements:
+Требования:
 
 1. Create `apiUsers` array.
 2. Add three user objects manually in array literal.

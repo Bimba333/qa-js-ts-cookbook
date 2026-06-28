@@ -18,7 +18,7 @@ Operator
 
 Теперь появляется следующий вопрос:
 
-> What can a program do with those results?
+> Что программа может сделать с этими результатами?
 
 Например, API вернул:
 
@@ -38,7 +38,7 @@ JavaScript не угадывает. Program evaluates an expression first, then 
 
 Главный вопрос этой главы:
 
-> What decision is the program making?
+> Какое решение принимает программа?
 
 ---
 
@@ -46,14 +46,14 @@ JavaScript не угадывает. Program evaluates an expression first, then 
 
 Для этой главы нужно понимать:
 
-* что values have types;
+* что значения have types;
 * что comparison operators produce Boolean results;
-* что logical operators combine condition-like values;
-* что truthy and falsy values exist;
+* что logical operators combine condition-like значения;
+* что truthy and falsy значения exist;
 * что expressions produce results;
 * что operators are actions performed on operands.
 
-Не требуется знать ternary operator in depth, short-circuit evaluation, nullish coalescing, optional chaining, pattern matching or advanced switch behavior. Эти темы будут изучаться позже.
+Не требуется знать ternary operator in depth, short-circuit evaluation, nullish coalescing, optional chaining, pattern matching or advanced switch поведение. Эти темы будут изучаться позже.
 
 ---
 
@@ -97,7 +97,7 @@ docs/01-javascript/19-loops.md
 
 Следующая глава ответит:
 
-> What if the same decision has to be made many times?
+> Что если одно и то же решение нужно принимать много раз?
 
 ---
 
@@ -128,7 +128,7 @@ API returned:
 const statusCode = 500;
 ```
 
-Question:
+Вопрос:
 
 ```text
 Should the test continue?
@@ -178,13 +178,13 @@ Choose path based on result
 
 Главный вопрос:
 
-> What decision is the program making?
+> Какое решение принимает программа?
 
 ---
 
 ## Теория
 
-### Why conditionals exist
+### Зачем существуют conditionals
 
 Without conditionals, program would execute every line in the same order.
 
@@ -210,7 +210,7 @@ If status is not OK
 └── report failure
 ```
 
-Conditionals exist because programs need to choose execution paths.
+Conditionals существуют, потому что программам нужно выбирать пути выполнения.
 
 Decision tree:
 
@@ -245,7 +245,7 @@ statusCode === 200
 false
 ```
 
-Operator → Condition:
+Operator → Условие:
 
 ```text
 Comparison operator
@@ -257,7 +257,7 @@ Boolean result
 Conditional decision
 ```
 
-What decision is the program making?
+Какое решение принимает программа?
 
 ```text
 Is statusCode equal to expected success code?
@@ -265,7 +265,7 @@ Is statusCode equal to expected success code?
 
 ### `if`
 
-`if` executes block only when condition result allows it.
+`if` выполняет block только когда результат condition это позволяет.
 
 ```javascript
 const statusCode = 200;
@@ -275,7 +275,7 @@ if (statusCode === 200) {
 }
 ```
 
-`if` diagram:
+`if` схема:
 
 ```text
 Evaluate condition
@@ -313,7 +313,7 @@ if (statusCode === 200) {
 }
 ```
 
-`if / else` diagram:
+`if / else` схема:
 
 ```text
 Evaluate condition
@@ -378,7 +378,7 @@ statusCode === 200?
         └── false → Unexpected status
 ```
 
-What decision is the program making?
+Какое решение принимает программа?
 
 ```text
 Which status category does this response belong to?
@@ -399,7 +399,7 @@ if (statusCode === 200) {
 }
 ```
 
-Nested conditions diagram:
+Nested conditions схема:
 
 ```text
 statusCode === 200?
@@ -414,7 +414,7 @@ statusCode === 200?
     └── false → missing user id
 ```
 
-Nested conditions are useful when second decision only matters inside first decision.
+Вложенные условия полезны, когда второе решение имеет смысл только внутри первого.
 
 Предупреждение о читаемости:
 
@@ -469,13 +469,13 @@ switch value: "staging"
 └── default        → not used
 ```
 
-This chapter keeps `switch` high-level. Advanced switch behavior will be studied later if needed.
+Эта глава оставляет `switch` на высоком уровне. Продвинутое поведение switch будет изучено позже при необходимости.
 
 ### Default branch
 
 `default` is fallback branch.
 
-Default branch diagram:
+Default branch схема:
 
 ```text
 switch value
@@ -487,7 +487,7 @@ Any case matches?
 └── no  → execute default branch
 ```
 
-Default branch is useful when program must handle unexpected values:
+Default branch полезна, когда программа должна обработать неожиданные значения:
 
 ```text
 Known environments
@@ -513,7 +513,7 @@ Choose second
 Execute selected path third
 ```
 
-Execution path diagram:
+Execution path схема:
 
 ```text
 Start
@@ -573,7 +573,7 @@ Short-circuit evaluation details will be studied later. Here the goal is readabl
 
 ## Внутренний механизм
 
-At a conceptual level:
+На концептуальном уровне:
 
 ```text
 Conditional statement
@@ -620,7 +620,7 @@ Chosen path
 Executed statements
 ```
 
-Current position in JavaScript model:
+Текущее место в модели JavaScript:
 
 ```text
 Operators
@@ -767,15 +767,15 @@ No. It evaluates expression first, then chooses path based on result.
 
 ### Does every condition have to be Boolean?
 
-Condition is evaluated as a decision. Boolean values are clearest. Truthy/falsy behavior exists, but explicit Boolean expressions are usually more readable.
+Condition is evaluated as a decision. Boolean значения are clearest. Truthy/falsy поведение exists, but explicit Boolean expressions are usually more readable.
 
 ### Should I avoid nested conditions?
 
-Not always. Use nesting when the inner decision only makes sense inside the outer decision. Avoid deep nesting when named expressions or early structure would be clearer.
+Не всегда. Используйте вложенность, когда внутреннее решение имеет смысл только внутри внешнего. Избегайте глубокой вложенности, когда named expressions или ранняя структура читаются понятнее.
 
 ### Is `switch` better than `else if`?
 
-Not always. `switch` is useful when comparing one value against several known cases. `else if` is more flexible for different expressions.
+Не всегда. `switch` полезен, когда одно значение сравнивается с несколькими известными cases. `else if` гибче для разных expressions.
 
 ### Is ternary a conditional?
 
@@ -791,7 +791,7 @@ It is conditional expression syntax, but this chapter does not teach ternary in 
 
 `if` evaluates an expression result.
 
-### Миф: All branches run and JavaScript chooses output
+### Миф: All branches run and JavaScript chooses вывод
 
 Реальность:
 
@@ -824,7 +824,7 @@ Mistake
 
 ## Типичные ошибки
 
-### Ошибка 1. Assignment instead of comparison
+### Ошибка 1. Assignment вместо comparison
 
 ```javascript
 let statusCode = 500;
@@ -834,9 +834,9 @@ if (statusCode = 200) {
 }
 ```
 
-This updates `statusCode` instead of comparing it.
+This updates `statusCode` вместо comparing it.
 
-Correct:
+Правильно:
 
 ```javascript
 if (statusCode === 200) {
@@ -852,7 +852,7 @@ if (responseBody.id) {
 }
 ```
 
-If `id` can be `0`, this condition may be misleading. Use explicit checks when needed.
+Если `id` может быть `0`, это condition может вводить в заблуждение. Используйте явные проверки, когда это нужно.
 
 ### Ошибка 3. Missing `else`
 
@@ -879,13 +879,13 @@ Hard to read, hard to debug.
 
 ### Ошибка 5. Missing `default` in switch
 
-If unexpected value is possible, default branch makes behavior explicit.
+If unexpected value is possible, default branch makes поведение explicit.
 
 ---
 
 ## Практическое использование
 
-Conditionals are used when program needs to choose:
+Conditionals используются, когда программе нужно выбрать:
 
 ```text
 Continue or stop
@@ -895,7 +895,7 @@ Validate body or report status error
 Run assertion A or assertion B
 ```
 
-Practical reading checklist:
+Практический чек-лист чтения:
 
 ```text
 1. What decision is being made?
@@ -955,7 +955,7 @@ switch (environment) {
 
 ### Skipping tests
 
-At a high level:
+На высоком уровне:
 
 ```text
 feature enabled?
@@ -986,7 +986,7 @@ Conditionals answer:
 What can a program do with operator results?
 ```
 
-Core model:
+Основная модель:
 
 ```text
 Expression produces a result.
@@ -1005,7 +1005,7 @@ switch
 default branch
 ```
 
-The next chapter, Loops, answers:
+The next chapter, Loops, отвечает:
 
 ```text
 What if the same decision has to be made many times?
@@ -1017,7 +1017,7 @@ What if the same decision has to be made many times?
 
 * Conditional execution starts with evaluated expression.
 * Program does not guess.
-* `if` executes block when condition path is selected.
+* `if` выполняет block, когда выбран путь condition.
 * `else` provides alternative path.
 * `else if` builds decision chain.
 * Nested conditions represent decisions inside decisions.
@@ -1033,16 +1033,16 @@ What if the same decision has to be made many times?
 
 Ответьте без запуска кода.
 
-1. Why do conditionals exist?
-2. What happens before JavaScript chooses a branch?
-3. What does `if` do?
-4. What does `else` add?
+1. Почему существуют conditionals?
+2. Что происходит до того, как JavaScript выбирает ветку?
+3. Что делает `if`?
+4. Что добавляет `else`?
 5. When is `else if` useful?
 6. When is nesting useful?
-7. What does `switch` evaluate?
-8. What is `default` branch?
-9. Why should conditions be readable?
-10. How does this chapter lead to Loops?
+7. Что вычисляет `switch`?
+8. Что такое `default` branch?
+9. Почему conditions должны быть читаемыми?
+10. Как эта глава ведёт к Loops?
 
 ---
 
@@ -1054,7 +1054,7 @@ What if the same decision has to be made many times?
 practice/01-javascript/18-conditionals.md
 ```
 
-Сначала отвечайте без запуска там, где нужно predict output. Главная цель - определить evaluated expression and chosen path.
+Сначала отвечайте без запуска там, где нужно predict вывод. Главная цель - определить evaluated expression and chosen path.
 
 ---
 

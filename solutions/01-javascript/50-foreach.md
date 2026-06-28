@@ -88,7 +88,7 @@ undefined
 
 Связь с Automation QA: если нужен report array, его нужно строить отдельно или изучить future methods.
 
-## Debugging
+## Отладка
 
 Ответ:
 
@@ -113,7 +113,7 @@ console.log(titles);
 
 Связь с Automation QA: report lines нужно собирать осознанно.
 
-## QA scenario
+## QA-сценарий
 
 Ответ:
 

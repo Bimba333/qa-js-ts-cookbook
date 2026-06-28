@@ -139,7 +139,7 @@ docs/01-javascript/08-lexical-environment.md
 * как Scope связан с Execution Context;
 * как Scope связан с Variables;
 * как Scope помогает писать читаемые Playwright-тесты;
-* почему global mutable state опасен для Automation QA.
+* почему global mutable состояние опасен для Automation QA.
 
 ---
 
@@ -352,7 +352,7 @@ console.log(testName)
 └── lookup finds testName in Global Scope
 ```
 
-Global Scope удобен для stable configuration в маленьких примерах, но в больших тестовых проектах global mutable state часто создает проблемы. Это будет разобрано в Automation QA разделе главы.
+Global Scope удобен для stable configuration в маленьких примерах, но в больших тестовых проектах global mutable состояние часто создает проблемы. Это будет разобрано в Automation QA разделе главы.
 
 ### Function Scope
 
@@ -444,7 +444,7 @@ if (true) {
 // console.log(expectedStatus);
 ```
 
-`var` ведет себя иначе по отношению к block scope; подробности будут разобраны в главах про Hoisting и Scope-related behavior. В этой главе основной focus — `let` и `const`, потому что это modern default.
+`var` ведет себя иначе по отношению к block scope; подробности будут разобраны в главах про Hoisting и Scope-related поведение. В этой главе основной focus — `let` и `const`, потому что это modern default.
 
 ### Nested scopes
 
@@ -1337,7 +1337,7 @@ use local status
 do not read global status
 ```
 
-### Ошибка 4. Использовать global mutable state в тестах
+### Ошибка 4. Использовать global mutable состояние в тестах
 
 Неправильная модель:
 
@@ -1347,7 +1347,7 @@ One global variable can safely store current test data for all tests.
 
 Что произошло:
 
-Global mutable state может связывать тесты между собой и усложнять debugging.
+Global mutable состояние может связывать тесты между собой и усложнять debugging.
 
 Исправленная модель:
 
@@ -1428,7 +1428,7 @@ Test Scope
 
 ### Fixture-local variables
 
-Fixture может иметь local setup values:
+Fixture может иметь local setup значения:
 
 ```text
 Fixture Scope
@@ -1438,7 +1438,7 @@ Fixture Scope
 └── setupStatus
 ```
 
-Если эти values не нужны тесту напрямую, они должны оставаться внутри fixture logic.
+Если эти значения не нужны тесту напрямую, они должны оставаться внутри fixture logic.
 
 ### Test-local variables
 
@@ -1463,7 +1463,7 @@ testLogin Scope
 
 Такой код проще читать и безопаснее менять.
 
-### Avoiding global mutable state
+### Avoiding global mutable состояние
 
 Опасная модель:
 
@@ -1565,7 +1565,7 @@ Scope answers:
 "Where are those names visible?"
 ```
 
-Global Scope видим из многих мест через outward lookup, но global mutable state нужно использовать осторожно. Function Scope скрывает local variables функции. Block Scope ограничивает visibility identifiers внутри `{ ... }` для `let` и `const`.
+Global Scope видим из многих мест через outward lookup, но global mutable состояние нужно использовать осторожно. Function Scope скрывает local variables функции. Block Scope ограничивает visibility identifiers внутри `{ ... }` для `let` и `const`.
 
 Scope Chain — концептуальный путь поиска identifier:
 

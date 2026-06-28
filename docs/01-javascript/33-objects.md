@@ -21,7 +21,7 @@ const apiClient = {
 };
 ```
 
-Там object был нужен как receiver:
+Там object был нужен как объект выполнения:
 
 ```text
 apiClient
@@ -58,10 +58,10 @@ many named properties
 * что primitive value представляет одно indivisible value;
 * что variable дает named access к value;
 * что `const` запрещает reassignment identifier;
-* что function object тоже относится к object values;
-* что `this` часто указывает на receiver object;
+* что function object тоже относится к object значения;
+* что `this` часто указывает на объект выполнения object;
 * что dot notation уже встречалась в `object.method()`;
-* что references объясняют shared object behavior на концептуальном уровне.
+* что references объясняют shared object поведение на концептуальном уровне.
 
 Не требуется знать prototypes, descriptors, classes, `Object.create()`, `Object.assign()`, destructuring, optional chaining, property attributes или JSON. Эти темы будут изучаться позже.
 
@@ -107,7 +107,7 @@ docs/01-javascript/34-destructuring.md
 
 Следующая глава ответит:
 
-> Как удобно извлекать values из object?
+> Как удобно извлекать значения из object?
 
 ---
 
@@ -246,7 +246,7 @@ named parts of information
 
 ### Почему objects существуют
 
-Primitive values хороши для отдельных значений:
+Primitive значения хороши для отдельных значений:
 
 ```javascript
 const statusCode = 200;
@@ -256,7 +256,7 @@ const environment = 'staging';
 
 Но программа редко работает только с одним isolated value.
 
-В реальном коде values образуют смысловые группы:
+В реальном коде значения образуют смысловые группы:
 
 ```text
 API response
@@ -1228,7 +1228,7 @@ const createUserPayload = {
 };
 ```
 
-### Expected result
+### Ожидаемый результат
 
 ```javascript
 const expectedUser = {
@@ -1240,7 +1240,7 @@ const expectedUser = {
 
 Главный практический вопрос:
 
-> Какие values принадлежат одной entity?
+> Какие значения принадлежат одной entity?
 
 Если ответ ясен, object часто делает код лучше.
 
@@ -1394,7 +1394,7 @@ Property
 └── value
 ```
 
-### 6. Keys and values
+### 6. Keys and значения
 
 ```text
 name: 'Anna'
@@ -1752,7 +1752,7 @@ expected data
 
 * object literals;
 * properties;
-* keys and values;
+* keys and значения;
 * reading properties;
 * adding properties;
 * updating properties;

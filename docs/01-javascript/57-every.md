@@ -18,7 +18,7 @@
 
 * что `some()` отвечает на Boolean question;
 * что QA gate может требовать строгую проверку всех test cases;
-* что test cases имеют fields `status` и `priority`.
+* что test cases имеют поля `status` и `priority`.
 
 Не требуется изучать новые pipeline methods. Здесь фокус на rule: all must match.
 
@@ -72,7 +72,7 @@ Result — Boolean.
 
 ## Внутренний механизм
 
-Conceptual steps:
+Концептуальные шаги:
 
 ```text
 check element
@@ -157,7 +157,7 @@ const allHavePriority = testCases.every(function (testCase) {
 
 ## Переход к следующей главе
 
-Теперь мы умеем проверять conditions на objects.
+Теперь мы умеем проверять conditions на объектах.
 
 Следующий вопрос:
 

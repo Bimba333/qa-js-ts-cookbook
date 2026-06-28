@@ -343,7 +343,7 @@ const validateStatus
 создает function object
 ```
 
-Arrow creation timeline:
+Arrow creation временная шкала:
 
 ```text
 Engine reaches assignment
@@ -369,7 +369,7 @@ Arrow Function вызывается так же, как function object из Fun
 validateStatus();
 ```
 
-Invocation diagram:
+Invocation схема:
 
 ```text
 validateStatus
@@ -532,7 +532,7 @@ Implicit return
 
 Arrow Function полезна, когда сокращение делает код яснее.
 
-Readability comparison:
+Сравнение читаемости:
 
 ```text
 Хороший случай
@@ -616,7 +616,7 @@ Arrow Function
 
 Эта глава не объясняет отличия Arrow Functions в поведении `this`, constructors, prototype и `arguments`. Эти темы требуют отдельной внутренней модели и будут изучаться позже.
 
-### Current position in JavaScript model
+### Текущее место в модели JavaScript
 
 ```text
 Functions
@@ -631,7 +631,7 @@ Functions
     └── shorter syntax for function object
 ```
 
-Модель values остается такой:
+Модель значения остается такой:
 
 ```text
 JavaScript values
@@ -1008,7 +1008,7 @@ Arrow Function создает helper как function object.
 const isSuccessfulStatus = () => true;
 ```
 
-QA helper example:
+Пример QA-helper:
 
 ```text
 isSuccessfulStatus

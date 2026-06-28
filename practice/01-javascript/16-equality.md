@@ -4,7 +4,7 @@
 
 Ответьте своими словами.
 
-1. Why equality is needed?
+1. Зачем нужно equality?
 2. Why does JavaScript have more than one equality operator?
 3. What does `==` ask?
 4. What does `===` ask?
@@ -86,7 +86,7 @@ Need to check whether parsed value is `NaN`.
 
 ### Сценарий 4
 
-Two objects have same expected shape and values.
+Two objects have same expected shape and значения.
 
 ### Сценарий 5
 
@@ -113,7 +113,7 @@ console.log(expectedStatus === Number(actualStatusFromApi));
 
 ### Задача 1
 
-Тест прошел, хотя API returned String instead of Number.
+Тест прошел, хотя API returned String вместо Number.
 
 ```javascript
 const expectedStatus = 200;
@@ -155,7 +155,7 @@ console.log(Object.is(price, NaN));
 
 ### Сценарий 1. API value comparison
 
-API response:
+API-ответ:
 
 ```json
 {
@@ -175,7 +175,7 @@ Write comparison strategy.
 
 ### Сценарий 3. Object comparison
 
-Two response objects have same fields:
+Two response objects have same поля:
 
 ```javascript
 const expected = {

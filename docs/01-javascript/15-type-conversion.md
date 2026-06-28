@@ -19,11 +19,11 @@ Stack & Heap
 
 Мы уже понимаем:
 
-* JavaScript работает с values;
-* values имеют types;
-* primitive and object values behave differently;
+* JavaScript работает с значения;
+* значения имеют types;
+* primitive and object значения behave differently;
 * references explain object sharing;
-* Stack & Heap diagrams are conceptual tools for visualizing values and references.
+* Stack & Heap diagrams are conceptual tools for visualizing значения and references.
 
 Теперь вопрос меняется.
 
@@ -37,7 +37,7 @@ What object does this variable refer to?
 
 В этой главе главный вопрос другой:
 
-> What type does this operation expect?
+> Какой тип ожидает эта операция?
 
 Начнем с наблюдаемого поведения:
 
@@ -59,7 +59,7 @@ console.log('5' - 1);
 
 > Почему JavaScript treat the same string differently?
 
-Ответ этой главы: because operations expect particular types, and JavaScript may convert values to fit those expectations.
+Ответ этой главы: потому что операции ожидают определённые типы, и JavaScript может преобразовать значения под эти ожидания.
 
 ---
 
@@ -70,9 +70,9 @@ console.log('5' - 1);
 * что value - информация, с которой работает программа;
 * какие primitive types есть в JavaScript;
 * чем String отличается from Number;
-* что Boolean имеет values `true` and `false`;
-* что `null`, `undefined` and `NaN` are important values;
-* что object values are different, but object-to-primitive details are not part of this chapter;
+* что Boolean имеет значения `true` and `false`;
+* что `null`, `undefined` and `NaN` are important значения;
+* что object значения are different, but object-to-primitive details are not part of this chapter;
 * что `console.log` помогает observe result.
 
 Не требуется знать `==`, `===`, `Object.is()`, abstract equality algorithm, operator specification details, object-to-primitive algorithm or Symbol conversion internals. Equality has its own chapter.
@@ -119,7 +119,7 @@ docs/01-javascript/16-equality.md
 
 Следующая глава ответит на вопрос:
 
-> What happens when JavaScript compares two values?
+> Что происходит, когда JavaScript сравнивает два значения?
 
 В этой главе equality algorithms не изучаются.
 
@@ -135,12 +135,12 @@ docs/01-javascript/16-equality.md
 * когда использовать `String()`;
 * когда использовать `Boolean()`;
 * common conversion rules;
-* что такое truthy and falsy values;
+* что такое truthy and falsy значения;
 * почему `NaN` appears during number conversion;
 * что такое conversion chain на высоком уровне;
 * почему conversion is not random;
 * почему hidden conversion bugs appear in Automation QA;
-* как работать with API strings, form values and environment variables.
+* как работать with API strings, form значения and environment variables.
 
 ---
 
@@ -160,7 +160,7 @@ console.log('5' - 1);
 4
 ```
 
-Если смотреть только на values, поведение кажется странным:
+Если смотреть только на значения, поведение кажется странным:
 
 ```text
 "5" is String
@@ -169,7 +169,7 @@ console.log('5' - 1);
 
 Почему в первом случае result is `"51"`, а во втором `4`?
 
-Секрет не в том, что JavaScript "случайно" выбирает behavior. Секрет в operation expectation.
+Секрет не в том, что JavaScript "случайно" выбирает поведение. Секрет в operation expectation.
 
 ```text
 Operation
@@ -201,7 +201,7 @@ Value already matches?
 
 Главный вопрос:
 
-> What type does this operation expect?
+> Какой тип ожидает эта операция?
 
 ---
 
@@ -209,7 +209,7 @@ Value already matches?
 
 ### Почему type conversion exists
 
-JavaScript receives values from many sources:
+JavaScript receives значения from many sources:
 
 ```text
 Source
@@ -223,7 +223,7 @@ Source
 └── browser APIs
 ```
 
-These values do not always have the type your operation expects.
+These значения do not always have the type your operation expects.
 
 Example from Automation QA:
 
@@ -242,7 +242,7 @@ console.log(nextRetry);
 
 If you expected numeric addition, this is a bug. The operation did not receive the type you intended.
 
-Conversion exists because JavaScript often tries to adapt values for operations.
+Conversion существует, потому что JavaScript часто пытается адаптировать значения под операции.
 
 Ментальная модель: translator.
 
@@ -258,15 +258,15 @@ Operation continues
 
 ### Implicit conversion
 
-Implicit conversion happens when JavaScript converts value automatically.
+Implicit conversion происходит, когда JavaScript преобразует value автоматически.
 
 ```javascript
 console.log('5' - 1);
 ```
 
-The `-` operation expects numeric behavior.
+The `-` operation expects numeric поведение.
 
-Implicit conversion diagram:
+Implicit conversion схема:
 
 ```text
 "5"        1
@@ -284,17 +284,17 @@ converted to Number 5
 4
 ```
 
-What type does this operation expect?
+Какой тип ожидает эта операция?
 
 ```text
 The subtraction operation expects Number-like values.
 ```
 
-Implicit conversion is not always bad. It is dangerous when it is invisible and unexpected.
+Implicit conversion не всегда плоха. Она опасна, когда незаметна и неожиданна.
 
 ### Explicit conversion
 
-Explicit conversion happens when programmer asks for conversion directly.
+Explicit conversion происходит, когда программист явно просит выполнить conversion.
 
 ```javascript
 const retriesFromEnv = '3';
@@ -303,7 +303,7 @@ const retries = Number(retriesFromEnv);
 console.log(retries + 1);
 ```
 
-Explicit conversion diagram:
+Explicit conversion схема:
 
 ```text
 "3"
@@ -321,13 +321,13 @@ Number("3")
 4
 ```
 
-What type does this operation expect?
+Какой тип ожидает эта операция?
 
 ```text
 Numeric addition expects Number values.
 ```
 
-Explicit conversion is usually better in tests because it documents intent.
+Explicit conversion обычно лучше в тестах, потому что документирует намерение.
 
 ```text
 Hidden intent
@@ -353,7 +353,7 @@ console.log(Number(null));
 console.log(Number(undefined));
 ```
 
-Number conversion diagram:
+Number conversion схема:
 
 ```text
 Input value
@@ -365,7 +365,7 @@ Number(value)
 Number result or NaN
 ```
 
-Common results:
+Частые результаты:
 
 ```text
 Number("5")        → 5
@@ -389,7 +389,7 @@ Numeric operation
 └── numeric calculation
 ```
 
-Diagram:
+Схема:
 
 ```text
 Operation expects Number
@@ -406,14 +406,14 @@ Continue operation
 
 ### NaN during conversion
 
-`NaN` means Not-a-Number. It appears when JavaScript tries to produce a Number but cannot produce meaningful numeric value.
+`NaN` означает Not-a-Number. Он появляется, когда JavaScript пытается создать Number, но не может получить осмысленное числовое значение.
 
 ```javascript
 console.log(Number('abc'));
 console.log(Number(undefined));
 ```
 
-NaN diagram:
+NaN схема:
 
 ```text
 Value
@@ -430,13 +430,13 @@ No meaningful numeric result
 NaN
 ```
 
-What type does this operation expect?
+Какой тип ожидает эта операция?
 
 ```text
 Number conversion expects value that can become a Number.
 ```
 
-In Automation QA, `NaN` often means test parsed wrong field:
+In Automation QA, `NaN` often means test parsed wrong поле:
 
 ```text
 Expected numeric price
@@ -460,7 +460,7 @@ console.log(String(null));
 console.log(String(undefined));
 ```
 
-String conversion diagram:
+String conversion схема:
 
 ```text
 Input value
@@ -472,7 +472,7 @@ String(value)
 String result
 ```
 
-Common results:
+Частые результаты:
 
 ```text
 String(5)          → "5"
@@ -493,7 +493,7 @@ Text operation
 └── creating URL parameter
 ```
 
-Diagram:
+Схема:
 
 ```text
 Operation expects String
@@ -520,7 +520,7 @@ console.log(Boolean(0));
 console.log(Boolean(null));
 ```
 
-Boolean conversion diagram:
+Boolean conversion схема:
 
 ```text
 Input value
@@ -532,7 +532,7 @@ Boolean(value)
 true or false
 ```
 
-Boolean conversion is used when operation expects condition-like value.
+Boolean conversion используется, когда операция ожидает значение, похожее на условие.
 
 ```text
 Condition expects Boolean-like decision
@@ -543,11 +543,11 @@ Value converted to true or false
 
 Detailed conditionals will be studied later. Here we only need conversion model.
 
-### Truthy values
+### Truthy значения
 
 Truthy value is a value that becomes `true` in Boolean conversion.
 
-Truthy values diagram:
+Truthy значения схема:
 
 ```text
 Truthy examples
@@ -603,11 +603,11 @@ true
 
 The string `'false'` is not Boolean `false`.
 
-### Falsy values
+### Falsy значения
 
 Falsy value is a value that becomes `false` in Boolean conversion.
 
-Falsy values diagram:
+Falsy значения схема:
 
 ```text
 Falsy values
@@ -647,7 +647,7 @@ Sometimes conversion happens in steps.
 console.log('Total: ' + 5);
 ```
 
-Conceptual chain:
+Концептуальная цепочка:
 
 ```text
 String operation
@@ -668,7 +668,7 @@ Another chain:
 console.log(Number(String(5)));
 ```
 
-Diagram:
+Схема:
 
 ```text
 5
@@ -686,7 +686,7 @@ Number("5")
 5
 ```
 
-This chapter keeps conversion chains high-level. Operator specification details are not needed here.
+Эта глава оставляет цепочки преобразований высокоуровневыми. Детали спецификации операторов здесь не нужны.
 
 ### Conversion table
 
@@ -709,7 +709,7 @@ NaN          NaN             "NaN"             false
 
 Do not memorize the table mechanically. Use the question:
 
-> What type does this operation expect?
+> Какой тип ожидает эта операция?
 
 ---
 
@@ -717,7 +717,7 @@ Do not memorize the table mechanically. Use the question:
 
 At a conceptual level, conversion follows a decision flow.
 
-Conversion decision flow:
+Conversion decision поток:
 
 ```text
 Operation begins
@@ -775,7 +775,7 @@ Conversion rules are applied
 5
 ```
 
-### Current position in JavaScript model
+### Текущее место в модели JavaScript
 
 ```text
 JavaScript model so far
@@ -786,7 +786,7 @@ JavaScript model so far
 └── Type Conversion adapts values for operations
 ```
 
-Current position diagram:
+Current position схема:
 
 ```text
 Primitive Types
@@ -856,7 +856,7 @@ Cable has Type B
 Adapter converts connection
 ```
 
-In JavaScript:
+В JavaScript:
 
 ```text
 Operation expects Number
@@ -923,15 +923,15 @@ node examples/01-javascript/chapter-15/06-common-mistakes.js
 
 ### 01-number-conversion.js
 
-Shows `Number()` conversion for API-like values.
+Shows `Number()` conversion for API-like значения.
 
 ### 02-string-conversion.js
 
-Shows `String()` conversion for logs and form-like values.
+Shows `String()` conversion for logs and form-like значения.
 
 ### 03-boolean-conversion.js
 
-Shows truthy and falsy behavior.
+Shows truthy and falsy поведение.
 
 ### 04-implicit-conversion.js
 
@@ -951,11 +951,11 @@ Shows hidden conversion bug with environment-like value.
 
 ### Is conversion random?
 
-No. Conversion follows rules. It looks random when the expected type of operation is unclear.
+Нет. Conversion следует правилам. Она выглядит случайной, когда неясен ожидаемый тип операции.
 
 ### Should I avoid all implicit conversion?
 
-In production and test code, explicit conversion is often clearer. But implicit conversion exists and must be understood because JavaScript uses it in many operations.
+В production-коде и тестовом коде explicit conversion часто понятнее. Но implicit conversion существует, и её нужно понимать, потому что JavaScript использует её во многих операциях.
 
 ### Is `Boolean('false')` false?
 
@@ -965,31 +965,31 @@ No.
 Boolean('false');
 ```
 
-returns:
+возвращает:
 
 ```text
 true
 ```
 
-because non-empty strings are truthy.
+потому что непустые строки являются truthy.
 
-### Why does `Number('abc')` produce `NaN`?
+### Почему `Number('abc')` даёт `NaN`?
 
 Because JavaScript tried to convert string to Number but could not produce meaningful numeric value.
 
 ### Will equality explain more conversion?
 
-Yes. Equality has its own chapter. This chapter does not teach `==`, `===`, `Object.is()` or equality algorithms.
+Да. Equality имеет отдельную главу. Эта глава не учит `==`, `===`, `Object.is()` или equality algorithms.
 
 ---
 
 ## Распространенные мифы
 
-### Миф: JavaScript converts values randomly
+### Миф: JavaScript converts значения randomly
 
 Реальность:
 
-Conversion happens because an operation expects a particular type and rules are applied.
+Conversion происходит, потому что операция ожидает конкретный тип и применяются правила.
 
 ### Миф: `Boolean(value)` checks whether value is meaningful
 
@@ -1063,7 +1063,7 @@ If API returns string `"200"` but test expects Number `200`, decide conversion p
 
 ### Ошибка 5. Memorize results without operation expectation
 
-Better question:
+Более точный вопрос:
 
 ```text
 What type does this operation expect?
@@ -1073,18 +1073,18 @@ What type does this operation expect?
 
 ## Практическое использование
 
-Use explicit conversion when input type is uncertain.
+Используйте explicit conversion, когда входной тип неясен.
 
-### API numeric field as string
+### API numeric поле as string
 
 ```javascript
 const responseStatus = '200';
 const statusCode = Number(responseStatus);
 ```
 
-### Form values
+### Form значения
 
-Form input values often arrive as strings:
+Form вход значения often arrive как строки:
 
 ```javascript
 const ageFromForm = '30';
@@ -1122,7 +1122,7 @@ This example uses an object as a simple lookup table. Equality rules will be stu
 
 ## Использование в Automation QA
 
-### API returns strings instead of numbers
+### API returns strings вместо numbers
 
 ```json
 {
@@ -1136,7 +1136,7 @@ Test may need:
 const statusCode = Number(response.statusCode);
 ```
 
-Automation QA example diagram:
+Automation QA example схема:
 
 ```text
 API response field
@@ -1153,9 +1153,9 @@ Number("200")
 200
 ```
 
-### Comparing JSON values
+### Comparing JSON значения
 
-JSON can contain numbers, strings, booleans and null. Tests should not assume visually similar values are same type:
+JSON can contain numbers, strings, booleans and null. Tests should not assume visually similar значения are same type:
 
 ```text
 "200"  is String
@@ -1164,13 +1164,13 @@ true   is Boolean
 "true" is String
 ```
 
-### Form values
+### Form значения
 
-Browser form inputs usually provide text-like values. If test reads `"30"` from input, numeric calculation needs conversion.
+Browser form входs usually provide text-like значения. If test reads `"30"` from вход, numeric calculation needs conversion.
 
 ### Environment variables
 
-Environment values often arrive as strings:
+Environment значения often arrive как строки:
 
 ```text
 HEADLESS="false"
@@ -1188,7 +1188,7 @@ Prefer:
 const retries = Number(retriesFromEnv);
 ```
 
-over relying on implicit behavior.
+over relying on implicit поведение.
 
 When test fails unexpectedly, ask:
 
@@ -1203,7 +1203,7 @@ Should the test convert explicitly?
 
 ## Итоги
 
-Type conversion answers:
+Type conversion отвечает:
 
 ```text
 What happens when operation expects one type but receives another?
@@ -1229,7 +1229,7 @@ Type Conversion
     └── programmer calls Number(), String(), Boolean()
 ```
 
-Important categories:
+Важные категории:
 
 ```text
 Number conversion → may produce NaN
@@ -1247,16 +1247,16 @@ What happens when JavaScript compares two values?
 
 ## Что нужно запомнить
 
-* Conversion happens because operation expects a type.
+* Conversion происходит, потому что операция ожидает определённый тип.
 * Implicit conversion is triggered by JavaScript operation.
 * Explicit conversion is requested by programmer.
 * `Number()` can produce `NaN`.
 * `String()` produces string representation.
 * `Boolean()` uses truthy/falsy rules.
 * Non-empty strings are truthy, including `'false'` and `'0'`.
-* Falsy values include `false`, `0`, `''`, `null`, `undefined`, `NaN`.
+* Falsy значения include `false`, `0`, `''`, `null`, `undefined`, `NaN`.
 * Hidden conversion bugs are common in tests.
-* Environment variables and form values often arrive as strings.
+* Environment variables and form значения often arrive как строки.
 * Equality has its own chapter.
 
 ---
@@ -1265,16 +1265,16 @@ What happens when JavaScript compares two values?
 
 Ответьте без запуска кода.
 
-1. Why does type conversion exist?
-2. What is implicit conversion?
-3. What is explicit conversion?
-4. What does `Number('abc')` produce?
+1. Почему существует type conversion?
+2. Что такое implicit conversion?
+3. Что такое explicit conversion?
+4. Что возвращает `Number('abc')`?
 5. Is `Boolean('false')` true or false?
-6. Why can `'5' + 1` differ from `'5' - 1`?
-7. What type does subtraction expect?
-8. Why are environment variables dangerous for Boolean conversion?
-9. What is `NaN` in conversion context?
-10. What question will the next chapter answer?
+6. Почему `'5' + 1` отличается от `'5' - 1`?
+7. Какой тип ожидает subtraction?
+8. Почему environment variables опасны для Boolean conversion?
+9. Что такое `NaN` в контексте conversion?
+10. На какой вопрос ответит следующая глава?
 
 ---
 
@@ -1286,7 +1286,7 @@ What happens when JavaScript compares two values?
 practice/01-javascript/15-type-conversion.md
 ```
 
-Решайте задания без запуска там, где требуется predict output. Главная цель - научиться видеть expected type of operation.
+Решайте задания без запуска там, где требуется predict вывод. Главная цель - научиться видеть expected type of operation.
 
 ---
 

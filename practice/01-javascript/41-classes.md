@@ -6,10 +6,10 @@
 
 * объяснять, зачем classes существуют;
 * отличать class from instance;
-* понимать constructor behavior;
+* понимать constructor поведение;
 * видеть own data on instances;
 * понимать, что class methods use prototypes;
-* предсказывать output of class-based code;
+* предсказывать вывод of class-based code;
 * применять classes к Page Objects and API clients.
 
 ---
@@ -29,7 +29,7 @@
 
 ---
 
-## 2. Identify constructor behavior
+## 2. Identify constructor поведение
 
 ### Задание 2.1
 
@@ -46,7 +46,7 @@ const loginPage = new PageObject('LoginPage', '/login');
 
 Ответьте:
 
-* What values enter constructor?
+* What значения enter constructor?
 * What own properties appear on `loginPage`?
 * What repetitive work did class remove?
 
@@ -131,7 +131,7 @@ console.log(statusValidator.isValid());
 
 ---
 
-## 4. Debugging tasks
+## 4. Задания на отладку
 
 ### Задание 4.1
 
@@ -185,13 +185,13 @@ console.log(client.baseUrl);
 
 ---
 
-## 5. QA-oriented tasks
+## 5. QA-задачи
 
 ### Задание 5.1
 
 Создайте `LoginPage` class.
 
-Requirements:
+Требования:
 
 * constructor receives `url`;
 * instance stores own `url`;
@@ -201,7 +201,7 @@ Requirements:
 
 Создайте `ApiClient` class.
 
-Requirements:
+Требования:
 
 * constructor receives `name` and `baseUrl`;
 * method `describeRequest(endpoint)` returns full request description;
@@ -211,7 +211,7 @@ Requirements:
 
 Создайте `StatusValidator` class.
 
-Requirements:
+Требования:
 
 * constructor receives `expected` and `actual`;
 * method `isValid()` returns comparison result;
@@ -229,7 +229,7 @@ Requirements:
 
 Создайте small QA framework object model.
 
-Requirements:
+Требования:
 
 1. Create `ApiClient` class.
 2. Constructor receives `name`, `baseUrl`.

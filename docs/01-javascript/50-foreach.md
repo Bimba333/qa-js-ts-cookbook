@@ -59,7 +59,7 @@ execute same action
 
 ## Мотивация
 
-Есть prepared test run:
+Есть подготовленный тестовый запуск:
 
 ```javascript
 const testRun = [
@@ -126,7 +126,7 @@ repeat for next element
 
 ## Внутренний механизм
 
-Conceptual steps:
+Концептуальные шаги:
 
 ```text
 Array

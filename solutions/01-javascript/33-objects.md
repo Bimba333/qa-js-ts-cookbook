@@ -50,11 +50,11 @@
 
 **Распространённая ошибка:** думать, что key and value are both variables.
 
-**Связь с Automation QA:** expected values сравниваются с actual property values.
+**Связь с Automation QA:** expected значения сравниваются с actual property значения.
 
 ### 1.6 Почему object лучше понимать как entity?
 
-**Ответ:** потому что design данных зависит от смысла: какие values belong together.
+**Ответ:** потому что design данных зависит от смысла: какие значения belong together.
 
 **Объяснение:** фраза "key-value pairs" описывает форму, но не объясняет, почему эти pairs должны быть в одном object.
 
@@ -76,11 +76,11 @@
 
 **Ответ:** dot notation использует key, written directly in code. Bracket notation вычисляет expression inside brackets and uses result as key.
 
-**Объяснение:** `user.name` ищет key `"name"`, `user[fieldName]` сначала читает `fieldName`.
+**Объяснение:** `user.name` ищет key `"name"`, `user[полеName]` сначала читает `полеName`.
 
-**Распространённая ошибка:** писать `user.fieldName`, ожидая value из variable `fieldName`.
+**Распространённая ошибка:** писать `user.полеName`, ожидая value из variable `полеName`.
 
-**Связь с Automation QA:** dynamic validation fields require bracket notation.
+**Связь с Automation QA:** dynamic validation поля require bracket notation.
 
 ### 1.9 Когда bracket notation required?
 
@@ -90,7 +90,7 @@
 
 **Распространённая ошибка:** использовать dot notation for dynamic key.
 
-**Связь с Automation QA:** validating table fields or API fields by variable key uses bracket notation.
+**Связь с Automation QA:** validating table поля or API поля by variable key uses bracket notation.
 
 ### 1.10 Почему reading missing property returns `undefined`?
 
@@ -100,11 +100,11 @@
 
 **Распространённая ошибка:** считать `undefined` признаком сломанного object literal.
 
-**Связь с Automation QA:** absence of expected field in API response often appears as `undefined`.
+**Связь с Automation QA:** absence of expected поле in API response often appears as `undefined`.
 
 ---
 
-## 2. Определите properties, keys and values
+## 2. Определите properties, keys and значения
 
 ### 2.1
 
@@ -112,7 +112,7 @@
 
 * object variable: `user`;
 * keys: `id`, `name`, `role`;
-* values: `101`, `'Anna'`, `'admin'`.
+* значения: `101`, `'Anna'`, `'admin'`.
 
 **Объяснение:** каждая строка inside object literal describes one property.
 
@@ -126,11 +126,11 @@
 
 * object variable: `config`;
 * keys: `baseUrl`, `timeout`, `retries`;
-* values: `'https://api.example.test'`, `5000`, `2`.
+* значения: `'https://api.example.test'`, `5000`, `2`.
 
 **Объяснение:** config groups environment settings.
 
-**Распространённая ошибка:** хранить config values в несвязанных variables.
+**Распространённая ошибка:** хранить config значения в несвязанных variables.
 
 **Связь с Automation QA:** configuration objects are used across API and UI tests.
 
@@ -140,7 +140,7 @@
 
 * object variable: `response`;
 * keys: `status`, `ok`, `error`;
-* values: `200`, `true`, `null`.
+* значения: `200`, `true`, `null`.
 
 **Объяснение:** `null` здесь тоже property value.
 
@@ -165,7 +165,7 @@ admin
 
 **Распространённая ошибка:** путать property access with variable access.
 
-**Связь с Automation QA:** так читаются fields from expected test user.
+**Связь с Automation QA:** так читаются поля from expected test user.
 
 ### 3.2
 
@@ -213,7 +213,7 @@ console.log(user.name);
 
 **Распространённая ошибка:** использовать bracket notation без необходимости. Это не ошибка, но dot notation читабельнее.
 
-**Связь с Automation QA:** fixed response fields usually read through dot notation.
+**Связь с Automation QA:** fixed response поля usually read through dot notation.
 
 ### 4.2
 
@@ -223,11 +223,11 @@ console.log(user.name);
 console.log(user[fieldName]);
 ```
 
-**Объяснение:** key is stored in variable `fieldName`.
+**Объяснение:** key is stored in variable `полеName`.
 
-**Распространённая ошибка:** `user.fieldName` looks for key literally named `"fieldName"`.
+**Распространённая ошибка:** `user.полеName` looks for key literally named `"полеName"`.
 
-**Связь с Automation QA:** dynamic field validation uses this pattern.
+**Связь с Automation QA:** dynamic поле validation uses this pattern.
 
 ### 4.3
 
@@ -251,7 +251,7 @@ console.log(response['status code']);
 
 **Распространённая ошибка:** считать bracket notation just alternative style. Иногда это requirement.
 
-**Связь с Automation QA:** API fields, table columns and config keys can be selected dynamically.
+**Связь с Automation QA:** API поля, table columns and config keys can be selected dynamically.
 
 ---
 
@@ -273,7 +273,7 @@ console.log(response['status code']);
 
 **Распространённая ошибка:** считать any assignment as only update. It can add property too.
 
-**Связь с Automation QA:** test data may be extended with fields before request.
+**Связь с Automation QA:** test data may be extended with поля before request.
 
 ### 5.2
 
@@ -296,7 +296,7 @@ Then object no longer has `retries`:
 
 **Распространённая ошибка:** думать, что `delete` assigns `undefined`.
 
-**Связь с Automation QA:** service fields can be removed before comparing public expected data.
+**Связь с Automation QA:** service поля can be removed before comparing public expected data.
 
 ---
 
@@ -315,7 +315,7 @@ undefined
 
 **Распространённая ошибка:** ожидать error for missing property.
 
-**Связь с Automation QA:** missing response fields often show up as `undefined`.
+**Связь с Automation QA:** missing response поля often show up as `undefined`.
 
 ### 6.2
 
@@ -330,7 +330,7 @@ undefined
 
 **Распространённая ошибка:** confuse dot notation and bracket notation.
 
-**Связь с Automation QA:** dynamic assertion field names require bracket notation.
+**Связь с Automation QA:** dynamic assertion поле names require bracket notation.
 
 ### 6.3
 
@@ -363,11 +363,11 @@ false
 
 ---
 
-## 7. Debugging tasks
+## 7. Задания на отладку
 
 ### 7.1
 
-**Проблема:** `user.fieldName` looks for key `"fieldName"`.
+**Проблема:** `user.полеName` looks for key `"полеName"`.
 
 Исправление:
 
@@ -386,7 +386,7 @@ console.log(user[fieldName]);
 
 **Распространённая ошибка:** use dot notation for dynamic key.
 
-**Связь с Automation QA:** reusable field validators often receive field name as argument.
+**Связь с Automation QA:** reusable поле validators often receive поле name as argument.
 
 ### 7.2
 
@@ -410,7 +410,7 @@ console.log(response['status code']);
 
 ### 7.3
 
-**Проблема:** output happens before adding `timeout`.
+**Проблема:** вывод happens before adding `timeout`.
 
 Исправление:
 
@@ -432,7 +432,7 @@ console.log(config.timeout);
 
 ---
 
-## 8. QA-oriented tasks
+## 8. QA-задачи
 
 ### 8.1
 
@@ -495,7 +495,7 @@ console.log(apiResponse.body.role);
 
 **Объяснение:** response groups status and body; body groups user data.
 
-**Распространённая ошибка:** flatten all response fields into separate variables.
+**Распространённая ошибка:** flatten all response поля into separate variables.
 
 **Связь с Automation QA:** this mirrors many REST API responses.
 
@@ -514,11 +514,11 @@ delete actualUser.internalToken;
 console.log(actualUser);
 ```
 
-**Объяснение:** service field removed before comparison.
+**Объяснение:** service поле removed before comparison.
 
 **Распространённая ошибка:** set `internalToken = undefined` and assume property is absent.
 
-**Связь с Automation QA:** API responses often contain fields that should be ignored in public assertions.
+**Связь с Automation QA:** API responses often contain поля that should be ignored in public assertions.
 
 ---
 
@@ -584,8 +584,8 @@ console.log(apiResponse.body);
 2. If key exists, assignment updates property value.
 3. If key is absent, assignment adds new property.
 4. `delete object.key` removes property on базовом уровне.
-5. `object[fieldName]` uses value of variable; `object.fieldName` looks for key `"fieldName"`.
+5. `object[полеName]` uses value of variable; `object.полеName` looks for key `"полеName"`.
 6. Objects важны для API testing, потому что responses, payloads and expected data are grouped structures.
-7. Следующая тема - Destructuring, потому что после создания object возникает вопрос, как удобно extracting values from it.
+7. Следующая тема - Destructuring, потому что после создания object возникает вопрос, как удобно extracting значения from it.
 
 **Общий вывод:** object is one entity with many named properties. Syntax matters, but grouping is the main idea.

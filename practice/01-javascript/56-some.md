@@ -48,7 +48,7 @@ console.log(result);
 
 Сначала запишите ответ без запуска.
 
-## Debugging
+## Отладка
 
 Автор хотел проверить, есть ли failed tests.
 
@@ -62,7 +62,7 @@ console.log(hasFailedTests);
 
 Что не так? Исправьте код.
 
-## QA scenario
+## QA-сценарий
 
 Создайте Boolean `shouldBlockMerge`, который равен `true`, если есть хотя бы один failed test.
 

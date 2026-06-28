@@ -7,11 +7,11 @@
 * объяснять, зачем существует destructuring;
 * определять, какие variables создаются;
 * понимать matching by property name;
-* использовать default values;
+* использовать default значения;
 * использовать renaming;
 * предсказывать результат выполнения кода;
 * находить ошибки в destructuring patterns;
-* применять destructuring в Automation QA scenarios.
+* применять destructuring в Automation QA-сценариях.
 
 ---
 
@@ -23,7 +23,7 @@
 4. Does destructuring change the object?
 5. Как происходит matching в object destructuring?
 6. Что будет, если property отсутствует?
-7. Для чего нужны default values?
+7. Для чего нужны default значения?
 8. Для чего нужно renaming?
 9. Почему deep nested destructuring может ухудшить readability?
 10. Где destructuring полезен в Automation QA?
@@ -58,7 +58,7 @@ const response = {
 const { status, durationMs } = response;
 ```
 
-Какие values extracted?
+Какие значения extracted?
 
 ### Задание 2.3
 
@@ -134,7 +134,7 @@ console.log(user.name);
 
 ---
 
-## 4. Default values
+## 4. Default значения
 
 Для каждого примера определите value created variable.
 
@@ -174,7 +174,7 @@ const { role = 'guest' } = user;
 
 ### Задание 5.1
 
-Object:
+Объект:
 
 ```javascript
 const user = {
@@ -190,7 +190,7 @@ const user = {
 
 ### Задание 5.2
 
-Object:
+Объект:
 
 ```javascript
 const response = {
@@ -206,7 +206,7 @@ const response = {
 
 ---
 
-## 6. Debugging tasks
+## 6. Задания на отладку
 
 Найдите ошибку и исправьте код.
 
@@ -253,11 +253,11 @@ console.log(name);
 
 ---
 
-## 7. QA-oriented tasks
+## 7. QA-задачи
 
 ### Задание 7.1
 
-Есть API response:
+Есть API-ответ:
 
 ```javascript
 const apiResponse = {
@@ -300,24 +300,24 @@ const expectedUser = {
 };
 ```
 
-Извлеките values в variables `expectedName` and `expectedRole`.
+Извлеките значения в variables `expectedName` and `expectedRole`.
 
 ---
 
 ## 8. Мини-проект
 
-Создайте один файл с QA scenario.
+Создайте один файл с QA-сценарием.
 
 Требования:
 
-1. Создайте object `apiResponse` with `status`, `body`, `durationMs`.
+1. Создайте объект `apiResponse` with `status`, `body`, `durationMs`.
 2. В `body` храните user data: `id`, `name`, `role`, `active`.
-3. Создайте object `expectedUser`.
+3. Создайте объект `expectedUser`.
 4. Извлеките `status`, `body`, `durationMs` from `apiResponse`.
 5. Извлеките `name` and `role` from `body`.
-6. Извлеките expected values using renaming: `expectedName`, `expectedRole`.
+6. Извлеките expected значения using renaming: `expectedName`, `expectedRole`.
 7. Используйте default value for missing config timeout.
-8. Выведите все values.
+8. Выведите все значения.
 9. Отдельно объясните, изменился ли `apiResponse` после destructuring.
 
 ---

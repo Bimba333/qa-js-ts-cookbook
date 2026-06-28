@@ -4,9 +4,9 @@
 
 ### 1. Зачем существует this?
 
-Ответ: `this` нужен, чтобы функция могла работать с current receiver, то есть с object, для которого она вызвана.
+Ответ: `this` нужен, чтобы функция могла работать с current объект выполнения, то есть с object, для которого она вызвана.
 
-Объяснение: один function object может быть method разных objects. `this` позволяет function body обращаться к receiver текущего вызова.
+Объяснение: один function object может быть method разных objects. `this` позволяет function body обращаться к объект выполнения текущего вызова.
 
 Распространённая ошибка: считать, что `this` навсегда привязан к object, где функция была создана.
 
@@ -14,9 +14,9 @@
 
 ---
 
-### 2. Что такое execution receiver?
+### 2. Что такое execution объект выполнения?
 
-Ответ: execution receiver - это object, для которого выполняется function call.
+Ответ: execution объект выполнения - это object, для которого выполняется function call.
 
 Объяснение:
 
@@ -26,7 +26,7 @@ apiClient.buildUrl('/users')
 └── receiver: apiClient
 ```
 
-Распространённая ошибка: путать receiver с function object.
+Распространённая ошибка: путать объект выполнения с function object.
 
 Связь с Automation QA: если `apiClient.buildUrl()` вызывается как method, `this` внутри method указывает на `apiClient`.
 
@@ -50,7 +50,7 @@ Function invocation
 
 Распространённая ошибка: искать `this` по месту объявления функции.
 
-Связь с Automation QA: method может сломаться, если передать ее как отдельную функцию и потерять receiver.
+Связь с Automation QA: method может сломаться, если передать ее как отдельную функцию и потерять объект выполнения.
 
 ---
 
@@ -62,13 +62,13 @@ Function invocation
 
 Распространённая ошибка: думать, что `this` работает как variable из Closure.
 
-Связь с Automation QA: это помогает различать configuration, captured через Closure, и state object, доступный через `this`.
+Связь с Automation QA: это помогает различать configuration, captured через Closure, и состояние object, доступный через `this`.
 
 ---
 
 ### 5. Чем method invocation отличается от global invocation?
 
-Ответ: method invocation имеет receiver, global invocation вызывается без object receiver.
+Ответ: method invocation имеет объект выполнения, global invocation вызывается без object объект выполнения.
 
 Объяснение:
 
@@ -82,7 +82,7 @@ functionName()
 └── receiver: none
 ```
 
-Распространённая ошибка: ожидать, что standalone call сохранит receiver от прежнего object.
+Распространённая ошибка: ожидать, что standalone call сохранит объект выполнения от прежнего object.
 
 Связь с Automation QA: detached Page Object methods часто теряют `this`.
 
@@ -99,7 +99,7 @@ const method = object.method;
 method();
 ```
 
-Для обычной модели вызова из этой главы здесь нет object receiver: вызов идет как `method()`, а не как `object.method()`.
+Для обычной модели вызова из этой главы здесь нет object объект выполнения: вызов идет как `method()`, а не как `object.method()`.
 
 Распространённая ошибка: думать, что переменная `method` помнит object, из которого функция была взята.
 
@@ -109,7 +109,7 @@ method();
 
 ### 7. Почему Arrow Function нельзя считать простой заменой method?
 
-Ответ: Arrow Function имеет особое поведение `this` и не получает receiver так же, как обычная function.
+Ответ: Arrow Function имеет особое поведение `this` и не получает объект выполнения так же, как обычная function.
 
 Объяснение: `object.arrowMethod()` выглядит как method call, но arrow не определяет `this` через этот вызов.
 
@@ -192,7 +192,7 @@ secondClient.printName()
 
 Распространённая ошибка: думать, что функция навсегда привязана к `firstClient`, потому что была взята из `firstClient.printName`.
 
-Связь с Automation QA: один method implementation может работать для разных client objects, если receiver выбран правильно.
+Связь с Automation QA: один method implementation может работать для разных client objects, если объект выполнения выбран правильно.
 
 ---
 
@@ -206,7 +206,7 @@ secondClient.printName()
 undefined
 ```
 
-Объяснение: в strict mode standalone function call не имеет receiver, поэтому `this` равен `undefined`.
+Объяснение: в strict mode standalone function call не имеет объект выполнения, поэтому `this` равен `undefined`.
 
 Распространённая ошибка: ожидать global object.
 
@@ -232,7 +232,7 @@ response.isSuccessful()
 
 `this.status` равен `200`.
 
-Распространённая ошибка: читать `this.status` как неизвестную variable, а не как property receiver.
+Распространённая ошибка: читать `this.status` как неизвестную variable, а не как property объект выполнения.
 
 Связь с Automation QA: такой pattern может использоваться в response helper objects.
 
@@ -274,7 +274,7 @@ admin: Anna
 
 `prefix` берется через Closure.
 
-`this.name` берется из receiver текущего вызова.
+`this.name` берется из объект выполнения текущего вызова.
 
 Объяснение:
 
@@ -302,11 +302,11 @@ Who is the current receiver?
 
 Распространённая ошибка: думать, что `this.name` тоже берется из Closure.
 
-Связь с Automation QA: factory может captured expected label, а receiver может быть конкретным page object или client object.
+Связь с Automation QA: factory может captured expected label, а объект выполнения может быть конкретным page object или client object.
 
 ---
 
-## Определите receiver
+## Определите объект выполнения
 
 ### Задание 7
 
@@ -322,9 +322,9 @@ buildUrl('/orders')
 └── receiver: none
 ```
 
-Объяснение: в обычной модели `object.method()` первый вызов имеет receiver `apiClient`. Второй вызов идет через standalone variable, поэтому receiver не выбирается как object method receiver.
+Объяснение: в обычной модели `object.method()` первый вызов имеет объект выполнения `apiClient`. Второй вызов идет через standalone variable, поэтому объект выполнения не выбирается как object method объект выполнения.
 
-Распространённая ошибка: считать, что `buildUrl` хранит receiver вместе с function object.
+Распространённая ошибка: считать, что `buildUrl` хранит объект выполнения вместе с function object.
 
 Связь с Automation QA: если method API client извлечь в переменную, `this.baseUrl` может стать недоступным.
 
@@ -355,13 +355,13 @@ logger.log('Request failed');
 API: Request failed
 ```
 
-Объяснение: для обычного method call `logger.log()` receiver выбирается из формы вызова, поэтому внутри method `this -> logger`.
+Объяснение: для обычного method call `logger.log()` объект выполнения выбирается из формы вызова, поэтому внутри method `this -> logger`.
 
-Распространённая ошибка: делать `const log = logger.log` и ожидать, что receiver сохранится.
+Распространённая ошибка: делать `const log = logger.log` и ожидать, что объект выполнения сохранится.
 
 Связь с Automation QA: logging helpers и assertion helpers часто ломаются при detached methods.
 
-Возможное улучшение: после изучения `bind()` можно будет создавать function с заранее выбранным receiver.
+Возможное улучшение: после изучения `bind()` можно будет создавать function с заранее выбранным объект выполнения.
 
 ---
 
@@ -424,7 +424,7 @@ true
 
 Объяснение: `buildUrl` вызывается как method, поэтому `this.baseUrl` читает property `apiClient.baseUrl`.
 
-Распространённая ошибка: извлечь `buildUrl` в переменную и потерять receiver.
+Распространённая ошибка: извлечь `buildUrl` в переменную и потерять объект выполнения.
 
 Связь с Automation QA: API clients часто хранят base URL и methods рядом.
 
@@ -453,9 +453,9 @@ true
 false
 ```
 
-Объяснение: receiver в обоих вызовах - `assertions`.
+Объяснение: объект выполнения в обоих вызовах - `assertions`.
 
-Распространённая ошибка: писать Arrow Function и ожидать method receiver.
+Распространённая ошибка: писать Arrow Function и ожидать method объект выполнения.
 
 Связь с Automation QA: assertion helper objects могут хранить expected configuration.
 
@@ -524,10 +524,10 @@ formatError(response)
 └── this -> undefined in strict mode
 ```
 
-Объяснение: `responseHelper.formatError()` имеет receiver. `formatError()` после извлечения вызывается как standalone function.
+Объяснение: `responseHelper.formatError()` имеет объект выполнения. `formatError()` после извлечения вызывается как standalone function.
 
-Распространённая ошибка: думать, что переменная `formatError` хранит не только function object, но и receiver.
+Распространённая ошибка: думать, что переменная `formatError` хранит не только function object, но и объект выполнения.
 
 Связь с Automation QA: это помогает понимать ошибки в Page Object methods, API client helpers и assertion helpers.
 
-Возможное улучшение: после главы `bind()` можно будет сохранить receiver заранее.
+Возможное улучшение: после главы `bind()` можно будет сохранить объект выполнения заранее.

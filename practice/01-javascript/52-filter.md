@@ -49,7 +49,7 @@ console.log(highPriorityTests.length);
 
 Сначала запишите ответ без запуска.
 
-## Debugging
+## Отладка
 
 Автор хотел выбрать failed tests.
 
@@ -68,7 +68,7 @@ console.log(failedTests);
 
 Что не так? Исправьте код.
 
-## QA scenario
+## QA-сценарий
 
 Создайте `ciReadyTests`, который содержит все test cases, кроме `status: 'skipped'`.
 

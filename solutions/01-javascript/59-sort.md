@@ -6,29 +6,29 @@
 
 Ответ: сравнить `id` каждого test case.
 
-Объяснение: `firstTest.id.localeCompare(secondTest.id)` задает string order по id.
+Объяснение: `firstTest.id.localeCompare(secondTest.id)` задает строковый порядок по id.
 
-Ошибка: сравнивать entire objects instead of their `id`.
+Ошибка: сравнивать объекты целиком вместо их `id`.
 
-QA связь: order by id удобно сверять с test management system.
+QA связь: сортировку по id удобно сверять с test management system.
 
-### 2. Почему default sort может поставить `T-10` перед `T-2`?
+### 2. Почему сортировка по умолчанию может поставить `T-10` перед `T-2`?
 
-Ответ: default sort compares values as strings.
+Ответ: сортировка по умолчанию сравнивает значения как строки.
 
-Объяснение: string comparison compares characters, not numeric part of id.
+Объяснение: строковое сравнение сравнивает символы, а не числовую часть id.
 
-Ошибка: ожидать numeric order без compare function.
+Ошибка: ожидать числовой порядок без функции сравнения.
 
-QA связь: test id order should be explicit when report order matters.
+QA связь: порядок test id должен быть явным, если порядок отчёта важен.
 
-### 3. Когда нужен compare function?
+### 3. Когда нужна функция сравнения?
 
-Ответ: когда order должен зависеть от custom rule.
+Ответ: когда порядок должен зависеть от собственного правила.
 
-Объяснение: для objects JavaScript не знает, по какому field их нужно упорядочить.
+Объяснение: для объектов JavaScript не знает, по какому поле их нужно упорядочить.
 
-Ошибка: вызывать `sort()` на objects без правила.
+Ошибка: вызывать `sort()` на объектах без правила.
 
 QA связь: priority/status order is a triage rule, and it should be visible in code.
 
@@ -38,19 +38,19 @@ QA связь: priority/status order is a triage rule, and it should be visible 
 
 Объяснение: меньший rank ставит element раньше.
 
-Ошибка: сортировать priority alphabetically.
+Ошибка: сортировать priority по алфавиту.
 
-QA связь: high priority failures should be visible first.
+QA связь: ошибки с высоким приоритетом должны быть видны первыми.
 
 ### 5. Что произойдет с current array после вызова `sort()`?
 
 Ответ: current array получит новый order.
 
-Объяснение: `sort()` changes the same array, not a separate result.
+Объяснение: `sort()` изменяет тот же массив, а не отдельный результат.
 
-Ошибка: ожидать original order in later steps.
+Ошибка: ожидать исходный порядок на следующих шагах.
 
-QA связь: shared execution list can affect next report step.
+QA связь: общий список выполнения может повлиять на следующий шаг отчёта.
 
 ## Чтение кода
 
@@ -65,7 +65,7 @@ T-3
 
 Ошибка: считать, что `testCases` остался в старом порядке.
 
-QA связь: later report steps read already ordered data.
+QA связь: следующие шаги отчёта читают уже упорядоченные данные.
 
 ## Предскажите результат выполнения
 
@@ -75,13 +75,13 @@ QA связь: later report steps read already ordered data.
 ['T-1', 'T-10', 'T-2', 'T-3']
 ```
 
-Объяснение: default sort compares strings.
+Объяснение: сортировка по умолчанию сравнивает строки.
 
 Ошибка: ожидать `T-10` after `T-3`.
 
-QA связь: default order should not define CI report ordering accidentally.
+QA связь: порядок по умолчанию не должен случайно определять порядок CI-отчёта.
 
-## Debugging
+## Отладка
 
 Ответ:
 
@@ -93,13 +93,13 @@ testCases.sort(function (firstTest, secondTest) {
 });
 ```
 
-Объяснение: для objects нужен explicit order по field.
+Объяснение: для объектов нужен явный порядок по полю.
 
-Ошибка: думать, что default sort понимает `priority`.
+Ошибка: думать, что сортировка по умолчанию понимает `priority`.
 
-QA связь: priority sorting должен совпадать с правилами triage.
+QA связь: сортировка по priority должна совпадать с правилами triage.
 
-## QA scenario
+## QA-сценарий
 
 Ответ:
 
@@ -113,9 +113,9 @@ testCases.sort(function (firstTest, secondTest) {
 
 Объяснение: failed tests поднимаются наверх.
 
-Ошибка: сортировать status alphabetically вместо business order.
+Ошибка: сортировать status по алфавиту вместо прикладного порядка.
 
-QA связь: failures должны быть видны первыми.
+QA связь: ошибки должны быть видны первыми.
 
 ## Мини-проект
 
@@ -151,6 +151,6 @@ console.log(testCases);
 
 Объяснение: каждая сортировка применяет новый rule к current array.
 
-Ошибка: считать, что каждая сортировка начинается с original order.
+Ошибка: считать, что каждая сортировка начинается с исходного порядка.
 
-QA связь: report ordering должен быть управляемым и ожидаемым.
+QA связь: порядок отчёта должен быть управляемым и ожидаемым.

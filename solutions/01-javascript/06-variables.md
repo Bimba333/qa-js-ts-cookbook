@@ -18,7 +18,7 @@ Memory хранит information, но код должен обращаться �
 
 Связь с Automation QA:
 
-В тестах variables дают имена configuration, test data, expected и actual values.
+В тестах variables дают имена configuration, test data, expected и actual значения.
 
 ### 2. Почему variable не коробка
 
@@ -190,7 +190,7 @@ Stable test data через `const` должна быть известна в м
 
 Объяснение:
 
-Если status, counter или temporary state меняется, `let` честно сообщает о reassignment.
+Если status, counter или temporary состояние меняется, `let` честно сообщает о reassignment.
 
 Распространённая ошибка:
 
@@ -304,7 +304,7 @@ console.log(retryCount);
 
 Распространённая ошибка:
 
-Ожидать, что все прошлые values читаются через `retryCount`.
+Ожидать, что все прошлые значения читаются через `retryCount`.
 
 Связь с Automation QA:
 
@@ -362,7 +362,7 @@ https://example.com/login
 
 Объяснение:
 
-`baseUrl` и `path` initialized, затем их values используются для initialization `loginUrl`.
+`baseUrl` и `path` initialized, затем их значения используются для initialization `loginUrl`.
 
 Распространённая ошибка:
 
@@ -422,7 +422,7 @@ testStatus → "created"
 expectedTitle → "Dashboard"
 ```
 
-Reassignment:
+Переназначение:
 
 ```text
 testStatus → "ready"
@@ -476,7 +476,7 @@ read gives "ready"
 
 Связь с Automation QA:
 
-При падении проверки нужно смотреть все updates test state до assertion.
+При падении проверки нужно смотреть все updates test состояние до assertion.
 
 ### Задача 2
 
@@ -512,7 +512,7 @@ Later assignment для `const` невозможен, потому что `const
 
 Связь с Automation QA:
 
-Configuration values должны выглядеть стабильными, если тест не должен их менять.
+Configuration значения должны выглядеть стабильными, если тест не должен их менять.
 
 ## QA-задачи
 
@@ -530,7 +530,7 @@ actual user status     → const, если получен один раз
 
 Объяснение:
 
-Configuration и expected values обычно не reassignment-ятся. Setup status меняется по ходу подготовки. Actual status может быть `const`, если он получен один раз и дальше только читается.
+Configuration и expected значения обычно не reassignment-ятся. Setup status меняется по ходу подготовки. Actual status может быть `const`, если он получен один раз и дальше только читается.
 
 Распространённая ошибка:
 
@@ -624,7 +624,7 @@ actualStatus   | const   | current testStatus      | no            | captured on
 
 Объяснение:
 
-`const` используется там, где named access не должен reassignment-иться. `let` используется для changing state.
+`const` используется там, где named access не должен reassignment-иться. `let` используется для changing состояние.
 
 Распространённая ошибка:
 
@@ -632,7 +632,7 @@ actualStatus   | const   | current testStatus      | no            | captured on
 
 Связь с Automation QA:
 
-Мини-проект повторяет структуру реального теста: configuration, changing setup state, expected и actual values.
+Мини-проект повторяет структуру реального теста: configuration, changing setup состояние, expected и actual значения.
 
 ## Возможные улучшения
 

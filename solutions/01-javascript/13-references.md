@@ -6,7 +6,7 @@
 
 Ответ:
 
-References exist because objects are structured values, and JavaScript needs a way for variables to work with object values without copying the whole object on every assignment.
+References exist because objects are structured значения, and JavaScript needs a way for variables to work with object значения without copying the whole object on every assignment.
 
 Объяснение:
 
@@ -100,7 +100,7 @@ Engine follows the variable's reference to object, then reads property value.
 
 Объяснение:
 
-For `admin.name`, first determine which object `admin` refers to, then read property `name`.
+Для `admin.name`, first determine which object `admin` refers to, then read property `name`.
 
 Распространённая ошибка:
 
@@ -122,7 +122,7 @@ If another variable refers to the same object, it observes the updated property.
 
 Распространённая ошибка:
 
-Think update belongs only to the variable used in the assignment.
+Думать, что update относится только к переменной, использованной в присваивании.
 
 Связь с Automation QA:
 
@@ -162,7 +162,7 @@ Apply primitive mental model to objects.
 
 Связь с Automation QA:
 
-Primitive expected values are usually safer from accidental mutation than object expected data.
+Primitive expected значения are usually safer from accidental mutation than object expected data.
 
 ### 10. Object identity
 
@@ -190,7 +190,7 @@ They can be different because each object literal creates a separate object valu
 
 Объяснение:
 
-`{ name: 'Anna' }` and `{ name: 'Anna' }` are two object values with similar structure.
+`{ name: 'Anna' }` and `{ name: 'Anna' }` are two object значения with similar structure.
 
 Распространённая ошибка:
 
@@ -239,7 +239,7 @@ Expect both variables to change together.
 
 Связь с Automation QA:
 
-Primitive expected values do not share mutable object state.
+Primitive expected значения do not share mutable object состояние.
 
 ### Задача 2
 
@@ -272,7 +272,7 @@ false
 
 Объяснение:
 
-Two object literals create two different object values. Strict comparison checks whether both variables refer to same object.
+Two object literals create two different object значения. Strict comparison checks whether both variables refer to same object.
 
 Распространённая ошибка:
 
@@ -311,7 +311,7 @@ Reassigning local variable does not update all aliases in test setup.
 
 Variables: `user`, `admin`, `currentUser`.
 
-Object values created: 1.
+Object значения created: 1.
 
 All three variables refer to same object.
 
@@ -333,7 +333,7 @@ Several fixture variables can point to same object.
 
 Variables: `expectedUser`, `actualUser`.
 
-Object values created: 2.
+Object значения created: 2.
 
 They do not refer to same object.
 
@@ -343,7 +343,7 @@ There are two separate object literals.
 
 Распространённая ошибка:
 
-Think same property values imply same object.
+Think same property значения imply same object.
 
 Связь с Automation QA:
 
@@ -353,7 +353,7 @@ Expected and actual objects may have same shape but should still be compared by 
 
 Ответ:
 
-Object values created: 2.
+Object значения created: 2.
 
 Initially `selectedUser` and `firstSelection` refer to first object. After reassignment, `selectedUser` refers to second object, `firstSelection` still refers to first object.
 
@@ -367,7 +367,7 @@ Think reassignment changes the old object.
 
 Связь с Automation QA:
 
-Important when test code replaces payload object after saving previous version.
+Важно, когда тестовый код заменяет payload object после сохранения предыдущей версии.
 
 ## Чтение кода
 
@@ -375,7 +375,7 @@ Important when test code replaces payload object after saving previous version.
 
 1. Shared object is the object originally assigned to `defaultUser`.
 2. Mutation line: `adminUser.role = 'admin';`
-3. Output:
+3. Вывод:
 
 ```text
 admin
@@ -403,7 +403,7 @@ Shared default payloads should not be mutated directly across tests.
 
 Cause: `actualUser` and `expectedUser` refer to the same object.
 
-Correct safer version:
+Более безопасный вариант:
 
 ```javascript
 const expectedUser = {
@@ -425,7 +425,7 @@ console.log(expectedUser.role);
 
 Распространённая ошибка:
 
-Debug the assertion instead of object setup.
+Debug the assertion вместо object setup.
 
 Связь с Automation QA:
 
@@ -439,7 +439,7 @@ It returns `false` because `expectedUser` and `actualUser` refer to different ob
 
 Объяснение:
 
-Same property values do not mean same object identity.
+Same property значения do not mean same object identity.
 
 Распространённая ошибка:
 
@@ -447,13 +447,13 @@ Use strict identity comparison for object structure.
 
 Связь с Automation QA:
 
-API object assertions should compare structure and values through appropriate assertion tools.
+API object assertions should compare structure and значения through appropriate assertion tools.
 
 ### Задача 3
 
 Ответ:
 
-Output:
+Вывод:
 
 ```text
 admin
@@ -493,7 +493,7 @@ const adminUser = {
 
 Объяснение:
 
-Object spread creates a new first-level object instead of reusing same object reference.
+Object spread creates a new first-level object вместо reusing same object reference.
 
 Распространённая ошибка:
 
@@ -563,7 +563,7 @@ Expected and actual data should be independently produced unless intentionally t
 
 Ответ:
 
-Checklist:
+Чек-лист:
 
 ```text
 1. Which variables refer to this object?

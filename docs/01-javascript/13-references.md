@@ -25,7 +25,7 @@ Object
 
 Теперь появляется следующий вопрос.
 
-Если object содержит много related values, как несколько variables могут работать with the same object?
+Если object содержит много related значения, как несколько variables могут работать with the same object?
 
 Начнем с поведения, которое часто удивляет:
 
@@ -55,7 +55,7 @@ Kate
 
 Главный вопрос главы:
 
-> What object is this variable referring to right now?
+> На какой object эта переменная ссылается прямо сейчас?
 
 ---
 
@@ -64,7 +64,7 @@ Kate
 Для этой главы нужно понимать:
 
 * что variable дает named access к value;
-* что primitive values are indivisible;
+* что primitive значения are indivisible;
 * что object value groups related information;
 * что object contains properties;
 * что property can be read and updated;
@@ -114,7 +114,7 @@ docs/01-javascript/13-references.md
 docs/01-javascript/14-stack-and-heap.md
 ```
 
-Следующая глава объяснит commonly used conceptual memory model: Stack & Heap. В этой главе мы не используем эту модель, потому что сначала нужно понять observable behavior references.
+Следующая глава объяснит commonly used conceptual memory model: Stack & Heap. В этой главе мы не используем эту модель, потому что сначала нужно понять observable поведение references.
 
 ---
 
@@ -130,7 +130,7 @@ docs/01-javascript/14-stack-and-heap.md
 * что происходит при updating through a reference;
 * что означает assigning one reference to another variable;
 * почему primitive assignment behaves differently;
-* чем identity отличается от copied primitive values на концептуальном уровне;
+* чем identity отличается от copied primitive значения на концептуальном уровне;
 * почему unexpected object changes часто возникают in Automation QA;
 * как helper functions can modify shared objects;
 * как безопаснее работать with expected test data.
@@ -210,7 +210,7 @@ admin ─────┘
 
 Главный вопрос:
 
-> What object is this variable referring to right now?
+> На какой object эта переменная ссылается прямо сейчас?
 
 ---
 
@@ -247,9 +247,9 @@ Assign object
 └── update which copy?
 ```
 
-Instead JavaScript allows variables to refer to object values.
+Instead JavaScript allows variables to refer to object значения.
 
-Conceptual idea:
+Концептуальная идея:
 
 ```text
 Object value exists
@@ -264,7 +264,7 @@ Another variable can receive same reference
 Both variables reach same object
 ```
 
-Reference exists to let code work with object values without treating every object assignment as independent duplication.
+Reference exists to let code work with object значения without treating every object assignment as independent duplication.
 
 ### Что такое reference conceptually
 
@@ -329,7 +329,7 @@ const user = {
 };
 ```
 
-Conceptually:
+Концептуально:
 
 ```text
 Variable: user
@@ -342,13 +342,13 @@ Object value
 └── name: "Anna"
 ```
 
-Object answers:
+Object отвечает:
 
 ```text
 What information is grouped together?
 ```
 
-Reference answers:
+Reference отвечает:
 
 ```text
 Which object does this variable refer to?
@@ -356,7 +356,7 @@ Which object does this variable refer to?
 
 ### Primitive assignment
 
-Primitive values behave differently.
+Primitive значения behave differently.
 
 ```javascript
 let userName = 'Anna';
@@ -368,7 +368,7 @@ console.log(userName);
 console.log(adminName);
 ```
 
-Output:
+Вывод:
 
 ```text
 Anna
@@ -454,7 +454,7 @@ user  ─────┐
 admin ─────┘
 ```
 
-What object is `admin` referring to right now?
+На какой object сейчас ссылается `admin`?
 
 ```text
 The same object as user.
@@ -474,7 +474,7 @@ const admin = user;
 const currentUser = user;
 ```
 
-Shared object diagram:
+Shared object схема:
 
 ```text
 user        ──┐
@@ -542,9 +542,9 @@ admin.name
 └── returned value: "Anna"
 ```
 
-Question:
+Вопрос:
 
-> What object is `admin` referring to right now?
+> На какой object сейчас ссылается `admin`?
 
 Ответ:
 
@@ -595,7 +595,7 @@ After
             │    └── name: "Kate"
 ```
 
-`user.name` also shows `"Kate"` because `user` refers to the same object.
+`user.name` тоже показывает `"Kate"`, потому что `user` ссылается на тот же object.
 
 ### Assigning one reference to another variable
 
@@ -651,7 +651,7 @@ console.log(admin.name);
 console.log(currentUser.name);
 ```
 
-Output:
+Вывод:
 
 ```text
 Anna
@@ -678,9 +678,9 @@ Step 2: currentUser = { name: "Kate" }
                    └── name: "Kate"
 ```
 
-Question:
+Вопрос:
 
-> What object is `currentUser` referring to right now?
+> На какой object сейчас ссылается `currentUser`?
 
 After reassignment:
 
@@ -688,9 +688,9 @@ After reassignment:
 Object B.
 ```
 
-Question:
+Вопрос:
 
-> What object is `admin` referring to right now?
+> На какой object сейчас ссылается `admin`?
 
 Ответ:
 
@@ -698,9 +698,9 @@ Question:
 Object A.
 ```
 
-### Identity vs copied primitive values
+### Identity vs copied primitive значения
 
-Primitive values are compared as values.
+Primitive значения are compared as значения.
 
 ```javascript
 const firstName = 'Anna';
@@ -709,7 +709,7 @@ const secondName = 'Anna';
 console.log(firstName === secondName);
 ```
 
-Conceptually:
+Концептуально:
 
 ```text
 "Anna" compared with "Anna"
@@ -717,7 +717,7 @@ Conceptually:
 └── same primitive value
 ```
 
-Object values are different. Two objects with same properties are still two different objects.
+Object значения are different. Two objects with same properties are still two different objects.
 
 ```javascript
 const firstUser = {
@@ -731,7 +731,7 @@ const secondUser = {
 console.log(firstUser === secondUser);
 ```
 
-Conceptual object comparison:
+Концептуальное сравнение объектов:
 
 ```text
 firstUser ──► Object A
@@ -757,9 +757,9 @@ Do both objects have same-looking properties?
 
 Detailed equality rules will be studied in a later chapter. Сейчас важно понять identity concept.
 
-### Why primitives behave differently
+### Почему примитивы ведут себя иначе
 
-Primitive values are indivisible.
+Primitive значения are indivisible.
 
 ```text
 Primitive
@@ -767,7 +767,7 @@ Primitive
 └── one value
 ```
 
-Object values are structured and can be updated through properties.
+Object значения are structured and can be updated through properties.
 
 ```text
 Object
@@ -839,7 +839,7 @@ admin.name = 'Kate';
 console.log(user.name);
 ```
 
-Complete execution diagram:
+Complete execution схема:
 
 ```text
 1. Create Object
@@ -875,7 +875,7 @@ read name from Object A
 "Kate"
 ```
 
-### Current position in JavaScript model
+### Текущее место в модели JavaScript
 
 ```text
 JavaScript Engine
@@ -923,7 +923,7 @@ Consequence
 
 ### Переход к Stack & Heap
 
-References explain behavior:
+References explain поведение:
 
 ```text
 Several variables can refer to one object.
@@ -939,7 +939,7 @@ Why do diagrams often show Stack and Heap?
 
 Next chapter answers those questions. It will introduce Stack & Heap as a conceptual model, not as a precise engine implementation.
 
-Bridge diagram:
+Bridge схема:
 
 ```text
 References
@@ -1118,7 +1118,7 @@ Both variables read from the same object.
 currentUser.role = 'admin';
 ```
 
-The property belongs to the shared object.
+Свойство относится к общему объекту.
 
 ### 05-reference-reassignment.js
 
@@ -1184,9 +1184,9 @@ user.name = 'Kate';
 
 `const` prevents reassignment of `user`, not updating object properties.
 
-### How can I avoid accidental mutation in tests?
+### Как избежать случайной мутации в тестах?
 
-At a simple level, create a new object for expected data instead of reusing a shared mutable object.
+At a simple level, create a new object for expected data вместо reusing a shared mutable object.
 
 ```javascript
 const defaultUser = {
@@ -1204,7 +1204,7 @@ Object spread syntax creates a new object at the first level. Spread will be stu
 
 ### Are arrays affected by references too?
 
-Yes. Arrays are object values, so variables can refer to the same array. Arrays will be studied in a dedicated chapter.
+Yes. Arrays are object значения, so variables can refer to the same array. Arrays will be studied in a dedicated chapter.
 
 ---
 
@@ -1246,7 +1246,7 @@ admin refers to same object as user
 
 Реальность:
 
-Two different object values may have same properties but different identity.
+Two different object значения may have same properties but different identity.
 
 ```text
 Object A { name: "Anna" }
@@ -1259,7 +1259,7 @@ They are not the same object.
 
 Реальность:
 
-References can be understood from observable behavior first. Stack & Heap will make the memory diagram clearer later.
+References can be understood from observable поведение first. Stack & Heap will make the memory diagram clearer later.
 
 ---
 
@@ -1303,7 +1303,7 @@ const admin = user;
 
 This does not create a second object.
 
-### Ошибка 3. Сравнивать object identity instead of structure
+### Ошибка 3. Сравнивать object identity вместо structure
 
 ```javascript
 const expectedUser = {
@@ -1321,7 +1321,7 @@ Conceptually these are two different objects.
 
 Detailed equality and assertion strategies will be studied later.
 
-### Ошибка 4. Mutate helper input
+### Ошибка 4. Mutate helper вход
 
 ```javascript
 function markAsAdmin(user) {
@@ -1329,7 +1329,7 @@ function markAsAdmin(user) {
 }
 ```
 
-This helper changes the object it receives. Functions will be studied later, but the reference behavior is already visible: if вызывающий код and helper work with same object, mutation is shared.
+This helper changes the object it receives. Functions will be studied later, but the reference поведение is already visible: if вызывающий код and helper work with same object, mutation is shared.
 
 ### Ошибка 5. Hide shared mutable test data
 
@@ -1364,11 +1364,11 @@ localConfig.retries = 3;
 console.log(config.retries);
 ```
 
-`config.retries` is `3`, because both variables refer to same object.
+`config.retries` is `3`, потому что обе переменные ссылаются на один object.
 
 ### Preparing new object from existing data
 
-Sometimes you want a new object instead of shared reference.
+Sometimes you want a new object вместо shared reference.
 
 ```javascript
 const defaultUser = {
@@ -1382,7 +1382,7 @@ const adminUser = {
 };
 ```
 
-This uses object spread to create a new first-level object. Detailed spread behavior will be studied later.
+This uses object spread to create a new first-level object. Detailed spread поведение will be studied later.
 
 ### Complete reference overview
 
@@ -1434,7 +1434,7 @@ actualUser.role = 'admin';
 
 This destroys the meaning of `expectedUser`.
 
-Better:
+Лучше:
 
 ```javascript
 const expectedUser = {
@@ -1485,7 +1485,7 @@ addRole(testUser);
 console.log(testUser.role);
 ```
 
-Output:
+Вывод:
 
 ```text
 admin
@@ -1493,9 +1493,9 @@ admin
 
 The helper modified the object that `testUser` refers to.
 
-Functions will be studied later. Here the important part is reference behavior.
+Functions will be studied later. Here the important part is reference поведение.
 
-### Debugging unexpected object changes
+### Отладка unexpected object changes
 
 When object changes unexpectedly, ask:
 
@@ -1514,7 +1514,7 @@ This mental checklist helps debug Playwright fixtures, request payload builders,
 
 References explain why object assignment behaves differently from primitive assignment.
 
-Primitive assignment:
+Присваивание примитива:
 
 ```text
 let a = "Anna"
@@ -1524,7 +1524,7 @@ b = "Kate"
 a remains "Anna"
 ```
 
-Object assignment:
+Присваивание объекта:
 
 ```text
 const user = { name: "Anna" }
@@ -1534,7 +1534,7 @@ admin.name = "Kate"
 user.name becomes "Kate"
 ```
 
-Core model:
+Основная модель:
 
 ```text
 Variables do not contain objects.
@@ -1544,14 +1544,14 @@ Multiple variables can refer to the same object.
 
 Reference is not the object. It is the conceptual connection that lets a variable reach an object.
 
-The next chapter will explain Stack & Heap as the common conceptual memory model behind this behavior.
+The next chapter will explain Stack & Heap as the common conceptual memory model behind this поведение.
 
 ---
 
 ## Что нужно запомнить
 
 * Object assignment does not create an independent copy.
-* Variables refer to object values.
+* Variables refer to object значения.
 * Multiple variables can refer to the same object.
 * Updating property through one variable affects the shared object.
 * Other variables referring to that object observe the update.
@@ -1560,7 +1560,7 @@ The next chapter will explain Stack & Heap as the common conceptual memory model
 * Same-looking objects may still be different objects.
 * Shared test data can be accidentally mutated.
 * Helper functions can change objects they receive.
-* Stack & Heap will be studied next; references should first be understood through behavior.
+* Stack & Heap will be studied next; references should first be understood through поведение.
 
 ---
 
@@ -1570,7 +1570,7 @@ The next chapter will explain Stack & Heap as the common conceptual memory model
 
 1. Почему `admin.name = 'Kate'` can change `user.name`?
 2. Reference and object are the same thing?
-3. Что означает `const admin = user` for object values?
+3. Что означает `const admin = user` for object значения?
 4. Что происходит при primitive assignment?
 5. Что означает object identity?
 6. Почему two same-looking objects may not be equal by identity?
@@ -1601,4 +1601,4 @@ practice/01-javascript/13-references.md
 solutions/01-javascript/13-references.md
 ```
 
-Читайте решения после самостоятельной попытки. Проверяйте не только output, но и reasoning: какой object общий, какой object новый, где произошло property update, где произошло reassignment.
+Читайте решения после самостоятельной попытки. Проверяйте не только вывод, но и reasoning: какой object общий, какой object новый, где произошло property update, где произошло reassignment.

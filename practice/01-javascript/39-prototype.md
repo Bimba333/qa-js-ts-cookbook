@@ -8,7 +8,7 @@
 * видеть duplicated methods;
 * отличать own property from inherited property;
 * описывать property lookup;
-* понимать, где живет shared behavior;
+* понимать, где живет общее поведение;
 * использовать `Object.getPrototypeOf()` для проверки prototype;
 * применять Prototype model к Page Objects and API clients.
 
@@ -16,14 +16,14 @@
 
 ## 1. Концептуальные вопросы
 
-1. Why is shared behavior useful?
+1. Why is общее поведение useful?
 2. Почему duplicated methods become a maintenance problem?
 3. Что такое prototype object на концептуальном уровне?
 4. Чем own property отличается от inherited property?
 5. Где JavaScript ищет property сначала?
 6. Что происходит, если property не найдена directly on object?
 7. Почему Prototype не стоит объяснять primarily as inheritance?
-8. Почему per-object state обычно должен быть own property?
+8. Почему per-object состояние обычно должен быть own property?
 9. Что возвращает `Object.getPrototypeOf(object)`?
 10. Почему `__proto__` не нужен для основной mental model этой главы?
 
@@ -73,7 +73,7 @@ Object.setPrototypeOf(apiClient, apiBehavior);
 Ответьте:
 
 * Which value is own data?
-* Which behavior is shared?
+* Which поведение is shared?
 * What object is prototype for `apiClient`?
 
 ---
@@ -246,7 +246,7 @@ console.log(secondUser.describe());
 
 ---
 
-## 6. Debugging tasks
+## 6. Задания на отладку
 
 ### Задание 6.1
 
@@ -318,7 +318,7 @@ console.log(user.describe());
 
 ---
 
-## 7. QA-oriented tasks
+## 7. QA-задачи
 
 ### Задание 7.1
 
@@ -347,7 +347,7 @@ console.log(user.describe());
 
 ### Задание 7.4
 
-Опишите, какие данные API client должны быть own properties, а какое behavior можно вынести в shared prototype.
+Опишите, какие данные API client должны быть own properties, а какое поведение можно вынести в shared prototype.
 
 ---
 
@@ -358,8 +358,8 @@ console.log(user.describe());
 Требования:
 
 1. Создайте `validatorBehavior`.
-2. Добавьте method `describeExpectation()` to shared behavior.
-3. Добавьте method `describeActual()` to shared behavior.
+2. Добавьте method `describeExpectation()` to общее поведение.
+3. Добавьте method `describeActual()` to общее поведение.
 4. Создайте `statusValidator` with own `expected` and `actual`.
 5. Создайте `roleValidator` with own `expected` and `actual`.
 6. Свяжите оба validators with `validatorBehavior`.
@@ -369,5 +369,5 @@ console.log(user.describe());
 После выполнения объясните:
 
 * where own data lives;
-* where shared behavior lives;
-* why shared behavior is useful here.
+* where общее поведение lives;
+* why общее поведение is useful here.

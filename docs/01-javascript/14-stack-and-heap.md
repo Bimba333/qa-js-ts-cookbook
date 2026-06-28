@@ -2,7 +2,7 @@
 
 ## Связь с предыдущей главой
 
-Предыдущая глава объяснила references через observable behavior:
+Предыдущая глава объяснила references через observable поведение:
 
 ```javascript
 const user = {
@@ -34,7 +34,7 @@ Multiple variables can refer to the same object.
 
 > Почему почти все книги, статьи и схемы рисуют Stack and Heap?
 
-Ответ: Stack & Heap diagrams are conceptual tools. Они помогают визуализировать behavior with primitive values, object values and references.
+Ответ: Stack & Heap diagrams are conceptual tools. Они помогают визуализировать поведение with primitive значения, object значения and references.
 
 Важно:
 
@@ -48,7 +48,7 @@ Stack & Heap diagrams
 
 Главный вопрос этой главы:
 
-> What does this diagram help us understand?
+> Что помогает понять эта схема?
 
 ---
 
@@ -56,10 +56,10 @@ Stack & Heap diagrams
 
 Для этой главы нужно понимать:
 
-* что primitive values are indivisible;
-* что Object values group related information;
+* что primitive значения are indivisible;
+* что Object значения group related information;
 * что variables give named access;
-* что references connect variables with object values conceptually;
+* что references connect variables with object значения conceptually;
 * что multiple variables can refer to the same object;
 * что property update through one reference is visible through another reference.
 
@@ -105,7 +105,7 @@ docs/01-javascript/14-stack-and-heap.md
 docs/01-javascript/15-type-conversion.md
 ```
 
-Следующая глава сменит фокус с memory model на value transformations: как JavaScript converts values between types.
+Следующая глава сменит фокус с memory model на value transformations: как JavaScript converts значения between types.
 
 ---
 
@@ -116,8 +116,8 @@ docs/01-javascript/15-type-conversion.md
 * зачем programmers use Stack & Heap diagrams;
 * что Stack means in this conceptual model;
 * что Heap means in this conceptual model;
-* как primitive values обычно показывают на таких диаграммах;
-* как object values обычно показывают на таких диаграммах;
+* как primitive значения обычно показывают на таких диаграммах;
+* как object значения обычно показывают на таких диаграммах;
 * как references связывают Stack side and Heap side conceptually;
 * как function calls relate to Stack на высоком уровне;
 * как visual diagrams explain object sharing;
@@ -173,7 +173,7 @@ Both entries lead to the same object.
 Property update changes the shared object.
 ```
 
-Это и есть причина, почему Stack & Heap diagrams are popular: they make reference behavior visible.
+Это и есть причина, почему Stack & Heap diagrams are popular: they make reference поведение visible.
 
 ---
 
@@ -191,7 +191,7 @@ Why did object change through another variable?
 Why did reassignment not change old object?
 ```
 
-Conceptual overview:
+Концептуальный обзор:
 
 ```text
 Conceptual Memory Map
@@ -218,7 +218,7 @@ It is not a promise of exact engine layout.
 
 ### Stack as a conceptual model
 
-Stack in this chapter is a conceptual area where we draw active execution data: variable entries, primitive values and references.
+Stack in this chapter is a conceptual area where we draw active execution data: variable entries, primitive значения and references.
 
 Stack concept:
 
@@ -230,7 +230,7 @@ Stack-like area
 └── user: reference to Object A
 ```
 
-What does this diagram help us understand?
+Что помогает понять эта схема?
 
 ```text
 Which names are active right now.
@@ -254,7 +254,7 @@ Function call details are still high-level in this chapter. Execution Context an
 
 ### Heap as a conceptual model
 
-Heap in this chapter is a conceptual area where we draw object values.
+Heap in this chapter is a conceptual area where we draw object значения.
 
 Heap concept:
 
@@ -270,7 +270,7 @@ Heap-like area
     └── role: "admin"
 ```
 
-What does this diagram help us understand?
+Что помогает понять эта схема?
 
 ```text
 Objects can be shared.
@@ -290,9 +290,9 @@ Read it as:
 The conceptual model represents object values separately from variable entries.
 ```
 
-### Primitive values in the conceptual model
+### Primitive значения in the conceptual model
 
-Primitive value diagram:
+Primitive value схема:
 
 ```javascript
 let userName = 'Anna';
@@ -301,7 +301,7 @@ let adminName = userName;
 adminName = 'Kate';
 ```
 
-Conceptual diagram:
+Концептуальная схема:
 
 ```text
 Stack-like area
@@ -310,14 +310,14 @@ Stack-like area
 └── adminName: "Kate"
 ```
 
-What does this diagram help us understand?
+Что помогает понять эта схема?
 
 ```text
 Changing adminName does not change userName.
 Primitive assignment is shown as independent values in this model.
 ```
 
-Primitive assignment:
+Присваивание примитива:
 
 ```text
 Step 1
@@ -335,9 +335,9 @@ Step 3: adminName = "Kate"
 └── adminName: "Kate"
 ```
 
-### Object values in the conceptual model
+### Object значения in the conceptual model
 
-Object value diagram:
+Object value схема:
 
 ```javascript
 const user = {
@@ -346,7 +346,7 @@ const user = {
 };
 ```
 
-Conceptual diagram:
+Концептуальная схема:
 
 ```text
 Stack-like area           Heap-like area
@@ -356,7 +356,7 @@ user ───────────────────► Object A
                           └── role: "user"
 ```
 
-What does this diagram help us understand?
+Что помогает понять эта схема?
 
 ```text
 Variable entry is drawn separately.
@@ -366,7 +366,7 @@ Reference connects them.
 
 ### Variable → Reference → Object
 
-The core diagram:
+The core схема:
 
 ```text
 Variable
@@ -388,7 +388,7 @@ user ── reference ───────► Object A
                           └── role: "user"
 ```
 
-What does this diagram help us understand?
+Что помогает понять эта схема?
 
 ```text
 The variable is not the object.
@@ -406,7 +406,7 @@ const user = {
 const admin = user;
 ```
 
-Object assignment diagram:
+Object assignment схема:
 
 ```text
 Stack-like area           Heap-like area
@@ -416,7 +416,7 @@ admin ───────────────┼──► Object A
                      │    └── name: "Anna"
 ```
 
-What does this diagram help us understand?
+Что помогает понять эта схема?
 
 ```text
 There is one object.
@@ -426,7 +426,7 @@ Both references lead to the same object.
 
 ### Shared object
 
-Shared object diagram:
+Shared object схема:
 
 ```text
 Stack-like area           Heap-like area
@@ -437,7 +437,7 @@ adminUser   ─────────┘    ├── email: "anna@example.com
                            └── role: "user"
 ```
 
-What does this diagram help us understand?
+Что помогает понять эта схема?
 
 ```text
 Mutating through any of these variables affects Object A.
@@ -450,7 +450,7 @@ All other variables that refer to Object A observe the change.
 adminUser.role = 'admin';
 ```
 
-Mutation diagram:
+Mutation схема:
 
 ```text
 Before
@@ -466,7 +466,7 @@ After adminUser.role = "admin"
                   │    └── role: "admin"
 ```
 
-What does this diagram help us understand?
+Что помогает понять эта схема?
 
 ```text
 The reference did not change.
@@ -487,7 +487,7 @@ currentUser = {
 };
 ```
 
-Reassignment diagram:
+Reassignment схема:
 
 ```text
 Before reassignment
@@ -505,7 +505,7 @@ After reassignment
                         └── name: "Kate"
 ```
 
-What does this diagram help us understand?
+Что помогает понять эта схема?
 
 ```text
 Reassignment changes what currentUser refers to.
@@ -529,7 +529,7 @@ const testUser = {
 updateRole(testUser);
 ```
 
-Function call high-level diagram:
+Function call high-level схема:
 
 ```text
 Global active area        Heap-like area
@@ -550,18 +550,18 @@ testUser ───────────────► Object A
                           └── role: "admin"
 ```
 
-What does this diagram help us understand?
+Что помогает понять эта схема?
 
 ```text
 Function parameter can refer to same object as outer variable.
 Mutation inside function changes shared object.
 ```
 
-Function internals, parameters and return behavior will be studied in detail later. This is only high-level connection.
+Function internals, parameters and return поведение will be studied in detail later. This is only high-level connection.
 
 ### Nested object
 
-Nested object conceptual diagram:
+Nested object conceptual схема:
 
 ```javascript
 const user = {
@@ -571,7 +571,7 @@ const user = {
 };
 ```
 
-Diagram:
+Схема:
 
 ```text
 Stack-like area           Heap-like area
@@ -581,7 +581,7 @@ user ───────────────────► Object A
                                           └── name: "Anna"
 ```
 
-What does this diagram help us understand?
+Что помогает понять эта схема?
 
 ```text
 Nested object is also an object value in the conceptual map.
@@ -593,7 +593,7 @@ Detailed copying of nested objects will be studied later with spread, structured
 
 ### Identity
 
-Object identity diagram:
+Object identity схема:
 
 ```javascript
 const firstUser = { name: 'Anna' };
@@ -601,7 +601,7 @@ const secondUser = { name: 'Anna' };
 const sameUser = firstUser;
 ```
 
-Diagram:
+Схема:
 
 ```text
 firstUser ──────────────► Object A
@@ -613,7 +613,7 @@ secondUser ─────────────► Object B
 sameUser ───────────────► Object A
 ```
 
-What does this diagram help us understand?
+Что помогает понять эта схема?
 
 ```text
 firstUser and sameUser refer to same object.
@@ -637,7 +637,7 @@ admin.name = 'Kate';
 console.log(user.name);
 ```
 
-Complete execution picture:
+Полная картина выполнения:
 
 ```text
 1. Create object
@@ -681,7 +681,7 @@ read name from Object A
 
 ## Внутренний механизм
 
-This chapter does not describe exact JavaScript engine internals.
+Эта глава не описывает точные внутренние детали JavaScript engine.
 
 Real engines are sophisticated:
 
@@ -706,7 +706,7 @@ Conceptual Stack & Heap model
 └── prepares for deeper memory management topics
 ```
 
-### Current position in JavaScript model
+### Текущее место в модели JavaScript
 
 ```text
 JavaScript Engine
@@ -725,7 +725,7 @@ JavaScript Engine
 └── Stack & Heap conceptual diagrams
 ```
 
-What does this diagram help us understand?
+Что помогает понять эта схема?
 
 ```text
 We are not learning a new syntax feature.
@@ -744,7 +744,7 @@ Reality
 └── "This is a useful conceptual diagram for understanding behavior."
 ```
 
-Myth vs reality diagram:
+Myth vs reality схема:
 
 ```text
 Simple diagram
@@ -762,9 +762,9 @@ Real engine
 
 ### Переход к Type Conversion
 
-Stack & Heap explains how we visualize values and object references.
+Stack & Heap explains how we visualize значения and object references.
 
-Next, the course shifts to another kind of behavior:
+Next, the course shifts to another kind of поведение:
 
 ```text
 Value exists
@@ -816,7 +816,7 @@ Archive
 └── folder: Payload
 ```
 
-What does this model help understand?
+Что помогает понять эта модель?
 
 ```text
 Active variables are easy to see on the desk.
@@ -878,7 +878,7 @@ Object A
 └── actual grouped data
 ```
 
-### Conceptual map
+### Концептуальная карта
 
 Best mental model:
 
@@ -941,23 +941,23 @@ node examples/01-javascript/chapter-14/06-common-mistakes.js
 
 ### Is Stack & Heap the real engine implementation?
 
-No. It is a conceptual model used to understand behavior. Real engines are more sophisticated.
+No. It is a conceptual model used to understand поведение. Real engines are more sophisticated.
 
 ### Are primitives always physically on Stack?
 
-This chapter does not make physical claims. In diagrams, primitive values are often drawn in stack-like area because it helps explain assignment behavior.
+Эта глава не делает физических утверждений. На схемах primitive значения часто рисуются в Stack-like области, потому что это помогает объяснить поведение присваивания.
 
 ### Are objects always physically on Heap?
 
-This chapter does not teach physical storage rules. It says: object values are drawn in heap-like area in the conceptual model.
+Эта глава не учит физические правила хранения. Она говорит: object значения рисуются в Heap-like области в концептуальной модели.
 
-### Why use the model if it is not exact?
+### Зачем использовать модель, если она не точная?
 
-Because it explains observable behavior well enough for reasoning, debugging and learning references.
+Because it explains observable поведение well enough for reasoning, debugging and learning references.
 
 ### Does this chapter teach Garbage Collector?
 
-No. Garbage Collector internals will be studied later. Here we only discuss diagrams for values, references and objects.
+No. Garbage Collector internals will be studied later. Here we only discuss diagrams for значения, references and objects.
 
 ---
 
@@ -975,7 +975,7 @@ The diagram is a conceptual map.
 
 The conceptual model represents objects separately from variable entries. Real engine layout can differ.
 
-### Миф: Stack & Heap explains all JavaScript behavior
+### Миф: Stack & Heap explains all JavaScript поведение
 
 Реальность:
 
@@ -993,7 +993,7 @@ Garbage Collector is a separate topic with its own mechanisms.
 
 ### Ошибка 1. Treat conceptual diagram as physical truth
 
-Correct view:
+Правильный взгляд:
 
 ```text
 Use diagram to reason.
@@ -1002,20 +1002,20 @@ Do not overclaim implementation.
 
 ### Ошибка 2. Draw two objects after direct assignment
 
-Wrong:
+Неправильно:
 
 ```text
 user  ──► Object A
 admin ──► Object B
 ```
 
-For:
+Для:
 
 ```javascript
 const admin = user;
 ```
 
-Better:
+Лучше:
 
 ```text
 user  ──┐
@@ -1032,7 +1032,7 @@ same object
 changed property
 ```
 
-Reassignment:
+Переназначение:
 
 ```text
 same variable name
@@ -1044,7 +1044,7 @@ different object
 
 Nested object can also be shared in conceptual diagrams.
 
-### Ошибка 5. Debug flaky tests without drawing shared state
+### Ошибка 5. Debug flaky tests without drawing shared состояние
 
 If shared request body changes unexpectedly, draw:
 
@@ -1060,13 +1060,13 @@ which helper changed which property
 Stack & Heap diagrams are useful when:
 
 * object is changed unexpectedly;
-* helper mutates input;
+* helper mutates вход;
 * test data is reused;
 * expected and actual objects look suspiciously connected;
 * reassignment does not affect old variable;
 * same-looking objects compare unexpectedly.
 
-Practical checklist:
+Практический чек-лист:
 
 ```text
 1. Draw variable names.
@@ -1093,7 +1093,7 @@ const adminPayload = defaultPayload;
 adminPayload.role = 'admin';
 ```
 
-Diagram:
+Схема:
 
 ```text
 defaultPayload ──┐
@@ -1105,7 +1105,7 @@ This explains why default request body changed unexpectedly.
 
 ### Fixture mutation
 
-A fixture may return object. If test mutates it, another part of setup may observe changed state if same object is reused.
+A fixture may return object. If test mutates it, another part of setup may observe changed состояние if same object is reused.
 
 ```text
 fixtureData ──┐
@@ -1114,7 +1114,7 @@ testData    ──┘──► Object A
 
 ### Object reuse
 
-Object reuse is not bad by itself. It becomes risky when mutable shared object is changed.
+Переиспользование object не плохо само по себе. Риск появляется, когда изменяется mutable shared object.
 
 ### Payload preparation
 
@@ -1127,9 +1127,9 @@ const adminPayload = {
 };
 ```
 
-Spread details will be studied later. Here it means: create a new first-level object instead of assigning same reference.
+Spread details will be studied later. Here it means: create a new first-level object вместо assigning same reference.
 
-### Debugging shared state
+### Отладка shared состояние
 
 When Playwright test is flaky, ask:
 
@@ -1140,7 +1140,7 @@ Did fixture return shared object?
 Did one test change data used by another test?
 ```
 
-Memory diagrams help because flaky behavior often comes from hidden shared state.
+Схемы памяти помогают, потому что flaky-поведение часто возникает из скрытого общего состояния.
 
 ---
 
@@ -1191,17 +1191,17 @@ Next chapter moves from memory visualization to value transformation: Type Conve
 ## Что нужно запомнить
 
 * Stack & Heap diagrams are conceptual tools.
-* They explain observable JavaScript behavior.
+* They explain observable JavaScript поведение.
 * They are not exact descriptions of every JavaScript engine.
 * Stack-like area shows active names and references in diagrams.
-* Heap-like area shows object values in diagrams.
-* Primitive values are often drawn directly in stack-like area.
-* Object variables are drawn as references to object values.
+* Heap-like area shows object значения in diagrams.
+* Primitive значения are often drawn directly in stack-like area.
+* Object variables are drawn as references to object значения.
 * Direct object assignment shares reference.
 * Mutation changes shared object.
 * Reassignment changes what variable refers to.
 * Function parameters can refer to the same object as вызывающий код variables.
-* Draw diagrams when debugging shared state in tests.
+* Рисуйте схемы при отладке общего состояния в тестах.
 
 ---
 
@@ -1209,16 +1209,16 @@ Next chapter moves from memory visualization to value transformation: Type Conve
 
 Ответьте без запуска кода.
 
-1. Why do programmers use Stack & Heap diagrams?
-2. What does Stack mean in this conceptual chapter?
-3. What does Heap mean in this conceptual chapter?
-4. Why should we not treat the diagram as exact engine implementation?
-5. How do you draw primitive assignment?
-6. How do you draw object assignment?
-7. What changes in mutation?
-8. What changes in reassignment?
-9. Why can helper function mutate вызывающий код's object?
-10. How can memory diagrams help debug flaky tests?
+1. Зачем программисты используют схемы Stack и Heap?
+2. Что означает Stack в этой концептуальной главе?
+3. Что означает Heap в этой концептуальной главе?
+4. Почему нельзя считать схему точной реализацией engine?
+5. Как нарисовать primitive assignment?
+6. Как нарисовать object assignment?
+7. Что меняется при mutation?
+8. Что меняется при reassignment?
+9. Почему helper function может изменить объект вызывающего кода?
+10. Как схемы памяти помогают отлаживать flaky tests?
 
 ---
 
@@ -1242,4 +1242,4 @@ practice/01-javascript/14-stack-and-heap.md
 solutions/01-javascript/14-stack-and-heap.md
 ```
 
-Читайте решения после самостоятельной попытки и сравнивайте не только output, но и diagram reasoning.
+Читайте решения после самостоятельной попытки и сравнивайте не только вывод, но и diagram reasoning.

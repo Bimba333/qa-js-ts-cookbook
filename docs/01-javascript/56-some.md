@@ -72,7 +72,7 @@ Result — Boolean.
 
 ## Внутренний механизм
 
-Conceptual steps:
+Концептуальные шаги:
 
 ```text
 check element

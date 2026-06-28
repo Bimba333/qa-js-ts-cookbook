@@ -164,7 +164,7 @@ Rest parameter распаковывает array в arguments.
 
 ### Сценарий 1. Many status validator
 
-Создайте function `validateStatuses(expectedStatus, ...actualStatuses)`.
+Создайте функцию `validateStatuses(expectedStatus, ...actualStatuses)`.
 
 Функция должна вывести expected status и collected actual statuses.
 
@@ -176,7 +176,7 @@ Rest parameter распаковывает array в arguments.
 
 ### Сценарий 2. Flexible logger
 
-Создайте function `logMessages(...messages)`.
+Создайте функцию `logMessages(...messages)`.
 
 Функция должна вывести array сообщений.
 
@@ -184,11 +184,11 @@ Rest parameter распаковывает array в arguments.
 
 ### Сценарий 3. Collect test data
 
-Создайте function `collectUserEmails(...userEmails)`.
+Создайте функцию `collectUserEmails(...userEmails)`.
 
 Функция должна вернуть `userEmails`.
 
-Вызовите ее с тремя email values.
+Вызовите ее с тремя email значения.
 
 ### Сценарий 4. Naming
 
@@ -213,10 +213,10 @@ playground/rest-qa-helpers.js
 
 В нем:
 
-1. Создайте function `validateStatuses(expectedStatus, ...actualStatuses)`.
-2. Создайте function `logMessages(...messages)`.
-3. Создайте function `collectUserEmails(...userEmails)`.
-4. Создайте function `collectLocatorNames(...locatorNames)`.
+1. Создайте функцию `validateStatuses(expectedStatus, ...actualStatuses)`.
+2. Создайте функцию `logMessages(...messages)`.
+3. Создайте функцию `collectUserEmails(...userEmails)`.
+4. Создайте функцию `collectLocatorNames(...locatorNames)`.
 5. Вызовите каждую функцию с разным количеством arguments.
 6. Добавьте отчет:
 

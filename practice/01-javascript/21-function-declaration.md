@@ -178,7 +178,7 @@ function runEverything() {
 
 ### Сценарий 1. Переиспользуемая проверка
 
-Создайте function declaration `assertStatusIsSuccessful`.
+Создайте функцию declaration `assertStatusIsSuccessful`.
 
 Внутри используйте фиксированное значение `statusCode = 200` и выведите `Status is successful`.
 

@@ -38,7 +38,7 @@ console.log(plan.length);
 
 Сначала запишите ответ без запуска.
 
-## Debugging
+## Отладка
 
 Автор хотел получить первые два test cases, но получил три.
 
@@ -51,7 +51,7 @@ console.log(smoke);
 
 Исправьте код.
 
-## QA scenario
+## QA-сценарий
 
 Создайте snapshot payment flow из списка:
 

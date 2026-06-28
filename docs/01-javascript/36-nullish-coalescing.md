@@ -69,7 +69,7 @@ Is it null or undefined?
 * что object может содержать optional properties;
 * что missing property gives `undefined`;
 * что Optional Chaining safely returns `undefined`;
-* что `null` and `undefined` represent absent or intentionally empty values in different situations;
+* что `null` and `undefined` represent absent or intentionally empty значения in different situations;
 * что variable receives expression result;
 * что Automation QA code often uses configuration defaults.
 
@@ -117,7 +117,7 @@ docs/01-javascript/37-object-methods.md
 
 Следующая глава ответит:
 
-> Как objects могут хранить не только data, но и behavior?
+> Как objects могут хранить не только data, но и поведение?
 
 ---
 
@@ -126,7 +126,7 @@ docs/01-javascript/37-object-methods.md
 После изучения этой главы вы будете понимать:
 
 * зачем существует `??`;
-* что такое nullish values;
+* что такое nullish значения;
 * когда используется fallback value;
 * как работает evaluation order;
 * что short-circuiting означает для `??`;
@@ -217,7 +217,7 @@ is null or undefined?
 
 Nullish Coalescing exists because not every value that looks "empty" means "absent".
 
-In JavaScript:
+В JavaScript:
 
 ```text
 null
@@ -253,7 +253,7 @@ everything else
 const result = value ?? fallback;
 ```
 
-Meaning:
+Значение:
 
 ```text
 value
@@ -265,9 +265,9 @@ is null or undefined?
 └── no  -> value
 ```
 
-### Nullish values
+### Nullish значения
 
-Nullish values are:
+Nullish значения are:
 
 ```text
 null
@@ -283,7 +283,7 @@ console.log(null ?? 'fallback');
 
 Both use fallback.
 
-### Existing values
+### Existing значения
 
 Values that are not `null` or `undefined` are preserved:
 
@@ -301,9 +301,9 @@ false
 
 ```
 
-The third output is empty string. It is preserved.
+The third вывод is empty string. It is preserved.
 
-### Fallback values
+### Fallback значения
 
 Fallback value is used only when current value is `null` or `undefined`.
 
@@ -311,7 +311,7 @@ Fallback value is used only when current value is `null` or `undefined`.
 const timeout = config.timeout ?? 5000;
 ```
 
-Model:
+Модель:
 
 ```text
 config.timeout
@@ -370,13 +370,13 @@ Nullish Coalescing
 fallback if result is null/undefined
 ```
 
-Optional Chaining answers:
+Optional Chaining отвечает:
 
 ```text
 Can I safely read this path?
 ```
 
-Nullish Coalescing answers:
+Nullish Coalescing отвечает:
 
 ```text
 What should I use if result is null or undefined?
@@ -386,7 +386,7 @@ What should I use if result is null or undefined?
 
 `||` will be studied with logical operators later.
 
-For now, only remember the high-level difference:
+Пока достаточно запомнить высокоуровневую разницу:
 
 ```text
 ?? checks only null and undefined
@@ -419,7 +419,7 @@ If `retries` is intentionally `0`, `??` keeps `0`.
 const timeout = config.timeout ?? 5000;
 ```
 
-Conceptual engine flow:
+Концептуальный поток engine:
 
 ```text
 1. Evaluate config.timeout
@@ -487,7 +487,7 @@ config.retries
 const retries = config.retryPolicy?.retries ?? 2;
 ```
 
-Engine conceptual flow:
+Engine conceptual поток:
 
 ```text
 safe traversal result
@@ -664,7 +664,7 @@ console.log(retries);
 
 ## Частые вопросы
 
-### `??` заменяет все "пустые" values?
+### `??` заменяет все "пустые" значения?
 
 Нет.
 
@@ -787,7 +787,7 @@ console.log(config.timeout);
 
 ### Ошибка 4. Использовать fallback там, где missing value should fail
 
-If API field is required, fallback can hide a contract problem.
+If API поле is required, fallback can hide a contract problem.
 
 ```text
 required field missing
@@ -807,7 +807,7 @@ const timeout = config.timeout ?? 5000;
 const retries = config.retries ?? 2;
 ```
 
-### Optional API fields
+### Необязательные API-поля
 
 ```javascript
 const middleName = user.middleName ?? 'not provided';
@@ -821,7 +821,7 @@ const retries = config.retryPolicy?.retries ?? 2;
 
 If retries is `0`, `??` keeps `0`.
 
-### Timeout values
+### Timeout значения
 
 ```javascript
 const timeoutMs = config.timeouts?.api ?? 5000;
@@ -851,7 +851,7 @@ If timeout is missing, use default.
 
 If timeout is `0`, keep `0`.
 
-### Optional API fields
+### Необязательные API-поля
 
 ```javascript
 const city = response.body.user.profile?.address?.city ?? 'unknown';
@@ -1099,7 +1099,7 @@ retryPolicy?.retries
 ?? 2
 ```
 
-### 23. Optional API field
+### 23. Optional API поле
 
 ```text
 profile?.address?.city
@@ -1136,7 +1136,7 @@ false
 kept
 ```
 
-### 27. Nullish values only
+### 27. Nullish значения only
 
 ```text
 null
@@ -1275,7 +1275,7 @@ Is it null or undefined?
 
 ## Что нужно запомнить
 
-* `??` exists for fallback values.
+* `??` exists for fallback значения.
 * Fallback is used only for `null` and `undefined`.
 * `??` keeps `0`, `false`, `''` and `NaN`.
 * `??` does not change source object.
@@ -1283,8 +1283,8 @@ Is it null or undefined?
 * If left side is not nullish, fallback is not needed.
 * Optional Chaining and `??` work naturally together.
 * `??` is not the same as `||`.
-* In QA, `??` is useful for config defaults and optional API fields.
-* Object Methods are the next step: objects can contain behavior as well as data.
+* In QA, `??` is useful for config defaults and optional API поля.
+* Object Methods are the next step: objects can contain поведение as well as data.
 
 ---
 
@@ -1293,7 +1293,7 @@ Is it null or undefined?
 Ответьте без запуска кода.
 
 1. Какую проблему решает `??`?
-2. Какие values are nullish?
+2. Какие значения are nullish?
 3. Когда fallback is used?
 4. Почему `0 ?? 2` returns `0`?
 5. Почему `undefined ?? 2` returns `2`?

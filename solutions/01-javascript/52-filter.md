@@ -28,7 +28,7 @@
 
 Объяснение: element проходит проверку и остается в result.
 
-Распространённая ошибка: думать, что `true` превращается в output element.
+Распространённая ошибка: думать, что `true` превращается в вывод element.
 
 Связь с Automation QA: matching test case остается в selected run.
 
@@ -36,7 +36,7 @@
 
 Ответ: текущий element не попадает в result array.
 
-Объяснение: source array не меняется, но result этот element не получает.
+Объяснение: исходный массив не меняется, но result этот element не получает.
 
 Распространённая ошибка: думать, что `filter()` удаляет element из source.
 
@@ -46,9 +46,9 @@
 
 Ответ: нет.
 
-Объяснение: source array остается полным catalog.
+Объяснение: исходный массив остается полным catalog.
 
-Распространённая ошибка: ожидать, что source array станет короче.
+Распространённая ошибка: ожидать, что исходный массив станет короче.
 
 Связь с Automation QA: full test catalog остается доступным.
 
@@ -86,7 +86,7 @@
 
 Связь с Automation QA: condition должен соответствовать цели selection.
 
-## Debugging
+## Отладка
 
 Ответ:
 
@@ -102,7 +102,7 @@ const failedTests = testCases.filter(function (testCase) {
 
 Связь с Automation QA: пустой rerun list может скрыть реальные failures.
 
-## QA scenario
+## QA-сценарий
 
 Ответ:
 

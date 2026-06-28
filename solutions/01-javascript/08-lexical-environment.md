@@ -36,7 +36,7 @@ Record хранит identifiers текущей области, outer reference �
 
 Связь с Automation QA:
 
-Помогает объяснять lookup configuration values inside helpers.
+Помогает объяснять lookup configuration значения inside helpers.
 
 ### 3. Environment Record
 
@@ -126,7 +126,7 @@ Variables создают identifiers, а Environment Record хранит records
 
 Связь с Automation QA:
 
-Test data variables become records in their test/helper environment.
+Переменные тестовых данных становятся records в своём test/helper environment.
 
 ### 8. Связь с Memory
 
@@ -408,7 +408,7 @@ Global code lookup starts in global record and cannot search inside function rec
 
 Связь с Automation QA:
 
-Helper-local values must be returned or exposed intentionally if test needs them.
+Helper-local значения must be returned or exposed intentionally if test needs them.
 
 ### Задача 2
 
@@ -487,13 +487,13 @@ Isolation keeps helpers reusable and tests readable.
 
 Ответ:
 
-`path` lookup:
+`path` поиск:
 
 ```text
 Helper Environment Record → found
 ```
 
-`baseUrl` lookup:
+`baseUrl` поиск:
 
 ```text
 Helper Environment Record → not found
@@ -506,7 +506,7 @@ Nested helper can use local data and outer configuration through linked environm
 
 Распространённая ошибка:
 
-Treat all helper inputs as global.
+Treat all helper входs as global.
 
 Связь с Automation QA:
 
@@ -532,7 +532,7 @@ Both are needed: stack trace tells where code ran, environment model tells where
 
 Объяснение:
 
-Runtime failure can depend on both call chain and resolved values.
+Runtime failure can depend on both call chain and resolved значения.
 
 Распространённая ошибка:
 
@@ -562,7 +562,7 @@ function testLogin() {
 testLogin();
 ```
 
-Diagram:
+Схема:
 
 ```text
 Block Lexical Environment

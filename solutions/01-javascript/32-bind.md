@@ -4,9 +4,9 @@
 
 ### 1.1 Какую проблему решает `bind()`?
 
-**Ответ:** `bind()` позволяет явно выбрать receiver заранее и получить новую function для будущих вызовов.
+**Ответ:** `bind()` позволяет явно выбрать объект выполнения заранее и получить новую function для будущих вызовов.
 
-**Объяснение:** `call()` и `apply()` выбирают receiver и сразу выполняют function. `bind()` выбирает receiver, но возвращает function.
+**Объяснение:** `call()` и `apply()` выбирают объект выполнения и сразу выполняют function. `bind()` выбирает объект выполнения, но возвращает function.
 
 **Распространённая ошибка:** думать, что `bind()` просто вызывает function с нужным `this`.
 
@@ -18,7 +18,7 @@
 
 **Объяснение:** invocation происходит только тогда, когда вызывается returned function.
 
-**Распространённая ошибка:** ожидать output сразу после строки с `bind()`.
+**Распространённая ошибка:** ожидать вывод сразу после строки с `bind()`.
 
 **Связь с Automation QA:** prepared helper можно создать в setup, а вызывать позже в тестах.
 
@@ -26,7 +26,7 @@
 
 **Ответ:** новую function object.
 
-**Объяснение:** эта function связана с target function и заранее выбранным receiver.
+**Объяснение:** эта function связана с target function и заранее выбранным объект выполнения.
 
 **Распространённая ошибка:** считать, что `bind()` возвращает результат выполнения target function.
 
@@ -36,7 +36,7 @@
 
 **Ответ:** `call()` вызывает function сразу, `bind()` возвращает новую function для будущего вызова.
 
-**Объяснение:** оба механизма выбирают receiver явно, но момент выполнения разный.
+**Объяснение:** оба механизма выбирают объект выполнения явно, но момент выполнения разный.
 
 **Распространённая ошибка:** использовать `bind()`, когда нужен одноразовый немедленный вызов.
 
@@ -46,27 +46,27 @@
 
 **Ответ:** `apply()` вызывает function сразу и передает arguments через array или array-like collection. `bind()` возвращает новую function.
 
-**Объяснение:** `apply()` решает задачу передачи ordered argument list, `bind()` - задачу delayed invocation с fixed receiver.
+**Объяснение:** `apply()` решает задачу передачи ordered argument list, `bind()` - задачу delayed invocation с fixed объект выполнения.
 
 **Распространённая ошибка:** сравнивать `bind()` и `apply()` только по синтаксису.
 
 **Связь с Automation QA:** `apply()` полезен, когда данные уже лежат в array, `bind()` - когда нужен reusable helper.
 
-### 1.6 Что такое fixed receiver?
+### 1.6 Что такое fixed объект выполнения?
 
-**Ответ:** receiver, заранее выбранный через `bind()` для будущих вызовов bound function.
+**Ответ:** объект выполнения, заранее выбранный через `bind()` для будущих вызовов bound function.
 
 **Объяснение:** при вызове bound function `this` берется из binding, а не из обычной формы вызова.
 
-**Распространённая ошибка:** думать, что receiver будет каждый раз определяться заново как у обычного method call.
+**Распространённая ошибка:** думать, что объект выполнения будет каждый раз определяться заново как у обычного method call.
 
-**Связь с Automation QA:** fixed receiver может быть environment config, API client или reporting context.
+**Связь с Automation QA:** fixed объект выполнения может быть environment config, API client или reporting context.
 
 ### 1.7 Почему `bind()` не изменяет original function?
 
 **Ответ:** потому что `bind()` создает новую function.
 
-**Объяснение:** original function остается такой же и может быть вызвана с другим receiver через `call()` или `apply()`.
+**Объяснение:** original function остается такой же и может быть вызвана с другим объект выполнения через `call()` или `apply()`.
 
 **Распространённая ошибка:** ожидать, что после `validate.bind(config)` сама `validate` уже привязана.
 
@@ -84,7 +84,7 @@
 
 ### 1.9 В каком случае `bind()` делает код читаемее?
 
-**Ответ:** когда один receiver используется для многих будущих вызовов.
+**Ответ:** когда один объект выполнения используется для многих будущих вызовов.
 
 **Объяснение:** вместо повторяющегося `.call(config, ...)` появляется named helper.
 
@@ -94,9 +94,9 @@
 
 ### 1.10 Почему detached function - не единственное применение `bind()`?
 
-**Ответ:** потому что `bind()` является общим механизмом явного выбора receiver заранее.
+**Ответ:** потому что `bind()` является общим механизмом явного выбора объект выполнения заранее.
 
-**Объяснение:** восстановление receiver у detached function - только один сценарий. Другой сценарий - создание prepared helper для многих вызовов.
+**Объяснение:** восстановление объект выполнения у detached function - только один сценарий. Другой сценарий - создание prepared helper для многих вызовов.
 
 **Распространённая ошибка:** определять `bind()` только через detached functions.
 
@@ -104,21 +104,21 @@
 
 ---
 
-## 2. Определите receiver
+## 2. Определите объект выполнения
 
 ### 2.1
 
 **Ответ:** `this` внутри `printName` будет `user`.
 
-**Объяснение:** `printName.bind(user)` возвращает bound function с fixed receiver `user`.
+**Объяснение:** `printName.bind(user)` возвращает bound function с fixed объект выполнения `user`.
 
-**Распространённая ошибка:** искать receiver в форме `printUserName()`. Для bound function receiver уже выбран.
+**Распространённая ошибка:** искать объект выполнения в форме `printUserName()`. Для bound function объект выполнения уже выбран.
 
 **Связь с Automation QA:** так можно привязать helper к конкретному config object.
 
 ### 2.2
 
-**Ответ:** receiver будет `stagingClient`, вывод будет:
+**Ответ:** объект выполнения будет `stagingClient`, вывод будет:
 
 ```text
 https://staging.example.test/users
@@ -132,15 +132,15 @@ https://staging.example.test/users
 
 ### 2.3
 
-**Ответ:** receiver останется `reportConfig`, результат:
+**Ответ:** объект выполнения останется `reportConfig`, результат:
 
 ```text
 smoke: passed
 ```
 
-**Объяснение:** `formatSmokeMessage` уже bound function. В этой базовой модели receiver выбран через `bind(reportConfig)`.
+**Объяснение:** `formatSmokeMessage` уже bound function. В этой базовой модели объект выполнения выбран через `bind(reportConfig)`.
 
-**Распространённая ошибка:** думать, что `.call(anotherConfig, ...)` обязательно заменит receiver у bound function.
+**Распространённая ошибка:** думать, что `.call(anotherConfig, ...)` обязательно заменит объект выполнения у bound function.
 
 **Связь с Automation QA:** если helper уже привязан к suite config, его поведение предсказуемо при обычном использовании.
 
@@ -190,9 +190,9 @@ smoke: passed
 staging
 ```
 
-**Объяснение:** `getStagingEnvironment` - bound function с receiver `config`.
+**Объяснение:** `getStagingEnvironment` - bound function с объект выполнения `config`.
 
-**Распространённая ошибка:** думать, что `this` будет `undefined`, потому что вызов выглядит как standalone. Для bound function receiver уже выбран.
+**Распространённая ошибка:** думать, что `this` будет `undefined`, потому что вызов выглядит как standalone. Для bound function объект выполнения уже выбран.
 
 **Связь с Automation QA:** helper может безопасно использовать environment config.
 
@@ -236,9 +236,9 @@ https://api.example.test/users
 false
 ```
 
-**Объяснение:** оба вызова `bind()` создают разные function objects, даже если target function и receiver одинаковые.
+**Объяснение:** оба вызова `bind()` создают разные function objects, даже если target function и объект выполнения одинаковые.
 
-**Распространённая ошибка:** ожидать `true`, потому что receiver один и тот же.
+**Распространённая ошибка:** ожидать `true`, потому что объект выполнения один и тот же.
 
 **Связь с Automation QA:** если нужно сравнивать или удалять handlers/helpers по identity, важно хранить конкретную function.
 
@@ -279,7 +279,7 @@ preparedPrint();
 
 ---
 
-## 6. Debugging tasks
+## 6. Задания на отладку
 
 ### 6.1
 
@@ -305,7 +305,7 @@ console.log(validateExpectedStatus(200));
 
 **Объяснение:** original `validateStatus` не изменился после `bind()`.
 
-**Распространённая ошибка:** вызывать original function и ожидать fixed receiver.
+**Распространённая ошибка:** вызывать original function и ожидать fixed объект выполнения.
 
 **Связь с Automation QA:** так часто ломаются helpers, которые "привязали", но продолжили вызывать старую function.
 
@@ -359,7 +359,7 @@ const buildApiUrl = buildUrl.bind(apiClient);
 console.log(buildApiUrl('/users'));
 ```
 
-**Объяснение:** `bind(apiClient)` фиксирует receiver, но не передает `path`, если он не указан отдельно.
+**Объяснение:** `bind(apiClient)` фиксирует объект выполнения, но не передает `path`, если он не указан отдельно.
 
 **Распространённая ошибка:** думать, что `bind()` решает все arguments автоматически.
 
@@ -389,7 +389,7 @@ console.log(validateStagingStatus('/orders', 201, 201));
 console.log(validateStagingStatus('/profile', 200, 200));
 ```
 
-**Объяснение:** receiver `staging` выбран один раз, затем helper вызывается как обычная function.
+**Объяснение:** объект выполнения `staging` выбран один раз, затем helper вызывается как обычная function.
 
 **Распространённая ошибка:** оставить `.call(staging, ...)` после создания bound helper.
 
@@ -414,7 +414,7 @@ console.log(buildApiUrl('/users'));
 console.log(buildApiUrl('/orders'));
 ```
 
-**Объяснение:** `buildApiUrl` уже знает receiver.
+**Объяснение:** `buildApiUrl` уже знает объект выполнения.
 
 **Распространённая ошибка:** ожидать, что `bind()` построит URL без вызова.
 
@@ -422,7 +422,7 @@ console.log(buildApiUrl('/orders'));
 
 ---
 
-## 8. QA-oriented tasks
+## 8. QA-задачи
 
 ### 8.1
 
@@ -443,9 +443,9 @@ console.log(assertSmokeStatus('login', 200, 200));
 console.log(assertSmokeStatus('checkout', 500, 200));
 ```
 
-**Объяснение:** `assertSmokeStatus` - reusable helper with fixed receiver.
+**Объяснение:** `assertSmokeStatus` - reusable helper with fixed объект выполнения.
 
-**Распространённая ошибка:** передавать `smokeSuite` как обычный first argument вместо binding receiver.
+**Распространённая ошибка:** передавать `smokeSuite` как обычный first argument вместо binding объект выполнения.
 
 **Связь с Automation QA:** suite metadata не нужно повторять в каждом assertion.
 
@@ -469,7 +469,7 @@ console.log(requestBillingPath('/payments'));
 console.log(requestBillingPath('/refunds'));
 ```
 
-**Объяснение:** receiver `billingClient` выбран один раз.
+**Объяснение:** объект выполнения `billingClient` выбран один раз.
 
 **Распространённая ошибка:** забыть передать path при вызове prepared helper.
 
@@ -479,7 +479,7 @@ console.log(requestBillingPath('/refunds'));
 
 **Ответ:** второй вариант обычно читается лучше, если таких вызовов много.
 
-**Объяснение:** имя `validateStagingResponse` фиксирует намерение. Код ниже фокусируется на path и status, а не на постоянном receiver.
+**Объяснение:** имя `validateStagingResponse` фиксирует намерение. Код ниже фокусируется на path и status, а не на постоянном объект выполнения.
 
 **Распространённая ошибка:** всегда заменять `call()` на `bind()`. Если вызов один, `call()` может быть яснее.
 
@@ -534,12 +534,12 @@ console.log(formatLocalBillingCheck('/payments', 200, 200));
 
 ## 10. Контрольные вопросы
 
-1. При обычном `object.method()` receiver выбирается формой вызова.
-2. При `call()` receiver выбирает разработчик через первый argument.
-3. При `apply()` receiver выбирает разработчик через первый argument.
-4. При `bind()` receiver выбирает разработчик заранее, при создании bound function.
+1. При обычном `object.method()` объект выполнения выбирается формой вызова.
+2. При `call()` объект выполнения выбирает разработчик через первый argument.
+3. При `apply()` объект выполнения выбирает разработчик через первый argument.
+4. При `bind()` объект выполнения выбирает разработчик заранее, при создании bound function.
 5. Execution происходит после вызова returned function.
 6. `bind()` полезен для reusable validators, потому что config выбирается один раз.
 7. Если не сохранить результат `bind()`, новая function потеряется.
 
-**Общий вывод:** `bind()` завершает базовую модель manual receiver selection. Он нужен не для немедленного запуска, а для подготовки function к будущим вызовам.
+**Общий вывод:** `bind()` завершает базовую модель manual объект выполнения selection. Он нужен не для немедленного запуска, а для подготовки function к будущим вызовам.

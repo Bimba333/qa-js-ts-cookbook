@@ -82,7 +82,7 @@ Initialization — момент, когда identifier получает first us
 
 Объяснение:
 
-For `let user;`, initialization happens when declaration line executes, with value `undefined`.
+Для `let user;`, initialization happens when declaration line executes, with value `undefined`.
 
 Распространённая ошибка:
 
@@ -208,7 +208,7 @@ TDZ ReferenceError: identifier exists but is uninitialized. Missing identifier: 
 
 Объяснение:
 
-Both can be ReferenceError, but states differ.
+Оба случая могут дать ReferenceError, но состояния отличаются.
 
 Распространённая ошибка:
 
@@ -250,11 +250,11 @@ Block scope controls TDZ for block-level `const`.
 
 Распространённая ошибка:
 
-Start TDZ at global scope instead of block scope.
+Start TDZ at global scope вместо block scope.
 
 Связь с Automation QA:
 
-Useful for block-scoped assertion values.
+Useful for block-scoped assertion значения.
 
 ### Фрагмент 3
 
@@ -346,7 +346,7 @@ Expect undefined.
 
 Config constants must be declared before building derived URLs.
 
-## Определите identifier state
+## Определите identifier состояние
 
 Ответ:
 
@@ -363,7 +363,7 @@ Line | Identifier | State
 
 Объяснение:
 
-Creation Phase prepares all records, but states differ.
+Creation Phase подготавливает все записи, но состояния отличаются.
 
 Распространённая ошибка:
 
@@ -383,7 +383,7 @@ Engine knows `baseUrl`; it is registered in Environment Record. Error means acce
 
 Объяснение:
 
-TDZ ReferenceError is about state, not absence.
+TDZ ReferenceError is about состояние, not absence.
 
 Распространённая ошибка:
 
@@ -399,7 +399,7 @@ In helper files, check whether derived constants are declared before dependencie
 
 Ошибка: `loginUrl` reads `baseUrl` while `baseUrl` is in TDZ.
 
-Corrected:
+Исправленный вариант:
 
 ```javascript
 const baseUrl = 'https://example.com';
@@ -449,7 +449,7 @@ Precise language improves team debugging and mentoring.
 
 Helper падает because `loginUrl` tries to read `baseUrl` before `baseUrl` initialization.
 
-Corrected:
+Исправленный вариант:
 
 ```javascript
 const baseUrl = 'https://example.com';
@@ -462,7 +462,7 @@ const loginUrl = baseUrl + '/login';
 
 Распространённая ошибка:
 
-Blame string concatenation instead of declaration order.
+Blame string concatenation вместо declaration order.
 
 Связь с Automation QA:
 
@@ -472,7 +472,7 @@ URL builders should declare base config before derived URLs.
 
 Ответ:
 
-Output:
+Вывод:
 
 ```text
 undefined
@@ -496,7 +496,7 @@ Modern tests prefer `const` to fail earlier on ordering mistakes.
 
 Ответ:
 
-TDZ makes reads before initialization fail loudly. This helps find declaration order mistakes instead of silently using `undefined`.
+TDZ makes reads before initialization fail loudly. This helps find declaration order mistakes вместо silently using `undefined`.
 
 Объяснение:
 
@@ -508,7 +508,7 @@ Use `var` to avoid ReferenceError, hiding real issue.
 
 Связь с Automation QA:
 
-Fail-fast behavior is valuable in Playwright setup and helpers.
+Fail-fast поведение is valuable in Playwright setup and helpers.
 
 ## Мини-проект
 
@@ -530,7 +530,7 @@ var status = 'created';
 console.log(status);
 ```
 
-Timeline:
+Временная шкала:
 
 ```text
 Creation Phase
@@ -551,7 +551,7 @@ Execution Phase
 
 Объяснение:
 
-`baseUrl` and `userName` have TDZ before their declaration lines, but all reads in this project happen after initialization.
+`baseUrl` и `userName` находятся в TDZ до своих строк объявления, но все чтения в этом проекте происходят после initialization.
 
 Распространённая ошибка:
 

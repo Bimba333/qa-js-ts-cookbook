@@ -4,19 +4,19 @@
 
 ### 1.1 Почему property is not only value?
 
-**Ответ:** because property also has metadata controlling behavior.
+**Ответ:** because property also has metadata controlling поведение.
 
 **Объяснение:** two properties can have same value but different assignment, enumeration and property-definition rules.
 
 **Распространённая ошибка:** think property is only key-value pair.
 
-**Связь с Automation QA:** framework config fields may need protection from accidental mutation.
+**Связь с Automation QA:** framework config поля may need protection from accidental mutation.
 
 ### 1.2 Что такое property metadata?
 
 **Ответ:** information about property rules.
 
-**Объяснение:** `writable`, `enumerable`, `configurable` are metadata fields.
+**Объяснение:** `writable`, `enumerable`, `configurable` are metadata поля.
 
 **Распространённая ошибка:** treat metadata as business data.
 
@@ -24,7 +24,7 @@
 
 ### 1.3 Что описывает descriptor?
 
-**Ответ:** descriptor describes property value and behavior rules.
+**Ответ:** descriptor describes property value and поведение rules.
 
 **Объяснение:** for data properties it includes `value`, `writable`, `enumerable`, `configurable`.
 
@@ -62,7 +62,7 @@
 
 **Связь с Automation QA:** important infrastructure properties can be protected from accidental definition changes, including deletion.
 
-### 1.7 Why can equal values behave differently?
+### 1.7 Why can equal значения behave differently?
 
 **Ответ:** because descriptors can be different.
 
@@ -104,7 +104,7 @@
 
 ---
 
-## 2. Identify descriptor behavior
+## 2. Identify descriptor поведение
 
 ### 2.1
 
@@ -117,7 +117,7 @@
 
 **Объяснение:** each operation checks a different rule.
 
-**Распространённая ошибка:** expect one flag to control all behavior.
+**Распространённая ошибка:** expect one flag to control all поведение.
 
 **Связь с Automation QA:** stable framework config may be visible but readonly.
 
@@ -132,7 +132,7 @@
 
 **Распространённая ошибка:** think hidden means private.
 
-**Связь с Automation QA:** internal metadata can be kept out of ordinary report fields.
+**Связь с Automation QA:** internal metadata can be kept out of ordinary report поля.
 
 ### 2.3
 
@@ -195,13 +195,13 @@ staging
 
 ---
 
-## 4. Debugging tasks
+## 4. Задания на отладку
 
 ### 4.1
 
 **Проблема:** `Object.defineProperty()` defaults `writable` to `false` when omitted.
 
-Fix:
+Исправление:
 
 ```javascript
 const config = {};
@@ -232,11 +232,11 @@ console.log(config.environment);
 
 **Распространённая ошибка:** use descriptors for privacy.
 
-**Связь с Automation QA:** internal values can be hidden from listings but still accessible.
+**Связь с Automation QA:** internal значения can be hidden from listings but still accessible.
 
 ### 4.3
 
-Fix:
+Исправление:
 
 ```javascript
 const config = {};
@@ -258,7 +258,7 @@ console.log(Object.keys(config));
 
 ---
 
-## 5. QA-oriented tasks
+## 5. QA-задачи
 
 ### 5.1
 
@@ -294,7 +294,7 @@ Object.defineProperty(helper, 'internalRunId', {
 
 **Распространённая ошибка:** think this makes it secure.
 
-**Связь с Automation QA:** framework internals can stay out of ordinary output.
+**Связь с Automation QA:** framework internals can stay out of ordinary вывод.
 
 ### 5.3
 
@@ -312,11 +312,11 @@ console.log(descriptor);
 
 ### 5.4
 
-**Ответ:** because their descriptor metadata can be different.
+**Ответ:** потому что их descriptor metadata может отличаться.
 
-**Объяснение:** equal values do not imply equal behavior rules.
+**Объяснение:** equal значения do not imply equal поведение rules.
 
-**Распространённая ошибка:** judge property behavior by visible value only.
+**Распространённая ошибка:** judge property поведение by visible value only.
 
 **Связь с Automation QA:** same baseUrl string can be mutable in one config and readonly in another.
 
@@ -381,7 +381,7 @@ console.log(Object.getOwnPropertyDescriptor(frameworkConfig, 'internalRunId'));
 
 ## 7. Контрольные вопросы
 
-1. Descriptor describes property value and behavior; the chapter emphasizes behavior rules.
+1. Descriptor describes property value and поведение; the chapter emphasizes поведение rules.
 2. `writable`.
 3. `enumerable`.
 4. `configurable`.

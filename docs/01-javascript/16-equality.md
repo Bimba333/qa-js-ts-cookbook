@@ -16,7 +16,7 @@ JavaScript may convert value
 
 Теперь появляется следующий вопрос:
 
-> How does JavaScript decide whether two values are equal?
+> Как JavaScript решает, равны ли два значения?
 
 Начнем с наблюдаемого поведения:
 
@@ -32,19 +32,19 @@ true
 false
 ```
 
-Обе строки сравнивают same visible values: `5` and `'5'`.
+Обе строки сравнивают same visible значения: `5` and `'5'`.
 
 Но ответы разные.
 
 Вопрос:
 
-> Why are the answers different?
+> Почему ответы отличаются?
 
-В предыдущей главе мы узнали: JavaScript sometimes converts values. В этой главе мы увидим, что different equality operators answer different questions.
+В предыдущей главе мы узнали: JavaScript sometimes converts значения. В этой главе мы увидим, что different equality operators answer different questions.
 
 Главный вопрос главы:
 
-> What exactly is being compared?
+> Что именно сравнивается?
 
 ---
 
@@ -52,13 +52,13 @@ false
 
 Для этой главы нужно понимать:
 
-* что values have types;
+* что значения have types;
 * чем Number differs from String;
-* что Type Conversion may happen when operation expects another type;
-* что objects are compared differently from primitive values;
+* что Type Conversion может произойти, когда операция ожидает другой тип;
+* что objects are compared differently from primitive значения;
 * что references explain object identity;
 * что `NaN` can appear during number conversion;
-* что `+0` and `-0` are numeric values with a special edge case.
+* что `+0` and `-0` are numeric значения with a special edge case.
 
 Не требуется знать SameValue algorithm details, SameValueZero, Map/Set comparison rules, deep equality libraries, JSON comparison or testing frameworks. Эти темы будут упоминаться только как future topics.
 
@@ -78,7 +78,7 @@ false
 
 Уровень сложности: **L3**.
 
-Equality is dangerous because syntax is tiny, but semantics are important. One extra `=` can change whether conversion happens before comparison.
+Equality опасно, потому что синтаксис маленький, а семантика важная. Один лишний `=` может изменить, произойдёт ли conversion перед сравнением.
 
 ---
 
@@ -127,14 +127,14 @@ docs/01-javascript/17-operators.md
 
 ## Мотивация
 
-Начнем with observable behavior:
+Начнем with observable поведение:
 
 ```javascript
 console.log(5 == '5');
 console.log(5 === '5');
 ```
 
-Output:
+Вывод:
 
 ```text
 true
@@ -176,13 +176,13 @@ Compare two values
 
 Главный вопрос:
 
-> What exactly is being compared?
+> Что именно сравнивается?
 
 ---
 
 ## Теория
 
-### Why equality is needed
+### Зачем нужно equality
 
 Programs constantly make decisions:
 
@@ -194,7 +194,7 @@ Is parsed value equal to expected value?
 Is this object the same object as before?
 ```
 
-In code:
+В коде:
 
 ```javascript
 const statusCode = 200;
@@ -209,9 +209,9 @@ Equality is needed to answer:
 Do these two values match according to this comparison rule?
 ```
 
-### Why JavaScript has multiple equality operators
+### Почему в JavaScript несколько equality operators
 
-JavaScript was designed to be flexible with values from different contexts. That flexibility produced two common comparison modes:
+JavaScript was designed to be flexible with значения from different contexts. That flexibility produced two common comparison modes:
 
 ```text
 Loose equality
@@ -255,7 +255,7 @@ console.log(5 === '5');
 false
 ```
 
-`===` flow:
+`===` поток:
 
 ```text
 Compare with ===
@@ -280,7 +280,7 @@ Number   String
   false
 ```
 
-`===` asks:
+`===` спрашивает:
 
 > Are these already the same type and value?
 
@@ -298,7 +298,7 @@ console.log(5 == '5');
 true
 ```
 
-`==` flow:
+`==` поток:
 
 ```text
 Compare with ==
@@ -333,11 +333,11 @@ Number   String
   true
 ```
 
-`==` asks:
+`==` спрашивает:
 
-> Can these values become comparable?
+> Can these значения become comparable?
 
-This is useful only when conversion is intentionally desired. Most test code should avoid hidden comparison conversion.
+Это полезно только когда conversion действительно нужна. Большей части тестового кода стоит избегать скрытого преобразования при сравнении.
 
 ### `Object.is()`
 
@@ -349,7 +349,7 @@ console.log(Object.is(NaN, NaN));
 console.log(Object.is(+0, -0));
 ```
 
-Object.is diagram:
+Object.is схема:
 
 ```text
 Object.is(valueA, valueB)
@@ -362,7 +362,7 @@ Compare using Object.is rules
 └── otherwise similar to strict exact comparison for common primitives
 ```
 
-`Object.is()` asks:
+`Object.is()` спрашивает:
 
 > Are these exactly the same according to Object.is rules?
 
@@ -370,7 +370,7 @@ Detailed SameValue algorithm is not part of this chapter.
 
 ### Primitive comparison
 
-Primitive values are compared by value.
+Primitive значения are compared by value.
 
 ```javascript
 console.log(200 === 200);
@@ -378,7 +378,7 @@ console.log('admin' === 'admin');
 console.log(true === true);
 ```
 
-Primitive comparison diagram:
+Primitive comparison схема:
 
 ```text
 Primitive A          Primitive B
@@ -398,7 +398,7 @@ true === true        → true
 200 === "200"        → false
 ```
 
-What exactly is being compared?
+Что именно сравнивается?
 
 ```text
 For primitives with ===:
@@ -427,7 +427,7 @@ console.log(firstUser === secondUser);
 false
 ```
 
-Object comparison diagram:
+Object comparison схема:
 
 ```text
 firstUser ─────────► Object A
@@ -454,7 +454,7 @@ const sameUser = firstUser;
 console.log(firstUser === sameUser);
 ```
 
-Diagram:
+Схема:
 
 ```text
 firstUser ─────┐
@@ -468,7 +468,7 @@ sameUser  ─────┘──► Object A
 true
 ```
 
-What exactly is being compared?
+Что именно сравнивается?
 
 ```text
 For objects:
@@ -481,7 +481,7 @@ Deep equality libraries, JSON comparison and testing framework object matchers w
 
 Identity and value are different questions.
 
-Identity vs value diagram:
+Identity vs value схема:
 
 ```text
 Primitive comparison
@@ -513,14 +513,14 @@ console.log(NaN === NaN);
 console.log(Object.is(NaN, NaN));
 ```
 
-Results:
+Результаты:
 
 ```text
 false
 true
 ```
 
-NaN comparison diagram:
+NaN comparison схема:
 
 ```text
 NaN === NaN
@@ -534,7 +534,7 @@ Object.is(NaN, NaN)
 true
 ```
 
-What exactly is being compared?
+Что именно сравнивается?
 
 ```text
 === follows strict equality behavior.
@@ -552,14 +552,14 @@ console.log(+0 === -0);
 console.log(Object.is(+0, -0));
 ```
 
-Results:
+Результаты:
 
 ```text
 true
 false
 ```
 
-`+0` vs `-0` diagram:
+`+0` vs `-0` схема:
 
 ```text
 +0 === -0
@@ -573,7 +573,7 @@ Object.is(+0, -0)
 false
 ```
 
-This is one of the few places where `Object.is()` has visibly different behavior.
+This is one of the few places where `Object.is()` has visibly different поведение.
 
 ### Decision tree
 
@@ -661,7 +661,7 @@ Comparison operator
 └── true / false
 ```
 
-### Current position in JavaScript model
+### Текущее место в модели JavaScript
 
 ```text
 Primitive Types
@@ -682,7 +682,7 @@ Type Conversion
 Equality
 ```
 
-What exactly is being compared?
+Что именно сравнивается?
 
 ```text
 Primitive values
@@ -844,19 +844,19 @@ Use `===` by default. It avoids hidden type conversion and makes comparisons eas
 
 ### Is `==` always bad?
 
-No. It is dangerous when used accidentally. Use it only when its conversion rules are intentionally desired and understood.
+Нет. Это опасно при случайном использовании. Используйте это только тогда, когда правила conversion действительно нужны и понятны.
 
-### Why does `Object.is()` exist?
+### Зачем существует `Object.is()`?
 
 It handles a few exact comparison cases differently, especially `NaN` and `+0` / `-0`.
 
-### Why are two same-looking objects not equal?
+### Почему два одинаково выглядящих объекта не равны?
 
 Because object comparison checks identity, not shape.
 
-### How do test frameworks compare objects deeply?
+### Как test frameworks глубоко сравнивают объекты?
 
-Testing frameworks and deep equality tools have their own mechanisms. They will be discussed later when testing frameworks are introduced.
+Тестовые фреймворки и инструменты глубокого сравнения имеют свои механизмы. Они будут разобраны позже, когда появятся testing frameworks.
 
 ---
 
@@ -886,7 +886,7 @@ They are similar in many common cases, but differ for `NaN` and `+0` / `-0`.
 
 Tables help, but reasoning starts with: what exactly is being compared?
 
-Equality myths diagram:
+Equality myths схема:
 
 ```text
 Myth
@@ -986,7 +986,7 @@ const expectedStatusCode = 200;
 console.log(actualStatusCode === expectedStatusCode);
 ```
 
-Diagram:
+Схема:
 
 ```text
 API value "200"
@@ -1008,7 +1008,7 @@ true
 
 ## Использование в Automation QA
 
-### Why assertions usually use strict equality
+### Почему assertions обычно используют strict equality
 
 Tests should reveal type mismatches, not hide them.
 
@@ -1025,9 +1025,9 @@ console.log(expectedStatusCode === actualStatusCode);
 false
 ```
 
-This is useful because API returned String, not Number.
+Это полезно, потому что API вернул String, а не Number.
 
-### Comparing API values
+### Comparing API значения
 
 If API contract says number:
 
@@ -1038,7 +1038,7 @@ Actual:   "200" as String
 
 Do not let `==` hide this mismatch.
 
-### Comparing parsed values
+### Comparing parsed значения
 
 If API intentionally returns string and test needs Number for calculation:
 
@@ -1065,7 +1065,7 @@ const actualUser = {
 
 ### Avoiding hidden conversion bugs
 
-Checklist:
+Чек-лист:
 
 ```text
 1. What are the types of both values?
@@ -1079,13 +1079,13 @@ Checklist:
 
 ## Итоги
 
-Equality answers:
+Equality отвечает:
 
 ```text
 How does JavaScript decide whether two values are equal?
 ```
 
-Core model:
+Основная модель:
 
 ```text
 ==
@@ -1101,7 +1101,7 @@ Object.is()
 └── follows its own comparison rules
 ```
 
-Primitive values are compared by type and value with `===`.
+Primitive значения are compared by type and value with `===`.
 
 Objects are compared by identity.
 
@@ -1119,10 +1119,10 @@ Use Object.is() for the few cases where its semantics are specifically needed.
 
 * Equality is a comparison operation.
 * Always ask: what exactly is being compared?
-* `==` may convert values before comparison.
+* `==` may convert значения before comparison.
 * `===` never performs type conversion.
 * `Object.is()` has its own comparison semantics.
-* Primitive values compare by value and type with `===`.
+* Primitive значения compare by value and type with `===`.
 * Objects compare by identity.
 * Same-looking objects are not necessarily equal.
 * `NaN === NaN` is false.
@@ -1137,15 +1137,15 @@ Use Object.is() for the few cases where its semantics are specifically needed.
 
 Ответьте без запуска кода.
 
-1. Why does `5 == '5'` differ from `5 === '5'`?
-2. What question does `==` ask?
-3. What question does `===` ask?
-4. What question does `Object.is()` ask?
+1. Почему `5 == '5'` отличается от `5 === '5'`?
+2. Какой вопрос задаёт `==`?
+3. Какой вопрос задаёт `===`?
+4. Какой вопрос задаёт `Object.is()`?
 5. Do objects compare by shape or identity?
-6. Why can two same-looking objects be not equal?
-7. What is special about `NaN === NaN`?
-8. What is special about `Object.is(+0, -0)`?
-9. Why do QA assertions usually prefer strict equality?
+6. Почему два одинаково выглядящих объекта могут быть не равны?
+7. Что особенного в `NaN === NaN`?
+8. Что особенного в `Object.is(+0, -0)`?
+9. Почему QA assertions обычно предпочитают strict equality?
 10. When is `==` acceptable?
 
 ---

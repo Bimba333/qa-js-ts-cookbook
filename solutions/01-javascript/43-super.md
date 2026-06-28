@@ -4,17 +4,17 @@
 
 ### 1.1 Why does `super` exist?
 
-**Ответ:** to call base class behavior from derived class behavior.
+**Ответ:** to call base class поведение from derived class поведение.
 
 **Объяснение:** it is useful when derived method overrides base method but still wants to reuse base logic.
 
-**Распространённая ошибка:** define `super` as just "parent access" without explaining behavior reuse.
+**Распространённая ошибка:** define `super` as just "parent access" without explaining поведение reuse.
 
 **Связь с Automation QA:** `LoginPage.open()` can reuse `BasePage.open()` and add login-specific preparation.
 
 ### 1.2 What problem appears when derived method overrides base method?
 
-**Ответ:** base behavior is no longer used for that method call unless derived method explicitly calls it.
+**Ответ:** base поведение is no longer used for that method call unless derived method explicitly calls it.
 
 **Объяснение:** overriding selects derived method first.
 
@@ -36,15 +36,15 @@
 
 **Ответ:** no.
 
-**Объяснение:** `super.method()` calls base behavior; it does not duplicate the method body.
+**Объяснение:** `super.method()` calls base поведение; it does not duplicate the method body.
 
 **Распространённая ошибка:** imagine inherited code inserted into derived class.
 
-**Связь с Automation QA:** changing base behavior updates all derived methods that call it.
+**Связь с Automation QA:** changing base поведение updates all derived methods that call it.
 
-### 1.5 Why use `super` instead of copying base method code?
+### 1.5 Why use `super` вместо copying base method code?
 
-**Ответ:** to avoid duplication and keep common behavior in one place.
+**Ответ:** to avoid duplication and keep common поведение in one place.
 
 **Объяснение:** copied code must be updated manually in every derived class.
 
@@ -54,9 +54,9 @@
 
 ### 1.6 What is the difference between `super` and `this`?
 
-**Ответ:** `super` selects base method; `this` is the receiver object.
+**Ответ:** `super` selects base method; `this` is the объект выполнения object.
 
-**Объяснение:** base method called through `super` still works with current receiver.
+**Объяснение:** base method called through `super` still works with current объект выполнения.
 
 **Распространённая ошибка:** think `super` changes `this` to base class.
 
@@ -64,17 +64,17 @@
 
 ### 1.7 What happens if override does not call `super`?
 
-**Ответ:** derived method replaces base behavior for that call.
+**Ответ:** derived method replaces base поведение for that call.
 
 **Объяснение:** lookup finds derived method first, and base method is not called automatically.
 
 **Распространённая ошибка:** assume base method always runs before derived method.
 
-**Связь с Automation QA:** custom page behavior can skip common wait logic if `super` is omitted.
+**Связь с Automation QA:** custom page поведение can skip common wait logic if `super` is omitted.
 
 ### 1.8 When can override without `super` be intentional?
 
-**Ответ:** when derived behavior should fully replace base behavior.
+**Ответ:** when derived поведение should fully replace base поведение.
 
 **Объяснение:** not every override is extension; some are replacement.
 
@@ -94,31 +94,31 @@
 
 ### 1.10 How is `super` useful in Automation QA?
 
-**Ответ:** it keeps common framework behavior reusable while allowing specific classes to extend it.
+**Ответ:** it keeps common framework поведение reusable while allowing specific classes to extend it.
 
-**Объяснение:** derived classes can add page/API/validator-specific behavior after base behavior.
+**Объяснение:** derived classes can add page/API/validator-specific поведение after base поведение.
 
-**Распространённая ошибка:** duplicate framework behavior in every specialized class.
+**Распространённая ошибка:** duplicate framework поведение in every specialized class.
 
 **Связь с Automation QA:** BasePage, BaseApiClient and BaseValidator are common examples.
 
 ---
 
-## 2. Identify base behavior
+## 2. Identify base поведение
 
 ### 2.1
 
 **Ответ:**
 
-* Base behavior: `BasePage.open(pageName)`.
-* Derived-specific behavior: `and focus form`.
+* Base поведение: `BasePage.open(pageName)`.
+* Derived-specific поведение: `and focus form`.
 * `super.open(pageName)` calls `BasePage.open(pageName)`.
 
 **Объяснение:** derived `open` extends base `open`.
 
 **Распространённая ошибка:** think `super.open` calls `LoginPage.open` again.
 
-**Связь с Automation QA:** login page can reuse common open behavior and add form focus.
+**Связь с Automation QA:** login page can reuse common open поведение and add form focus.
 
 ### 2.2
 
@@ -145,7 +145,7 @@
 open LoginPage and focus form
 ```
 
-**Объяснение:** derived method calls base method and appends specific behavior.
+**Объяснение:** derived method calls base method and appends specific поведение.
 
 **Распространённая ошибка:** expect only `open LoginPage`.
 
@@ -163,7 +163,7 @@ QA: failed [run]
 
 **Распространённая ошибка:** think `this.prefix` is read from `BaseReporter`.
 
-**Связь с Automation QA:** shared reporter methods can use concrete reporter state.
+**Связь с Automation QA:** shared reporter methods can use concrete reporter состояние.
 
 ### 3.3
 
@@ -181,7 +181,7 @@ focus LoginPage
 
 ---
 
-## 4. Debugging tasks
+## 4. Задания на отладку
 
 ### 4.1
 
@@ -196,15 +196,15 @@ class LoginPage extends BasePage {
 }
 ```
 
-**Объяснение:** `super.open(pageName)` preserves base behavior; derived method adds login-specific behavior.
+**Объяснение:** `super.open(pageName)` preserves base поведение; derived method adds login-specific поведение.
 
-**Распространённая ошибка:** replace base behavior while intending to extend it.
+**Распространённая ошибка:** replace base поведение while intending to extend it.
 
 **Связь с Automation QA:** common navigation remains centralized in `BasePage`.
 
 ### 4.2
 
-**Ответ:** output contains `undefined` because `this.prefix` is not set on `reporter`.
+**Ответ:** вывод contains `undefined` because `this.prefix` is not set on `reporter`.
 
 **Объяснение:** `super.label()` calls base method with `this` still pointing to `reporter`. If `reporter.prefix` is missing, `this.prefix` is `undefined`.
 
@@ -233,7 +233,7 @@ class StatusValidator extends BaseValidator {
 
 ---
 
-## 5. QA-oriented tasks
+## 5. QA-задачи
 
 ### 5.1
 
@@ -363,7 +363,7 @@ console.log(profilePage.open('ProfilePage'));
 console.log(profilePage.waitReady('ProfilePage'));
 ```
 
-Possible output:
+Возможный вывод:
 
 ```text
 open LoginPage, then focus username field
@@ -372,10 +372,10 @@ open ProfilePage
 ProfilePage is ready, then verify profile header
 ```
 
-**Объяснение:** base behavior lives in `BasePage`. Derived behavior lives in `LoginPage.open` and `ProfilePage.waitReady`. `super.method()` calls base behavior, then derived method adds specialization.
+**Объяснение:** base поведение lives in `BasePage`. Derived поведение lives in `LoginPage.open` and `ProfilePage.waitReady`. `super.method()` calls base поведение, then derived method adds specialization.
 
 **Распространённая ошибка:** copy `open` and `waitReady` code into derived classes.
 
-**Связь с Automation QA:** this is a realistic pattern for extending base Page Object behavior without duplicating common logic.
+**Связь с Automation QA:** this is a realistic pattern for extending base Page Object поведение without duplicating common logic.
 
 **Возможное улучшение:** keep overrides short; if derived method becomes long, split page-specific work into separate methods.

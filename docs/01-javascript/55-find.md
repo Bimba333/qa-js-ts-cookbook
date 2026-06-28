@@ -28,7 +28,7 @@ report data
 
 * что array хранит ordered elements;
 * что callback может проверять condition;
-* что test case object может иметь fields `id`, `title`, `status`, `priority`;
+* что test case object может иметь поля `id`, `title`, `status`, `priority`;
 * что `filter()` возвращает subset array.
 
 Не требуется заново изучать `map()`, `filter()` или `reduce()`. В этой главе фокус только на поиске одного element.
@@ -89,7 +89,7 @@ const found = array.find(function (element) {
 
 ## Внутренний механизм
 
-Conceptual steps:
+Концептуальные шаги:
 
 ```text
 start with first element

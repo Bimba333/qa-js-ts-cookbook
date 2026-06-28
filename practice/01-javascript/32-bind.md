@@ -6,7 +6,7 @@
 
 * объяснять, зачем существует `bind()`;
 * отличать `bind()` от `call()` и `apply()`;
-* определять receiver bound function;
+* определять объект выполнения bound function;
 * понимать, что `bind()` возвращает новую function;
 * предсказывать результат выполнения кода;
 * находить ошибки, связанные с delayed invocation;
@@ -23,7 +23,7 @@
 3. Что возвращает `bind()`?
 4. Чем `bind()` отличается от `call()`?
 5. Чем `bind()` отличается от `apply()`?
-6. Что такое fixed receiver?
+6. Что такое fixed объект выполнения?
 7. Почему `bind()` не изменяет original function?
 8. Что означает delayed invocation?
 9. В каком случае `bind()` делает код читаемее?
@@ -31,7 +31,7 @@
 
 ---
 
-## 2. Определите receiver
+## 2. Определите объект выполнения
 
 Для каждого фрагмента укажите, каким будет `this` внутри function.
 
@@ -259,7 +259,7 @@ console.log('configured');
 
 ---
 
-## 6. Debugging tasks
+## 6. Задания на отладку
 
 Найдите ошибку и исправьте код.
 
@@ -321,7 +321,7 @@ console.log(buildApiUrl());
 
 ## 7. Перепишите `call()` через `bind()`
 
-Перепишите код так, чтобы receiver выбирался один раз.
+Перепишите код так, чтобы объект выполнения выбирался один раз.
 
 ### Задание 7.1
 
@@ -360,7 +360,7 @@ console.log(buildUrl.call(client, '/orders'));
 
 ---
 
-## 8. QA-oriented tasks
+## 8. QA-задачи
 
 ### Задание 8.1
 
@@ -433,7 +433,7 @@ validateStagingResponse('/profile', 200, 200);
 
 Требования:
 
-1. Создайте function `formatApiCheck(path, actualStatus, expectedStatus)`.
+1. Создайте функцию `formatApiCheck(path, actualStatus, expectedStatus)`.
 2. Function должна использовать `this.project` и `this.environment`.
 3. Создайте два config objects:
    * `stagingBilling`;
@@ -450,10 +450,10 @@ validateStagingResponse('/profile', 200, 200);
 
 Ответьте кратко.
 
-1. Кто выбирает receiver при обычном `object.method()` вызове?
-2. Кто выбирает receiver при `call()`?
-3. Кто выбирает receiver при `apply()`?
-4. Кто выбирает receiver при `bind()`?
+1. Кто выбирает объект выполнения при обычном `object.method()` вызове?
+2. Кто выбирает объект выполнения при `call()`?
+3. Кто выбирает объект выполнения при `apply()`?
+4. Кто выбирает объект выполнения при `bind()`?
 5. Когда происходит execution после `bind()`?
 6. Почему `bind()` полезен для reusable validators?
 7. Что потеряется, если вызвать `bind()` без сохранения результата?

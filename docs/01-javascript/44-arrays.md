@@ -40,7 +40,7 @@ user.email
 
 Теперь появляется новый вопрос:
 
-> Как хранить много values together, если важен порядок?
+> Как хранить много значения together, если важен порядок?
 
 Например, API вернул 100 users.
 
@@ -83,7 +83,7 @@ Arrays start a new section.
 * что value can be primitive or object;
 * что object models one entity with named properties;
 * что variable gives named access to value;
-* что JavaScript can read and update values;
+* что JavaScript can read and update значения;
 * что Automation QA often works with API responses, users, assertions and test data.
 
 Не требуется знать array methods, `push`, `pop`, `shift`, `unshift`, `splice`, `slice`, `map`, `filter`, `reduce`, loops or iteration. Эти темы будут изучаться позже.
@@ -187,7 +187,7 @@ many related values
 └── hard to read as one collection
 ```
 
-Нам нужна одна value, которая represents many ordered values:
+Нам нужна одна value, которая represents many ordered значения:
 
 ```javascript
 const testUsers = [
@@ -213,7 +213,7 @@ Array solves ordered storage.
 
 ## Теория
 
-Array is an ordered collection of values.
+Array is an ordered collection of значения.
 
 Главная модель:
 
@@ -322,7 +322,7 @@ We are not studying array growth yet. Adding/removing elements with methods such
 console.log(users.length);
 ```
 
-For:
+Для:
 
 ```javascript
 const users = ['Anna', 'Kate', 'Max'];
@@ -334,7 +334,7 @@ const users = ['Anna', 'Kate', 'Max'];
 3
 ```
 
-Important relation:
+Важная связь:
 
 ```text
 last index
@@ -376,9 +376,9 @@ no requests yet
 
 We are not adding elements yet. Growth is next chapter.
 
-### Mixed values
+### Mixed значения
 
-JavaScript arrays can contain different kinds of values:
+JavaScript arrays can contain different kinds of значения:
 
 ```javascript
 const mixed = ['status', 200, true];
@@ -398,7 +398,7 @@ unclear collection
 └── unrelated values mixed together
 ```
 
-Mixed values will appear naturally later, but do not use them as default style.
+Mixed значения will appear naturally later, but do not use them as default style.
 
 ---
 
@@ -469,7 +469,7 @@ undefined
 
 But the question is different.
 
-Object:
+Объект:
 
 ```text
 What value belongs to this name?
@@ -483,7 +483,7 @@ What value is stored at this position?
 
 ### Updating flow
 
-For:
+Для:
 
 ```javascript
 users[1] = 'updated@example.test';
@@ -534,7 +534,7 @@ You ask:
 How many elements are in this array?
 ```
 
-Not:
+Не так:
 
 ```text
 What is the last index?
@@ -641,7 +641,7 @@ examples/01-javascript/chapter-44/01-first-array.js
 examples/01-javascript/chapter-44/02-indexes.js
 ```
 
-Показывает reading values by index.
+Показывает reading значения by index.
 
 ### Пример 3. Update elements
 
@@ -720,7 +720,7 @@ last element  -> length - 1
 
 Да.
 
-For example:
+Например:
 
 ```javascript
 const users = [
@@ -731,7 +731,7 @@ const users = [
 
 This is common in API testing.
 
-### Should arrays contain mixed values?
+### Should arrays contain mixed значения?
 
 JavaScript allows it, but readability often suffers.
 
@@ -744,7 +744,7 @@ assertions
 test cases
 ```
 
-### Why not use object instead of array?
+### Why not use object вместо array?
 
 Use object when names matter.
 
@@ -761,7 +761,7 @@ array  -> ordered positions
 
 ### Миф: Array is just object with square brackets
 
-Реальность: arrays are object values in JavaScript, but for this chapter the useful model is ordered collection with indexes. Object internals will be discussed only when needed.
+Реальность: arrays are object значения in JavaScript, but for this chapter the useful model is ordered collection with indexes. Object internals will be discussed only when needed.
 
 ### Миф: `length` is last index
 
@@ -838,7 +838,7 @@ const lastUser = users[users.length];
 const lastUser = users[users.length - 1];
 ```
 
-### Ошибка 4. Использовать many variables instead of array
+### Ошибка 4. Использовать many variables вместо array
 
 Неправильная модель:
 
@@ -899,7 +899,7 @@ user3
 
 ### Users returned from API
 
-API often returns:
+API often возвращает:
 
 ```text
 users
@@ -909,7 +909,7 @@ users
 └── user at index 2
 ```
 
-In code:
+В коде:
 
 ```javascript
 const users = [
@@ -940,7 +940,7 @@ The order can match reporting order.
 
 Browser contexts can have many pages/tabs.
 
-Conceptually:
+Концептуально:
 
 ```text
 pages
@@ -1060,7 +1060,7 @@ replace element
 └── length 0
 ```
 
-### 10. Mixed values
+### 10. Mixed значения
 
 ```text
 ["status", 200, true]
@@ -1238,7 +1238,7 @@ order matters
 └── array fits
 ```
 
-### 29. Value ownership
+### 29. Принадлежность значения
 
 ```text
 array
@@ -1415,7 +1415,7 @@ The next chapter will explain how arrays grow and shrink with methods such as `p
 
 ## Что нужно запомнить
 
-✓ Array is an ordered collection of values.
+✓ Array is an ordered collection of значения.
 
 ✓ Array elements are accessed by indexes.
 
@@ -1427,7 +1427,7 @@ The next chapter will explain how arrays grow and shrink with methods such as `p
 
 ✓ Empty array has length `0`.
 
-✓ Arrays can contain primitive values and objects.
+✓ Arrays can contain primitive значения and objects.
 
 ✓ Objects use names; arrays use positions.
 
@@ -1441,7 +1441,7 @@ The next chapter will explain how arrays grow and shrink with methods such as `p
 
 1. What problem do arrays solve?
 
-2. Why use an array instead of many variables?
+2. Why use an array вместо many variables?
 
 3. What is an index?
 
@@ -1479,4 +1479,4 @@ practice/01-javascript/44-arrays.md
 solutions/01-javascript/44-arrays.md
 ```
 
-Сначала выполните практику самостоятельно. Затем сравните reasoning, not only final answer.
+Сначала выполните практику самостоятельно. Затем сравните ход рассуждения, а не только итоговый ответ.

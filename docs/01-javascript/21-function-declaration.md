@@ -927,7 +927,7 @@ function cleanupTestData() {
 Выполнение начинается только тогда, когда функция вызвана.
 ```
 
-Function declaration:
+Function Declaration:
 
 ```text
 function name() {
@@ -935,7 +935,7 @@ function name() {
 }
 ```
 
-Function invocation:
+Вызов функции:
 
 ```text
 name()

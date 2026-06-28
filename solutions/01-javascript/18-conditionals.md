@@ -2,11 +2,11 @@
 
 ## Концептуальные вопросы
 
-### 1. Why conditionals exist
+### 1. Зачем существуют conditionals
 
 Ответ:
 
-Conditionals exist because programs need to choose execution paths.
+Conditionals существуют, потому что программам нужно выбирать пути выполнения.
 
 Объяснение:
 
@@ -32,7 +32,7 @@ In `if / else`, one branch runs and the other is skipped.
 
 Распространённая ошибка:
 
-Think JavaScript evaluates all branches and then chooses output.
+Think JavaScript evaluates all branches and then chooses вывод.
 
 Связь с Automation QA:
 
@@ -50,7 +50,7 @@ JavaScript evaluates condition expression.
 
 Распространённая ошибка:
 
-Read condition as text instead of evaluated expression.
+Read condition as text вместо evaluated expression.
 
 Связь с Automation QA:
 
@@ -68,7 +68,7 @@ Boolean expressions are clearest for decisions.
 
 Распространённая ошибка:
 
-Rely on unclear truthy/falsy values.
+Rely on unclear truthy/falsy значения.
 
 Связь с Automation QA:
 
@@ -82,7 +82,7 @@ Clear Boolean names improve test readability.
 
 Объяснение:
 
-It makes failure or fallback behavior explicit.
+It makes failure or fallback поведение explicit.
 
 Распространённая ошибка:
 
@@ -90,7 +90,7 @@ Omit else when failure path matters.
 
 Связь с Automation QA:
 
-Status error reporting belongs in else path.
+Отчёт об ошибке status относится к ветке else.
 
 ### 6. `else if`
 
@@ -104,7 +104,7 @@ Status code can be success, not found, server error or unexpected.
 
 Распространённая ошибка:
 
-Write independent `if` statements when only one category should run.
+Писать независимые инструкции `if`, когда должна выполниться только одна категория.
 
 Связь с Automation QA:
 
@@ -118,7 +118,7 @@ Nested conditions are useful when inner decision only matters inside outer path.
 
 Объяснение:
 
-Checking body fields makes sense only if status is successful.
+Checking body поля makes sense only if status успешен.
 
 Распространённая ошибка:
 
@@ -154,7 +154,7 @@ Config selection.
 
 Объяснение:
 
-Unexpected environment should still have explicit behavior.
+Unexpected environment should still have explicit поведение.
 
 Распространённая ошибка:
 
@@ -198,7 +198,7 @@ Explain unexpected branch as "random".
 
 Связь с Automation QA:
 
-Debug evaluated values, not guesses.
+Debug evaluated значения, not guesses.
 
 ### 12. Connection to operators
 
@@ -400,7 +400,7 @@ Readable validation is easier to maintain.
 
 Branch runs because `statusCode = 200` is assignment, not comparison. It changes value to `200`, and assignment result is used by condition.
 
-Correct:
+Правильно:
 
 ```javascript
 let statusCode = 500;
@@ -428,7 +428,7 @@ Can make tests pass incorrectly.
 
 `0` is falsy, so else branch runs even though property exists.
 
-Better:
+Лучше:
 
 ```javascript
 if ('id' in responseBody) {
@@ -621,7 +621,7 @@ switch (environment) {
 }
 ```
 
-Report:
+Отчёт:
 
 ```text
 Decision                | Expression result | Chosen path           | QA meaning

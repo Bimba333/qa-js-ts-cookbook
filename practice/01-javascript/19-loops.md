@@ -4,18 +4,18 @@
 
 Ответьте своими словами.
 
-1. Why do loops exist?
+1. Почему существуют loops?
 2. What is repeated execution?
 3. What is loop condition?
-4. What is iteration?
+4. Что такое iteration?
 5. What is loop body?
 6. What is initialization?
 7. What is update step?
 8. How does `while` work?
 9. How does `do...while` differ from `while`?
 10. How does `for` organize loop lifecycle?
-11. What does `break` do?
-12. What does `continue` do?
+11. Что делает `break`?
+12. Что делает `continue`?
 13. Why do infinite loops happen?
 14. How do you choose appropriate loop?
 
@@ -110,7 +110,7 @@ do {
 
 Прочитайте код и ответьте:
 
-1. What is repeated?
+1. Что повторяется?
 2. When does loop stop?
 3. What happens if status is not `200`?
 4. Which iteration prints invalid response?

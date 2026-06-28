@@ -123,7 +123,7 @@ docs/01-javascript/30-call.md
 
 Следующая глава ответит:
 
-> Можно ли выбрать receiver вручную?
+> Можно ли выбрать объект выполнения вручную?
 
 ---
 
@@ -132,10 +132,10 @@ docs/01-javascript/30-call.md
 После изучения этой главы вы будете понимать:
 
 * зачем существует `this`;
-* что такое execution receiver;
+* что такое execution объект выполнения;
 * почему `this` определяется во время вызова;
 * чем global invocation отличается от method invocation;
-* почему detached function теряет receiver;
+* почему detached function теряет объект выполнения;
 * почему Creation Phase не решает значение `this` заранее;
 * чем Closure отличается от `this`;
 * как Arrow Function связана с `this` на высоком уровне;
@@ -207,7 +207,7 @@ Same code
 
 > Как функция была вызвана?
 
-Why `this` exists:
+Зачем существует `this`:
 
 ```text
 One reusable function
@@ -282,9 +282,9 @@ inside method
 
 ---
 
-### Execution receiver
+### Execution объект выполнения
 
-Execution receiver - это object, для которого выполняется function call.
+Execution объект выполнения - это object, для которого выполняется function call.
 
 В выражении:
 
@@ -292,7 +292,7 @@ Execution receiver - это object, для которого выполняетс
 apiClient.printName();
 ```
 
-receiver:
+объект выполнения:
 
 ```text
 apiClient.printName()
@@ -301,7 +301,7 @@ apiClient.printName()
 └── printName -> function object
 ```
 
-Current receiver:
+Current объект выполнения:
 
 ```text
 Current function call
@@ -395,13 +395,13 @@ client.printName()
     this -> client
 ```
 
-Это не универсальное правило для всех форм вызова в JavaScript. Сейчас мы строим базовую модель receiver для обычных вызовов `object.method()` и standalone calls. Другие формы вызова будут изучаться в следующих главах.
+Это не универсальное правило для всех форм вызова в JavaScript. Сейчас мы строим базовую модель объект выполнения для обычных вызовов `object.method()` и standalone calls. Другие формы вызова будут изучаться в следующих главах.
 
 ---
 
 ### Global invocation
 
-Global invocation - это вызов функции без object receiver.
+Global invocation - это вызов функции без object объект выполнения.
 
 ```javascript
 'use strict';
@@ -413,7 +413,7 @@ function printThis() {
 printThis();
 ```
 
-Global call:
+Глобальный вызов:
 
 ```text
 printThis()
@@ -433,7 +433,7 @@ this -> undefined
 
 В старом non-strict поведении `this` мог указывать на global object. В этом курсе мы строим современную практическую модель и будем избегать зависимости от non-strict поведения.
 
-Global invocation diagram:
+Global invocation схема:
 
 ```text
 Function call
@@ -470,7 +470,7 @@ user
 └── printName: function object
 ```
 
-Method call:
+Вызов метода:
 
 ```text
 user.printName()
@@ -489,7 +489,7 @@ Inside printName
 └── means user.name for this invocation
 ```
 
-Same code, different receiver:
+Same code, different объект выполнения:
 
 ```text
 printName body
@@ -542,7 +542,7 @@ printClientName
 └── references same function object
 ```
 
-Lost receiver:
+Потерянный объект выполнения:
 
 ```text
 apiClient.printName()
@@ -556,7 +556,7 @@ printClientName()
 
 В strict mode `this` будет `undefined`, поэтому попытка прочитать `this.name` приведет к ошибке.
 
-Detached function diagram:
+Detached function схема:
 
 ```text
 Object property access
@@ -652,7 +652,7 @@ this value is available during execution
 
 Важно: `this` не ищется как обычная variable через Scope Chain.
 
-`this` lookup:
+`this` поиск:
 
 ```text
 Need this
@@ -674,7 +674,7 @@ Do not search outer scopes like normal identifier
 client.printStatus();
 ```
 
-Invocation flow:
+Invocation поток:
 
 ```text
 1. Evaluate client
@@ -698,7 +698,7 @@ Invocation flow:
 7. Inside body this -> client
 ```
 
-Receiver selection:
+Выбор объекта выполнения:
 
 ```text
 For ordinary calls in this chapter
@@ -718,7 +718,7 @@ call / apply / bind / new / classes
 └── later chapters
 ```
 
-Complete execution picture:
+Полная картина выполнения:
 
 ```text
 client.printStatus()
@@ -757,7 +757,7 @@ this
 └── Who is the current receiver of this call?
 ```
 
-Environment vs receiver:
+Environment vs объект выполнения:
 
 ```text
 Lexical Environment
@@ -797,7 +797,7 @@ this.name
 
 ### Timeline
 
-Timeline:
+Временная шкала:
 
 ```text
 T1  Function object is created
@@ -823,7 +823,7 @@ Create function object
 └── does not permanently choose this
 ```
 
-Function invocation:
+Вызов функции:
 
 ```text
 Call function
@@ -837,9 +837,9 @@ Call function
 
 ## Ментальная модель
 
-### Current receiver
+### Current объект выполнения
 
-Думайте о `this` как о current receiver card, которую JavaScript кладет перед функцией на время вызова.
+Думайте о `this` как о current объект выполнения card, которую JavaScript кладет перед функцией на время вызова.
 
 Current context card:
 
@@ -967,7 +967,7 @@ function body
 
 ---
 
-### Current position in JavaScript model
+### Текущее место в модели JavaScript
 
 ```text
 JavaScript function model
@@ -1030,7 +1030,7 @@ function showReceiver() {
 showReceiver();
 ```
 
-Global call:
+Глобальный вызов:
 
 ```text
 showReceiver()
@@ -1055,7 +1055,7 @@ const apiClient = {
 apiClient.printName();
 ```
 
-Method call:
+Вызов метода:
 
 ```text
 apiClient.printName()
@@ -1082,7 +1082,7 @@ const getClientName = apiClient.getName;
 console.log(getClientName());
 ```
 
-Этот пример intentionally demonstrates an error. Detached function вызывается без receiver, поэтому `this` равен `undefined` в strict mode.
+Этот пример intentionally demonstrates an error. Detached function вызывается без объект выполнения, поэтому `this` равен `undefined` в strict mode.
 
 ---
 
@@ -1123,7 +1123,7 @@ this
 
 ### this указывает на функцию?
 
-Нет. `this` указывает на receiver текущего вызова, а не на function object.
+Нет. `this` указывает на объект выполнения текущего вызова, а не на function object.
 
 ### this определяется там, где функция написана?
 
@@ -1131,7 +1131,7 @@ this
 
 ### Почему detached function теряет this?
 
-В модели обычных вызовов из этой главы `functionName()` вызывается без object receiver. Поэтому такой вызов не выбирает receiver так же, как `object.method()`.
+В модели обычных вызовов из этой главы `functionName()` вызывается без object объект выполнения. Поэтому такой вызов не выбирает объект выполнения так же, как `object.method()`.
 
 ### Нужно ли всегда избегать this?
 
@@ -1171,13 +1171,13 @@ this
 
 ### Миф 3. Arrow Functions - лучший метод для object methods
 
-Реальность: если method должен использовать receiver через `this`, обычная function часто понятнее. Arrow Functions имеют особое поведение `this`, которое будет изучаться позже.
+Реальность: если method должен использовать объект выполнения через `this`, обычная function часто понятнее. Arrow Functions имеют особое поведение `this`, которое будет изучаться позже.
 
 ---
 
 ## Типичные ошибки
 
-### Ошибка 1. Потерять receiver
+### Ошибка 1. Потерять объект выполнения
 
 Неправильный код:
 
@@ -1226,7 +1226,7 @@ this became undefined in strict mode
 helper.log('Request failed');
 ```
 
-`call()`, `apply()` и `bind()` дадут другие способы управления receiver в следующих главах.
+`call()`, `apply()` и `bind()` дадут другие способы управления объект выполнения в следующих главах.
 
 ---
 
@@ -1242,7 +1242,7 @@ function createPrinter(prefix) {
 
 `prefix` приходит из Closure.
 
-`this.name` приходит из receiver текущего вызова.
+`this.name` приходит из объект выполнения текущего вызова.
 
 Типичные ошибки:
 
@@ -1294,7 +1294,7 @@ const user = {
 
 ## Практическое использование
 
-`this` полезен, когда object хранит данные и behavior рядом.
+`this` полезен, когда object хранит данные и поведение рядом.
 
 ```javascript
 const response = {
@@ -1347,7 +1347,7 @@ LoginPage
     └── this.page
 ```
 
-Если method вызывается как `loginPage.open()`, receiver - `loginPage`.
+Если method вызывается как `loginPage.open()`, объект выполнения - `loginPage`.
 
 ```text
 loginPage.open()
@@ -1355,7 +1355,7 @@ loginPage.open()
 └── this -> loginPage
 ```
 
-Если method detached, receiver может потеряться.
+Если method detached, объект выполнения может потеряться.
 
 ---
 
@@ -1379,7 +1379,7 @@ apiClient.buildUrl('/users')
 └── this.baseUrl -> apiClient.baseUrl
 ```
 
-Это помогает держать configuration и behavior рядом.
+Это помогает держать configuration и поведение рядом.
 
 ---
 
@@ -1399,9 +1399,9 @@ assertions
 Понимание `this` помогает:
 
 * читать page object methods;
-* находить потерянный receiver;
+* находить потерянный объект выполнения;
 * понимать ошибки в helper objects;
-* не путать Closure configuration и receiver state;
+* не путать Closure configuration и объект выполнения состояние;
 * аккуратно проектировать API clients.
 
 ---
@@ -1432,7 +1432,7 @@ Who is the receiver of this invocation?
 solutions/01-javascript/29-this.md
 ```
 
-В решениях обращайте внимание на reasoning. Для `this` недостаточно назвать результат; нужно объяснить, какая форма invocation выбрала receiver.
+В решениях обращайте внимание на reasoning. Для `this` недостаточно назвать результат; нужно объяснить, какая форма invocation выбрала объект выполнения.
 
 ---
 
@@ -1474,7 +1474,7 @@ this
 └── who is the current receiver?
 ```
 
-Следующая глава про `call()` покажет, как выбрать receiver вручную.
+Следующая глава про `call()` покажет, как выбрать объект выполнения вручную.
 
 ---
 
@@ -1482,12 +1482,12 @@ this
 
 * `this` определяется во время invocation.
 * Function creation не фиксирует `this` навсегда.
-* В обычном вызове `object.method()` receiver обычно object слева от точки.
-* В detached function receiver теряется.
+* В обычном вызове `object.method()` объект выполнения обычно object слева от точки.
+* В detached function объект выполнения теряется.
 * В strict mode global call дает `this === undefined`.
-* Closure отвечает про variables, `this` отвечает про receiver.
+* Closure отвечает про variables, `this` отвечает про объект выполнения.
 * Arrow Functions имеют особое поведение `this`; подробно оно будет изучаться позже.
-* Следующие главы покажут другие формы вызова и ручной выбор receiver.
+* Следующие главы покажут другие формы вызова и ручной выбор объект выполнения.
 
 ---
 
@@ -1496,7 +1496,7 @@ this
 Ответьте без запуска кода:
 
 1. Чем Closure отличается от `this`?
-2. Что является receiver в вызове `apiClient.buildUrl('/users')`?
+2. Что является объект выполнения в вызове `apiClient.buildUrl('/users')`?
 3. Почему `const fn = object.method; fn()` может сломать `this`?
 4. Когда определяется `this`: при создании функции или при вызове?
 5. Почему Arrow Function не стоит механически использовать как object method с `this`?

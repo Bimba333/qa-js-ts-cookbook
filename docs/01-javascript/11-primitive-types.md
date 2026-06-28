@@ -31,7 +31,7 @@ Temporal Dead Zone
 
 Теперь начинается новый блок:
 
-> С какими values работает JavaScript?
+> С какими значения работает JavaScript?
 
 До этого мы говорили, что engine хранит информацию, identifiers дают named access, Scope определяет visibility, а Lexical Environment помогает lookup. Но сама информация тоже бывает разной.
 
@@ -43,9 +43,9 @@ const isActive = true;
 
 Вопрос:
 
-> What kind of value is the engine working with right now?
+> С каким видом значения engine работает прямо сейчас?
 
-Эта глава вводит primitive values — фундаментальные, indivisible values JavaScript. Objects будут изучаться отдельно в следующих главах.
+Эта глава вводит primitive значения — фундаментальные, indivisible значения JavaScript. Objects будут изучаться отдельно в следующих главах.
 
 ---
 
@@ -57,7 +57,7 @@ const isActive = true;
 * что variable дает named access к value;
 * что `const` запрещает reassignment identifier;
 * что `let` позволяет reassignment;
-* что engine работает с values during execution;
+* что engine работает с значения during execution;
 * что `console.log` выводит переданное value.
 
 Не требуется знать Object Type internals, References, Stack & Heap, Garbage Collector, Object wrappers, Prototype или Classes. Эти темы будут изучаться позже.
@@ -78,7 +78,7 @@ const isActive = true;
 
 Уровень сложности: **L2-L3**.
 
-Тема выглядит простой, но ошибки с `null`, `undefined`, `typeof`, number values and string values часто приводят к неверным assertions in Automation QA.
+Тема выглядит простой, но ошибки с `null`, `undefined`, `typeof`, number значения and string значения часто приводят к неверным assertions in Automation QA.
 
 ---
 
@@ -96,7 +96,7 @@ docs/01-javascript/10-temporal-dead-zone.md
 docs/01-javascript/12-object-type.md
 ```
 
-Следующая глава объяснит Object Type. Objects are different from primitive values and will be studied separately.
+Следующая глава объяснит Object Type. Objects are different from primitive значения and will be studied separately.
 
 ---
 
@@ -105,15 +105,15 @@ docs/01-javascript/12-object-type.md
 После изучения этой главы вы будете понимать:
 
 * что такое value;
-* почему JavaScript делит values на primitive and object values;
-* что primitive values are fundamental indivisible values;
+* почему JavaScript делит значения на primitive and object значения;
+* что primitive значения are fundamental indivisible значения;
 * как работают Number, String, Boolean, Undefined, Null, Symbol and BigInt;
 * что показывает `typeof`;
-* почему primitive values immutable;
+* почему primitive значения immutable;
 * почему `const` and primitive immutability are different ideas;
 * какие misconceptions встречаются чаще всего;
-* как primitive values используются in assertions;
-* как читать JSON primitive values;
+* как primitive значения используются in assertions;
+* как читать JSON primitive значения;
 * как выбирать correct assertion types in Automation QA.
 
 ---
@@ -162,7 +162,7 @@ const isActive = true;
 const deletedAt = null;
 ```
 
-Все это values, но они are not the same kind of value.
+Все это значения, но они are not the same kind of value.
 
 ```text
 30        → number-like value
@@ -182,11 +182,11 @@ null      → intentional absence
 }
 ```
 
-Тест должен понимать, какие values он сравнивает. Иначе assertion может быть формально написан, но смысл проверки будет неправильным.
+Тест должен понимать, какие значения он сравнивает. Иначе assertion может быть формально написан, но смысл проверки будет неправильным.
 
 Главный вопрос главы:
 
-> What kind of value is the engine working with right now?
+> С каким видом значения engine работает прямо сейчас?
 
 ---
 
@@ -202,7 +202,7 @@ const retryCount = 2;
 const isPassed = true;
 ```
 
-Здесь values:
+Здесь значения:
 
 ```text
 "login"
@@ -239,9 +239,9 @@ Engine compares a value.
 Engine passes a value to console.log or assertion.
 ```
 
-### Почему JavaScript делит values на primitive and object values
+### Почему JavaScript делит значения на primitive and object значения
 
-JavaScript values делятся на две большие группы:
+JavaScript значения делятся на две большие группы:
 
 ```text
 JavaScript Values
@@ -280,11 +280,11 @@ Object values
 └── structured values with properties, studied later
 ```
 
-Objects, arrays, functions, dates and references will be studied later. Сейчас важно понять primitive values before structured values.
+Objects, arrays, functions, dates and references will be studied later. Сейчас важно понять primitive значения before structured значения.
 
 ### Primitive vs Object overview
 
-Primitive values are atomic for our current mental model.
+Primitive значения are atomic for our current mental model.
 
 ```text
 Primitive
@@ -294,7 +294,7 @@ Primitive
 └── immutable
 ```
 
-Object values are different:
+Object значения are different:
 
 ```text
 Object
@@ -348,7 +348,7 @@ BigInt    → integer beyond regular Number limits
 
 ### Number
 
-Number — primitive type для numeric values.
+Number — primitive type для numeric значения.
 
 ```javascript
 const age = 30;
@@ -366,7 +366,7 @@ Number
 └── 2
 ```
 
-JavaScript uses Number for integers and fractional values.
+JavaScript uses Number for integers and fractional значения.
 
 ```text
 30
@@ -378,7 +378,7 @@ JavaScript uses Number for integers and fractional values.
 └── Number
 ```
 
-Special numeric values like `NaN` and `Infinity` exist, but detailed number behavior will be studied later with operators and comparisons.
+Special numeric значения like `NaN` and `Infinity` exist, but detailed number поведение will be studied later with operators and comparisons.
 
 Automation QA:
 
@@ -391,7 +391,7 @@ const actualStatusCode = 200;
 
 ### String
 
-String — primitive type для text values.
+String — primitive type для text значения.
 
 ```javascript
 const userName = 'Anna';
@@ -421,7 +421,7 @@ String value is text.
 └── Number
 ```
 
-Это разные values.
+Это разные значения.
 
 В Automation QA это часто важно:
 
@@ -434,7 +434,7 @@ const statusCodeFromResponse = 200;
 
 ### Boolean
 
-Boolean — primitive type with only two values:
+Boolean — primitive type with only two значения:
 
 ```text
 true
@@ -457,7 +457,7 @@ Boolean
 └── false
 ```
 
-Boolean values are used for yes/no, enabled/disabled, passed/failed, exists/not exists.
+Boolean значения are used for yes/no, enabled/disabled, passed/failed, exists/not exists.
 
 Automation QA:
 
@@ -518,7 +518,7 @@ Automation QA:
 const responseField = undefined;
 ```
 
-If a field is `undefined`, it may mean the field was not present or was not assigned. JSON itself does not represent `undefined`; JSON details will be studied later with API testing.
+If a поле is `undefined`, it may mean the поле was not present or was not assigned. JSON itself does not represent `undefined`; JSON details will be studied later with API testing.
 
 ### Null
 
@@ -536,7 +536,7 @@ Null
 └── null
 ```
 
-Difference:
+Разница:
 
 ```text
 undefined
@@ -558,23 +558,23 @@ Automation QA:
 
 This usually means system intentionally says: there is no deletion date.
 
-Important `typeof` note:
+Важное замечание про `typeof`:
 
 ```javascript
 typeof null;
 ```
 
-returns:
+возвращает:
 
 ```text
 object
 ```
 
-This is a historical JavaScript behavior. It does not mean `null` is an object. `null` is a primitive value.
+This is a historical JavaScript поведение. It does not mean `null` is an object. `null` is a primitive value.
 
 ### Symbol
 
-Symbol — primitive type for unique values.
+Symbol — primitive type for unique значения.
 
 ```javascript
 const firstId = Symbol('id');
@@ -632,7 +632,7 @@ BigInt is not the same as Number:
 
 Automation QA:
 
-BigInt can appear around very large IDs, but many APIs send large IDs as strings to avoid precision problems.
+BigInt can appear around very large IDs, but many APIs send large IDs как строки to avoid precision problems.
 
 Detailed numeric limits and conversions will be studied later.
 
@@ -666,7 +666,7 @@ Symbol()    | "symbol"
 typeof null === "object"
 ```
 
-This is historical behavior. In the mental model of this chapter:
+This is historical поведение. In the mental model of this chapter:
 
 ```text
 null is primitive
@@ -677,7 +677,7 @@ Do not use `typeof null` as proof that null is object.
 
 ### Primitive immutability
 
-Primitive values are immutable.
+Primitive значения are immutable.
 
 This means the value itself cannot be changed.
 
@@ -735,7 +735,7 @@ status → "created"
 status → "ready"
 ```
 
-### Labels pointing to values
+### Labels pointing to значения
 
 Use the mental model from Variables carefully:
 
@@ -746,13 +746,13 @@ identifier
 primitive value
 ```
 
-Example:
+Пример:
 
 ```javascript
 const status = 'active';
 ```
 
-Diagram:
+Схема:
 
 ```text
 status
@@ -769,7 +769,7 @@ let status = 'created';
 status = 'active';
 ```
 
-Diagram:
+Схема:
 
 ```text
 Before
@@ -781,7 +781,7 @@ status → "active"
 
 Primitive value did not change. The label now refers to another primitive value.
 
-### Current position in JavaScript model
+### Текущее место в модели JavaScript
 
 Теперь курс переходит от execution model к value model.
 
@@ -812,7 +812,7 @@ JavaScript works with values
 └── Object Values
 ```
 
-This chapter:
+Эта глава:
 
 ```text
 Primitive Values
@@ -828,7 +828,7 @@ Primitive Values
 
 ### Переход к Object Type
 
-Primitive values are fundamental indivisible values.
+Primitive значения are fundamental indivisible значения.
 
 Objects are different.
 
@@ -842,11 +842,11 @@ Object
 └── structured value with properties
 ```
 
-Do not try to explain object behavior through primitive rules.
+Do not try to explain object поведение through primitive rules.
 
 Next chapter will answer:
 
-> What kind of value is an object, and why does it behave differently?
+> Каким видом значения является object и почему он ведёт себя иначе?
 
 ### Complete primitive overview
 
@@ -917,7 +917,7 @@ literal "Anna"
 String primitive value
 ```
 
-When engine compares primitive values, it compares values themselves. Equality details will be studied later, but the basic mental model is:
+When engine compares primitive значения, it сравнивает значения themselves. Equality details will be studied later, but the basic mental model is:
 
 ```text
 Primitive comparison
@@ -925,7 +925,7 @@ Primitive comparison
 └── compare primitive values
 ```
 
-What kind of value is the engine working with right now:
+С каким видом значения engine работает прямо сейчас:
 
 ```text
 30        → Number
@@ -945,7 +945,7 @@ No memory layout, Stack & Heap, wrappers or references are needed for this chapt
 
 ### Atoms
 
-Primitive values are like atoms in the current model.
+Primitive значения are like atoms in the current model.
 
 ```text
 Primitive atom
@@ -962,7 +962,7 @@ true
 null
 ```
 
-### Indivisible values
+### Indivisible значения
 
 Primitive value is not a structure you open in this chapter.
 
@@ -974,9 +974,9 @@ Primitive value is not a structure you open in this chapter.
 
 Objects will be different.
 
-### Immutable values
+### Immutable значения
 
-Primitive values do not change internally.
+Primitive значения do not change internally.
 
 ```text
 "created"
@@ -988,9 +988,9 @@ Primitive values do not change internally.
 └── another immutable value
 ```
 
-### Labels pointing to values
+### Labels pointing to значения
 
-Variables are labels pointing to primitive values.
+Variables are labels pointing to primitive значения.
 
 ```text
 expectedStatus
@@ -1043,7 +1043,7 @@ examples/01-javascript/chapter-11/
 examples/01-javascript/chapter-11/01-number.js
 ```
 
-Показывает Number values in test-like data.
+Показывает Number значения in test-like data.
 
 ### Пример 2. String
 
@@ -1053,7 +1053,7 @@ examples/01-javascript/chapter-11/01-number.js
 examples/01-javascript/chapter-11/02-string.js
 ```
 
-Показывает String values.
+Показывает String значения.
 
 ### Пример 3. Boolean
 
@@ -1063,7 +1063,7 @@ examples/01-javascript/chapter-11/02-string.js
 examples/01-javascript/chapter-11/03-boolean.js
 ```
 
-Показывает Boolean values for flags.
+Показывает Boolean значения for flags.
 
 ### Пример 4. Null and Undefined
 
@@ -1083,7 +1083,7 @@ examples/01-javascript/chapter-11/04-null-undefined.js
 examples/01-javascript/chapter-11/05-symbol-bigint.js
 ```
 
-Показывает less common primitive values.
+Показывает less common primitive значения.
 
 ### Пример 6. typeof
 
@@ -1105,7 +1105,7 @@ examples/01-javascript/chapter-11/06-typeof.js
 
 ### `null` — object?
 
-Нет. `null` is primitive. `typeof null` returns `"object"` because of historical JavaScript behavior.
+Нет. `null` является primitive. `typeof null` возвращает `"object"` из-за исторического поведения JavaScript.
 
 ### `undefined` и `null` одно и то же?
 
@@ -1113,7 +1113,7 @@ examples/01-javascript/chapter-11/06-typeof.js
 
 ### `const` делает primitive immutable?
 
-Primitive values immutable by nature. `const` prevents reassignment of identifier. Это разные идеи.
+Primitive значения immutable by nature. `const` prevents reassignment of identifier. Это разные идеи.
 
 ### Нужно ли часто использовать Symbol and BigInt in tests?
 
@@ -1123,7 +1123,7 @@ Primitive values immutable by nature. `const` prevents reassignment of identifie
 
 ## Распространенные мифы
 
-### Миф 1. Primitive values are stored like small objects
+### Миф 1. Primitive значения are stored like small objects
 
 Реальность:
 
@@ -1217,7 +1217,7 @@ Identifier now refers to another primitive value. The string `'created'` was not
 
 ## Практическое использование
 
-When reading code, classify values:
+When reading code, classify значения:
 
 ```text
 1. Is this value primitive or object?
@@ -1227,7 +1227,7 @@ When reading code, classify values:
 5. Does typeof give expected result?
 ```
 
-Table:
+Таблица:
 
 ```text
 Value       | Type category | typeof
@@ -1252,16 +1252,16 @@ not only visually similar output.
 
 ## Использование в Automation QA
 
-### Expected values in assertions
+### Expected значения in assertions
 
-Assertions often compare primitive values:
+Assertions often compare primitive значения:
 
 ```javascript
 const expectedStatus = 'active';
 const actualStatus = 'active';
 ```
 
-Both are String primitive values.
+Both are String primitive значения.
 
 ```text
 expectedStatus → "active"
@@ -1270,7 +1270,7 @@ actualStatus   → "active"
 
 ### API response validation
 
-API response values may be numbers, strings, booleans or null.
+API response значения may be numbers, strings, booleans or null.
 
 ```javascript
 const expectedStatusCode = 200;
@@ -1280,7 +1280,7 @@ const expectedDeletedAt = null;
 
 QA engineer should know what kind of value is expected.
 
-### Comparing primitive values
+### Comparing primitive значения
 
 Before comparing:
 
@@ -1314,7 +1314,7 @@ const expectedIsActive = true;
 const expectedDeletedAt = null;
 ```
 
-### Reading JSON values
+### Reading JSON значения
 
 JSON commonly contains:
 
@@ -1327,7 +1327,7 @@ JSON commonly contains:
 }
 ```
 
-These correspond to primitive values in JavaScript after parsing. `undefined` is not a JSON value.
+These correspond to primitive значения in JavaScript after parsing. `undefined` is not a JSON value.
 
 ### Choosing correct assertion types
 
@@ -1357,9 +1357,9 @@ This prevents false confidence in tests.
 
 ## Итоги
 
-Primitive values are the fundamental indivisible values of JavaScript.
+Primitive значения are the fundamental indivisible значения of JavaScript.
 
-JavaScript values divide into:
+JavaScript значения divide into:
 
 ```text
 JavaScript Values
@@ -1368,7 +1368,7 @@ JavaScript Values
 └── Object Values
 ```
 
-This chapter studied primitive values:
+Эта глава изучила примитивные значения:
 
 ```text
 Number
@@ -1380,7 +1380,7 @@ Symbol
 BigInt
 ```
 
-Primitive values are immutable. Reassignment changes which value an identifier refers to; it does not mutate the primitive value itself.
+Primitive значения are immutable. Reassignment changes which value an identifier refers to; it does not mutate the primitive value itself.
 
 Objects are different and will be studied separately in the next chapter.
 
@@ -1390,13 +1390,13 @@ Objects are different and will be studied separately in the next chapter.
 
 ✓ Value is the actual information JavaScript works with.
 
-✓ Primitive values are fundamental indivisible values.
+✓ Primitive значения are fundamental indivisible значения.
 
-✓ JavaScript has primitive values and object values.
+✓ JavaScript has primitive значения and object значения.
 
-✓ Number represents numeric values.
+✓ Number represents numeric значения.
 
-✓ String represents text values.
+✓ String represents text значения.
 
 ✓ Boolean has only `true` and `false`.
 
@@ -1404,13 +1404,13 @@ Objects are different and will be studied separately in the next chapter.
 
 ✓ `null` usually means intentional absence.
 
-✓ `Symbol` creates unique primitive values.
+✓ `Symbol` creates unique primitive значения.
 
-✓ `BigInt` represents large integer values.
+✓ `BigInt` represents large integer значения.
 
 ✓ `typeof null` returns `"object"`, but `null` is primitive.
 
-✓ Primitive values are immutable.
+✓ Primitive значения are immutable.
 
 ---
 
@@ -1418,7 +1418,7 @@ Objects are different and will be studied separately in the next chapter.
 
 1. Что такое value?
 
-2. Почему JavaScript divides values into primitive and object values?
+2. Почему JavaScript divides значения into primitive and object значения?
 
 3. Какие primitive types есть в JavaScript?
 
@@ -1458,4 +1458,4 @@ practice/01-javascript/11-primitive-types.md
 solutions/01-javascript/11-primitive-types.md
 ```
 
-Открывайте решения после самостоятельной попытки. В этой главе важно сравнивать не только output, но и kind of value.
+Открывайте решения после самостоятельной попытки. В этой главе важно сравнивать не только вывод, но и kind of value.

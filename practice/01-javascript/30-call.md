@@ -4,17 +4,17 @@
 
 1. Зачем существует `call()`?
 
-2. Кто выбирает receiver при ordinary invocation?
+2. Кто выбирает объект выполнения при ordinary invocation?
 
-3. Кто выбирает receiver при `call()`?
+3. Кто выбирает объект выполнения при `call()`?
 
-4. Что означает первый argument в `functionObject.call(receiver)`?
+4. Что означает первый argument в `functionObject.call(объект выполнения)`?
 
-5. Куда попадают arguments, которые идут после receiver?
+5. Куда попадают arguments, которые идут после объект выполнения?
 
-6. Почему `call()` не привязывает receiver навсегда?
+6. Почему `call()` не привязывает объект выполнения навсегда?
 
-7. Чем `call()` отличается от обычного `object.method()` на уровне выбора receiver?
+7. Чем `call()` отличается от обычного `object.method()` на уровне выбора объект выполнения?
 
 8. Почему `apply()` логически продолжает тему `call()`?
 
@@ -24,7 +24,7 @@
 
 ### Задание 1
 
-Определите receiver и результат.
+Определите объект выполнения и результат.
 
 ```javascript
 function printServiceName() {
@@ -40,7 +40,7 @@ console.log(printServiceName.call(service));
 
 Ответьте:
 
-* кто выбирает receiver;
+* кто выбирает объект выполнения;
 * что становится `this`;
 * что будет выведено.
 
@@ -189,13 +189,13 @@ console.log(validateStatus.call(response, config));
 
 ---
 
-## Кто выбирает receiver?
+## Кто выбирает объект выполнения?
 
 ### Задание 8
 
 Для каждого вызова ответьте:
 
-* кто выбирает receiver;
+* кто выбирает объект выполнения;
 * что становится `this`;
 * какие значения попадают в parameters.
 
@@ -225,7 +225,7 @@ buildUrl.call(apiClient, '/orders');
 https://api.example.test/users
 ```
 
-Но сейчас receiver выбран неправильно.
+Но сейчас объект выполнения выбран неправильно.
 
 ```javascript
 function buildUrl(path) {
@@ -271,7 +271,7 @@ console.log(validateStatus.call(response, config));
 
 ### Задание 11
 
-Создайте function `statusMatches(response)`.
+Создайте функцию `statusMatches(response)`.
 
 Она должна сравнивать:
 
@@ -290,7 +290,7 @@ response.status === this.expectedStatus
 
 ### Задание 12
 
-Создайте function `buildApiUrl(path)`.
+Создайте функцию `buildApiUrl(path)`.
 
 Она должна возвращать:
 
@@ -315,15 +315,15 @@ this.baseUrl + path
 
 Требования:
 
-1. Создайте function `formatRequest(method, path)`.
+1. Создайте функцию `formatRequest(method, path)`.
 2. Она должна использовать `this.baseUrl`.
-3. Создайте function `statusMatches(response)`.
+3. Создайте функцию `statusMatches(response)`.
 4. Она должна использовать `this.expectedStatus`.
-5. Создайте object `usersApiConfig`.
-6. Создайте object `ordersApiConfig`.
-7. Создайте object `okAssertionConfig`.
+5. Создайте объект `usersApiConfig`.
+6. Создайте объект `ordersApiConfig`.
+7. Создайте объект `okAssertionConfig`.
 8. Вызовите functions через `call()`.
-9. Для каждого вызова подпишите, кто выбирает receiver.
+9. Для каждого вызова подпишите, кто выбирает объект выполнения.
 10. Нарисуйте схему:
 
 ```text
@@ -337,4 +337,4 @@ function.call(receiver, argument)
 
 * почему `call()` подходит для этой задачи;
 * где обычный method call был бы читаемее;
-* почему `call()` не сохраняет receiver навсегда.
+* почему `call()` не сохраняет объект выполнения навсегда.

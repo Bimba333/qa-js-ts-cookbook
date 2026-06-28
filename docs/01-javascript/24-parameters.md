@@ -174,7 +174,7 @@ helper всегда будет проверять только `200`.
 
 Именно для этого существуют параметры.
 
-Why parameters exist:
+Зачем существуют parameters:
 
 ```text
 Reusable function
@@ -268,7 +268,7 @@ function validateStatus(statusCode)
                         └── parameter
 ```
 
-Parameter belongs to function definition:
+Parameter относится к определению функции:
 
 ```text
 Function definition
@@ -296,7 +296,7 @@ validateStatus(200)
                └── argument
 ```
 
-Argument belongs to function call:
+Argument относится к вызову функции:
 
 ```text
 Function invocation
@@ -343,7 +343,7 @@ Parameter
 └── statusCode
 ```
 
-Data flow:
+Data поток:
 
 ```text
 validateStatus(200)
@@ -366,7 +366,7 @@ function validateStatus(statusCode)
 validateStatus(200);
 ```
 
-Invocation lifecycle:
+Жизненный цикл вызова:
 
 ```text
 Program reaches function call
@@ -472,7 +472,7 @@ function compareStatus(actualStatus, expectedStatus)
                        └── parameter 1
 ```
 
-Arguments:
+Аргументы:
 
 ```text
 compareStatus(200, 200)
@@ -621,7 +621,7 @@ Function call
 └── invocation
 ```
 
-Function boundary:
+Граница функции:
 
 ```text
 Outside
@@ -658,7 +658,7 @@ I make 200 available as statusCode.
 I execute the body.
 ```
 
-Current position in JavaScript model:
+Текущее место в модели JavaScript:
 
 ```text
 Functions
@@ -733,7 +733,7 @@ Mailbox name: statusCode
 └── received value: 200
 ```
 
-### Form fields
+### Поля формы
 
 Функция похожа на форму.
 
@@ -747,7 +747,7 @@ Submitted value
 └── 200
 ```
 
-### Machine input
+### Machine вход
 
 ```text
 Machine: validateStatus
@@ -827,7 +827,7 @@ node examples/01-javascript/chapter-24/06-qa-example.js
 
 ### 06-qa-example.js
 
-Показывает QA validator, который получает expected и actual values.
+Показывает QA validator, который получает expected и actual значения.
 
 ---
 
@@ -1015,7 +1015,7 @@ profileLocator
 
 ## Использование в Automation QA
 
-### Validators receiving expected values
+### Validators receiving expected значения
 
 ```javascript
 function validateStatus(actualStatus, expectedStatus) {
@@ -1025,7 +1025,7 @@ function validateStatus(actualStatus, expectedStatus) {
 validateStatus(200, 200);
 ```
 
-QA validator:
+QA-валидатор:
 
 ```text
 actualStatus

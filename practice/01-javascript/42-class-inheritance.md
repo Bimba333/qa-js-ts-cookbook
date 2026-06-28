@@ -5,11 +5,11 @@
 После выполнения заданий вы должны уметь:
 
 * объяснять, зачем существует class inheritance;
-* находить duplicated class behavior;
+* находить duplicated class поведение;
 * отличать base class from derived class;
 * понимать `extends` на базовом уровне;
 * определять inherited methods;
-* предсказывать overriding behavior;
+* предсказывать overriding поведение;
 * связывать inheritance with prototype lookup;
 * применять inheritance в QA framework examples.
 
@@ -25,7 +25,7 @@
 6. Does inheritance copy methods?
 7. How is inheritance related to Prototype Chain?
 8. What is method overriding?
-9. Why should base class contain only common behavior?
+9. Why should base class contain only common поведение?
 10. Why is `super` not needed to understand basic inherited method lookup?
 
 ---
@@ -54,8 +54,8 @@ class LoginPage extends BasePage {
 
 Ответьте:
 
-* Which methods belong to `BasePage`?
-* Which method belongs to `LoginPage`?
+* Какие methods относятся к `BasePage`?
+* Какой method относится к `LoginPage`?
 * Which methods can `new LoginPage()` use?
 
 ### Задание 2.2
@@ -142,7 +142,7 @@ console.log(validator.isValid());
 
 ---
 
-## 4. Debugging tasks
+## 4. Задания на отладку
 
 ### Задание 4.1
 
@@ -200,7 +200,7 @@ class LoginPage extends BasePage {
 
 ---
 
-## 5. QA-oriented tasks
+## 5. QA-задачи
 
 ### Задание 5.1
 
@@ -221,7 +221,7 @@ Create `BaseApiClient` with:
 
 * `describeRequest(serviceName, endpoint)`.
 
-Create:
+Создайте:
 
 * `UsersClient extends BaseApiClient`;
 * `OrdersClient extends BaseApiClient`.
@@ -243,7 +243,7 @@ Create `StatusValidator extends BaseValidator` with:
 
 Explain:
 
-> Why should inheritance describe real shared behavior, not just hide random duplication?
+> Why should inheritance describe real общее поведение, not just hide random duplication?
 
 ---
 
@@ -251,7 +251,7 @@ Explain:
 
 Create small Page Object inheritance model.
 
-Requirements:
+Требования:
 
 1. Create `BasePage`.
 2. Add shared method `open(pageName)`.
@@ -263,7 +263,7 @@ Requirements:
 8. Create instances of both pages.
 9. Call inherited methods on both instances.
 10. Call specific methods on each instance.
-11. Explain where common behavior lives.
+11. Explain where common поведение lives.
 12. Explain why methods are reused, not copied.
 
 Do not use `super`.

@@ -7,10 +7,10 @@
 * объяснять, зачем существует Optional Chaining;
 * определять, где property chain stops;
 * понимать result `undefined`;
-* отличать Optional Chaining от default values;
-* предсказывать output;
+* отличать Optional Chaining от default значения;
+* предсказывать вывод;
 * находить ошибки placement of `?.`;
-* применять Optional Chaining в Automation QA scenarios.
+* применять Optional Chaining в Automation QA-сценариях.
 
 ---
 
@@ -19,7 +19,7 @@
 1. Какую проблему решает Optional Chaining?
 2. Почему ordinary access can throw TypeError?
 3. Что проверяет operator `?.`?
-4. Why does Optional Chaining return undefined instead of throwing?
+4. Why does Optional Chaining return undefined вместо throwing?
 5. Задает ли Optional Chaining fallback value?
 6. Меняет ли Optional Chaining object?
 7. Что такое short-circuiting в property chain?
@@ -127,7 +127,7 @@ console.log(payload.discount?.promoCode);
 
 ---
 
-## 4. Debugging tasks
+## 4. Задания на отладку
 
 Найдите проблему и исправьте код.
 
@@ -171,7 +171,7 @@ console.log(role);
 
 ---
 
-## 5. QA-oriented tasks
+## 5. QA-задачи
 
 ### Задание 5.1
 
@@ -226,8 +226,8 @@ const payload = {
 
 Объясните, в каком случае Optional Chaining should not be used:
 
-* optional field `middleName`;
-* required field `id`.
+* optional поле `middleName`;
+* required поле `id`.
 
 ---
 
@@ -247,7 +247,7 @@ console.log('after reporter');
 
 ## 7. Мини-проект
 
-Создайте QA scenario.
+Создайте QA-сценарий.
 
 Требования:
 
@@ -259,7 +259,7 @@ console.log('after reporter');
 6. Безопасно прочитайте `retryPolicy.retries`.
 7. Выведите все results.
 8. Объясните, где chain stops.
-9. Отдельно объясните, почему Optional Chaining did not provide default values.
+9. Отдельно объясните, почему Optional Chaining did not provide default значения.
 
 ---
 
@@ -269,4 +269,4 @@ console.log('after reporter');
 2. Почему code continues after safe stop?
 3. Почему `?.` должен стоять before missing level?
 4. Чем safe access отличается от validation?
-5. Какая следующая тема нужна для fallback values?
+5. Какая следующая тема нужна для fallback значения?

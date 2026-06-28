@@ -161,7 +161,7 @@ checkStatus();
 
 ### Задача 3
 
-Инженер использует global mutable state:
+Инженер использует global mutable состояние:
 
 ```javascript
 let currentUserName = 'unknown';

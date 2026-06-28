@@ -36,7 +36,7 @@ console.log(allowedPriorities.includes('critical'));
 
 Сначала запишите ответ без запуска.
 
-## Debugging
+## Отладка
 
 Автор хотел проверить, что status входит в список разрешенных.
 
@@ -51,7 +51,7 @@ console.log(isValid);
 
 Что не так? Исправьте код.
 
-## QA scenario
+## QA-сценарий
 
 Создайте `allowedStatuses` и проверьте, что status каждого test case входит в этот список. Используйте `includes()` внутри уже изученной проверки всех elements.
 
@@ -66,4 +66,4 @@ console.log(isValid);
 * создать `allowedPriorities`;
 * проверить status одного test case;
 * проверить priority одного test case;
-* проверить, что все test cases используют только allowed values.
+* проверить, что все test cases используют только allowed значения.

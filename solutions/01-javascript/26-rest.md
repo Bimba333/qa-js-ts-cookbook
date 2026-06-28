@@ -10,11 +10,11 @@ Rest Parameters нужны, чтобы функция могла принять 
 
 Объяснение:
 
-Обычные parameters подходят, когда количество inputs известно. Rest parameter собирает remaining arguments в array.
+Обычные parameters подходят, когда количество входs известно. Rest parameter собирает remaining arguments в array.
 
 Распространённая ошибка:
 
-Использовать rest везде, даже когда inputs fixed.
+Использовать rest везде, даже когда входs fixed.
 
 Связь с Automation QA:
 
@@ -24,7 +24,7 @@ Helper может принять любое количество status codes и
 
 Ответ:
 
-Это ситуация, когда вызывающий код может передать один, несколько или ноль values.
+Это ситуация, когда вызывающий код может передать один, несколько или ноль значения.
 
 Объяснение:
 
@@ -78,7 +78,7 @@ Helper может принять любое количество status codes и
 
 Ответ:
 
-Потому что нужно одно значение, которое хранит много collected values.
+Потому что нужно одно значение, которое хранит много collected значения.
 
 Объяснение:
 
@@ -104,11 +104,11 @@ Collected test data удобно хранить как array.
 
 Распространённая ошибка:
 
-Ожидать object или named values.
+Ожидать object или named значения.
 
 Связь с Automation QA:
 
-Порядок values в проверках может быть важен.
+Порядок значения в проверках может быть важен.
 
 ### 7. Ноль arguments
 
@@ -150,7 +150,7 @@ Helper signature должна быть предсказуемой.
 
 Ответ:
 
-Когда количество inputs известно и имеет ясный смысл.
+Когда количество входs известно и имеет ясный смысл.
 
 Объяснение:
 
@@ -262,11 +262,11 @@ Rest parameter: `otherMessages`.
 
 Объяснение:
 
-Rest собирает values после первого argument.
+Rest собирает значения после первого argument.
 
 Распространённая ошибка:
 
-Думать, что rest всегда собирает абсолютно все values.
+Думать, что rest всегда собирает абсолютно все значения.
 
 Связь с Automation QA:
 
@@ -332,7 +332,7 @@ Empty test data collection должна быть понятной.
 
 Связь с Automation QA:
 
-Known value и remaining values часто имеют разный смысл.
+Known value и remaining значения часто имеют разный смысл.
 
 ## Предскажите вывод перед запуском
 
@@ -395,7 +395,7 @@ No statuses means empty collection.
 
 Связь с Automation QA:
 
-Expected отдельно, actual values collection отдельно.
+Expected отдельно, actual значения collection отдельно.
 
 ### Задача 4
 
@@ -474,7 +474,7 @@ Collection лучше называть во множественном числ�
 
 Ответ:
 
-Здесь inputs fixed: actual и expected.
+Здесь входs fixed: actual и expected.
 
 Лучше:
 
@@ -486,7 +486,7 @@ function compareStatus(actualStatus, expectedStatus) {
 
 Объяснение:
 
-Rest нужен для неизвестного количества values.
+Rest нужен для неизвестного количества значения.
 
 Распространённая ошибка:
 
@@ -539,7 +539,7 @@ validateStatuses(200, 200, 201, 204);
 
 Связь с Automation QA:
 
-Один expected value и много observed values.
+Один expected value и много observed значения.
 
 ### Сценарий 2
 
@@ -613,7 +613,7 @@ Rest parameter хранит collection.
 
 Связь с Automation QA:
 
-Имена показывают, что helper принимает много values.
+Имена показывают, что helper принимает много значения.
 
 ## Мини-проект
 
@@ -663,7 +663,7 @@ collectLocatorNames | none              | locatorNames   | profile button, save 
 
 Распространённая ошибка:
 
-Считать collected values отдельными variables, а не array.
+Считать collected значения отдельными variables, а не array.
 
 Связь с Automation QA:
 

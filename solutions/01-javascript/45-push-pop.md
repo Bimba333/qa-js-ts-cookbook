@@ -4,7 +4,7 @@
 
 ### 1.1 Why does `push()` exist?
 
-**Ответ:** to add new values to the end of an array.
+**Ответ:** to add new значения to the end of an array.
 
 **Объяснение:** arrays often need to grow after creation.
 
@@ -172,7 +172,7 @@ undefined
 
 **Объяснение:** start `2`, pop -> `1`, push -> `2`, push -> `3`.
 
-**Распространённая ошибка:** count operations without tracking current state.
+**Распространённая ошибка:** count operations without tracking current состояние.
 
 **Связь с Automation QA:** test data list can be adjusted dynamically.
 
@@ -186,13 +186,13 @@ undefined
 
 **Объяснение:** `pop()` removes newest last element.
 
-**Распространённая ошибка:** think `last` is the remaining last element instead of removed value.
+**Распространённая ошибка:** think `last` is the remaining last element вместо removed value.
 
 **Связь с Automation QA:** request history inspection depends on this distinction.
 
 ---
 
-## 4. Debugging tasks
+## 4. Задания на отладку
 
 ### 4.1
 
@@ -210,7 +210,7 @@ console.log(users[0]);
 
 **Распространённая ошибка:** treat return value of `pop()` as array.
 
-**Связь с Automation QA:** removed assertion and remaining assertion collection are different values.
+**Связь с Automation QA:** removed assertion and remaining assertion collection are different значения.
 
 ### 4.2
 
@@ -224,7 +224,7 @@ console.log(users[0]);
 
 ### 4.3
 
-**Ответ:** output is `Anna`.
+**Ответ:** вывод is `Anna`.
 
 **Объяснение:** `push('Kate')` adds to end, so Kate is at index `1`. Index `0` remains Anna.
 
@@ -234,7 +234,7 @@ console.log(users[0]);
 
 ---
 
-## 5. QA-oriented tasks
+## 5. QA-задачи
 
 ### 5.1
 
@@ -322,7 +322,7 @@ console.log(testResults.length);
 console.log(testResults[testResults.length - 1]);
 ```
 
-Possible output:
+Возможный вывод:
 
 ```text
 1

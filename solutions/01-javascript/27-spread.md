@@ -6,7 +6,7 @@
 
 Ответ:
 
-Spread нужен, чтобы раскрыть collection в отдельные values или properties.
+Spread нужен, чтобы раскрыть collection в отдельные значения или properties.
 
 Объяснение:
 
@@ -18,13 +18,13 @@ Spread нужен, чтобы раскрыть collection в отдельные 
 
 Связь с Automation QA:
 
-Можно передавать массив prepared values в helper call.
+Можно передавать массив prepared значения в helper call.
 
 ### 2. Направление Spread
 
 Ответ:
 
-Spread идет от одного collection к многим values.
+Spread идет от одного collection к многим значения.
 
 Объяснение:
 
@@ -42,11 +42,11 @@ Status array можно раскрыть в helper arguments.
 
 Ответ:
 
-Rest собирает many values в one array.
+Rest собирает many значения в one array.
 
 Объяснение:
 
-В parameter list `...values` принимает remaining arguments.
+В parameter list `...значения` принимает remaining arguments.
 
 Распространённая ошибка:
 
@@ -78,11 +78,11 @@ Rest полезен для flexible helpers, Spread - для раскрытия 
 
 Ответ:
 
-Он раскрывает array values в separate arguments.
+Он раскрывает array значения в separate arguments.
 
 Объяснение:
 
-`fn(...values)` становится вызовом с отдельными values.
+`fn(...значения)` становится вызовом с отдельными значения.
 
 Распространённая ошибка:
 
@@ -96,11 +96,11 @@ Rest полезен для flexible helpers, Spread - для раскрытия 
 
 Ответ:
 
-Он раскрывает array values внутри нового array.
+Он раскрывает array значения внутри нового array.
 
 Объяснение:
 
-`[...a, ...b]` создает array из values обоих arrays.
+`[...a, ...b]` создает array из значения обоих arrays.
 
 Распространённая ошибка:
 
@@ -192,7 +192,7 @@ Readable setup важнее короткого setup.
 
 Объяснение:
 
-`...values` находится в parameter list и собирает incoming arguments.
+`...значения` находится в parameter list и собирает incoming arguments.
 
 Распространённая ошибка:
 
@@ -210,7 +210,7 @@ Readable setup важнее короткого setup.
 
 Объяснение:
 
-`...values` находится в function call и раскрывает array в arguments.
+`...значения` находится в function call и раскрывает array в arguments.
 
 Распространённая ошибка:
 
@@ -218,7 +218,7 @@ Readable setup важнее короткого setup.
 
 Связь с Automation QA:
 
-Prepared values раскрываются в helper call.
+Prepared значения раскрываются в helper call.
 
 ### Задача 3
 
@@ -228,7 +228,7 @@ Prepared values раскрываются в helper call.
 
 Объяснение:
 
-Он раскрывает values из `values` внутрь нового array.
+Он раскрывает значения из `значения` внутрь нового array.
 
 Распространённая ошибка:
 
@@ -244,11 +244,11 @@ Prepared values раскрываются в helper call.
 
 Ответ:
 
-Array `statuses` раскрывается в separate values для `console.log`.
+Array `statuses` раскрывается в separate значения для `console.log`.
 
 Объяснение:
 
-Function call получает values individually.
+Function call получает значения individually.
 
 Распространённая ошибка:
 
@@ -266,7 +266,7 @@ Function call получает values individually.
 
 Объяснение:
 
-Array literal получает values из двух collections.
+Array literal получает значения из двух collections.
 
 Распространённая ошибка:
 
@@ -306,7 +306,7 @@ Request payload composition.
 
 Объяснение:
 
-Spread раскрывает values из `statuses`, затем добавляется `204`.
+Spread раскрывает значения из `statuses`, затем добавляется `204`.
 
 Распространённая ошибка:
 
@@ -327,7 +327,7 @@ Spread раскрывает values из `statuses`, затем добавляе�
 
 Объяснение:
 
-Array values стали separate arguments.
+Array значения стали separate arguments.
 
 Распространённая ошибка:
 
@@ -533,7 +533,7 @@ validateThreeStatuses(...statuses);
 
 Объяснение:
 
-Spread expands array values into separate arguments.
+Spread expands array значения into separate arguments.
 
 Распространённая ошибка:
 

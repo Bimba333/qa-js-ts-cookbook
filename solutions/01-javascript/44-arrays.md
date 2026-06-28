@@ -4,31 +4,31 @@
 
 ### 1.1 Why do arrays exist?
 
-**Ответ:** to store many values together in a specific order.
+**Ответ:** to store many значения together in a specific order.
 
-**Объяснение:** many related values should be represented as one collection.
+**Объяснение:** many related значения should be represented as one collection.
 
 **Распространённая ошибка:** think array is only square bracket syntax.
 
 **Связь с Automation QA:** API responses often return lists of users, orders or errors.
 
-### 1.2 Why use an array instead of many variables?
+### 1.2 Why use an array вместо many variables?
 
-**Ответ:** array keeps related ordered values in one collection.
+**Ответ:** array keeps related ordered значения in one collection.
 
 **Объяснение:** `user1`, `user2`, `user3` do not scale and make order harder to manage.
 
-**Распространённая ошибка:** create numbered variables instead of collection.
+**Распространённая ошибка:** create numbered variables вместо collection.
 
 **Связь с Automation QA:** test users, requests and assertions are easier to pass as arrays.
 
 ### 1.3 What is an ordered collection?
 
-**Ответ:** collection where values have stable positions.
+**Ответ:** collection where значения have stable positions.
 
 **Объяснение:** array remembers first, second, third and so on through indexes.
 
-**Распространённая ошибка:** treat array like unordered set of values.
+**Распространённая ошибка:** treat array like unordered set of значения.
 
 **Связь с Automation QA:** order can matter in UI rows, API results and reports.
 
@@ -66,7 +66,7 @@
 
 **Ответ:** collection with no elements.
 
-**Объяснение:** it can be a valid state, such as no failures yet.
+**Объяснение:** it can be a valid состояние, such as no failures yet.
 
 **Распространённая ошибка:** treat every empty array as error.
 
@@ -74,17 +74,17 @@
 
 ### 1.8 When is object more suitable?
 
-**Ответ:** when values belong to named properties of one entity.
+**Ответ:** когда значения относятся к именованным свойствам одной сущности.
 
-**Объяснение:** user email and role belong to one user object.
+**Объяснение:** user email и role относятся к одному user object.
 
-**Распространённая ошибка:** use array positions for unrelated named fields.
+**Распространённая ошибка:** use array positions for unrelated named поля.
 
 **Связь с Automation QA:** one API user should usually be object.
 
 ### 1.9 When is array more suitable?
 
-**Ответ:** when storing many values where order/position matters.
+**Ответ:** when storing many значения where order/position matters.
 
 **Объяснение:** list of users or test cases fits array.
 
@@ -94,7 +94,7 @@
 
 ### 1.10 Why use mixed arrays carefully?
 
-**Ответ:** mixed values can reduce readability.
+**Ответ:** mixed значения can reduce readability.
 
 **Объяснение:** array of same kind of element is easier to understand.
 
@@ -188,7 +188,7 @@ profile
 
 ---
 
-## 4. Debugging tasks
+## 4. Задания на отладку
 
 ### 4.1
 
@@ -230,7 +230,7 @@ console.log(users[0].email);
 
 ---
 
-## 5. QA-oriented tasks
+## 5. QA-задачи
 
 ### 5.1
 
@@ -309,11 +309,11 @@ console.log(testCases.length);
 
 ### 5.4
 
-**Ответ:** use array for many ordered items; use object for one entity with named fields.
+**Ответ:** use array for many ordered items; use object for one entity with named поля.
 
 **Объяснение:** `users` is array; each `user` inside it is object.
 
-**Распространённая ошибка:** choose structure by syntax preference instead of data shape.
+**Распространённая ошибка:** choose structure by syntax preference вместо data shape.
 
 **Связь с Automation QA:** API response often contains arrays of objects.
 
@@ -350,7 +350,7 @@ console.log(apiUsers[1].role);
 console.log(apiUsers.length);
 ```
 
-Possible output:
+Возможный вывод:
 
 ```text
 anna@example.test
@@ -359,7 +359,7 @@ admin
 3
 ```
 
-**Объяснение:** `apiUsers` is one ordered collection. Each element is one user object. Array is better than `user1`, `user2`, `user3` because it keeps related values together and preserves order.
+**Объяснение:** `apiUsers` is one ordered collection. Each element is one user object. Array is better than `user1`, `user2`, `user3` because it keeps related значения together and preserves order.
 
 **Распространённая ошибка:** confuse array index and object property access.
 

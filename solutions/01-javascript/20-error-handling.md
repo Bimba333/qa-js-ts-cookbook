@@ -6,7 +6,7 @@
 
 Ответ:
 
-Normal execution is the usual forward flow of program statements.
+Нормальное выполнение — это обычный прямой поток инструкций программы.
 
 Объяснение:
 
@@ -82,7 +82,7 @@ Program stops because continuing normal path may be unsafe or impossible.
 
 Объяснение:
 
-No parsed object means field validation cannot run correctly.
+No parsed object means поле validation cannot run correctly.
 
 Распространённая ошибка:
 
@@ -90,7 +90,7 @@ Continue after setup failure.
 
 Связь с Automation QA:
 
-Stopping test can be correct behavior.
+Stopping test can be correct поведение.
 
 ### 6. `throw`
 
@@ -226,7 +226,7 @@ Reliable tests fail clearly.
 
 Normal path starts in try. `JSON.parse` fails. `console.log('Parsed')` does not run. Catch prints `Invalid JSON`. Then `After` prints.
 
-Output:
+Вывод:
 
 ```text
 Invalid JSON
@@ -251,7 +251,7 @@ Validation after invalid JSON should not run.
 
 No error occurs. Catch does not run. Finally runs.
 
-Output:
+Вывод:
 
 ```text
 Start
@@ -277,7 +277,7 @@ Cleanup after successful test setup.
 
 `throw` starts error path. There is no catch here, but finally runs before error continues outward. If run directly, script ends with thrown error after printing cleanup.
 
-Output before termination:
+Вывод до завершения:
 
 ```text
 Cleanup
@@ -370,7 +370,7 @@ If parsing fails, catch runs.
 
 Field validation `console.log(body.id)` does not run.
 
-QA debugging should log that response body is invalid and ideally include safe context about operation/input.
+QA debugging should log that response body is invalid and ideally include safe context about operation/вход.
 
 Объяснение:
 
@@ -378,7 +378,7 @@ No parsed body exists after parse error.
 
 Распространённая ошибка:
 
-Try to validate fields after parse failure.
+Пытаться проверять поля после ошибки парсинга.
 
 Связь с Automation QA:
 
@@ -392,7 +392,7 @@ Invalid JSON should produce clear test failure.
 
 It is bad because it swallows error and loses information.
 
-Better:
+Лучше:
 
 ```javascript
 try {
@@ -420,7 +420,7 @@ Hidden parsing failures make tests misleading.
 
 `Failed` does not explain what failed or why.
 
-Better:
+Лучше:
 
 ```javascript
 throw new Error('Expected status 200, received 500');
@@ -428,7 +428,7 @@ throw new Error('Expected status 200, received 500');
 
 Объяснение:
 
-Useful error message includes expectation and actual state.
+Useful error message includes expectation and actual состояние.
 
 Распространённая ошибка:
 
@@ -592,7 +592,7 @@ try {
 }
 ```
 
-Report:
+Отчёт:
 
 ```text
 Step              | Normal path             | Error path                  | What happens to execution now

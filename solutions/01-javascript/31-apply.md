@@ -4,11 +4,11 @@
 
 ### 1. Зачем существует apply()?
 
-Ответ: `apply()` нужен, чтобы вызвать function object с явно выбранным receiver и передать normal arguments как array или array-like ordered argument list.
+Ответ: `apply()` нужен, чтобы вызвать function object с явно выбранным объект выполнения и передать normal arguments как array или array-like ordered argument list.
 
 Объяснение: `call()` удобен, когда arguments уже отдельные. `apply()` удобен, когда arguments уже собраны в array или array-like collection.
 
-Распространённая ошибка: думать, что `apply()` решает новую проблему receiver.
+Распространённая ошибка: думать, что `apply()` решает новую проблему объект выполнения.
 
 Связь с Automation QA: test data часто приходит в виде подготовленного array значений.
 
@@ -18,17 +18,17 @@
 
 Ответ: проблему передачи arguments.
 
-Объяснение: receiver selection у `call()` и `apply()` одинаковый: первый argument становится `this`. Отличается второй argument: у `apply()` это array или array-like ordered argument list.
+Объяснение: объект выполнения selection у `call()` и `apply()` одинаковый: первый argument становится `this`. Отличается второй argument: у `apply()` это array или array-like ordered argument list.
 
 Распространённая ошибка: объяснять `apply()` как другой способ определить `this`.
 
-Связь с Automation QA: config object остается receiver, а request/response data могут лежать в array.
+Связь с Automation QA: config object остается объект выполнения, а request/response data могут лежать в array.
 
 ---
 
 ### 3. Что общего у call() и apply()?
 
-Ответ: оба вызывают function immediately и позволяют явно выбрать receiver первым argument.
+Ответ: оба вызывают function immediately и позволяют явно выбрать объект выполнения первым argument.
 
 Объяснение:
 
@@ -39,9 +39,9 @@ fn.apply(receiver, ...)
 └── receiver -> this
 ```
 
-Распространённая ошибка: думать, что `apply()` сохраняет receiver навсегда.
+Распространённая ошибка: думать, что `apply()` сохраняет объект выполнения навсегда.
 
-Связь с Automation QA: оба механизма полезны для understanding helpers with explicit config receiver.
+Связь с Automation QA: оба механизма полезны для understanding helpers with explicit config объект выполнения.
 
 ---
 
@@ -59,7 +59,7 @@ apply(receiver, [arg1, arg2])
 └── arguments as one ordered argument list
 ```
 
-Объяснение: `apply()` берет values из array или array-like list по positions и передает их parameters.
+Объяснение: `apply()` берет значения из array или array-like list по positions и передает их parameters.
 
 Распространённая ошибка: передать array в `call()` и ожидать, что он автоматически разложится по parameters.
 
@@ -81,11 +81,11 @@ functionObject.apply(receiver, values)
 
 Распространённая ошибка: считать, что second argument влияет на `this`.
 
-Связь с Automation QA: assertion config object обычно становится receiver.
+Связь с Automation QA: assertion config object обычно становится объект выполнения.
 
 ---
 
-### 6. Как values из array попадают в parameters?
+### 6. Как значения из array попадают в parameters?
 
 Ответ: по позиции.
 
@@ -105,13 +105,13 @@ values[2] -> third parameter
 
 ### 7. Что такое array-like collection?
 
-Ответ: на высоком уровне это object-like value с indexed values и `length`.
+Ответ: на высоком уровне это object-like value с indexed значения и `length`.
 
 Объяснение: `apply()` может работать с array-like ordered argument lists. Подробности `arguments` object internals будут изучаться позже.
 
 Распространённая ошибка: углубляться в internals раньше времени.
 
-Связь с Automation QA: некоторые tools и APIs возвращают array-like values.
+Связь с Automation QA: некоторые tools и APIs возвращают array-like значения.
 
 ---
 
@@ -133,7 +133,7 @@ Already in array or array-like list
 
 Распространённая ошибка: использовать `apply()` везде механически.
 
-Связь с Automation QA: data-driven tests часто подготавливают набор values заранее.
+Связь с Automation QA: data-driven tests часто подготавливают набор значения заранее.
 
 ---
 
@@ -147,7 +147,7 @@ Already in array or array-like list
 GET https://api.example.test/users
 ```
 
-Mapping:
+Сопоставление:
 
 ```text
 apiClient       -> this
@@ -155,7 +155,7 @@ requestParts[0] -> method
 requestParts[1] -> path
 ```
 
-Объяснение: первый argument `apply()` выбирает receiver. Второй argument содержит values для parameters.
+Объяснение: первый argument `apply()` выбирает объект выполнения. Второй argument содержит значения для parameters.
 
 Распространённая ошибка: считать, что `requestParts` целиком станет `method`.
 
@@ -182,9 +182,9 @@ call(apiClient, '/users')
 apply(apiClient, ['/users'])
 ```
 
-Объяснение: receiver handling одинаковый. Argument passing разный.
+Объяснение: объект выполнения handling одинаковый. Argument passing разный.
 
-Распространённая ошибка: думать, что `apply()` отличается прежде всего receiver behavior.
+Распространённая ошибка: думать, что `apply()` отличается прежде всего объект выполнения поведение.
 
 Связь с Automation QA: выбирайте форму по тому, как уже представлены test data.
 
@@ -208,7 +208,7 @@ data[0]       -> status
 data[1]       -> path
 ```
 
-Распространённая ошибка: перепутать receiver и `data`.
+Распространённая ошибка: перепутать объект выполнения и `data`.
 
 Связь с Automation QA: service config отделен от response data.
 
@@ -233,7 +233,7 @@ responseParts[2] -> body
 
 Все условия возвращают `true`.
 
-Распространённая ошибка: нарушить порядок values в `responseParts`.
+Распространённая ошибка: нарушить порядок значения в `responseParts`.
 
 Связь с Automation QA: порядок данных в data provider должен совпадать с signature helper.
 
@@ -294,7 +294,7 @@ validateResponse.call(config, 200, '/users', '{"name":"Anna"}');
 
 Распространённая ошибка: передать array в `call()` вторым argument и ожидать автоматический mapping.
 
-Связь с Automation QA: если values уже распакованы, `call()` может быть читаемее.
+Связь с Automation QA: если значения уже распакованы, `call()` может быть читаемее.
 
 ---
 
@@ -364,7 +364,7 @@ config     -> this
 response   -> first parameter
 ```
 
-Распространённая ошибка: поставить array with data на место receiver.
+Распространённая ошибка: поставить array with data на место объект выполнения.
 
 Связь с Automation QA: config object и actual data должны занимать разные позиции.
 
@@ -399,9 +399,9 @@ console.log(validateResponse.apply(config, responseParts));
 true
 ```
 
-Объяснение: receiver содержит expected values, array содержит actual values.
+Объяснение: объект выполнения содержит expected значения, array содержит actual значения.
 
-Распространённая ошибка: хранить expected и actual values в одном object без явного разделения ролей.
+Распространённая ошибка: хранить expected и actual значения в одном object без явного разделения ролей.
 
 Связь с Automation QA: это типичная структура reusable API validator.
 
@@ -438,7 +438,7 @@ POST https://users.example.test/users {"name":"Anna"}
 POST https://orders.example.test/orders {"id":1}
 ```
 
-Объяснение: same function, different receiver and different arrays with arguments.
+Объяснение: same function, different объект выполнения and different arrays with arguments.
 
 Распространённая ошибка: использовать один config для разных services.
 
@@ -486,7 +486,7 @@ POST https://api.example.test/users {"name":"Anna"}
 true
 ```
 
-Mapping:
+Сопоставление:
 
 ```text
 buildRequest.apply(apiConfig, requestParts)
@@ -508,10 +508,10 @@ validateRequest.apply(assertionConfig, responseParts)
 
 Где `call()` был бы читаемее: если `method`, `path`, `body` уже лежат в отдельных variables.
 
-Почему receiver handling не отличается от `call()`: первый argument в обоих methods становится `this`.
+Почему объект выполнения handling не отличается от `call()`: первый argument в обоих methods становится `this`.
 
-Распространённая ошибка: воспринимать `apply()` как механизм receiver, а не как механизм передачи ordered argument list.
+Распространённая ошибка: воспринимать `apply()` как механизм объект выполнения, а не как механизм передачи ordered argument list.
 
 Связь с Automation QA: mini-project показывает request builder и validator, работающие с configuration objects и test data arrays.
 
-Возможное улучшение: следующая глава `bind()` покажет, как создать reusable function с заранее выбранным receiver.
+Возможное улучшение: следующая глава `bind()` покажет, как создать reusable function с заранее выбранным объект выполнения.

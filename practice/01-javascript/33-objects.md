@@ -6,13 +6,13 @@
 
 * объяснять, зачем objects существуют;
 * группировать related data в object;
-* определять properties, keys and values;
+* определять properties, keys and значения;
 * читать properties через dot notation;
 * использовать bracket notation там, где она required;
 * добавлять, обновлять и удалять properties;
 * предсказывать вывод кода;
 * находить ошибки в object access;
-* применять objects в Automation QA scenarios.
+* применять objects в Automation QA-сценариях.
 
 ---
 
@@ -33,13 +33,13 @@
 
 ---
 
-## 2. Определите properties, keys and values
+## 2. Определите properties, keys and значения
 
 Для каждого object выпишите:
 
 * имя object variable;
 * property keys;
-* property values.
+* property значения.
 
 ### Задание 2.1
 
@@ -143,7 +143,7 @@ const user = {
 const fieldName = 'role';
 ```
 
-Нужно прочитать property, имя которой лежит в `fieldName`.
+Нужно прочитать property, имя которой лежит в `полеName`.
 
 ### Задание 4.3
 
@@ -258,7 +258,7 @@ console.log(firstUser === secondUser);
 
 ---
 
-## 7. Debugging tasks
+## 7. Задания на отладку
 
 Найдите ошибку и исправьте код.
 
@@ -301,11 +301,11 @@ config.timeout = 5000;
 
 ---
 
-## 8. QA-oriented tasks
+## 8. QA-задачи
 
 ### Задание 8.1
 
-Создайте object `testUser` со свойствами:
+Создайте объект `testUser` со свойствами:
 
 * `name`;
 * `email`;
@@ -316,7 +316,7 @@ config.timeout = 5000;
 
 ### Задание 8.2
 
-Создайте object `stagingConfig` со свойствами:
+Создайте объект `stagingConfig` со свойствами:
 
 * `baseUrl`;
 * `timeout`;
@@ -326,7 +326,7 @@ config.timeout = 5000;
 
 ### Задание 8.3
 
-Создайте object `apiResponse`:
+Создайте объект `apiResponse`:
 
 * `status`;
 * `ok`;
@@ -342,7 +342,7 @@ config.timeout = 5000;
 
 ### Задание 8.4
 
-Есть object:
+Есть объект:
 
 ```javascript
 const actualUser = {
@@ -383,6 +383,6 @@ const actualUser = {
 2. Что происходит при `object.key = value`, если key уже есть?
 3. Что происходит при `object.key = value`, если key отсутствует?
 4. Что делает `delete object.key` на базовом уровне?
-5. Почему `object[fieldName]` отличается от `object.fieldName`?
+5. Почему `object[полеName]` отличается от `object.полеName`?
 6. Почему objects важны для API testing?
 7. Какая следующая тема логически продолжает objects?

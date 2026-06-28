@@ -539,7 +539,7 @@ checkStatus
 
 Function Expression полезен, но не каждый код становится лучше от его использования.
 
-Readability comparison:
+Сравнение читаемости:
 
 ```text
 Function Declaration
@@ -630,7 +630,7 @@ const validateStatus = function () { ... };
 └── store value in variable
 ```
 
-Function creation timeline:
+Function creation временная шкала:
 
 ```text
 Line with Function Expression
@@ -690,7 +690,7 @@ validateStatus();
 Я выполняю его тело.
 ```
 
-### Current position in JavaScript model
+### Текущее место в модели JavaScript
 
 ```text
 Functions
@@ -1055,7 +1055,7 @@ const validateUserProfile = function () {
 };
 ```
 
-QA helper example:
+Пример QA-helper:
 
 ```text
 validateUserProfile
@@ -1065,7 +1065,7 @@ validateUserProfile
     └── reusable validation
 ```
 
-### Configurable behavior
+### Configurable поведение
 
 На высоком уровне Function Expression помогает думать о поведении как о значении.
 
@@ -1157,7 +1157,7 @@ Function Expression
 ## Что нужно запомнить
 
 * Function Expression создает function object.
-* Function object относится к object values, а не к отдельной третьей категории значений.
+* Function object относится к object значения, а не к отдельной третьей категории значений.
 * Переменная может хранить function object.
 * Тело функции не выполняется при присваивании.
 * Вызов происходит через `variableName()`.

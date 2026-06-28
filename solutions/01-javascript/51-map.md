@@ -14,7 +14,7 @@
 
 ### 2. Чем `map()` отличается от `forEach()`?
 
-Ответ: `forEach()` выполняет action, а `map()` возвращает новый array transformed values.
+Ответ: `forEach()` выполняет action, а `map()` возвращает новый array transformed значения.
 
 Объяснение: return value callback в `forEach()` не собирается, а в `map()` становится element нового array.
 
@@ -36,9 +36,9 @@
 
 Ответ: новый array.
 
-Объяснение: размер результата связан с количеством input elements.
+Объяснение: размер результата связан с количеством вход elements.
 
-Распространённая ошибка: думать, что `map()` изменяет source array.
+Распространённая ошибка: думать, что `map()` изменяет исходный массив.
 
 Связь с Automation QA: source test cases остаются доступными для следующих pipeline steps.
 
@@ -46,7 +46,7 @@
 
 Ответ: нет, сам `map()` возвращает новый array.
 
-Объяснение: source array остается отдельным входом для pipeline.
+Объяснение: исходный массив остается отдельным входом для pipeline.
 
 Распространённая ошибка: ожидать, что `testCases` превратится в strings.
 
@@ -56,7 +56,7 @@
 
 Ответ: report generation часто требует преобразовать каждый test case в строку или object другого формата.
 
-Объяснение: для каждого input test case появляется одна строка или один payload object.
+Объяснение: для каждого вход test case появляется одна строка или один payload object.
 
 Распространённая ошибка: собирать report через side effects без явного result array.
 
@@ -73,7 +73,7 @@
 ]
 ```
 
-Объяснение: в `labels` будет два elements, потому что source array содержит два test cases. Каждый output element — строка из `id` и `title`. `testCases` не изменился.
+Объяснение: в `labels` будет два elements, потому что исходный массив содержит два test cases. Каждый вывод element — строка из `id` и `title`. `testCases` не изменился.
 
 Распространённая ошибка: думать, что `labels` содержит original objects.
 
@@ -93,7 +93,7 @@
 
 Связь с Automation QA: так можно получить список statuses для дальнейшей обработки.
 
-## Debugging
+## Отладка
 
 Ответ:
 
@@ -109,7 +109,7 @@ const titles = testCases.map(function (testCase) {
 
 Связь с Automation QA: payload с `undefined` вместо titles может сломать отчет.
 
-## QA scenario
+## QA-сценарий
 
 Ответ:
 
@@ -125,7 +125,7 @@ const ciPayload = testCases.map(function (testCase) {
 
 Объяснение: каждый test case превращается в object нужного формата.
 
-Распространённая ошибка: менять исходный object вместо создания output object.
+Распространённая ошибка: менять исходный object вместо создания вывод object.
 
 Связь с Automation QA: CI часто требует конкретный shape payload.
 
@@ -158,8 +158,8 @@ console.log(ciPayload);
 console.log(testCases);
 ```
 
-Объяснение: два `map()` создают два разных output arrays из одного source.
+Объяснение: два `map()` создают два разных выходной массивы из одного source.
 
-Распространённая ошибка: смешивать два разных output formats в одном `map()`.
+Распространённая ошибка: смешивать два разных вывод formats в одном `map()`.
 
 Связь с Automation QA: один source test list может использоваться для разных reporting integrations.

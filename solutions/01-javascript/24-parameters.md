@@ -18,7 +18,7 @@
 
 Связь с Automation QA:
 
-Validators получают actual и expected values через параметры.
+Validators получают actual и expected значения через параметры.
 
 ### 2. Parameter
 
@@ -266,7 +266,7 @@ Parameter находится в определении функции, argument 
 
 Parameters: `actualStatus`, `expectedStatus`.
 
-Arguments: `200`, `201`.
+Аргументы: `200`, `201`.
 
 `200 → actualStatus`, `201 → expectedStatus`.
 
@@ -341,7 +341,7 @@ Arguments сопоставляются по позиции.
 
 Распространённая ошибка:
 
-Перепутать порядок values.
+Перепутать порядок значения.
 
 Связь с Automation QA:
 
@@ -618,7 +618,7 @@ clickElement   | locatorName                   | profile button         | UI hel
 
 Распространённая ошибка:
 
-Смешать parameter names и argument values в отчете.
+Смешать parameter names и argument значения в отчете.
 
 Связь с Automation QA:
 

@@ -77,7 +77,7 @@ const reportLines = testCases
 
 ## Теория
 
-Chaining возможен, когда result одного step подходит как input следующего step. В этой главе мы рассматриваем простой pipeline: source array проходит через несколько последовательных operations и превращается в final array.
+Chaining возможен, когда result одного step подходит как вход следующего step. В этой главе мы рассматриваем простой pipeline: исходный массив проходит через несколько последовательных operations и превращается в final array.
 
 ## Внутренний механизм
 
@@ -134,7 +134,7 @@ const reportLines = testCases
   });
 ```
 
-Такой chain читается как business workflow: взять список test cases, оставить high priority и подготовить строки отчета.
+Такой chain читается как business workпоток: взять список test cases, оставить high priority и подготовить строки отчета.
 
 ## Распространённые ошибки
 
@@ -154,7 +154,7 @@ Chaining лучше подходит для data transformation pipeline. Side e
 
 Chaining basics соединяет несколько простых steps в один pipeline.
 
-Главное: chain должен читаться как последовательность понятных states, а не как плотная строка трюков.
+Главное: chain должен читаться как последовательность понятных состояния, а не как плотная строка трюков.
 
 ## Переход к следующей главе
 

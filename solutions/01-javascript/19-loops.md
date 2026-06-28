@@ -2,7 +2,7 @@
 
 ## Концептуальные вопросы
 
-### 1. Why loops exist
+### 1. Зачем существуют loops
 
 Ответ:
 
@@ -96,11 +96,11 @@ Body often contains assertion logic.
 
 Ответ:
 
-Initialization prepares starting state.
+Initialization prepares starting состояние.
 
 Объяснение:
 
-Example: `let index = 0`.
+Пример: `let index = 0`.
 
 Распространённая ошибка:
 
@@ -114,7 +114,7 @@ Counters track attempts or response index.
 
 Ответ:
 
-Update changes loop state after each iteration.
+Update changes loop состояние after each iteration.
 
 Объяснение:
 
@@ -252,7 +252,7 @@ Choose based only on habit.
 
 Связь с Automation QA:
 
-Different QA scenarios need different repetition models.
+Разным QA-сценариям нужны разные модели повторения.
 
 ## Определите loop lifecycle
 
@@ -260,11 +260,11 @@ Different QA scenarios need different repetition models.
 
 Ответ:
 
-Initialization: `let attempt = 1`.
+Инициализация: `let attempt = 1`.
 
-Condition: `attempt <= 3`.
+Условие: `attempt <= 3`.
 
-Body: `console.log(attempt)`.
+Тело: `console.log(attempt)`.
 
 Update: `attempt += 1`.
 
@@ -286,11 +286,11 @@ Retry loop lifecycle.
 
 Ответ:
 
-Initialization: `let index = 0`.
+Инициализация: `let index = 0`.
 
-Condition: `index < 3`.
+Условие: `index < 3`.
 
-Body: `console.log(index)`.
+Тело: `console.log(index)`.
 
 Update: `index += 1`.
 
@@ -312,11 +312,11 @@ Array index validation.
 
 Ответ:
 
-Initialization: `let shouldRetry = false`.
+Инициализация: `let shouldRetry = false`.
 
-Condition: `shouldRetry`.
+Условие: `shouldRetry`.
 
-Body: `console.log('Run once')`.
+Тело: `console.log('Run once')`.
 
 Update: none in body.
 
@@ -400,7 +400,7 @@ Expect attempts 4 and 5.
 
 Связь с Automation QA:
 
-Stop after success or critical state.
+Stop after success or critical состояние.
 
 ### Задача 4
 
@@ -416,7 +416,7 @@ Stop after success or critical state.
 
 Распространённая ошибка:
 
-Expect no output.
+Expect no вывод.
 
 Связь с Automation QA:
 
@@ -454,7 +454,7 @@ Stop on first invalid API response.
 
 It can be infinite because `attempt` never changes.
 
-Fix:
+Исправление:
 
 ```javascript
 let attempt = 1;
@@ -471,7 +471,7 @@ Condition stays true forever without update.
 
 Распространённая ошибка:
 
-Look only at body output, not update.
+Look only at body вывод, not update.
 
 Связь с Automation QA:
 
@@ -481,7 +481,7 @@ Endless retries hang test runs.
 
 Ответ:
 
-Because condition is `index <= 3`, so values `0`, `1`, `2`, `3` all pass.
+Because condition is `index <= 3`, so значения `0`, `1`, `2`, `3` all pass.
 
 Объяснение:
 
@@ -503,7 +503,7 @@ Can check one extra row or response.
 
 `break` at `index === 3` stops loop entirely.
 
-Output:
+Вывод:
 
 ```text
 0
@@ -621,7 +621,7 @@ Skip invalid test data while keeping valid cases.
 
 Ответ:
 
-Lifecycle:
+Жизненный цикл:
 
 ```text
 initialization: attempt = 1
@@ -684,7 +684,7 @@ for (let index = 0; index < users.length; index += 1) {
 }
 ```
 
-Report:
+Отчёт:
 
 ```text
 Loop       | Iteration | Decision                  | Action              | Stop reason

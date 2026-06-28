@@ -4,9 +4,9 @@
 
 Ответьте своими словами.
 
-1. What is an operator?
-2. What is an operand?
-3. What is operator result?
+1. Что такое operator?
+2. Что такое operand?
+3. Что такое результат operator?
 4. Why are operators grouped into categories?
 5. What is unary operator?
 6. What is binary operator?
@@ -16,8 +16,8 @@
 10. What do logical operators do at a high level?
 11. What do assignment operators do?
 12. What does `typeof` return?
-13. What does `delete` do at a high level?
-14. What does `in` check?
+13. Что делает `delete` на высоком уровне?
+14. Что проверяет `in`?
 15. Why does operator precedence exist?
 
 ## Определите operator category
@@ -249,7 +249,7 @@ playground/operators-report.js
 
 В нем:
 
-1. Создайте object `response`:
+1. Создайте объект `response`:
    * `statusCode: 200`;
    * `responseTimeMs: 350`;
    * `body` with `id`, `email`, `role`.

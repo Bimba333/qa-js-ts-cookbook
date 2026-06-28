@@ -52,7 +52,7 @@ Caller
 * что тело функции выполняется после invocation;
 * что `console.log()` выводит значение в консоль.
 
-Не требуется знать returning objects in detail, destructuring returned values, generators, async return, Promise, recursion или higher-order functions. Эти темы будут изучаться позже.
+Не требуется знать returning objects in detail, destructuring returned значения, generators, async return, Promise, recursion или higher-order functions. Эти темы будут изучаться позже.
 
 ---
 
@@ -153,7 +153,7 @@ undefined?
 
 Чтобы результат вышел из функции, нужен `return`.
 
-Why return exists:
+Зачем существует return:
 
 ```text
 Function receives input
@@ -213,7 +213,7 @@ return value
 Caller receives result
 ```
 
-Function input/output:
+Function вход/вывод:
 
 ```text
 Arguments
@@ -279,7 +279,7 @@ function compareStatus(actualStatus, expectedStatus) {
 }
 ```
 
-Data flow:
+Data поток:
 
 ```text
 200, 200
@@ -461,7 +461,7 @@ return value
 └── sends value back
 ```
 
-### One return statement
+### Одна инструкция return
 
 Функция может иметь один `return`.
 
@@ -499,7 +499,7 @@ function getStatusMessage(statusCode) {
 }
 ```
 
-Multiple returns:
+Multiple возвращает:
 
 ```text
 Condition
@@ -602,7 +602,7 @@ I send the value back to the вызывающий код.
 I stop executing this function.
 ```
 
-Complete input/output model:
+Complete вход/вывод model:
 
 ```text
 Caller
@@ -623,7 +623,7 @@ Caller
 └── receives return value
 ```
 
-Current position in JavaScript model:
+Текущее место в модели JavaScript:
 
 ```text
 Functions
@@ -690,7 +690,7 @@ Calculator
 
 Если калькулятор только показывает число на экране, это похоже на `console.log`. Если он отдает число другой части программы, это похоже на `return`.
 
-### Input/output machine
+### Input/вывод machine
 
 ```text
 Input
@@ -981,7 +981,7 @@ function isSuccessfulStatus(statusCode) {
 }
 ```
 
-QA validator:
+QA-валидатор:
 
 ```text
 statusCode
@@ -1014,7 +1014,7 @@ console.log(passed);
 
 Возвращаемое значение можно сохранить и использовать дальше.
 
-### Возврат parsed values
+### Возврат parsed значения
 
 На высоком уровне helper может вернуть подготовленное значение:
 
@@ -1100,7 +1100,7 @@ return value
 * Код после выполненного `return` не запускается.
 * Функция без explicit return возвращает `undefined`.
 * `console.log()` печатает значение, но не возвращает его вызывающий код.
-* Функция может иметь один return statement.
+* Функция может иметь один инструкция return.
 * Функция может иметь multiple return paths.
 * В Automation QA validators часто возвращают boolean.
 * Returning objects, async return, Promise, generators, recursion и higher-order functions будут изучаться позже.

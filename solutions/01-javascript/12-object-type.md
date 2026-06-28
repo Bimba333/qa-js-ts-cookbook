@@ -2,11 +2,11 @@
 
 ## Концептуальные вопросы
 
-### 1. Почему primitive values sometimes become insufficient
+### 1. Почему primitive значения sometimes become insufficient
 
 Ответ:
 
-Primitive values become insufficient when several values describe one entity and should be managed together.
+Primitive значения become insufficient when several значения describe one entity and should be managed together.
 
 Объяснение:
 
@@ -14,11 +14,11 @@ Primitive values become insufficient when several values describe one entity and
 
 Распространённая ошибка:
 
-Keep related values in separate variables and rely on reader's memory.
+Keep related значения in separate variables and rely on reader's memory.
 
 Связь с Automation QA:
 
-API responses, test data and expected results usually describe entities, not isolated values.
+API responses, test data and expected results usually describe entities, not isolated значения.
 
 ### 2. Какую проблему решает Object Type
 
@@ -28,7 +28,7 @@ Object Type allows JavaScript to represent grouped information as one value.
 
 Объяснение:
 
-Instead of many unrelated primitive values, object can express one user, one config, one response, one test result.
+Instead of many unrelated primitive значения, object can express one user, one config, one response, one test result.
 
 Распространённая ошибка:
 
@@ -42,7 +42,7 @@ Objects make expected and actual structures visible in tests.
 
 Ответ:
 
-It means several properties belong to one conceptual entity.
+Это означает, что несколько свойств относятся к одной концептуальной сущности.
 
 Объяснение:
 
@@ -50,7 +50,7 @@ In `user`, properties like `firstName`, `lastName` and `age` describe the same u
 
 Распространённая ошибка:
 
-Group values that are not conceptually related.
+Group значения that are not conceptually related.
 
 Связь с Automation QA:
 
@@ -86,7 +86,7 @@ In `firstName: 'Anna'`, `firstName` is property name, `'Anna'` is property value
 
 Распространённая ошибка:
 
-Compare property names instead of values or use wrong property name.
+Compare property names вместо значения or use wrong property name.
 
 Связь с Automation QA:
 
@@ -118,7 +118,7 @@ Engine finds property name inside object and returns the corresponding property 
 
 Объяснение:
 
-For `user.firstName`, engine reads object `user`, then reads property `firstName`.
+Для `user.firstName`, engine reads object `user`, then reads property `firstName`.
 
 Распространённая ошибка:
 
@@ -126,7 +126,7 @@ Think reading one property reads or copies the entire object.
 
 Связь с Automation QA:
 
-Most API checks read specific fields from a response object.
+Most API checks read specific поля from a response object.
 
 ### 8. Reading missing property
 
@@ -198,7 +198,7 @@ Explain deletion through Garbage Collector too early.
 
 Связь с Automation QA:
 
-Tests may remove temporary fields before comparing sanitized objects.
+Tests may remove temporary поля before comparing sanitized objects.
 
 ### 12. Nested object
 
@@ -240,11 +240,11 @@ Playwright and test code often use `const` for objects whose properties may stil
 
 Ответ:
 
-Arrays and functions are object values, but they have special behavior and need dedicated chapters.
+Arrays and functions are object значения, but they have special поведение and need dedicated chapters.
 
 Объяснение:
 
-This chapter focuses on plain object as grouped information.
+Эта глава фокусируется на обычном object как сгруппированной информации.
 
 Распространённая ошибка:
 
@@ -262,7 +262,7 @@ Tests use arrays for lists and functions for helpers, but object shape is the ba
 
 Object name: `user`.
 
-Properties:
+Свойства:
 
 ```text
 firstName → "Anna"
@@ -270,7 +270,7 @@ lastName  → "Smith"
 age       → 30
 ```
 
-Grouped information:
+Сгруппированная информация:
 
 ```text
 Basic information about one user.
@@ -294,7 +294,7 @@ This shape can be used as expected user profile.
 
 Object name: `config`.
 
-Properties:
+Свойства:
 
 ```text
 baseUrl  → "https://example.com"
@@ -302,7 +302,7 @@ retries  → 2
 headless → true
 ```
 
-Grouped information:
+Сгруппированная информация:
 
 ```text
 Runtime or test execution configuration.
@@ -310,7 +310,7 @@ Runtime or test execution configuration.
 
 Объяснение:
 
-These values belong to one configuration object.
+Эти значения относятся к одному configuration object.
 
 Распространённая ошибка:
 
@@ -326,7 +326,7 @@ Test frameworks commonly use configuration objects.
 
 Object name: `response`.
 
-Properties:
+Свойства:
 
 ```text
 statusCode → 200
@@ -340,7 +340,7 @@ id    → 101
 email → "anna@example.com"
 ```
 
-Grouped information:
+Сгруппированная информация:
 
 ```text
 Response metadata and response body.
@@ -358,11 +358,11 @@ Miss nested structure and try to read `response.email`.
 
 API tests often distinguish response status and response body.
 
-## Read object values
+## Read object значения
 
 Ответ:
 
-Output:
+Вывод:
 
 ```text
 Anna
@@ -426,7 +426,7 @@ Expect deleted property to keep old value.
 
 Связь с Automation QA:
 
-After sanitizing response objects, removed fields should not be used in assertions.
+After sanitizing response objects, removed поля should not be used in assertions.
 
 ### Задача 3
 
@@ -447,7 +447,7 @@ Miss case difference in property names.
 
 Связь с Automation QA:
 
-API field names are exact. `userId`, `userid` and `userID` are different names.
+API поле names are exact. `userId`, `userid` and `userID` are different names.
 
 ## Чтение кода
 
@@ -457,7 +457,7 @@ API field names are exact. `userId`, `userid` and `userID` are different names.
 2. Identity properties: `id`, `profile.firstName`, `profile.lastName`.
 3. State properties: `status.role`, `status.isActive`, `status.deletedAt`.
 4. Nested objects: `profile` and `status`.
-5. Primitive values: `101`, `'Anna'`, `'Smith'`, `'admin'`, `true`, `null`.
+5. Primitive значения: `101`, `'Anna'`, `'Smith'`, `'admin'`, `true`, `null`.
 
 Объяснение:
 
@@ -490,7 +490,7 @@ console.log(user);
 
 Объяснение:
 
-All values describe one user, so object is the natural grouping.
+All значения describe one user, so object is the natural grouping.
 
 Распространённая ошибка:
 
@@ -550,7 +550,7 @@ console.log(order);
 
 Распространённая ошибка:
 
-Create `newStatus` instead of updating object when the entity state changes.
+Create `newStatus` вместо updating object when the entity состояние changes.
 
 Связь с Automation QA:
 
@@ -591,7 +591,7 @@ Reports often use objects with test name, status and duration.
 
 The code uses `firstname`, but object has `firstName`.
 
-Correct version:
+Правильный вариант:
 
 ```javascript
 const user = {
@@ -629,13 +629,13 @@ Look only at value `'admin'` and ignore property name mismatch.
 
 Связь с Automation QA:
 
-Expected and actual object structures must match, not only values.
+Expected and actual object structures must match, not only значения.
 
 ### Задача 3
 
 Ответ:
 
-Output is:
+Вывод:
 
 ```text
 undefined
@@ -651,7 +651,7 @@ Use a property after removing it.
 
 Связь с Automation QA:
 
-Sanitized request or response objects should be checked after field removal.
+Sanitized request or response objects should be checked after поле removal.
 
 ### Задача 4
 
@@ -699,7 +699,7 @@ const expectedUser = {
 
 Объяснение:
 
-Property names match API response fields, and values match expected primitives.
+Property names match API response поля, and значения match expected primitives.
 
 Распространённая ошибка:
 
@@ -707,7 +707,7 @@ Rename `active` to `isActive` in expected object when API actually returns `acti
 
 Связь с Automation QA:
 
-API contract checks require exact field names.
+API contract checks require exact поле names.
 
 ### Сценарий 2. Expected vs actual structure
 
@@ -726,7 +726,7 @@ Both objects contain value `'admin'`, but under different property names.
 
 Распространённая ошибка:
 
-Compare only visible values and ignore object shape.
+Compare only visible значения and ignore object shape.
 
 Связь с Automation QA:
 
@@ -747,11 +747,11 @@ const browserConfig = {
 
 Объяснение:
 
-These settings belong to one browser configuration and should be passed or read together.
+Эти настройки относятся к одной browser configuration и должны передаваться или читаться вместе.
 
 Распространённая ошибка:
 
-Keep related configuration values as separate variables across a file.
+Keep related configuration значения as separate variables across a file.
 
 Связь с Automation QA:
 
@@ -772,15 +772,15 @@ const expectedProfile = {
 
 Объяснение:
 
-Property names describe UI fields in code-friendly form. `isActive` represents "Active: Yes" as Boolean.
+Property names describe UI поля in code-friendly form. `isActive` represents "Active: Yes" as Boolean.
 
 Распространённая ошибка:
 
-Store everything as strings exactly as UI text and lose semantic meaning.
+Store everything как строки exactly as UI text and lose semantic meaning.
 
 Связь с Automation QA:
 
-Expected profile object can be compared with parsed UI values.
+Expected profile object can be compared with parsed UI значения.
 
 ## Мини-проект
 

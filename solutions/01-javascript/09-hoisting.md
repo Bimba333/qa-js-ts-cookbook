@@ -24,7 +24,7 @@ Execution начинается не сразу. Сначала engine prepares L
 
 Ответ:
 
-Source code сохраняет original order. Engine only prepares declaration records before execution.
+Source code сохраняет исходный порядок. Engine только подготавливает declaration records до выполнения.
 
 Объяснение:
 
@@ -46,11 +46,11 @@ During Creation Phase engine creates Execution Context, prepares Lexical Environ
 
 Объяснение:
 
-This happens before code lines start executing.
+Это происходит до начала выполнения строк кода.
 
 Распространённая ошибка:
 
-Считать, что all identifiers appear only when execution reaches their lines.
+Считать, что все identifiers появляются только тогда, когда выполнение доходит до их строк.
 
 Связь с Automation QA:
 
@@ -60,7 +60,7 @@ Explains why function declarations in old test framework can be used early.
 
 Ответ:
 
-During Execution Phase engine runs source code in original order.
+Во время Execution Phase engine выполняет source code в исходном порядке.
 
 Объяснение:
 
@@ -86,11 +86,11 @@ That is why it can be called before its source line.
 
 Распространённая ошибка:
 
-Thinking function body moved upward.
+Думать, что тело функции переместилось вверх.
 
 Связь с Automation QA:
 
-Legacy framework helpers often use declarations before their physical location.
+Старые framework helpers часто используют объявления до их физического расположения.
 
 ### 6. var registration
 
@@ -162,7 +162,7 @@ Treating `var a = 5` as one preparation step with value `5`.
 
 Связь с Automation QA:
 
-Debugging setup values requires knowing whether assignment already ran.
+Отладка setup-значений требует понимать, выполнилось ли присваивание.
 
 ### 10. Почему `var a = 5` does not expose `5` before line
 
@@ -172,11 +172,11 @@ Creation Phase prepares `a` with `undefined`; assignment `a = 5` happens only du
 
 Объяснение:
 
-The value `5` is not assigned until execution reaches the source line.
+Значение `5` не присваивается, пока выполнение не дойдёт до исходной строки.
 
 Распространённая ошибка:
 
-Thinking complete statement is hoisted.
+Думать, что вся инструкция поднимается.
 
 Связь с Automation QA:
 
@@ -190,11 +190,11 @@ TDZ explains why `let` and `const` are registered but cannot be accessed before 
 
 Объяснение:
 
-Hoisting gives the preparation model; TDZ explains access restrictions.
+Hoisting даёт модель подготовки; TDZ объясняет ограничения доступа.
 
 Распространённая ошибка:
 
-Trying to solve all `let`/`const` behavior in Hoisting chapter.
+Trying to solve all `let`/`const` поведение in Hoisting chapter.
 
 Связь с Automation QA:
 
@@ -255,11 +255,11 @@ Creation Phase registers `userName` with `undefined`; assignment happens later.
 
 Распространённая ошибка:
 
-Expect `Anna` in first output.
+Expect `Anna` in first вывод.
 
 Связь с Automation QA:
 
-Explains old config helper behavior.
+Explains old config helper поведение.
 
 ### Задача 3
 
@@ -324,7 +324,7 @@ Creation Phase prepares records before execution starts.
 
 Распространённая ошибка:
 
-Put assigned values `Anna`, `admin`, URL into Creation Phase for all declarations.
+Put assigned значения `Anna`, `admin`, URL into Creation Phase for all declarations.
 
 Связь с Automation QA:
 
@@ -456,7 +456,7 @@ Common in legacy framework files.
 
 Ответ:
 
-Expected output:
+Ожидаемый вывод:
 
 ```text
 undefined
@@ -480,7 +480,7 @@ Useful for debugging old Node.js helper configuration.
 
 1. In new code, do not intentionally rely on Hoisting for readability.
 2. Declaring helpers before usage makes execution easier to read.
-3. Hoisting still matters for reading existing JavaScript and debugging old helper files.
+3. Hoisting still matters for reading existing JavaScript and debugging старых helper-файлов.
 
 Объяснение:
 
@@ -542,11 +542,11 @@ read baseUrl
 
 Объяснение:
 
-The output follows prepared records and original source order.
+The вывод follows prepared records and original source order.
 
 Распространённая ошибка:
 
-Move all declarations to top mentally and assign values too early.
+Move all declarations to top mentally and assign значения too early.
 
 Связь с Automation QA:
 

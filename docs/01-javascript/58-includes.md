@@ -16,8 +16,8 @@
 
 Для этой главы нужно понимать:
 
-* что arrays могут хранить primitive values;
-* что для simple values callback не всегда нужен;
+* что arrays могут хранить primitive значения;
+* что для simple значения callback не всегда нужен;
 * что status и priority могут храниться отдельными lists.
 
 Не требуется изучать object search заново. Для objects с condition обычно используются methods из предыдущих глав.
@@ -52,7 +52,7 @@ const testCase = {
 };
 ```
 
-Нужно проверить: входит ли `testCase.status` в список разрешенных values?
+Нужно проверить: входит ли `testCase.status` в список разрешенных значения?
 
 ```text
 allowedStatuses
@@ -78,7 +78,7 @@ Result — Boolean. Callback не нужен.
 
 ## Внутренний механизм
 
-Conceptual steps:
+Концептуальные шаги:
 
 ```text
 take value
@@ -142,7 +142,7 @@ const allowedPriorities = ['high', 'medium', 'low'];
 const isValidPriority = allowedPriorities.includes(testCase.priority);
 ```
 
-Такой код хорошо подходит для validation rules, где есть fixed list of allowed values.
+Такой код хорошо подходит для validation rules, где есть fixed list of allowed значения.
 
 ## Распространённые ошибки
 
@@ -154,7 +154,7 @@ const isValidPriority = allowedPriorities.includes(testCase.priority);
 
 Для object conditions нужен другой method. `includes()` проверяет presence конкретного value.
 
-### Ошибка 3. Путать allowed values и actual values
+### Ошибка 3. Путать allowed значения и actual значения
 
 Проверяйте actual value against allowed list, а не наоборот.
 

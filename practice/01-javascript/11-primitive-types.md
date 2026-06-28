@@ -5,7 +5,7 @@
 Ответьте своими словами.
 
 1. Что такое value?
-2. Почему JavaScript divides values into primitive and object values?
+2. Почему JavaScript divides значения into primitive and object значения?
 3. Что такое primitive value?
 4. Какие primitive types есть в JavaScript?
 5. Что представляет Number?
@@ -15,7 +15,7 @@
 9. Что такое Symbol на базовом уровне?
 10. Что такое BigInt на базовом уровне?
 11. Что показывает `typeof`?
-12. Что означает immutability of primitive values?
+12. Что означает immutability of primitive значения?
 
 ## Определите primitive types
 
@@ -49,9 +49,9 @@ console.log(typeof 10n);
 
 Прочитайте код и ответьте:
 
-1. Какие values являются Number?
-2. Какие values являются String?
-3. Какие values являются Boolean?
+1. Какие значения являются Number?
+2. Какие значения являются String?
+3. Какие значения являются Boolean?
 4. Где intentional absence?
 5. Где missing / not assigned value?
 
@@ -109,7 +109,7 @@ typeof null is "object", so null is object.
 
 ### Сценарий 1
 
-API response:
+API-ответ:
 
 ```json
 {
@@ -120,7 +120,7 @@ API response:
 }
 ```
 
-Выпишите expected values and primitive types for assertions.
+Выпишите expected значения and primitive types for assertions.
 
 ### Сценарий 2
 

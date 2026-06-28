@@ -643,7 +643,7 @@
 
 Главы **1–45** считаются утверждёнными и больше не изменяются.
 
-Данная часть синхронизирована с фактически написанными JavaScript-главами до главы **86**.
+Данная часть синхронизирована с фактически написанными JavaScript-главами до главы **96**.
 
 ---
 
@@ -771,7 +771,7 @@
 
 ---
 
-## 54. find()
+## 54. Chaining basics
 
 **Главный вопрос**
 
@@ -1351,11 +1351,133 @@
 
 ---
 
+# Раздел 13. JavaScript Conclusion
+
+---
+
+## 91. Modern JavaScript Features
+
+**Главный вопрос**
+
+> Как обычно выглядит современный JavaScript-код?
+
+Темы:
+
+* Modules
+* Destructuring
+* Optional Chaining
+* Nullish Coalescing
+* async / await
+* Spread / Rest
+* Classes
+* Iterators
+* Generators
+
+---
+
+## 92. JavaScript Best Practices
+
+**Главный вопрос**
+
+> Что отличает поддерживаемый JavaScript от хаотичного JavaScript?
+
+Темы:
+
+* Small Functions
+* Clear Naming
+* Single Responsibility
+* Avoid Duplication
+* Predictable Flow
+* Consistent Style
+* Defensive Programming
+* Readability over Cleverness
+
+---
+
+## 93. Error Objects
+
+**Главный вопрос**
+
+> Почему нужно выбрасывать Error objects, а не произвольные значения?
+
+Темы:
+
+* Error
+* TypeError
+* ReferenceError
+* RangeError
+* SyntaxError
+* throw
+* message
+* name
+* stack
+* Custom Error Classes
+
+---
+
+## 94. JSON
+
+**Главный вопрос**
+
+> Почему JavaScript objects нельзя отправлять по сети напрямую?
+
+Темы:
+
+* JSON
+* Сериализация
+* Десериализация
+* JSON.stringify()
+* JSON.parse()
+* Object vs JSON Text
+* Supported Data Types
+* Circular References
+
+---
+
+## 95. Date
+
+**Главный вопрос**
+
+> Как JavaScript представляет время?
+
+Темы:
+
+* Date
+* new Date()
+* Timestamp
+* getTime()
+* Date.now()
+* toISOString()
+* Comparing Dates
+* Invalid Dates
+
+---
+
+## 96. Почему появился TypeScript
+
+**Главный вопрос**
+
+> Если JavaScript настолько способен, зачем появился TypeScript?
+
+Темы:
+
+* Large Projects
+* Dynamic Typing
+* Late Error Detection
+* Refactoring Difficulty
+* Tooling Limitations
+* Maintainability
+* TypeScript builds on JavaScript
+
+---
+
 # Статус
 
-Фактически написанная JavaScript-часть синхронизирована до главы **90**.
+Фактически написанная JavaScript-часть синхронизирована до главы **96**.
 
-Следующая часть ROADMAP начинается с **TypeScript** (глава **93**).
+Раздел JavaScript завершен.
+
+Следующая часть ROADMAP продолжается с **TypeScript** (глава **97**).
 
 # ROADMAP.md
 
@@ -1367,7 +1489,7 @@
 
 # Продолжение Part II
 
-Главы **1–90** считаются текущей фактически написанной частью JavaScript.
+Главы **1–96** считаются завершенной частью JavaScript.
 
 Данная часть полностью посвящена **TypeScript**.
 
@@ -1435,22 +1557,7 @@ Large Applications
 
 ---
 
-## 93. Почему появился TypeScript
-
-**Главный вопрос**
-
-> Почему JavaScript оказался недостаточным для больших проектов?
-
-Темы:
-
-* История появления
-* Проблемы JavaScript
-* Статическая типизация
-* Цели TypeScript
-
----
-
-## 94. TypeScript Compiler
+## 97. TypeScript Compiler
 
 **Главный вопрос**
 
@@ -1465,7 +1572,7 @@ Large Applications
 
 ---
 
-## 95. tsconfig.json
+## 98. tsconfig.json
 
 **Главный вопрос**
 
@@ -1482,7 +1589,7 @@ Large Applications
 
 ---
 
-## 96. Type Erasure
+## 99. Type Erasure
 
 **Главный вопрос**
 
@@ -1500,7 +1607,7 @@ Large Applications
 
 ---
 
-## 97. Primitive Types
+## 100. Primitive Types
 
 **Главный вопрос**
 
@@ -1518,7 +1625,7 @@ Large Applications
 
 ---
 
-## 98. Object Types
+## 101. Object Types
 
 **Главный вопрос**
 
@@ -1532,7 +1639,7 @@ Large Applications
 
 ---
 
-## 99. Arrays
+## 102. Arrays
 
 **Главный вопрос**
 
@@ -1545,7 +1652,7 @@ Large Applications
 
 ---
 
-## 100. Tuples
+## 103. Tuples
 
 **Главный вопрос**
 
@@ -1558,7 +1665,7 @@ Large Applications
 
 ---
 
-## 101. Enum
+## 104. Enum
 
 **Главный вопрос**
 
@@ -1572,7 +1679,7 @@ Large Applications
 
 ---
 
-## 102. Literal Types
+## 105. Literal Types
 
 **Главный вопрос**
 
@@ -1586,7 +1693,7 @@ Large Applications
 
 ---
 
-## 103. Union Types
+## 106. Union Types
 
 **Главный вопрос**
 
@@ -1599,7 +1706,7 @@ Large Applications
 
 ---
 
-## 104. Intersection Types
+## 107. Intersection Types
 
 **Главный вопрос**
 
@@ -1616,7 +1723,7 @@ Large Applications
 
 ---
 
-## 105. Type Alias
+## 108. Type Alias
 
 **Главный вопрос**
 
@@ -1624,7 +1731,7 @@ Large Applications
 
 ---
 
-## 106. Interface
+## 109. Interface
 
 **Главный вопрос**
 
@@ -1632,7 +1739,7 @@ Large Applications
 
 ---
 
-## 107. Interface vs Type
+## 110. Interface vs Type
 
 **Главный вопрос**
 
@@ -1640,7 +1747,7 @@ Large Applications
 
 ---
 
-## 108. Structural Typing
+## 111. Structural Typing
 
 **Главный вопрос**
 
@@ -1652,7 +1759,7 @@ Large Applications
 
 ---
 
-## 109. Type Inference
+## 112. Type Inference
 
 **Главный вопрос**
 
@@ -1660,7 +1767,7 @@ Large Applications
 
 ---
 
-## 110. Narrowing
+## 113. Narrowing
 
 **Главный вопрос**
 
@@ -1668,7 +1775,7 @@ Large Applications
 
 ---
 
-## 111. Type Guards
+## 114. Type Guards
 
 **Главный вопрос**
 
@@ -1683,7 +1790,7 @@ Large Applications
 
 ---
 
-## 112. Type Assertions
+## 115. Type Assertions
 
 **Главный вопрос**
 
@@ -1697,7 +1804,7 @@ Large Applications
 
 ---
 
-## 113. satisfies
+## 116. satisfies
 
 **Главный вопрос**
 
@@ -1705,7 +1812,7 @@ Large Applications
 
 ---
 
-## 114. as const
+## 117. as const
 
 **Главный вопрос**
 
@@ -1717,7 +1824,7 @@ Large Applications
 
 ---
 
-## 115. Function Types
+## 118. Function Types
 
 **Главный вопрос**
 
@@ -1725,7 +1832,7 @@ Large Applications
 
 ---
 
-## 116. Function Overloads
+## 119. Function Overloads
 
 **Главный вопрос**
 
@@ -1733,7 +1840,7 @@ Large Applications
 
 ---
 
-## 117. Generics
+## 120. Generics
 
 **Главный вопрос**
 
@@ -1747,7 +1854,7 @@ Large Applications
 
 ---
 
-## 118. Generic Constraints
+## 121. Generic Constraints
 
 **Главный вопрос**
 
@@ -1764,7 +1871,7 @@ Large Applications
 
 ---
 
-## 119. keyof
+## 122. keyof
 
 **Главный вопрос**
 
@@ -1772,7 +1879,7 @@ Large Applications
 
 ---
 
-## 120. typeof
+## 123. typeof
 
 **Главный вопрос**
 
@@ -1780,7 +1887,7 @@ Large Applications
 
 ---
 
-## 121. Indexed Access Types
+## 124. Indexed Access Types
 
 **Главный вопрос**
 
@@ -1788,7 +1895,7 @@ Large Applications
 
 ---
 
-## 122. Mapped Types
+## 125. Mapped Types
 
 **Главный вопрос**
 
@@ -1796,7 +1903,7 @@ Large Applications
 
 ---
 
-## 123. Conditional Types
+## 126. Conditional Types
 
 **Главный вопрос**
 
@@ -1804,7 +1911,7 @@ Large Applications
 
 ---
 
-## 124. infer
+## 127. infer
 
 **Главный вопрос**
 
@@ -1812,7 +1919,7 @@ Large Applications
 
 ---
 
-## 125. Utility Types
+## 128. Utility Types
 
 **Главный вопрос**
 
@@ -1837,7 +1944,7 @@ Large Applications
 
 ---
 
-## 126. Declaration Files
+## 129. Declaration Files
 
 **Главный вопрос**
 
@@ -1845,7 +1952,7 @@ Large Applications
 
 ---
 
-## 127. Modules
+## 130. Modules
 
 **Главный вопрос**
 
@@ -1853,7 +1960,7 @@ Large Applications
 
 ---
 
-## 128. Decorators
+## 131. Decorators
 
 **Главный вопрос**
 
@@ -1866,7 +1973,7 @@ Large Applications
 
 ---
 
-## 129. ESLint
+## 132. ESLint
 
 **Главный вопрос**
 
@@ -1874,7 +1981,7 @@ Large Applications
 
 ---
 
-## 130. Prettier
+## 133. Prettier
 
 **Главный вопрос**
 
@@ -1882,7 +1989,7 @@ Large Applications
 
 ---
 
-## 131. TypeScript в Playwright
+## 134. TypeScript в Playwright
 
 **Главный вопрос**
 
@@ -1916,11 +2023,11 @@ Large Applications
 ```text
 TypeScript
 
-93
+97
 
 ↓
 
-131
+134
 
 STATUS
 
@@ -1937,7 +2044,7 @@ FROZEN
 
 # Продолжение Part III
 
-Главы **1–131** считаются утверждёнными.
+Главы **1–134** считаются утверждёнными.
 
 Данная часть полностью посвящена **Automation QA** и финальному промышленному проекту.
 
@@ -1951,7 +2058,7 @@ FROZEN
 
 ---
 
-## 132. Что такое Automation QA Framework
+## 135. Что такое Automation QA Framework
 
 **Главный вопрос**
 
@@ -1966,7 +2073,7 @@ FROZEN
 
 ---
 
-## 133. Структура проекта
+## 136. Структура проекта
 
 **Главный вопрос**
 
@@ -1984,7 +2091,7 @@ FROZEN
 
 ---
 
-## 134. Playwright Test
+## 137. Playwright Test
 
 **Главный вопрос**
 
@@ -1999,7 +2106,7 @@ FROZEN
 
 ---
 
-## 135. Fixtures
+## 138. Fixtures
 
 **Главный вопрос**
 
@@ -2013,7 +2120,7 @@ FROZEN
 
 ---
 
-## 136. Page Object
+## 139. Page Object
 
 **Главный вопрос**
 
@@ -2027,7 +2134,7 @@ FROZEN
 
 ---
 
-## 137. Components
+## 140. Components
 
 **Главный вопрос**
 
@@ -2044,7 +2151,7 @@ FROZEN
 
 ---
 
-## 138. REST
+## 141. REST
 
 **Главный вопрос**
 
@@ -2052,7 +2159,7 @@ FROZEN
 
 ---
 
-## 139. API Client
+## 142. API Client
 
 **Главный вопрос**
 
@@ -2060,7 +2167,7 @@ FROZEN
 
 ---
 
-## 140. Authentication
+## 143. Authentication
 
 **Главный вопрос**
 
@@ -2074,7 +2181,7 @@ FROZEN
 
 ---
 
-## 141. Request Builders
+## 144. Request Builders
 
 **Главный вопрос**
 
@@ -2082,7 +2189,7 @@ FROZEN
 
 ---
 
-## 142. Response Validation
+## 145. Response Validation
 
 **Главный вопрос**
 
@@ -2090,7 +2197,7 @@ FROZEN
 
 ---
 
-## 143. Contract Testing
+## 146. Contract Testing
 
 **Главный вопрос**
 
@@ -2102,7 +2209,7 @@ FROZEN
 
 ---
 
-## 144. Основы gRPC
+## 147. Основы gRPC
 
 **Главный вопрос**
 
@@ -2110,7 +2217,7 @@ FROZEN
 
 ---
 
-## 145. Protocol Buffers
+## 148. Protocol Buffers
 
 **Главный вопрос**
 
@@ -2118,7 +2225,7 @@ FROZEN
 
 ---
 
-## 146. gRPC Client
+## 149. gRPC Client
 
 **Главный вопрос**
 
@@ -2126,7 +2233,7 @@ FROZEN
 
 ---
 
-## 147. Metadata
+## 150. Metadata
 
 **Главный вопрос**
 
@@ -2134,7 +2241,7 @@ FROZEN
 
 ---
 
-## 148. Validation
+## 151. Validation
 
 **Главный вопрос**
 
@@ -2146,7 +2253,7 @@ FROZEN
 
 ---
 
-## 149. PostgreSQL
+## 152. PostgreSQL
 
 **Главный вопрос**
 
@@ -2154,7 +2261,7 @@ FROZEN
 
 ---
 
-## 150. Repository Pattern
+## 153. Repository Pattern
 
 **Главный вопрос**
 
@@ -2162,7 +2269,7 @@ FROZEN
 
 ---
 
-## 151. Database Verification
+## 154. Database Verification
 
 **Главный вопрос**
 
@@ -2170,7 +2277,7 @@ FROZEN
 
 ---
 
-## 152. Transactions
+## 155. Transactions
 
 **Главный вопрос**
 
@@ -2182,7 +2289,7 @@ FROZEN
 
 ---
 
-## 153. Helpers
+## 156. Helpers
 
 **Главный вопрос**
 
@@ -2190,7 +2297,7 @@ FROZEN
 
 ---
 
-## 154. Assertions
+## 157. Assertions
 
 **Главный вопрос**
 
@@ -2198,7 +2305,7 @@ FROZEN
 
 ---
 
-## 155. Configuration
+## 158. Configuration
 
 **Главный вопрос**
 
@@ -2206,7 +2313,7 @@ FROZEN
 
 ---
 
-## 156. Environment
+## 159. Environment
 
 **Главный вопрос**
 
@@ -2214,7 +2321,7 @@ FROZEN
 
 ---
 
-## 157. Test Data Builders
+## 160. Test Data Builders
 
 **Главный вопрос**
 
@@ -2222,7 +2329,7 @@ FROZEN
 
 ---
 
-## 158. Retry
+## 161. Retry
 
 **Главный вопрос**
 
@@ -2230,7 +2337,7 @@ FROZEN
 
 ---
 
-## 159. Logging
+## 162. Logging
 
 **Главный вопрос**
 
@@ -2238,7 +2345,7 @@ FROZEN
 
 ---
 
-## 160. Reporting
+## 163. Reporting
 
 **Главный вопрос**
 
@@ -2246,7 +2353,7 @@ FROZEN
 
 ---
 
-## 161. Allure
+## 164. Allure
 
 **Главный вопрос**
 
@@ -2254,7 +2361,7 @@ FROZEN
 
 ---
 
-## 162. Parallel Execution
+## 165. Parallel Execution
 
 **Главный вопрос**
 
@@ -2262,7 +2369,7 @@ FROZEN
 
 ---
 
-## 163. Flaky Tests
+## 166. Flaky Tests
 
 **Главный вопрос**
 
@@ -2270,7 +2377,7 @@ FROZEN
 
 ---
 
-## 164. Архитектура Framework
+## 167. Архитектура Framework
 
 **Главный вопрос**
 
@@ -2288,7 +2395,7 @@ FROZEN
 
 ---
 
-## 165. Проектирование Framework
+## 168. Проектирование Framework
 
 **Главный вопрос**
 
@@ -2296,7 +2403,7 @@ FROZEN
 
 ---
 
-## 166. Создание структуры проекта
+## 169. Создание структуры проекта
 
 **Главный вопрос**
 
@@ -2304,7 +2411,7 @@ FROZEN
 
 ---
 
-## 167. Реализация UI Layer
+## 170. Реализация UI Layer
 
 Темы:
 
@@ -2314,7 +2421,7 @@ FROZEN
 
 ---
 
-## 168. Реализация API Layer
+## 171. Реализация API Layer
 
 Темы:
 
@@ -2324,7 +2431,7 @@ FROZEN
 
 ---
 
-## 169. Реализация gRPC Layer
+## 172. Реализация gRPC Layer
 
 Темы:
 
@@ -2334,7 +2441,7 @@ FROZEN
 
 ---
 
-## 170. Реализация Database Layer
+## 173. Реализация Database Layer
 
 Темы:
 
@@ -2344,7 +2451,7 @@ FROZEN
 
 ---
 
-## 171. Общая инфраструктура
+## 174. Общая инфраструктура
 
 Темы:
 
@@ -2355,7 +2462,7 @@ FROZEN
 
 ---
 
-## 172. Reporting
+## 175. Reporting
 
 Темы:
 
@@ -2366,7 +2473,7 @@ FROZEN
 
 ---
 
-## 173. CI/CD
+## 176. CI/CD
 
 **Главный вопрос**
 
@@ -2380,7 +2487,7 @@ FROZEN
 
 ---
 
-## 174. Финальный рефакторинг
+## 177. Финальный рефакторинг
 
 **Главный вопрос**
 
@@ -2388,7 +2495,7 @@ FROZEN
 
 ---
 
-## 175. Best Practices
+## 178. Best Practices
 
 **Главный вопрос**
 
@@ -2396,7 +2503,7 @@ FROZEN
 
 ---
 
-## 176. Заключение
+## 179. Заключение
 
 Темы:
 
@@ -2411,12 +2518,12 @@ FROZEN
 | Часть            | Глав |
 | ---------------- | ---: |
 | Введение         |    4 |
-| JavaScript       |   92 |
-| TypeScript       |   39 |
+| JavaScript       |   96 |
+| TypeScript       |   38 |
 | Automation QA    |   33 |
 | Финальный проект |   12 |
 
-**Всего глав: 176**
+**Всего глав: 179**
 
 ---
 

@@ -12,7 +12,7 @@ Scope answers:
 "Where are those names visible?"
 ```
 
-Мы уже умеем мысленно выполнять lookup:
+Мы уже умеем мысленно выполнять поиск:
 
 ```text
 Current Scope
@@ -31,7 +31,7 @@ Global Scope
 Scope объясняет правила. Но rules должны где-то храниться во время выполнения. Engine должен помнить:
 
 * какие identifiers есть в current scope;
-* какие values доступны через эти identifiers;
+* какие значения доступны через эти identifiers;
 * куда идти дальше, если identifier не найден;
 * как связать function scope с outer scope;
 * почему helper-local identifiers остаются isolated.
@@ -227,7 +227,7 @@ function buildLoginUrl() {
 buildLoginUrl();
 ```
 
-Во время выполнения `fullUrl` engine должен сделать lookup:
+Во время выполнения `fullUrl` engine должен сделать поиск:
 
 ```text
 fullUrl
@@ -667,7 +667,7 @@ Current Lexical Environment: buildLoginUrl
         use baseUrl
 ```
 
-Complete lookup process:
+Полный процесс поиска:
 
 ```text
 Identifier requested
@@ -712,7 +712,7 @@ function testLogin() {
 }
 ```
 
-Diagram:
+Схема:
 
 ```text
 Block Lexical Environment
@@ -746,7 +746,7 @@ userName record
 baseUrl record
 ```
 
-### Current chapter position in JavaScript model
+### Текущее место главы в модели JavaScript
 
 Теперь модель выполнения стала глубже:
 
@@ -1240,7 +1240,7 @@ function buildUserName() {
 }
 ```
 
-Conceptual model:
+Концептуальная модель:
 
 ```text
 buildUserName Lexical Environment
@@ -1279,7 +1279,7 @@ Function Environment
     └── baseUrl found
 ```
 
-Так nested helper может читать configuration, не передавая ее через global mutable state.
+Так nested helper может читать configuration, не передавая ее через global mutable состояние.
 
 ### Runtime lookup during debugging
 

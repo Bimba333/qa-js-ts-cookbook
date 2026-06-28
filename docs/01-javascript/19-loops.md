@@ -18,7 +18,7 @@ Choose one path
 
 Теперь появляется следующий вопрос:
 
-> What if the same decision or action must happen many times?
+> Что если одно и то же решение или действие нужно выполнить много раз?
 
 Представьте, что нужно validate 100 API responses.
 
@@ -36,7 +36,7 @@ check response 100
 
 Главный вопрос этой главы:
 
-> What is repeated?
+> Что повторяется?
 
 ---
 
@@ -47,8 +47,8 @@ check response 100
 * что conditionals choose execution path;
 * что expressions produce results;
 * что comparison operators produce Boolean results;
-* что variables can store changing values;
-* что assignment can update values;
+* что variables can store changing значения;
+* что assignment can update значения;
 * что readable code should make intent visible.
 
 Не требуется знать `for...of`, `for...in`, iterators, generators, array iteration methods, asynchronous loops or labeled break. Эти темы будут изучаться позже.
@@ -69,7 +69,7 @@ check response 100
 
 Уровень сложности: **L3**.
 
-Loops are not hard because of syntax. They are hard because one missing update step can make program repeat forever.
+Loops сложны не из-за синтаксиса. Они сложны потому, что один пропущенный update step может заставить программу повторяться бесконечно.
 
 ---
 
@@ -95,7 +95,7 @@ docs/01-javascript/20-error-handling.md
 
 Следующая глава ответит:
 
-> What should happen if an error occurs during execution?
+> Что должно происходить при ошибке во время выполнения?
 
 ---
 
@@ -141,7 +141,7 @@ repeat one validation algorithm
 until all responses are checked
 ```
 
-Why loops exist:
+Зачем существуют loops:
 
 ```text
 Repeated work
@@ -165,15 +165,15 @@ Check condition
 
 Главный вопрос:
 
-> What is repeated?
+> Что повторяется?
 
 ---
 
 ## Теория
 
-### Why loops exist
+### Зачем существуют loops
 
-Loops exist because programs often need to repeat an algorithm.
+Loops существуют, потому что программам часто нужно повторять алгоритм.
 
 Примеры:
 
@@ -207,7 +207,7 @@ Loop = repeated execution until stopping condition is reached.
 
 Every loop has a lifecycle.
 
-Loop lifecycle diagram:
+Loop lifecycle схема:
 
 ```text
 Initialization
@@ -238,13 +238,13 @@ Four core parts:
 
 ### Initialization
 
-Initialization prepares loop state.
+Initialization prepares loop состояние.
 
 ```javascript
 let responseIndex = 0;
 ```
 
-Initialization diagram:
+Initialization схема:
 
 ```text
 Before loop starts
@@ -256,7 +256,7 @@ Create starting value
 responseIndex = 0
 ```
 
-What is repeated?
+Что повторяется?
 
 ```text
 Not initialization.
@@ -271,7 +271,7 @@ Condition decides whether loop continues.
 responseIndex < totalResponses
 ```
 
-Condition diagram:
+Condition схема:
 
 ```text
 Evaluate condition
@@ -294,7 +294,7 @@ Loop body is the repeated work.
 console.log('Validate response');
 ```
 
-Body diagram:
+Body схема:
 
 ```text
 Loop body
@@ -305,7 +305,7 @@ Loop body
     └── report result
 ```
 
-What is repeated?
+Что повторяется?
 
 ```text
 The body.
@@ -319,7 +319,7 @@ Update moves loop toward stopping condition.
 responseIndex += 1;
 ```
 
-Update diagram:
+Update схема:
 
 ```text
 After body
@@ -340,7 +340,7 @@ Without update, loop may never stop.
 
 One iteration is one complete pass through loop body.
 
-Iteration timeline:
+Iteration временная шкала:
 
 ```text
 Iteration 1
@@ -360,7 +360,7 @@ Stop
 └── condition false
 ```
 
-Iteration answers:
+Iteration отвечает:
 
 ```text
 Which repetition are we on?
@@ -380,7 +380,7 @@ while (responseIndex < totalResponses) {
 }
 ```
 
-`while` diagram:
+`while` схема:
 
 ```text
 while condition
@@ -394,7 +394,7 @@ while condition
     └── exit loop
 ```
 
-Use `while` when number of repetitions is not known exactly before loop starts.
+Используйте `while`, когда количество повторений заранее неизвестно.
 
 ### `do...while`
 
@@ -409,7 +409,7 @@ do {
 } while (attempt <= 1);
 ```
 
-`do...while` diagram:
+`do...while` схема:
 
 ```text
 Run body once
@@ -430,7 +430,7 @@ Key idea:
 Body runs at least once.
 ```
 
-Use it when action must happen before deciding whether to repeat.
+Используйте его, когда действие должно выполниться до решения о повторе.
 
 ### `for`
 
@@ -442,7 +442,7 @@ for (let responseIndex = 0; responseIndex < 3; responseIndex += 1) {
 }
 ```
 
-`for` diagram:
+`for` схема:
 
 ```text
 for (
@@ -466,7 +466,7 @@ responseIndex < 3?
 └── false → exit
 ```
 
-Use `for` when loop has clear counter-like lifecycle.
+Используйте `for`, когда у loop есть понятный counter-like lifecycle.
 
 ### `break`
 
@@ -482,7 +482,7 @@ for (let attempt = 1; attempt <= 3; attempt += 1) {
 }
 ```
 
-`break` diagram:
+`break` схема:
 
 ```text
 Loop running
@@ -494,7 +494,7 @@ Condition inside body
 └── no break      → continue normal lifecycle
 ```
 
-Use `break` when loop found what it needed or must stop early.
+Используйте `break`, когда loop нашёл нужное или должен остановиться раньше.
 
 ### `continue`
 
@@ -510,7 +510,7 @@ for (let responseIndex = 0; responseIndex < 3; responseIndex += 1) {
 }
 ```
 
-`continue` diagram:
+`continue` схема:
 
 ```text
 Current iteration
@@ -525,11 +525,11 @@ skip rest of body
 go to update / next condition check
 ```
 
-Use `continue` when current item should be skipped but loop should keep running.
+Используйте `continue`, когда текущий item нужно пропустить, но loop должен продолжаться.
 
 ### Avoiding infinite loops
 
-Infinite loop happens when stopping condition is never reached.
+Infinite loop возникает, когда stopping condition никогда не достигается.
 
 ```javascript
 let attempt = 1;
@@ -539,7 +539,7 @@ while (attempt <= 3) {
 }
 ```
 
-Infinite loop diagram:
+Infinite loop схема:
 
 ```text
 attempt = 1
@@ -557,7 +557,7 @@ attempt is still 1
 condition true again forever
 ```
 
-Avoid it by ensuring update changes loop state:
+Avoid it by ensuring update changes loop состояние:
 
 ```javascript
 attempt += 1;
@@ -588,7 +588,7 @@ Future chapters will introduce `for...of`, `for...in`, array iteration methods a
 
 ## Внутренний механизм
 
-At a conceptual level:
+На концептуальном уровне:
 
 ```text
 Loop starts
@@ -638,7 +638,7 @@ Condition
     └── back to condition
 ```
 
-Current position in JavaScript model:
+Текущее место в модели JavaScript:
 
 ```text
 Conditionals
@@ -783,19 +783,19 @@ Shows validation of multiple API-like responses.
 
 No. A loop repeats body and condition evaluation. `if` makes one decision.
 
-### Which loop should I use most often?
+### Какой loop использовать чаще всего?
 
 For counter-based repetition, `for` is common. For unknown repetition count, `while` is often clearer.
 
 ### Is `do...while` common?
 
-Less common, but useful when body must run at least once.
+Менее распространён, но полезен, когда body должен выполниться хотя бы один раз.
 
 ### Should I use `break` and `continue`?
 
-Use them when they make the loop clearer. Avoid overusing them in a way that hides control flow.
+Используйте их, когда они делают loop понятнее. Не злоупотребляйте ими так, чтобы скрывать control flow.
 
-### Why not teach array methods now?
+### Почему не изучать array methods сейчас?
 
 Array iteration methods are important, but they rely on arrays and functions. They will be studied later.
 
@@ -825,7 +825,7 @@ Infinite loop usually means stopping condition never becomes false.
 
 Реальность:
 
-They are tools. Use them when they make intent clearer.
+Это инструменты. Используйте их, когда они делают намерение понятнее.
 
 ---
 
@@ -888,7 +888,7 @@ state changes each iteration
 condition decides when to stop
 ```
 
-Practical reading checklist:
+Практический чек-лист чтения:
 
 ```text
 1. What is repeated?
@@ -974,7 +974,7 @@ Loops answer:
 What if the same decision or action must happen many times?
 ```
 
-Core model:
+Основная модель:
 
 ```text
 A loop repeats an algorithm.
@@ -1015,7 +1015,7 @@ What should happen if an error occurs during execution?
 * Loop repeats execution.
 * Loop repeats until stopping condition is reached.
 * Iteration is one pass through loop body.
-* Initialization prepares loop state.
+* Initialization prepares loop состояние.
 * Condition decides whether to continue.
 * Body contains repeated work.
 * Update moves loop toward stopping.
@@ -1024,7 +1024,7 @@ What should happen if an error occurs during execution?
 * `for` is useful for clear counter lifecycle.
 * `break` stops loop.
 * `continue` skips current iteration.
-* Infinite loops usually happen when condition never becomes false.
+* Infinite loops обычно возникают, когда condition никогда не становится false.
 
 ---
 
@@ -1032,16 +1032,16 @@ What should happen if an error occurs during execution?
 
 Ответьте без запуска кода.
 
-1. Why do loops exist?
-2. What is repeated in a loop?
-3. What is iteration?
-4. What are four core parts of a loop?
+1. Почему существуют loops?
+2. Что повторяется в loop?
+3. Что такое iteration?
+4. Какие четыре основные части есть у loop?
 5. When does `while` stop?
-6. What is special about `do...while`?
+6. В чём особенность `do...while`?
 7. When is `for` useful?
-8. What does `break` do?
-9. What does `continue` do?
-10. How does this chapter lead to Error Handling?
+8. Что делает `break`?
+9. Что делает `continue`?
+10. Как эта глава ведёт к Error Handling?
 
 ---
 
@@ -1053,7 +1053,7 @@ What should happen if an error occurs during execution?
 practice/01-javascript/19-loops.md
 ```
 
-Сначала решайте predict output задания без запуска. Главная цель - видеть lifecycle: initialization, condition, body, update.
+Сначала решайте predict вывод задания без запуска. Главная цель - видеть lifecycle: initialization, condition, body, update.
 
 ---
 
@@ -1065,4 +1065,4 @@ practice/01-javascript/19-loops.md
 solutions/01-javascript/19-loops.md
 ```
 
-Читайте решения после самостоятельной попытки. Проверяйте reasoning: what is repeated and when does repetition stop?
+Читайте решения после самостоятельной попытки. Проверяйте ход рассуждения: что повторяется и когда повторение останавливается?

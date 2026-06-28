@@ -4,7 +4,7 @@
 
 ### 1.1 Why does inheritance exist?
 
-**Ответ:** to reuse common behavior between classes.
+**Ответ:** to reuse common поведение between classes.
 
 **Объяснение:** if several classes repeat the same methods, common methods can live in base class.
 
@@ -24,9 +24,9 @@
 
 ### 1.3 What is a base class?
 
-**Ответ:** class that contains common behavior for derived classes.
+**Ответ:** class that contains common поведение for derived classes.
 
-**Объяснение:** base class should hold methods that truly belong to all derived classes.
+**Объяснение:** base class должен хранить methods, которые действительно относятся ко всем derived classes.
 
 **Распространённая ошибка:** put page-specific methods into base class.
 
@@ -34,11 +34,11 @@
 
 ### 1.4 What is a derived class?
 
-**Ответ:** class that extends base class and adds specific behavior.
+**Ответ:** class that extends base class and adds specific поведение.
 
 **Объяснение:** derived class can use inherited methods and define its own methods.
 
-**Распространённая ошибка:** make derived class empty when it needs specific behavior.
+**Распространённая ошибка:** make derived class empty when it needs specific поведение.
 
 **Связь с Automation QA:** `LoginPage` can extend `BasePage` and add `login()`.
 
@@ -46,11 +46,11 @@
 
 **Ответ:** relationship between derived class and base class.
 
-**Объяснение:** this relationship allows method lookup to reach base class behavior.
+**Объяснение:** this relationship allows method lookup to reach base class поведение.
 
 **Распространённая ошибка:** think `extends` copies methods.
 
-**Связь с Automation QA:** `LoginPage extends BasePage` means LoginPage can reuse common page behavior.
+**Связь с Automation QA:** `LoginPage extends BasePage` means LoginPage can reuse common page поведение.
 
 ### 1.6 Does inheritance copy methods?
 
@@ -66,7 +66,7 @@
 
 **Ответ:** inheritance builds on prototype lookup.
 
-**Объяснение:** if method is not found closer to instance, lookup can continue to base class behavior.
+**Объяснение:** if method is not found closer to instance, lookup can continue to base class поведение.
 
 **Распространённая ошибка:** think inheritance creates a separate lookup mechanism.
 
@@ -80,13 +80,13 @@
 
 **Распространённая ошибка:** think overriding deletes base method.
 
-**Связь с Automation QA:** specific page can override generic behavior when needed.
+**Связь с Automation QA:** specific page can override generic поведение when needed.
 
-### 1.9 Why should base class contain only common behavior?
+### 1.9 Why should base class contain only common поведение?
 
-**Ответ:** because every derived class receives access to base behavior.
+**Ответ:** because every derived class receives access to base поведение.
 
-**Объяснение:** if base contains specific behavior, unrelated classes get confusing methods.
+**Объяснение:** if base contains specific поведение, unrelated classes get confusing methods.
 
 **Распространённая ошибка:** turn base class into a storage place for random helpers.
 
@@ -96,7 +96,7 @@
 
 **Ответ:** because this chapter explains simple inherited method lookup.
 
-**Объяснение:** `super` is needed when derived class wants to call base class behavior explicitly; that is next chapter.
+**Объяснение:** `super` is needed when derived class wants to call base class поведение explicitly; that is next chapter.
 
 **Распространённая ошибка:** introduce `super` before understanding basic inheritance.
 
@@ -127,7 +127,7 @@
 * `describeRequest`: inherited method from `BaseApiClient`.
 * `userEndpoint`: specific method from `UsersClient`.
 
-**Объяснение:** common request description belongs to base client; user endpoint belongs to specific service client.
+**Объяснение:** общее описание request относится к base client; user endpoint относится к конкретному service client.
 
 **Распространённая ошибка:** duplicate `describeRequest` in every service client.
 
@@ -163,7 +163,7 @@ login
 
 **Распространённая ошибка:** expect base method to win because it is "base".
 
-**Связь с Automation QA:** page-specific behavior can override generic behavior.
+**Связь с Automation QA:** page-specific поведение can override generic поведение.
 
 ### 3.3
 
@@ -174,7 +174,7 @@ base format
 false
 ```
 
-**Объяснение:** `format` is inherited from `BaseValidator`; `isValid` belongs to `StatusValidator`.
+**Объяснение:** `format` наследуется от `BaseValidator`; `isValid` относится к `StatusValidator`.
 
 **Распространённая ошибка:** think inherited and own methods are called differently.
 
@@ -182,7 +182,7 @@ false
 
 ---
 
-## 4. Debugging tasks
+## 4. Задания на отладку
 
 ### 4.1
 
@@ -200,13 +200,13 @@ class LoginPage extends BasePage {
 
 **Распространённая ошибка:** define base class but forget to connect derived class.
 
-**Связь с Automation QA:** Page Object must explicitly extend base class to reuse base behavior.
+**Связь с Automation QA:** Page Object must explicitly extend base class to reuse base поведение.
 
 ### 4.2
 
 **Ответ:** `login()` should be in `LoginPage`, not `BasePage`.
 
-**Объяснение:** base class behavior becomes available to all derived pages. Not every page can log in.
+**Объяснение:** base class поведение becomes available to all derived pages. Not every page can log in.
 
 **Распространённая ошибка:** put specific methods into base class because it is convenient.
 
@@ -224,7 +224,7 @@ class LoginPage extends BasePage {
 
 ---
 
-## 5. QA-oriented tasks
+## 5. QA-задачи
 
 ### 5.1
 
@@ -332,7 +332,7 @@ console.log(validator.isValid(200, 201));
 
 ### 5.4
 
-**Ответ:** inheritance should express meaningful shared behavior.
+**Ответ:** inheritance should express meaningful общее поведение.
 
 **Объяснение:** if classes are connected only to hide random duplication, hierarchy becomes confusing.
 
@@ -381,7 +381,7 @@ console.log(profilePage.waitReady('ProfilePage'));
 console.log(profilePage.updateProfile());
 ```
 
-Possible output:
+Возможный вывод:
 
 ```text
 open LoginPage
@@ -392,10 +392,10 @@ ProfilePage is ready
 update user profile
 ```
 
-**Объяснение:** common behavior lives in `BasePage`. Specific behavior lives in `LoginPage` and `ProfilePage`. Methods are reused through inheritance and prototype lookup, not copied into each derived class.
+**Объяснение:** common поведение lives in `BasePage`. Specific поведение lives in `LoginPage` and `ProfilePage`. Methods are reused through inheritance and prototype lookup, not copied into each derived class.
 
 **Распространённая ошибка:** put `login()` and `updateProfile()` into `BasePage`.
 
 **Связь с Automation QA:** this is the core mental model behind simple Page Object inheritance.
 
-**Возможное улучшение:** keep the hierarchy shallow and move only truly common behavior to the base class.
+**Возможное улучшение:** keep the hierarchy shallow and move only truly common поведение to the base class.

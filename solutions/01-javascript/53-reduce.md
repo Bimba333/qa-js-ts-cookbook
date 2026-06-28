@@ -44,7 +44,7 @@
 
 ### 5. Чем `reduce()` отличается от `map()`?
 
-Ответ: `map()` возвращает array transformed values, `reduce()` возвращает один accumulated result.
+Ответ: `map()` возвращает array transformed значения, `reduce()` возвращает один accumulated result.
 
 Объяснение: labels остаются списком, summary становится одним итогом.
 
@@ -86,7 +86,7 @@ T-1 T-2
 
 Связь с Automation QA: aggregation может собирать report string.
 
-## Debugging
+## Отладка
 
 Ответ:
 
@@ -103,7 +103,7 @@ const ids = testCases.reduce(function (accumulator, testCase) {
 
 Связь с Automation QA: сбор report ids должен быть stable.
 
-## QA scenario
+## QA-сценарий
 
 Ответ:
 

@@ -34,7 +34,7 @@
 
 Распространённая ошибка: считать, что если значение живет дольше функции, оно стало global.
 
-Связь с Automation QA: это помогает избегать global mutable state в тестовом фреймворке.
+Связь с Automation QA: это помогает избегать global mutable состояние в тестовом фреймворке.
 
 ---
 
@@ -219,13 +219,13 @@ second
 
 ---
 
-## Expected lifetime vs Actual lifetime
+## Ожидаемое время жизни vs Фактическое время жизни
 
 ### Задание 5
 
 Ответ:
 
-Expected lifetime без учета Closure:
+Ожидаемое время жизни без учета Closure:
 
 ```text
 createTokenReader starts
@@ -240,7 +240,7 @@ createTokenReader finishes
 token expected to disappear
 ```
 
-Actual lifetime:
+Фактическое время жизни:
 
 ```text
 createTokenReader starts
@@ -349,9 +349,9 @@ false
 
 Объяснение: каждый validator сохраняет свой `expectedStatus` в отдельном lexical environment.
 
-Распространённая ошибка: оставлять `expectedStatus` как global mutable state.
+Распространённая ошибка: оставлять `expectedStatus` как global mutable состояние.
 
-Связь с Automation QA: global mutable state часто приводит к flaky tests, когда один тест меняет состояние для другого.
+Связь с Automation QA: global mutable состояние часто приводит к flaky tests, когда один тест меняет состояние для другого.
 
 ---
 
@@ -560,12 +560,12 @@ validateRequestId
 
 Объяснение: factory functions создают specialized helpers. Одни значения captured при создании helper, другие приходят позже как arguments.
 
-Captured values:
+Captured значения:
 
 * `expectedStatus`;
 * `headerName`.
 
-Arguments:
+Аргументы:
 
 * `response`;
 * `headers`.

@@ -2,93 +2,93 @@
 
 ## 1. Концептуальные вопросы
 
-### 1.1 Почему object может содержать data and behavior?
+### 1.1 Почему object может содержать данные и поведение?
 
-**Ответ:** because real entities often have state and actions related to that state.
+**Ответ:** потому что реальные сущности часто имеют состояние и действия, связанные с этим состоянием.
 
-**Объяснение:** user has data (`name`, `role`) and behavior (`describe`, `rename`) that naturally belongs to user.
+**Объяснение:** user имеет данные (`name`, `role`) и поведение (`describe`, `rename`), которое естественно относится к user.
 
-**Распространённая ошибка:** store all behavior as unrelated functions.
+**Распространённая ошибка:** store all поведение as unrelated functions.
 
-**Связь с Automation QA:** API clients and Page Objects combine state and behavior.
+**Связь с Automation QA:** API clients и Page Objects объединяют состояние и поведение.
 
-### 1.2 Что такое state?
+### 1.2 Что такое состояние?
 
-**Ответ:** state is data stored in object properties.
+**Ответ:** состояние is data stored in object properties.
 
-**Объяснение:** `baseUrl`, `timeout`, `role` are examples of state.
+**Объяснение:** `baseUrl`, `timeout`, `role` are examples of состояние.
 
-**Распространённая ошибка:** confuse method result with state.
+**Распространённая ошибка:** confuse method result with состояние.
 
-**Связь с Automation QA:** config values and locators are object state.
+**Связь с Automation QA:** config-значения и locators являются состоянием объекта.
 
-### 1.3 Что такое behavior?
+### 1.3 Что такое поведение?
 
-**Ответ:** behavior is what object can do through methods.
+**Ответ:** поведение — это то, что object может делать через methods.
 
-**Объяснение:** `buildUrl()`, `formatStatus()` and `describe()` are behavior.
+**Объяснение:** `buildUrl()`, `formatStatus()` и `describe()` являются поведением.
 
-**Распространённая ошибка:** think behavior must always change state. It can only read state.
+**Распространённая ошибка:** think поведение must always change состояние. It can only read состояние.
 
 **Связь с Automation QA:** assertion helpers often format or validate without mutating.
 
-### 1.4 Почему method is ordinary function?
+### 1.4 Почему method является обычной функцией?
 
 **Ответ:** method uses function object; it is not a separate magical function kind.
 
-**Объяснение:** function becomes method when used as behavior through object invocation.
+**Объяснение:** function становится method, когда используется как поведение через вызов объекта.
 
 **Распространённая ошибка:** think methods ignore normal function invocation rules.
 
-**Связь с Automation QA:** detached helper methods can still lose receiver.
+**Связь с Automation QA:** detached helper methods can still lose объект выполнения.
 
 ### 1.5 Почему method becomes method when called through object?
 
-**Ответ:** because invocation form `object.method()` selects object as receiver.
+**Ответ:** because invocation form `object.method()` selects object as объект выполнения.
 
 **Объяснение:** this connects method call with `this`.
 
 **Распространённая ошибка:** think method is permanently bound to object just because it was written there.
 
-**Связь с Automation QA:** Page Object methods should usually be called through page object instance.
+**Связь с Automation QA:** Page Object methods обычно нужно вызывать через экземпляр page object.
 
 ### 1.6 Как `this` связан with ordinary method call?
 
-**Ответ:** in ordinary `object.method()` invocation, `this` points to receiver object.
+**Ответ:** при обычном вызове `object.method()` `this` указывает на объект выполнения.
 
-**Объяснение:** `apiClient.buildUrl()` makes `apiClient` receiver.
+**Объяснение:** `apiClient.buildUrl()` makes `apiClient` объект выполнения.
 
 **Распространённая ошибка:** assume `this` is decided where function was created.
 
 **Связь с Automation QA:** API client methods use `this.baseUrl`.
 
-### 1.7 Почему behavior should belong to object?
+### 1.7 Почему поведение should belong to object?
 
-**Ответ:** when behavior uses object state or represents action of that entity.
+**Ответ:** когда поведение использует состояние объекта или представляет действие этой сущности.
 
-**Объяснение:** `buildUrl()` belongs to API client because it uses client `baseUrl`.
+**Объяснение:** `buildUrl()` относится к API client, потому что использует `baseUrl` клиента.
 
 **Распространённая ошибка:** attach unrelated functions to object.
 
-**Связь с Automation QA:** request builder behavior belongs to builder object.
+**Связь с Automation QA:** поведение request builder относится к builder object.
 
 ### 1.8 Когда ordinary function лучше?
 
-**Ответ:** when behavior does not depend on object state and does not represent entity responsibility.
+**Ответ:** когда поведение не зависит от состояния объекта и не представляет ответственность сущности.
 
-**Объяснение:** pure utility calculations often stay ordinary functions.
+**Объяснение:** чистые utility-вычисления часто остаются обычными функциями.
 
 **Распространённая ошибка:** put every helper into object.
 
-**Связь с Automation QA:** generic string formatting may not need object state.
+**Связь с Automation QA:** общее форматирование строк может не требовать состояния объекта.
 
 ### 1.9 Почему arrow functions as methods требуют осторожности?
 
-**Ответ:** arrow functions have different `this` behavior.
+**Ответ:** arrow functions have different `this` поведение.
 
 **Объяснение:** this chapter recommends regular method syntax.
 
-**Распространённая ошибка:** write arrow method and expect ordinary receiver `this`.
+**Распространённая ошибка:** писать arrow method и ожидать обычный объект выполнения в `this`.
 
 **Связь с Automation QA:** method `this` bugs can break Page Object helpers.
 
@@ -96,11 +96,11 @@
 
 **Ответ:** API clients, Page Objects, assertion helpers, request builders and configuration helpers.
 
-**Объяснение:** these entities own both data and actions.
+**Объяснение:** эти сущности владеют и данными, и действиями.
 
-**Распространённая ошибка:** separate related behavior from its state.
+**Распространённая ошибка:** separate related поведение from its состояние.
 
-**Связь с Automation QA:** object methods are foundation for framework architecture.
+**Связь с Automation QA:** object methods являются фундаментом framework architecture.
 
 ---
 
@@ -108,33 +108,33 @@
 
 ### 2.1
 
-**Ответ:** state: `name`, `role`; method: `describe`.
+**Ответ:** состояние: `name`, `role`; method: `describe`.
 
-**Объяснение:** `describe` stores function behavior and uses object state via `this`.
+**Объяснение:** `describe` хранит поведение функции и использует состояние объекта через `this`.
 
-**Распространённая ошибка:** call `describe` a data field only because it is a property.
+**Распространённая ошибка:** call `describe` a data поле only because it is a property.
 
 **Связь с Automation QA:** test entity can describe itself for reports.
 
 ### 2.2
 
-**Ответ:** `describe()` belongs to `config` because it uses `config` state: `baseUrl` and `timeout`.
+**Ответ:** `describe()` относится к `config`, потому что использует состояние `config`: `baseUrl` and `timeout`.
 
-**Объяснение:** behavior describes same entity.
+**Объяснение:** поведение describes same entity.
 
-**Распространённая ошибка:** move behavior away and pass config manually everywhere.
+**Распространённая ошибка:** выносить поведение отдельно и везде передавать config вручную.
 
 **Связь с Automation QA:** config helper can explain current environment setup.
 
 ### 2.3
 
-**Ответ:** `buildUrl` uses object state; `requestName` does not use object state.
+**Ответ:** `buildUrl` использует состояние объекта; `requestName` не использует состояние объекта.
 
 **Объяснение:** `buildUrl` reads `this.baseUrl`; `requestName` uses only arguments.
 
 **Распространённая ошибка:** assume every method uses `this`.
 
-**Связь с Automation QA:** some helper methods may be better as ordinary functions if they do not belong to object state.
+**Связь с Automation QA:** некоторые helper methods лучше оставить обычными функциями, если они не относятся к состоянию объекта.
 
 ---
 
@@ -148,9 +148,9 @@
 Anna is admin
 ```
 
-**Объяснение:** `user.describe()` makes `user` receiver; `this.name` and `this.role` read user state.
+**Объяснение:** `user.describe()` делает `user` объектом выполнения; `this.name` и `this.role` читают состояние user.
 
-**Распространённая ошибка:** think `this` is undefined in any function. In ordinary method call receiver is selected.
+**Распространённая ошибка:** думать, что `this` всегда `undefined` в любой функции. При обычном вызове метода объект выполнения выбирается формой вызова.
 
 **Связь с Automation QA:** entity methods can format readable labels.
 
@@ -162,11 +162,11 @@ Anna is admin
 150
 ```
 
-**Объяснение:** `deposit(50)` updates `this.balance`; `getBalance()` returns updated state.
+**Объяснение:** `deposit(50)` updates `this.balance`; `getBalance()` returns updated состояние.
 
-**Распространённая ошибка:** forget that methods can change object state.
+**Распространённая ошибка:** забывать, что methods могут менять состояние объекта.
 
-**Связь с Automation QA:** request builders may update internal state before building payload.
+**Связь с Automation QA:** request builders may update internal состояние before building payload.
 
 ### 3.3
 
@@ -176,7 +176,7 @@ Anna is admin
 https://api.example.test/users
 ```
 
-**Объяснение:** `this.baseUrl` reads apiClient state.
+**Объяснение:** `this.baseUrl` reads apiClient состояние.
 
 **Распространённая ошибка:** use `baseUrl` without `this`.
 
@@ -184,7 +184,7 @@ https://api.example.test/users
 
 ---
 
-## 4. Debugging tasks
+## 4. Задания на отладку
 
 ### 4.1
 
@@ -201,15 +201,15 @@ const apiClient = {
 console.log(apiClient.buildUrl('/users'));
 ```
 
-**Объяснение:** `baseUrl` is object property, so method reads it through `this.baseUrl`.
+**Объяснение:** `baseUrl` является свойством объекта, поэтому method читает его через `this.baseUrl`.
 
 **Распространённая ошибка:** treat property as local variable.
 
-**Связь с Automation QA:** API client methods commonly access object config through `this`.
+**Связь с Automation QA:** API client methods часто обращаются к config объекта через `this`.
 
 ### 4.2
 
-**Ответ:** `describe` is detached from `user`. Called as `describe()`, it no longer has ordinary receiver `user`.
+**Ответ:** `describe` отделён от `user`. При вызове `describe()` у него больше нет обычного объекта выполнения `user`.
 
 One fix:
 
@@ -217,11 +217,11 @@ One fix:
 const describe = user.describe.bind(user);
 ```
 
-**Объяснение:** `bind()` creates function with fixed receiver.
+**Объяснение:** `bind()` creates function with fixed объект выполнения.
 
 **Распространённая ошибка:** assume method remains bound forever.
 
-**Связь с Automation QA:** detached Page Object methods can fail when passed around.
+**Связь с Automation QA:** отделённые Page Object methods могут падать при передаче как значения.
 
 ### 4.3
 
@@ -236,15 +236,15 @@ const assertionHelper = {
 };
 ```
 
-**Объяснение:** `suite` is object state, not local variable.
+**Объяснение:** `suite` является состоянием объекта, а не локальной переменной.
 
 **Распространённая ошибка:** forget `this` inside method.
 
-**Связь с Automation QA:** assertion helpers often use suite/reporting state.
+**Связь с Automation QA:** assertion helpers often use suite/reporting состояние.
 
 ---
 
-## 5. QA-oriented tasks
+## 5. QA-задачи
 
 ### 5.1
 
@@ -260,7 +260,7 @@ const apiClient = {
 };
 ```
 
-**Объяснение:** URL behavior belongs to API client because it uses `baseUrl`.
+**Объяснение:** поведение построения URL относится к API client, потому что использует `baseUrl`.
 
 **Распространённая ошибка:** duplicate baseUrl logic outside client.
 
@@ -277,7 +277,7 @@ const assertionHelper = {
 };
 ```
 
-**Объяснение:** formatting behavior belongs to helper because it uses suite state.
+**Объяснение:** поведение форматирования относится к helper, потому что использует состояние suite.
 
 **Распространённая ошибка:** hardcode suite in every assertion.
 
@@ -298,7 +298,7 @@ const requestBuilder = {
 };
 ```
 
-**Объяснение:** builder owns default role and behavior for creating payload.
+**Объяснение:** builder владеет ролью по умолчанию и поведением для создания payload.
 
 **Распространённая ошибка:** pass default role manually every time.
 
@@ -306,11 +306,11 @@ const requestBuilder = {
 
 ### 5.4
 
-**Ответ:** behavior belongs to object when it uses object state or represents responsibility of that entity.
+**Ответ:** поведение относится к объекту, когда использует состояние объекта или представляет ответственность этой сущности.
 
 **Объяснение:** `buildUrl` uses `baseUrl`; `formatStatus` uses `suite`; `createUser` uses `defaultRole`.
 
-**Распространённая ошибка:** group behavior by convenience rather than responsibility.
+**Распространённая ошибка:** group поведение by convenience rather than responsibility.
 
 **Связь с Automation QA:** good framework architecture is responsibility-based.
 
@@ -353,22 +353,22 @@ console.log(assertions.statusLine('login', 200, 200));
 console.log(testUser.describe());
 ```
 
-**Объяснение:** state is stored data: `baseUrl`, `suite`, user fields. Behavior is methods: `buildUrl`, `describeRequest`, `statusLine`, `describe`.
+**Объяснение:** состояние is stored data: `baseUrl`, `suite`, user поля. Behavior is methods: `buildUrl`, `describeRequest`, `statusLine`, `describe`.
 
-**Распространённая ошибка:** move related behavior into unrelated utility functions.
+**Распространённая ошибка:** move related поведение into unrelated utility functions.
 
-**Связь с Automation QA:** this pattern is a small preview of API clients, assertion helpers and Page Objects.
+**Связь с Automation QA:** этот паттерн является маленьким предварительным взглядом на API clients, assertion helpers и Page Objects.
 
-**Возможное улучшение:** later classes and prototypes can help share methods across many similar objects.
+**Возможное улучшение:** позже classes и prototypes помогут разделять методы между многими похожими объектами.
 
 ---
 
 ## 7. Контрольные вопросы
 
-1. `object.method()` reads method function from object and calls it with object as ordinary receiver.
+1. `object.method()` читает функцию метода из объекта и вызывает её с объектом как обычным объектом выполнения.
 2. Receiver is `apiClient`.
-3. Because ordinary method call sets `this` to receiver.
-4. Detached method may lose receiver and `this` may not point to original object.
-5. Page Object naturally uses methods because page actions belong to page entity and use page state such as locators.
+3. Потому что обычный вызов метода устанавливает `this` в объект выполнения.
+4. Отделённый метод может потерять объект выполнения, и `this` может не указывать на исходный объект.
+5. Page Object естественно использует methods, потому что действия страницы относятся к сущности страницы и используют её состояние, например locators.
 
-**Общий вывод:** object method is behavior owned by object, implemented as ordinary function and invoked through object.
+**Общий вывод:** object method — это поведение, принадлежащее объекту, реализованное как обычная функция и вызванное через объект.

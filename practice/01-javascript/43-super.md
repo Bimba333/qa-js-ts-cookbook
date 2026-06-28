@@ -6,7 +6,7 @@
 
 * объяснять, зачем существует `super`;
 * отличать override with `super` from override without `super`;
-* определять base behavior;
+* определять base поведение;
 * предсказывать result of `super.method()`;
 * понимать relationship between `super` and `this`;
 * применять `super` в Page Objects, API clients and validators.
@@ -19,7 +19,7 @@
 2. What problem appears when derived method overrides base method?
 3. What does `super.method()` call?
 4. Does `super.method()` copy base method code?
-5. Why use `super` instead of copying base method code?
+5. Why use `super` вместо copying base method code?
 6. What is the difference between `super` and `this`?
 7. What happens if override does not call `super`?
 8. When can override without `super` be intentional?
@@ -28,7 +28,7 @@
 
 ---
 
-## 2. Identify base behavior
+## 2. Identify base поведение
 
 ### Задание 2.1
 
@@ -49,8 +49,8 @@ class LoginPage extends BasePage {
 
 Ответьте:
 
-* What is the base behavior?
-* What is the derived-specific behavior?
+* What is the base поведение?
+* What is the derived-specific поведение?
 * What does `super.open(pageName)` call?
 
 ### Задание 2.2
@@ -142,7 +142,7 @@ console.log(page.open('LoginPage'));
 
 ---
 
-## 4. Debugging tasks
+## 4. Задания на отладку
 
 ### Задание 4.1
 
@@ -160,7 +160,7 @@ class LoginPage extends BasePage {
 }
 ```
 
-Автор хотел preserve base opening behavior and add login-specific behavior. Исправьте method.
+Автор хотел preserve base opening поведение and add login-specific поведение. Исправьте method.
 
 ### Задание 4.2
 
@@ -182,7 +182,7 @@ const reporter = new TestReporter();
 console.log(reporter.label('failed'));
 ```
 
-Объясните, why output contains `undefined`.
+Объясните, why вывод contains `undefined`.
 
 ### Задание 4.3
 
@@ -204,27 +204,27 @@ Explain why this is wrong for this chapter and fix the method.
 
 ---
 
-## 5. QA-oriented tasks
+## 5. QA-задачи
 
 ### Задание 5.1
 
-Create:
+Создайте:
 
 * `BasePage.open(pageName)`;
 * `LoginPage extends BasePage`;
-* `LoginPage.open(pageName)` that calls base open and adds login-specific behavior.
+* `LoginPage.open(pageName)` that calls base open and adds login-specific поведение.
 
 ### Задание 5.2
 
-Create:
+Создайте:
 
 * `BaseApiClient.describeRequest(serviceName, endpoint)`;
 * `UsersClient extends BaseApiClient`;
-* `UsersClient.describeRequest(endpoint)` that calls base behavior and adds `[authenticated]`.
+* `UsersClient.describeRequest(endpoint)` that calls base поведение and adds `[authenticated]`.
 
 ### Задание 5.3
 
-Create:
+Создайте:
 
 * `BaseValidator.formatFailure(expected, actual)`;
 * `StatusValidator extends BaseValidator`;
@@ -236,7 +236,7 @@ Create:
 
 Create small QA framework model.
 
-Requirements:
+Требования:
 
 1. Create `BasePage`.
 2. Add method `open(pageName)`.
@@ -244,12 +244,12 @@ Requirements:
 4. Create `LoginPage extends BasePage`.
 5. Override `open(pageName)`.
 6. Inside override, call `super.open(pageName)`.
-7. Add login-specific behavior after base behavior.
+7. Add login-specific поведение after base поведение.
 8. Create `ProfilePage extends BasePage`.
 9. Override `waitReady(pageName)`.
 10. Inside override, call `super.waitReady(pageName)`.
-11. Add profile-specific behavior.
+11. Add profile-specific поведение.
 12. Print results.
-13. Explain which behavior is base and which is derived.
+13. Explain which поведение is base and which is derived.
 
 Do not use constructor `super()`.

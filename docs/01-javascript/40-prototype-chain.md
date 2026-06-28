@@ -21,7 +21,7 @@ Current object
     Look in Prototype
 ```
 
-Prototype был представлен как обычный object, который может быть shared source of properties. На практике мы чаще всего использовали его для shared behavior:
+Prototype был представлен как обычный object, который может быть shared source of properties. На практике мы чаще всего использовали его для общее поведение:
 
 ```text
 object
@@ -84,11 +84,11 @@ Found or undefined
 * что object has own properties;
 * что prototype is ordinary object;
 * что prototype can contain any properties;
-* что на практике prototype часто содержит shared behavior;
+* что на практике prototype часто содержит общее поведение;
 * что property lookup сначала проверяет own properties;
 * что inherited property is found through prototype lookup;
-* что method location and receiver are different concepts;
-* что ordinary `object.method()` invocation uses object before dot as receiver.
+* что method location and объект выполнения are different concepts;
+* что ordinary `object.method()` invocation uses object before dot as объект выполнения.
 
 Не требуется знать `constructor.prototype`, classes, `new`, `instanceof`, `Reflect`, `Proxy`, `Symbol.hasInstance` или advanced inheritance. Эти темы будут изучаться позже.
 
@@ -159,7 +159,7 @@ docs/01-javascript/41-classes.md
 
 Начнем с уже знакомой модели.
 
-Есть object:
+Есть объект:
 
 ```javascript
 const loginPage = {
@@ -167,7 +167,7 @@ const loginPage = {
 };
 ```
 
-Есть shared page behavior:
+Есть shared page поведение:
 
 ```javascript
 const pageBehavior = {
@@ -503,7 +503,7 @@ If returned value is a function and call form is:
 loginPage.formatError();
 ```
 
-receiver reminder:
+объект выполнения reminder:
 
 ```text
 method found in frameworkBehavior
@@ -513,7 +513,7 @@ but ordinary call is loginPage.formatError()
 therefore receiver is loginPage
 ```
 
-The method location does not automatically become receiver.
+The method location does not automatically become объект выполнения.
 
 ```text
 Location: frameworkBehavior
@@ -666,7 +666,7 @@ second prototype
 examples/01-javascript/chapter-40/02-property-lookup.js
 ```
 
-Показывает lookup order from own property to shared framework behavior.
+Показывает lookup order from own property to shared framework поведение.
 
 ### Пример 3. Shadowing
 
@@ -702,7 +702,7 @@ examples/01-javascript/chapter-40/04-common-mistakes.js
 examples/01-javascript/chapter-40/05-framework-preview.js
 ```
 
-Показывает layered framework behavior.
+Показывает layered framework поведение.
 
 ### Пример 6. QA example
 
@@ -712,7 +712,7 @@ examples/01-javascript/chapter-40/05-framework-preview.js
 examples/01-javascript/chapter-40/06-qa-example.js
 ```
 
-Показывает API client lookup through client-specific, service-level and framework-level behavior.
+Показывает API client lookup through client-specific, service-level and framework-level поведение.
 
 ---
 
@@ -778,7 +778,7 @@ searched whole chain
 
 `Object.prototype` is common prototype near the end of many ordinary object chains.
 
-В этой главе достаточно понимать его position in lookup. Detailed built-in behavior будет встречаться позже по мере необходимости.
+В этой главе достаточно понимать его position in lookup. Detailed built-in поведение будет встречаться позже по мере необходимости.
 
 ---
 
@@ -847,7 +847,7 @@ own property priority
 └── closer property wins
 ```
 
-### Ошибка 2. Думать, что method receiver is where method was found
+### Ошибка 2. Думать, что method объект выполнения is where method was found
 
 Неправильная модель:
 
@@ -900,7 +900,7 @@ level 4
 
 * сложно понять, где property found;
 * сложно debug;
-* сложно explain behavior to team.
+* сложно explain поведение to team.
 
 Исправленный подход:
 
@@ -932,7 +932,7 @@ object.missing
 
 ## Практическое использование
 
-Prototype Chain помогает читать код, где behavior organized in layers.
+Prototype Chain помогает читать код, где поведение organized in layers.
 
 ```text
 specific object
@@ -956,10 +956,10 @@ frameworkBehavior
 Такая модель может быть полезной, если нужно:
 
 * separate object-specific data from shared actions;
-* provide default behavior;
-* override behavior locally;
+* provide default поведение;
+* override поведение locally;
 * understand where method was found;
-* debug unexpected property values.
+* debug unexpected property значения.
 
 Но deep chain is not automatically good architecture.
 
@@ -1049,7 +1049,7 @@ reporting behavior
 
 This can help reuse formatting and error reporting.
 
-### Debugging unexpected methods
+### Отладка unexpected methods
 
 If method exists but not directly in object:
 
@@ -1221,7 +1221,7 @@ own property
 └── wins first
 ```
 
-### 15. Shared behavior
+### 15. Shared поведение
 
 ```text
 object
@@ -1375,7 +1375,7 @@ end reached
     undefined
 ```
 
-### 28. Property ownership
+### 28. Принадлежность свойства
 
 ```text
 own
@@ -1566,7 +1566,7 @@ Own properties have priority. Closer properties shadow farther properties. If lo
 
 ✓ `Object.prototype` is near the end of many ordinary object chains.
 
-✓ Method location and receiver are different concepts.
+✓ Method location and объект выполнения are different concepts.
 
 ✓ Prototype Chain is lookup algorithm, not inheritance hierarchy.
 
@@ -1614,4 +1614,4 @@ practice/01-javascript/40-prototype-chain.md
 solutions/01-javascript/40-prototype-chain.md
 ```
 
-Сначала выполните практику самостоятельно. Затем сравните reasoning, not only final answer.
+Сначала выполните практику самостоятельно. Затем сравните ход рассуждения, а не только итоговый ответ.

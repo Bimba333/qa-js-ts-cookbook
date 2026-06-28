@@ -6,13 +6,13 @@
 
 **Ответ:** `??` выбирает fallback value when current value is `null` or `undefined`.
 
-**Объяснение:** Optional Chaining may safely return `undefined`; `??` decides what value to use instead.
+**Объяснение:** Optional Chaining may safely return `undefined`; `??` decides what value to use вместо.
 
 **Распространённая ошибка:** think `??` replaces every "empty-looking" value.
 
 **Связь с Automation QA:** config defaults often require fallback only when value is absent.
 
-### 1.2 Какие values are nullish?
+### 1.2 Какие значения are nullish?
 
 **Ответ:** `null` and `undefined`.
 
@@ -36,9 +36,9 @@
 
 **Ответ:** when it is not `null` and not `undefined`.
 
-**Объяснение:** `??` preserves all other values.
+**Объяснение:** `??` preserves all other значения.
 
-**Распространённая ошибка:** think false-like values are replaced.
+**Распространённая ошибка:** think false-like значения are replaced.
 
 **Связь с Automation QA:** `false` can be a meaningful flag.
 
@@ -48,7 +48,7 @@
 
 **Объяснение:** `??` performs nullish check only.
 
-**Распространённая ошибка:** confuse `??` with broader logical behavior.
+**Распространённая ошибка:** confuse `??` with broader logical поведение.
 
 **Связь с Automation QA:** `retries: 0` can intentionally disable retries.
 
@@ -80,11 +80,11 @@
 
 **Распространённая ошибка:** use fallback before safe traversal.
 
-**Связь с Automation QA:** nested optional response fields often need readable fallback values.
+**Связь с Automation QA:** nested optional response поля often need readable fallback значения.
 
 ### 1.9 Чем отличается от `||` на высоком уровне?
 
-**Ответ:** `??` checks only `null` and `undefined`; `||` has broader logical behavior.
+**Ответ:** `??` checks only `null` and `undefined`; `||` has broader logical поведение.
 
 **Объяснение:** logical operators are future topic.
 
@@ -94,13 +94,13 @@
 
 ### 1.10 Где полезен в Automation QA?
 
-**Ответ:** configuration defaults, optional API fields, retry counts, timeout values and assertion helpers.
+**Ответ:** configuration defaults, optional API поля, retry counts, timeout значения and assertion helpers.
 
 **Объяснение:** all these places often distinguish absent value from intentional value.
 
-**Распространённая ошибка:** hide required missing fields with fallback.
+**Распространённая ошибка:** hide required missing поля with fallback.
 
-**Связь с Automation QA:** required contract fields should still fail clearly.
+**Связь с Automation QA:** required contract поля should still fail clearly.
 
 ---
 
@@ -124,7 +124,7 @@
 
 **Распространённая ошибка:** think fallback applies only to `undefined`.
 
-**Связь с Automation QA:** nullable API fields can get display fallback.
+**Связь с Automation QA:** nullable API поля can get display fallback.
 
 ### 2.3
 
@@ -215,7 +215,7 @@ unknown
 
 **Распространённая ошибка:** forget that `??` is the fallback step, not `?.`.
 
-**Связь с Automation QA:** optional nested fields often need display values.
+**Связь с Automation QA:** optional nested поля often need display значения.
 
 ---
 
@@ -239,7 +239,7 @@ unknown
 
 **Распространённая ошибка:** think fallback always applies.
 
-**Связь с Automation QA:** existing API field should be preserved.
+**Связь с Automation QA:** existing API поле should be preserved.
 
 ### 4.3
 
@@ -249,11 +249,11 @@ unknown
 
 **Распространённая ошибка:** expect TypeError.
 
-**Связь с Automation QA:** optional profile data can still produce stable output.
+**Связь с Automation QA:** optional profile data can still produce stable вывод.
 
 ---
 
-## 5. Debugging tasks
+## 5. Задания на отладку
 
 ### 5.1
 
@@ -287,15 +287,15 @@ console.log(timeout);
 
 **Ответ:** using fallback `0` for required `id` may hide contract bug.
 
-**Объяснение:** if `id` is required, missing id should fail clearly instead of becoming `0`.
+**Объяснение:** if `id` is required, missing id should fail clearly вместо becoming `0`.
 
-**Распространённая ошибка:** add fallback to every missing field.
+**Распространённая ошибка:** add fallback to every missing поле.
 
-**Связь с Automation QA:** required API fields should be validated, not silently replaced.
+**Связь с Automation QA:** required API поля should be validated, not silently replaced.
 
 ---
 
-## 6. QA-oriented tasks
+## 6. QA-задачи
 
 ### 6.1
 
@@ -339,7 +339,7 @@ console.log(city);
 
 **Распространённая ошибка:** omit `?.` before optional `address`.
 
-**Связь с Automation QA:** optional profile fields often need readable fallback.
+**Связь с Automation QA:** optional profile поля often need readable fallback.
 
 ### 6.3
 
@@ -367,7 +367,7 @@ console.log(retries);
 
 **Объяснение:** `??` is a nullish check, not a general emptiness check.
 
-**Распространённая ошибка:** confuse nullish with broader logical behavior.
+**Распространённая ошибка:** confuse nullish with broader logical поведение.
 
 **Связь с Automation QA:** preserving `0` matters for retries, timeout and limits.
 
@@ -401,7 +401,7 @@ console.log(timeout);
 console.log(retries);
 ```
 
-Expected output:
+Ожидаемый вывод:
 
 ```text
 unknown city
@@ -413,9 +413,9 @@ unknown city
 
 **Распространённая ошибка:** expect `retries` to become `2`.
 
-**Связь с Automation QA:** this mirrors config + optional API field handling.
+**Связь с Automation QA:** this mirrors config + optional API поле handling.
 
-**Возможное улучшение:** required fields should be asserted separately instead of receiving fallback silently.
+**Возможное улучшение:** required поля should be asserted separately вместо receiving fallback silently.
 
 ---
 

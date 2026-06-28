@@ -28,11 +28,11 @@ Values приходят из API, форм, переменных окружен�
 
 Объяснение:
 
-Вычитание ожидает numeric values. Построение текста ожидает string values. Условия используют Boolean conversion.
+Вычитание ожидает numeric значения. Построение текста ожидает string значения. Условия используют Boolean conversion.
 
 Распространённая ошибка:
 
-Смотреть только на входные values и не учитывать операцию, которая с ними выполняется.
+Смотреть только на входные значения и не учитывать операцию, которая с ними выполняется.
 
 Связь с Automation QA:
 
@@ -108,7 +108,7 @@ Explicit conversion делает test setup проще для ревью.
 
 Связь с Automation QA:
 
-Парсинг numeric fields из API требует отдельной проверки.
+Парсинг числовые поля из API требует отдельной проверки.
 
 ### 7. Что означает `NaN`?
 
@@ -144,7 +144,7 @@ Explicit conversion делает test setup проще для ревью.
 
 Связь с Automation QA:
 
-Это полезно при заполнении text fields и построении читаемых логов.
+Это полезно при заполнении текстовые поля и построении читаемых логов.
 
 ### 9. Что делает `Boolean()`?
 
@@ -194,7 +194,7 @@ Falsy value становится `false` при Boolean conversion.
 
 Распространённая ошибка:
 
-Думать, что все "пустые на вид" values ведут себя одинаково в любом контексте.
+Думать, что все "пустые на вид" значения ведут себя одинаково в любом контексте.
 
 Связь с Automation QA:
 
@@ -230,7 +230,7 @@ Conversions могут появляться внутри сравнений, н�
 
 Распространённая ошибка:
 
-Смешивать conversion rules и equality behavior слишком рано.
+Смешивать conversion rules и equality поведение слишком рано.
 
 Связь с Automation QA:
 
@@ -272,7 +272,7 @@ Boolean false становится string text `'false'`.
 
 Связь с Automation QA:
 
-Это полезно в логах и form fields.
+Это полезно в логах и поля формы.
 
 ### Задача 3
 
@@ -326,7 +326,7 @@ Number `1` адаптируется к string context.
 
 Связь с Automation QA:
 
-Баг с env values: `'3' + 1` превращается в `'31'`.
+Баг с env значения: `'3' + 1` превращается в `'31'`.
 
 ## Предскажите вывод перед запуском
 
@@ -352,7 +352,7 @@ Numeric strings преобразуются в numbers. Пустая строка
 
 Связь с Automation QA:
 
-Input parsing должен осознанно обрабатывать пустые и некорректные values.
+Input parsing должен осознанно обрабатывать пустые и некорректные значения.
 
 ### Задача 2
 
@@ -367,7 +367,7 @@ undefined
 
 Объяснение:
 
-Это string representations, даже если console output может не показывать кавычки.
+Это string representations, даже если console вывод может не показывать кавычки.
 
 Распространённая ошибка:
 
@@ -375,7 +375,7 @@ undefined
 
 Связь с Automation QA:
 
-String conversion полезна для UI text values.
+String conversion полезна для UI text значения.
 
 ### Задача 3
 
@@ -467,7 +467,7 @@ Boolean conversion следует фиксированным truthy/falsy rules.
 
 Ответ:
 
-Hidden conversion: `retriesFromEnv + 1` создает string concatenation behavior.
+Hidden conversion: `retriesFromEnv + 1` создает string concatenation поведение.
 
 Explicit conversion: `Boolean(headlessFromEnv)`.
 
@@ -493,7 +493,7 @@ console.log(headless);
 
 Объяснение:
 
-Config values являются strings. Их нужно парсить в соответствии с ожидаемым type.
+Config значения являются strings. Их нужно парсить в соответствии с ожидаемым type.
 
 Распространённая ошибка:
 
@@ -522,7 +522,7 @@ console.log(nextRetry);
 
 Объяснение:
 
-Numeric addition ожидает Number values.
+Numeric addition ожидает Number значения.
 
 Распространённая ошибка:
 
@@ -578,7 +578,7 @@ NaN
 
 Распространённая ошибка:
 
-Игнорировать некорректное numeric field.
+Игнорировать некорректное numeric поле.
 
 Связь с Automation QA:
 
@@ -600,11 +600,11 @@ const statusCode = Number(response.statusCode);
 
 Объяснение:
 
-Тест ожидает numeric status code, но API field является String.
+Тест ожидает numeric status code, но API поле является String.
 
 Распространённая ошибка:
 
-Сравнивать визуально похожие values без учета type.
+Сравнивать визуально похожие значения без учета type.
 
 Связь с Automation QA:
 
@@ -622,7 +622,7 @@ const nextAge = age + 1;
 
 Объяснение:
 
-Form values часто являются strings; numeric calculation ожидает Number.
+Form значения часто являются strings; numeric calculation ожидает Number.
 
 Распространённая ошибка:
 
@@ -630,7 +630,7 @@ Form values часто являются strings; numeric calculation ожида�
 
 Связь с Automation QA:
 
-UI automation часто читает text input values.
+UI automation часто читает text вход значения.
 
 ### Сценарий 3
 
@@ -665,7 +665,7 @@ Retries должен быть Number. Headless требует явного seman
 
 Ответ:
 
-Checklist:
+Чек-лист:
 
 ```text
 1. Какой источник создал value?
@@ -734,7 +734,7 @@ baseUrl   | "https://example.com" | string   | "https://example.com" | string   
 
 Объяснение:
 
-Raw config имитирует env values. Parsed config делает ожидаемые types явными.
+Raw config имитирует env значения. Parsed config делает ожидаемые types явными.
 
 Распространённая ошибка:
 

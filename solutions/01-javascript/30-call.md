@@ -4,9 +4,9 @@
 
 ### 1. Зачем существует call()?
 
-Ответ: `call()` нужен, чтобы вызвать function object и вручную выбрать receiver для `this`.
+Ответ: `call()` нужен, чтобы вызвать function object и вручную выбрать объект выполнения для `this`.
 
-Объяснение: ordinary invocation выбирает receiver из формы вызова. `call()` позволяет передать receiver явно первым argument.
+Объяснение: ordinary invocation выбирает объект выполнения из формы вызова. `call()` позволяет передать объект выполнения явно первым argument.
 
 Распространённая ошибка: думать, что `call()` создает новую функцию.
 
@@ -14,9 +14,9 @@
 
 ---
 
-### 2. Кто выбирает receiver при ordinary invocation?
+### 2. Кто выбирает объект выполнения при ordinary invocation?
 
-Ответ: JavaScript выбирает receiver по ordinary invocation form, изученной в главе про `this`.
+Ответ: JavaScript выбирает объект выполнения по ordinary invocation form, изученной в главе про `this`.
 
 Объяснение:
 
@@ -32,7 +32,7 @@ object.method()
 
 ---
 
-### 3. Кто выбирает receiver при call()?
+### 3. Кто выбирает объект выполнения при call()?
 
 Ответ: разработчик.
 
@@ -44,7 +44,7 @@ functionObject.call(receiver)
 └── receiver passed manually
 ```
 
-Распространённая ошибка: ждать, что receiver будет взят из object, где function была создана.
+Распространённая ошибка: ждать, что объект выполнения будет взят из object, где function была создана.
 
 Связь с Automation QA: можно вызвать общий validator с разными config objects.
 
@@ -63,13 +63,13 @@ validate.call(config, response)
 └── response -> first parameter
 ```
 
-Распространённая ошибка: передать обычный function argument первым и случайно сделать его receiver.
+Распространённая ошибка: передать обычный function argument первым и случайно сделать его объект выполнения.
 
 Связь с Automation QA: особенно важно не путать config object и response object.
 
 ---
 
-### 5. Куда попадают arguments после receiver?
+### 5. Куда попадают arguments после объект выполнения?
 
 Ответ: они передаются в parameters вызываемой function по позиции.
 
@@ -89,9 +89,9 @@ format.call(client, 'GET', '/users')
 
 ---
 
-### 6. Почему call() не привязывает receiver навсегда?
+### 6. Почему call() не привязывает объект выполнения навсегда?
 
-Ответ: `call()` выбирает receiver только для одного invocation.
+Ответ: `call()` выбирает объект выполнения только для одного invocation.
 
 Объяснение: следующий вызов той же function может быть ordinary invocation, another `call()` или standalone call.
 
@@ -103,7 +103,7 @@ format.call(client, 'GET', '/users')
 
 ### 7. Чем call() отличается от object.method()?
 
-Ответ: в ordinary `object.method()` receiver выбирается из формы вызова. В `call()` receiver передается явно.
+Ответ: в ordinary `object.method()` объект выполнения выбирается из формы вызова. В `call()` объект выполнения передается явно.
 
 Объяснение:
 
@@ -125,7 +125,7 @@ method.call(object, value)
 
 ### 8. Почему apply() продолжает тему call()?
 
-Ответ: `apply()` тоже связан с ручным выбором receiver, но передает arguments другой формой.
+Ответ: `apply()` тоже связан с ручным выбором объект выполнения, но передает arguments другой формой.
 
 Объяснение: `call()` передает arguments по одному. `apply()` будет изучаться дальше и покажет, что делать, если arguments уже собраны в collection.
 
@@ -185,7 +185,7 @@ buildUrl.call(apiClient, '/users')
 └── '/users'  -> path
 ```
 
-Распространённая ошибка: забыть, что normal arguments начинаются после receiver.
+Распространённая ошибка: забыть, что normal arguments начинаются после объект выполнения.
 
 Связь с Automation QA: это типичный URL builder для API tests.
 
@@ -201,9 +201,9 @@ buildUrl.call(apiClient, '/users')
 apiClient.buildUrl.call(apiClient, '/orders');
 ```
 
-Объяснение: function object находится в `apiClient.buildUrl`, а receiver передается первым argument в `call()`.
+Объяснение: function object находится в `apiClient.buildUrl`, а объект выполнения передается первым argument в `call()`.
 
-Распространённая ошибка: написать `apiClient.buildUrl.call('/orders')`, сделав `'/orders'` receiver.
+Распространённая ошибка: написать `apiClient.buildUrl.call('/orders')`, сделав `'/orders'` объект выполнения.
 
 Связь с Automation QA: такой rewrite полезен для понимания, но в реальном коде `apiClient.buildUrl('/orders')` обычно читается лучше.
 
@@ -241,7 +241,7 @@ response   -> response parameter
 201
 ```
 
-Объяснение: каждый `call()` выбирает receiver для одного invocation.
+Объяснение: каждый `call()` выбирает объект выполнения для одного invocation.
 
 ```text
 getExpectedStatus.call(okConfig)
@@ -277,7 +277,7 @@ formatRequest.call(apiClient, 'POST', '/orders')
 └── '/orders' -> path
 ```
 
-Распространённая ошибка: забыть, что receiver не передается в `method`.
+Распространённая ошибка: забыть, что объект выполнения не передается в `method`.
 
 Связь с Automation QA: request formatters могут использовать client configuration через `this`.
 
@@ -316,7 +316,7 @@ response.status === this.expectedStatus
 
 Именно поэтому код опасен: wrong objects are in the wrong roles, но проверка случайно проходит.
 
-Correct version:
+Правильный вариант:
 
 ```javascript
 console.log(validateStatus.call(config, response));
@@ -328,13 +328,13 @@ console.log(validateStatus.call(config, response));
 true
 ```
 
-Распространённая ошибка: поменять receiver и data argument местами.
+Распространённая ошибка: поменять объект выполнения и data argument местами.
 
 Связь с Automation QA: в тестах такая ошибка может дать ложноположительный результат, если object shapes случайно совпали.
 
 ---
 
-## Кто выбирает receiver?
+## Кто выбирает объект выполнения?
 
 ### Задание 8
 
@@ -354,9 +354,9 @@ buildUrl.call(apiClient, '/orders')
 └── path -> '/orders'
 ```
 
-Объяснение: первый вызов использует ordinary invocation. Второй вызов использует manual receiver selection.
+Объяснение: первый вызов использует ordinary invocation. Второй вызов использует manual объект выполнения selection.
 
-Распространённая ошибка: не различать механизм выбора receiver, если результат одинаковый.
+Распространённая ошибка: не различать механизм выбора объект выполнения, если результат одинаковый.
 
 Связь с Automation QA: понимание разницы важно при явном выборе config object и при отладке detached methods.
 
@@ -386,9 +386,9 @@ console.log(buildUrl.call(apiClient, '/users'));
 https://api.example.test/users
 ```
 
-Объяснение: `apiClient` должен быть receiver, а `'/users'` должен быть normal argument.
+Объяснение: `apiClient` должен быть объект выполнения, а `'/users'` должен быть normal argument.
 
-Распространённая ошибка: забыть первый receiver argument.
+Распространённая ошибка: забыть первый объект выполнения argument.
 
 Связь с Automation QA: это частая ошибка в reusable API helper functions.
 
@@ -427,7 +427,7 @@ config   -> this
 response -> response parameter
 ```
 
-Распространённая ошибка: ставить data object на место receiver.
+Распространённая ошибка: ставить data object на место объект выполнения.
 
 Связь с Automation QA: config и actual response должны играть разные роли.
 
@@ -467,7 +467,7 @@ true
 false
 ```
 
-Объяснение: один function object вызывается с двумя receivers.
+Объяснение: один function object вызывается с двумя объект выполненияs.
 
 Распространённая ошибка: создавать две одинаковые functions вместо одной reusable function.
 
@@ -503,9 +503,9 @@ https://users.example.test/list
 https://orders.example.test/list
 ```
 
-Объяснение: `call()` выбирает different receiver for each invocation.
+Объяснение: `call()` выбирает different объект выполнения for each invocation.
 
-Распространённая ошибка: ожидать, что function remembers previous receiver.
+Распространённая ошибка: ожидать, что function remembers previous объект выполнения.
 
 Связь с Automation QA: один URL builder может работать с разными API configs.
 
@@ -570,9 +570,9 @@ statusMatches.call(okAssertionConfig, response)
 └── response          -> response parameter
 ```
 
-Объяснение: `call()` подходит, потому что function behavior общий, а receiver configuration меняется.
+Объяснение: `call()` подходит, потому что function поведение общий, а объект выполнения configuration меняется.
 
-Где ordinary method call читается лучше:
+Где обычный вызов метода читается лучше:
 
 ```javascript
 usersApiConfig.formatRequest('/users');
@@ -580,7 +580,7 @@ usersApiConfig.formatRequest('/users');
 
 если function действительно является частью object API.
 
-Почему `call()` не сохраняет receiver навсегда: каждый invocation выбирает receiver отдельно.
+Почему `call()` не сохраняет объект выполнения навсегда: каждый invocation выбирает объект выполнения отдельно.
 
 Распространённая ошибка: использовать `call()` там, где обычный object method сделал бы код проще.
 

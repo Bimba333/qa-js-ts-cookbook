@@ -18,25 +18,25 @@ Identifier gives access, but value is the information itself: `200`, `'Anna'`, `
 
 Связь с Automation QA:
 
-Assertions compare values, not variable names.
+Assertions compare значения, not variable names.
 
-### 2. Почему primitive and object values
+### 2. Почему primitive and object значения
 
 Ответ:
 
-JavaScript separates fundamental indivisible values from structured object values.
+JavaScript separates fundamental indivisible значения from structured object значения.
 
 Объяснение:
 
-Primitive values are atomic in this mental model; objects behave differently and will be studied later.
+Primitive значения are atomic in this mental model; objects behave differently and will be studied later.
 
 Распространённая ошибка:
 
-Use object behavior to explain primitives.
+Use object поведение to explain primitives.
 
 Связь с Automation QA:
 
-API responses contain both primitive fields and structured objects.
+API responses contain both primitive поля and structured objects.
 
 ### 3. Primitive value
 
@@ -78,11 +78,11 @@ Knowing all primitive types helps read data from APIs and libraries.
 
 Ответ:
 
-Number represents numeric values like `200`, `30`, `19.99`.
+Number represents numeric значения like `200`, `30`, `19.99`.
 
 Объяснение:
 
-JavaScript uses Number for integer-like and fractional numeric values.
+JavaScript uses Number for integer-like and fractional numeric значения.
 
 Распространённая ошибка:
 
@@ -96,7 +96,7 @@ HTTP status code from API is usually Number.
 
 Ответ:
 
-String represents text values.
+String represents text значения.
 
 Объяснение:
 
@@ -114,19 +114,19 @@ UI text is often String even when it looks like a number.
 
 Ответ:
 
-Boolean has two values: `true` and `false`.
+Boolean has two значения: `true` and `false`.
 
 Объяснение:
 
-It represents flags and yes/no states.
+It represents flags and yes/no состояния.
 
 Распространённая ошибка:
 
-Use string `"true"` instead of Boolean `true`.
+Use string `"true"` вместо Boolean `true`.
 
 Связь с Automation QA:
 
-API fields like `active` often are Boolean.
+API поля like `active` often are Boolean.
 
 ### 8. Undefined vs Null
 
@@ -136,7 +136,7 @@ API fields like `active` often are Boolean.
 
 Объяснение:
 
-They are different primitive values with different meanings.
+They are different primitive значения with different meanings.
 
 Распространённая ошибка:
 
@@ -150,11 +150,11 @@ API may intentionally return `null`; JSON does not represent `undefined`.
 
 Ответ:
 
-Symbol creates unique primitive values.
+Symbol creates unique primitive значения.
 
 Объяснение:
 
-`Symbol('id')` and `Symbol('id')` are different values.
+`Symbol('id')` and `Symbol('id')` are different значения.
 
 Распространённая ошибка:
 
@@ -168,7 +168,7 @@ Less common in tests, but may appear in libraries.
 
 Ответ:
 
-BigInt represents large integer values.
+BigInt represents large integer значения.
 
 Объяснение:
 
@@ -190,7 +190,7 @@ Large IDs may be represented as BigInt or String depending on API.
 
 Объяснение:
 
-It helps inspect values, but has historical behavior for `null`.
+It helps inspect значения, but has historical поведение for `null`.
 
 Распространённая ошибка:
 
@@ -198,7 +198,7 @@ Trust `typeof null` as proof that null is object.
 
 Связь с Automation QA:
 
-Useful when debugging unexpected API response values.
+Useful when debugging unexpected API response значения.
 
 ### 12. Primitive immutability
 
@@ -216,7 +216,7 @@ Confuse reassignment with mutation.
 
 Связь с Automation QA:
 
-Helps reason about expected values in tests.
+Helps reason about expected значения in tests.
 
 ## Определите primitive types
 
@@ -234,7 +234,7 @@ largeId      → BigInt
 
 Объяснение:
 
-Each literal belongs to a primitive category.
+Каждый literal относится к primitive category.
 
 Распространённая ошибка:
 
@@ -315,7 +315,7 @@ Treat `"200"` as Number.
 
 Связь с Automation QA:
 
-This is common when comparing UI text and API response values.
+This is common when comparing UI text and API response значения.
 
 ## Задачи на отладку
 
@@ -331,7 +331,7 @@ They look similar but are different primitive types.
 
 Распространённая ошибка:
 
-Compare visual output instead of value type.
+Compare visual вывод вместо value type.
 
 Связь с Automation QA:
 
@@ -349,17 +349,17 @@ JSON has `null`, but not `undefined`.
 
 Распространённая ошибка:
 
-Use undefined for all absent values.
+Use undefined for all absent значения.
 
 Связь с Automation QA:
 
-Correct API validation depends on distinguishing null from missing fields.
+Correct API validation depends on distinguishing null from missing поля.
 
 ### Задача 3
 
 Ответ:
 
-`typeof null` returns `"object"` due to historical behavior. `null` remains primitive.
+`typeof null` returns `"object"` due to historical поведение. `null` remains primitive.
 
 Объяснение:
 
@@ -388,7 +388,7 @@ expectedDeletedAt → null → Null
 
 Объяснение:
 
-Each JSON field maps to a primitive value after parsing.
+Each JSON поле maps to a primitive value after parsing.
 
 Распространённая ошибка:
 
@@ -410,11 +410,11 @@ Assertions should either compare string with string or number with number intent
 
 Распространённая ошибка:
 
-Mix UI and API values without conversion plan.
+Mix UI and API значения without conversion plan.
 
 Связь с Automation QA:
 
-Cross-layer tests often compare UI text and backend values.
+Cross-layer tests often compare UI text and backend значения.
 
 ### Сценарий 3
 
@@ -424,7 +424,7 @@ Large IDs are often stored as String to avoid numeric precision issues and prese
 
 Объяснение:
 
-BigInt exists, but APIs often serialize IDs as strings.
+BigInt exists, but APIs often serialize IDs как строки.
 
 Распространённая ошибка:
 
@@ -432,7 +432,7 @@ Treat every numeric-looking ID as Number.
 
 Связь с Automation QA:
 
-IDs should usually be compared exactly, often as strings.
+IDs should usually be compared exactly, often как строки.
 
 ## Мини-проект
 
@@ -454,7 +454,7 @@ console.log(optionalComment, typeof optionalComment);
 console.log(largeOrderId, typeof largeOrderId);
 ```
 
-Table:
+Таблица:
 
 ```text
 Identifier      | Value              | Primitive type | typeof result | QA meaning
@@ -468,7 +468,7 @@ largeOrderId    | 9007199254740993n  | BigInt         | bigint        | large ID
 
 Объяснение:
 
-The project shows primitive values and the limitation of `typeof null`.
+The project shows primitive значения and the limitation of `typeof null`.
 
 Распространённая ошибка:
 
@@ -482,7 +482,7 @@ This table format is useful for API response validation design.
 
 После выполнения практики можно:
 
-* take one API response and classify all primitive fields;
-* compare UI text values with API primitive values;
+* take one API response and classify all primitive поля;
+* compare UI text значения with API primitive значения;
 * add explicit expected value types to test cases;
 * return to this chapter before Object Type.

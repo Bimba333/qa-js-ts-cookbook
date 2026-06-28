@@ -122,7 +122,7 @@ console.log(second());
 
 ---
 
-## Expected lifetime vs Actual lifetime
+## Ожидаемое время жизни vs Фактическое время жизни
 
 ### Задание 5
 

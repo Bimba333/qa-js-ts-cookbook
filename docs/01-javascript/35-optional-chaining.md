@@ -19,7 +19,7 @@ extract required values
 new variables
 ```
 
-Destructuring удобно извлекает values из existing properties.
+Destructuring удобно извлекает значения из existing properties.
 
 Но теперь появляется другая проблема.
 
@@ -111,7 +111,7 @@ Optional Chaining не выбирает fallback value. Он только safely
 
 Уровень сложности: **L3**.
 
-Optional Chaining выглядит маленьким operator, но он меняет mental model чтения nested data: теперь code can safely stop at missing level instead of crashing.
+Optional Chaining выглядит маленьким operator, но он меняет mental model чтения nested data: теперь code can safely stop at missing level вместо crashing.
 
 ---
 
@@ -454,7 +454,7 @@ else
 return undefined
 ```
 
-This chapter only previews optional method calls. We do not study advanced call forms here.
+Эта глава только предварительно показывает optional method calls. Продвинутые формы вызова здесь не изучаются.
 
 ---
 
@@ -466,7 +466,7 @@ This chapter only previews optional method calls. We do not study advanced call 
 const city = response.body.user.profile?.address?.city;
 ```
 
-Conceptual engine flow:
+Концептуальный поток engine:
 
 ```text
 1. Read response
@@ -877,7 +877,7 @@ If settings missing:
 theme = undefined
 ```
 
-Not:
+Не так:
 
 ```text
 theme = 'default'
@@ -910,7 +910,7 @@ Other property access can still throw.
 
 Optional Chaining useful when object shape is partially optional.
 
-### Optional API fields
+### Необязательные API-поля
 
 ```javascript
 const middleName = response.body.user.profile?.middleName;
@@ -934,15 +934,15 @@ const retryCount = config.retryPolicy?.retries;
 const actualRole = response.body.user?.role;
 ```
 
-The helper can safely read optional field and then decide what assertion should do.
+The helper can safely read optional поле and then decide what assertion should do.
 
 ---
 
 ## Использование в Automation QA
 
-### Optional API fields
+### Необязательные API-поля
 
-Some API fields appear only for specific users:
+Some API поля appear only for specific users:
 
 ```text
 admin user
@@ -984,7 +984,7 @@ This reads optional config safely. It does not provide default retries. That com
 const promoCode = payload.discount?.promoCode;
 ```
 
-Useful when field is optional.
+Useful when поле is optional.
 
 ### Assertion helpers
 
@@ -1412,12 +1412,12 @@ Optional Chaining is not a default value mechanism. It only performs safe traver
 * `?.` checks whether current value is `null` or `undefined` before continuing.
 * If current value is `null` or `undefined`, chain stops.
 * Safe stop returns `undefined`.
-* Optional Chaining does not create default values.
+* Optional Chaining does not create default значения.
 * Optional Chaining does not change object.
 * `?.` should be placed before levels that may be missing.
 * Optional method calls exist, but advanced cases come later.
-* In Automation QA, Optional Chaining helps with optional API fields, nested responses and optional config.
-* Nullish Coalescing will explain fallback values in the next chapter.
+* In Automation QA, Optional Chaining helps with optional API поля, nested responses and optional config.
+* Nullish Coalescing will explain fallback значения in the next chapter.
 
 ---
 
@@ -1428,7 +1428,7 @@ Optional Chaining is not a default value mechanism. It only performs safe traver
 1. Какую проблему решает Optional Chaining?
 2. Что делает operator `?.`?
 3. Что произойдет, если current value is `undefined`?
-4. Почему Optional Chaining returns `undefined` instead of throwing?
+4. Почему Optional Chaining returns `undefined` вместо throwing?
 5. Задает ли Optional Chaining default value?
 6. Меняет ли Optional Chaining source object?
 7. Почему `?.` иногда нужно ставить на нескольких levels?

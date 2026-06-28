@@ -60,7 +60,7 @@ Helper остается function object независимо от синтакс
 
 Ответ:
 
-Arrow Function не является новым типом значения, потому что она создает function object, относящийся к object values.
+Arrow Function не является новым типом значения, потому что она создает function object, относящийся к object значения.
 
 Объяснение:
 

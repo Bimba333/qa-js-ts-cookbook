@@ -42,7 +42,7 @@ console.log(plan.length);
 
 Сначала запишите ответ без запуска.
 
-## Debugging
+## Отладка
 
 Автор хотел удалить только `deprecated test`.
 
@@ -58,7 +58,7 @@ console.log(tests);
 
 После исправления объясните, почему следующий `splice()` в этом же array нельзя планировать по старым indexes.
 
-## QA scenario
+## QA-сценарий
 
 Есть regression plan:
 

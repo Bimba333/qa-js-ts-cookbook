@@ -6,10 +6,10 @@
 
 * объяснять, зачем существует `??`;
 * определять, когда fallback используется;
-* отличать `null`/`undefined` from other values;
+* отличать `null`/`undefined` from other значения;
 * понимать, почему `0`, `false` and `''` are preserved;
 * соединять Optional Chaining and `??`;
-* предсказывать output;
+* предсказывать вывод;
 * применять `??` in QA configuration and API response scenarios.
 
 ---
@@ -17,7 +17,7 @@
 ## 1. Концептуальные вопросы
 
 1. Какую проблему решает `??`?
-2. Какие values называются nullish?
+2. Какие значения называются nullish?
 3. Когда fallback value используется?
 4. Когда original value сохраняется?
 5. Почему `??` не заменяет `0`?
@@ -162,7 +162,7 @@ const name = response.body.user.profile?.name ?? 'anonymous';
 
 ---
 
-## 5. Debugging tasks
+## 5. Задания на отладку
 
 Найдите проблему and explain fix.
 
@@ -208,11 +208,11 @@ const userId = response.body.user.id ?? 0;
 console.log(userId);
 ```
 
-`id` is required field. Explain risk.
+`id` is required поле. Explain risk.
 
 ---
 
-## 6. QA-oriented tasks
+## 6. QA-задачи
 
 ### Задание 6.1
 
@@ -274,7 +274,7 @@ const settings = {
 
 ## 7. Мини-проект
 
-Создайте QA scenario.
+Создайте QA-сценарий.
 
 Требования:
 
@@ -285,15 +285,15 @@ const settings = {
 5. Используйте `??` to provide fallback timeout `5000`.
 6. Используйте `??` for retries fallback `2` and show that `0` is preserved.
 7. Выведите results.
-8. Объясните, какие fallback values были использованы.
-9. Объясните, какие original values были preserved.
+8. Объясните, какие fallback значения были использованы.
+9. Объясните, какие original значения были preserved.
 
 ---
 
 ## 8. Контрольные вопросы
 
 1. Что проверяет `??`?
-2. Какие два values trigger fallback?
+2. Какие два значения trigger fallback?
 3. Почему `false ?? true` returns `false`?
 4. Почему `null ?? 'x'` returns `'x'`?
 5. Почему `??` does not update object property?

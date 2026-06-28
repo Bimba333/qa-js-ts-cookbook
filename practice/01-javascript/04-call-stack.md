@@ -84,7 +84,7 @@ node examples/01-javascript/chapter-04/05-stack-trace.js
 
 ### Сценарий 1
 
-Playwright-тест вызывает метод Page Object:
+Playwright-тест вызывает метод Page Объект:
 
 ```text
 test

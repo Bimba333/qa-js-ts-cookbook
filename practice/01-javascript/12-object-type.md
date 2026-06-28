@@ -4,7 +4,7 @@
 
 Ответьте своими словами.
 
-1. Почему primitive values sometimes become insufficient?
+1. Почему primitive значения sometimes become insufficient?
 2. Какую проблему решает Object Type?
 3. Что означает фраза: object groups related information?
 4. Что такое property?
@@ -31,7 +31,7 @@ const user = {
 
 * object name;
 * property names;
-* property values;
+* property значения;
 * какая информация grouped together.
 
 ### Задача 1
@@ -66,9 +66,9 @@ const response = {
 };
 ```
 
-## Read object values
+## Read object значения
 
-Прочитайте код и напишите, какие values будут прочитаны.
+Прочитайте код и напишите, какие значения будут прочитаны.
 
 ```javascript
 const user = {
@@ -92,7 +92,7 @@ console.log(user.status.isActive);
 
 ### Задача 1
 
-Перед запуском предскажите output.
+Перед запуском предскажите вывод.
 
 ```javascript
 const user = {
@@ -110,7 +110,7 @@ console.log(user.role);
 
 ### Задача 2
 
-Перед запуском предскажите output.
+Перед запуском предскажите вывод.
 
 ```javascript
 const user = {
@@ -126,7 +126,7 @@ console.log(user.temporaryCode);
 
 ### Задача 3
 
-Перед запуском предскажите output.
+Перед запуском предскажите вывод.
 
 ```javascript
 const user = {
@@ -143,9 +143,9 @@ console.log(user.firstname);
 
 1. Какая entity представлена object `expectedUser`?
 2. Какие properties описывают identity пользователя?
-3. Какие properties описывают state пользователя?
+3. Какие properties описывают состояние пользователя?
 4. Где используется nested object?
-5. Какие primitive values находятся внутри object?
+5. Какие primitive значения находятся внутри object?
 
 ```javascript
 const expectedUser = {
@@ -166,7 +166,7 @@ const expectedUser = {
 
 ### Задача 1
 
-Создайте object `user`, который groups:
+Создайте объект `user`, который groups:
 
 * `firstName`;
 * `lastName`;
@@ -177,7 +177,7 @@ const expectedUser = {
 
 ### Задача 2
 
-Создайте object `config`, который groups:
+Создайте объект `config`, который groups:
 
 * `baseUrl`;
 * `retries`;
@@ -187,7 +187,7 @@ const expectedUser = {
 
 ### Задача 3
 
-Создайте object `order`, который groups:
+Создайте объект `order`, который groups:
 
 * `id`;
 * `status`;
@@ -197,7 +197,7 @@ const expectedUser = {
 
 ### Задача 4
 
-Создайте object `testResult` with properties:
+Создайте объект `testResult` with properties:
 
 * `name`;
 * `status`.
@@ -273,7 +273,7 @@ user.isActive = true;
 
 ### Сценарий 1. API response
 
-API response:
+API-ответ:
 
 ```json
 {
@@ -312,7 +312,7 @@ const actualUser = {
 
 ### Сценарий 3. Configuration object
 
-Создайте object `browserConfig`, который groups:
+Создайте объект `browserConfig`, который groups:
 
 * `baseUrl`;
 * `headless`;
@@ -332,7 +332,7 @@ Role: Admin
 Active: Yes
 ```
 
-Создайте object for expected profile data. Какие property names вы выберете и почему?
+Создайте объект for expected profile data. Какие property names вы выберете и почему?
 
 ## Мини-проект
 

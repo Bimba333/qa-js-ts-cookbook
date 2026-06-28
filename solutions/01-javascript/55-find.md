@@ -16,7 +16,7 @@
 
 Ответ: сам matching element.
 
-Объяснение: result будет object из source array.
+Объяснение: result будет object из исходный массив.
 
 Распространённая ошибка: думать, что result обернут в array.
 
@@ -86,7 +86,7 @@ undefined
 
 Связь с Automation QA: missing id — нормальная ситуация, которую нужно обработать.
 
-## Debugging
+## Отладка
 
 Ответ:
 
@@ -106,9 +106,9 @@ if (targetTest !== undefined) {
 
 Распространённая ошибка: читать property у `undefined`.
 
-Связь с Automation QA: diagnostic output должен объяснять missing test.
+Связь с Automation QA: diagnostic вывод должен объяснять missing test.
 
-## QA scenario
+## QA-сценарий
 
 Ответ:
 

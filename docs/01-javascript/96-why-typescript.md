@@ -2,22 +2,27 @@
 
 ## Связь с предыдущей главой
 
-Предыдущая глава показала, как писать поддерживаемый JavaScript:
+Предыдущая глава завершила последние прикладные темы JavaScript: как представлять время, сравнивать даты и считать интервалы.
+
+Теперь JavaScript-раздел можно собрать в одну картину:
 
 ```text
-clear naming
+механизмы языка
 │
 ▼
-small functions
+данные
 │
 ▼
-single responsibility
+ошибки
 │
 ▼
-readable code
+асинхронность
 │
 ▼
-safe change
+модули
+│
+▼
+инженерная практика
 ```
 
 Но даже хороший JavaScript остается динамическим языком. Многие ошибки обнаруживаются только во время выполнения.
@@ -82,6 +87,25 @@ TypeScript появился не потому, что JavaScript "плохой".
 
 TypeScript появился потому, что большие JavaScript-проекты нуждаются в дополнительных проверках.
 
+## Внутренний механизм
+
+На уровне идеи TypeScript добавляет слой проверки перед выполнением JavaScript:
+
+```text
+source code
+│
+▼
+TypeScript checks
+│
+▼
+JavaScript
+│
+▼
+runtime
+```
+
+В этой главе мы не изучаем синтаксис TypeScript. Важно только понять направление: часть ошибок можно находить раньше, до запуска тестов.
+
 ## Главная ментальная модель
 
 ```text
@@ -112,16 +136,16 @@ TypeScript не заменяет JavaScript.
 Примеры находятся в:
 
 ```text
-examples/01-javascript/chapter-93/
+examples/01-javascript/chapter-96/
 ```
 
 Запуск:
 
 ```bash
-node examples/01-javascript/chapter-93/01-dynamic-data-shape.js
-node examples/01-javascript/chapter-93/02-late-error.js
-node examples/01-javascript/chapter-93/03-refactor-risk.js
-node examples/01-javascript/chapter-93/04-qa-contract-problem.js
+node examples/01-javascript/chapter-96/01-dynamic-data-shape.js
+node examples/01-javascript/chapter-96/02-late-error.js
+node examples/01-javascript/chapter-96/03-refactor-risk.js
+node examples/01-javascript/chapter-96/04-qa-contract-problem.js
 ```
 
 ## Automation QA
@@ -173,13 +197,13 @@ TypeScript помогает видеть ошибки, но не заменяе�
 Практика находится в:
 
 ```text
-practice/01-javascript/93-why-typescript.md
+practice/01-javascript/96-why-typescript.md
 ```
 
 Решения находятся в:
 
 ```text
-solutions/01-javascript/93-why-typescript.md
+solutions/01-javascript/96-why-typescript.md
 ```
 
 ## Краткие итоги

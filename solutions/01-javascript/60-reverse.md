@@ -4,7 +4,7 @@
 
 ### 1. Что именно инвертирует `reverse()`?
 
-Ответ: current order array.
+Ответ: текущий порядок массива.
 
 Объяснение: `reverse()` меняет first-to-last на last-to-first.
 
@@ -12,7 +12,7 @@
 
 QA связь: последние tests часто важны при debugging.
 
-### 2. Чем inversion of current order отличается от ordering by rule?
+### 2. Чем inversion of текущий порядок отличается от ordering by rule?
 
 Ответ: `sort()` задает order по rule, `reverse()` flips existing order.
 
@@ -20,7 +20,7 @@ QA связь: последние tests часто важны при debugging.
 
 Ошибка: использовать reverse вместо explicit sorting rule.
 
-QA связь: reverse полезен только когда current order already means something.
+QA связь: reverse полезен только когда текущий порядок already means something.
 
 ### 3. Что произойдет, если вызвать `reverse()` два раза?
 
@@ -81,7 +81,7 @@ QA связь: дальнейший analysis будет читать reversed or
 
 QA связь: repeated order operations должны быть заметны в коде.
 
-## Debugging
+## Отладка
 
 Ответ:
 
@@ -93,13 +93,13 @@ console.log(testIds);
 console.log(reversedIds);
 ```
 
-Объяснение: copy keeps original order, then `reverse()` changes only copied array.
+Объяснение: copy keeps исходный порядок, then `reverse()` changes only copied array.
 
 Ошибка: считать `reversedIds` независимым от `testIds` после прямого `reverse()`.
 
 QA связь: original execution order часто нужно сохранить для audit trail.
 
-## QA scenario
+## QA-сценарий
 
 Ответ:
 
@@ -110,7 +110,7 @@ console.log(testCases);
 
 Объяснение: last executed test становится первым в array.
 
-Ошибка: применять reverse до того, как original order был сохранен.
+Ошибка: применять reverse до того, как исходный порядок был сохранен.
 
 QA связь: debugging view может отличаться от original report.
 
@@ -142,6 +142,6 @@ console.log(testCases.map(function (testCase) { return testCase.id; }));
 
 Объяснение: after `sort()`, `reverse()` инвертирует already sorted order.
 
-Ошибка: ожидать, что reverse помнит original order.
+Ошибка: ожидать, что reverse помнит исходного порядка.
 
 QA связь: debugging order зависит от текущего состояния report.

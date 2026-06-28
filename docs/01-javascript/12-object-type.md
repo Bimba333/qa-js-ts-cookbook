@@ -2,7 +2,7 @@
 
 ## Связь с предыдущей главой
 
-Предыдущая глава начала блок **Values and Types** и объяснила primitive values:
+Предыдущая глава начала блок **Values and Types** и объяснила primitive значения:
 
 ```text
 JavaScript Value
@@ -28,7 +28,7 @@ const userName = 'Anna';
 const isActive = true;
 ```
 
-Но реальные программы редко работают только с отдельными values. В тестах, API responses, конфигурации и UI-состояниях данные почти всегда связаны между собой.
+Но реальные программы редко работают только с отдельными значения. В тестах, API responses, конфигурации и UI-состояниях данные почти всегда связаны между собой.
 
 Например:
 
@@ -47,7 +47,7 @@ const isActive = true;
 
 И дополнительный вопрос, который будет повторяться дальше:
 
-> What information is grouped together right now?
+> Какая информация сгруппирована прямо сейчас?
 
 Object Type отвечает именно на это.
 
@@ -106,7 +106,7 @@ docs/01-javascript/12-object-type.md
 docs/01-javascript/13-references.md
 ```
 
-Следующая глава объяснит References. Это будет ответ на вопрос: если Object value может содержать много related values, как JavaScript работает с таким value internally? В этой главе этот механизм не разбирается.
+Следующая глава объяснит References. Это будет ответ на вопрос: если Object value может содержать много related значения, как JavaScript работает с таким value internally? В этой главе этот механизм не разбирается.
 
 ---
 
@@ -114,7 +114,7 @@ docs/01-javascript/13-references.md
 
 После изучения этой главы вы будете понимать:
 
-* почему primitive values иногда insufficient;
+* почему primitive значения иногда insufficient;
 * зачем JavaScript нужен Object Type;
 * что Object value groups related information;
 * что такое property;
@@ -124,7 +124,7 @@ docs/01-javascript/13-references.md
 * как adding property расширяет object;
 * что означает deleting property на базовом уровне;
 * как читать nested objects conceptually;
-* почему arrays and functions also belong to object values, но требуют отдельных глав;
+* почему arrays и functions тоже относятся к object значениям, но требуют отдельных глав;
 * как objects используются в API responses, JSON, test data and configuration;
 * как отличать expected object structure from actual object structure.
 
@@ -143,7 +143,7 @@ const age = 30;
 const isActive = true;
 ```
 
-Все values корректны:
+Все значения корректны:
 
 ```text
 "Anna"  → String
@@ -161,7 +161,7 @@ age
 isActive
 ```
 
-Эти values are related. Они описывают одну entity: user.
+Эти значения are related. Они описывают одну entity: user.
 
 Диаграмма проблемы:
 
@@ -178,7 +178,7 @@ Problem
 └── Where is "one user"?
 ```
 
-Engine видит отдельные values. Читатель понимает, что они связаны. Код пока не выражает эту связь.
+Engine видит отдельные значения. Читатель понимает, что они связаны. Код пока не выражает эту связь.
 
 Object решает эту проблему:
 
@@ -237,7 +237,7 @@ Primitive
 └── one value
 ```
 
-Object value groups multiple related values under one entity.
+Object value groups multiple related значения under one entity.
 
 ```text
 Object
@@ -247,7 +247,7 @@ Object
 └── related value
 ```
 
-Диаграмма Primitive vs Object:
+Диаграмма Primitive vs Объект:
 
 ```text
 Primitive value
@@ -269,9 +269,9 @@ Object is also a value.
 
 То есть `user` не является набором случайных variables. `user` gives named access to one Object value, а внутри этого Object value есть related information.
 
-### Почему primitive values становятся недостаточными
+### Почему primitive значения становятся недостаточными
 
-Primitive values хороши, когда нужно выразить одну вещь:
+Primitive значения хороши, когда нужно выразить одну вещь:
 
 ```javascript
 const statusCode = 200;
@@ -379,7 +379,7 @@ Object value: user
     └── value: 30
 ```
 
-Object is useful because it allows the program to represent one conceptual thing:
+Object полезен, потому что позволяет программе представить одну концептуальную сущность:
 
 ```text
 Profile card
@@ -433,13 +433,13 @@ firstName: "Anna"
 └── property name
 ```
 
-Property name answers:
+Property name отвечает:
 
 ```text
 What is this piece of information called?
 ```
 
-Property value answers:
+Property value отвечает:
 
 ```text
 What information is stored under this name?
@@ -495,7 +495,7 @@ firstName
 └── property name inside object
 ```
 
-### Property values
+### Property значения
 
 Property value is the actual value stored under property name.
 
@@ -507,7 +507,7 @@ const user = {
 };
 ```
 
-Property values:
+Property значения:
 
 ```text
 "Anna" → String
@@ -515,7 +515,7 @@ Property values:
 true   → Boolean
 ```
 
-Object может group primitive values:
+Object может group primitive значения:
 
 ```text
 user
@@ -525,7 +525,7 @@ user
 └── isActive  → Boolean value
 ```
 
-Позже object может group other objects too. Nested objects are introduced conceptually in this chapter, but detailed internal behavior will be studied later.
+Позже object может group other objects too. Nested objects are introduced conceptually in this chapter, but detailed internal поведение will be studied later.
 
 ### Reading properties
 
@@ -578,7 +578,7 @@ const user = {
 console.log(user.role);
 ```
 
-Conceptual result:
+Концептуальный результат:
 
 ```text
 user
@@ -596,7 +596,7 @@ Lookup
 
 ### Updating properties
 
-Object can represent changing state of the same entity.
+Object can represent changing состояние of the same entity.
 
 ```javascript
 const user = {
@@ -645,7 +645,7 @@ const user = {
 user.age = 31;
 ```
 
-`const` prevents reassignment of the `user` identifier. It does not mean every property of the object is frozen. Почему так происходит internally, будет объяснено в главе про References. Сейчас достаточно понимать behavior: object property can be updated.
+`const` prevents reassignment of the `user` identifier. It does not mean every property of the object is frozen. Почему так происходит internally, будет объяснено в главе про References. Сейчас достаточно понимать поведение: object property can be updated.
 
 ### Adding properties
 
@@ -680,7 +680,7 @@ After
     └── role:      "admin"
 ```
 
-This is useful when information appears step by step:
+Это полезно, когда информация появляется по шагам:
 
 ```text
 Initial user data
@@ -773,7 +773,7 @@ user
     └── emailNotifications: true
 ```
 
-What information is grouped together right now?
+Какая информация сгруппирована прямо сейчас?
 
 ```text
 user
@@ -788,7 +788,7 @@ Reading nested property:
 console.log(user.profile.firstName);
 ```
 
-Conceptually:
+Концептуально:
 
 ```text
 user.profile.firstName
@@ -810,11 +810,11 @@ Nested objects are common in API responses:
 }
 ```
 
-В этой главе nested object is only a grouping model. References and deeper internal behavior will be studied later.
+В этой главе nested object is only a grouping model. References and deeper internal поведение will be studied later.
 
 ### Arrays and functions are also objects
 
-JavaScript has many object values.
+JavaScript has many object значения.
 
 ```text
 Object Values
@@ -826,9 +826,9 @@ Object Values
 └── other built-in objects
 ```
 
-Array is an object-like value for ordered collections. Functions are callable object values. Date and other built-in objects provide specialized behavior.
+Array is an object-like value for ordered collections. Functions are callable object значения. Date and other built-in objects provide specialized поведение.
 
-Подробно arrays, functions, Date, prototypes and built-in object behavior will be studied later. Сейчас важно не перегружать главу: current object model is about grouping related information with properties.
+Подробно arrays, functions, Date, prototypes and built-in object поведение will be studied later. Сейчас важно не перегружать главу: current object model is about grouping related information with properties.
 
 Диаграмма object hierarchy:
 
@@ -918,7 +918,7 @@ Request
 └── property value: "Anna"
 ```
 
-Complete lookup process:
+Полный процесс поиска:
 
 ```text
 Read user.firstName
@@ -973,13 +973,13 @@ user
 └── age:       30
 ```
 
-After:
+После:
 
 ```text
 user.age = 31
 ```
 
-Conceptual object:
+Концептуальный объект:
 
 ```text
 user
@@ -988,14 +988,14 @@ user
 └── age:       31
 ```
 
-What information is grouped together right now?
+Какая информация сгруппирована прямо сейчас?
 
 ```text
 Information about the same user,
 but one property value changed.
 ```
 
-### Current position in JavaScript model
+### Текущее место в модели JavaScript
 
 К этому моменту модель курса выглядит так:
 
@@ -1029,7 +1029,7 @@ Primitive chapter answered:
 What kind of single value is this?
 ```
 
-Object chapter answers:
+Object chapter отвечает:
 
 ```text
 What related information belongs together?
@@ -1070,7 +1070,7 @@ References
 └── explain how JavaScript works with object values internally
 ```
 
-References will be studied in the next chapter. This chapter intentionally stops before that mechanism.
+References будут изучены в следующей главе. Эта глава намеренно останавливается до этого механизма.
 
 ---
 
@@ -1089,7 +1089,7 @@ Folder: user
 └── document: isActive  → true
 ```
 
-Каждый document has a name and content. Вместе они belong to one folder.
+Каждый document имеет name и content. Вместе они относятся к одной folder.
 
 ### Profile card
 
@@ -1158,7 +1158,7 @@ const loginData = {
 };
 ```
 
-Object answers:
+Object отвечает:
 
 ```text
 Which pieces of information should travel together?
@@ -1297,7 +1297,7 @@ const user = {
 user.age = 31;
 ```
 
-Этот код обновляет property внутри object. Почему это возможно internally, будет объяснено в главе про References. Сейчас важно запомнить observable behavior: `const` не означает immutable object.
+Этот код обновляет property внутри object. Почему это возможно internally, будет объяснено в главе про References. Сейчас важно запомнить observable поведение: `const` не означает immutable object.
 
 ### Чем object отличается от JSON?
 
@@ -1307,7 +1307,7 @@ JSON will be studied later in API testing. Сейчас достаточно п�
 
 ### Что произойдет при чтении отсутствующего property?
 
-At this level:
+На этом уровне:
 
 ```javascript
 const user = {
@@ -1327,7 +1327,7 @@ Engine did not find property name `role` inside object.
 
 ### Arrays and functions are objects too?
 
-Yes, arrays and functions belong to object values in JavaScript. But arrays are for ordered collections, and functions are callable values. Dedicated chapters will explain them later.
+Yes, arrays и functions относятся к object значениям в JavaScript. But arrays are for ordered collections, and functions are callable значения. Dedicated chapters will explain them later.
 
 ---
 
@@ -1363,7 +1363,7 @@ const user = {
 user.age = 31; // works
 ```
 
-Object immutability techniques exist, but they belong to later chapters.
+Техники неизменяемости объектов существуют, но относятся к будущим главам.
 
 ### Миф: Missing property means object is broken
 
@@ -1468,7 +1468,7 @@ user.permissions = ['read'];
 user.lastLoginAt = null;
 ```
 
-Иногда это нормально. Но in tests expected object is often clearer when shape is visible at creation:
+Иногда это нормально. Но в тестах expected object часто понятнее, когда shape виден при создании:
 
 ```javascript
 const expectedUser = {
@@ -1489,7 +1489,7 @@ References are important, but not the first question. First understand what Obje
 Object groups related information.
 ```
 
-Then next chapter will explain how JavaScript works with object values internally.
+Then next chapter will explain how JavaScript works with object значения internally.
 
 ---
 
@@ -1508,7 +1508,7 @@ const user = {
 };
 ```
 
-What information is grouped together right now?
+Какая информация сгруппирована прямо сейчас?
 
 ```text
 Information about one user.
@@ -1526,7 +1526,7 @@ const config = {
 
 Object groups settings that should be read together.
 
-### Expected API result
+### Ожидаемый API-результат
 
 ```javascript
 const expectedUser = {
@@ -1654,7 +1654,7 @@ const registrationData = {
 };
 ```
 
-Object keeps related input values together.
+Object keeps related вход значения together.
 
 ### Expected vs actual object structure
 
@@ -1690,9 +1690,9 @@ That is object thinking.
 
 ## Итоги
 
-Primitive values represent one indivisible value.
+Primitive значения represent one indivisible value.
 
-Object values group multiple related values under one entity.
+Object значения group multiple related значения under one entity.
 
 ```text
 Primitive Types
@@ -1735,7 +1735,7 @@ user
     └── settings data
 ```
 
-Arrays и functions тоже относятся к object values, но их детали будут разобраны в отдельных главах.
+Arrays и functions тоже относятся к object значения, но их детали будут разобраны в отдельных главах.
 
 Следующая глава отвечает на следующий естественный вопрос:
 
@@ -1760,7 +1760,7 @@ That is the topic of References.
 * Deleting property removes information from object at a high level.
 * Nested object means grouped information inside grouped information.
 * `const` does not make object properties immutable.
-* Arrays and functions are object values, but they will be studied separately.
+* Arrays and functions are object значения, but they will be studied separately.
 * Do not explain objects through References before understanding why objects exist.
 
 ---
@@ -1769,7 +1769,7 @@ That is the topic of References.
 
 Ответьте без запуска кода.
 
-1. Почему four separate primitive values may be worse than one object?
+1. Почему four separate primitive значения may be worse than one object?
 2. Что такое property?
 3. Чем property name отличается от property value?
 4. Что произойдет при чтении missing property?

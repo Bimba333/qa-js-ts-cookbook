@@ -126,7 +126,7 @@ failures.shift();
 
 ## 5. Определите изменения indexes
 
-Есть array:
+Есть массив:
 
 ```javascript
 const tabs = ['Home', 'Users', 'Orders'];

@@ -2,7 +2,7 @@
 
 ## Связь с предыдущей главой
 
-Предыдущие главы объяснили values, types, references, conceptual memory model, type conversion and equality.
+Предыдущие главы объяснили значения, types, references, conceptual memory model, type conversion and equality.
 
 ```text
 Primitive Types
@@ -25,9 +25,9 @@ Equality
 
 Теперь начинается новый блок: **Program Control**.
 
-До этого мы изучали, что такое values and how they compare. Теперь вопрос другой:
+До этого мы изучали, что такое значения and how they compare. Теперь вопрос другой:
 
-> How does JavaScript perform operations on values?
+> Как JavaScript выполняет операции над значениями?
 
 Начнем с простого выражения:
 
@@ -37,13 +37,13 @@ Equality
 
 Вопрос:
 
-> What is `+`?
+> Что такое `+`?
 
-`2` and `3` are values. `+` is the action performed on them.
+`2` and `3` are значения. `+` is the action performed on them.
 
 Главный вопрос этой главы:
 
-> What operation is being performed?
+> Какая операция выполняется?
 
 ---
 
@@ -52,11 +52,11 @@ Equality
 Для этой главы нужно понимать:
 
 * что value is information JavaScript works with;
-* что values have types;
-* что type conversion can happen when an operation expects another type;
-* что equality operators compare values;
+* что значения have types;
+* что type conversion может произойти, когда операция ожидает другой тип;
+* что equality operators compare значения;
 * что objects contain properties;
-* что variables give named access to values.
+* что variables give named access to значения.
 
 Не требуется знать bitwise operators, optional chaining, nullish coalescing, destructuring, spread, rest, precedence tables or short-circuit evaluation details. Эти темы будут изучаться позже.
 
@@ -76,7 +76,7 @@ Equality
 
 Уровень сложности: **L2-L3**.
 
-Operators look familiar because `+`, `-`, `=`, `&&`, `typeof` are short. But short syntax does not mean simple behavior. Каждый operator performs an operation and produces a result.
+Operators выглядят знакомо, потому что `+`, `-`, `=`, `&&`, `typeof` короткие. Но короткий синтаксис не означает простое поведение. Каждый operator performs an operation and produces a result.
 
 ---
 
@@ -116,7 +116,7 @@ docs/01-javascript/18-conditionals.md
 * what comparison operators do;
 * what logical operators do at a high level;
 * what assignment operators do;
-* how `typeof` helps inspect values;
+* how `typeof` helps inspect значения;
 * what `delete`, `in` and `instanceof` mean at a high level;
 * what operator result means;
 * why operator precedence exists conceptually;
@@ -132,7 +132,7 @@ docs/01-javascript/18-conditionals.md
 2 + 3
 ```
 
-Здесь есть values:
+Здесь есть значения:
 
 ```text
 2
@@ -166,7 +166,7 @@ Value
 └── 5
 ```
 
-Operators are the language mechanism that transforms, combines and evaluates values.
+Operators are the language mechanism that transforms, combines and evaluates значения.
 
 ```text
 Operands
@@ -180,7 +180,7 @@ Operator
 
 Главный вопрос:
 
-> What operation is being performed?
+> Какая операция выполняется?
 
 ---
 
@@ -188,13 +188,13 @@ Operator
 
 ### Operator, operand, result
 
-Do not start with syntax. Start with behavior.
+Do not start with syntax. Start with поведение.
 
 ```javascript
 const total = 2 + 3;
 ```
 
-What operation is being performed?
+Какая операция выполняется?
 
 ```text
 Addition.
@@ -238,7 +238,7 @@ Unary operator works with one operand.
 const valueType = typeof 'Anna';
 ```
 
-Unary operator diagram:
+Unary operator схема:
 
 ```text
 Operator
@@ -263,7 +263,7 @@ Other unary examples:
 typeof 200;
 ```
 
-This chapter does not list every unary operator. It builds the model:
+Эта глава не перечисляет все unary operators. Она строит модель:
 
 ```text
 one operand
@@ -284,7 +284,7 @@ const total = 2 + 3;
 const isExpected = 200 === 200;
 ```
 
-Binary operator diagram:
+Binary operator схема:
 
 ```text
 Left operand
@@ -326,7 +326,7 @@ const label = isActive ? 'active' : 'inactive';
 
 Ternary means three operands.
 
-Ternary operator diagram:
+Ternary operator схема:
 
 ```text
 condition ? valueIfTrue : valueIfFalse
@@ -340,7 +340,7 @@ condition ? valueIfTrue : valueIfFalse
 └── one of two values
 ```
 
-This chapter only introduces the shape. Conditionals will explain decision-making in detail later.
+Эта глава только вводит форму. Conditionals позже подробно объяснит принятие решений.
 
 ### Operator categories
 
@@ -360,7 +360,7 @@ Operators
 └── Other specialized categories
 ```
 
-What operation is being performed?
+Какая операция выполняется?
 
 ```text
 Arithmetic   → calculate
@@ -383,7 +383,7 @@ const itemCount = 3;
 const totalPrice = itemPrice * itemCount;
 ```
 
-Arithmetic operators diagram:
+Arithmetic operators схема:
 
 ```text
 Number-like operand
@@ -405,7 +405,7 @@ Number-like result
 %  remainder
 ```
 
-This chapter does not teach every arithmetic operator individually. The mental model is enough:
+Эта глава не учит каждый арифметический оператор отдельно. Достаточно ментальной модели:
 
 ```text
 operands
@@ -421,14 +421,14 @@ Type conversion may happen if operands are not the expected type. Type Conversio
 
 ### Comparison operators
 
-Comparison operators compare values and produce Boolean result.
+Comparison operators compare значения and produce Boolean result.
 
 ```javascript
 const statusCode = 200;
 const isSuccess = statusCode === 200;
 ```
 
-Comparison operators diagram:
+Comparison operators схема:
 
 ```text
 Value A
@@ -458,7 +458,7 @@ Equality was studied in the previous chapter. Other comparison operators will ap
 
 ### Logical operators
 
-Logical operators work with values used as logical decisions.
+Logical operators work with значения used as logical decisions.
 
 ```javascript
 const isStatusOk = statusCode === 200;
@@ -466,7 +466,7 @@ const hasUser = true;
 const canContinue = isStatusOk && hasUser;
 ```
 
-Logical operators diagram:
+Logical operators схема:
 
 ```text
 Logical input
@@ -486,9 +486,9 @@ Common logical operators:
 !   NOT
 ```
 
-This chapter does not teach short-circuit evaluation details. They will be explained later when conditionals need them.
+Эта глава не разбирает детали short-circuit evaluation. Они будут объяснены позже, когда понадобятся в условиях.
 
-At this level:
+На этом уровне:
 
 ```text
 && combines conditions
@@ -498,14 +498,14 @@ At this level:
 
 ### Assignment operators
 
-Assignment operators store or update values through identifiers or properties.
+Assignment operators store or update значения through identifiers or properties.
 
 ```javascript
 let retryCount = 0;
 retryCount = 1;
 ```
 
-Assignment operators diagram:
+Assignment operators схема:
 
 ```text
 Target
@@ -530,7 +530,7 @@ Other assignment-like forms exist:
 retryCount += 1;
 ```
 
-At a high level:
+На высоком уровне:
 
 ```text
 read current value
@@ -540,7 +540,7 @@ perform operation
 assign result back
 ```
 
-Detailed operator variants will be studied when needed.
+Подробные варианты operators будут изучаться по мере необходимости.
 
 ### `typeof`
 
@@ -552,7 +552,7 @@ console.log(typeof 'Anna');
 console.log(typeof true);
 ```
 
-`typeof` diagram:
+`typeof` схема:
 
 ```text
 typeof
@@ -564,7 +564,7 @@ value
 type category string
 ```
 
-Automation QA uses `typeof` for debugging unexpected API values:
+Automation QA uses `typeof` for debugging unexpected API значения:
 
 ```javascript
 const statusCode = '200';
@@ -591,7 +591,7 @@ const user = {
 delete user.temporaryCode;
 ```
 
-`delete` diagram:
+`delete` схема:
 
 ```text
 Object
@@ -608,7 +608,7 @@ Object
 └── name
 ```
 
-This chapter does not teach lower-level memory behavior or performance details.
+Эта глава не разбирает низкоуровневое поведение памяти или детали performance.
 
 ### `in`
 
@@ -623,7 +623,7 @@ console.log('name' in user);
 console.log('role' in user);
 ```
 
-`in` diagram:
+`in` схема:
 
 ```text
 property name
@@ -663,7 +663,7 @@ const createdAt = new Date();
 console.log(createdAt instanceof Date);
 ```
 
-`instanceof` diagram:
+`instanceof` схема:
 
 ```text
 object
@@ -678,7 +678,7 @@ constructor-like value
 Boolean result
 ```
 
-This chapter only introduces the operator. Prototypes, constructors and classes will be studied later.
+Эта глава только вводит оператор. Prototypes, constructors и classes будут изучены позже.
 
 ### Operator result
 
@@ -698,7 +698,7 @@ typeof value
 └── result: "string"
 ```
 
-Operator result diagram:
+Operator result схема:
 
 ```text
 Operation
@@ -725,7 +725,7 @@ When expression has multiple operators, JavaScript needs an order.
 const result = 2 + 3 * 4;
 ```
 
-Conceptual precedence diagram:
+Концептуальная схема приоритета:
 
 ```text
 Expression
@@ -742,7 +742,7 @@ Expression
       14
 ```
 
-This chapter does not teach precedence tables. The practical rule for now:
+Эта глава не учит таблицы приоритета. Практическое правило пока такое:
 
 ```text
 If expression is not obvious, use parentheses.
@@ -795,7 +795,7 @@ Engine produces result
 Result is used by surrounding code
 ```
 
-Current position in JavaScript model:
+Текущее место в модели JavaScript:
 
 ```text
 Values and Types
@@ -813,7 +813,7 @@ Program Control
 └── Operators
 ```
 
-Operators are the first step toward control flow because conditionals depend on expression results.
+Operators — первый шаг к control flow, потому что conditionals зависят от результатов expressions.
 
 Переход к Conditionals:
 
@@ -841,7 +841,7 @@ Action: +
 Output: 5
 ```
 
-### Machine processing inputs
+### Machine processing входs
 
 ```text
 Input value(s)
@@ -887,7 +887,7 @@ An operator is not literally a function in syntax, but it can be imagined like:
 operator(left, right) → result
 ```
 
-Example:
+Пример:
 
 ```text
 (2, 3) through + → 5
@@ -930,7 +930,7 @@ Shows comparison operators producing Boolean results.
 
 ### 03-logical.js
 
-Shows logical operators combining condition-like values.
+Shows logical operators combining condition-like значения.
 
 ### 04-assignment.js
 
@@ -958,7 +958,7 @@ No. Comparison operators often return Boolean. Arithmetic operators return numer
 
 ### Should I memorize precedence tables now?
 
-No. This chapter only introduces precedence conceptually. Use parentheses when expression is not obvious.
+Нет. Эта глава вводит precedence только концептуально. Используйте скобки, когда порядок expression неочевиден.
 
 ### Are `delete`, `in` and `instanceof` important for QA?
 
@@ -972,7 +972,7 @@ Yes, but at different levels. `in` helps verify object properties, `typeof` help
 
 Реальность:
 
-Operators are actions performed on values.
+Operators are actions performed on значения.
 
 ### Миф: All operators behave like arithmetic
 
@@ -1053,7 +1053,7 @@ retryCount += 1;
 const valueType = typeof value;
 ```
 
-Practical reading checklist:
+Практический чек-лист чтения:
 
 ```text
 1. Find the operator.
@@ -1084,7 +1084,7 @@ Conditionals use results of expressions:
 const canContinue = isStatusExpected && hasUser;
 ```
 
-Detailed conditional behavior comes next.
+Detailed conditional поведение comes next.
 
 ### Response validation
 
@@ -1109,7 +1109,7 @@ const startedAt = new Date();
 console.log(startedAt instanceof Date);
 ```
 
-Useful at runtime, but detailed constructor/prototype behavior will be studied later.
+Useful at runtime, but detailed constructor/prototype поведение will be studied later.
 
 ---
 
@@ -1127,7 +1127,7 @@ Operator
 Результат
 ```
 
-Operators belong to categories:
+Operators относятся к категориям:
 
 ```text
 Arithmetic
@@ -1138,7 +1138,7 @@ Type inspection
 Object/property-related
 ```
 
-This chapter is an overview. Future chapters explain many categories in more detail.
+Эта глава является обзором. Будущие главы объяснят многие категории подробнее.
 
 The key question:
 
@@ -1158,15 +1158,15 @@ The next chapter uses operator results to explain Conditionals.
 * Unary operators work with one operand.
 * Binary operators work with two operands.
 * Ternary operator works with three operands.
-* Operators belong to categories.
+* Operators относятся к категориям.
 * Arithmetic operators calculate.
 * Comparison operators compare.
-* Logical operators combine/evaluate condition-like values.
+* Logical operators combine/evaluate condition-like значения.
 * Assignment operators update targets.
 * `typeof` inspects type category.
 * `delete`, `in` and `instanceof` are specialized operators.
-* Precedence decides order when multiple operators appear.
-* Use parentheses when expression order is not obvious.
+* Precedence определяет порядок, когда в expression несколько operators.
+* Используйте скобки, когда порядок expression неочевиден.
 
 ---
 
@@ -1174,16 +1174,16 @@ The next chapter uses operator results to explain Conditionals.
 
 Ответьте без запуска кода.
 
-1. What is an operator?
-2. What is an operand?
-3. What is operator result?
-4. What operation is performed by `2 + 3`?
-5. What category does `===` belong to?
-6. What category does `typeof` belong to?
-7. What does `in` check?
-8. What does `delete` do at a high level?
-9. Why does precedence exist?
-10. How do operators prepare us for conditionals?
+1. Что такое operator?
+2. Что такое operand?
+3. Что такое результат operator?
+4. Какая операция выполняется в `2 + 3`?
+5. К какой категории относится `===`?
+6. К какой категории относится `typeof`?
+7. Что проверяет `in`?
+8. Что делает `delete` на высоком уровне?
+9. Зачем существует precedence?
+10. Как operators готовят нас к conditionals?
 
 ---
 
@@ -1195,7 +1195,7 @@ The next chapter uses operator results to explain Conditionals.
 practice/01-javascript/17-operators.md
 ```
 
-Сначала решайте predict output задания без запуска. Главная цель - определить operator, operands, category and result.
+Сначала решайте predict вывод задания без запуска. Главная цель - определить operator, operands, category and result.
 
 ---
 

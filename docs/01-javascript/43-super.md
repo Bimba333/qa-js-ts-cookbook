@@ -22,7 +22,7 @@ Derived class
 Prototype lookup still works
 ```
 
-Мы увидели, что derived class can reuse base class behavior:
+Мы увидели, что derived class can reuse base class поведение:
 
 ```javascript
 class BasePage {
@@ -50,7 +50,7 @@ LoginPage.open()
 
 Теперь появляется следующий вопрос:
 
-> Что если derived method переопределяет base method, но все еще хочет использовать base behavior?
+> Что если derived method переопределяет base method, но все еще хочет использовать base поведение?
 
 Например:
 
@@ -88,7 +88,7 @@ calls base behavior
 derived method adds specific behavior
 ```
 
-Важно: `super` does not copy base code. `super` calls base behavior through the class relationship.
+Важно: `super` does not copy base code. `super` calls base поведение through the class relationship.
 
 ---
 
@@ -97,13 +97,13 @@ derived method adds specific behavior
 Для этой главы нужно понимать:
 
 * что class methods are shared through prototype lookup;
-* что inheritance reuses behavior between classes;
+* что inheritance reuses поведение between classes;
 * что `extends` creates relationship between derived and base class;
 * что overriding means closer method wins;
-* что method location and receiver are different concepts;
-* что `this` inside method refers to receiver during ordinary invocation.
+* что method location and объект выполнения are different concepts;
+* что `this` inside method refers to объект выполнения during ordinary invocation.
 
-Не требуется знать `super()` in constructors, constructor inheritance, private fields, static members, mixins, decorators, advanced prototype internals or `Reflect`. Constructor `super()` будет отдельной темой позже.
+Не требуется знать `super()` in constructors, constructor inheritance, private поля, static members, mixins, decorators, advanced prototype internals or `Reflect`. Constructor `super()` будет отдельной темой позже.
 
 ---
 
@@ -121,7 +121,7 @@ derived method adds specific behavior
 
 Уровень сложности: **L4**.
 
-`super` часто кажется коротким синтаксисом. Но важно видеть механизм: derived method не хочет заменить base behavior полностью. Он хочет reuse base behavior and extend it.
+`super` часто кажется коротким синтаксисом. Но важно видеть механизм: derived method не хочет заменить base поведение полностью. Он хочет reuse base поведение and extend it.
 
 ---
 
@@ -156,12 +156,12 @@ docs/01-javascript/44-arrays.md
 После изучения этой главы вы будете понимать:
 
 * зачем существует `super`;
-* почему override sometimes still needs base behavior;
+* почему override sometimes still needs base поведение;
 * что делает `super.method()`;
 * как derived method extends base method;
 * как `super` связан с class relationship;
 * как `super` связан с prototype lookup;
-* почему `this` inside base method still refers to receiver;
+* почему `this` inside base method still refers to объект выполнения;
 * почему `super` не копирует base code;
 * какие ошибки встречаются чаще всего;
 * как `super` используется in Automation QA framework classes.
@@ -208,7 +208,7 @@ LoginPage.open()
 
 Если base opening procedure changes, derived method must be updated manually.
 
-Мы хотим другой flow:
+Мы хотим другой поток:
 
 ```text
 LoginPage.open()
@@ -219,7 +219,7 @@ LoginPage.open()
 
 Это не просто "доступ к родителю".
 
-Это behavior reuse inside override.
+Это поведение reuse inside override.
 
 ```text
 Override
@@ -243,9 +243,9 @@ Add specific behavior
 
 Начинайте с вопроса:
 
-> Какое base behavior используется повторно?
+> Какое base поведение используется повторно?
 
-Example:
+Пример:
 
 ```javascript
 class BasePage {
@@ -262,7 +262,7 @@ class LoginPage extends BasePage {
 }
 ```
 
-Now:
+Теперь:
 
 ```text
 LoginPage.open()
@@ -355,7 +355,7 @@ base class behavior
 called with same receiver
 ```
 
-The class relationship created by `extends` tells JavaScript where base behavior is.
+The class relationship created by `extends` tells JavaScript where base поведение is.
 
 We do not need advanced prototype internals in this chapter.
 
@@ -440,7 +440,7 @@ adds specific behavior
 returns final result
 ```
 
-Complete flow:
+Complete поток:
 
 ```text
 loginPage.open()
@@ -556,7 +556,7 @@ Override
 Add specific behavior
 ```
 
-These are mental models, not formal definitions.
+Это ментальные модели, а не формальные определения.
 
 The technical idea for this chapter:
 
@@ -612,7 +612,7 @@ examples/01-javascript/chapter-43/02-extend-method.js
 examples/01-javascript/chapter-43/03-this-with-super.js
 ```
 
-Показывает that base method called through `super` still works with receiver object.
+Показывает that base method called through `super` still works with объект выполнения object.
 
 ### Пример 4. Типичные ошибки
 
@@ -622,7 +622,7 @@ examples/01-javascript/chapter-43/03-this-with-super.js
 examples/01-javascript/chapter-43/04-common-mistakes.js
 ```
 
-Показывает override without `super`: base behavior is not reused.
+Показывает override without `super`: base поведение is not reused.
 
 ### Пример 5. Page Object
 
@@ -652,7 +652,7 @@ examples/01-javascript/chapter-43/06-qa-example.js
 
 Нет.
 
-`super.method()` calls base behavior. It does not copy method body into derived class.
+`super.method()` calls base поведение. It does not copy method body into derived class.
 
 ```text
 super.method()
@@ -678,7 +678,7 @@ this
 
 Copy creates duplication.
 
-If base behavior changes, copied code must be updated manually.
+If base поведение changes, copied code must be updated manually.
 
 ```text
 copy
@@ -694,13 +694,13 @@ super
 
 Нет.
 
-This chapter explains `super.method()` inside methods.
+Эта глава объясняет `super.method()` внутри methods.
 
 Constructor `super()` will be studied later when constructor inheritance becomes necessary.
 
 ### Можно ли использовать `super` without overriding?
 
-`super.method()` is useful inside derived behavior when you need base behavior as part of derived behavior. The core case in this chapter is override plus extension.
+`super.method()` is useful inside derived поведение when you need base поведение as part of derived поведение. The core case in this chapter is override plus extension.
 
 ---
 
@@ -708,25 +708,25 @@ Constructor `super()` will be studied later when constructor inheritance becomes
 
 ### Миф: `super` means parent object
 
-Реальность: in this chapter `super.method()` is a way to call base class behavior through class relationship.
+Реальность: in this chapter `super.method()` is a way to call base class поведение through class relationship.
 
 ### Миф: `super` changes `this`
 
-Реальность: base method called through `super` still works with the current receiver.
+Реальность: base method called through `super` still works with the current объект выполнения.
 
 ### Миф: `super` copies base method
 
-Реальность: it calls base behavior.
+Реальность: it calls base поведение.
 
 ### Миф: every override should call `super`
 
-Реальность: иногда override намеренно заменяет behavior. Используйте `super`, когда base behavior нужно переиспользовать.
+Реальность: иногда override намеренно заменяет поведение. Используйте `super`, когда base поведение нужно переиспользовать.
 
 ---
 
 ## Типичные ошибки
 
-### Ошибка 1. Override and forget base behavior
+### Ошибка 1. Override and forget base поведение
 
 Неправильный код:
 
@@ -746,7 +746,7 @@ class LoginPage extends BasePage {
 
 Что произошло:
 
-`LoginPage.open()` replaced base behavior.
+`LoginPage.open()` replaced base поведение.
 
 Исправленный вариант:
 
@@ -757,7 +757,7 @@ open(pageName) {
 }
 ```
 
-### Ошибка 2. Think `super` changes receiver
+### Ошибка 2. Think `super` changes объект выполнения
 
 Неправильная модель:
 
@@ -778,9 +778,9 @@ loginPage.open()
     └── this is still loginPage
 ```
 
-### Ошибка 3. Использовать `super`, когда нужна замена behavior
+### Ошибка 3. Использовать `super`, когда нужна замена поведение
 
-Sometimes derived method should fully replace base behavior.
+Sometimes derived method should fully replace base поведение.
 
 If so:
 
@@ -801,7 +801,7 @@ reuse base behavior?
 
 ### Ошибка 4. Try to use `super()` here
 
-This chapter is not about constructor `super()`.
+Эта глава не про constructor `super()`.
 
 Wrong direction for this chapter:
 
@@ -952,7 +952,7 @@ LoginPage
 └── open()
 ```
 
-### 4. Reuse base behavior
+### 4. Reuse base поведение
 
 ```text
 LoginPage.open()
@@ -960,7 +960,7 @@ LoginPage.open()
 └── calls BasePage.open()
 ```
 
-### 5. Extend behavior
+### 5. Extend поведение
 
 ```text
 base behavior
@@ -1241,7 +1241,7 @@ plus
 derived addition
 ```
 
-### 35. Behavior ownership
+### 35. Принадлежность поведения
 
 ```text
 common part -> base
@@ -1292,14 +1292,14 @@ can replace
 Base method
 ```
 
-`super` answers:
+`super` отвечает:
 
 ```text
 Как derived method может переопределить base method
 but still reuse base behavior?
 ```
 
-The core model:
+Основная модель:
 
 ```text
 Derived method
@@ -1314,7 +1314,7 @@ base behavior
 derived method adds specialization
 ```
 
-`super` does not copy base code. It calls base behavior through the class relationship, while the receiver model and prototype-chain mental model still matter.
+`super` does not copy base code. It calls base поведение through the class relationship, while the объект выполнения model and prototype-chain mental model still matter.
 
 The next chapter starts the Arrays section.
 
@@ -1322,19 +1322,19 @@ The next chapter starts the Arrays section.
 
 ## Что нужно запомнить
 
-✓ `super.method()` calls base class behavior from derived method.
+✓ `super.method()` calls base class поведение from derived method.
 
-✓ `super` is most useful when override should extend base behavior.
+✓ `super` is most useful when override should extend base поведение.
 
 ✓ `super` does not copy base code.
 
 ✓ `super` and `this` are different concepts.
 
-✓ Base method called through `super` still uses current receiver.
+✓ Base method called through `super` still uses current объект выполнения.
 
-✓ Override without `super` replaces base behavior for that method call.
+✓ Override without `super` replaces base поведение for that method call.
 
-✓ Override with `super` reuses and extends base behavior.
+✓ Override with `super` reuses and extends base поведение.
 
 ✓ Constructor `super()` is a future topic.
 
@@ -1352,7 +1352,7 @@ The next chapter starts the Arrays section.
 
 3. Does `super.method()` copy base method code?
 
-4. Какое base behavior переиспользуется в `LoginPage.open()`?
+4. Какое base поведение переиспользуется в `LoginPage.open()`?
 
 5. На что указывает `this` внутри base method, вызванного через `super`?
 

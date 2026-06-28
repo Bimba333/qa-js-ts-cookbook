@@ -148,7 +148,7 @@ actualStatus и expectedStatus являются arguments.
 
 ### Сценарий 1. API status validator
 
-Создайте function `validateApiStatus` с parameters:
+Создайте функцию `validateApiStatus` с parameters:
 
 ```text
 actualStatus
@@ -161,7 +161,7 @@ expectedStatus
 
 ### Сценарий 2. Test data helper
 
-Создайте function `createUser` с parameter `userEmail`.
+Создайте функцию `createUser` с parameter `userEmail`.
 
 Функция должна выводить email.
 
@@ -196,8 +196,8 @@ playground/parameterized-qa-helpers.js
 
 В нем:
 
-1. Создайте function `validateStatus(actualStatus, expectedStatus)`.
-2. Создайте function `createUser(userEmail)`.
+1. Создайте функцию `validateStatus(actualStatus, expectedStatus)`.
+2. Создайте функцию `createUser(userEmail)`.
 3. Создайте Arrow Function `openProfile(userId)`.
 4. Создайте Arrow Function `clickElement(locatorName)`.
 5. Вызовите каждую функцию с понятными arguments.

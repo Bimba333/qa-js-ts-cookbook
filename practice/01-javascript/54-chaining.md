@@ -57,7 +57,7 @@ console.log(result);
 
 Сначала запишите ответ без запуска.
 
-## Debugging
+## Отладка
 
 Автор хотел получить labels только для failed tests.
 
@@ -78,7 +78,7 @@ const result = testCases
 
 Что не так? Исправьте порядок или shape данных.
 
-## QA scenario
+## QA-сценарий
 
 Создайте chain:
 

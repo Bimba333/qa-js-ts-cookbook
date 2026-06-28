@@ -36,7 +36,7 @@ Identifier может существовать внутри функции, но
 
 Связь с Automation QA:
 
-Helper-local values не должны случайно использоваться тестом напрямую.
+Helper-local значения не должны случайно использоваться тестом напрямую.
 
 ### 3. Global Scope
 
@@ -50,11 +50,11 @@ Identifiers в Global Scope могут быть найдены при outward lo
 
 Распространённая ошибка:
 
-Хранить весь test state globally.
+Хранить весь test состояние globally.
 
 Связь с Automation QA:
 
-Global Scope подходит для stable constants в маленьких примерах, но global mutable state опасен.
+Global Scope подходит для stable constants в маленьких примерах, но global mutable состояние опасен.
 
 ### 4. Function Scope
 
@@ -180,7 +180,7 @@ Lookup использует ближайший visible identifier.
 
 Связь с Automation QA:
 
-Shadowing `status` или `userName` в tests может запутать expected и actual values.
+Shadowing `status` или `userName` в tests может запутать expected и actual значения.
 
 ### 11. Visibility vs lifetime
 
@@ -198,7 +198,7 @@ Visibility отвечает, где identifier можно access. Lifetime от�
 
 Связь с Automation QA:
 
-Debugging test data требует отдельно думать о доступности имени и о времени жизни данных.
+Отладка тестовых данных требует отдельно думать о доступности имени и о времени жизни данных.
 
 ### 12. Scope Chain не Call Stack
 
@@ -272,7 +272,7 @@ Temporary helper data не должна протекать в тест.
 
 Связь с Automation QA:
 
-Temporary assertion values можно ограничивать block scope.
+Temporary assertion значения можно ограничивать block scope.
 
 ## Определите Scope
 
@@ -436,7 +436,7 @@ Lookup starts in current function scope and stops at first match.
 
 Ответ:
 
-Global mutable state может сделать тесты зависимыми от порядка выполнения.
+Global mutable состояние может сделать тесты зависимыми от порядка выполнения.
 
 Объяснение:
 
@@ -448,7 +448,7 @@ Global mutable state может сделать тесты зависимыми �
 
 Связь с Automation QA:
 
-Параллельные или независимые Playwright tests должны минимизировать shared mutable state.
+Параллельные или независимые Playwright tests должны минимизировать shared mutable состояние.
 
 ## QA-задачи
 
@@ -500,7 +500,7 @@ Lookup берет nearest identifier, поэтому одинаковые names 
 
 Распространённая ошибка:
 
-Называть все status-like values одинаково.
+Называть все status-like значения одинаково.
 
 Связь с Automation QA:
 
@@ -531,7 +531,7 @@ testLogin();
 console.log(baseUrl);
 ```
 
-Scope diagram:
+Scope схема:
 
 ```text
 Global Scope

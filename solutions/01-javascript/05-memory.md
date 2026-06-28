@@ -18,7 +18,7 @@ Memory нужна, чтобы программа могла сохранять �
 
 Связь с Automation QA:
 
-Test data, tokens, URLs и expected values должны сохраняться между шагами теста.
+Test data, tokens, URLs и expected значения должны сохраняться между шагами теста.
 
 ### 2. Что такое value
 
@@ -36,7 +36,7 @@ Value — конкретная информация, с которой рабо�
 
 Связь с Automation QA:
 
-Expected status `'active'` или browser name `'chromium'` являются values, которые тест использует в проверках и настройках.
+Expected status `'active'` или browser name `'chromium'` являются значения, которые тест использует в проверках и настройках.
 
 ### 3. Что такое identifier
 
@@ -54,7 +54,7 @@ Identifier — имя, через которое программа обраща
 
 Связь с Automation QA:
 
-В тестах `baseUrl`, `userName`, `expectedStatus` — identifiers для доступа к сохраненным values.
+В тестах `baseUrl`, `userName`, `expectedStatus` — identifiers для доступа к сохраненным значения.
 
 ### 4. Почему identifier и value нельзя считать одним и тем же
 
@@ -108,7 +108,7 @@ Read value означает получить сохраненную информ
 
 Связь с Automation QA:
 
-Assertion читает actual и expected values перед сравнением.
+Assertion читает actual и expected значения перед сравнением.
 
 ### 7. Update value
 
@@ -176,11 +176,11 @@ Engine выполняет верхний context и читает или обно
 
 Распространённая ошибка:
 
-Ожидать, что Call Stack сам хранит все values программы.
+Ожидать, что Call Stack сам хранит все значения программы.
 
 Связь с Automation QA:
 
-Stack trace показывает путь вызовов, а memory model помогает понять, какие values были сохранены или обновлены на этом пути.
+Stack trace показывает путь вызовов, а memory model помогает понять, какие значения были сохранены или обновлены на этом пути.
 
 ### 11. Почему не Stack & Heap
 
@@ -255,11 +255,11 @@ Value: 2
 
 Объяснение:
 
-Обе строки создают named access к values, которые читаются позже.
+Обе строки создают named access к значения, которые читаются позже.
 
 Распространённая ошибка:
 
-Считать, что `console.log` создает новые values.
+Считать, что `console.log` создает новые значения.
 
 Связь с Automation QA:
 
@@ -300,7 +300,7 @@ created
 finished
 ```
 
-Memory timeline:
+Memory временная шкала:
 
 ```text
 store status → "created"
@@ -319,7 +319,7 @@ read status  → "finished"
 
 Связь с Automation QA:
 
-Так часто проявляются ошибки в test state, когда status меняется между steps.
+Так часто проявляются ошибки в test состояние, когда status меняется между steps.
 
 ### Задача 2
 
@@ -329,7 +329,7 @@ read status  → "finished"
 qa-user
 ```
 
-Memory timeline:
+Memory временная шкала:
 
 ```text
 store prefix → "qa"
@@ -359,7 +359,7 @@ staging
 staging
 ```
 
-Memory timeline:
+Memory временная шкала:
 
 ```text
 store environment → "staging"
@@ -377,7 +377,7 @@ Value не обновлялось, поэтому оба чтения получ
 
 Связь с Automation QA:
 
-Config values часто читаются много раз в рамках одного запуска.
+Config значения часто читаются много раз в рамках одного запуска.
 
 ## Предскажите состояние памяти
 
@@ -548,7 +548,7 @@ Memory before login step
 
 Объяснение:
 
-Login step должен прочитать оба values, подготовленные раньше.
+Login step должен прочитать оба значения, подготовленные раньше.
 
 Распространённая ошибка:
 
@@ -569,7 +569,7 @@ Login step должен прочитать оба values, подготовлен
 * в промежуточном update, если значение было изменено;
 * в сборке итогового URL.
 
-Stack trace показывает цепочку вызовов, но не заменяет анализ memory state.
+Stack trace показывает цепочку вызовов, но не заменяет анализ memory состояние.
 
 Таблица:
 
@@ -614,7 +614,7 @@ Assertion не может сравнить значения, если они н�
 
 Связь с Automation QA:
 
-Любая проверка API, UI или DB опирается на values, подготовленные или полученные раньше.
+Любая проверка API, UI или DB опирается на значения, подготовленные или полученные раньше.
 
 ## Мини-проект
 
@@ -634,7 +634,7 @@ status = 'ready';
 console.log(status);
 ```
 
-Timeline:
+Временная шкала:
 
 ```text
 store baseUrl → "https://example.com"
@@ -649,7 +649,7 @@ read status
 
 Объяснение:
 
-`baseUrl` и `path` являются сохраненными values. Соединение строк создает temporary result. `loginUrl` сохраняет итоговый URL. `status` сначала имеет одно value, затем обновляется.
+`baseUrl` и `path` являются сохраненными значения. Соединение строк создает temporary result. `loginUrl` сохраняет итоговый URL. `status` сначала имеет одно value, затем обновляется.
 
 Распространённая ошибка:
 
@@ -664,6 +664,6 @@ read status
 После выполнения практики можно:
 
 * добавить рядом с каждым примером таблицу `identifier → current value`;
-* взять реальный Playwright-тест и выписать все stored values;
-* отметить строки, где происходит update test state;
+* взять реальный Playwright-тест и выписать все stored значения;
+* отметить строки, где происходит update test состояние;
 * вернуться к этой практике перед главой про Variables.

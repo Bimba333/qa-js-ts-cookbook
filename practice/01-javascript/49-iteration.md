@@ -22,7 +22,7 @@ for (const testCase of testRun) {
 Ответьте:
 
 * сколько раз выполнится body;
-* какие values получит `testCase`;
+* какие значения получит `testCase`;
 * изменится ли `testRun`.
 
 ## Предскажите результат выполнения
@@ -39,7 +39,7 @@ console.log('done');
 
 Сначала запишите ответ без запуска.
 
-## Debugging
+## Отладка
 
 Автор хотел вывести titles, но выводит весь object.
 
@@ -56,9 +56,9 @@ for (const testCase of testRun) {
 
 Исправьте код.
 
-## QA scenario
+## QA-сценарий
 
-Есть snapshot:
+Есть снимок:
 
 ```javascript
 const smokeRun = ['login smoke', 'create order'];
