@@ -1,0 +1,28 @@
+.example-card {
+  border: 1px solid var(--vp-c-divider);
+  border-radius: 12px;
+  padding: 16px;
+  margin: 16px 0;
+  background: var(--vp-c-bg-soft);
+}
+
+.example-card__label {
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+
+.example-card__path {
+  display: block;
+  padding: 12px;
+  border-radius: 8px;
+  background: var(--vp-code-block-bg);
+  overflow-x: auto;
+}
+
+.example-card__actions {
+  margin-top: 12px;
+}
+
+.example-card__actions a {
+  font-weight: 600;
+}

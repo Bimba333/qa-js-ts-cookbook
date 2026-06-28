@@ -1,3 +1,4 @@
+import { exampleCardPlugin } from './plugins/example-card.mjs'
 import { defineConfig } from 'vitepress'
 import { sidebar } from './sidebar.generated'
 
@@ -8,6 +9,12 @@ export default defineConfig({
   base: '/qa-javascript-book/',
 
   cleanUrls: true,
+
+  markdown: {
+    config(md) {
+      md.use(exampleCardPlugin)
+    }
+  },
 
   themeConfig: {
     siteTitle: 'JS/TS QA Book',
