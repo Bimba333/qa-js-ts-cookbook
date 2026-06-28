@@ -24,6 +24,11 @@ const sections = [
     title: 'Решения',
     dir: 'solutions/01-javascript',
     base: '/solutions/01-javascript/'
+  },
+  {
+    title: 'Примеры',
+    dir: 'examples/01-javascript',
+    base: '/examples/01-javascript/'
   }
 ]
 

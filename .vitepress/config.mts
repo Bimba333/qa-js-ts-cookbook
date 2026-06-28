@@ -2,7 +2,7 @@ import { defineConfig } from 'vitepress'
 import { sidebar } from './sidebar.generated'
 
 export default defineConfig({
-  title: 'JavaScript & TypeScript for QA Automation',
+  title: 'JS/TS QA Book',
   description: 'Книга по JavaScript и TypeScript для QA Automation',
 
   base: '/qa-javascript-book/',
@@ -10,6 +10,7 @@ export default defineConfig({
   cleanUrls: true,
 
   themeConfig: {
+    siteTitle: 'JS/TS QA Book',
     logo: '/assets/logo.svg',
 
     nav: [

@@ -1190,5 +1190,10 @@ export const sidebar = [
         "link": "/solutions/01-javascript/96-why-typescript"
       }
     ]
+  },
+  {
+    "text": "Примеры",
+    "collapsed": false,
+    "items": []
   }
 ]
