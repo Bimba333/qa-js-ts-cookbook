@@ -102,4 +102,3 @@ const sidebar = sections.map(section => ({
 
 fs.writeFileSync(OUT, `export const sidebar = ${JSON.stringify(sidebar, null, 2)}\n`)
 console.log(`Generated ${OUT}`)
-EOF
