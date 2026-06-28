@@ -4,19 +4,19 @@ export const sidebar = [
     "collapsed": false,
     "items": [
       {
-        "text": "About Course",
+        "text": "О курсе",
         "link": "/docs/00-introduction/01-about-course"
       },
       {
-        "text": "How To Study",
+        "text": "Как пользоваться курсом",
         "link": "/docs/00-introduction/02-how-to-study"
       },
       {
-        "text": "Course Structure",
+        "text": "Структура курса",
         "link": "/docs/00-introduction/03-course-structure"
       },
       {
-        "text": "Development Environment",
+        "text": "Рабочее окружение",
         "link": "/docs/00-introduction/04-development-environment"
       }
     ]
@@ -26,11 +26,11 @@ export const sidebar = [
     "collapsed": false,
     "items": [
       {
-        "text": "What Is Javascript",
+        "text": "Что такое JavaScript",
         "link": "/docs/01-javascript/01-what-is-javascript"
       },
       {
-        "text": "How Javascript Works",
+        "text": "Как выполняется JavaScript",
         "link": "/docs/01-javascript/02-how-javascript-works"
       },
       {
@@ -78,7 +78,7 @@ export const sidebar = [
         "link": "/docs/01-javascript/13-references"
       },
       {
-        "text": "Stack And Heap",
+        "text": "Stack & Heap",
         "link": "/docs/01-javascript/14-stack-and-heap"
       },
       {
@@ -126,7 +126,7 @@ export const sidebar = [
         "link": "/docs/01-javascript/25-return"
       },
       {
-        "text": "Rest",
+        "text": "Rest Parameters",
         "link": "/docs/01-javascript/26-rest"
       },
       {
@@ -138,19 +138,19 @@ export const sidebar = [
         "link": "/docs/01-javascript/28-closures"
       },
       {
-        "text": "This",
+        "text": "this",
         "link": "/docs/01-javascript/29-this"
       },
       {
-        "text": "Call",
+        "text": "call()",
         "link": "/docs/01-javascript/30-call"
       },
       {
-        "text": "Apply",
+        "text": "apply()",
         "link": "/docs/01-javascript/31-apply"
       },
       {
-        "text": "Bind",
+        "text": "bind()",
         "link": "/docs/01-javascript/32-bind"
       },
       {
@@ -194,7 +194,7 @@ export const sidebar = [
         "link": "/docs/01-javascript/42-class-inheritance"
       },
       {
-        "text": "Super",
+        "text": "super",
         "link": "/docs/01-javascript/43-super"
       },
       {
@@ -202,19 +202,19 @@ export const sidebar = [
         "link": "/docs/01-javascript/44-arrays"
       },
       {
-        "text": "Push Pop",
+        "text": "push() and pop()",
         "link": "/docs/01-javascript/45-push-pop"
       },
       {
-        "text": "Shift Unshift",
+        "text": "shift() and unshift()",
         "link": "/docs/01-javascript/46-shift-unshift"
       },
       {
-        "text": "Splice",
+        "text": "splice()",
         "link": "/docs/01-javascript/47-splice"
       },
       {
-        "text": "Slice",
+        "text": "slice()",
         "link": "/docs/01-javascript/48-slice"
       },
       {
@@ -222,47 +222,47 @@ export const sidebar = [
         "link": "/docs/01-javascript/49-iteration"
       },
       {
-        "text": "Foreach",
+        "text": "forEach()",
         "link": "/docs/01-javascript/50-foreach"
       },
       {
-        "text": "Map",
+        "text": "map()",
         "link": "/docs/01-javascript/51-map"
       },
       {
-        "text": "Filter",
+        "text": "filter()",
         "link": "/docs/01-javascript/52-filter"
       },
       {
-        "text": "Reduce",
+        "text": "reduce()",
         "link": "/docs/01-javascript/53-reduce"
       },
       {
-        "text": "Chaining",
+        "text": "Chaining basics",
         "link": "/docs/01-javascript/54-chaining"
       },
       {
-        "text": "Find",
+        "text": "find()",
         "link": "/docs/01-javascript/55-find"
       },
       {
-        "text": "Some",
+        "text": "some()",
         "link": "/docs/01-javascript/56-some"
       },
       {
-        "text": "Every",
+        "text": "every()",
         "link": "/docs/01-javascript/57-every"
       },
       {
-        "text": "Includes",
+        "text": "includes()",
         "link": "/docs/01-javascript/58-includes"
       },
       {
-        "text": "Sort",
+        "text": "sort()",
         "link": "/docs/01-javascript/59-sort"
       },
       {
-        "text": "Reverse",
+        "text": "reverse()",
         "link": "/docs/01-javascript/60-reverse"
       },
       {
@@ -278,7 +278,7 @@ export const sidebar = [
         "link": "/docs/01-javascript/63-memory-model"
       },
       {
-        "text": "Hoisting Tdz",
+        "text": "Hoisting + TDZ",
         "link": "/docs/01-javascript/64-hoisting-tdz"
       },
       {
@@ -286,15 +286,15 @@ export const sidebar = [
         "link": "/docs/01-javascript/65-closures"
       },
       {
-        "text": "This",
+        "text": "this",
         "link": "/docs/01-javascript/66-this"
       },
       {
-        "text": "Call Apply Bind",
+        "text": "call(), apply(), bind()",
         "link": "/docs/01-javascript/67-call-apply-bind"
       },
       {
-        "text": "Context Management",
+        "text": "Практическое управление контекстом",
         "link": "/docs/01-javascript/68-context-management"
       },
       {
@@ -318,7 +318,7 @@ export const sidebar = [
         "link": "/docs/01-javascript/73-event-loop"
       },
       {
-        "text": "Web Apis",
+        "text": "Web APIs",
         "link": "/docs/01-javascript/74-web-apis"
       },
       {
@@ -330,19 +330,19 @@ export const sidebar = [
         "link": "/docs/01-javascript/76-macrotasks"
       },
       {
-        "text": "Promise Api",
+        "text": "Promise API",
         "link": "/docs/01-javascript/77-promise-api"
       },
       {
-        "text": "Async Await",
+        "text": "async и await",
         "link": "/docs/01-javascript/78-async-await"
       },
       {
-        "text": "Async Error Handling",
+        "text": "Error Handling in Asynchronous Code",
         "link": "/docs/01-javascript/79-async-error-handling"
       },
       {
-        "text": "Parallel Async",
+        "text": "Parallel Asynchronous Operations",
         "link": "/docs/01-javascript/80-parallel-async"
       },
       {
@@ -362,7 +362,7 @@ export const sidebar = [
         "link": "/docs/01-javascript/84-custom-iteration"
       },
       {
-        "text": "Javascript Modules",
+        "text": "JavaScript Modules",
         "link": "/docs/01-javascript/85-javascript-modules"
       },
       {
@@ -386,11 +386,11 @@ export const sidebar = [
         "link": "/docs/01-javascript/90-debugging"
       },
       {
-        "text": "Modern Javascript",
+        "text": "Modern JavaScript Features",
         "link": "/docs/01-javascript/91-modern-javascript"
       },
       {
-        "text": "Javascript Best Practices",
+        "text": "JavaScript Best Practices",
         "link": "/docs/01-javascript/92-javascript-best-practices"
       },
       {
@@ -398,7 +398,7 @@ export const sidebar = [
         "link": "/docs/01-javascript/93-error-objects"
       },
       {
-        "text": "Json",
+        "text": "JSON",
         "link": "/docs/01-javascript/94-json"
       },
       {
@@ -406,7 +406,7 @@ export const sidebar = [
         "link": "/docs/01-javascript/95-date"
       },
       {
-        "text": "Why Typescript",
+        "text": "Почему появился TypeScript",
         "link": "/docs/01-javascript/96-why-typescript"
       }
     ]
@@ -416,387 +416,387 @@ export const sidebar = [
     "collapsed": false,
     "items": [
       {
-        "text": "What Is Javascript",
+        "text": "Практика. Глава 4. Что такое JavaScript",
         "link": "/practice/01-javascript/01-what-is-javascript"
       },
       {
-        "text": "How Javascript Works",
+        "text": "Практика. Глава 5. Как выполняется JavaScript",
         "link": "/practice/01-javascript/02-how-javascript-works"
       },
       {
-        "text": "Execution Context",
+        "text": "Практика. Глава 6. Execution Context",
         "link": "/practice/01-javascript/03-execution-context"
       },
       {
-        "text": "Call Stack",
+        "text": "Практика. Глава 7. Call Stack",
         "link": "/practice/01-javascript/04-call-stack"
       },
       {
-        "text": "Memory",
+        "text": "Практика. Глава 8. Memory",
         "link": "/practice/01-javascript/05-memory"
       },
       {
-        "text": "Variables",
+        "text": "Практика. Глава 9. Variables",
         "link": "/practice/01-javascript/06-variables"
       },
       {
-        "text": "Scope",
+        "text": "Практика. Глава 10. Scope",
         "link": "/practice/01-javascript/07-scope"
       },
       {
-        "text": "Lexical Environment",
+        "text": "Практика. Глава 11. Lexical Environment",
         "link": "/practice/01-javascript/08-lexical-environment"
       },
       {
-        "text": "Hoisting",
+        "text": "Практика. Глава 12. Hoisting",
         "link": "/practice/01-javascript/09-hoisting"
       },
       {
-        "text": "Temporal Dead Zone",
+        "text": "Практика. Глава 13. Temporal Dead Zone",
         "link": "/practice/01-javascript/10-temporal-dead-zone"
       },
       {
-        "text": "Primitive Types",
+        "text": "Практика. Глава 14. Primitive Types",
         "link": "/practice/01-javascript/11-primitive-types"
       },
       {
-        "text": "Object Type",
+        "text": "Практика. Глава 15. Object Type",
         "link": "/practice/01-javascript/12-object-type"
       },
       {
-        "text": "References",
+        "text": "Практика. Глава 16. References",
         "link": "/practice/01-javascript/13-references"
       },
       {
-        "text": "Stack And Heap",
+        "text": "Практика. Глава 17. Stack & Heap",
         "link": "/practice/01-javascript/14-stack-and-heap"
       },
       {
-        "text": "Type Conversion",
+        "text": "Практика. Глава 18. Type Conversion",
         "link": "/practice/01-javascript/15-type-conversion"
       },
       {
-        "text": "Equality",
+        "text": "Практика. Глава 19. Equality",
         "link": "/practice/01-javascript/16-equality"
       },
       {
-        "text": "Operators",
+        "text": "Практика. Глава 20. Operators",
         "link": "/practice/01-javascript/17-operators"
       },
       {
-        "text": "Conditionals",
+        "text": "Практика. Глава 21. Conditionals",
         "link": "/practice/01-javascript/18-conditionals"
       },
       {
-        "text": "Loops",
+        "text": "Практика. Глава 22. Loops",
         "link": "/practice/01-javascript/19-loops"
       },
       {
-        "text": "Error Handling",
+        "text": "Практика. Глава 23. Error Handling",
         "link": "/practice/01-javascript/20-error-handling"
       },
       {
-        "text": "Function Declaration",
+        "text": "Практика. Глава 24. Function Declaration",
         "link": "/practice/01-javascript/21-function-declaration"
       },
       {
-        "text": "Function Expression",
+        "text": "Практика. Глава 25. Function Expression",
         "link": "/practice/01-javascript/22-function-expression"
       },
       {
-        "text": "Arrow Functions",
+        "text": "Практика. Глава 26. Arrow Functions",
         "link": "/practice/01-javascript/23-arrow-functions"
       },
       {
-        "text": "Parameters",
+        "text": "Практика. Глава 27. Parameters",
         "link": "/practice/01-javascript/24-parameters"
       },
       {
-        "text": "Return",
+        "text": "Практика. Глава 28. Return",
         "link": "/practice/01-javascript/25-return"
       },
       {
-        "text": "Rest",
+        "text": "Практика. Глава 29. Rest Parameters",
         "link": "/practice/01-javascript/26-rest"
       },
       {
-        "text": "Spread",
+        "text": "Практика. Глава 30. Spread",
         "link": "/practice/01-javascript/27-spread"
       },
       {
-        "text": "Closures",
+        "text": "Практика: Closures",
         "link": "/practice/01-javascript/28-closures"
       },
       {
-        "text": "This",
+        "text": "Практика: this",
         "link": "/practice/01-javascript/29-this"
       },
       {
-        "text": "Call",
+        "text": "Практика: call()",
         "link": "/practice/01-javascript/30-call"
       },
       {
-        "text": "Apply",
+        "text": "Практика: apply()",
         "link": "/practice/01-javascript/31-apply"
       },
       {
-        "text": "Bind",
+        "text": "Практика: bind()",
         "link": "/practice/01-javascript/32-bind"
       },
       {
-        "text": "Objects",
+        "text": "Практика: Objects",
         "link": "/practice/01-javascript/33-objects"
       },
       {
-        "text": "Destructuring",
+        "text": "Практика: Destructuring",
         "link": "/practice/01-javascript/34-destructuring"
       },
       {
-        "text": "Optional Chaining",
+        "text": "Практика: Optional Chaining",
         "link": "/practice/01-javascript/35-optional-chaining"
       },
       {
-        "text": "Nullish Coalescing",
+        "text": "Практика: Nullish Coalescing",
         "link": "/practice/01-javascript/36-nullish-coalescing"
       },
       {
-        "text": "Object Methods",
+        "text": "Практика: Object Methods",
         "link": "/practice/01-javascript/37-object-methods"
       },
       {
-        "text": "Object Descriptors",
+        "text": "Практика: Object Descriptors",
         "link": "/practice/01-javascript/38-object-descriptors"
       },
       {
-        "text": "Prototype",
+        "text": "Практика: Prototype",
         "link": "/practice/01-javascript/39-prototype"
       },
       {
-        "text": "Prototype Chain",
+        "text": "Практика: Prototype Chain",
         "link": "/practice/01-javascript/40-prototype-chain"
       },
       {
-        "text": "Classes",
+        "text": "Практика: Classes",
         "link": "/practice/01-javascript/41-classes"
       },
       {
-        "text": "Class Inheritance",
+        "text": "Практика: Class Inheritance",
         "link": "/practice/01-javascript/42-class-inheritance"
       },
       {
-        "text": "Super",
+        "text": "Практика: super",
         "link": "/practice/01-javascript/43-super"
       },
       {
-        "text": "Arrays",
+        "text": "Практика: Arrays",
         "link": "/practice/01-javascript/44-arrays"
       },
       {
-        "text": "Push Pop",
+        "text": "Практика: push() and pop()",
         "link": "/practice/01-javascript/45-push-pop"
       },
       {
-        "text": "Shift Unshift",
+        "text": "Практика: shift() and unshift()",
         "link": "/practice/01-javascript/46-shift-unshift"
       },
       {
-        "text": "Splice",
+        "text": "Практика: splice()",
         "link": "/practice/01-javascript/47-splice"
       },
       {
-        "text": "Slice",
+        "text": "Практика: slice()",
         "link": "/practice/01-javascript/48-slice"
       },
       {
-        "text": "Iteration",
+        "text": "Практика: Iteration",
         "link": "/practice/01-javascript/49-iteration"
       },
       {
-        "text": "Foreach",
+        "text": "Практика: forEach()",
         "link": "/practice/01-javascript/50-foreach"
       },
       {
-        "text": "Map",
+        "text": "Практика: map()",
         "link": "/practice/01-javascript/51-map"
       },
       {
-        "text": "Filter",
+        "text": "Практика: filter()",
         "link": "/practice/01-javascript/52-filter"
       },
       {
-        "text": "Reduce",
+        "text": "Практика: reduce()",
         "link": "/practice/01-javascript/53-reduce"
       },
       {
-        "text": "Chaining",
+        "text": "Практика: Chaining basics",
         "link": "/practice/01-javascript/54-chaining"
       },
       {
-        "text": "Find",
+        "text": "Практика: find()",
         "link": "/practice/01-javascript/55-find"
       },
       {
-        "text": "Some",
+        "text": "Практика: some()",
         "link": "/practice/01-javascript/56-some"
       },
       {
-        "text": "Every",
+        "text": "Практика: every()",
         "link": "/practice/01-javascript/57-every"
       },
       {
-        "text": "Includes",
+        "text": "Практика: includes()",
         "link": "/practice/01-javascript/58-includes"
       },
       {
-        "text": "Sort",
+        "text": "Практика: sort()",
         "link": "/practice/01-javascript/59-sort"
       },
       {
-        "text": "Reverse",
+        "text": "Практика: reverse()",
         "link": "/practice/01-javascript/60-reverse"
       },
       {
-        "text": "Execution Context",
+        "text": "Практика: Execution Context",
         "link": "/practice/01-javascript/61-execution-context"
       },
       {
-        "text": "Call Stack",
+        "text": "Практика: Call Stack",
         "link": "/practice/01-javascript/62-call-stack"
       },
       {
-        "text": "Memory Model",
+        "text": "Практика: Memory Model",
         "link": "/practice/01-javascript/63-memory-model"
       },
       {
-        "text": "Hoisting Tdz",
+        "text": "Практика: Hoisting + TDZ",
         "link": "/practice/01-javascript/64-hoisting-tdz"
       },
       {
-        "text": "Closures",
+        "text": "Практика: Closures",
         "link": "/practice/01-javascript/65-closures"
       },
       {
-        "text": "This",
+        "text": "Практика: this",
         "link": "/practice/01-javascript/66-this"
       },
       {
-        "text": "Call Apply Bind",
+        "text": "Практика: call(), apply(), bind()",
         "link": "/practice/01-javascript/67-call-apply-bind"
       },
       {
-        "text": "Context Management",
+        "text": "Практика: практическое управление контекстом",
         "link": "/practice/01-javascript/68-context-management"
       },
       {
-        "text": "Synchronous Execution",
+        "text": "Практика: Synchronous Execution",
         "link": "/practice/01-javascript/69-synchronous-execution"
       },
       {
-        "text": "Asynchronous Programming",
+        "text": "Практика: Asynchronous Programming",
         "link": "/practice/01-javascript/70-asynchronous-programming"
       },
       {
-        "text": "Callback",
+        "text": "Практика: Callback",
         "link": "/practice/01-javascript/71-callback"
       },
       {
-        "text": "Promise",
+        "text": "Практика: Promise",
         "link": "/practice/01-javascript/72-promise"
       },
       {
-        "text": "Event Loop",
+        "text": "Практика: Event Loop",
         "link": "/practice/01-javascript/73-event-loop"
       },
       {
-        "text": "Web Apis",
+        "text": "Практика: Web APIs",
         "link": "/practice/01-javascript/74-web-apis"
       },
       {
-        "text": "Microtasks",
+        "text": "Практика: Microtasks",
         "link": "/practice/01-javascript/75-microtasks"
       },
       {
-        "text": "Macrotasks",
+        "text": "Практика: Macrotasks",
         "link": "/practice/01-javascript/76-macrotasks"
       },
       {
-        "text": "Promise Api",
+        "text": "Практика: Promise API",
         "link": "/practice/01-javascript/77-promise-api"
       },
       {
-        "text": "Async Await",
+        "text": "Практика: async и await",
         "link": "/practice/01-javascript/78-async-await"
       },
       {
-        "text": "Async Error Handling",
+        "text": "Практика: Error Handling in Asynchronous Code",
         "link": "/practice/01-javascript/79-async-error-handling"
       },
       {
-        "text": "Parallel Async",
+        "text": "Практика: Parallel Asynchronous Operations",
         "link": "/practice/01-javascript/80-parallel-async"
       },
       {
-        "text": "Iterable Protocol",
+        "text": "Практика: Iterable Protocol",
         "link": "/practice/01-javascript/81-iterable-protocol"
       },
       {
-        "text": "Iterators",
+        "text": "Практика: Iterators",
         "link": "/practice/01-javascript/82-iterators"
       },
       {
-        "text": "Generators",
+        "text": "Практика: Generators",
         "link": "/practice/01-javascript/83-generators"
       },
       {
-        "text": "Custom Iteration",
+        "text": "Практика: Custom Iteration",
         "link": "/practice/01-javascript/84-custom-iteration"
       },
       {
-        "text": "Javascript Modules",
+        "text": "Практика: JavaScript Modules",
         "link": "/practice/01-javascript/85-javascript-modules"
       },
       {
-        "text": "Module Systems",
+        "text": "Практика: Module Systems",
         "link": "/practice/01-javascript/86-module-systems"
       },
       {
-        "text": "Garbage Collector",
+        "text": "Практика: Garbage Collector",
         "link": "/practice/01-javascript/87-garbage-collector"
       },
       {
-        "text": "Memory Management",
+        "text": "Практика: Memory Management",
         "link": "/practice/01-javascript/88-memory-management"
       },
       {
-        "text": "Performance",
+        "text": "Практика: Performance",
         "link": "/practice/01-javascript/89-performance"
       },
       {
-        "text": "Debugging",
+        "text": "Практика: Debugging",
         "link": "/practice/01-javascript/90-debugging"
       },
       {
-        "text": "Modern Javascript",
+        "text": "Практика: Modern JavaScript Features",
         "link": "/practice/01-javascript/91-modern-javascript"
       },
       {
-        "text": "Javascript Best Practices",
+        "text": "Практика: JavaScript Best Practices",
         "link": "/practice/01-javascript/92-javascript-best-practices"
       },
       {
-        "text": "Error Objects",
+        "text": "Практика: Error Objects",
         "link": "/practice/01-javascript/93-error-objects"
       },
       {
-        "text": "Json",
+        "text": "Практика: JSON",
         "link": "/practice/01-javascript/94-json"
       },
       {
-        "text": "Date",
+        "text": "Практика: Date",
         "link": "/practice/01-javascript/95-date"
       },
       {
-        "text": "Why Typescript",
+        "text": "Практика: Почему появился TypeScript",
         "link": "/practice/01-javascript/96-why-typescript"
       }
     ]
@@ -806,394 +806,389 @@ export const sidebar = [
     "collapsed": false,
     "items": [
       {
-        "text": "What Is Javascript",
+        "text": "Решения. Глава 4. Что такое JavaScript",
         "link": "/solutions/01-javascript/01-what-is-javascript"
       },
       {
-        "text": "How Javascript Works",
+        "text": "Решения. Глава 5. Как выполняется JavaScript",
         "link": "/solutions/01-javascript/02-how-javascript-works"
       },
       {
-        "text": "Execution Context",
+        "text": "Решения. Глава 6. Execution Context",
         "link": "/solutions/01-javascript/03-execution-context"
       },
       {
-        "text": "Call Stack",
+        "text": "Решения. Глава 7. Call Stack",
         "link": "/solutions/01-javascript/04-call-stack"
       },
       {
-        "text": "Memory",
+        "text": "Решения. Глава 8. Memory",
         "link": "/solutions/01-javascript/05-memory"
       },
       {
-        "text": "Variables",
+        "text": "Решения. Глава 9. Variables",
         "link": "/solutions/01-javascript/06-variables"
       },
       {
-        "text": "Scope",
+        "text": "Решения. Глава 10. Scope",
         "link": "/solutions/01-javascript/07-scope"
       },
       {
-        "text": "Lexical Environment",
+        "text": "Решения. Глава 11. Lexical Environment",
         "link": "/solutions/01-javascript/08-lexical-environment"
       },
       {
-        "text": "Hoisting",
+        "text": "Решения. Глава 12. Hoisting",
         "link": "/solutions/01-javascript/09-hoisting"
       },
       {
-        "text": "Temporal Dead Zone",
+        "text": "Решения. Глава 13. Temporal Dead Zone",
         "link": "/solutions/01-javascript/10-temporal-dead-zone"
       },
       {
-        "text": "Primitive Types",
+        "text": "Решения. Глава 14. Primitive Types",
         "link": "/solutions/01-javascript/11-primitive-types"
       },
       {
-        "text": "Object Type",
+        "text": "Решения. Глава 15. Object Type",
         "link": "/solutions/01-javascript/12-object-type"
       },
       {
-        "text": "References",
+        "text": "Решения. Глава 16. References",
         "link": "/solutions/01-javascript/13-references"
       },
       {
-        "text": "Stack And Heap",
+        "text": "Решения. Глава 17. Stack & Heap",
         "link": "/solutions/01-javascript/14-stack-and-heap"
       },
       {
-        "text": "Type Conversion",
+        "text": "Решения. Глава 18. Type Conversion",
         "link": "/solutions/01-javascript/15-type-conversion"
       },
       {
-        "text": "Equality",
+        "text": "Решения. Глава 19. Equality",
         "link": "/solutions/01-javascript/16-equality"
       },
       {
-        "text": "Operators",
+        "text": "Решения. Глава 20. Operators",
         "link": "/solutions/01-javascript/17-operators"
       },
       {
-        "text": "Conditionals",
+        "text": "Решения. Глава 21. Conditionals",
         "link": "/solutions/01-javascript/18-conditionals"
       },
       {
-        "text": "Loops",
+        "text": "Решения. Глава 22. Loops",
         "link": "/solutions/01-javascript/19-loops"
       },
       {
-        "text": "Error Handling",
+        "text": "Решения. Глава 23. Error Handling",
         "link": "/solutions/01-javascript/20-error-handling"
       },
       {
-        "text": "Function Declaration",
+        "text": "Решения. Глава 24. Function Declaration",
         "link": "/solutions/01-javascript/21-function-declaration"
       },
       {
-        "text": "Function Expression",
+        "text": "Решения. Глава 25. Function Expression",
         "link": "/solutions/01-javascript/22-function-expression"
       },
       {
-        "text": "Arrow Functions",
+        "text": "Решения. Глава 26. Arrow Functions",
         "link": "/solutions/01-javascript/23-arrow-functions"
       },
       {
-        "text": "Parameters",
+        "text": "Решения. Глава 27. Parameters",
         "link": "/solutions/01-javascript/24-parameters"
       },
       {
-        "text": "Return",
+        "text": "Решения. Глава 28. Return",
         "link": "/solutions/01-javascript/25-return"
       },
       {
-        "text": "Rest",
+        "text": "Решения. Глава 29. Rest Parameters",
         "link": "/solutions/01-javascript/26-rest"
       },
       {
-        "text": "Spread",
+        "text": "Решения. Глава 30. Spread",
         "link": "/solutions/01-javascript/27-spread"
       },
       {
-        "text": "Closures",
+        "text": "Решения: Closures",
         "link": "/solutions/01-javascript/28-closures"
       },
       {
-        "text": "This",
+        "text": "Решения: this",
         "link": "/solutions/01-javascript/29-this"
       },
       {
-        "text": "Call",
+        "text": "Решения: call()",
         "link": "/solutions/01-javascript/30-call"
       },
       {
-        "text": "Apply",
+        "text": "Решения: apply()",
         "link": "/solutions/01-javascript/31-apply"
       },
       {
-        "text": "Bind",
+        "text": "Решения: bind()",
         "link": "/solutions/01-javascript/32-bind"
       },
       {
-        "text": "Objects",
+        "text": "Решения: Objects",
         "link": "/solutions/01-javascript/33-objects"
       },
       {
-        "text": "Destructuring",
+        "text": "Решения: Destructuring",
         "link": "/solutions/01-javascript/34-destructuring"
       },
       {
-        "text": "Optional Chaining",
+        "text": "Решения: Optional Chaining",
         "link": "/solutions/01-javascript/35-optional-chaining"
       },
       {
-        "text": "Nullish Coalescing",
+        "text": "Решения: Nullish Coalescing",
         "link": "/solutions/01-javascript/36-nullish-coalescing"
       },
       {
-        "text": "Object Methods",
+        "text": "Решения: Object Methods",
         "link": "/solutions/01-javascript/37-object-methods"
       },
       {
-        "text": "Object Descriptors",
+        "text": "Решения: Object Descriptors",
         "link": "/solutions/01-javascript/38-object-descriptors"
       },
       {
-        "text": "Prototype",
+        "text": "Решения: Prototype",
         "link": "/solutions/01-javascript/39-prototype"
       },
       {
-        "text": "Prototype Chain",
+        "text": "Решения: Prototype Chain",
         "link": "/solutions/01-javascript/40-prototype-chain"
       },
       {
-        "text": "Classes",
+        "text": "Решения: Classes",
         "link": "/solutions/01-javascript/41-classes"
       },
       {
-        "text": "Class Inheritance",
+        "text": "Решения: Class Inheritance",
         "link": "/solutions/01-javascript/42-class-inheritance"
       },
       {
-        "text": "Super",
+        "text": "Решения: super",
         "link": "/solutions/01-javascript/43-super"
       },
       {
-        "text": "Arrays",
+        "text": "Решения: Arrays",
         "link": "/solutions/01-javascript/44-arrays"
       },
       {
-        "text": "Push Pop",
+        "text": "Решения: push() and pop()",
         "link": "/solutions/01-javascript/45-push-pop"
       },
       {
-        "text": "Shift Unshift",
+        "text": "Решения: shift() and unshift()",
         "link": "/solutions/01-javascript/46-shift-unshift"
       },
       {
-        "text": "Splice",
+        "text": "Решения: splice()",
         "link": "/solutions/01-javascript/47-splice"
       },
       {
-        "text": "Slice",
+        "text": "Решения: slice()",
         "link": "/solutions/01-javascript/48-slice"
       },
       {
-        "text": "Iteration",
+        "text": "Решения: Iteration",
         "link": "/solutions/01-javascript/49-iteration"
       },
       {
-        "text": "Foreach",
+        "text": "Решения: forEach()",
         "link": "/solutions/01-javascript/50-foreach"
       },
       {
-        "text": "Map",
+        "text": "Решения: map()",
         "link": "/solutions/01-javascript/51-map"
       },
       {
-        "text": "Filter",
+        "text": "Решения: filter()",
         "link": "/solutions/01-javascript/52-filter"
       },
       {
-        "text": "Reduce",
+        "text": "Решения: reduce()",
         "link": "/solutions/01-javascript/53-reduce"
       },
       {
-        "text": "Chaining",
+        "text": "Решения: Chaining basics",
         "link": "/solutions/01-javascript/54-chaining"
       },
       {
-        "text": "Find",
+        "text": "Решения: find()",
         "link": "/solutions/01-javascript/55-find"
       },
       {
-        "text": "Some",
+        "text": "Решения: some()",
         "link": "/solutions/01-javascript/56-some"
       },
       {
-        "text": "Every",
+        "text": "Решения: every()",
         "link": "/solutions/01-javascript/57-every"
       },
       {
-        "text": "Includes",
+        "text": "Решения: includes()",
         "link": "/solutions/01-javascript/58-includes"
       },
       {
-        "text": "Sort",
+        "text": "Решения: sort()",
         "link": "/solutions/01-javascript/59-sort"
       },
       {
-        "text": "Reverse",
+        "text": "Решения: reverse()",
         "link": "/solutions/01-javascript/60-reverse"
       },
       {
-        "text": "Execution Context",
+        "text": "Решения: Execution Context",
         "link": "/solutions/01-javascript/61-execution-context"
       },
       {
-        "text": "Call Stack",
+        "text": "Решения: Call Stack",
         "link": "/solutions/01-javascript/62-call-stack"
       },
       {
-        "text": "Memory Model",
+        "text": "Решения: Memory Model",
         "link": "/solutions/01-javascript/63-memory-model"
       },
       {
-        "text": "Hoisting Tdz",
+        "text": "Решения: Hoisting + TDZ",
         "link": "/solutions/01-javascript/64-hoisting-tdz"
       },
       {
-        "text": "Closures",
+        "text": "Решения: Closures",
         "link": "/solutions/01-javascript/65-closures"
       },
       {
-        "text": "This",
+        "text": "Решения: this",
         "link": "/solutions/01-javascript/66-this"
       },
       {
-        "text": "Call Apply Bind",
+        "text": "Решения: call(), apply(), bind()",
         "link": "/solutions/01-javascript/67-call-apply-bind"
       },
       {
-        "text": "Context Management",
+        "text": "Решения: практическое управление контекстом",
         "link": "/solutions/01-javascript/68-context-management"
       },
       {
-        "text": "Synchronous Execution",
+        "text": "Решения: Synchronous Execution",
         "link": "/solutions/01-javascript/69-synchronous-execution"
       },
       {
-        "text": "Asynchronous Programming",
+        "text": "Решения: Asynchronous Programming",
         "link": "/solutions/01-javascript/70-asynchronous-programming"
       },
       {
-        "text": "Callback",
+        "text": "Решения: Callback",
         "link": "/solutions/01-javascript/71-callback"
       },
       {
-        "text": "Promise",
+        "text": "Решения: Promise",
         "link": "/solutions/01-javascript/72-promise"
       },
       {
-        "text": "Event Loop",
+        "text": "Решения: Event Loop",
         "link": "/solutions/01-javascript/73-event-loop"
       },
       {
-        "text": "Web Apis",
+        "text": "Решения: Web APIs",
         "link": "/solutions/01-javascript/74-web-apis"
       },
       {
-        "text": "Microtasks",
+        "text": "Решения: Microtasks",
         "link": "/solutions/01-javascript/75-microtasks"
       },
       {
-        "text": "Macrotasks",
+        "text": "Решения: Macrotasks",
         "link": "/solutions/01-javascript/76-macrotasks"
       },
       {
-        "text": "Promise Api",
+        "text": "Решения: Promise API",
         "link": "/solutions/01-javascript/77-promise-api"
       },
       {
-        "text": "Async Await",
+        "text": "Решения: async и await",
         "link": "/solutions/01-javascript/78-async-await"
       },
       {
-        "text": "Async Error Handling",
+        "text": "Решения: Error Handling in Asynchronous Code",
         "link": "/solutions/01-javascript/79-async-error-handling"
       },
       {
-        "text": "Parallel Async",
+        "text": "Решения: Parallel Asynchronous Operations",
         "link": "/solutions/01-javascript/80-parallel-async"
       },
       {
-        "text": "Iterable Protocol",
+        "text": "Решения: Iterable Protocol",
         "link": "/solutions/01-javascript/81-iterable-protocol"
       },
       {
-        "text": "Iterators",
+        "text": "Решения: Iterators",
         "link": "/solutions/01-javascript/82-iterators"
       },
       {
-        "text": "Generators",
+        "text": "Решения: Generators",
         "link": "/solutions/01-javascript/83-generators"
       },
       {
-        "text": "Custom Iteration",
+        "text": "Решения: Custom Iteration",
         "link": "/solutions/01-javascript/84-custom-iteration"
       },
       {
-        "text": "Javascript Modules",
+        "text": "Решения: JavaScript Modules",
         "link": "/solutions/01-javascript/85-javascript-modules"
       },
       {
-        "text": "Module Systems",
+        "text": "Решения: Module Systems",
         "link": "/solutions/01-javascript/86-module-systems"
       },
       {
-        "text": "Garbage Collector",
+        "text": "Решения: Garbage Collector",
         "link": "/solutions/01-javascript/87-garbage-collector"
       },
       {
-        "text": "Memory Management",
+        "text": "Решения: Memory Management",
         "link": "/solutions/01-javascript/88-memory-management"
       },
       {
-        "text": "Performance",
+        "text": "Решения: Performance",
         "link": "/solutions/01-javascript/89-performance"
       },
       {
-        "text": "Debugging",
+        "text": "Решения: Debugging",
         "link": "/solutions/01-javascript/90-debugging"
       },
       {
-        "text": "Modern Javascript",
+        "text": "Решения: Modern JavaScript Features",
         "link": "/solutions/01-javascript/91-modern-javascript"
       },
       {
-        "text": "Javascript Best Practices",
+        "text": "Решения: JavaScript Best Practices",
         "link": "/solutions/01-javascript/92-javascript-best-practices"
       },
       {
-        "text": "Error Objects",
+        "text": "Решения: Error Objects",
         "link": "/solutions/01-javascript/93-error-objects"
       },
       {
-        "text": "Json",
+        "text": "Решения: JSON",
         "link": "/solutions/01-javascript/94-json"
       },
       {
-        "text": "Date",
+        "text": "Решения: Date",
         "link": "/solutions/01-javascript/95-date"
       },
       {
-        "text": "Why Typescript",
+        "text": "Решения: Почему появился TypeScript",
         "link": "/solutions/01-javascript/96-why-typescript"
       }
     ]
-  },
-  {
-    "text": "Примеры",
-    "collapsed": false,
-    "items": []
   }
 ]

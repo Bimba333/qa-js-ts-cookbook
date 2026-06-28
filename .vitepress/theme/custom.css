@@ -1,28 +1,102 @@
-.example-card {
+.book-link-card {
   border: 1px solid var(--vp-c-divider);
-  border-radius: 12px;
+  border-radius: 14px;
   padding: 16px;
   margin: 16px 0;
   background: var(--vp-c-bg-soft);
 }
 
-.example-card__label {
+.book-link-card__title {
   font-weight: 700;
+  margin-bottom: 12px;
+  overflow-wrap: anywhere;
+}
+
+.book-link-card__button {
+  display: inline-block;
+  padding: 8px 14px;
+  border-radius: 8px;
+  background: var(--vp-c-brand-1);
+  color: white !important;
+  text-decoration: none !important;
+  font-weight: 700;
+}
+
+.code-runner {
+  border: 1px solid var(--vp-c-divider);
+  border-radius: 14px;
+  padding: 16px;
+  margin: 20px 0;
+  background: var(--vp-c-bg-soft);
+}
+
+.code-runner__header {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  align-items: flex-start;
+  margin-bottom: 14px;
+}
+
+.code-runner__title {
+  font-weight: 800;
+  font-size: 18px;
+}
+
+.code-runner__file {
+  margin-top: 4px;
+  font-family: var(--vp-font-family-mono);
+  font-size: 14px;
+  color: var(--vp-c-text-2);
+  overflow-wrap: anywhere;
+}
+
+.code-runner__button {
+  cursor: pointer;
+  border: 0;
+  border-radius: 8px;
+  padding: 8px 16px;
+  background: var(--vp-c-brand-1);
+  color: white;
+  font-weight: 800;
+}
+
+.code-runner__editor {
+  width: 100%;
+  min-height: 220px;
+  resize: vertical;
+  box-sizing: border-box;
+  padding: 16px;
+  border: 1px solid var(--vp-c-divider);
+  border-radius: 10px;
+  background: var(--vp-code-block-bg);
+  color: var(--vp-c-text-1);
+  font-family: var(--vp-font-family-mono);
+  font-size: 14px;
+  line-height: 1.7;
+  white-space: pre;
+}
+
+.code-runner__output,
+.code-runner__error {
+  margin-top: 14px;
+  padding: 12px;
+  border-radius: 10px;
+  background: var(--vp-code-block-bg);
+}
+
+.code-runner__output-title {
+  font-weight: 800;
   margin-bottom: 8px;
 }
 
-.example-card__path {
-  display: block;
-  padding: 12px;
-  border-radius: 8px;
-  background: var(--vp-code-block-bg);
+.code-runner__output pre,
+.code-runner__error pre {
+  margin: 0;
   overflow-x: auto;
+  white-space: pre-wrap;
 }
 
-.example-card__actions {
-  margin-top: 12px;
-}
-
-.example-card__actions a {
-  font-weight: 600;
+.code-runner__error {
+  color: #ff8f8f;
 }

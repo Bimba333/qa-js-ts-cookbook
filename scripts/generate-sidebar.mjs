@@ -24,20 +24,22 @@ const sections = [
     title: 'Решения',
     dir: 'solutions/01-javascript',
     base: '/solutions/01-javascript/'
-  },
-  {
-    title: 'Примеры',
-    dir: 'examples/01-javascript',
-    base: '/examples/01-javascript/'
   }
 ]
 
-function fileTitle(fileName) {
-  return fileName
+function getTitleFromMarkdown(filePath) {
+  const content = fs.readFileSync(filePath, 'utf8')
+  const match = content.match(/^#\s+(.+)$/m)
+
+  if (match) {
+    return match[1].trim()
+  }
+
+  return path
+    .basename(filePath)
     .replace(/\.md$/, '')
     .replace(/^\d+-/, '')
     .replace(/-/g, ' ')
-    .replace(/\b\w/g, char => char.toUpperCase())
 }
 
 function readItems(section) {
@@ -51,10 +53,14 @@ function readItems(section) {
     .readdirSync(absDir)
     .filter(file => file.endsWith('.md'))
     .sort((a, b) => a.localeCompare(b, undefined, { numeric: true }))
-    .map(file => ({
-      text: fileTitle(file),
-      link: `${section.base}${file.replace(/\.md$/, '')}`
-    }))
+    .map(file => {
+      const absFile = path.join(absDir, file)
+
+      return {
+        text: getTitleFromMarkdown(absFile),
+        link: `${section.base}${file.replace(/\.md$/, '')}`
+      }
+    })
 }
 
 const sidebar = sections.map(section => ({
@@ -63,7 +69,9 @@ const sidebar = sections.map(section => ({
   items: readItems(section)
 }))
 
-const content = `export const sidebar = ${JSON.stringify(sidebar, null, 2)}\n`
+fs.writeFileSync(
+  OUT,
+  `export const sidebar = ${JSON.stringify(sidebar, null, 2)}\n`
+)
 
-fs.writeFileSync(OUT, content)
 console.log(`Generated ${OUT}`)
