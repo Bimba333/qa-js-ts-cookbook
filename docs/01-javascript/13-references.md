@@ -6,27 +6,7 @@
 
 Primitive value представляет одно indivisible value:
 
-```mermaid
-flowchart TD
-    N1["Primitive"]
-    N2["one value"]
-    N1 --> N2
-```
-
 Object value groups related information:
-
-```mermaid
-flowchart TD
-    N1["Object"]
-    N2["user"]
-    N3["name: &quot;Anna&quot;"]
-    N4["role: &quot;user&quot;"]
-    N5["active: true"]
-    N1 --> N2
-    N2 --> N3
-    N2 --> N4
-    N2 --> N5
-```
 
 Теперь появляется следующий вопрос.
 
@@ -162,13 +142,6 @@ console.log(user.name);
 
 Если думать, что variable contains object, хочется ожидать:
 
-```mermaid
-flowchart TD
-    N1["user.name → &quot;Anna&quot;"]
-    N2["admin.name → &quot;Kate&quot;"]
-    N1 --> N2
-```
-
 Но результат другой:
 
 ```text
@@ -177,42 +150,11 @@ Kate
 
 Диаграмма удивительного поведения:
 
-```mermaid
-flowchart TD
-    N1["const user = { name: &quot;Anna&quot; }"]
-    N2["const admin = user"]
-    N3["admin.name = &quot;Kate&quot;"]
-    N4["console.log(user.name)"]
-    N5["&quot;Kate&quot;"]
-    N1 --> N2
-    N2 --> N3
-    N3 --> N4
-    N4 --> N5
-```
-
 Это невозможно объяснить моделью "каждая variable содержит собственный object".
 
 Нужна другая модель:
 
-```mermaid
-flowchart TD
-    N1["Variable"]
-    N2["refers to object value"]
-    N1 --> N2
-```
-
 `user` and `admin` are two ways to reach the same object.
-
-```mermaid
-flowchart TD
-    N1["user ─────┐"]
-    N2["Object"]
-    N3["name: &quot;Kate&quot;"]
-    N4["admin ─────┘"]
-    N1 --> N2
-    N2 --> N3
-    N1 --> N4
-```
 
 Главный вопрос:
 
@@ -226,58 +168,11 @@ flowchart TD
 
 Objects can be large, structured and mutable.
 
-```mermaid
-flowchart TD
-    N1["user"]
-    N2["identity"]
-    N3["id"]
-    N4["email"]
-    N5["profile"]
-    N6["firstName"]
-    N7["lastName"]
-    N8["status"]
-    N9["role"]
-    N10["isActive"]
-    N1 --> N2
-    N1 --> N3
-    N1 --> N4
-    N1 --> N5
-    N1 --> N6
-    N1 --> N7
-    N1 --> N8
-    N8 --> N9
-    N8 --> N10
-```
-
 Если бы every assignment of object created a full independent copy, JavaScript programs became harder to reason about and less practical:
-
-```mermaid
-flowchart TD
-    N1["Assign object"]
-    N2["copy every property?"]
-    N3["copy nested objects?"]
-    N4["keep identity?"]
-    N5["update which copy?"]
-    N1 --> N2
-    N1 --> N3
-    N1 --> N4
-    N1 --> N5
-```
 
 Instead JavaScript allows variables to refer to object значения.
 
 Концептуальная идея:
-
-```mermaid
-flowchart TD
-    N1["Object value exists"]
-    N2["Variable gets a reference to it"]
-    N3["Another variable can receive same reference"]
-    N4["Both variables reach same object"]
-    N1 --> N2
-    N2 --> N3
-    N3 --> N4
-```
 
 Reference exists to let code work with object значения without treating every object assignment as independent duplication.
 
@@ -287,51 +182,11 @@ Reference is a conceptual connection from a variable to an object value.
 
 Не запоминайте это как implementation detail. В этой главе reference means:
 
-```mermaid
-flowchart TD
-    N1["Variable"]
-    N2["can reach an object value"]
-    N1 --> N2
-```
-
 Диаграмма Object + Reference:
-
-```mermaid
-flowchart TD
-    N1["user"]
-    N2["reference"]
-    N3["Object value"]
-    N4["name: &quot;Anna&quot;"]
-    N1 --> N2
-    N1 --> N3
-    N3 --> N4
-```
 
 Reference is not the object itself.
 
-```mermaid
-flowchart TD
-    N1["Reference"]
-    N2["way to reach object"]
-    N3["Object"]
-    N4["actual grouped information"]
-    N1 --> N2
-    N1 --> N3
-    N3 --> N4
-```
-
 Ментальная модель bookmark:
-
-```mermaid
-flowchart TD
-    N1["Bookmark"]
-    N2["points to a page in a book"]
-    N3["Page"]
-    N4["actual content"]
-    N1 --> N2
-    N1 --> N3
-    N3 --> N4
-```
 
 Bookmark is not the page. Reference is not the object.
 
@@ -348,17 +203,6 @@ const user = {
 ```
 
 Концептуально:
-
-```mermaid
-flowchart TD
-    N1["Variable: user"]
-    N2["reference"]
-    N3["Object value"]
-    N4["name: &quot;Anna&quot;"]
-    N1 --> N2
-    N1 --> N3
-    N3 --> N4
-```
 
 Object отвечает:
 
@@ -395,39 +239,9 @@ Kate
 
 Диаграмма primitive assignment:
 
-```mermaid
-flowchart TD
-    N1["Initial"]
-    N2["userName → &quot;Anna&quot;"]
-    N3["adminName → &quot;Anna&quot;"]
-    N4["После: adminName = &quot;Kate&quot;"]
-    N5["userName → &quot;Anna&quot;"]
-    N6["adminName → &quot;Kate&quot;"]
-    N1 --> N2
-    N1 --> N3
-    N1 --> N4
-    N4 --> N5
-    N4 --> N6
-```
-
 At this conceptual level, assignment of primitive value gives another variable its own primitive value.
 
 Primitive comparison:
-
-```mermaid
-flowchart TD
-    N1["Primitive values"]
-    N2["&quot;Anna&quot;"]
-    N3["30"]
-    N4["true"]
-    N5["Assignment"]
-    N6["value is copied conceptually"]
-    N1 --> N2
-    N1 --> N3
-    N1 --> N4
-    N1 --> N5
-    N5 --> N6
-```
 
 This is why changing `adminName` does not affect `userName`.
 
@@ -445,39 +259,7 @@ const admin = user;
 
 Диаграмма object assignment:
 
-```mermaid
-flowchart TD
-    N1["До: assignment"]
-    N2["user"]
-    N3["Object"]
-    N4["name: &quot;Anna&quot;"]
-    N5["После: const admin = user"]
-    N6["user"]
-    N7["Object"]
-    N8["name: &quot;Anna&quot;"]
-    N9["admin"]
-    N1 --> N2
-    N1 --> N3
-    N3 --> N4
-    N3 --> N5
-    N5 --> N6
-    N5 --> N7
-    N7 --> N8
-    N7 --> N9
-```
-
 One object, two variables:
-
-```mermaid
-flowchart TD
-    N1["user ─────┐"]
-    N2["Object"]
-    N3["name: &quot;Anna&quot;"]
-    N4["admin ─────┘"]
-    N1 --> N2
-    N2 --> N3
-    N1 --> N4
-```
 
 На какой object сейчас ссылается `admin`?
 
@@ -501,19 +283,6 @@ const currentUser = user;
 
 Shared object схема:
 
-```mermaid
-flowchart TD
-    N1["user ──┐"]
-    N2["admin ──┼ → Object"]
-    N3["currentUser ──┘ │"]
-    N4["name: &quot;Anna&quot;"]
-    N5["role: &quot;user&quot;"]
-    N1 --> N2
-    N2 --> N3
-    N3 --> N4
-    N4 --> N5
-```
-
 This is not three users.
 
 This is:
@@ -525,21 +294,6 @@ three variables referring to it
 
 Ментальная модель multiple labels pointing to one folder:
 
-```mermaid
-flowchart TD
-    N1["Label: user"]
-    N2["Label: admin"]
-    N3["Label: currentUser"]
-    N4["Folder with documents"]
-    N5["name"]
-    N6["role"]
-    N3 --> N4
-    N4 --> N5
-    N4 --> N6
-    N1 --> N2
-    N2 --> N3
-```
-
 ### Reading through a reference
 
 When code reads:
@@ -550,29 +304,7 @@ console.log(admin.name);
 
 Engine conceptually does:
 
-```mermaid
-flowchart TD
-    N1["admin"]
-    N2["follow reference to object"]
-    N3["find property name"]
-    N4["read property value"]
-    N1 --> N2
-    N2 --> N3
-    N3 --> N4
-```
-
 Диаграмма reading through reference:
-
-```mermaid
-flowchart TD
-    N1["admin.name"]
-    N2["admin refers to Object"]
-    N3["Object has property name"]
-    N4["возвращённое значение: &quot;Anna&quot;"]
-    N1 --> N2
-    N1 --> N3
-    N1 --> N4
-```
 
 Вопрос:
 
@@ -594,41 +326,7 @@ admin.name = 'Kate';
 
 Engine conceptually does:
 
-```mermaid
-flowchart TD
-    N1["admin"]
-    N2["follow reference to object"]
-    N3["find property name"]
-    N4["replace property value"]
-    N1 --> N2
-    N2 --> N3
-    N3 --> N4
-```
-
 Диаграмма updating through reference:
-
-```mermaid
-flowchart TD
-    N1["Before"]
-    N2["user ──┐"]
-    N3["admin ──┼ → Object"]
-    N4["name: &quot;Anna&quot;"]
-    N5["Operation"]
-    N6["admin.name = &quot;Kate&quot;"]
-    N7["After"]
-    N8["user ──┐"]
-    N9["admin ──┼ → Object"]
-    N10["name: &quot;Kate&quot;"]
-    N1 --> N2
-    N1 --> N3
-    N1 --> N5
-    N5 --> N6
-    N5 --> N7
-    N7 --> N8
-    N7 --> N9
-    N3 --> N4
-    N9 --> N10
-```
 
 `user.name` тоже показывает `"Kate"`, потому что `user` ссылается на тот же object.
 
@@ -645,19 +343,6 @@ does not create a new object.
 It makes `admin` refer to the same object as `user`.
 
 Variables + References:
-
-```mermaid
-flowchart TD
-    N1["Variable user"]
-    N2["reference to Object A"]
-    N3["const admin = user"]
-    N4["Variable admin"]
-    N5["reference to Object A"]
-    N1 --> N2
-    N1 --> N3
-    N3 --> N4
-    N4 --> N5
-```
 
 This is the central idea of the chapter:
 
@@ -695,29 +380,6 @@ Kate
 
 Диаграмма reference reassignment:
 
-```mermaid
-flowchart TD
-    N1["Step 1"]
-    N2["currentUser ──┐"]
-    N3["admin ──┘"]
-    N4["Object A"]
-    N5["name: &quot;Anna&quot;"]
-    N6["Step 2: currentUser = { name: &quot;Kate&quot; }"]
-    N7["admin → Object A"]
-    N8["name: &quot;Anna&quot;"]
-    N9["currentUser → Object B"]
-    N10["name: &quot;Kate&quot;"]
-    N1 --> N2
-    N1 --> N3
-    N1 --> N4
-    N4 --> N5
-    N1 --> N6
-    N6 --> N7
-    N6 --> N8
-    N6 --> N9
-    N9 --> N10
-```
-
 Вопрос:
 
 > На какой object сейчас ссылается `currentUser`?
@@ -751,13 +413,6 @@ console.log(firstName === secondName);
 
 Концептуально:
 
-```mermaid
-flowchart TD
-    N1["&quot;Anna&quot; compared with &quot;Anna&quot;"]
-    N2["same primitive value"]
-    N1 --> N2
-```
-
 Object значения are different. Two objects with same properties are still two different objects.
 
 ```javascript
@@ -773,19 +428,6 @@ console.log(firstUser === secondUser);
 ```
 
 Концептуальное сравнение объектов:
-
-```mermaid
-flowchart TD
-    N1["firstUser → Object A"]
-    N2["name: &quot;Anna&quot;"]
-    N3["secondUser → Object B"]
-    N4["name: &quot;Anna&quot;"]
-    N5["Object A and Object B are not the same object."]
-    N1 --> N3
-    N3 --> N5
-    N1 --> N2
-    N3 --> N4
-```
 
 Object comparison here is about identity:
 
@@ -805,52 +447,11 @@ Detailed equality rules will be studied in a later chapter. Сейчас важ�
 
 Primitive значения are indivisible.
 
-```mermaid
-flowchart TD
-    N1["Primitive"]
-    N2["one value"]
-    N1 --> N2
-```
-
 Object значения are structured and can be updated through properties.
-
-```mermaid
-flowchart TD
-    N1["Object"]
-    N2["property"]
-    N3["property"]
-    N4["property"]
-    N1 --> N2
-    N1 --> N3
-    N1 --> N4
-```
 
 Because objects are worked with through references, changing property through one variable can be observed through another variable referring to the same object.
 
 Common comparison:
-
-```mermaid
-flowchart TD
-    N1["Primitive assignment"]
-    N2["let a = &quot;Anna&quot;"]
-    N3["let b = a"]
-    N4["b = &quot;Kate&quot;"]
-    N5["a remains &quot;Anna&quot;"]
-    N6["Object assignment"]
-    N7["const a = { name: &quot;Anna&quot; }"]
-    N8["const b = a"]
-    N9["b.name = &quot;Kate&quot;"]
-    N10["a.name is &quot;Kate&quot;"]
-    N1 --> N2
-    N1 --> N3
-    N1 --> N4
-    N4 --> N5
-    N1 --> N6
-    N6 --> N7
-    N6 --> N8
-    N6 --> N9
-    N9 --> N10
-```
 
 ---
 
@@ -861,19 +462,6 @@ flowchart TD
 Мы не говорим, где именно находятся objects physically. Мы не используем Stack & Heap. Мы не называем reference address. Это будет позже.
 
 Сейчас механизм такой:
-
-```mermaid
-flowchart TD
-    N1["Object value is created"]
-    N2["Variable receives a reference to it"]
-    N3["Another variable can receive same reference"]
-    N4["Property read follows reference"]
-    N5["Property update follows reference"]
-    N1 --> N2
-    N2 --> N3
-    N3 --> N4
-    N4 --> N5
-```
 
 ### Complete reference flow
 
@@ -891,91 +479,11 @@ console.log(user.name);
 
 Complete execution схема:
 
-```mermaid
-flowchart TD
-    N1["1. Create Object"]
-    N2["Object A"]
-    N3["name: &quot;Anna&quot;"]
-    N4["2. user refers to Object A"]
-    N5["user → Object A"]
-    N6["3. admin receives same reference"]
-    N7["user ──┐"]
-    N8["admin ──┘ → Object A"]
-    N9["4. admin.name = &quot;Kate&quot;"]
-    N10["user ──┐"]
-    N11["admin ──┘ → Object A"]
-    N12["name: &quot;Kate&quot;"]
-    N13["5. user.name"]
-    N14["read name from Object A"]
-    N15["&quot;Kate&quot;"]
-    N1 --> N2
-    N2 --> N3
-    N2 --> N4
-    N4 --> N5
-    N5 --> N6
-    N6 --> N7
-    N8 --> N9
-    N9 --> N10
-    N11 --> N13
-    N13 --> N14
-    N14 --> N15
-    N7 --> N8
-    N10 --> N11
-    N11 --> N12
-```
-
 ### Текущее место в модели JavaScript
-
-```mermaid
-flowchart TD
-    N1["JavaScript Engine"]
-    N2["выполняется code"]
-    N3["создает Execution Context"]
-    N4["uses Call Stack"]
-    N5["stores information"]
-    N6["exposes named access through Variables"]
-    N7["works with Primitive values"]
-    N8["works with Object values"]
-    N9["uses References to let variables reach objects"]
-    N1 --> N2
-    N1 --> N3
-    N1 --> N4
-    N1 --> N5
-    N1 --> N6
-    N1 --> N7
-    N1 --> N8
-    N1 --> N9
-```
 
 The current block:
 
-```mermaid
-flowchart TD
-    N1["Primitive Types"]
-    N2["Object Type"]
-    N3["References"]
-    N4["Stack &amp; Heap"]
-    N1 --> N2
-    N2 --> N3
-    N3 --> N4
-```
-
 ### Схема типичных ошибок
-
-```mermaid
-flowchart TD
-    N1["Mistake"]
-    N2["&quot;admin got its own object&quot;"]
-    N3["Reality"]
-    N4["admin refers to same object as user"]
-    N5["Consequence"]
-    N6["admin.name update is visible through user.name"]
-    N1 --> N2
-    N1 --> N3
-    N3 --> N4
-    N3 --> N5
-    N5 --> N6
-```
 
 ### Переход к Stack & Heap
 
@@ -997,17 +505,6 @@ Next chapter answers those questions. It will introduce Stack & Heap as a concep
 
 Bridge схема:
 
-```mermaid
-flowchart TD
-    N1["References"]
-    N2["explain observable object sharing"]
-    N3["Stack &amp; Heap"]
-    N4["explain common conceptual memory diagram"]
-    N1 --> N2
-    N1 --> N3
-    N3 --> N4
-```
-
 ---
 
 ## Ментальная модель
@@ -1016,37 +513,11 @@ flowchart TD
 
 Reference похожа на library catalog card.
 
-```mermaid
-flowchart TD
-    N1["Catalog card: user"]
-    N2["points to Book A"]
-    N3["Catalog card: admin"]
-    N4["points to Book A"]
-    N5["Book A"]
-    N6["actual content"]
-    N1 --> N2
-    N1 --> N3
-    N3 --> N4
-    N3 --> N5
-    N5 --> N6
-```
-
 Two cards can point to the same book. Editing the book changes what both cards lead to.
 
 ### Bookmark in a book
 
 Bookmark tells you where to go. It is not the page.
-
-```mermaid
-flowchart TD
-    N1["Bookmark"]
-    N2["leads to page"]
-    N3["Page"]
-    N4["contains text"]
-    N1 --> N2
-    N1 --> N3
-    N3 --> N4
-```
 
 Variable reference leads to object. It is not the object itself.
 
@@ -1054,50 +525,15 @@ Variable reference leads to object. It is not the object itself.
 
 Use this only as a conceptual navigation metaphor, not as implementation.
 
-```mermaid
-flowchart TD
-    N1["Paper note: &quot;Room 204&quot;"]
-    N2["helps find room"]
-    N3["Room 204"]
-    N4["actual place with objects inside"]
-    N1 --> N2
-    N1 --> N3
-    N3 --> N4
-```
-
 The note is not the room. Reference is not the object.
 
 ### Shared key to one room
 
 Several people can have keys to the same room.
 
-```mermaid
-flowchart TD
-    N1["key user ──┐"]
-    N2["key admin ──┼ → one room"]
-    N3["key owner ──┘"]
-    N1 --> N2
-    N2 --> N3
-```
-
 If one person changes the whiteboard in that room, everyone entering the same room sees the change.
 
 ### Multiple labels pointing to one folder
-
-```mermaid
-flowchart TD
-    N1["Label: user"]
-    N2["Label: admin"]
-    N3["Label: currentUser"]
-    N4["Folder"]
-    N5["name: &quot;Kate&quot;"]
-    N6["role: &quot;admin&quot;"]
-    N3 --> N4
-    N4 --> N5
-    N4 --> N6
-    N1 --> N2
-    N2 --> N3
-```
 
 This model is useful for test data:
 
@@ -1221,17 +657,6 @@ Both variables refer to one object.
 
 No.
 
-```mermaid
-flowchart TD
-    N1["Reference"]
-    N2["way to reach object"]
-    N3["Object"]
-    N4["value with properties"]
-    N1 --> N2
-    N1 --> N3
-    N3 --> N4
-```
-
 ### Reference is a pointer?
 
 This course does not use pointer implementation here. Reference is introduced as a language concept and mental model. Implementation details and engine internals are not needed for this chapter.
@@ -1281,17 +706,6 @@ Yes. Arrays are object значения, so variables can refer to the same arra
 Реальность:
 
 Variable refers to object value.
-
-```mermaid
-flowchart TD
-    N1["Wrong"]
-    N2["user contains full object"]
-    N3["Better"]
-    N4["user refers to object"]
-    N1 --> N2
-    N1 --> N3
-    N3 --> N4
-```
 
 ### Миф: assigning object creates independent copy
 
@@ -1452,23 +866,6 @@ const adminUser = {
 This uses object spread to create a new first-level object. Detailed spread поведение will be studied later.
 
 ### Complete reference overview
-
-```mermaid
-flowchart TD
-    N1["References"]
-    N2["connect variables with object values"]
-    N3["allow multiple variables to refer to same object"]
-    N4["make shared updates observable"]
-    N5["differ from primitive assignment"]
-    N6["explain object identity"]
-    N7["prepare for Stack &amp; Heap model"]
-    N1 --> N2
-    N1 --> N3
-    N1 --> N4
-    N1 --> N5
-    N1 --> N6
-    N1 --> N7
-```
 
 ---
 

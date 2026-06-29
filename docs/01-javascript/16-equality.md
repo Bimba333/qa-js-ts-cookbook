@@ -4,15 +4,6 @@
 
 Предыдущая глава объяснила Type Conversion:
 
-```mermaid
-flowchart TD
-    N1["Operation expects a type"]
-    N2["Value has another type"]
-    N3["JavaScript may convert value"]
-    N1 --> N2
-    N2 --> N3
-```
-
 Теперь появляется следующий вопрос:
 
 > Как JavaScript решает, равны ли два значения?
@@ -144,39 +135,7 @@ If equality meant only "look the same", both answers would be the same.
 
 But JavaScript has different equality questions:
 
-```mermaid
-flowchart TD
-    N1["=="]
-    N2["Can these values become comparable?"]
-    N3["==="]
-    N4["Are these already the same type and value?"]
-    N5["Object.is()"]
-    N6["Are these exactly the same according to Object.is rules?"]
-    N1 --> N2
-    N1 --> N3
-    N3 --> N4
-    N3 --> N5
-    N5 --> N6
-```
-
 Equality overview:
-
-```mermaid
-flowchart TD
-    N1["Compare two values"]
-    N2["loose equality =="]
-    N3["may convert before comparison"]
-    N4["strict equality ==="]
-    N5["нет type conversion"]
-    N6["Object.is()"]
-    N7["special exact comparison semantics"]
-    N1 --> N2
-    N1 --> N3
-    N1 --> N4
-    N1 --> N5
-    N1 --> N6
-    N6 --> N7
-```
 
 Главный вопрос:
 
@@ -217,35 +176,9 @@ Do these two values match according to this comparison rule?
 
 JavaScript was designed to be flexible with значения from different contexts. That flexibility produced two common comparison modes:
 
-```mermaid
-flowchart TD
-    N1["Loose equality"]
-    N2["allows conversion"]
-    N3["Strict equality"]
-    N4["avoids conversion"]
-    N1 --> N2
-    N1 --> N3
-    N3 --> N4
-```
-
 Later, `Object.is()` became useful for a few exact edge cases.
 
 Comparison questions:
-
-```mermaid
-flowchart TD
-    N1["=="]
-    N2["Can these values become comparable?"]
-    N3["==="]
-    N4["Same type and same value?"]
-    N5["Object.is()"]
-    N6["Same according to Object.is semantics?"]
-    N1 --> N2
-    N1 --> N3
-    N3 --> N4
-    N3 --> N5
-    N5 --> N6
-```
 
 ### Strict equality `===`
 
@@ -263,29 +196,7 @@ false
 
 `===` поток:
 
-```mermaid
-flowchart TD
-    N1["Compare with ==="]
-    N2["Types are the same?"]
-    N3["нет → false"]
-    N4["да → compare values"]
-    N1 --> N2
-    N2 --> N3
-    N2 --> N4
-```
-
 `===` without conversion:
-
-```mermaid
-flowchart TD
-    N1["5 &quot;5&quot;"]
-    N2["Number String"]
-    N3["types differ"]
-    N4["false"]
-    N1 --> N2
-    N2 --> N3
-    N2 --> N4
-```
 
 `===` спрашивает:
 
@@ -307,33 +218,7 @@ true
 
 `==` поток:
 
-```mermaid
-flowchart TD
-    N1["Compare with =="]
-    N2["Types are the same?"]
-    N3["да → compare values"]
-    N4["нет"]
-    N5["try conversion according to rules"]
-    N6["compare converted values"]
-    N1 --> N2
-    N2 --> N3
-    N2 --> N4
-    N2 --> N5
-    N5 --> N6
-```
-
 Type conversion before `==`:
-
-```mermaid
-flowchart TD
-    N1["5 &quot;5&quot;"]
-    N2["Number String"]
-    N3["Number(&quot;5&quot;) → 5"]
-    N4["true"]
-    N1 --> N2
-    N2 --> N3
-    N2 --> N4
-```
 
 `==` спрашивает:
 
@@ -353,19 +238,6 @@ console.log(Object.is(+0, -0));
 
 Object.is схема:
 
-```mermaid
-flowchart TD
-    N1["Object.is(valueA, valueB)"]
-    N2["Compare using Object.is rules"]
-    N3["NaN and NaN → true"]
-    N4["+0 and -0 → false"]
-    N5["иначе similar to strict exact comparison for common primitives"]
-    N1 --> N2
-    N2 --> N3
-    N2 --> N4
-    N2 --> N5
-```
-
 `Object.is()` спрашивает:
 
 > Are these exactly the same according to Object.is rules?
@@ -384,27 +256,7 @@ console.log(true === true);
 
 Primitive comparison схема:
 
-```mermaid
-flowchart TD
-    N1["Primitive A Primitive B"]
-    N2["value and type value and type"]
-    N3["── compare ───────┘"]
-    N1 --> N2
-    N2 --> N3
-```
-
 Примеры:
-
-```mermaid
-flowchart TD
-    N1["200 === 200 → true"]
-    N2["&quot;admin&quot; === &quot;admin&quot; → true"]
-    N3["true === true → true"]
-    N4["200 === &quot;200&quot; → false"]
-    N1 --> N2
-    N2 --> N3
-    N3 --> N4
-```
 
 Что именно сравнивается?
 
@@ -437,21 +289,6 @@ false
 
 Object comparison схема:
 
-```mermaid
-flowchart TD
-    N1["firstUser → Object A"]
-    N2["name: &quot;Anna&quot;"]
-    N3["secondUser → Object B"]
-    N4["name: &quot;Anna&quot;"]
-    N5["Object A is not Object B"]
-    N6["false"]
-    N1 --> N3
-    N3 --> N5
-    N5 --> N6
-    N1 --> N2
-    N3 --> N4
-```
-
 Same reference:
 
 ```javascript
@@ -465,15 +302,6 @@ console.log(firstUser === sameUser);
 ```
 
 Схема:
-
-```mermaid
-flowchart TD
-    N1["firstUser ─────┐"]
-    N2["sameUser ─────┘ → Object A"]
-    N3["name: &quot;Anna&quot;"]
-    N1 --> N2
-    N2 --> N3
-```
 
 Результат:
 
@@ -496,27 +324,7 @@ Identity and value are different questions.
 
 Identity vs value схема:
 
-```mermaid
-flowchart TD
-    N1["Primitive comparison"]
-    N2["compare value directly"]
-    N3["Object comparison"]
-    N4["compare identity: same object or not"]
-    N1 --> N2
-    N1 --> N3
-    N3 --> N4
-```
-
 Identical twins mental model:
-
-```mermaid
-flowchart TD
-    N1["Twin A and Twin B"]
-    N2["look similar"]
-    N3["are still two different people"]
-    N1 --> N2
-    N1 --> N3
-```
 
 Two objects may look identical but still have different identity.
 
@@ -537,17 +345,6 @@ true
 ```
 
 NaN comparison схема:
-
-```mermaid
-flowchart TD
-    N1["NaN === NaN"]
-    N2["false"]
-    N3["Object.is(NaN, NaN)"]
-    N4["true"]
-    N1 --> N2
-    N2 --> N3
-    N3 --> N4
-```
 
 Что именно сравнивается?
 
@@ -576,56 +373,13 @@ false
 
 `+0` vs `-0` схема:
 
-```mermaid
-flowchart TD
-    N1["+0 === -0"]
-    N2["true"]
-    N3["Object.is(+0, -0)"]
-    N4["false"]
-    N1 --> N2
-    N2 --> N3
-    N3 --> N4
-```
-
 This is one of the few places where `Object.is()` has visibly different поведение.
 
 ### Decision tree
 
 Recommended decision tree:
 
-```mermaid
-flowchart TD
-    N1["Need to compare values?"]
-    N2["Are you intentionally relying on conversion?"]
-    N3["да → consider == carefully"]
-    N4["нет"]
-    N5["Need special NaN or +0/-0 semantics?"]
-    N6["да → Object.is()"]
-    N7["нет → ==="]
-    N1 --> N2
-    N2 --> N3
-    N2 --> N4
-    N2 --> N5
-    N5 --> N6
-    N6 --> N7
-```
-
 Recommended comparison strategy:
-
-```mermaid
-flowchart TD
-    N1["значение по умолчанию"]
-    N2["use ==="]
-    N3["Intentional conversion"]
-    N4["use == only when rules are desired and understood"]
-    N5["Special exact cases"]
-    N6["use Object.is()"]
-    N1 --> N2
-    N1 --> N3
-    N3 --> N4
-    N3 --> N5
-    N5 --> N6
-```
 
 ---
 
@@ -633,89 +387,11 @@ flowchart TD
 
 At a conceptual level, equality is an operation with a chosen comparison rule.
 
-```mermaid
-flowchart TD
-    N1["Two values enter comparison"]
-    N2["Operator chooses comparison mode"]
-    N3["== may convert"]
-    N4["=== does not convert"]
-    N5["Object.is() follows its own rules"]
-    N6["Result is Boolean"]
-    N1 --> N2
-    N2 --> N3
-    N2 --> N4
-    N2 --> N5
-    N2 --> N6
-```
-
 ### Complete comparison picture
-
-```mermaid
-flowchart TD
-    N1["Value A"]
-    N2["type"]
-    N3["value / identity"]
-    N4["Value B"]
-    N5["type"]
-    N6["value / identity"]
-    N7["Comparison operator"]
-    N8["=="]
-    N9["conversion may happen"]
-    N10["==="]
-    N11["conversion never happens"]
-    N12["Object.is()"]
-    N13["special exact semantics"]
-    N14["Результат"]
-    N15["true / false"]
-    N1 --> N2
-    N1 --> N3
-    N1 --> N4
-    N4 --> N5
-    N4 --> N6
-    N4 --> N7
-    N7 --> N8
-    N7 --> N9
-    N7 --> N10
-    N7 --> N11
-    N7 --> N12
-    N12 --> N13
-    N7 --> N14
-    N14 --> N15
-```
 
 ### Текущее место в модели JavaScript
 
-```mermaid
-flowchart TD
-    N1["Primitive Types"]
-    N2["Object Type"]
-    N3["References"]
-    N4["Stack &amp; Heap"]
-    N5["Type Conversion"]
-    N6["Equality"]
-    N1 --> N2
-    N2 --> N3
-    N3 --> N4
-    N4 --> N5
-    N5 --> N6
-```
-
 Что именно сравнивается?
-
-```mermaid
-flowchart TD
-    N1["Primitive values"]
-    N2["type and value"]
-    N3["Object values"]
-    N4["identity"]
-    N5["Loose equality"]
-    N6["possibly converted values"]
-    N1 --> N2
-    N1 --> N3
-    N3 --> N4
-    N3 --> N5
-    N5 --> N6
-```
 
 ### Переход к Operators
 
@@ -729,17 +405,6 @@ How do JavaScript operators transform, combine and evaluate values?
 
 Переход к Operators:
 
-```mermaid
-flowchart TD
-    N1["Equality"]
-    N2["comparison operators"]
-    N3["Operators"]
-    N4["broader operation model"]
-    N1 --> N2
-    N1 --> N3
-    N3 --> N4
-```
-
 ---
 
 ## Ментальная модель
@@ -748,72 +413,25 @@ flowchart TD
 
 `===` is like passport check:
 
-```mermaid
-flowchart TD
-    N1["Passport check"]
-    N2["same document type?"]
-    N3["same person?"]
-    N4["нет adaptation"]
-    N1 --> N2
-    N1 --> N3
-    N1 --> N4
-```
-
 If type differs, `===` says false.
 
 ### Переводчик перед сравнением
 
 `==` is like translator before comparison:
 
-```mermaid
-flowchart TD
-    N1["Person A speaks Number"]
-    N2["Person B speaks String"]
-    N3["Translator tries to make them comparable"]
-    N4["Then comparison happens"]
-    N2 --> N3
-    N3 --> N4
-    N1 --> N2
-```
-
 ### Fingerprint
 
 `Object.is()` is like fingerprint for special exact cases:
 
-```mermaid
-flowchart TD
-    N1["Fingerprint check"]
-    N2["stricter about certain edge cases"]
-    N1 --> N2
-```
-
 ### Identical twins
 
 Objects with same shape are like identical twins:
-
-```mermaid
-flowchart TD
-    N1["Twin A"]
-    N2["Twin B"]
-    N3["look alike"]
-    N4["not same person"]
-    N2 --> N3
-    N2 --> N4
-    N1 --> N2
-```
 
 Two objects may look the same but are not the same object.
 
 ### Labels on boxes
 
 Variables are labels. Objects are boxes.
-
-```mermaid
-flowchart TD
-    N1["label firstUser → Box A"]
-    N2["label secondUser → Box B"]
-    N1 --> N2
-```
 
 If two labels point to same box, object equality by identity is true.
 
@@ -916,25 +534,6 @@ Tables help, but reasoning starts with: what exactly is being compared?
 
 Equality myths схема:
 
-```mermaid
-flowchart TD
-    N1["Myth"]
-    N2["запомнить все результаты"]
-    N3["ignore comparison mode"]
-    N4["Reality"]
-    N5["identify operator"]
-    N6["identify types"]
-    N7["identify conversion"]
-    N8["identify identity vs value"]
-    N1 --> N2
-    N1 --> N3
-    N1 --> N4
-    N4 --> N5
-    N4 --> N6
-    N4 --> N7
-    N4 --> N8
-```
-
 ---
 
 ## Типичные ошибки
@@ -1021,19 +620,6 @@ console.log(actualStatusCode === expectedStatusCode);
 
 Схема:
 
-```mermaid
-flowchart TD
-    N1["API value &quot;200&quot;"]
-    N2["explicit conversion"]
-    N3["Number 200"]
-    N4["strict comparison with expected 200"]
-    N5["true"]
-    N1 --> N2
-    N2 --> N3
-    N3 --> N4
-    N4 --> N5
-```
-
 ---
 
 ## Использование в Automation QA
@@ -1116,21 +702,6 @@ How does JavaScript decide whether two values are equal?
 ```
 
 Основная модель:
-
-```mermaid
-flowchart TD
-    N1["=="]
-    N2["may convert values before comparison"]
-    N3["==="]
-    N4["never performs type conversion"]
-    N5["Object.is()"]
-    N6["follows its own comparison rules"]
-    N1 --> N2
-    N1 --> N3
-    N3 --> N4
-    N3 --> N5
-    N5 --> N6
-```
 
 Primitive значения are compared by type and value with `===`.
 

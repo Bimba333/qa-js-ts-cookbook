@@ -6,17 +6,6 @@
 
 Главная модель была такой:
 
-```mermaid
-flowchart TD
-    N1["Array"]
-    N2["forEach()"]
-    N3["same action for each element"]
-    N4["side effect"]
-    N1 --> N2
-    N2 --> N3
-    N3 --> N4
-```
-
 `forEach()` удобен, когда нужно выполнить действие: вывести log, зарегистрировать test case, отправить команду.
 
 Но иногда действие не является конечной целью. Иногда нужно взять каждый test case и получить из него новое значение: строку отчета, краткое имя, объект для CI, список titles.
@@ -73,15 +62,6 @@ T-3: pay order
 
 Нужна операция другого типа:
 
-```mermaid
-flowchart TD
-    N1["input array"]
-    N2["transform each element"]
-    N3["output array"]
-    N1 --> N2
-    N2 --> N3
-```
-
 ## Теория
 
 `map()` вызывает function для каждого element и собирает return значения в новый array.
@@ -96,50 +76,13 @@ const result = array.map(function (element) {
 
 Смысл:
 
-```mermaid
-flowchart TD
-    N1["element"]
-    N2["callback"]
-    N3["возвращаемое значение"]
-    N4["new array element"]
-    N1 --> N2
-    N2 --> N3
-    N3 --> N4
-```
-
 Если нужен выходной массив, результат `map()` нужно сохранить.
 
 ## Внутренний механизм
 
 Концептуальные шаги:
 
-```mermaid
-flowchart TD
-    N1["source array"]
-    N2["создать empty result array"]
-    N3["take first element"]
-    N4["вызвать callback"]
-    N5["put возвращённое значение into result array"]
-    N6["repeat for each element"]
-    N7["вернуть result array"]
-    N1 --> N2
-    N2 --> N3
-    N3 --> N4
-    N4 --> N5
-    N5 --> N6
-    N6 --> N7
-```
-
 Для test cases:
-
-```mermaid
-flowchart TD
-    N1["{ id: 'T-1', title: 'login smoke' }"]
-    N2["вернуть 'T-1: login smoke'"]
-    N3["result[0]"]
-    N1 --> N2
-    N2 --> N3
-```
 
 Исходный `testCases` остается тем же array с теми же objects. `map()` создает новый array для transformed значения.
 
@@ -147,27 +90,7 @@ flowchart TD
 
 Главная модель этой главы: **вход -> transformed выходной массив**.
 
-```mermaid
-flowchart TD
-    N1["input array"]
-    N2["map()"]
-    N3["transform each element"]
-    N4["new output array"]
-    N1 --> N2
-    N2 --> N3
-    N3 --> N4
-```
-
 Количество elements обычно сохраняется, а форма данных меняется:
-
-```mermaid
-flowchart TD
-    N1["3 input elements"]
-    N2["map()"]
-    N3["3 output elements"]
-    N1 --> N2
-    N2 --> N3
-```
 
 ## Практические примеры
 
@@ -220,15 +143,6 @@ const ciPayload = testCases.map(function (testCase) {
 ### Ошибка 2. Забыть `return`
 
 Если callback ничего не возвращает, `map()` положит `undefined` в новый array.
-
-```mermaid
-flowchart TD
-    N1["callback возвращает nothing"]
-    N2["undefined"]
-    N3["result array"]
-    N1 --> N2
-    N2 --> N3
-```
 
 ### Ошибка 3. Ожидать изменение исходного array
 

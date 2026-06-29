@@ -124,83 +124,19 @@ export default function log(message) {
 
 Не все, что находится внутри файла, автоматически доступно снаружи.
 
-```mermaid
-flowchart TD
-    N1["module"]
-    N2["private code"]
-    N3["exported API"]
-    N1 --> N2
-    N1 --> N3
-```
-
 Другие модули видят только то, что было экспортировано.
-
-```mermaid
-flowchart TD
-    N1["config.js"]
-    N2["export baseUrl"]
-    N3["runner.js"]
-    N4["import baseUrl"]
-    N1 --> N2
-    N1 --> N3
-    N3 --> N4
-```
 
 Когда один модуль импортирует другой, между ними появляется зависимость.
 
-```mermaid
-flowchart TD
-    N1["runner.js"]
-    N2["imports config.js"]
-    N3["imports logger.js"]
-    N4["imports reporter.js"]
-    N5["imports assertions.js"]
-    N1 --> N2
-    N1 --> N3
-    N1 --> N4
-    N1 --> N5
-```
-
 Набор таких связей образует dependency graph.
 
-```mermaid
-flowchart TD
-    N1["runner.js"]
-    N2["config.js"]
-    N3["logger.js"]
-    N4["reporter.js"]
-    N5["assertions.js"]
-    N1 --> N2
-    N1 --> N3
-    N1 --> N4
-    N1 --> N5
-```
-
 Dependency graph помогает понять, от каких файлов зависит запуск программы.
-
-```mermaid
-flowchart TD
-    N1["config.js changed"]
-    N2["runner.js may also need changes"]
-    N1 --> N2
-```
 
 Зависимости помогают разработчику понимать, какие части приложения может затронуть изменение. Если меняется модуль конфигурации, нужно проверить файлы, которые его импортируют.
 
 ## Главная ментальная модель
 
 Главная модель главы:
-
-```mermaid
-flowchart TD
-    N1["file"]
-    N2["module"]
-    N3["exports public API"]
-    N4["other modules import it"]
-    N1 --> N2
-    N2 --> N3
-    N3 --> N4
-```
 
 Модуль похож на отдельный инструмент в тестовом фреймворке: внутри может быть много деталей, но наружу он отдает только понятный интерфейс.
 

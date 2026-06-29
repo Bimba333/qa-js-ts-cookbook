@@ -6,25 +6,7 @@
 
 Главная модель была такой:
 
-```mermaid
-flowchart TD
-    N1["Array"]
-    N2["walk through collection"]
-    N3["one element at a time"]
-    N1 --> N2
-    N2 --> N3
-```
-
 Теперь мы хотим выразить похожую идею через array method:
-
-```mermaid
-flowchart TD
-    N1["Array"]
-    N2["for each element"]
-    N3["выполнить same action"]
-    N1 --> N2
-    N2 --> N3
-```
 
 ## Главный вопрос
 
@@ -70,13 +52,6 @@ const testRun = [
 
 Нужно для каждого test case выполнить одинаковое действие: зарегистрировать запуск.
 
-```mermaid
-flowchart TD
-    N1["test case"]
-    N2["log выполнение"]
-    N1 --> N2
-```
-
 Можно использовать `for...of`.
 
 Но array also provides method for this shape:
@@ -101,17 +76,6 @@ array.forEach(function (element) {
 
 Смысл:
 
-```mermaid
-flowchart TD
-    N1["Array"]
-    N2["take element"]
-    N3["вызвать function with element"]
-    N4["repeat for next element"]
-    N1 --> N2
-    N2 --> N3
-    N3 --> N4
-```
-
 `forEach()` обычно используют для side effects:
 
 * log;
@@ -124,46 +88,11 @@ flowchart TD
 
 Концептуальные шаги:
 
-```mermaid
-flowchart TD
-    N1["Array"]
-    N2["start from first element"]
-    N3["pass element into function"]
-    N4["выполнить action"]
-    N5["move to next element"]
-    N6["finish after last element"]
-    N1 --> N2
-    N2 --> N3
-    N3 --> N4
-    N4 --> N5
-    N5 --> N6
-```
-
 Важно: `forEach()` не создает новый array с результатами.
-
-```mermaid
-flowchart TD
-    N1["forEach()"]
-    N2["выполнить side effect"]
-    N3["возвращаемое значение is not used as new collection"]
-    N1 --> N2
-    N2 --> N3
-```
 
 ## Главная ментальная модель
 
 Главная модель этой главы: **side-effect execution**.
-
-```mermaid
-flowchart TD
-    N1["Array"]
-    N2["forEach()"]
-    N3["same action for each element"]
-    N4["side effect"]
-    N1 --> N2
-    N2 --> N3
-    N3 --> N4
-```
 
 ## Практические примеры
 

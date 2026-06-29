@@ -6,17 +6,6 @@
 
 Главная модель была такой:
 
-```mermaid
-flowchart TD
-    N1["Function Expression"]
-    N2["создает function object"]
-    N3["переменная хранит function object"]
-    N4["вызов через variableName()"]
-    N1 --> N2
-    N2 --> N3
-    N3 --> N4
-```
-
 Теперь появляется следующий вопрос:
 
 > Можно ли создать такой же function object более коротким синтаксисом?
@@ -150,19 +139,6 @@ const validateStatus = function () {
 
 Схема проблемы:
 
-```mermaid
-flowchart TD
-    N1["Нужно создать function object"]
-    N2["Function Expression работает"]
-    N3["Но запись иногда длинная"]
-    N4["Компактная запись решает часть проблемы"]
-    N5["Arrow Function"]
-    N1 --> N2
-    N2 --> N3
-    N3 --> N4
-    N4 --> N5
-```
-
 Arrow Function не отменяет Function Declaration и Function Expression.
 
 В этой главе мы смотрим на нее через узкий вопрос:
@@ -179,44 +155,9 @@ Arrow Function не отменяет Function Declaration и Function Expression
 
 Эволюция синтаксиса:
 
-```mermaid
-flowchart TD
-    N1["Function Declaration"]
-    N2["function validateStatus() { ... }"]
-    N3["Function Expression"]
-    N4["const validateStatus = function () { ... };"]
-    N5["Arrow Function"]
-    N6["const validateStatus = () =&gt; { ... };"]
-    N1 --> N2
-    N1 --> N3
-    N3 --> N4
-    N3 --> N5
-    N5 --> N6
-```
-
 Почему компактная форма полезна:
 
-```mermaid
-flowchart TD
-    N1["Тот же function object"]
-    N2["меньше синтаксического шума"]
-    N3["короче запись"]
-    N4["удобнее для некоторых маленьких функций"]
-    N1 --> N2
-    N2 --> N3
-    N3 --> N4
-```
-
 Важно:
-
-```mermaid
-flowchart TD
-    N1["Arrow Function"]
-    N2["не &quot;новый вид значения&quot;"]
-    N3["в этой главе рассматривается как способ создать function object"]
-    N1 --> N2
-    N2 --> N3
-```
 
 У Arrow Functions есть и другие особенности. Здесь они не раскрываются, потому что требуют отдельных тем: `this`, constructors, `arguments` и более сложные сценарии будут изучаться позже.
 
@@ -240,42 +181,9 @@ const validateStatus = () => {
 
 Сравнение:
 
-```mermaid
-flowchart TD
-    N1["Function Expression"]
-    N2["function keyword"]
-    N3["parentheses"]
-    N4["body"]
-    N5["Arrow Function"]
-    N6["parentheses"]
-    N7["=&gt;"]
-    N8["body"]
-    N1 --> N2
-    N1 --> N3
-    N1 --> N4
-    N1 --> N5
-    N5 --> N6
-    N5 --> N7
-    N5 --> N8
-```
-
 Главная замена:
 
-```mermaid
-flowchart TD
-    N1["function () { ... }"]
-    N2["() =&gt; { ... }"]
-    N1 --> N2
-```
-
 Обе формы создают function object, который можно сохранить в переменной.
-
-```mermaid
-flowchart TD
-    N1["const validateStatus = ..."]
-    N2["variable stores function object"]
-    N1 --> N2
-```
 
 ### Syntax simplification
 
@@ -297,27 +205,7 @@ function () {
 
 Схема упрощения:
 
-```mermaid
-flowchart TD
-    N1["function keyword"]
-    N2["removed"]
-    N3["arrow =&gt;"]
-    N4["separates parameters and body"]
-    N1 --> N2
-    N1 --> N3
-    N3 --> N4
-```
-
 Compact syntax model:
-
-```mermaid
-flowchart TD
-    N1["параметры"]
-    N2["=&gt;"]
-    N3["body"]
-    N1 --> N2
-    N2 --> N3
-```
 
 ### Создание Arrow Function
 
@@ -331,31 +219,7 @@ const validateStatus = () => {
 
 Схема создания:
 
-```mermaid
-flowchart TD
-    N1["const validateStatus"]
-    N2["переменная"]
-    N3["() =&gt; { ... }"]
-    N4["создает function object"]
-    N1 --> N2
-    N2 --> N3
-    N3 --> N4
-```
-
 Arrow creation временная шкала:
-
-```mermaid
-flowchart TD
-    N1["Engine reaches assignment"]
-    N2["evaluates right side"]
-    N3["right side создает function object"]
-    N4["stores object in variable"]
-    N5["body waits for invocation"]
-    N1 --> N2
-    N2 --> N3
-    N3 --> N4
-    N4 --> N5
-```
 
 ### Вызов Arrow Function
 
@@ -367,31 +231,7 @@ validateStatus();
 
 Invocation схема:
 
-```mermaid
-flowchart TD
-    N1["validateStatus"]
-    N2["read variable"]
-    N3["get function object"]
-    N4["()"]
-    N5["выполнить body"]
-    N1 --> N2
-    N2 --> N3
-    N3 --> N4
-    N4 --> N5
-```
-
 Объявление переменной с Arrow Function не выполняет тело.
-
-```mermaid
-flowchart TD
-    N1["const validateStatus = () =&gt; { ... };"]
-    N2["создает and stores function object"]
-    N3["validateStatus();"]
-    N4["invokes function object"]
-    N1 --> N2
-    N1 --> N3
-    N3 --> N4
-```
 
 ### Empty parameter list
 
@@ -404,13 +244,6 @@ const validateStatus = () => {
 ```
 
 Схема:
-
-```mermaid
-flowchart TD
-    N1["()"]
-    N2["empty parameter list"]
-    N1 --> N2
-```
 
 В этой главе параметры объясняются только на уровне формы записи. Следующая глава будет подробно отвечать, как данные попадают внутрь функции.
 
@@ -426,13 +259,6 @@ const validateStatus = statusCode => {
 
 Схема:
 
-```mermaid
-flowchart TD
-    N1["statusCode =&gt; { ... }"]
-    N2["one parameter"]
-    N1 --> N2
-```
-
 Также можно оставить скобки:
 
 ```javascript
@@ -445,15 +271,6 @@ const validateStatus = (statusCode) => {
 
 Важно:
 
-```mermaid
-flowchart TD
-    N1["one parameter"]
-    N2["statusCode =&gt; { ... }"]
-    N3["(statusCode) =&gt; { ... }"]
-    N1 --> N2
-    N1 --> N3
-```
-
 ### Multiple parameters
 
 Если параметров несколько, скобки обязательны:
@@ -465,13 +282,6 @@ const compareStatus = (actualStatus, expectedStatus) => {
 ```
 
 Схема:
-
-```mermaid
-flowchart TD
-    N1["(actualStatus, expectedStatus)"]
-    N2["multiple parameters require parentheses"]
-    N1 --> N2
-```
 
 Подробная работа параметров будет изучаться в следующей главе.
 
@@ -487,17 +297,6 @@ const isSuccessfulStatus = () => {
 
 Схема:
 
-```mermaid
-flowchart TD
-    N1["() =&gt; {"]
-    N2["возвращаемое значение;"]
-    N3["}"]
-    N4["explicit return"]
-    N3 --> N4
-    N1 --> N2
-    N2 --> N3
-```
-
 В этой главе `return` рассматривается только на высоком уровне. Отдельная глава о `return` будет позже.
 
 ### Implicit return
@@ -510,25 +309,7 @@ const isSuccessfulStatus = () => true;
 
 Схема:
 
-```mermaid
-flowchart TD
-    N1["() =&gt; expression"]
-    N2["result of expression is returned"]
-    N1 --> N2
-```
-
 Сравнение:
-
-```mermaid
-flowchart TD
-    N1["Explicit return"]
-    N2["() =&gt; { вернуть true; }"]
-    N3["Implicit return"]
-    N4["() =&gt; true"]
-    N1 --> N2
-    N1 --> N3
-    N3 --> N4
-```
 
 Важно не превращать implicit return в головоломку. Если короткая запись ухудшает читаемость, лучше использовать тело с `{}` и `return`.
 
@@ -537,17 +318,6 @@ flowchart TD
 Arrow Function полезна, когда сокращение делает код яснее.
 
 Сравнение читаемости:
-
-```mermaid
-flowchart TD
-    N1["Хороший случай"]
-    N2["короткая функция, понятное имя"]
-    N3["Плохой случай"]
-    N4["длинное тело, много условий, неочевидный implicit return"]
-    N1 --> N2
-    N1 --> N3
-    N3 --> N4
-```
 
 Пример читаемой формы:
 
@@ -573,101 +343,17 @@ Arrow Function не требует всегда использовать сам�
 
 На концептуальном уровне Arrow Function проходит тот же путь, что и Function Expression:
 
-```mermaid
-flowchart TD
-    N1["Arrow syntax"]
-    N2["создает function object"]
-    N3["function object stored in variable"]
-    N4["function object invoked later"]
-    N1 --> N2
-    N2 --> N3
-    N3 --> N4
-```
-
 Что делает движок:
 
-```mermaid
-flowchart TD
-    N1["I see const validateStatus."]
-    N2["I evaluate the right side."]
-    N3["The right side is an Arrow Function."]
-    N4["I создать a function object."]
-    N5["I store it in validateStatus."]
-    N6["я жду, пока появится validateStatus()."]
-    N1 --> N2
-    N2 --> N3
-    N3 --> N4
-    N4 --> N5
-    N5 --> N6
-```
-
 Function object remains the same conceptual result:
-
-```mermaid
-flowchart TD
-    N1["Function Expression"]
-    N2["создает function object"]
-    N3["Arrow Function"]
-    N4["создает function object"]
-    N1 --> N2
-    N1 --> N3
-    N3 --> N4
-```
 
 Эта глава не объясняет отличия Arrow Functions в поведении `this`, constructors, prototype и `arguments`. Эти темы требуют отдельной внутренней модели и будут изучаться позже.
 
 ### Текущее место в модели JavaScript
 
-```mermaid
-flowchart TD
-    N1["Functions"]
-    N2["Function Declaration"]
-    N3["named reusable algorithm"]
-    N4["Function Expression"]
-    N5["function object stored in variable"]
-    N6["Arrow Function"]
-    N7["shorter syntax for function object"]
-    N1 --> N2
-    N1 --> N3
-    N1 --> N4
-    N1 --> N5
-    N1 --> N6
-    N6 --> N7
-```
-
 Модель значения остается такой:
 
-```mermaid
-flowchart TD
-    N1["JavaScript values"]
-    N2["Primitive values"]
-    N3["Object values"]
-    N4["Ordinary objects"]
-    N5["Function objects"]
-    N6["can be created with function syntax"]
-    N7["can be created with arrow syntax"]
-    N1 --> N2
-    N1 --> N3
-    N3 --> N4
-    N3 --> N5
-    N5 --> N6
-    N5 --> N7
-```
-
 Переход к Parameters:
-
-```mermaid
-flowchart TD
-    N1["Arrow Functions"]
-    N2["show different parameter forms"]
-    N3["Next question"]
-    N4["how does data enter a function?"]
-    N5["Parameters"]
-    N1 --> N2
-    N1 --> N3
-    N3 --> N4
-    N3 --> N5
-```
 
 ---
 
@@ -677,87 +363,21 @@ flowchart TD
 
 Arrow Function похожа на сокращенную запись.
 
-```mermaid
-flowchart TD
-    N1["Полная запись"]
-    N2["function () { ... }"]
-    N3["Сокращенная запись"]
-    N4["() =&gt; { ... }"]
-    N1 --> N2
-    N1 --> N3
-    N3 --> N4
-```
-
 Сокращение не меняет главную цель: создать function object.
 
 ### Compressed recipe
-
-```mermaid
-flowchart TD
-    N1["Recipe"]
-    N2["long form: function () { steps }"]
-    N3["compact form: () =&gt; { steps }"]
-    N1 --> N2
-    N1 --> N3
-```
 
 Обе формы описывают инструкцию, которую можно выполнить позже.
 
 ### Simplified blueprint
 
-```mermaid
-flowchart TD
-    N1["Blueprint"]
-    N2["inputs"]
-    N3["arrow"]
-    N4["body"]
-    N1 --> N2
-    N1 --> N3
-    N1 --> N4
-```
-
 Arrow Function - это упрощенный чертеж создания function object.
 
 ### Compact instruction card
 
-```mermaid
-flowchart TD
-    N1["Instruction card"]
-    N2["() нет input"]
-    N3["=&gt; создать arrow function"]
-    N4["{ ... } body"]
-    N1 --> N2
-    N1 --> N3
-    N1 --> N4
-```
-
 ### Abbreviated command
 
-```mermaid
-flowchart TD
-    N1["validateStatus = () =&gt; { ... }"]
-    N2["abbreviated command for creating function object"]
-    N1 --> N2
-```
-
 Complete Arrow Function overview:
-
-```mermaid
-flowchart TD
-    N1["Arrow Function"]
-    N2["создает function object"]
-    N3["can be stored in variable"]
-    N4["can be invoked"]
-    N5["can use explicit return"]
-    N6["can use implicit return"]
-    N7["should remain readable"]
-    N1 --> N2
-    N1 --> N3
-    N1 --> N4
-    N1 --> N5
-    N1 --> N6
-    N1 --> N7
-```
 
 ---
 
@@ -862,21 +482,6 @@ Function Declaration, Function Expression и Arrow Function решают раз�
 
 Схема типичных ошибок:
 
-```mermaid
-flowchart TD
-    N1["Ошибка"]
-    N2["забыть вызвать функцию"]
-    N3["перепутать explicit и implicit return"]
-    N4["убрать скобки там, где они нужны"]
-    N5["сделать слишком длинную Arrow Function"]
-    N6["считать Arrow Function заменой всех функций"]
-    N1 --> N2
-    N1 --> N3
-    N1 --> N4
-    N1 --> N5
-    N1 --> N6
-```
-
 ---
 
 ## Типичные ошибки
@@ -980,17 +585,6 @@ Arrow Function creates function object with concise syntax.
 
 Arrow Functions полезны, когда:
 
-```mermaid
-flowchart TD
-    N1["функция короткая"]
-    N2["имя переменной понятное"]
-    N3["тело легко прочитать"]
-    N4["короткая форма не скрывает смысл"]
-    N1 --> N2
-    N2 --> N3
-    N3 --> N4
-```
-
 Практический чек-лист:
 
 ```text
@@ -1002,17 +596,6 @@ flowchart TD
 ```
 
 Правило читаемости:
-
-```mermaid
-flowchart TD
-    N1["Shorter"]
-    N2["не всегда clearer"]
-    N3["Clearer"]
-    N4["всегда важнее shorter"]
-    N1 --> N2
-    N1 --> N3
-    N3 --> N4
-```
 
 ---
 
@@ -1036,15 +619,6 @@ const isSuccessfulStatus = () => true;
 
 Пример QA-helper:
 
-```mermaid
-flowchart TD
-    N1["isSuccessfulStatus"]
-    N2["arrow function object"]
-    N3["concise validator"]
-    N1 --> N2
-    N2 --> N3
-```
-
 ### Readable utilities
 
 ```javascript
@@ -1067,17 +641,6 @@ const assertUserProfileVisible = () => {
 
 ### Avoiding overly clever syntax
 
-```mermaid
-flowchart TD
-    N1["Automation QA code"]
-    N2["should be clear"]
-    N3["should be maintainable"]
-    N4["should explain test intention"]
-    N1 --> N2
-    N1 --> N3
-    N1 --> N4
-```
-
 Arrow Functions полезны, но тестовый код читают люди. Читаемость важнее демонстрации знания короткого синтаксиса.
 
 ---
@@ -1086,48 +649,13 @@ Arrow Functions полезны, но тестовый код читают люд
 
 Arrow Functions продолжают линию:
 
-```mermaid
-flowchart TD
-    N1["Function Declaration"]
-    N2["Function Expression"]
-    N3["Arrow Functions"]
-    N1 --> N2
-    N2 --> N3
-```
-
 Главная модель:
-
-```mermaid
-flowchart TD
-    N1["Arrow Function"]
-    N2["создает function object"]
-    N3["stores it in variable"]
-    N4["invocation выполняется body"]
-    N1 --> N2
-    N2 --> N3
-    N3 --> N4
-```
 
 В рамках этой главы Arrow Functions важны как компактная форма создания function object.
 
 Это не означает, что Arrow Function равна Function Expression "только короче". У arrow-синтаксиса есть другие особенности, но они требуют отдельного объяснения и будут изучаться позже.
 
 Они не заменяют все остальные формы функций.
-
-```mermaid
-flowchart TD
-    N1["Function Declaration"]
-    N2["good for named reusable algorithms"]
-    N3["Function Expression"]
-    N4["shows function object as value"]
-    N5["Arrow Function"]
-    N6["создает function object with arrow syntax"]
-    N1 --> N2
-    N1 --> N3
-    N3 --> N4
-    N3 --> N5
-    N5 --> N6
-```
 
 Следующая глава ответит:
 

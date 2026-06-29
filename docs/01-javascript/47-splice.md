@@ -4,31 +4,9 @@
 
 Предыдущая глава показала, как array изменяется в начале:
 
-```mermaid
-flowchart TD
-    N1["Array"]
-    N2["Начало"]
-    N3["unshift()"]
-    N4["shift()"]
-    N1 --> N2
-    N2 --> N3
-    N2 --> N4
-```
-
 До этого мы уже изменяли конец через `push()` и `pop()`.
 
 Теперь остается область, которую нельзя описать только словами "начало" или "конец".
-
-```mermaid
-flowchart TD
-    N1["Array"]
-    N2["начало"]
-    N3["середина"]
-    N4["конец"]
-    N1 --> N2
-    N1 --> N3
-    N1 --> N4
-```
 
 Тестовый фреймворк хранит список test cases. Иногда новый test case нужно вставить не в конец, а между уже существующими проверками. Иногда устаревший test case нужно удалить из середины. Иногда один test case нужно заменить другим.
 
@@ -89,33 +67,11 @@ const testCases = [
 
 Нужна операция для середины:
 
-```mermaid
-flowchart TD
-    N1["Array"]
-    N2["найти позицию в середине"]
-    N3["splice()"]
-    N4["array изменен"]
-    N1 --> N2
-    N2 --> N3
-    N3 --> N4
-```
-
 ## Теория
 
 `splice()` изменяет существующий array.
 
 Для этой главы важно думать об array не как о статичной записи, а как о состоянии во времени.
-
-```mermaid
-flowchart TD
-    N1["Array"]
-    N2["current state"]
-    N3["splice()"]
-    N4["next state"]
-    N1 --> N2
-    N2 --> N3
-    N3 --> N4
-```
 
 Array — это mutable состояние object: один и тот же array может находиться в разных состояниях в разные моменты выполнения программы. Каждый вызов `splice()` является состояние transition: он берет текущее состояние array и превращает его в следующее состояние.
 
@@ -128,21 +84,6 @@ array.splice(startIndex, deleteCount, newElement1, newElement2);
 ```
 
 Смысл:
-
-```mermaid
-flowchart TD
-    N1["startIndex"]
-    N2["с какой позиции начать"]
-    N3["deleteCount"]
-    N4["сколько elements удалить"]
-    N5["new elements"]
-    N6["что вставить на это место"]
-    N1 --> N2
-    N2 --> N3
-    N3 --> N4
-    N4 --> N5
-    N5 --> N6
-```
 
 Если нужно только удалить:
 
@@ -179,94 +120,13 @@ testCases.splice(2, 0, 'apply discount');
 
 Шаги:
 
-```mermaid
-flowchart TD
-    N1["Array"]
-    N2["найти index 2"]
-    N3["удалить 0 elements"]
-    N4["вставить &quot;apply discount&quot;"]
-    N5["сдвинуть следующие elements вправо"]
-    N6["обновить length"]
-    N1 --> N2
-    N2 --> N3
-    N3 --> N4
-    N4 --> N5
-    N5 --> N6
-```
-
 Результат:
-
-```mermaid
-flowchart TD
-    N1["index 0 → login smoke"]
-    N2["index 1 → создать order"]
-    N3["index 2 → apply discount"]
-    N4["index 3 → pay order"]
-    N5["index 4 → logout smoke"]
-    N1 --> N2
-    N2 --> N3
-    N3 --> N4
-    N4 --> N5
-```
 
 Теперь посмотрим на это как на transition состояния:
 
-```mermaid
-flowchart TD
-    N1["До: splice"]
-    N2["index 0 → login smoke"]
-    N3["index 1 → создать order"]
-    N4["index 2 → pay order"]
-    N5["index 3 → logout smoke"]
-    N6["splice(2, 0, &quot;apply discount&quot;)"]
-    N7["После: splice"]
-    N8["index 0 → login smoke"]
-    N9["index 1 → создать order"]
-    N10["index 2 → apply discount"]
-    N11["index 3 → pay order"]
-    N12["index 4 → logout smoke"]
-    N1 --> N2
-    N1 --> N3
-    N1 --> N4
-    N1 --> N5
-    N1 --> N6
-    N6 --> N7
-    N7 --> N8
-    N7 --> N9
-    N7 --> N10
-    N7 --> N11
-    N7 --> N12
-```
-
 Обратите внимание: `pay order` был на index `2`, но после вставки оказался на index `3`.
 
-```mermaid
-flowchart TD
-    N1["Before"]
-    N2["index 2 → pay order"]
-    N3["splice inserts before index 2"]
-    N4["After"]
-    N5["index 2 → apply discount"]
-    N6["index 3 → pay order"]
-    N2 --> N3
-    N3 --> N4
-    N1 --> N2
-    N4 --> N5
-    N5 --> N6
-```
-
 Это не мелкая деталь. Это инженерное правило:
-
-```mermaid
-flowchart TD
-    N1["После splice()"]
-    N2["indexes invalidated"]
-    N3["remaining elements shift"]
-    N4["previous index references are unsafe"]
-    N1 --> N2
-    N2 --> N3
-    N3 --> N4
-```
 
 Если код заранее сохранил index `2` как "позицию payment test", после `splice()` это значение уже может указывать на другой element. После каждой mutation нужно заново смотреть на текущее состояние array.
 
@@ -283,44 +143,11 @@ console.log(removed); // []
 
 Главная модель этой главы: **middle modification**.
 
-```mermaid
-flowchart TD
-    N1["Array"]
-    N2["позиция в середине"]
-    N3["удалить / вставить / заменить"]
-    N4["splice()"]
-    N5["тот же array в новом состоянии"]
-    N1 --> N2
-    N2 --> N3
-    N3 --> N4
-    N4 --> N5
-```
-
 Важно: `splice()` не создает безопасную копию для чтения. Он меняет исходный array.
 
 Более точная инженерная формулировка:
 
-```mermaid
-flowchart TD
-    N1["Array = state over time"]
-    N2["splice() = state transition"]
-    N3["следующая операция читает уже новое состояние"]
-    N1 --> N2
-    N2 --> N3
-```
-
 Поэтому `splice()` всегда нужно читать слева направо по времени:
-
-```mermaid
-flowchart TD
-    N1["state 1"]
-    N2["splice()"]
-    N3["state 2"]
-    N4["следующая операция"]
-    N1 --> N2
-    N2 --> N3
-    N3 --> N4
-```
 
 ## Практические примеры
 
@@ -359,31 +186,6 @@ regressionPlan.splice(2, 0, 'apply discount');
 
 После этой операции план уже изменился:
 
-```mermaid
-flowchart TD
-    N1["state before"]
-    N2["0 login smoke"]
-    N3["1 создать order"]
-    N4["2 pay order"]
-    N5["3 logout smoke"]
-    N6["state after"]
-    N7["0 login smoke"]
-    N8["1 создать order"]
-    N9["2 apply discount"]
-    N10["3 pay order"]
-    N11["4 logout smoke"]
-    N1 --> N2
-    N1 --> N3
-    N1 --> N4
-    N1 --> N5
-    N1 --> N6
-    N6 --> N7
-    N6 --> N8
-    N6 --> N9
-    N6 --> N10
-    N6 --> N11
-```
-
 Другой пример — удаление временного теста:
 
 ```javascript
@@ -400,21 +202,7 @@ const removedTests = regressionPlan.splice(1, 1);
 
 Неправильная модель:
 
-```mermaid
-flowchart TD
-    N1["splice()"]
-    N2["new array"]
-    N1 --> N2
-```
-
 Реальность:
-
-```mermaid
-flowchart TD
-    N1["splice()"]
-    N2["changes existing array"]
-    N1 --> N2
-```
 
 ### Ошибка 2. Путать `startIndex` и `deleteCount`
 
@@ -424,51 +212,15 @@ testCases.splice(2, 1);
 
 Это означает:
 
-```mermaid
-flowchart TD
-    N1["начать с index 2"]
-    N2["удалить 1 element"]
-    N1 --> N2
-```
-
 ### Ошибка 3. Забыть про сдвиг indexes
 
 После добавления или удаления из середины indexes следующих elements меняются.
 
 Строгое правило:
 
-```mermaid
-flowchart TD
-    N1["Любой splice()"]
-    N2["изменяет состояние array"]
-    N3["старые indexes больше не считаются надежными"]
-    N1 --> N2
-    N2 --> N3
-```
-
 Небезопасная модель:
 
-```mermaid
-flowchart TD
-    N1["index 2 был нужным"]
-    N2["splice()"]
-    N3["index 2 все еще нужный"]
-    N1 --> N2
-    N2 --> N3
-```
-
 Правильная модель:
-
-```mermaid
-flowchart TD
-    N1["index 2 был нужным"]
-    N2["splice()"]
-    N3["проверить новое состояние"]
-    N4["найти нужный index заново"]
-    N1 --> N2
-    N2 --> N3
-    N3 --> N4
-```
 
 В Automation QA это особенно важно: если один helper вставил test case в середину плана, другой helper не должен молча использовать index, рассчитанный до изменения.
 
@@ -485,17 +237,6 @@ flowchart TD
 * изменить исходный array.
 
 Главная мысль:
-
-```mermaid
-flowchart TD
-    N1["array current state"]
-    N2["splice()"]
-    N3["array next state"]
-    N4["indexes после операции нужно читать заново"]
-    N1 --> N2
-    N2 --> N3
-    N3 --> N4
-```
 
 ## Переход к следующей главе
 

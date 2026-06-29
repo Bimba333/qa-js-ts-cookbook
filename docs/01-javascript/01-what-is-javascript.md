@@ -98,21 +98,6 @@ JavaScript часто воспринимают как один цельный и
 
 Цель этой главы — разделить понятия.
 
-```mermaid
-flowchart TD
-    N1["JavaScript language"]
-    N2["описывает правила языка"]
-    N3["JavaScript Engine"]
-    N4["выполняет язык"]
-    N5["Runtime"]
-    N6["добавляет окружение и API"]
-    N1 --> N2
-    N1 --> N3
-    N3 --> N4
-    N3 --> N5
-    N5 --> N6
-```
-
 Для Automation QA это базовая модель. Без нее трудно объяснить, почему тестовый код видит одни возможности, а код внутри браузерной страницы — другие.
 
 ---
@@ -128,25 +113,6 @@ JavaScript — это язык программирования.
 В этой главе не изучаются переменные, функции, объекты, область видимости, hoisting, promises или event loop. Эти темы будут подробно разобраны в следующих главах. Сейчас важно понять, где находится JavaScript в общей системе.
 
 JavaScript можно представить как набор правил:
-
-```mermaid
-flowchart TD
-    N1["JavaScript"]
-    N2["syntax"]
-    N3["значения"]
-    N4["operators"]
-    N5["control flow"]
-    N6["функции"]
-    N7["объекты"]
-    N8["errors"]
-    N1 --> N2
-    N1 --> N3
-    N1 --> N4
-    N1 --> N5
-    N1 --> N6
-    N1 --> N7
-    N1 --> N8
-```
 
 Syntax — это правила записи кода; подробно синтаксис будет вводиться постепенно.
 
@@ -173,21 +139,6 @@ JavaScript был создан для браузера.
 * выполнять простую логику рядом с пользователем.
 
 JavaScript появился как язык для поведения веб-страниц.
-
-```mermaid
-flowchart TD
-    N1["HTML"]
-    N2["структура страницы"]
-    N3["CSS"]
-    N4["внешний вид"]
-    N5["JavaScript"]
-    N6["поведение страницы"]
-    N1 --> N2
-    N1 --> N3
-    N3 --> N4
-    N3 --> N5
-    N5 --> N6
-```
 
 Позже JavaScript вышел за пределы браузера. Появился Node.js, и язык начал использоваться для серверных приложений, инструментов разработки, CLI-утилит, сборки проектов, тестирования и Automation QA.
 
@@ -219,25 +170,6 @@ JavaScript — это практическая реализация языка, 
 
 Схема:
 
-```mermaid
-flowchart TD
-    N1["ECMAScript"]
-    N2["стандарт языка"]
-    N3["правила синтаксиса"]
-    N4["базовые типы"]
-    N5["встроенные объекты"]
-    N6["ожидаемое поведение"]
-    N7["JavaScript"]
-    N8["язык в реальных engines и runtimes"]
-    N1 --> N2
-    N1 --> N3
-    N1 --> N4
-    N1 --> N5
-    N1 --> N6
-    N1 --> N7
-    N7 --> N8
-```
-
 Важно различать:
 
 * ECMAScript определяет ядро языка;
@@ -259,17 +191,6 @@ ECMAScript описывает язык.
 
 Node.js добавляет возможности для работы с системой, файлами и процессом.
 
-```mermaid
-flowchart TD
-    N1["JavaScript в браузере"]
-    N2["ECMAScript core Browser APIs"]
-    N3["JavaScript в Node.js"]
-    N4["ECMAScript core Node.js APIs"]
-    N2 --> N3
-    N2 --> N4
-    N1 --> N2
-```
-
 Поэтому один и тот же язык может иметь разные доступные возможности в разных runtimes.
 
 ### Что такое JavaScript Engine
@@ -279,23 +200,6 @@ JavaScript Engine — это программа, которая выполняе
 Engine читает код, разбирает его, подготавливает к выполнению и выполняет. Подробно parsing, AST, compilation и execution будут изучаться в следующей главе. Сейчас достаточно понимать: engine отвечает за выполнение самого языка.
 
 Схема:
-
-```mermaid
-flowchart TD
-    N1["JavaScript code"]
-    N2["JavaScript Engine"]
-    N3["read code"]
-    N4["parse code"]
-    N5["prepare выполнение"]
-    N6["выполнить code"]
-    N7["Результат"]
-    N1 --> N2
-    N2 --> N3
-    N2 --> N4
-    N2 --> N5
-    N2 --> N6
-    N2 --> N7
-```
 
 Примеры engines:
 
@@ -318,19 +222,6 @@ Runtime — это среда, в которой выполняется прог
 
 Runtime включает engine и дополнительные API, которые доступны коду.
 
-```mermaid
-flowchart TD
-    N1["Runtime"]
-    N2["JavaScript Engine"]
-    N3["APIs"]
-    N4["environment objects"]
-    N5["rules of interaction with outside world"]
-    N1 --> N2
-    N1 --> N3
-    N1 --> N4
-    N1 --> N5
-```
-
 Environment object — это объект, который окружение предоставляет коду, например `window` в браузере или `process` в Node.js; подробно объекты будут изучаться позже.
 
 JavaScript Engine отвечает за выполнение языка. Runtime отвечает за то, какие внешние возможности есть у программы.
@@ -344,29 +235,6 @@ ECMAScript не говорит, как найти кнопку на HTML-стр�
 Browser runtime — это среда выполнения JavaScript внутри браузера.
 
 Он включает JavaScript engine и browser APIs.
-
-```mermaid
-flowchart TD
-    N1["Browser Runtime"]
-    N2["JavaScript Engine"]
-    N3["например V8 в Chrome"]
-    N4["DOM API"]
-    N5["работа со страницей"]
-    N6["Web APIs"]
-    N7["timers"]
-    N8["fetch"]
-    N9["events"]
-    N10["window / document"]
-    N1 --> N2
-    N1 --> N3
-    N1 --> N4
-    N1 --> N5
-    N1 --> N6
-    N1 --> N7
-    N1 --> N8
-    N1 --> N9
-    N1 --> N10
-```
 
 DOM API — это возможности для работы со структурой HTML-страницы; подробно DOM будет встречаться в Automation QA и browser-темах.
 
@@ -388,25 +256,6 @@ Browser runtime дает доступ к таким вещам, как:
 Node.js runtime — это среда выполнения JavaScript вне браузера.
 
 Он включает V8 engine и Node.js APIs.
-
-```mermaid
-flowchart TD
-    N1["Node.js Runtime"]
-    N2["V8 Engine"]
-    N3["Node.js APIs"]
-    N4["fs"]
-    N5["path"]
-    N6["process"]
-    N7["modules"]
-    N8["terminal / operating system interaction"]
-    N1 --> N2
-    N1 --> N3
-    N1 --> N4
-    N1 --> N5
-    N1 --> N6
-    N1 --> N7
-    N1 --> N8
-```
 
 `fs` — это Node.js API для работы с файлами; подробно работа с ним будет изучаться позже, когда появится практическая необходимость.
 
@@ -430,21 +279,6 @@ Node.js runtime дает доступ к:
 JavaScript может работать в разных местах, потому что язык отделен от runtime.
 
 ECMAScript описывает ядро языка. Engine выполняет это ядро. Runtime добавляет конкретное окружение.
-
-```mermaid
-flowchart TD
-    N1["ECMAScript core"]
-    N2["JavaScript Engine"]
-    N3["Browser Runtime"]
-    N4["browser APIs"]
-    N5["Node.js Runtime"]
-    N6["Node.js APIs"]
-    N1 --> N2
-    N2 --> N3
-    N2 --> N4
-    N2 --> N5
-    N5 --> N6
-```
 
 Один и тот же базовый язык может выполняться в разных средах, если там есть engine.
 
@@ -474,27 +308,6 @@ Node-only API — это возможность, которая существу
 
 Схема:
 
-```mermaid
-flowchart TD
-    N1["Shared JavaScript language"]
-    N2["Browser Runtime"]
-    N3["window"]
-    N4["document"]
-    N5["DOM"]
-    N6["Node.js Runtime"]
-    N7["process"]
-    N8["fs"]
-    N9["path"]
-    N1 --> N2
-    N1 --> N3
-    N1 --> N4
-    N1 --> N5
-    N1 --> N6
-    N6 --> N7
-    N6 --> N8
-    N6 --> N9
-```
-
 Когда код падает с сообщением, что `document` не определен, часто причина не в синтаксисе JavaScript. Причина в том, что код выполняется в Node.js, где нет browser API.
 
 ### TypeScript на высоком уровне
@@ -504,17 +317,6 @@ TypeScript — это язык, который добавляет к JavaScript 
 Типы помогают описывать ожидания к данным и функциям до запуска программы. Но TypeScript не заменяет JavaScript. После компиляции выполняется JavaScript.
 
 Compilation — это преобразование исходного кода в другой вид кода; подробно TypeScript compilation будет изучаться в части TypeScript.
-
-```mermaid
-flowchart TD
-    N1["исходный код TypeScript"]
-    N2["type checking"]
-    N3["JavaScript-код на выходе"]
-    N4["Runtime выполняется JavaScript"]
-    N1 --> N2
-    N1 --> N3
-    N3 --> N4
-```
 
 Поэтому JavaScript fundamentals нужны до TypeScript. Чтобы понимать, что TypeScript проверяет, нужно понимать, как JavaScript выполняется.
 
@@ -526,19 +328,6 @@ flowchart TD
 
 Один JavaScript-файл не выполняется сам по себе. Его выполняет engine внутри runtime.
 
-```mermaid
-flowchart TD
-    N1["Code"]
-    N2["Engine"]
-    N3["Runtime"]
-    N4["Available APIs"]
-    N5["Program behavior"]
-    N1 --> N2
-    N2 --> N3
-    N3 --> N4
-    N4 --> N5
-```
-
 Если доступен `document`, значит код находится в окружении, где есть browser API.
 
 Если доступен `process`, значит код находится в Node.js runtime.
@@ -547,33 +336,9 @@ flowchart TD
 
 Пример разделения:
 
-```mermaid
-flowchart TD
-    N1["console.log('Hello')"]
-    N2["базовый запуск возможен в Node.js и браузере"]
-    N3["document.title"]
-    N4["доступно в browser runtime"]
-    N5["process.version"]
-    N6["доступно в Node.js runtime"]
-    N1 --> N2
-    N1 --> N3
-    N3 --> N4
-    N3 --> N5
-    N5 --> N6
-```
-
 `console.log` здесь используется только как способ вывести текст; подробно средства вывода и выражения будут встречаться в следующих главах.
 
 Когда вы видите ошибку, нужно задавать вопрос:
-
-```mermaid
-flowchart TD
-    N1["Это проблема языка?"]
-    N2["или"]
-    N3["Это проблема runtime API?"]
-    N1 --> N2
-    N2 --> N3
-```
 
 Такой вопрос помогает быстрее отличать синтаксическую ошибку от ошибки окружения.
 
@@ -584,19 +349,6 @@ flowchart TD
 Представьте JavaScript как текст инструкции, engine как исполнителя инструкции, а runtime как помещение, в котором исполнитель работает.
 
 Один и тот же исполнитель может читать похожую инструкцию в разных помещениях, но доступные инструменты будут разными.
-
-```mermaid
-flowchart TD
-    N1["JavaScript code"]
-    N2["Engine reads and выполняется"]
-    N3["Runtime provides tools"]
-    N4["Browser: document, window, DOM"]
-    N5["Node.js: process, fs, path"]
-    N1 --> N2
-    N2 --> N3
-    N3 --> N4
-    N3 --> N5
-```
 
 Если вы просите исполнителя "найди кнопку на странице", это возможно в помещении браузера.
 
@@ -749,17 +501,6 @@ Node.js — это runtime для выполнения JavaScript вне бра�
 
 Исправленная модель:
 
-```mermaid
-flowchart TD
-    N1["Playwright test code"]
-    N2["Node.js context"]
-    N3["page.evaluate code"]
-    N4["Browser context"]
-    N1 --> N2
-    N1 --> N3
-    N3 --> N4
-```
-
 ### Ошибка 4. Думать, что TypeScript заменяет JavaScript
 
 Неправильное ожидание:
@@ -840,23 +581,6 @@ Playwright-тесты обычно запускаются в Node.js. Они и�
 
 Главная схема:
 
-```mermaid
-flowchart TD
-    N1["Playwright Test"]
-    N2["runs in Node.js context"]
-    N3["sends commands to browser"]
-    N4["Browser"]
-    N5["opens page"]
-    N6["выполняется page JavaScript"]
-    N7["provides DOM APIs"]
-    N1 --> N2
-    N1 --> N3
-    N1 --> N4
-    N4 --> N5
-    N4 --> N6
-    N4 --> N7
-```
-
 Когда вы пишете обычный код теста, он выполняется в Node.js context.
 
 Когда вы передаете код в `page.evaluate`, этот код выполняется в browser context.
@@ -864,31 +588,6 @@ flowchart TD
 `page.evaluate` — это Playwright-метод для выполнения функции внутри страницы браузера; подробно он будет изучаться в разделе Playwright.
 
 Схема:
-
-```mermaid
-flowchart TD
-    N1["Node.js context"]
-    N2["test file"]
-    N3["Playwright API"]
-    N4["process"]
-    N5["fs"]
-    N6["page.evaluate(...)"]
-    N7["Browser context"]
-    N8["page JavaScript"]
-    N9["window"]
-    N10["document"]
-    N11["DOM"]
-    N1 --> N2
-    N1 --> N3
-    N1 --> N4
-    N1 --> N5
-    N1 --> N6
-    N1 --> N7
-    N7 --> N8
-    N7 --> N9
-    N7 --> N10
-    N7 --> N11
-```
 
 Почему это важно:
 
@@ -899,17 +598,6 @@ flowchart TD
 * ошибка может быть связана не с Playwright, а с неправильным контекстом выполнения.
 
 Типичная QA-ситуация:
-
-```mermaid
-flowchart TD
-    N1["Тест падает"]
-    N2["код выполнялся в Node.js?"]
-    N3["код выполнялся в browser context?"]
-    N4["API существует в этом context?"]
-    N1 --> N2
-    N1 --> N3
-    N1 --> N4
-```
 
 Это различение будет постоянно использоваться в Playwright, API testing, fixtures, helpers и framework architecture.
 

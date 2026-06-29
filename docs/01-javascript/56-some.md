@@ -51,13 +51,6 @@ const testCases = [
 
 Нужен не сам failed test, а ответ:
 
-```mermaid
-flowchart TD
-    N1["true → есть хотя бы один failed test"]
-    N2["false → failed tests нет"]
-    N1 --> N2
-```
-
 ## Теория
 
 `some()` отвечает на вопрос "есть ли хотя бы один match?"
@@ -76,29 +69,11 @@ Result — Boolean.
 
 Концептуальные шаги:
 
-```mermaid
-flowchart TD
-    N1["check element"]
-    N2["true → вернуть true"]
-    N3["false → check next element"]
-    N1 --> N2
-    N1 --> N3
-```
-
 Метод может остановиться на первом совпадении, потому что дальнейшие elements уже не изменят ответ.
 
 ## Главная ментальная модель
 
 Главная модель этой главы: **at least one match**.
-
-```mermaid
-flowchart TD
-    N1["testCases"]
-    N2["some()"]
-    N3["true / false"]
-    N1 --> N2
-    N2 --> N3
-```
 
 Вопрос: "Есть ли хотя бы один?"
 

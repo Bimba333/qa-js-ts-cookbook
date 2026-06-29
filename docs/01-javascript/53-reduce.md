@@ -6,15 +6,6 @@
 
 Главная модель была такой:
 
-```mermaid
-flowchart TD
-    N1["input array"]
-    N2["filter()"]
-    N3["subset array"]
-    N1 --> N2
-    N2 --> N3
-```
-
 `filter()` выбирает часть elements.
 
 Теперь появляется новая задача: не получить array, а вычислить один итог по всему списку.
@@ -75,15 +66,6 @@ const testCases = [
 
 Нужна операция, которая постепенно собирает один итог:
 
-```mermaid
-flowchart TD
-    N1["many elements"]
-    N2["combine step by step"]
-    N3["one result"]
-    N1 --> N2
-    N2 --> N3
-```
-
 ## Теория
 
 `reduce()` проходит по array и переносит промежуточный result от шага к шагу.
@@ -98,71 +80,19 @@ const result = array.reduce(function (accumulator, element) {
 
 Смысл:
 
-```mermaid
-flowchart TD
-    N1["accumulator"]
-    N2["текущий элемент"]
-    N3["callback"]
-    N4["next accumulator"]
-    N1 --> N2
-    N2 --> N3
-    N3 --> N4
-```
-
 `initialValue` задает начальное состояние aggregation.
 
 ## Внутренний механизм
 
 Концептуальные шаги:
 
-```mermaid
-flowchart TD
-    N1["initial value"]
-    N2["accumulator"]
-    N3["take first element"]
-    N4["вернуть updated accumulator"]
-    N5["take next element"]
-    N6["вернуть updated accumulator"]
-    N7["вернуть final result"]
-    N1 --> N2
-    N2 --> N3
-    N3 --> N4
-    N4 --> N5
-    N5 --> N6
-    N6 --> N7
-```
-
 Один trace для status summary:
-
-```mermaid
-flowchart TD
-    N1["{ passed: 0, failed: 0, skipped: 0 }"]
-    N2["T-1 passed"]
-    N3["{ passed: 1, failed: 0, skipped: 0 }"]
-    N4["T-2 failed"]
-    N5["{ passed: 1, failed: 1, skipped: 0 }"]
-    N1 --> N2
-    N2 --> N3
-    N3 --> N4
-    N4 --> N5
-```
 
 Этого достаточно для основной модели: каждый callback call получает текущий accumulator и возвращает следующий.
 
 ## Главная ментальная модель
 
 Главная модель этой главы: **вход -> single accumulated result**.
-
-```mermaid
-flowchart TD
-    N1["input array"]
-    N2["reduce()"]
-    N3["accumulate step by step"]
-    N4["single result"]
-    N1 --> N2
-    N2 --> N3
-    N3 --> N4
-```
 
 Ключевой вопрос при чтении `reduce()`: как текущий element меняет accumulator?
 

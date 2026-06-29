@@ -6,15 +6,6 @@
 
 Мы научились моделировать одну entity:
 
-```mermaid
-flowchart TD
-    N1["Object"]
-    N2["one entity"]
-    N3["many named properties"]
-    N1 --> N2
-    N2 --> N3
-```
-
 Например:
 
 ```javascript
@@ -28,13 +19,6 @@ Object отвечает на вопрос:
 
 ```text
 What value belongs to this name?
-```
-
-```mermaid
-flowchart TD
-    N1["user.email"]
-    N2["&quot;anna@example.test&quot;"]
-    N1 --> N2
 ```
 
 Теперь появляется новый вопрос:
@@ -54,19 +38,6 @@ user100
 ```
 
 Нужна ordered collection:
-
-```mermaid
-flowchart TD
-    N1["Many values"]
-    N2["Array"]
-    N3["Ordered positions"]
-    N4["Indexes"]
-    N5["Read values"]
-    N1 --> N2
-    N2 --> N3
-    N3 --> N4
-    N4 --> N5
-```
 
 Arrays start a new section.
 
@@ -174,19 +145,6 @@ user100
 
 Проблема:
 
-```mermaid
-flowchart TD
-    N1["many related values"]
-    N2["too many variable names"]
-    N3["hard to keep order"]
-    N4["hard to pass together"]
-    N5["hard to read as one collection"]
-    N1 --> N2
-    N1 --> N3
-    N1 --> N4
-    N1 --> N5
-```
-
 Нам нужна одна value, которая represents many ordered значения:
 
 ```javascript
@@ -199,17 +157,6 @@ const testUsers = [
 
 Теперь есть one collection:
 
-```mermaid
-flowchart TD
-    N1["testUsers"]
-    N2["position 0 → &quot;anna@example.test&quot;"]
-    N3["position 1 → &quot;kate@example.test&quot;"]
-    N4["position 2 → &quot;max@example.test&quot;"]
-    N1 --> N2
-    N1 --> N3
-    N1 --> N4
-```
-
 Array solves ordered storage.
 
 ---
@@ -219,19 +166,6 @@ Array solves ordered storage.
 Array is an ordered collection of значения.
 
 Главная модель:
-
-```mermaid
-flowchart TD
-    N1["Array"]
-    N2["index 0 → value"]
-    N3["index 1 → value"]
-    N4["index 2 → value"]
-    N5["..."]
-    N1 --> N2
-    N1 --> N3
-    N1 --> N4
-    N1 --> N5
-```
 
 Array literal:
 
@@ -246,13 +180,6 @@ const users = [
 Square brackets are syntax.
 
 The concept is ordered collection:
-
-```mermaid
-flowchart TD
-    N1["Many values"]
-    N2["one ordered structure"]
-    N1 --> N2
-```
 
 ### Index
 
@@ -288,15 +215,6 @@ const secondUser = users[1];
 
 Ментальная модель:
 
-```mermaid
-flowchart TD
-    N1["users[1]"]
-    N2["go to position 1"]
-    N3["read value"]
-    N1 --> N2
-    N2 --> N3
-```
-
 ### Updating elements
 
 You can replace value at position:
@@ -306,15 +224,6 @@ users[1] = 'kate.updated@example.test';
 ```
 
 Ментальная модель:
-
-```mermaid
-flowchart TD
-    N1["index 1"]
-    N2["old value"]
-    N3["new value"]
-    N1 --> N2
-    N2 --> N3
-```
 
 This is element replacement.
 
@@ -342,13 +251,6 @@ const users = ['Anna', 'Kate', 'Max'];
 
 Важная связь:
 
-```mermaid
-flowchart TD
-    N1["last index"]
-    N2["length - 1"]
-    N1 --> N2
-```
-
 For length `3`, last index is `2`.
 
 ```text
@@ -365,13 +267,6 @@ const failedAssertions = [];
 ```
 
 Ментальная модель:
-
-```mermaid
-flowchart TD
-    N1["empty array"]
-    N2["length: 0"]
-    N1 --> N2
-```
 
 It can represent:
 
@@ -395,17 +290,6 @@ This is allowed.
 
 But for readable test code, arrays are usually clearer when elements represent the same kind of thing:
 
-```mermaid
-flowchart TD
-    N1["good collection"]
-    N2["list of users"]
-    N3["unclear collection"]
-    N4["unrelated values mixed together"]
-    N1 --> N2
-    N1 --> N3
-    N3 --> N4
-```
-
 Mixed значения will appear naturally later, but do not use them as default style.
 
 ---
@@ -427,53 +311,11 @@ requested index: 2
 
 Then:
 
-```mermaid
-flowchart TD
-    N1["Step 1"]
-    N2["Find array value"]
-    N1 --> N2
-```
-
-```mermaid
-flowchart TD
-    N1["Step 2"]
-    N2["Use index 2 as position"]
-    N1 --> N2
-```
-
-```mermaid
-flowchart TD
-    N1["Step 3"]
-    N2["Возвращаемое значение stored there"]
-    N1 --> N2
-```
-
 If index exists:
-
-```mermaid
-flowchart TD
-    N1["users[2]"]
-    N2["&quot;max@example.test&quot;"]
-    N1 --> N2
-```
 
 If index does not contain element:
 
-```mermaid
-flowchart TD
-    N1["users[10]"]
-    N2["undefined"]
-    N1 --> N2
-```
-
 This is similar to reading missing object property in one important way:
-
-```mermaid
-flowchart TD
-    N1["значение отсутствует value"]
-    N2["undefined"]
-    N1 --> N2
-```
 
 But the question is different.
 
@@ -499,37 +341,7 @@ users[1] = 'updated@example.test';
 
 Engine:
 
-```mermaid
-flowchart TD
-    N1["Step 1"]
-    N2["Find array value"]
-    N1 --> N2
-```
-
-```mermaid
-flowchart TD
-    N1["Step 2"]
-    N2["Find position 1"]
-    N1 --> N2
-```
-
-```mermaid
-flowchart TD
-    N1["Step 3"]
-    N2["Replace stored value"]
-    N1 --> N2
-```
-
 After update:
-
-```mermaid
-flowchart TD
-    N1["index 0 → &quot;anna@example.test&quot;"]
-    N2["index 1 → &quot;updated@example.test&quot;"]
-    N3["index 2 → &quot;max@example.test&quot;"]
-    N1 --> N2
-    N2 --> N3
-```
 
 ### Length flow
 
@@ -564,75 +376,17 @@ last index: 2
 
 Array is like bookshelf.
 
-```mermaid
-flowchart TD
-    N1["Bookshelf"]
-    N2["shelf position 0 → book"]
-    N3["shelf position 1 → book"]
-    N4["shelf position 2 → book"]
-    N1 --> N2
-    N1 --> N3
-    N1 --> N4
-```
-
 Numbered lockers:
-
-```mermaid
-flowchart TD
-    N1["Locker 0 → value"]
-    N2["Locker 1 → value"]
-    N3["Locker 2 → value"]
-    N1 --> N2
-    N2 --> N3
-```
 
 Train cars:
 
-```mermaid
-flowchart TD
-    N1["Train"]
-    N2["car 0"]
-    N3["car 1"]
-    N4["car 2"]
-    N1 --> N2
-    N1 --> N3
-    N1 --> N4
-```
-
 Hotel rooms:
 
-```mermaid
-flowchart TD
-    N1["Hotel"]
-    N2["room 0 → guest"]
-    N3["room 1 → guest"]
-    N4["room 2 → guest"]
-    N1 --> N2
-    N1 --> N3
-    N1 --> N4
-```
-
 Spreadsheet rows:
-
-```mermaid
-flowchart TD
-    N1["Row 0 → first item"]
-    N2["Row 1 → second item"]
-    N3["Row 2 → third item"]
-    N1 --> N2
-    N2 --> N3
-```
 
 These are analogies.
 
 The technical mental model:
-
-```mermaid
-flowchart TD
-    N1["Array"]
-    N2["ordered collection accessed by index"]
-    N1 --> N2
-```
 
 ---
 
@@ -722,29 +476,11 @@ Square brackets are syntax.
 
 Array is ordered collection.
 
-```mermaid
-flowchart TD
-    N1["[]"]
-    N2["syntax"]
-    N3["Array"]
-    N4["ordered storage model"]
-    N1 --> N2
-    N1 --> N3
-    N3 --> N4
-```
-
 ### Почему первый index is `0`?
 
 JavaScript uses zero-based indexing. This is common in many programming languages.
 
 For this chapter, remember practical rule:
-
-```mermaid
-flowchart TD
-    N1["first element → index 0"]
-    N2["last element → length - 1"]
-    N1 --> N2
-```
 
 ### Array can store objects?
 
@@ -779,13 +515,6 @@ test cases
 Use object when names matter.
 
 Use array when order and positions matter.
-
-```mermaid
-flowchart TD
-    N1["object → named properties"]
-    N2["array → ordered positions"]
-    N1 --> N2
-```
 
 ---
 
@@ -892,15 +621,6 @@ const requests = ['/users', '/orders', '/profile'];
 
 Arrays useful when you have:
 
-```mermaid
-flowchart TD
-    N1["many values"]
-    N2["and"]
-    N3["order matters"]
-    N1 --> N2
-    N2 --> N3
-```
-
 Примеры:
 
 * list of users;
@@ -911,13 +631,6 @@ flowchart TD
 * list of browser tabs.
 
 Array improves readability:
-
-```mermaid
-flowchart TD
-    N1["testUsers"]
-    N2["one named collection"]
-    N1 --> N2
-```
 
 Instead of:
 
@@ -934,17 +647,6 @@ user3
 ### Users returned from API
 
 API often возвращает:
-
-```mermaid
-flowchart TD
-    N1["users"]
-    N2["user at index 0"]
-    N3["user at index 1"]
-    N4["user at index 2"]
-    N1 --> N2
-    N1 --> N3
-    N1 --> N4
-```
 
 В коде:
 
@@ -979,17 +681,6 @@ Browser contexts can have many pages/tabs.
 
 Концептуально:
 
-```mermaid
-flowchart TD
-    N1["pages"]
-    N2["index 0 → first tab"]
-    N3["index 1 → second tab"]
-    N4["index 2 → third tab"]
-    N1 --> N2
-    N1 --> N3
-    N1 --> N4
-```
-
 ### Failed assertions
 
 Empty array can represent no failures:
@@ -1018,44 +709,9 @@ This keeps related request descriptions together.
 
 ### 1. Why arrays exist
 
-```mermaid
-flowchart TD
-    N1["many values"]
-    N2["value 1"]
-    N3["value 2"]
-    N4["value 3"]
-    N5["need one ordered collection"]
-    N1 --> N2
-    N1 --> N3
-    N1 --> N4
-    N1 --> N5
-```
-
 ### 2. One object vs many objects
 
-```mermaid
-flowchart TD
-    N1["Object"]
-    N2["one entity"]
-    N3["Array"]
-    N4["many values"]
-    N1 --> N2
-    N1 --> N3
-    N3 --> N4
-```
-
 ### 3. Ordered collection
-
-```mermaid
-flowchart TD
-    N1["Array"]
-    N2["first"]
-    N3["second"]
-    N4["third"]
-    N1 --> N2
-    N1 --> N3
-    N1 --> N4
-```
 
 ### 4. Numbered positions
 
@@ -1074,372 +730,73 @@ value: A B C
 
 ### 6. Reading by index
 
-```mermaid
-flowchart TD
-    N1["array[1]"]
-    N2["value at index 1"]
-    N1 --> N2
-```
-
 ### 7. Updating by index
-
-```mermaid
-flowchart TD
-    N1["array[1] = newValue"]
-    N2["replace element"]
-    N1 --> N2
-```
 
 ### 8. Length
 
-```mermaid
-flowchart TD
-    N1["[A, B, C]"]
-    N2["length 3"]
-    N1 --> N2
-```
-
 ### 9. Empty array
-
-```mermaid
-flowchart TD
-    N1["[]"]
-    N2["length 0"]
-    N1 --> N2
-```
 
 ### 10. Mixed значения
 
-```mermaid
-flowchart TD
-    N1["[&quot;status&quot;, 200, true]"]
-    N2["allowed but use carefully"]
-    N1 --> N2
-```
-
 ### 11. Текущая модель JavaScript
-
-```mermaid
-flowchart TD
-    N1["Values"]
-    N2["Objects"]
-    N3["Arrays"]
-    N4["ordered collections"]
-    N1 --> N2
-    N1 --> N3
-    N3 --> N4
-```
 
 ### 12. QA users list
 
-```mermaid
-flowchart TD
-    N1["users"]
-    N2["0 → Anna"]
-    N3["1 → Kate"]
-    N4["2 → Max"]
-    N1 --> N2
-    N1 --> N3
-    N1 --> N4
-```
-
 ### 13. API response
-
-```mermaid
-flowchart TD
-    N1["response.users"]
-    N2["array of user objects"]
-    N1 --> N2
-```
 
 ### 14. Test cases
 
-```mermaid
-flowchart TD
-    N1["testCases"]
-    N2["valid login"]
-    N3["invalid password"]
-    N4["locked user"]
-    N1 --> N2
-    N1 --> N3
-    N1 --> N4
-```
-
 ### 15. Читаемость
-
-```mermaid
-flowchart TD
-    N1["one collection name"]
-    N2["better than"]
-    N3["many numbered variables"]
-    N1 --> N2
-    N2 --> N3
-```
 
 ### 16. Типичные ошибки
 
-```mermaid
-flowchart TD
-    N1["length 3"]
-    N2["last index 2"]
-    N1 --> N2
-```
-
 ### 17. Bookshelf analogy
-
-```mermaid
-flowchart TD
-    N1["shelf 0 → book"]
-    N2["shelf 1 → book"]
-    N3["shelf 2 → book"]
-    N1 --> N2
-    N2 --> N3
-```
 
 ### 18. Train analogy
 
-```mermaid
-flowchart TD
-    N1["car 0 → value"]
-    N2["car 1 → value"]
-    N3["car 2 → value"]
-    N1 --> N2
-    N2 --> N3
-```
-
 ### 19. Hotel analogy
-
-```mermaid
-flowchart TD
-    N1["room 0 → guest"]
-    N2["room 1 → guest"]
-    N3["room 2 → guest"]
-    N1 --> N2
-    N2 --> N3
-```
 
 ### 20. Spreadsheet analogy
 
-```mermaid
-flowchart TD
-    N1["row 0 → item"]
-    N2["row 1 → item"]
-    N3["row 2 → item"]
-    N1 --> N2
-    N2 --> N3
-```
-
 ### 21. Index lookup
-
-```mermaid
-flowchart TD
-    N1["index"]
-    N2["position"]
-    N3["значение"]
-    N1 --> N2
-    N2 --> N3
-```
 
 ### 22. Last element
 
-```mermaid
-flowchart TD
-    N1["length - 1"]
-    N2["last index"]
-    N1 --> N2
-```
-
 ### 23. Array growth preview
-
-```mermaid
-flowchart TD
-    N1["array now"]
-    N2["next chapter: add/remove elements"]
-    N1 --> N2
-```
 
 ### 24. Element replacement
 
-```mermaid
-flowchart TD
-    N1["old value"]
-    N2["new value at same index"]
-    N1 --> N2
-```
-
 ### 25. Краткая ментальная модель
-
-```mermaid
-flowchart TD
-    N1["Many values"]
-    N2["Ordered collection"]
-    N3["Indexes"]
-    N1 --> N2
-    N2 --> N3
-```
 
 ### 26. Complete array model
 
-```mermaid
-flowchart TD
-    N1["Array"]
-    N2["length"]
-    N3["index 0"]
-    N4["index 1"]
-    N5["index 2"]
-    N1 --> N2
-    N1 --> N3
-    N1 --> N4
-    N1 --> N5
-```
-
 ### 27. Object vs array
-
-```mermaid
-flowchart TD
-    N1["object.name"]
-    N2["named property"]
-    N3["array[0]"]
-    N4["positioned element"]
-    N1 --> N2
-    N2 --> N3
-    N3 --> N4
-```
 
 ### 28. Ordered storage
 
-```mermaid
-flowchart TD
-    N1["order matters"]
-    N2["array fits"]
-    N1 --> N2
-```
-
 ### 29. Принадлежность значения
-
-```mermaid
-flowchart TD
-    N1["array"]
-    N2["contains elements"]
-    N1 --> N2
-```
 
 ### 30. Array lifecycle
 
-```mermaid
-flowchart TD
-    N1["create"]
-    N2["чтение"]
-    N3["update"]
-    N4["grow later"]
-    N1 --> N2
-    N2 --> N3
-    N3 --> N4
-```
-
 ### 31. Переход к push()
-
-```mermaid
-flowchart TD
-    N1["fixed elements now"]
-    N2["push() later"]
-    N1 --> N2
-```
 
 ### 32. Переход к loops
 
-```mermaid
-flowchart TD
-    N1["many elements"]
-    N2["later: repeat over them"]
-    N1 --> N2
-```
-
 ### 33. Переход к iteration
-
-```mermaid
-flowchart TD
-    N1["array"]
-    N2["later: iteration methods"]
-    N1 --> N2
-```
 
 ### 34. QA framework example
 
-```mermaid
-flowchart TD
-    N1["failedAssertions"]
-    N2["failure 0"]
-    N3["failure 1"]
-    N1 --> N2
-    N1 --> N3
-```
-
 ### 35. API collection
-
-```mermaid
-flowchart TD
-    N1["GET /users"]
-    N2["array of users"]
-    N1 --> N2
-```
 
 ### 36. Collection evolution
 
-```mermaid
-flowchart TD
-    N1["one value"]
-    N2["many values"]
-    N3["array"]
-    N1 --> N2
-    N2 --> N3
-```
-
 ### 37. Element identity
-
-```mermaid
-flowchart TD
-    N1["element at index 0"]
-    N2["can be primitive or object"]
-    N1 --> N2
-```
 
 ### 38. Array memory intuition
 
-```mermaid
-flowchart TD
-    N1["one variable"]
-    N2["one array value"]
-    N3["many elements"]
-    N1 --> N2
-    N2 --> N3
-```
-
 ### 39. Reading flow
 
-```mermaid
-flowchart TD
-    N1["array[index]"]
-    N2["find position"]
-    N3["возвращаемое значение"]
-    N1 --> N2
-    N2 --> N3
-```
-
 ### 40. Итоговая схема
-
-```mermaid
-flowchart TD
-    N1["Many values"]
-    N2["Array"]
-    N3["Ordered positions"]
-    N4["Indexes"]
-    N5["Read values"]
-    N1 --> N2
-    N2 --> N3
-    N3 --> N4
-    N4 --> N5
-```
 
 ---
 
@@ -1459,31 +816,7 @@ How do we store many values together in order?
 
 The central model:
 
-```mermaid
-flowchart TD
-    N1["Many values"]
-    N2["Array"]
-    N3["Ordered positions"]
-    N4["Indexes"]
-    N5["Read values"]
-    N1 --> N2
-    N2 --> N3
-    N3 --> N4
-    N4 --> N5
-```
-
 Objects and arrays solve different problems:
-
-```mermaid
-flowchart TD
-    N1["Object"]
-    N2["What value belongs to this name?"]
-    N3["Array"]
-    N4["What value is stored at this position?"]
-    N1 --> N2
-    N1 --> N3
-    N3 --> N4
-```
 
 The next chapter will explain how arrays grow and shrink with methods such as `push()` and `pop()`.
 

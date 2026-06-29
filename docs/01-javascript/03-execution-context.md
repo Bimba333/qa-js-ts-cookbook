@@ -352,19 +352,6 @@ showMessage();
 
 Эти ответы должны где-то храниться.
 
-```mermaid
-flowchart TD
-    N1["showMessage()"]
-    N2["find identifier"]
-    N3["get registered function"]
-    N4["создать function выполнение context"]
-    N5["выполнить тело функции"]
-    N1 --> N2
-    N1 --> N3
-    N1 --> N4
-    N1 --> N5
-```
-
 Call Stack — механизм, который управляет порядком активных function calls; он будет изучаться в следующей главе. В этой главе важно только то, что каждый вызов функции получает свой Execution Context.
 
 ### Creation phase
@@ -372,21 +359,6 @@ Call Stack — механизм, который управляет порядк�
 Creation phase — этап создания Execution Context до выполнения строк кода.
 
 На этом этапе engine подготавливает комнату:
-
-```mermaid
-flowchart TD
-    N1["Creation Phase"]
-    N2["scan code structure"]
-    N3["register function declarations"]
-    N4["register variable declarations"]
-    N5["prepare internal memory slots"]
-    N6["prepare for выполнение phase"]
-    N1 --> N2
-    N1 --> N3
-    N1 --> N4
-    N1 --> N5
-    N1 --> N6
-```
 
 Scan code structure здесь означает, что engine работает с уже разобранной структурой программы, а не просто читает текст как человек.
 
@@ -409,37 +381,6 @@ user = 'John';
 ```
 
 На уровне исходного кода читатель видит три строки. На уровне engine это два разных этапа.
-
-```mermaid
-flowchart TD
-    N1["исходный код"]
-    N2["function greet() {}"]
-    N3["let user;"]
-    N4["user = 'John';"]
-    N5["Creation Phase"]
-    N6["Identifier: greet"]
-    N7["registered"]
-    N8["points to тело функции"]
-    N9["Identifier: user"]
-    N10["registered"]
-    N11["memory slot prepared conceptually"]
-    N12["выполнение Phase"]
-    N13["user = 'John'"]
-    N14["значение появляется во время выполнения"]
-    N1 --> N2
-    N1 --> N3
-    N1 --> N4
-    N1 --> N5
-    N5 --> N6
-    N5 --> N7
-    N5 --> N8
-    N5 --> N9
-    N9 --> N10
-    N9 --> N11
-    N5 --> N12
-    N12 --> N13
-    N13 --> N14
-```
 
 Это концептуальная схема. Она не описывает Stack, Heap или точное устройство памяти engine. Она показывает главное: engine сначала готовит имена и внутренние записи, а затем выполняет присваивание.
 
@@ -464,23 +405,6 @@ Engine еще не присваивает 'John'.
 ```
 
 Схема:
-
-```mermaid
-flowchart TD
-    N1["исходный код"]
-    N2["Creation Phase"]
-    N3["register showMessage"]
-    N4["register status"]
-    N5["выполнение Phase"]
-    N6["вызвать showMessage()"]
-    N7["assign / read values"]
-    N1 --> N2
-    N2 --> N3
-    N2 --> N4
-    N2 --> N5
-    N5 --> N6
-    N5 --> N7
-```
 
 Это объясняет, почему некоторые имена уже известны engine до того, как execution дошел до строки объявления.
 
@@ -510,17 +434,6 @@ function showMessage() {
 
 Упрощенная модель:
 
-```mermaid
-flowchart TD
-    N1["Creation Phase"]
-    N2["register function showMessage"]
-    N3["выполнение Phase"]
-    N4["showMessage() can be called"]
-    N1 --> N2
-    N1 --> N3
-    N3 --> N4
-```
-
 Что engine делает прямо сейчас:
 
 ```text
@@ -538,19 +451,6 @@ Variable declaration — объявление имени переменной; �
 
 На высоком уровне:
 
-```mermaid
-flowchart TD
-    N1["Creation Phase"]
-    N2["engine sees variable declaration"]
-    N3["engine registers identifier"]
-    N4["выполнение Phase"]
-    N5["value assignment happens when code reaches assignment"]
-    N1 --> N2
-    N1 --> N3
-    N1 --> N4
-    N4 --> N5
-```
-
 Assignment — присваивание значения имени; подробно будет изучаться в главе про variables.
 
 Сейчас важно не запоминать правила конкретных ключевых слов, а удержать общий механизм:
@@ -566,23 +466,6 @@ Assignment — присваивание значения имени; подро�
 
 В этой главе мы используем концептуальную схему:
 
-```mermaid
-flowchart TD
-    N1["Memory Registration"]
-    N2["identifier: showMessage"]
-    N3["points to тело функции"]
-    N4["identifier: status"]
-    N5["slot prepared for value"]
-    N6["выполнение state"]
-    N7["ready for выполнение phase"]
-    N1 --> N2
-    N1 --> N3
-    N1 --> N4
-    N1 --> N5
-    N1 --> N6
-    N6 --> N7
-```
-
 Это не подробная модель Stack и Heap. Stack, Heap и References будут изучаться позже. Здесь достаточно понимать, что Execution Context содержит подготовленные записи, с которыми engine будет работать.
 
 Что engine делает прямо сейчас:
@@ -594,39 +477,7 @@ Engine готовит имена к будущему использованию.
 
 Еще одна схема показывает сам переход от регистрации к появлению значения:
 
-```mermaid
-flowchart TD
-    N1["Creation Phase"]
-    N2["prepare identifier"]
-    N3["prepare conceptual memory slot"]
-    N4["выполнение Phase"]
-    N5["assignment happens"]
-    N6["значение появляется"]
-    N1 --> N2
-    N2 --> N3
-    N3 --> N4
-    N4 --> N5
-    N5 --> N6
-```
-
 Для переменной `user` это можно представить так:
-
-```mermaid
-flowchart TD
-    N1["Creation Phase"]
-    N2["user"]
-    N3["identifier registered"]
-    N4["slot prepared"]
-    N5["выполнение Phase"]
-    N6["user = 'John'"]
-    N7["slot receives value"]
-    N1 --> N2
-    N2 --> N3
-    N2 --> N4
-    N1 --> N5
-    N5 --> N6
-    N6 --> N7
-```
 
 Важно:
 
@@ -649,21 +500,6 @@ Execution phase — этап, на котором engine начинает вып
 
 Схема:
 
-```mermaid
-flowchart TD
-    N1["выполнение Phase"]
-    N2["выполнить statement"]
-    N3["read registered identifiers"]
-    N4["assign values"]
-    N5["вызвать functions"]
-    N6["interact with runtime"]
-    N1 --> N2
-    N1 --> N3
-    N1 --> N4
-    N1 --> N5
-    N1 --> N6
-```
-
 Statement — инструкция программы; подробно инструкции будут разбираться постепенно.
 
 Что engine делает прямо сейчас:
@@ -682,25 +518,6 @@ Global Execution Context создается для запуска файла и�
 Modules — система разделения кода по файлам; подробности modules будут изучаться позже.
 
 Схема:
-
-```mermaid
-flowchart TD
-    N1["Global Execution Context"]
-    N2["creation phase"]
-    N3["register global-level functions"]
-    N4["register global-level variables"]
-    N5["выполнение phase"]
-    N6["выполнить top-level code"]
-    N7["вызвать functions"]
-    N8["interact with runtime"]
-    N1 --> N2
-    N1 --> N3
-    N1 --> N4
-    N1 --> N5
-    N5 --> N6
-    N5 --> N7
-    N5 --> N8
-```
 
 Top-level code — код, который находится не внутри функции; подробности границ выполнения будут уточняться в следующих главах.
 
@@ -727,23 +544,6 @@ printMessage();
 
 Схема:
 
-```mermaid
-flowchart TD
-    N1["Global Execution Context"]
-    N2["register printMessage"]
-    N3["выполнение phase"]
-    N4["вызвать printMessage()"]
-    N5["Function Execution Context"]
-    N6["creation phase"]
-    N7["выполнение phase"]
-    N1 --> N2
-    N1 --> N3
-    N3 --> N4
-    N3 --> N5
-    N5 --> N6
-    N5 --> N7
-```
-
 Что engine делает прямо сейчас:
 
 ```text
@@ -754,21 +554,6 @@ Engine создает отдельную рабочую комнату для э
 ### Один вызов функции — один Execution Context
 
 Если функция вызывается два раза, создаются два отдельных Function Execution Context.
-
-```mermaid
-flowchart TD
-    N1["вызвать helper()"]
-    N2["Function Execution Context #1"]
-    N3["finish and disappear"]
-    N4["вызвать helper()"]
-    N5["Function Execution Context #2"]
-    N6["finish and disappear"]
-    N1 --> N2
-    N2 --> N3
-    N3 --> N4
-    N4 --> N5
-    N5 --> N6
-```
 
 Это критично для helpers и utilities. Один и тот же код функции может выполняться много раз, но каждый вызов получает собственную временную среду выполнения.
 
@@ -792,56 +577,15 @@ outer();
 
 Упрощенная схема:
 
-```mermaid
-flowchart TD
-    N1["Global Execution Context"]
-    N2["вызвать outer()"]
-    N3["Function Execution Context: outer"]
-    N4["вызвать inner()"]
-    N5["Function Execution Context: inner"]
-    N1 --> N2
-    N1 --> N3
-    N3 --> N4
-    N3 --> N5
-```
-
 Call Stack подробно объяснит порядок входа и выхода из таких contexts в следующей главе. Здесь важно увидеть сам факт: вызов внутри вызова создает новый контекст.
 
 ### Lifecycle Execution Context
 
 Lifecycle Execution Context:
 
-```mermaid
-flowchart TD
-    N1["Context Lifecycle"]
-    N2["create"]
-    N3["creation phase"]
-    N4["выполнение phase"]
-    N5["complete"]
-    N6["disappear"]
-    N1 --> N2
-    N1 --> N3
-    N1 --> N4
-    N1 --> N5
-    N1 --> N6
-```
-
 Для Global Execution Context lifecycle длится весь запуск файла.
 
 Для Function Execution Context lifecycle обычно короче: контекст появляется при вызове функции и исчезает после завершения вызова.
-
-```mermaid
-flowchart TD
-    N1["вызов функции starts"]
-    N2["Function Execution Context появляется"]
-    N3["Function code выполняется"]
-    N4["Function возвращает / завершается"]
-    N5["Function Execution Context исчезает"]
-    N1 --> N2
-    N2 --> N3
-    N3 --> N4
-    N4 --> N5
-```
 
 Return — завершение функции с результатом; подробно `return` будет изучаться в разделе Functions.
 
@@ -849,45 +593,11 @@ Return — завершение функции с результатом; под
 
 Execution contexts можно представить как иерархию активного выполнения.
 
-```mermaid
-flowchart TD
-    N1["Execution Context hierarchy"]
-    N2["Global Context"]
-    N3["Function Context: setup"]
-    N4["Function Context: readConfig"]
-    N5["Function Context: runTest"]
-    N6["Function Context: createUser"]
-    N1 --> N2
-    N1 --> N3
-    N1 --> N4
-    N1 --> N5
-    N1 --> N6
-```
-
 Это не полная модель Call Stack. Здесь схема показывает отношение "кто вызвал кого" на уровне contexts. Call Stack объяснит, как engine управляет этим порядком технически.
 
 ### Relationship with Runtime
 
 Execution Context принадлежит работе engine, но код внутри него может обращаться к runtime.
-
-```mermaid
-flowchart TD
-    N1["Execution Context"]
-    N2["engine выполняется code"]
-    N3["code calls runtime API"]
-    N4["Runtime"]
-    N5["console"]
-    N6["process"]
-    N7["timers"]
-    N8["environment APIs"]
-    N1 --> N2
-    N1 --> N3
-    N1 --> N4
-    N4 --> N5
-    N4 --> N6
-    N4 --> N7
-    N4 --> N8
-```
 
 Runtime не заменяет Execution Context. Runtime предоставляет внешние возможности. Execution Context — внутренняя рабочая среда выполнения кода.
 
@@ -902,45 +612,11 @@ Engine выполняет код внутри context.
 
 Теперь общая модель стала глубже:
 
-```mermaid
-flowchart TD
-    N1["исходный код"]
-    N2["парсинг / AST"]
-    N3["Execution Context Creation"]
-    N4["Creation Phase"]
-    N5["выполнение Phase"]
-    N6["Runtime Interaction"]
-    N1 --> N2
-    N2 --> N3
-    N3 --> N4
-    N4 --> N5
-    N5 --> N6
-```
-
 В предыдущей главе мы остановились на переходе к execution. В этой главе мы открыли внутреннюю дверь: execution происходит не в пустоте, а внутри Execution Context.
 
 ### Engine timeline
 
 С точки зрения engine глава выглядит как timeline подготовки и выполнения.
-
-```mermaid
-flowchart TD
-    N1["Engine timeline"]
-    N2["receive prepared code structure"]
-    N3["создать Global Execution Context"]
-    N4["run creation phase"]
-    N5["run выполнение phase"]
-    N6["создать Function Execution Context on call"]
-    N7["finish Function Execution Context"]
-    N8["продолжить or finish Global Execution Context"]
-    N1 --> N2
-    N1 --> N3
-    N1 --> N4
-    N1 --> N5
-    N1 --> N6
-    N1 --> N7
-    N1 --> N8
-```
 
 Что engine делает прямо сейчас:
 
@@ -953,143 +629,19 @@ Engine движется не по "строкам текста",
 
 С точки зрения программы timeline проще:
 
-```mermaid
-flowchart TD
-    N1["Program timeline"]
-    N2["file starts"]
-    N3["global context is prepared"]
-    N4["top-level code runs"]
-    N5["function is called"]
-    N6["function context runs"]
-    N7["function завершается"]
-    N8["file завершается"]
-    N1 --> N2
-    N1 --> N3
-    N1 --> N4
-    N1 --> N5
-    N1 --> N6
-    N1 --> N7
-    N1 --> N8
-```
-
 Обе timeline описывают один процесс, но с разных сторон. Engine timeline показывает внутреннюю работу. Program timeline показывает наблюдаемое движение программы.
 
 ### Engine diary
 
 Теперь представим тот же процесс как короткий дневник engine.
 
-```mermaid
-flowchart TD
-    N1["Engine Diary"]
-    N2["&quot;Я получил подготовленную структуру программы.&quot;"]
-    N3["&quot;Я создаю Global Execution Context.&quot;"]
-    N4["&quot;Я начинаю creation phase.&quot;"]
-    N5["&quot;Я нашел function declaration.&quot;"]
-    N6["&quot;Я регистрирую функцию.&quot;"]
-    N7["&quot;Я нашел variable declaration.&quot;"]
-    N8["&quot;Я подготавливаю место для значения.&quot;"]
-    N9["&quot;Подготовка завершена.&quot;"]
-    N10["&quot;Я начинаю выполнение phase.&quot;"]
-    N11["&quot;Я выполняю первую инструкцию.&quot;"]
-    N12["&quot;Я вижу вызов функции.&quot;"]
-    N13["&quot;Я создаю Function Execution Context.&quot;"]
-    N14["&quot;Я выполняю тело функции.&quot;"]
-    N15["&quot;Function Context завершен.&quot;"]
-    N16["&quot;Я продолжаю выполнение внешнего context.&quot;"]
-    N1 --> N2
-    N1 --> N3
-    N1 --> N4
-    N1 --> N5
-    N1 --> N6
-    N1 --> N7
-    N1 --> N8
-    N1 --> N9
-    N1 --> N10
-    N1 --> N11
-    N1 --> N12
-    N1 --> N13
-    N1 --> N14
-    N1 --> N15
-    N1 --> N16
-```
-
 Этот дневник не является реальным логом V8. Это учебная модель, которая помогает мысленно симулировать процесс.
 
 Если читать код с таким дневником, становится легче отделять подготовку от выполнения:
 
-```mermaid
-flowchart TD
-    N1["До выполнение:"]
-    N2["engine регистрирует и готовит"]
-    N3["Во время выполнение:"]
-    N4["engine читает, присваивает, вызывает и завершает"]
-    N1 --> N2
-    N1 --> N3
-    N3 --> N4
-```
-
 ### End-to-end timeline
 
 Теперь соединим предыдущую главу и текущую в один большой фильм.
-
-```mermaid
-flowchart TD
-    N1["node app.js"]
-    N2["Node.js Runtime"]
-    N3["finds app.js"]
-    N4["reads исходный код"]
-    N5["passes code to engine"]
-    N6["JavaScript Engine"]
-    N7["лексический анализ"]
-    N8["исходный код → токены"]
-    N9["парсер"]
-    N10["токены → AST"]
-    N11["AST"]
-    N12["structured program"]
-    N13["Global Execution Context"]
-    N14["Creation Phase"]
-    N15["register functions"]
-    N16["register variables"]
-    N17["prepare conceptual memory slots"]
-    N18["выполнение Phase"]
-    N19["выполнить top-level code"]
-    N20["assign values"]
-    N21["вызвать functions"]
-    N22["вызов функции"]
-    N23["создает Function Execution Context"]
-    N24["Creation Phase"]
-    N25["выполнение Phase"]
-    N26["Function Context завершается"]
-    N27["выполнение continues in outer context"]
-    N28["Program ends"]
-    N1 --> N2
-    N2 --> N3
-    N2 --> N4
-    N2 --> N5
-    N2 --> N6
-    N6 --> N7
-    N6 --> N8
-    N6 --> N9
-    N6 --> N10
-    N6 --> N11
-    N6 --> N12
-    N6 --> N13
-    N6 --> N14
-    N6 --> N15
-    N6 --> N16
-    N6 --> N17
-    N6 --> N18
-    N6 --> N19
-    N6 --> N20
-    N6 --> N21
-    N6 --> N22
-    N6 --> N23
-    N6 --> N24
-    N6 --> N25
-    N6 --> N26
-    N6 --> N27
-    N6 --> N28
-```
 
 Это схема, которую стоит держать в голове при чтении следующих глав. Scope, Call Stack, Hoisting и Event Loop будут добавлять новые слои к этому фильму, но не отменят его.
 
@@ -1101,17 +653,6 @@ flowchart TD
 
 Ответ будет в следующей главе: Call Stack.
 
-```mermaid
-flowchart TD
-    N1["вызов функции"]
-    N2["Function Execution Context"]
-    N3["How does engine track active contexts?"]
-    N4["Call Stack"]
-    N1 --> N2
-    N2 --> N3
-    N3 --> N4
-```
-
 Call Stack — механизм, который хранит порядок активных вызовов; подробно он будет изучаться сразу после этой главы.
 
 ---
@@ -1120,49 +661,11 @@ Call Stack — механизм, который хранит порядок ак
 
 Внутренний механизм Execution Context состоит из двух крупных фаз.
 
-```mermaid
-flowchart TD
-    N1["Execution Context"]
-    N2["Creation Phase"]
-    N3["register identifiers"]
-    N4["register functions"]
-    N5["register variables"]
-    N6["prepare memory conceptually"]
-    N7["выполнение Phase"]
-    N8["выполнить statements"]
-    N9["assign values"]
-    N10["вызвать functions"]
-    N11["interact with runtime"]
-    N1 --> N2
-    N1 --> N3
-    N1 --> N4
-    N1 --> N5
-    N1 --> N6
-    N1 --> N7
-    N7 --> N8
-    N7 --> N9
-    N7 --> N10
-    N7 --> N11
-```
-
 Creation phase отвечает за подготовку.
 
 Execution phase отвечает за выполнение.
 
 Если код вызывает функцию, engine повторяет тот же принцип:
-
-```mermaid
-flowchart TD
-    N1["Global Execution Context"]
-    N2["вызвать function"]
-    N3["Function Execution Context"]
-    N4["Creation Phase"]
-    N5["выполнение Phase"]
-    N1 --> N2
-    N1 --> N3
-    N3 --> N4
-    N3 --> N5
-```
 
 Это рекурсивная идея: выполнение функции не является исключением. Для каждого вызова создается свой контекст.
 
@@ -1174,53 +677,9 @@ Recursion — ситуация, когда функция вызывает са�
 
 Главная модель главы — подготовленная рабочая комната.
 
-```mermaid
-flowchart TD
-    N1["Empty room"]
-    N2["Prepare room"]
-    N3["register names"]
-    N4["place function blueprints"]
-    N5["reserve slots"]
-    N6["connect runtime tools"]
-    N7["Work starts"]
-    N8["read names"]
-    N9["assign values"]
-    N10["вызвать functions"]
-    N11["use runtime"]
-    N12["Room disappears when work is done"]
-    N1 --> N2
-    N2 --> N3
-    N2 --> N4
-    N2 --> N5
-    N2 --> N6
-    N2 --> N7
-    N7 --> N8
-    N7 --> N9
-    N7 --> N10
-    N7 --> N11
-    N7 --> N12
-```
-
 Для global-кода комната живет весь запуск файла.
 
 Для функции комната появляется на время вызова.
-
-```mermaid
-flowchart TD
-    N1["Global room"]
-    N2["exists while file runs"]
-    N3["can создать function rooms"]
-    N4["Function room"]
-    N5["appears on call"]
-    N6["выполняется тело функции"]
-    N7["disappears after completion"]
-    N1 --> N2
-    N1 --> N3
-    N1 --> N4
-    N4 --> N5
-    N4 --> N6
-    N4 --> N7
-```
 
 Если вы можете смотреть на код и мысленно говорить "сейчас создается global context", "сейчас регистрируется функция", "сейчас началась execution phase", "сейчас вызов создает function context", значит модель работает.
 
@@ -1375,17 +834,6 @@ Engine дошел до строки.
 
 Исправленная модель:
 
-```mermaid
-flowchart TD
-    N1["Creation Phase"]
-    N2["register identifiers"]
-    N3["выполнение Phase"]
-    N4["use identifiers"]
-    N1 --> N2
-    N1 --> N3
-    N3 --> N4
-```
-
 ### Ошибка 2. Считать, что один function declaration сразу создает Function Context
 
 Что произошло:
@@ -1394,17 +842,6 @@ flowchart TD
 
 Исправленная модель:
 
-```mermaid
-flowchart TD
-    N1["function declaration"]
-    N2["registered in current context"]
-    N3["вызов функции"]
-    N4["создает Function Execution Context"]
-    N1 --> N2
-    N1 --> N3
-    N3 --> N4
-```
-
 ### Ошибка 3. Смешивать Execution Context и runtime
 
 Что произошло:
@@ -1412,17 +849,6 @@ flowchart TD
 `console.log` или `process` воспринимаются как часть Execution Context.
 
 Исправленная модель:
-
-```mermaid
-flowchart TD
-    N1["Execution Context"]
-    N2["engine выполняется code"]
-    N3["Runtime API"]
-    N4["console / process / timers"]
-    N1 --> N2
-    N1 --> N3
-    N3 --> N4
-```
 
 ### Ошибка 4. Углубляться в Call Stack раньше времени
 
@@ -1483,15 +909,6 @@ Playwright-тест — это JavaScript или TypeScript-код, которы
 
 Если helper вызывается внутри теста, у helper будет свой Function Execution Context.
 
-```mermaid
-flowchart TD
-    N1["Test file context"]
-    N2["test callback context"]
-    N3["helper function context"]
-    N1 --> N2
-    N2 --> N3
-```
-
 Callback — функция, переданная как значение для выполнения позже; подробно callbacks будут изучаться в async-разделе.
 
 ### Helper functions
@@ -1516,35 +933,9 @@ Page Object — класс или объект, который группиру�
 
 Utility может вызываться из разных тестов. Один и тот же код функции выполняется в разных function contexts.
 
-```mermaid
-flowchart TD
-    N1["test A"]
-    N2["utility()"]
-    N3["Function Context #1"]
-    N4["test B"]
-    N5["utility()"]
-    N6["Function Context #2"]
-    N1 --> N2
-    N2 --> N3
-    N1 --> N4
-    N4 --> N5
-    N5 --> N6
-```
-
 ### Reading runtime errors
 
 Если ошибка возникла внутри helper, важно понять:
-
-```mermaid
-flowchart TD
-    N1["Global / test context"]
-    N2["helper context"]
-    N3["nested utility context"]
-    N4["runtime error"]
-    N1 --> N2
-    N2 --> N3
-    N3 --> N4
-```
 
 Такой взгляд готовит к чтению stack traces и к следующей главе про Call Stack.
 

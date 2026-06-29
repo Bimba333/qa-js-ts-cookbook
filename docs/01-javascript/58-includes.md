@@ -54,15 +54,6 @@ const testCase = {
 
 Нужно проверить: входит ли `testCase.status` в список разрешенных значения?
 
-```mermaid
-flowchart TD
-    N1["allowedStatuses"]
-    N2["includes('failed')"]
-    N3["true"]
-    N1 --> N2
-    N2 --> N3
-```
-
 ## Теория
 
 `includes()` — самый простой method в этом модуле: он проверяет presence value в array.
@@ -79,31 +70,11 @@ Result — Boolean. Callback не нужен.
 
 Концептуальные шаги:
 
-```mermaid
-flowchart TD
-    N1["take value"]
-    N2["compare with array elements"]
-    N3["found → true"]
-    N4["not found → false"]
-    N1 --> N2
-    N2 --> N3
-    N2 --> N4
-```
-
 Для arrays со strings, numbers и booleans это читается как прямой presence check.
 
 ## Главная ментальная модель
 
 Главная модель этой главы: **value exists in array**.
-
-```mermaid
-flowchart TD
-    N1["simple values array"]
-    N2["includes(value)"]
-    N3["true / false"]
-    N1 --> N2
-    N2 --> N3
-```
 
 Вопрос: "Есть ли это value в списке?"
 
@@ -166,17 +137,6 @@ const isValidPriority = allowedPriorities.includes(testCase.priority);
 ## Переход к следующей главе
 
 Теперь decision-layer module выглядит так:
-
-```mermaid
-flowchart TD
-    N1["find() → найти один element"]
-    N2["some() → проверить хотя бы один match"]
-    N3["every() → проверить все elements"]
-    N4["includes() → проверить наличие simple value"]
-    N1 --> N2
-    N2 --> N3
-    N3 --> N4
-```
 
 Дальше раздел Arrays продолжит разбирать методы, которые помогают упорядочивать и сравнивать данные.
 

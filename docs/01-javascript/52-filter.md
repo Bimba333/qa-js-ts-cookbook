@@ -6,15 +6,6 @@
 
 Главная модель была такой:
 
-```mermaid
-flowchart TD
-    N1["input array"]
-    N2["map()"]
-    N3["transformed output array"]
-    N1 --> N2
-    N2 --> N3
-```
-
 `map()` меняет форму каждого element и обычно сохраняет количество elements.
 
 Теперь появляется другая задача: не преобразовать все test cases, а выбрать только нужные.
@@ -64,17 +55,6 @@ CI pipeline должен перезапустить только failed tests.
 
 Нужна операция:
 
-```mermaid
-flowchart TD
-    N1["input array"]
-    N2["check each element"]
-    N3["keep matching elements"]
-    N4["subset array"]
-    N1 --> N2
-    N2 --> N3
-    N3 --> N4
-```
-
 ## Теория
 
 `filter()` вызывает function для каждого element. Если callback возвращает `true`, element попадает в result array. Если callback возвращает `false`, element пропускается.
@@ -89,39 +69,11 @@ const result = array.filter(function (element) {
 
 Смысл:
 
-```mermaid
-flowchart TD
-    N1["element"]
-    N2["condition"]
-    N3["true → keep"]
-    N4["false → skip"]
-    N1 --> N2
-    N2 --> N3
-    N2 --> N4
-```
-
 Callback для `filter()` часто называют predicate: function, которая отвечает "подходит ли element?".
 
 ## Внутренний механизм
 
 Концептуальные шаги:
-
-```mermaid
-flowchart TD
-    N1["source array"]
-    N2["создать empty result array"]
-    N3["take element"]
-    N4["вызвать predicate"]
-    N5["true → add element to result"]
-    N6["false → do not add element"]
-    N7["вернуть subset array"]
-    N1 --> N2
-    N2 --> N3
-    N3 --> N4
-    N4 --> N5
-    N4 --> N6
-    N4 --> N7
-```
 
 Важно: `filter()` не меняет сами test case objects. Он выбирает references на elements, которые уже были в исходный массив. Подробности references изучались раньше; здесь достаточно помнить, что `filter()` выбирает элементы, а не превращает их.
 
@@ -129,27 +81,7 @@ flowchart TD
 
 Главная модель этой главы: **вход -> reduced subset array**.
 
-```mermaid
-flowchart TD
-    N1["input array"]
-    N2["filter()"]
-    N3["condition for each element"]
-    N4["subset array"]
-    N1 --> N2
-    N2 --> N3
-    N3 --> N4
-```
-
 Количество elements может уменьшиться, а shape каждого выбранного element остается тем же:
-
-```mermaid
-flowchart TD
-    N1["4 input elements"]
-    N2["filter failed"]
-    N3["1 output element"]
-    N1 --> N2
-    N2 --> N3
-```
 
 ## Практические примеры
 

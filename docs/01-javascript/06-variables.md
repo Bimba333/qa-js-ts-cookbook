@@ -4,19 +4,6 @@
 
 В предыдущей главе была построена модель memory:
 
-```mermaid
-flowchart TD
-    N1["Memory"]
-    N2["stores values"]
-    N3["lets the engine read values later"]
-    N4["lets the engine update stored information"]
-    N5["keeps information while the program runs"]
-    N1 --> N2
-    N1 --> N3
-    N1 --> N4
-    N1 --> N5
-```
-
 Теперь появляется следующий вопрос:
 
 > Как программист создает named access к этой сохраненной информации?
@@ -28,25 +15,6 @@ flowchart TD
 Variables — это не коробки. В этой главе variable будет рассматриваться как named access к информации, которой управляет JavaScript Engine.
 
 Общая цепочка теперь такая:
-
-```mermaid
-flowchart TD
-    N1["Execution Context"]
-    N2["создает среду выполнения"]
-    N3["Call Stack"]
-    N4["управляет активным context"]
-    N5["Memory"]
-    N6["хранит информацию во время выполнения"]
-    N7["Variables"]
-    N8["дают именованный доступ к сохраненной информации"]
-    N1 --> N2
-    N1 --> N3
-    N3 --> N4
-    N3 --> N5
-    N5 --> N6
-    N5 --> N7
-    N7 --> N8
-```
 
 ---
 
@@ -149,19 +117,6 @@ userName
 
 Вопрос:
 
-```mermaid
-flowchart TD
-    N1["Value exists"]
-    N2["Memory can store it"]
-    N3["Programmer needs readable access"]
-    N4["Identifier gives a name"]
-    N5["Variable connects code with stored information"]
-    N1 --> N2
-    N2 --> N3
-    N3 --> N4
-    N4 --> N5
-```
-
 Переменная нужна не потому, что программисту хочется "коробку". Переменная нужна потому, что программе нужен понятный способ:
 
 * зарегистрировать имя;
@@ -209,42 +164,9 @@ read testStatus
 
 Представим, что variables не существуют.
 
-```mermaid
-flowchart TD
-    N1["Programmer"]
-    N2["must remember where value is stored"]
-    N3["must refer to internal locations"]
-    N4["must track updates manually"]
-    N5["must read code without meaningful names"]
-    N1 --> N2
-    N1 --> N3
-    N1 --> N4
-    N1 --> N5
-```
-
 Код стал бы нечитаемым:
 
-```mermaid
-flowchart TD
-    N1["location #101 → &quot;https://example.com&quot;"]
-    N2["location #102 → &quot;created&quot;"]
-    N3["location #102 → &quot;ready&quot;"]
-    N4["read location #101"]
-    N5["read location #102"]
-    N1 --> N2
-    N2 --> N3
-    N3 --> N4
-    N4 --> N5
-```
-
 Проблема:
-
-```mermaid
-flowchart TD
-    N1["Memory can store information"]
-    N2["but code needs names"]
-    N1 --> N2
-```
 
 Variables решают эту проблему.
 
@@ -262,17 +184,6 @@ Variable is a named way to access stored information.
 
 Концептуально:
 
-```mermaid
-flowchart TD
-    N1["Identifier"]
-    N2["userName"]
-    N3["access to stored information"]
-    N4["&quot;Anna&quot;"]
-    N1 --> N2
-    N2 --> N3
-    N3 --> N4
-```
-
 Когда вы пишете:
 
 ```javascript
@@ -280,15 +191,6 @@ const userName = 'Anna';
 ```
 
 engine не создает физическую коробку с наклейкой `userName` в том учебном смысле, который часто показывают новичкам. Более точная модель:
-
-```mermaid
-flowchart TD
-    N1["Register identifier: userName"]
-    N2["Store value: &quot;Anna&quot;"]
-    N3["Allow code to read value through userName"]
-    N1 --> N2
-    N2 --> N3
-```
 
 Что происходит внутри engine прямо сейчас:
 
@@ -337,17 +239,6 @@ const actualStatus = 'active';
 
 Схема:
 
-```mermaid
-flowchart TD
-    N1["Notebook of names"]
-    N2["baseUrl → &quot;https://example.com&quot;"]
-    N3["expectedStatus → &quot;active&quot;"]
-    N4["actualStatus → &quot;active&quot;"]
-    N1 --> N2
-    N1 --> N3
-    N1 --> N4
-```
-
 ### Declaration
 
 Declaration — регистрация identifier в текущей среде выполнения.
@@ -358,46 +249,9 @@ let testStatus;
 
 Эта строка не дает meaningful value для теста. Она говорит engine:
 
-```mermaid
-flowchart TD
-    N1["Register identifier"]
-    N2["testStatus exists as a name"]
-    N3["value can be assigned later"]
-    N1 --> N2
-    N2 --> N3
-```
-
 Диаграмма declaration:
 
-```mermaid
-flowchart TD
-    N1["До: declaration"]
-    N2["Registry"]
-    N3["нет testStatus"]
-    N4["Declaration"]
-    N5["let testStatus;"]
-    N6["После: declaration"]
-    N7["Registry"]
-    N8["testStatus registered"]
-    N2 --> N3
-    N2 --> N4
-    N5 --> N6
-    N7 --> N8
-    N1 --> N2
-    N4 --> N5
-    N6 --> N7
-```
-
 Declaration as registration:
-
-```mermaid
-flowchart TD
-    N1["declaration"]
-    N2["identifier registry"]
-    N3["name becomes known to engine"]
-    N1 --> N2
-    N2 --> N3
-```
 
 Hoisting — это особенности того, как declarations учитываются во время подготовки к выполнению; отдельная глава будет позже. Сейчас достаточно понимать declaration как регистрацию имени.
 
@@ -421,29 +275,7 @@ undefined
 
 Концептуально:
 
-```mermaid
-flowchart TD
-    N1["let testStatus;"]
-    N2["Identifier registered"]
-    N3["нет meaningful value assigned by programmer"]
-    N4["Reading gives undefined"]
-    N1 --> N2
-    N2 --> N3
-    N3 --> N4
-```
-
 Диаграмма:
-
-```mermaid
-flowchart TD
-    N1["Identifier registry"]
-    N2["testStatus → нет meaningful assigned value"]
-    N3["Read testStatus"]
-    N4["undefined"]
-    N1 --> N2
-    N1 --> N3
-    N3 --> N4
-```
 
 Что происходит внутри engine прямо сейчас:
 
@@ -463,36 +295,9 @@ let testStatus = 'created';
 
 Здесь одновременно происходят две вещи:
 
-```mermaid
-flowchart TD
-    N1["Declaration"]
-    N2["register identifier: testStatus"]
-    N3["Initialization"]
-    N4["initial value: &quot;created&quot;"]
-    N1 --> N2
-    N1 --> N3
-    N3 --> N4
-```
-
 Диаграмма initialization:
 
-```mermaid
-flowchart TD
-    N1["let testStatus = &quot;created&quot;"]
-    N2["declare testStatus"]
-    N3["initialize with &quot;created&quot;"]
-    N1 --> N2
-    N1 --> N3
-```
-
 Memory view:
-
-```mermaid
-flowchart TD
-    N1["Variables + Memory"]
-    N2["testStatus → &quot;created&quot;"]
-    N1 --> N2
-```
 
 Что происходит внутри engine прямо сейчас:
 
@@ -516,33 +321,7 @@ testStatus = 'created';
 
 Диаграмма assignment:
 
-```mermaid
-flowchart TD
-    N1["Step 1"]
-    N2["let testStatus;"]
-    N3["testStatus registered"]
-    N4["Step 2"]
-    N5["testStatus = &quot;created&quot;;"]
-    N6["stored information becomes &quot;created&quot;"]
-    N2 --> N3
-    N3 --> N4
-    N5 --> N6
-    N1 --> N2
-    N4 --> N5
-```
-
 Declaration vs assignment:
-
-```mermaid
-flowchart TD
-    N1["Declaration"]
-    N2["create/register name"]
-    N3["Assignment"]
-    N4["write value for that name"]
-    N1 --> N2
-    N1 --> N3
-    N3 --> N4
-```
 
 Что происходит внутри engine прямо сейчас:
 
@@ -563,44 +342,9 @@ testStatus = 'ready';
 
 Концептуально:
 
-```mermaid
-flowchart TD
-    N1["Initial state"]
-    N2["testStatus → &quot;created&quot;"]
-    N3["Reassignment"]
-    N4["testStatus = &quot;ready&quot;"]
-    N5["Current state"]
-    N6["testStatus → &quot;ready&quot;"]
-    N1 --> N2
-    N1 --> N3
-    N3 --> N4
-    N3 --> N5
-    N5 --> N6
-```
-
 Диаграмма reassignment:
 
-```mermaid
-flowchart TD
-    N1["testStatus"]
-    N2["was: &quot;created&quot;"]
-    N3["assigned: &quot;ready&quot;"]
-    N4["now: &quot;ready&quot;"]
-    N1 --> N2
-    N1 --> N3
-    N3 --> N4
-```
-
 Важно: один identifier не означает, что через него одновременно читаются все прошлые значения.
-
-```mermaid
-flowchart TD
-    N1["Read after reassignment"]
-    N2["current stored information"]
-    N3["&quot;ready&quot;"]
-    N1 --> N2
-    N2 --> N3
-```
 
 ### Declaration vs assignment
 
@@ -613,21 +357,6 @@ testStatus = 'ready';    // reassignment
 ```
 
 Схема:
-
-```mermaid
-flowchart TD
-    N1["Line 1"]
-    N2["declare identifier"]
-    N3["Line 2"]
-    N4["assign first meaningful value"]
-    N5["Line 3"]
-    N6["assign new value"]
-    N1 --> N2
-    N1 --> N3
-    N3 --> N4
-    N3 --> N5
-    N5 --> N6
-```
 
 Сравнение:
 
@@ -643,21 +372,6 @@ Reassignment    | existing value is replaced
 ### Variable lifecycle
 
 На высоком уровне lifecycle variable можно представить так:
-
-```mermaid
-flowchart TD
-    N1["Declaration"]
-    N2["Initialization"]
-    N3["Read"]
-    N4["Assignment / Reassignment"]
-    N5["Read updated value"]
-    N6["Variable нет longer needed"]
-    N1 --> N2
-    N2 --> N3
-    N3 --> N4
-    N4 --> N5
-    N5 --> N6
-```
 
 Не каждая variable проходит все этапы.
 
@@ -689,17 +403,6 @@ console.log(baseUrl);
 ```
 
 Модель:
-
-```mermaid
-flowchart TD
-    N1["const baseUrl = &quot;https://example.com&quot;"]
-    N2["declare baseUrl"]
-    N3["initialize with value"]
-    N4["disallow reassignment of baseUrl"]
-    N1 --> N2
-    N1 --> N3
-    N1 --> N4
-```
 
 Нельзя:
 
@@ -735,21 +438,6 @@ console.log(testStatus);
 
 Модель:
 
-```mermaid
-flowchart TD
-    N1["let testStatus = &quot;created&quot;"]
-    N2["declare testStatus"]
-    N3["initialize with &quot;created&quot;"]
-    N4["allow reassignment"]
-    N5["testStatus = &quot;ready&quot;"]
-    N6["update current stored information"]
-    N1 --> N2
-    N1 --> N3
-    N1 --> N4
-    N1 --> N5
-    N5 --> N6
-```
-
 `let` подходит, когда значение действительно меняется по ходу выполнения.
 
 Пример из Automation QA:
@@ -771,17 +459,6 @@ var legacyStatus = 'created';
 ```
 
 На базовом уровне:
-
-```mermaid
-flowchart TD
-    N1["var"]
-    N2["declares identifier"]
-    N3["can be initialized"]
-    N4["allows reassignment"]
-    N1 --> N2
-    N1 --> N3
-    N1 --> N4
-```
 
 Но `var` имеет исторические особенности поведения, связанные с Hoisting и Scope. Hoisting — поведение declarations во время подготовки execution; Scope — правила доступности identifiers. Эти темы будут изучаться позже.
 
@@ -805,27 +482,6 @@ var mainly for reading legacy code
 
 Временная шкала:
 
-```mermaid
-flowchart TD
-    N1["Early JavaScript"]
-    N2["var"]
-    N3["Modern JavaScript"]
-    N4["let"]
-    N5["const"]
-    N6["Current practice"]
-    N7["const by значение по умолчанию"]
-    N8["let when needed"]
-    N9["var for legacy code"]
-    N1 --> N2
-    N1 --> N3
-    N3 --> N4
-    N3 --> N5
-    N3 --> N6
-    N6 --> N7
-    N6 --> N8
-    N6 --> N9
-```
-
 Comparison:
 
 ```text
@@ -848,37 +504,7 @@ const   | yes                     | no                  | yes
 
 Variables дают readable access к memory.
 
-```mermaid
-flowchart TD
-    N1["Memory"]
-    N2["stored value: &quot;https://example.com&quot;"]
-    N3["stored value: &quot;ready&quot;"]
-    N4["Variables"]
-    N5["baseUrl → &quot;https://example.com&quot;"]
-    N6["testStatus → &quot;ready&quot;"]
-    N1 --> N2
-    N1 --> N3
-    N1 --> N4
-    N4 --> N5
-    N4 --> N6
-```
-
 Более точно:
-
-```mermaid
-flowchart TD
-    N1["Identifier registry"]
-    N2["baseUrl"]
-    N3["testStatus"]
-    N4["Stored information"]
-    N5["&quot;https://example.com&quot;"]
-    N6["&quot;ready&quot;"]
-    N1 --> N2
-    N1 --> N3
-    N1 --> N4
-    N4 --> N5
-    N4 --> N6
-```
 
 Variables не заменяют memory. Они являются способом работать с information, которая хранится и управляется engine.
 
@@ -886,40 +512,9 @@ Variables не заменяют memory. Они являются способом
 
 Execution Context — среда, в которой engine выполняет код. Variables регистрируются для выполнения в этой среде.
 
-```mermaid
-flowchart TD
-    N1["Execution Context"]
-    N2["current code"]
-    N3["registered identifiers"]
-    N4["access to stored information"]
-    N1 --> N2
-    N1 --> N3
-    N1 --> N4
-```
-
 Для global-кода:
 
-```mermaid
-flowchart TD
-    N1["Global Execution Context"]
-    N2["baseUrl"]
-    N3["testStatus"]
-    N4["console.log reads values"]
-    N1 --> N2
-    N1 --> N3
-    N1 --> N4
-```
-
 Для function execution:
-
-```mermaid
-flowchart TD
-    N1["Function Execution Context"]
-    N2["identifiers for this function выполнение"]
-    N3["values used by this function выполнение"]
-    N1 --> N2
-    N1 --> N3
-```
 
 Подробная структура Lexical Environment будет изучаться позже. Сейчас важно только: variables не существуют "в воздухе"; они существуют внутри модели execution.
 
@@ -927,44 +522,9 @@ flowchart TD
 
 Call Stack показывает, какой Execution Context активен прямо сейчас. Active context определяет, с какими registered identifiers engine работает в данный момент.
 
-```mermaid
-flowchart TD
-    N1["Call Stack"]
-    N2["Function Context: buildLoginUrl"]
-    N3["variables used now"]
-    N4["Global Context"]
-    N5["variables waiting below"]
-    N1 --> N2
-    N1 --> N3
-    N1 --> N4
-    N4 --> N5
-```
-
 Когда вызывается функция:
 
-```mermaid
-flowchart TD
-    N1["вызвать function"]
-    N2["push Function Execution Context"]
-    N3["register variables for that выполнение"]
-    N4["read / assign values"]
-    N5["pop Function Execution Context"]
-    N1 --> N2
-    N2 --> N3
-    N3 --> N4
-    N4 --> N5
-```
-
 Это не объяснение Scope. Это связь уже изученных механизмов:
-
-```mermaid
-flowchart TD
-    N1["Call Stack"]
-    N2["active context"]
-    N3["variables available for current выполнение model"]
-    N1 --> N2
-    N1 --> N3
-```
 
 ### Переход к Scope
 
@@ -996,68 +556,17 @@ function prepareUser() {
 
 Scope — правила, которые определяют, где identifier доступен. Это следующая глава. В текущей главе мы изучаем, как identifier создается и связывается с information; в следующей — где этот identifier можно использовать.
 
-```mermaid
-flowchart TD
-    N1["Variables"]
-    N2["how names are created and assigned values"]
-    N3["Scope"]
-    N4["where those names can be used"]
-    N1 --> N2
-    N1 --> N3
-    N3 --> N4
-```
-
 ---
 
 ## Внутренний механизм
 
 Для каждой variable engine выполняет набор операций.
 
-```mermaid
-flowchart TD
-    N1["исходный код"]
-    N2["declaration keyword"]
-    N3["identifier"]
-    N4["optional initial value"]
-    N5["registered named access"]
-    N1 --> N2
-    N2 --> N3
-    N3 --> N4
-    N4 --> N5
-```
-
 Если есть initialization:
-
-```mermaid
-flowchart TD
-    N1["const baseUrl = &quot;https://example.com&quot;"]
-    N2["register baseUrl"]
-    N3["store initial value"]
-    N1 --> N2
-    N1 --> N3
-```
 
 Если declaration отделена от assignment:
 
-```mermaid
-flowchart TD
-    N1["let testStatus;"]
-    N2["register testStatus"]
-    N3["testStatus = &quot;created&quot;;"]
-    N4["assign value"]
-    N1 --> N2
-    N1 --> N3
-    N3 --> N4
-```
-
 Если есть reassignment:
-
-```mermaid
-flowchart TD
-    N1["testStatus = &quot;ready&quot;;"]
-    N2["update current stored information for testStatus"]
-    N1 --> N2
-```
 
 Сквозной пример:
 
@@ -1073,43 +582,7 @@ console.log(testStatus);
 
 Engine diary:
 
-```mermaid
-flowchart TD
-    N1["&quot;I see const baseUrl.&quot;"]
-    N2["&quot;I register baseUrl.&quot;"]
-    N3["&quot;I initialize it with https://example.com.&quot;"]
-    N4["&quot;I see let testStatus.&quot;"]
-    N5["&quot;I register testStatus.&quot;"]
-    N6["&quot;I initialize it with created.&quot;"]
-    N7["&quot;I see assignment to testStatus.&quot;"]
-    N8["&quot;I update its текущее значение to ready.&quot;"]
-    N9["&quot;I read baseUrl.&quot;"]
-    N10["&quot;I read testStatus.&quot;"]
-    N1 --> N2
-    N2 --> N3
-    N3 --> N4
-    N4 --> N5
-    N5 --> N6
-    N6 --> N7
-    N7 --> N8
-    N8 --> N9
-    N9 --> N10
-```
-
 Что происходит внутри engine прямо сейчас:
-
-```mermaid
-flowchart TD
-    N1["Declaration → register identifier."]
-    N2["Initialization → provide first value."]
-    N3["Assignment → write value."]
-    N4["Reassignment → replace текущее значение for that identifier."]
-    N5["Read → retrieve текущее значение."]
-    N1 --> N2
-    N2 --> N3
-    N3 --> N4
-    N4 --> N5
-```
 
 ---
 
@@ -1119,33 +592,11 @@ flowchart TD
 
 Не используйте модель "variable is a box". Более точная учебная модель — label on storage shelf.
 
-```mermaid
-flowchart TD
-    N1["Shelf label"]
-    N2["baseUrl"]
-    N3["Stored information"]
-    N4["&quot;https://example.com&quot;"]
-    N1 --> N2
-    N2 --> N3
-    N3 --> N4
-```
-
 Label помогает найти информацию. Label не является самой информацией.
 
 ### Notebook of names
 
 Можно представить variables как записи в блокноте имен.
-
-```mermaid
-flowchart TD
-    N1["Notebook"]
-    N2["baseUrl: &quot;https://example.com&quot;"]
-    N3["testStatus: &quot;ready&quot;"]
-    N4["retryCount: 1"]
-    N1 --> N2
-    N1 --> N3
-    N1 --> N4
-```
 
 Когда происходит reassignment, запись обновляется:
 
@@ -1161,67 +612,13 @@ testStatus: "ready"
 
 Declaration — это регистрация имени.
 
-```mermaid
-flowchart TD
-    N1["Identifier registry"]
-    N2["baseUrl"]
-    N3["testStatus"]
-    N4["retryCount"]
-    N1 --> N2
-    N1 --> N3
-    N1 --> N4
-```
-
 После registration engine знает, что такое имя существует в текущей модели выполнения.
 
 ### Declaration as registration
 
-```mermaid
-flowchart TD
-    N1["let retryCount;"]
-    N2["register identifier"]
-    N3["retryCount is known"]
-    N1 --> N2
-    N2 --> N3
-```
-
 ### Assignment as changing stored information
 
-```mermaid
-flowchart TD
-    N1["retryCount = 1"]
-    N2["retryCount → 1"]
-    N3["retryCount = 2"]
-    N4["retryCount → 2"]
-    N1 --> N2
-    N2 --> N3
-    N3 --> N4
-```
-
 Итоговая модель:
-
-```mermaid
-flowchart TD
-    N1["Variable"]
-    N2["named access to stored information"]
-    N3["Declaration"]
-    N4["register name"]
-    N5["Initialization"]
-    N6["first value"]
-    N7["Assignment"]
-    N8["write value"]
-    N9["Reassignment"]
-    N10["write new value to existing named access"]
-    N1 --> N2
-    N1 --> N3
-    N3 --> N4
-    N3 --> N5
-    N5 --> N6
-    N5 --> N7
-    N7 --> N8
-    N7 --> N9
-    N9 --> N10
-```
 
 ---
 
@@ -1503,21 +900,6 @@ Line | Code                         | Operation
 
 Практическое правило:
 
-```mermaid
-flowchart TD
-    N1["Use const"]
-    N2["when value should not be reassigned"]
-    N3["Use let"]
-    N4["when value must change"]
-    N5["Avoid var"]
-    N6["in new code"]
-    N1 --> N2
-    N1 --> N3
-    N3 --> N4
-    N3 --> N5
-    N5 --> N6
-```
-
 Это правило не заменяет понимание. Оно просто помогает писать более читаемый код.
 
 ---
@@ -1534,15 +916,6 @@ const browserName = 'chromium';
 ```
 
 Почему `const`:
-
-```mermaid
-flowchart TD
-    N1["Reader sees const"]
-    N2["expects нет reassignment"]
-    N3["configuration looks stable"]
-    N1 --> N2
-    N2 --> N3
-```
 
 ### Storing test data
 
@@ -1575,17 +948,6 @@ console.log(actualStatus);
 
 Схема:
 
-```mermaid
-flowchart TD
-    N1["expectedStatus"]
-    N2["what test expects"]
-    N3["actualStatus"]
-    N4["what system returned"]
-    N1 --> N2
-    N1 --> N3
-    N3 --> N4
-```
-
 Хорошие identifiers уменьшают количество ошибок при чтении теста.
 
 ### Helper results
@@ -1602,38 +964,11 @@ const userName = buildUserName();
 
 `return` будет подробно изучаться позже. Сейчас важно: результат helper получает readable name.
 
-```mermaid
-flowchart TD
-    N1["helper result"]
-    N2["stored through variable"]
-    N3["used by test step"]
-    N1 --> N2
-    N2 --> N3
-```
-
 ### Fixture variables
 
 Fixture часто подготавливает значения для теста.
 
-```mermaid
-flowchart TD
-    N1["fixture"]
-    N2["declares userName"]
-    N3["initializes userName"]
-    N4["test reads userName later"]
-    N1 --> N2
-    N1 --> N3
-    N1 --> N4
-```
-
 Если fixture меняет status, это должно быть видно через `let`.
-
-```mermaid
-flowchart TD
-    N1["let setupStatus"]
-    N2["reader expects updates"]
-    N1 --> N2
-```
 
 ### Почему выбор `let` или `const` улучшает читаемость
 
@@ -1659,33 +994,7 @@ Variables нужны, чтобы программист мог работать 
 
 Главная модель:
 
-```mermaid
-flowchart TD
-    N1["Variable"]
-    N2["named access to information managed by the engine"]
-    N1 --> N2
-```
-
 В этой главе были разобраны:
-
-```mermaid
-flowchart TD
-    N1["Declaration"]
-    N2["register identifier"]
-    N3["Initialization"]
-    N4["first value at declaration"]
-    N5["Assignment"]
-    N6["write value to existing name"]
-    N7["Reassignment"]
-    N8["write new value to existing name"]
-    N1 --> N2
-    N1 --> N3
-    N3 --> N4
-    N3 --> N5
-    N5 --> N6
-    N5 --> N7
-    N7 --> N8
-```
 
 `const` запрещает reassignment. `let` разрешает reassignment. `var` остается в языке по историческим причинам и будет важен при изучении Hoisting и Scope.
 

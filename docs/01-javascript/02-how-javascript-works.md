@@ -95,27 +95,6 @@ node app.js
 
 Он делает это поэтапно:
 
-```mermaid
-flowchart TD
-    N1["app.js"]
-    N2["исходный код"]
-    N3["лексический анализ"]
-    N4["парсинг"]
-    N5["AST"]
-    N6["подготовка / компиляция"]
-    N7["выполнение"]
-    N8["взаимодействие с Runtime"]
-    N9["результат"]
-    N1 --> N2
-    N2 --> N3
-    N3 --> N4
-    N4 --> N5
-    N5 --> N6
-    N6 --> N7
-    N7 --> N8
-    N8 --> N9
-```
-
 Если в коде есть синтаксическая ошибка, программа может не дойти до execution вообще. Это важно для Automation QA: иногда тест не падает из-за неверной проверки, плохого locator или асинхронности. Иногда engine даже не смог разобрать файл.
 
 Locator — это способ найти элемент на странице в UI-тесте; подробно locators будут изучаться в разделе Playwright.
@@ -139,39 +118,6 @@ Lifecycle JavaScript-файла — это путь от исходного те
 Дальше начинает работать engine.
 
 Полная схема:
-
-```mermaid
-flowchart TD
-    N1["терминал"]
-    N2["node app.js"]
-    N3["Node.js Runtime"]
-    N4["находит файл"]
-    N5["читает исходный код"]
-    N6["передает код в V8 Engine"]
-    N7["JavaScript Engine"]
-    N8["лексический анализ"]
-    N9["парсинг"]
-    N10["AST"]
-    N11["compilation / preparation"]
-    N12["выполнение"]
-    N13["Runtime APIs"]
-    N14["console, process, files, timers"]
-    N15["Результат"]
-    N1 --> N2
-    N2 --> N3
-    N3 --> N4
-    N3 --> N5
-    N3 --> N6
-    N3 --> N7
-    N7 --> N8
-    N7 --> N9
-    N7 --> N10
-    N7 --> N11
-    N7 --> N12
-    N7 --> N13
-    N13 --> N14
-    N13 --> N15
-```
 
 V8 — JavaScript Engine, используемый в Node.js и Chrome; он был представлен в предыдущей главе.
 
@@ -225,27 +171,6 @@ console.log('Hello');
 
 Упрощенно:
 
-```mermaid
-flowchart TD
-    N1["исходный код"]
-    N2["токены"]
-    N3["console"]
-    N4["."]
-    N5["log"]
-    N6["("]
-    N7["'Hello'"]
-    N8[")"]
-    N9[";"]
-    N1 --> N2
-    N2 --> N3
-    N2 --> N4
-    N2 --> N5
-    N2 --> N6
-    N2 --> N7
-    N2 --> N8
-    N2 --> N9
-```
-
 Что engine делает прямо сейчас:
 
 ```text
@@ -274,23 +199,6 @@ Parsing отвечает на другой вопрос:
 
 Схема parser pipeline:
 
-```mermaid
-flowchart TD
-    N1["исходный код"]
-    N2["лексический анализ"]
-    N3["токены"]
-    N4["парсер"]
-    N5["проверяет порядок токены"]
-    N6["проверяет грамматику языка"]
-    N7["строит AST"]
-    N1 --> N2
-    N2 --> N3
-    N3 --> N4
-    N4 --> N5
-    N4 --> N6
-    N4 --> N7
-```
-
 Грамматика языка — это набор правил, по которым элементы JavaScript могут соединяться друг с другом; подробно грамматика будет проявляться постепенно в главах про синтаксис.
 
 Что engine делает прямо сейчас:
@@ -308,23 +216,6 @@ Abstract Syntax Tree, или AST, — это древовидное предст
 AST не является текстом. Это внутренняя структура, которая показывает, из каких частей состоит программа и как эти части связаны.
 
 Упрощенная схема:
-
-```mermaid
-flowchart TD
-    N1["исходный код"]
-    N2["console.log('Hello');"]
-    N3["AST"]
-    N4["ExpressionStatement"]
-    N5["CallExpression"]
-    N6["callee: console.log"]
-    N7["argument: 'Hello'"]
-    N1 --> N2
-    N2 --> N3
-    N3 --> N4
-    N4 --> N5
-    N5 --> N6
-    N5 --> N7
-```
 
 Это не точный AST конкретного engine. Это учебная модель, которая показывает идею: текст превращается в дерево.
 
@@ -363,13 +254,6 @@ Engine не может построить корректный AST, потому
 
 Схема позиции ошибки:
 
-```mermaid
-flowchart TD
-    N1["console.log('Hello'"]
-    N2["парсер ожидал закрывающую скобку )"]
-    N1 --> N2
-```
-
 Что engine делает прямо сейчас:
 
 ```text
@@ -396,17 +280,6 @@ Compilation — это преобразование кода в форму, бо
 
 На высоком уровне:
 
-```mermaid
-flowchart TD
-    N1["AST"]
-    N2["intermediate representation"]
-    N3["bytecode or machine code"]
-    N4["выполнение"]
-    N1 --> N2
-    N2 --> N3
-    N3 --> N4
-```
-
 Intermediate representation — промежуточное представление программы, удобное для engine; детали конкретных engines в этом курсе не являются основной темой.
 
 Bytecode — промежуточная инструкция для виртуальной машины engine; точный формат зависит от engine.
@@ -427,27 +300,6 @@ Compilation — подход, при котором программа пред�
 
 Упрощенное сравнение:
 
-```mermaid
-flowchart TD
-    N1["Interpretation"]
-    N2["читать представление"]
-    N3["выполнять шаг"]
-    N4["читать следующий шаг"]
-    N5["выполнять следующий шаг"]
-    N6["компиляция"]
-    N7["подготовить исполняемую форму"]
-    N8["оптимизировать"]
-    N9["выполнить подготовленный код"]
-    N1 --> N2
-    N1 --> N3
-    N1 --> N4
-    N1 --> N5
-    N1 --> N6
-    N6 --> N7
-    N6 --> N8
-    N6 --> N9
-```
-
 Современные JavaScript engines используют смешанную модель. Они могут быстро начать выполнение с помощью interpreter, а часто выполняемый код дополнительно оптимизировать compiler.
 
 Оптимизация — это преобразование кода engine так, чтобы он выполнялся быстрее; подробности оптимизаций будут изучаться позже в advanced-разделе.
@@ -465,25 +317,6 @@ Engine может сочетать interpretation и compilation.
 Современный JavaScript Engine — это не простой построчный читатель.
 
 Он обычно включает несколько подсистем:
-
-```mermaid
-flowchart TD
-    N1["Modern JavaScript Engine"]
-    N2["lexer"]
-    N3["парсер"]
-    N4["AST builder"]
-    N5["interpreter"]
-    N6["compiler"]
-    N7["optimizer"]
-    N8["runtime interface"]
-    N1 --> N2
-    N1 --> N3
-    N1 --> N4
-    N1 --> N5
-    N1 --> N6
-    N1 --> N7
-    N1 --> N8
-```
 
 Названия и устройство отличаются между engines, но общая идея сохраняется: engine должен понять код, представить его структурно, подготовить к выполнению и выполнить.
 
@@ -510,21 +343,6 @@ Preparation for execution — это подготовка программы к 
 * подготовил исполняемое представление.
 
 Но перед реальным выполнением runtime должен предоставить окружение:
-
-```mermaid
-flowchart TD
-    N1["Prepared code"]
-    N2["Runtime environment"]
-    N3["console"]
-    N4["process"]
-    N5["timers"]
-    N6["other APIs"]
-    N1 --> N2
-    N2 --> N3
-    N2 --> N4
-    N2 --> N5
-    N2 --> N6
-```
 
 Timers — это API для отложенных действий; подробное поведение timers и Event Loop будет изучаться в async-разделе.
 
@@ -554,19 +372,6 @@ Runtime error — ошибка, которая возникает во врем�
 
 Execution pipeline:
 
-```mermaid
-flowchart TD
-    N1["prepared code"]
-    N2["start выполнение"]
-    N3["perform program steps"]
-    N4["вызвать runtime APIs if needed"]
-    N5["получить результат или runtime error"]
-    N1 --> N2
-    N2 --> N3
-    N3 --> N4
-    N4 --> N5
-```
-
 Что engine делает прямо сейчас:
 
 ```text
@@ -586,43 +391,9 @@ console.log('Hello');
 
 На уровне ментальной модели:
 
-```mermaid
-flowchart TD
-    N1["JavaScript выполнение"]
-    N2["вызвать console.log"]
-    N3["Runtime API"]
-    N4["terminal output"]
-    N1 --> N2
-    N2 --> N3
-    N3 --> N4
-```
-
 `console.log` используется здесь только как минимальный способ увидеть результат. Подробно функции и вызовы будут изучаться позже.
 
 Runtime interaction может быть разным:
-
-```mermaid
-flowchart TD
-    N1["Node.js Runtime"]
-    N2["console output"]
-    N3["process information"]
-    N4["file system"]
-    N5["timers"]
-    N6["Browser Runtime"]
-    N7["document"]
-    N8["window"]
-    N9["DOM"]
-    N10["browser events"]
-    N1 --> N2
-    N1 --> N3
-    N1 --> N4
-    N1 --> N5
-    N1 --> N6
-    N6 --> N7
-    N6 --> N8
-    N6 --> N9
-    N6 --> N10
-```
 
 DOM — структура HTML-страницы, доступная браузеру; подробно она будет встречаться в Playwright-разделе.
 
@@ -651,25 +422,6 @@ Runtime дает внешнюю возможность.
 
 Финальная схема:
 
-```mermaid
-flowchart TD
-    N1["node app.js"]
-    N2["read source"]
-    N3["токены"]
-    N4["AST"]
-    N5["compiled / prepared form"]
-    N6["выполнение"]
-    N7["взаимодействие с Runtime"]
-    N8["наблюдаемый результат"]
-    N1 --> N2
-    N2 --> N3
-    N3 --> N4
-    N4 --> N5
-    N5 --> N6
-    N6 --> N7
-    N7 --> N8
-```
-
 Что engine делает прямо сейчас:
 
 ```text
@@ -685,59 +437,13 @@ Runtime возвращает наблюдаемый результат поль�
 
 Сначала работает Node.js runtime:
 
-```mermaid
-flowchart TD
-    N1["node app.js"]
-    N2["Node.js проверяет путь"]
-    N3["Node.js читает файл"]
-    N4["Node.js передает исходный код в V8"]
-    N1 --> N2
-    N2 --> N3
-    N3 --> N4
-```
-
 Затем работает engine:
 
-```mermaid
-flowchart TD
-    N1["V8 Engine"]
-    N2["лексический анализ"]
-    N3["парсинг"]
-    N4["AST construction"]
-    N5["compilation / preparation"]
-    N6["выполнение"]
-    N1 --> N2
-    N1 --> N3
-    N1 --> N4
-    N1 --> N5
-    N1 --> N6
-```
-
 Потом снова заметен runtime:
-
-```mermaid
-flowchart TD
-    N1["executing code"]
-    N2["runtime API call"]
-    N3["console output / error / side effect"]
-    N1 --> N2
-    N2 --> N3
-```
 
 Side effect — наблюдаемое изменение вне самого вычисления, например вывод в терминал или запись файла; подробно side effects будут обсуждаться позже при изучении функций и архитектуры тестов.
 
 Главное различие:
-
-```mermaid
-flowchart TD
-    N1["Syntax error"]
-    N2["возникает до выполнение"]
-    N3["Runtime error"]
-    N4["возникает во время выполнение"]
-    N1 --> N2
-    N1 --> N3
-    N3 --> N4
-```
 
 Если файл содержит синтаксическую ошибку, engine не может построить корректный AST. Это значит, что программа не начинает выполняться.
 
@@ -763,27 +469,6 @@ flowchart TD
 ```
 
 Ментальный фильм после `node app.js`:
-
-```mermaid
-flowchart TD
-    N1["Вы нажали Enter"]
-    N2["Node.js нашел app.js"]
-    N3["V8 получил текст"]
-    N4["V8 превратил текст в токены"]
-    N5["парсер построил AST"]
-    N6["Engine подготовил код"]
-    N7["выполнение начался"]
-    N8["Код обратился к runtime"]
-    N9["Вы увидели результат"]
-    N1 --> N2
-    N2 --> N3
-    N3 --> N4
-    N4 --> N5
-    N5 --> N6
-    N6 --> N7
-    N7 --> N8
-    N8 --> N9
-```
 
 Если на любом раннем этапе структура нарушена, фильм останавливается до выполнения.
 
@@ -939,13 +624,6 @@ Syntax errors появляются до execution. Runtime errors появляю
 
 Неправильный подход:
 
-```mermaid
-flowchart TD
-    N1["SyntaxError"]
-    N2["искать проблему в console.log или runtime API"]
-    N1 --> N2
-```
-
 Что произошло:
 
 Категория ошибки определена неверно.
@@ -955,15 +633,6 @@ flowchart TD
 Не отделен parsing от execution.
 
 Исправленный подход:
-
-```mermaid
-flowchart TD
-    N1["SyntaxError"]
-    N2["проверить структуру кода"]
-    N3["найти место, где парсер не смог продолжить"]
-    N1 --> N2
-    N2 --> N3
-```
 
 ### Ошибка 2. Думать, что AST — это просто красивое слово для кода
 
@@ -977,15 +646,6 @@ AST воспринимается как текстовый формат.
 
 Исправленная модель:
 
-```mermaid
-flowchart TD
-    N1["исходный код"]
-    N2["токены"]
-    N3["tree structure"]
-    N1 --> N2
-    N2 --> N3
-```
-
 ### Ошибка 3. Смешивать compilation и TypeScript compilation
 
 Что произошло:
@@ -997,17 +657,6 @@ Compilation внутри JavaScript engine смешана с компиляци�
 Одинаковое слово используется в разных контекстах.
 
 Исправленная модель:
-
-```mermaid
-flowchart TD
-    N1["TypeScript compilation"]
-    N2["TypeScript source → JavaScript output"]
-    N3["Engine compilation"]
-    N4["JavaScript representation → executable form"]
-    N1 --> N2
-    N1 --> N3
-    N3 --> N4
-```
 
 TypeScript compilation будет изучаться в части TypeScript.
 
@@ -1044,35 +693,9 @@ TypeScript compilation будет изучаться в части TypeScript.
 
 Пример:
 
-```mermaid
-flowchart TD
-    N1["Cannot find module"]
-    N2["проблема до передачи исходный код в engine"]
-    N3["SyntaxError"]
-    N4["проблема на парсинг / AST stage"]
-    N5["ReferenceError во время запуска"]
-    N6["программа дошла до выполнение"]
-    N1 --> N2
-    N1 --> N3
-    N3 --> N4
-    N3 --> N5
-    N5 --> N6
-```
-
 ReferenceError — ошибка обращения к имени, которое недоступно в текущем месте выполнения; подробно имена и Scope будут изучаться позже.
 
 Готовность к следующей главе:
-
-```mermaid
-flowchart TD
-    N1["✓ Я понимаю путь исходный код → токены → AST → выполнение."]
-    N2["✓ Я отличаю syntax error от runtime error."]
-    N3["✓ Я понимаю, что выполнение начинается не сразу после чтения файла."]
-    N4["✓ Я могу объяснить, что engine делает на каждом этапе."]
-    N1 --> N2
-    N2 --> N3
-    N3 --> N4
-```
 
 ---
 
@@ -1082,19 +705,6 @@ Automation QA Engineer часто видит ошибки не в учебном
 
 Например:
 
-```mermaid
-flowchart TD
-    N1["npx playwright test"]
-    N2["test files are loaded"]
-    N3["JavaScript / TypeScript toolchain prepares code"]
-    N4["engine starts выполнение"]
-    N5["Playwright runtime interacts with browser"]
-    N1 --> N2
-    N2 --> N3
-    N3 --> N4
-    N4 --> N5
-```
-
 `npx` — инструмент запуска npm-пакетов; подробно npm-инструменты будут изучаться позже.
 
 Если в тестовом файле есть syntax error, Playwright может даже не начать выполнять сценарий. Браузер может не открыться, потому что ошибка случилась раньше: engine или toolchain не смогли подготовить файл.
@@ -1102,21 +712,6 @@ flowchart TD
 Toolchain — цепочка инструментов, которая обрабатывает код перед запуском; подробно она будет встречаться в TypeScript и Playwright-разделах.
 
 QA-диагностика через pipeline:
-
-```mermaid
-flowchart TD
-    N1["Тест не стартует"]
-    N2["файл найден?"]
-    N3["синтаксис корректен?"]
-    N4["TypeScript успел скомпилироваться?"]
-    N5["JavaScript начал выполнение?"]
-    N6["браузер вообще был запущен?"]
-    N1 --> N2
-    N1 --> N3
-    N1 --> N4
-    N1 --> N5
-    N1 --> N6
-```
 
 Это помогает не путать:
 
@@ -1141,23 +736,6 @@ Assertion — проверка ожидаемого результата; под
 Если AST построен успешно, engine подготавливает код к выполнению. Современные JavaScript engines используют сочетание interpretation, compilation и optimization. После подготовки начинается execution, и код может взаимодействовать с runtime APIs.
 
 Главная ментальная модель главы:
-
-```mermaid
-flowchart TD
-    N1["исходный код"]
-    N2["токены"]
-    N3["AST"]
-    N4["compiled / prepared form"]
-    N5["выполнение"]
-    N6["взаимодействие с Runtime"]
-    N7["результат"]
-    N1 --> N2
-    N2 --> N3
-    N3 --> N4
-    N4 --> N5
-    N5 --> N6
-    N6 --> N7
-```
 
 Следующая глава объяснит Execution Context — внутреннюю среду, в которой JavaScript выполняет код после подготовки.
 

@@ -6,17 +6,6 @@
 
 Теперь посмотрим на другую задачу: как передавать обычные данные между программами.
 
-```mermaid
-flowchart TD
-    N1["JavaScript object"]
-    N2["API request"]
-    N3["передача данных"]
-    N4["API response"]
-    N1 --> N2
-    N2 --> N3
-    N3 --> N4
-```
-
 JavaScript object существует в памяти программы. Сеть передает текст или байты. Между ними нужен общий формат.
 
 ## Главный вопрос
@@ -50,17 +39,6 @@ JSON — текстовый формат обмена данными.
 
 Он похож на JavaScript object literal, но это не одно и то же:
 
-```mermaid
-flowchart TD
-    N1["JavaScript object"]
-    N2["значение в памяти JavaScript"]
-    N3["JSON text"]
-    N4["строка для передачи или хранения"]
-    N1 --> N2
-    N2 --> N3
-    N3 --> N4
-```
-
 Главные операции:
 
 * `JSON.stringify()` превращает JavaScript value в JSON text;
@@ -86,53 +64,11 @@ JSON не хранит:
 
 Сериализация превращает значение JavaScript в текст:
 
-```mermaid
-flowchart TD
-    N1["JavaScript object"]
-    N2["JSON.stringify()"]
-    N3["JSON text"]
-    N1 --> N2
-    N2 --> N3
-```
-
 Десериализация делает обратное:
-
-```mermaid
-flowchart TD
-    N1["JSON text"]
-    N2["JSON.parse()"]
-    N3["JavaScript object"]
-    N1 --> N2
-    N2 --> N3
-```
 
 Полный путь в API выглядит так:
 
-```mermaid
-flowchart TD
-    N1["JavaScript object"]
-    N2["JSON.stringify()"]
-    N3["JSON text"]
-    N4["передача или хранение"]
-    N5["JSON.parse()"]
-    N6["JavaScript object"]
-    N1 --> N2
-    N2 --> N3
-    N3 --> N4
-    N4 --> N5
-    N5 --> N6
-```
-
 ## Главная ментальная модель
-
-```mermaid
-flowchart TD
-    N1["object для работы в коде"]
-    N2["JSON text для передачи"]
-    N3["object после получения"]
-    N1 --> N2
-    N2 --> N3
-```
 
 JSON — это мост между JavaScript value и внешней системой.
 

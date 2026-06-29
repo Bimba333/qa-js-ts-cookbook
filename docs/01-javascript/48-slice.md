@@ -6,17 +6,6 @@
 
 Главная модель была такой:
 
-```mermaid
-flowchart TD
-    N1["Array"]
-    N2["середина"]
-    N3["splice()"]
-    N4["исходный array изменен"]
-    N1 --> N2
-    N2 --> N3
-    N3 --> N4
-```
-
 Но не каждая операция со списком test cases должна менять исходный список.
 
 Иногда нужно получить snapshot: часть regression plan для отдельного запуска, полный copy списка перед изменением или первые несколько smoke tests для быстрого pipeline.
@@ -69,27 +58,9 @@ const testCases = [
 
 Нужно запустить только первые два smoke-related tests:
 
-```mermaid
-flowchart TD
-    N1["index 0 → login smoke"]
-    N2["index 1 → создать order"]
-    N1 --> N2
-```
-
 Но исходный regression plan должен остаться целым.
 
 Нужна операция:
-
-```mermaid
-flowchart TD
-    N1["Array"]
-    N2["выбрать диапазон"]
-    N3["slice()"]
-    N4["new array copy"]
-    N1 --> N2
-    N2 --> N3
-    N3 --> N4
-```
 
 ## Теория
 
@@ -103,17 +74,6 @@ array.slice(startIndex, endIndex);
 
 Смысл:
 
-```mermaid
-flowchart TD
-    N1["startIndex"]
-    N2["с какой позиции начать copy"]
-    N3["endIndex"]
-    N4["перед какой позицией остановиться"]
-    N1 --> N2
-    N2 --> N3
-    N3 --> N4
-```
-
 `endIndex` не включается.
 
 ```javascript
@@ -121,13 +81,6 @@ const smokeTests = testCases.slice(0, 2);
 ```
 
 Результат:
-
-```mermaid
-flowchart TD
-    N1["index 0 → login smoke"]
-    N2["index 1 → создать order"]
-    N1 --> N2
-```
 
 Исходный `testCases` остается без изменений.
 
@@ -141,63 +94,13 @@ const smokeTests = testCases.slice(0, 2);
 
 он делает conceptual steps:
 
-```mermaid
-flowchart TD
-    N1["Array"]
-    N2["прочитать startIndex 0"]
-    N3["прочитать elements до index 2"]
-    N4["создать new array"]
-    N5["поместить copied elements"]
-    N6["вернуть new array"]
-    N1 --> N2
-    N2 --> N3
-    N3 --> N4
-    N4 --> N5
-    N5 --> N6
-```
-
 Исходный array:
 
-```mermaid
-flowchart TD
-    N1["testCases"]
-    N2["login smoke"]
-    N3["создать order"]
-    N4["apply discount"]
-    N5["pay order"]
-    N6["logout smoke"]
-    N1 --> N2
-    N1 --> N3
-    N1 --> N4
-    N1 --> N5
-    N1 --> N6
-```
-
 Новый array:
-
-```mermaid
-flowchart TD
-    N1["smokeTests"]
-    N2["login smoke"]
-    N3["создать order"]
-    N1 --> N2
-    N1 --> N3
-```
 
 ## Главная ментальная модель
 
 Главная модель этой главы: **copying**.
-
-```mermaid
-flowchart TD
-    N1["Array"]
-    N2["slice()"]
-    N3["copy selected elements"]
-    N4["new array"]
-    N1 --> N2
-    N2 --> N3
-    N3 --> N4
-```
 
 `slice()` не изменяет исходный array.
 
@@ -247,15 +150,6 @@ const paymentFlow = testCases.slice(2, 4);
 
 `slice()` не удаляет и не вставляет elements.
 
-```mermaid
-flowchart TD
-    N1["slice()"]
-    N2["copy"]
-    N3["source unchanged"]
-    N1 --> N2
-    N2 --> N3
-```
-
 ### Ошибка 2. Думать, что `endIndex` включается
 
 ```javascript
@@ -265,17 +159,6 @@ testCases.slice(0, 2);
 Берет indexes `0` и `1`, но не `2`.
 
 ### Ошибка 3. Путать `slice()` и `splice()`
-
-```mermaid
-flowchart TD
-    N1["slice()"]
-    N2["copy"]
-    N3["splice()"]
-    N4["modify"]
-    N1 --> N2
-    N2 --> N3
-    N3 --> N4
-```
 
 ## Краткие итоги
 

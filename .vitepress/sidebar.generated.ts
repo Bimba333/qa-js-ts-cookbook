@@ -300,11 +300,11 @@ export const sidebar = [
         "collapsed": false,
         "items": [
           {
-            "text": "Глава 61. Execution Context",
+            "text": "Глава 61. Execution Context: углубленное повторение",
             "link": "/docs/01-javascript/61-execution-context"
           },
           {
-            "text": "Глава 62. Call Stack",
+            "text": "Глава 62. Call Stack: углубленное повторение",
             "link": "/docs/01-javascript/62-call-stack"
           },
           {
@@ -322,11 +322,11 @@ export const sidebar = [
         "collapsed": false,
         "items": [
           {
-            "text": "Глава 65. Closures",
+            "text": "Глава 65. Closures: углубленное повторение",
             "link": "/docs/01-javascript/65-closures"
           },
           {
-            "text": "Глава 66. this",
+            "text": "Глава 66. this: углубленное повторение",
             "link": "/docs/01-javascript/66-this"
           },
           {

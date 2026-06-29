@@ -6,15 +6,6 @@
 
 Главная модель была такой:
 
-```mermaid
-flowchart TD
-    N1["same elements"]
-    N2["sort()"]
-    N3["different order"]
-    N1 --> N2
-    N2 --> N3
-```
-
 Теперь порядок уже существует. Иногда нужно не строить новый order, а просто перевернуть текущий: посмотреть последние failures первыми, прочитать execution sequence в обратном направлении или подготовить обратный rerun order.
 
 ## Главный вопрос
@@ -61,15 +52,6 @@ const testCases = [
 
 Нужна операция:
 
-```mermaid
-flowchart TD
-    N1["first → last"]
-    N2["reverse()"]
-    N3["last → first"]
-    N1 --> N2
-    N2 --> N3
-```
-
 ## Теория
 
 `reverse()` инвертирует текущий порядок массива.
@@ -82,54 +64,17 @@ array.reverse();
 
 Важное поведение: `reverse()` mutates исходный массив.
 
-```mermaid
-flowchart TD
-    N1["reverse()"]
-    N2["same array, opposite order"]
-    N1 --> N2
-```
-
 `reverse()` не смотрит на `id`, `status` или `priority`. Он просто переворачивает текущий порядок.
 
 ## Внутренний механизм
 
 Observable model:
 
-```mermaid
-flowchart TD
-    N1["before"]
-    N2["first"]
-    N3["middle"]
-    N4["last"]
-    N5["reverse()"]
-    N6["after"]
-    N7["last"]
-    N8["middle"]
-    N9["first"]
-    N1 --> N2
-    N1 --> N3
-    N1 --> N4
-    N1 --> N5
-    N5 --> N6
-    N6 --> N7
-    N6 --> N8
-    N6 --> N9
-```
-
 Это текущий порядок, прочитанный в обратном направлении.
 
 ## Главная ментальная модель
 
 Главная модель этой главы: **flipping order**.
-
-```mermaid
-flowchart TD
-    N1["current order"]
-    N2["reverse()"]
-    N3["opposite order"]
-    N1 --> N2
-    N2 --> N3
-```
 
 Главное: `reverse()` не сортирует. Он только инвертирует уже существующий порядок.
 
@@ -198,13 +143,6 @@ testCases.reverse();
 ## Переход к следующей главе
 
 Теперь мы умеем управлять order:
-
-```mermaid
-flowchart TD
-    N1["sort() → задать порядок"]
-    N2["reverse() → инвертировать текущий порядок"]
-    N1 --> N2
-```
 
 Дальше раздел Arrays продолжит разбирать способы получать и преобразовывать данные без лишней ручной работы.
 

@@ -1,18 +1,12 @@
 import path from 'node:path'
 import { exists, readText, walk } from './report.mjs'
 
-function taskCount(markdown) {
-  return (markdown.match(/^###\s+/gm) || []).length +
-    (markdown.match(/^\d+\.\s+/gm) || []).length +
-    (markdown.match(/^##\s+Мини-проект/gm) || []).length
-}
-
-function answerCount(markdown) {
-  return Math.max(
-    (markdown.match(/^###\s+/gm) || []).length,
-    (markdown.match(/^Ответ:?/gm) || []).length,
-    (markdown.match(/^##\s+Мини-проект/gm) || []).length
-  )
+function workSectionCount(markdown) {
+  return [...markdown.matchAll(/^##\s+(.+)$/gm)]
+    .map(match => match[1].trim())
+    .filter(title => !/^Возможные улучшения$/i.test(title))
+    .filter(title => !/^Цели практики$/i.test(title))
+    .length
 }
 
 export function checkPracticeSolutions(context) {
@@ -39,14 +33,14 @@ export function checkPracticeSolutions(context) {
 
     const practiceMarkdown = readText(root, practice)
     const solutionMarkdown = readText(root, solution)
-    const tasks = taskCount(practiceMarkdown)
-    const answers = answerCount(solutionMarkdown)
+    const tasks = workSectionCount(practiceMarkdown)
+    const answers = workSectionCount(solutionMarkdown)
 
     if (!/Ответ/.test(solutionMarkdown)) {
       report.fail('Practice/Solutions', `Solutions не содержит ответы: ${solution}`)
     }
 
-    if (tasks && answers && Math.abs(tasks - answers) > Math.max(4, Math.ceil(tasks * 0.35))) {
+    if (tasks && answers && Math.abs(tasks - answers) > Math.max(2, Math.ceil(tasks * 0.35))) {
       report.warn(`Количество задач и ответов заметно отличается: ${practice} (${tasks}) / ${solution} (${answers})`)
     }
   }
@@ -67,4 +61,3 @@ export function checkPracticeSolutions(context) {
     report.ok('Practice/Solutions')
   }
 }
-

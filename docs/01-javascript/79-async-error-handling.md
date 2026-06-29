@@ -4,15 +4,6 @@
 
 Предыдущая глава показала `async` и `await`:
 
-```mermaid
-flowchart TD
-    N1["async function"]
-    N2["await Promise"]
-    N3["продолжить после результата"]
-    N1 --> N2
-    N2 --> N3
-```
-
 Теперь нужно понять, что происходит, если асинхронная операция завершается ошибкой.
 
 ## Главный вопрос
@@ -24,17 +15,6 @@ flowchart TD
 ## Мотивация
 
 В тестовом фреймворке ошибка может возникнуть на любом шаге:
-
-```mermaid
-flowchart TD
-    N1["подготовить окружение"]
-    N2["login"]
-    N3["выполнить тесты"]
-    N4["загрузить отчет"]
-    N1 --> N2
-    N2 --> N3
-    N3 --> N4
-```
 
 Если загрузка отчета упала, код должен:
 
@@ -72,51 +52,13 @@ try {
 
 Упрощенная модель:
 
-```mermaid
-flowchart TD
-    N1["await Promise"]
-    N2["Promise успешен → вернуть значение"]
-    N3["Promise rejected → перейти в catch"]
-    N1 --> N2
-    N1 --> N3
-```
-
 Если ошибка не обработана внутри текущей `async`-функции, она распространяется наружу как rejected Promise этой функции.
-
-```mermaid
-flowchart TD
-    N1["async function generateReport()"]
-    N2["await collectLogs()"]
-    N3["collectLogs rejected"]
-    N4["generateReport возвращает rejected Promise"]
-    N1 --> N2
-    N2 --> N3
-    N3 --> N4
-```
-
-```mermaid
-flowchart TD
-    N1["ошибка"]
-    N2["не обработана"]
-    N3["async-функция возвращает rejected Promise"]
-    N1 --> N2
-    N2 --> N3
-```
 
 Это позволяет обрабатывать ошибку на более высоком уровне.
 
 ## Главная ментальная модель
 
 Главная модель главы:
-
-```mermaid
-flowchart TD
-    N1["асинхронная ошибка"]
-    N2["rejected Promise"]
-    N3["catch() или try/catch"]
-    N1 --> N2
-    N2 --> N3
-```
 
 ## Практические примеры
 

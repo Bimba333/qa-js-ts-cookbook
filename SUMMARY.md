@@ -92,15 +92,15 @@
 
 ## Раздел 6. Execution Model Revisited
 
-* [Execution Context](docs/01-javascript/61-execution-context.md)
-* [Call Stack](docs/01-javascript/62-call-stack.md)
+* [Execution Context: углубленное повторение](docs/01-javascript/61-execution-context.md)
+* [Call Stack: углубленное повторение](docs/01-javascript/62-call-stack.md)
 * [Memory Model](docs/01-javascript/63-memory-model.md)
 * [Hoisting + TDZ](docs/01-javascript/64-hoisting-tdz.md)
 
 ## Раздел 7. Function Context
 
-* [Closures](docs/01-javascript/65-closures.md)
-* [this](docs/01-javascript/66-this.md)
+* [Closures: углубленное повторение](docs/01-javascript/65-closures.md)
+* [this: углубленное повторение](docs/01-javascript/66-this.md)
 * [call(), apply(), bind()](docs/01-javascript/67-call-apply-bind.md)
 * [Practical Context Management](docs/01-javascript/68-context-management.md)
 

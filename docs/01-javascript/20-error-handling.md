@@ -4,15 +4,6 @@
 
 Предыдущие главы раздела **Program Control** объяснили:
 
-```mermaid
-flowchart TD
-    N1["Operators"]
-    N2["Conditionals"]
-    N3["Loops"]
-    N1 --> N2
-    N2 --> N3
-```
-
 Теперь программа может выполнять алгоритмы:
 
 ```text
@@ -146,29 +137,7 @@ If parsing failed, there is no valid object to validate.
 
 Normal execution:
 
-```mermaid
-flowchart TD
-    N1["Request profile"]
-    N2["Parse JSON"]
-    N3["Validate fields"]
-    N4["Report success"]
-    N1 --> N2
-    N2 --> N3
-    N3 --> N4
-```
-
 Error during execution:
-
-```mermaid
-flowchart TD
-    N1["Request profile"]
-    N2["Parse JSON"]
-    N3["Runtime error"]
-    N4["Normal path is interrupted"]
-    N1 --> N2
-    N2 --> N3
-    N3 --> N4
-```
 
 Что теперь происходит с выполнением?
 
@@ -184,17 +153,6 @@ Normal execution means code can continue step by step.
 
 Normal execution схема:
 
-```mermaid
-flowchart TD
-    N1["Step 1"]
-    N2["Step 2"]
-    N3["Step 3"]
-    N4["Finish"]
-    N1 --> N2
-    N2 --> N3
-    N3 --> N4
-```
-
 Пример:
 
 ```javascript
@@ -206,33 +164,9 @@ console.log(body.id);
 
 Safe execution model:
 
-```mermaid
-flowchart TD
-    N1["Operation succeeds"]
-    N2["Result is available"]
-    N3["Next line can use result"]
-    N1 --> N2
-    N2 --> N3
-```
-
 ### Что такое error
 
 An error is a signal that normal execution cannot continue as expected.
-
-```mermaid
-flowchart TD
-    N1["Expected"]
-    N2["valid JSON"]
-    N3["Received"]
-    N4["invalid JSON"]
-    N5["Результат"]
-    N6["error"]
-    N1 --> N2
-    N1 --> N3
-    N3 --> N4
-    N3 --> N5
-    N5 --> N6
-```
 
 Error is not just "bad вывод". It changes execution flow.
 
@@ -241,17 +175,6 @@ Error is not just "bad вывод". It changes execution flow.
 Abnormal execution происходит, когда операция падает и normal path прерывается.
 
 Abnormal execution схема:
-
-```mermaid
-flowchart TD
-    N1["Step 1"]
-    N2["Step 2"]
-    N3["Error occurs"]
-    N4["Normal path stops"]
-    N1 --> N2
-    N2 --> N3
-    N3 --> N4
-```
 
 Что теперь происходит с выполнением?
 
@@ -270,44 +193,13 @@ JSON.parse('not valid json');
 
 Runtime error схема:
 
-```mermaid
-flowchart TD
-    N1["Program is running"]
-    N2["Operation receives invalid input"]
-    N3["Runtime error is produced"]
-    N4["Normal выполнение is interrupted"]
-    N1 --> N2
-    N2 --> N3
-    N3 --> N4
-```
-
 Эта глава не объясняет внутреннее устройство stack trace. Stack traces будут изучены позже, когда отладка станет глубже.
 
 ### Почему программы останавливаются
 
 If an error is not handled, JavaScript cannot safely continue the normal path.
 
-```mermaid
-flowchart TD
-    N1["Invalid JSON"]
-    N2["нет parsed object"]
-    N3["Cannot validate object fields"]
-    N4["Program stops normal выполнение"]
-    N1 --> N2
-    N2 --> N3
-    N3 --> N4
-```
-
 Continue vs stop:
-
-```mermaid
-flowchart TD
-    N1["Can program продолжить safely?"]
-    N2["да → handle error and продолжить controlled path"]
-    N3["нет → stop and report error"]
-    N1 --> N2
-    N1 --> N3
-```
 
 ### `throw`
 
@@ -322,17 +214,6 @@ if (statusCode !== 200) {
 ```
 
 `throw` схема:
-
-```mermaid
-flowchart TD
-    N1["Code detects invalid state"]
-    N2["throw"]
-    N3["normal path is interrupted"]
-    N4["error path begins"]
-    N1 --> N2
-    N2 --> N3
-    N3 --> N4
-```
 
 Что теперь происходит с выполнением?
 
@@ -355,17 +236,6 @@ try {
 
 `try` схема:
 
-```mermaid
-flowchart TD
-    N1["try block"]
-    N2["operation 1"]
-    N3["operation 2"]
-    N4["operation 3"]
-    N1 --> N2
-    N1 --> N3
-    N1 --> N4
-```
-
 `try` alone is not enough. It needs `catch` or `finally`.
 
 ### `catch`
@@ -382,19 +252,6 @@ try {
 ```
 
 `catch` схема:
-
-```mermaid
-flowchart TD
-    N1["try block"]
-    N2["success → продолжить after try/catch"]
-    N3["error"]
-    N4["catch block"]
-    N5["controlled error handling"]
-    N1 --> N2
-    N1 --> N3
-    N1 --> N4
-    N1 --> N5
-```
 
 Что теперь происходит с выполнением?
 
@@ -419,71 +276,19 @@ try {
 
 `finally` схема:
 
-```mermaid
-flowchart TD
-    N1["try succeeds"]
-    N2["finally runs"]
-    N3["try throws"]
-    N4["catch handles"]
-    N5["finally runs"]
-    N1 --> N2
-    N2 --> N3
-    N3 --> N4
-    N4 --> N5
-```
-
 At a high level, `finally` is used for cleanup-like work.
 
 ### try/catch flow
 
 Try/catch поток:
 
-```mermaid
-flowchart TD
-    N1["Enter try"]
-    N2["Run operation"]
-    N3["нет error"]
-    N4["skip catch"]
-    N5["error"]
-    N6["jump to catch"]
-    N7["продолжить after try/catch"]
-    N1 --> N2
-    N2 --> N3
-    N2 --> N4
-    N2 --> N5
-    N5 --> N6
-    N2 --> N7
-```
-
 Exception path:
-
-```mermaid
-flowchart TD
-    N1["normal path"]
-    N2["error occurs"]
-    N3["exception path"]
-    N4["catch or outer handler"]
-    N1 --> N2
-    N2 --> N3
-    N3 --> N4
-```
 
 ### Error propagation
 
 If current place does not handle error, error propagates upward conceptually.
 
 Error propagation схема:
-
-```mermaid
-flowchart TD
-    N1["Operation fails"]
-    N2["нет local handling"]
-    N3["Error moves to вызывающий код / outer level"]
-    N4["Handled there or program stops"]
-    N1 --> N2
-    N2 --> N3
-    N3 --> N4
-```
 
 Functions will make this model more important. They are the next chapter block.
 
@@ -493,59 +298,13 @@ Not every error should be handled immediately.
 
 Decision after error:
 
-```mermaid
-flowchart TD
-    N1["Error happened"]
-    N2["Can this level recover meaningfully?"]
-    N3["да → handle here"]
-    N4["нет → let вызывающий код / test framework handle"]
-    N1 --> N2
-    N2 --> N3
-    N2 --> N4
-```
-
 In Automation QA:
-
-```mermaid
-flowchart TD
-    N1["Invalid optional cleanup"]
-    N2["maybe log and продолжить"]
-    N3["Invalid login setup"]
-    N4["usually stop test"]
-    N1 --> N2
-    N1 --> N3
-    N3 --> N4
-```
 
 ### Multiple operations
 
 Multiple operations in `try`:
 
-```mermaid
-flowchart TD
-    N1["try"]
-    N2["parse response"]
-    N3["validate id"]
-    N4["validate email"]
-    N5["report success"]
-    N1 --> N2
-    N1 --> N3
-    N1 --> N4
-    N1 --> N5
-```
-
 If parse fails:
-
-```mermaid
-flowchart TD
-    N1["parse response"]
-    N2["error"]
-    N3["validate id does not run"]
-    N4["catch handles"]
-    N1 --> N2
-    N2 --> N3
-    N3 --> N4
-```
 
 Что теперь происходит с выполнением?
 
@@ -567,73 +326,11 @@ Error handling decides what happens next.
 
 Error lifecycle:
 
-```mermaid
-flowchart TD
-    N1["Operation starts"]
-    N2["Failure occurs"]
-    N3["Error is created / thrown"]
-    N4["Normal path interrupted"]
-    N5["Handler searched conceptually"]
-    N6["found → catch runs"]
-    N7["not found → program/test stops"]
-    N8["finally may run"]
-    N1 --> N2
-    N2 --> N3
-    N3 --> N4
-    N4 --> N5
-    N5 --> N6
-    N5 --> N7
-    N5 --> N8
-```
-
 Complete error handling picture:
-
-```mermaid
-flowchart TD
-    N1["try"]
-    N2["normal operation"]
-    N3["success → skip catch"]
-    N4["failing operation"]
-    N5["error → catch"]
-    N6["handle/log/decide"]
-    N7["finally"]
-    N8["продолжить or stop"]
-    N1 --> N2
-    N1 --> N3
-    N1 --> N4
-    N4 --> N5
-    N1 --> N6
-    N1 --> N7
-    N7 --> N8
-```
 
 Текущее место в модели JavaScript:
 
-```mermaid
-flowchart TD
-    N1["Values"]
-    N2["Operators"]
-    N3["Conditionals"]
-    N4["Loops"]
-    N5["Error Handling"]
-    N6["Functions"]
-    N1 --> N2
-    N2 --> N3
-    N3 --> N4
-    N4 --> N5
-    N5 --> N6
-```
-
 Переход к Functions:
-
-```mermaid
-flowchart TD
-    N1["Repeated or grouped behavior"]
-    N2["Needs a name and reusable boundary"]
-    N3["Functions"]
-    N1 --> N2
-    N2 --> N3
-```
 
 Functions сделают error propagation понятнее, потому что errors часто проходят через границы функций.
 
@@ -643,68 +340,15 @@ Functions сделают error propagation понятнее, потому что
 
 ### Emergency stop button
 
-```mermaid
-flowchart TD
-    N1["Factory line running"]
-    N2["Emergency stop pressed"]
-    N3["Normal production stops"]
-    N4["Safety procedure starts"]
-    N1 --> N2
-    N2 --> N3
-    N3 --> N4
-```
-
 Error is the emergency stop for normal execution.
 
 ### Factory failure
 
-```mermaid
-flowchart TD
-    N1["Machine expects valid part"]
-    N2["Broken part arrives"]
-    N3["Machine cannot продолжить normal operation"]
-    N4["Failure handling needed"]
-    N1 --> N2
-    N2 --> N3
-    N3 --> N4
-```
-
 ### Blocked railway
-
-```mermaid
-flowchart TD
-    N1["Train moves forward"]
-    N2["Track blocked"]
-    N3["Train cannot продолжить normal route"]
-    N4["Dispatcher chooses next action"]
-    N1 --> N2
-    N2 --> N3
-    N3 --> N4
-```
 
 ### Airport security stop
 
-```mermaid
-flowchart TD
-    N1["Passenger proceeds normally"]
-    N2["Problem detected"]
-    N3["Normal flow interrupted"]
-    N4["Security handling path"]
-    N1 --> N2
-    N2 --> N3
-    N3 --> N4
-```
-
 ### Interrupted conveyor
-
-```mermaid
-flowchart TD
-    N1["Item moves on conveyor"]
-    N2["Invalid item detected"]
-    N3["Conveyor pauses or redirects"]
-    N1 --> N2
-    N2 --> N3
-```
 
 Program execution normally flows forward. Errors interrupt normal execution. Error handling decides what happens next.
 
@@ -807,21 +451,6 @@ Handle errors where meaningful action can be taken.
 
 Типичные ошибки:
 
-```mermaid
-flowchart TD
-    N1["Mistake"]
-    N2["swallow error"]
-    N3["catch too broadly"]
-    N4["продолжить after critical failure"]
-    N5["forget cleanup"]
-    N6["hide original error message"]
-    N1 --> N2
-    N1 --> N3
-    N1 --> N4
-    N1 --> N5
-    N1 --> N6
-```
-
 ---
 
 ## Типичные ошибки
@@ -903,17 +532,6 @@ if (statusCode !== 200) {
 
 QA failure example:
 
-```mermaid
-flowchart TD
-    N1["API response"]
-    N2["statusCode = 500"]
-    N3["throw error"]
-    N4["test stops with clear message"]
-    N1 --> N2
-    N2 --> N3
-    N3 --> N4
-```
-
 ### Parsing JSON
 
 ```javascript
@@ -928,15 +546,6 @@ try {
 ### Failing test setup
 
 If setup cannot create user, test should usually stop.
-
-```mermaid
-flowchart TD
-    N1["setup failed"]
-    N2["нет valid test data"]
-    N3["stop test"]
-    N1 --> N2
-    N2 --> N3
-```
 
 ### Logging errors
 
@@ -963,15 +572,6 @@ Cleanup logic in real frameworks will be studied later.
 
 ### Deciding whether test should stop
 
-```mermaid
-flowchart TD
-    N1["Can test still validate target behavior?"]
-    N2["да → handle and продолжить carefully"]
-    N3["нет → stop with clear error"]
-    N1 --> N2
-    N1 --> N3
-```
-
 ---
 
 ## Итоги
@@ -996,21 +596,6 @@ finally
 ```
 
 Final section bridge:
-
-```mermaid
-flowchart TD
-    N1["Values"]
-    N2["Operators"]
-    N3["Conditionals"]
-    N4["Loops"]
-    N5["Error Handling"]
-    N6["Functions"]
-    N1 --> N2
-    N2 --> N3
-    N3 --> N4
-    N4 --> N5
-    N5 --> N6
-```
 
 Functions are the next abstraction: they let us give names to reusable поведение and create clearer boundaries for execution and errors.
 

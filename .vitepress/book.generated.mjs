@@ -299,11 +299,11 @@ export const bookEngineData = {
           "title": "Execution Model Revisited",
           "chapters": [
             {
-              "fallbackTitle": "Execution Context",
+              "fallbackTitle": "Execution Context: углубленное повторение",
               "path": "docs/01-javascript/61-execution-context.md"
             },
             {
-              "fallbackTitle": "Call Stack",
+              "fallbackTitle": "Call Stack: углубленное повторение",
               "path": "docs/01-javascript/62-call-stack.md"
             },
             {
@@ -320,11 +320,11 @@ export const bookEngineData = {
           "title": "Function Context",
           "chapters": [
             {
-              "fallbackTitle": "Closures",
+              "fallbackTitle": "Closures: углубленное повторение",
               "path": "docs/01-javascript/65-closures.md"
             },
             {
-              "fallbackTitle": "this",
+              "fallbackTitle": "this: углубленное повторение",
               "path": "docs/01-javascript/66-this.md"
             },
             {
@@ -709,7 +709,7 @@ export const bookEngineData = {
       "examples": 9,
       "tasks": 32,
       "solutions": 16,
-      "mermaid": 22,
+      "mermaid": 2,
       "miniProjects": 1,
       "previous": {
         "title": "Рабочее окружение",
@@ -756,7 +756,7 @@ export const bookEngineData = {
         "examples": 9,
         "tasks": 32,
         "solutions": 16,
-        "mermaid": 22
+        "mermaid": 2
       }
     },
     "docs/01-javascript/02-how-javascript-works.md": {
@@ -775,7 +775,7 @@ export const bookEngineData = {
       "examples": 9,
       "tasks": 37,
       "solutions": 17,
-      "mermaid": 28,
+      "mermaid": 0,
       "miniProjects": 1,
       "previous": {
         "title": "Что такое JavaScript",
@@ -828,7 +828,7 @@ export const bookEngineData = {
         "examples": 9,
         "tasks": 37,
         "solutions": 17,
-        "mermaid": 28
+        "mermaid": 0
       }
     },
     "docs/01-javascript/03-execution-context.md": {
@@ -847,7 +847,7 @@ export const bookEngineData = {
       "examples": 7,
       "tasks": 36,
       "solutions": 16,
-      "mermaid": 46,
+      "mermaid": 11,
       "miniProjects": 1,
       "previous": {
         "title": "Как выполняется JavaScript",
@@ -900,7 +900,7 @@ export const bookEngineData = {
         "examples": 7,
         "tasks": 36,
         "solutions": 16,
-        "mermaid": 46
+        "mermaid": 11
       }
     },
     "docs/01-javascript/04-call-stack.md": {
@@ -919,7 +919,7 @@ export const bookEngineData = {
       "examples": 7,
       "tasks": 30,
       "solutions": 15,
-      "mermaid": 62,
+      "mermaid": 19,
       "miniProjects": 1,
       "previous": {
         "title": "Execution Context",
@@ -972,7 +972,7 @@ export const bookEngineData = {
         "examples": 7,
         "tasks": 30,
         "solutions": 15,
-        "mermaid": 62
+        "mermaid": 19
       }
     },
     "docs/01-javascript/05-memory.md": {
@@ -991,7 +991,7 @@ export const bookEngineData = {
       "examples": 7,
       "tasks": 29,
       "solutions": 25,
-      "mermaid": 74,
+      "mermaid": 20,
       "miniProjects": 1,
       "previous": {
         "title": "Call Stack",
@@ -1044,7 +1044,7 @@ export const bookEngineData = {
         "examples": 7,
         "tasks": 29,
         "solutions": 25,
-        "mermaid": 74
+        "mermaid": 20
       }
     },
     "docs/01-javascript/06-variables.md": {
@@ -1063,7 +1063,7 @@ export const bookEngineData = {
       "examples": 7,
       "tasks": 29,
       "solutions": 26,
-      "mermaid": 67,
+      "mermaid": 10,
       "miniProjects": 1,
       "previous": {
         "title": "Memory",
@@ -1116,7 +1116,7 @@ export const bookEngineData = {
         "examples": 7,
         "tasks": 29,
         "solutions": 26,
-        "mermaid": 67
+        "mermaid": 10
       }
     },
     "docs/01-javascript/07-scope.md": {
@@ -1135,7 +1135,7 @@ export const bookEngineData = {
       "examples": 7,
       "tasks": 33,
       "solutions": 25,
-      "mermaid": 60,
+      "mermaid": 13,
       "miniProjects": 1,
       "previous": {
         "title": "Variables",
@@ -1188,7 +1188,7 @@ export const bookEngineData = {
         "examples": 7,
         "tasks": 33,
         "solutions": 25,
-        "mermaid": 60
+        "mermaid": 13
       }
     },
     "docs/01-javascript/08-lexical-environment.md": {
@@ -1207,7 +1207,7 @@ export const bookEngineData = {
       "examples": 7,
       "tasks": 27,
       "solutions": 24,
-      "mermaid": 78,
+      "mermaid": 23,
       "miniProjects": 1,
       "previous": {
         "title": "Scope",
@@ -1260,7 +1260,7 @@ export const bookEngineData = {
         "examples": 7,
         "tasks": 27,
         "solutions": 24,
-        "mermaid": 78
+        "mermaid": 23
       }
     },
     "docs/01-javascript/09-hoisting.md": {
@@ -1279,7 +1279,7 @@ export const bookEngineData = {
       "examples": 7,
       "tasks": 26,
       "solutions": 24,
-      "mermaid": 63,
+      "mermaid": 6,
       "miniProjects": 1,
       "previous": {
         "title": "Lexical Environment",
@@ -1307,12 +1307,6 @@ export const bookEngineData = {
           "link": "/docs/01-javascript/03-execution-context"
         },
         {
-          "term": "Call Stack",
-          "title": "Call Stack",
-          "number": 4,
-          "link": "/docs/01-javascript/04-call-stack"
-        },
-        {
           "term": "Scope",
           "title": "Scope",
           "number": 7,
@@ -1323,6 +1317,12 @@ export const bookEngineData = {
           "title": "Temporal Dead Zone",
           "number": 10,
           "link": "/docs/01-javascript/10-temporal-dead-zone"
+        },
+        {
+          "term": "Closure",
+          "title": "Closures",
+          "number": 28,
+          "link": "/docs/01-javascript/28-closures"
         }
       ],
       "card": {
@@ -1332,7 +1332,7 @@ export const bookEngineData = {
         "examples": 7,
         "tasks": 26,
         "solutions": 24,
-        "mermaid": 63
+        "mermaid": 6
       }
     },
     "docs/01-javascript/10-temporal-dead-zone.md": {
@@ -1351,7 +1351,7 @@ export const bookEngineData = {
       "examples": 7,
       "tasks": 25,
       "solutions": 25,
-      "mermaid": 54,
+      "mermaid": 2,
       "miniProjects": 1,
       "previous": {
         "title": "Hoisting",
@@ -1404,7 +1404,7 @@ export const bookEngineData = {
         "examples": 7,
         "tasks": 25,
         "solutions": 25,
-        "mermaid": 54
+        "mermaid": 2
       }
     },
     "docs/01-javascript/11-primitive-types.md": {
@@ -1423,7 +1423,7 @@ export const bookEngineData = {
       "examples": 7,
       "tasks": 24,
       "solutions": 21,
-      "mermaid": 57,
+      "mermaid": 7,
       "miniProjects": 1,
       "previous": {
         "title": "Temporal Dead Zone",
@@ -1445,28 +1445,28 @@ export const bookEngineData = {
       },
       "related": [
         {
-          "term": "Execution Context",
-          "title": "Execution Context",
-          "number": 3,
-          "link": "/docs/01-javascript/03-execution-context"
-        },
-        {
-          "term": "Call Stack",
-          "title": "Call Stack",
-          "number": 4,
-          "link": "/docs/01-javascript/04-call-stack"
-        },
-        {
           "term": "Scope",
           "title": "Scope",
           "number": 7,
           "link": "/docs/01-javascript/07-scope"
         },
         {
-          "term": "Hoisting",
-          "title": "Hoisting",
-          "number": 9,
-          "link": "/docs/01-javascript/09-hoisting"
+          "term": "this",
+          "title": "this",
+          "number": 29,
+          "link": "/docs/01-javascript/29-this"
+        },
+        {
+          "term": "Prototype",
+          "title": "Prototype",
+          "number": 39,
+          "link": "/docs/01-javascript/39-prototype"
+        },
+        {
+          "term": "Garbage Collector",
+          "title": "Garbage Collector",
+          "number": 87,
+          "link": "/docs/01-javascript/87-garbage-collector"
         }
       ],
       "card": {
@@ -1476,7 +1476,7 @@ export const bookEngineData = {
         "examples": 7,
         "tasks": 24,
         "solutions": 21,
-        "mermaid": 57
+        "mermaid": 7
       }
     },
     "docs/01-javascript/12-object-type.md": {
@@ -1495,7 +1495,7 @@ export const bookEngineData = {
       "examples": 7,
       "tasks": 47,
       "solutions": 34,
-      "mermaid": 65,
+      "mermaid": 4,
       "miniProjects": 1,
       "previous": {
         "title": "Primitive Types",
@@ -1517,28 +1517,28 @@ export const bookEngineData = {
       },
       "related": [
         {
-          "term": "Execution Context",
-          "title": "Execution Context",
-          "number": 3,
-          "link": "/docs/01-javascript/03-execution-context"
+          "term": "this",
+          "title": "this",
+          "number": 29,
+          "link": "/docs/01-javascript/29-this"
         },
         {
-          "term": "Call Stack",
-          "title": "Call Stack",
-          "number": 4,
-          "link": "/docs/01-javascript/04-call-stack"
+          "term": "Prototype",
+          "title": "Prototype",
+          "number": 39,
+          "link": "/docs/01-javascript/39-prototype"
         },
         {
-          "term": "Scope",
-          "title": "Scope",
-          "number": 7,
-          "link": "/docs/01-javascript/07-scope"
+          "term": "Garbage Collector",
+          "title": "Garbage Collector",
+          "number": 87,
+          "link": "/docs/01-javascript/87-garbage-collector"
         },
         {
-          "term": "Hoisting",
-          "title": "Hoisting",
-          "number": 9,
-          "link": "/docs/01-javascript/09-hoisting"
+          "term": "JSON",
+          "title": "JSON",
+          "number": 94,
+          "link": "/docs/01-javascript/94-json"
         }
       ],
       "card": {
@@ -1548,7 +1548,7 @@ export const bookEngineData = {
         "examples": 7,
         "tasks": 47,
         "solutions": 34,
-        "mermaid": 65
+        "mermaid": 4
       }
     },
     "docs/01-javascript/13-references.md": {
@@ -1567,7 +1567,7 @@ export const bookEngineData = {
       "examples": 7,
       "tasks": 39,
       "solutions": 28,
-      "mermaid": 45,
+      "mermaid": 0,
       "miniProjects": 1,
       "previous": {
         "title": "Object Type",
@@ -1589,18 +1589,6 @@ export const bookEngineData = {
       },
       "related": [
         {
-          "term": "Execution Context",
-          "title": "Execution Context",
-          "number": 3,
-          "link": "/docs/01-javascript/03-execution-context"
-        },
-        {
-          "term": "Call Stack",
-          "title": "Call Stack",
-          "number": 4,
-          "link": "/docs/01-javascript/04-call-stack"
-        },
-        {
           "term": "this",
           "title": "this",
           "number": 29,
@@ -1611,6 +1599,12 @@ export const bookEngineData = {
           "title": "Prototype",
           "number": 39,
           "link": "/docs/01-javascript/39-prototype"
+        },
+        {
+          "term": "Garbage Collector",
+          "title": "Garbage Collector",
+          "number": 87,
+          "link": "/docs/01-javascript/87-garbage-collector"
         }
       ],
       "card": {
@@ -1620,7 +1614,7 @@ export const bookEngineData = {
         "examples": 7,
         "tasks": 39,
         "solutions": 28,
-        "mermaid": 45
+        "mermaid": 0
       }
     },
     "docs/01-javascript/14-stack-and-heap.md": {
@@ -1639,7 +1633,7 @@ export const bookEngineData = {
       "examples": 7,
       "tasks": 37,
       "solutions": 28,
-      "mermaid": 46,
+      "mermaid": 13,
       "miniProjects": 1,
       "previous": {
         "title": "References",
@@ -1673,16 +1667,16 @@ export const bookEngineData = {
           "link": "/docs/01-javascript/04-call-stack"
         },
         {
-          "term": "Scope",
-          "title": "Scope",
-          "number": 7,
-          "link": "/docs/01-javascript/07-scope"
+          "term": "this",
+          "title": "this",
+          "number": 29,
+          "link": "/docs/01-javascript/29-this"
         },
         {
-          "term": "Hoisting",
-          "title": "Hoisting",
-          "number": 9,
-          "link": "/docs/01-javascript/09-hoisting"
+          "term": "Garbage Collector",
+          "title": "Garbage Collector",
+          "number": 87,
+          "link": "/docs/01-javascript/87-garbage-collector"
         }
       ],
       "card": {
@@ -1692,7 +1686,7 @@ export const bookEngineData = {
         "examples": 7,
         "tasks": 37,
         "solutions": 28,
-        "mermaid": 46
+        "mermaid": 13
       }
     },
     "docs/01-javascript/15-type-conversion.md": {
@@ -1711,7 +1705,7 @@ export const bookEngineData = {
       "examples": 7,
       "tasks": 39,
       "solutions": 31,
-      "mermaid": 35,
+      "mermaid": 0,
       "miniProjects": 1,
       "previous": {
         "title": "Stack & Heap",
@@ -1752,7 +1746,7 @@ export const bookEngineData = {
         "examples": 7,
         "tasks": 39,
         "solutions": 31,
-        "mermaid": 35
+        "mermaid": 0
       }
     },
     "docs/01-javascript/16-equality.md": {
@@ -1771,7 +1765,7 @@ export const bookEngineData = {
       "examples": 7,
       "tasks": 37,
       "solutions": 29,
-      "mermaid": 33,
+      "mermaid": 0,
       "miniProjects": 1,
       "previous": {
         "title": "Type Conversion",
@@ -1812,7 +1806,7 @@ export const bookEngineData = {
         "examples": 7,
         "tasks": 37,
         "solutions": 29,
-        "mermaid": 33
+        "mermaid": 0
       }
     },
     "docs/01-javascript/17-operators.md": {
@@ -1831,7 +1825,7 @@ export const bookEngineData = {
       "examples": 7,
       "tasks": 45,
       "solutions": 35,
-      "mermaid": 36,
+      "mermaid": 1,
       "miniProjects": 1,
       "previous": {
         "title": "Equality",
@@ -1878,7 +1872,7 @@ export const bookEngineData = {
         "examples": 7,
         "tasks": 45,
         "solutions": 35,
-        "mermaid": 36
+        "mermaid": 1
       }
     },
     "docs/01-javascript/18-conditionals.md": {
@@ -1897,7 +1891,7 @@ export const bookEngineData = {
       "examples": 7,
       "tasks": 37,
       "solutions": 27,
-      "mermaid": 37,
+      "mermaid": 0,
       "miniProjects": 1,
       "previous": {
         "title": "Operators",
@@ -1932,7 +1926,7 @@ export const bookEngineData = {
         "examples": 7,
         "tasks": 37,
         "solutions": 27,
-        "mermaid": 37
+        "mermaid": 0
       }
     },
     "docs/01-javascript/19-loops.md": {
@@ -1951,7 +1945,7 @@ export const bookEngineData = {
       "examples": 7,
       "tasks": 42,
       "solutions": 29,
-      "mermaid": 32,
+      "mermaid": 0,
       "miniProjects": 1,
       "previous": {
         "title": "Conditionals",
@@ -1979,7 +1973,7 @@ export const bookEngineData = {
         "examples": 7,
         "tasks": 42,
         "solutions": 29,
-        "mermaid": 32
+        "mermaid": 0
       }
     },
     "docs/01-javascript/20-error-handling.md": {
@@ -1998,7 +1992,7 @@ export const bookEngineData = {
       "examples": 7,
       "tasks": 38,
       "solutions": 26,
-      "mermaid": 36,
+      "mermaid": 1,
       "miniProjects": 1,
       "previous": {
         "title": "Loops",
@@ -2051,7 +2045,7 @@ export const bookEngineData = {
         "examples": 7,
         "tasks": 38,
         "solutions": 26,
-        "mermaid": 36
+        "mermaid": 1
       }
     },
     "docs/01-javascript/21-function-declaration.md": {
@@ -2070,7 +2064,7 @@ export const bookEngineData = {
       "examples": 7,
       "tasks": 38,
       "solutions": 29,
-      "mermaid": 32,
+      "mermaid": 0,
       "miniProjects": 1,
       "previous": {
         "title": "Error Handling",
@@ -2111,7 +2105,7 @@ export const bookEngineData = {
         "examples": 7,
         "tasks": 38,
         "solutions": 29,
-        "mermaid": 32
+        "mermaid": 0
       }
     },
     "docs/01-javascript/22-function-expression.md": {
@@ -2130,7 +2124,7 @@ export const bookEngineData = {
       "examples": 7,
       "tasks": 36,
       "solutions": 27,
-      "mermaid": 46,
+      "mermaid": 0,
       "miniProjects": 1,
       "previous": {
         "title": "Function Declaration",
@@ -2165,7 +2159,7 @@ export const bookEngineData = {
         "examples": 7,
         "tasks": 36,
         "solutions": 27,
-        "mermaid": 46
+        "mermaid": 0
       }
     },
     "docs/01-javascript/23-arrow-functions.md": {
@@ -2184,7 +2178,7 @@ export const bookEngineData = {
       "examples": 7,
       "tasks": 40,
       "solutions": 32,
-      "mermaid": 43,
+      "mermaid": 1,
       "miniProjects": 1,
       "previous": {
         "title": "Function Expression",
@@ -2219,7 +2213,7 @@ export const bookEngineData = {
         "examples": 7,
         "tasks": 40,
         "solutions": 32,
-        "mermaid": 43
+        "mermaid": 1
       }
     },
     "docs/01-javascript/24-parameters.md": {
@@ -2238,7 +2232,7 @@ export const bookEngineData = {
       "examples": 7,
       "tasks": 35,
       "solutions": 28,
-      "mermaid": 48,
+      "mermaid": 1,
       "miniProjects": 1,
       "previous": {
         "title": "Arrow Functions",
@@ -2258,14 +2252,7 @@ export const bookEngineData = {
         "total": 96,
         "bar": "███░░░░░░░░░"
       },
-      "related": [
-        {
-          "term": "this",
-          "title": "this",
-          "number": 29,
-          "link": "/docs/01-javascript/29-this"
-        }
-      ],
+      "related": [],
       "card": {
         "chapterLabel": "Глава 24",
         "title": "Parameters",
@@ -2273,7 +2260,7 @@ export const bookEngineData = {
         "examples": 7,
         "tasks": 35,
         "solutions": 28,
-        "mermaid": 48
+        "mermaid": 1
       }
     },
     "docs/01-javascript/25-return.md": {
@@ -2292,7 +2279,7 @@ export const bookEngineData = {
       "examples": 7,
       "tasks": 36,
       "solutions": 28,
-      "mermaid": 41,
+      "mermaid": 1,
       "miniProjects": 1,
       "previous": {
         "title": "Parameters",
@@ -2314,12 +2301,6 @@ export const bookEngineData = {
       },
       "related": [
         {
-          "term": "this",
-          "title": "this",
-          "number": 29,
-          "link": "/docs/01-javascript/29-this"
-        },
-        {
           "term": "Promise",
           "title": "Promise",
           "number": 72,
@@ -2333,7 +2314,7 @@ export const bookEngineData = {
         "examples": 7,
         "tasks": 36,
         "solutions": 28,
-        "mermaid": 41
+        "mermaid": 1
       }
     },
     "docs/01-javascript/26-rest.md": {
@@ -2352,7 +2333,7 @@ export const bookEngineData = {
       "examples": 7,
       "tasks": 36,
       "solutions": 29,
-      "mermaid": 41,
+      "mermaid": 1,
       "miniProjects": 1,
       "previous": {
         "title": "Return",
@@ -2380,7 +2361,7 @@ export const bookEngineData = {
         "examples": 7,
         "tasks": 36,
         "solutions": 29,
-        "mermaid": 41
+        "mermaid": 1
       }
     },
     "docs/01-javascript/27-spread.md": {
@@ -2399,7 +2380,7 @@ export const bookEngineData = {
       "examples": 7,
       "tasks": 37,
       "solutions": 28,
-      "mermaid": 41,
+      "mermaid": 0,
       "miniProjects": 1,
       "previous": {
         "title": "Rest Parameters",
@@ -2440,7 +2421,7 @@ export const bookEngineData = {
         "examples": 7,
         "tasks": 37,
         "solutions": 28,
-        "mermaid": 41
+        "mermaid": 0
       }
     },
     "docs/01-javascript/28-closures.md": {
@@ -2459,7 +2440,7 @@ export const bookEngineData = {
       "examples": 7,
       "tasks": 31,
       "solutions": 20,
-      "mermaid": 87,
+      "mermaid": 15,
       "miniProjects": 1,
       "previous": {
         "title": "Spread",
@@ -2512,7 +2493,7 @@ export const bookEngineData = {
         "examples": 7,
         "tasks": 31,
         "solutions": 20,
-        "mermaid": 87
+        "mermaid": 15
       }
     },
     "docs/01-javascript/29-this.md": {
@@ -2531,7 +2512,7 @@ export const bookEngineData = {
       "examples": 7,
       "tasks": 29,
       "solutions": 20,
-      "mermaid": 83,
+      "mermaid": 17,
       "miniProjects": 1,
       "previous": {
         "title": "Closures",
@@ -2584,7 +2565,7 @@ export const bookEngineData = {
         "examples": 7,
         "tasks": 29,
         "solutions": 20,
-        "mermaid": 83
+        "mermaid": 17
       }
     },
     "docs/01-javascript/30-call.md": {
@@ -2603,7 +2584,7 @@ export const bookEngineData = {
       "examples": 7,
       "tasks": 32,
       "solutions": 21,
-      "mermaid": 86,
+      "mermaid": 16,
       "miniProjects": 1,
       "previous": {
         "title": "this",
@@ -2631,12 +2612,6 @@ export const bookEngineData = {
           "link": "/docs/01-javascript/03-execution-context"
         },
         {
-          "term": "Closure",
-          "title": "Closures",
-          "number": 28,
-          "link": "/docs/01-javascript/28-closures"
-        },
-        {
           "term": "this",
           "title": "this",
           "number": 29,
@@ -2650,7 +2625,7 @@ export const bookEngineData = {
         "examples": 7,
         "tasks": 32,
         "solutions": 21,
-        "mermaid": 86
+        "mermaid": 16
       }
     },
     "docs/01-javascript/31-apply.md": {
@@ -2669,7 +2644,7 @@ export const bookEngineData = {
       "examples": 7,
       "tasks": 31,
       "solutions": 20,
-      "mermaid": 74,
+      "mermaid": 12,
       "miniProjects": 1,
       "previous": {
         "title": "call()",
@@ -2691,12 +2666,6 @@ export const bookEngineData = {
       },
       "related": [
         {
-          "term": "Execution Context",
-          "title": "Execution Context",
-          "number": 3,
-          "link": "/docs/01-javascript/03-execution-context"
-        },
-        {
           "term": "this",
           "title": "this",
           "number": 29,
@@ -2716,7 +2685,7 @@ export const bookEngineData = {
         "examples": 7,
         "tasks": 31,
         "solutions": 20,
-        "mermaid": 74
+        "mermaid": 12
       }
     },
     "docs/01-javascript/32-bind.md": {
@@ -2735,7 +2704,7 @@ export const bookEngineData = {
       "examples": 7,
       "tasks": 44,
       "solutions": 28,
-      "mermaid": 92,
+      "mermaid": 0,
       "miniProjects": 0,
       "previous": {
         "title": "apply()",
@@ -2776,7 +2745,7 @@ export const bookEngineData = {
         "examples": 7,
         "tasks": 44,
         "solutions": 28,
-        "mermaid": 92
+        "mermaid": 0
       }
     },
     "docs/01-javascript/33-objects.md": {
@@ -2795,7 +2764,7 @@ export const bookEngineData = {
       "examples": 7,
       "tasks": 49,
       "solutions": 33,
-      "mermaid": 84,
+      "mermaid": 0,
       "miniProjects": 0,
       "previous": {
         "title": "bind()",
@@ -2848,7 +2817,7 @@ export const bookEngineData = {
         "examples": 7,
         "tasks": 49,
         "solutions": 33,
-        "mermaid": 84
+        "mermaid": 0
       }
     },
     "docs/01-javascript/34-destructuring.md": {
@@ -2867,7 +2836,7 @@ export const bookEngineData = {
       "examples": 7,
       "tasks": 44,
       "solutions": 29,
-      "mermaid": 67,
+      "mermaid": 0,
       "miniProjects": 0,
       "previous": {
         "title": "Objects",
@@ -2902,7 +2871,7 @@ export const bookEngineData = {
         "examples": 7,
         "tasks": 44,
         "solutions": 29,
-        "mermaid": 67
+        "mermaid": 0
       }
     },
     "docs/01-javascript/35-optional-chaining.md": {
@@ -2921,7 +2890,7 @@ export const bookEngineData = {
       "examples": 7,
       "tasks": 38,
       "solutions": 24,
-      "mermaid": 66,
+      "mermaid": 0,
       "miniProjects": 0,
       "previous": {
         "title": "Destructuring",
@@ -2949,7 +2918,7 @@ export const bookEngineData = {
         "examples": 7,
         "tasks": 38,
         "solutions": 24,
-        "mermaid": 66
+        "mermaid": 0
       }
     },
     "docs/01-javascript/36-nullish-coalescing.md": {
@@ -2968,7 +2937,7 @@ export const bookEngineData = {
       "examples": 7,
       "tasks": 44,
       "solutions": 29,
-      "mermaid": 60,
+      "mermaid": 0,
       "miniProjects": 0,
       "previous": {
         "title": "Optional Chaining",
@@ -3003,7 +2972,7 @@ export const bookEngineData = {
         "examples": 7,
         "tasks": 44,
         "solutions": 29,
-        "mermaid": 60
+        "mermaid": 0
       }
     },
     "docs/01-javascript/37-object-methods.md": {
@@ -3022,7 +2991,7 @@ export const bookEngineData = {
       "examples": 7,
       "tasks": 34,
       "solutions": 23,
-      "mermaid": 60,
+      "mermaid": 0,
       "miniProjects": 0,
       "previous": {
         "title": "Nullish Coalescing",
@@ -3063,7 +3032,7 @@ export const bookEngineData = {
         "examples": 7,
         "tasks": 34,
         "solutions": 23,
-        "mermaid": 60
+        "mermaid": 0
       }
     },
     "docs/01-javascript/38-object-descriptors.md": {
@@ -3082,7 +3051,7 @@ export const bookEngineData = {
       "examples": 7,
       "tasks": 38,
       "solutions": 23,
-      "mermaid": 57,
+      "mermaid": 0,
       "miniProjects": 0,
       "previous": {
         "title": "Object Methods",
@@ -3123,7 +3092,7 @@ export const bookEngineData = {
         "examples": 7,
         "tasks": 38,
         "solutions": 23,
-        "mermaid": 57
+        "mermaid": 0
       }
     },
     "docs/01-javascript/39-prototype.md": {
@@ -3142,7 +3111,7 @@ export const bookEngineData = {
       "examples": 8,
       "tasks": 34,
       "solutions": 26,
-      "mermaid": 111,
+      "mermaid": 10,
       "miniProjects": 0,
       "previous": {
         "title": "Object Descriptors",
@@ -3164,12 +3133,6 @@ export const bookEngineData = {
       },
       "related": [
         {
-          "term": "Execution Context",
-          "title": "Execution Context",
-          "number": 3,
-          "link": "/docs/01-javascript/03-execution-context"
-        },
-        {
           "term": "this",
           "title": "this",
           "number": 29,
@@ -3183,7 +3146,7 @@ export const bookEngineData = {
         "examples": 8,
         "tasks": 34,
         "solutions": 26,
-        "mermaid": 111
+        "mermaid": 10
       }
     },
     "docs/01-javascript/40-prototype-chain.md": {
@@ -3202,7 +3165,7 @@ export const bookEngineData = {
       "examples": 8,
       "tasks": 32,
       "solutions": 24,
-      "mermaid": 112,
+      "mermaid": 17,
       "miniProjects": 0,
       "previous": {
         "title": "Prototype",
@@ -3243,7 +3206,7 @@ export const bookEngineData = {
         "examples": 8,
         "tasks": 32,
         "solutions": 24,
-        "mermaid": 112
+        "mermaid": 17
       }
     },
     "docs/01-javascript/41-classes.md": {
@@ -3262,7 +3225,7 @@ export const bookEngineData = {
       "examples": 8,
       "tasks": 32,
       "solutions": 22,
-      "mermaid": 87,
+      "mermaid": 0,
       "miniProjects": 0,
       "previous": {
         "title": "Prototype Chain",
@@ -3303,7 +3266,7 @@ export const bookEngineData = {
         "examples": 8,
         "tasks": 32,
         "solutions": 22,
-        "mermaid": 87
+        "mermaid": 0
       }
     },
     "docs/01-javascript/42-class-inheritance.md": {
@@ -3322,7 +3285,7 @@ export const bookEngineData = {
       "examples": 8,
       "tasks": 34,
       "solutions": 22,
-      "mermaid": 85,
+      "mermaid": 0,
       "miniProjects": 0,
       "previous": {
         "title": "Classes",
@@ -3363,7 +3326,7 @@ export const bookEngineData = {
         "examples": 8,
         "tasks": 34,
         "solutions": 22,
-        "mermaid": 85
+        "mermaid": 0
       }
     },
     "docs/01-javascript/43-super.md": {
@@ -3382,7 +3345,7 @@ export const bookEngineData = {
       "examples": 8,
       "tasks": 34,
       "solutions": 21,
-      "mermaid": 86,
+      "mermaid": 0,
       "miniProjects": 0,
       "previous": {
         "title": "Class Inheritance",
@@ -3423,7 +3386,7 @@ export const bookEngineData = {
         "examples": 8,
         "tasks": 34,
         "solutions": 21,
-        "mermaid": 86
+        "mermaid": 0
       }
     },
     "docs/01-javascript/44-arrays.md": {
@@ -3442,7 +3405,7 @@ export const bookEngineData = {
       "examples": 8,
       "tasks": 30,
       "solutions": 22,
-      "mermaid": 75,
+      "mermaid": 0,
       "miniProjects": 0,
       "previous": {
         "title": "super",
@@ -3477,7 +3440,7 @@ export const bookEngineData = {
         "examples": 8,
         "tasks": 30,
         "solutions": 22,
-        "mermaid": 75
+        "mermaid": 0
       }
     },
     "docs/01-javascript/45-push-pop.md": {
@@ -3496,7 +3459,7 @@ export const bookEngineData = {
       "examples": 8,
       "tasks": 30,
       "solutions": 22,
-      "mermaid": 86,
+      "mermaid": 0,
       "miniProjects": 0,
       "previous": {
         "title": "Arrays",
@@ -3531,7 +3494,7 @@ export const bookEngineData = {
         "examples": 8,
         "tasks": 30,
         "solutions": 22,
-        "mermaid": 86
+        "mermaid": 0
       }
     },
     "docs/01-javascript/46-shift-unshift.md": {
@@ -3550,7 +3513,7 @@ export const bookEngineData = {
       "examples": 8,
       "tasks": 30,
       "solutions": 19,
-      "mermaid": 96,
+      "mermaid": 3,
       "miniProjects": 0,
       "previous": {
         "title": "push() and pop()",
@@ -3578,7 +3541,7 @@ export const bookEngineData = {
         "examples": 8,
         "tasks": 30,
         "solutions": 19,
-        "mermaid": 96
+        "mermaid": 3
       }
     },
     "docs/01-javascript/47-splice.md": {
@@ -3597,7 +3560,7 @@ export const bookEngineData = {
       "examples": 6,
       "tasks": 9,
       "solutions": 13,
-      "mermaid": 23,
+      "mermaid": 2,
       "miniProjects": 1,
       "previous": {
         "title": "shift() and unshift()",
@@ -3625,7 +3588,7 @@ export const bookEngineData = {
         "examples": 6,
         "tasks": 9,
         "solutions": 13,
-        "mermaid": 23
+        "mermaid": 2
       }
     },
     "docs/01-javascript/48-slice.md": {
@@ -3644,7 +3607,7 @@ export const bookEngineData = {
       "examples": 6,
       "tasks": 7,
       "solutions": 11,
-      "mermaid": 12,
+      "mermaid": 1,
       "miniProjects": 1,
       "previous": {
         "title": "splice()",
@@ -3672,7 +3635,7 @@ export const bookEngineData = {
         "examples": 6,
         "tasks": 7,
         "solutions": 11,
-        "mermaid": 12
+        "mermaid": 1
       }
     },
     "docs/01-javascript/49-iteration.md": {
@@ -3691,7 +3654,7 @@ export const bookEngineData = {
       "examples": 6,
       "tasks": 7,
       "solutions": 11,
-      "mermaid": 6,
+      "mermaid": 0,
       "miniProjects": 1,
       "previous": {
         "title": "slice()",
@@ -3719,7 +3682,7 @@ export const bookEngineData = {
         "examples": 6,
         "tasks": 7,
         "solutions": 11,
-        "mermaid": 6
+        "mermaid": 0
       }
     },
     "docs/01-javascript/50-foreach.md": {
@@ -3738,7 +3701,7 @@ export const bookEngineData = {
       "examples": 6,
       "tasks": 7,
       "solutions": 11,
-      "mermaid": 7,
+      "mermaid": 0,
       "miniProjects": 1,
       "previous": {
         "title": "Iteration",
@@ -3773,7 +3736,7 @@ export const bookEngineData = {
         "examples": 6,
         "tasks": 7,
         "solutions": 11,
-        "mermaid": 7
+        "mermaid": 0
       }
     },
     "docs/01-javascript/51-map.md": {
@@ -3792,7 +3755,7 @@ export const bookEngineData = {
       "examples": 6,
       "tasks": 7,
       "solutions": 11,
-      "mermaid": 8,
+      "mermaid": 0,
       "miniProjects": 1,
       "previous": {
         "title": "forEach()",
@@ -3820,7 +3783,7 @@ export const bookEngineData = {
         "examples": 6,
         "tasks": 7,
         "solutions": 11,
-        "mermaid": 8
+        "mermaid": 0
       }
     },
     "docs/01-javascript/52-filter.md": {
@@ -3839,7 +3802,7 @@ export const bookEngineData = {
       "examples": 6,
       "tasks": 7,
       "solutions": 11,
-      "mermaid": 6,
+      "mermaid": 0,
       "miniProjects": 1,
       "previous": {
         "title": "map()",
@@ -3867,7 +3830,7 @@ export const bookEngineData = {
         "examples": 6,
         "tasks": 7,
         "solutions": 11,
-        "mermaid": 6
+        "mermaid": 0
       }
     },
     "docs/01-javascript/53-reduce.md": {
@@ -3886,7 +3849,7 @@ export const bookEngineData = {
       "examples": 6,
       "tasks": 7,
       "solutions": 11,
-      "mermaid": 6,
+      "mermaid": 0,
       "miniProjects": 1,
       "previous": {
         "title": "filter()",
@@ -3914,7 +3877,7 @@ export const bookEngineData = {
         "examples": 6,
         "tasks": 7,
         "solutions": 11,
-        "mermaid": 6
+        "mermaid": 0
       }
     },
     "docs/01-javascript/54-chaining.md": {
@@ -3933,7 +3896,7 @@ export const bookEngineData = {
       "examples": 6,
       "tasks": 7,
       "solutions": 11,
-      "mermaid": 1,
+      "mermaid": 0,
       "miniProjects": 1,
       "previous": {
         "title": "reduce()",
@@ -3961,7 +3924,7 @@ export const bookEngineData = {
         "examples": 6,
         "tasks": 7,
         "solutions": 11,
-        "mermaid": 1
+        "mermaid": 0
       }
     },
     "docs/01-javascript/55-find.md": {
@@ -3980,7 +3943,7 @@ export const bookEngineData = {
       "examples": 6,
       "tasks": 7,
       "solutions": 11,
-      "mermaid": 4,
+      "mermaid": 0,
       "miniProjects": 1,
       "previous": {
         "title": "Chaining basics",
@@ -4000,14 +3963,7 @@ export const bookEngineData = {
         "total": 96,
         "bar": "███████░░░░░"
       },
-      "related": [
-        {
-          "term": "this",
-          "title": "this",
-          "number": 29,
-          "link": "/docs/01-javascript/29-this"
-        }
-      ],
+      "related": [],
       "card": {
         "chapterLabel": "Глава 55",
         "title": "find()",
@@ -4015,7 +3971,7 @@ export const bookEngineData = {
         "examples": 6,
         "tasks": 7,
         "solutions": 11,
-        "mermaid": 4
+        "mermaid": 0
       }
     },
     "docs/01-javascript/56-some.md": {
@@ -4034,7 +3990,7 @@ export const bookEngineData = {
       "examples": 6,
       "tasks": 7,
       "solutions": 11,
-      "mermaid": 3,
+      "mermaid": 0,
       "miniProjects": 1,
       "previous": {
         "title": "find()",
@@ -4062,7 +4018,7 @@ export const bookEngineData = {
         "examples": 6,
         "tasks": 7,
         "solutions": 11,
-        "mermaid": 3
+        "mermaid": 0
       }
     },
     "docs/01-javascript/57-every.md": {
@@ -4081,7 +4037,7 @@ export const bookEngineData = {
       "examples": 6,
       "tasks": 7,
       "solutions": 11,
-      "mermaid": 3,
+      "mermaid": 0,
       "miniProjects": 1,
       "previous": {
         "title": "some()",
@@ -4109,7 +4065,7 @@ export const bookEngineData = {
         "examples": 6,
         "tasks": 7,
         "solutions": 11,
-        "mermaid": 3
+        "mermaid": 0
       }
     },
     "docs/01-javascript/58-includes.md": {
@@ -4128,7 +4084,7 @@ export const bookEngineData = {
       "examples": 6,
       "tasks": 7,
       "solutions": 11,
-      "mermaid": 4,
+      "mermaid": 0,
       "miniProjects": 1,
       "previous": {
         "title": "every()",
@@ -4156,7 +4112,7 @@ export const bookEngineData = {
         "examples": 6,
         "tasks": 7,
         "solutions": 11,
-        "mermaid": 4
+        "mermaid": 0
       }
     },
     "docs/01-javascript/59-sort.md": {
@@ -4175,7 +4131,7 @@ export const bookEngineData = {
       "examples": 6,
       "tasks": 6,
       "solutions": 10,
-      "mermaid": 5,
+      "mermaid": 0,
       "miniProjects": 1,
       "previous": {
         "title": "includes()",
@@ -4195,14 +4151,7 @@ export const bookEngineData = {
         "total": 96,
         "bar": "███████░░░░░"
       },
-      "related": [
-        {
-          "term": "this",
-          "title": "this",
-          "number": 29,
-          "link": "/docs/01-javascript/29-this"
-        }
-      ],
+      "related": [],
       "card": {
         "chapterLabel": "Глава 59",
         "title": "sort()",
@@ -4210,7 +4159,7 @@ export const bookEngineData = {
         "examples": 6,
         "tasks": 6,
         "solutions": 10,
-        "mermaid": 5
+        "mermaid": 0
       }
     },
     "docs/01-javascript/60-reverse.md": {
@@ -4229,14 +4178,14 @@ export const bookEngineData = {
       "examples": 6,
       "tasks": 6,
       "solutions": 10,
-      "mermaid": 6,
+      "mermaid": 0,
       "miniProjects": 1,
       "previous": {
         "title": "sort()",
         "link": "/docs/01-javascript/59-sort"
       },
       "next": {
-        "title": "Execution Context",
+        "title": "Execution Context: углубленное повторение",
         "link": "/docs/01-javascript/61-execution-context"
       },
       "sectionLink": {
@@ -4257,33 +4206,33 @@ export const bookEngineData = {
         "examples": 6,
         "tasks": 6,
         "solutions": 10,
-        "mermaid": 6
+        "mermaid": 0
       }
     },
     "docs/01-javascript/61-execution-context.md": {
       "path": "docs/01-javascript/61-execution-context.md",
       "link": "/docs/01-javascript/61-execution-context",
-      "title": "Execution Context",
+      "title": "Execution Context: углубленное повторение",
       "number": 61,
       "part": "JavaScript",
       "section": "Execution Model Revisited",
       "sectionIndex": 5,
       "chapterIndex": 0,
-      "wordCount": 555,
+      "wordCount": 557,
       "readingMinutes": 4,
       "h2": 15,
       "h3": 3,
       "examples": 5,
       "tasks": 5,
       "solutions": 10,
-      "mermaid": 10,
+      "mermaid": 6,
       "miniProjects": 0,
       "previous": {
         "title": "reverse()",
         "link": "/docs/01-javascript/60-reverse"
       },
       "next": {
-        "title": "Call Stack",
+        "title": "Call Stack: углубленное повторение",
         "link": "/docs/01-javascript/62-call-stack"
       },
       "sectionLink": {
@@ -4318,34 +4267,34 @@ export const bookEngineData = {
       ],
       "card": {
         "chapterLabel": "Глава 61",
-        "title": "Execution Context",
+        "title": "Execution Context: углубленное повторение",
         "reading": 4,
         "examples": 5,
         "tasks": 5,
         "solutions": 10,
-        "mermaid": 10
+        "mermaid": 6
       }
     },
     "docs/01-javascript/62-call-stack.md": {
       "path": "docs/01-javascript/62-call-stack.md",
       "link": "/docs/01-javascript/62-call-stack",
-      "title": "Call Stack",
+      "title": "Call Stack: углубленное повторение",
       "number": 62,
       "part": "JavaScript",
       "section": "Execution Model Revisited",
       "sectionIndex": 5,
       "chapterIndex": 1,
-      "wordCount": 444,
+      "wordCount": 446,
       "readingMinutes": 3,
       "h2": 15,
       "h3": 3,
       "examples": 5,
       "tasks": 5,
       "solutions": 10,
-      "mermaid": 15,
+      "mermaid": 10,
       "miniProjects": 0,
       "previous": {
-        "title": "Execution Context",
+        "title": "Execution Context: углубленное повторение",
         "link": "/docs/01-javascript/61-execution-context"
       },
       "next": {
@@ -4378,12 +4327,12 @@ export const bookEngineData = {
       ],
       "card": {
         "chapterLabel": "Глава 62",
-        "title": "Call Stack",
+        "title": "Call Stack: углубленное повторение",
         "reading": 3,
         "examples": 5,
         "tasks": 5,
         "solutions": 10,
-        "mermaid": 15
+        "mermaid": 10
       }
     },
     "docs/01-javascript/63-memory-model.md": {
@@ -4402,10 +4351,10 @@ export const bookEngineData = {
       "examples": 5,
       "tasks": 5,
       "solutions": 10,
-      "mermaid": 11,
+      "mermaid": 7,
       "miniProjects": 0,
       "previous": {
-        "title": "Call Stack",
+        "title": "Call Stack: углубленное повторение",
         "link": "/docs/01-javascript/62-call-stack"
       },
       "next": {
@@ -4455,7 +4404,7 @@ export const bookEngineData = {
         "examples": 5,
         "tasks": 5,
         "solutions": 10,
-        "mermaid": 11
+        "mermaid": 7
       }
     },
     "docs/01-javascript/64-hoisting-tdz.md": {
@@ -4474,14 +4423,14 @@ export const bookEngineData = {
       "examples": 5,
       "tasks": 5,
       "solutions": 10,
-      "mermaid": 12,
+      "mermaid": 0,
       "miniProjects": 0,
       "previous": {
         "title": "Memory Model",
         "link": "/docs/01-javascript/63-memory-model"
       },
       "next": {
-        "title": "Closures",
+        "title": "Closures: углубленное повторение",
         "link": "/docs/01-javascript/65-closures"
       },
       "sectionLink": {
@@ -4527,19 +4476,19 @@ export const bookEngineData = {
         "examples": 5,
         "tasks": 5,
         "solutions": 10,
-        "mermaid": 12
+        "mermaid": 0
       }
     },
     "docs/01-javascript/65-closures.md": {
       "path": "docs/01-javascript/65-closures.md",
       "link": "/docs/01-javascript/65-closures",
-      "title": "Closures",
+      "title": "Closures: углубленное повторение",
       "number": 65,
       "part": "JavaScript",
       "section": "Function Context",
       "sectionIndex": 6,
       "chapterIndex": 0,
-      "wordCount": 518,
+      "wordCount": 520,
       "readingMinutes": 3,
       "h2": 16,
       "h3": 3,
@@ -4553,7 +4502,7 @@ export const bookEngineData = {
         "link": "/docs/01-javascript/64-hoisting-tdz"
       },
       "next": {
-        "title": "this",
+        "title": "this: углубленное повторение",
         "link": "/docs/01-javascript/66-this"
       },
       "sectionLink": {
@@ -4594,7 +4543,7 @@ export const bookEngineData = {
       ],
       "card": {
         "chapterLabel": "Глава 65",
-        "title": "Closures",
+        "title": "Closures: углубленное повторение",
         "reading": 3,
         "examples": 5,
         "tasks": 6,
@@ -4605,13 +4554,13 @@ export const bookEngineData = {
     "docs/01-javascript/66-this.md": {
       "path": "docs/01-javascript/66-this.md",
       "link": "/docs/01-javascript/66-this",
-      "title": "this",
+      "title": "this: углубленное повторение",
       "number": 66,
       "part": "JavaScript",
       "section": "Function Context",
       "sectionIndex": 6,
       "chapterIndex": 1,
-      "wordCount": 468,
+      "wordCount": 470,
       "readingMinutes": 3,
       "h2": 16,
       "h3": 3,
@@ -4621,7 +4570,7 @@ export const bookEngineData = {
       "mermaid": 6,
       "miniProjects": 1,
       "previous": {
-        "title": "Closures",
+        "title": "Closures: углубленное повторение",
         "link": "/docs/01-javascript/65-closures"
       },
       "next": {
@@ -4660,7 +4609,7 @@ export const bookEngineData = {
       ],
       "card": {
         "chapterLabel": "Глава 66",
-        "title": "this",
+        "title": "this: углубленное повторение",
         "reading": 3,
         "examples": 5,
         "tasks": 6,
@@ -4684,10 +4633,10 @@ export const bookEngineData = {
       "examples": 5,
       "tasks": 6,
       "solutions": 10,
-      "mermaid": 8,
+      "mermaid": 0,
       "miniProjects": 1,
       "previous": {
-        "title": "this",
+        "title": "this: углубленное повторение",
         "link": "/docs/01-javascript/66-this"
       },
       "next": {
@@ -4725,7 +4674,7 @@ export const bookEngineData = {
         "examples": 5,
         "tasks": 6,
         "solutions": 10,
-        "mermaid": 8
+        "mermaid": 0
       }
     },
     "docs/01-javascript/68-context-management.md": {
@@ -4744,7 +4693,7 @@ export const bookEngineData = {
       "examples": 5,
       "tasks": 6,
       "solutions": 10,
-      "mermaid": 8,
+      "mermaid": 0,
       "miniProjects": 1,
       "previous": {
         "title": "call(), apply(), bind()",
@@ -4785,7 +4734,7 @@ export const bookEngineData = {
         "examples": 5,
         "tasks": 6,
         "solutions": 10,
-        "mermaid": 8
+        "mermaid": 0
       }
     },
     "docs/01-javascript/69-synchronous-execution.md": {
@@ -4804,7 +4753,7 @@ export const bookEngineData = {
       "examples": 5,
       "tasks": 10,
       "solutions": 10,
-      "mermaid": 8,
+      "mermaid": 0,
       "miniProjects": 1,
       "previous": {
         "title": "Практическое управление контекстом",
@@ -4826,12 +4775,6 @@ export const bookEngineData = {
       },
       "related": [
         {
-          "term": "Execution Context",
-          "title": "Execution Context",
-          "number": 3,
-          "link": "/docs/01-javascript/03-execution-context"
-        },
-        {
           "term": "Call Stack",
           "title": "Call Stack",
           "number": 4,
@@ -4848,6 +4791,12 @@ export const bookEngineData = {
           "title": "this",
           "number": 29,
           "link": "/docs/01-javascript/29-this"
+        },
+        {
+          "term": "Promise",
+          "title": "Promise",
+          "number": 72,
+          "link": "/docs/01-javascript/72-promise"
         }
       ],
       "card": {
@@ -4857,7 +4806,7 @@ export const bookEngineData = {
         "examples": 5,
         "tasks": 10,
         "solutions": 10,
-        "mermaid": 8
+        "mermaid": 0
       }
     },
     "docs/01-javascript/70-asynchronous-programming.md": {
@@ -4876,7 +4825,7 @@ export const bookEngineData = {
       "examples": 5,
       "tasks": 6,
       "solutions": 10,
-      "mermaid": 11,
+      "mermaid": 0,
       "miniProjects": 1,
       "previous": {
         "title": "Synchronous Execution",
@@ -4917,7 +4866,7 @@ export const bookEngineData = {
         "examples": 5,
         "tasks": 6,
         "solutions": 10,
-        "mermaid": 11
+        "mermaid": 0
       }
     },
     "docs/01-javascript/71-callback.md": {
@@ -4936,7 +4885,7 @@ export const bookEngineData = {
       "examples": 5,
       "tasks": 9,
       "solutions": 10,
-      "mermaid": 12,
+      "mermaid": 0,
       "miniProjects": 1,
       "previous": {
         "title": "Asynchronous Programming",
@@ -4989,7 +4938,7 @@ export const bookEngineData = {
         "examples": 5,
         "tasks": 9,
         "solutions": 10,
-        "mermaid": 12
+        "mermaid": 0
       }
     },
     "docs/01-javascript/72-promise.md": {
@@ -5008,7 +4957,7 @@ export const bookEngineData = {
       "examples": 5,
       "tasks": 9,
       "solutions": 10,
-      "mermaid": 10,
+      "mermaid": 6,
       "miniProjects": 1,
       "previous": {
         "title": "Callback",
@@ -5049,7 +4998,7 @@ export const bookEngineData = {
         "examples": 5,
         "tasks": 9,
         "solutions": 10,
-        "mermaid": 10
+        "mermaid": 6
       }
     },
     "docs/01-javascript/73-event-loop.md": {
@@ -5128,7 +5077,7 @@ export const bookEngineData = {
       "examples": 5,
       "tasks": 6,
       "solutions": 10,
-      "mermaid": 7,
+      "mermaid": 0,
       "miniProjects": 1,
       "previous": {
         "title": "Event Loop",
@@ -5169,7 +5118,7 @@ export const bookEngineData = {
         "examples": 5,
         "tasks": 6,
         "solutions": 10,
-        "mermaid": 7
+        "mermaid": 0
       }
     },
     "docs/01-javascript/75-microtasks.md": {
@@ -5188,7 +5137,7 @@ export const bookEngineData = {
       "examples": 5,
       "tasks": 6,
       "solutions": 10,
-      "mermaid": 7,
+      "mermaid": 0,
       "miniProjects": 1,
       "previous": {
         "title": "Web APIs",
@@ -5235,7 +5184,7 @@ export const bookEngineData = {
         "examples": 5,
         "tasks": 6,
         "solutions": 10,
-        "mermaid": 7
+        "mermaid": 0
       }
     },
     "docs/01-javascript/76-macrotasks.md": {
@@ -5254,7 +5203,7 @@ export const bookEngineData = {
       "examples": 5,
       "tasks": 6,
       "solutions": 10,
-      "mermaid": 10,
+      "mermaid": 0,
       "miniProjects": 1,
       "previous": {
         "title": "Microtasks",
@@ -5301,7 +5250,7 @@ export const bookEngineData = {
         "examples": 5,
         "tasks": 6,
         "solutions": 10,
-        "mermaid": 10
+        "mermaid": 0
       }
     },
     "docs/01-javascript/77-promise-api.md": {
@@ -5320,7 +5269,7 @@ export const bookEngineData = {
       "examples": 5,
       "tasks": 6,
       "solutions": 10,
-      "mermaid": 5,
+      "mermaid": 4,
       "miniProjects": 1,
       "previous": {
         "title": "Macrotasks",
@@ -5367,7 +5316,7 @@ export const bookEngineData = {
         "examples": 5,
         "tasks": 6,
         "solutions": 10,
-        "mermaid": 5
+        "mermaid": 4
       }
     },
     "docs/01-javascript/78-async-await.md": {
@@ -5446,7 +5395,7 @@ export const bookEngineData = {
       "examples": 5,
       "tasks": 6,
       "solutions": 10,
-      "mermaid": 6,
+      "mermaid": 0,
       "miniProjects": 1,
       "previous": {
         "title": "async и await",
@@ -5487,7 +5436,7 @@ export const bookEngineData = {
         "examples": 5,
         "tasks": 6,
         "solutions": 10,
-        "mermaid": 6
+        "mermaid": 0
       }
     },
     "docs/01-javascript/80-parallel-async.md": {
@@ -5506,7 +5455,7 @@ export const bookEngineData = {
       "examples": 5,
       "tasks": 6,
       "solutions": 10,
-      "mermaid": 6,
+      "mermaid": 1,
       "miniProjects": 1,
       "previous": {
         "title": "Error Handling in Asynchronous Code",
@@ -5547,7 +5496,7 @@ export const bookEngineData = {
         "examples": 5,
         "tasks": 6,
         "solutions": 10,
-        "mermaid": 6
+        "mermaid": 1
       }
     },
     "docs/01-javascript/81-iterable-protocol.md": {
@@ -5566,7 +5515,7 @@ export const bookEngineData = {
       "examples": 5,
       "tasks": 6,
       "solutions": 10,
-      "mermaid": 8,
+      "mermaid": 0,
       "miniProjects": 1,
       "previous": {
         "title": "Parallel Asynchronous Operations",
@@ -5588,12 +5537,6 @@ export const bookEngineData = {
       },
       "related": [
         {
-          "term": "Promise",
-          "title": "Promise",
-          "number": 72,
-          "link": "/docs/01-javascript/72-promise"
-        },
-        {
           "term": "Iterator",
           "title": "Iterators",
           "number": 82,
@@ -5607,7 +5550,7 @@ export const bookEngineData = {
         "examples": 5,
         "tasks": 6,
         "solutions": 10,
-        "mermaid": 8
+        "mermaid": 0
       }
     },
     "docs/01-javascript/82-iterators.md": {
@@ -5626,7 +5569,7 @@ export const bookEngineData = {
       "examples": 5,
       "tasks": 6,
       "solutions": 10,
-      "mermaid": 6,
+      "mermaid": 0,
       "miniProjects": 1,
       "previous": {
         "title": "Iterable Protocol",
@@ -5654,7 +5597,7 @@ export const bookEngineData = {
         "examples": 5,
         "tasks": 6,
         "solutions": 10,
-        "mermaid": 6
+        "mermaid": 0
       }
     },
     "docs/01-javascript/83-generators.md": {
@@ -5673,7 +5616,7 @@ export const bookEngineData = {
       "examples": 5,
       "tasks": 6,
       "solutions": 10,
-      "mermaid": 7,
+      "mermaid": 0,
       "miniProjects": 1,
       "previous": {
         "title": "Iterators",
@@ -5708,7 +5651,7 @@ export const bookEngineData = {
         "examples": 5,
         "tasks": 6,
         "solutions": 10,
-        "mermaid": 7
+        "mermaid": 0
       }
     },
     "docs/01-javascript/84-custom-iteration.md": {
@@ -5727,7 +5670,7 @@ export const bookEngineData = {
       "examples": 5,
       "tasks": 6,
       "solutions": 10,
-      "mermaid": 7,
+      "mermaid": 0,
       "miniProjects": 1,
       "previous": {
         "title": "Generators",
@@ -5774,7 +5717,7 @@ export const bookEngineData = {
         "examples": 5,
         "tasks": 6,
         "solutions": 10,
-        "mermaid": 7
+        "mermaid": 0
       }
     },
     "docs/01-javascript/85-javascript-modules.md": {
@@ -5793,7 +5736,7 @@ export const bookEngineData = {
       "examples": 1,
       "tasks": 7,
       "solutions": 11,
-      "mermaid": 12,
+      "mermaid": 6,
       "miniProjects": 1,
       "previous": {
         "title": "Custom Iteration",
@@ -5834,7 +5777,7 @@ export const bookEngineData = {
         "examples": 1,
         "tasks": 7,
         "solutions": 11,
-        "mermaid": 12
+        "mermaid": 6
       }
     },
     "docs/01-javascript/86-module-systems.md": {
@@ -5853,7 +5796,7 @@ export const bookEngineData = {
       "examples": 1,
       "tasks": 7,
       "solutions": 11,
-      "mermaid": 9,
+      "mermaid": 5,
       "miniProjects": 1,
       "previous": {
         "title": "JavaScript Modules",
@@ -5888,7 +5831,7 @@ export const bookEngineData = {
         "examples": 1,
         "tasks": 7,
         "solutions": 11,
-        "mermaid": 9
+        "mermaid": 5
       }
     },
     "docs/01-javascript/87-garbage-collector.md": {
@@ -5907,7 +5850,7 @@ export const bookEngineData = {
       "examples": 5,
       "tasks": 6,
       "solutions": 11,
-      "mermaid": 17,
+      "mermaid": 9,
       "miniProjects": 1,
       "previous": {
         "title": "Module Systems",
@@ -5935,7 +5878,7 @@ export const bookEngineData = {
         "examples": 5,
         "tasks": 6,
         "solutions": 11,
-        "mermaid": 17
+        "mermaid": 9
       }
     },
     "docs/01-javascript/88-memory-management.md": {
@@ -5954,7 +5897,7 @@ export const bookEngineData = {
       "examples": 5,
       "tasks": 6,
       "solutions": 11,
-      "mermaid": 15,
+      "mermaid": 7,
       "miniProjects": 1,
       "previous": {
         "title": "Garbage Collector",
@@ -5995,7 +5938,7 @@ export const bookEngineData = {
         "examples": 5,
         "tasks": 6,
         "solutions": 11,
-        "mermaid": 15
+        "mermaid": 7
       }
     },
     "docs/01-javascript/89-performance.md": {
@@ -6014,7 +5957,7 @@ export const bookEngineData = {
       "examples": 5,
       "tasks": 6,
       "solutions": 10,
-      "mermaid": 10,
+      "mermaid": 2,
       "miniProjects": 1,
       "previous": {
         "title": "Memory Management",
@@ -6049,7 +5992,7 @@ export const bookEngineData = {
         "examples": 5,
         "tasks": 6,
         "solutions": 10,
-        "mermaid": 10
+        "mermaid": 2
       }
     },
     "docs/01-javascript/90-debugging.md": {
@@ -6068,7 +6011,7 @@ export const bookEngineData = {
       "examples": 5,
       "tasks": 6,
       "solutions": 10,
-      "mermaid": 13,
+      "mermaid": 2,
       "miniProjects": 1,
       "previous": {
         "title": "Performance",
@@ -6096,7 +6039,7 @@ export const bookEngineData = {
         "examples": 5,
         "tasks": 6,
         "solutions": 10,
-        "mermaid": 13
+        "mermaid": 2
       }
     },
     "docs/01-javascript/91-modern-javascript.md": {
@@ -6115,7 +6058,7 @@ export const bookEngineData = {
       "examples": 5,
       "tasks": 6,
       "solutions": 10,
-      "mermaid": 5,
+      "mermaid": 1,
       "miniProjects": 1,
       "previous": {
         "title": "Debugging",
@@ -6150,7 +6093,7 @@ export const bookEngineData = {
         "examples": 5,
         "tasks": 6,
         "solutions": 10,
-        "mermaid": 5
+        "mermaid": 1
       }
     },
     "docs/01-javascript/92-javascript-best-practices.md": {
@@ -6169,7 +6112,7 @@ export const bookEngineData = {
       "examples": 5,
       "tasks": 6,
       "solutions": 10,
-      "mermaid": 8,
+      "mermaid": 1,
       "miniProjects": 1,
       "previous": {
         "title": "Modern JavaScript Features",
@@ -6197,7 +6140,7 @@ export const bookEngineData = {
         "examples": 5,
         "tasks": 6,
         "solutions": 10,
-        "mermaid": 8
+        "mermaid": 1
       }
     },
     "docs/01-javascript/93-error-objects.md": {
@@ -6216,7 +6159,7 @@ export const bookEngineData = {
       "examples": 5,
       "tasks": 6,
       "solutions": 10,
-      "mermaid": 4,
+      "mermaid": 0,
       "miniProjects": 1,
       "previous": {
         "title": "JavaScript Best Practices",
@@ -6244,7 +6187,7 @@ export const bookEngineData = {
         "examples": 5,
         "tasks": 6,
         "solutions": 10,
-        "mermaid": 4
+        "mermaid": 0
       }
     },
     "docs/01-javascript/94-json.md": {
@@ -6263,7 +6206,7 @@ export const bookEngineData = {
       "examples": 6,
       "tasks": 6,
       "solutions": 10,
-      "mermaid": 6,
+      "mermaid": 0,
       "miniProjects": 1,
       "previous": {
         "title": "Error Objects",
@@ -6291,7 +6234,7 @@ export const bookEngineData = {
         "examples": 6,
         "tasks": 6,
         "solutions": 10,
-        "mermaid": 6
+        "mermaid": 0
       }
     },
     "docs/01-javascript/95-date.md": {
@@ -6310,7 +6253,7 @@ export const bookEngineData = {
       "examples": 7,
       "tasks": 6,
       "solutions": 10,
-      "mermaid": 3,
+      "mermaid": 0,
       "miniProjects": 1,
       "previous": {
         "title": "JSON",
@@ -6345,7 +6288,7 @@ export const bookEngineData = {
         "examples": 7,
         "tasks": 6,
         "solutions": 10,
-        "mermaid": 3
+        "mermaid": 0
       }
     },
     "docs/01-javascript/96-why-typescript.md": {
@@ -6364,7 +6307,7 @@ export const bookEngineData = {
       "examples": 5,
       "tasks": 6,
       "solutions": 10,
-      "mermaid": 9,
+      "mermaid": 3,
       "miniProjects": 1,
       "previous": {
         "title": "Date",
@@ -6389,7 +6332,7 @@ export const bookEngineData = {
         "examples": 5,
         "tasks": 6,
         "solutions": 10,
-        "mermaid": 9
+        "mermaid": 3
       }
     }
   },
@@ -6398,7 +6341,7 @@ export const bookEngineData = {
     "tasks": 2017,
     "solutions": 1717,
     "examples": 593,
-    "mermaid": 3306,
+    "mermaid": 404,
     "miniProjects": 81,
     "readingMinutes": 602
   }

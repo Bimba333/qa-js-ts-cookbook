@@ -281,25 +281,7 @@ flowchart TD
 
 Call Stack работает так же:
 
-```mermaid
-flowchart TD
-    N1["верх"]
-    N2["Context C"]
-    N3["Context B"]
-    N4["Context A"]
-    N1 --> N2
-    N1 --> N3
-    N1 --> N4
-```
-
 Активен всегда верхний context.
-
-```mermaid
-flowchart TD
-    N1["верхний контекст"]
-    N2["выполняется сейчас"]
-    N1 --> N2
-```
 
 ### Stack of trays
 
@@ -307,38 +289,9 @@ flowchart TD
 
 Новый поднос кладется сверху. Последний положенный поднос снимается первым.
 
-```mermaid
-flowchart TD
-    N1["положить задачу A"]
-    N2["положить задачу B"]
-    N3["положить задачу C"]
-    N4["снять задачу C"]
-    N5["снять задачу B"]
-    N6["снять задачу A"]
-    N3 --> N4
-    N1 --> N2
-    N2 --> N3
-    N4 --> N5
-    N5 --> N6
-```
-
 Это называется last in — first out.
 
-```mermaid
-flowchart TD
-    N1["последним вошёл"]
-    N2["первым вышел"]
-    N1 --> N2
-```
-
 Для Call Stack:
-
-```mermaid
-flowchart TD
-    N1["последняя вызванная функция"]
-    N2["первая функция, которая завершится"]
-    N1 --> N2
-```
 
 Что происходит внутри engine прямо сейчас:
 
@@ -354,25 +307,6 @@ Push — операция добавления нового элемента н�
 
 Когда вызывается функция, engine создает Function Execution Context и делает push.
 
-```mermaid
-flowchart TD
-    N1["До: вызов функции"]
-    N2["Call Stack"]
-    N3["Global Context"]
-    N4["вызвать greet()"]
-    N5["поместить greet Context"]
-    N6["Call Stack"]
-    N7["greet Context"]
-    N8["Global Context"]
-    N1 --> N2
-    N2 --> N3
-    N2 --> N4
-    N4 --> N5
-    N5 --> N6
-    N6 --> N7
-    N6 --> N8
-```
-
 Что происходит внутри engine прямо сейчас:
 
 ```text
@@ -387,25 +321,6 @@ Engine выполняет верхний context.
 Pop — операция снятия верхнего элемента со stack.
 
 Когда функция завершается, ее Function Execution Context больше не нужен. Engine снимает его с Call Stack.
-
-```mermaid
-flowchart TD
-    N1["До: function finish"]
-    N2["Call Stack"]
-    N3["greet Context"]
-    N4["Global Context"]
-    N5["greet() завершается"]
-    N6["снять greet Context"]
-    N7["Call Stack"]
-    N8["Global Context"]
-    N1 --> N2
-    N2 --> N3
-    N2 --> N4
-    N2 --> N5
-    N5 --> N6
-    N6 --> N7
-    N7 --> N8
-```
 
 После pop активным снова становится context, который оказался сверху.
 
@@ -431,57 +346,7 @@ greet();
 
 Жизненный цикл:
 
-```mermaid
-flowchart TD
-    N1["программа начинается"]
-    N2["поместить Global Context"]
-    N3["вызвать greet()"]
-    N4["поместить greet Context"]
-    N5["greet выполняется"]
-    N6["снять greet Context"]
-    N7["Global Context продолжает работу"]
-    N8["снять Global Context"]
-    N9["Call Stack пуст"]
-    N1 --> N2
-    N2 --> N3
-    N3 --> N4
-    N4 --> N5
-    N5 --> N6
-    N6 --> N7
-    N7 --> N8
-    N8 --> N9
-```
-
 Диаграмма stack:
-
-```mermaid
-flowchart TD
-    N1["Step 1"]
-    N2["Call Stack"]
-    N3["Global"]
-    N4["Step 2"]
-    N5["Call Stack"]
-    N6["greet"]
-    N7["Global"]
-    N8["Step 3"]
-    N9["Call Stack"]
-    N10["Global"]
-    N11["Step 4"]
-    N12["Call Stack"]
-    N13["empty"]
-    N2 --> N3
-    N2 --> N4
-    N5 --> N6
-    N5 --> N7
-    N5 --> N8
-    N9 --> N10
-    N9 --> N11
-    N12 --> N13
-    N1 --> N2
-    N4 --> N5
-    N8 --> N9
-    N11 --> N12
-```
 
 ### Nested function calls
 
@@ -505,55 +370,7 @@ first();
 
 Stack растет вниз в схеме, но верх stack находится сверху списка:
 
-```mermaid
-flowchart TD
-    N1["Call Stack"]
-    N2["Global"]
-    N3["вызвать first()"]
-    N4["Call Stack"]
-    N5["first"]
-    N6["Global"]
-    N7["first calls second()"]
-    N8["Call Stack"]
-    N9["second"]
-    N10["first"]
-    N11["Global"]
-    N12["second calls third()"]
-    N13["Call Stack"]
-    N14["third"]
-    N15["second"]
-    N16["first"]
-    N17["Global"]
-    N1 --> N2
-    N1 --> N3
-    N3 --> N4
-    N4 --> N5
-    N4 --> N6
-    N4 --> N7
-    N7 --> N8
-    N8 --> N9
-    N8 --> N10
-    N8 --> N11
-    N8 --> N12
-    N12 --> N13
-    N13 --> N14
-    N13 --> N15
-    N13 --> N16
-    N13 --> N17
-```
-
 Теперь функции завершаются в обратном порядке:
-
-```mermaid
-flowchart TD
-    N1["third завершается → pop third"]
-    N2["second завершается → pop second"]
-    N3["first завершается → pop first"]
-    N4["global завершается → pop global"]
-    N1 --> N2
-    N2 --> N3
-    N3 --> N4
-```
 
 Что происходит внутри engine прямо сейчас:
 
@@ -577,52 +394,13 @@ console.log(name);
 
 `return` завершает выполнение функции и передает результат в место вызова. Подробная глава о `return` будет позже; сейчас важен механизм возврата context.
 
-```mermaid
-flowchart TD
-    N1["Global Context"]
-    N2["вызвать getName()"]
-    N3["поместить getName Context"]
-    N4["вернуть 'Anna'"]
-    N5["снять getName Context"]
-    N6["продолжить Global Context"]
-    N1 --> N2
-    N1 --> N3
-    N1 --> N4
-    N1 --> N5
-    N1 --> N6
-```
-
 Engine помнит место возврата через Call Stack: после pop активным становится предыдущий context.
 
 ### Stack growth
 
 Stack grows, когда функции вызывают другие функции.
 
-```mermaid
-flowchart TD
-    N1["Global"]
-    N2["Global + loadConfig"]
-    N3["Global + loadConfig + readFilePath"]
-    N4["Global + loadConfig + readFilePath + normalizePath"]
-    N1 --> N2
-    N2 --> N3
-    N3 --> N4
-```
-
 В реальных программах stack постоянно растет и уменьшается.
-
-```mermaid
-flowchart TD
-    N1["call"]
-    N2["push"]
-    N3["execute"]
-    N4["pop"]
-    N5["return"]
-    N1 --> N2
-    N2 --> N3
-    N3 --> N4
-    N4 --> N5
-```
 
 Что происходит внутри engine прямо сейчас:
 
@@ -634,31 +412,7 @@ Engine отслеживает текущую цепочку синхронных
 
 Когда Global Execution Context завершен и снят, stack становится empty.
 
-```mermaid
-flowchart TD
-    N1["Call Stack"]
-    N2["Global Context"]
-    N3["global завершается"]
-    N4["снять Global Context"]
-    N5["Call Stack"]
-    N6["empty"]
-    N1 --> N2
-    N1 --> N3
-    N3 --> N4
-    N4 --> N5
-    N5 --> N6
-```
-
 Для синхронной программы это означает, что выполнять больше нечего.
-
-```mermaid
-flowchart TD
-    N1["Stack empty"]
-    N2["нет active Execution Context"]
-    N3["synchronous program ends"]
-    N1 --> N2
-    N2 --> N3
-```
 
 Async-код, Event Loop, timers и Promises будут изучаться позже. Там история усложнится: stack может стать empty, а runtime позже снова поместит работу на выполнение. В этой главе мы изучаем только синхронный JavaScript.
 
@@ -666,57 +420,11 @@ Async-код, Event Loop, timers и Promises будут изучаться по�
 
 Полный lifecycle stack для простой программы:
 
-```mermaid
-flowchart TD
-    N1["программа начинается"]
-    N2["push Global"]
-    N3["вызвать A"]
-    N4["push A"]
-    N5["вызвать B"]
-    N6["push B"]
-    N7["B завершается"]
-    N8["pop B"]
-    N9["A завершается"]
-    N10["pop A"]
-    N11["Global завершается"]
-    N12["pop Global"]
-    N13["Stack empty"]
-    N14["Program ends"]
-    N1 --> N2
-    N2 --> N3
-    N3 --> N4
-    N4 --> N5
-    N5 --> N6
-    N6 --> N7
-    N7 --> N8
-    N8 --> N9
-    N9 --> N10
-    N10 --> N11
-    N11 --> N12
-    N12 --> N13
-    N13 --> N14
-```
-
 ### Stack overflow на высоком уровне
 
 Call Stack не бесконечен.
 
 Если функции вызывают функции слишком глубоко и contexts продолжают добавляться, stack может переполниться.
-
-```mermaid
-flowchart TD
-    N1["Call Stack"]
-    N2["call #10000"]
-    N3["call #9999"]
-    N4["call #9998"]
-    N5["..."]
-    N6["Global"]
-    N1 --> N2
-    N1 --> N3
-    N1 --> N4
-    N1 --> N5
-    N1 --> N6
-```
 
 Stack overflow — ситуация, когда вызовов стало слишком много и engine больше не может безопасно добавить новый context.
 
@@ -724,48 +432,13 @@ Stack overflow — ситуация, когда вызовов стало сли
 
 В этой главе важно только:
 
-```mermaid
-flowchart TD
-    N1["Too many active function calls"]
-    N2["too many contexts on Call Stack"]
-    N3["stack overflow"]
-    N1 --> N2
-    N2 --> N3
-```
-
 ### Stack trace
 
 Stack trace — текстовое описание цепочки вызовов, которая привела к ошибке.
 
 Если ошибка произошла внутри глубокой функции, stack trace помогает увидеть путь:
 
-```mermaid
-flowchart TD
-    N1["Error"]
-    N2["at normalizeUser"]
-    N3["at buildUserData"]
-    N4["at createUser"]
-    N5["at test"]
-    N1 --> N2
-    N2 --> N3
-    N3 --> N4
-    N4 --> N5
-```
-
 Это читается снизу вверх как путь к ошибке:
-
-```mermaid
-flowchart TD
-    N1["test"]
-    N2["createUser"]
-    N3["buildUserData"]
-    N4["normalizeUser"]
-    N5["error here"]
-    N1 --> N2
-    N2 --> N3
-    N3 --> N4
-    N4 --> N5
-```
 
 Stack trace не показывает все детали Execution Context. Но он показывает цепочку вызовов, связанную с Call Stack.
 
@@ -780,54 +453,13 @@ Engine может показать цепочку вызовов, которые
 
 Связь можно представить так:
 
-```mermaid
-flowchart TD
-    N1["Execution Context"]
-    N2["рабочая среда одного выполнения"]
-    N3["Call Stack"]
-    N4["структура, где лежат активные Execution Contexts"]
-    N1 --> N2
-    N1 --> N3
-    N3 --> N4
-```
-
 Или так:
-
-```mermaid
-flowchart TD
-    N1["Call Stack"]
-    N2["Function Execution Context: current"]
-    N3["Function Execution Context: вызывающий код"]
-    N4["Global Execution Context"]
-    N1 --> N2
-    N1 --> N3
-    N1 --> N4
-```
 
 Call Stack не объясняет, какие имена доступны внутри context. Это будет тема Scope. Call Stack объясняет, какой context сейчас активен и куда engine вернется.
 
 ### Chapter position in JavaScript model
 
 Теперь общая модель выполнения стала такой:
-
-```mermaid
-flowchart TD
-    N1["исходный код"]
-    N2["парсинг / AST"]
-    N3["Execution Context Creation"]
-    N4["Call Stack"]
-    N5["поместить Global Context"]
-    N6["поместить Function Context on call"]
-    N7["снять Function Context on return"]
-    N8["Runtime Interaction"]
-    N1 --> N2
-    N2 --> N3
-    N3 --> N4
-    N4 --> N5
-    N4 --> N6
-    N4 --> N7
-    N4 --> N8
-```
 
 Предыдущая глава объяснила, что такое context. Эта глава объясняет, как engine управляет активными contexts.
 
@@ -840,21 +472,6 @@ flowchart TD
 > Где живут значения, с которыми работает context?
 
 На этот вопрос постепенно ответят главы про Variables, Primitive Types, Object Type, Stack & Heap и References.
-
-```mermaid
-flowchart TD
-    N1["Call Stack"]
-    N2["tracks active выполнение"]
-    N3["Values and Memory"]
-    N4["what data exists"]
-    N5["where values live conceptually"]
-    N6["how references work"]
-    N1 --> N2
-    N1 --> N3
-    N3 --> N4
-    N3 --> N5
-    N3 --> N6
-```
 
 Stack & Heap как модель памяти будут изучаться позже. Сейчас слово stack относится именно к Call Stack вызовов, а не к будущей теме Stack & Heap.
 
@@ -876,37 +493,6 @@ prepare();
 
 Фильм выполнения:
 
-```mermaid
-flowchart TD
-    N1["программа начинается"]
-    N2["push Global"]
-    N3["Global выполняется prepare()"]
-    N4["push prepare"]
-    N5["prepare выполняется validate()"]
-    N6["push validate"]
-    N7["validate выполняется console.log"]
-    N8["validate завершается"]
-    N9["pop validate"]
-    N10["prepare continues and завершается"]
-    N11["pop prepare"]
-    N12["Global Context продолжает работу and завершается"]
-    N13["pop Global"]
-    N14["Call Stack пуст"]
-    N1 --> N2
-    N2 --> N3
-    N3 --> N4
-    N4 --> N5
-    N5 --> N6
-    N6 --> N7
-    N7 --> N8
-    N8 --> N9
-    N9 --> N10
-    N10 --> N11
-    N11 --> N12
-    N12 --> N13
-    N13 --> N14
-```
-
 Если вы можете нарисовать такую схему для любого синхронного кода, модель Call Stack работает.
 
 ---
@@ -915,44 +501,9 @@ flowchart TD
 
 Внутренний механизм Call Stack состоит из двух операций: push и pop.
 
-```mermaid
-flowchart TD
-    N1["вызов функции"]
-    N2["создать Function Execution Context"]
-    N3["push context onto Call Stack"]
-    N4["выполнить тело функции"]
-    N5["function завершается"]
-    N6["pop context from Call Stack"]
-    N7["вернуть to previous context"]
-    N1 --> N2
-    N2 --> N3
-    N3 --> N4
-    N4 --> N5
-    N5 --> N6
-    N6 --> N7
-```
-
 Engine всегда выполняет верхний context.
 
-```mermaid
-flowchart TD
-    N1["Call Stack"]
-    N2["top context ← executing now"]
-    N3["waiting context"]
-    N4["Global Context"]
-    N1 --> N2
-    N1 --> N3
-    N1 --> N4
-```
-
 Когда верхний context завершен, engine снимает его. Следующий context сверху становится активным.
-
-```mermaid
-flowchart TD
-    N1["pop top"]
-    N2["previous context becomes active"]
-    N1 --> N2
-```
 
 Это и есть механизм возвращения к предыдущему месту выполнения.
 
@@ -962,63 +513,11 @@ flowchart TD
 
 Главная модель — стопка книг.
 
-```mermaid
-flowchart TD
-    N1["put book: Global"]
-    N2["put book: first()"]
-    N3["put book: second()"]
-    N4["put book: third()"]
-    N5["remove book: third()"]
-    N6["remove book: second()"]
-    N7["remove book: first()"]
-    N8["remove book: Global"]
-    N4 --> N5
-    N1 --> N2
-    N2 --> N3
-    N3 --> N4
-    N5 --> N6
-    N6 --> N7
-    N7 --> N8
-```
-
 Последняя положенная книга снимается первой.
-
-```mermaid
-flowchart TD
-    N1["последним вошёл"]
-    N2["первым вышел"]
-    N1 --> N2
-```
 
 В терминах выполнения:
 
-```mermaid
-flowchart TD
-    N1["enter function"]
-    N2["push context"]
-    N3["leave function"]
-    N4["pop context"]
-    N5["after pop"]
-    N6["вернуть to previous place"]
-    N1 --> N2
-    N2 --> N3
-    N3 --> N4
-    N4 --> N5
-    N5 --> N6
-```
-
 Модель подносов дает тот же результат:
-
-```mermaid
-flowchart TD
-    N1["Tray stack"]
-    N2["current tray"]
-    N3["previous tray"]
-    N4["first tray"]
-    N1 --> N2
-    N1 --> N3
-    N1 --> N4
-```
 
 Работать можно только с верхним подносом. Так же engine работает только с верхним Execution Context.
 
@@ -1160,17 +659,6 @@ Stack trace — диагностический отчет. Stack overflow — к
 
 Исправленная модель:
 
-```mermaid
-flowchart TD
-    N1["Bottom of stack trace"]
-    N2["where chain started"]
-    N3["Top of stack trace"]
-    N4["where error happened"]
-    N1 --> N2
-    N1 --> N3
-    N3 --> N4
-```
-
 ### Ошибка 2. Думать, что функция после вызова продолжает выполняться параллельно
 
 Что произошло:
@@ -1178,17 +666,6 @@ flowchart TD
 Внешняя функция воспринимается как параллельная внутренней.
 
 Исправленная модель:
-
-```mermaid
-flowchart TD
-    N1["outer pauses"]
-    N2["inner runs"]
-    N3["inner завершается"]
-    N4["outer continues"]
-    N1 --> N2
-    N2 --> N3
-    N3 --> N4
-```
 
 JavaScript async и parallel execution не изучаются в этой главе.
 
@@ -1200,17 +677,6 @@ JavaScript async и parallel execution не изучаются в этой гл�
 
 Исправленная модель:
 
-```mermaid
-flowchart TD
-    N1["Call Stack"]
-    N2["active function calls"]
-    N3["Stack &amp; Heap"]
-    N4["memory model, будет позже"]
-    N1 --> N2
-    N1 --> N3
-    N3 --> N4
-```
-
 ### Ошибка 4. Объяснять stack overflow без stack growth
 
 Что произошло:
@@ -1218,15 +684,6 @@ flowchart TD
 Stack overflow воспринимается как случайная ошибка.
 
 Исправленная модель:
-
-```mermaid
-flowchart TD
-    N1["too many calls"]
-    N2["too many contexts"]
-    N3["Call Stack limit reached"]
-    N1 --> N2
-    N2 --> N3
-```
 
 ---
 
@@ -1248,17 +705,6 @@ flowchart TD
 
 Мини-шаблон:
 
-```mermaid
-flowchart TD
-    N1["Call Stack"]
-    N2["current function"]
-    N3["вызывающий код function"]
-    N4["Global"]
-    N1 --> N2
-    N1 --> N3
-    N1 --> N4
-```
-
 Чек-лист готовности к следующей теме:
 
 ```text
@@ -1277,33 +723,11 @@ flowchart TD
 
 Playwright stack trace часто показывает цепочку:
 
-```mermaid
-flowchart TD
-    N1["test"]
-    N2["page object method"]
-    N3["helper"]
-    N4["assertion utility"]
-    N5["error"]
-    N1 --> N2
-    N2 --> N3
-    N3 --> N4
-    N4 --> N5
-```
-
 Если читать только последнюю строку, можно пропустить реальную причину. Иногда ошибка проявилась в utility, но вызвана неверными данными из fixture.
 
 ### Отладка helper chains
 
 Helper может вызвать другой helper.
-
-```mermaid
-flowchart TD
-    N1["createUser()"]
-    N2["buildUserData()"]
-    N3["normalizeEmail()"]
-    N1 --> N2
-    N2 --> N3
-```
 
 Call Stack помогает понять, где была создана цепочка вызовов и куда engine возвращался.
 
@@ -1311,48 +735,17 @@ Call Stack помогает понять, где была создана цеп�
 
 Одна строка теста может вызвать несколько методов внутри Page Object.
 
-```mermaid
-flowchart TD
-    N1["test"]
-    N2["profilePage.open()"]
-    N3["profilePage.waitForLoaded()"]
-    N4["assertion"]
-    N1 --> N2
-    N2 --> N3
-    N3 --> N4
-```
-
 Когда падает внутренняя проверка, stack trace помогает найти не только место падения, но и путь к нему.
 
 ### Fixture call chains
 
 Fixture может готовить данные, авторизацию и страницы.
 
-```mermaid
-flowchart TD
-    N1["fixture"]
-    N2["loadConfig()"]
-    N3["createUser()"]
-    N4["openSession()"]
-    N1 --> N2
-    N1 --> N3
-    N1 --> N4
-```
-
 Если fixture падает до запуска теста, это не ошибка тестового шага. Это ошибка в цепочке подготовки.
 
 ### Locating real source of runtime errors
 
 Runtime error часто находится в верхней функции stack trace, но причина может быть ниже по цепочке вызовов.
-
-```mermaid
-flowchart TD
-    N1["Top: normalizeUser failed"]
-    N2["Middle: buildUserData passed invalid data"]
-    N3["Bottom: test called createUser with wrong input"]
-    N1 --> N2
-    N2 --> N3
-```
 
 Call Stack помогает не гадать, а читать путь выполнения.
 

@@ -4,15 +4,6 @@
 
 Предыдущие главы собрали цепочку:
 
-```mermaid
-flowchart TD
-    N1["Iterable"]
-    N2["Iterator"]
-    N3["Generator"]
-    N1 --> N2
-    N2 --> N3
-```
-
 Теперь можно применить ее к собственным объектам.
 
 ## Главный вопрос
@@ -47,15 +38,6 @@ for (const test of testSuite) {
 
 Чтобы объект стал iterable, у него должен быть метод `Symbol.iterator`.
 
-```mermaid
-flowchart TD
-    N1["свой объект"]
-    N2["Symbol.iterator()"]
-    N3["iterator"]
-    N1 --> N2
-    N1 --> N3
-```
-
 Есть два практических способа:
 
 1. вернуть ручной iterator с `next()`;
@@ -67,55 +49,15 @@ flowchart TD
 
 Когда `for...of` получает собственный объект, процесс тот же:
 
-```mermaid
-flowchart TD
-    N1["for...of testSuite"]
-    N2["testSuite[Symbol.iterator]()"]
-    N3["получить iterator"]
-    N4["вызывать next()"]
-    N5["получать тесты по одному"]
-    N1 --> N2
-    N2 --> N3
-    N3 --> N4
-    N4 --> N5
-```
-
 Ручной iterator:
 
-```mermaid
-flowchart TD
-    N1["Symbol.iterator"]
-    N2["вернуть объект с next()"]
-    N1 --> N2
-```
-
 Iterator на основе generator:
-
-```mermaid
-flowchart TD
-    N1["Symbol.iterator"]
-    N2["generator"]
-    N3["yield значения"]
-    N1 --> N2
-    N2 --> N3
-```
 
 Оба подхода подчиняются одному правилу: `Symbol.iterator` должен дать JavaScript объект, из которого можно получать значения.
 
 ## Главная ментальная модель
 
 Главная модель главы:
-
-```mermaid
-flowchart TD
-    N1["свой объект"]
-    N2["реализует Symbol.iterator"]
-    N3["становится iterable"]
-    N4["работает с for...of"]
-    N1 --> N2
-    N2 --> N3
-    N3 --> N4
-```
 
 Custom iteration — это не магия, а явно заданное правило обхода.
 
@@ -201,16 +143,5 @@ Custom iteration позволяет собственным объектам ра
 ## Завершение модуля
 
 Теперь вся цепочка выглядит так:
-
-```mermaid
-flowchart TD
-    N1["Object"]
-    N2["Symbol.iterator"]
-    N3["Iterator"]
-    N4["for...of"]
-    N1 --> N2
-    N2 --> N3
-    N3 --> N4
-```
 
 После этого `for...of` перестает быть магией. Это обычный механизм языка, построенный вокруг `Symbol.iterator`, `next()`, `value` и `done`.

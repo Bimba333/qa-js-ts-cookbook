@@ -49,15 +49,6 @@ const testCases = [
 
 Нужна операция:
 
-```mermaid
-flowchart TD
-    N1["all elements pass condition"]
-    N2["да → true"]
-    N3["нет → false"]
-    N1 --> N2
-    N1 --> N3
-```
-
 ## Теория
 
 `every()` проверяет, выполняется ли condition для всех elements.
@@ -76,29 +67,11 @@ Result — Boolean.
 
 Концептуальные шаги:
 
-```mermaid
-flowchart TD
-    N1["check element"]
-    N2["true → check next element"]
-    N3["false → вернуть false"]
-    N1 --> N2
-    N1 --> N3
-```
-
 `every()` ищет не совпадение, а нарушение общего правила.
 
 ## Главная ментальная модель
 
 Главная модель этой главы: **all must match**.
-
-```mermaid
-flowchart TD
-    N1["testCases"]
-    N2["every()"]
-    N3["true only if all match"]
-    N1 --> N2
-    N2 --> N3
-```
 
 Вопрос: "Все ли подходят?"
 

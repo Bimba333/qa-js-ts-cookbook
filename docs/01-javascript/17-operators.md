@@ -4,21 +4,6 @@
 
 Предыдущие главы объяснили значения, types, references, conceptual memory model, type conversion and equality.
 
-```mermaid
-flowchart TD
-    N1["Primitive Types"]
-    N2["Object Type"]
-    N3["References"]
-    N4["Stack &amp; Heap"]
-    N5["Type Conversion"]
-    N6["Equality"]
-    N1 --> N2
-    N2 --> N3
-    N3 --> N4
-    N4 --> N5
-    N5 --> N6
-```
-
 Теперь начинается новый блок: **Program Control**.
 
 До этого мы изучали, что такое значения and how they compare. Теперь вопрос другой:
@@ -143,35 +128,7 @@ docs/01-javascript/18-conditionals.md
 
 Диаграмма Operator overview:
 
-```mermaid
-flowchart TD
-    N1["Value"]
-    N2["2"]
-    N3["Operator"]
-    N4["+"]
-    N5["Value"]
-    N6["3"]
-    N7["Результат"]
-    N8["5"]
-    N1 --> N2
-    N1 --> N3
-    N3 --> N4
-    N3 --> N5
-    N5 --> N6
-    N5 --> N7
-    N7 --> N8
-```
-
 Operators are the language mechanism that transforms, combines and evaluates значения.
-
-```mermaid
-flowchart TD
-    N1["Operands"]
-    N2["Operator"]
-    N3["Результат"]
-    N1 --> N2
-    N2 --> N3
-```
 
 Главный вопрос:
 
@@ -197,37 +154,7 @@ Addition.
 
 Operand → Operator → Result:
 
-```mermaid
-flowchart TD
-    N1["2 + 3"]
-    N2["operand"]
-    N3["──────── operator"]
-    N4["──────────────── operand"]
-    N5["Результат"]
-    N6["5"]
-    N1 --> N2
-    N1 --> N3
-    N1 --> N4
-    N1 --> N5
-    N5 --> N6
-```
-
 Operator receives operands and produces a result.
-
-```mermaid
-flowchart TD
-    N1["Input value"]
-    N2["operand"]
-    N3["Action"]
-    N4["operator"]
-    N5["Output value"]
-    N6["результат"]
-    N1 --> N2
-    N1 --> N3
-    N3 --> N4
-    N3 --> N5
-    N5 --> N6
-```
 
 ### Unary operators
 
@@ -239,21 +166,6 @@ const valueType = typeof 'Anna';
 
 Unary operator схема:
 
-```mermaid
-flowchart TD
-    N1["Operator"]
-    N2["typeof"]
-    N3["Operand"]
-    N4["&quot;Anna&quot;"]
-    N5["Результат"]
-    N6["&quot;string&quot;"]
-    N1 --> N2
-    N1 --> N3
-    N3 --> N4
-    N3 --> N5
-    N5 --> N6
-```
-
 Other unary examples:
 
 ```javascript
@@ -263,15 +175,6 @@ typeof 200;
 ```
 
 Эта глава не перечисляет все unary operators. Она строит модель:
-
-```mermaid
-flowchart TD
-    N1["one operand"]
-    N2["unary operator"]
-    N3["результат"]
-    N1 --> N2
-    N2 --> N3
-```
 
 ### Binary operators
 
@@ -284,35 +187,7 @@ const isExpected = 200 === 200;
 
 Binary operator схема:
 
-```mermaid
-flowchart TD
-    N1["Left operand"]
-    N2["2"]
-    N3["Operator"]
-    N4["+"]
-    N5["Right operand"]
-    N6["3"]
-    N7["Результат"]
-    N8["5"]
-    N1 --> N2
-    N1 --> N3
-    N3 --> N4
-    N3 --> N5
-    N5 --> N6
-    N5 --> N7
-    N7 --> N8
-```
-
 Equality is also binary:
-
-```mermaid
-flowchart TD
-    N1["200 === 200"]
-    N2["left op right"]
-    N3["true"]
-    N1 --> N2
-    N2 --> N3
-```
 
 ### Ternary operator
 
@@ -326,21 +201,6 @@ Ternary means three operands.
 
 Ternary operator схема:
 
-```mermaid
-flowchart TD
-    N1["condition ? valueIfTrue : valueIfFalse"]
-    N2["third operand"]
-    N3["────────────── second operand"]
-    N4["────────────────────────── first operand"]
-    N5["Результат"]
-    N6["one of two values"]
-    N1 --> N2
-    N1 --> N3
-    N1 --> N4
-    N1 --> N5
-    N5 --> N6
-```
-
 Эта глава только вводит форму. Conditionals позже подробно объяснит принятие решений.
 
 ### Operator categories
@@ -349,45 +209,7 @@ Operators are grouped by the kind of operation they perform.
 
 Operator categories:
 
-```mermaid
-flowchart TD
-    N1["Operators"]
-    N2["Arithmetic"]
-    N3["Comparison"]
-    N4["Logical"]
-    N5["Assignment"]
-    N6["Type inspection"]
-    N7["Property / object-related"]
-    N8["Other specialized categories"]
-    N1 --> N2
-    N1 --> N3
-    N1 --> N4
-    N1 --> N5
-    N1 --> N6
-    N1 --> N7
-    N1 --> N8
-```
-
 Какая операция выполняется?
-
-```mermaid
-flowchart TD
-    N1["Arithmetic → calculate"]
-    N2["Comparison → compare"]
-    N3["Logical → combine/evaluate logic"]
-    N4["Assignment → store/update value"]
-    N5["typeof → inspect type category"]
-    N6["delete → remove property at high level"]
-    N7["in → check property presence"]
-    N8["instanceof → check runtime object relationship at high level"]
-    N1 --> N2
-    N2 --> N3
-    N3 --> N4
-    N4 --> N5
-    N5 --> N6
-    N6 --> N7
-    N7 --> N8
-```
 
 ### Arithmetic operators
 
@@ -401,15 +223,6 @@ const totalPrice = itemPrice * itemCount;
 
 Arithmetic operators схема:
 
-```mermaid
-flowchart TD
-    N1["Number-like operand"]
-    N2["Arithmetic operator"]
-    N3["числовой результат"]
-    N1 --> N2
-    N2 --> N3
-```
-
 Примеры:
 
 ```text
@@ -421,15 +234,6 @@ flowchart TD
 ```
 
 Эта глава не учит каждый арифметический оператор отдельно. Достаточно ментальной модели:
-
-```mermaid
-flowchart TD
-    N1["operands"]
-    N2["calculation"]
-    N3["результат"]
-    N1 --> N2
-    N2 --> N3
-```
 
 Type conversion may happen if operands are not the expected type. Type Conversion chapter explained why.
 
@@ -443,17 +247,6 @@ const isSuccess = statusCode === 200;
 ```
 
 Comparison operators схема:
-
-```mermaid
-flowchart TD
-    N1["Value A"]
-    N2["Comparison operator"]
-    N3["Value B"]
-    N4["булев результат"]
-    N1 --> N2
-    N2 --> N3
-    N3 --> N4
-```
 
 Примеры:
 
@@ -479,15 +272,6 @@ const canContinue = isStatusOk && hasUser;
 ```
 
 Logical operators схема:
-
-```mermaid
-flowchart TD
-    N1["Logical input"]
-    N2["Logical operator"]
-    N3["логический результат / выбранное значение"]
-    N1 --> N2
-    N2 --> N3
-```
 
 Common logical operators:
 
@@ -518,23 +302,6 @@ retryCount = 1;
 
 Assignment operators схема:
 
-```mermaid
-flowchart TD
-    N1["Target"]
-    N2["retryCount"]
-    N3["Operator"]
-    N4["="]
-    N5["Value"]
-    N6["1"]
-    N7["Updated target"]
-    N1 --> N2
-    N1 --> N3
-    N3 --> N4
-    N3 --> N5
-    N5 --> N6
-    N5 --> N7
-```
-
 Other assignment-like forms exist:
 
 ```javascript
@@ -542,15 +309,6 @@ retryCount += 1;
 ```
 
 На высоком уровне:
-
-```mermaid
-flowchart TD
-    N1["read текущее значение"]
-    N2["perform operation"]
-    N3["записать результат обратно"]
-    N1 --> N2
-    N2 --> N3
-```
 
 Подробные варианты operators будут изучаться по мере необходимости.
 
@@ -565,15 +323,6 @@ console.log(typeof true);
 ```
 
 `typeof` схема:
-
-```mermaid
-flowchart TD
-    N1["typeof"]
-    N2["значение"]
-    N3["type category string"]
-    N1 --> N2
-    N2 --> N3
-```
 
 Automation QA uses `typeof` for debugging unexpected API значения:
 
@@ -604,21 +353,6 @@ delete user.temporaryCode;
 
 `delete` схема:
 
-```mermaid
-flowchart TD
-    N1["Object"]
-    N2["name"]
-    N3["temporaryCode"]
-    N4["delete property"]
-    N5["Object"]
-    N6["name"]
-    N1 --> N2
-    N1 --> N3
-    N1 --> N4
-    N4 --> N5
-    N5 --> N6
-```
-
 Эта глава не разбирает низкоуровневое поведение памяти или детали performance.
 
 ### `in`
@@ -635,17 +369,6 @@ console.log('role' in user);
 ```
 
 `in` схема:
-
-```mermaid
-flowchart TD
-    N1["property name"]
-    N2["in"]
-    N3["объект"]
-    N4["булев результат"]
-    N1 --> N2
-    N2 --> N3
-    N3 --> N4
-```
 
 Результат:
 
@@ -674,50 +397,13 @@ console.log(createdAt instanceof Date);
 
 `instanceof` схема:
 
-```mermaid
-flowchart TD
-    N1["объект"]
-    N2["instanceof"]
-    N3["constructor-like value"]
-    N4["булев результат"]
-    N1 --> N2
-    N2 --> N3
-    N3 --> N4
-```
-
 Эта глава только вводит оператор. Prototypes, constructors и classes будут изучены позже.
 
 ### Operator result
 
 Every operator produces a result.
 
-```mermaid
-flowchart TD
-    N1["2 + 3"]
-    N2["результат: 5"]
-    N3["statusCode === 200"]
-    N4["результат: true"]
-    N5["typeof value"]
-    N6["результат: &quot;string&quot;"]
-    N1 --> N2
-    N1 --> N3
-    N3 --> N4
-    N3 --> N5
-    N5 --> N6
-```
-
 Operator result схема:
-
-```mermaid
-flowchart TD
-    N1["Operation"]
-    N2["operands"]
-    N3["operator"]
-    N4["результат"]
-    N1 --> N2
-    N1 --> N3
-    N1 --> N4
-```
 
 This result can be:
 
@@ -738,19 +424,6 @@ const result = 2 + 3 * 4;
 
 Концептуальная схема приоритета:
 
-```mermaid
-flowchart TD
-    N1["Expression"]
-    N2["2 + 3 * 4"]
-    N3["* happens before +"]
-    N4["2 + 12"]
-    N5["14"]
-    N1 --> N2
-    N1 --> N3
-    N1 --> N4
-    N1 --> N5
-```
-
 Эта глава не учит таблицы приоритета. Практическое правило пока такое:
 
 ```text
@@ -767,77 +440,13 @@ const result = 2 + (3 * 4);
 
 At a conceptual level, an operator is an instruction to the engine:
 
-```mermaid
-flowchart TD
-    N1["Read operand(s)"]
-    N2["Apply operator rules"]
-    N3["Produce result"]
-    N1 --> N2
-    N2 --> N3
-```
-
 Complete operator picture:
 
-```mermaid
-flowchart TD
-    N1["исходный код expression"]
-    N2["Engine identifies operator"]
-    N3["Engine identifies operands"]
-    N4["Engine applies category rules"]
-    N5["arithmetic"]
-    N6["comparison"]
-    N7["logical"]
-    N8["assignment"]
-    N9["specialized"]
-    N10["Engine produces result"]
-    N11["Result is used by surrounding code"]
-    N1 --> N2
-    N2 --> N3
-    N3 --> N4
-    N4 --> N5
-    N4 --> N6
-    N4 --> N7
-    N4 --> N8
-    N4 --> N9
-    N4 --> N10
-    N10 --> N11
-```
-
 Текущее место в модели JavaScript:
-
-```mermaid
-flowchart TD
-    N1["Values and Types"]
-    N2["Primitive Types"]
-    N3["Object Type"]
-    N4["References"]
-    N5["Stack &amp; Heap"]
-    N6["Type Conversion"]
-    N7["Equality"]
-    N8["Program Control"]
-    N9["Operators"]
-    N1 --> N2
-    N1 --> N3
-    N1 --> N4
-    N1 --> N5
-    N1 --> N6
-    N1 --> N7
-    N1 --> N8
-    N8 --> N9
-```
 
 Operators — первый шаг к control flow, потому что conditionals зависят от результатов expressions.
 
 Переход к Conditionals:
-
-```mermaid
-flowchart TD
-    N1["результат оператора"]
-    N2["Boolean-like decision"]
-    N3["Conditional chooses path"]
-    N1 --> N2
-    N2 --> N3
-```
 
 ---
 
@@ -855,36 +464,9 @@ Output: 5
 
 ### Machine processing входs
 
-```mermaid
-flowchart TD
-    N1["Input value(s)"]
-    N2["Machine: operator"]
-    N3["вывести результат"]
-    N1 --> N2
-    N2 --> N3
-```
-
 ### Factory conveyor
 
-```mermaid
-flowchart TD
-    N1["Operand enters conveyor"]
-    N2["Operator station transforms it"]
-    N3["Result leaves conveyor"]
-    N1 --> N2
-    N2 --> N3
-```
-
 ### Recipe step
-
-```mermaid
-flowchart TD
-    N1["Ingredients"]
-    N2["Recipe action"]
-    N3["подготовленный результат"]
-    N1 --> N2
-    N2 --> N3
-```
 
 Operator is the recipe action.
 
@@ -892,21 +474,7 @@ Operator is the recipe action.
 
 An operator is not literally a function in syntax, but it can be imagined like:
 
-```mermaid
-flowchart LR
-    N1["operator(left, right)"]
-    N2["результат"]
-    N1 --> N2
-```
-
 Пример:
-
-```mermaid
-flowchart LR
-    N1["(2, 3) through +"]
-    N2["5"]
-    N1 --> N2
-```
 
 This model helps remember:
 
@@ -1131,15 +699,6 @@ Useful at runtime, but detailed constructor/prototype поведение will be
 ## Итоги
 
 Operators are actions that receive operands and produce results.
-
-```mermaid
-flowchart TD
-    N1["Operand(s)"]
-    N2["Operator"]
-    N3["Результат"]
-    N1 --> N2
-    N2 --> N3
-```
 
 Operators относятся к категориям:
 
