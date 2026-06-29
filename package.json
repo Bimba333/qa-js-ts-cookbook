@@ -7,7 +7,8 @@
     "docs:sidebar": "node scripts/generate-sidebar.mjs",
     "docs:dev": "npm run docs:sidebar && vitepress dev .",
     "docs:build": "npm run docs:sidebar && vitepress build .",
-    "docs:preview": "vitepress preview ."
+    "docs:preview": "vitepress preview .",
+    "docs:smoke": "npm run docs:build && node scripts/smoke-build.mjs"
   },
   "devDependencies": {
     "mermaid": "^11.16.0",
