@@ -97,7 +97,8 @@ function splitByHeading(markdown, level) {
 function renderAnswerDetails(md, markdown, env) {
   const rendered = md.render(markdown.trim(), {
     ...env,
-    embeddedMarkdown: true
+    embeddedMarkdown: true,
+    answerDetails: true
   })
 
   return `
@@ -120,8 +121,9 @@ function mergeSectionWithAnswers(md, practiceSection, solutionSection, env) {
   const solutionBody = solutionSection.body.join('\n').trim()
   const practiceTasks = splitByHeading(practiceBody, 3)
   const solutionTasks = splitByHeading(solutionBody, 3)
+  const hasPracticeTasks = practiceTasks.some(section => section.title)
 
-  if (!practiceTasks.length || !solutionTasks.length) {
+  if (!hasPracticeTasks || !solutionTasks.length) {
     return `## ${practiceSection.title}\n\n${practiceBody}\n\n${renderAnswerDetails(md, solutionBody, env)}`.trimEnd()
   }
 
@@ -365,6 +367,40 @@ function isSupportHeading(content) {
   return /^(Практика|Решения|Примеры)$/.test(content.trim())
 }
 
+function setTokenAttr(token, name, value) {
+  if (!token) return
+
+  const index = token.attrIndex(name)
+
+  if (index >= 0) {
+    token.attrs[index][1] = value
+  } else {
+    token.attrPush([name, value])
+  }
+}
+
+function renameInlineToken(token, value) {
+  token.content = value
+
+  if (!token.children?.length) {
+    return
+  }
+
+  let textWasSet = false
+
+  for (const child of token.children) {
+    if (!textWasSet && child.type === 'text') {
+      child.content = value
+      child.hidden = false
+      textWasSet = true
+      continue
+    }
+
+    child.content = ''
+    child.hidden = true
+  }
+}
+
 function publicLabelForPath(value) {
   if (/^docs\//.test(value) || value === 'docs/') return 'глава книги'
   if (/^practice\//.test(value) || value === 'practice/') return 'практика'
@@ -428,11 +464,16 @@ export function exampleCardPlugin(md) {
           headingClose?.type === 'heading_close' &&
           isSupportHeading(headingInline.content)
         ) {
-          headingOpen.hidden = true
-          headingInline.hidden = true
-          headingInline.content = ''
-          headingInline.children = []
-          headingClose.hidden = true
+          if (headingInline.content.trim() === 'Практика') {
+            renameInlineToken(headingInline, 'Задачи')
+            setTokenAttr(headingOpen, 'id', 'задачи')
+          } else {
+            headingOpen.hidden = true
+            headingInline.hidden = true
+            headingInline.content = ''
+            headingInline.children = []
+            headingClose.hidden = true
+          }
         }
       }
     }
@@ -516,6 +557,10 @@ export function exampleCardPlugin(md) {
     }
 
     if (isPlaygroundPath) {
+      if (env.answerDetails) {
+        return ''
+      }
+
       const title = 'Песочница'
       const template = `// Напишите код для задания.
 console.log('Проверьте доступность process:', typeof process !== 'undefined')
