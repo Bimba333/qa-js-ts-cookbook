@@ -1,8 +1,172 @@
 import fs from 'node:fs'
 import path from 'node:path'
+import { bookEngineData } from '../book.generated.mjs'
 
 const BOOK_BASE = '/qa-javascript-book/'
 const EMBED_TYPES = new Set(['practice', 'solutions'])
+
+function escapeHtml(value) {
+  return String(value)
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+}
+
+function siteHref(link) {
+  return `${BOOK_BASE}${link.replace(/^\//, '')}`
+}
+
+function normalizePagePath(value) {
+  if (!value) {
+    return ''
+  }
+
+  let result = String(value)
+
+  if (path.isAbsolute(result)) {
+    result = path.relative(process.cwd(), result)
+  }
+
+  result = result.replace(/\\/g, '/').replace(/^\//, '')
+
+  if (result.endsWith('.html')) {
+    result = result.replace(/\.html$/, '.md')
+  }
+
+  if (!result.endsWith('.md')) {
+    result = `${result}.md`
+  }
+
+  return result
+}
+
+function pagePathFromEnv(env) {
+  const candidates = [
+    env.relativePath,
+    env.path,
+    env.filePath,
+    env.id
+  ]
+
+  for (const candidate of candidates) {
+    const normalized = normalizePagePath(candidate)
+
+    if (bookEngineData.chapters[normalized] || normalized === 'index.md') {
+      return normalized
+    }
+  }
+
+  return ''
+}
+
+function renderBookStat(label, value) {
+  return `
+    <div class="book-stat">
+      <div class="book-stat__value">${escapeHtml(value)}</div>
+      <div class="book-stat__label">${escapeHtml(label)}</div>
+    </div>
+`
+}
+
+function renderBookStats() {
+  const stats = bookEngineData.statistics
+
+  return `
+<section class="book-stats" aria-label="Статистика книги">
+  <h2>Статистика книги</h2>
+  <div class="book-stats__grid">
+    ${renderBookStat('Всего глав', stats.chapters)}
+    ${renderBookStat('Всего задач', stats.tasks)}
+    ${renderBookStat('Всего решений', stats.solutions)}
+    ${renderBookStat('Всего примеров', stats.examples)}
+    ${renderBookStat('Всего Mermaid', stats.mermaid)}
+    ${renderBookStat('Всего мини-проектов', stats.miniProjects)}
+    ${renderBookStat('Общее время чтения', `${stats.readingMinutes} минут`)}
+  </div>
+</section>
+`
+}
+
+function renderChapterCard(chapter) {
+  if (!chapter?.card) {
+    return ''
+  }
+
+  const progress = chapter.progress
+    ? `
+      <div class="book-chapter-card__progress" aria-label="Прогресс раздела">
+        <div class="book-chapter-card__progress-label">${escapeHtml(chapter.progress.label)}</div>
+        <div class="book-chapter-card__progress-bar">${escapeHtml(chapter.progress.bar)}</div>
+        <div class="book-chapter-card__progress-count">${chapter.progress.current} из ${chapter.progress.total} глав</div>
+      </div>
+`
+    : ''
+
+  return `
+<section class="book-chapter-card" aria-label="Информация о главе">
+  <div class="book-chapter-card__eyebrow">${escapeHtml(chapter.card.chapterLabel)}</div>
+  <h1 class="book-chapter-card__title">${escapeHtml(chapter.card.title)}</h1>
+  <div class="book-chapter-card__meta">
+    <span>⏱ Время чтения: ${chapter.card.reading} минут</span>
+    <span>📄 Примеров: ${chapter.card.examples}</span>
+    <span>📝 Задач: ${chapter.card.tasks}</span>
+    <span>💡 Решений: ${chapter.card.solutions}</span>
+    <span>📊 Диаграмм: ${chapter.card.mermaid}</span>
+  </div>
+  ${progress}
+</section>
+`
+}
+
+function renderRelated(chapter) {
+  if (!chapter?.related?.length) {
+    return ''
+  }
+
+  const items = chapter.related.map(item => `
+    <a class="book-related__item" href="${siteHref(item.link)}">
+      <span>Подробнее</span>
+      <strong>${item.number ? `Глава ${item.number}. ` : ''}${escapeHtml(item.title)}</strong>
+    </a>
+`).join('')
+
+  return `
+<section class="book-related" aria-label="Связанные главы">
+  ${items}
+</section>
+`
+}
+
+function renderChapterNavigation(chapter) {
+  if (!chapter) {
+    return ''
+  }
+
+  const previous = chapter.previous
+    ? `<a href="${siteHref(chapter.previous.link)}">← Предыдущая глава</a>`
+    : '<span></span>'
+  const section = chapter.sectionLink
+    ? `<a href="${siteHref(chapter.sectionLink.link)}">↑ К разделу</a>`
+    : '<span></span>'
+  const next = chapter.next
+    ? `<a href="${siteHref(chapter.next.link)}">Следующая глава →</a>`
+    : '<span></span>'
+
+  return `
+<nav class="book-chapter-nav" aria-label="Навигация по книге">
+  ${previous}
+  ${section}
+  ${next}
+</nav>
+`
+}
+
+function htmlToken(state, content) {
+  const token = new state.Token('html_block', '', 0)
+  token.content = content
+  return token
+}
 
 function titleFromFile(filePath) {
   return path
@@ -302,6 +466,7 @@ function renderExample(md, filePath, env) {
 <CodeRunner
   title="${md.utils.escapeHtml(title)}"
   source-b64="${sourceB64}"
+  file-path="${md.utils.escapeHtml(filePath)}"
   readonly
 />
 `
@@ -435,6 +600,44 @@ function renderMermaid(md, content) {
 export function exampleCardPlugin(md) {
   const defaultFence = md.renderer.rules.fence
   const defaultCodeInline = md.renderer.rules.code_inline
+
+  md.core.ruler.after('inline', 'book_engine_blocks', state => {
+    if (state.env.embeddedMarkdown) {
+      return
+    }
+
+    const currentPath = pagePathFromEnv(state.env)
+
+    if (currentPath === 'index.md') {
+      const insertAfter = state.tokens.findIndex(token => token.type === 'heading_close' && token.tag === 'h1')
+      const stats = htmlToken(state, renderBookStats())
+
+      if (insertAfter >= 0) {
+        state.tokens.splice(insertAfter + 1, 0, stats)
+      } else {
+        state.tokens.unshift(stats)
+      }
+
+      return
+    }
+
+    const chapter = bookEngineData.chapters[currentPath]
+
+    if (!chapter) {
+      return
+    }
+
+    const h1Index = state.tokens.findIndex(token => token.type === 'heading_open' && token.tag === 'h1')
+
+    if (h1Index >= 0) {
+      state.tokens[h1Index].hidden = true
+      state.tokens[h1Index + 1].hidden = true
+      state.tokens[h1Index + 2].hidden = true
+    }
+
+    state.tokens.unshift(htmlToken(state, `${renderChapterCard(chapter)}${renderRelated(chapter)}`))
+    state.tokens.push(htmlToken(state, renderChapterNavigation(chapter)))
+  })
 
   md.core.ruler.after('inline', 'book_hide_repository_labels', state => {
     for (let i = 0; i < state.tokens.length - 2; i++) {
@@ -573,6 +776,7 @@ console.log('Проверьте доступность window:', typeof window !
 <CodeRunner
   title="${md.utils.escapeHtml(title)}"
   source-b64="${sourceB64}"
+  file-path="${md.utils.escapeHtml(content)}"
 />
 `
     }

@@ -1,5 +1,7 @@
 <script setup>
-import { computed, ref } from 'vue'
+import { computed, nextTick, onBeforeUnmount, ref, watch } from 'vue'
+
+const RUN_TIMEOUT_MS = 2000
 
 const props = defineProps({
   title: {
@@ -10,6 +12,10 @@ const props = defineProps({
     type: String,
     required: true
   },
+  filePath: {
+    type: String,
+    default: ''
+  },
   readonly: {
     type: Boolean,
     default: false
@@ -19,28 +25,70 @@ const props = defineProps({
 const output = ref('')
 const error = ref('')
 const iframeSource = ref('')
+const iframeKey = ref(0)
 const runId = ref(0)
+const editableSource = ref('')
+let timeoutId = 0
 
 const initialSource = computed(() => {
   const binary = atob(props.sourceB64)
   const bytes = Uint8Array.from(binary, char => char.charCodeAt(0))
+
   return new TextDecoder().decode(bytes)
 })
 
-const editableSource = ref('')
-
-function currentSource() {
+const displayedSource = computed(() => {
   return props.readonly ? initialSource.value : editableSource.value || initialSource.value
-}
+})
+
+const isNodeOnly = computed(() => isNodeOnlySource(displayedSource.value))
+
+const runCommand = computed(() => {
+  return props.filePath ? `node ${props.filePath}` : 'node path/to/file.js'
+})
+
+watch(initialSource, source => {
+  if (!props.readonly) {
+    editableSource.value = source
+  }
+}, { immediate: true })
 
 function isNodeOnlySource(source) {
-  return /(^|\W)(process|require|__dirname|__filename)(\W|$)/.test(source) ||
-    /(^|\n)\s*import\s+.+\s+from\s+['"]node:/.test(source) ||
-    /(^|\n)\s*import\s+.+\s+from\s+['"](fs|path|node:fs|node:path)['"]/.test(source)
+  return /(^|\W)(process|__dirname|__filename)(\W|$)/.test(source) ||
+    /(^|\W)require\s*\(/.test(source) ||
+    /(^|\n)\s*import\s+.+\s+from\s+['"](?:fs|path|node:fs|node:path)['"]/.test(source) ||
+    /(^|\n)\s*import\s+['"](?:fs|path|node:fs|node:path)['"]/.test(source)
 }
 
 function escapeScriptEnd(source) {
   return source.replace(/<\/script/gi, '<\\/script')
+}
+
+function clearTimeoutIfNeeded() {
+  if (timeoutId) {
+    window.clearTimeout(timeoutId)
+    timeoutId = 0
+  }
+}
+
+function destroyIframe() {
+  iframeSource.value = ''
+  iframeKey.value += 1
+}
+
+function resetRunner() {
+  clearTimeoutIfNeeded()
+  output.value = ''
+  error.value = ''
+  destroyIframe()
+
+  if (!props.readonly) {
+    editableSource.value = initialSource.value
+  }
+}
+
+function appendOutput(value) {
+  output.value = output.value ? `${output.value}\n${value}` : value
 }
 
 function createIframeSource(source) {
@@ -64,20 +112,29 @@ function createIframeSource(source) {
 
     const format = value => {
       if (typeof value === 'string') return value
+      if (typeof value === 'undefined') return 'undefined'
+      if (typeof value === 'function') return value.toString()
 
       try {
-        return JSON.stringify(value)
+        return JSON.stringify(value, null, 2)
       } catch {
         return String(value)
       }
     }
 
-    console.log = (...args) => send('log', args.map(format).join(' '))
-    console.warn = (...args) => send('log', args.map(format).join(' '))
-    console.error = (...args) => send('log', args.map(format).join(' '))
+    const write = (type, args) => send(type, Array.from(args).map(format).join(' '))
+
+    console.log = (...args) => write('log', args)
+    console.warn = (...args) => write('log', args)
+    console.error = (...args) => write('log', args)
+    console.table = value => send('log', format(value))
 
     window.addEventListener('error', event => {
-      send('error', event.message)
+      send('error', event.message || 'Ошибка выполнения.')
+    })
+
+    window.addEventListener('unhandledrejection', event => {
+      send('error', event.reason?.message || format(event.reason))
     })
   <\/script>
   <script>
@@ -98,37 +155,55 @@ function handleMessage(event) {
   }
 
   if (message.type === 'log') {
-    output.value = output.value
-      ? `${output.value}\n${message.value}`
-      : message.value
+    appendOutput(message.value)
   }
 
   if (message.type === 'error') {
     error.value = message.value || 'Ошибка выполнения.'
+    clearTimeoutIfNeeded()
+    destroyIframe()
   }
 
-  if (message.type === 'done' && !output.value && !error.value) {
-    output.value = 'Код выполнен без вывода.'
+  if (message.type === 'done') {
+    clearTimeoutIfNeeded()
+
+    if (!output.value && !error.value) {
+      output.value = 'Код выполнен без вывода.'
+    }
+
+    destroyIframe()
   }
 }
 
-function runCode() {
+async function runCode() {
+  clearTimeoutIfNeeded()
   output.value = ''
   error.value = ''
-  iframeSource.value = ''
+  destroyIframe()
   runId.value += 1
 
-  const source = currentSource()
-
-  if (isNodeOnlySource(source)) {
-    error.value = 'Этот пример предназначен для Node.js.'
+  if (isNodeOnly.value) {
     return
   }
 
   window.removeEventListener('message', handleMessage)
   window.addEventListener('message', handleMessage)
-  iframeSource.value = createIframeSource(source)
+
+  await nextTick()
+
+  timeoutId = window.setTimeout(() => {
+    error.value = 'Код выполняется слишком долго. Возможно, в нем бесконечный цикл.'
+    destroyIframe()
+    clearTimeoutIfNeeded()
+  }, RUN_TIMEOUT_MS)
+
+  iframeSource.value = createIframeSource(displayedSource.value)
 }
+
+onBeforeUnmount(() => {
+  clearTimeoutIfNeeded()
+  window.removeEventListener('message', handleMessage)
+})
 </script>
 
 <template>
@@ -136,9 +211,24 @@ function runCode() {
     <div class="code-runner__header">
       <div class="code-runner__title">{{ title }}</div>
 
-      <button class="code-runner__button" type="button" @click="runCode">
-        ▶ Запустить
-      </button>
+      <div class="code-runner__actions">
+        <button
+          class="code-runner__button"
+          type="button"
+          :disabled="isNodeOnly"
+          @click="runCode"
+        >
+          ▶ Запустить
+        </button>
+
+        <button
+          class="code-runner__button code-runner__button--secondary"
+          type="button"
+          @click="resetRunner"
+        >
+          ↺ Сбросить
+        </button>
+      </div>
     </div>
 
     <pre v-if="readonly" class="code-runner__code"><code>{{ initialSource }}</code></pre>
@@ -148,8 +238,13 @@ function runCode() {
       v-model="editableSource"
       class="code-runner__editor"
       spellcheck="false"
-      :placeholder="initialSource"
     />
+
+    <div v-if="isNodeOnly" class="code-runner__node">
+      <p>Этот пример предназначен для Node.js.</p>
+      <p>Запустите локально:</p>
+      <pre><code>{{ runCommand }}</code></pre>
+    </div>
 
     <div v-if="output" class="code-runner__output">
       <div class="code-runner__output-title">Результат</div>
@@ -163,6 +258,7 @@ function runCode() {
 
     <iframe
       v-if="iframeSource"
+      :key="iframeKey"
       class="code-runner__iframe"
       title="Изолированное выполнение примера"
       sandbox="allow-scripts"

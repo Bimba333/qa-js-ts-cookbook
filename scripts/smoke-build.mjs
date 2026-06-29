@@ -45,6 +45,12 @@ const indexPath = path.join(DIST, 'index.html')
 
 if (!exists(indexPath)) {
   fail('Не найден .vitepress/dist/index.html')
+} else {
+  const indexHtml = read(indexPath)
+
+  if (!indexHtml.includes('book-stats')) {
+    fail('На главной странице нет блока статистики книги')
+  }
 }
 
 const jsHtmlFiles = walk(path.join(DIST, 'docs', '01-javascript'))
@@ -63,8 +69,28 @@ if (!exists(sampleHtmlPath)) {
   const html = read(sampleHtmlPath)
   const solutionPath = sampleChapter.replace(/^docs\//, 'solutions/')
 
+  if (!html.includes('book-chapter-card')) {
+    fail('В проверочной JavaScript-главе нет карточки главы Book Engine')
+  }
+
+  if (!html.includes('book-chapter-nav')) {
+    fail('В проверочной JavaScript-главе нет нижней навигации Book Engine')
+  }
+
+  if (!html.includes('book-chapter-card__progress')) {
+    fail('В проверочной JavaScript-главе нет индикатора прогресса Book Engine')
+  }
+
   if (!html.includes('book-embedded--practice')) {
     fail('В проверочной JavaScript-главе нет встроенного блока практики')
+  }
+
+  if (!html.includes('code-runner')) {
+    fail('В проверочной JavaScript-главе нет признаков CodeRunner')
+  }
+
+  if (!html.includes('Запустить')) {
+    fail('В проверочной JavaScript-главе нет кнопки запуска CodeRunner')
   }
 
   if (exists(path.join(ROOT, solutionPath)) && !html.includes('book-answer')) {

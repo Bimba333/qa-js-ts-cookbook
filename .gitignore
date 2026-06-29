@@ -6,4 +6,6 @@ coverage/
 
 .vscode/settings.json
 
+.vitepress/.temp/
+
 .DS_Store
