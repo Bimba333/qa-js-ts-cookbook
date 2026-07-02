@@ -6,7 +6,7 @@ export default defineConfig({
   title: 'JS/TS QA Book',
   description: 'Книга по JavaScript и TypeScript для QA Automation',
 
-  base: '/qa-javascript-book/',
+  base: '/qa-js-ts-cookbook/',
 
   cleanUrls: true,
 
@@ -22,7 +22,7 @@ export default defineConfig({
 
     nav: [
       { text: 'Теория', link: '/docs/00-introduction/01-about-course' },
-      { text: 'GitHub', link: 'https://github.com/Bimba333/qa-javascript-book' }
+      { text: 'GitHub', link: 'https://github.com/Bimba333/qa-js-ts-cookbook' }
     ],
 
     sidebar,

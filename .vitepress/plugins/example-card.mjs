@@ -2,7 +2,7 @@ import fs from 'node:fs'
 import path from 'node:path'
 import { bookEngineData } from '../book.generated.mjs'
 
-const BOOK_BASE = '/qa-javascript-book/'
+const BOOK_BASE = '/qa-js-ts-cookbook/'
 const EMBED_TYPES = new Set(['practice', 'solutions'])
 
 function escapeHtml(value) {
