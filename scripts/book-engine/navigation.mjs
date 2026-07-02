@@ -32,12 +32,14 @@ export function applyNavigation(chapters) {
       previous: chapters[index - 1]
         ? {
             title: chapters[index - 1].title,
+            number: chapters[index - 1].number,
             link: chapters[index - 1].link
           }
         : null,
       next: chapters[index + 1]
         ? {
             title: chapters[index + 1].title,
+            number: chapters[index + 1].number,
             link: chapters[index + 1].link
           }
         : null,

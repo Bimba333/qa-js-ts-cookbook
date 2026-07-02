@@ -73,10 +73,6 @@ if (!exists(sampleHtmlPath)) {
     fail('В проверочной JavaScript-главе нет карточки главы Book Engine')
   }
 
-  if (!html.includes('book-chapter-nav')) {
-    fail('В проверочной JavaScript-главе нет нижней навигации Book Engine')
-  }
-
   if (!html.includes('book-chapter-card__progress')) {
     fail('В проверочной JavaScript-главе нет индикатора прогресса Book Engine')
   }

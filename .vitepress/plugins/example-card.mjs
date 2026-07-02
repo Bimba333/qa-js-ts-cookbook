@@ -119,53 +119,86 @@ function renderChapterCard(chapter) {
 `
 }
 
-function renderRelated(chapter) {
-  if (!chapter?.related?.length) {
-    return ''
-  }
-
-  const items = chapter.related.map(item => `
-    <a class="book-related__item" href="${siteHref(item.link)}">
-      <span>Подробнее</span>
-      <strong>${item.number ? `Глава ${item.number}. ` : ''}${escapeHtml(item.title)}</strong>
-    </a>
-`).join('')
-
-  return `
-<section class="book-related" aria-label="Связанные главы">
-  ${items}
-</section>
-`
+function htmlToken(state, content) {
+  const token = new state.Token('html_block', '', 0)
+  token.content = content
+  return token
 }
 
-function renderChapterNavigation(chapter) {
-  if (!chapter) {
+function renderInlinePager(chapter) {
+  if (!chapter?.previous && !chapter?.next) {
     return ''
   }
 
+  const itemTitle = item => {
+    const prefix = item.number && item.link.includes('/docs/01-javascript/')
+      ? `Глава ${item.number}. `
+      : ''
+
+    return `${prefix}${escapeHtml(item.title)}`
+  }
   const previous = chapter.previous
-    ? `<a href="${siteHref(chapter.previous.link)}">← Предыдущая глава</a>`
-    : '<span></span>'
-  const section = chapter.sectionLink
-    ? `<a href="${siteHref(chapter.sectionLink.link)}">↑ К разделу</a>`
-    : '<span></span>'
+    ? `
+      <a class="book-inline-pager__link book-inline-pager__link--previous" href="${siteHref(chapter.previous.link)}">
+        <span>Предыдущая</span>
+        <strong>${itemTitle(chapter.previous)}</strong>
+      </a>
+`
+    : '<span class="book-inline-pager__link book-inline-pager__link--empty"></span>'
   const next = chapter.next
-    ? `<a href="${siteHref(chapter.next.link)}">Следующая глава →</a>`
-    : '<span></span>'
+    ? `
+      <a class="book-inline-pager__link book-inline-pager__link--next" href="${siteHref(chapter.next.link)}">
+        <span>Следующая</span>
+        <strong>${itemTitle(chapter.next)}</strong>
+      </a>
+`
+    : '<span class="book-inline-pager__link book-inline-pager__link--empty"></span>'
 
   return `
-<nav class="book-chapter-nav" aria-label="Навигация по книге">
+<nav class="book-inline-pager" aria-label="Навигация по соседним главам">
   ${previous}
-  ${section}
   ${next}
 </nav>
 `
 }
 
-function htmlToken(state, content) {
-  const token = new state.Token('html_block', '', 0)
-  token.content = content
-  return token
+function replaceManualNavigationSection(state, chapter) {
+  const tokens = state.tokens
+
+  for (let i = 0; i < tokens.length - 2; i++) {
+    const open = tokens[i]
+    const inline = tokens[i + 1]
+    const close = tokens[i + 2]
+
+    if (
+      open.type !== 'heading_open' ||
+      open.tag !== 'h2' ||
+      inline.type !== 'inline' ||
+      inline.content.trim() !== 'Навигация' ||
+      close.type !== 'heading_close'
+    ) {
+      continue
+    }
+
+    const replacement = htmlToken(state, renderInlinePager(chapter))
+    tokens.splice(i, 0, replacement)
+    i += 1
+
+    for (let j = i; j < tokens.length; j++) {
+      const token = tokens[j]
+
+      if (j > i && token.type === 'heading_open' && (token.tag === 'h1' || token.tag === 'h2')) {
+        break
+      }
+
+      token.hidden = true
+
+      if (token.type === 'inline') {
+        token.content = ''
+        token.children = []
+      }
+    }
+  }
 }
 
 function titleFromFile(filePath) {
@@ -635,8 +668,18 @@ export function exampleCardPlugin(md) {
       state.tokens[h1Index + 2].hidden = true
     }
 
-    state.tokens.unshift(htmlToken(state, `${renderChapterCard(chapter)}${renderRelated(chapter)}`))
-    state.tokens.push(htmlToken(state, renderChapterNavigation(chapter)))
+    state.tokens.unshift(htmlToken(state, renderChapterCard(chapter)))
+  })
+
+  md.core.ruler.after('book_engine_blocks', 'book_hide_manual_navigation', state => {
+    if (state.env.embeddedMarkdown) {
+      return
+    }
+
+    const currentPath = pagePathFromEnv(state.env)
+    const chapter = bookEngineData.chapters[currentPath]
+
+    replaceManualNavigationSection(state, chapter)
   })
 
   md.core.ruler.after('inline', 'book_hide_repository_labels', state => {
@@ -699,6 +742,10 @@ export function exampleCardPlugin(md) {
   md.renderer.rules.inline = (tokens, idx, options, env, self) => {
     const token = tokens[idx]
 
+    if (token.hidden) {
+      return ''
+    }
+
     if (shouldHideSupportParagraph(token.content)) {
       return ''
     }
@@ -710,6 +757,11 @@ export function exampleCardPlugin(md) {
 
   md.renderer.rules.fence = (tokens, idx, options, env, self) => {
     const token = tokens[idx]
+
+    if (token.hidden) {
+      return ''
+    }
+
     const content = token.content.trim()
 
     if (token.info.trim() === 'mermaid') {

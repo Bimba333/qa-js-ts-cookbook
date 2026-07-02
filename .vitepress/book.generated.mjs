@@ -504,6 +504,7 @@ export const bookEngineData = {
       "previous": null,
       "next": {
         "title": "Как пользоваться курсом",
+        "number": 2,
         "link": "/docs/00-introduction/02-how-to-study"
       },
       "sectionLink": {
@@ -567,10 +568,12 @@ export const bookEngineData = {
       "miniProjects": 1,
       "previous": {
         "title": "О курсе",
+        "number": 1,
         "link": "/docs/00-introduction/01-about-course"
       },
       "next": {
         "title": "Структура курса",
+        "number": 3,
         "link": "/docs/00-introduction/03-course-structure"
       },
       "sectionLink": {
@@ -611,7 +614,7 @@ export const bookEngineData = {
       "section": "Введение",
       "sectionIndex": 0,
       "chapterIndex": 2,
-      "wordCount": 2664,
+      "wordCount": 2660,
       "readingMinutes": 15,
       "h2": 18,
       "h3": 18,
@@ -622,10 +625,12 @@ export const bookEngineData = {
       "miniProjects": 1,
       "previous": {
         "title": "Как пользоваться курсом",
+        "number": 2,
         "link": "/docs/00-introduction/02-how-to-study"
       },
       "next": {
         "title": "Рабочее окружение",
+        "number": 4,
         "link": "/docs/00-introduction/04-development-environment"
       },
       "sectionLink": {
@@ -671,10 +676,12 @@ export const bookEngineData = {
       "miniProjects": 1,
       "previous": {
         "title": "Структура курса",
+        "number": 3,
         "link": "/docs/00-introduction/03-course-structure"
       },
       "next": {
         "title": "Что такое JavaScript",
+        "number": 1,
         "link": "/docs/01-javascript/01-what-is-javascript"
       },
       "sectionLink": {
@@ -713,10 +720,12 @@ export const bookEngineData = {
       "miniProjects": 1,
       "previous": {
         "title": "Рабочее окружение",
+        "number": 4,
         "link": "/docs/00-introduction/04-development-environment"
       },
       "next": {
         "title": "Как выполняется JavaScript",
+        "number": 2,
         "link": "/docs/01-javascript/02-how-javascript-works"
       },
       "sectionLink": {
@@ -779,10 +788,12 @@ export const bookEngineData = {
       "miniProjects": 1,
       "previous": {
         "title": "Что такое JavaScript",
+        "number": 1,
         "link": "/docs/01-javascript/01-what-is-javascript"
       },
       "next": {
         "title": "Execution Context",
+        "number": 3,
         "link": "/docs/01-javascript/03-execution-context"
       },
       "sectionLink": {
@@ -851,10 +862,12 @@ export const bookEngineData = {
       "miniProjects": 1,
       "previous": {
         "title": "Как выполняется JavaScript",
+        "number": 2,
         "link": "/docs/01-javascript/02-how-javascript-works"
       },
       "next": {
         "title": "Call Stack",
+        "number": 4,
         "link": "/docs/01-javascript/04-call-stack"
       },
       "sectionLink": {
@@ -923,10 +936,12 @@ export const bookEngineData = {
       "miniProjects": 1,
       "previous": {
         "title": "Execution Context",
+        "number": 3,
         "link": "/docs/01-javascript/03-execution-context"
       },
       "next": {
         "title": "Memory",
+        "number": 5,
         "link": "/docs/01-javascript/05-memory"
       },
       "sectionLink": {
@@ -995,10 +1010,12 @@ export const bookEngineData = {
       "miniProjects": 1,
       "previous": {
         "title": "Call Stack",
+        "number": 4,
         "link": "/docs/01-javascript/04-call-stack"
       },
       "next": {
         "title": "Variables",
+        "number": 6,
         "link": "/docs/01-javascript/06-variables"
       },
       "sectionLink": {
@@ -1067,10 +1084,12 @@ export const bookEngineData = {
       "miniProjects": 1,
       "previous": {
         "title": "Memory",
+        "number": 5,
         "link": "/docs/01-javascript/05-memory"
       },
       "next": {
         "title": "Scope",
+        "number": 7,
         "link": "/docs/01-javascript/07-scope"
       },
       "sectionLink": {
@@ -1139,10 +1158,12 @@ export const bookEngineData = {
       "miniProjects": 1,
       "previous": {
         "title": "Variables",
+        "number": 6,
         "link": "/docs/01-javascript/06-variables"
       },
       "next": {
         "title": "Lexical Environment",
+        "number": 8,
         "link": "/docs/01-javascript/08-lexical-environment"
       },
       "sectionLink": {
@@ -1211,10 +1232,12 @@ export const bookEngineData = {
       "miniProjects": 1,
       "previous": {
         "title": "Scope",
+        "number": 7,
         "link": "/docs/01-javascript/07-scope"
       },
       "next": {
         "title": "Hoisting",
+        "number": 9,
         "link": "/docs/01-javascript/09-hoisting"
       },
       "sectionLink": {
@@ -1283,10 +1306,12 @@ export const bookEngineData = {
       "miniProjects": 1,
       "previous": {
         "title": "Lexical Environment",
+        "number": 8,
         "link": "/docs/01-javascript/08-lexical-environment"
       },
       "next": {
         "title": "Temporal Dead Zone",
+        "number": 10,
         "link": "/docs/01-javascript/10-temporal-dead-zone"
       },
       "sectionLink": {
@@ -1355,10 +1380,12 @@ export const bookEngineData = {
       "miniProjects": 1,
       "previous": {
         "title": "Hoisting",
+        "number": 9,
         "link": "/docs/01-javascript/09-hoisting"
       },
       "next": {
         "title": "Primitive Types",
+        "number": 11,
         "link": "/docs/01-javascript/11-primitive-types"
       },
       "sectionLink": {
@@ -1427,10 +1454,12 @@ export const bookEngineData = {
       "miniProjects": 1,
       "previous": {
         "title": "Temporal Dead Zone",
+        "number": 10,
         "link": "/docs/01-javascript/10-temporal-dead-zone"
       },
       "next": {
         "title": "Object Type",
+        "number": 12,
         "link": "/docs/01-javascript/12-object-type"
       },
       "sectionLink": {
@@ -1499,10 +1528,12 @@ export const bookEngineData = {
       "miniProjects": 1,
       "previous": {
         "title": "Primitive Types",
+        "number": 11,
         "link": "/docs/01-javascript/11-primitive-types"
       },
       "next": {
         "title": "References",
+        "number": 13,
         "link": "/docs/01-javascript/13-references"
       },
       "sectionLink": {
@@ -1571,10 +1602,12 @@ export const bookEngineData = {
       "miniProjects": 1,
       "previous": {
         "title": "Object Type",
+        "number": 12,
         "link": "/docs/01-javascript/12-object-type"
       },
       "next": {
         "title": "Stack & Heap",
+        "number": 14,
         "link": "/docs/01-javascript/14-stack-and-heap"
       },
       "sectionLink": {
@@ -1637,10 +1670,12 @@ export const bookEngineData = {
       "miniProjects": 1,
       "previous": {
         "title": "References",
+        "number": 13,
         "link": "/docs/01-javascript/13-references"
       },
       "next": {
         "title": "Type Conversion",
+        "number": 15,
         "link": "/docs/01-javascript/15-type-conversion"
       },
       "sectionLink": {
@@ -1709,10 +1744,12 @@ export const bookEngineData = {
       "miniProjects": 1,
       "previous": {
         "title": "Stack & Heap",
+        "number": 14,
         "link": "/docs/01-javascript/14-stack-and-heap"
       },
       "next": {
         "title": "Equality",
+        "number": 16,
         "link": "/docs/01-javascript/16-equality"
       },
       "sectionLink": {
@@ -1769,10 +1806,12 @@ export const bookEngineData = {
       "miniProjects": 1,
       "previous": {
         "title": "Type Conversion",
+        "number": 15,
         "link": "/docs/01-javascript/15-type-conversion"
       },
       "next": {
         "title": "Operators",
+        "number": 17,
         "link": "/docs/01-javascript/17-operators"
       },
       "sectionLink": {
@@ -1829,10 +1868,12 @@ export const bookEngineData = {
       "miniProjects": 1,
       "previous": {
         "title": "Equality",
+        "number": 16,
         "link": "/docs/01-javascript/16-equality"
       },
       "next": {
         "title": "Conditionals",
+        "number": 18,
         "link": "/docs/01-javascript/18-conditionals"
       },
       "sectionLink": {
@@ -1895,10 +1936,12 @@ export const bookEngineData = {
       "miniProjects": 1,
       "previous": {
         "title": "Operators",
+        "number": 17,
         "link": "/docs/01-javascript/17-operators"
       },
       "next": {
         "title": "Loops",
+        "number": 19,
         "link": "/docs/01-javascript/19-loops"
       },
       "sectionLink": {
@@ -1949,10 +1992,12 @@ export const bookEngineData = {
       "miniProjects": 1,
       "previous": {
         "title": "Conditionals",
+        "number": 18,
         "link": "/docs/01-javascript/18-conditionals"
       },
       "next": {
         "title": "Error Handling",
+        "number": 20,
         "link": "/docs/01-javascript/20-error-handling"
       },
       "sectionLink": {
@@ -1996,10 +2041,12 @@ export const bookEngineData = {
       "miniProjects": 1,
       "previous": {
         "title": "Loops",
+        "number": 19,
         "link": "/docs/01-javascript/19-loops"
       },
       "next": {
         "title": "Function Declaration",
+        "number": 21,
         "link": "/docs/01-javascript/21-function-declaration"
       },
       "sectionLink": {
@@ -2068,10 +2115,12 @@ export const bookEngineData = {
       "miniProjects": 1,
       "previous": {
         "title": "Error Handling",
+        "number": 20,
         "link": "/docs/01-javascript/20-error-handling"
       },
       "next": {
         "title": "Function Expression",
+        "number": 22,
         "link": "/docs/01-javascript/22-function-expression"
       },
       "sectionLink": {
@@ -2128,10 +2177,12 @@ export const bookEngineData = {
       "miniProjects": 1,
       "previous": {
         "title": "Function Declaration",
+        "number": 21,
         "link": "/docs/01-javascript/21-function-declaration"
       },
       "next": {
         "title": "Arrow Functions",
+        "number": 23,
         "link": "/docs/01-javascript/23-arrow-functions"
       },
       "sectionLink": {
@@ -2182,10 +2233,12 @@ export const bookEngineData = {
       "miniProjects": 1,
       "previous": {
         "title": "Function Expression",
+        "number": 22,
         "link": "/docs/01-javascript/22-function-expression"
       },
       "next": {
         "title": "Parameters",
+        "number": 24,
         "link": "/docs/01-javascript/24-parameters"
       },
       "sectionLink": {
@@ -2236,10 +2289,12 @@ export const bookEngineData = {
       "miniProjects": 1,
       "previous": {
         "title": "Arrow Functions",
+        "number": 23,
         "link": "/docs/01-javascript/23-arrow-functions"
       },
       "next": {
         "title": "Return",
+        "number": 25,
         "link": "/docs/01-javascript/25-return"
       },
       "sectionLink": {
@@ -2283,10 +2338,12 @@ export const bookEngineData = {
       "miniProjects": 1,
       "previous": {
         "title": "Parameters",
+        "number": 24,
         "link": "/docs/01-javascript/24-parameters"
       },
       "next": {
         "title": "Rest Parameters",
+        "number": 26,
         "link": "/docs/01-javascript/26-rest"
       },
       "sectionLink": {
@@ -2337,10 +2394,12 @@ export const bookEngineData = {
       "miniProjects": 1,
       "previous": {
         "title": "Return",
+        "number": 25,
         "link": "/docs/01-javascript/25-return"
       },
       "next": {
         "title": "Spread",
+        "number": 27,
         "link": "/docs/01-javascript/27-spread"
       },
       "sectionLink": {
@@ -2384,10 +2443,12 @@ export const bookEngineData = {
       "miniProjects": 1,
       "previous": {
         "title": "Rest Parameters",
+        "number": 26,
         "link": "/docs/01-javascript/26-rest"
       },
       "next": {
         "title": "Closures",
+        "number": 28,
         "link": "/docs/01-javascript/28-closures"
       },
       "sectionLink": {
@@ -2444,10 +2505,12 @@ export const bookEngineData = {
       "miniProjects": 1,
       "previous": {
         "title": "Spread",
+        "number": 27,
         "link": "/docs/01-javascript/27-spread"
       },
       "next": {
         "title": "this",
+        "number": 29,
         "link": "/docs/01-javascript/29-this"
       },
       "sectionLink": {
@@ -2516,10 +2579,12 @@ export const bookEngineData = {
       "miniProjects": 1,
       "previous": {
         "title": "Closures",
+        "number": 28,
         "link": "/docs/01-javascript/28-closures"
       },
       "next": {
         "title": "call()",
+        "number": 30,
         "link": "/docs/01-javascript/30-call"
       },
       "sectionLink": {
@@ -2588,10 +2653,12 @@ export const bookEngineData = {
       "miniProjects": 1,
       "previous": {
         "title": "this",
+        "number": 29,
         "link": "/docs/01-javascript/29-this"
       },
       "next": {
         "title": "apply()",
+        "number": 31,
         "link": "/docs/01-javascript/31-apply"
       },
       "sectionLink": {
@@ -2648,10 +2715,12 @@ export const bookEngineData = {
       "miniProjects": 1,
       "previous": {
         "title": "call()",
+        "number": 30,
         "link": "/docs/01-javascript/30-call"
       },
       "next": {
         "title": "bind()",
+        "number": 32,
         "link": "/docs/01-javascript/32-bind"
       },
       "sectionLink": {
@@ -2708,10 +2777,12 @@ export const bookEngineData = {
       "miniProjects": 0,
       "previous": {
         "title": "apply()",
+        "number": 31,
         "link": "/docs/01-javascript/31-apply"
       },
       "next": {
         "title": "Objects",
+        "number": 33,
         "link": "/docs/01-javascript/33-objects"
       },
       "sectionLink": {
@@ -2768,10 +2839,12 @@ export const bookEngineData = {
       "miniProjects": 0,
       "previous": {
         "title": "bind()",
+        "number": 32,
         "link": "/docs/01-javascript/32-bind"
       },
       "next": {
         "title": "Destructuring",
+        "number": 34,
         "link": "/docs/01-javascript/34-destructuring"
       },
       "sectionLink": {
@@ -2840,10 +2913,12 @@ export const bookEngineData = {
       "miniProjects": 0,
       "previous": {
         "title": "Objects",
+        "number": 33,
         "link": "/docs/01-javascript/33-objects"
       },
       "next": {
         "title": "Optional Chaining",
+        "number": 35,
         "link": "/docs/01-javascript/35-optional-chaining"
       },
       "sectionLink": {
@@ -2894,10 +2969,12 @@ export const bookEngineData = {
       "miniProjects": 0,
       "previous": {
         "title": "Destructuring",
+        "number": 34,
         "link": "/docs/01-javascript/34-destructuring"
       },
       "next": {
         "title": "Nullish Coalescing",
+        "number": 36,
         "link": "/docs/01-javascript/36-nullish-coalescing"
       },
       "sectionLink": {
@@ -2941,10 +3018,12 @@ export const bookEngineData = {
       "miniProjects": 0,
       "previous": {
         "title": "Optional Chaining",
+        "number": 35,
         "link": "/docs/01-javascript/35-optional-chaining"
       },
       "next": {
         "title": "Object Methods",
+        "number": 37,
         "link": "/docs/01-javascript/37-object-methods"
       },
       "sectionLink": {
@@ -2995,10 +3074,12 @@ export const bookEngineData = {
       "miniProjects": 0,
       "previous": {
         "title": "Nullish Coalescing",
+        "number": 36,
         "link": "/docs/01-javascript/36-nullish-coalescing"
       },
       "next": {
         "title": "Object Descriptors",
+        "number": 38,
         "link": "/docs/01-javascript/38-object-descriptors"
       },
       "sectionLink": {
@@ -3055,10 +3136,12 @@ export const bookEngineData = {
       "miniProjects": 0,
       "previous": {
         "title": "Object Methods",
+        "number": 37,
         "link": "/docs/01-javascript/37-object-methods"
       },
       "next": {
         "title": "Prototype",
+        "number": 39,
         "link": "/docs/01-javascript/39-prototype"
       },
       "sectionLink": {
@@ -3115,10 +3198,12 @@ export const bookEngineData = {
       "miniProjects": 0,
       "previous": {
         "title": "Object Descriptors",
+        "number": 38,
         "link": "/docs/01-javascript/38-object-descriptors"
       },
       "next": {
         "title": "Prototype Chain",
+        "number": 40,
         "link": "/docs/01-javascript/40-prototype-chain"
       },
       "sectionLink": {
@@ -3169,10 +3254,12 @@ export const bookEngineData = {
       "miniProjects": 0,
       "previous": {
         "title": "Prototype",
+        "number": 39,
         "link": "/docs/01-javascript/39-prototype"
       },
       "next": {
         "title": "Classes",
+        "number": 41,
         "link": "/docs/01-javascript/41-classes"
       },
       "sectionLink": {
@@ -3229,10 +3316,12 @@ export const bookEngineData = {
       "miniProjects": 0,
       "previous": {
         "title": "Prototype Chain",
+        "number": 40,
         "link": "/docs/01-javascript/40-prototype-chain"
       },
       "next": {
         "title": "Class Inheritance",
+        "number": 42,
         "link": "/docs/01-javascript/42-class-inheritance"
       },
       "sectionLink": {
@@ -3289,10 +3378,12 @@ export const bookEngineData = {
       "miniProjects": 0,
       "previous": {
         "title": "Classes",
+        "number": 41,
         "link": "/docs/01-javascript/41-classes"
       },
       "next": {
         "title": "super",
+        "number": 43,
         "link": "/docs/01-javascript/43-super"
       },
       "sectionLink": {
@@ -3349,10 +3440,12 @@ export const bookEngineData = {
       "miniProjects": 0,
       "previous": {
         "title": "Class Inheritance",
+        "number": 42,
         "link": "/docs/01-javascript/42-class-inheritance"
       },
       "next": {
         "title": "Arrays",
+        "number": 44,
         "link": "/docs/01-javascript/44-arrays"
       },
       "sectionLink": {
@@ -3409,10 +3502,12 @@ export const bookEngineData = {
       "miniProjects": 0,
       "previous": {
         "title": "super",
+        "number": 43,
         "link": "/docs/01-javascript/43-super"
       },
       "next": {
         "title": "push() and pop()",
+        "number": 45,
         "link": "/docs/01-javascript/45-push-pop"
       },
       "sectionLink": {
@@ -3463,10 +3558,12 @@ export const bookEngineData = {
       "miniProjects": 0,
       "previous": {
         "title": "Arrays",
+        "number": 44,
         "link": "/docs/01-javascript/44-arrays"
       },
       "next": {
         "title": "shift() and unshift()",
+        "number": 46,
         "link": "/docs/01-javascript/46-shift-unshift"
       },
       "sectionLink": {
@@ -3517,10 +3614,12 @@ export const bookEngineData = {
       "miniProjects": 0,
       "previous": {
         "title": "push() and pop()",
+        "number": 45,
         "link": "/docs/01-javascript/45-push-pop"
       },
       "next": {
         "title": "splice()",
+        "number": 47,
         "link": "/docs/01-javascript/47-splice"
       },
       "sectionLink": {
@@ -3564,10 +3663,12 @@ export const bookEngineData = {
       "miniProjects": 1,
       "previous": {
         "title": "shift() and unshift()",
+        "number": 46,
         "link": "/docs/01-javascript/46-shift-unshift"
       },
       "next": {
         "title": "slice()",
+        "number": 48,
         "link": "/docs/01-javascript/48-slice"
       },
       "sectionLink": {
@@ -3611,10 +3712,12 @@ export const bookEngineData = {
       "miniProjects": 1,
       "previous": {
         "title": "splice()",
+        "number": 47,
         "link": "/docs/01-javascript/47-splice"
       },
       "next": {
         "title": "Iteration",
+        "number": 49,
         "link": "/docs/01-javascript/49-iteration"
       },
       "sectionLink": {
@@ -3658,10 +3761,12 @@ export const bookEngineData = {
       "miniProjects": 1,
       "previous": {
         "title": "slice()",
+        "number": 48,
         "link": "/docs/01-javascript/48-slice"
       },
       "next": {
         "title": "forEach()",
+        "number": 50,
         "link": "/docs/01-javascript/50-foreach"
       },
       "sectionLink": {
@@ -3705,10 +3810,12 @@ export const bookEngineData = {
       "miniProjects": 1,
       "previous": {
         "title": "Iteration",
+        "number": 49,
         "link": "/docs/01-javascript/49-iteration"
       },
       "next": {
         "title": "map()",
+        "number": 51,
         "link": "/docs/01-javascript/51-map"
       },
       "sectionLink": {
@@ -3759,10 +3866,12 @@ export const bookEngineData = {
       "miniProjects": 1,
       "previous": {
         "title": "forEach()",
+        "number": 50,
         "link": "/docs/01-javascript/50-foreach"
       },
       "next": {
         "title": "filter()",
+        "number": 52,
         "link": "/docs/01-javascript/52-filter"
       },
       "sectionLink": {
@@ -3806,10 +3915,12 @@ export const bookEngineData = {
       "miniProjects": 1,
       "previous": {
         "title": "map()",
+        "number": 51,
         "link": "/docs/01-javascript/51-map"
       },
       "next": {
         "title": "reduce()",
+        "number": 53,
         "link": "/docs/01-javascript/53-reduce"
       },
       "sectionLink": {
@@ -3853,10 +3964,12 @@ export const bookEngineData = {
       "miniProjects": 1,
       "previous": {
         "title": "filter()",
+        "number": 52,
         "link": "/docs/01-javascript/52-filter"
       },
       "next": {
         "title": "Chaining basics",
+        "number": 54,
         "link": "/docs/01-javascript/54-chaining"
       },
       "sectionLink": {
@@ -3900,10 +4013,12 @@ export const bookEngineData = {
       "miniProjects": 1,
       "previous": {
         "title": "reduce()",
+        "number": 53,
         "link": "/docs/01-javascript/53-reduce"
       },
       "next": {
         "title": "find()",
+        "number": 55,
         "link": "/docs/01-javascript/55-find"
       },
       "sectionLink": {
@@ -3947,10 +4062,12 @@ export const bookEngineData = {
       "miniProjects": 1,
       "previous": {
         "title": "Chaining basics",
+        "number": 54,
         "link": "/docs/01-javascript/54-chaining"
       },
       "next": {
         "title": "some()",
+        "number": 56,
         "link": "/docs/01-javascript/56-some"
       },
       "sectionLink": {
@@ -3994,10 +4111,12 @@ export const bookEngineData = {
       "miniProjects": 1,
       "previous": {
         "title": "find()",
+        "number": 55,
         "link": "/docs/01-javascript/55-find"
       },
       "next": {
         "title": "every()",
+        "number": 57,
         "link": "/docs/01-javascript/57-every"
       },
       "sectionLink": {
@@ -4041,10 +4160,12 @@ export const bookEngineData = {
       "miniProjects": 1,
       "previous": {
         "title": "some()",
+        "number": 56,
         "link": "/docs/01-javascript/56-some"
       },
       "next": {
         "title": "includes()",
+        "number": 58,
         "link": "/docs/01-javascript/58-includes"
       },
       "sectionLink": {
@@ -4088,10 +4209,12 @@ export const bookEngineData = {
       "miniProjects": 1,
       "previous": {
         "title": "every()",
+        "number": 57,
         "link": "/docs/01-javascript/57-every"
       },
       "next": {
         "title": "sort()",
+        "number": 59,
         "link": "/docs/01-javascript/59-sort"
       },
       "sectionLink": {
@@ -4135,10 +4258,12 @@ export const bookEngineData = {
       "miniProjects": 1,
       "previous": {
         "title": "includes()",
+        "number": 58,
         "link": "/docs/01-javascript/58-includes"
       },
       "next": {
         "title": "reverse()",
+        "number": 60,
         "link": "/docs/01-javascript/60-reverse"
       },
       "sectionLink": {
@@ -4182,10 +4307,12 @@ export const bookEngineData = {
       "miniProjects": 1,
       "previous": {
         "title": "sort()",
+        "number": 59,
         "link": "/docs/01-javascript/59-sort"
       },
       "next": {
         "title": "Execution Context: углубленное повторение",
+        "number": 61,
         "link": "/docs/01-javascript/61-execution-context"
       },
       "sectionLink": {
@@ -4229,10 +4356,12 @@ export const bookEngineData = {
       "miniProjects": 0,
       "previous": {
         "title": "reverse()",
+        "number": 60,
         "link": "/docs/01-javascript/60-reverse"
       },
       "next": {
         "title": "Call Stack: углубленное повторение",
+        "number": 62,
         "link": "/docs/01-javascript/62-call-stack"
       },
       "sectionLink": {
@@ -4295,10 +4424,12 @@ export const bookEngineData = {
       "miniProjects": 0,
       "previous": {
         "title": "Execution Context: углубленное повторение",
+        "number": 61,
         "link": "/docs/01-javascript/61-execution-context"
       },
       "next": {
         "title": "Memory Model",
+        "number": 63,
         "link": "/docs/01-javascript/63-memory-model"
       },
       "sectionLink": {
@@ -4355,10 +4486,12 @@ export const bookEngineData = {
       "miniProjects": 0,
       "previous": {
         "title": "Call Stack: углубленное повторение",
+        "number": 62,
         "link": "/docs/01-javascript/62-call-stack"
       },
       "next": {
         "title": "Hoisting + TDZ",
+        "number": 64,
         "link": "/docs/01-javascript/64-hoisting-tdz"
       },
       "sectionLink": {
@@ -4427,10 +4560,12 @@ export const bookEngineData = {
       "miniProjects": 0,
       "previous": {
         "title": "Memory Model",
+        "number": 63,
         "link": "/docs/01-javascript/63-memory-model"
       },
       "next": {
         "title": "Closures: углубленное повторение",
+        "number": 65,
         "link": "/docs/01-javascript/65-closures"
       },
       "sectionLink": {
@@ -4499,10 +4634,12 @@ export const bookEngineData = {
       "miniProjects": 1,
       "previous": {
         "title": "Hoisting + TDZ",
+        "number": 64,
         "link": "/docs/01-javascript/64-hoisting-tdz"
       },
       "next": {
         "title": "this: углубленное повторение",
+        "number": 66,
         "link": "/docs/01-javascript/66-this"
       },
       "sectionLink": {
@@ -4571,10 +4708,12 @@ export const bookEngineData = {
       "miniProjects": 1,
       "previous": {
         "title": "Closures: углубленное повторение",
+        "number": 65,
         "link": "/docs/01-javascript/65-closures"
       },
       "next": {
         "title": "call(), apply(), bind()",
+        "number": 67,
         "link": "/docs/01-javascript/67-call-apply-bind"
       },
       "sectionLink": {
@@ -4637,10 +4776,12 @@ export const bookEngineData = {
       "miniProjects": 1,
       "previous": {
         "title": "this: углубленное повторение",
+        "number": 66,
         "link": "/docs/01-javascript/66-this"
       },
       "next": {
         "title": "Практическое управление контекстом",
+        "number": 68,
         "link": "/docs/01-javascript/68-context-management"
       },
       "sectionLink": {
@@ -4697,10 +4838,12 @@ export const bookEngineData = {
       "miniProjects": 1,
       "previous": {
         "title": "call(), apply(), bind()",
+        "number": 67,
         "link": "/docs/01-javascript/67-call-apply-bind"
       },
       "next": {
         "title": "Synchronous Execution",
+        "number": 69,
         "link": "/docs/01-javascript/69-synchronous-execution"
       },
       "sectionLink": {
@@ -4757,10 +4900,12 @@ export const bookEngineData = {
       "miniProjects": 1,
       "previous": {
         "title": "Практическое управление контекстом",
+        "number": 68,
         "link": "/docs/01-javascript/68-context-management"
       },
       "next": {
         "title": "Asynchronous Programming",
+        "number": 70,
         "link": "/docs/01-javascript/70-asynchronous-programming"
       },
       "sectionLink": {
@@ -4829,10 +4974,12 @@ export const bookEngineData = {
       "miniProjects": 1,
       "previous": {
         "title": "Synchronous Execution",
+        "number": 69,
         "link": "/docs/01-javascript/69-synchronous-execution"
       },
       "next": {
         "title": "Callback",
+        "number": 71,
         "link": "/docs/01-javascript/71-callback"
       },
       "sectionLink": {
@@ -4889,10 +5036,12 @@ export const bookEngineData = {
       "miniProjects": 1,
       "previous": {
         "title": "Asynchronous Programming",
+        "number": 70,
         "link": "/docs/01-javascript/70-asynchronous-programming"
       },
       "next": {
         "title": "Promise",
+        "number": 72,
         "link": "/docs/01-javascript/72-promise"
       },
       "sectionLink": {
@@ -4961,10 +5110,12 @@ export const bookEngineData = {
       "miniProjects": 1,
       "previous": {
         "title": "Callback",
+        "number": 71,
         "link": "/docs/01-javascript/71-callback"
       },
       "next": {
         "title": "Event Loop",
+        "number": 73,
         "link": "/docs/01-javascript/73-event-loop"
       },
       "sectionLink": {
@@ -5021,10 +5172,12 @@ export const bookEngineData = {
       "miniProjects": 1,
       "previous": {
         "title": "Promise",
+        "number": 72,
         "link": "/docs/01-javascript/72-promise"
       },
       "next": {
         "title": "Web APIs",
+        "number": 74,
         "link": "/docs/01-javascript/74-web-apis"
       },
       "sectionLink": {
@@ -5081,10 +5234,12 @@ export const bookEngineData = {
       "miniProjects": 1,
       "previous": {
         "title": "Event Loop",
+        "number": 73,
         "link": "/docs/01-javascript/73-event-loop"
       },
       "next": {
         "title": "Microtasks",
+        "number": 75,
         "link": "/docs/01-javascript/75-microtasks"
       },
       "sectionLink": {
@@ -5141,10 +5296,12 @@ export const bookEngineData = {
       "miniProjects": 1,
       "previous": {
         "title": "Web APIs",
+        "number": 74,
         "link": "/docs/01-javascript/74-web-apis"
       },
       "next": {
         "title": "Macrotasks",
+        "number": 76,
         "link": "/docs/01-javascript/76-macrotasks"
       },
       "sectionLink": {
@@ -5207,10 +5364,12 @@ export const bookEngineData = {
       "miniProjects": 1,
       "previous": {
         "title": "Microtasks",
+        "number": 75,
         "link": "/docs/01-javascript/75-microtasks"
       },
       "next": {
         "title": "Promise API",
+        "number": 77,
         "link": "/docs/01-javascript/77-promise-api"
       },
       "sectionLink": {
@@ -5273,10 +5432,12 @@ export const bookEngineData = {
       "miniProjects": 1,
       "previous": {
         "title": "Macrotasks",
+        "number": 76,
         "link": "/docs/01-javascript/76-macrotasks"
       },
       "next": {
         "title": "async и await",
+        "number": 78,
         "link": "/docs/01-javascript/78-async-await"
       },
       "sectionLink": {
@@ -5339,10 +5500,12 @@ export const bookEngineData = {
       "miniProjects": 1,
       "previous": {
         "title": "Promise API",
+        "number": 77,
         "link": "/docs/01-javascript/77-promise-api"
       },
       "next": {
         "title": "Error Handling in Asynchronous Code",
+        "number": 79,
         "link": "/docs/01-javascript/79-async-error-handling"
       },
       "sectionLink": {
@@ -5399,10 +5562,12 @@ export const bookEngineData = {
       "miniProjects": 1,
       "previous": {
         "title": "async и await",
+        "number": 78,
         "link": "/docs/01-javascript/78-async-await"
       },
       "next": {
         "title": "Parallel Asynchronous Operations",
+        "number": 80,
         "link": "/docs/01-javascript/80-parallel-async"
       },
       "sectionLink": {
@@ -5459,10 +5624,12 @@ export const bookEngineData = {
       "miniProjects": 1,
       "previous": {
         "title": "Error Handling in Asynchronous Code",
+        "number": 79,
         "link": "/docs/01-javascript/79-async-error-handling"
       },
       "next": {
         "title": "Iterable Protocol",
+        "number": 81,
         "link": "/docs/01-javascript/81-iterable-protocol"
       },
       "sectionLink": {
@@ -5519,10 +5686,12 @@ export const bookEngineData = {
       "miniProjects": 1,
       "previous": {
         "title": "Parallel Asynchronous Operations",
+        "number": 80,
         "link": "/docs/01-javascript/80-parallel-async"
       },
       "next": {
         "title": "Iterators",
+        "number": 82,
         "link": "/docs/01-javascript/82-iterators"
       },
       "sectionLink": {
@@ -5573,10 +5742,12 @@ export const bookEngineData = {
       "miniProjects": 1,
       "previous": {
         "title": "Iterable Protocol",
+        "number": 81,
         "link": "/docs/01-javascript/81-iterable-protocol"
       },
       "next": {
         "title": "Generators",
+        "number": 83,
         "link": "/docs/01-javascript/83-generators"
       },
       "sectionLink": {
@@ -5620,10 +5791,12 @@ export const bookEngineData = {
       "miniProjects": 1,
       "previous": {
         "title": "Iterators",
+        "number": 82,
         "link": "/docs/01-javascript/82-iterators"
       },
       "next": {
         "title": "Custom Iteration",
+        "number": 84,
         "link": "/docs/01-javascript/84-custom-iteration"
       },
       "sectionLink": {
@@ -5674,10 +5847,12 @@ export const bookEngineData = {
       "miniProjects": 1,
       "previous": {
         "title": "Generators",
+        "number": 83,
         "link": "/docs/01-javascript/83-generators"
       },
       "next": {
         "title": "JavaScript Modules",
+        "number": 85,
         "link": "/docs/01-javascript/85-javascript-modules"
       },
       "sectionLink": {
@@ -5740,10 +5915,12 @@ export const bookEngineData = {
       "miniProjects": 1,
       "previous": {
         "title": "Custom Iteration",
+        "number": 84,
         "link": "/docs/01-javascript/84-custom-iteration"
       },
       "next": {
         "title": "Module Systems",
+        "number": 86,
         "link": "/docs/01-javascript/86-module-systems"
       },
       "sectionLink": {
@@ -5800,10 +5977,12 @@ export const bookEngineData = {
       "miniProjects": 1,
       "previous": {
         "title": "JavaScript Modules",
+        "number": 85,
         "link": "/docs/01-javascript/85-javascript-modules"
       },
       "next": {
         "title": "Garbage Collector",
+        "number": 87,
         "link": "/docs/01-javascript/87-garbage-collector"
       },
       "sectionLink": {
@@ -5854,10 +6033,12 @@ export const bookEngineData = {
       "miniProjects": 1,
       "previous": {
         "title": "Module Systems",
+        "number": 86,
         "link": "/docs/01-javascript/86-module-systems"
       },
       "next": {
         "title": "Memory Management",
+        "number": 88,
         "link": "/docs/01-javascript/88-memory-management"
       },
       "sectionLink": {
@@ -5901,10 +6082,12 @@ export const bookEngineData = {
       "miniProjects": 1,
       "previous": {
         "title": "Garbage Collector",
+        "number": 87,
         "link": "/docs/01-javascript/87-garbage-collector"
       },
       "next": {
         "title": "Performance",
+        "number": 89,
         "link": "/docs/01-javascript/89-performance"
       },
       "sectionLink": {
@@ -5961,10 +6144,12 @@ export const bookEngineData = {
       "miniProjects": 1,
       "previous": {
         "title": "Memory Management",
+        "number": 88,
         "link": "/docs/01-javascript/88-memory-management"
       },
       "next": {
         "title": "Debugging",
+        "number": 90,
         "link": "/docs/01-javascript/90-debugging"
       },
       "sectionLink": {
@@ -6015,10 +6200,12 @@ export const bookEngineData = {
       "miniProjects": 1,
       "previous": {
         "title": "Performance",
+        "number": 89,
         "link": "/docs/01-javascript/89-performance"
       },
       "next": {
         "title": "Modern JavaScript Features",
+        "number": 91,
         "link": "/docs/01-javascript/91-modern-javascript"
       },
       "sectionLink": {
@@ -6062,10 +6249,12 @@ export const bookEngineData = {
       "miniProjects": 1,
       "previous": {
         "title": "Debugging",
+        "number": 90,
         "link": "/docs/01-javascript/90-debugging"
       },
       "next": {
         "title": "JavaScript Best Practices",
+        "number": 92,
         "link": "/docs/01-javascript/92-javascript-best-practices"
       },
       "sectionLink": {
@@ -6116,10 +6305,12 @@ export const bookEngineData = {
       "miniProjects": 1,
       "previous": {
         "title": "Modern JavaScript Features",
+        "number": 91,
         "link": "/docs/01-javascript/91-modern-javascript"
       },
       "next": {
         "title": "Error Objects",
+        "number": 93,
         "link": "/docs/01-javascript/93-error-objects"
       },
       "sectionLink": {
@@ -6163,10 +6354,12 @@ export const bookEngineData = {
       "miniProjects": 1,
       "previous": {
         "title": "JavaScript Best Practices",
+        "number": 92,
         "link": "/docs/01-javascript/92-javascript-best-practices"
       },
       "next": {
         "title": "JSON",
+        "number": 94,
         "link": "/docs/01-javascript/94-json"
       },
       "sectionLink": {
@@ -6210,10 +6403,12 @@ export const bookEngineData = {
       "miniProjects": 1,
       "previous": {
         "title": "Error Objects",
+        "number": 93,
         "link": "/docs/01-javascript/93-error-objects"
       },
       "next": {
         "title": "Date",
+        "number": 95,
         "link": "/docs/01-javascript/95-date"
       },
       "sectionLink": {
@@ -6257,10 +6452,12 @@ export const bookEngineData = {
       "miniProjects": 1,
       "previous": {
         "title": "JSON",
+        "number": 94,
         "link": "/docs/01-javascript/94-json"
       },
       "next": {
         "title": "Почему появился TypeScript",
+        "number": 96,
         "link": "/docs/01-javascript/96-why-typescript"
       },
       "sectionLink": {
@@ -6311,6 +6508,7 @@ export const bookEngineData = {
       "miniProjects": 1,
       "previous": {
         "title": "Date",
+        "number": 95,
         "link": "/docs/01-javascript/95-date"
       },
       "next": null,
