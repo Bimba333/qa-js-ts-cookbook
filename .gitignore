@@ -4,6 +4,10 @@ dist/
 
 coverage/
 
+test-results/
+playwright-report/
+blob-report/
+
 .vscode/settings.json
 
 .vitepress/.temp/

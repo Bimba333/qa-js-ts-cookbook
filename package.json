@@ -10,10 +10,18 @@
     "docs:build": "npm run docs:sidebar && vitepress build .",
     "docs:preview": "vitepress preview .",
     "docs:smoke": "npm run docs:build && node scripts/smoke-build.mjs",
-    "docs:qa": "node scripts/book-qa/index.mjs"
+    "docs:qa": "node scripts/book-qa/index.mjs",
+    "docs:ts:check": "npx tsc --version",
+    "docs:ts:examples": "node scripts/validate-typescript-examples.mjs",
+    "docs:ts:smoke": "npm run docs:ts:check && npm run docs:ts:examples",
+    "test:playwright": "playwright test",
+    "test:playwright:list": "playwright test --list"
   },
   "devDependencies": {
+    "@playwright/test": "1.61.1",
+    "@types/node": "20.19.43",
     "mermaid": "^11.16.0",
+    "typescript": "^7.0.2",
     "vitepress": "^1.6.4"
   }
 }

@@ -1,0 +1,24 @@
+{
+  "compilerOptions": {
+    "lib": ["ESNext", "DOM"],
+    "module": "NodeNext",
+    "moduleResolution": "NodeNext",
+    "noEmit": true,
+    "strict": true,
+    "target": "ESNext",
+    "types": ["node", "@playwright/test"]
+  },
+  "include": [
+    "./playwright.ui-layer.config.ts",
+    "./chapter-176/**/*.ts",
+    "./chapter-177/**/*.ts",
+    "./chapter-178/**/*.ts",
+    "./chapter-179/**/*.ts",
+    "./chapter-180/**/*.ts",
+    "./chapter-181/**/*.ts",
+    "./chapter-182/**/*.ts",
+    "./chapter-183/**/*.ts",
+    "./chapter-184/**/*.ts",
+    "./chapter-185/**/*.ts"
+  ]
+}

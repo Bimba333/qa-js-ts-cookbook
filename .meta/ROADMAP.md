@@ -1,6 +1,6 @@
 # ROADMAP.md
 
-> Version: 5.0
+> Version: 6.0
 > Status: **FROZEN**
 > Part: I / IV
 
@@ -633,7 +633,7 @@
 
 # ROADMAP.md
 
-> Version: 5.0
+> Version: 6.0
 > Status: **FROZEN**
 > Part: II / IV
 
@@ -1481,7 +1481,7 @@
 
 # ROADMAP.md
 
-> Version: 5.0
+> Version: 6.0
 > Status: **FROZEN**
 > Part: III / IV
 
@@ -1511,107 +1511,229 @@ FROZEN
 
 * не изменяется нумерация;
 * новые главы не добавляются;
-* новые темы интегрируются только в существующие главы.
+* новые темы интегрируются только в существующие главы;
+* каждая глава отвечает на один инженерный вопрос: какую проблему JavaScript решает TypeScript.
 
 ---
 
 # Главная цель раздела
 
-После завершения JavaScript появляется естественный вопрос:
+После завершения JavaScript читатель уже понимает язык, runtime, асинхронность, модули, память и инженерные практики.
+
+TypeScript не повторяет JavaScript.
+
+TypeScript отвечает на следующий вопрос:
 
 ```text
 JavaScript
 
 ↓
 
-Как писать большие проекты безопаснее?
-```
+Большой проект
 
-Ответом становится TypeScript.
+↓
+
+Слишком много ошибок обнаруживается поздно
+
+↓
+
+Нужна проверка до запуска
+```
 
 Весь раздел строится вокруг одной идеи:
 
 ```text
-JavaScript
+JavaScript-код
 
 ↓
 
-Types
+Типы
 
 ↓
 
-Safer Code
+Проверка компилятором
 
 ↓
 
-Better Tooling
+Безопасный рефакторинг
 
 ↓
 
-Large Applications
+Поддерживаемый Automation QA Framework
 ```
 
 ---
 
-# Раздел 1. Введение
+# Модули TypeScript
+
+| Модуль | Главы | Образовательная цель |
+| ------ | ----- | -------------------- |
+| 1. Компилятор и граница TypeScript | 97–101 | Понять, где TypeScript помогает, а где заканчивается его влияние |
+| 2. Базовый словарь типов | 102–107 | Научиться описывать значения, которые уже знакомы по JavaScript |
+| 3. Объектные контракты | 108–114 | Описывать форму объектов и публичные договоренности между частями кода |
+| 4. Значения как типы и композиция | 115–120 | Ограничивать допустимые значения и собирать сложные состояния из простых типов |
+| 5. Типизация функций | 121–126 | Делать параметры, callbacks, overloads и async-функции проверяемыми |
+| 6. Narrowing и безопасные ветвления | 127–132 | Помогать TypeScript понимать, какой вариант данных находится в конкретной ветке кода |
+| 7. Generics | 133–138 | Писать переиспользуемый код без потери информации о типах |
+| 8. Операции над типами | 139–145 | Строить новые типы из существующих и уменьшать ручное дублирование |
+| 9. Классы и объектные контракты | 146–149 | Использовать TypeScript для проверки классов, Page Objects и наследования |
+| 10. Модули и декларации | 150–155 | Понять, как TypeScript работает с JavaScript-модулями и внешними типами |
+| 11. Проектная практика | 156–159 | Применить TypeScript к структуре большого Automation QA проекта |
+
+---
+
+# Раздел 1. Компилятор и граница TypeScript
 
 ---
 
 ## 97. TypeScript Compiler
 
+**Модуль:** Компилятор и граница TypeScript
+
+**Предпосылки:** 96. Почему появился TypeScript
+
 **Главный вопрос**
 
-> Что делает компилятор TypeScript?
+> Что делает TypeScript Compiler до запуска программы?
+
+**Цель главы:** Показать, что TypeScript добавляет этап проверки перед выполнением JavaScript, но не меняет runtime напрямую.
 
 Темы:
 
+* Установка TypeScript
 * tsc
-* Компиляция
 * Проверка типов
 * Генерация JavaScript
+* Ошибки компиляции
+* Связь с Automation QA проектом
 
 ---
 
-## 98. tsconfig.json
+## 98. Type Checking vs Runtime
+
+**Модуль:** Компилятор и граница TypeScript
+
+**Предпосылки:** 97. TypeScript Compiler
 
 **Главный вопрос**
 
-> Как управлять компиляцией проекта?
+> Почему TypeScript находит ошибки до запуска, но не существует во время выполнения?
+
+**Цель главы:** Разделить compile time и runtime, чтобы читатель не ожидал от TypeScript runtime-проверок.
+
+Темы:
+
+* Compile Time
+* Runtime
+* Type Checking
+* JavaScript как результат компиляции
+* Граница ответственности TypeScript
+
+---
+
+## 99. Type Erasure
+
+**Модуль:** Компилятор и граница TypeScript
+
+**Предпосылки:** 97. TypeScript Compiler, 98. Type Checking vs Runtime
+
+**Главный вопрос**
+
+> Почему типы исчезают после компиляции?
+
+**Цель главы:** Объяснить, что типы служат для проверки кода, а не для хранения данных в выполняемой программе.
+
+Темы:
+
+* Удаление типов
+* JavaScript output
+* Ограничения TypeScript
+* Почему нельзя полагаться на типы в runtime
+
+---
+
+## 100. tsconfig.json
+
+**Модуль:** Компилятор и граница TypeScript
+
+**Предпосылки:** 97. TypeScript Compiler
+
+**Главный вопрос**
+
+> Как TypeScript понимает правила проекта?
+
+**Цель главы:** Показать tsconfig.json как договор между проектом и компилятором.
 
 Темы:
 
 * compilerOptions
 * include
 * exclude
-* strict
 * target
 * module
+* project boundary
 
 ---
 
-## 99. Type Erasure
+## 101. strict mode
+
+**Модуль:** Компилятор и граница TypeScript
+
+**Предпосылки:** 100. tsconfig.json
 
 **Главный вопрос**
 
-> Почему после компиляции типы исчезают?
+> Почему строгая проверка делает проект надежнее?
+
+**Цель главы:** Объяснить strict mode как набор правил, который заставляет явно описывать сомнительные места в коде.
 
 Темы:
 
-* Compile Time
-* Runtime
-* Ограничения TypeScript
+* strict
+* Почему слабая проверка пропускает ошибки
+* Nullability preview
+* Практическая цена строгого режима
+* Стратегия для большого QA проекта
 
 ---
 
-# Раздел 2. Базовые типы
+# Раздел 2. Базовый словарь типов
 
 ---
 
-## 100. Primitive Types
+## 102. Type Annotations and Type Inference
+
+**Модуль:** Базовый словарь типов
+
+**Предпосылки:** 97. TypeScript Compiler, 101. strict mode
 
 **Главный вопрос**
 
-> Как описывать примитивные значения?
+> Когда TypeScript сам понимает тип, а когда ему нужно помочь?
+
+**Цель главы:** Научить балансировать между явными аннотациями и выводом типов без лишнего шума в коде.
+
+Темы:
+
+* Type annotations
+* Type inference
+* Когда аннотация нужна
+* Когда аннотация мешает
+* Читаемость typed code
+
+---
+
+## 103. Primitive Types
+
+**Модуль:** Базовый словарь типов
+
+**Предпосылки:** 102. Type Annotations and Type Inference, 11. Primitive Types
+
+**Главный вопрос**
+
+> Как TypeScript описывает примитивные значения JavaScript?
+
+**Цель главы:** Связать знакомые JavaScript-примитивы с TypeScript-типами.
 
 Темы:
 
@@ -1625,305 +1747,945 @@ Large Applications
 
 ---
 
-## 101. Object Types
+## 104. any и unknown
+
+**Модуль:** Базовый словарь типов
+
+**Предпосылки:** 102. Type Annotations and Type Inference
 
 **Главный вопрос**
 
-> Как описывать объекты?
+> Как описывать данные, тип которых пока неизвестен?
+
+**Цель главы:** Развести опасное отключение проверки через any и безопасную работу с неизвестными данными через unknown.
 
 Темы:
 
-* Object Types
-* Optional Properties
-* Nested Objects
+* any
+* unknown
+* Потеря проверки
+* Проверка перед использованием
+* Данные из API и внешних источников
 
 ---
 
-## 102. Arrays
+## 105. void и never
+
+**Модуль:** Базовый словарь типов
+
+**Предпосылки:** 25. Return, 102. Type Annotations and Type Inference
 
 **Главный вопрос**
 
-> Как типизировать массивы?
+> Как типизировать отсутствие результата и невозможный результат?
+
+**Цель главы:** Объяснить void и never через поведение функций, ошибок и недостижимых веток.
+
+Темы:
+
+* void
+* never
+* Функции без возвращаемого значения
+* throw
+* Недостижимый код
+
+---
+
+## 106. Arrays
+
+**Модуль:** Базовый словарь типов
+
+**Предпосылки:** 44. Arrays, 102. Type Annotations and Type Inference
+
+**Главный вопрос**
+
+> Как TypeScript защищает массив от элементов неправильного типа?
+
+**Цель главы:** Научить описывать коллекции однотипных значений и понимать отличие T[] от Array<T>.
 
 Темы:
 
 * T[]
 * Array<T>
+* Массив объектов
+* ReadonlyArray
+* Test data collections
 
 ---
 
-## 103. Tuples
+## 107. Tuples
+
+**Модуль:** Базовый словарь типов
+
+**Предпосылки:** 106. Arrays
 
 **Главный вопрос**
 
 > Когда массив превращается в структуру фиксированной формы?
 
+**Цель главы:** Показать tuple как способ описывать позиционные данные с известной длиной и порядком.
+
 Темы:
 
 * Tuple
-* Readonly Tuple
+* Fixed length
+* Optional tuple elements
+* Readonly tuple
+* Практические ограничения
 
 ---
 
-## 104. Enum
+# Раздел 3. Объектные контракты
+
+---
+
+## 108. Object Types
+
+**Модуль:** Объектные контракты
+
+**Предпосылки:** 12. Object Type, 33. Objects, 102. Type Annotations and Type Inference
 
 **Главный вопрос**
 
-> Как описывать ограниченный набор значений?
+> Как описать форму объекта в TypeScript?
+
+**Цель главы:** Научить описывать свойства объекта как контракт между частями программы.
 
 Темы:
 
-* Numeric Enum
-* String Enum
-* const enum
+* Object Types
+* Required properties
+* Nested objects
+* Response objects
+* Configuration objects
 
 ---
 
-## 105. Literal Types
+## 109. Optional and Readonly Properties
+
+**Модуль:** Объектные контракты
+
+**Предпосылки:** 108. Object Types, 35. Optional Chaining
 
 **Главный вопрос**
 
-> Как разрешить только конкретные значения?
+> Как описывать необязательные и неизменяемые свойства?
+
+**Цель главы:** Показать, как TypeScript отличает обязательные данные от опциональных и защищает свойства от переназначения.
 
 Темы:
 
-* String Literals
-* Number Literals
-* Boolean Literals
+* Optional properties
+* readonly
+* Разница между отсутствием свойства и undefined
+* Immutable configuration
+* Test metadata
 
 ---
 
-## 106. Union Types
+## 110. Index Signatures
+
+**Модуль:** Объектные контракты
+
+**Предпосылки:** 108. Object Types, 60. Map
 
 **Главный вопрос**
 
-> Как разрешить несколько возможных типов?
+> Как типизировать объект со заранее неизвестными ключами?
+
+**Цель главы:** Объяснить index signature как контракт для словарей и динамических наборов свойств.
 
 Темы:
 
-* Union
-* Narrowing Preview
+* String index signature
+* Number index signature
+* Dictionary object
+* Ограничения значений
+* Headers и metadata
 
 ---
 
-## 107. Intersection Types
+## 111. Type Alias
 
-**Главный вопрос**
+**Модуль:** Объектные контракты
 
-> Как объединить несколько типов?
-
-Темы:
-
-* Intersection
-* Type Composition
-
----
-
-# Раздел 3. Создание собственных типов
-
----
-
-## 108. Type Alias
+**Предпосылки:** 108. Object Types
 
 **Главный вопрос**
 
 > Как дать имя сложному типу?
 
+**Цель главы:** Научить выносить повторяющиеся типы в понятные именованные контракты.
+
+Темы:
+
+* type
+* Именование типов
+* Повторное использование
+* Типы для test data
+* Типы для API payload
+
 ---
 
-## 109. Interface
+## 112. Interface
+
+**Модуль:** Объектные контракты
+
+**Предпосылки:** 108. Object Types
 
 **Главный вопрос**
 
-> Как описывать структуру объектов?
+> Как описывать объектный контракт, который будут реализовывать разные части проекта?
+
+**Цель главы:** Показать interface как способ описывать форму объекта и публичный договор.
+
+Темы:
+
+* interface
+* Object shape
+* Method signatures
+* Расширение interface
+* Контракты Page Objects и helpers
 
 ---
 
-## 110. Interface vs Type
+## 113. Interface vs Type Alias
+
+**Модуль:** Объектные контракты
+
+**Предпосылки:** 111. Type Alias, 112. Interface
 
 **Главный вопрос**
 
-> Когда использовать Interface, а когда Type Alias?
+> Когда использовать interface, а когда type alias?
+
+**Цель главы:** Дать практическое правило выбора без превращения темы в спор о стиле.
+
+Темы:
+
+* Object contracts
+* Type composition
+* Extending
+* Declaration merging preview
+* Практические рекомендации
 
 ---
 
-## 111. Structural Typing
+## 114. Structural Typing
+
+**Модуль:** Объектные контракты
+
+**Предпосылки:** 108. Object Types, 111. Type Alias, 112. Interface
 
 **Главный вопрос**
 
-> Почему TypeScript сравнивает структуру, а не название типа?
+> Почему TypeScript сравнивает структуру, а не имя типа?
+
+**Цель главы:** Объяснить structural typing как основу совместимости типов в TypeScript.
+
+Темы:
+
+* Structural Typing
+* Shape compatibility
+* Excess property checks
+* Объекты из разных модулей
+* Ошибки при передаче лишних свойств
 
 ---
 
-# Раздел 4. Вывод типов
+# Раздел 4. Значения как типы и композиция
 
 ---
 
-## 112. Type Inference
+## 115. Literal Types
+
+**Модуль:** Значения как типы и композиция
+
+**Предпосылки:** 102. Type Annotations and Type Inference, 15. Type Conversion
 
 **Главный вопрос**
 
-> Когда TypeScript способен вывести тип самостоятельно?
+> Как разрешить только конкретные значения?
+
+**Цель главы:** Показать literal types как способ превратить допустимые значения в проверяемый контракт.
+
+Темы:
+
+* String literal types
+* Number literal types
+* Boolean literal types
+* Status values
+* Environment names
 
 ---
 
-## 113. Narrowing
+## 116. as const
+
+**Модуль:** Значения как типы и композиция
+
+**Предпосылки:** 115. Literal Types, 107. Tuples
 
 **Главный вопрос**
 
-> Как TypeScript уточняет тип во время выполнения программы?
+> Как сохранить максимально точные типы значений?
+
+**Цель главы:** Объяснить as const как способ зафиксировать литеральные значения и readonly-структуры.
+
+Темы:
+
+* as const
+* Literal inference
+* Readonly objects
+* Readonly tuples
+* Константы тестовых окружений
 
 ---
 
-## 114. Type Guards
+## 117. Enum
+
+**Модуль:** Значения как типы и композиция
+
+**Предпосылки:** 115. Literal Types
 
 **Главный вопрос**
 
-> Как помочь компилятору определить правильный тип?
+> Когда нужен enum, если есть literal types?
+
+**Цель главы:** Показать enum как инструмент для ограниченных наборов значений и объяснить, когда он оправдан.
+
+Темы:
+
+* Numeric enum
+* String enum
+* Runtime presence
+* Отличие от union literals
+* Практические ограничения
+
+---
+
+## 118. Union Types
+
+**Модуль:** Значения как типы и композиция
+
+**Предпосылки:** 115. Literal Types, 20. Error Handling
+
+**Главный вопрос**
+
+> Как описать значение, у которого есть несколько допустимых вариантов?
+
+**Цель главы:** Научить моделировать альтернативы без потери проверки типов.
+
+Темы:
+
+* Union
+* Multiple allowed types
+* Nullable values
+* Discriminated unions
+* Result states
+* API response variants
+
+---
+
+## 119. Intersection Types
+
+**Модуль:** Значения как типы и композиция
+
+**Предпосылки:** 108. Object Types, 118. Union Types
+
+**Главный вопрос**
+
+> Как объединить несколько требований к одному значению?
+
+**Цель главы:** Показать intersection types как способ собрать объект из нескольких контрактов.
+
+Темы:
+
+* Intersection
+* Object composition
+* Shared metadata
+* Combining contracts
+* Ограничения intersection
+
+---
+
+## 120. Type Composition in Practice
+
+**Модуль:** Значения как типы и композиция
+
+**Предпосылки:** 111. Type Alias, 112. Interface, 118. Union Types, 119. Intersection Types
+
+**Главный вопрос**
+
+> Как проектировать типы, чтобы они отражали реальные состояния системы?
+
+**Цель главы:** Собрать aliases, interfaces, union и intersection в практическую модель данных Automation QA проекта.
+
+Темы:
+
+* Composition
+* Test status model
+* Report entries
+* API result models
+* Избежание дублирования типов
+
+---
+
+# Раздел 5. Типизация функций
+
+---
+
+## 121. Function Types
+
+**Модуль:** Типизация функций
+
+**Предпосылки:** 21. Function Declaration, 22. Function Expression, 102. Type Annotations and Type Inference
+
+**Главный вопрос**
+
+> Как описать параметры и результат функции?
+
+**Цель главы:** Научить типизировать функции как контракты поведения.
+
+Темы:
+
+* Parameter types
+* Return type
+* Function type expressions
+* Method signatures
+* Helper functions
+
+---
+
+## 122. Optional, Default and Rest Parameters
+
+**Модуль:** Типизация функций
+
+**Предпосылки:** 24. Parameters, 26. Rest Parameters, 121. Function Types
+
+**Главный вопрос**
+
+> Как типизировать разные способы передачи аргументов?
+
+**Цель главы:** Показать, как TypeScript проверяет optional, default и rest parameters.
+
+Темы:
+
+* Optional parameters
+* Default parameters
+* Rest parameters
+* Порядок параметров
+* Helper APIs
+
+---
+
+## 123. Callback Types
+
+**Модуль:** Типизация функций
+
+**Предпосылки:** 50. forEach(), 51. map(), 121. Function Types
+
+**Главный вопрос**
+
+> Как типизировать функцию, которую передают в другую функцию?
+
+**Цель главы:** Научить описывать callbacks и higher-order functions без потери информации о параметрах.
+
+Темы:
+
+* Callback signature
+* Higher-order functions
+* Predicate types
+* Array callbacks
+* Custom assertions
+
+---
+
+## 124. Function Overloads
+
+**Модуль:** Типизация функций
+
+**Предпосылки:** 121. Function Types, 118. Union Types
+
+**Главный вопрос**
+
+> Как описать функцию с несколькими корректными способами вызова?
+
+**Цель главы:** Показать overloads как способ описать разные входы и соответствующие выходы функции.
+
+Темы:
+
+* Overload signatures
+* Implementation signature
+* Union vs overload
+* API helpers
+* Ошибки перегрузок
+
+---
+
+## 125. this Parameter
+
+**Модуль:** Типизация функций
+
+**Предпосылки:** 29. this, 66. this: углубленное повторение, 121. Function Types
+
+**Главный вопрос**
+
+> Как TypeScript помогает контролировать this в функциях?
+
+**Цель главы:** Связать JavaScript-модель this с TypeScript-проверкой контекста вызова.
+
+Темы:
+
+* this parameter
+* noImplicitThis
+* Methods vs functions
+* Callback context
+* Page Object methods
+
+---
+
+## 126. Async Function Types
+
+**Модуль:** Типизация функций
+
+**Предпосылки:** 78. async и await, 80. Parallel Asynchronous Operations, 121. Function Types
+
+**Главный вопрос**
+
+> Как типизировать асинхронный результат?
+
+**Цель главы:** Показать Promise<T> как контракт результата async-функции.
+
+Темы:
+
+* Promise<T>
+* async return type
+* API client methods
+* Fixture setup
+* Ошибки с вложенными Promise
+
+---
+
+# Раздел 6. Narrowing и безопасные ветвления
+
+---
+
+## 127. Narrowing
+
+**Модуль:** Narrowing и безопасные ветвления
+
+**Предпосылки:** 18. Conditionals, 118. Union Types
+
+**Главный вопрос**
+
+> Как TypeScript уточняет тип внутри ветки кода?
+
+**Цель главы:** Объяснить narrowing как анализ условий, который делает union types безопасными.
+
+Темы:
+
+* Control flow analysis
+* Narrowing
+* if
+* switch
+* Return-based narrowing
+
+---
+
+## 128. Built-in Type Guards
+
+**Модуль:** Narrowing и безопасные ветвления
+
+**Предпосылки:** 127. Narrowing, 15. Type Conversion
+
+**Главный вопрос**
+
+> Какие проверки TypeScript уже умеет понимать?
+
+**Цель главы:** Показать typeof, instanceof и in как стандартные способы уточнения типа.
 
 Темы:
 
 * typeof
 * instanceof
 * in
-* User Defined Type Guards
+* Equality narrowing
+* Truthiness narrowing
+* Проверка внешних данных
 
 ---
 
-## 115. Type Assertions
+## 129. User Defined Type Guards
+
+**Модуль:** Narrowing и безопасные ветвления
+
+**Предпосылки:** 123. Callback Types, 128. Built-in Type Guards
 
 **Главный вопрос**
 
-> Когда программист знает больше компилятора?
+> Как написать собственную проверку, которую понимает TypeScript?
+
+**Цель главы:** Научить создавать type guards для доменных объектов Automation QA проекта.
+
+Темы:
+
+* value is Type
+* Guard function
+* Reusable validation
+* API response guards
+* Ошибки ложных guards
+
+---
+
+## 130. Type Assertions
+
+**Модуль:** Narrowing и безопасные ветвления
+
+**Предпосылки:** 104. any и unknown, 127. Narrowing
+
+**Главный вопрос**
+
+> Когда программист сообщает TypeScript больше, чем компилятор может вывести сам?
+
+**Цель главы:** Объяснить type assertions как ручное утверждение и показать риск неправильного использования.
 
 Темы:
 
 * as
-* Non-null Assertion
-* Ограничения
+* Non-null assertion
+* Ограничения assertions
+* Отличие от runtime-проверки
+* Безопасные альтернативы
 
 ---
 
-## 116. satisfies
+## 131. satisfies
+
+**Модуль:** Narrowing и безопасные ветвления
+
+**Предпосылки:** 115. Literal Types, 130. Type Assertions
 
 **Главный вопрос**
 
-> Как проверить соответствие типа без изменения выводимого типа?
+> Как проверить соответствие типу, не теряя точность значения?
 
----
-
-## 117. as const
-
-**Главный вопрос**
-
-> Как сохранить максимально точные литеральные типы?
-
----
-
-# Раздел 5. Functions
-
----
-
-## 118. Function Types
-
-**Главный вопрос**
-
-> Как описывать типы функций?
-
----
-
-## 119. Function Overloads
-
-**Главный вопрос**
-
-> Как одна функция может иметь несколько сигнатур?
-
----
-
-## 120. Generics
-
-**Главный вопрос**
-
-> Как писать универсальный код без потери типизации?
+**Цель главы:** Показать satisfies как инструмент проверки конфигураций и констант без расширения literal types.
 
 Темы:
 
-* Generic Functions
-* Generic Interfaces
-* Generic Classes
+* satisfies
+* Shape validation
+* Literal preservation
+* Config objects
+* Отличие от annotation и assertion
 
 ---
 
-## 121. Generic Constraints
+## 132. Exhaustive Checks with never
+
+**Модуль:** Narrowing и безопасные ветвления
+
+**Предпосылки:** 105. void и never, 118. Union Types, 127. Narrowing
 
 **Главный вопрос**
 
-> Как ограничивать Generic-параметры?
+> Как убедиться, что обработаны все варианты состояния?
+
+**Цель главы:** Научить использовать never для проверки полноты switch и безопасной обработки union-состояний.
+
+Темы:
+
+* Exhaustiveness
+* never
+* switch
+* Discriminated state handling
+* Report status processing
+
+---
+
+# Раздел 7. Generics
+
+---
+
+## 133. Generic Functions
+
+**Модуль:** Generics
+
+**Предпосылки:** 121. Function Types, 106. Arrays
+
+**Главный вопрос**
+
+> Как функция может сохранить тип данных, который получает на вход?
+
+**Цель главы:** Объяснить generic functions как способ писать универсальный код без any.
+
+Темы:
+
+* Type parameter
+* Generic function
+* Inference for generics
+* Identity helpers
+* Typed data factories
+
+---
+
+## 134. Generic Constraints
+
+**Модуль:** Generics
+
+**Предпосылки:** 133. Generic Functions, 108. Object Types
+
+**Главный вопрос**
+
+> Как ограничить generic-параметр нужной формой?
+
+**Цель главы:** Показать extends как способ требовать минимальный контракт от generic-типа.
 
 Темы:
 
 * extends
-* Ограничения Generic
+* Constraint
+* Minimum required shape
+* Safe property access
+* Test entities
 
 ---
 
-# Раздел 6. Продвинутая система типов
+## 135. keyof Constraints
 
----
+**Модуль:** Generics
 
-## 122. keyof
+**Предпосылки:** 134. Generic Constraints, 108. Object Types
 
 **Главный вопрос**
 
-> Как получить объединение всех ключей типа?
+> Как разрешить только ключи существующего объекта?
+
+**Цель главы:** Показать связку keyof и generics для безопасного доступа к свойствам.
+
+Темы:
+
+* keyof with generics
+* K extends keyof T
+* Safe property picker
+* Configuration helpers
+* Ошибки с динамическими ключами
 
 ---
 
-## 123. typeof
+## 136. Generic Type Aliases and Interfaces
+
+**Модуль:** Generics
+
+**Предпосылки:** 111. Type Alias, 112. Interface, 133. Generic Functions
+
+**Главный вопрос**
+
+> Как сделать собственные типы параметризуемыми?
+
+**Цель главы:** Научить создавать reusable containers, results и API response models.
+
+Темы:
+
+* Generic type alias
+* Generic interface
+* Result<T>
+* ApiResponse<T>
+* TestDataBuilder<T>
+
+---
+
+## 137. Generic Classes
+
+**Модуль:** Generics
+
+**Предпосылки:** 41. Classes, 136. Generic Type Aliases and Interfaces
+
+**Главный вопрос**
+
+> Как класс может работать с разными типами данных безопасно?
+
+**Цель главы:** Показать generic classes на примере хранилищ, builders и clients.
+
+Темы:
+
+* Generic class
+* Typed storage
+* Builder pattern
+* API client wrapper
+* Ограничения generic classes
+
+---
+
+## 138. Default Generic Parameters
+
+**Модуль:** Generics
+
+**Предпосылки:** 136. Generic Type Aliases and Interfaces, 137. Generic Classes
+
+**Главный вопрос**
+
+> Как задать generic-тип по умолчанию?
+
+**Цель главы:** Объяснить default generic parameters как способ сделать generic API удобнее без потери строгости.
+
+Темы:
+
+* Default type parameter
+* Public API ergonomics
+* Backward compatibility
+* Defaults for helpers
+* Ошибки слишком широких defaults
+
+---
+
+# Раздел 8. Операции над типами
+
+---
+
+## 139. keyof
+
+**Модуль:** Операции над типами
+
+**Предпосылки:** 108. Object Types, 135. keyof Constraints
+
+**Главный вопрос**
+
+> Как получить union всех ключей типа?
+
+**Цель главы:** Показать keyof как способ превращать форму объекта в набор допустимых ключей.
+
+Темы:
+
+* keyof
+* Key union
+* Object contracts
+* Safe selectors
+* Locator maps
+
+---
+
+## 140. typeof Type Query
+
+**Модуль:** Операции над типами
+
+**Предпосылки:** 102. Type Annotations and Type Inference, 116. as const
 
 **Главный вопрос**
 
 > Как получить тип существующего значения?
 
+**Цель главы:** Научить строить типы от реальных констант без ручного дублирования.
+
+Темы:
+
+* typeof in type position
+* Value to type
+* Config constants
+* Test data constants
+* Отличие от JavaScript typeof
+
 ---
 
-## 124. Indexed Access Types
+## 141. Indexed Access Types
+
+**Модуль:** Операции над типами
+
+**Предпосылки:** 139. keyof, 140. typeof Type Query
 
 **Главный вопрос**
 
 > Как получить тип отдельного свойства?
 
----
+**Цель главы:** Показать indexed access types как способ переиспользовать части существующих типов.
 
-## 125. Mapped Types
+Темы:
 
-**Главный вопрос**
-
-> Как автоматически преобразовывать существующие типы?
-
----
-
-## 126. Conditional Types
-
-**Главный вопрос**
-
-> Как создавать типы с условиями?
+* T[K]
+* Property type extraction
+* Array element type
+* Response field types
+* Ошибки несуществующих ключей
 
 ---
 
-## 127. infer
+## 142. Mapped Types
+
+**Модуль:** Операции над типами
+
+**Предпосылки:** 139. keyof, 141. Indexed Access Types
 
 **Главный вопрос**
 
-> Как автоматически извлекать типы?
+> Как автоматически преобразовать каждое свойство типа?
+
+**Цель главы:** Объяснить mapped types как цикл по ключам типа.
+
+Темы:
+
+* Mapped type
+* Key iteration
+* Modifiers
+* Readonly and optional transformations
+* Form models
 
 ---
 
-## 128. Utility Types
+## 143. Conditional Types
+
+**Модуль:** Операции над типами
+
+**Предпосылки:** 118. Union Types, 142. Mapped Types
 
 **Главный вопрос**
 
-> Какие готовые инструменты уже предоставляет TypeScript?
+> Как создавать типы с условной логикой?
+
+**Цель главы:** Показать conditional types как способ выбирать тип на основе другого типа.
+
+Темы:
+
+* T extends U ? X : Y
+* Type-level condition
+* Distribution over unions
+* Practical limits
+* Helper types
+
+---
+
+## 144. infer
+
+**Модуль:** Операции над типами
+
+**Предпосылки:** 143. Conditional Types, 126. Async Function Types
+
+**Главный вопрос**
+
+> Как извлечь часть типа автоматически?
+
+**Цель главы:** Объяснить infer как механизм извлечения типа внутри conditional type.
+
+Темы:
+
+* infer
+* Extract return type
+* Extract Promise value
+* Extract array item
+* Ограничения читаемости
+
+---
+
+## 145. Utility Types
+
+**Модуль:** Операции над типами
+
+**Предпосылки:** 139. keyof, 142. Mapped Types, 143. Conditional Types
+
+**Главный вопрос**
+
+> Какие типовые преобразования TypeScript уже предоставляет?
+
+**Цель главы:** Научить использовать utility types как готовые строительные блоки вместо ручных mapped и conditional types.
 
 Темы:
 
@@ -1933,76 +2695,335 @@ Large Applications
 * Pick
 * Omit
 * Record
-* Exclude
-* Extract
-* ReturnType
-* Parameters
+* Exclude / Extract
+* ReturnType / Parameters
 
 ---
 
-# Раздел 7. Экосистема
+# Раздел 9. Классы и объектные контракты
 
 ---
 
-## 129. Declaration Files
+## 146. Typed Classes
+
+**Модуль:** Классы и объектные контракты
+
+**Предпосылки:** 41. Classes, 121. Function Types, 108. Object Types
 
 **Главный вопрос**
 
-> Откуда TypeScript знает типы сторонних библиотек?
+> Как TypeScript проверяет поля, constructor и методы класса?
 
----
-
-## 130. Modules
-
-**Главный вопрос**
-
-> Как TypeScript работает с JavaScript-модулями?
-
----
-
-## 131. Decorators
-
-**Главный вопрос**
-
-> Как расширять поведение классов декларативно?
+**Цель главы:** Связать JavaScript classes с TypeScript-проверкой экземпляров и методов.
 
 Темы:
 
-* Современные Decorators
-* Практические сценарии
+* Class fields
+* Constructor parameters
+* Method types
+* Instance type
+* Page Object shape
 
 ---
 
-## 132. ESLint
+## 147. Access Modifiers and readonly Members
+
+**Модуль:** Классы и объектные контракты
+
+**Предпосылки:** 146. Typed Classes, 109. Optional and Readonly Properties
 
 **Главный вопрос**
 
-> Как автоматически находить ошибки и поддерживать единый стиль кода?
+> Как ограничить доступ к деталям реализации класса?
 
----
-
-## 133. Prettier
-
-**Главный вопрос**
-
-> Почему форматирование должно выполняться автоматически?
-
----
-
-## 134. TypeScript в Playwright
-
-**Главный вопрос**
-
-> Как использовать возможности TypeScript в промышлененном Automation QA Framework?
+**Цель главы:** Показать public, private, protected и readonly как инструменты контроля публичного API класса.
 
 Темы:
 
-* Типизация Page Objects
-* Типизация Fixtures
-* Типизация API Client
-* Типизация gRPC Client
-* Типизация Test Data
-* Практические рекомендации
+* public
+* private
+* protected
+* readonly members
+* Parameter properties
+* Инкапсуляция Page Object деталей
+
+---
+
+## 148. Abstract Classes
+
+**Модуль:** Классы и объектные контракты
+
+**Предпосылки:** 42. Class Inheritance, 146. Typed Classes, 147. Access Modifiers and readonly Members
+
+**Главный вопрос**
+
+> Как описать общий базовый класс, который нельзя использовать напрямую?
+
+**Цель главы:** Объяснить abstract class как контракт с общей реализацией для наследников.
+
+Темы:
+
+* abstract class
+* Abstract methods
+* Shared behavior
+* Base page object
+* Ограничения наследования
+
+---
+
+## 149. implements and override
+
+**Модуль:** Классы и объектные контракты
+
+**Предпосылки:** 112. Interface, 146. Typed Classes, 148. Abstract Classes
+
+**Главный вопрос**
+
+> Как проверить, что класс соответствует контракту и корректно переопределяет поведение?
+
+**Цель главы:** Показать implements и override как защиту от расхождения класса с ожидаемым API.
+
+Темы:
+
+* implements
+* override
+* Interface contract
+* Inheritance checks
+* Component objects
+
+---
+
+# Раздел 10. Модули и декларации
+
+---
+
+## 150. TypeScript and JavaScript Modules
+
+**Модуль:** Модули и декларации
+
+**Предпосылки:** 85. JavaScript Modules, 86. Module Systems, 100. tsconfig.json
+
+**Главный вопрос**
+
+> Как TypeScript добавляет типы к уже знакомым JavaScript-модулям?
+
+**Цель главы:** Показать, что TypeScript использует JavaScript module system, но дополнительно проверяет импортируемые и экспортируемые типы.
+
+Темы:
+
+* ES Modules
+* import / export
+* Typed exports
+* Public API modules
+* Module boundaries
+
+---
+
+## 151. Type-only Imports and Exports
+
+**Модуль:** Модули и декларации
+
+**Предпосылки:** 99. Type Erasure, 150. TypeScript and JavaScript Modules
+
+**Главный вопрос**
+
+> Как импортировать типы отдельно от runtime-значений?
+
+**Цель главы:** Объяснить type-only imports как способ явно отделять compile-time зависимости от runtime-кода.
+
+Темы:
+
+* import type
+* export type
+* Type erasure
+* Runtime imports
+* Dependency clarity
+
+---
+
+## 152. Module Resolution
+
+**Модуль:** Модули и декларации
+
+**Предпосылки:** 70. Module Resolution, 100. tsconfig.json, 150. TypeScript and JavaScript Modules
+
+**Главный вопрос**
+
+> Как TypeScript находит модуль и его типы?
+
+**Цель главы:** Дать концептуальную модель module resolution без погружения в bundlers и build tools.
+
+Темы:
+
+* Relative imports
+* Поиск типов внешних модулей
+* paths concept
+* type declarations lookup
+* Ошибки Cannot find module
+
+---
+
+## 153. Declaration Files
+
+**Модуль:** Модули и декларации
+
+**Предпосылки:** 99. Type Erasure, 150. TypeScript and JavaScript Modules, 152. Module Resolution
+
+**Главный вопрос**
+
+> Как TypeScript узнает типы JavaScript-кода, которого сам не видит?
+
+**Цель главы:** Показать .d.ts files как описание внешнего JavaScript API для компилятора.
+
+Темы:
+
+* .d.ts
+* Ambient declarations
+* Library types
+* External API shape
+* Ограничения деклараций
+
+---
+
+## 154. Declaration Merging
+
+**Модуль:** Модули и декларации
+
+**Предпосылки:** 112. Interface, 153. Declaration Files
+
+**Главный вопрос**
+
+> Почему некоторые объявления TypeScript могут объединяться?
+
+**Цель главы:** Объяснить declaration merging как специальный механизм расширения деклараций без превращения его в повседневный стиль.
+
+Темы:
+
+* Declaration merging
+* Interface merging
+* Module augmentation overview
+* Практические риски
+* Когда избегать merging
+
+---
+
+## 155. Compiler Options for Real Projects
+
+**Модуль:** Модули и декларации
+
+**Предпосылки:** 100. tsconfig.json, 101. strict mode, 152. Module Resolution
+
+**Главный вопрос**
+
+> Какие compiler options действительно влияют на поддержку большого проекта?
+
+**Цель главы:** Связать отдельные compiler options с инженерными последствиями для команды.
+
+Темы:
+
+* target
+* module
+* lib
+* noEmit
+* incremental
+* noUncheckedIndexedAccess overview
+* exactOptionalPropertyTypes overview
+
+---
+
+# Раздел 11. Проектная практика
+
+---
+
+## 156. Typed Configuration and Test Data
+
+**Модуль:** Проектная практика
+
+**Предпосылки:** 108. Object Types, 115. Literal Types, 131. satisfies, 155. Compiler Options for Real Projects
+
+**Главный вопрос**
+
+> Как TypeScript помогает держать configuration и test data согласованными?
+
+**Цель главы:** Показать типизацию конфигураций, окружений и тестовых данных без обучения конкретному тестовому фреймворку.
+
+Темы:
+
+* Environment config
+* Test data models
+* satisfies for config
+* Readonly constants
+* Ошибки несогласованных данных
+
+---
+
+## 157. Typed Page Objects, Fixtures and Helpers
+
+**Модуль:** Проектная практика
+
+**Предпосылки:** 146. Typed Classes, 147. Access Modifiers and readonly Members, 149. implements and override
+
+**Главный вопрос**
+
+> Как типы помогают удерживать Page Objects, fixtures и helpers в понятных границах?
+
+**Цель главы:** Применить классы, interfaces и function types к объектам страниц, fixtures и общим helper APIs.
+
+Темы:
+
+* Page Object contracts
+* Fixture contracts
+* Helper function contracts
+* Public API of helper modules
+* Reusable page components
+* Ошибки архитектурного расползания
+
+---
+
+## 158. Typed API Clients and Assertions
+
+**Модуль:** Проектная практика
+
+**Предпосылки:** 126. Async Function Types, 129. User Defined Type Guards, 136. Generic Type Aliases and Interfaces, 145. Utility Types
+
+**Главный вопрос**
+
+> Как TypeScript помогает описывать API responses и проверки?
+
+**Цель главы:** Показать типизацию API clients, response models и assertion helpers в Automation QA проекте.
+
+Темы:
+
+* ApiResponse<T>
+* Typed request payload
+* Typed response body
+* Database result models
+* gRPC request and response models
+* Assertion helper contracts
+* Runtime validation boundary
+
+---
+
+## 159. Maintaining Large TypeScript Test Projects
+
+**Модуль:** Проектная практика
+
+**Предпосылки:** 150. TypeScript and JavaScript Modules, 155. Compiler Options for Real Projects, 156. Typed Configuration and Test Data, 157. Typed Page Objects, Fixtures and Helpers, 158. Typed API Clients and Assertions
+
+**Главный вопрос**
+
+> Как поддерживать большой TypeScript-проект без превращения типов в хаос?
+
+**Цель главы:** Завершить TypeScript-раздел инженерными правилами проектирования типов для больших Automation QA проектов.
+
+Темы:
+
+* Type ownership
+* Public type API
+* Avoiding overengineering
+* Typed reporting boundaries
+* Refactoring with compiler feedback
+* Подготовка к Automation QA Framework разделу
 
 ---
 
@@ -2010,11 +3031,11 @@ Large Applications
 
 После завершения TypeScript читатель:
 
-* понимает ограничения JavaScript;
-* умеет проектировать типы;
-* уверенно использует Generics;
-* понимает сложную систему типов TypeScript;
-* умеет применять TypeScript в промышлененном Automation QA Framework.
+* понимает, что TypeScript проверяет JavaScript до запуска, но не заменяет runtime;
+* умеет проектировать типы для данных, функций, классов и модулей;
+* уверенно использует narrowing, generics, utility types и declaration files;
+* понимает границы compiler options и strict mode;
+* умеет применять TypeScript для архитектуры крупного Automation QA проекта.
 
 ---
 
@@ -2027,7 +3048,7 @@ TypeScript
 
 ↓
 
-134
+159
 
 STATUS
 
@@ -2036,7 +3057,7 @@ FROZEN
 
 # ROADMAP.md
 
-> Version: 5.0
+> Version: 6.0
 > Status: **FROZEN**
 > Part: IV / IV
 
@@ -2044,7 +3065,7 @@ FROZEN
 
 # Продолжение Part III
 
-Главы **1–134** считаются утверждёнными.
+Главы **1–159** считаются утверждёнными.
 
 Данная часть полностью посвящена **Automation QA** и финальному промышленному проекту.
 
@@ -2054,340 +3075,1658 @@ FROZEN
 
 ---
 
-# Раздел 1. Архитектура Automation Framework
+# Инструментальный контур части
+
+Практическая реализация строится на минимальном согласованном стеке:
+
+* TypeScript и Node.js как язык и runtime тестового проекта;
+* Playwright как библиотека browser automation;
+* Playwright Test как test runner, fixture system и assertion system;
+* `APIRequestContext` как HTTP client для REST API;
+* Protocol Buffers и `@grpc/grpc-js` как Node gRPC client для gRPC-вызовов;
+* PostgreSQL и `pg` как Node.js driver для доступа к базе данных;
+* Allure и `allure-playwright` как внешний reporting tool после изучения общих принципов отчётности;
+* GitHub Actions как CI-платформа практической реализации.
+
+Конкретный protobuf code generator и runtime validator контрактов выбираются при реализации с учётом контракта учебного приложения. Этот выбор не меняет архитектуру курса и не вводит отдельную учебную тему.
 
 ---
 
-## 135. Что такое Automation QA Framework
+# Раздел 1. Основы Automation QA Framework
+
+**Назначение раздела:** отделить framework от отдельных инструментов и сформировать модель его слоёв, зависимостей и жизненного цикла.
+
+**Предпосылки:** JavaScript 1–96, TypeScript 97–159.
+
+**Результат:** читатель умеет объяснить ответственность framework и спроектировать минимальные границы проекта без привязки к одной структуре папок.
+
+**Граница review/freeze:** главы 160–165.
+
+---
+
+## 160. Что такое Automation QA Framework
 
 **Главный вопрос**
 
-> Почему одного Playwright недостаточно для большого проекта?
+> Чем поддерживаемый Automation QA Framework отличается от набора тестовых скриптов?
 
 Темы:
 
-* Framework
-* Архитектура
-* Масштабируемость
+* Framework и отдельный тест
 * Повторное использование
+* Поддерживаемость
+* Масштабирование проекта
+* Границы ответственности
 
 ---
 
-## 136. Структура проекта
+## 161. Инструменты и роли в Automation QA
 
 **Главный вопрос**
 
-> Как организовать большой проект?
+> Какую задачу решает каждый инструмент внутри Automation QA проекта?
 
 Темы:
 
-* src
-* tests
-* pages
-* api
-* grpc
-* database
-* helpers
+* Application under test
+* Playwright и browser automation
+* Playwright Test и test runner
+* Assertion system
+* API client
+* Reporting tool
+* CI system
+* Automation QA Framework как целое
 
 ---
 
-## 137. Playwright Test
+## 162. Архитектурные слои и поток зависимостей
 
 **Главный вопрос**
 
-> Как работает тестовый раннер?
+> Как разделить UI, API, gRPC, database и общую инфраструктуру без циклических зависимостей?
 
 Темы:
 
-* test()
-* describe()
-* hooks
-* configuration
+* Слои framework
+* Направление зависимостей
+* Публичные границы модулей
+* Composition Root
+* Недопустимые циклические связи
 
 ---
 
-## 138. Fixtures
+## 163. Тестовый и инфраструктурный код
 
 **Главный вопрос**
 
-> Как избавиться от повторяющейся подготовки тестов?
+> Где проходит граница между сценарием теста и механизмами framework?
 
 Темы:
 
-* Built-in Fixtures
-* Custom Fixtures
+* Test intent
+* Test orchestration
+* Infrastructure code
+* Domain language
+* Признаки утечки деталей реализации в тест
+
+---
+
+## 164. Жизненный цикл автотеста
+
+**Главный вопрос**
+
+> Какие этапы проходит автотест от загрузки конфигурации до сохранения диагностических данных?
+
+Темы:
+
+* Configuration
+* Подготовка окружения и данных
+* Выполнение сценария
+* Проверки
+* Cleanup
+* Evidence и report
+
+---
+
+## 165. Структура проекта и границы модулей
+
+**Главный вопрос**
+
+> Как структура проекта отражает ответственность модулей, а не случайный набор папок?
+
+Темы:
+
+* Feature-first и layer-first организация
+* `tests`, `pages`, `api`, `grpc`, `database`
+* Общая инфраструктура
+* Публичные точки входа
+* Критерии выбора структуры
+
+---
+
+# Раздел 2. Playwright Test и основы UI-автоматизации
+
+**Назначение раздела:** объяснить модель выполнения Playwright Test и базовые browser primitives до архитектурных паттернов.
+
+**Предпосылки:** 160–165.
+
+**Результат:** читатель пишет изолированные UI-тесты с устойчивыми locators, действиями, ожиданиями и web-first assertions.
+
+**Граница review/freeze:** главы 166–175.
+
+---
+
+## 166. Playwright и Playwright Test
+
+**Главный вопрос**
+
+> Чем browser automation library отличается от test runner и как они работают вместе?
+
+Темы:
+
+* Playwright library
+* Playwright Test
+* Test runner
+* Fixtures и assertions как отдельные роли
+* Граница framework
+
+---
+
+## 167. Анатомия и модель выполнения теста
+
+**Главный вопрос**
+
+> Как Playwright Test обнаруживает, группирует и выполняет тесты?
+
+Темы:
+
+* `test()`
+* `test.describe()`
+* Test discovery
+* Test execution
+* Annotations overview
+* Результат и exit code
+
+---
+
+## 168. Browser, BrowserContext и Page
+
+**Главный вопрос**
+
+> Как Playwright моделирует браузер, изолированную сессию и вкладку?
+
+Темы:
+
+* Browser
+* BrowserContext
+* Page
+* Изоляция cookies и storage
+* Жизненный цикл browser resources
+
+---
+
+## 169. Locator и стратегия поиска элементов
+
+**Главный вопрос**
+
+> Как находить элементы устойчиво и сохранять намерение пользователя в тесте?
+
+Темы:
+
+* Locator
+* Role, label и text locators
+* Test id
+* Strictness
+* Chaining и filtering
+* Хрупкие CSS/XPath стратегии
+
+---
+
+## 170. Пользовательские действия
+
+**Главный вопрос**
+
+> Как Playwright выполняет действия пользователя и проверяет готовность элемента?
+
+Темы:
+
+* Click
+* Fill
+* Select
+* Keyboard и mouse
+* Actionability checks
+* Ошибки взаимодействия
+
+---
+
+## 171. Web-first assertions
+
+**Главный вопрос**
+
+> Почему проверки UI должны ожидать наблюдаемое состояние, а не читать его один раз?
+
+Темы:
+
+* `expect()`
+* Locator assertions
+* Auto-retrying assertions
+* Expected и actual
+* Диагностические сообщения
+
+---
+
+## 172. Auto-waiting и явные ожидания
+
+**Главный вопрос**
+
+> Когда Playwright ждёт автоматически и когда тесту действительно нужно явное условие?
+
+Темы:
+
+* Auto-waiting
+* Наблюдаемое условие
+* `waitFor()`
+* Ожидание response или event
+* Запрет произвольных пауз как стратегии синхронизации
+
+---
+
+## 173. Timeouts и границы ожидания
+
+**Главный вопрос**
+
+> Как задавать временные границы без маскировки медленных или зависших сценариев?
+
+Темы:
+
+* Test timeout
+* Action timeout
+* Assertion timeout
+* Navigation timeout
+* Локальная и глобальная настройка
+* Причина timeout до увеличения значения
+
+---
+
+## 174. Hooks и жизненный цикл теста
+
+**Главный вопрос**
+
+> Как подготовка и очистка связываются с жизненным циклом test suite?
+
+Темы:
+
+* `beforeAll()` и `afterAll()`
+* `beforeEach()` и `afterEach()`
+* Scope hooks
+* Cleanup при ошибке
+* Риск скрытых зависимостей
+
+---
+
+## 175. Изоляция UI-тестов и состояние браузера
+
+**Главный вопрос**
+
+> Почему каждый тест должен владеть своим состоянием и не зависеть от порядка запуска?
+
+Темы:
+
+* Test isolation
+* Fresh BrowserContext
+* Cookies и storage
+* Независимость порядка
+* Контролируемая подготовка состояния
+
+---
+
+# Раздел 3. Fixtures и архитектура UI-слоя
+
+**Назначение раздела:** построить повторно используемый UI-слой после освоения Page, Locator, действий, ожиданий и lifecycle.
+
+**Предпосылки:** 166–175.
+
+**Результат:** читатель проектирует fixtures, authentication state, Page Objects и browser scenarios без скрытых зависимостей.
+
+**Граница review/freeze:** главы 176–185.
+
+---
+
+## 176. Built-in fixtures
+
+**Главный вопрос**
+
+> Какие ресурсы Playwright Test предоставляет тесту и кто управляет их жизненным циклом?
+
+Темы:
+
+* `page`
+* `context`
+* `browser`
+* Fixture scope
+* Setup и teardown
+
+---
+
+## 177. Custom fixtures и граф зависимостей
+
+**Главный вопрос**
+
+> Как создавать собственные fixtures с явными зависимостями и гарантированным cleanup?
+
+Темы:
+
+* `test.extend()`
 * Dependency Injection
+* Test-scoped и worker-scoped fixtures
+* Fixture dependencies
+* Automatic fixtures
+* Cleanup
 
 ---
 
-## 139. Page Object
+## 178. Authentication state и управляемые сессии
 
 **Главный вопрос**
 
-> Как отделить тесты от UI?
+> Как повторно использовать авторизованное состояние, не связывая тесты общей изменяемой сессией?
+
+Темы:
+
+* `storageState`
+* Setup project
+* Роли пользователей
+* Срок жизни credentials
+* Изоляция и безопасность состояния
+
+---
+
+## 179. Page Object
+
+**Главный вопрос**
+
+> Как отделить язык тестового сценария от деталей конкретной страницы?
 
 Темы:
 
 * Page Object Pattern
-* Инкапсуляция
-* Повторное использование
+* Locator ownership
+* User-facing actions
+* Assertions boundary
+* Признаки чрезмерного Page Object
 
 ---
 
-## 140. Components
+## 180. Component Objects и композиция страниц
 
 **Главный вопрос**
 
-> Как переиспользовать части страниц?
+> Как переиспользовать независимые части интерфейса без наследования страниц?
 
 Темы:
 
-* Component Objects
+* Component Object
 * Composition
+* Root Locator
+* Повторяющиеся widgets
+* Граница page и component
 
 ---
 
-# Раздел 2. API Testing
-
----
-
-## 141. REST
+## 181. Frames
 
 **Главный вопрос**
 
-> Как устроено взаимодействие клиента и сервера?
-
----
-
-## 142. API Client
-
-**Главный вопрос**
-
-> Как инкапсулировать HTTP-запросы?
-
----
-
-## 143. Authentication
-
-**Главный вопрос**
-
-> Как работать с авторизацией API?
+> Как работать с элементами внутри iframe, не теряя границу контекста?
 
 Темы:
 
-* Bearer Token
-* OAuth Overview
-* API Keys
+* Frame
+* FrameLocator
+* Навигация frame
+* Ожидания внутри frame
+* Типичные ошибки контекста
 
 ---
 
-## 144. Request Builders
+## 182. Вкладки, окна и popups
 
 **Главный вопрос**
 
-> Как создавать сложные запросы?
-
----
-
-## 145. Response Validation
-
-**Главный вопрос**
-
-> Как проверять ответы API?
-
----
-
-## 146. Contract Testing
-
-**Главный вопрос**
-
-> Как убедиться, что контракт API не изменился?
-
----
-
-# Раздел 3. gRPC
-
----
-
-## 147. Основы gRPC
-
-**Главный вопрос**
-
-> Чем gRPC отличается от REST?
-
----
-
-## 148. Protocol Buffers
-
-**Главный вопрос**
-
-> Почему gRPC использует protobuf?
-
----
-
-## 149. gRPC Client
-
-**Главный вопрос**
-
-> Как выполнять gRPC-запросы?
-
----
-
-## 150. Metadata
-
-**Главный вопрос**
-
-> Как передавать служебные данные?
-
----
-
-## 151. Validation
-
-**Главный вопрос**
-
-> Как проверять ответы gRPC?
-
----
-
-# Раздел 4. Database Testing
-
----
-
-## 152. PostgreSQL
-
-**Главный вопрос**
-
-> Как работать с PostgreSQL в тестах?
-
----
-
-## 153. Repository Pattern
-
-**Главный вопрос**
-
-> Как инкапсулировать SQL?
-
----
-
-## 154. Database Verification
-
-**Главный вопрос**
-
-> Как сверять данные БД с API?
-
----
-
-## 155. Transactions
-
-**Главный вопрос**
-
-> Почему тестам важно понимать транзакции?
-
----
-
-# Раздел 5. Framework Infrastructure
-
----
-
-## 156. Helpers
-
-**Главный вопрос**
-
-> Какие задачи должны решать вспомогательные классы?
-
----
-
-## 157. Assertions
-
-**Главный вопрос**
-
-> Как писать понятные проверки?
-
----
-
-## 158. Configuration
-
-**Главный вопрос**
-
-> Как управлять настройками проекта?
-
----
-
-## 159. Environment
-
-**Главный вопрос**
-
-> Как поддерживать несколько окружений?
-
----
-
-## 160. Test Data Builders
-
-**Главный вопрос**
-
-> Как удобно создавать тестовые данные?
-
----
-
-## 161. Retry
-
-**Главный вопрос**
-
-> Когда повтор теста полезен, а когда вреден?
-
----
-
-## 162. Logging
-
-**Главный вопрос**
-
-> Как собирать информацию для анализа ошибок?
-
----
-
-## 163. Reporting
-
-**Главный вопрос**
-
-> Как получать качественные отчёты?
-
----
-
-## 164. Allure
-
-**Главный вопрос**
-
-> Как использовать Allure максимально эффективно?
-
----
-
-## 165. Parallel Execution
-
-**Главный вопрос**
-
-> Как ускорить выполнение тестов?
-
----
-
-## 166. Flaky Tests
-
-**Главный вопрос**
-
-> Почему нестабильные тесты появляются и как их устранять?
-
----
-
-## 167. Архитектура Framework
-
-**Главный вопрос**
-
-> Как все части проекта работают вместе?
+> Как синхронизировать действие с появлением новой Page?
 
 Темы:
 
-* Layers
-* Dependency Flow
-* Best Practices
+* Page event
+* Popup
+* Несколько Page в BrowserContext
+* Ожидание события до действия
+* Закрытие ресурсов
+
+---
+
+## 183. Диалоги и работа с файлами
+
+**Главный вопрос**
+
+> Как автоматизировать browser interactions, которые не являются обычными DOM-действиями?
+
+Темы:
+
+* Dialog events
+* File upload
+* Download events
+* Временные файлы
+* Cleanup артефактов
+
+---
+
+## 184. Network interception и mocking
+
+**Главный вопрос**
+
+> Когда тесту нужно наблюдать или контролировать сетевое взаимодействие страницы?
+
+Темы:
+
+* Request и response events
+* Route interception
+* Mock response
+* Modification и abort
+* Граница между UI и API-тестом
+
+---
+
+## 185. Интеграция UI-слоя
+
+**Главный вопрос**
+
+> Как fixtures, Page Objects, components и browser state образуют единый UI-слой?
+
+Темы:
+
+* Dependency flow
+* Fixture composition
+* Page и component ownership
+* Authentication flow
+* Test readability
+* Критерии архитектурного review
+
+---
+
+# Раздел 4. Тестирование REST API
+
+**Назначение раздела:** перейти от HTTP-протокола к поддерживаемому API-слою и отделить transport checks, business assertions и contract validation.
+
+**Предпосылки:** 160–165, TypeScript 126, 129, 158.
+
+**Результат:** читатель создаёт REST API tests через `APIRequestContext`, управляет авторизацией и данными, проверяет позитивные и негативные сценарии.
+
+**Граница review/freeze:** главы 186–196.
+
+---
+
+## 186. HTTP и REST для API-тестирования
+
+**Главный вопрос**
+
+> Какие свойства HTTP и REST определяют поведение API-теста?
+
+Темы:
+
+* Client и server
+* Resource
+* HTTP methods
+* Idempotency для тестовых сценариев
+* Stateless interaction
+* REST как архитектурный стиль
+
+---
+
+## 187. Структура HTTP-запроса
+
+**Главный вопрос**
+
+> Из каких частей состоит запрос и какую ошибку может содержать каждая из них?
+
+Темы:
+
+* URL и path parameters
+* Query parameters
+* Headers
+* Content type
+* Request body
+* JSON и form data
+
+---
+
+## 188. Структура HTTP-ответа
+
+**Главный вопрос**
+
+> Какие уровни результата нужно проверить в HTTP-ответе?
+
+Темы:
+
+* Status code
+* Response headers
+* Response body
+* JSON parsing
+* Transport result и business result
+
+---
+
+## 189. APIRequestContext
+
+**Главный вопрос**
+
+> Как выполнять независимые HTTP-запросы средствами Playwright Test?
+
+Темы:
+
+* `request` fixture
+* Новый APIRequestContext
+* Base URL
+* Shared headers
+* Cookies и storage state
+* Dispose и lifecycle
+
+---
+
+## 190. API Client и граница HTTP-слоя
+
+**Главный вопрос**
+
+> Как скрыть детали HTTP-вызовов, не скрывая смысл API-операций?
+
+Темы:
+
+* API Client
+* Resource clients
+* Request и response models
+* Transport errors
+* Public API модуля
+* Избыточная абстракция
+
+---
+
+## 191. Аутентификация API
+
+**Главный вопрос**
+
+> Как передавать credentials безопасно и отделять получение доступа от бизнес-запросов?
+
+Темы:
+
+* API key
+* Bearer token
+* OAuth overview для QA
+* Token lifecycle
+* Secrets boundary
+* Негативные сценарии доступа
+
+---
+
+## 192. Request Builders и подготовка данных через API
+
+**Главный вопрос**
+
+> Как создавать сложные payloads и тестовые данные без копирования деталей запроса?
+
+Темы:
+
+* Request Builder
+* Valid defaults
+* Scenario overrides
+* Unique data
+* Setup through API
+* Cleanup contract
+
+---
+
+## 193. Проверка API-ответов и бизнес-правил
+
+**Главный вопрос**
+
+> Как разделить проверку HTTP-контракта и проверку ожидаемого поведения системы?
+
+Темы:
+
+* Status и headers checks
+* Response shape
+* Business assertions
+* Expected versus actual
+* Диагностические сообщения
+
+---
+
+## 194. Негативные API-сценарии и ошибки
+
+**Главный вопрос**
+
+> Как проверять контролируемый отказ, а не только успешный ответ?
+
+Темы:
+
+* Invalid input
+* Missing credentials
+* Forbidden operation
+* Not found и conflict
+* Error response contract
+* Побочные эффекты после ошибки
+
+---
+
+## 195. Проверка контрактов во время выполнения
+
+**Главный вопрос**
+
+> Как проверить внешний ответ во время выполнения, если TypeScript не валидирует runtime data?
+
+Темы:
+
+* TypeScript boundary
+* OpenAPI и JSON Schema как источники контракта
+* Runtime validator boundary
+* Contract drift
+* Contract test и business assertion
+* Диагностика несовпадения
+
+---
+
+## 196. Совместные UI и API-сценарии
+
+**Главный вопрос**
+
+> Как использовать API для подготовки и очистки данных, сохраняя UI как предмет проверки?
+
+Темы:
+
+* API setup
+* UI verification
+* UI action и API verification
+* Cleanup through API
+* Общая identity данных
+* Граница ответственности слоёв
+
+---
+
+# Раздел 5. Тестирование gRPC
+
+**Назначение раздела:** научить читать protobuf-контракт, вызывать gRPC service из Node.js и проверять ответы, статусы и временные границы.
+
+**Предпосылки:** 186–196, TypeScript 158.
+
+**Результат:** читатель автоматизирует unary gRPC scenarios и интегрирует client в framework, понимая границу Node gRPC и grpc-web.
+
+**Граница review/freeze:** главы 197–206.
+
+---
+
+## 197. gRPC и REST в тестовой архитектуре
+
+**Главный вопрос**
+
+> Чем gRPC-взаимодействие отличается от REST и что это меняет для теста?
+
+Темы:
+
+* RPC model
+* Service и method
+* Binary messages
+* HTTP/2 boundary
+* Node gRPC и grpc-web
+* Выбор уровня проверки
+
+---
+
+## 198. Protocol Buffers: сервисы и сообщения
+
+**Главный вопрос**
+
+> Как `.proto`-контракт описывает доступные вызовы и данные?
+
+Темы:
+
+* `service`
+* `rpc`
+* Request и response messages
+* Field numbers
+* Package
+* Совместимость контракта
+
+---
+
+## 199. Сгенерированный код и создание gRPC Client
+
+**Главный вопрос**
+
+> Как protobuf-контракт превращается в вызываемый и типизированный client API?
+
+Темы:
+
+* Code generation boundary
+* Generated message types
+* Generated service client
+* Channel и endpoint
+* Credentials
+* Lifecycle client
+
+---
+
+## 200. Unary gRPC-вызовы
+
+**Главный вопрос**
+
+> Как выполнить unary call и получить его результат в тесте?
+
+Темы:
+
+* Unary request-response
+* Promise wrapper boundary
+* Request message
+* Response message
+* Call lifecycle
+* Streaming overview без реализации
+
+---
+
+## 201. Поля protobuf-сообщений
+
+**Главный вопрос**
+
+> Как особенности protobuf fields влияют на подготовку запроса и проверку ответа?
+
+Темы:
+
+* Scalar fields
+* Repeated fields
+* Enums
+* Optional fields
+* Default values
+* Nested messages
+
+---
+
+## 202. Metadata и аутентификация gRPC
+
+**Главный вопрос**
+
+> Как передавать служебные данные отдельно от request message?
+
+Темы:
+
+* Metadata
+* Authorization metadata
+* Correlation id
+* Общие metadata interceptors
+* Secrets boundary
+
+---
+
+## 203. Deadlines и timeouts gRPC
+
+**Главный вопрос**
+
+> Как ограничить время gRPC-вызова и отличить медленный ответ от зависшего запроса?
+
+Темы:
+
+* Deadline
+* Client timeout
+* Cancellation
+* `DEADLINE_EXCEEDED`
+* Диагностика времени вызова
+
+---
+
+## 204. Статусы gRPC и обработка ошибок
+
+**Главный вопрос**
+
+> Как gRPC сообщает об отказе и какие свойства ошибки должен проверять тест?
+
+Темы:
+
+* Status code
+* Details
+* Metadata ошибки
+* Transport и business failure
+* Негативные сценарии
+
+---
+
+## 205. Проверка gRPC-ответов и негативных сценариев
+
+**Главный вопрос**
+
+> Как проверить message contract, business result и отсутствие нежелательных побочных эффектов?
+
+Темы:
+
+* Message shape
+* Repeated и optional fields
+* Business assertions
+* Invalid request
+* Authorization failure
+* Диагностические сообщения
+
+---
+
+## 206. gRPC Client в Automation Framework
+
+**Главный вопрос**
+
+> Как встроить generated client в framework и сравнивать gRPC-данные с другими слоями?
+
+Темы:
+
+* Client wrapper
+* Configuration и channel ownership
+* Metadata composition
+* Fixture lifecycle
+* Сравнение с API и database
+* Граница generated и handwritten code
+
+---
+
+# Раздел 6. Тестирование PostgreSQL
+
+**Назначение раздела:** использовать database как контролируемый test boundary для подготовки и проверки данных, не превращая курс в database administration.
+
+**Предпосылки:** 186–206, TypeScript 158.
+
+**Результат:** читатель безопасно выполняет parameterized queries, управляет connection lifecycle, cleanup и isolation, сравнивает database data с API и gRPC.
+
+**Граница review/freeze:** главы 207–215.
+
+---
+
+## 207. PostgreSQL в Automation QA
+
+**Главный вопрос**
+
+> Когда тесту нужен прямой доступ к PostgreSQL и где проходит граница такой проверки?
+
+Темы:
+
+* Database как test boundary
+* Source of truth
+* Подготовка и verification
+* Риск привязки к реализации
+* Ownership тестовых данных
+
+---
+
+## 208. Connections, pools и lifecycle
+
+**Главный вопрос**
+
+> Как управлять соединениями с database без утечек и взаимного влияния тестов?
+
+Темы:
+
+* Connection
+* Pool
+* Acquire и release
+* Test-scoped и worker-scoped lifecycle
+* Ошибки подключения
+* Graceful shutdown
+
+---
+
+## 209. Parameterized queries
+
+**Главный вопрос**
+
+> Как передавать данные в SQL безопасно и предсказуемо?
+
+Темы:
+
+* Query parameters
+* SQL injection boundary
+* `null` и типы database
+* Query result
+* Ошибки запроса
+
+---
+
+## 210. Database Access Layer
+
+**Главный вопрос**
+
+> Как отделить тестовый сценарий от SQL и схемы database?
+
+Темы:
+
+* Database client
+* Query modules
+* Repository Pattern как вариант
+* Result mapping
+* Public API слоя
+* Риск универсального repository
+
+---
+
+## 211. Подготовка и очистка данных в database
+
+**Главный вопрос**
+
+> Как создавать и удалять test data с явным владельцем и предсказуемым lifecycle?
+
+Темы:
+
+* Data setup
+* Cleanup
+* Unique identifiers
+* Foreign keys
+* Idempotent cleanup
+* Cleanup после падения
+
+---
+
+## 212. Transactions, rollback и test isolation
+
+**Главный вопрос**
+
+> Когда transaction помогает изолировать тест и когда rollback не покрывает внешние процессы?
+
+Темы:
+
+* Transaction boundary
+* Commit и rollback
+* Isolation levels overview
+* Внешние соединения
+* Background processing
+* Ограничения transactional tests
+
+---
+
+## 213. Eventual consistency и polling
+
+**Главный вопрос**
+
+> Как проверять данные, которые появляются асинхронно, без произвольных пауз?
+
+Темы:
+
+* Eventual consistency
+* Polling condition
+* Interval и deadline
+* Последняя наблюдаемая ошибка
+* Timeout diagnostics
+
+---
+
+## 214. Сверка данных PostgreSQL с API и gRPC
+
+**Главный вопрос**
+
+> Как корректно сравнить database row с API или gRPC model?
+
+Темы:
+
+* Mapping
+* Normalization
+* Database types и transport types
+* Stable identifiers
+* Business fields
+* Диагностика различий
+
+---
+
+## 215. Конфликты данных и параллельные тесты
+
+**Главный вопрос**
+
+> Почему общие database records создают нестабильность ещё до включения parallel execution?
+
+Темы:
+
+* Shared rows
+* Unique namespace
+* Ownership
+* Cleanup race
+* Worker identity
+* Подготовка к parallel execution
+
+---
+
+# Раздел 7. Конфигурация, тестовые данные и общая инфраструктура
+
+**Назначение раздела:** продолжить TypeScript-модели 156–159 конкретной runtime-реализацией configuration, test data, helpers и domain checks.
+
+**Предпосылки:** 160–215, TypeScript 156–159.
+
+**Результат:** читатель строит валидируемую конфигурацию, управляет жизненным циклом test data и создаёт узкие reusable APIs.
+
+**Граница review/freeze:** главы 216–224.
+
+---
+
+## 216. Конфигурация Playwright и execution projects
+
+**Главный вопрос**
+
+> Как связать настройки Playwright Test с браузерами, окружениями и режимами запуска?
+
+Темы:
+
+* `playwright.config`
+* Projects
+* `use` options
+* Base URL
+* Reporter selection
+* Execution profiles
+
+---
+
+## 217. Окружения, переменные и secrets
+
+**Главный вопрос**
+
+> Как передавать различия окружений и чувствительные данные без hardcode?
+
+Темы:
+
+* Environment variables
+* Local и CI environment
+* Secrets
+* Required и optional values
+* Redaction
+* Запрет credentials в repository
+
+---
+
+## 218. Загрузка и runtime validation конфигурации
+
+**Главный вопрос**
+
+> Как завершить запуск сразу, если внешняя конфигурация неполна или некорректна?
+
+Темы:
+
+* Config loader
+* Parse и normalize
+* Runtime validation
+* Typed configuration result
+* Fail fast
+* Диагностическая ошибка
+
+---
+
+## 219. Организация test data
+
+**Главный вопрос**
+
+> Когда использовать статические данные, а когда создавать их динамически?
+
+Темы:
+
+* Static fixtures data
+* Dynamic data
+* Scenario data
+* Environment-dependent data
+* Data ownership
+* Секреты и персональные данные
+
+---
+
+## 220. Builders, factories и уникальные данные
+
+**Главный вопрос**
+
+> Как создавать валидные данные с минимальными изменениями для конкретного сценария?
+
+Темы:
+
+* Builder
+* Factory
+* Valid defaults
+* Overrides
+* Unique values
+* Reproducibility и seed
+
+---
+
+## 221. Жизненный цикл тестовых данных
+
+**Главный вопрос**
+
+> Как связать создание, использование и cleanup данных в одну управляемую операцию?
+
+Темы:
+
+* Setup ownership
+* Cleanup registration
+* Cleanup order
+* Failure-safe cleanup
+* API и database cleanup
+* Parallel-safe data
+
+---
+
+## 222. Helpers и границы повторного использования
+
+**Главный вопрос**
+
+> Какие операции действительно должны становиться shared helpers?
+
+Темы:
+
+* Повторяемая операция
+* Domain helper и technical helper
+* Узкий public API
+* Side effects
+* Dependency visibility
+* Dumping ground anti-pattern
+
+---
+
+## 223. Пользовательские проверки и soft assertions
+
+**Главный вопрос**
+
+> Когда базовых assertions недостаточно и как сохранить полезную диагностику?
+
+Темы:
+
+* Custom matcher boundary
+* Domain assertion
+* Soft assertions
+* Expected и actual
+* Failure message
+* Attachment from assertion
+
+---
+
+## 224. Нормализация и проверки между слоями
+
+**Главный вопрос**
+
+> Как сравнивать одну бизнес-сущность, представленную разными моделями UI, API, gRPC и database?
+
+Темы:
+
+* Canonical model
+* Mapping
+* Normalization
+* Dates, numbers и optional values
+* Field ownership
+* Reusable comparison logic
+
+---
+
+# Раздел 8. Диагностика и отчётность
+
+**Назначение раздела:** превратить падение теста в воспроизводимое расследование с достаточными runtime evidence и понятным report.
+
+**Предпосылки:** 166–224.
+
+**Результат:** читатель собирает logs, traces, screenshots, videos и attachments, а затем представляет их в общем report и Allure.
+
+**Граница review/freeze:** главы 225–231.
+
+---
+
+## 225. Расследование падения автотеста
+
+**Главный вопрос**
+
+> Как перейти от симптома в отчёте к воспроизводимой root cause?
+
+Темы:
+
+* Symptom
+* Reproduction
+* Test, framework и application failure
+* Сужение области поиска
+* Root cause
+* Verification исправления
+
+---
+
+## 226. Структурированное логирование
+
+**Главный вопрос**
+
+> Какие события нужно логировать, чтобы восстановить ход теста без информационного шума?
+
+Темы:
+
+* Log levels
+* Structured fields
+* Correlation id
+* Request и response metadata
+* Redaction
+* Logger boundary
+
+---
+
+## 227. Screenshots, videos и Playwright Trace
+
+**Главный вопрос**
+
+> Какой вид evidence отвечает на какой вопрос при UI-падении?
+
+Темы:
+
+* Screenshot
+* Video
+* Trace
+* DOM snapshot
+* Network timeline
+* Политика сохранения
+
+---
+
+## 228. Attachments и lifecycle артефактов
+
+**Главный вопрос**
+
+> Как прикреплять полезные данные к test result и управлять их размером и сроком хранения?
+
+Темы:
+
+* Attachments
+* JSON и text evidence
+* Request и response payloads
+* File naming
+* Retention
+* Sensitive data
+
+---
+
+## 229. Принципы тестовой отчётности
+
+**Главный вопрос**
+
+> Какая информация делает report полезным для разработки, QA и CI?
+
+Темы:
+
+* Test identity
+* Status и duration
+* Steps
+* Failure details
+* Environment information
+* Links и ownership
+
+---
+
+## 230. Отчётность в Allure
+
+**Главный вопрос**
+
+> Как представить test results и evidence в Allure без дублирования логики теста?
+
+Темы:
+
+* Allure adapter
+* Steps
+* Labels
+* Links
+* Attachments
+* Environment information
+* History overview
+
+---
+
+## 231. Диагностический поток Framework
+
+**Главный вопрос**
+
+> Как logs, Playwright evidence, attachments и report образуют единый путь расследования?
+
+Темы:
+
+* Evidence collection policy
+* Failure hooks
+* Correlation
+* Report integration
+* Storage boundary
+* Проверка достаточности диагностики
+
+---
+
+# Раздел 9. Стабильность и масштабирование выполнения
+
+**Назначение раздела:** сначала устранить причины нестабильности, затем безопасно ускорить выполнение через workers, parallel execution и sharding.
+
+**Предпосылки:** 175, 215, 216–231.
+
+**Результат:** читатель диагностирует flaky tests, ограниченно применяет retries и масштабирует запуск без конфликтов shared resources.
+
+**Граница review/freeze:** главы 232–238.
+
+---
+
+## 232. Причины flaky tests
+
+**Главный вопрос**
+
+> Какие нарушения детерминированности делают результат теста нестабильным?
+
+Темы:
+
+* Неправильные ожидания
+* Shared state
+* Неуправляемые данные
+* Внешние зависимости
+* Race conditions
+* Resource exhaustion
+
+---
+
+## 233. Расследование и quarantine flaky tests
+
+**Главный вопрос**
+
+> Как доказать причину нестабильности и временно защитить основной сигнал тестового запуска?
+
+Темы:
+
+* Reproduction strategy
+* Повторяемые evidence
+* Classification
+* Quarantine
+* Ownership и срок исправления
+* Verification стабильности
+
+---
+
+## 234. Retry policy
+
+**Главный вопрос**
+
+> Когда повторный запуск даёт диагностический сигнал, а когда скрывает дефект?
+
+Темы:
+
+* Retry после анализа причин
+* Retry configuration
+* First-run и retry evidence
+* Infrastructure failure
+* Запрет retry как основного исправления
+* Метрики нестабильности
+
+---
+
+## 235. Workers и shared resources
+
+**Главный вопрос**
+
+> Как Playwright Test распределяет работу и какие ресурсы нельзя разделять между workers без координации?
+
+Темы:
+
+* Worker process
+* Worker-scoped fixtures
+* Worker index
+* Shared accounts
+* Database records
+* External service limits
+
+---
+
+## 236. Parallel execution
+
+**Главный вопрос**
+
+> Как ускорить suite, сохраняя isolation и предсказуемость результатов?
+
+Темы:
+
+* File-level parallelism
+* Fully parallel mode
+* Serial boundary
+* Resource partitioning
+* Duration balance
+* Диагностика конфликтов
+
+---
+
+## 237. Sharding
+
+**Главный вопрос**
+
+> Как разделить suite между независимыми процессами или CI jobs?
+
+Темы:
+
+* Shard index и total
+* Независимость shards
+* Balanced distribution
+* Report merge
+* Общие внешние ресурсы
+
+---
+
+## 238. Tags, annotations и test selection
+
+**Главный вопрос**
+
+> Как выбирать нужный набор тестов без копирования suites и скрытых условий?
+
+Темы:
+
+* Tags
+* Annotations
+* Grep
+* Projects
+* Smoke и regression sets
+* Skip и fixme policy
+
+---
+
+# Раздел 10. CI и эксплуатация проекта
+
+**Назначение раздела:** перенести детерминированный локальный запуск в GitHub Actions и сохранить диагностику, безопасность и масштабирование.
+
+**Предпосылки:** 216–238.
+
+**Результат:** читатель создаёт воспроизводимый CI pipeline с browsers, secrets, artifacts, reports и распределённым запуском.
+
+**Граница review/freeze:** главы 239–244.
+
+---
+
+## 239. CI fundamentals для Automation QA
+
+**Главный вопрос**
+
+> Какие условия делают тестовый запуск воспроизводимым в чистом CI environment?
+
+Темы:
+
+* Clean runner
+* Deterministic install
+* Test command
+* Exit codes
+* Environment parity
+* Timeout job
+
+---
+
+## 240. GitHub Actions pipeline
+
+**Главный вопрос**
+
+> Как описать автоматический запуск Playwright Test для push и pull request?
+
+Темы:
+
+* Workflow
+* Trigger
+* Job и steps
+* Checkout и Node.js setup
+* Dependency installation
+* Playwright test command
+
+---
+
+## 241. Browsers и системные зависимости в CI
+
+**Главный вопрос**
+
+> Как подготовить runner для browser automation и избежать различий с локальным запуском?
+
+Темы:
+
+* Browser installation
+* System dependencies
+* Browser versions
+* Caching boundary
+* Headless execution
+* Local versus CI differences
+
+---
+
+## 242. Environments и secrets в CI
+
+**Главный вопрос**
+
+> Как безопасно передать environment configuration и credentials в pipeline?
+
+Темы:
+
+* Repository и environment secrets
+* Variables
+* Protected environments
+* Secret masking
+* Runtime validation
+* Least privilege
+
+---
+
+## 243. Артефакты и отчёты в CI
+
+**Главный вопрос**
+
+> Как сохранить report, trace, screenshots и logs после завершения runner?
+
+Темы:
+
+* Artifact upload
+* Upload on failure
+* Retention
+* Allure results
+* Report publication boundary
+* Sensitive evidence
+
+---
+
+## 244. CI jobs, sharding и диагностика запусков
+
+**Главный вопрос**
+
+> Как масштабировать pipeline и расследовать различия между pull-request, scheduled и локальным запуском?
+
+Темы:
+
+* Matrix jobs
+* Sharding
+* Report merge
+* Pull-request runs
+* Scheduled runs
+* Failure diagnosis
+
+---
+
+# Раздел 11. Интеграция Automation Framework
+
+**Назначение раздела:** собрать изученные слои в единую архитектуру до начала capstone, не вводя новых foundational topics.
+
+**Предпосылки:** 160–244.
+
+**Результат:** читатель может обосновать dependency flow, data lifecycle, observability и execution model промышленного framework.
+
+**Граница review/freeze:** главы 245–249.
+
+---
+
+## 245. Интеграция слоёв и dependency flow
+
+**Главный вопрос**
+
+> Как UI, API, gRPC, database и shared infrastructure взаимодействуют без нарушения границ?
+
+Темы:
+
+* Layer ownership
+* Dependency direction
+* Public APIs
+* Composition Root
+* Cross-layer orchestration
+* Запрет циклических зависимостей
+
+---
+
+## 246. Composition fixtures и configuration flow
+
+**Главный вопрос**
+
+> Как configuration превращается в управляемые clients, pages и test resources?
+
+Темы:
+
+* Config loading
+* Client factories
+* Fixture graph
+* Resource scopes
+* Cleanup order
+* Dependency visibility
+
+---
+
+## 247. Жизненный цикл данных в сценариях между слоями
+
+**Главный вопрос**
+
+> Как одна test entity проходит создание, использование, проверку и cleanup через разные слои?
+
+Темы:
+
+* Entity identity
+* API или database setup
+* UI action
+* API, gRPC и database verification
+* Ownership
+* Failure-safe cleanup
+
+---
+
+## 248. Диагностика, стабильность и CI в общей архитектуре
+
+**Главный вопрос**
+
+> Как framework сохраняет диагностический сигнал при локальном, parallel и CI execution?
+
+Темы:
+
+* Correlated logs
+* Runtime evidence
+* Reports
+* Worker и shard identity
+* CI artifacts
+* Flaky signal
+
+---
+
+## 249. Architecture review и эволюция Framework
+
+**Главный вопрос**
+
+> Как оценить готовность framework к росту и выбрать следующий рефакторинг по фактической проблеме?
+
+Темы:
+
+* Architecture review checklist
+* Coupling и cohesion
+* Public boundaries
+* Maintenance cost
+* Incremental refactoring
+* Запрет speculative abstractions
 
 ---
 
@@ -2395,121 +4734,634 @@ FROZEN
 
 ---
 
-## 168. Проектирование Framework
+# Раздел 1. Финальный промышленный проект
 
-**Главный вопрос**
+**Назначение раздела:** поэтапно реализовать один Automation QA Framework, используя только уже изученные механизмы.
 
-> Как спроектировать промышлененный Automation Framework?
+**Предпосылки:** 160–249.
 
----
+**Результат:** читатель представляет работающий проект с UI, REST, gRPC и PostgreSQL слоями, диагностикой, parallel execution и GitHub Actions.
 
-## 169. Создание структуры проекта
-
-**Главный вопрос**
-
-> С чего начинается реальный проект?
+**Граница review/freeze:** главы 250–259.
 
 ---
 
-## 170. Реализация UI Layer
+# Замороженная спецификация финального проекта
+
+```text
+FINAL PROJECT SPECIFICATION
+
+Version 1.0
+
+STATUS
+
+FROZEN
+```
+
+Спецификация фиксирует обязательный результат глав 250–259. Изменение mandatory scope, scenario minimums, milestones, Definition of Done или review rubric требует нового specification architecture review по `.meta/CHANGE_POLICY.md`.
+
+## Модель System Under Test
+
+Репозиторий курса не поставляет готовое учебное приложение, REST endpoints, `.proto`-контракты, PostgreSQL database, test accounts или seed data.
+
+Финальный проект адаптируется к одному заранее существующему учебному System Under Test либо к согласованному набору его сервисов в одном бизнес-домене.
+
+Выбранный System Under Test обязан предоставлять:
+
+* browser-accessible UI;
+* REST API;
+* unary gRPC service для того же бизнес-домена;
+* PostgreSQL persistence с read access и согласованным write access для setup или cleanup;
+* authentication минимум для UI и одного service layer;
+* бизнес-сущность с create/read/update либо эквивалентным изменением состояния;
+* детерминированный способ cleanup созданных данных;
+* доступность обязательных сервисов локально и из GitHub Actions.
+
+Распределение ресурсов:
+
+* **Курс предоставляет:** требования, изученный стек, milestone structure, Definition of Done и review rubric.
+* **Ученик предоставляет:** System Under Test, законный доступ, endpoints, `.proto`, database connection data, test accounts и разрешение на создание и удаление test data.
+* **Настраивается:** URLs, credentials, environment profiles, timeouts и identifiers внешних ресурсов.
+* **Можно mock:** только необязательные third-party dependencies; mocks не заменяют mandatory UI, REST, unary gRPC и PostgreSQL integration.
+* **Опционально:** локальная оркестрация сервисов и Docker, если они уже поддерживаются выбранным System Under Test.
+* **Не предоставляется курсом:** готовый production-like backend или инфраструктура его развёртывания.
+
+Если выбранный System Under Test не удовлетворяет хотя бы одной mandatory capability или недоступен из CI, milestone 250 получает `FAIL`, и реализация не начинается до выбора подходящей системы.
+
+## Размер проекта
+
+* Один repository и один бизнес-домен.
+* Десять milestones, соответствующих главам 250–259.
+* Девять mandatory automated scenarios.
+* Ориентир реализации: 30–45 часов после завершения главы 249, без учёта разработки или развёртывания самого System Under Test.
+* Документация: один operational `README`, одна architecture diagram и минимум три кратких Architecture Decision Records.
+
+Проект автоматизирует representative workflow, а не полное покрытие продукта.
+
+## Mandatory scope
+
+Для получения passing result обязательны:
+
+* один устанавливаемый и запускаемый TypeScript repository;
+* typed configuration с runtime validation;
+* local profile и CI profile;
+* UI Layer на Playwright с Page Objects и Component Objects там, где композиция оправдана;
+* REST API Layer на `APIRequestContext`;
+* gRPC Layer на `@grpc/grpc-js` с generated client integration;
+* Database Layer на `pg` с connection pool и parameterized queries;
+* fixtures с явным resource lifecycle;
+* test-data strategy с owner, setup и cleanup;
+* normalization strategy для cross-layer comparison;
+* девять mandatory scenarios из frozen portfolio;
+* минимум два authenticated scenarios: один UI и один REST или gRPC;
+* минимум три negative scenarios: по одному UI, REST и gRPC;
+* минимум два state-changing scenarios;
+* минимум одна прямая проверка persisted state в PostgreSQL;
+* минимум одна setup или cleanup operation через Database Layer, если write access разрешён; при read-only access обязательна документированная API cleanup alternative;
+* runtime contract checking REST responses;
+* structured diagnostics и Allure results;
+* полный mandatory suite с двумя workers и retries, установленными в `0` для stability proof;
+* GitHub Actions workflow, выполняющий полный mandatory suite;
+* operational README, architecture documentation и известные ограничения.
+
+## Mandatory scenario portfolio
+
+| Layer | Количество | Обязательное поведение |
+| ----- | ---------: | ---------------------- |
+| UI | 2 | Один authenticated positive state-changing workflow и одна UI validation или negative scenario |
+| REST | 2 | Один positive state-changing request и один negative request с ожидаемым error response |
+| gRPC | 2 | Один successful unary call и один unary call с ожидаемым non-OK status |
+| Cross-layer | 3 | API setup → UI verification; UI action → PostgreSQL verification; gRPC call → PostgreSQL или REST comparison |
+
+Итого: **9 mandatory scenarios**. Один scenario не может одновременно закрывать две строки таблицы, но может дополнительно подтверждать authentication, negative, state-changing или database requirement.
+
+Для каждого mandatory scenario фиксируются:
+
+* source layer;
+* business action;
+* expected business result;
+* verification layer;
+* data owner;
+* setup strategy;
+* cleanup strategy;
+* expected diagnostic evidence.
+
+## Optional scope
+
+Следующие extensions не влияют на passing result:
+
+* дополнительные browsers;
+* дополнительные environments;
+* дополнительные UI, REST, gRPC, database или cross-layer scenarios;
+* network interception и mocking сверх mandatory portfolio;
+* advanced Allure labels, links и history;
+* sharding;
+* scheduled CI runs;
+* CI matrix;
+* gRPC streaming;
+* Docker;
+* performance observations без load-testing программы;
+* дополнительные database verification rules.
+
+Optional work оценивается только после выполнения всех mandatory requirements и не компенсирует их отсутствие.
+
+## Explicit exclusions
+
+Финальный проект не требует:
+
+* разработки System Under Test;
+* полного покрытия продукта;
+* production deployment;
+* полноценного DevOps pipeline;
+* Kubernetes или multi-region infrastructure;
+* обязательного Docker;
+* load testing;
+* security penetration testing;
+* mobile automation;
+* внешней visual regression platform;
+* custom test runner, assertion framework или reporting system;
+* dependency injection container или plugin architecture;
+* monorepo и package publishing;
+* реализации gRPC streaming;
+* реализации OAuth provider;
+* database administration и проектирования production schema.
+
+## Architecture acceptance
+
+Обязательные responsibility boundaries:
+
+* tests выражают business scenarios и вызывают public APIs слоёв;
+* UI abstractions владеют locators и browser actions;
+* API Client владеет HTTP transport setup и request construction;
+* gRPC Client владеет channel, metadata, deadline и generated client integration;
+* Database Access Layer владеет pool и SQL operations;
+* fixtures владеют creation, scope и teardown ресурсов;
+* configuration module загружает, валидирует и выдаёт immutable runtime config;
+* test-data module создаёт unique data и регистрирует cleanup;
+* normalization module приводит layer models к сопоставимому виду;
+* diagnostics и reporting собирают sanitized evidence.
+
+Dependency direction документируется в architecture diagram. Tests могут зависеть от public APIs слоёв; transport и infrastructure modules не зависят от tests. Циклические зависимости запрещены.
+
+Запрещены raw selectors, raw SQL, HTTP request construction и gRPC transport setup, продублированные в test scenarios; hidden global mutable state; scattered environment branching; hardcoded secrets; arbitrary sleeps; retry как исправление дефекта; cleanup только после успешного теста.
+
+Folder structure остаётся свободным архитектурным решением, если responsibilities и dependency direction соблюдены.
+
+## Configuration and secrets acceptance
+
+* External configuration имеет TypeScript model и runtime validation.
+* Required values перечислены явно; invalid configuration завершает запуск до tests с non-zero exit status.
+* Реализованы local и CI profiles.
+* Runtime-validation library выбирается в milestone 252 и обосновывается в ADR; конкретная library не предписывается.
+* Real secrets отсутствуют в source control и загружаются через local secret storage или GitHub Secrets.
+* Environment variables документированы.
+* Logs, errors, reports и attachments redacted от tokens, passwords, connection strings и sensitive payload fields.
+
+## Data lifecycle acceptance
+
+* Каждая созданная entity имеет owner: test либо fixture.
+* Shared environments используют unique identifiers, включающие worker-safe component.
+* Setup и cleanup определены до реализации scenario.
+* Cleanup выполняется fixture teardown или зарегистрированным failure-safe mechanism.
+* API cleanup, database cleanup, rollback или isolated environment reset выбираются по границе scenario и документируются.
+* Static accounts имеют назначение, scope, mutation policy и запрет конкурентного изменения без isolation.
+* Generated data имеет naming и retention policy.
+* Eventual consistency обрабатывается condition-based polling с deadline, без arbitrary sleep.
+* Mandatory tests не зависят от порядка выполнения.
+
+## Runtime contract validation acceptance
+
+TypeScript annotation не считается runtime validation внешнего REST response.
+
+Если System Under Test предоставляет стабильный OpenAPI или JSON Schema contract, mandatory REST responses проверяются по нему. Library выбирается в milestone 254 и фиксируется в ADR.
+
+Если стабильный machine-readable contract отсутствует, обязательна документированная runtime validator function для business-critical fields, status-dependent shape и error response. Полный отказ от runtime checking не допускается.
+
+Validation failure должна показывать безопасный field path, expected rule и sanitized actual value.
+
+## Diagnostics and reporting acceptance
+
+При падении соответствующего layer mandatory evidence включает:
+
+* **UI:** screenshot, Playwright Trace, current URL, failed business step и business identifier при его наличии.
+* **REST:** method, sanitized URL, status code, sanitized request/response details и contract-validation result.
+* **gRPC:** service, method, sanitized metadata summary, status code, status details и configured deadline.
+* **PostgreSQL:** operation name, safe query identifier и normalized expected/actual data без credentials или raw sensitive values.
+
+Каждый mandatory test создаёт Allure result. Layer-specific failure evidence прикрепляется к Allure либо сохраняется как CI artifact со ссылкой из test result. Environment profile и correlation/business identifier указываются при наличии.
+
+## Parallel and stability acceptance
+
+* Полный mandatory suite проходит с двумя workers.
+* Stability proof: три последовательных успешных запуска с двумя workers и `retries: 0`; минимум один запуск выполняется в GitHub Actions.
+* Tests не зависят от порядка и не изменяют shared data без isolation.
+* Fixtures и clients имеют controlled lifetime и не содержат unsafe global mutable state.
+* Падение, прошедшее только после retry, не считается стабильным результатом.
+* Flaky test получает owner, evidence, quarantine decision и срок исправления; он не может silently оставаться в mandatory passing suite.
+* Sharding является optional extension.
+
+## CI acceptance
+
+GitHub Actions workflow обязан:
+
+* запускаться через `pull_request` и `workflow_dispatch`;
+* использовать поддерживаемую и зафиксированную major version Node.js;
+* выполнять deterministic installation через lockfile;
+* устанавливать требуемые Playwright browsers и system dependencies;
+* получать endpoints и non-sensitive configuration через variables, secrets через GitHub Secrets;
+* обеспечивать доступность UI, REST, gRPC и PostgreSQL либо запускать документированный training environment;
+* выполнять одну documented command для полного mandatory suite;
+* возвращать non-zero status при test failure;
+* сохранять Allure results и общий report artifact;
+* сохранять screenshots и traces при UI failures;
+* документировать service availability, permissions, retention и известные CI limitations.
+
+Если полный mandatory suite недоступен из CI, Definition of Done получает `FAIL`. Matrix, scheduled runs и sharding остаются optional.
+
+## Documentation acceptance
+
+Operational `README` содержит:
+
+* purpose и System Under Test assumptions;
+* prerequisites и installation;
+* configuration, environment variables и secret handling;
+* local command полного suite и commands по слоям;
+* parallel command;
+* report generation;
+* GitHub Actions behavior;
+* architecture overview и layer responsibilities;
+* test-data lifecycle и cleanup strategy;
+* known limitations;
+* troubleshooting.
+
+Architecture documentation содержит одну актуальную diagram, dependency direction и минимум три ADR с decision, alternatives и consequences. Другой QA engineer должен выполнить documented setup и mandatory command без устных инструкций автора.
+
+## Code quality acceptance
+
+* TypeScript compilation и обязательные validation commands завершаются успешно.
+* В mandatory project code нет implicit или скрытого `any`, необоснованных unsafe assertions и unhandled rejected promises.
+* Нет real secrets, mandatory `TODO`/`FIXME`, arbitrary sleeps, test-order dependency и retry-dependent passing.
+* Raw selectors, SQL и transport setup не дублируются между tests.
+* Database connections освобождаются; owned test data имеет cleanup.
+* Public boundaries и names отражают ответственность; framework code остаётся inspectable и debuggable.
+* Не требуются one-class-per-file, обязательные interfaces, одинаковая folder structure слоёв или generics без практической необходимости.
+
+## Milestone specification
+
+### Chapter 250
+
+* **Input:** frozen specification и доступные candidate systems.
+* **Deliverable:** выбранный System Under Test, scope matrix, девять scenario records, initial Definition of Done и effort plan.
+* **Evidence:** capabilities и CI availability подтверждены endpoint/database access checks без framework implementation.
+* **Failure:** отсутствует mandatory capability, data cleanup или CI access.
+* **Excluded:** разработка System Under Test и test code.
+* **Handoff:** approved scope и risks передаются в chapter 251.
+
+### Chapter 251
+
+* **Input:** approved scope, scenarios и risks.
+* **Deliverable:** architecture diagram, responsibility table, dependency direction, минимум три initial ADR и plan milestones 252–259.
+* **Evidence:** review подтверждает отсутствие cycles и ownership gaps.
+* **Failure:** не определены layer boundaries, resource owners или dependency direction.
+* **Excluded:** выбор универсальной folder structure и реализация слоёв.
+* **Handoff:** architecture contract передаётся в chapter 252.
+
+### Chapter 252
+
+* **Input:** architecture contract и SUT configuration contract.
+* **Deliverable:** compiling skeleton, package commands, Playwright configuration, runtime-validated local/CI profiles, secret handling, base fixtures и первый CI-compatible command.
+* **Evidence:** clean install, compilation, invalid-config failure и dry startup command.
+* **Failure:** hardcoded secret, unvalidated external config или broken command.
+* **Excluded:** реализация business scenarios и clients всех слоёв.
+* **Handoff:** runtime composition передаётся в chapter 253.
+
+### Chapter 253
+
+* **Input:** skeleton, config и UI contracts.
+* **Deliverable:** UI Layer, authentication state, UI fixtures и два mandatory UI scenarios.
+* **Evidence:** оба scenarios проходят независимо; negative scenario падает при намеренно нарушенном expectation с UI evidence.
+* **Failure:** unstable locators, shared mutable session, arbitrary sleep или отсутствующий cleanup.
+* **Excluded:** REST, gRPC и database layer implementation.
+* **Handoff:** UI public API и data needs передаются в chapter 254.
+
+### Chapter 254
+
+* **Input:** architecture contract, REST contract и data needs.
+* **Deliverable:** REST client, authentication, justified builders, runtime contract checks, setup/cleanup operations и два mandatory REST scenarios.
+* **Evidence:** positive и negative scenarios проходят; invalid runtime response вызывает диагностическую validation failure.
+* **Failure:** TypeScript annotation используется вместо runtime check или request construction дублируется в tests.
+* **Excluded:** gRPC transport и database access.
+* **Handoff:** REST setup/cleanup API передаётся в chapter 255.
+
+### Chapter 255
+
+* **Input:** `.proto`, generated code и architecture contract.
+* **Deliverable:** gRPC Client integration, metadata, deadlines, status handling и два mandatory unary scenarios.
+* **Evidence:** successful и non-OK status scenarios проходят с sanitized diagnostics.
+* **Failure:** отсутствует deadline, status assertion или generated/handwritten boundary.
+* **Excluded:** streaming implementation.
+* **Handoff:** gRPC public API и comparison data передаются в chapter 256.
+
+### Chapter 256
+
+* **Input:** database access contract и required verification data.
+* **Deliverable:** pool lifecycle, parameterized queries, Database Access Layer, setup/cleanup operation и persisted-state verification.
+* **Evidence:** connections release after success/failure; unsafe interpolation check отсутствует; cleanup доказан повторным query.
+* **Failure:** ad hoc connections, interpolated SQL, leaked connection или отсутствующий data owner.
+* **Excluded:** database administration, schema redesign и migrations System Under Test.
+* **Handoff:** database public API и normalized models передаются в chapter 257.
+
+### Chapter 257
+
+* **Input:** public APIs всех слоёв и scenario records.
+* **Deliverable:** три mandatory cross-layer scenarios, canonical comparison model, unique data strategy, ownership map и failure-safe cleanup.
+* **Evidence:** scenarios проходят независимо и оставляют no owned data; polling показывает deadline diagnostics.
+* **Failure:** layer bypass, order dependency, leaked data или direct comparison без normalization.
+* **Excluded:** новые transport clients и новые foundational abstractions.
+* **Handoff:** полный mandatory portfolio передаётся в chapter 258.
+
+### Chapter 258
+
+* **Input:** полный mandatory portfolio и diagnostics requirements.
+* **Deliverable:** structured logs, Allure integration, attachments, two-worker execution и GitHub Actions workflow с artifacts.
+* **Evidence:** три stability runs, включая один CI run; controlled failure создаёт expected evidence и failed workflow.
+* **Failure:** retry-dependent passing, missing secret redaction, missing CI layer или потерянные failure artifacts.
+* **Excluded:** mandatory sharding, matrix и scheduled runs.
+* **Handoff:** release candidate и evidence package передаются в chapter 259.
+
+### Chapter 259
+
+* **Input:** release candidate, evidence package и initial Definition of Done.
+* **Deliverable:** final DoD audit, architecture/stability/security/CI reviews, known limitations, refactoring report, operational README и controlled development plan.
+* **Evidence:** каждый DoD item имеет `PASS`, `FAIL` или обоснованный `NOT APPLICABLE`; independent runner воспроизводит setup и mandatory command.
+* **Failure:** blocker, silently waived mandatory requirement или undocumented external dependency.
+* **Excluded:** добавление новых features вместо закрытия audit findings.
+* **Handoff:** frozen final assessment и готовый к демонстрации project repository.
+
+## Definition of Done
+
+Каждый пункт получает `PASS`, `FAIL` или `NOT APPLICABLE` с письменным обоснованием. Mandatory requirement нельзя отметить `NOT APPLICABLE`.
+
+### Project setup
+
+* Clean install по documented command проходит.
+* TypeScript compilation и mandatory validation commands проходят.
+* Full mandatory suite запускается одной documented command.
+* Real secrets отсутствуют в repository и history проверяемой submission.
+
+### Architecture
+
+* Responsibilities обязательных слоёв документированы.
+* Dependency direction соблюдён, cycles отсутствуют.
+* Tests выражают business behavior и не дублируют transport/SQL/selector details.
+* Reusable infrastructure имеет обоснованного consumer и не является speculative abstraction.
+
+### Scenarios
+
+* Реализованы ровно или больше девяти mandatory scenarios без подмены строк portfolio.
+* Выполнены UI 2, REST 2, gRPC 2 и cross-layer 3 minimums.
+* Выполнены authentication, negative, state-changing и PostgreSQL requirements.
+
+### Data and runtime correctness
+
+* Для created data указаны owner, setup и cleanup.
+* Mandatory tests order-independent и используют parallel-safe identifiers.
+* REST external data проверяется во время выполнения.
+* gRPC statuses/deadlines обработаны.
+* PostgreSQL comparisons normalized.
+* Eventual consistency обрабатывается polling, если она присутствует.
+
+### Diagnostics and stability
+
+* Layer failures создают mandatory sanitized evidence.
+* Allure results и CI artifacts доступны после запуска.
+* Три runs с двумя workers и `retries: 0` успешны.
+* Arbitrary sleeps и known retry-dependent flaky tests отсутствуют.
+
+### CI and documentation
+
+* GitHub Actions выполняет full mandatory suite и возвращает failed status при controlled failure.
+* CI сохраняет report, Allure results и failure evidence.
+* README и architecture documentation удовлетворяют frozen documentation acceptance.
+* Known limitations и external dependencies перечислены.
+* Другой QA engineer воспроизводит setup и run по документации.
+
+### Final audit
+
+* Blockers отсутствуют.
+* Mandatory requirement не waived и не скрыт optional feature.
+* Major findings закрыты либо project получает `FAIL`.
+* Final limitations имеют owner, rationale и impact.
+
+## Review rubric
+
+Каждая категория оценивается от 0 до 10 и умножается на weight:
+
+| Категория | Weight |
+| --------- | -----: |
+| Architecture | 10% |
+| UI Layer | 7% |
+| REST Layer | 7% |
+| gRPC Layer | 7% |
+| Database Layer | 7% |
+| Cross-layer design | 10% |
+| Configuration and secrets | 8% |
+| Data lifecycle | 10% |
+| Diagnostics and reporting | 8% |
+| Stability and parallel safety | 8% |
+| CI | 8% |
+| Documentation | 5% |
+| Code quality | 5% |
+
+Passing result требует одновременно:
+
+* weighted score не ниже 80%;
+* отсутствие blockers;
+* не более двух major findings;
+* score каждой mandatory layer category не ниже 6/10;
+* все mandatory DoD items имеют `PASS`.
+
+**Blocker:** committed real secret; mandatory suite не запускается; обязательный layer отсутствует; GitHub Actions не выполняет tests; destructive data не имеет cleanup; REST external data доверяется только TypeScript annotation; SQL строится unsafe interpolation; tests зависят от порядка; retries нужны для обычного passing; undocumented external dependency делает запуск невоспроизводимым.
+
+**Major finding:** нарушенная dependency direction; отсутствующая runtime evidence для целого layer; неполный mandatory portfolio; shared mutable data без isolation; CI не сохраняет обязательные artifacts; README не позволяет воспроизвести запуск.
+
+**Minor finding:** локальное дублирование без изменения architecture boundary; неточная naming; неполное пояснение non-blocking decision; presentation defect, не влияющий на execution, diagnostics или cleanup.
+
+Optional extensions не повышают score категории выше 10/10 и не компенсируют blocker, major finding или failed mandatory DoD item.
+
+---
+
+## 250. Требования и критерии готовности проекта
+
+**Главный вопрос**
+
+> Как ограничить scope финального проекта и превратить цели в проверяемые критерии?
 
 Темы:
 
-* Page Objects
-* Components
-* Fixtures
+* Application under test
+* Representative UI, REST, gRPC и database scenarios
+* Functional requirements
+* Quality requirements
+* Definition of Done
+* Явные exclusions
 
 ---
 
-## 171. Реализация API Layer
+## 251. Архитектурные решения и план реализации
+
+**Главный вопрос**
+
+> Какие решения нужно принять до создания слоёв и в каком порядке их реализовывать?
+
+Темы:
+
+* Architecture decision records
+* Layer boundaries
+* Dependency flow
+* Tool ownership
+* Milestones
+* Review points
+
+---
+
+## 252. Каркас, configuration и environments
+
+**Главный вопрос**
+
+> Как создать минимальный запускаемый каркас с валидируемой конфигурацией?
+
+Темы:
+
+* Project structure
+* Playwright configuration
+* Environment loader
+* Secrets boundary
+* Base fixtures
+* Первый CI-compatible command
+
+---
+
+## 253. Реализация UI Layer
+
+**Главный вопрос**
+
+> Как реализовать UI-сценарии через fixtures, Page Objects и components?
+
+Темы:
+
+* Stable locators
+* Page Objects
+* Component Objects
+* Authentication state
+* UI fixtures
+* Web-first assertions
+
+---
+
+## 254. Реализация REST API Layer
+
+**Главный вопрос**
+
+> Как реализовать API setup, business scenarios и cleanup через `APIRequestContext`?
 
 Темы:
 
 * API Client
-* Validation
-* Builders
+* Authentication
+* Request Builders
+* Runtime contract validation
+* Negative scenarios
+* Data setup и cleanup
 
 ---
 
-## 172. Реализация gRPC Layer
+## 255. Реализация gRPC Layer
+
+**Главный вопрос**
+
+> Как подключить generated gRPC client и реализовать unary scenarios?
 
 Темы:
 
-* Clients
-* Validation
+* Generated client
+* Unary calls
 * Metadata
+* Deadlines
+* Status errors
+* Response checks
 
 ---
 
-## 173. Реализация Database Layer
+## 256. Реализация Database Layer
+
+**Главный вопрос**
+
+> Как реализовать безопасный доступ к PostgreSQL для setup, cleanup и verification?
 
 Темы:
 
-* Repository
-* Verification
-* SQL
+* Connection pool
+* Parameterized queries
+* Database Access Layer
+* Transactions where applicable
+* Cleanup
+* Cross-layer verification
 
 ---
 
-## 174. Общая инфраструктура
+## 257. Cross-layer scenarios и data lifecycle
+
+**Главный вопрос**
+
+> Как объединить слои в сценариях с единым владельцем данных и гарантированным cleanup?
 
 Темы:
 
-* Helpers
-* Config
-* Environment
-* Logging
+* API setup и UI verification
+* UI action и database verification
+* gRPC и database comparison
+* Canonical data model
+* Unique data
+* Failure-safe cleanup
 
 ---
 
-## 175. Reporting
+## 258. Диагностика, parallel execution и CI
+
+**Главный вопрос**
+
+> Как обеспечить полезную диагностику и воспроизводимый масштабируемый запуск проекта?
 
 Темы:
 
 * Allure
+* Structured logs
 * Attachments
-* Screenshots
-* Videos
-
----
-
-## 176. CI/CD
-
-**Главный вопрос**
-
-> Как автоматически запускать тесты?
-
-Темы:
-
 * GitHub Actions
-* Pipelines
-* Artifacts
+* Parallel workers
+* Sharding (optional)
+* CI artifacts
 
 ---
 
-## 177. Финальный рефакторинг
+## 259. Финальный аудит и подготовка к эксплуатации
 
 **Главный вопрос**
 
-> Как подготовить Framework к промышленной эксплуатации?
-
----
-
-## 178. Best Practices
-
-**Главный вопрос**
-
-> Какие инженерные правила позволяют поддерживать Framework годами?
-
----
-
-## 179. Заключение
+> Соответствует ли реализованный framework требованиям и готов ли он к поддержке командой?
 
 Темы:
 
+* Definition of Done audit
+* Architecture review
+* Stability review
+* Security и secrets review
+* CI verification
+* Final refactoring
 * Что изучено
 * Следующие шаги
-* План дальнейшего развития
+* План контролируемого развития
 
 ---
 
@@ -2519,11 +5371,11 @@ FROZEN
 | ---------------- | ---: |
 | Введение         |    4 |
 | JavaScript       |   96 |
-| TypeScript       |   38 |
-| Automation QA    |   33 |
-| Финальный проект |   12 |
+| TypeScript       |   63 |
+| Automation QA    |   90 |
+| Финальный проект |   10 |
 
-**Всего глав: 179**
+**Всего глав: 263**
 
 ---
 
@@ -2602,7 +5454,7 @@ FROZEN
 # Статус документа
 
 ```text
-ROADMAP Version 5.0
+ROADMAP Version 6.0
 
 STATUS
 
