@@ -1,6 +1,6 @@
 # Course Change Policy
 
-> Version: 2.0
+> Version: 2.1
 > Status: Active
 > Content-status authority: This document
 
@@ -51,16 +51,62 @@ Only the following workflow statuses are used for module content:
 - `DRAFT`: creation or review is incomplete;
 - `TECHNICALLY READY`: technical review passed, but final editorial review or audit remains;
 - `READY TO FREEZE`: required reviews passed, but the final freeze audit or registry update remains;
+- `REVIEWED BASELINE`: a completed milestone inside a larger roadmap module has passed the required technical and final quality reviews but is not content-frozen;
 - `CONTENT FROZEN`: the final audit passed and the authoritative registry records the freeze;
 - `REOPENED`: previously frozen content is undergoing an approved semantic change or full re-review.
 
-Intermediate statuses may appear in review reports. Only `CONTENT FROZEN` and `REOPENED` are recorded in the authoritative registry.
+Intermediate statuses may appear in review reports. `REVIEWED BASELINE` may also appear in the subordinate Reviewed Baseline Log defined below. Only `CONTENT FROZEN` and `REOPENED` are recorded in the authoritative Content Freeze Registry.
+
+---
+
+## Freeze Granularity and Reviewed Baselines
+
+### Module-level Content Freeze
+
+New `CONTENT FROZEN` records must use the complete module boundary defined by `.meta/ROADMAP.md`. A module that contains one chapter may therefore use a single-chapter range, but an individual chapter inside a multi-chapter roadmap module cannot receive a separate `CONTENT FROZEN` record.
+
+The Content Freeze Registry is non-overlapping:
+
+- ranges cannot overlap or be nested;
+- partial-module rows cannot later be merged into or replaced by an aggregate module row;
+- existing rows cannot be deleted or replaced to change their range;
+- a new module row is appended only after the complete roadmap module passes its final freeze audit;
+- reopening and refreezing update the status and freeze basis of the existing row for the same exact range;
+- duplicate rows for the same range are prohibited.
+
+Existing registry rows remain authoritative and are not retroactively reinterpreted by this clarification.
+
+### REVIEWED BASELINE
+
+`REVIEWED BASELINE` is a reviewed-but-unfrozen milestone state for completed chapters or contiguous completed milestones inside a larger roadmap module. It is subordinate review evidence, not a content-freeze status, and does not create a second content-status authority.
+
+A baseline may be recorded only in the Reviewed Baseline Log in this policy after the relevant technical and final quality reviews pass with no blocker or unresolved major finding. Baseline ranges may overlap the eventual complete module range because they do not appear in the Content Freeze Registry and do not assert `CONTENT FROZEN`.
+
+For a `REVIEWED BASELINE`:
+
+- `REOPENED` does not apply because the content is not `CONTENT FROZEN`;
+- a technical or conceptual change, practice or solution logic change, or semantic diagram change invalidates the affected review evidence and requires the relevant technical and final quality reviews again;
+- an editorial-only change requires the affected final quality review again;
+- an obvious typo, punctuation, formatting or link-only correction requires a lightweight review and directly affected validation;
+- corrections required by later integration are allowed within the frozen roadmap and specification boundaries, but the affected baseline reviews must be repeated before the baseline can again be relied upon;
+- normal development of later chapters does not invalidate an unchanged baseline;
+- the final module freeze incorporates all baseline evidence but still requires complete full-range reviews and validations.
+
+Baseline log entries are append-only historical evidence. Each entry attests only the artifact state identified by its review basis at the time of the audit. A later semantic change makes that entry inapplicable to the current artifact state until a successful affected review appends new baseline evidence. Entries are not removed, replaced or marked `REOPENED`. When the complete module later becomes `CONTENT FROZEN`, its authoritative registry row supersedes baseline records for content-status decisions while the baseline entries remain as review history.
+
+#### Reviewed Baseline Log
+
+| Chapter range | Roadmap module | Status | Review basis |
+| --- | --- | --- | --- |
+| 250 | Финальный промышленный проект — Требования и критерии готовности проекта | REVIEWED BASELINE | Technical review: 9.7/10, TECHNICALLY READY; final quality review: 9.9/10, READY FOR CHAPTER FREEZE; governance baseline audit passed. |
+
+No baseline is created automatically by a review report. Adding a baseline log entry requires a separate baseline audit that confirms the range, review evidence and unchanged roadmap/specification boundaries.
 
 ---
 
 ## Content Freeze Eligibility
 
-A roadmap module or an explicitly approved contiguous chapter range may become `CONTENT FROZEN` only when all of the following conditions pass:
+A complete roadmap module may become `CONTENT FROZEN` only when all of the following conditions pass:
 
 1. Module creation is complete and its boundary matches `.meta/ROADMAP.md`.
 2. All required theory files exist.
@@ -113,6 +159,8 @@ This table is the authoritative, persistent content-freeze record. One row repre
 | 216-224 | Конфигурация, тестовые данные и общая инфраструктура | CONTENT FROZEN | Technical review, final quality review, final freeze audit and required validations passed. | This policy applies. |
 | 225-231 | Диагностика и отчётность | CONTENT FROZEN | Technical review, final quality review, final freeze audit and required validations passed. | This policy applies. |
 | 232-238 | Стабильность и масштабирование выполнения | CONTENT FROZEN | Technical review, final quality review, final freeze audit and required validations passed. | This policy applies. |
+| 239-244 | CI и эксплуатация проекта | CONTENT FROZEN | Technical review, final quality review, validator technical re-review, final freeze audit and required validations passed. | This policy applies. |
+| 245-249 | Интеграция Automation Framework | CONTENT FROZEN | Technical review, final quality review, final freeze audit and required validations passed. | This policy applies. |
 
 ### Legacy Protected Content Without a Registry Freeze
 
@@ -142,6 +190,18 @@ The final freeze audit must:
 No marker file, checksum, release tag or one-file-per-module manifest is required.
 
 The freeze is auditable by reading this policy, checking the registry row, reviewing its Git history and rerunning the validations named in the freeze basis or final audit.
+
+For a multi-chapter module developed incrementally, the final freeze audit additionally requires:
+
+1. every chapter in the roadmap module to be complete;
+2. all milestone reviews to be complete or superseded by full-range review evidence;
+3. a full-range technical review and final quality review;
+4. the final execution audit and all required frozen regressions;
+5. final repository and course-consistency checks;
+6. completion of any final scoring or readiness chapter assigned by the roadmap;
+7. exactly one non-overlapping Content Freeze Registry row for the complete module boundary.
+
+Reviewed baselines do not reduce these final module requirements.
 
 ---
 
@@ -176,6 +236,8 @@ The module must be set to `REOPENED` in the registry before any of the following
 - any other change that affects learning outcomes or validation behavior.
 
 The approved change must receive the relevant technical, editorial, practice, solution and validation reviews. The module returns to `CONTENT FROZEN` only through the complete refreeze procedure.
+
+`REOPENED` applies only to content already recorded as `CONTENT FROZEN`. Reviewed but unfrozen content follows the `REVIEWED BASELINE` change rules and does not require a registry status change.
 
 ### Architecture Review
 

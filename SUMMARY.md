@@ -371,8 +371,18 @@
 * [Артефакты и отчёты в CI](docs/03-automation-qa/243-artifacts-and-reports-in-ci.md)
 * [CI jobs, sharding и диагностика запусков](docs/03-automation-qa/244-ci-jobs-sharding-and-run-diagnostics.md)
 
+## Раздел 11. Интеграция Automation Framework
+
+* [Интеграция слоёв и dependency flow](docs/03-automation-qa/245-layer-integration-and-dependency-flow.md)
+* [Composition fixtures и configuration flow](docs/03-automation-qa/246-composition-fixtures-and-configuration-flow.md)
+* [Жизненный цикл данных в сценариях между слоями](docs/03-automation-qa/247-cross-layer-data-lifecycle.md)
+* [Диагностика, стабильность и CI в общей архитектуре](docs/03-automation-qa/248-diagnostics-stability-and-ci-in-architecture.md)
+* [Architecture review и эволюция Framework](docs/03-automation-qa/249-architecture-review-and-framework-evolution.md)
+
 ---
 
 # Часть IV. Финальный проект
 
-> Будет добавлена после завершения раздела Automation QA.
+## Раздел 1. Финальный промышленный проект
+
+* [Требования и критерии готовности проекта](docs/04-final-project/250-project-requirements-and-readiness-criteria.md)

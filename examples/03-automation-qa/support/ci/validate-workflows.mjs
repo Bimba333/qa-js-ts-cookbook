@@ -1,17 +1,55 @@
 import assert from "node:assert/strict";
 import { execFileSync } from "node:child_process";
-import { readdir, readFile } from "node:fs/promises";
-import { dirname, relative, resolve, sep } from "node:path";
+import { readdir, readFile, realpath } from "node:fs/promises";
+import { dirname, isAbsolute, relative, resolve, sep } from "node:path";
 import { fileURLToPath } from "node:url";
 
+const scriptDirectory = dirname(fileURLToPath(import.meta.url));
+const repositoryRoot = resolve(scriptDirectory, "../../../..");
+const activeWorkflowDirectory = resolve(repositoryRoot, ".github/workflows");
 const moduleDirectory = process.argv[2]
   ? resolve(process.argv[2])
-  : resolve(dirname(fileURLToPath(import.meta.url)), "../..");
+  : resolve(scriptDirectory, "../..");
 
-assert(
-  !`${moduleDirectory}${sep}`.includes(`${sep}.github${sep}workflows${sep}`),
-  "educational workflow fixtures must not be validated from an active .github/workflows path",
-);
+function normalizePlatformPath(filename) {
+  return filename.replaceAll("\\", sep);
+}
+
+export function hasActiveWorkflowSegments(filename) {
+  const segments = normalizePlatformPath(filename).split(sep).filter(Boolean);
+  return segments.some((segment, index) => (
+    segment.toLowerCase() === ".github"
+    && segments[index + 1]?.toLowerCase() === "workflows"
+  ));
+}
+
+function isInsideDirectory(filename, directory) {
+  const pathFromDirectory = relative(directory, filename);
+  return pathFromDirectory === ""
+    || (!isAbsolute(pathFromDirectory) && pathFromDirectory !== ".." && !pathFromDirectory.startsWith(`..${sep}`));
+}
+
+export async function assertInactiveWorkflowPath(filename) {
+  const resolvedPath = resolve(normalizePlatformPath(filename));
+  let realPath = resolvedPath;
+
+  try {
+    realPath = await realpath(resolvedPath);
+  } catch (error) {
+    if (error?.code !== "ENOENT") throw error;
+  }
+
+  const activePath = [resolvedPath, realPath].find((candidate) => (
+    hasActiveWorkflowSegments(candidate) || isInsideDirectory(candidate, activeWorkflowDirectory)
+  ));
+
+  assert(
+    !activePath,
+    `educational workflow fixture path is active: ${activePath ?? resolvedPath}`,
+  );
+}
+
+await assertInactiveWorkflowPath(moduleDirectory);
 
 const expectedFixtures = new Map([
   ["chapter-240/01-playwright-pipeline.workflow.yml", {
@@ -128,9 +166,12 @@ async function discoverFixtures() {
   const discovered = [];
   for (let chapter = 240; chapter <= 244; chapter += 1) {
     const directory = resolve(moduleDirectory, `chapter-${chapter}`);
+    await assertInactiveWorkflowPath(directory);
     for (const entry of await readdir(directory, { withFileTypes: true })) {
-      if (entry.isFile() && entry.name.endsWith(".workflow.yml")) {
-        discovered.push(relative(moduleDirectory, resolve(directory, entry.name)));
+      if ((entry.isFile() || entry.isSymbolicLink()) && entry.name.endsWith(".workflow.yml")) {
+        const filename = resolve(directory, entry.name);
+        await assertInactiveWorkflowPath(filename);
+        discovered.push(relative(moduleDirectory, filename));
       }
     }
   }
@@ -142,6 +183,7 @@ assert.deepEqual(discoveredFixtures, [...expectedFixtures.keys()].sort(), "unexp
 
 for (const [fixture, expected] of expectedFixtures) {
   const filename = resolve(moduleDirectory, fixture);
+  await assertInactiveWorkflowPath(filename);
   const source = await readFile(filename, "utf8");
   const workflow = parseYaml(filename);
 
