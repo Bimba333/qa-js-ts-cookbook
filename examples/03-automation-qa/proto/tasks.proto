@@ -1,0 +1,54 @@
+syntax = "proto3";
+
+package qa.tasks.v1;
+
+service TaskService {
+  rpc CreateTask(CreateTaskRequest) returns (Task);
+  rpc CreateAuthorizedTask(CreateTaskRequest) returns (Task);
+  rpc GetTask(GetTaskRequest) returns (Task);
+  rpc ListTasks(ListTasksRequest) returns (ListTasksResponse);
+  rpc SlowTask(SlowTaskRequest) returns (Task);
+}
+
+enum TaskPriority {
+  TASK_PRIORITY_UNSPECIFIED = 0;
+  TASK_PRIORITY_LOW = 1;
+  TASK_PRIORITY_HIGH = 2;
+}
+
+message Owner {
+  string id = 1;
+  string name = 2;
+}
+
+message Task {
+  string id = 1;
+  string title = 2;
+  bool completed = 3;
+  repeated string labels = 4;
+  TaskPriority priority = 5;
+  optional string description = 6;
+  Owner owner = 7;
+}
+
+message CreateTaskRequest {
+  string title = 1;
+  repeated string labels = 2;
+  TaskPriority priority = 3;
+  optional string description = 4;
+  Owner owner = 5;
+}
+
+message GetTaskRequest {
+  string id = 1;
+}
+
+message ListTasksRequest {}
+
+message ListTasksResponse {
+  repeated Task tasks = 1;
+}
+
+message SlowTaskRequest {
+  int32 delay_ms = 1;
+}

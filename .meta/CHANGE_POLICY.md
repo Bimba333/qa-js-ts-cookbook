@@ -107,6 +107,12 @@ This table is the authoritative, persistent content-freeze record. One row repre
 | 1-96 | JavaScript | CONTENT FROZEN | Legacy repository record: the previous policy declared this range `FROZEN`, and repository tag `v1.0-javascript` preserves the completed volume. A detailed historical review record is not stored in metadata. | This policy applies. |
 | 166-175 | Playwright Test и основы UI-автоматизации | CONTENT FROZEN | Technical review, final quality review, final freeze audit and required validations passed. | This policy applies. |
 | 176-185 | Fixtures и архитектура UI-слоя | CONTENT FROZEN | Technical review, final quality review, final freeze audit and required validations passed. | This policy applies. |
+| 186-196 | Тестирование REST API | CONTENT FROZEN | Technical review, final quality review, final freeze audit and required validations passed. | This policy applies. |
+| 197-206 | Тестирование gRPC | CONTENT FROZEN | Technical review, final quality review, final freeze audit and required validations passed. | This policy applies. |
+| 207-215 | Тестирование PostgreSQL | CONTENT FROZEN | Technical review, final quality review, final freeze audit and required validations passed. | This policy applies. |
+| 216-224 | Конфигурация, тестовые данные и общая инфраструктура | CONTENT FROZEN | Technical review, final quality review, final freeze audit and required validations passed. | This policy applies. |
+| 225-231 | Диагностика и отчётность | CONTENT FROZEN | Technical review, final quality review, final freeze audit and required validations passed. | This policy applies. |
+| 232-238 | Стабильность и масштабирование выполнения | CONTENT FROZEN | Technical review, final quality review, final freeze audit and required validations passed. | This policy applies. |
 
 ### Legacy Protected Content Without a Registry Freeze
 

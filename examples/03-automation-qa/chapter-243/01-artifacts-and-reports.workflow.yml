@@ -1,0 +1,34 @@
+name: Educational diagnostic artifacts
+
+"on":
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  diagnostics:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+      - name: Setup Node.js
+        uses: actions/setup-node@v6
+        with:
+          node-version: 22
+          cache: npm
+      - name: Install dependencies
+        run: npm ci
+      - name: Install Chromium and system dependencies
+        run: npx playwright install --with-deps chromium
+      - name: Run diagnostics suite
+        run: npx playwright test --config=examples/03-automation-qa/playwright.diagnostics.config.ts
+      - name: Upload bounded diagnostic output
+        if: always()
+        uses: actions/upload-artifact@v6
+        with:
+          name: diagnostics-${{ github.run_id }}
+          path: test-results/diagnostics
+          if-no-files-found: error
+          retention-days: 7

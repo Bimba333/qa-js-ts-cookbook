@@ -1,0 +1,24 @@
+{
+  "compilerOptions": {
+    "lib": ["ESNext", "DOM"],
+    "module": "NodeNext",
+    "moduleResolution": "NodeNext",
+    "noEmit": true,
+    "strict": true,
+    "target": "ESNext",
+    "types": ["node", "@playwright/test"]
+  },
+  "include": [
+    "./playwright.stability.config.ts",
+    "./playwright.stability-controlled.config.ts",
+    "./support/stability/**/*.ts",
+    "./chapter-232/**/*.ts",
+    "./chapter-233/**/*.ts",
+    "./chapter-234/**/*.ts",
+    "./chapter-235/**/*.ts",
+    "./chapter-236/**/*.ts",
+    "./chapter-237/**/*.ts",
+    "./chapter-238/**/*.ts",
+    "./controlled-instability/**/*.ts"
+  ]
+}

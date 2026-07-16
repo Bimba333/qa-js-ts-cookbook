@@ -1,0 +1,24 @@
+{
+  "compilerOptions": {
+    "lib": ["ESNext", "DOM"],
+    "module": "NodeNext",
+    "moduleResolution": "NodeNext",
+    "noEmit": true,
+    "strict": true,
+    "target": "ESNext",
+    "types": ["node", "@playwright/test"]
+  },
+  "include": [
+    "./playwright.diagnostics.config.ts",
+    "./playwright.diagnostics-failure.config.ts",
+    "./support/diagnostics/**/*.ts",
+    "./chapter-225/**/*.ts",
+    "./chapter-226/**/*.ts",
+    "./chapter-227/**/*.ts",
+    "./chapter-228/**/*.ts",
+    "./chapter-229/**/*.ts",
+    "./chapter-230/**/*.ts",
+    "./chapter-231/**/*.ts",
+    "./controlled-failures/**/*.ts"
+  ]
+}

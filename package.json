@@ -14,13 +14,20 @@
     "docs:ts:check": "npx tsc --version",
     "docs:ts:examples": "node scripts/validate-typescript-examples.mjs",
     "docs:ts:smoke": "npm run docs:ts:check && npm run docs:ts:examples",
+    "grpc:generate": "proto-loader-gen-types --grpcLib=@grpc/grpc-js --outDir=examples/03-automation-qa/generated/grpc --includeDirs=examples/03-automation-qa/proto --enums=String --defaults --arrays --objects --oneofs --importFileExtension=.js tasks.proto",
+    "postgresql:test": "node scripts/run-postgresql-examples.mjs",
     "test:playwright": "playwright test",
     "test:playwright:list": "playwright test --list"
   },
   "devDependencies": {
+    "@grpc/grpc-js": "1.14.4",
+    "@grpc/proto-loader": "0.8.1",
     "@playwright/test": "1.61.1",
     "@types/node": "20.19.43",
+    "@types/pg": "8.20.0",
+    "allure-playwright": "3.10.2",
     "mermaid": "^11.16.0",
+    "pg": "8.22.0",
     "typescript": "^7.0.2",
     "vitepress": "^1.6.4"
   }

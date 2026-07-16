@@ -305,6 +305,72 @@
 * [Проверка контрактов во время выполнения](docs/03-automation-qa/195-runtime-contract-validation.md)
 * [Совместные UI и API-сценарии](docs/03-automation-qa/196-combined-ui-and-api-scenarios.md)
 
+## Раздел 5. Тестирование gRPC
+
+* [gRPC и REST в тестовой архитектуре](docs/03-automation-qa/197-grpc-and-rest-in-test-architecture.md)
+* [Protocol Buffers: сервисы и сообщения](docs/03-automation-qa/198-protocol-buffers-services-and-messages.md)
+* [Сгенерированный код и создание gRPC Client](docs/03-automation-qa/199-generated-code-and-grpc-client.md)
+* [Unary gRPC-вызовы](docs/03-automation-qa/200-unary-grpc-calls.md)
+* [Поля protobuf-сообщений](docs/03-automation-qa/201-protobuf-message-fields.md)
+* [Metadata и аутентификация gRPC](docs/03-automation-qa/202-grpc-metadata-and-authentication.md)
+* [Deadlines и timeouts gRPC](docs/03-automation-qa/203-grpc-deadlines-and-timeouts.md)
+* [Статусы gRPC и обработка ошибок](docs/03-automation-qa/204-grpc-statuses-and-error-handling.md)
+* [Проверка gRPC-ответов и негативных сценариев](docs/03-automation-qa/205-grpc-response-and-negative-scenario-validation.md)
+* [gRPC Client в Automation Framework](docs/03-automation-qa/206-grpc-client-in-automation-framework.md)
+
+## Раздел 6. Тестирование PostgreSQL
+
+* [PostgreSQL в Automation QA](docs/03-automation-qa/207-postgresql-in-automation-qa.md)
+* [Connections, pools и lifecycle](docs/03-automation-qa/208-connections-pools-and-lifecycle.md)
+* [Parameterized queries](docs/03-automation-qa/209-parameterized-queries.md)
+* [Database Access Layer](docs/03-automation-qa/210-database-access-layer.md)
+* [Подготовка и очистка данных в database](docs/03-automation-qa/211-database-data-setup-and-cleanup.md)
+* [Transactions, rollback и test isolation](docs/03-automation-qa/212-transactions-rollback-and-test-isolation.md)
+* [Eventual consistency и polling](docs/03-automation-qa/213-eventual-consistency-and-polling.md)
+* [Сверка данных PostgreSQL с API и gRPC](docs/03-automation-qa/214-postgresql-api-grpc-data-comparison.md)
+* [Конфликты данных и параллельные тесты](docs/03-automation-qa/215-data-conflicts-and-parallel-tests.md)
+
+## Раздел 7. Конфигурация, тестовые данные и общая инфраструктура
+
+* [Конфигурация Playwright и execution projects](docs/03-automation-qa/216-playwright-configuration-and-execution-projects.md)
+* [Окружения, переменные и secrets](docs/03-automation-qa/217-environments-variables-and-secrets.md)
+* [Загрузка и runtime validation конфигурации](docs/03-automation-qa/218-configuration-loading-and-runtime-validation.md)
+* [Организация test data](docs/03-automation-qa/219-test-data-organization.md)
+* [Builders, factories и уникальные данные](docs/03-automation-qa/220-builders-factories-and-unique-data.md)
+* [Жизненный цикл тестовых данных](docs/03-automation-qa/221-test-data-lifecycle.md)
+* [Helpers и границы повторного использования](docs/03-automation-qa/222-helpers-and-reuse-boundaries.md)
+* [Пользовательские проверки и soft assertions](docs/03-automation-qa/223-custom-assertions-and-soft-assertions.md)
+* [Нормализация и проверки между слоями](docs/03-automation-qa/224-cross-layer-normalization-and-validation.md)
+
+## Раздел 8. Диагностика и отчётность
+
+* [Расследование падения автотеста](docs/03-automation-qa/225-failure-investigation.md)
+* [Структурированное логирование](docs/03-automation-qa/226-structured-logging.md)
+* [Screenshots, videos и Playwright Trace](docs/03-automation-qa/227-screenshots-videos-and-playwright-trace.md)
+* [Attachments и lifecycle артефактов](docs/03-automation-qa/228-attachments-and-artifact-lifecycle.md)
+* [Принципы тестовой отчётности](docs/03-automation-qa/229-test-reporting-principles.md)
+* [Отчётность в Allure](docs/03-automation-qa/230-allure-reporting.md)
+* [Диагностический поток Framework](docs/03-automation-qa/231-framework-diagnostic-flow.md)
+
+## Раздел 9. Стабильность и масштабирование выполнения
+
+* [Причины flaky tests](docs/03-automation-qa/232-causes-of-flaky-tests.md)
+* [Расследование и quarantine flaky tests](docs/03-automation-qa/233-investigation-and-quarantine-of-flaky-tests.md)
+* [Retry policy](docs/03-automation-qa/234-retry-policy.md)
+* [Workers и shared resources](docs/03-automation-qa/235-workers-and-shared-resources.md)
+* [Parallel execution](docs/03-automation-qa/236-parallel-execution.md)
+* [Sharding](docs/03-automation-qa/237-sharding.md)
+* [Tags, annotations и test selection](docs/03-automation-qa/238-tags-annotations-and-test-selection.md)
+
+## Раздел 10. CI и эксплуатация проекта
+
+* [CI fundamentals для Automation QA](docs/03-automation-qa/239-ci-fundamentals-for-automation-qa.md)
+* [GitHub Actions pipeline](docs/03-automation-qa/240-github-actions-pipeline.md)
+* [Browsers и системные зависимости в CI](docs/03-automation-qa/241-browsers-and-system-dependencies-in-ci.md)
+* [Environments и secrets в CI](docs/03-automation-qa/242-environments-and-secrets-in-ci.md)
+* [Артефакты и отчёты в CI](docs/03-automation-qa/243-artifacts-and-reports-in-ci.md)
+* [CI jobs, sharding и диагностика запусков](docs/03-automation-qa/244-ci-jobs-sharding-and-run-diagnostics.md)
+
 ---
 
 # Часть IV. Финальный проект

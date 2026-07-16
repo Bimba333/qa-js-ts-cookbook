@@ -1,0 +1,24 @@
+{
+  "compilerOptions": {
+    "lib": ["ESNext", "DOM"],
+    "module": "NodeNext",
+    "moduleResolution": "NodeNext",
+    "noEmit": true,
+    "strict": true,
+    "target": "ESNext",
+    "types": ["node", "@playwright/test"]
+  },
+  "include": [
+    "./playwright.execution.config.ts",
+    "./support/execution/**/*.ts",
+    "./chapter-216/**/*.ts",
+    "./chapter-217/**/*.ts",
+    "./chapter-218/**/*.ts",
+    "./chapter-219/**/*.ts",
+    "./chapter-220/**/*.ts",
+    "./chapter-221/**/*.ts",
+    "./chapter-222/**/*.ts",
+    "./chapter-223/**/*.ts",
+    "./chapter-224/**/*.ts"
+  ]
+}
