@@ -114,6 +114,7 @@
   .VPNavBar.has-sidebar .container {
     display: flex;
     align-items: center;
+    padding-left: 24px;
   }
 
   .VPNavBar.has-sidebar .container > .title {
