@@ -3537,7 +3537,7 @@ export const bookEngineData = {
       "h2": 21,
       "h3": 68,
       "examples": 7,
-      "tasks": 44,
+      "tasks": 54,
       "solutions": 28,
       "mermaid": 0,
       "miniProjects": 0,
@@ -3580,7 +3580,7 @@ export const bookEngineData = {
         "title": "bind()",
         "reading": 8,
         "examples": 7,
-        "tasks": 44,
+        "tasks": 54,
         "solutions": 28,
         "mermaid": 0
       }
@@ -3599,7 +3599,7 @@ export const bookEngineData = {
       "h2": 21,
       "h3": 78,
       "examples": 7,
-      "tasks": 49,
+      "tasks": 59,
       "solutions": 33,
       "mermaid": 0,
       "miniProjects": 0,
@@ -3654,7 +3654,7 @@ export const bookEngineData = {
         "title": "Objects",
         "reading": 10,
         "examples": 7,
-        "tasks": 49,
+        "tasks": 59,
         "solutions": 33,
         "mermaid": 0
       }
@@ -3673,7 +3673,7 @@ export const bookEngineData = {
       "h2": 21,
       "h3": 70,
       "examples": 7,
-      "tasks": 44,
+      "tasks": 53,
       "solutions": 29,
       "mermaid": 0,
       "miniProjects": 0,
@@ -3710,7 +3710,7 @@ export const bookEngineData = {
         "title": "Destructuring",
         "reading": 8,
         "examples": 7,
-        "tasks": 44,
+        "tasks": 53,
         "solutions": 29,
         "mermaid": 0
       }
@@ -3729,7 +3729,7 @@ export const bookEngineData = {
       "h2": 21,
       "h3": 71,
       "examples": 7,
-      "tasks": 38,
+      "tasks": 46,
       "solutions": 24,
       "mermaid": 0,
       "miniProjects": 0,
@@ -3759,7 +3759,7 @@ export const bookEngineData = {
         "title": "Optional Chaining",
         "reading": 8,
         "examples": 7,
-        "tasks": 38,
+        "tasks": 46,
         "solutions": 24,
         "mermaid": 0
       }
@@ -3778,7 +3778,7 @@ export const bookEngineData = {
       "h2": 21,
       "h3": 73,
       "examples": 7,
-      "tasks": 44,
+      "tasks": 52,
       "solutions": 29,
       "mermaid": 0,
       "miniProjects": 0,
@@ -3815,7 +3815,7 @@ export const bookEngineData = {
         "title": "Nullish Coalescing",
         "reading": 6,
         "examples": 7,
-        "tasks": 44,
+        "tasks": 52,
         "solutions": 29,
         "mermaid": 0
       }
@@ -3834,7 +3834,7 @@ export const bookEngineData = {
       "h2": 21,
       "h3": 71,
       "examples": 7,
-      "tasks": 34,
+      "tasks": 41,
       "solutions": 23,
       "mermaid": 0,
       "miniProjects": 0,
@@ -3877,7 +3877,7 @@ export const bookEngineData = {
         "title": "Object Methods",
         "reading": 8,
         "examples": 7,
-        "tasks": 34,
+        "tasks": 41,
         "solutions": 23,
         "mermaid": 0
       }
@@ -3896,7 +3896,7 @@ export const bookEngineData = {
       "h2": 21,
       "h3": 75,
       "examples": 7,
-      "tasks": 38,
+      "tasks": 45,
       "solutions": 23,
       "mermaid": 0,
       "miniProjects": 0,
@@ -3939,7 +3939,7 @@ export const bookEngineData = {
         "title": "Object Descriptors",
         "reading": 8,
         "examples": 7,
-        "tasks": 38,
+        "tasks": 45,
         "solutions": 23,
         "mermaid": 0
       }
@@ -3958,7 +3958,7 @@ export const bookEngineData = {
       "h2": 21,
       "h3": 65,
       "examples": 8,
-      "tasks": 34,
+      "tasks": 42,
       "solutions": 26,
       "mermaid": 10,
       "miniProjects": 0,
@@ -3995,7 +3995,7 @@ export const bookEngineData = {
         "title": "Prototype",
         "reading": 10,
         "examples": 8,
-        "tasks": 34,
+        "tasks": 42,
         "solutions": 26,
         "mermaid": 10
       }
@@ -4014,7 +4014,7 @@ export const bookEngineData = {
       "h2": 21,
       "h3": 68,
       "examples": 8,
-      "tasks": 32,
+      "tasks": 39,
       "solutions": 24,
       "mermaid": 17,
       "miniProjects": 0,
@@ -4057,7 +4057,7 @@ export const bookEngineData = {
         "title": "Prototype Chain",
         "reading": 9,
         "examples": 8,
-        "tasks": 32,
+        "tasks": 39,
         "solutions": 24,
         "mermaid": 17
       }
@@ -4076,7 +4076,7 @@ export const bookEngineData = {
       "h2": 21,
       "h3": 68,
       "examples": 8,
-      "tasks": 32,
+      "tasks": 38,
       "solutions": 22,
       "mermaid": 0,
       "miniProjects": 0,
@@ -4119,7 +4119,7 @@ export const bookEngineData = {
         "title": "Classes",
         "reading": 8,
         "examples": 8,
-        "tasks": 32,
+        "tasks": 38,
         "solutions": 22,
         "mermaid": 0
       }
@@ -4138,7 +4138,7 @@ export const bookEngineData = {
       "h2": 21,
       "h3": 66,
       "examples": 8,
-      "tasks": 34,
+      "tasks": 40,
       "solutions": 22,
       "mermaid": 0,
       "miniProjects": 0,
@@ -4181,7 +4181,7 @@ export const bookEngineData = {
         "title": "Class Inheritance",
         "reading": 8,
         "examples": 8,
-        "tasks": 34,
+        "tasks": 40,
         "solutions": 22,
         "mermaid": 0
       }
@@ -4200,7 +4200,7 @@ export const bookEngineData = {
       "h2": 21,
       "h3": 64,
       "examples": 8,
-      "tasks": 34,
+      "tasks": 40,
       "solutions": 21,
       "mermaid": 0,
       "miniProjects": 0,
@@ -4243,7 +4243,7 @@ export const bookEngineData = {
         "title": "super",
         "reading": 8,
         "examples": 8,
-        "tasks": 34,
+        "tasks": 40,
         "solutions": 21,
         "mermaid": 0
       }
@@ -4262,7 +4262,7 @@ export const bookEngineData = {
       "h2": 21,
       "h3": 72,
       "examples": 8,
-      "tasks": 30,
+      "tasks": 36,
       "solutions": 22,
       "mermaid": 0,
       "miniProjects": 0,
@@ -4299,7 +4299,7 @@ export const bookEngineData = {
         "title": "Arrays",
         "reading": 7,
         "examples": 8,
-        "tasks": 30,
+        "tasks": 36,
         "solutions": 22,
         "mermaid": 0
       }
@@ -4318,7 +4318,7 @@ export const bookEngineData = {
       "h2": 21,
       "h3": 67,
       "examples": 8,
-      "tasks": 30,
+      "tasks": 36,
       "solutions": 22,
       "mermaid": 0,
       "miniProjects": 0,
@@ -4355,7 +4355,7 @@ export const bookEngineData = {
         "title": "push() and pop()",
         "reading": 7,
         "examples": 8,
-        "tasks": 30,
+        "tasks": 36,
         "solutions": 22,
         "mermaid": 0
       }
@@ -4374,7 +4374,7 @@ export const bookEngineData = {
       "h2": 21,
       "h3": 70,
       "examples": 8,
-      "tasks": 30,
+      "tasks": 42,
       "solutions": 19,
       "mermaid": 3,
       "miniProjects": 0,
@@ -4404,7 +4404,7 @@ export const bookEngineData = {
         "title": "shift() and unshift()",
         "reading": 8,
         "examples": 8,
-        "tasks": 30,
+        "tasks": 42,
         "solutions": 19,
         "mermaid": 3
       }
@@ -13017,7 +13017,7 @@ export const bookEngineData = {
       "h2": 14,
       "h3": 0,
       "examples": 1,
-      "tasks": 0,
+      "tasks": 6,
       "solutions": 24,
       "mermaid": 1,
       "miniProjects": 0,
@@ -13047,7 +13047,7 @@ export const bookEngineData = {
         "title": "PostgreSQL в Automation QA",
         "reading": 3,
         "examples": 1,
-        "tasks": 0,
+        "tasks": 6,
         "solutions": 24,
         "mermaid": 1
       }
@@ -13066,7 +13066,7 @@ export const bookEngineData = {
       "h2": 14,
       "h3": 0,
       "examples": 1,
-      "tasks": 0,
+      "tasks": 6,
       "solutions": 24,
       "mermaid": 1,
       "miniProjects": 0,
@@ -13096,7 +13096,7 @@ export const bookEngineData = {
         "title": "Connections, pools и lifecycle",
         "reading": 3,
         "examples": 1,
-        "tasks": 0,
+        "tasks": 6,
         "solutions": 24,
         "mermaid": 1
       }
@@ -13115,7 +13115,7 @@ export const bookEngineData = {
       "h2": 14,
       "h3": 0,
       "examples": 1,
-      "tasks": 0,
+      "tasks": 6,
       "solutions": 24,
       "mermaid": 0,
       "miniProjects": 0,
@@ -13145,7 +13145,7 @@ export const bookEngineData = {
         "title": "Parameterized queries",
         "reading": 3,
         "examples": 1,
-        "tasks": 0,
+        "tasks": 6,
         "solutions": 24,
         "mermaid": 0
       }
@@ -13164,7 +13164,7 @@ export const bookEngineData = {
       "h2": 14,
       "h3": 0,
       "examples": 1,
-      "tasks": 0,
+      "tasks": 6,
       "solutions": 24,
       "mermaid": 0,
       "miniProjects": 0,
@@ -13194,7 +13194,7 @@ export const bookEngineData = {
         "title": "Database Access Layer",
         "reading": 3,
         "examples": 1,
-        "tasks": 0,
+        "tasks": 6,
         "solutions": 24,
         "mermaid": 0
       }
@@ -13213,7 +13213,7 @@ export const bookEngineData = {
       "h2": 14,
       "h3": 0,
       "examples": 1,
-      "tasks": 0,
+      "tasks": 6,
       "solutions": 24,
       "mermaid": 1,
       "miniProjects": 0,
@@ -13243,7 +13243,7 @@ export const bookEngineData = {
         "title": "Подготовка и очистка данных в database",
         "reading": 2,
         "examples": 1,
-        "tasks": 0,
+        "tasks": 6,
         "solutions": 24,
         "mermaid": 1
       }
@@ -13262,7 +13262,7 @@ export const bookEngineData = {
       "h2": 14,
       "h3": 0,
       "examples": 1,
-      "tasks": 0,
+      "tasks": 6,
       "solutions": 24,
       "mermaid": 1,
       "miniProjects": 0,
@@ -13292,7 +13292,7 @@ export const bookEngineData = {
         "title": "Transactions, rollback и test isolation",
         "reading": 3,
         "examples": 1,
-        "tasks": 0,
+        "tasks": 6,
         "solutions": 24,
         "mermaid": 1
       }
@@ -13311,7 +13311,7 @@ export const bookEngineData = {
       "h2": 14,
       "h3": 0,
       "examples": 1,
-      "tasks": 0,
+      "tasks": 6,
       "solutions": 24,
       "mermaid": 1,
       "miniProjects": 0,
@@ -13348,7 +13348,7 @@ export const bookEngineData = {
         "title": "Eventual consistency и polling",
         "reading": 3,
         "examples": 1,
-        "tasks": 0,
+        "tasks": 6,
         "solutions": 24,
         "mermaid": 1
       }
@@ -13367,7 +13367,7 @@ export const bookEngineData = {
       "h2": 14,
       "h3": 0,
       "examples": 1,
-      "tasks": 0,
+      "tasks": 6,
       "solutions": 24,
       "mermaid": 1,
       "miniProjects": 0,
@@ -13404,7 +13404,7 @@ export const bookEngineData = {
         "title": "Сверка данных PostgreSQL с API и gRPC",
         "reading": 3,
         "examples": 1,
-        "tasks": 0,
+        "tasks": 6,
         "solutions": 24,
         "mermaid": 1
       }
@@ -13423,7 +13423,7 @@ export const bookEngineData = {
       "h2": 14,
       "h3": 0,
       "examples": 1,
-      "tasks": 0,
+      "tasks": 6,
       "solutions": 24,
       "mermaid": 1,
       "miniProjects": 0,
@@ -13453,7 +13453,7 @@ export const bookEngineData = {
         "title": "Конфликты данных и параллельные тесты",
         "reading": 3,
         "examples": 1,
-        "tasks": 0,
+        "tasks": 6,
         "solutions": 24,
         "mermaid": 1
       }
@@ -13472,7 +13472,7 @@ export const bookEngineData = {
       "h2": 14,
       "h3": 0,
       "examples": 1,
-      "tasks": 0,
+      "tasks": 6,
       "solutions": 24,
       "mermaid": 1,
       "miniProjects": 0,
@@ -13502,7 +13502,7 @@ export const bookEngineData = {
         "title": "Конфигурация Playwright и execution projects",
         "reading": 3,
         "examples": 1,
-        "tasks": 0,
+        "tasks": 6,
         "solutions": 24,
         "mermaid": 1
       }
@@ -13521,7 +13521,7 @@ export const bookEngineData = {
       "h2": 14,
       "h3": 0,
       "examples": 1,
-      "tasks": 0,
+      "tasks": 6,
       "solutions": 24,
       "mermaid": 0,
       "miniProjects": 0,
@@ -13551,7 +13551,7 @@ export const bookEngineData = {
         "title": "Окружения, переменные и secrets",
         "reading": 3,
         "examples": 1,
-        "tasks": 0,
+        "tasks": 6,
         "solutions": 24,
         "mermaid": 0
       }
@@ -13570,7 +13570,7 @@ export const bookEngineData = {
       "h2": 14,
       "h3": 0,
       "examples": 1,
-      "tasks": 0,
+      "tasks": 6,
       "solutions": 24,
       "mermaid": 1,
       "miniProjects": 0,
@@ -13600,7 +13600,7 @@ export const bookEngineData = {
         "title": "Загрузка и runtime validation конфигурации",
         "reading": 3,
         "examples": 1,
-        "tasks": 0,
+        "tasks": 6,
         "solutions": 24,
         "mermaid": 1
       }
@@ -13619,7 +13619,7 @@ export const bookEngineData = {
       "h2": 14,
       "h3": 0,
       "examples": 1,
-      "tasks": 0,
+      "tasks": 6,
       "solutions": 24,
       "mermaid": 0,
       "miniProjects": 0,
@@ -13656,7 +13656,7 @@ export const bookEngineData = {
         "title": "Организация test data",
         "reading": 3,
         "examples": 1,
-        "tasks": 0,
+        "tasks": 6,
         "solutions": 24,
         "mermaid": 0
       }
@@ -13675,7 +13675,7 @@ export const bookEngineData = {
       "h2": 14,
       "h3": 0,
       "examples": 1,
-      "tasks": 0,
+      "tasks": 6,
       "solutions": 24,
       "mermaid": 0,
       "miniProjects": 0,
@@ -13712,7 +13712,7 @@ export const bookEngineData = {
         "title": "Builders, factories и уникальные данные",
         "reading": 3,
         "examples": 1,
-        "tasks": 0,
+        "tasks": 6,
         "solutions": 24,
         "mermaid": 0
       }
@@ -13731,7 +13731,7 @@ export const bookEngineData = {
       "h2": 14,
       "h3": 0,
       "examples": 1,
-      "tasks": 0,
+      "tasks": 6,
       "solutions": 24,
       "mermaid": 1,
       "miniProjects": 0,
@@ -13768,7 +13768,7 @@ export const bookEngineData = {
         "title": "Жизненный цикл тестовых данных",
         "reading": 3,
         "examples": 1,
-        "tasks": 0,
+        "tasks": 6,
         "solutions": 24,
         "mermaid": 1
       }
@@ -13787,7 +13787,7 @@ export const bookEngineData = {
       "h2": 14,
       "h3": 0,
       "examples": 1,
-      "tasks": 0,
+      "tasks": 6,
       "solutions": 24,
       "mermaid": 0,
       "miniProjects": 0,
@@ -13817,7 +13817,7 @@ export const bookEngineData = {
         "title": "Helpers и границы повторного использования",
         "reading": 3,
         "examples": 1,
-        "tasks": 0,
+        "tasks": 6,
         "solutions": 24,
         "mermaid": 0
       }
@@ -13836,7 +13836,7 @@ export const bookEngineData = {
       "h2": 14,
       "h3": 0,
       "examples": 1,
-      "tasks": 0,
+      "tasks": 6,
       "solutions": 24,
       "mermaid": 1,
       "miniProjects": 0,
@@ -13873,7 +13873,7 @@ export const bookEngineData = {
         "title": "Пользовательские проверки и soft assertions",
         "reading": 3,
         "examples": 1,
-        "tasks": 0,
+        "tasks": 6,
         "solutions": 24,
         "mermaid": 1
       }
@@ -13892,7 +13892,7 @@ export const bookEngineData = {
       "h2": 14,
       "h3": 0,
       "examples": 1,
-      "tasks": 0,
+      "tasks": 6,
       "solutions": 24,
       "mermaid": 1,
       "miniProjects": 0,
@@ -13929,7 +13929,7 @@ export const bookEngineData = {
         "title": "Нормализация и проверки между слоями",
         "reading": 3,
         "examples": 1,
-        "tasks": 0,
+        "tasks": 6,
         "solutions": 24,
         "mermaid": 1
       }
@@ -13948,7 +13948,7 @@ export const bookEngineData = {
       "h2": 14,
       "h3": 0,
       "examples": 1,
-      "tasks": 0,
+      "tasks": 6,
       "solutions": 24,
       "mermaid": 1,
       "miniProjects": 0,
@@ -13978,7 +13978,7 @@ export const bookEngineData = {
         "title": "Расследование падения автотеста",
         "reading": 3,
         "examples": 1,
-        "tasks": 0,
+        "tasks": 6,
         "solutions": 24,
         "mermaid": 1
       }
@@ -13997,7 +13997,7 @@ export const bookEngineData = {
       "h2": 14,
       "h3": 0,
       "examples": 1,
-      "tasks": 0,
+      "tasks": 6,
       "solutions": 24,
       "mermaid": 0,
       "miniProjects": 0,
@@ -14027,7 +14027,7 @@ export const bookEngineData = {
         "title": "Структурированное логирование",
         "reading": 3,
         "examples": 1,
-        "tasks": 0,
+        "tasks": 6,
         "solutions": 24,
         "mermaid": 0
       }
@@ -14046,7 +14046,7 @@ export const bookEngineData = {
       "h2": 14,
       "h3": 0,
       "examples": 1,
-      "tasks": 0,
+      "tasks": 6,
       "solutions": 24,
       "mermaid": 1,
       "miniProjects": 0,
@@ -14076,7 +14076,7 @@ export const bookEngineData = {
         "title": "Screenshots, videos и Playwright Trace",
         "reading": 3,
         "examples": 1,
-        "tasks": 0,
+        "tasks": 6,
         "solutions": 24,
         "mermaid": 1
       }
@@ -14095,7 +14095,7 @@ export const bookEngineData = {
       "h2": 14,
       "h3": 0,
       "examples": 1,
-      "tasks": 0,
+      "tasks": 6,
       "solutions": 24,
       "mermaid": 0,
       "miniProjects": 0,
@@ -14132,7 +14132,7 @@ export const bookEngineData = {
         "title": "Attachments и lifecycle артефактов",
         "reading": 2,
         "examples": 1,
-        "tasks": 0,
+        "tasks": 6,
         "solutions": 24,
         "mermaid": 0
       }
@@ -14151,7 +14151,7 @@ export const bookEngineData = {
       "h2": 14,
       "h3": 0,
       "examples": 1,
-      "tasks": 0,
+      "tasks": 6,
       "solutions": 24,
       "mermaid": 0,
       "miniProjects": 0,
@@ -14181,7 +14181,7 @@ export const bookEngineData = {
         "title": "Принципы тестовой отчётности",
         "reading": 3,
         "examples": 1,
-        "tasks": 0,
+        "tasks": 6,
         "solutions": 24,
         "mermaid": 0
       }
@@ -14200,7 +14200,7 @@ export const bookEngineData = {
       "h2": 14,
       "h3": 0,
       "examples": 1,
-      "tasks": 0,
+      "tasks": 6,
       "solutions": 24,
       "mermaid": 0,
       "miniProjects": 0,
@@ -14237,7 +14237,7 @@ export const bookEngineData = {
         "title": "Отчётность в Allure",
         "reading": 3,
         "examples": 1,
-        "tasks": 0,
+        "tasks": 6,
         "solutions": 24,
         "mermaid": 0
       }
@@ -14256,7 +14256,7 @@ export const bookEngineData = {
       "h2": 14,
       "h3": 0,
       "examples": 1,
-      "tasks": 0,
+      "tasks": 6,
       "solutions": 24,
       "mermaid": 1,
       "miniProjects": 0,
@@ -14293,7 +14293,7 @@ export const bookEngineData = {
         "title": "Диагностический поток Framework",
         "reading": 3,
         "examples": 1,
-        "tasks": 0,
+        "tasks": 6,
         "solutions": 24,
         "mermaid": 1
       }
@@ -14312,7 +14312,7 @@ export const bookEngineData = {
       "h2": 14,
       "h3": 0,
       "examples": 1,
-      "tasks": 0,
+      "tasks": 6,
       "solutions": 24,
       "mermaid": 1,
       "miniProjects": 0,
@@ -14342,7 +14342,7 @@ export const bookEngineData = {
         "title": "Причины flaky tests",
         "reading": 3,
         "examples": 1,
-        "tasks": 0,
+        "tasks": 6,
         "solutions": 24,
         "mermaid": 1
       }
@@ -14361,7 +14361,7 @@ export const bookEngineData = {
       "h2": 14,
       "h3": 0,
       "examples": 1,
-      "tasks": 0,
+      "tasks": 6,
       "solutions": 24,
       "mermaid": 0,
       "miniProjects": 0,
@@ -14391,7 +14391,7 @@ export const bookEngineData = {
         "title": "Расследование и quarantine flaky tests",
         "reading": 2,
         "examples": 1,
-        "tasks": 0,
+        "tasks": 6,
         "solutions": 24,
         "mermaid": 0
       }
@@ -14410,7 +14410,7 @@ export const bookEngineData = {
       "h2": 14,
       "h3": 0,
       "examples": 1,
-      "tasks": 0,
+      "tasks": 6,
       "solutions": 24,
       "mermaid": 1,
       "miniProjects": 0,
@@ -14440,7 +14440,7 @@ export const bookEngineData = {
         "title": "Retry policy",
         "reading": 3,
         "examples": 1,
-        "tasks": 0,
+        "tasks": 6,
         "solutions": 24,
         "mermaid": 1
       }
@@ -14459,7 +14459,7 @@ export const bookEngineData = {
       "h2": 14,
       "h3": 0,
       "examples": 1,
-      "tasks": 0,
+      "tasks": 6,
       "solutions": 24,
       "mermaid": 1,
       "miniProjects": 0,
@@ -14489,7 +14489,7 @@ export const bookEngineData = {
         "title": "Workers и shared resources",
         "reading": 3,
         "examples": 1,
-        "tasks": 0,
+        "tasks": 6,
         "solutions": 24,
         "mermaid": 1
       }
@@ -14508,7 +14508,7 @@ export const bookEngineData = {
       "h2": 14,
       "h3": 0,
       "examples": 1,
-      "tasks": 0,
+      "tasks": 6,
       "solutions": 24,
       "mermaid": 1,
       "miniProjects": 0,
@@ -14538,7 +14538,7 @@ export const bookEngineData = {
         "title": "Parallel execution",
         "reading": 2,
         "examples": 1,
-        "tasks": 0,
+        "tasks": 6,
         "solutions": 24,
         "mermaid": 1
       }
@@ -14557,7 +14557,7 @@ export const bookEngineData = {
       "h2": 14,
       "h3": 0,
       "examples": 1,
-      "tasks": 0,
+      "tasks": 6,
       "solutions": 24,
       "mermaid": 1,
       "miniProjects": 0,
@@ -14587,7 +14587,7 @@ export const bookEngineData = {
         "title": "Sharding",
         "reading": 2,
         "examples": 1,
-        "tasks": 0,
+        "tasks": 6,
         "solutions": 24,
         "mermaid": 1
       }
@@ -14606,7 +14606,7 @@ export const bookEngineData = {
       "h2": 14,
       "h3": 0,
       "examples": 1,
-      "tasks": 0,
+      "tasks": 6,
       "solutions": 24,
       "mermaid": 0,
       "miniProjects": 0,
@@ -14636,7 +14636,7 @@ export const bookEngineData = {
         "title": "Tags, annotations и test selection",
         "reading": 3,
         "examples": 1,
-        "tasks": 0,
+        "tasks": 6,
         "solutions": 24,
         "mermaid": 0
       }
@@ -14655,7 +14655,7 @@ export const bookEngineData = {
       "h2": 14,
       "h3": 0,
       "examples": 1,
-      "tasks": 0,
+      "tasks": 6,
       "solutions": 24,
       "mermaid": 1,
       "miniProjects": 0,
@@ -14685,7 +14685,7 @@ export const bookEngineData = {
         "title": "CI fundamentals для Automation QA",
         "reading": 3,
         "examples": 1,
-        "tasks": 0,
+        "tasks": 6,
         "solutions": 24,
         "mermaid": 1
       }
@@ -14704,7 +14704,7 @@ export const bookEngineData = {
       "h2": 14,
       "h3": 0,
       "examples": 0,
-      "tasks": 0,
+      "tasks": 6,
       "solutions": 24,
       "mermaid": 1,
       "miniProjects": 0,
@@ -14734,7 +14734,7 @@ export const bookEngineData = {
         "title": "GitHub Actions pipeline",
         "reading": 3,
         "examples": 0,
-        "tasks": 0,
+        "tasks": 6,
         "solutions": 24,
         "mermaid": 1
       }
@@ -14753,7 +14753,7 @@ export const bookEngineData = {
       "h2": 14,
       "h3": 0,
       "examples": 0,
-      "tasks": 0,
+      "tasks": 6,
       "solutions": 24,
       "mermaid": 0,
       "miniProjects": 0,
@@ -14783,7 +14783,7 @@ export const bookEngineData = {
         "title": "Browsers и системные зависимости в CI",
         "reading": 3,
         "examples": 0,
-        "tasks": 0,
+        "tasks": 6,
         "solutions": 24,
         "mermaid": 0
       }
@@ -14802,7 +14802,7 @@ export const bookEngineData = {
       "h2": 14,
       "h3": 0,
       "examples": 0,
-      "tasks": 0,
+      "tasks": 6,
       "solutions": 24,
       "mermaid": 0,
       "miniProjects": 0,
@@ -14832,7 +14832,7 @@ export const bookEngineData = {
         "title": "Environments и secrets в CI",
         "reading": 3,
         "examples": 0,
-        "tasks": 0,
+        "tasks": 6,
         "solutions": 24,
         "mermaid": 0
       }
@@ -14851,7 +14851,7 @@ export const bookEngineData = {
       "h2": 14,
       "h3": 0,
       "examples": 0,
-      "tasks": 0,
+      "tasks": 6,
       "solutions": 24,
       "mermaid": 1,
       "miniProjects": 0,
@@ -14881,7 +14881,7 @@ export const bookEngineData = {
         "title": "Артефакты и отчёты в CI",
         "reading": 3,
         "examples": 0,
-        "tasks": 0,
+        "tasks": 6,
         "solutions": 24,
         "mermaid": 1
       }
@@ -14900,7 +14900,7 @@ export const bookEngineData = {
       "h2": 14,
       "h3": 0,
       "examples": 0,
-      "tasks": 0,
+      "tasks": 6,
       "solutions": 24,
       "mermaid": 1,
       "miniProjects": 0,
@@ -14930,7 +14930,7 @@ export const bookEngineData = {
         "title": "CI jobs, sharding и диагностика запусков",
         "reading": 3,
         "examples": 0,
-        "tasks": 0,
+        "tasks": 6,
         "solutions": 24,
         "mermaid": 1
       }
@@ -14949,7 +14949,7 @@ export const bookEngineData = {
       "h2": 14,
       "h3": 0,
       "examples": 1,
-      "tasks": 0,
+      "tasks": 6,
       "solutions": 24,
       "mermaid": 1,
       "miniProjects": 0,
@@ -14979,7 +14979,7 @@ export const bookEngineData = {
         "title": "Интеграция слоёв и dependency flow",
         "reading": 4,
         "examples": 1,
-        "tasks": 0,
+        "tasks": 6,
         "solutions": 24,
         "mermaid": 1
       }
@@ -14998,7 +14998,7 @@ export const bookEngineData = {
       "h2": 14,
       "h3": 0,
       "examples": 1,
-      "tasks": 0,
+      "tasks": 6,
       "solutions": 24,
       "mermaid": 1,
       "miniProjects": 0,
@@ -15028,7 +15028,7 @@ export const bookEngineData = {
         "title": "Composition fixtures и configuration flow",
         "reading": 3,
         "examples": 1,
-        "tasks": 0,
+        "tasks": 6,
         "solutions": 24,
         "mermaid": 1
       }
@@ -15047,7 +15047,7 @@ export const bookEngineData = {
       "h2": 14,
       "h3": 0,
       "examples": 1,
-      "tasks": 0,
+      "tasks": 6,
       "solutions": 24,
       "mermaid": 1,
       "miniProjects": 0,
@@ -15084,7 +15084,7 @@ export const bookEngineData = {
         "title": "Жизненный цикл данных в сценариях между слоями",
         "reading": 3,
         "examples": 1,
-        "tasks": 0,
+        "tasks": 6,
         "solutions": 24,
         "mermaid": 1
       }
@@ -15103,7 +15103,7 @@ export const bookEngineData = {
       "h2": 14,
       "h3": 0,
       "examples": 1,
-      "tasks": 0,
+      "tasks": 6,
       "solutions": 24,
       "mermaid": 1,
       "miniProjects": 0,
@@ -15133,7 +15133,7 @@ export const bookEngineData = {
         "title": "Диагностика, стабильность и CI в общей архитектуре",
         "reading": 3,
         "examples": 1,
-        "tasks": 0,
+        "tasks": 6,
         "solutions": 24,
         "mermaid": 1
       }
@@ -15152,7 +15152,7 @@ export const bookEngineData = {
       "h2": 14,
       "h3": 0,
       "examples": 1,
-      "tasks": 0,
+      "tasks": 6,
       "solutions": 24,
       "mermaid": 0,
       "miniProjects": 0,
@@ -15182,7 +15182,7 @@ export const bookEngineData = {
         "title": "Architecture review и эволюция Framework",
         "reading": 3,
         "examples": 1,
-        "tasks": 0,
+        "tasks": 6,
         "solutions": 24,
         "mermaid": 0
       }
@@ -15201,7 +15201,7 @@ export const bookEngineData = {
       "h2": 27,
       "h3": 4,
       "examples": 0,
-      "tasks": 17,
+      "tasks": 23,
       "solutions": 24,
       "mermaid": 2,
       "miniProjects": 0,
@@ -15227,7 +15227,7 @@ export const bookEngineData = {
         "title": "Требования и критерии готовности проекта",
         "reading": 21,
         "examples": 0,
-        "tasks": 17,
+        "tasks": 23,
         "solutions": 24,
         "mermaid": 2
       }
@@ -15235,7 +15235,7 @@ export const bookEngineData = {
   },
   "statistics": {
     "chapters": 254,
-    "tasks": 2353,
+    "tasks": 2733,
     "solutions": 5133,
     "examples": 703,
     "mermaid": 539,

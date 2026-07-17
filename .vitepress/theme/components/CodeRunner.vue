@@ -48,6 +48,11 @@ const displayedSource = computed(() => {
 
 const isNodeOnly = computed(() => isNodeOnlySource(displayedSource.value))
 
+// Учебные примеры, которые намеренно завершаются ошибкой.
+const isIntentionalError = computed(() =>
+  /INTENTIONAL|EDUCATIONAL INVALID|намеренно (выбрасывает|содержит|демонстрирует)/i.test(initialSource.value)
+)
+
 watch(initialSource, source => {
   if (!props.readonly) {
     editableSource.value = source
@@ -184,10 +189,14 @@ function createIframeSource(source) {
     var module = { exports }
   <\/script>
   <script>
+// Async-обертка: разрешает top-level await и позволяет дождаться
+// завершения асинхронного кода перед сигналом done.
+(async () => {
 ${safeSource}
-  <\/script>
-  <script>
-    send('done', '')
+})().then(
+  () => send('done', ''),
+  err => send('error', (err && err.message) || String(err))
+)
   <\/script>
 </body>
 </html>`
@@ -331,6 +340,9 @@ onBeforeUnmount(() => {
     <div v-if="error" class="code-runner__error">
       <div class="code-runner__output-title">Ошибка</div>
       <pre>{{ error }}</pre>
+      <p v-if="isIntentionalError" class="code-runner__expected-note">
+        ✓ Так и задумано: этот пример намеренно демонстрирует ошибку — разбор смотрите в тексте главы.
+      </p>
     </div>
 
     <iframe

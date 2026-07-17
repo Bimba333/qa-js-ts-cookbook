@@ -39,10 +39,12 @@ function countExamples(markdown) {
 
 function countPracticeTasks(markdown) {
   const h3Tasks = count(/^###\s+/gm, markdown)
+  // Новые главы оформляют задачи как "## 1. Название".
+  const numberedH2Tasks = count(/^##\s+\d+\./gm, markdown)
   const orderedQuestions = count(/^\d+\.\s+/gm, markdown)
   const miniProjects = count(/^##\s+Мини-проект/gm, markdown)
 
-  return h3Tasks + orderedQuestions + miniProjects
+  return h3Tasks + numberedH2Tasks + orderedQuestions + miniProjects
 }
 
 function countSolutions(markdown) {

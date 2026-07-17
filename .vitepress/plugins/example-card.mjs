@@ -13,10 +13,6 @@ function escapeHtml(value) {
     .replace(/"/g, '&quot;')
 }
 
-function siteHref(link) {
-  return `${BOOK_BASE}${link.replace(/^\//, '')}`
-}
-
 function normalizePagePath(value) {
   if (!value) {
     return ''
@@ -93,26 +89,41 @@ function renderChapterCard(chapter) {
     return ''
   }
 
-  const progress = chapter.progress
-    ? `
-      <div class="book-chapter-card__progress" aria-label="Прогресс раздела">
-        <div class="book-chapter-card__progress-label">${escapeHtml(chapter.progress.label)}</div>
-        <div class="book-chapter-card__progress-bar">${escapeHtml(chapter.progress.bar)}</div>
-        <div class="book-chapter-card__progress-count">${chapter.progress.current} из ${chapter.progress.total} глав</div>
+  const meta = [`<span>⏱ ${chapter.card.reading} мин чтения</span>`]
+
+  if (chapter.card.examples) {
+    meta.push(`<span>📄 Примеров: ${chapter.card.examples}</span>`)
+  }
+
+  if (chapter.card.tasks) {
+    meta.push(`<span>📝 Задач: ${chapter.card.tasks}</span>`)
+  }
+
+  if (chapter.card.mermaid) {
+    meta.push(`<span>📊 Диаграмм: ${chapter.card.mermaid}</span>`)
+  }
+
+  let progress = ''
+
+  if (chapter.progress) {
+    const { label, current, total } = chapter.progress
+    const percent = Math.round((current / total) * 100)
+    const partLabel = label === 'Введение' ? 'Введение' : `Часть «${escapeHtml(label)}»`
+
+    progress = `
+      <div class="book-chapter-card__progress" aria-label="Прогресс части книги">
+        <div class="book-chapter-card__progress-track"><i style="width:${percent}%"></i></div>
+        <span class="book-chapter-card__progress-text">${partLabel}: ${current} из ${total} глав</span>
       </div>
 `
-    : ''
+  }
 
   return `
 <section class="book-chapter-card" aria-label="Информация о главе">
   <div class="book-chapter-card__eyebrow">${escapeHtml(chapter.card.chapterLabel)}</div>
   <h1 class="book-chapter-card__title">${escapeHtml(chapter.card.title)}</h1>
   <div class="book-chapter-card__meta">
-    <span>⏱ Время чтения: ${chapter.card.reading} минут</span>
-    <span>📄 Примеров: ${chapter.card.examples}</span>
-    <span>📝 Задач: ${chapter.card.tasks}</span>
-    <span>💡 Решений: ${chapter.card.solutions}</span>
-    <span>📊 Диаграмм: ${chapter.card.mermaid}</span>
+    ${meta.join('\n    ')}
   </div>
   ${progress}
 </section>
@@ -125,44 +136,11 @@ function htmlToken(state, content) {
   return token
 }
 
-function renderInlinePager(chapter) {
-  if (!chapter?.previous && !chapter?.next) {
-    return ''
-  }
+// Служебные секции глав, которые не должны попадать на сайт: время чтения
+// есть в карточке главы, а для переходов есть кнопки внизу страницы.
+const HIDDEN_SECTION_TITLES = new Set(['Время изучения', 'Навигация'])
 
-  const itemTitle = item => {
-    const prefix = item.number && !item.link.includes('/docs/00-introduction/')
-      ? `Глава ${item.number}. `
-      : ''
-
-    return `${prefix}${escapeHtml(item.title)}`
-  }
-  const previous = chapter.previous
-    ? `
-      <a class="book-inline-pager__link book-inline-pager__link--previous" href="${siteHref(chapter.previous.link)}">
-        <span>Предыдущая</span>
-        <strong>${itemTitle(chapter.previous)}</strong>
-      </a>
-`
-    : '<span class="book-inline-pager__link book-inline-pager__link--empty"></span>'
-  const next = chapter.next
-    ? `
-      <a class="book-inline-pager__link book-inline-pager__link--next" href="${siteHref(chapter.next.link)}">
-        <span>Следующая</span>
-        <strong>${itemTitle(chapter.next)}</strong>
-      </a>
-`
-    : '<span class="book-inline-pager__link book-inline-pager__link--empty"></span>'
-
-  return `
-<nav class="book-inline-pager" aria-label="Навигация по соседним главам">
-  ${previous}
-  ${next}
-</nav>
-`
-}
-
-function replaceManualNavigationSection(state, chapter) {
+function hideServiceSections(state) {
   const tokens = state.tokens
 
   for (let i = 0; i < tokens.length - 2; i++) {
@@ -174,15 +152,11 @@ function replaceManualNavigationSection(state, chapter) {
       open.type !== 'heading_open' ||
       open.tag !== 'h2' ||
       inline.type !== 'inline' ||
-      inline.content.trim() !== 'Навигация' ||
+      !HIDDEN_SECTION_TITLES.has(inline.content.trim()) ||
       close.type !== 'heading_close'
     ) {
       continue
     }
-
-    const replacement = htmlToken(state, renderInlinePager(chapter))
-    tokens.splice(i, 0, replacement)
-    i += 1
 
     for (let j = i; j < tokens.length; j++) {
       const token = tokens[j]
@@ -411,7 +385,7 @@ function readMarkdown(filePath) {
 function renderEmbeddedMarkdown(md, filePath, type, env) {
   const markdown = readMarkdown(filePath)
 
-  if (!markdown) {
+  if (!markdown || !stripFirstHeading(markdown).trim()) {
     return ''
   }
 
@@ -486,6 +460,11 @@ function renderExample(md, filePath, env) {
 
   if (!fs.existsSync(absPath)) {
     return '<div class="example-card">Пример не найден.</div>'
+  }
+
+  // JSON — данные, а не исполняемый код: показываем без кнопки запуска.
+  if (/\.json$/.test(filePath)) {
+    return renderStaticExample(md, filePath)
   }
 
   env.embeddedExamples ||= new Set()
@@ -698,17 +677,32 @@ export function exampleCardPlugin(md) {
     }
 
     state.tokens.unshift(htmlToken(state, renderChapterCard(chapter)))
+
+    // Новые главы не ссылаются на файл практики явно — подключаем задачи
+    // автоматически, если файл практики существует и не пуст.
+    const hasPracticeFence = state.tokens.some(
+      token => token.type === 'fence' && /^practice\//.test(token.content.trim())
+    )
+
+    if (!hasPracticeFence) {
+      const practicePath = currentPath.replace(/^docs\//, 'practice/')
+      const embedded = renderEmbeddedMarkdown(md, practicePath, 'practice', state.env)
+
+      if (embedded) {
+        state.tokens.push(
+          htmlToken(state, '<h2 id="задачи" tabindex="-1">Задачи</h2>'),
+          htmlToken(state, embedded)
+        )
+      }
+    }
   })
 
-  md.core.ruler.after('book_engine_blocks', 'book_hide_manual_navigation', state => {
+  md.core.ruler.after('book_engine_blocks', 'book_hide_service_sections', state => {
     if (state.env.embeddedMarkdown) {
       return
     }
 
-    const currentPath = pagePathFromEnv(state.env)
-    const chapter = bookEngineData.chapters[currentPath]
-
-    replaceManualNavigationSection(state, chapter)
+    hideServiceSections(state)
   })
 
   md.core.ruler.after('inline', 'book_hide_repository_labels', state => {
@@ -812,6 +806,16 @@ export function exampleCardPlugin(md) {
     }
 
     if (PATH_SANITIZE_EXEMPT.has(pagePathFromEnv(env))) {
+      // Пути в этой главе — учебный материал, но практика и решения
+      // встраиваются как обычно.
+      if (/^practice\/.+\.md$/.test(content)) {
+        return renderEmbeddedMarkdown(md, content, 'practice', env)
+      }
+
+      if (/^solutions\/.+\.md$/.test(content)) {
+        return ''
+      }
+
       return defaultFence(tokens, idx, options, env, self)
     }
 
