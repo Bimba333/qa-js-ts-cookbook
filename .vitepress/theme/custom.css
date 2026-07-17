@@ -72,31 +72,70 @@
    Единый фиксированный хедер и скрываемый сайдбар
    ============================================================ */
 
-.book-sidebar-toggle {
+/* Стрелки-язычки на кромках боковых панелей. */
+.book-panel-toggle {
   display: none;
+  position: fixed;
+  top: 50%;
+  z-index: 22;
   align-items: center;
   justify-content: center;
-  width: 32px;
-  height: 32px;
-  margin-left: 10px;
+  width: 22px;
+  height: 52px;
   border: 1px solid var(--vp-c-divider);
-  border-radius: 8px;
-  background: transparent;
-  color: var(--vp-c-text-2);
+  background: var(--vp-c-bg-soft);
+  color: var(--vp-c-text-3);
   cursor: pointer;
-  transition: color 0.2s, border-color 0.2s, background 0.2s;
+  transition: left 0.25s ease, right 0.25s ease, color 0.2s, border-color 0.2s, background 0.2s;
 }
 
-.book-sidebar-toggle:hover {
+.book-panel-toggle:hover {
   border-color: var(--vp-c-brand-1);
   color: var(--vp-c-brand-1);
   background: var(--vp-c-brand-soft);
 }
 
+.book-panel-toggle--left {
+  transform: translateY(-50%);
+  border-left: none;
+  border-radius: 0 8px 8px 0;
+}
+
+.book-panel-toggle--right {
+  transform: translateY(-50%);
+  border-right: none;
+  border-radius: 8px 0 0 8px;
+  right: 0;
+}
+
 @media (min-width: 960px) {
-  /* Тумблер показываем только на страницах с сайдбаром. */
-  .VPNavBar.has-sidebar .book-sidebar-toggle {
-    display: inline-flex;
+  .book-panel-toggle--left {
+    display: flex;
+    left: var(--vp-sidebar-width);
+  }
+
+  html.book-sidebar-hidden .book-panel-toggle--left {
+    left: 0;
+  }
+
+  /* Плавное скрытие сайдбара: панель уезжает, контент доезжает следом. */
+  .VPSidebar {
+    transition: transform 0.25s ease, opacity 0.25s ease;
+  }
+
+  html.book-sidebar-hidden .VPSidebar {
+    transform: translateX(-100%) !important;
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+  }
+
+  .VPContent.has-sidebar {
+    transition: padding-left 0.25s ease;
+  }
+
+  .VPLocalNav.has-sidebar {
+    transition: padding-left 0.25s ease;
   }
 
   /* Лого и название — обычный элемент хедера, а не блок шириной с сайдбар. */
@@ -150,9 +189,37 @@
   html.book-sidebar-hidden {
     --vp-sidebar-width: 0px;
   }
+}
 
-  html.book-sidebar-hidden .VPSidebar {
-    display: none;
+/* На широких экранах сайдбар шире (VitePress добавляет поле слева) —
+   выравниваем стрелку по его реальной кромке. */
+@media (min-width: 1440px) {
+  .book-panel-toggle--left {
+    left: calc((100% - (var(--vp-layout-max-width) - 64px)) / 2 + var(--vp-sidebar-width) - 32px);
+  }
+
+  html.book-sidebar-hidden .book-panel-toggle--left {
+    left: 0;
+  }
+}
+
+/* Правое оглавление «На странице» (видно с 1280px). */
+@media (min-width: 1280px) {
+  .book-panel-toggle--right {
+    display: flex;
+  }
+
+  .VPDoc .aside {
+    overflow: hidden;
+    transition: max-width 0.25s ease, padding-left 0.25s ease, opacity 0.25s ease;
+  }
+
+  html.book-outline-hidden .VPDoc .aside {
+    max-width: 0 !important;
+    padding-left: 0 !important;
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
   }
 }
 
