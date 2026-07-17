@@ -1171,7 +1171,7 @@ Engine ищет outward only и останавливается на первом
 practice/01-javascript/07-scope.md
 ```
 
-Перед практикой запустите примеры из `examples/01-javascript/chapter-07/` и для каждого identifier ответьте:
+Перед практикой запустите примеры из раздела «Примеры кода» и для каждого identifier ответьте:
 
 ```text
 Where is it declared?

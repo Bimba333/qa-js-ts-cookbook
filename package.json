@@ -28,6 +28,7 @@
     "allure-playwright": "3.10.2",
     "mermaid": "^11.16.0",
     "pg": "8.22.0",
+    "sucrase": "^3.35.1",
     "typescript": "^7.0.2",
     "vitepress": "^1.6.4"
   }

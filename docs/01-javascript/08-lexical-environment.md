@@ -844,7 +844,7 @@ Execution Context использует Lexical Environment для resolving iden
 practice/01-javascript/08-lexical-environment.md
 ```
 
-Перед практикой запустите примеры из `examples/01-javascript/chapter-08/` и для каждого identifier составьте lookup path.
+Перед практикой запустите примеры из раздела «Примеры кода» и для каждого identifier составьте lookup path.
 
 ---
 

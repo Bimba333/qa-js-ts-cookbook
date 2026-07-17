@@ -1,7 +1,10 @@
 <script setup>
 import { computed, nextTick, onBeforeUnmount, ref, watch } from 'vue'
 
-const RUN_TIMEOUT_MS = 2000
+const RUN_TIMEOUT_MS = 5000
+// После синхронного завершения скрипта ждем отложенный вывод:
+// setTimeout, промисы и другие задачи event loop из учебных примеров.
+const ASYNC_GRACE_MS = 1500
 
 const props = defineProps({
   title: {
@@ -12,9 +15,9 @@ const props = defineProps({
     type: String,
     required: true
   },
-  filePath: {
+  lang: {
     type: String,
-    default: ''
+    default: 'js'
   },
   readonly: {
     type: Boolean,
@@ -24,11 +27,13 @@ const props = defineProps({
 
 const output = ref('')
 const error = ref('')
+const running = ref(false)
 const iframeSource = ref('')
 const iframeKey = ref(0)
 const runId = ref(0)
 const editableSource = ref('')
 let timeoutId = 0
+let graceTimeoutId = 0
 
 const initialSource = computed(() => {
   const binary = atob(props.sourceB64)
@@ -43,10 +48,6 @@ const displayedSource = computed(() => {
 
 const isNodeOnly = computed(() => isNodeOnlySource(displayedSource.value))
 
-const runCommand = computed(() => {
-  return props.filePath ? `node ${props.filePath}` : 'node path/to/file.js'
-})
-
 watch(initialSource, source => {
   if (!props.readonly) {
     editableSource.value = source
@@ -56,8 +57,12 @@ watch(initialSource, source => {
 function isNodeOnlySource(source) {
   return /(^|\W)(process|__dirname|__filename)(\W|$)/.test(source) ||
     /(^|\W)require\s*\(/.test(source) ||
-    /(^|\n)\s*import\s+.+\s+from\s+['"](?:fs|path|node:fs|node:path)['"]/.test(source) ||
-    /(^|\n)\s*import\s+['"](?:fs|path|node:fs|node:path)['"]/.test(source)
+    /^\s*import\s/m.test(source) ||
+    /^\s*export\s+\{?[\w\s,*]*\}?\s+from\s/m.test(source)
+}
+
+function hasExportStatements(source) {
+  return /^\s*export\s/m.test(source)
 }
 
 function escapeScriptEnd(source) {
@@ -69,6 +74,22 @@ function clearTimeoutIfNeeded() {
     window.clearTimeout(timeoutId)
     timeoutId = 0
   }
+
+  if (graceTimeoutId) {
+    window.clearTimeout(graceTimeoutId)
+    graceTimeoutId = 0
+  }
+}
+
+function finalizeRun() {
+  clearTimeoutIfNeeded()
+  running.value = false
+
+  if (!output.value && !error.value) {
+    output.value = 'Код выполнен без вывода.'
+  }
+
+  destroyIframe()
 }
 
 function destroyIframe() {
@@ -80,6 +101,7 @@ function resetRunner() {
   clearTimeoutIfNeeded()
   output.value = ''
   error.value = ''
+  running.value = false
   destroyIframe()
 
   if (!props.readonly) {
@@ -89,6 +111,26 @@ function resetRunner() {
 
 function appendOutput(value) {
   output.value = output.value ? `${output.value}\n${value}` : value
+}
+
+async function prepareRunnableSource(source) {
+  const transforms = []
+
+  if (props.lang === 'ts') {
+    transforms.push('typescript')
+  }
+
+  if (hasExportStatements(source)) {
+    transforms.push('imports')
+  }
+
+  if (!transforms.length) {
+    return source
+  }
+
+  const { transform } = await import('sucrase')
+
+  return transform(source, { transforms }).code
 }
 
 function createIframeSource(source) {
@@ -125,6 +167,7 @@ function createIframeSource(source) {
     const write = (type, args) => send(type, Array.from(args).map(format).join(' '))
 
     console.log = (...args) => write('log', args)
+    console.info = (...args) => write('log', args)
     console.warn = (...args) => write('log', args)
     console.error = (...args) => write('log', args)
     console.table = value => send('log', format(value))
@@ -136,6 +179,9 @@ function createIframeSource(source) {
     window.addEventListener('unhandledrejection', event => {
       send('error', event.reason?.message || format(event.reason))
     })
+
+    var exports = {}
+    var module = { exports }
   <\/script>
   <script>
 ${safeSource}
@@ -160,18 +206,17 @@ function handleMessage(event) {
 
   if (message.type === 'error') {
     error.value = message.value || 'Ошибка выполнения.'
+    running.value = false
     clearTimeoutIfNeeded()
     destroyIframe()
   }
 
   if (message.type === 'done') {
-    clearTimeoutIfNeeded()
-
-    if (!output.value && !error.value) {
-      output.value = 'Код выполнен без вывода.'
+    if (graceTimeoutId) {
+      window.clearTimeout(graceTimeoutId)
     }
 
-    destroyIframe()
+    graceTimeoutId = window.setTimeout(finalizeRun, ASYNC_GRACE_MS)
   }
 }
 
@@ -183,6 +228,22 @@ async function runCode() {
   runId.value += 1
 
   if (isNodeOnly.value) {
+    if (!props.readonly) {
+      error.value = 'Этот код использует import, require или Node.js API — в песочнице браузера они недоступны. Уберите их и попробуйте снова.'
+    }
+
+    return
+  }
+
+  running.value = true
+
+  let runnableSource = ''
+
+  try {
+    runnableSource = await prepareRunnableSource(displayedSource.value)
+  } catch (transpileError) {
+    running.value = false
+    error.value = `Ошибка синтаксиса: ${transpileError.message || transpileError}`
     return
   }
 
@@ -192,12 +253,26 @@ async function runCode() {
   await nextTick()
 
   timeoutId = window.setTimeout(() => {
+    running.value = false
     error.value = 'Код выполняется слишком долго. Возможно, в нем бесконечный цикл.'
     destroyIframe()
     clearTimeoutIfNeeded()
   }, RUN_TIMEOUT_MS)
 
-  iframeSource.value = createIframeSource(displayedSource.value)
+  iframeSource.value = createIframeSource(runnableSource)
+}
+
+function handleEditorTab(event) {
+  const target = event.target
+  const start = target.selectionStart
+  const end = target.selectionEnd
+
+  editableSource.value = `${editableSource.value.slice(0, start)}  ${editableSource.value.slice(end)}`
+
+  nextTick(() => {
+    target.selectionStart = start + 2
+    target.selectionEnd = start + 2
+  })
 }
 
 onBeforeUnmount(() => {
@@ -207,18 +282,21 @@ onBeforeUnmount(() => {
 </script>
 
 <template>
-  <div class="code-runner">
+  <div class="code-runner" :class="{ 'code-runner--sandbox': !readonly }">
     <div class="code-runner__header">
-      <div class="code-runner__title">{{ title }}</div>
+      <div class="code-runner__title">
+        <span class="code-runner__badge" :class="`code-runner__badge--${lang}`">{{ lang === 'ts' ? 'TS' : 'JS' }}</span>
+        {{ title }}
+      </div>
 
       <div class="code-runner__actions">
         <button
           class="code-runner__button"
           type="button"
-          :disabled="isNodeOnly"
+          :disabled="(readonly && isNodeOnly) || running"
           @click="runCode"
         >
-          ▶ Запустить
+          {{ running ? '⏳ Выполняется…' : '▶ Запустить' }}
         </button>
 
         <button
@@ -238,12 +316,11 @@ onBeforeUnmount(() => {
       v-model="editableSource"
       class="code-runner__editor"
       spellcheck="false"
+      @keydown.tab.prevent="handleEditorTab"
     />
 
-    <div v-if="isNodeOnly" class="code-runner__node">
-      <p>Этот пример предназначен для Node.js.</p>
-      <p>Запустите локально:</p>
-      <pre><code>{{ runCommand }}</code></pre>
+    <div v-if="readonly && isNodeOnly" class="code-runner__node">
+      <p>⚙️ Этот пример рассчитан на серверную среду Node.js, поэтому в браузере он не запускается. Прочитайте код — ожидаемый вывод разобран в тексте главы.</p>
     </div>
 
     <div v-if="output" class="code-runner__output">

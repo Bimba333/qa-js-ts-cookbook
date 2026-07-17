@@ -853,7 +853,7 @@ Configuration capture:
 practice/01-javascript/28-closures.md
 ```
 
-Выполняйте задания после запуска примеров из `examples/01-javascript/chapter-28/`.
+Выполняйте задания после запуска примеров из раздела «Примеры кода».
 
 Решения находятся отдельно:
 

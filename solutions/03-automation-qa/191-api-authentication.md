@@ -54,7 +54,7 @@ Token получают или обновляют в контролируемой
 ### Ответ
 ```ts
 import { expect, test } from "@playwright/test";
-import { startLocalApi } from "../../examples/03-automation-qa/support/local-api.js";
+import { startLocalApi } from "./support/local-api.js";
 
 test("проверяет аутентификацию и авторизацию", async ({ request }) => {
   const api = await startLocalApi();

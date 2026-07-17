@@ -55,7 +55,7 @@ steps:
       cache: npm
   - run: npm ci
   - run: npm run docs:ts:smoke
-  - run: npx playwright test --config=examples/03-automation-qa/playwright.stability.config.ts
+  - run: npx playwright test --config=playwright.stability.config.ts
 ```
 ### Объяснение
 Порядок позволяет недорогим обязательным проверкам остановить непригодный запуск раньше.

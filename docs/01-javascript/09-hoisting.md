@@ -889,7 +889,7 @@ Source code остается в исходном порядке. Engine созд
 practice/01-javascript/09-hoisting.md
 ```
 
-Перед практикой запустите примеры из `examples/01-javascript/chapter-09/` и для каждого файла составьте Creation Phase / Execution Phase timeline.
+Перед практикой запустите примеры из раздела «Примеры кода» и для каждого файла составьте Creation Phase / Execution Phase timeline.
 
 ---
 

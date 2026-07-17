@@ -54,7 +54,7 @@ Fixture предоставляет готовые клиенты и управл
 ### Ответ
 ```ts
 import { expect, test } from "@playwright/test";
-import { startLocalApi } from "../../examples/03-automation-qa/support/local-api.js";
+import { startLocalApi } from "./support/local-api.js";
 
 test("связывает действие через UI и проверку через API", async ({ page, request }) => {
   const api = await startLocalApi();

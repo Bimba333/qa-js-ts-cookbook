@@ -33,7 +33,7 @@
 ## 4. Выбор проекта
 ### Ответ
 ```bash
-npx playwright test --config=examples/03-automation-qa/playwright.execution.config.ts --project=local-chromium
+npx playwright test --config=playwright.execution.config.ts --project=local-chromium
 ```
 ### Объяснение
 `--config` выбирает конфигурацию, `--project` — один её вариант.

@@ -957,7 +957,7 @@ Objects are different and will be studied separately in the next chapter.
 practice/01-javascript/11-primitive-types.md
 ```
 
-Перед практикой запустите примеры из `examples/01-javascript/chapter-11/` и для каждого value запишите primitive type and `typeof` result.
+Перед практикой запустите примеры из раздела «Примеры кода» и для каждого value запишите primitive type and `typeof` result.
 
 ---
 

@@ -821,7 +821,7 @@ Call Stack работает по принципу last in — first out. Пос�
 practice/01-javascript/04-call-stack.md
 ```
 
-Перед практикой запустите примеры из `examples/01-javascript/chapter-04/` и вручную нарисуйте Call Stack для каждого файла.
+Перед практикой запустите примеры из раздела «Примеры кода» и вручную нарисуйте Call Stack для каждого файла.
 
 ---
 

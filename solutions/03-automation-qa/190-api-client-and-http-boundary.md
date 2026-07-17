@@ -54,7 +54,7 @@ API Client скрывает URL, HTTP-метод и повторяющуюся �
 ### Ответ
 ```ts
 import { expect, type APIRequestContext, test } from "@playwright/test";
-import { startLocalApi } from "../../examples/03-automation-qa/support/local-api.js";
+import { startLocalApi } from "./support/local-api.js";
 
 class TasksClient {
   constructor(private request: APIRequestContext, private baseURL: string) {}

@@ -300,7 +300,7 @@ function renderAnswerDetails(md, markdown, env) {
 
   return `
 <details class="book-answer">
-  <summary>Ответ</summary>
+  <summary>Показать ответ</summary>
   <div class="book-answer__content">
 ${rendered}
   </div>
@@ -460,7 +460,7 @@ function renderTheoryCard(md, filePath) {
 }
 
 function isExampleFile(filePath) {
-  return /^examples\/.+\.(js|ts|json)$/.test(filePath)
+  return /^examples\/.+\.(js|mjs|cjs|ts|json)$/.test(filePath)
 }
 
 function isExampleDir(filePath) {
@@ -476,7 +476,7 @@ function exampleFilesFromDir(dirPath) {
 
   return fs
     .readdirSync(absPath)
-    .filter(file => /\.(js|ts|json)$/.test(file))
+    .filter(file => /\.(js|mjs|cjs|ts|json)$/.test(file))
     .sort((a, b) => a.localeCompare(b, undefined, { numeric: true }))
     .map(file => `${dirPath}${file}`)
 }
@@ -494,12 +494,13 @@ function renderExample(md, filePath, env) {
   const source = fs.readFileSync(absPath, 'utf8')
   const sourceB64 = Buffer.from(source, 'utf8').toString('base64')
   const title = exampleTitle(filePath)
+  const lang = /\.ts$/.test(filePath) ? 'ts' : 'js'
 
   return `
 <CodeRunner
   title="${md.utils.escapeHtml(title)}"
   source-b64="${sourceB64}"
-  file-path="${md.utils.escapeHtml(filePath)}"
+  lang="${lang}"
   readonly
 />
 `
@@ -519,11 +520,11 @@ function renderExampleDir(md, dirPath, env) {
 }
 
 function isNodeExampleCommand(line) {
-  return /^node examples\/.+\.(js|ts|json)$/.test(line.trim())
+  return /^(node|tsc|npx tsc|npx tsx|tsx|ts-node|npx ts-node) examples\/.+\.(js|mjs|cjs|ts|json)$/.test(line.trim())
 }
 
 function examplePathFromNodeCommand(line) {
-  return line.trim().replace(/^node\s+/, '')
+  return line.trim().replace(/^(npx\s+)?(node|tsc|tsx|ts-node)\s+/, '')
 }
 
 function renderNodeExampleCommands(md, content, env) {
@@ -552,13 +553,15 @@ function renderNodeExampleCommands(md, content, env) {
 }
 
 function shouldHideSupportParagraph(content) {
-  return /^(Практика|Решения|Примеры) находятся в(?: отдельном)? файле:?$/.test(content.trim()) ||
-    /^(Практика|Решения|Примеры) находится в(?: отдельном)? файле:?$/.test(content.trim()) ||
-    /^(Практика|Решения|Примеры) к этой главе находится в(?: отдельном)? файле:?$/.test(content.trim()) ||
-    /^(Практика|Решения|Примеры) к этой главе находятся в(?: отдельном)? файле:?$/.test(content.trim()) ||
-    /^(Практика|Решения|Примеры) находятся в:?$/.test(content.trim()) ||
-    /^(Практика|Решения|Примеры) находится в:?$/.test(content.trim()) ||
-    /^Запуск:$/.test(content.trim())
+  const text = content.trim()
+
+  return /^(Практика|Решения|Примеры)( к этой главе)? наход(ится|ятся) в(( отдельном)? файле|( отдельной)? папке)?:?$/.test(text) ||
+    /^Запуск:$/.test(text) ||
+    /^Файл:$/.test(text) ||
+    /^Создайте файл:?$/.test(text) ||
+    /^Создайте файл( в)? `?playground\/[^`]*`?:?$/.test(text) ||
+    /^Запускайте (их|команды|примеры) из корня проекта\.?$/.test(text) ||
+    /^(Команда запуска|Запустите|Запуск) из корня проекта:?\.?$/.test(text)
 }
 
 function isSupportHeading(content) {
@@ -622,6 +625,28 @@ function sanitizeRepositoryPaths(content) {
     .replace(/^playground\/$/gm, 'Песочница')
 }
 
+function renderStaticExample(md, filePath) {
+  const absPath = path.join(process.cwd(), filePath)
+
+  if (!fs.existsSync(absPath)) {
+    return ''
+  }
+
+  const source = stripRepositoryDirs(fs.readFileSync(absPath, 'utf8'))
+  const title = exampleTitle(filePath)
+
+  return `
+<div class="book-static-example">
+  <div class="book-static-example__title">${md.utils.escapeHtml(title)}</div>
+  <pre v-pre><code>${md.utils.escapeHtml(source)}</code></pre>
+</div>
+`
+}
+
+function stripRepositoryDirs(content) {
+  return content.replace(/(\.\.\/)*\b(docs|practice|solutions|examples|playground)\/(?:[\w.-]+\/)*/g, '')
+}
+
 function renderMermaid(md, content) {
   const sourceB64 = Buffer.from(content, 'utf8').toString('base64')
 
@@ -665,6 +690,10 @@ export function exampleCardPlugin(md) {
     if (h1Index >= 0) {
       state.tokens[h1Index].hidden = true
       state.tokens[h1Index + 1].hidden = true
+      // markdown-it рендерит children inline-токена напрямую, поэтому
+      // одного hidden недостаточно — очищаем содержимое заголовка.
+      state.tokens[h1Index + 1].content = ''
+      state.tokens[h1Index + 1].children = []
       state.tokens[h1Index + 2].hidden = true
     }
 
@@ -683,6 +712,10 @@ export function exampleCardPlugin(md) {
   })
 
   md.core.ruler.after('inline', 'book_hide_repository_labels', state => {
+    if (PATH_SANITIZE_EXEMPT.has(pagePathFromEnv(state.env))) {
+      return
+    }
+
     for (let i = 0; i < state.tokens.length - 2; i++) {
       const open = state.tokens[i]
       const inline = state.tokens[i + 1]
@@ -725,8 +758,18 @@ export function exampleCardPlugin(md) {
     }
   })
 
+  // В главе про рабочее окружение пути вида playground/hello.js — учебный
+  // материал про файловую систему, а не ссылки на файлы репозитория.
+  const PATH_SANITIZE_EXEMPT = new Set(['docs/00-introduction/04-development-environment.md'])
+
   md.renderer.rules.code_inline = (tokens, idx, options, env, self) => {
     const token = tokens[idx]
+
+    if (PATH_SANITIZE_EXEMPT.has(pagePathFromEnv(env))) {
+      return defaultCodeInline
+        ? defaultCodeInline(tokens, idx, options, env, self)
+        : `<code>${md.utils.escapeHtml(token.content)}</code>`
+    }
 
     if (/^(docs|practice|solutions|examples|playground)\//.test(token.content)) {
       return `<code>${md.utils.escapeHtml(publicLabelForPath(token.content))}</code>`
@@ -746,7 +789,7 @@ export function exampleCardPlugin(md) {
       return ''
     }
 
-    if (shouldHideSupportParagraph(token.content)) {
+    if (!PATH_SANITIZE_EXEMPT.has(pagePathFromEnv(env)) && shouldHideSupportParagraph(token.content)) {
       return ''
     }
 
@@ -768,10 +811,20 @@ export function exampleCardPlugin(md) {
       return renderMermaid(md, token.content)
     }
 
+    if (PATH_SANITIZE_EXEMPT.has(pagePathFromEnv(env))) {
+      return defaultFence(tokens, idx, options, env, self)
+    }
+
     const nodeCommandExamples = renderNodeExampleCommands(md, content, env)
 
     if (nodeCommandExamples !== null) {
       return nodeCommandExamples
+    }
+
+    const isShellFence = /^(bash|sh|shell|zsh|console|cmd)$/.test(token.info.trim())
+
+    if (isShellFence && /\b(docs|practice|solutions|examples|playground)\//.test(token.content)) {
+      token.content = stripRepositoryDirs(token.content)
     }
 
     if (content.includes('\n')) {
@@ -780,6 +833,23 @@ export function exampleCardPlugin(md) {
       }
 
       return defaultFence(tokens, idx, options, env, self)
+    }
+
+    if (/^examples\/.+\.md$/.test(content)) {
+      return ''
+    }
+
+    // Служебные файлы (support/) — инфраструктура примеров, не учебный контент.
+    if (/^examples\/.+\/support\//.test(content)) {
+      return ''
+    }
+
+    if (/^examples\/.+\.(yml|yaml|proto|sql|txt)$/.test(content)) {
+      return renderStaticExample(md, content)
+    }
+
+    if ((token.info === '' || token.info === 'text') && /^(docs|practice|solutions|examples|playground)\/[^\s]*\/?$/.test(content) && !/\.(md|js|mjs|cjs|ts|json)$/.test(content) && !isExampleDir(content)) {
+      return ''
     }
 
     const isMarkdownPath = /^(docs|practice|solutions)\/.+\.md$/.test(content)
@@ -817,18 +887,17 @@ export function exampleCardPlugin(md) {
       }
 
       const title = 'Песочница'
-      const template = `// Напишите код для задания.
-console.log('Проверьте доступность process:', typeof process !== 'undefined')
-console.log('Проверьте доступность document:', typeof document !== 'undefined')
-console.log('Проверьте доступность window:', typeof window !== 'undefined')`
+      const template = `// Напишите здесь решение задачи и нажмите «Запустить».
+console.log('Песочница готова к работе!')`
 
       const sourceB64 = Buffer.from(template, 'utf8').toString('base64')
+      const lang = /\.ts$/.test(content) ? 'ts' : 'js'
 
       return `
 <CodeRunner
   title="${md.utils.escapeHtml(title)}"
   source-b64="${sourceB64}"
-  file-path="${md.utils.escapeHtml(content)}"
+  lang="${lang}"
 />
 `
     }

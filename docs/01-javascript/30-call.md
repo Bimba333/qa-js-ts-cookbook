@@ -743,7 +743,7 @@ stagingClient.buildUrl('/users')
 practice/01-javascript/30-call.md
 ```
 
-Выполняйте задания после запуска примеров из `examples/01-javascript/chapter-30/`.
+Выполняйте задания после запуска примеров из раздела «Примеры кода».
 
 Главный вопрос практики:
 

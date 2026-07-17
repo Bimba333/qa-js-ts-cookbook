@@ -1009,7 +1009,7 @@ Global Execution Context создается для верхнего уровня
 practice/01-javascript/03-execution-context.md
 ```
 
-Перед практикой запустите примеры из `examples/01-javascript/chapter-03/` и попробуйте для каждого файла проговорить creation phase и execution phase.
+Перед практикой запустите примеры из раздела «Примеры кода» и попробуйте для каждого файла проговорить creation phase и execution phase.
 
 ---
 

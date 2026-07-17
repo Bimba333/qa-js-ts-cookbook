@@ -54,7 +54,7 @@ HTTP-контракт отвечает на вопрос, корректны л�
 ### Ответ
 ```ts
 import { expect, test } from "@playwright/test";
-import { startLocalApi } from "../../examples/03-automation-qa/support/local-api.js";
+import { startLocalApi } from "./support/local-api.js";
 
 test("проверяет три уровня ответа", async ({ request }) => {
   const api = await startLocalApi();

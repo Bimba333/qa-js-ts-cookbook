@@ -923,7 +923,7 @@ Do not say `let` and `const` are "not hoisted." A more precise model is: they ar
 practice/01-javascript/10-temporal-dead-zone.md
 ```
 
-Перед практикой запустите примеры из `examples/01-javascript/chapter-10/` и для каждого identifier выпишите состояние: registered, uninitialized, initialized, readable.
+Перед практикой запустите примеры из раздела «Примеры кода» и для каждого identifier выпишите состояние: registered, uninitialized, initialized, readable.
 
 ---
 

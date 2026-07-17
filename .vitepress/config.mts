@@ -10,6 +10,20 @@ export default defineConfig({
 
   cleanUrls: true,
 
+  srcExclude: [
+    'AGENTS.md',
+    'README.md',
+    'SUMMARY.md',
+    '.meta/**',
+    'practice/**',
+    'solutions/**',
+    'examples/**',
+    'playground/**',
+    'scripts/**',
+    'tests/**',
+    'test-results/**'
+  ],
+
   markdown: {
     config(md) {
       md.use(exampleCardPlugin)
@@ -18,10 +32,10 @@ export default defineConfig({
 
   themeConfig: {
     siteTitle: 'JS/TS QA Book',
-    logo: '/assets/logo.svg',
+    logo: '/logo.svg',
 
     nav: [
-      { text: 'Теория', link: '/docs/00-introduction/01-about-course' },
+      { text: 'Читать книгу', link: '/docs/00-introduction/01-about-course' },
       { text: 'GitHub', link: 'https://github.com/Bimba333/qa-js-ts-cookbook' }
     ],
 

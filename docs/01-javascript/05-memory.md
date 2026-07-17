@@ -1015,7 +1015,7 @@ Memory stores everything the engine needs while the program runs.
 practice/01-javascript/05-memory.md
 ```
 
-Перед выполнением практики запустите примеры из `examples/01-javascript/chapter-05/` и для каждого файла составьте таблицу:
+Перед выполнением практики запустите примеры из раздела «Примеры кода» и для каждого файла составьте таблицу:
 
 ---
 
