@@ -69,6 +69,53 @@
 }
 
 /* ============================================================
+   Скрываемый сайдбар со списком глав
+   ============================================================ */
+
+.book-sidebar-toggle {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  margin-left: 10px;
+  border: 1px solid var(--vp-c-divider);
+  border-radius: 8px;
+  background: transparent;
+  color: var(--vp-c-text-2);
+  cursor: pointer;
+  transition: color 0.2s, border-color 0.2s, background 0.2s;
+}
+
+.book-sidebar-toggle:hover {
+  border-color: var(--vp-c-brand-1);
+  color: var(--vp-c-brand-1);
+  background: var(--vp-c-brand-soft);
+}
+
+/* Тумблер имеет смысл только там, где виден десктопный сайдбар. */
+@media (min-width: 960px) {
+  .book-sidebar-toggle {
+    display: inline-flex;
+  }
+
+  html.book-sidebar-hidden {
+    --vp-sidebar-width: 0px;
+  }
+
+  html.book-sidebar-hidden .VPSidebar {
+    display: none;
+  }
+
+  /* Не даем области заголовка в навбаре схлопнуться до нуля. */
+  html.book-sidebar-hidden .VPNavBar.has-sidebar .title {
+    width: auto;
+    padding-left: 0;
+    background-color: transparent;
+  }
+}
+
+/* ============================================================
    Карточка главы
    ============================================================ */
 
@@ -584,6 +631,40 @@
   max-width: none;
   min-width: min(720px, 100%);
   height: auto;
+}
+
+/* Полировка отрисованных диаграмм: скругления и аккуратные линии. */
+.book-mermaid svg .node rect,
+.book-mermaid-viewer__content svg .node rect {
+  rx: 8px;
+  stroke-width: 1.4px;
+}
+
+.book-mermaid svg .node polygon,
+.book-mermaid svg .node circle,
+.book-mermaid-viewer__content svg .node polygon,
+.book-mermaid-viewer__content svg .node circle {
+  stroke-width: 1.4px;
+}
+
+.book-mermaid svg .edgePath path,
+.book-mermaid svg .flowchart-link,
+.book-mermaid-viewer__content svg .edgePath path,
+.book-mermaid-viewer__content svg .flowchart-link {
+  stroke-width: 1.6px;
+}
+
+.book-mermaid svg .cluster rect,
+.book-mermaid-viewer__content svg .cluster rect {
+  rx: 10px;
+  stroke-dasharray: 4 3;
+  stroke-width: 1.2px;
+}
+
+.book-mermaid svg .edgeLabel,
+.book-mermaid-viewer__content svg .edgeLabel {
+  border-radius: 4px;
+  font-size: 12px;
 }
 
 .book-mermaid__canvas {

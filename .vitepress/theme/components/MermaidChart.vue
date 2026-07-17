@@ -75,12 +75,77 @@ function sourceFromBase64(value: string): string {
   )
 }
 
-function currentTheme(): 'dark' | 'default' {
+const FONT_FAMILY = "'Inter', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif"
+
+function isDarkTheme(): boolean {
   if (typeof document === 'undefined') {
-    return 'default'
+    return false
   }
 
-  return document.documentElement.classList.contains('dark') ? 'dark' : 'default'
+  return document.documentElement.classList.contains('dark')
+}
+
+// Переменные темы Mermaid, согласованные с палитрой книги (индиго).
+function themeVariables(dark: boolean) {
+  return dark
+    ? {
+        fontFamily: FONT_FAMILY,
+        fontSize: '14px',
+        darkMode: true,
+        background: '#1b1b1f',
+        primaryColor: '#2b2b3d',
+        primaryTextColor: '#e2e4ee',
+        primaryBorderColor: '#818cf8',
+        secondaryColor: '#1f2937',
+        secondaryBorderColor: '#475569',
+        secondaryTextColor: '#cbd5e1',
+        tertiaryColor: '#26262b',
+        tertiaryBorderColor: '#3f3f46',
+        tertiaryTextColor: '#cbd5e1',
+        lineColor: '#7c85a3',
+        textColor: '#d7dbe2',
+        edgeLabelBackground: '#1b1b1f',
+        clusterBkg: 'rgba(129, 140, 248, 0.08)',
+        clusterBorder: '#4b5563',
+        titleColor: '#e2e4ee',
+        noteBkgColor: '#3b3524',
+        noteTextColor: '#e5d9b6',
+        noteBorderColor: '#8a7b3f',
+        actorBkg: '#2b2b3d',
+        actorBorder: '#818cf8',
+        actorTextColor: '#e2e4ee',
+        signalColor: '#7c85a3',
+        signalTextColor: '#d7dbe2'
+      }
+    : {
+        fontFamily: FONT_FAMILY,
+        fontSize: '14px',
+        darkMode: false,
+        background: '#ffffff',
+        primaryColor: '#eef2ff',
+        primaryTextColor: '#1e293b',
+        primaryBorderColor: '#6366f1',
+        secondaryColor: '#e0f2fe',
+        secondaryBorderColor: '#7dd3fc',
+        secondaryTextColor: '#1e293b',
+        tertiaryColor: '#f8fafc',
+        tertiaryBorderColor: '#cbd5e1',
+        tertiaryTextColor: '#334155',
+        lineColor: '#8b94ab',
+        textColor: '#334155',
+        edgeLabelBackground: '#ffffff',
+        clusterBkg: 'rgba(99, 102, 241, 0.06)',
+        clusterBorder: '#c7d2fe',
+        titleColor: '#1e293b',
+        noteBkgColor: '#fef9c3',
+        noteTextColor: '#713f12',
+        noteBorderColor: '#facc15',
+        actorBkg: '#eef2ff',
+        actorBorder: '#6366f1',
+        actorTextColor: '#1e293b',
+        signalColor: '#64748b',
+        signalTextColor: '#334155'
+      }
 }
 
 async function renderChart() {
@@ -98,7 +163,19 @@ async function renderChart() {
   mermaid.initialize({
     startOnLoad: false,
     securityLevel: 'strict',
-    theme: currentTheme()
+    theme: 'base',
+    themeVariables: themeVariables(isDarkTheme()),
+    flowchart: {
+      curve: 'basis',
+      htmlLabels: true,
+      nodeSpacing: 40,
+      rankSpacing: 44,
+      padding: 10
+    },
+    sequence: {
+      mirrorActors: false,
+      boxMargin: 8
+    }
   })
 
   try {
