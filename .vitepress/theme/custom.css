@@ -44,18 +44,51 @@
 
 .vp-doc {
   font-size: 16px;
-  line-height: 1.75;
+  line-height: 1.6;
+}
+
+/* Более плотная вертикальная ритмика: в книге много коротких абзацев,
+   и стандартные отступы VitePress растягивают страницу. */
+.vp-doc p {
+  margin: 10px 0;
 }
 
 .vp-doc h2 {
-  margin-top: 40px;
-  padding-top: 20px;
+  margin-top: 28px;
+  padding-top: 14px;
+  margin-bottom: 12px;
   letter-spacing: -0.01em;
 }
 
 .vp-doc h3 {
-  margin-top: 28px;
+  margin-top: 20px;
+  margin-bottom: 8px;
   letter-spacing: -0.01em;
+}
+
+.vp-doc ul,
+.vp-doc ol {
+  margin: 10px 0;
+}
+
+.vp-doc li + li {
+  margin-top: 2px;
+}
+
+.vp-doc blockquote {
+  margin: 12px 0;
+}
+
+.vp-doc div[class*='language-'] {
+  margin: 12px 0;
+}
+
+.vp-doc hr {
+  margin: 20px 0;
+}
+
+.vp-doc table {
+  margin: 12px 0;
 }
 
 .VPDoc .content,
@@ -395,8 +428,8 @@
    ============================================================ */
 
 .book-embedded {
-  margin: 32px 0;
-  padding: 4px 22px 22px;
+  margin: 24px 0;
+  padding: 4px 22px 18px;
   border: 1px solid var(--vp-c-divider);
   border-radius: var(--book-radius);
   background: var(--vp-c-bg-soft);
@@ -415,7 +448,7 @@
 }
 
 .book-embedded__heading {
-  margin: 26px 0 12px;
+  margin: 18px 0 8px;
   color: var(--vp-c-text-1);
   font-size: 19px;
   font-weight: 700;
@@ -427,7 +460,7 @@
 }
 
 .book-answer {
-  margin: 16px 0 24px;
+  margin: 12px 0 18px;
   border: 1px solid var(--vp-c-divider);
   border-left: 3px solid var(--vp-c-brand-3);
   border-radius: var(--book-radius-sm);
@@ -485,8 +518,8 @@
 .code-runner {
   border: 1px solid var(--vp-c-divider);
   border-radius: var(--book-radius);
-  padding: 16px;
-  margin: 20px 0;
+  padding: 14px;
+  margin: 14px 0;
   background: var(--vp-c-bg-soft);
   max-width: 100%;
   overflow: hidden;
@@ -701,7 +734,7 @@
    ============================================================ */
 
 .book-static-example {
-  margin: 20px 0;
+  margin: 14px 0;
   border: 1px solid var(--vp-c-divider);
   border-radius: var(--book-radius);
   background: var(--vp-c-bg-soft);
@@ -737,8 +770,8 @@
   display: flex;
   justify-content: center;
   max-width: 100%;
-  margin: 24px 0;
-  padding: 16px;
+  margin: 16px 0;
+  padding: 14px;
   overflow-x: auto;
   border: 1px solid var(--vp-c-divider);
   border-radius: var(--book-radius-sm);
