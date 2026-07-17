@@ -131,7 +131,7 @@ function renderInlinePager(chapter) {
   }
 
   const itemTitle = item => {
-    const prefix = item.number && item.link.includes('/docs/01-javascript/')
+    const prefix = item.number && !item.link.includes('/docs/00-introduction/')
       ? `Глава ${item.number}. `
       : ''
 

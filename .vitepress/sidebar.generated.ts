@@ -27,7 +27,7 @@ export const sidebar = [
     "items": [
       {
         "text": "Основы языка",
-        "collapsed": false,
+        "collapsed": true,
         "items": [
           {
             "text": "Глава 1. Что такое JavaScript",
@@ -97,7 +97,7 @@ export const sidebar = [
       },
       {
         "text": "Управление программой",
-        "collapsed": false,
+        "collapsed": true,
         "items": [
           {
             "text": "Глава 17. Operators",
@@ -119,7 +119,7 @@ export const sidebar = [
       },
       {
         "text": "Functions",
-        "collapsed": false,
+        "collapsed": true,
         "items": [
           {
             "text": "Глава 21. Function Declaration",
@@ -173,7 +173,7 @@ export const sidebar = [
       },
       {
         "text": "Objects",
-        "collapsed": false,
+        "collapsed": true,
         "items": [
           {
             "text": "Глава 33. Objects",
@@ -223,7 +223,7 @@ export const sidebar = [
       },
       {
         "text": "Arrays",
-        "collapsed": false,
+        "collapsed": true,
         "items": [
           {
             "text": "Глава 44. Arrays",
@@ -297,7 +297,7 @@ export const sidebar = [
       },
       {
         "text": "Execution Model Revisited",
-        "collapsed": false,
+        "collapsed": true,
         "items": [
           {
             "text": "Глава 61. Execution Context: углубленное повторение",
@@ -319,7 +319,7 @@ export const sidebar = [
       },
       {
         "text": "Function Context",
-        "collapsed": false,
+        "collapsed": true,
         "items": [
           {
             "text": "Глава 65. Closures: углубленное повторение",
@@ -341,7 +341,7 @@ export const sidebar = [
       },
       {
         "text": "Async JavaScript",
-        "collapsed": false,
+        "collapsed": true,
         "items": [
           {
             "text": "Глава 69. Synchronous Execution",
@@ -395,7 +395,7 @@ export const sidebar = [
       },
       {
         "text": "Iteration Protocols",
-        "collapsed": false,
+        "collapsed": true,
         "items": [
           {
             "text": "Глава 81. Iterable Protocol",
@@ -417,7 +417,7 @@ export const sidebar = [
       },
       {
         "text": "Modules",
-        "collapsed": false,
+        "collapsed": true,
         "items": [
           {
             "text": "Глава 85. JavaScript Modules",
@@ -431,7 +431,7 @@ export const sidebar = [
       },
       {
         "text": "Memory Management",
-        "collapsed": false,
+        "collapsed": true,
         "items": [
           {
             "text": "Глава 87. Garbage Collector",
@@ -445,7 +445,7 @@ export const sidebar = [
       },
       {
         "text": "Engineering Practice",
-        "collapsed": false,
+        "collapsed": true,
         "items": [
           {
             "text": "Глава 89. Performance",
@@ -459,7 +459,7 @@ export const sidebar = [
       },
       {
         "text": "JavaScript Conclusion",
-        "collapsed": false,
+        "collapsed": true,
         "items": [
           {
             "text": "Глава 91. Modern JavaScript Features",
@@ -484,6 +484,778 @@ export const sidebar = [
           {
             "text": "Глава 96. Почему появился TypeScript",
             "link": "/docs/01-javascript/96-why-typescript"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "text": "TypeScript",
+    "collapsed": false,
+    "items": [
+      {
+        "text": "Компилятор и граница TypeScript",
+        "collapsed": true,
+        "items": [
+          {
+            "text": "Глава 97. TypeScript Compiler",
+            "link": "/docs/02-typescript/97-typescript-compiler"
+          },
+          {
+            "text": "Глава 98. Type Checking vs Runtime",
+            "link": "/docs/02-typescript/98-type-checking-vs-runtime"
+          },
+          {
+            "text": "Глава 99. Type Erasure",
+            "link": "/docs/02-typescript/99-type-erasure"
+          },
+          {
+            "text": "Глава 100. tsconfig.json",
+            "link": "/docs/02-typescript/100-tsconfig-json"
+          },
+          {
+            "text": "Глава 101. strict mode",
+            "link": "/docs/02-typescript/101-strict-mode"
+          }
+        ]
+      },
+      {
+        "text": "Базовый словарь типов",
+        "collapsed": true,
+        "items": [
+          {
+            "text": "Глава 102. Type Annotations and Type Inference",
+            "link": "/docs/02-typescript/102-type-annotations-and-type-inference"
+          },
+          {
+            "text": "Глава 103. Primitive Types",
+            "link": "/docs/02-typescript/103-primitive-types"
+          },
+          {
+            "text": "Глава 104. any и unknown",
+            "link": "/docs/02-typescript/104-any-and-unknown"
+          },
+          {
+            "text": "Глава 105. void и never",
+            "link": "/docs/02-typescript/105-void-and-never"
+          },
+          {
+            "text": "Глава 106. Arrays",
+            "link": "/docs/02-typescript/106-arrays"
+          },
+          {
+            "text": "Глава 107. Tuples",
+            "link": "/docs/02-typescript/107-tuples"
+          }
+        ]
+      },
+      {
+        "text": "Объектные контракты",
+        "collapsed": true,
+        "items": [
+          {
+            "text": "Глава 108. Object Types",
+            "link": "/docs/02-typescript/108-object-types"
+          },
+          {
+            "text": "Глава 109. Optional and Readonly Properties",
+            "link": "/docs/02-typescript/109-optional-and-readonly-properties"
+          },
+          {
+            "text": "Глава 110. Index Signatures",
+            "link": "/docs/02-typescript/110-index-signatures"
+          },
+          {
+            "text": "Глава 111. Type Alias",
+            "link": "/docs/02-typescript/111-type-alias"
+          },
+          {
+            "text": "Глава 112. Interface",
+            "link": "/docs/02-typescript/112-interface"
+          },
+          {
+            "text": "Глава 113. Interface vs Type Alias",
+            "link": "/docs/02-typescript/113-interface-vs-type-alias"
+          },
+          {
+            "text": "Глава 114. Structural Typing",
+            "link": "/docs/02-typescript/114-structural-typing"
+          }
+        ]
+      },
+      {
+        "text": "Значения как типы и композиция",
+        "collapsed": true,
+        "items": [
+          {
+            "text": "Глава 115. Literal Types",
+            "link": "/docs/02-typescript/115-literal-types"
+          },
+          {
+            "text": "Глава 116. as const",
+            "link": "/docs/02-typescript/116-as-const"
+          },
+          {
+            "text": "Глава 117. Enum",
+            "link": "/docs/02-typescript/117-enum"
+          },
+          {
+            "text": "Глава 118. Union Types",
+            "link": "/docs/02-typescript/118-union-types"
+          },
+          {
+            "text": "Глава 119. Intersection Types",
+            "link": "/docs/02-typescript/119-intersection-types"
+          },
+          {
+            "text": "Глава 120. Type Composition in Practice",
+            "link": "/docs/02-typescript/120-type-composition-in-practice"
+          }
+        ]
+      },
+      {
+        "text": "Типизация функций",
+        "collapsed": true,
+        "items": [
+          {
+            "text": "Глава 121. Function Types",
+            "link": "/docs/02-typescript/121-function-types"
+          },
+          {
+            "text": "Глава 122. Optional, Default and Rest Parameters",
+            "link": "/docs/02-typescript/122-optional-default-and-rest-parameters"
+          },
+          {
+            "text": "Глава 123. Callback Types",
+            "link": "/docs/02-typescript/123-callback-types"
+          },
+          {
+            "text": "Глава 124. Function Overloads",
+            "link": "/docs/02-typescript/124-function-overloads"
+          },
+          {
+            "text": "Глава 125. this Parameter",
+            "link": "/docs/02-typescript/125-this-parameter"
+          },
+          {
+            "text": "Глава 126. Async Function Types",
+            "link": "/docs/02-typescript/126-async-function-types"
+          }
+        ]
+      },
+      {
+        "text": "Narrowing и безопасные ветвления",
+        "collapsed": true,
+        "items": [
+          {
+            "text": "Глава 127. Narrowing",
+            "link": "/docs/02-typescript/127-narrowing"
+          },
+          {
+            "text": "Глава 128. Built-in Type Guards",
+            "link": "/docs/02-typescript/128-built-in-type-guards"
+          },
+          {
+            "text": "Глава 129. User Defined Type Guards",
+            "link": "/docs/02-typescript/129-user-defined-type-guards"
+          },
+          {
+            "text": "Глава 130. Type Assertions",
+            "link": "/docs/02-typescript/130-type-assertions"
+          },
+          {
+            "text": "Глава 131. satisfies",
+            "link": "/docs/02-typescript/131-satisfies"
+          },
+          {
+            "text": "Глава 132. Exhaustive Checks with never",
+            "link": "/docs/02-typescript/132-exhaustive-checks-with-never"
+          }
+        ]
+      },
+      {
+        "text": "Generics",
+        "collapsed": true,
+        "items": [
+          {
+            "text": "Глава 133. Generic Functions",
+            "link": "/docs/02-typescript/133-generic-functions"
+          },
+          {
+            "text": "Глава 134. Generic Constraints",
+            "link": "/docs/02-typescript/134-generic-constraints"
+          },
+          {
+            "text": "Глава 135. keyof Constraints",
+            "link": "/docs/02-typescript/135-keyof-constraints"
+          },
+          {
+            "text": "Глава 136. Generic Type Aliases and Interfaces",
+            "link": "/docs/02-typescript/136-generic-type-aliases-and-interfaces"
+          },
+          {
+            "text": "Глава 137. Generic Classes",
+            "link": "/docs/02-typescript/137-generic-classes"
+          },
+          {
+            "text": "Глава 138. Default Generic Parameters",
+            "link": "/docs/02-typescript/138-default-generic-parameters"
+          }
+        ]
+      },
+      {
+        "text": "Операции над типами",
+        "collapsed": true,
+        "items": [
+          {
+            "text": "Глава 139. keyof",
+            "link": "/docs/02-typescript/139-keyof"
+          },
+          {
+            "text": "Глава 140. typeof Type Query",
+            "link": "/docs/02-typescript/140-typeof-type-query"
+          },
+          {
+            "text": "Глава 141. Indexed Access Types",
+            "link": "/docs/02-typescript/141-indexed-access-types"
+          },
+          {
+            "text": "Глава 142. Mapped Types",
+            "link": "/docs/02-typescript/142-mapped-types"
+          },
+          {
+            "text": "Глава 143. Conditional Types",
+            "link": "/docs/02-typescript/143-conditional-types"
+          },
+          {
+            "text": "Глава 144. infer",
+            "link": "/docs/02-typescript/144-infer"
+          },
+          {
+            "text": "Глава 145. Utility Types",
+            "link": "/docs/02-typescript/145-utility-types"
+          }
+        ]
+      },
+      {
+        "text": "Классы и объектные контракты",
+        "collapsed": true,
+        "items": [
+          {
+            "text": "Глава 146. Typed Classes",
+            "link": "/docs/02-typescript/146-typed-classes"
+          },
+          {
+            "text": "Глава 147. Access Modifiers and readonly Members",
+            "link": "/docs/02-typescript/147-access-modifiers-and-readonly-members"
+          },
+          {
+            "text": "Глава 148. Abstract Classes",
+            "link": "/docs/02-typescript/148-abstract-classes"
+          },
+          {
+            "text": "Глава 149. implements and override",
+            "link": "/docs/02-typescript/149-implements-and-override"
+          }
+        ]
+      },
+      {
+        "text": "Модули и декларации",
+        "collapsed": true,
+        "items": [
+          {
+            "text": "Глава 150. TypeScript and JavaScript Modules",
+            "link": "/docs/02-typescript/150-typescript-and-javascript-modules"
+          },
+          {
+            "text": "Глава 151. Type-only Imports and Exports",
+            "link": "/docs/02-typescript/151-type-only-imports-and-exports"
+          },
+          {
+            "text": "Глава 152. Module Resolution",
+            "link": "/docs/02-typescript/152-module-resolution"
+          },
+          {
+            "text": "Глава 153. Declaration Files",
+            "link": "/docs/02-typescript/153-declaration-files"
+          },
+          {
+            "text": "Глава 154. Declaration Merging",
+            "link": "/docs/02-typescript/154-declaration-merging"
+          },
+          {
+            "text": "Глава 155. Compiler Options for Real Projects",
+            "link": "/docs/02-typescript/155-compiler-options-for-real-projects"
+          }
+        ]
+      },
+      {
+        "text": "Проектная практика",
+        "collapsed": true,
+        "items": [
+          {
+            "text": "Глава 156. Typed Configuration and Test Data",
+            "link": "/docs/02-typescript/156-typed-configuration-and-test-data"
+          },
+          {
+            "text": "Глава 157. Typed Page Objects, Fixtures and Helpers",
+            "link": "/docs/02-typescript/157-typed-page-objects-fixtures-and-helpers"
+          },
+          {
+            "text": "Глава 158. Typed API Clients and Assertions",
+            "link": "/docs/02-typescript/158-typed-api-clients-and-assertions"
+          },
+          {
+            "text": "Глава 159. Maintaining Large TypeScript Test Projects",
+            "link": "/docs/02-typescript/159-maintaining-large-typescript-test-projects"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "text": "Automation QA",
+    "collapsed": false,
+    "items": [
+      {
+        "text": "Основы Automation QA Framework",
+        "collapsed": true,
+        "items": [
+          {
+            "text": "Глава 160. Что такое Automation QA Framework",
+            "link": "/docs/03-automation-qa/160-what-is-automation-qa-framework"
+          },
+          {
+            "text": "Глава 161. Инструменты и роли в Automation QA",
+            "link": "/docs/03-automation-qa/161-tools-and-roles-in-automation-qa"
+          },
+          {
+            "text": "Глава 162. Архитектурные слои и поток зависимостей",
+            "link": "/docs/03-automation-qa/162-architectural-layers-and-dependency-flow"
+          },
+          {
+            "text": "Глава 163. Тестовый и инфраструктурный код",
+            "link": "/docs/03-automation-qa/163-test-code-and-infrastructure-code"
+          },
+          {
+            "text": "Глава 164. Жизненный цикл автотеста",
+            "link": "/docs/03-automation-qa/164-automated-test-lifecycle"
+          },
+          {
+            "text": "Глава 165. Структура проекта и границы модулей",
+            "link": "/docs/03-automation-qa/165-project-structure-and-module-boundaries"
+          }
+        ]
+      },
+      {
+        "text": "Playwright Test и основы UI-автоматизации",
+        "collapsed": true,
+        "items": [
+          {
+            "text": "Глава 166. Playwright и Playwright Test",
+            "link": "/docs/03-automation-qa/166-playwright-and-playwright-test"
+          },
+          {
+            "text": "Глава 167. Анатомия и модель выполнения теста",
+            "link": "/docs/03-automation-qa/167-test-anatomy-and-execution-model"
+          },
+          {
+            "text": "Глава 168. Browser, BrowserContext и Page",
+            "link": "/docs/03-automation-qa/168-browser-browsercontext-and-page"
+          },
+          {
+            "text": "Глава 169. Locator и стратегия поиска элементов",
+            "link": "/docs/03-automation-qa/169-locator-and-element-search-strategy"
+          },
+          {
+            "text": "Глава 170. Пользовательские действия",
+            "link": "/docs/03-automation-qa/170-user-actions"
+          },
+          {
+            "text": "Глава 171. Web-first assertions",
+            "link": "/docs/03-automation-qa/171-web-first-assertions"
+          },
+          {
+            "text": "Глава 172. Auto-waiting и явные ожидания",
+            "link": "/docs/03-automation-qa/172-auto-waiting-and-explicit-waits"
+          },
+          {
+            "text": "Глава 173. Timeouts и границы ожидания",
+            "link": "/docs/03-automation-qa/173-timeouts-and-wait-boundaries"
+          },
+          {
+            "text": "Глава 174. Hooks и жизненный цикл теста",
+            "link": "/docs/03-automation-qa/174-hooks-and-test-lifecycle"
+          },
+          {
+            "text": "Глава 175. Изоляция UI-тестов и состояние браузера",
+            "link": "/docs/03-automation-qa/175-ui-test-isolation-and-browser-state"
+          }
+        ]
+      },
+      {
+        "text": "Fixtures и архитектура UI-слоя",
+        "collapsed": true,
+        "items": [
+          {
+            "text": "Глава 176. Built-in fixtures",
+            "link": "/docs/03-automation-qa/176-built-in-fixtures"
+          },
+          {
+            "text": "Глава 177. Custom fixtures и граф зависимостей",
+            "link": "/docs/03-automation-qa/177-custom-fixtures-and-dependency-graph"
+          },
+          {
+            "text": "Глава 178. Authentication state и управляемые сессии",
+            "link": "/docs/03-automation-qa/178-authentication-state-and-managed-sessions"
+          },
+          {
+            "text": "Глава 179. Page Object",
+            "link": "/docs/03-automation-qa/179-page-object"
+          },
+          {
+            "text": "Глава 180. Component Objects и композиция страниц",
+            "link": "/docs/03-automation-qa/180-component-objects-and-page-composition"
+          },
+          {
+            "text": "Глава 181. Frames",
+            "link": "/docs/03-automation-qa/181-frames"
+          },
+          {
+            "text": "Глава 182. Вкладки, окна и popups",
+            "link": "/docs/03-automation-qa/182-tabs-windows-and-popups"
+          },
+          {
+            "text": "Глава 183. Диалоги и работа с файлами",
+            "link": "/docs/03-automation-qa/183-dialogs-and-files"
+          },
+          {
+            "text": "Глава 184. Network interception и mocking",
+            "link": "/docs/03-automation-qa/184-network-interception-and-mocking"
+          },
+          {
+            "text": "Глава 185. Интеграция UI-слоя",
+            "link": "/docs/03-automation-qa/185-ui-layer-integration"
+          }
+        ]
+      },
+      {
+        "text": "Тестирование REST API",
+        "collapsed": true,
+        "items": [
+          {
+            "text": "Глава 186. HTTP и REST для API-тестирования",
+            "link": "/docs/03-automation-qa/186-http-and-rest-for-api-testing"
+          },
+          {
+            "text": "Глава 187. Структура HTTP-запроса",
+            "link": "/docs/03-automation-qa/187-http-request-structure"
+          },
+          {
+            "text": "Глава 188. Структура HTTP-ответа",
+            "link": "/docs/03-automation-qa/188-http-response-structure"
+          },
+          {
+            "text": "Глава 189. APIRequestContext",
+            "link": "/docs/03-automation-qa/189-api-request-context"
+          },
+          {
+            "text": "Глава 190. API Client и граница HTTP-слоя",
+            "link": "/docs/03-automation-qa/190-api-client-and-http-boundary"
+          },
+          {
+            "text": "Глава 191. Аутентификация API",
+            "link": "/docs/03-automation-qa/191-api-authentication"
+          },
+          {
+            "text": "Глава 192. Request Builders и подготовка данных через API",
+            "link": "/docs/03-automation-qa/192-request-builders-and-api-data-setup"
+          },
+          {
+            "text": "Глава 193. Проверка API-ответов и бизнес-правил",
+            "link": "/docs/03-automation-qa/193-api-response-and-business-rule-validation"
+          },
+          {
+            "text": "Глава 194. Негативные API-сценарии и ошибки",
+            "link": "/docs/03-automation-qa/194-negative-api-scenarios-and-errors"
+          },
+          {
+            "text": "Глава 195. Проверка контрактов во время выполнения",
+            "link": "/docs/03-automation-qa/195-runtime-contract-validation"
+          },
+          {
+            "text": "Глава 196. Совместные UI и API-сценарии",
+            "link": "/docs/03-automation-qa/196-combined-ui-and-api-scenarios"
+          }
+        ]
+      },
+      {
+        "text": "Тестирование gRPC",
+        "collapsed": true,
+        "items": [
+          {
+            "text": "Глава 197. gRPC и REST в тестовой архитектуре",
+            "link": "/docs/03-automation-qa/197-grpc-and-rest-in-test-architecture"
+          },
+          {
+            "text": "Глава 198. Protocol Buffers: сервисы и сообщения",
+            "link": "/docs/03-automation-qa/198-protocol-buffers-services-and-messages"
+          },
+          {
+            "text": "Глава 199. Сгенерированный код и создание gRPC Client",
+            "link": "/docs/03-automation-qa/199-generated-code-and-grpc-client"
+          },
+          {
+            "text": "Глава 200. Unary gRPC-вызовы",
+            "link": "/docs/03-automation-qa/200-unary-grpc-calls"
+          },
+          {
+            "text": "Глава 201. Поля protobuf-сообщений",
+            "link": "/docs/03-automation-qa/201-protobuf-message-fields"
+          },
+          {
+            "text": "Глава 202. Metadata и аутентификация gRPC",
+            "link": "/docs/03-automation-qa/202-grpc-metadata-and-authentication"
+          },
+          {
+            "text": "Глава 203. Deadlines и timeouts gRPC",
+            "link": "/docs/03-automation-qa/203-grpc-deadlines-and-timeouts"
+          },
+          {
+            "text": "Глава 204. Статусы gRPC и обработка ошибок",
+            "link": "/docs/03-automation-qa/204-grpc-statuses-and-error-handling"
+          },
+          {
+            "text": "Глава 205. Проверка gRPC-ответов и негативных сценариев",
+            "link": "/docs/03-automation-qa/205-grpc-response-and-negative-scenario-validation"
+          },
+          {
+            "text": "Глава 206. gRPC Client в Automation Framework",
+            "link": "/docs/03-automation-qa/206-grpc-client-in-automation-framework"
+          }
+        ]
+      },
+      {
+        "text": "Тестирование PostgreSQL",
+        "collapsed": true,
+        "items": [
+          {
+            "text": "Глава 207. PostgreSQL в Automation QA",
+            "link": "/docs/03-automation-qa/207-postgresql-in-automation-qa"
+          },
+          {
+            "text": "Глава 208. Connections, pools и lifecycle",
+            "link": "/docs/03-automation-qa/208-connections-pools-and-lifecycle"
+          },
+          {
+            "text": "Глава 209. Parameterized queries",
+            "link": "/docs/03-automation-qa/209-parameterized-queries"
+          },
+          {
+            "text": "Глава 210. Database Access Layer",
+            "link": "/docs/03-automation-qa/210-database-access-layer"
+          },
+          {
+            "text": "Глава 211. Подготовка и очистка данных в database",
+            "link": "/docs/03-automation-qa/211-database-data-setup-and-cleanup"
+          },
+          {
+            "text": "Глава 212. Transactions, rollback и test isolation",
+            "link": "/docs/03-automation-qa/212-transactions-rollback-and-test-isolation"
+          },
+          {
+            "text": "Глава 213. Eventual consistency и polling",
+            "link": "/docs/03-automation-qa/213-eventual-consistency-and-polling"
+          },
+          {
+            "text": "Глава 214. Сверка данных PostgreSQL с API и gRPC",
+            "link": "/docs/03-automation-qa/214-postgresql-api-grpc-data-comparison"
+          },
+          {
+            "text": "Глава 215. Конфликты данных и параллельные тесты",
+            "link": "/docs/03-automation-qa/215-data-conflicts-and-parallel-tests"
+          }
+        ]
+      },
+      {
+        "text": "Конфигурация, тестовые данные и общая инфраструктура",
+        "collapsed": true,
+        "items": [
+          {
+            "text": "Глава 216. Конфигурация Playwright и execution projects",
+            "link": "/docs/03-automation-qa/216-playwright-configuration-and-execution-projects"
+          },
+          {
+            "text": "Глава 217. Окружения, переменные и secrets",
+            "link": "/docs/03-automation-qa/217-environments-variables-and-secrets"
+          },
+          {
+            "text": "Глава 218. Загрузка и runtime validation конфигурации",
+            "link": "/docs/03-automation-qa/218-configuration-loading-and-runtime-validation"
+          },
+          {
+            "text": "Глава 219. Организация test data",
+            "link": "/docs/03-automation-qa/219-test-data-organization"
+          },
+          {
+            "text": "Глава 220. Builders, factories и уникальные данные",
+            "link": "/docs/03-automation-qa/220-builders-factories-and-unique-data"
+          },
+          {
+            "text": "Глава 221. Жизненный цикл тестовых данных",
+            "link": "/docs/03-automation-qa/221-test-data-lifecycle"
+          },
+          {
+            "text": "Глава 222. Helpers и границы повторного использования",
+            "link": "/docs/03-automation-qa/222-helpers-and-reuse-boundaries"
+          },
+          {
+            "text": "Глава 223. Пользовательские проверки и soft assertions",
+            "link": "/docs/03-automation-qa/223-custom-assertions-and-soft-assertions"
+          },
+          {
+            "text": "Глава 224. Нормализация и проверки между слоями",
+            "link": "/docs/03-automation-qa/224-cross-layer-normalization-and-validation"
+          }
+        ]
+      },
+      {
+        "text": "Диагностика и отчётность",
+        "collapsed": true,
+        "items": [
+          {
+            "text": "Глава 225. Расследование падения автотеста",
+            "link": "/docs/03-automation-qa/225-failure-investigation"
+          },
+          {
+            "text": "Глава 226. Структурированное логирование",
+            "link": "/docs/03-automation-qa/226-structured-logging"
+          },
+          {
+            "text": "Глава 227. Screenshots, videos и Playwright Trace",
+            "link": "/docs/03-automation-qa/227-screenshots-videos-and-playwright-trace"
+          },
+          {
+            "text": "Глава 228. Attachments и lifecycle артефактов",
+            "link": "/docs/03-automation-qa/228-attachments-and-artifact-lifecycle"
+          },
+          {
+            "text": "Глава 229. Принципы тестовой отчётности",
+            "link": "/docs/03-automation-qa/229-test-reporting-principles"
+          },
+          {
+            "text": "Глава 230. Отчётность в Allure",
+            "link": "/docs/03-automation-qa/230-allure-reporting"
+          },
+          {
+            "text": "Глава 231. Диагностический поток Framework",
+            "link": "/docs/03-automation-qa/231-framework-diagnostic-flow"
+          }
+        ]
+      },
+      {
+        "text": "Стабильность и масштабирование выполнения",
+        "collapsed": true,
+        "items": [
+          {
+            "text": "Глава 232. Причины flaky tests",
+            "link": "/docs/03-automation-qa/232-causes-of-flaky-tests"
+          },
+          {
+            "text": "Глава 233. Расследование и quarantine flaky tests",
+            "link": "/docs/03-automation-qa/233-investigation-and-quarantine-of-flaky-tests"
+          },
+          {
+            "text": "Глава 234. Retry policy",
+            "link": "/docs/03-automation-qa/234-retry-policy"
+          },
+          {
+            "text": "Глава 235. Workers и shared resources",
+            "link": "/docs/03-automation-qa/235-workers-and-shared-resources"
+          },
+          {
+            "text": "Глава 236. Parallel execution",
+            "link": "/docs/03-automation-qa/236-parallel-execution"
+          },
+          {
+            "text": "Глава 237. Sharding",
+            "link": "/docs/03-automation-qa/237-sharding"
+          },
+          {
+            "text": "Глава 238. Tags, annotations и test selection",
+            "link": "/docs/03-automation-qa/238-tags-annotations-and-test-selection"
+          }
+        ]
+      },
+      {
+        "text": "CI и эксплуатация проекта",
+        "collapsed": true,
+        "items": [
+          {
+            "text": "Глава 239. CI fundamentals для Automation QA",
+            "link": "/docs/03-automation-qa/239-ci-fundamentals-for-automation-qa"
+          },
+          {
+            "text": "Глава 240. GitHub Actions pipeline",
+            "link": "/docs/03-automation-qa/240-github-actions-pipeline"
+          },
+          {
+            "text": "Глава 241. Browsers и системные зависимости в CI",
+            "link": "/docs/03-automation-qa/241-browsers-and-system-dependencies-in-ci"
+          },
+          {
+            "text": "Глава 242. Environments и secrets в CI",
+            "link": "/docs/03-automation-qa/242-environments-and-secrets-in-ci"
+          },
+          {
+            "text": "Глава 243. Артефакты и отчёты в CI",
+            "link": "/docs/03-automation-qa/243-artifacts-and-reports-in-ci"
+          },
+          {
+            "text": "Глава 244. CI jobs, sharding и диагностика запусков",
+            "link": "/docs/03-automation-qa/244-ci-jobs-sharding-and-run-diagnostics"
+          }
+        ]
+      },
+      {
+        "text": "Интеграция Automation Framework",
+        "collapsed": true,
+        "items": [
+          {
+            "text": "Глава 245. Интеграция слоёв и dependency flow",
+            "link": "/docs/03-automation-qa/245-layer-integration-and-dependency-flow"
+          },
+          {
+            "text": "Глава 246. Composition fixtures и configuration flow",
+            "link": "/docs/03-automation-qa/246-composition-fixtures-and-configuration-flow"
+          },
+          {
+            "text": "Глава 247. Жизненный цикл данных в сценариях между слоями",
+            "link": "/docs/03-automation-qa/247-cross-layer-data-lifecycle"
+          },
+          {
+            "text": "Глава 248. Диагностика, стабильность и CI в общей архитектуре",
+            "link": "/docs/03-automation-qa/248-diagnostics-stability-and-ci-in-architecture"
+          },
+          {
+            "text": "Глава 249. Architecture review и эволюция Framework",
+            "link": "/docs/03-automation-qa/249-architecture-review-and-framework-evolution"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "text": "Финальный проект",
+    "collapsed": false,
+    "items": [
+      {
+        "text": "Финальный промышленный проект",
+        "collapsed": true,
+        "items": [
+          {
+            "text": "Глава 250. Требования и критерии готовности проекта",
+            "link": "/docs/04-final-project/250-project-requirements-and-readiness-criteria"
           }
         ]
       }

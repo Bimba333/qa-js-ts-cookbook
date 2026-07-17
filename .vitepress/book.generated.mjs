@@ -1,5 +1,5 @@
 export const bookEngineData = {
-  "cacheReads": 301,
+  "cacheReads": 763,
   "parts": [
     {
       "title": "Введение",
@@ -480,6 +480,752 @@ export const bookEngineData = {
           ]
         }
       ]
+    },
+    {
+      "title": "TypeScript",
+      "sections": [
+        {
+          "title": "Компилятор и граница TypeScript",
+          "chapters": [
+            {
+              "fallbackTitle": "TypeScript Compiler",
+              "path": "docs/02-typescript/97-typescript-compiler.md"
+            },
+            {
+              "fallbackTitle": "Type Checking vs Runtime",
+              "path": "docs/02-typescript/98-type-checking-vs-runtime.md"
+            },
+            {
+              "fallbackTitle": "Type Erasure",
+              "path": "docs/02-typescript/99-type-erasure.md"
+            },
+            {
+              "fallbackTitle": "tsconfig.json",
+              "path": "docs/02-typescript/100-tsconfig-json.md"
+            },
+            {
+              "fallbackTitle": "strict mode",
+              "path": "docs/02-typescript/101-strict-mode.md"
+            }
+          ]
+        },
+        {
+          "title": "Базовый словарь типов",
+          "chapters": [
+            {
+              "fallbackTitle": "Type Annotations and Type Inference",
+              "path": "docs/02-typescript/102-type-annotations-and-type-inference.md"
+            },
+            {
+              "fallbackTitle": "Primitive Types",
+              "path": "docs/02-typescript/103-primitive-types.md"
+            },
+            {
+              "fallbackTitle": "any и unknown",
+              "path": "docs/02-typescript/104-any-and-unknown.md"
+            },
+            {
+              "fallbackTitle": "void и never",
+              "path": "docs/02-typescript/105-void-and-never.md"
+            },
+            {
+              "fallbackTitle": "Arrays",
+              "path": "docs/02-typescript/106-arrays.md"
+            },
+            {
+              "fallbackTitle": "Tuples",
+              "path": "docs/02-typescript/107-tuples.md"
+            }
+          ]
+        },
+        {
+          "title": "Объектные контракты",
+          "chapters": [
+            {
+              "fallbackTitle": "Object Types",
+              "path": "docs/02-typescript/108-object-types.md"
+            },
+            {
+              "fallbackTitle": "Optional and Readonly Properties",
+              "path": "docs/02-typescript/109-optional-and-readonly-properties.md"
+            },
+            {
+              "fallbackTitle": "Index Signatures",
+              "path": "docs/02-typescript/110-index-signatures.md"
+            },
+            {
+              "fallbackTitle": "Type Alias",
+              "path": "docs/02-typescript/111-type-alias.md"
+            },
+            {
+              "fallbackTitle": "Interface",
+              "path": "docs/02-typescript/112-interface.md"
+            },
+            {
+              "fallbackTitle": "Interface vs Type Alias",
+              "path": "docs/02-typescript/113-interface-vs-type-alias.md"
+            },
+            {
+              "fallbackTitle": "Structural Typing",
+              "path": "docs/02-typescript/114-structural-typing.md"
+            }
+          ]
+        },
+        {
+          "title": "Значения как типы и композиция",
+          "chapters": [
+            {
+              "fallbackTitle": "Literal Types",
+              "path": "docs/02-typescript/115-literal-types.md"
+            },
+            {
+              "fallbackTitle": "as const",
+              "path": "docs/02-typescript/116-as-const.md"
+            },
+            {
+              "fallbackTitle": "Enum",
+              "path": "docs/02-typescript/117-enum.md"
+            },
+            {
+              "fallbackTitle": "Union Types",
+              "path": "docs/02-typescript/118-union-types.md"
+            },
+            {
+              "fallbackTitle": "Intersection Types",
+              "path": "docs/02-typescript/119-intersection-types.md"
+            },
+            {
+              "fallbackTitle": "Type Composition in Practice",
+              "path": "docs/02-typescript/120-type-composition-in-practice.md"
+            }
+          ]
+        },
+        {
+          "title": "Типизация функций",
+          "chapters": [
+            {
+              "fallbackTitle": "Function Types",
+              "path": "docs/02-typescript/121-function-types.md"
+            },
+            {
+              "fallbackTitle": "Optional, Default and Rest Parameters",
+              "path": "docs/02-typescript/122-optional-default-and-rest-parameters.md"
+            },
+            {
+              "fallbackTitle": "Callback Types",
+              "path": "docs/02-typescript/123-callback-types.md"
+            },
+            {
+              "fallbackTitle": "Function Overloads",
+              "path": "docs/02-typescript/124-function-overloads.md"
+            },
+            {
+              "fallbackTitle": "this Parameter",
+              "path": "docs/02-typescript/125-this-parameter.md"
+            },
+            {
+              "fallbackTitle": "Async Function Types",
+              "path": "docs/02-typescript/126-async-function-types.md"
+            }
+          ]
+        },
+        {
+          "title": "Narrowing и безопасные ветвления",
+          "chapters": [
+            {
+              "fallbackTitle": "Narrowing",
+              "path": "docs/02-typescript/127-narrowing.md"
+            },
+            {
+              "fallbackTitle": "Built-in Type Guards",
+              "path": "docs/02-typescript/128-built-in-type-guards.md"
+            },
+            {
+              "fallbackTitle": "User Defined Type Guards",
+              "path": "docs/02-typescript/129-user-defined-type-guards.md"
+            },
+            {
+              "fallbackTitle": "Type Assertions",
+              "path": "docs/02-typescript/130-type-assertions.md"
+            },
+            {
+              "fallbackTitle": "satisfies",
+              "path": "docs/02-typescript/131-satisfies.md"
+            },
+            {
+              "fallbackTitle": "Exhaustive Checks with never",
+              "path": "docs/02-typescript/132-exhaustive-checks-with-never.md"
+            }
+          ]
+        },
+        {
+          "title": "Generics",
+          "chapters": [
+            {
+              "fallbackTitle": "Generic Functions",
+              "path": "docs/02-typescript/133-generic-functions.md"
+            },
+            {
+              "fallbackTitle": "Generic Constraints",
+              "path": "docs/02-typescript/134-generic-constraints.md"
+            },
+            {
+              "fallbackTitle": "keyof Constraints",
+              "path": "docs/02-typescript/135-keyof-constraints.md"
+            },
+            {
+              "fallbackTitle": "Generic Type Aliases and Interfaces",
+              "path": "docs/02-typescript/136-generic-type-aliases-and-interfaces.md"
+            },
+            {
+              "fallbackTitle": "Generic Classes",
+              "path": "docs/02-typescript/137-generic-classes.md"
+            },
+            {
+              "fallbackTitle": "Default Generic Parameters",
+              "path": "docs/02-typescript/138-default-generic-parameters.md"
+            }
+          ]
+        },
+        {
+          "title": "Операции над типами",
+          "chapters": [
+            {
+              "fallbackTitle": "keyof",
+              "path": "docs/02-typescript/139-keyof.md"
+            },
+            {
+              "fallbackTitle": "typeof Type Query",
+              "path": "docs/02-typescript/140-typeof-type-query.md"
+            },
+            {
+              "fallbackTitle": "Indexed Access Types",
+              "path": "docs/02-typescript/141-indexed-access-types.md"
+            },
+            {
+              "fallbackTitle": "Mapped Types",
+              "path": "docs/02-typescript/142-mapped-types.md"
+            },
+            {
+              "fallbackTitle": "Conditional Types",
+              "path": "docs/02-typescript/143-conditional-types.md"
+            },
+            {
+              "fallbackTitle": "infer",
+              "path": "docs/02-typescript/144-infer.md"
+            },
+            {
+              "fallbackTitle": "Utility Types",
+              "path": "docs/02-typescript/145-utility-types.md"
+            }
+          ]
+        },
+        {
+          "title": "Классы и объектные контракты",
+          "chapters": [
+            {
+              "fallbackTitle": "Typed Classes",
+              "path": "docs/02-typescript/146-typed-classes.md"
+            },
+            {
+              "fallbackTitle": "Access Modifiers and readonly Members",
+              "path": "docs/02-typescript/147-access-modifiers-and-readonly-members.md"
+            },
+            {
+              "fallbackTitle": "Abstract Classes",
+              "path": "docs/02-typescript/148-abstract-classes.md"
+            },
+            {
+              "fallbackTitle": "implements and override",
+              "path": "docs/02-typescript/149-implements-and-override.md"
+            }
+          ]
+        },
+        {
+          "title": "Модули и декларации",
+          "chapters": [
+            {
+              "fallbackTitle": "TypeScript and JavaScript Modules",
+              "path": "docs/02-typescript/150-typescript-and-javascript-modules.md"
+            },
+            {
+              "fallbackTitle": "Type-only Imports and Exports",
+              "path": "docs/02-typescript/151-type-only-imports-and-exports.md"
+            },
+            {
+              "fallbackTitle": "Module Resolution",
+              "path": "docs/02-typescript/152-module-resolution.md"
+            },
+            {
+              "fallbackTitle": "Declaration Files",
+              "path": "docs/02-typescript/153-declaration-files.md"
+            },
+            {
+              "fallbackTitle": "Declaration Merging",
+              "path": "docs/02-typescript/154-declaration-merging.md"
+            },
+            {
+              "fallbackTitle": "Compiler Options for Real Projects",
+              "path": "docs/02-typescript/155-compiler-options-for-real-projects.md"
+            }
+          ]
+        },
+        {
+          "title": "Проектная практика",
+          "chapters": [
+            {
+              "fallbackTitle": "Typed Configuration and Test Data",
+              "path": "docs/02-typescript/156-typed-configuration-and-test-data.md"
+            },
+            {
+              "fallbackTitle": "Typed Page Objects, Fixtures and Helpers",
+              "path": "docs/02-typescript/157-typed-page-objects-fixtures-and-helpers.md"
+            },
+            {
+              "fallbackTitle": "Typed API Clients and Assertions",
+              "path": "docs/02-typescript/158-typed-api-clients-and-assertions.md"
+            },
+            {
+              "fallbackTitle": "Maintaining Large TypeScript Test Projects",
+              "path": "docs/02-typescript/159-maintaining-large-typescript-test-projects.md"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Automation QA",
+      "sections": [
+        {
+          "title": "Основы Automation QA Framework",
+          "chapters": [
+            {
+              "fallbackTitle": "Что такое Automation QA Framework",
+              "path": "docs/03-automation-qa/160-what-is-automation-qa-framework.md"
+            },
+            {
+              "fallbackTitle": "Инструменты и роли в Automation QA",
+              "path": "docs/03-automation-qa/161-tools-and-roles-in-automation-qa.md"
+            },
+            {
+              "fallbackTitle": "Архитектурные слои и поток зависимостей",
+              "path": "docs/03-automation-qa/162-architectural-layers-and-dependency-flow.md"
+            },
+            {
+              "fallbackTitle": "Тестовый и инфраструктурный код",
+              "path": "docs/03-automation-qa/163-test-code-and-infrastructure-code.md"
+            },
+            {
+              "fallbackTitle": "Жизненный цикл автотеста",
+              "path": "docs/03-automation-qa/164-automated-test-lifecycle.md"
+            },
+            {
+              "fallbackTitle": "Структура проекта и границы модулей",
+              "path": "docs/03-automation-qa/165-project-structure-and-module-boundaries.md"
+            }
+          ]
+        },
+        {
+          "title": "Playwright Test и основы UI-автоматизации",
+          "chapters": [
+            {
+              "fallbackTitle": "Playwright и Playwright Test",
+              "path": "docs/03-automation-qa/166-playwright-and-playwright-test.md"
+            },
+            {
+              "fallbackTitle": "Анатомия и модель выполнения теста",
+              "path": "docs/03-automation-qa/167-test-anatomy-and-execution-model.md"
+            },
+            {
+              "fallbackTitle": "Browser, BrowserContext и Page",
+              "path": "docs/03-automation-qa/168-browser-browsercontext-and-page.md"
+            },
+            {
+              "fallbackTitle": "Locator и стратегия поиска элементов",
+              "path": "docs/03-automation-qa/169-locator-and-element-search-strategy.md"
+            },
+            {
+              "fallbackTitle": "Пользовательские действия",
+              "path": "docs/03-automation-qa/170-user-actions.md"
+            },
+            {
+              "fallbackTitle": "Web-first assertions",
+              "path": "docs/03-automation-qa/171-web-first-assertions.md"
+            },
+            {
+              "fallbackTitle": "Auto-waiting и явные ожидания",
+              "path": "docs/03-automation-qa/172-auto-waiting-and-explicit-waits.md"
+            },
+            {
+              "fallbackTitle": "Timeouts и границы ожидания",
+              "path": "docs/03-automation-qa/173-timeouts-and-wait-boundaries.md"
+            },
+            {
+              "fallbackTitle": "Hooks и жизненный цикл теста",
+              "path": "docs/03-automation-qa/174-hooks-and-test-lifecycle.md"
+            },
+            {
+              "fallbackTitle": "Изоляция UI-тестов и состояние браузера",
+              "path": "docs/03-automation-qa/175-ui-test-isolation-and-browser-state.md"
+            }
+          ]
+        },
+        {
+          "title": "Fixtures и архитектура UI-слоя",
+          "chapters": [
+            {
+              "fallbackTitle": "Built-in fixtures",
+              "path": "docs/03-automation-qa/176-built-in-fixtures.md"
+            },
+            {
+              "fallbackTitle": "Custom fixtures и граф зависимостей",
+              "path": "docs/03-automation-qa/177-custom-fixtures-and-dependency-graph.md"
+            },
+            {
+              "fallbackTitle": "Authentication state и управляемые сессии",
+              "path": "docs/03-automation-qa/178-authentication-state-and-managed-sessions.md"
+            },
+            {
+              "fallbackTitle": "Page Object",
+              "path": "docs/03-automation-qa/179-page-object.md"
+            },
+            {
+              "fallbackTitle": "Component Objects и композиция страниц",
+              "path": "docs/03-automation-qa/180-component-objects-and-page-composition.md"
+            },
+            {
+              "fallbackTitle": "Frames",
+              "path": "docs/03-automation-qa/181-frames.md"
+            },
+            {
+              "fallbackTitle": "Вкладки, окна и popups",
+              "path": "docs/03-automation-qa/182-tabs-windows-and-popups.md"
+            },
+            {
+              "fallbackTitle": "Диалоги и работа с файлами",
+              "path": "docs/03-automation-qa/183-dialogs-and-files.md"
+            },
+            {
+              "fallbackTitle": "Network interception и mocking",
+              "path": "docs/03-automation-qa/184-network-interception-and-mocking.md"
+            },
+            {
+              "fallbackTitle": "Интеграция UI-слоя",
+              "path": "docs/03-automation-qa/185-ui-layer-integration.md"
+            }
+          ]
+        },
+        {
+          "title": "Тестирование REST API",
+          "chapters": [
+            {
+              "fallbackTitle": "HTTP и REST для API-тестирования",
+              "path": "docs/03-automation-qa/186-http-and-rest-for-api-testing.md"
+            },
+            {
+              "fallbackTitle": "Структура HTTP-запроса",
+              "path": "docs/03-automation-qa/187-http-request-structure.md"
+            },
+            {
+              "fallbackTitle": "Структура HTTP-ответа",
+              "path": "docs/03-automation-qa/188-http-response-structure.md"
+            },
+            {
+              "fallbackTitle": "APIRequestContext",
+              "path": "docs/03-automation-qa/189-api-request-context.md"
+            },
+            {
+              "fallbackTitle": "API Client и граница HTTP-слоя",
+              "path": "docs/03-automation-qa/190-api-client-and-http-boundary.md"
+            },
+            {
+              "fallbackTitle": "Аутентификация API",
+              "path": "docs/03-automation-qa/191-api-authentication.md"
+            },
+            {
+              "fallbackTitle": "Request Builders и подготовка данных через API",
+              "path": "docs/03-automation-qa/192-request-builders-and-api-data-setup.md"
+            },
+            {
+              "fallbackTitle": "Проверка API-ответов и бизнес-правил",
+              "path": "docs/03-automation-qa/193-api-response-and-business-rule-validation.md"
+            },
+            {
+              "fallbackTitle": "Негативные API-сценарии и ошибки",
+              "path": "docs/03-automation-qa/194-negative-api-scenarios-and-errors.md"
+            },
+            {
+              "fallbackTitle": "Проверка контрактов во время выполнения",
+              "path": "docs/03-automation-qa/195-runtime-contract-validation.md"
+            },
+            {
+              "fallbackTitle": "Совместные UI и API-сценарии",
+              "path": "docs/03-automation-qa/196-combined-ui-and-api-scenarios.md"
+            }
+          ]
+        },
+        {
+          "title": "Тестирование gRPC",
+          "chapters": [
+            {
+              "fallbackTitle": "gRPC и REST в тестовой архитектуре",
+              "path": "docs/03-automation-qa/197-grpc-and-rest-in-test-architecture.md"
+            },
+            {
+              "fallbackTitle": "Protocol Buffers: сервисы и сообщения",
+              "path": "docs/03-automation-qa/198-protocol-buffers-services-and-messages.md"
+            },
+            {
+              "fallbackTitle": "Сгенерированный код и создание gRPC Client",
+              "path": "docs/03-automation-qa/199-generated-code-and-grpc-client.md"
+            },
+            {
+              "fallbackTitle": "Unary gRPC-вызовы",
+              "path": "docs/03-automation-qa/200-unary-grpc-calls.md"
+            },
+            {
+              "fallbackTitle": "Поля protobuf-сообщений",
+              "path": "docs/03-automation-qa/201-protobuf-message-fields.md"
+            },
+            {
+              "fallbackTitle": "Metadata и аутентификация gRPC",
+              "path": "docs/03-automation-qa/202-grpc-metadata-and-authentication.md"
+            },
+            {
+              "fallbackTitle": "Deadlines и timeouts gRPC",
+              "path": "docs/03-automation-qa/203-grpc-deadlines-and-timeouts.md"
+            },
+            {
+              "fallbackTitle": "Статусы gRPC и обработка ошибок",
+              "path": "docs/03-automation-qa/204-grpc-statuses-and-error-handling.md"
+            },
+            {
+              "fallbackTitle": "Проверка gRPC-ответов и негативных сценариев",
+              "path": "docs/03-automation-qa/205-grpc-response-and-negative-scenario-validation.md"
+            },
+            {
+              "fallbackTitle": "gRPC Client в Automation Framework",
+              "path": "docs/03-automation-qa/206-grpc-client-in-automation-framework.md"
+            }
+          ]
+        },
+        {
+          "title": "Тестирование PostgreSQL",
+          "chapters": [
+            {
+              "fallbackTitle": "PostgreSQL в Automation QA",
+              "path": "docs/03-automation-qa/207-postgresql-in-automation-qa.md"
+            },
+            {
+              "fallbackTitle": "Connections, pools и lifecycle",
+              "path": "docs/03-automation-qa/208-connections-pools-and-lifecycle.md"
+            },
+            {
+              "fallbackTitle": "Parameterized queries",
+              "path": "docs/03-automation-qa/209-parameterized-queries.md"
+            },
+            {
+              "fallbackTitle": "Database Access Layer",
+              "path": "docs/03-automation-qa/210-database-access-layer.md"
+            },
+            {
+              "fallbackTitle": "Подготовка и очистка данных в database",
+              "path": "docs/03-automation-qa/211-database-data-setup-and-cleanup.md"
+            },
+            {
+              "fallbackTitle": "Transactions, rollback и test isolation",
+              "path": "docs/03-automation-qa/212-transactions-rollback-and-test-isolation.md"
+            },
+            {
+              "fallbackTitle": "Eventual consistency и polling",
+              "path": "docs/03-automation-qa/213-eventual-consistency-and-polling.md"
+            },
+            {
+              "fallbackTitle": "Сверка данных PostgreSQL с API и gRPC",
+              "path": "docs/03-automation-qa/214-postgresql-api-grpc-data-comparison.md"
+            },
+            {
+              "fallbackTitle": "Конфликты данных и параллельные тесты",
+              "path": "docs/03-automation-qa/215-data-conflicts-and-parallel-tests.md"
+            }
+          ]
+        },
+        {
+          "title": "Конфигурация, тестовые данные и общая инфраструктура",
+          "chapters": [
+            {
+              "fallbackTitle": "Конфигурация Playwright и execution projects",
+              "path": "docs/03-automation-qa/216-playwright-configuration-and-execution-projects.md"
+            },
+            {
+              "fallbackTitle": "Окружения, переменные и secrets",
+              "path": "docs/03-automation-qa/217-environments-variables-and-secrets.md"
+            },
+            {
+              "fallbackTitle": "Загрузка и runtime validation конфигурации",
+              "path": "docs/03-automation-qa/218-configuration-loading-and-runtime-validation.md"
+            },
+            {
+              "fallbackTitle": "Организация test data",
+              "path": "docs/03-automation-qa/219-test-data-organization.md"
+            },
+            {
+              "fallbackTitle": "Builders, factories и уникальные данные",
+              "path": "docs/03-automation-qa/220-builders-factories-and-unique-data.md"
+            },
+            {
+              "fallbackTitle": "Жизненный цикл тестовых данных",
+              "path": "docs/03-automation-qa/221-test-data-lifecycle.md"
+            },
+            {
+              "fallbackTitle": "Helpers и границы повторного использования",
+              "path": "docs/03-automation-qa/222-helpers-and-reuse-boundaries.md"
+            },
+            {
+              "fallbackTitle": "Пользовательские проверки и soft assertions",
+              "path": "docs/03-automation-qa/223-custom-assertions-and-soft-assertions.md"
+            },
+            {
+              "fallbackTitle": "Нормализация и проверки между слоями",
+              "path": "docs/03-automation-qa/224-cross-layer-normalization-and-validation.md"
+            }
+          ]
+        },
+        {
+          "title": "Диагностика и отчётность",
+          "chapters": [
+            {
+              "fallbackTitle": "Расследование падения автотеста",
+              "path": "docs/03-automation-qa/225-failure-investigation.md"
+            },
+            {
+              "fallbackTitle": "Структурированное логирование",
+              "path": "docs/03-automation-qa/226-structured-logging.md"
+            },
+            {
+              "fallbackTitle": "Screenshots, videos и Playwright Trace",
+              "path": "docs/03-automation-qa/227-screenshots-videos-and-playwright-trace.md"
+            },
+            {
+              "fallbackTitle": "Attachments и lifecycle артефактов",
+              "path": "docs/03-automation-qa/228-attachments-and-artifact-lifecycle.md"
+            },
+            {
+              "fallbackTitle": "Принципы тестовой отчётности",
+              "path": "docs/03-automation-qa/229-test-reporting-principles.md"
+            },
+            {
+              "fallbackTitle": "Отчётность в Allure",
+              "path": "docs/03-automation-qa/230-allure-reporting.md"
+            },
+            {
+              "fallbackTitle": "Диагностический поток Framework",
+              "path": "docs/03-automation-qa/231-framework-diagnostic-flow.md"
+            }
+          ]
+        },
+        {
+          "title": "Стабильность и масштабирование выполнения",
+          "chapters": [
+            {
+              "fallbackTitle": "Причины flaky tests",
+              "path": "docs/03-automation-qa/232-causes-of-flaky-tests.md"
+            },
+            {
+              "fallbackTitle": "Расследование и quarantine flaky tests",
+              "path": "docs/03-automation-qa/233-investigation-and-quarantine-of-flaky-tests.md"
+            },
+            {
+              "fallbackTitle": "Retry policy",
+              "path": "docs/03-automation-qa/234-retry-policy.md"
+            },
+            {
+              "fallbackTitle": "Workers и shared resources",
+              "path": "docs/03-automation-qa/235-workers-and-shared-resources.md"
+            },
+            {
+              "fallbackTitle": "Parallel execution",
+              "path": "docs/03-automation-qa/236-parallel-execution.md"
+            },
+            {
+              "fallbackTitle": "Sharding",
+              "path": "docs/03-automation-qa/237-sharding.md"
+            },
+            {
+              "fallbackTitle": "Tags, annotations и test selection",
+              "path": "docs/03-automation-qa/238-tags-annotations-and-test-selection.md"
+            }
+          ]
+        },
+        {
+          "title": "CI и эксплуатация проекта",
+          "chapters": [
+            {
+              "fallbackTitle": "CI fundamentals для Automation QA",
+              "path": "docs/03-automation-qa/239-ci-fundamentals-for-automation-qa.md"
+            },
+            {
+              "fallbackTitle": "GitHub Actions pipeline",
+              "path": "docs/03-automation-qa/240-github-actions-pipeline.md"
+            },
+            {
+              "fallbackTitle": "Browsers и системные зависимости в CI",
+              "path": "docs/03-automation-qa/241-browsers-and-system-dependencies-in-ci.md"
+            },
+            {
+              "fallbackTitle": "Environments и secrets в CI",
+              "path": "docs/03-automation-qa/242-environments-and-secrets-in-ci.md"
+            },
+            {
+              "fallbackTitle": "Артефакты и отчёты в CI",
+              "path": "docs/03-automation-qa/243-artifacts-and-reports-in-ci.md"
+            },
+            {
+              "fallbackTitle": "CI jobs, sharding и диагностика запусков",
+              "path": "docs/03-automation-qa/244-ci-jobs-sharding-and-run-diagnostics.md"
+            }
+          ]
+        },
+        {
+          "title": "Интеграция Automation Framework",
+          "chapters": [
+            {
+              "fallbackTitle": "Интеграция слоёв и dependency flow",
+              "path": "docs/03-automation-qa/245-layer-integration-and-dependency-flow.md"
+            },
+            {
+              "fallbackTitle": "Composition fixtures и configuration flow",
+              "path": "docs/03-automation-qa/246-composition-fixtures-and-configuration-flow.md"
+            },
+            {
+              "fallbackTitle": "Жизненный цикл данных в сценариях между слоями",
+              "path": "docs/03-automation-qa/247-cross-layer-data-lifecycle.md"
+            },
+            {
+              "fallbackTitle": "Диагностика, стабильность и CI в общей архитектуре",
+              "path": "docs/03-automation-qa/248-diagnostics-stability-and-ci-in-architecture.md"
+            },
+            {
+              "fallbackTitle": "Architecture review и эволюция Framework",
+              "path": "docs/03-automation-qa/249-architecture-review-and-framework-evolution.md"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Финальный проект",
+      "sections": [
+        {
+          "title": "Финальный промышленный проект",
+          "chapters": [
+            {
+              "fallbackTitle": "Требования и критерии готовности проекта",
+              "path": "docs/04-final-project/250-project-requirements-and-readiness-criteria.md"
+            }
+          ]
+        }
+      ]
     }
   ],
   "chapters": {
@@ -511,7 +1257,12 @@ export const bookEngineData = {
         "title": "Введение",
         "link": "/docs/00-introduction/01-about-course"
       },
-      "progress": null,
+      "progress": {
+        "label": "Введение",
+        "current": 1,
+        "total": 4,
+        "bar": "███░░░░░░░░░"
+      },
       "related": [
         {
           "term": "Execution Context",
@@ -580,7 +1331,12 @@ export const bookEngineData = {
         "title": "Введение",
         "link": "/docs/00-introduction/01-about-course"
       },
-      "progress": null,
+      "progress": {
+        "label": "Введение",
+        "current": 2,
+        "total": 4,
+        "bar": "██████░░░░░░"
+      },
       "related": [
         {
           "term": "Promise",
@@ -637,7 +1393,12 @@ export const bookEngineData = {
         "title": "Введение",
         "link": "/docs/00-introduction/01-about-course"
       },
-      "progress": null,
+      "progress": {
+        "label": "Введение",
+        "current": 3,
+        "total": 4,
+        "bar": "█████████░░░"
+      },
       "related": [
         {
           "term": "Promise",
@@ -688,7 +1449,12 @@ export const bookEngineData = {
         "title": "Введение",
         "link": "/docs/00-introduction/01-about-course"
       },
-      "progress": null,
+      "progress": {
+        "label": "Введение",
+        "current": 4,
+        "total": 4,
+        "bar": "████████████"
+      },
       "related": [],
       "card": {
         "chapterLabel": "Глава 4",
@@ -6511,7 +7277,11 @@ export const bookEngineData = {
         "number": 95,
         "link": "/docs/01-javascript/95-date"
       },
-      "next": null,
+      "next": {
+        "title": "TypeScript Compiler",
+        "number": 97,
+        "link": "/docs/02-typescript/97-typescript-compiler"
+      },
       "sectionLink": {
         "title": "JavaScript Conclusion",
         "link": "/docs/01-javascript/91-modern-javascript"
@@ -6532,15 +7302,7944 @@ export const bookEngineData = {
         "solutions": 10,
         "mermaid": 3
       }
+    },
+    "docs/02-typescript/97-typescript-compiler.md": {
+      "path": "docs/02-typescript/97-typescript-compiler.md",
+      "link": "/docs/02-typescript/97-typescript-compiler",
+      "title": "TypeScript Compiler",
+      "number": 97,
+      "part": "TypeScript",
+      "section": "Компилятор и граница TypeScript",
+      "sectionIndex": 0,
+      "chapterIndex": 0,
+      "wordCount": 458,
+      "readingMinutes": 3,
+      "h2": 12,
+      "h3": 3,
+      "examples": 1,
+      "tasks": 6,
+      "solutions": 10,
+      "mermaid": 4,
+      "miniProjects": 1,
+      "previous": {
+        "title": "Почему появился TypeScript",
+        "number": 96,
+        "link": "/docs/01-javascript/96-why-typescript"
+      },
+      "next": {
+        "title": "Type Checking vs Runtime",
+        "number": 98,
+        "link": "/docs/02-typescript/98-type-checking-vs-runtime"
+      },
+      "sectionLink": {
+        "title": "Компилятор и граница TypeScript",
+        "link": "/docs/02-typescript/97-typescript-compiler"
+      },
+      "progress": {
+        "label": "TypeScript",
+        "current": 1,
+        "total": 63,
+        "bar": "█░░░░░░░░░░░"
+      },
+      "related": [],
+      "card": {
+        "chapterLabel": "Глава 97",
+        "title": "TypeScript Compiler",
+        "reading": 3,
+        "examples": 1,
+        "tasks": 6,
+        "solutions": 10,
+        "mermaid": 4
+      }
+    },
+    "docs/02-typescript/98-type-checking-vs-runtime.md": {
+      "path": "docs/02-typescript/98-type-checking-vs-runtime.md",
+      "link": "/docs/02-typescript/98-type-checking-vs-runtime",
+      "title": "Type Checking vs Runtime",
+      "number": 98,
+      "part": "TypeScript",
+      "section": "Компилятор и граница TypeScript",
+      "sectionIndex": 0,
+      "chapterIndex": 1,
+      "wordCount": 384,
+      "readingMinutes": 3,
+      "h2": 12,
+      "h3": 3,
+      "examples": 1,
+      "tasks": 6,
+      "solutions": 10,
+      "mermaid": 2,
+      "miniProjects": 1,
+      "previous": {
+        "title": "TypeScript Compiler",
+        "number": 97,
+        "link": "/docs/02-typescript/97-typescript-compiler"
+      },
+      "next": {
+        "title": "Type Erasure",
+        "number": 99,
+        "link": "/docs/02-typescript/99-type-erasure"
+      },
+      "sectionLink": {
+        "title": "Компилятор и граница TypeScript",
+        "link": "/docs/02-typescript/97-typescript-compiler"
+      },
+      "progress": {
+        "label": "TypeScript",
+        "current": 2,
+        "total": 63,
+        "bar": "█░░░░░░░░░░░"
+      },
+      "related": [],
+      "card": {
+        "chapterLabel": "Глава 98",
+        "title": "Type Checking vs Runtime",
+        "reading": 3,
+        "examples": 1,
+        "tasks": 6,
+        "solutions": 10,
+        "mermaid": 2
+      }
+    },
+    "docs/02-typescript/99-type-erasure.md": {
+      "path": "docs/02-typescript/99-type-erasure.md",
+      "link": "/docs/02-typescript/99-type-erasure",
+      "title": "Type Erasure",
+      "number": 99,
+      "part": "TypeScript",
+      "section": "Компилятор и граница TypeScript",
+      "sectionIndex": 0,
+      "chapterIndex": 2,
+      "wordCount": 310,
+      "readingMinutes": 2,
+      "h2": 12,
+      "h3": 3,
+      "examples": 1,
+      "tasks": 6,
+      "solutions": 10,
+      "mermaid": 4,
+      "miniProjects": 1,
+      "previous": {
+        "title": "Type Checking vs Runtime",
+        "number": 98,
+        "link": "/docs/02-typescript/98-type-checking-vs-runtime"
+      },
+      "next": {
+        "title": "tsconfig.json",
+        "number": 100,
+        "link": "/docs/02-typescript/100-tsconfig-json"
+      },
+      "sectionLink": {
+        "title": "Компилятор и граница TypeScript",
+        "link": "/docs/02-typescript/97-typescript-compiler"
+      },
+      "progress": {
+        "label": "TypeScript",
+        "current": 3,
+        "total": 63,
+        "bar": "█░░░░░░░░░░░"
+      },
+      "related": [],
+      "card": {
+        "chapterLabel": "Глава 99",
+        "title": "Type Erasure",
+        "reading": 2,
+        "examples": 1,
+        "tasks": 6,
+        "solutions": 10,
+        "mermaid": 4
+      }
+    },
+    "docs/02-typescript/100-tsconfig-json.md": {
+      "path": "docs/02-typescript/100-tsconfig-json.md",
+      "link": "/docs/02-typescript/100-tsconfig-json",
+      "title": "tsconfig.json",
+      "number": 100,
+      "part": "TypeScript",
+      "section": "Компилятор и граница TypeScript",
+      "sectionIndex": 0,
+      "chapterIndex": 3,
+      "wordCount": 364,
+      "readingMinutes": 3,
+      "h2": 12,
+      "h3": 3,
+      "examples": 1,
+      "tasks": 6,
+      "solutions": 10,
+      "mermaid": 2,
+      "miniProjects": 1,
+      "previous": {
+        "title": "Type Erasure",
+        "number": 99,
+        "link": "/docs/02-typescript/99-type-erasure"
+      },
+      "next": {
+        "title": "strict mode",
+        "number": 101,
+        "link": "/docs/02-typescript/101-strict-mode"
+      },
+      "sectionLink": {
+        "title": "Компилятор и граница TypeScript",
+        "link": "/docs/02-typescript/97-typescript-compiler"
+      },
+      "progress": {
+        "label": "TypeScript",
+        "current": 4,
+        "total": 63,
+        "bar": "█░░░░░░░░░░░"
+      },
+      "related": [],
+      "card": {
+        "chapterLabel": "Глава 100",
+        "title": "tsconfig.json",
+        "reading": 3,
+        "examples": 1,
+        "tasks": 6,
+        "solutions": 10,
+        "mermaid": 2
+      }
+    },
+    "docs/02-typescript/101-strict-mode.md": {
+      "path": "docs/02-typescript/101-strict-mode.md",
+      "link": "/docs/02-typescript/101-strict-mode",
+      "title": "strict mode",
+      "number": 101,
+      "part": "TypeScript",
+      "section": "Компилятор и граница TypeScript",
+      "sectionIndex": 0,
+      "chapterIndex": 4,
+      "wordCount": 398,
+      "readingMinutes": 3,
+      "h2": 12,
+      "h3": 3,
+      "examples": 1,
+      "tasks": 6,
+      "solutions": 10,
+      "mermaid": 2,
+      "miniProjects": 1,
+      "previous": {
+        "title": "tsconfig.json",
+        "number": 100,
+        "link": "/docs/02-typescript/100-tsconfig-json"
+      },
+      "next": {
+        "title": "Type Annotations and Type Inference",
+        "number": 102,
+        "link": "/docs/02-typescript/102-type-annotations-and-type-inference"
+      },
+      "sectionLink": {
+        "title": "Компилятор и граница TypeScript",
+        "link": "/docs/02-typescript/97-typescript-compiler"
+      },
+      "progress": {
+        "label": "TypeScript",
+        "current": 5,
+        "total": 63,
+        "bar": "█░░░░░░░░░░░"
+      },
+      "related": [],
+      "card": {
+        "chapterLabel": "Глава 101",
+        "title": "strict mode",
+        "reading": 3,
+        "examples": 1,
+        "tasks": 6,
+        "solutions": 10,
+        "mermaid": 2
+      }
+    },
+    "docs/02-typescript/102-type-annotations-and-type-inference.md": {
+      "path": "docs/02-typescript/102-type-annotations-and-type-inference.md",
+      "link": "/docs/02-typescript/102-type-annotations-and-type-inference",
+      "title": "Type Annotations and Type Inference",
+      "number": 102,
+      "part": "TypeScript",
+      "section": "Базовый словарь типов",
+      "sectionIndex": 1,
+      "chapterIndex": 0,
+      "wordCount": 374,
+      "readingMinutes": 3,
+      "h2": 12,
+      "h3": 3,
+      "examples": 1,
+      "tasks": 6,
+      "solutions": 10,
+      "mermaid": 2,
+      "miniProjects": 1,
+      "previous": {
+        "title": "strict mode",
+        "number": 101,
+        "link": "/docs/02-typescript/101-strict-mode"
+      },
+      "next": {
+        "title": "Primitive Types",
+        "number": 103,
+        "link": "/docs/02-typescript/103-primitive-types"
+      },
+      "sectionLink": {
+        "title": "Базовый словарь типов",
+        "link": "/docs/02-typescript/102-type-annotations-and-type-inference"
+      },
+      "progress": {
+        "label": "TypeScript",
+        "current": 6,
+        "total": 63,
+        "bar": "█░░░░░░░░░░░"
+      },
+      "related": [],
+      "card": {
+        "chapterLabel": "Глава 102",
+        "title": "Type Annotations and Type Inference",
+        "reading": 3,
+        "examples": 1,
+        "tasks": 6,
+        "solutions": 10,
+        "mermaid": 2
+      }
+    },
+    "docs/02-typescript/103-primitive-types.md": {
+      "path": "docs/02-typescript/103-primitive-types.md",
+      "link": "/docs/02-typescript/103-primitive-types",
+      "title": "Primitive Types",
+      "number": 103,
+      "part": "TypeScript",
+      "section": "Базовый словарь типов",
+      "sectionIndex": 1,
+      "chapterIndex": 1,
+      "wordCount": 416,
+      "readingMinutes": 3,
+      "h2": 12,
+      "h3": 3,
+      "examples": 1,
+      "tasks": 7,
+      "solutions": 11,
+      "mermaid": 2,
+      "miniProjects": 1,
+      "previous": {
+        "title": "Type Annotations and Type Inference",
+        "number": 102,
+        "link": "/docs/02-typescript/102-type-annotations-and-type-inference"
+      },
+      "next": {
+        "title": "any и unknown",
+        "number": 104,
+        "link": "/docs/02-typescript/104-any-and-unknown"
+      },
+      "sectionLink": {
+        "title": "Базовый словарь типов",
+        "link": "/docs/02-typescript/102-type-annotations-and-type-inference"
+      },
+      "progress": {
+        "label": "TypeScript",
+        "current": 7,
+        "total": 63,
+        "bar": "█░░░░░░░░░░░"
+      },
+      "related": [],
+      "card": {
+        "chapterLabel": "Глава 103",
+        "title": "Primitive Types",
+        "reading": 3,
+        "examples": 1,
+        "tasks": 7,
+        "solutions": 11,
+        "mermaid": 2
+      }
+    },
+    "docs/02-typescript/104-any-and-unknown.md": {
+      "path": "docs/02-typescript/104-any-and-unknown.md",
+      "link": "/docs/02-typescript/104-any-and-unknown",
+      "title": "any и unknown",
+      "number": 104,
+      "part": "TypeScript",
+      "section": "Базовый словарь типов",
+      "sectionIndex": 1,
+      "chapterIndex": 2,
+      "wordCount": 356,
+      "readingMinutes": 2,
+      "h2": 12,
+      "h3": 3,
+      "examples": 1,
+      "tasks": 6,
+      "solutions": 10,
+      "mermaid": 2,
+      "miniProjects": 1,
+      "previous": {
+        "title": "Primitive Types",
+        "number": 103,
+        "link": "/docs/02-typescript/103-primitive-types"
+      },
+      "next": {
+        "title": "void и never",
+        "number": 105,
+        "link": "/docs/02-typescript/105-void-and-never"
+      },
+      "sectionLink": {
+        "title": "Базовый словарь типов",
+        "link": "/docs/02-typescript/102-type-annotations-and-type-inference"
+      },
+      "progress": {
+        "label": "TypeScript",
+        "current": 8,
+        "total": 63,
+        "bar": "██░░░░░░░░░░"
+      },
+      "related": [
+        {
+          "term": "JSON",
+          "title": "JSON",
+          "number": 94,
+          "link": "/docs/01-javascript/94-json"
+        }
+      ],
+      "card": {
+        "chapterLabel": "Глава 104",
+        "title": "any и unknown",
+        "reading": 2,
+        "examples": 1,
+        "tasks": 6,
+        "solutions": 10,
+        "mermaid": 2
+      }
+    },
+    "docs/02-typescript/105-void-and-never.md": {
+      "path": "docs/02-typescript/105-void-and-never.md",
+      "link": "/docs/02-typescript/105-void-and-never",
+      "title": "void и never",
+      "number": 105,
+      "part": "TypeScript",
+      "section": "Базовый словарь типов",
+      "sectionIndex": 1,
+      "chapterIndex": 3,
+      "wordCount": 327,
+      "readingMinutes": 2,
+      "h2": 12,
+      "h3": 3,
+      "examples": 1,
+      "tasks": 6,
+      "solutions": 10,
+      "mermaid": 2,
+      "miniProjects": 1,
+      "previous": {
+        "title": "any и unknown",
+        "number": 104,
+        "link": "/docs/02-typescript/104-any-and-unknown"
+      },
+      "next": {
+        "title": "Arrays",
+        "number": 106,
+        "link": "/docs/02-typescript/106-arrays"
+      },
+      "sectionLink": {
+        "title": "Базовый словарь типов",
+        "link": "/docs/02-typescript/102-type-annotations-and-type-inference"
+      },
+      "progress": {
+        "label": "TypeScript",
+        "current": 9,
+        "total": 63,
+        "bar": "██░░░░░░░░░░"
+      },
+      "related": [],
+      "card": {
+        "chapterLabel": "Глава 105",
+        "title": "void и never",
+        "reading": 2,
+        "examples": 1,
+        "tasks": 6,
+        "solutions": 10,
+        "mermaid": 2
+      }
+    },
+    "docs/02-typescript/106-arrays.md": {
+      "path": "docs/02-typescript/106-arrays.md",
+      "link": "/docs/02-typescript/106-arrays",
+      "title": "Arrays",
+      "number": 106,
+      "part": "TypeScript",
+      "section": "Базовый словарь типов",
+      "sectionIndex": 1,
+      "chapterIndex": 4,
+      "wordCount": 329,
+      "readingMinutes": 2,
+      "h2": 12,
+      "h3": 3,
+      "examples": 1,
+      "tasks": 6,
+      "solutions": 10,
+      "mermaid": 2,
+      "miniProjects": 1,
+      "previous": {
+        "title": "void и never",
+        "number": 105,
+        "link": "/docs/02-typescript/105-void-and-never"
+      },
+      "next": {
+        "title": "Tuples",
+        "number": 107,
+        "link": "/docs/02-typescript/107-tuples"
+      },
+      "sectionLink": {
+        "title": "Базовый словарь типов",
+        "link": "/docs/02-typescript/102-type-annotations-and-type-inference"
+      },
+      "progress": {
+        "label": "TypeScript",
+        "current": 10,
+        "total": 63,
+        "bar": "██░░░░░░░░░░"
+      },
+      "related": [],
+      "card": {
+        "chapterLabel": "Глава 106",
+        "title": "Arrays",
+        "reading": 2,
+        "examples": 1,
+        "tasks": 6,
+        "solutions": 10,
+        "mermaid": 2
+      }
+    },
+    "docs/02-typescript/107-tuples.md": {
+      "path": "docs/02-typescript/107-tuples.md",
+      "link": "/docs/02-typescript/107-tuples",
+      "title": "Tuples",
+      "number": 107,
+      "part": "TypeScript",
+      "section": "Базовый словарь типов",
+      "sectionIndex": 1,
+      "chapterIndex": 5,
+      "wordCount": 330,
+      "readingMinutes": 2,
+      "h2": 12,
+      "h3": 3,
+      "examples": 1,
+      "tasks": 6,
+      "solutions": 10,
+      "mermaid": 2,
+      "miniProjects": 1,
+      "previous": {
+        "title": "Arrays",
+        "number": 106,
+        "link": "/docs/02-typescript/106-arrays"
+      },
+      "next": {
+        "title": "Object Types",
+        "number": 108,
+        "link": "/docs/02-typescript/108-object-types"
+      },
+      "sectionLink": {
+        "title": "Базовый словарь типов",
+        "link": "/docs/02-typescript/102-type-annotations-and-type-inference"
+      },
+      "progress": {
+        "label": "TypeScript",
+        "current": 11,
+        "total": 63,
+        "bar": "██░░░░░░░░░░"
+      },
+      "related": [],
+      "card": {
+        "chapterLabel": "Глава 107",
+        "title": "Tuples",
+        "reading": 2,
+        "examples": 1,
+        "tasks": 6,
+        "solutions": 10,
+        "mermaid": 2
+      }
+    },
+    "docs/02-typescript/108-object-types.md": {
+      "path": "docs/02-typescript/108-object-types.md",
+      "link": "/docs/02-typescript/108-object-types",
+      "title": "Object Types",
+      "number": 108,
+      "part": "TypeScript",
+      "section": "Объектные контракты",
+      "sectionIndex": 2,
+      "chapterIndex": 0,
+      "wordCount": 297,
+      "readingMinutes": 2,
+      "h2": 12,
+      "h3": 3,
+      "examples": 1,
+      "tasks": 6,
+      "solutions": 10,
+      "mermaid": 1,
+      "miniProjects": 1,
+      "previous": {
+        "title": "Tuples",
+        "number": 107,
+        "link": "/docs/02-typescript/107-tuples"
+      },
+      "next": {
+        "title": "Optional and Readonly Properties",
+        "number": 109,
+        "link": "/docs/02-typescript/109-optional-and-readonly-properties"
+      },
+      "sectionLink": {
+        "title": "Объектные контракты",
+        "link": "/docs/02-typescript/108-object-types"
+      },
+      "progress": {
+        "label": "TypeScript",
+        "current": 12,
+        "total": 63,
+        "bar": "██░░░░░░░░░░"
+      },
+      "related": [],
+      "card": {
+        "chapterLabel": "Глава 108",
+        "title": "Object Types",
+        "reading": 2,
+        "examples": 1,
+        "tasks": 6,
+        "solutions": 10,
+        "mermaid": 1
+      }
+    },
+    "docs/02-typescript/109-optional-and-readonly-properties.md": {
+      "path": "docs/02-typescript/109-optional-and-readonly-properties.md",
+      "link": "/docs/02-typescript/109-optional-and-readonly-properties",
+      "title": "Optional and Readonly Properties",
+      "number": 109,
+      "part": "TypeScript",
+      "section": "Объектные контракты",
+      "sectionIndex": 2,
+      "chapterIndex": 1,
+      "wordCount": 325,
+      "readingMinutes": 2,
+      "h2": 12,
+      "h3": 3,
+      "examples": 1,
+      "tasks": 6,
+      "solutions": 10,
+      "mermaid": 1,
+      "miniProjects": 1,
+      "previous": {
+        "title": "Object Types",
+        "number": 108,
+        "link": "/docs/02-typescript/108-object-types"
+      },
+      "next": {
+        "title": "Index Signatures",
+        "number": 110,
+        "link": "/docs/02-typescript/110-index-signatures"
+      },
+      "sectionLink": {
+        "title": "Объектные контракты",
+        "link": "/docs/02-typescript/108-object-types"
+      },
+      "progress": {
+        "label": "TypeScript",
+        "current": 13,
+        "total": 63,
+        "bar": "██░░░░░░░░░░"
+      },
+      "related": [],
+      "card": {
+        "chapterLabel": "Глава 109",
+        "title": "Optional and Readonly Properties",
+        "reading": 2,
+        "examples": 1,
+        "tasks": 6,
+        "solutions": 10,
+        "mermaid": 1
+      }
+    },
+    "docs/02-typescript/110-index-signatures.md": {
+      "path": "docs/02-typescript/110-index-signatures.md",
+      "link": "/docs/02-typescript/110-index-signatures",
+      "title": "Index Signatures",
+      "number": 110,
+      "part": "TypeScript",
+      "section": "Объектные контракты",
+      "sectionIndex": 2,
+      "chapterIndex": 2,
+      "wordCount": 364,
+      "readingMinutes": 3,
+      "h2": 12,
+      "h3": 3,
+      "examples": 1,
+      "tasks": 6,
+      "solutions": 10,
+      "mermaid": 1,
+      "miniProjects": 1,
+      "previous": {
+        "title": "Optional and Readonly Properties",
+        "number": 109,
+        "link": "/docs/02-typescript/109-optional-and-readonly-properties"
+      },
+      "next": {
+        "title": "Type Alias",
+        "number": 111,
+        "link": "/docs/02-typescript/111-type-alias"
+      },
+      "sectionLink": {
+        "title": "Объектные контракты",
+        "link": "/docs/02-typescript/108-object-types"
+      },
+      "progress": {
+        "label": "TypeScript",
+        "current": 14,
+        "total": 63,
+        "bar": "███░░░░░░░░░"
+      },
+      "related": [],
+      "card": {
+        "chapterLabel": "Глава 110",
+        "title": "Index Signatures",
+        "reading": 3,
+        "examples": 1,
+        "tasks": 6,
+        "solutions": 10,
+        "mermaid": 1
+      }
+    },
+    "docs/02-typescript/111-type-alias.md": {
+      "path": "docs/02-typescript/111-type-alias.md",
+      "link": "/docs/02-typescript/111-type-alias",
+      "title": "Type Alias",
+      "number": 111,
+      "part": "TypeScript",
+      "section": "Объектные контракты",
+      "sectionIndex": 2,
+      "chapterIndex": 3,
+      "wordCount": 283,
+      "readingMinutes": 2,
+      "h2": 12,
+      "h3": 3,
+      "examples": 1,
+      "tasks": 6,
+      "solutions": 10,
+      "mermaid": 1,
+      "miniProjects": 1,
+      "previous": {
+        "title": "Index Signatures",
+        "number": 110,
+        "link": "/docs/02-typescript/110-index-signatures"
+      },
+      "next": {
+        "title": "Interface",
+        "number": 112,
+        "link": "/docs/02-typescript/112-interface"
+      },
+      "sectionLink": {
+        "title": "Объектные контракты",
+        "link": "/docs/02-typescript/108-object-types"
+      },
+      "progress": {
+        "label": "TypeScript",
+        "current": 15,
+        "total": 63,
+        "bar": "███░░░░░░░░░"
+      },
+      "related": [],
+      "card": {
+        "chapterLabel": "Глава 111",
+        "title": "Type Alias",
+        "reading": 2,
+        "examples": 1,
+        "tasks": 6,
+        "solutions": 10,
+        "mermaid": 1
+      }
+    },
+    "docs/02-typescript/112-interface.md": {
+      "path": "docs/02-typescript/112-interface.md",
+      "link": "/docs/02-typescript/112-interface",
+      "title": "Interface",
+      "number": 112,
+      "part": "TypeScript",
+      "section": "Объектные контракты",
+      "sectionIndex": 2,
+      "chapterIndex": 4,
+      "wordCount": 280,
+      "readingMinutes": 2,
+      "h2": 12,
+      "h3": 3,
+      "examples": 1,
+      "tasks": 6,
+      "solutions": 10,
+      "mermaid": 0,
+      "miniProjects": 1,
+      "previous": {
+        "title": "Type Alias",
+        "number": 111,
+        "link": "/docs/02-typescript/111-type-alias"
+      },
+      "next": {
+        "title": "Interface vs Type Alias",
+        "number": 113,
+        "link": "/docs/02-typescript/113-interface-vs-type-alias"
+      },
+      "sectionLink": {
+        "title": "Объектные контракты",
+        "link": "/docs/02-typescript/108-object-types"
+      },
+      "progress": {
+        "label": "TypeScript",
+        "current": 16,
+        "total": 63,
+        "bar": "███░░░░░░░░░"
+      },
+      "related": [],
+      "card": {
+        "chapterLabel": "Глава 112",
+        "title": "Interface",
+        "reading": 2,
+        "examples": 1,
+        "tasks": 6,
+        "solutions": 10,
+        "mermaid": 0
+      }
+    },
+    "docs/02-typescript/113-interface-vs-type-alias.md": {
+      "path": "docs/02-typescript/113-interface-vs-type-alias.md",
+      "link": "/docs/02-typescript/113-interface-vs-type-alias",
+      "title": "Interface vs Type Alias",
+      "number": 113,
+      "part": "TypeScript",
+      "section": "Объектные контракты",
+      "sectionIndex": 2,
+      "chapterIndex": 5,
+      "wordCount": 295,
+      "readingMinutes": 2,
+      "h2": 12,
+      "h3": 3,
+      "examples": 1,
+      "tasks": 6,
+      "solutions": 10,
+      "mermaid": 0,
+      "miniProjects": 1,
+      "previous": {
+        "title": "Interface",
+        "number": 112,
+        "link": "/docs/02-typescript/112-interface"
+      },
+      "next": {
+        "title": "Structural Typing",
+        "number": 114,
+        "link": "/docs/02-typescript/114-structural-typing"
+      },
+      "sectionLink": {
+        "title": "Объектные контракты",
+        "link": "/docs/02-typescript/108-object-types"
+      },
+      "progress": {
+        "label": "TypeScript",
+        "current": 17,
+        "total": 63,
+        "bar": "███░░░░░░░░░"
+      },
+      "related": [],
+      "card": {
+        "chapterLabel": "Глава 113",
+        "title": "Interface vs Type Alias",
+        "reading": 2,
+        "examples": 1,
+        "tasks": 6,
+        "solutions": 10,
+        "mermaid": 0
+      }
+    },
+    "docs/02-typescript/114-structural-typing.md": {
+      "path": "docs/02-typescript/114-structural-typing.md",
+      "link": "/docs/02-typescript/114-structural-typing",
+      "title": "Structural Typing",
+      "number": 114,
+      "part": "TypeScript",
+      "section": "Объектные контракты",
+      "sectionIndex": 2,
+      "chapterIndex": 6,
+      "wordCount": 385,
+      "readingMinutes": 3,
+      "h2": 12,
+      "h3": 3,
+      "examples": 1,
+      "tasks": 6,
+      "solutions": 11,
+      "mermaid": 1,
+      "miniProjects": 1,
+      "previous": {
+        "title": "Interface vs Type Alias",
+        "number": 113,
+        "link": "/docs/02-typescript/113-interface-vs-type-alias"
+      },
+      "next": {
+        "title": "Literal Types",
+        "number": 115,
+        "link": "/docs/02-typescript/115-literal-types"
+      },
+      "sectionLink": {
+        "title": "Объектные контракты",
+        "link": "/docs/02-typescript/108-object-types"
+      },
+      "progress": {
+        "label": "TypeScript",
+        "current": 18,
+        "total": 63,
+        "bar": "███░░░░░░░░░"
+      },
+      "related": [],
+      "card": {
+        "chapterLabel": "Глава 114",
+        "title": "Structural Typing",
+        "reading": 3,
+        "examples": 1,
+        "tasks": 6,
+        "solutions": 11,
+        "mermaid": 1
+      }
+    },
+    "docs/02-typescript/115-literal-types.md": {
+      "path": "docs/02-typescript/115-literal-types.md",
+      "link": "/docs/02-typescript/115-literal-types",
+      "title": "Literal Types",
+      "number": 115,
+      "part": "TypeScript",
+      "section": "Значения как типы и композиция",
+      "sectionIndex": 3,
+      "chapterIndex": 0,
+      "wordCount": 395,
+      "readingMinutes": 3,
+      "h2": 12,
+      "h3": 3,
+      "examples": 1,
+      "tasks": 6,
+      "solutions": 10,
+      "mermaid": 1,
+      "miniProjects": 1,
+      "previous": {
+        "title": "Structural Typing",
+        "number": 114,
+        "link": "/docs/02-typescript/114-structural-typing"
+      },
+      "next": {
+        "title": "as const",
+        "number": 116,
+        "link": "/docs/02-typescript/116-as-const"
+      },
+      "sectionLink": {
+        "title": "Значения как типы и композиция",
+        "link": "/docs/02-typescript/115-literal-types"
+      },
+      "progress": {
+        "label": "TypeScript",
+        "current": 19,
+        "total": 63,
+        "bar": "████░░░░░░░░"
+      },
+      "related": [],
+      "card": {
+        "chapterLabel": "Глава 115",
+        "title": "Literal Types",
+        "reading": 3,
+        "examples": 1,
+        "tasks": 6,
+        "solutions": 10,
+        "mermaid": 1
+      }
+    },
+    "docs/02-typescript/116-as-const.md": {
+      "path": "docs/02-typescript/116-as-const.md",
+      "link": "/docs/02-typescript/116-as-const",
+      "title": "as const",
+      "number": 116,
+      "part": "TypeScript",
+      "section": "Значения как типы и композиция",
+      "sectionIndex": 3,
+      "chapterIndex": 1,
+      "wordCount": 350,
+      "readingMinutes": 2,
+      "h2": 12,
+      "h3": 3,
+      "examples": 1,
+      "tasks": 6,
+      "solutions": 10,
+      "mermaid": 1,
+      "miniProjects": 1,
+      "previous": {
+        "title": "Literal Types",
+        "number": 115,
+        "link": "/docs/02-typescript/115-literal-types"
+      },
+      "next": {
+        "title": "Enum",
+        "number": 117,
+        "link": "/docs/02-typescript/117-enum"
+      },
+      "sectionLink": {
+        "title": "Значения как типы и композиция",
+        "link": "/docs/02-typescript/115-literal-types"
+      },
+      "progress": {
+        "label": "TypeScript",
+        "current": 20,
+        "total": 63,
+        "bar": "████░░░░░░░░"
+      },
+      "related": [],
+      "card": {
+        "chapterLabel": "Глава 116",
+        "title": "as const",
+        "reading": 2,
+        "examples": 1,
+        "tasks": 6,
+        "solutions": 10,
+        "mermaid": 1
+      }
+    },
+    "docs/02-typescript/117-enum.md": {
+      "path": "docs/02-typescript/117-enum.md",
+      "link": "/docs/02-typescript/117-enum",
+      "title": "Enum",
+      "number": 117,
+      "part": "TypeScript",
+      "section": "Значения как типы и композиция",
+      "sectionIndex": 3,
+      "chapterIndex": 2,
+      "wordCount": 340,
+      "readingMinutes": 2,
+      "h2": 12,
+      "h3": 3,
+      "examples": 1,
+      "tasks": 6,
+      "solutions": 10,
+      "mermaid": 1,
+      "miniProjects": 1,
+      "previous": {
+        "title": "as const",
+        "number": 116,
+        "link": "/docs/02-typescript/116-as-const"
+      },
+      "next": {
+        "title": "Union Types",
+        "number": 118,
+        "link": "/docs/02-typescript/118-union-types"
+      },
+      "sectionLink": {
+        "title": "Значения как типы и композиция",
+        "link": "/docs/02-typescript/115-literal-types"
+      },
+      "progress": {
+        "label": "TypeScript",
+        "current": 21,
+        "total": 63,
+        "bar": "████░░░░░░░░"
+      },
+      "related": [],
+      "card": {
+        "chapterLabel": "Глава 117",
+        "title": "Enum",
+        "reading": 2,
+        "examples": 1,
+        "tasks": 6,
+        "solutions": 10,
+        "mermaid": 1
+      }
+    },
+    "docs/02-typescript/118-union-types.md": {
+      "path": "docs/02-typescript/118-union-types.md",
+      "link": "/docs/02-typescript/118-union-types",
+      "title": "Union Types",
+      "number": 118,
+      "part": "TypeScript",
+      "section": "Значения как типы и композиция",
+      "sectionIndex": 3,
+      "chapterIndex": 3,
+      "wordCount": 343,
+      "readingMinutes": 2,
+      "h2": 12,
+      "h3": 3,
+      "examples": 1,
+      "tasks": 6,
+      "solutions": 10,
+      "mermaid": 1,
+      "miniProjects": 1,
+      "previous": {
+        "title": "Enum",
+        "number": 117,
+        "link": "/docs/02-typescript/117-enum"
+      },
+      "next": {
+        "title": "Intersection Types",
+        "number": 119,
+        "link": "/docs/02-typescript/119-intersection-types"
+      },
+      "sectionLink": {
+        "title": "Значения как типы и композиция",
+        "link": "/docs/02-typescript/115-literal-types"
+      },
+      "progress": {
+        "label": "TypeScript",
+        "current": 22,
+        "total": 63,
+        "bar": "████░░░░░░░░"
+      },
+      "related": [
+        {
+          "term": "JSON",
+          "title": "JSON",
+          "number": 94,
+          "link": "/docs/01-javascript/94-json"
+        }
+      ],
+      "card": {
+        "chapterLabel": "Глава 118",
+        "title": "Union Types",
+        "reading": 2,
+        "examples": 1,
+        "tasks": 6,
+        "solutions": 10,
+        "mermaid": 1
+      }
+    },
+    "docs/02-typescript/119-intersection-types.md": {
+      "path": "docs/02-typescript/119-intersection-types.md",
+      "link": "/docs/02-typescript/119-intersection-types",
+      "title": "Intersection Types",
+      "number": 119,
+      "part": "TypeScript",
+      "section": "Значения как типы и композиция",
+      "sectionIndex": 3,
+      "chapterIndex": 4,
+      "wordCount": 331,
+      "readingMinutes": 2,
+      "h2": 12,
+      "h3": 3,
+      "examples": 1,
+      "tasks": 6,
+      "solutions": 10,
+      "mermaid": 1,
+      "miniProjects": 1,
+      "previous": {
+        "title": "Union Types",
+        "number": 118,
+        "link": "/docs/02-typescript/118-union-types"
+      },
+      "next": {
+        "title": "Type Composition in Practice",
+        "number": 120,
+        "link": "/docs/02-typescript/120-type-composition-in-practice"
+      },
+      "sectionLink": {
+        "title": "Значения как типы и композиция",
+        "link": "/docs/02-typescript/115-literal-types"
+      },
+      "progress": {
+        "label": "TypeScript",
+        "current": 23,
+        "total": 63,
+        "bar": "████░░░░░░░░"
+      },
+      "related": [],
+      "card": {
+        "chapterLabel": "Глава 119",
+        "title": "Intersection Types",
+        "reading": 2,
+        "examples": 1,
+        "tasks": 6,
+        "solutions": 10,
+        "mermaid": 1
+      }
+    },
+    "docs/02-typescript/120-type-composition-in-practice.md": {
+      "path": "docs/02-typescript/120-type-composition-in-practice.md",
+      "link": "/docs/02-typescript/120-type-composition-in-practice",
+      "title": "Type Composition in Practice",
+      "number": 120,
+      "part": "TypeScript",
+      "section": "Значения как типы и композиция",
+      "sectionIndex": 3,
+      "chapterIndex": 5,
+      "wordCount": 306,
+      "readingMinutes": 2,
+      "h2": 12,
+      "h3": 3,
+      "examples": 1,
+      "tasks": 6,
+      "solutions": 10,
+      "mermaid": 1,
+      "miniProjects": 1,
+      "previous": {
+        "title": "Intersection Types",
+        "number": 119,
+        "link": "/docs/02-typescript/119-intersection-types"
+      },
+      "next": {
+        "title": "Function Types",
+        "number": 121,
+        "link": "/docs/02-typescript/121-function-types"
+      },
+      "sectionLink": {
+        "title": "Значения как типы и композиция",
+        "link": "/docs/02-typescript/115-literal-types"
+      },
+      "progress": {
+        "label": "TypeScript",
+        "current": 24,
+        "total": 63,
+        "bar": "█████░░░░░░░"
+      },
+      "related": [],
+      "card": {
+        "chapterLabel": "Глава 120",
+        "title": "Type Composition in Practice",
+        "reading": 2,
+        "examples": 1,
+        "tasks": 6,
+        "solutions": 10,
+        "mermaid": 1
+      }
+    },
+    "docs/02-typescript/121-function-types.md": {
+      "path": "docs/02-typescript/121-function-types.md",
+      "link": "/docs/02-typescript/121-function-types",
+      "title": "Function Types",
+      "number": 121,
+      "part": "TypeScript",
+      "section": "Типизация функций",
+      "sectionIndex": 4,
+      "chapterIndex": 0,
+      "wordCount": 403,
+      "readingMinutes": 3,
+      "h2": 12,
+      "h3": 3,
+      "examples": 1,
+      "tasks": 6,
+      "solutions": 11,
+      "mermaid": 0,
+      "miniProjects": 1,
+      "previous": {
+        "title": "Type Composition in Practice",
+        "number": 120,
+        "link": "/docs/02-typescript/120-type-composition-in-practice"
+      },
+      "next": {
+        "title": "Optional, Default and Rest Parameters",
+        "number": 122,
+        "link": "/docs/02-typescript/122-optional-default-and-rest-parameters"
+      },
+      "sectionLink": {
+        "title": "Типизация функций",
+        "link": "/docs/02-typescript/121-function-types"
+      },
+      "progress": {
+        "label": "TypeScript",
+        "current": 25,
+        "total": 63,
+        "bar": "█████░░░░░░░"
+      },
+      "related": [],
+      "card": {
+        "chapterLabel": "Глава 121",
+        "title": "Function Types",
+        "reading": 3,
+        "examples": 1,
+        "tasks": 6,
+        "solutions": 11,
+        "mermaid": 0
+      }
+    },
+    "docs/02-typescript/122-optional-default-and-rest-parameters.md": {
+      "path": "docs/02-typescript/122-optional-default-and-rest-parameters.md",
+      "link": "/docs/02-typescript/122-optional-default-and-rest-parameters",
+      "title": "Optional, Default and Rest Parameters",
+      "number": 122,
+      "part": "TypeScript",
+      "section": "Типизация функций",
+      "sectionIndex": 4,
+      "chapterIndex": 1,
+      "wordCount": 384,
+      "readingMinutes": 3,
+      "h2": 12,
+      "h3": 3,
+      "examples": 1,
+      "tasks": 6,
+      "solutions": 11,
+      "mermaid": 0,
+      "miniProjects": 1,
+      "previous": {
+        "title": "Function Types",
+        "number": 121,
+        "link": "/docs/02-typescript/121-function-types"
+      },
+      "next": {
+        "title": "Callback Types",
+        "number": 123,
+        "link": "/docs/02-typescript/123-callback-types"
+      },
+      "sectionLink": {
+        "title": "Типизация функций",
+        "link": "/docs/02-typescript/121-function-types"
+      },
+      "progress": {
+        "label": "TypeScript",
+        "current": 26,
+        "total": 63,
+        "bar": "█████░░░░░░░"
+      },
+      "related": [],
+      "card": {
+        "chapterLabel": "Глава 122",
+        "title": "Optional, Default and Rest Parameters",
+        "reading": 3,
+        "examples": 1,
+        "tasks": 6,
+        "solutions": 11,
+        "mermaid": 0
+      }
+    },
+    "docs/02-typescript/123-callback-types.md": {
+      "path": "docs/02-typescript/123-callback-types.md",
+      "link": "/docs/02-typescript/123-callback-types",
+      "title": "Callback Types",
+      "number": 123,
+      "part": "TypeScript",
+      "section": "Типизация функций",
+      "sectionIndex": 4,
+      "chapterIndex": 2,
+      "wordCount": 325,
+      "readingMinutes": 2,
+      "h2": 12,
+      "h3": 3,
+      "examples": 1,
+      "tasks": 6,
+      "solutions": 11,
+      "mermaid": 0,
+      "miniProjects": 1,
+      "previous": {
+        "title": "Optional, Default and Rest Parameters",
+        "number": 122,
+        "link": "/docs/02-typescript/122-optional-default-and-rest-parameters"
+      },
+      "next": {
+        "title": "Function Overloads",
+        "number": 124,
+        "link": "/docs/02-typescript/124-function-overloads"
+      },
+      "sectionLink": {
+        "title": "Типизация функций",
+        "link": "/docs/02-typescript/121-function-types"
+      },
+      "progress": {
+        "label": "TypeScript",
+        "current": 27,
+        "total": 63,
+        "bar": "█████░░░░░░░"
+      },
+      "related": [],
+      "card": {
+        "chapterLabel": "Глава 123",
+        "title": "Callback Types",
+        "reading": 2,
+        "examples": 1,
+        "tasks": 6,
+        "solutions": 11,
+        "mermaid": 0
+      }
+    },
+    "docs/02-typescript/124-function-overloads.md": {
+      "path": "docs/02-typescript/124-function-overloads.md",
+      "link": "/docs/02-typescript/124-function-overloads",
+      "title": "Function Overloads",
+      "number": 124,
+      "part": "TypeScript",
+      "section": "Типизация функций",
+      "sectionIndex": 4,
+      "chapterIndex": 3,
+      "wordCount": 344,
+      "readingMinutes": 2,
+      "h2": 12,
+      "h3": 3,
+      "examples": 1,
+      "tasks": 6,
+      "solutions": 11,
+      "mermaid": 0,
+      "miniProjects": 1,
+      "previous": {
+        "title": "Callback Types",
+        "number": 123,
+        "link": "/docs/02-typescript/123-callback-types"
+      },
+      "next": {
+        "title": "this Parameter",
+        "number": 125,
+        "link": "/docs/02-typescript/125-this-parameter"
+      },
+      "sectionLink": {
+        "title": "Типизация функций",
+        "link": "/docs/02-typescript/121-function-types"
+      },
+      "progress": {
+        "label": "TypeScript",
+        "current": 28,
+        "total": 63,
+        "bar": "█████░░░░░░░"
+      },
+      "related": [
+        {
+          "term": "this",
+          "title": "this",
+          "number": 29,
+          "link": "/docs/01-javascript/29-this"
+        }
+      ],
+      "card": {
+        "chapterLabel": "Глава 124",
+        "title": "Function Overloads",
+        "reading": 2,
+        "examples": 1,
+        "tasks": 6,
+        "solutions": 11,
+        "mermaid": 0
+      }
+    },
+    "docs/02-typescript/125-this-parameter.md": {
+      "path": "docs/02-typescript/125-this-parameter.md",
+      "link": "/docs/02-typescript/125-this-parameter",
+      "title": "this Parameter",
+      "number": 125,
+      "part": "TypeScript",
+      "section": "Типизация функций",
+      "sectionIndex": 4,
+      "chapterIndex": 4,
+      "wordCount": 338,
+      "readingMinutes": 2,
+      "h2": 12,
+      "h3": 3,
+      "examples": 1,
+      "tasks": 6,
+      "solutions": 11,
+      "mermaid": 0,
+      "miniProjects": 1,
+      "previous": {
+        "title": "Function Overloads",
+        "number": 124,
+        "link": "/docs/02-typescript/124-function-overloads"
+      },
+      "next": {
+        "title": "Async Function Types",
+        "number": 126,
+        "link": "/docs/02-typescript/126-async-function-types"
+      },
+      "sectionLink": {
+        "title": "Типизация функций",
+        "link": "/docs/02-typescript/121-function-types"
+      },
+      "progress": {
+        "label": "TypeScript",
+        "current": 29,
+        "total": 63,
+        "bar": "██████░░░░░░"
+      },
+      "related": [
+        {
+          "term": "this",
+          "title": "this",
+          "number": 29,
+          "link": "/docs/01-javascript/29-this"
+        }
+      ],
+      "card": {
+        "chapterLabel": "Глава 125",
+        "title": "this Parameter",
+        "reading": 2,
+        "examples": 1,
+        "tasks": 6,
+        "solutions": 11,
+        "mermaid": 0
+      }
+    },
+    "docs/02-typescript/126-async-function-types.md": {
+      "path": "docs/02-typescript/126-async-function-types.md",
+      "link": "/docs/02-typescript/126-async-function-types",
+      "title": "Async Function Types",
+      "number": 126,
+      "part": "TypeScript",
+      "section": "Типизация функций",
+      "sectionIndex": 4,
+      "chapterIndex": 5,
+      "wordCount": 342,
+      "readingMinutes": 2,
+      "h2": 12,
+      "h3": 3,
+      "examples": 1,
+      "tasks": 6,
+      "solutions": 11,
+      "mermaid": 0,
+      "miniProjects": 1,
+      "previous": {
+        "title": "this Parameter",
+        "number": 125,
+        "link": "/docs/02-typescript/125-this-parameter"
+      },
+      "next": {
+        "title": "Narrowing",
+        "number": 127,
+        "link": "/docs/02-typescript/127-narrowing"
+      },
+      "sectionLink": {
+        "title": "Типизация функций",
+        "link": "/docs/02-typescript/121-function-types"
+      },
+      "progress": {
+        "label": "TypeScript",
+        "current": 30,
+        "total": 63,
+        "bar": "██████░░░░░░"
+      },
+      "related": [
+        {
+          "term": "this",
+          "title": "this",
+          "number": 29,
+          "link": "/docs/01-javascript/29-this"
+        },
+        {
+          "term": "Promise",
+          "title": "Promise",
+          "number": 72,
+          "link": "/docs/01-javascript/72-promise"
+        },
+        {
+          "term": "async/await",
+          "title": "async и await",
+          "number": 78,
+          "link": "/docs/01-javascript/78-async-await"
+        }
+      ],
+      "card": {
+        "chapterLabel": "Глава 126",
+        "title": "Async Function Types",
+        "reading": 2,
+        "examples": 1,
+        "tasks": 6,
+        "solutions": 11,
+        "mermaid": 0
+      }
+    },
+    "docs/02-typescript/127-narrowing.md": {
+      "path": "docs/02-typescript/127-narrowing.md",
+      "link": "/docs/02-typescript/127-narrowing",
+      "title": "Narrowing",
+      "number": 127,
+      "part": "TypeScript",
+      "section": "Narrowing и безопасные ветвления",
+      "sectionIndex": 5,
+      "chapterIndex": 0,
+      "wordCount": 337,
+      "readingMinutes": 2,
+      "h2": 12,
+      "h3": 0,
+      "examples": 0,
+      "tasks": 4,
+      "solutions": 28,
+      "mermaid": 2,
+      "miniProjects": 1,
+      "previous": {
+        "title": "Async Function Types",
+        "number": 126,
+        "link": "/docs/02-typescript/126-async-function-types"
+      },
+      "next": {
+        "title": "Built-in Type Guards",
+        "number": 128,
+        "link": "/docs/02-typescript/128-built-in-type-guards"
+      },
+      "sectionLink": {
+        "title": "Narrowing и безопасные ветвления",
+        "link": "/docs/02-typescript/127-narrowing"
+      },
+      "progress": {
+        "label": "TypeScript",
+        "current": 31,
+        "total": 63,
+        "bar": "██████░░░░░░"
+      },
+      "related": [],
+      "card": {
+        "chapterLabel": "Глава 127",
+        "title": "Narrowing",
+        "reading": 2,
+        "examples": 0,
+        "tasks": 4,
+        "solutions": 28,
+        "mermaid": 2
+      }
+    },
+    "docs/02-typescript/128-built-in-type-guards.md": {
+      "path": "docs/02-typescript/128-built-in-type-guards.md",
+      "link": "/docs/02-typescript/128-built-in-type-guards",
+      "title": "Built-in Type Guards",
+      "number": 128,
+      "part": "TypeScript",
+      "section": "Narrowing и безопасные ветвления",
+      "sectionIndex": 5,
+      "chapterIndex": 1,
+      "wordCount": 369,
+      "readingMinutes": 3,
+      "h2": 12,
+      "h3": 0,
+      "examples": 0,
+      "tasks": 4,
+      "solutions": 28,
+      "mermaid": 2,
+      "miniProjects": 1,
+      "previous": {
+        "title": "Narrowing",
+        "number": 127,
+        "link": "/docs/02-typescript/127-narrowing"
+      },
+      "next": {
+        "title": "User Defined Type Guards",
+        "number": 129,
+        "link": "/docs/02-typescript/129-user-defined-type-guards"
+      },
+      "sectionLink": {
+        "title": "Narrowing и безопасные ветвления",
+        "link": "/docs/02-typescript/127-narrowing"
+      },
+      "progress": {
+        "label": "TypeScript",
+        "current": 32,
+        "total": 63,
+        "bar": "██████░░░░░░"
+      },
+      "related": [
+        {
+          "term": "Date",
+          "title": "Date",
+          "number": 95,
+          "link": "/docs/01-javascript/95-date"
+        }
+      ],
+      "card": {
+        "chapterLabel": "Глава 128",
+        "title": "Built-in Type Guards",
+        "reading": 3,
+        "examples": 0,
+        "tasks": 4,
+        "solutions": 28,
+        "mermaid": 2
+      }
+    },
+    "docs/02-typescript/129-user-defined-type-guards.md": {
+      "path": "docs/02-typescript/129-user-defined-type-guards.md",
+      "link": "/docs/02-typescript/129-user-defined-type-guards",
+      "title": "User Defined Type Guards",
+      "number": 129,
+      "part": "TypeScript",
+      "section": "Narrowing и безопасные ветвления",
+      "sectionIndex": 5,
+      "chapterIndex": 2,
+      "wordCount": 253,
+      "readingMinutes": 2,
+      "h2": 12,
+      "h3": 0,
+      "examples": 0,
+      "tasks": 4,
+      "solutions": 28,
+      "mermaid": 2,
+      "miniProjects": 1,
+      "previous": {
+        "title": "Built-in Type Guards",
+        "number": 128,
+        "link": "/docs/02-typescript/128-built-in-type-guards"
+      },
+      "next": {
+        "title": "Type Assertions",
+        "number": 130,
+        "link": "/docs/02-typescript/130-type-assertions"
+      },
+      "sectionLink": {
+        "title": "Narrowing и безопасные ветвления",
+        "link": "/docs/02-typescript/127-narrowing"
+      },
+      "progress": {
+        "label": "TypeScript",
+        "current": 33,
+        "total": 63,
+        "bar": "██████░░░░░░"
+      },
+      "related": [],
+      "card": {
+        "chapterLabel": "Глава 129",
+        "title": "User Defined Type Guards",
+        "reading": 2,
+        "examples": 0,
+        "tasks": 4,
+        "solutions": 28,
+        "mermaid": 2
+      }
+    },
+    "docs/02-typescript/130-type-assertions.md": {
+      "path": "docs/02-typescript/130-type-assertions.md",
+      "link": "/docs/02-typescript/130-type-assertions",
+      "title": "Type Assertions",
+      "number": 130,
+      "part": "TypeScript",
+      "section": "Narrowing и безопасные ветвления",
+      "sectionIndex": 5,
+      "chapterIndex": 3,
+      "wordCount": 331,
+      "readingMinutes": 2,
+      "h2": 12,
+      "h3": 0,
+      "examples": 0,
+      "tasks": 4,
+      "solutions": 28,
+      "mermaid": 2,
+      "miniProjects": 1,
+      "previous": {
+        "title": "User Defined Type Guards",
+        "number": 129,
+        "link": "/docs/02-typescript/129-user-defined-type-guards"
+      },
+      "next": {
+        "title": "satisfies",
+        "number": 131,
+        "link": "/docs/02-typescript/131-satisfies"
+      },
+      "sectionLink": {
+        "title": "Narrowing и безопасные ветвления",
+        "link": "/docs/02-typescript/127-narrowing"
+      },
+      "progress": {
+        "label": "TypeScript",
+        "current": 34,
+        "total": 63,
+        "bar": "██████░░░░░░"
+      },
+      "related": [],
+      "card": {
+        "chapterLabel": "Глава 130",
+        "title": "Type Assertions",
+        "reading": 2,
+        "examples": 0,
+        "tasks": 4,
+        "solutions": 28,
+        "mermaid": 2
+      }
+    },
+    "docs/02-typescript/131-satisfies.md": {
+      "path": "docs/02-typescript/131-satisfies.md",
+      "link": "/docs/02-typescript/131-satisfies",
+      "title": "satisfies",
+      "number": 131,
+      "part": "TypeScript",
+      "section": "Narrowing и безопасные ветвления",
+      "sectionIndex": 5,
+      "chapterIndex": 4,
+      "wordCount": 314,
+      "readingMinutes": 2,
+      "h2": 12,
+      "h3": 0,
+      "examples": 0,
+      "tasks": 4,
+      "solutions": 28,
+      "mermaid": 2,
+      "miniProjects": 1,
+      "previous": {
+        "title": "Type Assertions",
+        "number": 130,
+        "link": "/docs/02-typescript/130-type-assertions"
+      },
+      "next": {
+        "title": "Exhaustive Checks with never",
+        "number": 132,
+        "link": "/docs/02-typescript/132-exhaustive-checks-with-never"
+      },
+      "sectionLink": {
+        "title": "Narrowing и безопасные ветвления",
+        "link": "/docs/02-typescript/127-narrowing"
+      },
+      "progress": {
+        "label": "TypeScript",
+        "current": 35,
+        "total": 63,
+        "bar": "███████░░░░░"
+      },
+      "related": [],
+      "card": {
+        "chapterLabel": "Глава 131",
+        "title": "satisfies",
+        "reading": 2,
+        "examples": 0,
+        "tasks": 4,
+        "solutions": 28,
+        "mermaid": 2
+      }
+    },
+    "docs/02-typescript/132-exhaustive-checks-with-never.md": {
+      "path": "docs/02-typescript/132-exhaustive-checks-with-never.md",
+      "link": "/docs/02-typescript/132-exhaustive-checks-with-never",
+      "title": "Exhaustive Checks with never",
+      "number": 132,
+      "part": "TypeScript",
+      "section": "Narrowing и безопасные ветвления",
+      "sectionIndex": 5,
+      "chapterIndex": 5,
+      "wordCount": 255,
+      "readingMinutes": 2,
+      "h2": 12,
+      "h3": 0,
+      "examples": 0,
+      "tasks": 4,
+      "solutions": 28,
+      "mermaid": 2,
+      "miniProjects": 1,
+      "previous": {
+        "title": "satisfies",
+        "number": 131,
+        "link": "/docs/02-typescript/131-satisfies"
+      },
+      "next": {
+        "title": "Generic Functions",
+        "number": 133,
+        "link": "/docs/02-typescript/133-generic-functions"
+      },
+      "sectionLink": {
+        "title": "Narrowing и безопасные ветвления",
+        "link": "/docs/02-typescript/127-narrowing"
+      },
+      "progress": {
+        "label": "TypeScript",
+        "current": 36,
+        "total": 63,
+        "bar": "███████░░░░░"
+      },
+      "related": [],
+      "card": {
+        "chapterLabel": "Глава 132",
+        "title": "Exhaustive Checks with never",
+        "reading": 2,
+        "examples": 0,
+        "tasks": 4,
+        "solutions": 28,
+        "mermaid": 2
+      }
+    },
+    "docs/02-typescript/133-generic-functions.md": {
+      "path": "docs/02-typescript/133-generic-functions.md",
+      "link": "/docs/02-typescript/133-generic-functions",
+      "title": "Generic Functions",
+      "number": 133,
+      "part": "TypeScript",
+      "section": "Generics",
+      "sectionIndex": 6,
+      "chapterIndex": 0,
+      "wordCount": 261,
+      "readingMinutes": 2,
+      "h2": 12,
+      "h3": 0,
+      "examples": 0,
+      "tasks": 4,
+      "solutions": 28,
+      "mermaid": 2,
+      "miniProjects": 1,
+      "previous": {
+        "title": "Exhaustive Checks with never",
+        "number": 132,
+        "link": "/docs/02-typescript/132-exhaustive-checks-with-never"
+      },
+      "next": {
+        "title": "Generic Constraints",
+        "number": 134,
+        "link": "/docs/02-typescript/134-generic-constraints"
+      },
+      "sectionLink": {
+        "title": "Generics",
+        "link": "/docs/02-typescript/133-generic-functions"
+      },
+      "progress": {
+        "label": "TypeScript",
+        "current": 37,
+        "total": 63,
+        "bar": "███████░░░░░"
+      },
+      "related": [
+        {
+          "term": "Date",
+          "title": "Date",
+          "number": 95,
+          "link": "/docs/01-javascript/95-date"
+        }
+      ],
+      "card": {
+        "chapterLabel": "Глава 133",
+        "title": "Generic Functions",
+        "reading": 2,
+        "examples": 0,
+        "tasks": 4,
+        "solutions": 28,
+        "mermaid": 2
+      }
+    },
+    "docs/02-typescript/134-generic-constraints.md": {
+      "path": "docs/02-typescript/134-generic-constraints.md",
+      "link": "/docs/02-typescript/134-generic-constraints",
+      "title": "Generic Constraints",
+      "number": 134,
+      "part": "TypeScript",
+      "section": "Generics",
+      "sectionIndex": 6,
+      "chapterIndex": 1,
+      "wordCount": 222,
+      "readingMinutes": 2,
+      "h2": 12,
+      "h3": 0,
+      "examples": 0,
+      "tasks": 4,
+      "solutions": 28,
+      "mermaid": 2,
+      "miniProjects": 1,
+      "previous": {
+        "title": "Generic Functions",
+        "number": 133,
+        "link": "/docs/02-typescript/133-generic-functions"
+      },
+      "next": {
+        "title": "keyof Constraints",
+        "number": 135,
+        "link": "/docs/02-typescript/135-keyof-constraints"
+      },
+      "sectionLink": {
+        "title": "Generics",
+        "link": "/docs/02-typescript/133-generic-functions"
+      },
+      "progress": {
+        "label": "TypeScript",
+        "current": 38,
+        "total": 63,
+        "bar": "███████░░░░░"
+      },
+      "related": [],
+      "card": {
+        "chapterLabel": "Глава 134",
+        "title": "Generic Constraints",
+        "reading": 2,
+        "examples": 0,
+        "tasks": 4,
+        "solutions": 28,
+        "mermaid": 2
+      }
+    },
+    "docs/02-typescript/135-keyof-constraints.md": {
+      "path": "docs/02-typescript/135-keyof-constraints.md",
+      "link": "/docs/02-typescript/135-keyof-constraints",
+      "title": "keyof Constraints",
+      "number": 135,
+      "part": "TypeScript",
+      "section": "Generics",
+      "sectionIndex": 6,
+      "chapterIndex": 2,
+      "wordCount": 219,
+      "readingMinutes": 2,
+      "h2": 12,
+      "h3": 0,
+      "examples": 0,
+      "tasks": 4,
+      "solutions": 28,
+      "mermaid": 1,
+      "miniProjects": 1,
+      "previous": {
+        "title": "Generic Constraints",
+        "number": 134,
+        "link": "/docs/02-typescript/134-generic-constraints"
+      },
+      "next": {
+        "title": "Generic Type Aliases and Interfaces",
+        "number": 136,
+        "link": "/docs/02-typescript/136-generic-type-aliases-and-interfaces"
+      },
+      "sectionLink": {
+        "title": "Generics",
+        "link": "/docs/02-typescript/133-generic-functions"
+      },
+      "progress": {
+        "label": "TypeScript",
+        "current": 39,
+        "total": 63,
+        "bar": "███████░░░░░"
+      },
+      "related": [],
+      "card": {
+        "chapterLabel": "Глава 135",
+        "title": "keyof Constraints",
+        "reading": 2,
+        "examples": 0,
+        "tasks": 4,
+        "solutions": 28,
+        "mermaid": 1
+      }
+    },
+    "docs/02-typescript/136-generic-type-aliases-and-interfaces.md": {
+      "path": "docs/02-typescript/136-generic-type-aliases-and-interfaces.md",
+      "link": "/docs/02-typescript/136-generic-type-aliases-and-interfaces",
+      "title": "Generic Type Aliases and Interfaces",
+      "number": 136,
+      "part": "TypeScript",
+      "section": "Generics",
+      "sectionIndex": 6,
+      "chapterIndex": 3,
+      "wordCount": 190,
+      "readingMinutes": 2,
+      "h2": 12,
+      "h3": 0,
+      "examples": 0,
+      "tasks": 4,
+      "solutions": 28,
+      "mermaid": 2,
+      "miniProjects": 1,
+      "previous": {
+        "title": "keyof Constraints",
+        "number": 135,
+        "link": "/docs/02-typescript/135-keyof-constraints"
+      },
+      "next": {
+        "title": "Generic Classes",
+        "number": 137,
+        "link": "/docs/02-typescript/137-generic-classes"
+      },
+      "sectionLink": {
+        "title": "Generics",
+        "link": "/docs/02-typescript/133-generic-functions"
+      },
+      "progress": {
+        "label": "TypeScript",
+        "current": 40,
+        "total": 63,
+        "bar": "████████░░░░"
+      },
+      "related": [],
+      "card": {
+        "chapterLabel": "Глава 136",
+        "title": "Generic Type Aliases and Interfaces",
+        "reading": 2,
+        "examples": 0,
+        "tasks": 4,
+        "solutions": 28,
+        "mermaid": 2
+      }
+    },
+    "docs/02-typescript/137-generic-classes.md": {
+      "path": "docs/02-typescript/137-generic-classes.md",
+      "link": "/docs/02-typescript/137-generic-classes",
+      "title": "Generic Classes",
+      "number": 137,
+      "part": "TypeScript",
+      "section": "Generics",
+      "sectionIndex": 6,
+      "chapterIndex": 4,
+      "wordCount": 194,
+      "readingMinutes": 2,
+      "h2": 12,
+      "h3": 0,
+      "examples": 0,
+      "tasks": 4,
+      "solutions": 28,
+      "mermaid": 1,
+      "miniProjects": 1,
+      "previous": {
+        "title": "Generic Type Aliases and Interfaces",
+        "number": 136,
+        "link": "/docs/02-typescript/136-generic-type-aliases-and-interfaces"
+      },
+      "next": {
+        "title": "Default Generic Parameters",
+        "number": 138,
+        "link": "/docs/02-typescript/138-default-generic-parameters"
+      },
+      "sectionLink": {
+        "title": "Generics",
+        "link": "/docs/02-typescript/133-generic-functions"
+      },
+      "progress": {
+        "label": "TypeScript",
+        "current": 41,
+        "total": 63,
+        "bar": "████████░░░░"
+      },
+      "related": [
+        {
+          "term": "this",
+          "title": "this",
+          "number": 29,
+          "link": "/docs/01-javascript/29-this"
+        }
+      ],
+      "card": {
+        "chapterLabel": "Глава 137",
+        "title": "Generic Classes",
+        "reading": 2,
+        "examples": 0,
+        "tasks": 4,
+        "solutions": 28,
+        "mermaid": 1
+      }
+    },
+    "docs/02-typescript/138-default-generic-parameters.md": {
+      "path": "docs/02-typescript/138-default-generic-parameters.md",
+      "link": "/docs/02-typescript/138-default-generic-parameters",
+      "title": "Default Generic Parameters",
+      "number": 138,
+      "part": "TypeScript",
+      "section": "Generics",
+      "sectionIndex": 6,
+      "chapterIndex": 5,
+      "wordCount": 227,
+      "readingMinutes": 2,
+      "h2": 12,
+      "h3": 0,
+      "examples": 0,
+      "tasks": 4,
+      "solutions": 28,
+      "mermaid": 1,
+      "miniProjects": 1,
+      "previous": {
+        "title": "Generic Classes",
+        "number": 137,
+        "link": "/docs/02-typescript/137-generic-classes"
+      },
+      "next": {
+        "title": "keyof",
+        "number": 139,
+        "link": "/docs/02-typescript/139-keyof"
+      },
+      "sectionLink": {
+        "title": "Generics",
+        "link": "/docs/02-typescript/133-generic-functions"
+      },
+      "progress": {
+        "label": "TypeScript",
+        "current": 42,
+        "total": 63,
+        "bar": "████████░░░░"
+      },
+      "related": [],
+      "card": {
+        "chapterLabel": "Глава 138",
+        "title": "Default Generic Parameters",
+        "reading": 2,
+        "examples": 0,
+        "tasks": 4,
+        "solutions": 28,
+        "mermaid": 1
+      }
+    },
+    "docs/02-typescript/139-keyof.md": {
+      "path": "docs/02-typescript/139-keyof.md",
+      "link": "/docs/02-typescript/139-keyof",
+      "title": "keyof",
+      "number": 139,
+      "part": "TypeScript",
+      "section": "Операции над типами",
+      "sectionIndex": 7,
+      "chapterIndex": 0,
+      "wordCount": 342,
+      "readingMinutes": 2,
+      "h2": 12,
+      "h3": 0,
+      "examples": 0,
+      "tasks": 4,
+      "solutions": 28,
+      "mermaid": 1,
+      "miniProjects": 1,
+      "previous": {
+        "title": "Default Generic Parameters",
+        "number": 138,
+        "link": "/docs/02-typescript/138-default-generic-parameters"
+      },
+      "next": {
+        "title": "typeof Type Query",
+        "number": 140,
+        "link": "/docs/02-typescript/140-typeof-type-query"
+      },
+      "sectionLink": {
+        "title": "Операции над типами",
+        "link": "/docs/02-typescript/139-keyof"
+      },
+      "progress": {
+        "label": "TypeScript",
+        "current": 43,
+        "total": 63,
+        "bar": "████████░░░░"
+      },
+      "related": [],
+      "card": {
+        "chapterLabel": "Глава 139",
+        "title": "keyof",
+        "reading": 2,
+        "examples": 0,
+        "tasks": 4,
+        "solutions": 28,
+        "mermaid": 1
+      }
+    },
+    "docs/02-typescript/140-typeof-type-query.md": {
+      "path": "docs/02-typescript/140-typeof-type-query.md",
+      "link": "/docs/02-typescript/140-typeof-type-query",
+      "title": "typeof Type Query",
+      "number": 140,
+      "part": "TypeScript",
+      "section": "Операции над типами",
+      "sectionIndex": 7,
+      "chapterIndex": 1,
+      "wordCount": 312,
+      "readingMinutes": 2,
+      "h2": 12,
+      "h3": 0,
+      "examples": 0,
+      "tasks": 4,
+      "solutions": 28,
+      "mermaid": 1,
+      "miniProjects": 1,
+      "previous": {
+        "title": "keyof",
+        "number": 139,
+        "link": "/docs/02-typescript/139-keyof"
+      },
+      "next": {
+        "title": "Indexed Access Types",
+        "number": 141,
+        "link": "/docs/02-typescript/141-indexed-access-types"
+      },
+      "sectionLink": {
+        "title": "Операции над типами",
+        "link": "/docs/02-typescript/139-keyof"
+      },
+      "progress": {
+        "label": "TypeScript",
+        "current": 44,
+        "total": 63,
+        "bar": "████████░░░░"
+      },
+      "related": [],
+      "card": {
+        "chapterLabel": "Глава 140",
+        "title": "typeof Type Query",
+        "reading": 2,
+        "examples": 0,
+        "tasks": 4,
+        "solutions": 28,
+        "mermaid": 1
+      }
+    },
+    "docs/02-typescript/141-indexed-access-types.md": {
+      "path": "docs/02-typescript/141-indexed-access-types.md",
+      "link": "/docs/02-typescript/141-indexed-access-types",
+      "title": "Indexed Access Types",
+      "number": 141,
+      "part": "TypeScript",
+      "section": "Операции над типами",
+      "sectionIndex": 7,
+      "chapterIndex": 2,
+      "wordCount": 258,
+      "readingMinutes": 2,
+      "h2": 12,
+      "h3": 0,
+      "examples": 0,
+      "tasks": 4,
+      "solutions": 28,
+      "mermaid": 1,
+      "miniProjects": 1,
+      "previous": {
+        "title": "typeof Type Query",
+        "number": 140,
+        "link": "/docs/02-typescript/140-typeof-type-query"
+      },
+      "next": {
+        "title": "Mapped Types",
+        "number": 142,
+        "link": "/docs/02-typescript/142-mapped-types"
+      },
+      "sectionLink": {
+        "title": "Операции над типами",
+        "link": "/docs/02-typescript/139-keyof"
+      },
+      "progress": {
+        "label": "TypeScript",
+        "current": 45,
+        "total": 63,
+        "bar": "█████████░░░"
+      },
+      "related": [],
+      "card": {
+        "chapterLabel": "Глава 141",
+        "title": "Indexed Access Types",
+        "reading": 2,
+        "examples": 0,
+        "tasks": 4,
+        "solutions": 28,
+        "mermaid": 1
+      }
+    },
+    "docs/02-typescript/142-mapped-types.md": {
+      "path": "docs/02-typescript/142-mapped-types.md",
+      "link": "/docs/02-typescript/142-mapped-types",
+      "title": "Mapped Types",
+      "number": 142,
+      "part": "TypeScript",
+      "section": "Операции над типами",
+      "sectionIndex": 7,
+      "chapterIndex": 3,
+      "wordCount": 233,
+      "readingMinutes": 2,
+      "h2": 12,
+      "h3": 0,
+      "examples": 0,
+      "tasks": 4,
+      "solutions": 28,
+      "mermaid": 1,
+      "miniProjects": 1,
+      "previous": {
+        "title": "Indexed Access Types",
+        "number": 141,
+        "link": "/docs/02-typescript/141-indexed-access-types"
+      },
+      "next": {
+        "title": "Conditional Types",
+        "number": 143,
+        "link": "/docs/02-typescript/143-conditional-types"
+      },
+      "sectionLink": {
+        "title": "Операции над типами",
+        "link": "/docs/02-typescript/139-keyof"
+      },
+      "progress": {
+        "label": "TypeScript",
+        "current": 46,
+        "total": 63,
+        "bar": "█████████░░░"
+      },
+      "related": [],
+      "card": {
+        "chapterLabel": "Глава 142",
+        "title": "Mapped Types",
+        "reading": 2,
+        "examples": 0,
+        "tasks": 4,
+        "solutions": 28,
+        "mermaid": 1
+      }
+    },
+    "docs/02-typescript/143-conditional-types.md": {
+      "path": "docs/02-typescript/143-conditional-types.md",
+      "link": "/docs/02-typescript/143-conditional-types",
+      "title": "Conditional Types",
+      "number": 143,
+      "part": "TypeScript",
+      "section": "Операции над типами",
+      "sectionIndex": 7,
+      "chapterIndex": 4,
+      "wordCount": 261,
+      "readingMinutes": 2,
+      "h2": 12,
+      "h3": 0,
+      "examples": 0,
+      "tasks": 4,
+      "solutions": 28,
+      "mermaid": 1,
+      "miniProjects": 1,
+      "previous": {
+        "title": "Mapped Types",
+        "number": 142,
+        "link": "/docs/02-typescript/142-mapped-types"
+      },
+      "next": {
+        "title": "infer",
+        "number": 144,
+        "link": "/docs/02-typescript/144-infer"
+      },
+      "sectionLink": {
+        "title": "Операции над типами",
+        "link": "/docs/02-typescript/139-keyof"
+      },
+      "progress": {
+        "label": "TypeScript",
+        "current": 47,
+        "total": 63,
+        "bar": "█████████░░░"
+      },
+      "related": [
+        {
+          "term": "JSON",
+          "title": "JSON",
+          "number": 94,
+          "link": "/docs/01-javascript/94-json"
+        }
+      ],
+      "card": {
+        "chapterLabel": "Глава 143",
+        "title": "Conditional Types",
+        "reading": 2,
+        "examples": 0,
+        "tasks": 4,
+        "solutions": 28,
+        "mermaid": 1
+      }
+    },
+    "docs/02-typescript/144-infer.md": {
+      "path": "docs/02-typescript/144-infer.md",
+      "link": "/docs/02-typescript/144-infer",
+      "title": "infer",
+      "number": 144,
+      "part": "TypeScript",
+      "section": "Операции над типами",
+      "sectionIndex": 7,
+      "chapterIndex": 5,
+      "wordCount": 209,
+      "readingMinutes": 2,
+      "h2": 12,
+      "h3": 0,
+      "examples": 0,
+      "tasks": 4,
+      "solutions": 28,
+      "mermaid": 1,
+      "miniProjects": 1,
+      "previous": {
+        "title": "Conditional Types",
+        "number": 143,
+        "link": "/docs/02-typescript/143-conditional-types"
+      },
+      "next": {
+        "title": "Utility Types",
+        "number": 145,
+        "link": "/docs/02-typescript/145-utility-types"
+      },
+      "sectionLink": {
+        "title": "Операции над типами",
+        "link": "/docs/02-typescript/139-keyof"
+      },
+      "progress": {
+        "label": "TypeScript",
+        "current": 48,
+        "total": 63,
+        "bar": "█████████░░░"
+      },
+      "related": [
+        {
+          "term": "Promise",
+          "title": "Promise",
+          "number": 72,
+          "link": "/docs/01-javascript/72-promise"
+        }
+      ],
+      "card": {
+        "chapterLabel": "Глава 144",
+        "title": "infer",
+        "reading": 2,
+        "examples": 0,
+        "tasks": 4,
+        "solutions": 28,
+        "mermaid": 1
+      }
+    },
+    "docs/02-typescript/145-utility-types.md": {
+      "path": "docs/02-typescript/145-utility-types.md",
+      "link": "/docs/02-typescript/145-utility-types",
+      "title": "Utility Types",
+      "number": 145,
+      "part": "TypeScript",
+      "section": "Операции над типами",
+      "sectionIndex": 7,
+      "chapterIndex": 6,
+      "wordCount": 228,
+      "readingMinutes": 2,
+      "h2": 12,
+      "h3": 0,
+      "examples": 0,
+      "tasks": 4,
+      "solutions": 28,
+      "mermaid": 1,
+      "miniProjects": 1,
+      "previous": {
+        "title": "infer",
+        "number": 144,
+        "link": "/docs/02-typescript/144-infer"
+      },
+      "next": {
+        "title": "Typed Classes",
+        "number": 146,
+        "link": "/docs/02-typescript/146-typed-classes"
+      },
+      "sectionLink": {
+        "title": "Операции над типами",
+        "link": "/docs/02-typescript/139-keyof"
+      },
+      "progress": {
+        "label": "TypeScript",
+        "current": 49,
+        "total": 63,
+        "bar": "█████████░░░"
+      },
+      "related": [],
+      "card": {
+        "chapterLabel": "Глава 145",
+        "title": "Utility Types",
+        "reading": 2,
+        "examples": 0,
+        "tasks": 4,
+        "solutions": 28,
+        "mermaid": 1
+      }
+    },
+    "docs/02-typescript/146-typed-classes.md": {
+      "path": "docs/02-typescript/146-typed-classes.md",
+      "link": "/docs/02-typescript/146-typed-classes",
+      "title": "Typed Classes",
+      "number": 146,
+      "part": "TypeScript",
+      "section": "Классы и объектные контракты",
+      "sectionIndex": 8,
+      "chapterIndex": 0,
+      "wordCount": 311,
+      "readingMinutes": 2,
+      "h2": 12,
+      "h3": 0,
+      "examples": 0,
+      "tasks": 4,
+      "solutions": 28,
+      "mermaid": 1,
+      "miniProjects": 1,
+      "previous": {
+        "title": "Utility Types",
+        "number": 145,
+        "link": "/docs/02-typescript/145-utility-types"
+      },
+      "next": {
+        "title": "Access Modifiers and readonly Members",
+        "number": 147,
+        "link": "/docs/02-typescript/147-access-modifiers-and-readonly-members"
+      },
+      "sectionLink": {
+        "title": "Классы и объектные контракты",
+        "link": "/docs/02-typescript/146-typed-classes"
+      },
+      "progress": {
+        "label": "TypeScript",
+        "current": 50,
+        "total": 63,
+        "bar": "██████████░░"
+      },
+      "related": [
+        {
+          "term": "this",
+          "title": "this",
+          "number": 29,
+          "link": "/docs/01-javascript/29-this"
+        }
+      ],
+      "card": {
+        "chapterLabel": "Глава 146",
+        "title": "Typed Classes",
+        "reading": 2,
+        "examples": 0,
+        "tasks": 4,
+        "solutions": 28,
+        "mermaid": 1
+      }
+    },
+    "docs/02-typescript/147-access-modifiers-and-readonly-members.md": {
+      "path": "docs/02-typescript/147-access-modifiers-and-readonly-members.md",
+      "link": "/docs/02-typescript/147-access-modifiers-and-readonly-members",
+      "title": "Access Modifiers and readonly Members",
+      "number": 147,
+      "part": "TypeScript",
+      "section": "Классы и объектные контракты",
+      "sectionIndex": 8,
+      "chapterIndex": 1,
+      "wordCount": 297,
+      "readingMinutes": 2,
+      "h2": 12,
+      "h3": 0,
+      "examples": 0,
+      "tasks": 4,
+      "solutions": 28,
+      "mermaid": 1,
+      "miniProjects": 1,
+      "previous": {
+        "title": "Typed Classes",
+        "number": 146,
+        "link": "/docs/02-typescript/146-typed-classes"
+      },
+      "next": {
+        "title": "Abstract Classes",
+        "number": 148,
+        "link": "/docs/02-typescript/148-abstract-classes"
+      },
+      "sectionLink": {
+        "title": "Классы и объектные контракты",
+        "link": "/docs/02-typescript/146-typed-classes"
+      },
+      "progress": {
+        "label": "TypeScript",
+        "current": 51,
+        "total": 63,
+        "bar": "██████████░░"
+      },
+      "related": [
+        {
+          "term": "this",
+          "title": "this",
+          "number": 29,
+          "link": "/docs/01-javascript/29-this"
+        }
+      ],
+      "card": {
+        "chapterLabel": "Глава 147",
+        "title": "Access Modifiers and readonly Members",
+        "reading": 2,
+        "examples": 0,
+        "tasks": 4,
+        "solutions": 28,
+        "mermaid": 1
+      }
+    },
+    "docs/02-typescript/148-abstract-classes.md": {
+      "path": "docs/02-typescript/148-abstract-classes.md",
+      "link": "/docs/02-typescript/148-abstract-classes",
+      "title": "Abstract Classes",
+      "number": 148,
+      "part": "TypeScript",
+      "section": "Классы и объектные контракты",
+      "sectionIndex": 8,
+      "chapterIndex": 2,
+      "wordCount": 246,
+      "readingMinutes": 2,
+      "h2": 12,
+      "h3": 0,
+      "examples": 0,
+      "tasks": 4,
+      "solutions": 28,
+      "mermaid": 1,
+      "miniProjects": 1,
+      "previous": {
+        "title": "Access Modifiers and readonly Members",
+        "number": 147,
+        "link": "/docs/02-typescript/147-access-modifiers-and-readonly-members"
+      },
+      "next": {
+        "title": "implements and override",
+        "number": 149,
+        "link": "/docs/02-typescript/149-implements-and-override"
+      },
+      "sectionLink": {
+        "title": "Классы и объектные контракты",
+        "link": "/docs/02-typescript/146-typed-classes"
+      },
+      "progress": {
+        "label": "TypeScript",
+        "current": 52,
+        "total": 63,
+        "bar": "██████████░░"
+      },
+      "related": [
+        {
+          "term": "this",
+          "title": "this",
+          "number": 29,
+          "link": "/docs/01-javascript/29-this"
+        }
+      ],
+      "card": {
+        "chapterLabel": "Глава 148",
+        "title": "Abstract Classes",
+        "reading": 2,
+        "examples": 0,
+        "tasks": 4,
+        "solutions": 28,
+        "mermaid": 1
+      }
+    },
+    "docs/02-typescript/149-implements-and-override.md": {
+      "path": "docs/02-typescript/149-implements-and-override.md",
+      "link": "/docs/02-typescript/149-implements-and-override",
+      "title": "implements and override",
+      "number": 149,
+      "part": "TypeScript",
+      "section": "Классы и объектные контракты",
+      "sectionIndex": 8,
+      "chapterIndex": 3,
+      "wordCount": 232,
+      "readingMinutes": 2,
+      "h2": 12,
+      "h3": 0,
+      "examples": 0,
+      "tasks": 4,
+      "solutions": 28,
+      "mermaid": 1,
+      "miniProjects": 1,
+      "previous": {
+        "title": "Abstract Classes",
+        "number": 148,
+        "link": "/docs/02-typescript/148-abstract-classes"
+      },
+      "next": {
+        "title": "TypeScript and JavaScript Modules",
+        "number": 150,
+        "link": "/docs/02-typescript/150-typescript-and-javascript-modules"
+      },
+      "sectionLink": {
+        "title": "Классы и объектные контракты",
+        "link": "/docs/02-typescript/146-typed-classes"
+      },
+      "progress": {
+        "label": "TypeScript",
+        "current": 53,
+        "total": 63,
+        "bar": "██████████░░"
+      },
+      "related": [
+        {
+          "term": "JSON",
+          "title": "JSON",
+          "number": 94,
+          "link": "/docs/01-javascript/94-json"
+        }
+      ],
+      "card": {
+        "chapterLabel": "Глава 149",
+        "title": "implements and override",
+        "reading": 2,
+        "examples": 0,
+        "tasks": 4,
+        "solutions": 28,
+        "mermaid": 1
+      }
+    },
+    "docs/02-typescript/150-typescript-and-javascript-modules.md": {
+      "path": "docs/02-typescript/150-typescript-and-javascript-modules.md",
+      "link": "/docs/02-typescript/150-typescript-and-javascript-modules",
+      "title": "TypeScript and JavaScript Modules",
+      "number": 150,
+      "part": "TypeScript",
+      "section": "Модули и декларации",
+      "sectionIndex": 9,
+      "chapterIndex": 0,
+      "wordCount": 353,
+      "readingMinutes": 2,
+      "h2": 12,
+      "h3": 0,
+      "examples": 0,
+      "tasks": 4,
+      "solutions": 28,
+      "mermaid": 1,
+      "miniProjects": 1,
+      "previous": {
+        "title": "implements and override",
+        "number": 149,
+        "link": "/docs/02-typescript/149-implements-and-override"
+      },
+      "next": {
+        "title": "Type-only Imports and Exports",
+        "number": 151,
+        "link": "/docs/02-typescript/151-type-only-imports-and-exports"
+      },
+      "sectionLink": {
+        "title": "Модули и декларации",
+        "link": "/docs/02-typescript/150-typescript-and-javascript-modules"
+      },
+      "progress": {
+        "label": "TypeScript",
+        "current": 54,
+        "total": 63,
+        "bar": "██████████░░"
+      },
+      "related": [
+        {
+          "term": "Modules",
+          "title": "JavaScript Modules",
+          "number": 85,
+          "link": "/docs/01-javascript/85-javascript-modules"
+        }
+      ],
+      "card": {
+        "chapterLabel": "Глава 150",
+        "title": "TypeScript and JavaScript Modules",
+        "reading": 2,
+        "examples": 0,
+        "tasks": 4,
+        "solutions": 28,
+        "mermaid": 1
+      }
+    },
+    "docs/02-typescript/151-type-only-imports-and-exports.md": {
+      "path": "docs/02-typescript/151-type-only-imports-and-exports.md",
+      "link": "/docs/02-typescript/151-type-only-imports-and-exports",
+      "title": "Type-only Imports and Exports",
+      "number": 151,
+      "part": "TypeScript",
+      "section": "Модули и декларации",
+      "sectionIndex": 9,
+      "chapterIndex": 1,
+      "wordCount": 293,
+      "readingMinutes": 2,
+      "h2": 12,
+      "h3": 0,
+      "examples": 0,
+      "tasks": 4,
+      "solutions": 28,
+      "mermaid": 1,
+      "miniProjects": 1,
+      "previous": {
+        "title": "TypeScript and JavaScript Modules",
+        "number": 150,
+        "link": "/docs/02-typescript/150-typescript-and-javascript-modules"
+      },
+      "next": {
+        "title": "Module Resolution",
+        "number": 152,
+        "link": "/docs/02-typescript/152-module-resolution"
+      },
+      "sectionLink": {
+        "title": "Модули и декларации",
+        "link": "/docs/02-typescript/150-typescript-and-javascript-modules"
+      },
+      "progress": {
+        "label": "TypeScript",
+        "current": 55,
+        "total": 63,
+        "bar": "██████████░░"
+      },
+      "related": [],
+      "card": {
+        "chapterLabel": "Глава 151",
+        "title": "Type-only Imports and Exports",
+        "reading": 2,
+        "examples": 0,
+        "tasks": 4,
+        "solutions": 28,
+        "mermaid": 1
+      }
+    },
+    "docs/02-typescript/152-module-resolution.md": {
+      "path": "docs/02-typescript/152-module-resolution.md",
+      "link": "/docs/02-typescript/152-module-resolution",
+      "title": "Module Resolution",
+      "number": 152,
+      "part": "TypeScript",
+      "section": "Модули и декларации",
+      "sectionIndex": 9,
+      "chapterIndex": 2,
+      "wordCount": 344,
+      "readingMinutes": 2,
+      "h2": 12,
+      "h3": 0,
+      "examples": 0,
+      "tasks": 4,
+      "solutions": 28,
+      "mermaid": 1,
+      "miniProjects": 1,
+      "previous": {
+        "title": "Type-only Imports and Exports",
+        "number": 151,
+        "link": "/docs/02-typescript/151-type-only-imports-and-exports"
+      },
+      "next": {
+        "title": "Declaration Files",
+        "number": 153,
+        "link": "/docs/02-typescript/153-declaration-files"
+      },
+      "sectionLink": {
+        "title": "Модули и декларации",
+        "link": "/docs/02-typescript/150-typescript-and-javascript-modules"
+      },
+      "progress": {
+        "label": "TypeScript",
+        "current": 56,
+        "total": 63,
+        "bar": "███████████░"
+      },
+      "related": [],
+      "card": {
+        "chapterLabel": "Глава 152",
+        "title": "Module Resolution",
+        "reading": 2,
+        "examples": 0,
+        "tasks": 4,
+        "solutions": 28,
+        "mermaid": 1
+      }
+    },
+    "docs/02-typescript/153-declaration-files.md": {
+      "path": "docs/02-typescript/153-declaration-files.md",
+      "link": "/docs/02-typescript/153-declaration-files",
+      "title": "Declaration Files",
+      "number": 153,
+      "part": "TypeScript",
+      "section": "Модули и декларации",
+      "sectionIndex": 9,
+      "chapterIndex": 3,
+      "wordCount": 300,
+      "readingMinutes": 2,
+      "h2": 12,
+      "h3": 0,
+      "examples": 0,
+      "tasks": 4,
+      "solutions": 28,
+      "mermaid": 1,
+      "miniProjects": 1,
+      "previous": {
+        "title": "Module Resolution",
+        "number": 152,
+        "link": "/docs/02-typescript/152-module-resolution"
+      },
+      "next": {
+        "title": "Declaration Merging",
+        "number": 154,
+        "link": "/docs/02-typescript/154-declaration-merging"
+      },
+      "sectionLink": {
+        "title": "Модули и декларации",
+        "link": "/docs/02-typescript/150-typescript-and-javascript-modules"
+      },
+      "progress": {
+        "label": "TypeScript",
+        "current": 57,
+        "total": 63,
+        "bar": "███████████░"
+      },
+      "related": [],
+      "card": {
+        "chapterLabel": "Глава 153",
+        "title": "Declaration Files",
+        "reading": 2,
+        "examples": 0,
+        "tasks": 4,
+        "solutions": 28,
+        "mermaid": 1
+      }
+    },
+    "docs/02-typescript/154-declaration-merging.md": {
+      "path": "docs/02-typescript/154-declaration-merging.md",
+      "link": "/docs/02-typescript/154-declaration-merging",
+      "title": "Declaration Merging",
+      "number": 154,
+      "part": "TypeScript",
+      "section": "Модули и декларации",
+      "sectionIndex": 9,
+      "chapterIndex": 4,
+      "wordCount": 276,
+      "readingMinutes": 2,
+      "h2": 12,
+      "h3": 0,
+      "examples": 0,
+      "tasks": 4,
+      "solutions": 28,
+      "mermaid": 1,
+      "miniProjects": 1,
+      "previous": {
+        "title": "Declaration Files",
+        "number": 153,
+        "link": "/docs/02-typescript/153-declaration-files"
+      },
+      "next": {
+        "title": "Compiler Options for Real Projects",
+        "number": 155,
+        "link": "/docs/02-typescript/155-compiler-options-for-real-projects"
+      },
+      "sectionLink": {
+        "title": "Модули и декларации",
+        "link": "/docs/02-typescript/150-typescript-and-javascript-modules"
+      },
+      "progress": {
+        "label": "TypeScript",
+        "current": 58,
+        "total": 63,
+        "bar": "███████████░"
+      },
+      "related": [],
+      "card": {
+        "chapterLabel": "Глава 154",
+        "title": "Declaration Merging",
+        "reading": 2,
+        "examples": 0,
+        "tasks": 4,
+        "solutions": 28,
+        "mermaid": 1
+      }
+    },
+    "docs/02-typescript/155-compiler-options-for-real-projects.md": {
+      "path": "docs/02-typescript/155-compiler-options-for-real-projects.md",
+      "link": "/docs/02-typescript/155-compiler-options-for-real-projects",
+      "title": "Compiler Options for Real Projects",
+      "number": 155,
+      "part": "TypeScript",
+      "section": "Модули и декларации",
+      "sectionIndex": 9,
+      "chapterIndex": 5,
+      "wordCount": 376,
+      "readingMinutes": 3,
+      "h2": 12,
+      "h3": 0,
+      "examples": 0,
+      "tasks": 4,
+      "solutions": 28,
+      "mermaid": 1,
+      "miniProjects": 1,
+      "previous": {
+        "title": "Declaration Merging",
+        "number": 154,
+        "link": "/docs/02-typescript/154-declaration-merging"
+      },
+      "next": {
+        "title": "Typed Configuration and Test Data",
+        "number": 156,
+        "link": "/docs/02-typescript/156-typed-configuration-and-test-data"
+      },
+      "sectionLink": {
+        "title": "Модули и декларации",
+        "link": "/docs/02-typescript/150-typescript-and-javascript-modules"
+      },
+      "progress": {
+        "label": "TypeScript",
+        "current": 59,
+        "total": 63,
+        "bar": "███████████░"
+      },
+      "related": [],
+      "card": {
+        "chapterLabel": "Глава 155",
+        "title": "Compiler Options for Real Projects",
+        "reading": 3,
+        "examples": 0,
+        "tasks": 4,
+        "solutions": 28,
+        "mermaid": 1
+      }
+    },
+    "docs/02-typescript/156-typed-configuration-and-test-data.md": {
+      "path": "docs/02-typescript/156-typed-configuration-and-test-data.md",
+      "link": "/docs/02-typescript/156-typed-configuration-and-test-data",
+      "title": "Typed Configuration and Test Data",
+      "number": 156,
+      "part": "TypeScript",
+      "section": "Проектная практика",
+      "sectionIndex": 10,
+      "chapterIndex": 0,
+      "wordCount": 395,
+      "readingMinutes": 3,
+      "h2": 12,
+      "h3": 0,
+      "examples": 0,
+      "tasks": 4,
+      "solutions": 28,
+      "mermaid": 1,
+      "miniProjects": 1,
+      "previous": {
+        "title": "Compiler Options for Real Projects",
+        "number": 155,
+        "link": "/docs/02-typescript/155-compiler-options-for-real-projects"
+      },
+      "next": {
+        "title": "Typed Page Objects, Fixtures and Helpers",
+        "number": 157,
+        "link": "/docs/02-typescript/157-typed-page-objects-fixtures-and-helpers"
+      },
+      "sectionLink": {
+        "title": "Проектная практика",
+        "link": "/docs/02-typescript/156-typed-configuration-and-test-data"
+      },
+      "progress": {
+        "label": "TypeScript",
+        "current": 60,
+        "total": 63,
+        "bar": "███████████░"
+      },
+      "related": [
+        {
+          "term": "JSON",
+          "title": "JSON",
+          "number": 94,
+          "link": "/docs/01-javascript/94-json"
+        }
+      ],
+      "card": {
+        "chapterLabel": "Глава 156",
+        "title": "Typed Configuration and Test Data",
+        "reading": 3,
+        "examples": 0,
+        "tasks": 4,
+        "solutions": 28,
+        "mermaid": 1
+      }
+    },
+    "docs/02-typescript/157-typed-page-objects-fixtures-and-helpers.md": {
+      "path": "docs/02-typescript/157-typed-page-objects-fixtures-and-helpers.md",
+      "link": "/docs/02-typescript/157-typed-page-objects-fixtures-and-helpers",
+      "title": "Typed Page Objects, Fixtures and Helpers",
+      "number": 157,
+      "part": "TypeScript",
+      "section": "Проектная практика",
+      "sectionIndex": 10,
+      "chapterIndex": 1,
+      "wordCount": 355,
+      "readingMinutes": 2,
+      "h2": 12,
+      "h3": 0,
+      "examples": 0,
+      "tasks": 4,
+      "solutions": 28,
+      "mermaid": 1,
+      "miniProjects": 1,
+      "previous": {
+        "title": "Typed Configuration and Test Data",
+        "number": 156,
+        "link": "/docs/02-typescript/156-typed-configuration-and-test-data"
+      },
+      "next": {
+        "title": "Typed API Clients and Assertions",
+        "number": 158,
+        "link": "/docs/02-typescript/158-typed-api-clients-and-assertions"
+      },
+      "sectionLink": {
+        "title": "Проектная практика",
+        "link": "/docs/02-typescript/156-typed-configuration-and-test-data"
+      },
+      "progress": {
+        "label": "TypeScript",
+        "current": 61,
+        "total": 63,
+        "bar": "████████████"
+      },
+      "related": [
+        {
+          "term": "this",
+          "title": "this",
+          "number": 29,
+          "link": "/docs/01-javascript/29-this"
+        },
+        {
+          "term": "Promise",
+          "title": "Promise",
+          "number": 72,
+          "link": "/docs/01-javascript/72-promise"
+        }
+      ],
+      "card": {
+        "chapterLabel": "Глава 157",
+        "title": "Typed Page Objects, Fixtures and Helpers",
+        "reading": 2,
+        "examples": 0,
+        "tasks": 4,
+        "solutions": 28,
+        "mermaid": 1
+      }
+    },
+    "docs/02-typescript/158-typed-api-clients-and-assertions.md": {
+      "path": "docs/02-typescript/158-typed-api-clients-and-assertions.md",
+      "link": "/docs/02-typescript/158-typed-api-clients-and-assertions",
+      "title": "Typed API Clients and Assertions",
+      "number": 158,
+      "part": "TypeScript",
+      "section": "Проектная практика",
+      "sectionIndex": 10,
+      "chapterIndex": 2,
+      "wordCount": 350,
+      "readingMinutes": 2,
+      "h2": 12,
+      "h3": 0,
+      "examples": 0,
+      "tasks": 4,
+      "solutions": 28,
+      "mermaid": 1,
+      "miniProjects": 1,
+      "previous": {
+        "title": "Typed Page Objects, Fixtures and Helpers",
+        "number": 157,
+        "link": "/docs/02-typescript/157-typed-page-objects-fixtures-and-helpers"
+      },
+      "next": {
+        "title": "Maintaining Large TypeScript Test Projects",
+        "number": 159,
+        "link": "/docs/02-typescript/159-maintaining-large-typescript-test-projects"
+      },
+      "sectionLink": {
+        "title": "Проектная практика",
+        "link": "/docs/02-typescript/156-typed-configuration-and-test-data"
+      },
+      "progress": {
+        "label": "TypeScript",
+        "current": 62,
+        "total": 63,
+        "bar": "████████████"
+      },
+      "related": [
+        {
+          "term": "Promise",
+          "title": "Promise",
+          "number": 72,
+          "link": "/docs/01-javascript/72-promise"
+        }
+      ],
+      "card": {
+        "chapterLabel": "Глава 158",
+        "title": "Typed API Clients and Assertions",
+        "reading": 2,
+        "examples": 0,
+        "tasks": 4,
+        "solutions": 28,
+        "mermaid": 1
+      }
+    },
+    "docs/02-typescript/159-maintaining-large-typescript-test-projects.md": {
+      "path": "docs/02-typescript/159-maintaining-large-typescript-test-projects.md",
+      "link": "/docs/02-typescript/159-maintaining-large-typescript-test-projects",
+      "title": "Maintaining Large TypeScript Test Projects",
+      "number": 159,
+      "part": "TypeScript",
+      "section": "Проектная практика",
+      "sectionIndex": 10,
+      "chapterIndex": 3,
+      "wordCount": 408,
+      "readingMinutes": 3,
+      "h2": 12,
+      "h3": 0,
+      "examples": 0,
+      "tasks": 4,
+      "solutions": 28,
+      "mermaid": 1,
+      "miniProjects": 1,
+      "previous": {
+        "title": "Typed API Clients and Assertions",
+        "number": 158,
+        "link": "/docs/02-typescript/158-typed-api-clients-and-assertions"
+      },
+      "next": {
+        "title": "Что такое Automation QA Framework",
+        "number": 160,
+        "link": "/docs/03-automation-qa/160-what-is-automation-qa-framework"
+      },
+      "sectionLink": {
+        "title": "Проектная практика",
+        "link": "/docs/02-typescript/156-typed-configuration-and-test-data"
+      },
+      "progress": {
+        "label": "TypeScript",
+        "current": 63,
+        "total": 63,
+        "bar": "████████████"
+      },
+      "related": [],
+      "card": {
+        "chapterLabel": "Глава 159",
+        "title": "Maintaining Large TypeScript Test Projects",
+        "reading": 3,
+        "examples": 0,
+        "tasks": 4,
+        "solutions": 28,
+        "mermaid": 1
+      }
+    },
+    "docs/03-automation-qa/160-what-is-automation-qa-framework.md": {
+      "path": "docs/03-automation-qa/160-what-is-automation-qa-framework.md",
+      "link": "/docs/03-automation-qa/160-what-is-automation-qa-framework",
+      "title": "Что такое Automation QA Framework",
+      "number": 160,
+      "part": "Automation QA",
+      "section": "Основы Automation QA Framework",
+      "sectionIndex": 0,
+      "chapterIndex": 0,
+      "wordCount": 528,
+      "readingMinutes": 3,
+      "h2": 14,
+      "h3": 0,
+      "examples": 1,
+      "tasks": 3,
+      "solutions": 24,
+      "mermaid": 1,
+      "miniProjects": 0,
+      "previous": {
+        "title": "Maintaining Large TypeScript Test Projects",
+        "number": 159,
+        "link": "/docs/02-typescript/159-maintaining-large-typescript-test-projects"
+      },
+      "next": {
+        "title": "Инструменты и роли в Automation QA",
+        "number": 161,
+        "link": "/docs/03-automation-qa/161-tools-and-roles-in-automation-qa"
+      },
+      "sectionLink": {
+        "title": "Основы Automation QA Framework",
+        "link": "/docs/03-automation-qa/160-what-is-automation-qa-framework"
+      },
+      "progress": {
+        "label": "Automation QA",
+        "current": 1,
+        "total": 90,
+        "bar": "█░░░░░░░░░░░"
+      },
+      "related": [
+        {
+          "term": "Promise",
+          "title": "Promise",
+          "number": 72,
+          "link": "/docs/01-javascript/72-promise"
+        }
+      ],
+      "card": {
+        "chapterLabel": "Глава 160",
+        "title": "Что такое Automation QA Framework",
+        "reading": 3,
+        "examples": 1,
+        "tasks": 3,
+        "solutions": 24,
+        "mermaid": 1
+      }
+    },
+    "docs/03-automation-qa/161-tools-and-roles-in-automation-qa.md": {
+      "path": "docs/03-automation-qa/161-tools-and-roles-in-automation-qa.md",
+      "link": "/docs/03-automation-qa/161-tools-and-roles-in-automation-qa",
+      "title": "Инструменты и роли в Automation QA",
+      "number": 161,
+      "part": "Automation QA",
+      "section": "Основы Automation QA Framework",
+      "sectionIndex": 0,
+      "chapterIndex": 1,
+      "wordCount": 468,
+      "readingMinutes": 3,
+      "h2": 14,
+      "h3": 0,
+      "examples": 0,
+      "tasks": 0,
+      "solutions": 24,
+      "mermaid": 0,
+      "miniProjects": 0,
+      "previous": {
+        "title": "Что такое Automation QA Framework",
+        "number": 160,
+        "link": "/docs/03-automation-qa/160-what-is-automation-qa-framework"
+      },
+      "next": {
+        "title": "Архитектурные слои и поток зависимостей",
+        "number": 162,
+        "link": "/docs/03-automation-qa/162-architectural-layers-and-dependency-flow"
+      },
+      "sectionLink": {
+        "title": "Основы Automation QA Framework",
+        "link": "/docs/03-automation-qa/160-what-is-automation-qa-framework"
+      },
+      "progress": {
+        "label": "Automation QA",
+        "current": 2,
+        "total": 90,
+        "bar": "█░░░░░░░░░░░"
+      },
+      "related": [],
+      "card": {
+        "chapterLabel": "Глава 161",
+        "title": "Инструменты и роли в Automation QA",
+        "reading": 3,
+        "examples": 0,
+        "tasks": 0,
+        "solutions": 24,
+        "mermaid": 0
+      }
+    },
+    "docs/03-automation-qa/162-architectural-layers-and-dependency-flow.md": {
+      "path": "docs/03-automation-qa/162-architectural-layers-and-dependency-flow.md",
+      "link": "/docs/03-automation-qa/162-architectural-layers-and-dependency-flow",
+      "title": "Архитектурные слои и поток зависимостей",
+      "number": 162,
+      "part": "Automation QA",
+      "section": "Основы Automation QA Framework",
+      "sectionIndex": 0,
+      "chapterIndex": 2,
+      "wordCount": 417,
+      "readingMinutes": 3,
+      "h2": 14,
+      "h3": 0,
+      "examples": 1,
+      "tasks": 3,
+      "solutions": 24,
+      "mermaid": 1,
+      "miniProjects": 0,
+      "previous": {
+        "title": "Инструменты и роли в Automation QA",
+        "number": 161,
+        "link": "/docs/03-automation-qa/161-tools-and-roles-in-automation-qa"
+      },
+      "next": {
+        "title": "Тестовый и инфраструктурный код",
+        "number": 163,
+        "link": "/docs/03-automation-qa/163-test-code-and-infrastructure-code"
+      },
+      "sectionLink": {
+        "title": "Основы Automation QA Framework",
+        "link": "/docs/03-automation-qa/160-what-is-automation-qa-framework"
+      },
+      "progress": {
+        "label": "Automation QA",
+        "current": 3,
+        "total": 90,
+        "bar": "█░░░░░░░░░░░"
+      },
+      "related": [
+        {
+          "term": "Promise",
+          "title": "Promise",
+          "number": 72,
+          "link": "/docs/01-javascript/72-promise"
+        }
+      ],
+      "card": {
+        "chapterLabel": "Глава 162",
+        "title": "Архитектурные слои и поток зависимостей",
+        "reading": 3,
+        "examples": 1,
+        "tasks": 3,
+        "solutions": 24,
+        "mermaid": 1
+      }
+    },
+    "docs/03-automation-qa/163-test-code-and-infrastructure-code.md": {
+      "path": "docs/03-automation-qa/163-test-code-and-infrastructure-code.md",
+      "link": "/docs/03-automation-qa/163-test-code-and-infrastructure-code",
+      "title": "Тестовый и инфраструктурный код",
+      "number": 163,
+      "part": "Automation QA",
+      "section": "Основы Automation QA Framework",
+      "sectionIndex": 0,
+      "chapterIndex": 3,
+      "wordCount": 404,
+      "readingMinutes": 3,
+      "h2": 14,
+      "h3": 0,
+      "examples": 0,
+      "tasks": 0,
+      "solutions": 24,
+      "mermaid": 0,
+      "miniProjects": 0,
+      "previous": {
+        "title": "Архитектурные слои и поток зависимостей",
+        "number": 162,
+        "link": "/docs/03-automation-qa/162-architectural-layers-and-dependency-flow"
+      },
+      "next": {
+        "title": "Жизненный цикл автотеста",
+        "number": 164,
+        "link": "/docs/03-automation-qa/164-automated-test-lifecycle"
+      },
+      "sectionLink": {
+        "title": "Основы Automation QA Framework",
+        "link": "/docs/03-automation-qa/160-what-is-automation-qa-framework"
+      },
+      "progress": {
+        "label": "Automation QA",
+        "current": 4,
+        "total": 90,
+        "bar": "█░░░░░░░░░░░"
+      },
+      "related": [],
+      "card": {
+        "chapterLabel": "Глава 163",
+        "title": "Тестовый и инфраструктурный код",
+        "reading": 3,
+        "examples": 0,
+        "tasks": 0,
+        "solutions": 24,
+        "mermaid": 0
+      }
+    },
+    "docs/03-automation-qa/164-automated-test-lifecycle.md": {
+      "path": "docs/03-automation-qa/164-automated-test-lifecycle.md",
+      "link": "/docs/03-automation-qa/164-automated-test-lifecycle",
+      "title": "Жизненный цикл автотеста",
+      "number": 164,
+      "part": "Automation QA",
+      "section": "Основы Automation QA Framework",
+      "sectionIndex": 0,
+      "chapterIndex": 4,
+      "wordCount": 504,
+      "readingMinutes": 3,
+      "h2": 14,
+      "h3": 0,
+      "examples": 1,
+      "tasks": 0,
+      "solutions": 24,
+      "mermaid": 1,
+      "miniProjects": 0,
+      "previous": {
+        "title": "Тестовый и инфраструктурный код",
+        "number": 163,
+        "link": "/docs/03-automation-qa/163-test-code-and-infrastructure-code"
+      },
+      "next": {
+        "title": "Структура проекта и границы модулей",
+        "number": 165,
+        "link": "/docs/03-automation-qa/165-project-structure-and-module-boundaries"
+      },
+      "sectionLink": {
+        "title": "Основы Automation QA Framework",
+        "link": "/docs/03-automation-qa/160-what-is-automation-qa-framework"
+      },
+      "progress": {
+        "label": "Automation QA",
+        "current": 5,
+        "total": 90,
+        "bar": "█░░░░░░░░░░░"
+      },
+      "related": [
+        {
+          "term": "Promise",
+          "title": "Promise",
+          "number": 72,
+          "link": "/docs/01-javascript/72-promise"
+        }
+      ],
+      "card": {
+        "chapterLabel": "Глава 164",
+        "title": "Жизненный цикл автотеста",
+        "reading": 3,
+        "examples": 1,
+        "tasks": 0,
+        "solutions": 24,
+        "mermaid": 1
+      }
+    },
+    "docs/03-automation-qa/165-project-structure-and-module-boundaries.md": {
+      "path": "docs/03-automation-qa/165-project-structure-and-module-boundaries.md",
+      "link": "/docs/03-automation-qa/165-project-structure-and-module-boundaries",
+      "title": "Структура проекта и границы модулей",
+      "number": 165,
+      "part": "Automation QA",
+      "section": "Основы Automation QA Framework",
+      "sectionIndex": 0,
+      "chapterIndex": 5,
+      "wordCount": 426,
+      "readingMinutes": 3,
+      "h2": 14,
+      "h3": 0,
+      "examples": 1,
+      "tasks": 0,
+      "solutions": 24,
+      "mermaid": 0,
+      "miniProjects": 0,
+      "previous": {
+        "title": "Жизненный цикл автотеста",
+        "number": 164,
+        "link": "/docs/03-automation-qa/164-automated-test-lifecycle"
+      },
+      "next": {
+        "title": "Playwright и Playwright Test",
+        "number": 166,
+        "link": "/docs/03-automation-qa/166-playwright-and-playwright-test"
+      },
+      "sectionLink": {
+        "title": "Основы Automation QA Framework",
+        "link": "/docs/03-automation-qa/160-what-is-automation-qa-framework"
+      },
+      "progress": {
+        "label": "Automation QA",
+        "current": 6,
+        "total": 90,
+        "bar": "█░░░░░░░░░░░"
+      },
+      "related": [
+        {
+          "term": "Promise",
+          "title": "Promise",
+          "number": 72,
+          "link": "/docs/01-javascript/72-promise"
+        }
+      ],
+      "card": {
+        "chapterLabel": "Глава 165",
+        "title": "Структура проекта и границы модулей",
+        "reading": 3,
+        "examples": 1,
+        "tasks": 0,
+        "solutions": 24,
+        "mermaid": 0
+      }
+    },
+    "docs/03-automation-qa/166-playwright-and-playwright-test.md": {
+      "path": "docs/03-automation-qa/166-playwright-and-playwright-test.md",
+      "link": "/docs/03-automation-qa/166-playwright-and-playwright-test",
+      "title": "Playwright и Playwright Test",
+      "number": 166,
+      "part": "Automation QA",
+      "section": "Playwright Test и основы UI-автоматизации",
+      "sectionIndex": 1,
+      "chapterIndex": 0,
+      "wordCount": 418,
+      "readingMinutes": 3,
+      "h2": 14,
+      "h3": 0,
+      "examples": 1,
+      "tasks": 0,
+      "solutions": 24,
+      "mermaid": 1,
+      "miniProjects": 0,
+      "previous": {
+        "title": "Структура проекта и границы модулей",
+        "number": 165,
+        "link": "/docs/03-automation-qa/165-project-structure-and-module-boundaries"
+      },
+      "next": {
+        "title": "Анатомия и модель выполнения теста",
+        "number": 167,
+        "link": "/docs/03-automation-qa/167-test-anatomy-and-execution-model"
+      },
+      "sectionLink": {
+        "title": "Playwright Test и основы UI-автоматизации",
+        "link": "/docs/03-automation-qa/166-playwright-and-playwright-test"
+      },
+      "progress": {
+        "label": "Automation QA",
+        "current": 7,
+        "total": 90,
+        "bar": "█░░░░░░░░░░░"
+      },
+      "related": [],
+      "card": {
+        "chapterLabel": "Глава 166",
+        "title": "Playwright и Playwright Test",
+        "reading": 3,
+        "examples": 1,
+        "tasks": 0,
+        "solutions": 24,
+        "mermaid": 1
+      }
+    },
+    "docs/03-automation-qa/167-test-anatomy-and-execution-model.md": {
+      "path": "docs/03-automation-qa/167-test-anatomy-and-execution-model.md",
+      "link": "/docs/03-automation-qa/167-test-anatomy-and-execution-model",
+      "title": "Анатомия и модель выполнения теста",
+      "number": 167,
+      "part": "Automation QA",
+      "section": "Playwright Test и основы UI-автоматизации",
+      "sectionIndex": 1,
+      "chapterIndex": 1,
+      "wordCount": 420,
+      "readingMinutes": 3,
+      "h2": 14,
+      "h3": 0,
+      "examples": 1,
+      "tasks": 0,
+      "solutions": 24,
+      "mermaid": 1,
+      "miniProjects": 0,
+      "previous": {
+        "title": "Playwright и Playwright Test",
+        "number": 166,
+        "link": "/docs/03-automation-qa/166-playwright-and-playwright-test"
+      },
+      "next": {
+        "title": "Browser, BrowserContext и Page",
+        "number": 168,
+        "link": "/docs/03-automation-qa/168-browser-browsercontext-and-page"
+      },
+      "sectionLink": {
+        "title": "Playwright Test и основы UI-автоматизации",
+        "link": "/docs/03-automation-qa/166-playwright-and-playwright-test"
+      },
+      "progress": {
+        "label": "Automation QA",
+        "current": 8,
+        "total": 90,
+        "bar": "█░░░░░░░░░░░"
+      },
+      "related": [
+        {
+          "term": "Promise",
+          "title": "Promise",
+          "number": 72,
+          "link": "/docs/01-javascript/72-promise"
+        }
+      ],
+      "card": {
+        "chapterLabel": "Глава 167",
+        "title": "Анатомия и модель выполнения теста",
+        "reading": 3,
+        "examples": 1,
+        "tasks": 0,
+        "solutions": 24,
+        "mermaid": 1
+      }
+    },
+    "docs/03-automation-qa/168-browser-browsercontext-and-page.md": {
+      "path": "docs/03-automation-qa/168-browser-browsercontext-and-page.md",
+      "link": "/docs/03-automation-qa/168-browser-browsercontext-and-page",
+      "title": "Browser, BrowserContext и Page",
+      "number": 168,
+      "part": "Automation QA",
+      "section": "Playwright Test и основы UI-автоматизации",
+      "sectionIndex": 1,
+      "chapterIndex": 2,
+      "wordCount": 351,
+      "readingMinutes": 2,
+      "h2": 14,
+      "h3": 0,
+      "examples": 1,
+      "tasks": 0,
+      "solutions": 24,
+      "mermaid": 1,
+      "miniProjects": 0,
+      "previous": {
+        "title": "Анатомия и модель выполнения теста",
+        "number": 167,
+        "link": "/docs/03-automation-qa/167-test-anatomy-and-execution-model"
+      },
+      "next": {
+        "title": "Locator и стратегия поиска элементов",
+        "number": 169,
+        "link": "/docs/03-automation-qa/169-locator-and-element-search-strategy"
+      },
+      "sectionLink": {
+        "title": "Playwright Test и основы UI-автоматизации",
+        "link": "/docs/03-automation-qa/166-playwright-and-playwright-test"
+      },
+      "progress": {
+        "label": "Automation QA",
+        "current": 9,
+        "total": 90,
+        "bar": "█░░░░░░░░░░░"
+      },
+      "related": [],
+      "card": {
+        "chapterLabel": "Глава 168",
+        "title": "Browser, BrowserContext и Page",
+        "reading": 2,
+        "examples": 1,
+        "tasks": 0,
+        "solutions": 24,
+        "mermaid": 1
+      }
+    },
+    "docs/03-automation-qa/169-locator-and-element-search-strategy.md": {
+      "path": "docs/03-automation-qa/169-locator-and-element-search-strategy.md",
+      "link": "/docs/03-automation-qa/169-locator-and-element-search-strategy",
+      "title": "Locator и стратегия поиска элементов",
+      "number": 169,
+      "part": "Automation QA",
+      "section": "Playwright Test и основы UI-автоматизации",
+      "sectionIndex": 1,
+      "chapterIndex": 3,
+      "wordCount": 396,
+      "readingMinutes": 3,
+      "h2": 14,
+      "h3": 0,
+      "examples": 1,
+      "tasks": 0,
+      "solutions": 24,
+      "mermaid": 0,
+      "miniProjects": 0,
+      "previous": {
+        "title": "Browser, BrowserContext и Page",
+        "number": 168,
+        "link": "/docs/03-automation-qa/168-browser-browsercontext-and-page"
+      },
+      "next": {
+        "title": "Пользовательские действия",
+        "number": 170,
+        "link": "/docs/03-automation-qa/170-user-actions"
+      },
+      "sectionLink": {
+        "title": "Playwright Test и основы UI-автоматизации",
+        "link": "/docs/03-automation-qa/166-playwright-and-playwright-test"
+      },
+      "progress": {
+        "label": "Automation QA",
+        "current": 10,
+        "total": 90,
+        "bar": "█░░░░░░░░░░░"
+      },
+      "related": [],
+      "card": {
+        "chapterLabel": "Глава 169",
+        "title": "Locator и стратегия поиска элементов",
+        "reading": 3,
+        "examples": 1,
+        "tasks": 0,
+        "solutions": 24,
+        "mermaid": 0
+      }
+    },
+    "docs/03-automation-qa/170-user-actions.md": {
+      "path": "docs/03-automation-qa/170-user-actions.md",
+      "link": "/docs/03-automation-qa/170-user-actions",
+      "title": "Пользовательские действия",
+      "number": 170,
+      "part": "Automation QA",
+      "section": "Playwright Test и основы UI-автоматизации",
+      "sectionIndex": 1,
+      "chapterIndex": 4,
+      "wordCount": 361,
+      "readingMinutes": 3,
+      "h2": 14,
+      "h3": 0,
+      "examples": 1,
+      "tasks": 0,
+      "solutions": 24,
+      "mermaid": 0,
+      "miniProjects": 0,
+      "previous": {
+        "title": "Locator и стратегия поиска элементов",
+        "number": 169,
+        "link": "/docs/03-automation-qa/169-locator-and-element-search-strategy"
+      },
+      "next": {
+        "title": "Web-first assertions",
+        "number": 171,
+        "link": "/docs/03-automation-qa/171-web-first-assertions"
+      },
+      "sectionLink": {
+        "title": "Playwright Test и основы UI-автоматизации",
+        "link": "/docs/03-automation-qa/166-playwright-and-playwright-test"
+      },
+      "progress": {
+        "label": "Automation QA",
+        "current": 11,
+        "total": 90,
+        "bar": "█░░░░░░░░░░░"
+      },
+      "related": [
+        {
+          "term": "Promise",
+          "title": "Promise",
+          "number": 72,
+          "link": "/docs/01-javascript/72-promise"
+        }
+      ],
+      "card": {
+        "chapterLabel": "Глава 170",
+        "title": "Пользовательские действия",
+        "reading": 3,
+        "examples": 1,
+        "tasks": 0,
+        "solutions": 24,
+        "mermaid": 0
+      }
+    },
+    "docs/03-automation-qa/171-web-first-assertions.md": {
+      "path": "docs/03-automation-qa/171-web-first-assertions.md",
+      "link": "/docs/03-automation-qa/171-web-first-assertions",
+      "title": "Web-first assertions",
+      "number": 171,
+      "part": "Automation QA",
+      "section": "Playwright Test и основы UI-автоматизации",
+      "sectionIndex": 1,
+      "chapterIndex": 5,
+      "wordCount": 336,
+      "readingMinutes": 2,
+      "h2": 14,
+      "h3": 0,
+      "examples": 1,
+      "tasks": 0,
+      "solutions": 24,
+      "mermaid": 1,
+      "miniProjects": 0,
+      "previous": {
+        "title": "Пользовательские действия",
+        "number": 170,
+        "link": "/docs/03-automation-qa/170-user-actions"
+      },
+      "next": {
+        "title": "Auto-waiting и явные ожидания",
+        "number": 172,
+        "link": "/docs/03-automation-qa/172-auto-waiting-and-explicit-waits"
+      },
+      "sectionLink": {
+        "title": "Playwright Test и основы UI-автоматизации",
+        "link": "/docs/03-automation-qa/166-playwright-and-playwright-test"
+      },
+      "progress": {
+        "label": "Automation QA",
+        "current": 12,
+        "total": 90,
+        "bar": "██░░░░░░░░░░"
+      },
+      "related": [],
+      "card": {
+        "chapterLabel": "Глава 171",
+        "title": "Web-first assertions",
+        "reading": 2,
+        "examples": 1,
+        "tasks": 0,
+        "solutions": 24,
+        "mermaid": 1
+      }
+    },
+    "docs/03-automation-qa/172-auto-waiting-and-explicit-waits.md": {
+      "path": "docs/03-automation-qa/172-auto-waiting-and-explicit-waits.md",
+      "link": "/docs/03-automation-qa/172-auto-waiting-and-explicit-waits",
+      "title": "Auto-waiting и явные ожидания",
+      "number": 172,
+      "part": "Automation QA",
+      "section": "Playwright Test и основы UI-автоматизации",
+      "sectionIndex": 1,
+      "chapterIndex": 6,
+      "wordCount": 377,
+      "readingMinutes": 3,
+      "h2": 14,
+      "h3": 0,
+      "examples": 1,
+      "tasks": 0,
+      "solutions": 24,
+      "mermaid": 1,
+      "miniProjects": 0,
+      "previous": {
+        "title": "Web-first assertions",
+        "number": 171,
+        "link": "/docs/03-automation-qa/171-web-first-assertions"
+      },
+      "next": {
+        "title": "Timeouts и границы ожидания",
+        "number": 173,
+        "link": "/docs/03-automation-qa/173-timeouts-and-wait-boundaries"
+      },
+      "sectionLink": {
+        "title": "Playwright Test и основы UI-автоматизации",
+        "link": "/docs/03-automation-qa/166-playwright-and-playwright-test"
+      },
+      "progress": {
+        "label": "Automation QA",
+        "current": 13,
+        "total": 90,
+        "bar": "██░░░░░░░░░░"
+      },
+      "related": [
+        {
+          "term": "Promise",
+          "title": "Promise",
+          "number": 72,
+          "link": "/docs/01-javascript/72-promise"
+        }
+      ],
+      "card": {
+        "chapterLabel": "Глава 172",
+        "title": "Auto-waiting и явные ожидания",
+        "reading": 3,
+        "examples": 1,
+        "tasks": 0,
+        "solutions": 24,
+        "mermaid": 1
+      }
+    },
+    "docs/03-automation-qa/173-timeouts-and-wait-boundaries.md": {
+      "path": "docs/03-automation-qa/173-timeouts-and-wait-boundaries.md",
+      "link": "/docs/03-automation-qa/173-timeouts-and-wait-boundaries",
+      "title": "Timeouts и границы ожидания",
+      "number": 173,
+      "part": "Automation QA",
+      "section": "Playwright Test и основы UI-автоматизации",
+      "sectionIndex": 1,
+      "chapterIndex": 7,
+      "wordCount": 408,
+      "readingMinutes": 3,
+      "h2": 14,
+      "h3": 0,
+      "examples": 1,
+      "tasks": 0,
+      "solutions": 24,
+      "mermaid": 0,
+      "miniProjects": 0,
+      "previous": {
+        "title": "Auto-waiting и явные ожидания",
+        "number": 172,
+        "link": "/docs/03-automation-qa/172-auto-waiting-and-explicit-waits"
+      },
+      "next": {
+        "title": "Hooks и жизненный цикл теста",
+        "number": 174,
+        "link": "/docs/03-automation-qa/174-hooks-and-test-lifecycle"
+      },
+      "sectionLink": {
+        "title": "Playwright Test и основы UI-автоматизации",
+        "link": "/docs/03-automation-qa/166-playwright-and-playwright-test"
+      },
+      "progress": {
+        "label": "Automation QA",
+        "current": 14,
+        "total": 90,
+        "bar": "██░░░░░░░░░░"
+      },
+      "related": [],
+      "card": {
+        "chapterLabel": "Глава 173",
+        "title": "Timeouts и границы ожидания",
+        "reading": 3,
+        "examples": 1,
+        "tasks": 0,
+        "solutions": 24,
+        "mermaid": 0
+      }
+    },
+    "docs/03-automation-qa/174-hooks-and-test-lifecycle.md": {
+      "path": "docs/03-automation-qa/174-hooks-and-test-lifecycle.md",
+      "link": "/docs/03-automation-qa/174-hooks-and-test-lifecycle",
+      "title": "Hooks и жизненный цикл теста",
+      "number": 174,
+      "part": "Automation QA",
+      "section": "Playwright Test и основы UI-автоматизации",
+      "sectionIndex": 1,
+      "chapterIndex": 8,
+      "wordCount": 406,
+      "readingMinutes": 3,
+      "h2": 14,
+      "h3": 0,
+      "examples": 1,
+      "tasks": 0,
+      "solutions": 24,
+      "mermaid": 1,
+      "miniProjects": 0,
+      "previous": {
+        "title": "Timeouts и границы ожидания",
+        "number": 173,
+        "link": "/docs/03-automation-qa/173-timeouts-and-wait-boundaries"
+      },
+      "next": {
+        "title": "Изоляция UI-тестов и состояние браузера",
+        "number": 175,
+        "link": "/docs/03-automation-qa/175-ui-test-isolation-and-browser-state"
+      },
+      "sectionLink": {
+        "title": "Playwright Test и основы UI-автоматизации",
+        "link": "/docs/03-automation-qa/166-playwright-and-playwright-test"
+      },
+      "progress": {
+        "label": "Automation QA",
+        "current": 15,
+        "total": 90,
+        "bar": "██░░░░░░░░░░"
+      },
+      "related": [],
+      "card": {
+        "chapterLabel": "Глава 174",
+        "title": "Hooks и жизненный цикл теста",
+        "reading": 3,
+        "examples": 1,
+        "tasks": 0,
+        "solutions": 24,
+        "mermaid": 1
+      }
+    },
+    "docs/03-automation-qa/175-ui-test-isolation-and-browser-state.md": {
+      "path": "docs/03-automation-qa/175-ui-test-isolation-and-browser-state.md",
+      "link": "/docs/03-automation-qa/175-ui-test-isolation-and-browser-state",
+      "title": "Изоляция UI-тестов и состояние браузера",
+      "number": 175,
+      "part": "Automation QA",
+      "section": "Playwright Test и основы UI-автоматизации",
+      "sectionIndex": 1,
+      "chapterIndex": 9,
+      "wordCount": 390,
+      "readingMinutes": 3,
+      "h2": 14,
+      "h3": 0,
+      "examples": 1,
+      "tasks": 0,
+      "solutions": 24,
+      "mermaid": 1,
+      "miniProjects": 0,
+      "previous": {
+        "title": "Hooks и жизненный цикл теста",
+        "number": 174,
+        "link": "/docs/03-automation-qa/174-hooks-and-test-lifecycle"
+      },
+      "next": {
+        "title": "Built-in fixtures",
+        "number": 176,
+        "link": "/docs/03-automation-qa/176-built-in-fixtures"
+      },
+      "sectionLink": {
+        "title": "Playwright Test и основы UI-автоматизации",
+        "link": "/docs/03-automation-qa/166-playwright-and-playwright-test"
+      },
+      "progress": {
+        "label": "Automation QA",
+        "current": 16,
+        "total": 90,
+        "bar": "██░░░░░░░░░░"
+      },
+      "related": [],
+      "card": {
+        "chapterLabel": "Глава 175",
+        "title": "Изоляция UI-тестов и состояние браузера",
+        "reading": 3,
+        "examples": 1,
+        "tasks": 0,
+        "solutions": 24,
+        "mermaid": 1
+      }
+    },
+    "docs/03-automation-qa/176-built-in-fixtures.md": {
+      "path": "docs/03-automation-qa/176-built-in-fixtures.md",
+      "link": "/docs/03-automation-qa/176-built-in-fixtures",
+      "title": "Built-in fixtures",
+      "number": 176,
+      "part": "Automation QA",
+      "section": "Fixtures и архитектура UI-слоя",
+      "sectionIndex": 2,
+      "chapterIndex": 0,
+      "wordCount": 515,
+      "readingMinutes": 3,
+      "h2": 16,
+      "h3": 0,
+      "examples": 1,
+      "tasks": 0,
+      "solutions": 24,
+      "mermaid": 1,
+      "miniProjects": 0,
+      "previous": {
+        "title": "Изоляция UI-тестов и состояние браузера",
+        "number": 175,
+        "link": "/docs/03-automation-qa/175-ui-test-isolation-and-browser-state"
+      },
+      "next": {
+        "title": "Custom fixtures и граф зависимостей",
+        "number": 177,
+        "link": "/docs/03-automation-qa/177-custom-fixtures-and-dependency-graph"
+      },
+      "sectionLink": {
+        "title": "Fixtures и архитектура UI-слоя",
+        "link": "/docs/03-automation-qa/176-built-in-fixtures"
+      },
+      "progress": {
+        "label": "Automation QA",
+        "current": 17,
+        "total": 90,
+        "bar": "██░░░░░░░░░░"
+      },
+      "related": [],
+      "card": {
+        "chapterLabel": "Глава 176",
+        "title": "Built-in fixtures",
+        "reading": 3,
+        "examples": 1,
+        "tasks": 0,
+        "solutions": 24,
+        "mermaid": 1
+      }
+    },
+    "docs/03-automation-qa/177-custom-fixtures-and-dependency-graph.md": {
+      "path": "docs/03-automation-qa/177-custom-fixtures-and-dependency-graph.md",
+      "link": "/docs/03-automation-qa/177-custom-fixtures-and-dependency-graph",
+      "title": "Custom fixtures и граф зависимостей",
+      "number": 177,
+      "part": "Automation QA",
+      "section": "Fixtures и архитектура UI-слоя",
+      "sectionIndex": 2,
+      "chapterIndex": 1,
+      "wordCount": 549,
+      "readingMinutes": 4,
+      "h2": 16,
+      "h3": 0,
+      "examples": 1,
+      "tasks": 0,
+      "solutions": 24,
+      "mermaid": 1,
+      "miniProjects": 0,
+      "previous": {
+        "title": "Built-in fixtures",
+        "number": 176,
+        "link": "/docs/03-automation-qa/176-built-in-fixtures"
+      },
+      "next": {
+        "title": "Authentication state и управляемые сессии",
+        "number": 178,
+        "link": "/docs/03-automation-qa/178-authentication-state-and-managed-sessions"
+      },
+      "sectionLink": {
+        "title": "Fixtures и архитектура UI-слоя",
+        "link": "/docs/03-automation-qa/176-built-in-fixtures"
+      },
+      "progress": {
+        "label": "Automation QA",
+        "current": 18,
+        "total": 90,
+        "bar": "██░░░░░░░░░░"
+      },
+      "related": [],
+      "card": {
+        "chapterLabel": "Глава 177",
+        "title": "Custom fixtures и граф зависимостей",
+        "reading": 4,
+        "examples": 1,
+        "tasks": 0,
+        "solutions": 24,
+        "mermaid": 1
+      }
+    },
+    "docs/03-automation-qa/178-authentication-state-and-managed-sessions.md": {
+      "path": "docs/03-automation-qa/178-authentication-state-and-managed-sessions.md",
+      "link": "/docs/03-automation-qa/178-authentication-state-and-managed-sessions",
+      "title": "Authentication state и управляемые сессии",
+      "number": 178,
+      "part": "Automation QA",
+      "section": "Fixtures и архитектура UI-слоя",
+      "sectionIndex": 2,
+      "chapterIndex": 2,
+      "wordCount": 503,
+      "readingMinutes": 3,
+      "h2": 16,
+      "h3": 0,
+      "examples": 0,
+      "tasks": 0,
+      "solutions": 24,
+      "mermaid": 1,
+      "miniProjects": 0,
+      "previous": {
+        "title": "Custom fixtures и граф зависимостей",
+        "number": 177,
+        "link": "/docs/03-automation-qa/177-custom-fixtures-and-dependency-graph"
+      },
+      "next": {
+        "title": "Page Object",
+        "number": 179,
+        "link": "/docs/03-automation-qa/179-page-object"
+      },
+      "sectionLink": {
+        "title": "Fixtures и архитектура UI-слоя",
+        "link": "/docs/03-automation-qa/176-built-in-fixtures"
+      },
+      "progress": {
+        "label": "Automation QA",
+        "current": 19,
+        "total": 90,
+        "bar": "███░░░░░░░░░"
+      },
+      "related": [],
+      "card": {
+        "chapterLabel": "Глава 178",
+        "title": "Authentication state и управляемые сессии",
+        "reading": 3,
+        "examples": 0,
+        "tasks": 0,
+        "solutions": 24,
+        "mermaid": 1
+      }
+    },
+    "docs/03-automation-qa/179-page-object.md": {
+      "path": "docs/03-automation-qa/179-page-object.md",
+      "link": "/docs/03-automation-qa/179-page-object",
+      "title": "Page Object",
+      "number": 179,
+      "part": "Automation QA",
+      "section": "Fixtures и архитектура UI-слоя",
+      "sectionIndex": 2,
+      "chapterIndex": 3,
+      "wordCount": 490,
+      "readingMinutes": 3,
+      "h2": 16,
+      "h3": 0,
+      "examples": 1,
+      "tasks": 0,
+      "solutions": 24,
+      "mermaid": 1,
+      "miniProjects": 0,
+      "previous": {
+        "title": "Authentication state и управляемые сессии",
+        "number": 178,
+        "link": "/docs/03-automation-qa/178-authentication-state-and-managed-sessions"
+      },
+      "next": {
+        "title": "Component Objects и композиция страниц",
+        "number": 180,
+        "link": "/docs/03-automation-qa/180-component-objects-and-page-composition"
+      },
+      "sectionLink": {
+        "title": "Fixtures и архитектура UI-слоя",
+        "link": "/docs/03-automation-qa/176-built-in-fixtures"
+      },
+      "progress": {
+        "label": "Automation QA",
+        "current": 20,
+        "total": 90,
+        "bar": "███░░░░░░░░░"
+      },
+      "related": [],
+      "card": {
+        "chapterLabel": "Глава 179",
+        "title": "Page Object",
+        "reading": 3,
+        "examples": 1,
+        "tasks": 0,
+        "solutions": 24,
+        "mermaid": 1
+      }
+    },
+    "docs/03-automation-qa/180-component-objects-and-page-composition.md": {
+      "path": "docs/03-automation-qa/180-component-objects-and-page-composition.md",
+      "link": "/docs/03-automation-qa/180-component-objects-and-page-composition",
+      "title": "Component Objects и композиция страниц",
+      "number": 180,
+      "part": "Automation QA",
+      "section": "Fixtures и архитектура UI-слоя",
+      "sectionIndex": 2,
+      "chapterIndex": 4,
+      "wordCount": 467,
+      "readingMinutes": 3,
+      "h2": 16,
+      "h3": 0,
+      "examples": 1,
+      "tasks": 0,
+      "solutions": 24,
+      "mermaid": 0,
+      "miniProjects": 0,
+      "previous": {
+        "title": "Page Object",
+        "number": 179,
+        "link": "/docs/03-automation-qa/179-page-object"
+      },
+      "next": {
+        "title": "Frames",
+        "number": 181,
+        "link": "/docs/03-automation-qa/181-frames"
+      },
+      "sectionLink": {
+        "title": "Fixtures и архитектура UI-слоя",
+        "link": "/docs/03-automation-qa/176-built-in-fixtures"
+      },
+      "progress": {
+        "label": "Automation QA",
+        "current": 21,
+        "total": 90,
+        "bar": "███░░░░░░░░░"
+      },
+      "related": [],
+      "card": {
+        "chapterLabel": "Глава 180",
+        "title": "Component Objects и композиция страниц",
+        "reading": 3,
+        "examples": 1,
+        "tasks": 0,
+        "solutions": 24,
+        "mermaid": 0
+      }
+    },
+    "docs/03-automation-qa/181-frames.md": {
+      "path": "docs/03-automation-qa/181-frames.md",
+      "link": "/docs/03-automation-qa/181-frames",
+      "title": "Frames",
+      "number": 181,
+      "part": "Automation QA",
+      "section": "Fixtures и архитектура UI-слоя",
+      "sectionIndex": 2,
+      "chapterIndex": 5,
+      "wordCount": 466,
+      "readingMinutes": 3,
+      "h2": 16,
+      "h3": 0,
+      "examples": 1,
+      "tasks": 0,
+      "solutions": 24,
+      "mermaid": 0,
+      "miniProjects": 0,
+      "previous": {
+        "title": "Component Objects и композиция страниц",
+        "number": 180,
+        "link": "/docs/03-automation-qa/180-component-objects-and-page-composition"
+      },
+      "next": {
+        "title": "Вкладки, окна и popups",
+        "number": 182,
+        "link": "/docs/03-automation-qa/182-tabs-windows-and-popups"
+      },
+      "sectionLink": {
+        "title": "Fixtures и архитектура UI-слоя",
+        "link": "/docs/03-automation-qa/176-built-in-fixtures"
+      },
+      "progress": {
+        "label": "Automation QA",
+        "current": 22,
+        "total": 90,
+        "bar": "███░░░░░░░░░"
+      },
+      "related": [],
+      "card": {
+        "chapterLabel": "Глава 181",
+        "title": "Frames",
+        "reading": 3,
+        "examples": 1,
+        "tasks": 0,
+        "solutions": 24,
+        "mermaid": 0
+      }
+    },
+    "docs/03-automation-qa/182-tabs-windows-and-popups.md": {
+      "path": "docs/03-automation-qa/182-tabs-windows-and-popups.md",
+      "link": "/docs/03-automation-qa/182-tabs-windows-and-popups",
+      "title": "Вкладки, окна и popups",
+      "number": 182,
+      "part": "Automation QA",
+      "section": "Fixtures и архитектура UI-слоя",
+      "sectionIndex": 2,
+      "chapterIndex": 6,
+      "wordCount": 477,
+      "readingMinutes": 3,
+      "h2": 16,
+      "h3": 0,
+      "examples": 1,
+      "tasks": 0,
+      "solutions": 24,
+      "mermaid": 0,
+      "miniProjects": 0,
+      "previous": {
+        "title": "Frames",
+        "number": 181,
+        "link": "/docs/03-automation-qa/181-frames"
+      },
+      "next": {
+        "title": "Диалоги и работа с файлами",
+        "number": 183,
+        "link": "/docs/03-automation-qa/183-dialogs-and-files"
+      },
+      "sectionLink": {
+        "title": "Fixtures и архитектура UI-слоя",
+        "link": "/docs/03-automation-qa/176-built-in-fixtures"
+      },
+      "progress": {
+        "label": "Automation QA",
+        "current": 23,
+        "total": 90,
+        "bar": "███░░░░░░░░░"
+      },
+      "related": [
+        {
+          "term": "Promise",
+          "title": "Promise",
+          "number": 72,
+          "link": "/docs/01-javascript/72-promise"
+        }
+      ],
+      "card": {
+        "chapterLabel": "Глава 182",
+        "title": "Вкладки, окна и popups",
+        "reading": 3,
+        "examples": 1,
+        "tasks": 0,
+        "solutions": 24,
+        "mermaid": 0
+      }
+    },
+    "docs/03-automation-qa/183-dialogs-and-files.md": {
+      "path": "docs/03-automation-qa/183-dialogs-and-files.md",
+      "link": "/docs/03-automation-qa/183-dialogs-and-files",
+      "title": "Диалоги и работа с файлами",
+      "number": 183,
+      "part": "Automation QA",
+      "section": "Fixtures и архитектура UI-слоя",
+      "sectionIndex": 2,
+      "chapterIndex": 7,
+      "wordCount": 485,
+      "readingMinutes": 3,
+      "h2": 16,
+      "h3": 0,
+      "examples": 1,
+      "tasks": 0,
+      "solutions": 24,
+      "mermaid": 0,
+      "miniProjects": 0,
+      "previous": {
+        "title": "Вкладки, окна и popups",
+        "number": 182,
+        "link": "/docs/03-automation-qa/182-tabs-windows-and-popups"
+      },
+      "next": {
+        "title": "Network interception и mocking",
+        "number": 184,
+        "link": "/docs/03-automation-qa/184-network-interception-and-mocking"
+      },
+      "sectionLink": {
+        "title": "Fixtures и архитектура UI-слоя",
+        "link": "/docs/03-automation-qa/176-built-in-fixtures"
+      },
+      "progress": {
+        "label": "Automation QA",
+        "current": 24,
+        "total": 90,
+        "bar": "███░░░░░░░░░"
+      },
+      "related": [
+        {
+          "term": "Promise",
+          "title": "Promise",
+          "number": 72,
+          "link": "/docs/01-javascript/72-promise"
+        }
+      ],
+      "card": {
+        "chapterLabel": "Глава 183",
+        "title": "Диалоги и работа с файлами",
+        "reading": 3,
+        "examples": 1,
+        "tasks": 0,
+        "solutions": 24,
+        "mermaid": 0
+      }
+    },
+    "docs/03-automation-qa/184-network-interception-and-mocking.md": {
+      "path": "docs/03-automation-qa/184-network-interception-and-mocking.md",
+      "link": "/docs/03-automation-qa/184-network-interception-and-mocking",
+      "title": "Network interception и mocking",
+      "number": 184,
+      "part": "Automation QA",
+      "section": "Fixtures и архитектура UI-слоя",
+      "sectionIndex": 2,
+      "chapterIndex": 8,
+      "wordCount": 502,
+      "readingMinutes": 3,
+      "h2": 16,
+      "h3": 0,
+      "examples": 1,
+      "tasks": 0,
+      "solutions": 24,
+      "mermaid": 0,
+      "miniProjects": 0,
+      "previous": {
+        "title": "Диалоги и работа с файлами",
+        "number": 183,
+        "link": "/docs/03-automation-qa/183-dialogs-and-files"
+      },
+      "next": {
+        "title": "Интеграция UI-слоя",
+        "number": 185,
+        "link": "/docs/03-automation-qa/185-ui-layer-integration"
+      },
+      "sectionLink": {
+        "title": "Fixtures и архитектура UI-слоя",
+        "link": "/docs/03-automation-qa/176-built-in-fixtures"
+      },
+      "progress": {
+        "label": "Automation QA",
+        "current": 25,
+        "total": 90,
+        "bar": "███░░░░░░░░░"
+      },
+      "related": [],
+      "card": {
+        "chapterLabel": "Глава 184",
+        "title": "Network interception и mocking",
+        "reading": 3,
+        "examples": 1,
+        "tasks": 0,
+        "solutions": 24,
+        "mermaid": 0
+      }
+    },
+    "docs/03-automation-qa/185-ui-layer-integration.md": {
+      "path": "docs/03-automation-qa/185-ui-layer-integration.md",
+      "link": "/docs/03-automation-qa/185-ui-layer-integration",
+      "title": "Интеграция UI-слоя",
+      "number": 185,
+      "part": "Automation QA",
+      "section": "Fixtures и архитектура UI-слоя",
+      "sectionIndex": 2,
+      "chapterIndex": 9,
+      "wordCount": 571,
+      "readingMinutes": 4,
+      "h2": 17,
+      "h3": 0,
+      "examples": 1,
+      "tasks": 0,
+      "solutions": 24,
+      "mermaid": 1,
+      "miniProjects": 0,
+      "previous": {
+        "title": "Network interception и mocking",
+        "number": 184,
+        "link": "/docs/03-automation-qa/184-network-interception-and-mocking"
+      },
+      "next": {
+        "title": "HTTP и REST для API-тестирования",
+        "number": 186,
+        "link": "/docs/03-automation-qa/186-http-and-rest-for-api-testing"
+      },
+      "sectionLink": {
+        "title": "Fixtures и архитектура UI-слоя",
+        "link": "/docs/03-automation-qa/176-built-in-fixtures"
+      },
+      "progress": {
+        "label": "Automation QA",
+        "current": 26,
+        "total": 90,
+        "bar": "███░░░░░░░░░"
+      },
+      "related": [],
+      "card": {
+        "chapterLabel": "Глава 185",
+        "title": "Интеграция UI-слоя",
+        "reading": 4,
+        "examples": 1,
+        "tasks": 0,
+        "solutions": 24,
+        "mermaid": 1
+      }
+    },
+    "docs/03-automation-qa/186-http-and-rest-for-api-testing.md": {
+      "path": "docs/03-automation-qa/186-http-and-rest-for-api-testing.md",
+      "link": "/docs/03-automation-qa/186-http-and-rest-for-api-testing",
+      "title": "HTTP и REST для API-тестирования",
+      "number": 186,
+      "part": "Automation QA",
+      "section": "Тестирование REST API",
+      "sectionIndex": 3,
+      "chapterIndex": 0,
+      "wordCount": 612,
+      "readingMinutes": 4,
+      "h2": 16,
+      "h3": 0,
+      "examples": 1,
+      "tasks": 0,
+      "solutions": 24,
+      "mermaid": 1,
+      "miniProjects": 0,
+      "previous": {
+        "title": "Интеграция UI-слоя",
+        "number": 185,
+        "link": "/docs/03-automation-qa/185-ui-layer-integration"
+      },
+      "next": {
+        "title": "Структура HTTP-запроса",
+        "number": 187,
+        "link": "/docs/03-automation-qa/187-http-request-structure"
+      },
+      "sectionLink": {
+        "title": "Тестирование REST API",
+        "link": "/docs/03-automation-qa/186-http-and-rest-for-api-testing"
+      },
+      "progress": {
+        "label": "Automation QA",
+        "current": 27,
+        "total": 90,
+        "bar": "████░░░░░░░░"
+      },
+      "related": [
+        {
+          "term": "JSON",
+          "title": "JSON",
+          "number": 94,
+          "link": "/docs/01-javascript/94-json"
+        }
+      ],
+      "card": {
+        "chapterLabel": "Глава 186",
+        "title": "HTTP и REST для API-тестирования",
+        "reading": 4,
+        "examples": 1,
+        "tasks": 0,
+        "solutions": 24,
+        "mermaid": 1
+      }
+    },
+    "docs/03-automation-qa/187-http-request-structure.md": {
+      "path": "docs/03-automation-qa/187-http-request-structure.md",
+      "link": "/docs/03-automation-qa/187-http-request-structure",
+      "title": "Структура HTTP-запроса",
+      "number": 187,
+      "part": "Automation QA",
+      "section": "Тестирование REST API",
+      "sectionIndex": 3,
+      "chapterIndex": 1,
+      "wordCount": 550,
+      "readingMinutes": 4,
+      "h2": 16,
+      "h3": 0,
+      "examples": 1,
+      "tasks": 0,
+      "solutions": 24,
+      "mermaid": 0,
+      "miniProjects": 0,
+      "previous": {
+        "title": "HTTP и REST для API-тестирования",
+        "number": 186,
+        "link": "/docs/03-automation-qa/186-http-and-rest-for-api-testing"
+      },
+      "next": {
+        "title": "Структура HTTP-ответа",
+        "number": 188,
+        "link": "/docs/03-automation-qa/188-http-response-structure"
+      },
+      "sectionLink": {
+        "title": "Тестирование REST API",
+        "link": "/docs/03-automation-qa/186-http-and-rest-for-api-testing"
+      },
+      "progress": {
+        "label": "Automation QA",
+        "current": 28,
+        "total": 90,
+        "bar": "████░░░░░░░░"
+      },
+      "related": [
+        {
+          "term": "JSON",
+          "title": "JSON",
+          "number": 94,
+          "link": "/docs/01-javascript/94-json"
+        }
+      ],
+      "card": {
+        "chapterLabel": "Глава 187",
+        "title": "Структура HTTP-запроса",
+        "reading": 4,
+        "examples": 1,
+        "tasks": 0,
+        "solutions": 24,
+        "mermaid": 0
+      }
+    },
+    "docs/03-automation-qa/188-http-response-structure.md": {
+      "path": "docs/03-automation-qa/188-http-response-structure.md",
+      "link": "/docs/03-automation-qa/188-http-response-structure",
+      "title": "Структура HTTP-ответа",
+      "number": 188,
+      "part": "Automation QA",
+      "section": "Тестирование REST API",
+      "sectionIndex": 3,
+      "chapterIndex": 2,
+      "wordCount": 524,
+      "readingMinutes": 3,
+      "h2": 16,
+      "h3": 0,
+      "examples": 1,
+      "tasks": 0,
+      "solutions": 24,
+      "mermaid": 0,
+      "miniProjects": 0,
+      "previous": {
+        "title": "Структура HTTP-запроса",
+        "number": 187,
+        "link": "/docs/03-automation-qa/187-http-request-structure"
+      },
+      "next": {
+        "title": "APIRequestContext",
+        "number": 189,
+        "link": "/docs/03-automation-qa/189-api-request-context"
+      },
+      "sectionLink": {
+        "title": "Тестирование REST API",
+        "link": "/docs/03-automation-qa/186-http-and-rest-for-api-testing"
+      },
+      "progress": {
+        "label": "Automation QA",
+        "current": 29,
+        "total": 90,
+        "bar": "████░░░░░░░░"
+      },
+      "related": [
+        {
+          "term": "JSON",
+          "title": "JSON",
+          "number": 94,
+          "link": "/docs/01-javascript/94-json"
+        }
+      ],
+      "card": {
+        "chapterLabel": "Глава 188",
+        "title": "Структура HTTP-ответа",
+        "reading": 3,
+        "examples": 1,
+        "tasks": 0,
+        "solutions": 24,
+        "mermaid": 0
+      }
+    },
+    "docs/03-automation-qa/189-api-request-context.md": {
+      "path": "docs/03-automation-qa/189-api-request-context.md",
+      "link": "/docs/03-automation-qa/189-api-request-context",
+      "title": "APIRequestContext",
+      "number": 189,
+      "part": "Automation QA",
+      "section": "Тестирование REST API",
+      "sectionIndex": 3,
+      "chapterIndex": 3,
+      "wordCount": 475,
+      "readingMinutes": 3,
+      "h2": 16,
+      "h3": 0,
+      "examples": 1,
+      "tasks": 0,
+      "solutions": 24,
+      "mermaid": 1,
+      "miniProjects": 0,
+      "previous": {
+        "title": "Структура HTTP-ответа",
+        "number": 188,
+        "link": "/docs/03-automation-qa/188-http-response-structure"
+      },
+      "next": {
+        "title": "API Client и граница HTTP-слоя",
+        "number": 190,
+        "link": "/docs/03-automation-qa/190-api-client-and-http-boundary"
+      },
+      "sectionLink": {
+        "title": "Тестирование REST API",
+        "link": "/docs/03-automation-qa/186-http-and-rest-for-api-testing"
+      },
+      "progress": {
+        "label": "Automation QA",
+        "current": 30,
+        "total": 90,
+        "bar": "████░░░░░░░░"
+      },
+      "related": [],
+      "card": {
+        "chapterLabel": "Глава 189",
+        "title": "APIRequestContext",
+        "reading": 3,
+        "examples": 1,
+        "tasks": 0,
+        "solutions": 24,
+        "mermaid": 1
+      }
+    },
+    "docs/03-automation-qa/190-api-client-and-http-boundary.md": {
+      "path": "docs/03-automation-qa/190-api-client-and-http-boundary.md",
+      "link": "/docs/03-automation-qa/190-api-client-and-http-boundary",
+      "title": "API Client и граница HTTP-слоя",
+      "number": 190,
+      "part": "Automation QA",
+      "section": "Тестирование REST API",
+      "sectionIndex": 3,
+      "chapterIndex": 4,
+      "wordCount": 529,
+      "readingMinutes": 3,
+      "h2": 16,
+      "h3": 0,
+      "examples": 1,
+      "tasks": 0,
+      "solutions": 24,
+      "mermaid": 1,
+      "miniProjects": 0,
+      "previous": {
+        "title": "APIRequestContext",
+        "number": 189,
+        "link": "/docs/03-automation-qa/189-api-request-context"
+      },
+      "next": {
+        "title": "Аутентификация API",
+        "number": 191,
+        "link": "/docs/03-automation-qa/191-api-authentication"
+      },
+      "sectionLink": {
+        "title": "Тестирование REST API",
+        "link": "/docs/03-automation-qa/186-http-and-rest-for-api-testing"
+      },
+      "progress": {
+        "label": "Automation QA",
+        "current": 31,
+        "total": 90,
+        "bar": "████░░░░░░░░"
+      },
+      "related": [
+        {
+          "term": "JSON",
+          "title": "JSON",
+          "number": 94,
+          "link": "/docs/01-javascript/94-json"
+        }
+      ],
+      "card": {
+        "chapterLabel": "Глава 190",
+        "title": "API Client и граница HTTP-слоя",
+        "reading": 3,
+        "examples": 1,
+        "tasks": 0,
+        "solutions": 24,
+        "mermaid": 1
+      }
+    },
+    "docs/03-automation-qa/191-api-authentication.md": {
+      "path": "docs/03-automation-qa/191-api-authentication.md",
+      "link": "/docs/03-automation-qa/191-api-authentication",
+      "title": "Аутентификация API",
+      "number": 191,
+      "part": "Automation QA",
+      "section": "Тестирование REST API",
+      "sectionIndex": 3,
+      "chapterIndex": 5,
+      "wordCount": 512,
+      "readingMinutes": 3,
+      "h2": 16,
+      "h3": 0,
+      "examples": 1,
+      "tasks": 0,
+      "solutions": 24,
+      "mermaid": 0,
+      "miniProjects": 0,
+      "previous": {
+        "title": "API Client и граница HTTP-слоя",
+        "number": 190,
+        "link": "/docs/03-automation-qa/190-api-client-and-http-boundary"
+      },
+      "next": {
+        "title": "Request Builders и подготовка данных через API",
+        "number": 192,
+        "link": "/docs/03-automation-qa/192-request-builders-and-api-data-setup"
+      },
+      "sectionLink": {
+        "title": "Тестирование REST API",
+        "link": "/docs/03-automation-qa/186-http-and-rest-for-api-testing"
+      },
+      "progress": {
+        "label": "Automation QA",
+        "current": 32,
+        "total": 90,
+        "bar": "████░░░░░░░░"
+      },
+      "related": [],
+      "card": {
+        "chapterLabel": "Глава 191",
+        "title": "Аутентификация API",
+        "reading": 3,
+        "examples": 1,
+        "tasks": 0,
+        "solutions": 24,
+        "mermaid": 0
+      }
+    },
+    "docs/03-automation-qa/192-request-builders-and-api-data-setup.md": {
+      "path": "docs/03-automation-qa/192-request-builders-and-api-data-setup.md",
+      "link": "/docs/03-automation-qa/192-request-builders-and-api-data-setup",
+      "title": "Request Builders и подготовка данных через API",
+      "number": 192,
+      "part": "Automation QA",
+      "section": "Тестирование REST API",
+      "sectionIndex": 3,
+      "chapterIndex": 6,
+      "wordCount": 490,
+      "readingMinutes": 3,
+      "h2": 16,
+      "h3": 0,
+      "examples": 1,
+      "tasks": 0,
+      "solutions": 24,
+      "mermaid": 0,
+      "miniProjects": 0,
+      "previous": {
+        "title": "Аутентификация API",
+        "number": 191,
+        "link": "/docs/03-automation-qa/191-api-authentication"
+      },
+      "next": {
+        "title": "Проверка API-ответов и бизнес-правил",
+        "number": 193,
+        "link": "/docs/03-automation-qa/193-api-response-and-business-rule-validation"
+      },
+      "sectionLink": {
+        "title": "Тестирование REST API",
+        "link": "/docs/03-automation-qa/186-http-and-rest-for-api-testing"
+      },
+      "progress": {
+        "label": "Automation QA",
+        "current": 33,
+        "total": 90,
+        "bar": "████░░░░░░░░"
+      },
+      "related": [
+        {
+          "term": "this",
+          "title": "this",
+          "number": 29,
+          "link": "/docs/01-javascript/29-this"
+        },
+        {
+          "term": "JSON",
+          "title": "JSON",
+          "number": 94,
+          "link": "/docs/01-javascript/94-json"
+        }
+      ],
+      "card": {
+        "chapterLabel": "Глава 192",
+        "title": "Request Builders и подготовка данных через API",
+        "reading": 3,
+        "examples": 1,
+        "tasks": 0,
+        "solutions": 24,
+        "mermaid": 0
+      }
+    },
+    "docs/03-automation-qa/193-api-response-and-business-rule-validation.md": {
+      "path": "docs/03-automation-qa/193-api-response-and-business-rule-validation.md",
+      "link": "/docs/03-automation-qa/193-api-response-and-business-rule-validation",
+      "title": "Проверка API-ответов и бизнес-правил",
+      "number": 193,
+      "part": "Automation QA",
+      "section": "Тестирование REST API",
+      "sectionIndex": 3,
+      "chapterIndex": 7,
+      "wordCount": 471,
+      "readingMinutes": 3,
+      "h2": 16,
+      "h3": 0,
+      "examples": 1,
+      "tasks": 0,
+      "solutions": 24,
+      "mermaid": 0,
+      "miniProjects": 0,
+      "previous": {
+        "title": "Request Builders и подготовка данных через API",
+        "number": 192,
+        "link": "/docs/03-automation-qa/192-request-builders-and-api-data-setup"
+      },
+      "next": {
+        "title": "Негативные API-сценарии и ошибки",
+        "number": 194,
+        "link": "/docs/03-automation-qa/194-negative-api-scenarios-and-errors"
+      },
+      "sectionLink": {
+        "title": "Тестирование REST API",
+        "link": "/docs/03-automation-qa/186-http-and-rest-for-api-testing"
+      },
+      "progress": {
+        "label": "Automation QA",
+        "current": 34,
+        "total": 90,
+        "bar": "█████░░░░░░░"
+      },
+      "related": [
+        {
+          "term": "JSON",
+          "title": "JSON",
+          "number": 94,
+          "link": "/docs/01-javascript/94-json"
+        }
+      ],
+      "card": {
+        "chapterLabel": "Глава 193",
+        "title": "Проверка API-ответов и бизнес-правил",
+        "reading": 3,
+        "examples": 1,
+        "tasks": 0,
+        "solutions": 24,
+        "mermaid": 0
+      }
+    },
+    "docs/03-automation-qa/194-negative-api-scenarios-and-errors.md": {
+      "path": "docs/03-automation-qa/194-negative-api-scenarios-and-errors.md",
+      "link": "/docs/03-automation-qa/194-negative-api-scenarios-and-errors",
+      "title": "Негативные API-сценарии и ошибки",
+      "number": 194,
+      "part": "Automation QA",
+      "section": "Тестирование REST API",
+      "sectionIndex": 3,
+      "chapterIndex": 8,
+      "wordCount": 492,
+      "readingMinutes": 3,
+      "h2": 16,
+      "h3": 0,
+      "examples": 1,
+      "tasks": 0,
+      "solutions": 24,
+      "mermaid": 0,
+      "miniProjects": 0,
+      "previous": {
+        "title": "Проверка API-ответов и бизнес-правил",
+        "number": 193,
+        "link": "/docs/03-automation-qa/193-api-response-and-business-rule-validation"
+      },
+      "next": {
+        "title": "Проверка контрактов во время выполнения",
+        "number": 195,
+        "link": "/docs/03-automation-qa/195-runtime-contract-validation"
+      },
+      "sectionLink": {
+        "title": "Тестирование REST API",
+        "link": "/docs/03-automation-qa/186-http-and-rest-for-api-testing"
+      },
+      "progress": {
+        "label": "Automation QA",
+        "current": 35,
+        "total": 90,
+        "bar": "█████░░░░░░░"
+      },
+      "related": [
+        {
+          "term": "JSON",
+          "title": "JSON",
+          "number": 94,
+          "link": "/docs/01-javascript/94-json"
+        }
+      ],
+      "card": {
+        "chapterLabel": "Глава 194",
+        "title": "Негативные API-сценарии и ошибки",
+        "reading": 3,
+        "examples": 1,
+        "tasks": 0,
+        "solutions": 24,
+        "mermaid": 0
+      }
+    },
+    "docs/03-automation-qa/195-runtime-contract-validation.md": {
+      "path": "docs/03-automation-qa/195-runtime-contract-validation.md",
+      "link": "/docs/03-automation-qa/195-runtime-contract-validation",
+      "title": "Проверка контрактов во время выполнения",
+      "number": 195,
+      "part": "Automation QA",
+      "section": "Тестирование REST API",
+      "sectionIndex": 3,
+      "chapterIndex": 9,
+      "wordCount": 534,
+      "readingMinutes": 3,
+      "h2": 16,
+      "h3": 0,
+      "examples": 1,
+      "tasks": 0,
+      "solutions": 24,
+      "mermaid": 1,
+      "miniProjects": 0,
+      "previous": {
+        "title": "Негативные API-сценарии и ошибки",
+        "number": 194,
+        "link": "/docs/03-automation-qa/194-negative-api-scenarios-and-errors"
+      },
+      "next": {
+        "title": "Совместные UI и API-сценарии",
+        "number": 196,
+        "link": "/docs/03-automation-qa/196-combined-ui-and-api-scenarios"
+      },
+      "sectionLink": {
+        "title": "Тестирование REST API",
+        "link": "/docs/03-automation-qa/186-http-and-rest-for-api-testing"
+      },
+      "progress": {
+        "label": "Automation QA",
+        "current": 36,
+        "total": 90,
+        "bar": "█████░░░░░░░"
+      },
+      "related": [
+        {
+          "term": "JSON",
+          "title": "JSON",
+          "number": 94,
+          "link": "/docs/01-javascript/94-json"
+        }
+      ],
+      "card": {
+        "chapterLabel": "Глава 195",
+        "title": "Проверка контрактов во время выполнения",
+        "reading": 3,
+        "examples": 1,
+        "tasks": 0,
+        "solutions": 24,
+        "mermaid": 1
+      }
+    },
+    "docs/03-automation-qa/196-combined-ui-and-api-scenarios.md": {
+      "path": "docs/03-automation-qa/196-combined-ui-and-api-scenarios.md",
+      "link": "/docs/03-automation-qa/196-combined-ui-and-api-scenarios",
+      "title": "Совместные UI и API-сценарии",
+      "number": 196,
+      "part": "Automation QA",
+      "section": "Тестирование REST API",
+      "sectionIndex": 3,
+      "chapterIndex": 10,
+      "wordCount": 540,
+      "readingMinutes": 3,
+      "h2": 16,
+      "h3": 0,
+      "examples": 1,
+      "tasks": 0,
+      "solutions": 24,
+      "mermaid": 1,
+      "miniProjects": 0,
+      "previous": {
+        "title": "Проверка контрактов во время выполнения",
+        "number": 195,
+        "link": "/docs/03-automation-qa/195-runtime-contract-validation"
+      },
+      "next": {
+        "title": "gRPC и REST в тестовой архитектуре",
+        "number": 197,
+        "link": "/docs/03-automation-qa/197-grpc-and-rest-in-test-architecture"
+      },
+      "sectionLink": {
+        "title": "Тестирование REST API",
+        "link": "/docs/03-automation-qa/186-http-and-rest-for-api-testing"
+      },
+      "progress": {
+        "label": "Automation QA",
+        "current": 37,
+        "total": 90,
+        "bar": "█████░░░░░░░"
+      },
+      "related": [],
+      "card": {
+        "chapterLabel": "Глава 196",
+        "title": "Совместные UI и API-сценарии",
+        "reading": 3,
+        "examples": 1,
+        "tasks": 0,
+        "solutions": 24,
+        "mermaid": 1
+      }
+    },
+    "docs/03-automation-qa/197-grpc-and-rest-in-test-architecture.md": {
+      "path": "docs/03-automation-qa/197-grpc-and-rest-in-test-architecture.md",
+      "link": "/docs/03-automation-qa/197-grpc-and-rest-in-test-architecture",
+      "title": "gRPC и REST в тестовой архитектуре",
+      "number": 197,
+      "part": "Automation QA",
+      "section": "Тестирование gRPC",
+      "sectionIndex": 4,
+      "chapterIndex": 0,
+      "wordCount": 549,
+      "readingMinutes": 4,
+      "h2": 16,
+      "h3": 0,
+      "examples": 1,
+      "tasks": 0,
+      "solutions": 24,
+      "mermaid": 1,
+      "miniProjects": 0,
+      "previous": {
+        "title": "Совместные UI и API-сценарии",
+        "number": 196,
+        "link": "/docs/03-automation-qa/196-combined-ui-and-api-scenarios"
+      },
+      "next": {
+        "title": "Protocol Buffers: сервисы и сообщения",
+        "number": 198,
+        "link": "/docs/03-automation-qa/198-protocol-buffers-services-and-messages"
+      },
+      "sectionLink": {
+        "title": "Тестирование gRPC",
+        "link": "/docs/03-automation-qa/197-grpc-and-rest-in-test-architecture"
+      },
+      "progress": {
+        "label": "Automation QA",
+        "current": 38,
+        "total": 90,
+        "bar": "█████░░░░░░░"
+      },
+      "related": [
+        {
+          "term": "JSON",
+          "title": "JSON",
+          "number": 94,
+          "link": "/docs/01-javascript/94-json"
+        }
+      ],
+      "card": {
+        "chapterLabel": "Глава 197",
+        "title": "gRPC и REST в тестовой архитектуре",
+        "reading": 4,
+        "examples": 1,
+        "tasks": 0,
+        "solutions": 24,
+        "mermaid": 1
+      }
+    },
+    "docs/03-automation-qa/198-protocol-buffers-services-and-messages.md": {
+      "path": "docs/03-automation-qa/198-protocol-buffers-services-and-messages.md",
+      "link": "/docs/03-automation-qa/198-protocol-buffers-services-and-messages",
+      "title": "Protocol Buffers: сервисы и сообщения",
+      "number": 198,
+      "part": "Automation QA",
+      "section": "Тестирование gRPC",
+      "sectionIndex": 4,
+      "chapterIndex": 1,
+      "wordCount": 485,
+      "readingMinutes": 3,
+      "h2": 16,
+      "h3": 0,
+      "examples": 0,
+      "tasks": 0,
+      "solutions": 24,
+      "mermaid": 1,
+      "miniProjects": 0,
+      "previous": {
+        "title": "gRPC и REST в тестовой архитектуре",
+        "number": 197,
+        "link": "/docs/03-automation-qa/197-grpc-and-rest-in-test-architecture"
+      },
+      "next": {
+        "title": "Сгенерированный код и создание gRPC Client",
+        "number": 199,
+        "link": "/docs/03-automation-qa/199-generated-code-and-grpc-client"
+      },
+      "sectionLink": {
+        "title": "Тестирование gRPC",
+        "link": "/docs/03-automation-qa/197-grpc-and-rest-in-test-architecture"
+      },
+      "progress": {
+        "label": "Automation QA",
+        "current": 39,
+        "total": 90,
+        "bar": "█████░░░░░░░"
+      },
+      "related": [],
+      "card": {
+        "chapterLabel": "Глава 198",
+        "title": "Protocol Buffers: сервисы и сообщения",
+        "reading": 3,
+        "examples": 0,
+        "tasks": 0,
+        "solutions": 24,
+        "mermaid": 1
+      }
+    },
+    "docs/03-automation-qa/199-generated-code-and-grpc-client.md": {
+      "path": "docs/03-automation-qa/199-generated-code-and-grpc-client.md",
+      "link": "/docs/03-automation-qa/199-generated-code-and-grpc-client",
+      "title": "Сгенерированный код и создание gRPC Client",
+      "number": 199,
+      "part": "Automation QA",
+      "section": "Тестирование gRPC",
+      "sectionIndex": 4,
+      "chapterIndex": 2,
+      "wordCount": 479,
+      "readingMinutes": 3,
+      "h2": 16,
+      "h3": 0,
+      "examples": 1,
+      "tasks": 0,
+      "solutions": 24,
+      "mermaid": 0,
+      "miniProjects": 0,
+      "previous": {
+        "title": "Protocol Buffers: сервисы и сообщения",
+        "number": 198,
+        "link": "/docs/03-automation-qa/198-protocol-buffers-services-and-messages"
+      },
+      "next": {
+        "title": "Unary gRPC-вызовы",
+        "number": 200,
+        "link": "/docs/03-automation-qa/200-unary-grpc-calls"
+      },
+      "sectionLink": {
+        "title": "Тестирование gRPC",
+        "link": "/docs/03-automation-qa/197-grpc-and-rest-in-test-architecture"
+      },
+      "progress": {
+        "label": "Automation QA",
+        "current": 40,
+        "total": 90,
+        "bar": "█████░░░░░░░"
+      },
+      "related": [],
+      "card": {
+        "chapterLabel": "Глава 199",
+        "title": "Сгенерированный код и создание gRPC Client",
+        "reading": 3,
+        "examples": 1,
+        "tasks": 0,
+        "solutions": 24,
+        "mermaid": 0
+      }
+    },
+    "docs/03-automation-qa/200-unary-grpc-calls.md": {
+      "path": "docs/03-automation-qa/200-unary-grpc-calls.md",
+      "link": "/docs/03-automation-qa/200-unary-grpc-calls",
+      "title": "Unary gRPC-вызовы",
+      "number": 200,
+      "part": "Automation QA",
+      "section": "Тестирование gRPC",
+      "sectionIndex": 4,
+      "chapterIndex": 3,
+      "wordCount": 452,
+      "readingMinutes": 3,
+      "h2": 16,
+      "h3": 0,
+      "examples": 1,
+      "tasks": 0,
+      "solutions": 24,
+      "mermaid": 1,
+      "miniProjects": 0,
+      "previous": {
+        "title": "Сгенерированный код и создание gRPC Client",
+        "number": 199,
+        "link": "/docs/03-automation-qa/199-generated-code-and-grpc-client"
+      },
+      "next": {
+        "title": "Поля protobuf-сообщений",
+        "number": 201,
+        "link": "/docs/03-automation-qa/201-protobuf-message-fields"
+      },
+      "sectionLink": {
+        "title": "Тестирование gRPC",
+        "link": "/docs/03-automation-qa/197-grpc-and-rest-in-test-architecture"
+      },
+      "progress": {
+        "label": "Automation QA",
+        "current": 41,
+        "total": 90,
+        "bar": "█████░░░░░░░"
+      },
+      "related": [
+        {
+          "term": "Promise",
+          "title": "Promise",
+          "number": 72,
+          "link": "/docs/01-javascript/72-promise"
+        }
+      ],
+      "card": {
+        "chapterLabel": "Глава 200",
+        "title": "Unary gRPC-вызовы",
+        "reading": 3,
+        "examples": 1,
+        "tasks": 0,
+        "solutions": 24,
+        "mermaid": 1
+      }
+    },
+    "docs/03-automation-qa/201-protobuf-message-fields.md": {
+      "path": "docs/03-automation-qa/201-protobuf-message-fields.md",
+      "link": "/docs/03-automation-qa/201-protobuf-message-fields",
+      "title": "Поля protobuf-сообщений",
+      "number": 201,
+      "part": "Automation QA",
+      "section": "Тестирование gRPC",
+      "sectionIndex": 4,
+      "chapterIndex": 4,
+      "wordCount": 509,
+      "readingMinutes": 3,
+      "h2": 16,
+      "h3": 0,
+      "examples": 1,
+      "tasks": 0,
+      "solutions": 24,
+      "mermaid": 0,
+      "miniProjects": 0,
+      "previous": {
+        "title": "Unary gRPC-вызовы",
+        "number": 200,
+        "link": "/docs/03-automation-qa/200-unary-grpc-calls"
+      },
+      "next": {
+        "title": "Metadata и аутентификация gRPC",
+        "number": 202,
+        "link": "/docs/03-automation-qa/202-grpc-metadata-and-authentication"
+      },
+      "sectionLink": {
+        "title": "Тестирование gRPC",
+        "link": "/docs/03-automation-qa/197-grpc-and-rest-in-test-architecture"
+      },
+      "progress": {
+        "label": "Automation QA",
+        "current": 42,
+        "total": 90,
+        "bar": "██████░░░░░░"
+      },
+      "related": [],
+      "card": {
+        "chapterLabel": "Глава 201",
+        "title": "Поля protobuf-сообщений",
+        "reading": 3,
+        "examples": 1,
+        "tasks": 0,
+        "solutions": 24,
+        "mermaid": 0
+      }
+    },
+    "docs/03-automation-qa/202-grpc-metadata-and-authentication.md": {
+      "path": "docs/03-automation-qa/202-grpc-metadata-and-authentication.md",
+      "link": "/docs/03-automation-qa/202-grpc-metadata-and-authentication",
+      "title": "Metadata и аутентификация gRPC",
+      "number": 202,
+      "part": "Automation QA",
+      "section": "Тестирование gRPC",
+      "sectionIndex": 4,
+      "chapterIndex": 5,
+      "wordCount": 464,
+      "readingMinutes": 3,
+      "h2": 16,
+      "h3": 0,
+      "examples": 1,
+      "tasks": 0,
+      "solutions": 24,
+      "mermaid": 1,
+      "miniProjects": 0,
+      "previous": {
+        "title": "Поля protobuf-сообщений",
+        "number": 201,
+        "link": "/docs/03-automation-qa/201-protobuf-message-fields"
+      },
+      "next": {
+        "title": "Deadlines и timeouts gRPC",
+        "number": 203,
+        "link": "/docs/03-automation-qa/203-grpc-deadlines-and-timeouts"
+      },
+      "sectionLink": {
+        "title": "Тестирование gRPC",
+        "link": "/docs/03-automation-qa/197-grpc-and-rest-in-test-architecture"
+      },
+      "progress": {
+        "label": "Automation QA",
+        "current": 43,
+        "total": 90,
+        "bar": "██████░░░░░░"
+      },
+      "related": [],
+      "card": {
+        "chapterLabel": "Глава 202",
+        "title": "Metadata и аутентификация gRPC",
+        "reading": 3,
+        "examples": 1,
+        "tasks": 0,
+        "solutions": 24,
+        "mermaid": 1
+      }
+    },
+    "docs/03-automation-qa/203-grpc-deadlines-and-timeouts.md": {
+      "path": "docs/03-automation-qa/203-grpc-deadlines-and-timeouts.md",
+      "link": "/docs/03-automation-qa/203-grpc-deadlines-and-timeouts",
+      "title": "Deadlines и timeouts gRPC",
+      "number": 203,
+      "part": "Automation QA",
+      "section": "Тестирование gRPC",
+      "sectionIndex": 4,
+      "chapterIndex": 6,
+      "wordCount": 471,
+      "readingMinutes": 3,
+      "h2": 16,
+      "h3": 0,
+      "examples": 1,
+      "tasks": 0,
+      "solutions": 24,
+      "mermaid": 1,
+      "miniProjects": 0,
+      "previous": {
+        "title": "Metadata и аутентификация gRPC",
+        "number": 202,
+        "link": "/docs/03-automation-qa/202-grpc-metadata-and-authentication"
+      },
+      "next": {
+        "title": "Статусы gRPC и обработка ошибок",
+        "number": 204,
+        "link": "/docs/03-automation-qa/204-grpc-statuses-and-error-handling"
+      },
+      "sectionLink": {
+        "title": "Тестирование gRPC",
+        "link": "/docs/03-automation-qa/197-grpc-and-rest-in-test-architecture"
+      },
+      "progress": {
+        "label": "Automation QA",
+        "current": 44,
+        "total": 90,
+        "bar": "██████░░░░░░"
+      },
+      "related": [
+        {
+          "term": "Promise",
+          "title": "Promise",
+          "number": 72,
+          "link": "/docs/01-javascript/72-promise"
+        },
+        {
+          "term": "Date",
+          "title": "Date",
+          "number": 95,
+          "link": "/docs/01-javascript/95-date"
+        }
+      ],
+      "card": {
+        "chapterLabel": "Глава 203",
+        "title": "Deadlines и timeouts gRPC",
+        "reading": 3,
+        "examples": 1,
+        "tasks": 0,
+        "solutions": 24,
+        "mermaid": 1
+      }
+    },
+    "docs/03-automation-qa/204-grpc-statuses-and-error-handling.md": {
+      "path": "docs/03-automation-qa/204-grpc-statuses-and-error-handling.md",
+      "link": "/docs/03-automation-qa/204-grpc-statuses-and-error-handling",
+      "title": "Статусы gRPC и обработка ошибок",
+      "number": 204,
+      "part": "Automation QA",
+      "section": "Тестирование gRPC",
+      "sectionIndex": 4,
+      "chapterIndex": 7,
+      "wordCount": 444,
+      "readingMinutes": 3,
+      "h2": 16,
+      "h3": 0,
+      "examples": 1,
+      "tasks": 0,
+      "solutions": 24,
+      "mermaid": 0,
+      "miniProjects": 0,
+      "previous": {
+        "title": "Deadlines и timeouts gRPC",
+        "number": 203,
+        "link": "/docs/03-automation-qa/203-grpc-deadlines-and-timeouts"
+      },
+      "next": {
+        "title": "Проверка gRPC-ответов и негативных сценариев",
+        "number": 205,
+        "link": "/docs/03-automation-qa/205-grpc-response-and-negative-scenario-validation"
+      },
+      "sectionLink": {
+        "title": "Тестирование gRPC",
+        "link": "/docs/03-automation-qa/197-grpc-and-rest-in-test-architecture"
+      },
+      "progress": {
+        "label": "Automation QA",
+        "current": 45,
+        "total": 90,
+        "bar": "██████░░░░░░"
+      },
+      "related": [
+        {
+          "term": "Promise",
+          "title": "Promise",
+          "number": 72,
+          "link": "/docs/01-javascript/72-promise"
+        }
+      ],
+      "card": {
+        "chapterLabel": "Глава 204",
+        "title": "Статусы gRPC и обработка ошибок",
+        "reading": 3,
+        "examples": 1,
+        "tasks": 0,
+        "solutions": 24,
+        "mermaid": 0
+      }
+    },
+    "docs/03-automation-qa/205-grpc-response-and-negative-scenario-validation.md": {
+      "path": "docs/03-automation-qa/205-grpc-response-and-negative-scenario-validation.md",
+      "link": "/docs/03-automation-qa/205-grpc-response-and-negative-scenario-validation",
+      "title": "Проверка gRPC-ответов и негативных сценариев",
+      "number": 205,
+      "part": "Automation QA",
+      "section": "Тестирование gRPC",
+      "sectionIndex": 4,
+      "chapterIndex": 8,
+      "wordCount": 449,
+      "readingMinutes": 3,
+      "h2": 16,
+      "h3": 0,
+      "examples": 1,
+      "tasks": 0,
+      "solutions": 24,
+      "mermaid": 0,
+      "miniProjects": 0,
+      "previous": {
+        "title": "Статусы gRPC и обработка ошибок",
+        "number": 204,
+        "link": "/docs/03-automation-qa/204-grpc-statuses-and-error-handling"
+      },
+      "next": {
+        "title": "gRPC Client в Automation Framework",
+        "number": 206,
+        "link": "/docs/03-automation-qa/206-grpc-client-in-automation-framework"
+      },
+      "sectionLink": {
+        "title": "Тестирование gRPC",
+        "link": "/docs/03-automation-qa/197-grpc-and-rest-in-test-architecture"
+      },
+      "progress": {
+        "label": "Automation QA",
+        "current": 46,
+        "total": 90,
+        "bar": "██████░░░░░░"
+      },
+      "related": [],
+      "card": {
+        "chapterLabel": "Глава 205",
+        "title": "Проверка gRPC-ответов и негативных сценариев",
+        "reading": 3,
+        "examples": 1,
+        "tasks": 0,
+        "solutions": 24,
+        "mermaid": 0
+      }
+    },
+    "docs/03-automation-qa/206-grpc-client-in-automation-framework.md": {
+      "path": "docs/03-automation-qa/206-grpc-client-in-automation-framework.md",
+      "link": "/docs/03-automation-qa/206-grpc-client-in-automation-framework",
+      "title": "gRPC Client в Automation Framework",
+      "number": 206,
+      "part": "Automation QA",
+      "section": "Тестирование gRPC",
+      "sectionIndex": 4,
+      "chapterIndex": 9,
+      "wordCount": 520,
+      "readingMinutes": 3,
+      "h2": 16,
+      "h3": 0,
+      "examples": 0,
+      "tasks": 0,
+      "solutions": 24,
+      "mermaid": 1,
+      "miniProjects": 0,
+      "previous": {
+        "title": "Проверка gRPC-ответов и негативных сценариев",
+        "number": 205,
+        "link": "/docs/03-automation-qa/205-grpc-response-and-negative-scenario-validation"
+      },
+      "next": {
+        "title": "PostgreSQL в Automation QA",
+        "number": 207,
+        "link": "/docs/03-automation-qa/207-postgresql-in-automation-qa"
+      },
+      "sectionLink": {
+        "title": "Тестирование gRPC",
+        "link": "/docs/03-automation-qa/197-grpc-and-rest-in-test-architecture"
+      },
+      "progress": {
+        "label": "Automation QA",
+        "current": 47,
+        "total": 90,
+        "bar": "██████░░░░░░"
+      },
+      "related": [
+        {
+          "term": "Promise",
+          "title": "Promise",
+          "number": 72,
+          "link": "/docs/01-javascript/72-promise"
+        }
+      ],
+      "card": {
+        "chapterLabel": "Глава 206",
+        "title": "gRPC Client в Automation Framework",
+        "reading": 3,
+        "examples": 0,
+        "tasks": 0,
+        "solutions": 24,
+        "mermaid": 1
+      }
+    },
+    "docs/03-automation-qa/207-postgresql-in-automation-qa.md": {
+      "path": "docs/03-automation-qa/207-postgresql-in-automation-qa.md",
+      "link": "/docs/03-automation-qa/207-postgresql-in-automation-qa",
+      "title": "PostgreSQL в Automation QA",
+      "number": 207,
+      "part": "Automation QA",
+      "section": "Тестирование PostgreSQL",
+      "sectionIndex": 5,
+      "chapterIndex": 0,
+      "wordCount": 413,
+      "readingMinutes": 3,
+      "h2": 14,
+      "h3": 0,
+      "examples": 1,
+      "tasks": 0,
+      "solutions": 24,
+      "mermaid": 1,
+      "miniProjects": 0,
+      "previous": {
+        "title": "gRPC Client в Automation Framework",
+        "number": 206,
+        "link": "/docs/03-automation-qa/206-grpc-client-in-automation-framework"
+      },
+      "next": {
+        "title": "Connections, pools и lifecycle",
+        "number": 208,
+        "link": "/docs/03-automation-qa/208-connections-pools-and-lifecycle"
+      },
+      "sectionLink": {
+        "title": "Тестирование PostgreSQL",
+        "link": "/docs/03-automation-qa/207-postgresql-in-automation-qa"
+      },
+      "progress": {
+        "label": "Automation QA",
+        "current": 48,
+        "total": 90,
+        "bar": "██████░░░░░░"
+      },
+      "related": [],
+      "card": {
+        "chapterLabel": "Глава 207",
+        "title": "PostgreSQL в Automation QA",
+        "reading": 3,
+        "examples": 1,
+        "tasks": 0,
+        "solutions": 24,
+        "mermaid": 1
+      }
+    },
+    "docs/03-automation-qa/208-connections-pools-and-lifecycle.md": {
+      "path": "docs/03-automation-qa/208-connections-pools-and-lifecycle.md",
+      "link": "/docs/03-automation-qa/208-connections-pools-and-lifecycle",
+      "title": "Connections, pools и lifecycle",
+      "number": 208,
+      "part": "Automation QA",
+      "section": "Тестирование PostgreSQL",
+      "sectionIndex": 5,
+      "chapterIndex": 1,
+      "wordCount": 405,
+      "readingMinutes": 3,
+      "h2": 14,
+      "h3": 0,
+      "examples": 1,
+      "tasks": 0,
+      "solutions": 24,
+      "mermaid": 1,
+      "miniProjects": 0,
+      "previous": {
+        "title": "PostgreSQL в Automation QA",
+        "number": 207,
+        "link": "/docs/03-automation-qa/207-postgresql-in-automation-qa"
+      },
+      "next": {
+        "title": "Parameterized queries",
+        "number": 209,
+        "link": "/docs/03-automation-qa/209-parameterized-queries"
+      },
+      "sectionLink": {
+        "title": "Тестирование PostgreSQL",
+        "link": "/docs/03-automation-qa/207-postgresql-in-automation-qa"
+      },
+      "progress": {
+        "label": "Automation QA",
+        "current": 49,
+        "total": 90,
+        "bar": "███████░░░░░"
+      },
+      "related": [],
+      "card": {
+        "chapterLabel": "Глава 208",
+        "title": "Connections, pools и lifecycle",
+        "reading": 3,
+        "examples": 1,
+        "tasks": 0,
+        "solutions": 24,
+        "mermaid": 1
+      }
+    },
+    "docs/03-automation-qa/209-parameterized-queries.md": {
+      "path": "docs/03-automation-qa/209-parameterized-queries.md",
+      "link": "/docs/03-automation-qa/209-parameterized-queries",
+      "title": "Parameterized queries",
+      "number": 209,
+      "part": "Automation QA",
+      "section": "Тестирование PostgreSQL",
+      "sectionIndex": 5,
+      "chapterIndex": 2,
+      "wordCount": 393,
+      "readingMinutes": 3,
+      "h2": 14,
+      "h3": 0,
+      "examples": 1,
+      "tasks": 0,
+      "solutions": 24,
+      "mermaid": 0,
+      "miniProjects": 0,
+      "previous": {
+        "title": "Connections, pools и lifecycle",
+        "number": 208,
+        "link": "/docs/03-automation-qa/208-connections-pools-and-lifecycle"
+      },
+      "next": {
+        "title": "Database Access Layer",
+        "number": 210,
+        "link": "/docs/03-automation-qa/210-database-access-layer"
+      },
+      "sectionLink": {
+        "title": "Тестирование PostgreSQL",
+        "link": "/docs/03-automation-qa/207-postgresql-in-automation-qa"
+      },
+      "progress": {
+        "label": "Automation QA",
+        "current": 50,
+        "total": 90,
+        "bar": "███████░░░░░"
+      },
+      "related": [],
+      "card": {
+        "chapterLabel": "Глава 209",
+        "title": "Parameterized queries",
+        "reading": 3,
+        "examples": 1,
+        "tasks": 0,
+        "solutions": 24,
+        "mermaid": 0
+      }
+    },
+    "docs/03-automation-qa/210-database-access-layer.md": {
+      "path": "docs/03-automation-qa/210-database-access-layer.md",
+      "link": "/docs/03-automation-qa/210-database-access-layer",
+      "title": "Database Access Layer",
+      "number": 210,
+      "part": "Automation QA",
+      "section": "Тестирование PostgreSQL",
+      "sectionIndex": 5,
+      "chapterIndex": 3,
+      "wordCount": 364,
+      "readingMinutes": 3,
+      "h2": 14,
+      "h3": 0,
+      "examples": 1,
+      "tasks": 0,
+      "solutions": 24,
+      "mermaid": 0,
+      "miniProjects": 0,
+      "previous": {
+        "title": "Parameterized queries",
+        "number": 209,
+        "link": "/docs/03-automation-qa/209-parameterized-queries"
+      },
+      "next": {
+        "title": "Подготовка и очистка данных в database",
+        "number": 211,
+        "link": "/docs/03-automation-qa/211-database-data-setup-and-cleanup"
+      },
+      "sectionLink": {
+        "title": "Тестирование PostgreSQL",
+        "link": "/docs/03-automation-qa/207-postgresql-in-automation-qa"
+      },
+      "progress": {
+        "label": "Automation QA",
+        "current": 51,
+        "total": 90,
+        "bar": "███████░░░░░"
+      },
+      "related": [],
+      "card": {
+        "chapterLabel": "Глава 210",
+        "title": "Database Access Layer",
+        "reading": 3,
+        "examples": 1,
+        "tasks": 0,
+        "solutions": 24,
+        "mermaid": 0
+      }
+    },
+    "docs/03-automation-qa/211-database-data-setup-and-cleanup.md": {
+      "path": "docs/03-automation-qa/211-database-data-setup-and-cleanup.md",
+      "link": "/docs/03-automation-qa/211-database-data-setup-and-cleanup",
+      "title": "Подготовка и очистка данных в database",
+      "number": 211,
+      "part": "Automation QA",
+      "section": "Тестирование PostgreSQL",
+      "sectionIndex": 5,
+      "chapterIndex": 4,
+      "wordCount": 358,
+      "readingMinutes": 2,
+      "h2": 14,
+      "h3": 0,
+      "examples": 1,
+      "tasks": 0,
+      "solutions": 24,
+      "mermaid": 1,
+      "miniProjects": 0,
+      "previous": {
+        "title": "Database Access Layer",
+        "number": 210,
+        "link": "/docs/03-automation-qa/210-database-access-layer"
+      },
+      "next": {
+        "title": "Transactions, rollback и test isolation",
+        "number": 212,
+        "link": "/docs/03-automation-qa/212-transactions-rollback-and-test-isolation"
+      },
+      "sectionLink": {
+        "title": "Тестирование PostgreSQL",
+        "link": "/docs/03-automation-qa/207-postgresql-in-automation-qa"
+      },
+      "progress": {
+        "label": "Automation QA",
+        "current": 52,
+        "total": 90,
+        "bar": "███████░░░░░"
+      },
+      "related": [],
+      "card": {
+        "chapterLabel": "Глава 211",
+        "title": "Подготовка и очистка данных в database",
+        "reading": 2,
+        "examples": 1,
+        "tasks": 0,
+        "solutions": 24,
+        "mermaid": 1
+      }
+    },
+    "docs/03-automation-qa/212-transactions-rollback-and-test-isolation.md": {
+      "path": "docs/03-automation-qa/212-transactions-rollback-and-test-isolation.md",
+      "link": "/docs/03-automation-qa/212-transactions-rollback-and-test-isolation",
+      "title": "Transactions, rollback и test isolation",
+      "number": 212,
+      "part": "Automation QA",
+      "section": "Тестирование PostgreSQL",
+      "sectionIndex": 5,
+      "chapterIndex": 5,
+      "wordCount": 393,
+      "readingMinutes": 3,
+      "h2": 14,
+      "h3": 0,
+      "examples": 1,
+      "tasks": 0,
+      "solutions": 24,
+      "mermaid": 1,
+      "miniProjects": 0,
+      "previous": {
+        "title": "Подготовка и очистка данных в database",
+        "number": 211,
+        "link": "/docs/03-automation-qa/211-database-data-setup-and-cleanup"
+      },
+      "next": {
+        "title": "Eventual consistency и polling",
+        "number": 213,
+        "link": "/docs/03-automation-qa/213-eventual-consistency-and-polling"
+      },
+      "sectionLink": {
+        "title": "Тестирование PostgreSQL",
+        "link": "/docs/03-automation-qa/207-postgresql-in-automation-qa"
+      },
+      "progress": {
+        "label": "Automation QA",
+        "current": 53,
+        "total": 90,
+        "bar": "███████░░░░░"
+      },
+      "related": [],
+      "card": {
+        "chapterLabel": "Глава 212",
+        "title": "Transactions, rollback и test isolation",
+        "reading": 3,
+        "examples": 1,
+        "tasks": 0,
+        "solutions": 24,
+        "mermaid": 1
+      }
+    },
+    "docs/03-automation-qa/213-eventual-consistency-and-polling.md": {
+      "path": "docs/03-automation-qa/213-eventual-consistency-and-polling.md",
+      "link": "/docs/03-automation-qa/213-eventual-consistency-and-polling",
+      "title": "Eventual consistency и polling",
+      "number": 213,
+      "part": "Automation QA",
+      "section": "Тестирование PostgreSQL",
+      "sectionIndex": 5,
+      "chapterIndex": 6,
+      "wordCount": 387,
+      "readingMinutes": 3,
+      "h2": 14,
+      "h3": 0,
+      "examples": 1,
+      "tasks": 0,
+      "solutions": 24,
+      "mermaid": 1,
+      "miniProjects": 0,
+      "previous": {
+        "title": "Transactions, rollback и test isolation",
+        "number": 212,
+        "link": "/docs/03-automation-qa/212-transactions-rollback-and-test-isolation"
+      },
+      "next": {
+        "title": "Сверка данных PostgreSQL с API и gRPC",
+        "number": 214,
+        "link": "/docs/03-automation-qa/214-postgresql-api-grpc-data-comparison"
+      },
+      "sectionLink": {
+        "title": "Тестирование PostgreSQL",
+        "link": "/docs/03-automation-qa/207-postgresql-in-automation-qa"
+      },
+      "progress": {
+        "label": "Automation QA",
+        "current": 54,
+        "total": 90,
+        "bar": "███████░░░░░"
+      },
+      "related": [
+        {
+          "term": "Promise",
+          "title": "Promise",
+          "number": 72,
+          "link": "/docs/01-javascript/72-promise"
+        }
+      ],
+      "card": {
+        "chapterLabel": "Глава 213",
+        "title": "Eventual consistency и polling",
+        "reading": 3,
+        "examples": 1,
+        "tasks": 0,
+        "solutions": 24,
+        "mermaid": 1
+      }
+    },
+    "docs/03-automation-qa/214-postgresql-api-grpc-data-comparison.md": {
+      "path": "docs/03-automation-qa/214-postgresql-api-grpc-data-comparison.md",
+      "link": "/docs/03-automation-qa/214-postgresql-api-grpc-data-comparison",
+      "title": "Сверка данных PostgreSQL с API и gRPC",
+      "number": 214,
+      "part": "Automation QA",
+      "section": "Тестирование PostgreSQL",
+      "sectionIndex": 5,
+      "chapterIndex": 7,
+      "wordCount": 376,
+      "readingMinutes": 3,
+      "h2": 14,
+      "h3": 0,
+      "examples": 1,
+      "tasks": 0,
+      "solutions": 24,
+      "mermaid": 1,
+      "miniProjects": 0,
+      "previous": {
+        "title": "Eventual consistency и polling",
+        "number": 213,
+        "link": "/docs/03-automation-qa/213-eventual-consistency-and-polling"
+      },
+      "next": {
+        "title": "Конфликты данных и параллельные тесты",
+        "number": 215,
+        "link": "/docs/03-automation-qa/215-data-conflicts-and-parallel-tests"
+      },
+      "sectionLink": {
+        "title": "Тестирование PostgreSQL",
+        "link": "/docs/03-automation-qa/207-postgresql-in-automation-qa"
+      },
+      "progress": {
+        "label": "Automation QA",
+        "current": 55,
+        "total": 90,
+        "bar": "███████░░░░░"
+      },
+      "related": [
+        {
+          "term": "Date",
+          "title": "Date",
+          "number": 95,
+          "link": "/docs/01-javascript/95-date"
+        }
+      ],
+      "card": {
+        "chapterLabel": "Глава 214",
+        "title": "Сверка данных PostgreSQL с API и gRPC",
+        "reading": 3,
+        "examples": 1,
+        "tasks": 0,
+        "solutions": 24,
+        "mermaid": 1
+      }
+    },
+    "docs/03-automation-qa/215-data-conflicts-and-parallel-tests.md": {
+      "path": "docs/03-automation-qa/215-data-conflicts-and-parallel-tests.md",
+      "link": "/docs/03-automation-qa/215-data-conflicts-and-parallel-tests",
+      "title": "Конфликты данных и параллельные тесты",
+      "number": 215,
+      "part": "Automation QA",
+      "section": "Тестирование PostgreSQL",
+      "sectionIndex": 5,
+      "chapterIndex": 8,
+      "wordCount": 423,
+      "readingMinutes": 3,
+      "h2": 14,
+      "h3": 0,
+      "examples": 1,
+      "tasks": 0,
+      "solutions": 24,
+      "mermaid": 1,
+      "miniProjects": 0,
+      "previous": {
+        "title": "Сверка данных PostgreSQL с API и gRPC",
+        "number": 214,
+        "link": "/docs/03-automation-qa/214-postgresql-api-grpc-data-comparison"
+      },
+      "next": {
+        "title": "Конфигурация Playwright и execution projects",
+        "number": 216,
+        "link": "/docs/03-automation-qa/216-playwright-configuration-and-execution-projects"
+      },
+      "sectionLink": {
+        "title": "Тестирование PostgreSQL",
+        "link": "/docs/03-automation-qa/207-postgresql-in-automation-qa"
+      },
+      "progress": {
+        "label": "Automation QA",
+        "current": 56,
+        "total": 90,
+        "bar": "███████░░░░░"
+      },
+      "related": [],
+      "card": {
+        "chapterLabel": "Глава 215",
+        "title": "Конфликты данных и параллельные тесты",
+        "reading": 3,
+        "examples": 1,
+        "tasks": 0,
+        "solutions": 24,
+        "mermaid": 1
+      }
+    },
+    "docs/03-automation-qa/216-playwright-configuration-and-execution-projects.md": {
+      "path": "docs/03-automation-qa/216-playwright-configuration-and-execution-projects.md",
+      "link": "/docs/03-automation-qa/216-playwright-configuration-and-execution-projects",
+      "title": "Конфигурация Playwright и execution projects",
+      "number": 216,
+      "part": "Automation QA",
+      "section": "Конфигурация, тестовые данные и общая инфраструктура",
+      "sectionIndex": 6,
+      "chapterIndex": 0,
+      "wordCount": 447,
+      "readingMinutes": 3,
+      "h2": 14,
+      "h3": 0,
+      "examples": 1,
+      "tasks": 0,
+      "solutions": 24,
+      "mermaid": 1,
+      "miniProjects": 0,
+      "previous": {
+        "title": "Конфликты данных и параллельные тесты",
+        "number": 215,
+        "link": "/docs/03-automation-qa/215-data-conflicts-and-parallel-tests"
+      },
+      "next": {
+        "title": "Окружения, переменные и secrets",
+        "number": 217,
+        "link": "/docs/03-automation-qa/217-environments-variables-and-secrets"
+      },
+      "sectionLink": {
+        "title": "Конфигурация, тестовые данные и общая инфраструктура",
+        "link": "/docs/03-automation-qa/216-playwright-configuration-and-execution-projects"
+      },
+      "progress": {
+        "label": "Automation QA",
+        "current": 57,
+        "total": 90,
+        "bar": "████████░░░░"
+      },
+      "related": [],
+      "card": {
+        "chapterLabel": "Глава 216",
+        "title": "Конфигурация Playwright и execution projects",
+        "reading": 3,
+        "examples": 1,
+        "tasks": 0,
+        "solutions": 24,
+        "mermaid": 1
+      }
+    },
+    "docs/03-automation-qa/217-environments-variables-and-secrets.md": {
+      "path": "docs/03-automation-qa/217-environments-variables-and-secrets.md",
+      "link": "/docs/03-automation-qa/217-environments-variables-and-secrets",
+      "title": "Окружения, переменные и secrets",
+      "number": 217,
+      "part": "Automation QA",
+      "section": "Конфигурация, тестовые данные и общая инфраструктура",
+      "sectionIndex": 6,
+      "chapterIndex": 1,
+      "wordCount": 394,
+      "readingMinutes": 3,
+      "h2": 14,
+      "h3": 0,
+      "examples": 1,
+      "tasks": 0,
+      "solutions": 24,
+      "mermaid": 0,
+      "miniProjects": 0,
+      "previous": {
+        "title": "Конфигурация Playwright и execution projects",
+        "number": 216,
+        "link": "/docs/03-automation-qa/216-playwright-configuration-and-execution-projects"
+      },
+      "next": {
+        "title": "Загрузка и runtime validation конфигурации",
+        "number": 218,
+        "link": "/docs/03-automation-qa/218-configuration-loading-and-runtime-validation"
+      },
+      "sectionLink": {
+        "title": "Конфигурация, тестовые данные и общая инфраструктура",
+        "link": "/docs/03-automation-qa/216-playwright-configuration-and-execution-projects"
+      },
+      "progress": {
+        "label": "Automation QA",
+        "current": 58,
+        "total": 90,
+        "bar": "████████░░░░"
+      },
+      "related": [],
+      "card": {
+        "chapterLabel": "Глава 217",
+        "title": "Окружения, переменные и secrets",
+        "reading": 3,
+        "examples": 1,
+        "tasks": 0,
+        "solutions": 24,
+        "mermaid": 0
+      }
+    },
+    "docs/03-automation-qa/218-configuration-loading-and-runtime-validation.md": {
+      "path": "docs/03-automation-qa/218-configuration-loading-and-runtime-validation.md",
+      "link": "/docs/03-automation-qa/218-configuration-loading-and-runtime-validation",
+      "title": "Загрузка и runtime validation конфигурации",
+      "number": 218,
+      "part": "Automation QA",
+      "section": "Конфигурация, тестовые данные и общая инфраструктура",
+      "sectionIndex": 6,
+      "chapterIndex": 2,
+      "wordCount": 386,
+      "readingMinutes": 3,
+      "h2": 14,
+      "h3": 0,
+      "examples": 1,
+      "tasks": 0,
+      "solutions": 24,
+      "mermaid": 1,
+      "miniProjects": 0,
+      "previous": {
+        "title": "Окружения, переменные и secrets",
+        "number": 217,
+        "link": "/docs/03-automation-qa/217-environments-variables-and-secrets"
+      },
+      "next": {
+        "title": "Организация test data",
+        "number": 219,
+        "link": "/docs/03-automation-qa/219-test-data-organization"
+      },
+      "sectionLink": {
+        "title": "Конфигурация, тестовые данные и общая инфраструктура",
+        "link": "/docs/03-automation-qa/216-playwright-configuration-and-execution-projects"
+      },
+      "progress": {
+        "label": "Automation QA",
+        "current": 59,
+        "total": 90,
+        "bar": "████████░░░░"
+      },
+      "related": [],
+      "card": {
+        "chapterLabel": "Глава 218",
+        "title": "Загрузка и runtime validation конфигурации",
+        "reading": 3,
+        "examples": 1,
+        "tasks": 0,
+        "solutions": 24,
+        "mermaid": 1
+      }
+    },
+    "docs/03-automation-qa/219-test-data-organization.md": {
+      "path": "docs/03-automation-qa/219-test-data-organization.md",
+      "link": "/docs/03-automation-qa/219-test-data-organization",
+      "title": "Организация test data",
+      "number": 219,
+      "part": "Automation QA",
+      "section": "Конфигурация, тестовые данные и общая инфраструктура",
+      "sectionIndex": 6,
+      "chapterIndex": 3,
+      "wordCount": 399,
+      "readingMinutes": 3,
+      "h2": 14,
+      "h3": 0,
+      "examples": 1,
+      "tasks": 0,
+      "solutions": 24,
+      "mermaid": 0,
+      "miniProjects": 0,
+      "previous": {
+        "title": "Загрузка и runtime validation конфигурации",
+        "number": 218,
+        "link": "/docs/03-automation-qa/218-configuration-loading-and-runtime-validation"
+      },
+      "next": {
+        "title": "Builders, factories и уникальные данные",
+        "number": 220,
+        "link": "/docs/03-automation-qa/220-builders-factories-and-unique-data"
+      },
+      "sectionLink": {
+        "title": "Конфигурация, тестовые данные и общая инфраструктура",
+        "link": "/docs/03-automation-qa/216-playwright-configuration-and-execution-projects"
+      },
+      "progress": {
+        "label": "Automation QA",
+        "current": 60,
+        "total": 90,
+        "bar": "████████░░░░"
+      },
+      "related": [
+        {
+          "term": "JSON",
+          "title": "JSON",
+          "number": 94,
+          "link": "/docs/01-javascript/94-json"
+        }
+      ],
+      "card": {
+        "chapterLabel": "Глава 219",
+        "title": "Организация test data",
+        "reading": 3,
+        "examples": 1,
+        "tasks": 0,
+        "solutions": 24,
+        "mermaid": 0
+      }
+    },
+    "docs/03-automation-qa/220-builders-factories-and-unique-data.md": {
+      "path": "docs/03-automation-qa/220-builders-factories-and-unique-data.md",
+      "link": "/docs/03-automation-qa/220-builders-factories-and-unique-data",
+      "title": "Builders, factories и уникальные данные",
+      "number": 220,
+      "part": "Automation QA",
+      "section": "Конфигурация, тестовые данные и общая инфраструктура",
+      "sectionIndex": 6,
+      "chapterIndex": 4,
+      "wordCount": 388,
+      "readingMinutes": 3,
+      "h2": 14,
+      "h3": 0,
+      "examples": 1,
+      "tasks": 0,
+      "solutions": 24,
+      "mermaid": 0,
+      "miniProjects": 0,
+      "previous": {
+        "title": "Организация test data",
+        "number": 219,
+        "link": "/docs/03-automation-qa/219-test-data-organization"
+      },
+      "next": {
+        "title": "Жизненный цикл тестовых данных",
+        "number": 221,
+        "link": "/docs/03-automation-qa/221-test-data-lifecycle"
+      },
+      "sectionLink": {
+        "title": "Конфигурация, тестовые данные и общая инфраструктура",
+        "link": "/docs/03-automation-qa/216-playwright-configuration-and-execution-projects"
+      },
+      "progress": {
+        "label": "Automation QA",
+        "current": 61,
+        "total": 90,
+        "bar": "████████░░░░"
+      },
+      "related": [
+        {
+          "term": "Date",
+          "title": "Date",
+          "number": 95,
+          "link": "/docs/01-javascript/95-date"
+        }
+      ],
+      "card": {
+        "chapterLabel": "Глава 220",
+        "title": "Builders, factories и уникальные данные",
+        "reading": 3,
+        "examples": 1,
+        "tasks": 0,
+        "solutions": 24,
+        "mermaid": 0
+      }
+    },
+    "docs/03-automation-qa/221-test-data-lifecycle.md": {
+      "path": "docs/03-automation-qa/221-test-data-lifecycle.md",
+      "link": "/docs/03-automation-qa/221-test-data-lifecycle",
+      "title": "Жизненный цикл тестовых данных",
+      "number": 221,
+      "part": "Automation QA",
+      "section": "Конфигурация, тестовые данные и общая инфраструктура",
+      "sectionIndex": 6,
+      "chapterIndex": 5,
+      "wordCount": 378,
+      "readingMinutes": 3,
+      "h2": 14,
+      "h3": 0,
+      "examples": 1,
+      "tasks": 0,
+      "solutions": 24,
+      "mermaid": 1,
+      "miniProjects": 0,
+      "previous": {
+        "title": "Builders, factories и уникальные данные",
+        "number": 220,
+        "link": "/docs/03-automation-qa/220-builders-factories-and-unique-data"
+      },
+      "next": {
+        "title": "Helpers и границы повторного использования",
+        "number": 222,
+        "link": "/docs/03-automation-qa/222-helpers-and-reuse-boundaries"
+      },
+      "sectionLink": {
+        "title": "Конфигурация, тестовые данные и общая инфраструктура",
+        "link": "/docs/03-automation-qa/216-playwright-configuration-and-execution-projects"
+      },
+      "progress": {
+        "label": "Automation QA",
+        "current": 62,
+        "total": 90,
+        "bar": "████████░░░░"
+      },
+      "related": [
+        {
+          "term": "Scope",
+          "title": "Scope",
+          "number": 7,
+          "link": "/docs/01-javascript/07-scope"
+        }
+      ],
+      "card": {
+        "chapterLabel": "Глава 221",
+        "title": "Жизненный цикл тестовых данных",
+        "reading": 3,
+        "examples": 1,
+        "tasks": 0,
+        "solutions": 24,
+        "mermaid": 1
+      }
+    },
+    "docs/03-automation-qa/222-helpers-and-reuse-boundaries.md": {
+      "path": "docs/03-automation-qa/222-helpers-and-reuse-boundaries.md",
+      "link": "/docs/03-automation-qa/222-helpers-and-reuse-boundaries",
+      "title": "Helpers и границы повторного использования",
+      "number": 222,
+      "part": "Automation QA",
+      "section": "Конфигурация, тестовые данные и общая инфраструктура",
+      "sectionIndex": 6,
+      "chapterIndex": 6,
+      "wordCount": 365,
+      "readingMinutes": 3,
+      "h2": 14,
+      "h3": 0,
+      "examples": 1,
+      "tasks": 0,
+      "solutions": 24,
+      "mermaid": 0,
+      "miniProjects": 0,
+      "previous": {
+        "title": "Жизненный цикл тестовых данных",
+        "number": 221,
+        "link": "/docs/03-automation-qa/221-test-data-lifecycle"
+      },
+      "next": {
+        "title": "Пользовательские проверки и soft assertions",
+        "number": 223,
+        "link": "/docs/03-automation-qa/223-custom-assertions-and-soft-assertions"
+      },
+      "sectionLink": {
+        "title": "Конфигурация, тестовые данные и общая инфраструктура",
+        "link": "/docs/03-automation-qa/216-playwright-configuration-and-execution-projects"
+      },
+      "progress": {
+        "label": "Automation QA",
+        "current": 63,
+        "total": 90,
+        "bar": "████████░░░░"
+      },
+      "related": [],
+      "card": {
+        "chapterLabel": "Глава 222",
+        "title": "Helpers и границы повторного использования",
+        "reading": 3,
+        "examples": 1,
+        "tasks": 0,
+        "solutions": 24,
+        "mermaid": 0
+      }
+    },
+    "docs/03-automation-qa/223-custom-assertions-and-soft-assertions.md": {
+      "path": "docs/03-automation-qa/223-custom-assertions-and-soft-assertions.md",
+      "link": "/docs/03-automation-qa/223-custom-assertions-and-soft-assertions",
+      "title": "Пользовательские проверки и soft assertions",
+      "number": 223,
+      "part": "Automation QA",
+      "section": "Конфигурация, тестовые данные и общая инфраструктура",
+      "sectionIndex": 6,
+      "chapterIndex": 7,
+      "wordCount": 419,
+      "readingMinutes": 3,
+      "h2": 14,
+      "h3": 0,
+      "examples": 1,
+      "tasks": 0,
+      "solutions": 24,
+      "mermaid": 1,
+      "miniProjects": 0,
+      "previous": {
+        "title": "Helpers и границы повторного использования",
+        "number": 222,
+        "link": "/docs/03-automation-qa/222-helpers-and-reuse-boundaries"
+      },
+      "next": {
+        "title": "Нормализация и проверки между слоями",
+        "number": 224,
+        "link": "/docs/03-automation-qa/224-cross-layer-normalization-and-validation"
+      },
+      "sectionLink": {
+        "title": "Конфигурация, тестовые данные и общая инфраструктура",
+        "link": "/docs/03-automation-qa/216-playwright-configuration-and-execution-projects"
+      },
+      "progress": {
+        "label": "Automation QA",
+        "current": 64,
+        "total": 90,
+        "bar": "█████████░░░"
+      },
+      "related": [
+        {
+          "term": "JSON",
+          "title": "JSON",
+          "number": 94,
+          "link": "/docs/01-javascript/94-json"
+        }
+      ],
+      "card": {
+        "chapterLabel": "Глава 223",
+        "title": "Пользовательские проверки и soft assertions",
+        "reading": 3,
+        "examples": 1,
+        "tasks": 0,
+        "solutions": 24,
+        "mermaid": 1
+      }
+    },
+    "docs/03-automation-qa/224-cross-layer-normalization-and-validation.md": {
+      "path": "docs/03-automation-qa/224-cross-layer-normalization-and-validation.md",
+      "link": "/docs/03-automation-qa/224-cross-layer-normalization-and-validation",
+      "title": "Нормализация и проверки между слоями",
+      "number": 224,
+      "part": "Automation QA",
+      "section": "Конфигурация, тестовые данные и общая инфраструктура",
+      "sectionIndex": 6,
+      "chapterIndex": 8,
+      "wordCount": 385,
+      "readingMinutes": 3,
+      "h2": 14,
+      "h3": 0,
+      "examples": 1,
+      "tasks": 0,
+      "solutions": 24,
+      "mermaid": 1,
+      "miniProjects": 0,
+      "previous": {
+        "title": "Пользовательские проверки и soft assertions",
+        "number": 223,
+        "link": "/docs/03-automation-qa/223-custom-assertions-and-soft-assertions"
+      },
+      "next": {
+        "title": "Расследование падения автотеста",
+        "number": 225,
+        "link": "/docs/03-automation-qa/225-failure-investigation"
+      },
+      "sectionLink": {
+        "title": "Конфигурация, тестовые данные и общая инфраструктура",
+        "link": "/docs/03-automation-qa/216-playwright-configuration-and-execution-projects"
+      },
+      "progress": {
+        "label": "Automation QA",
+        "current": 65,
+        "total": 90,
+        "bar": "█████████░░░"
+      },
+      "related": [
+        {
+          "term": "Date",
+          "title": "Date",
+          "number": 95,
+          "link": "/docs/01-javascript/95-date"
+        }
+      ],
+      "card": {
+        "chapterLabel": "Глава 224",
+        "title": "Нормализация и проверки между слоями",
+        "reading": 3,
+        "examples": 1,
+        "tasks": 0,
+        "solutions": 24,
+        "mermaid": 1
+      }
+    },
+    "docs/03-automation-qa/225-failure-investigation.md": {
+      "path": "docs/03-automation-qa/225-failure-investigation.md",
+      "link": "/docs/03-automation-qa/225-failure-investigation",
+      "title": "Расследование падения автотеста",
+      "number": 225,
+      "part": "Automation QA",
+      "section": "Диагностика и отчётность",
+      "sectionIndex": 7,
+      "chapterIndex": 0,
+      "wordCount": 414,
+      "readingMinutes": 3,
+      "h2": 14,
+      "h3": 0,
+      "examples": 1,
+      "tasks": 0,
+      "solutions": 24,
+      "mermaid": 1,
+      "miniProjects": 0,
+      "previous": {
+        "title": "Нормализация и проверки между слоями",
+        "number": 224,
+        "link": "/docs/03-automation-qa/224-cross-layer-normalization-and-validation"
+      },
+      "next": {
+        "title": "Структурированное логирование",
+        "number": 226,
+        "link": "/docs/03-automation-qa/226-structured-logging"
+      },
+      "sectionLink": {
+        "title": "Диагностика и отчётность",
+        "link": "/docs/03-automation-qa/225-failure-investigation"
+      },
+      "progress": {
+        "label": "Automation QA",
+        "current": 66,
+        "total": 90,
+        "bar": "█████████░░░"
+      },
+      "related": [],
+      "card": {
+        "chapterLabel": "Глава 225",
+        "title": "Расследование падения автотеста",
+        "reading": 3,
+        "examples": 1,
+        "tasks": 0,
+        "solutions": 24,
+        "mermaid": 1
+      }
+    },
+    "docs/03-automation-qa/226-structured-logging.md": {
+      "path": "docs/03-automation-qa/226-structured-logging.md",
+      "link": "/docs/03-automation-qa/226-structured-logging",
+      "title": "Структурированное логирование",
+      "number": 226,
+      "part": "Automation QA",
+      "section": "Диагностика и отчётность",
+      "sectionIndex": 7,
+      "chapterIndex": 1,
+      "wordCount": 440,
+      "readingMinutes": 3,
+      "h2": 14,
+      "h3": 0,
+      "examples": 1,
+      "tasks": 0,
+      "solutions": 24,
+      "mermaid": 0,
+      "miniProjects": 0,
+      "previous": {
+        "title": "Расследование падения автотеста",
+        "number": 225,
+        "link": "/docs/03-automation-qa/225-failure-investigation"
+      },
+      "next": {
+        "title": "Screenshots, videos и Playwright Trace",
+        "number": 227,
+        "link": "/docs/03-automation-qa/227-screenshots-videos-and-playwright-trace"
+      },
+      "sectionLink": {
+        "title": "Диагностика и отчётность",
+        "link": "/docs/03-automation-qa/225-failure-investigation"
+      },
+      "progress": {
+        "label": "Automation QA",
+        "current": 67,
+        "total": 90,
+        "bar": "█████████░░░"
+      },
+      "related": [],
+      "card": {
+        "chapterLabel": "Глава 226",
+        "title": "Структурированное логирование",
+        "reading": 3,
+        "examples": 1,
+        "tasks": 0,
+        "solutions": 24,
+        "mermaid": 0
+      }
+    },
+    "docs/03-automation-qa/227-screenshots-videos-and-playwright-trace.md": {
+      "path": "docs/03-automation-qa/227-screenshots-videos-and-playwright-trace.md",
+      "link": "/docs/03-automation-qa/227-screenshots-videos-and-playwright-trace",
+      "title": "Screenshots, videos и Playwright Trace",
+      "number": 227,
+      "part": "Automation QA",
+      "section": "Диагностика и отчётность",
+      "sectionIndex": 7,
+      "chapterIndex": 2,
+      "wordCount": 384,
+      "readingMinutes": 3,
+      "h2": 14,
+      "h3": 0,
+      "examples": 1,
+      "tasks": 0,
+      "solutions": 24,
+      "mermaid": 1,
+      "miniProjects": 0,
+      "previous": {
+        "title": "Структурированное логирование",
+        "number": 226,
+        "link": "/docs/03-automation-qa/226-structured-logging"
+      },
+      "next": {
+        "title": "Attachments и lifecycle артефактов",
+        "number": 228,
+        "link": "/docs/03-automation-qa/228-attachments-and-artifact-lifecycle"
+      },
+      "sectionLink": {
+        "title": "Диагностика и отчётность",
+        "link": "/docs/03-automation-qa/225-failure-investigation"
+      },
+      "progress": {
+        "label": "Automation QA",
+        "current": 68,
+        "total": 90,
+        "bar": "█████████░░░"
+      },
+      "related": [],
+      "card": {
+        "chapterLabel": "Глава 227",
+        "title": "Screenshots, videos и Playwright Trace",
+        "reading": 3,
+        "examples": 1,
+        "tasks": 0,
+        "solutions": 24,
+        "mermaid": 1
+      }
+    },
+    "docs/03-automation-qa/228-attachments-and-artifact-lifecycle.md": {
+      "path": "docs/03-automation-qa/228-attachments-and-artifact-lifecycle.md",
+      "link": "/docs/03-automation-qa/228-attachments-and-artifact-lifecycle",
+      "title": "Attachments и lifecycle артефактов",
+      "number": 228,
+      "part": "Automation QA",
+      "section": "Диагностика и отчётность",
+      "sectionIndex": 7,
+      "chapterIndex": 3,
+      "wordCount": 342,
+      "readingMinutes": 2,
+      "h2": 14,
+      "h3": 0,
+      "examples": 1,
+      "tasks": 0,
+      "solutions": 24,
+      "mermaid": 0,
+      "miniProjects": 0,
+      "previous": {
+        "title": "Screenshots, videos и Playwright Trace",
+        "number": 227,
+        "link": "/docs/03-automation-qa/227-screenshots-videos-and-playwright-trace"
+      },
+      "next": {
+        "title": "Принципы тестовой отчётности",
+        "number": 229,
+        "link": "/docs/03-automation-qa/229-test-reporting-principles"
+      },
+      "sectionLink": {
+        "title": "Диагностика и отчётность",
+        "link": "/docs/03-automation-qa/225-failure-investigation"
+      },
+      "progress": {
+        "label": "Automation QA",
+        "current": 69,
+        "total": 90,
+        "bar": "█████████░░░"
+      },
+      "related": [
+        {
+          "term": "JSON",
+          "title": "JSON",
+          "number": 94,
+          "link": "/docs/01-javascript/94-json"
+        }
+      ],
+      "card": {
+        "chapterLabel": "Глава 228",
+        "title": "Attachments и lifecycle артефактов",
+        "reading": 2,
+        "examples": 1,
+        "tasks": 0,
+        "solutions": 24,
+        "mermaid": 0
+      }
+    },
+    "docs/03-automation-qa/229-test-reporting-principles.md": {
+      "path": "docs/03-automation-qa/229-test-reporting-principles.md",
+      "link": "/docs/03-automation-qa/229-test-reporting-principles",
+      "title": "Принципы тестовой отчётности",
+      "number": 229,
+      "part": "Automation QA",
+      "section": "Диагностика и отчётность",
+      "sectionIndex": 7,
+      "chapterIndex": 4,
+      "wordCount": 387,
+      "readingMinutes": 3,
+      "h2": 14,
+      "h3": 0,
+      "examples": 1,
+      "tasks": 0,
+      "solutions": 24,
+      "mermaid": 0,
+      "miniProjects": 0,
+      "previous": {
+        "title": "Attachments и lifecycle артефактов",
+        "number": 228,
+        "link": "/docs/03-automation-qa/228-attachments-and-artifact-lifecycle"
+      },
+      "next": {
+        "title": "Отчётность в Allure",
+        "number": 230,
+        "link": "/docs/03-automation-qa/230-allure-reporting"
+      },
+      "sectionLink": {
+        "title": "Диагностика и отчётность",
+        "link": "/docs/03-automation-qa/225-failure-investigation"
+      },
+      "progress": {
+        "label": "Automation QA",
+        "current": 70,
+        "total": 90,
+        "bar": "█████████░░░"
+      },
+      "related": [],
+      "card": {
+        "chapterLabel": "Глава 229",
+        "title": "Принципы тестовой отчётности",
+        "reading": 3,
+        "examples": 1,
+        "tasks": 0,
+        "solutions": 24,
+        "mermaid": 0
+      }
+    },
+    "docs/03-automation-qa/230-allure-reporting.md": {
+      "path": "docs/03-automation-qa/230-allure-reporting.md",
+      "link": "/docs/03-automation-qa/230-allure-reporting",
+      "title": "Отчётность в Allure",
+      "number": 230,
+      "part": "Automation QA",
+      "section": "Диагностика и отчётность",
+      "sectionIndex": 7,
+      "chapterIndex": 5,
+      "wordCount": 386,
+      "readingMinutes": 3,
+      "h2": 14,
+      "h3": 0,
+      "examples": 1,
+      "tasks": 0,
+      "solutions": 24,
+      "mermaid": 0,
+      "miniProjects": 0,
+      "previous": {
+        "title": "Принципы тестовой отчётности",
+        "number": 229,
+        "link": "/docs/03-automation-qa/229-test-reporting-principles"
+      },
+      "next": {
+        "title": "Диагностический поток Framework",
+        "number": 231,
+        "link": "/docs/03-automation-qa/231-framework-diagnostic-flow"
+      },
+      "sectionLink": {
+        "title": "Диагностика и отчётность",
+        "link": "/docs/03-automation-qa/225-failure-investigation"
+      },
+      "progress": {
+        "label": "Automation QA",
+        "current": 71,
+        "total": 90,
+        "bar": "█████████░░░"
+      },
+      "related": [
+        {
+          "term": "JSON",
+          "title": "JSON",
+          "number": 94,
+          "link": "/docs/01-javascript/94-json"
+        }
+      ],
+      "card": {
+        "chapterLabel": "Глава 230",
+        "title": "Отчётность в Allure",
+        "reading": 3,
+        "examples": 1,
+        "tasks": 0,
+        "solutions": 24,
+        "mermaid": 0
+      }
+    },
+    "docs/03-automation-qa/231-framework-diagnostic-flow.md": {
+      "path": "docs/03-automation-qa/231-framework-diagnostic-flow.md",
+      "link": "/docs/03-automation-qa/231-framework-diagnostic-flow",
+      "title": "Диагностический поток Framework",
+      "number": 231,
+      "part": "Automation QA",
+      "section": "Диагностика и отчётность",
+      "sectionIndex": 7,
+      "chapterIndex": 6,
+      "wordCount": 405,
+      "readingMinutes": 3,
+      "h2": 14,
+      "h3": 0,
+      "examples": 1,
+      "tasks": 0,
+      "solutions": 24,
+      "mermaid": 1,
+      "miniProjects": 0,
+      "previous": {
+        "title": "Отчётность в Allure",
+        "number": 230,
+        "link": "/docs/03-automation-qa/230-allure-reporting"
+      },
+      "next": {
+        "title": "Причины flaky tests",
+        "number": 232,
+        "link": "/docs/03-automation-qa/232-causes-of-flaky-tests"
+      },
+      "sectionLink": {
+        "title": "Диагностика и отчётность",
+        "link": "/docs/03-automation-qa/225-failure-investigation"
+      },
+      "progress": {
+        "label": "Automation QA",
+        "current": 72,
+        "total": 90,
+        "bar": "██████████░░"
+      },
+      "related": [
+        {
+          "term": "JSON",
+          "title": "JSON",
+          "number": 94,
+          "link": "/docs/01-javascript/94-json"
+        }
+      ],
+      "card": {
+        "chapterLabel": "Глава 231",
+        "title": "Диагностический поток Framework",
+        "reading": 3,
+        "examples": 1,
+        "tasks": 0,
+        "solutions": 24,
+        "mermaid": 1
+      }
+    },
+    "docs/03-automation-qa/232-causes-of-flaky-tests.md": {
+      "path": "docs/03-automation-qa/232-causes-of-flaky-tests.md",
+      "link": "/docs/03-automation-qa/232-causes-of-flaky-tests",
+      "title": "Причины flaky tests",
+      "number": 232,
+      "part": "Automation QA",
+      "section": "Стабильность и масштабирование выполнения",
+      "sectionIndex": 8,
+      "chapterIndex": 0,
+      "wordCount": 398,
+      "readingMinutes": 3,
+      "h2": 14,
+      "h3": 0,
+      "examples": 1,
+      "tasks": 0,
+      "solutions": 24,
+      "mermaid": 1,
+      "miniProjects": 0,
+      "previous": {
+        "title": "Диагностический поток Framework",
+        "number": 231,
+        "link": "/docs/03-automation-qa/231-framework-diagnostic-flow"
+      },
+      "next": {
+        "title": "Расследование и quarantine flaky tests",
+        "number": 233,
+        "link": "/docs/03-automation-qa/233-investigation-and-quarantine-of-flaky-tests"
+      },
+      "sectionLink": {
+        "title": "Стабильность и масштабирование выполнения",
+        "link": "/docs/03-automation-qa/232-causes-of-flaky-tests"
+      },
+      "progress": {
+        "label": "Automation QA",
+        "current": 73,
+        "total": 90,
+        "bar": "██████████░░"
+      },
+      "related": [],
+      "card": {
+        "chapterLabel": "Глава 232",
+        "title": "Причины flaky tests",
+        "reading": 3,
+        "examples": 1,
+        "tasks": 0,
+        "solutions": 24,
+        "mermaid": 1
+      }
+    },
+    "docs/03-automation-qa/233-investigation-and-quarantine-of-flaky-tests.md": {
+      "path": "docs/03-automation-qa/233-investigation-and-quarantine-of-flaky-tests.md",
+      "link": "/docs/03-automation-qa/233-investigation-and-quarantine-of-flaky-tests",
+      "title": "Расследование и quarantine flaky tests",
+      "number": 233,
+      "part": "Automation QA",
+      "section": "Стабильность и масштабирование выполнения",
+      "sectionIndex": 8,
+      "chapterIndex": 1,
+      "wordCount": 347,
+      "readingMinutes": 2,
+      "h2": 14,
+      "h3": 0,
+      "examples": 1,
+      "tasks": 0,
+      "solutions": 24,
+      "mermaid": 0,
+      "miniProjects": 0,
+      "previous": {
+        "title": "Причины flaky tests",
+        "number": 232,
+        "link": "/docs/03-automation-qa/232-causes-of-flaky-tests"
+      },
+      "next": {
+        "title": "Retry policy",
+        "number": 234,
+        "link": "/docs/03-automation-qa/234-retry-policy"
+      },
+      "sectionLink": {
+        "title": "Стабильность и масштабирование выполнения",
+        "link": "/docs/03-automation-qa/232-causes-of-flaky-tests"
+      },
+      "progress": {
+        "label": "Automation QA",
+        "current": 74,
+        "total": 90,
+        "bar": "██████████░░"
+      },
+      "related": [],
+      "card": {
+        "chapterLabel": "Глава 233",
+        "title": "Расследование и quarantine flaky tests",
+        "reading": 2,
+        "examples": 1,
+        "tasks": 0,
+        "solutions": 24,
+        "mermaid": 0
+      }
+    },
+    "docs/03-automation-qa/234-retry-policy.md": {
+      "path": "docs/03-automation-qa/234-retry-policy.md",
+      "link": "/docs/03-automation-qa/234-retry-policy",
+      "title": "Retry policy",
+      "number": 234,
+      "part": "Automation QA",
+      "section": "Стабильность и масштабирование выполнения",
+      "sectionIndex": 8,
+      "chapterIndex": 2,
+      "wordCount": 392,
+      "readingMinutes": 3,
+      "h2": 14,
+      "h3": 0,
+      "examples": 1,
+      "tasks": 0,
+      "solutions": 24,
+      "mermaid": 1,
+      "miniProjects": 0,
+      "previous": {
+        "title": "Расследование и quarantine flaky tests",
+        "number": 233,
+        "link": "/docs/03-automation-qa/233-investigation-and-quarantine-of-flaky-tests"
+      },
+      "next": {
+        "title": "Workers и shared resources",
+        "number": 235,
+        "link": "/docs/03-automation-qa/235-workers-and-shared-resources"
+      },
+      "sectionLink": {
+        "title": "Стабильность и масштабирование выполнения",
+        "link": "/docs/03-automation-qa/232-causes-of-flaky-tests"
+      },
+      "progress": {
+        "label": "Automation QA",
+        "current": 75,
+        "total": 90,
+        "bar": "██████████░░"
+      },
+      "related": [],
+      "card": {
+        "chapterLabel": "Глава 234",
+        "title": "Retry policy",
+        "reading": 3,
+        "examples": 1,
+        "tasks": 0,
+        "solutions": 24,
+        "mermaid": 1
+      }
+    },
+    "docs/03-automation-qa/235-workers-and-shared-resources.md": {
+      "path": "docs/03-automation-qa/235-workers-and-shared-resources.md",
+      "link": "/docs/03-automation-qa/235-workers-and-shared-resources",
+      "title": "Workers и shared resources",
+      "number": 235,
+      "part": "Automation QA",
+      "section": "Стабильность и масштабирование выполнения",
+      "sectionIndex": 8,
+      "chapterIndex": 3,
+      "wordCount": 404,
+      "readingMinutes": 3,
+      "h2": 14,
+      "h3": 0,
+      "examples": 1,
+      "tasks": 0,
+      "solutions": 24,
+      "mermaid": 1,
+      "miniProjects": 0,
+      "previous": {
+        "title": "Retry policy",
+        "number": 234,
+        "link": "/docs/03-automation-qa/234-retry-policy"
+      },
+      "next": {
+        "title": "Parallel execution",
+        "number": 236,
+        "link": "/docs/03-automation-qa/236-parallel-execution"
+      },
+      "sectionLink": {
+        "title": "Стабильность и масштабирование выполнения",
+        "link": "/docs/03-automation-qa/232-causes-of-flaky-tests"
+      },
+      "progress": {
+        "label": "Automation QA",
+        "current": 76,
+        "total": 90,
+        "bar": "██████████░░"
+      },
+      "related": [],
+      "card": {
+        "chapterLabel": "Глава 235",
+        "title": "Workers и shared resources",
+        "reading": 3,
+        "examples": 1,
+        "tasks": 0,
+        "solutions": 24,
+        "mermaid": 1
+      }
+    },
+    "docs/03-automation-qa/236-parallel-execution.md": {
+      "path": "docs/03-automation-qa/236-parallel-execution.md",
+      "link": "/docs/03-automation-qa/236-parallel-execution",
+      "title": "Parallel execution",
+      "number": 236,
+      "part": "Automation QA",
+      "section": "Стабильность и масштабирование выполнения",
+      "sectionIndex": 8,
+      "chapterIndex": 4,
+      "wordCount": 329,
+      "readingMinutes": 2,
+      "h2": 14,
+      "h3": 0,
+      "examples": 1,
+      "tasks": 0,
+      "solutions": 24,
+      "mermaid": 1,
+      "miniProjects": 0,
+      "previous": {
+        "title": "Workers и shared resources",
+        "number": 235,
+        "link": "/docs/03-automation-qa/235-workers-and-shared-resources"
+      },
+      "next": {
+        "title": "Sharding",
+        "number": 237,
+        "link": "/docs/03-automation-qa/237-sharding"
+      },
+      "sectionLink": {
+        "title": "Стабильность и масштабирование выполнения",
+        "link": "/docs/03-automation-qa/232-causes-of-flaky-tests"
+      },
+      "progress": {
+        "label": "Automation QA",
+        "current": 77,
+        "total": 90,
+        "bar": "██████████░░"
+      },
+      "related": [],
+      "card": {
+        "chapterLabel": "Глава 236",
+        "title": "Parallel execution",
+        "reading": 2,
+        "examples": 1,
+        "tasks": 0,
+        "solutions": 24,
+        "mermaid": 1
+      }
+    },
+    "docs/03-automation-qa/237-sharding.md": {
+      "path": "docs/03-automation-qa/237-sharding.md",
+      "link": "/docs/03-automation-qa/237-sharding",
+      "title": "Sharding",
+      "number": 237,
+      "part": "Automation QA",
+      "section": "Стабильность и масштабирование выполнения",
+      "sectionIndex": 8,
+      "chapterIndex": 5,
+      "wordCount": 319,
+      "readingMinutes": 2,
+      "h2": 14,
+      "h3": 0,
+      "examples": 1,
+      "tasks": 0,
+      "solutions": 24,
+      "mermaid": 1,
+      "miniProjects": 0,
+      "previous": {
+        "title": "Parallel execution",
+        "number": 236,
+        "link": "/docs/03-automation-qa/236-parallel-execution"
+      },
+      "next": {
+        "title": "Tags, annotations и test selection",
+        "number": 238,
+        "link": "/docs/03-automation-qa/238-tags-annotations-and-test-selection"
+      },
+      "sectionLink": {
+        "title": "Стабильность и масштабирование выполнения",
+        "link": "/docs/03-automation-qa/232-causes-of-flaky-tests"
+      },
+      "progress": {
+        "label": "Automation QA",
+        "current": 78,
+        "total": 90,
+        "bar": "██████████░░"
+      },
+      "related": [],
+      "card": {
+        "chapterLabel": "Глава 237",
+        "title": "Sharding",
+        "reading": 2,
+        "examples": 1,
+        "tasks": 0,
+        "solutions": 24,
+        "mermaid": 1
+      }
+    },
+    "docs/03-automation-qa/238-tags-annotations-and-test-selection.md": {
+      "path": "docs/03-automation-qa/238-tags-annotations-and-test-selection.md",
+      "link": "/docs/03-automation-qa/238-tags-annotations-and-test-selection",
+      "title": "Tags, annotations и test selection",
+      "number": 238,
+      "part": "Automation QA",
+      "section": "Стабильность и масштабирование выполнения",
+      "sectionIndex": 8,
+      "chapterIndex": 6,
+      "wordCount": 394,
+      "readingMinutes": 3,
+      "h2": 14,
+      "h3": 0,
+      "examples": 1,
+      "tasks": 0,
+      "solutions": 24,
+      "mermaid": 0,
+      "miniProjects": 0,
+      "previous": {
+        "title": "Sharding",
+        "number": 237,
+        "link": "/docs/03-automation-qa/237-sharding"
+      },
+      "next": {
+        "title": "CI fundamentals для Automation QA",
+        "number": 239,
+        "link": "/docs/03-automation-qa/239-ci-fundamentals-for-automation-qa"
+      },
+      "sectionLink": {
+        "title": "Стабильность и масштабирование выполнения",
+        "link": "/docs/03-automation-qa/232-causes-of-flaky-tests"
+      },
+      "progress": {
+        "label": "Automation QA",
+        "current": 79,
+        "total": 90,
+        "bar": "███████████░"
+      },
+      "related": [],
+      "card": {
+        "chapterLabel": "Глава 238",
+        "title": "Tags, annotations и test selection",
+        "reading": 3,
+        "examples": 1,
+        "tasks": 0,
+        "solutions": 24,
+        "mermaid": 0
+      }
+    },
+    "docs/03-automation-qa/239-ci-fundamentals-for-automation-qa.md": {
+      "path": "docs/03-automation-qa/239-ci-fundamentals-for-automation-qa.md",
+      "link": "/docs/03-automation-qa/239-ci-fundamentals-for-automation-qa",
+      "title": "CI fundamentals для Automation QA",
+      "number": 239,
+      "part": "Automation QA",
+      "section": "CI и эксплуатация проекта",
+      "sectionIndex": 9,
+      "chapterIndex": 0,
+      "wordCount": 474,
+      "readingMinutes": 3,
+      "h2": 14,
+      "h3": 0,
+      "examples": 1,
+      "tasks": 0,
+      "solutions": 24,
+      "mermaid": 1,
+      "miniProjects": 0,
+      "previous": {
+        "title": "Tags, annotations и test selection",
+        "number": 238,
+        "link": "/docs/03-automation-qa/238-tags-annotations-and-test-selection"
+      },
+      "next": {
+        "title": "GitHub Actions pipeline",
+        "number": 240,
+        "link": "/docs/03-automation-qa/240-github-actions-pipeline"
+      },
+      "sectionLink": {
+        "title": "CI и эксплуатация проекта",
+        "link": "/docs/03-automation-qa/239-ci-fundamentals-for-automation-qa"
+      },
+      "progress": {
+        "label": "Automation QA",
+        "current": 80,
+        "total": 90,
+        "bar": "███████████░"
+      },
+      "related": [],
+      "card": {
+        "chapterLabel": "Глава 239",
+        "title": "CI fundamentals для Automation QA",
+        "reading": 3,
+        "examples": 1,
+        "tasks": 0,
+        "solutions": 24,
+        "mermaid": 1
+      }
+    },
+    "docs/03-automation-qa/240-github-actions-pipeline.md": {
+      "path": "docs/03-automation-qa/240-github-actions-pipeline.md",
+      "link": "/docs/03-automation-qa/240-github-actions-pipeline",
+      "title": "GitHub Actions pipeline",
+      "number": 240,
+      "part": "Automation QA",
+      "section": "CI и эксплуатация проекта",
+      "sectionIndex": 9,
+      "chapterIndex": 1,
+      "wordCount": 416,
+      "readingMinutes": 3,
+      "h2": 14,
+      "h3": 0,
+      "examples": 0,
+      "tasks": 0,
+      "solutions": 24,
+      "mermaid": 1,
+      "miniProjects": 0,
+      "previous": {
+        "title": "CI fundamentals для Automation QA",
+        "number": 239,
+        "link": "/docs/03-automation-qa/239-ci-fundamentals-for-automation-qa"
+      },
+      "next": {
+        "title": "Browsers и системные зависимости в CI",
+        "number": 241,
+        "link": "/docs/03-automation-qa/241-browsers-and-system-dependencies-in-ci"
+      },
+      "sectionLink": {
+        "title": "CI и эксплуатация проекта",
+        "link": "/docs/03-automation-qa/239-ci-fundamentals-for-automation-qa"
+      },
+      "progress": {
+        "label": "Automation QA",
+        "current": 81,
+        "total": 90,
+        "bar": "███████████░"
+      },
+      "related": [],
+      "card": {
+        "chapterLabel": "Глава 240",
+        "title": "GitHub Actions pipeline",
+        "reading": 3,
+        "examples": 0,
+        "tasks": 0,
+        "solutions": 24,
+        "mermaid": 1
+      }
+    },
+    "docs/03-automation-qa/241-browsers-and-system-dependencies-in-ci.md": {
+      "path": "docs/03-automation-qa/241-browsers-and-system-dependencies-in-ci.md",
+      "link": "/docs/03-automation-qa/241-browsers-and-system-dependencies-in-ci",
+      "title": "Browsers и системные зависимости в CI",
+      "number": 241,
+      "part": "Automation QA",
+      "section": "CI и эксплуатация проекта",
+      "sectionIndex": 9,
+      "chapterIndex": 2,
+      "wordCount": 395,
+      "readingMinutes": 3,
+      "h2": 14,
+      "h3": 0,
+      "examples": 0,
+      "tasks": 0,
+      "solutions": 24,
+      "mermaid": 0,
+      "miniProjects": 0,
+      "previous": {
+        "title": "GitHub Actions pipeline",
+        "number": 240,
+        "link": "/docs/03-automation-qa/240-github-actions-pipeline"
+      },
+      "next": {
+        "title": "Environments и secrets в CI",
+        "number": 242,
+        "link": "/docs/03-automation-qa/242-environments-and-secrets-in-ci"
+      },
+      "sectionLink": {
+        "title": "CI и эксплуатация проекта",
+        "link": "/docs/03-automation-qa/239-ci-fundamentals-for-automation-qa"
+      },
+      "progress": {
+        "label": "Automation QA",
+        "current": 82,
+        "total": 90,
+        "bar": "███████████░"
+      },
+      "related": [],
+      "card": {
+        "chapterLabel": "Глава 241",
+        "title": "Browsers и системные зависимости в CI",
+        "reading": 3,
+        "examples": 0,
+        "tasks": 0,
+        "solutions": 24,
+        "mermaid": 0
+      }
+    },
+    "docs/03-automation-qa/242-environments-and-secrets-in-ci.md": {
+      "path": "docs/03-automation-qa/242-environments-and-secrets-in-ci.md",
+      "link": "/docs/03-automation-qa/242-environments-and-secrets-in-ci",
+      "title": "Environments и secrets в CI",
+      "number": 242,
+      "part": "Automation QA",
+      "section": "CI и эксплуатация проекта",
+      "sectionIndex": 9,
+      "chapterIndex": 3,
+      "wordCount": 453,
+      "readingMinutes": 3,
+      "h2": 14,
+      "h3": 0,
+      "examples": 0,
+      "tasks": 0,
+      "solutions": 24,
+      "mermaid": 0,
+      "miniProjects": 0,
+      "previous": {
+        "title": "Browsers и системные зависимости в CI",
+        "number": 241,
+        "link": "/docs/03-automation-qa/241-browsers-and-system-dependencies-in-ci"
+      },
+      "next": {
+        "title": "Артефакты и отчёты в CI",
+        "number": 243,
+        "link": "/docs/03-automation-qa/243-artifacts-and-reports-in-ci"
+      },
+      "sectionLink": {
+        "title": "CI и эксплуатация проекта",
+        "link": "/docs/03-automation-qa/239-ci-fundamentals-for-automation-qa"
+      },
+      "progress": {
+        "label": "Automation QA",
+        "current": 83,
+        "total": 90,
+        "bar": "███████████░"
+      },
+      "related": [],
+      "card": {
+        "chapterLabel": "Глава 242",
+        "title": "Environments и secrets в CI",
+        "reading": 3,
+        "examples": 0,
+        "tasks": 0,
+        "solutions": 24,
+        "mermaid": 0
+      }
+    },
+    "docs/03-automation-qa/243-artifacts-and-reports-in-ci.md": {
+      "path": "docs/03-automation-qa/243-artifacts-and-reports-in-ci.md",
+      "link": "/docs/03-automation-qa/243-artifacts-and-reports-in-ci",
+      "title": "Артефакты и отчёты в CI",
+      "number": 243,
+      "part": "Automation QA",
+      "section": "CI и эксплуатация проекта",
+      "sectionIndex": 9,
+      "chapterIndex": 4,
+      "wordCount": 400,
+      "readingMinutes": 3,
+      "h2": 14,
+      "h3": 0,
+      "examples": 0,
+      "tasks": 0,
+      "solutions": 24,
+      "mermaid": 1,
+      "miniProjects": 0,
+      "previous": {
+        "title": "Environments и secrets в CI",
+        "number": 242,
+        "link": "/docs/03-automation-qa/242-environments-and-secrets-in-ci"
+      },
+      "next": {
+        "title": "CI jobs, sharding и диагностика запусков",
+        "number": 244,
+        "link": "/docs/03-automation-qa/244-ci-jobs-sharding-and-run-diagnostics"
+      },
+      "sectionLink": {
+        "title": "CI и эксплуатация проекта",
+        "link": "/docs/03-automation-qa/239-ci-fundamentals-for-automation-qa"
+      },
+      "progress": {
+        "label": "Automation QA",
+        "current": 84,
+        "total": 90,
+        "bar": "███████████░"
+      },
+      "related": [],
+      "card": {
+        "chapterLabel": "Глава 243",
+        "title": "Артефакты и отчёты в CI",
+        "reading": 3,
+        "examples": 0,
+        "tasks": 0,
+        "solutions": 24,
+        "mermaid": 1
+      }
+    },
+    "docs/03-automation-qa/244-ci-jobs-sharding-and-run-diagnostics.md": {
+      "path": "docs/03-automation-qa/244-ci-jobs-sharding-and-run-diagnostics.md",
+      "link": "/docs/03-automation-qa/244-ci-jobs-sharding-and-run-diagnostics",
+      "title": "CI jobs, sharding и диагностика запусков",
+      "number": 244,
+      "part": "Automation QA",
+      "section": "CI и эксплуатация проекта",
+      "sectionIndex": 9,
+      "chapterIndex": 5,
+      "wordCount": 441,
+      "readingMinutes": 3,
+      "h2": 14,
+      "h3": 0,
+      "examples": 0,
+      "tasks": 0,
+      "solutions": 24,
+      "mermaid": 1,
+      "miniProjects": 0,
+      "previous": {
+        "title": "Артефакты и отчёты в CI",
+        "number": 243,
+        "link": "/docs/03-automation-qa/243-artifacts-and-reports-in-ci"
+      },
+      "next": {
+        "title": "Интеграция слоёв и dependency flow",
+        "number": 245,
+        "link": "/docs/03-automation-qa/245-layer-integration-and-dependency-flow"
+      },
+      "sectionLink": {
+        "title": "CI и эксплуатация проекта",
+        "link": "/docs/03-automation-qa/239-ci-fundamentals-for-automation-qa"
+      },
+      "progress": {
+        "label": "Automation QA",
+        "current": 85,
+        "total": 90,
+        "bar": "███████████░"
+      },
+      "related": [],
+      "card": {
+        "chapterLabel": "Глава 244",
+        "title": "CI jobs, sharding и диагностика запусков",
+        "reading": 3,
+        "examples": 0,
+        "tasks": 0,
+        "solutions": 24,
+        "mermaid": 1
+      }
+    },
+    "docs/03-automation-qa/245-layer-integration-and-dependency-flow.md": {
+      "path": "docs/03-automation-qa/245-layer-integration-and-dependency-flow.md",
+      "link": "/docs/03-automation-qa/245-layer-integration-and-dependency-flow",
+      "title": "Интеграция слоёв и dependency flow",
+      "number": 245,
+      "part": "Automation QA",
+      "section": "Интеграция Automation Framework",
+      "sectionIndex": 10,
+      "chapterIndex": 0,
+      "wordCount": 594,
+      "readingMinutes": 4,
+      "h2": 14,
+      "h3": 0,
+      "examples": 1,
+      "tasks": 0,
+      "solutions": 24,
+      "mermaid": 1,
+      "miniProjects": 0,
+      "previous": {
+        "title": "CI jobs, sharding и диагностика запусков",
+        "number": 244,
+        "link": "/docs/03-automation-qa/244-ci-jobs-sharding-and-run-diagnostics"
+      },
+      "next": {
+        "title": "Composition fixtures и configuration flow",
+        "number": 246,
+        "link": "/docs/03-automation-qa/246-composition-fixtures-and-configuration-flow"
+      },
+      "sectionLink": {
+        "title": "Интеграция Automation Framework",
+        "link": "/docs/03-automation-qa/245-layer-integration-and-dependency-flow"
+      },
+      "progress": {
+        "label": "Automation QA",
+        "current": 86,
+        "total": 90,
+        "bar": "███████████░"
+      },
+      "related": [],
+      "card": {
+        "chapterLabel": "Глава 245",
+        "title": "Интеграция слоёв и dependency flow",
+        "reading": 4,
+        "examples": 1,
+        "tasks": 0,
+        "solutions": 24,
+        "mermaid": 1
+      }
+    },
+    "docs/03-automation-qa/246-composition-fixtures-and-configuration-flow.md": {
+      "path": "docs/03-automation-qa/246-composition-fixtures-and-configuration-flow.md",
+      "link": "/docs/03-automation-qa/246-composition-fixtures-and-configuration-flow",
+      "title": "Composition fixtures и configuration flow",
+      "number": 246,
+      "part": "Automation QA",
+      "section": "Интеграция Automation Framework",
+      "sectionIndex": 10,
+      "chapterIndex": 1,
+      "wordCount": 491,
+      "readingMinutes": 3,
+      "h2": 14,
+      "h3": 0,
+      "examples": 1,
+      "tasks": 0,
+      "solutions": 24,
+      "mermaid": 1,
+      "miniProjects": 0,
+      "previous": {
+        "title": "Интеграция слоёв и dependency flow",
+        "number": 245,
+        "link": "/docs/03-automation-qa/245-layer-integration-and-dependency-flow"
+      },
+      "next": {
+        "title": "Жизненный цикл данных в сценариях между слоями",
+        "number": 247,
+        "link": "/docs/03-automation-qa/247-cross-layer-data-lifecycle"
+      },
+      "sectionLink": {
+        "title": "Интеграция Automation Framework",
+        "link": "/docs/03-automation-qa/245-layer-integration-and-dependency-flow"
+      },
+      "progress": {
+        "label": "Automation QA",
+        "current": 87,
+        "total": 90,
+        "bar": "████████████"
+      },
+      "related": [],
+      "card": {
+        "chapterLabel": "Глава 246",
+        "title": "Composition fixtures и configuration flow",
+        "reading": 3,
+        "examples": 1,
+        "tasks": 0,
+        "solutions": 24,
+        "mermaid": 1
+      }
+    },
+    "docs/03-automation-qa/247-cross-layer-data-lifecycle.md": {
+      "path": "docs/03-automation-qa/247-cross-layer-data-lifecycle.md",
+      "link": "/docs/03-automation-qa/247-cross-layer-data-lifecycle",
+      "title": "Жизненный цикл данных в сценариях между слоями",
+      "number": 247,
+      "part": "Automation QA",
+      "section": "Интеграция Automation Framework",
+      "sectionIndex": 10,
+      "chapterIndex": 2,
+      "wordCount": 444,
+      "readingMinutes": 3,
+      "h2": 14,
+      "h3": 0,
+      "examples": 1,
+      "tasks": 0,
+      "solutions": 24,
+      "mermaid": 1,
+      "miniProjects": 0,
+      "previous": {
+        "title": "Composition fixtures и configuration flow",
+        "number": 246,
+        "link": "/docs/03-automation-qa/246-composition-fixtures-and-configuration-flow"
+      },
+      "next": {
+        "title": "Диагностика, стабильность и CI в общей архитектуре",
+        "number": 248,
+        "link": "/docs/03-automation-qa/248-diagnostics-stability-and-ci-in-architecture"
+      },
+      "sectionLink": {
+        "title": "Интеграция Automation Framework",
+        "link": "/docs/03-automation-qa/245-layer-integration-and-dependency-flow"
+      },
+      "progress": {
+        "label": "Automation QA",
+        "current": 88,
+        "total": 90,
+        "bar": "████████████"
+      },
+      "related": [
+        {
+          "term": "Scope",
+          "title": "Scope",
+          "number": 7,
+          "link": "/docs/01-javascript/07-scope"
+        }
+      ],
+      "card": {
+        "chapterLabel": "Глава 247",
+        "title": "Жизненный цикл данных в сценариях между слоями",
+        "reading": 3,
+        "examples": 1,
+        "tasks": 0,
+        "solutions": 24,
+        "mermaid": 1
+      }
+    },
+    "docs/03-automation-qa/248-diagnostics-stability-and-ci-in-architecture.md": {
+      "path": "docs/03-automation-qa/248-diagnostics-stability-and-ci-in-architecture.md",
+      "link": "/docs/03-automation-qa/248-diagnostics-stability-and-ci-in-architecture",
+      "title": "Диагностика, стабильность и CI в общей архитектуре",
+      "number": 248,
+      "part": "Automation QA",
+      "section": "Интеграция Automation Framework",
+      "sectionIndex": 10,
+      "chapterIndex": 3,
+      "wordCount": 457,
+      "readingMinutes": 3,
+      "h2": 14,
+      "h3": 0,
+      "examples": 1,
+      "tasks": 0,
+      "solutions": 24,
+      "mermaid": 1,
+      "miniProjects": 0,
+      "previous": {
+        "title": "Жизненный цикл данных в сценариях между слоями",
+        "number": 247,
+        "link": "/docs/03-automation-qa/247-cross-layer-data-lifecycle"
+      },
+      "next": {
+        "title": "Architecture review и эволюция Framework",
+        "number": 249,
+        "link": "/docs/03-automation-qa/249-architecture-review-and-framework-evolution"
+      },
+      "sectionLink": {
+        "title": "Интеграция Automation Framework",
+        "link": "/docs/03-automation-qa/245-layer-integration-and-dependency-flow"
+      },
+      "progress": {
+        "label": "Automation QA",
+        "current": 89,
+        "total": 90,
+        "bar": "████████████"
+      },
+      "related": [],
+      "card": {
+        "chapterLabel": "Глава 248",
+        "title": "Диагностика, стабильность и CI в общей архитектуре",
+        "reading": 3,
+        "examples": 1,
+        "tasks": 0,
+        "solutions": 24,
+        "mermaid": 1
+      }
+    },
+    "docs/03-automation-qa/249-architecture-review-and-framework-evolution.md": {
+      "path": "docs/03-automation-qa/249-architecture-review-and-framework-evolution.md",
+      "link": "/docs/03-automation-qa/249-architecture-review-and-framework-evolution",
+      "title": "Architecture review и эволюция Framework",
+      "number": 249,
+      "part": "Automation QA",
+      "section": "Интеграция Automation Framework",
+      "sectionIndex": 10,
+      "chapterIndex": 4,
+      "wordCount": 462,
+      "readingMinutes": 3,
+      "h2": 14,
+      "h3": 0,
+      "examples": 1,
+      "tasks": 0,
+      "solutions": 24,
+      "mermaid": 0,
+      "miniProjects": 0,
+      "previous": {
+        "title": "Диагностика, стабильность и CI в общей архитектуре",
+        "number": 248,
+        "link": "/docs/03-automation-qa/248-diagnostics-stability-and-ci-in-architecture"
+      },
+      "next": {
+        "title": "Требования и критерии готовности проекта",
+        "number": 250,
+        "link": "/docs/04-final-project/250-project-requirements-and-readiness-criteria"
+      },
+      "sectionLink": {
+        "title": "Интеграция Automation Framework",
+        "link": "/docs/03-automation-qa/245-layer-integration-and-dependency-flow"
+      },
+      "progress": {
+        "label": "Automation QA",
+        "current": 90,
+        "total": 90,
+        "bar": "████████████"
+      },
+      "related": [],
+      "card": {
+        "chapterLabel": "Глава 249",
+        "title": "Architecture review и эволюция Framework",
+        "reading": 3,
+        "examples": 1,
+        "tasks": 0,
+        "solutions": 24,
+        "mermaid": 0
+      }
+    },
+    "docs/04-final-project/250-project-requirements-and-readiness-criteria.md": {
+      "path": "docs/04-final-project/250-project-requirements-and-readiness-criteria.md",
+      "link": "/docs/04-final-project/250-project-requirements-and-readiness-criteria",
+      "title": "Требования и критерии готовности проекта",
+      "number": 250,
+      "part": "Финальный проект",
+      "section": "Финальный промышленный проект",
+      "sectionIndex": 0,
+      "chapterIndex": 0,
+      "wordCount": 3776,
+      "readingMinutes": 21,
+      "h2": 27,
+      "h3": 4,
+      "examples": 0,
+      "tasks": 17,
+      "solutions": 24,
+      "mermaid": 2,
+      "miniProjects": 0,
+      "previous": {
+        "title": "Architecture review и эволюция Framework",
+        "number": 249,
+        "link": "/docs/03-automation-qa/249-architecture-review-and-framework-evolution"
+      },
+      "next": null,
+      "sectionLink": {
+        "title": "Финальный промышленный проект",
+        "link": "/docs/04-final-project/250-project-requirements-and-readiness-criteria"
+      },
+      "progress": {
+        "label": "Финальный проект",
+        "current": 1,
+        "total": 1,
+        "bar": "████████████"
+      },
+      "related": [],
+      "card": {
+        "chapterLabel": "Глава 250",
+        "title": "Требования и критерии готовности проекта",
+        "reading": 21,
+        "examples": 0,
+        "tasks": 17,
+        "solutions": 24,
+        "mermaid": 2
+      }
     }
   },
   "statistics": {
-    "chapters": 100,
-    "tasks": 2017,
-    "solutions": 1717,
-    "examples": 593,
-    "mermaid": 404,
-    "miniProjects": 81,
-    "readingMinutes": 602
+    "chapters": 254,
+    "tasks": 2353,
+    "solutions": 5133,
+    "examples": 703,
+    "mermaid": 539,
+    "miniProjects": 144,
+    "readingMinutes": 1033
   }
 }

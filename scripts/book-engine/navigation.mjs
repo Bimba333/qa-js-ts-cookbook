@@ -10,10 +10,15 @@ function progressBar(current, total) {
 }
 
 export function applyNavigation(chapters) {
-  const jsChapters = chapters.filter(chapter => chapter.part === 'JavaScript')
+  const chaptersByPart = new Map()
   const firstBySection = new Map()
 
   for (const chapter of chapters) {
+    if (!chaptersByPart.has(chapter.part)) {
+      chaptersByPart.set(chapter.part, [])
+    }
+    chaptersByPart.get(chapter.part).push(chapter)
+
     const key = `${chapter.part}:${chapter.section}`
 
     if (!firstBySection.has(key)) {
@@ -22,9 +27,10 @@ export function applyNavigation(chapters) {
   }
 
   return chapters.map((chapter, index) => {
-    const jsIndex = jsChapters.findIndex(item => item.path === chapter.path)
-    const current = jsIndex >= 0 ? jsIndex + 1 : null
-    const total = jsIndex >= 0 ? jsChapters.length : null
+    const partChapters = chaptersByPart.get(chapter.part) || []
+    const partIndex = partChapters.findIndex(item => item.path === chapter.path)
+    const current = partIndex >= 0 ? partIndex + 1 : null
+    const total = partIndex >= 0 ? partChapters.length : null
     const sectionStart = firstBySection.get(`${chapter.part}:${chapter.section}`)
 
     return {
@@ -51,7 +57,7 @@ export function applyNavigation(chapters) {
         : null,
       progress: current && total
         ? {
-            label: 'JavaScript',
+            label: chapter.part,
             current,
             total,
             bar: progressBar(current, total)

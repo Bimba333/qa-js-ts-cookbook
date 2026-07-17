@@ -22,11 +22,7 @@ function chapterNumber(filePath) {
 }
 
 function normalizePartTitle(title) {
-  if (title === 'Часть I. JavaScript') {
-    return 'JavaScript'
-  }
-
-  return title
+  return title.replace(/^Часть\s+[IVXLC]+\.\s+/, '').trim()
 }
 
 function normalizeSectionTitle(title) {
@@ -74,25 +70,21 @@ function parseSummary() {
         continue
       }
 
-      if (title === 'Введение' || title.startsWith('Часть I. JavaScript')) {
-        currentPart = {
-          text: normalizePartTitle(title),
-          collapsed: false,
-          items: []
-        }
-        sidebar.push(currentPart)
-      } else {
-        currentPart = null
+      currentPart = {
+        text: normalizePartTitle(title),
+        collapsed: false,
+        items: []
       }
-
+      sidebar.push(currentPart)
       currentSection = null
       continue
     }
 
-    if (h2 && currentPart?.text === 'JavaScript') {
+    if (h2 && currentPart) {
       currentSection = {
         text: normalizeSectionTitle(h2[1].trim()),
-        collapsed: false,
+        // Книга большая: секции свернуты, VitePress сам раскрывает активную.
+        collapsed: true,
         items: []
       }
       currentPart.items.push(currentSection)
@@ -112,13 +104,10 @@ function parseSummary() {
 
     const title = pageTitle(link, fallbackTitle)
 
-    if (currentPart.text === 'Введение') {
-      currentPart.items.push(sidebarItem(title, link, false))
-      continue
-    }
-
-    if (currentPart.text === 'JavaScript' && currentSection) {
+    if (currentSection) {
       currentSection.items.push(sidebarItem(title, link, true))
+    } else {
+      currentPart.items.push(sidebarItem(title, link, currentPart.text !== 'Введение'))
     }
   }
 

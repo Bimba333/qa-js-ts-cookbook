@@ -1,9 +1,5 @@
 function normalizePartTitle(title) {
-  if (title === 'Часть I. JavaScript') {
-    return 'JavaScript'
-  }
-
-  return title
+  return title.replace(/^Часть\s+[IVXLC]+\.\s+/, '').trim()
 }
 
 function normalizeSectionTitle(title) {
@@ -11,7 +7,7 @@ function normalizeSectionTitle(title) {
 }
 
 function isBookPart(title) {
-  return title === 'Введение' || title.startsWith('Часть I. JavaScript')
+  return title === 'Введение' || /^Часть\s+[IVXLC]+\.\s+/.test(title)
 }
 
 function isTheoryLink(link) {
@@ -54,7 +50,7 @@ export function parseSummary(summaryMarkdown) {
       continue
     }
 
-    if (h2 && currentPart?.title === 'JavaScript') {
+    if (h2 && currentPart && currentPart.title !== 'Введение') {
       currentSection = {
         title: normalizeSectionTitle(h2[1].trim()),
         chapters: []
