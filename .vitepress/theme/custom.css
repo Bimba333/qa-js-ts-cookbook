@@ -69,7 +69,7 @@
 }
 
 /* ============================================================
-   Скрываемый сайдбар со списком глав
+   Единый фиксированный хедер и скрываемый сайдбар
    ============================================================ */
 
 .book-sidebar-toggle {
@@ -93,25 +93,65 @@
   background: var(--vp-c-brand-soft);
 }
 
-/* Тумблер имеет смысл только там, где виден десктопный сайдбар. */
 @media (min-width: 960px) {
-  .book-sidebar-toggle {
+  /* Тумблер показываем только на страницах с сайдбаром. */
+  .VPNavBar.has-sidebar .book-sidebar-toggle {
     display: inline-flex;
   }
 
+  /* Лого и название — обычный элемент хедера, а не блок шириной с сайдбар. */
+  .VPNavBar.has-sidebar .title {
+    position: static !important;
+    width: auto !important;
+    padding: 0 !important;
+    background-color: transparent !important;
+  }
+
+  .VPNavBarTitle.has-sidebar .title {
+    border-bottom-color: transparent !important;
+  }
+
+  .VPNavBar.has-sidebar .container {
+    display: flex;
+    align-items: center;
+  }
+
+  .VPNavBar.has-sidebar .container > .title {
+    flex: 0 0 auto;
+  }
+
+  .VPNavBar.has-sidebar .container > .content {
+    flex: 1 1 auto;
+    padding-left: 24px !important;
+  }
+
+  /* Хедер — сплошная фиксированная полоса на всю ширину. */
+  .VPNavBar.has-sidebar {
+    background-color: var(--vp-nav-bg-color) !important;
+  }
+
+  .VPNavBar.has-sidebar .divider {
+    padding-left: 0 !important;
+  }
+
+  /* Сайдбар начинается под хедером, а не уходит под него. */
+  .VPSidebar {
+    top: var(--vp-nav-height) !important;
+    padding-top: 20px !important;
+    border-right: 1px solid var(--vp-c-gutter);
+  }
+
+  .VPSidebar .curtain {
+    display: none;
+  }
+
+  /* Свернутый режим. */
   html.book-sidebar-hidden {
     --vp-sidebar-width: 0px;
   }
 
   html.book-sidebar-hidden .VPSidebar {
     display: none;
-  }
-
-  /* Не даем области заголовка в навбаре схлопнуться до нуля. */
-  html.book-sidebar-hidden .VPNavBar.has-sidebar .title {
-    width: auto;
-    padding-left: 0;
-    background-color: transparent;
   }
 }
 
