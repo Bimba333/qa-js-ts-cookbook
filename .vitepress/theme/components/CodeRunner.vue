@@ -298,11 +298,15 @@ onBeforeUnmount(() => {
         {{ title }}
       </div>
 
-      <div class="code-runner__actions">
+      <div v-if="readonly && isNodeOnly" class="code-runner__local-badge">
+        💻 Для локального запуска
+      </div>
+
+      <div v-else class="code-runner__actions">
         <button
           class="code-runner__button"
           type="button"
-          :disabled="(readonly && isNodeOnly) || running"
+          :disabled="running"
           @click="runCode"
         >
           {{ running ? '⏳ Выполняется…' : '▶ Запустить' }}
@@ -329,7 +333,7 @@ onBeforeUnmount(() => {
     />
 
     <div v-if="readonly && isNodeOnly" class="code-runner__node">
-      <p>⚙️ Этот пример рассчитан на серверную среду Node.js, поэтому в браузере он не запускается. Прочитайте код — ожидаемый вывод разобран в тексте главы.</p>
+      <p>⚙️ Этот пример использует Node.js API, поэтому в браузере он не выполняется. Попробуйте запустить его локально в Node.js — ожидаемый вывод разобран в тексте главы.</p>
     </div>
 
     <div v-if="output" class="code-runner__output">

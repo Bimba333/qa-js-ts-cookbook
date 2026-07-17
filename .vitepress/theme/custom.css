@@ -540,6 +540,17 @@
   gap: 8px;
 }
 
+.code-runner__local-badge {
+  flex: 0 0 auto;
+  padding: 5px 12px;
+  border: 1px dashed var(--vp-c-divider);
+  border-radius: 999px;
+  color: var(--vp-c-text-2);
+  font-size: 12px;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
 .code-runner__button {
   cursor: pointer;
   border: 1px solid var(--vp-c-brand-1);
