@@ -1262,3 +1262,32 @@ export const sidebar = [
     ]
   }
 ]
+
+export const sidebarEn = [
+  {
+    "text": "Introduction",
+    "collapsed": false,
+    "items": [
+      {
+        "text": "About the course",
+        "link": "/en/docs/00-introduction/01-about-course"
+      }
+    ]
+  },
+  {
+    "text": "JavaScript",
+    "collapsed": false,
+    "items": [
+      {
+        "text": "Language Fundamentals",
+        "collapsed": true,
+        "items": [
+          {
+            "text": "Chapter 1. What is JavaScript",
+            "link": "/en/docs/01-javascript/01-what-is-javascript"
+          }
+        ]
+      }
+    ]
+  }
+]

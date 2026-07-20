@@ -5,6 +5,63 @@ import { bookEngineData } from '../book.generated.mjs'
 const BOOK_BASE = '/qa-js-ts-cookbook/'
 const EMBED_TYPES = new Set(['practice', 'solutions'])
 
+// Локаль страницы определяется префиксом пути: en/docs/... — английская
+// версия, docs/... — русская (root-локаль).
+function localeOf(pagePath) {
+  return String(pagePath || '').startsWith('en/') ? 'en' : 'ru'
+}
+
+// Английские страницы лежат в en/docs|practice|solutions/..., но метаданные
+// главы, счетчики и структура берутся из русского движка по базовому пути
+// без префикса локали.
+function basePath(pagePath) {
+  return String(pagePath || '').replace(/^en\//, '')
+}
+
+// Строки интерфейса, которые плагин вставляет в отрендеренный HTML.
+const UI = {
+  ru: {
+    readingSuffix: 'мин чтения',
+    examples: 'Примеров',
+    tasks: 'Задач',
+    diagrams: 'Диаграмм',
+    tasksHeading: 'Задачи',
+    tasksHeadingId: 'задачи',
+    chapterProgressLabel: 'Прогресс части книги',
+    chapterInfoLabel: 'Информация о главе',
+    of: 'из',
+    chapters: 'глав',
+    part: label => (label === 'Введение' ? 'Введение' : `Часть «${escapeHtml(label)}»`),
+    showAnswer: 'Показать ответ',
+    example: 'Пример',
+    exampleGeneric: 'Пример'
+  },
+  en: {
+    readingSuffix: 'min read',
+    examples: 'Examples',
+    tasks: 'Tasks',
+    diagrams: 'Diagrams',
+    tasksHeading: 'Tasks',
+    tasksHeadingId: 'tasks',
+    chapterProgressLabel: 'Book part progress',
+    chapterInfoLabel: 'Chapter information',
+    of: 'of',
+    chapters: 'chapters',
+    part: label => {
+      const map = { 'Введение': 'Introduction', 'Финальный проект': 'Final Project' }
+      const en = map[label] || label
+      return en === 'Introduction' ? 'Introduction' : `Part «${escapeHtml(en)}»`
+    },
+    showAnswer: 'Show answer',
+    example: 'Example',
+    exampleGeneric: 'Example'
+  }
+}
+
+function ui(locale) {
+  return UI[locale] || UI.ru
+}
+
 function escapeHtml(value) {
   return String(value)
     .replace(/&/g, '&amp;')
@@ -48,7 +105,11 @@ function pagePathFromEnv(env) {
   for (const candidate of candidates) {
     const normalized = normalizePagePath(candidate)
 
-    if (bookEngineData.chapters[normalized] || normalized === 'index.md') {
+    if (
+      bookEngineData.chapters[basePath(normalized)] ||
+      normalized === 'index.md' ||
+      normalized === 'en/index.md'
+    ) {
       return normalized
     }
   }
@@ -65,42 +126,79 @@ function renderBookStat(label, value) {
 `
 }
 
-function renderBookStats() {
+const STATS_LABELS = {
+  ru: {
+    heading: 'Статистика книги',
+    chapters: 'Всего глав',
+    tasks: 'Всего задач',
+    solutions: 'Всего решений',
+    examples: 'Всего примеров',
+    mermaid: 'Всего Mermaid',
+    miniProjects: 'Всего мини-проектов',
+    reading: 'Общее время чтения',
+    minutes: min => `${min} минут`
+  },
+  en: {
+    heading: 'Book at a glance',
+    chapters: 'Chapters',
+    tasks: 'Tasks',
+    solutions: 'Solutions',
+    examples: 'Examples',
+    mermaid: 'Mermaid diagrams',
+    miniProjects: 'Mini-projects',
+    reading: 'Total reading time',
+    minutes: min => `${min} min`
+  }
+}
+
+function renderBookStats(locale = 'ru') {
   const stats = bookEngineData.statistics
+  const t = STATS_LABELS[locale] || STATS_LABELS.ru
 
   return `
-<section class="book-stats" aria-label="Статистика книги">
-  <h2>Статистика книги</h2>
+<section class="book-stats" aria-label="${t.heading}">
+  <h2>${t.heading}</h2>
   <div class="book-stats__grid">
-    ${renderBookStat('Всего глав', stats.chapters)}
-    ${renderBookStat('Всего задач', stats.tasks)}
-    ${renderBookStat('Всего решений', stats.solutions)}
-    ${renderBookStat('Всего примеров', stats.examples)}
-    ${renderBookStat('Всего Mermaid', stats.mermaid)}
-    ${renderBookStat('Всего мини-проектов', stats.miniProjects)}
-    ${renderBookStat('Общее время чтения', `${stats.readingMinutes} минут`)}
+    ${renderBookStat(t.chapters, stats.chapters)}
+    ${renderBookStat(t.tasks, stats.tasks)}
+    ${renderBookStat(t.solutions, stats.solutions)}
+    ${renderBookStat(t.examples, stats.examples)}
+    ${renderBookStat(t.mermaid, stats.mermaid)}
+    ${renderBookStat(t.miniProjects, stats.miniProjects)}
+    ${renderBookStat(t.reading, t.minutes(stats.readingMinutes))}
   </div>
 </section>
 `
 }
 
-function renderChapterCard(chapter) {
+function localizedChapterLabel(label, locale) {
+  if (locale !== 'en') {
+    return label
+  }
+
+  return String(label)
+    .replace(/^Глава\b/, 'Chapter')
+    .replace(/^Раздел\b/, 'Section')
+}
+
+function renderChapterCard(chapter, locale = 'ru', displayTitle) {
   if (!chapter?.card) {
     return ''
   }
 
-  const meta = [`<span>⏱ ${chapter.card.reading} мин чтения</span>`]
+  const t = ui(locale)
+  const meta = [`<span>⏱ ${chapter.card.reading} ${t.readingSuffix}</span>`]
 
   if (chapter.card.examples) {
-    meta.push(`<span>📄 Примеров: ${chapter.card.examples}</span>`)
+    meta.push(`<span>📄 ${t.examples}: ${chapter.card.examples}</span>`)
   }
 
   if (chapter.card.tasks) {
-    meta.push(`<span>📝 Задач: ${chapter.card.tasks}</span>`)
+    meta.push(`<span>📝 ${t.tasks}: ${chapter.card.tasks}</span>`)
   }
 
   if (chapter.card.mermaid) {
-    meta.push(`<span>📊 Диаграмм: ${chapter.card.mermaid}</span>`)
+    meta.push(`<span>📊 ${t.diagrams}: ${chapter.card.mermaid}</span>`)
   }
 
   let progress = ''
@@ -108,20 +206,22 @@ function renderChapterCard(chapter) {
   if (chapter.progress) {
     const { label, current, total } = chapter.progress
     const percent = Math.round((current / total) * 100)
-    const partLabel = label === 'Введение' ? 'Введение' : `Часть «${escapeHtml(label)}»`
+    const partLabel = t.part(label)
 
     progress = `
-      <div class="book-chapter-card__progress" aria-label="Прогресс части книги">
+      <div class="book-chapter-card__progress" aria-label="${t.chapterProgressLabel}">
         <div class="book-chapter-card__progress-track"><i style="width:${percent}%"></i></div>
-        <span class="book-chapter-card__progress-text">${partLabel}: ${current} из ${total} глав</span>
+        <span class="book-chapter-card__progress-text">${partLabel}: ${current} ${t.of} ${total} ${t.chapters}</span>
       </div>
 `
   }
 
+  const title = displayTitle || chapter.card.title
+
   return `
-<section class="book-chapter-card" aria-label="Информация о главе">
-  <div class="book-chapter-card__eyebrow">${escapeHtml(chapter.card.chapterLabel)}</div>
-  <h1 class="book-chapter-card__title">${escapeHtml(chapter.card.title)}</h1>
+<section class="book-chapter-card" aria-label="${t.chapterInfoLabel}">
+  <div class="book-chapter-card__eyebrow">${escapeHtml(localizedChapterLabel(chapter.card.chapterLabel, locale))}</div>
+  <h1 class="book-chapter-card__title">${escapeHtml(title)}</h1>
   <div class="book-chapter-card__meta">
     ${meta.join('\n    ')}
   </div>
@@ -146,7 +246,15 @@ const HIDDEN_SECTION_TITLES = new Set([
   'Предварительные требования',
   'Цели обучения',
   'Цель главы',
-  'Мотивация'
+  'Мотивация',
+  // Английские эквиваленты служебных секций — прячем так же, как русские.
+  'Study time',
+  'Navigation',
+  'Link to the previous chapter',
+  'Prerequisites',
+  'Learning goals',
+  'Chapter goal',
+  'Motivation'
 ])
 
 function hideServiceSections(state) {
@@ -211,11 +319,12 @@ function chapterNumberFromPath(filePath) {
   return match ? Number(match[1]) : null
 }
 
-function exampleTitle(filePath) {
+function exampleTitle(filePath, locale = 'ru') {
   const n = chapterNumberFromPath(filePath)
   const title = titleFromFile(filePath)
+  const t = ui(locale)
 
-  return n ? `Пример ${n}. ${title}` : `Пример. ${title}`
+  return n ? `${t.example} ${n}. ${title}` : `${t.exampleGeneric}. ${title}`
 }
 
 function stripFirstHeading(markdown) {
@@ -281,9 +390,11 @@ function renderAnswerDetails(md, markdown, env) {
     answerDetails: true
   })
 
+  const summary = ui(env.bookLocale).showAnswer
+
   return `
 <details class="book-answer">
-  <summary>Показать ответ</summary>
+  <summary>${summary}</summary>
   <div class="book-answer__content">
 ${rendered}
   </div>
@@ -346,7 +457,7 @@ function mergeSectionWithAnswers(md, practiceSection, solutionSection, env) {
 }
 
 function solutionPathForPractice(filePath) {
-  return filePath.replace(/^practice\//, 'solutions/')
+  return filePath.replace(/(^|\/)practice\//, '$1solutions/')
 }
 
 function mergePracticeWithAnswers(md, practiceMarkdown, solutionMarkdown, env) {
@@ -473,7 +584,7 @@ function renderExample(md, filePath, env) {
 
   // JSON — данные, а не исполняемый код: показываем без кнопки запуска.
   if (/\.json$/.test(filePath)) {
-    return renderStaticExample(md, filePath)
+    return renderStaticExample(md, filePath, env.bookLocale)
   }
 
   env.embeddedExamples ||= new Set()
@@ -481,7 +592,7 @@ function renderExample(md, filePath, env) {
 
   const source = fs.readFileSync(absPath, 'utf8')
   const sourceB64 = Buffer.from(source, 'utf8').toString('base64')
-  const title = exampleTitle(filePath)
+  const title = exampleTitle(filePath, env.bookLocale)
   const lang = /\.ts$/.test(filePath) ? 'ts' : 'js'
 
   return `
@@ -613,7 +724,7 @@ function sanitizeRepositoryPaths(content) {
     .replace(/^playground\/$/gm, 'Песочница')
 }
 
-function renderStaticExample(md, filePath) {
+function renderStaticExample(md, filePath, locale = 'ru') {
   const absPath = path.join(process.cwd(), filePath)
 
   if (!fs.existsSync(absPath)) {
@@ -621,7 +732,7 @@ function renderStaticExample(md, filePath) {
   }
 
   const source = stripRepositoryDirs(fs.readFileSync(absPath, 'utf8'))
-  const title = exampleTitle(filePath)
+  const title = exampleTitle(filePath, locale)
 
   return `
 <div class="book-static-example">
@@ -653,10 +764,14 @@ export function exampleCardPlugin(md) {
     }
 
     const currentPath = pagePathFromEnv(state.env)
+    const locale = localeOf(currentPath)
+    const base = basePath(currentPath)
+    // Пробрасываем локаль во вложенные md.render (практика, решения, ответы).
+    state.env.bookLocale = locale
 
-    if (currentPath === 'index.md') {
+    if (base === 'index.md') {
       const insertAfter = state.tokens.findIndex(token => token.type === 'heading_close' && token.tag === 'h1')
-      const stats = htmlToken(state, renderBookStats())
+      const stats = htmlToken(state, renderBookStats(locale))
 
       if (insertAfter >= 0) {
         state.tokens.splice(insertAfter + 1, 0, stats)
@@ -667,7 +782,7 @@ export function exampleCardPlugin(md) {
       return
     }
 
-    const chapter = bookEngineData.chapters[currentPath]
+    const chapter = bookEngineData.chapters[base]
 
     if (!chapter) {
       return
@@ -675,7 +790,16 @@ export function exampleCardPlugin(md) {
 
     const h1Index = state.tokens.findIndex(token => token.type === 'heading_open' && token.tag === 'h1')
 
+    // Заголовок h1 переведенной страницы используем как название в карточке.
+    let displayTitle
     if (h1Index >= 0) {
+      if (locale === 'en') {
+        const heading = state.tokens[h1Index + 1].content.trim()
+        if (heading) {
+          displayTitle = heading
+        }
+      }
+
       state.tokens[h1Index].hidden = true
       state.tokens[h1Index + 1].hidden = true
       // markdown-it рендерит children inline-токена напрямую, поэтому
@@ -685,21 +809,23 @@ export function exampleCardPlugin(md) {
       state.tokens[h1Index + 2].hidden = true
     }
 
-    state.tokens.unshift(htmlToken(state, renderChapterCard(chapter)))
+    state.tokens.unshift(htmlToken(state, renderChapterCard(chapter, locale, displayTitle)))
 
     // Новые главы не ссылаются на файл практики явно — подключаем задачи
     // автоматически, если файл практики существует и не пуст.
+    const practicePrefix = locale === 'en' ? 'en/practice/' : 'practice/'
     const hasPracticeFence = state.tokens.some(
-      token => token.type === 'fence' && /^practice\//.test(token.content.trim())
+      token => token.type === 'fence' && new RegExp(`^(en/)?practice/`).test(token.content.trim())
     )
 
     if (!hasPracticeFence) {
-      const practicePath = currentPath.replace(/^docs\//, 'practice/')
+      const practicePath = base.replace(/^docs\//, practicePrefix)
       const embedded = renderEmbeddedMarkdown(md, practicePath, 'practice', state.env)
 
       if (embedded) {
+        const t = ui(locale)
         state.tokens.push(
-          htmlToken(state, '<h2 id="задачи" tabindex="-1">Задачи</h2>'),
+          htmlToken(state, `<h2 id="${t.tasksHeadingId}" tabindex="-1">${t.tasksHeading}</h2>`),
           htmlToken(state, embedded)
         )
       }
@@ -763,7 +889,10 @@ export function exampleCardPlugin(md) {
 
   // В главе про рабочее окружение пути вида playground/hello.js — учебный
   // материал про файловую систему, а не ссылки на файлы репозитория.
-  const PATH_SANITIZE_EXEMPT = new Set(['docs/00-introduction/04-development-environment.md'])
+  const PATH_SANITIZE_EXEMPT = new Set([
+    'docs/00-introduction/04-development-environment.md',
+    'en/docs/00-introduction/04-development-environment.md'
+  ])
 
   md.renderer.rules.code_inline = (tokens, idx, options, env, self) => {
     const token = tokens[idx]
@@ -858,7 +987,7 @@ export function exampleCardPlugin(md) {
     }
 
     if (/^examples\/.+\.(yml|yaml|proto|sql|txt)$/.test(content)) {
-      return renderStaticExample(md, content)
+      return renderStaticExample(md, content, env.bookLocale)
     }
 
     if ((token.info === '' || token.info === 'text') && /^(docs|practice|solutions|examples|playground)\/[^\s]*\/?$/.test(content) && !/\.(md|js|mjs|cjs|ts|json)$/.test(content) && !isExampleDir(content)) {
