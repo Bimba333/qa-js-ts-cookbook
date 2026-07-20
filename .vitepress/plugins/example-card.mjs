@@ -1028,8 +1028,12 @@ export function exampleCardPlugin(md) {
         return ''
       }
 
-      const title = 'Песочница'
-      const template = `// Напишите здесь решение задачи и нажмите «Запустить».
+      const isEn = env.bookLocale === 'en'
+      const title = isEn ? 'Playground' : 'Песочница'
+      const template = isEn
+        ? `// Write your solution here and click “Run”.
+console.log('Playground is ready!')`
+        : `// Напишите здесь решение задачи и нажмите «Запустить».
 console.log('Песочница готова к работе!')`
 
       const sourceB64 = Buffer.from(template, 'utf8').toString('base64')

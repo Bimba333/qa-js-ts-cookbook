@@ -1,5 +1,35 @@
 <script setup>
 import { computed, nextTick, onBeforeUnmount, ref, watch } from 'vue'
+import { useData } from 'vitepress'
+
+const { lang } = useData()
+const isEn = computed(() => String(lang.value || '').toLowerCase().startsWith('en'))
+
+// Строки интерфейса запускалки — переключаются по локали страницы.
+const T = {
+  localBadge: () => (isEn.value ? '💻 Run locally' : '💻 Для локального запуска'),
+  run: () => (isEn.value ? '▶ Run' : '▶ Запустить'),
+  running: () => (isEn.value ? '⏳ Running…' : '⏳ Выполняется…'),
+  reset: () => (isEn.value ? '↺ Reset' : '↺ Сбросить'),
+  result: () => (isEn.value ? 'Result' : 'Результат'),
+  errorTitle: () => (isEn.value ? 'Error' : 'Ошибка'),
+  nodeNote: () => (isEn.value
+    ? '⚙️ This example uses Node.js APIs, so it does not run in the browser. Try running it locally in Node.js — the expected output is discussed in the chapter text.'
+    : '⚙️ Этот пример использует Node.js API, поэтому в браузере он не выполняется. Попробуйте запустить его локально в Node.js — ожидаемый вывод разобран в тексте главы.'),
+  intentionalNote: () => (isEn.value
+    ? '✓ This is intended: the example deliberately demonstrates an error — see the walkthrough in the chapter text.'
+    : '✓ Так и задумано: этот пример намеренно демонстрирует ошибку — разбор смотрите в тексте главы.'),
+  noOutput: () => (isEn.value ? 'Code ran with no output.' : 'Код выполнен без вывода.'),
+  runtimeError: () => (isEn.value ? 'Execution error.' : 'Ошибка выполнения.'),
+  nodeOnlyError: () => (isEn.value
+    ? 'This code uses import, require or Node.js APIs — they are not available in the browser sandbox. Remove them and try again.'
+    : 'Этот код использует import, require или Node.js API — в песочнице браузера они недоступны. Уберите их и попробуйте снова.'),
+  syntaxError: message => (isEn.value ? `Syntax error: ${message}` : `Ошибка синтаксиса: ${message}`),
+  timeoutError: () => (isEn.value
+    ? 'The code is taking too long. It may contain an infinite loop.'
+    : 'Код выполняется слишком долго. Возможно, в нем бесконечный цикл.'),
+  iframeTitle: () => (isEn.value ? 'Isolated example execution' : 'Изолированное выполнение примера')
+}
 
 const RUN_TIMEOUT_MS = 5000
 // После синхронного завершения скрипта ждем отложенный вывод:
@@ -91,7 +121,7 @@ function finalizeRun() {
   running.value = false
 
   if (!output.value && !error.value) {
-    output.value = 'Код выполнен без вывода.'
+    output.value = T.noOutput()
   }
 
   destroyIframe()
@@ -178,7 +208,7 @@ function createIframeSource(source) {
     console.table = value => send('log', format(value))
 
     window.addEventListener('error', event => {
-      send('error', event.message || 'Ошибка выполнения.')
+      send('error', event.message || ${JSON.stringify(T.runtimeError())})
     })
 
     window.addEventListener('unhandledrejection', event => {
@@ -214,7 +244,7 @@ function handleMessage(event) {
   }
 
   if (message.type === 'error') {
-    error.value = message.value || 'Ошибка выполнения.'
+    error.value = message.value || T.runtimeError()
     running.value = false
     clearTimeoutIfNeeded()
     destroyIframe()
@@ -238,7 +268,7 @@ async function runCode() {
 
   if (isNodeOnly.value) {
     if (!props.readonly) {
-      error.value = 'Этот код использует import, require или Node.js API — в песочнице браузера они недоступны. Уберите их и попробуйте снова.'
+      error.value = T.nodeOnlyError()
     }
 
     return
@@ -252,7 +282,7 @@ async function runCode() {
     runnableSource = await prepareRunnableSource(displayedSource.value)
   } catch (transpileError) {
     running.value = false
-    error.value = `Ошибка синтаксиса: ${transpileError.message || transpileError}`
+    error.value = T.syntaxError(transpileError.message || transpileError)
     return
   }
 
@@ -263,7 +293,7 @@ async function runCode() {
 
   timeoutId = window.setTimeout(() => {
     running.value = false
-    error.value = 'Код выполняется слишком долго. Возможно, в нем бесконечный цикл.'
+    error.value = T.timeoutError()
     destroyIframe()
     clearTimeoutIfNeeded()
   }, RUN_TIMEOUT_MS)
@@ -299,7 +329,7 @@ onBeforeUnmount(() => {
       </div>
 
       <div v-if="readonly && isNodeOnly" class="code-runner__local-badge">
-        💻 Для локального запуска
+        {{ T.localBadge() }}
       </div>
 
       <div v-else class="code-runner__actions">
@@ -309,7 +339,7 @@ onBeforeUnmount(() => {
           :disabled="running"
           @click="runCode"
         >
-          {{ running ? '⏳ Выполняется…' : '▶ Запустить' }}
+          {{ running ? T.running() : T.run() }}
         </button>
 
         <button
@@ -317,7 +347,7 @@ onBeforeUnmount(() => {
           type="button"
           @click="resetRunner"
         >
-          ↺ Сбросить
+          {{ T.reset() }}
         </button>
       </div>
     </div>
@@ -333,19 +363,19 @@ onBeforeUnmount(() => {
     />
 
     <div v-if="readonly && isNodeOnly" class="code-runner__node">
-      <p>⚙️ Этот пример использует Node.js API, поэтому в браузере он не выполняется. Попробуйте запустить его локально в Node.js — ожидаемый вывод разобран в тексте главы.</p>
+      <p>{{ T.nodeNote() }}</p>
     </div>
 
     <div v-if="output" class="code-runner__output">
-      <div class="code-runner__output-title">Результат</div>
+      <div class="code-runner__output-title">{{ T.result() }}</div>
       <pre>{{ output }}</pre>
     </div>
 
     <div v-if="error" class="code-runner__error">
-      <div class="code-runner__output-title">Ошибка</div>
+      <div class="code-runner__output-title">{{ T.errorTitle() }}</div>
       <pre>{{ error }}</pre>
       <p v-if="isIntentionalError" class="code-runner__expected-note">
-        ✓ Так и задумано: этот пример намеренно демонстрирует ошибку — разбор смотрите в тексте главы.
+        {{ T.intentionalNote() }}
       </p>
     </div>
 
@@ -353,7 +383,7 @@ onBeforeUnmount(() => {
       v-if="iframeSource"
       :key="iframeKey"
       class="code-runner__iframe"
-      title="Изолированное выполнение примера"
+      :title="T.iframeTitle()"
       sandbox="allow-scripts"
       :srcdoc="iframeSource"
     />

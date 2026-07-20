@@ -1271,6 +1271,18 @@ export const sidebarEn = [
       {
         "text": "About the course",
         "link": "/en/docs/00-introduction/01-about-course"
+      },
+      {
+        "text": "How to use the course",
+        "link": "/en/docs/00-introduction/02-how-to-study"
+      },
+      {
+        "text": "Course structure",
+        "link": "/en/docs/00-introduction/03-course-structure"
+      },
+      {
+        "text": "The working environment",
+        "link": "/en/docs/00-introduction/04-development-environment"
       }
     ]
   },
@@ -1285,6 +1297,10 @@ export const sidebarEn = [
           {
             "text": "Chapter 1. What is JavaScript",
             "link": "/en/docs/01-javascript/01-what-is-javascript"
+          },
+          {
+            "text": "Chapter 2. How JavaScript runs",
+            "link": "/en/docs/01-javascript/02-how-javascript-works"
           }
         ]
       }
