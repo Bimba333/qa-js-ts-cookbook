@@ -99,6 +99,8 @@ Baseline log entries are append-only historical evidence. Each entry attests onl
 | Chapter range | Roadmap module | Status | Review basis |
 | --- | --- | --- | --- |
 | 250 | Финальный промышленный проект — Требования и критерии готовности проекта | REVIEWED BASELINE | Technical review: 9.7/10, TECHNICALLY READY; final quality review: 9.9/10, READY FOR CHAPTER FREEZE; governance baseline audit passed. |
+| 251 | Финальный промышленный проект — Архитектурные решения и план реализации | REVIEWED BASELINE | Technical review: 9.7/10, TECHNICALLY READY; final quality review: 9.9/10, READY FOR REVIEWED BASELINE; governance baseline audit passed. |
+| 252 | Финальный промышленный проект — Каркас, configuration и environments | REVIEWED BASELINE | Technical/runtime review: 9.8/10, TECHNICALLY READY; final quality review: 9.9/10, READY FOR REVIEWED BASELINE; governance baseline audit passed. |
 
 No baseline is created automatically by a review report. Adding a baseline log entry requires a separate baseline audit that confirms the range, review evidence and unchanged roadmap/specification boundaries.
 

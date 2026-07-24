@@ -4751,7 +4751,7 @@ FROZEN
 ```text
 FINAL PROJECT SPECIFICATION
 
-Version 1.0
+Version 1.1
 
 STATUS
 
@@ -4762,11 +4762,12 @@ FROZEN
 
 ## Модель System Under Test
 
-Репозиторий курса не поставляет готовое учебное приложение, REST endpoints, `.proto`-контракты, PostgreSQL database, test accounts или seed data.
+Default путь финального проекта использует repository-owned учебное приложение
+**Educational Work Items**. Репозиторий предоставляет его UI, REST API, unary
+gRPC service, PostgreSQL persistence, test accounts, migrations и deterministic
+seed data через ненумерованный infrastructure milestone SUT-0.
 
-Финальный проект адаптируется к одному заранее существующему учебному System Under Test либо к согласованному набору его сервисов в одном бизнес-домене.
-
-Выбранный System Under Test обязан предоставлять:
+Educational Work Items обязан предоставлять:
 
 * browser-accessible UI;
 * REST API;
@@ -4779,21 +4780,32 @@ FROZEN
 
 Распределение ресурсов:
 
-* **Курс предоставляет:** требования, изученный стек, milestone structure, Definition of Done и review rubric.
-* **Ученик предоставляет:** System Under Test, законный доступ, endpoints, `.proto`, database connection data, test accounts и разрешение на создание и удаление test data.
-* **Настраивается:** URLs, credentials, environment profiles, timeouts и identifiers внешних ресурсов.
+* **Репозиторий предоставляет:** Educational Work Items SUT, требования,
+  изученный стек, milestone structure, Definition of Done и review rubric.
+* **Ученик реализует:** Automation QA Framework в
+  `examples/04-final-project/`, используя только публичные SUT boundaries.
+* **Настраивается:** локальные URLs, secret references, environment profiles,
+  timeouts и identifiers учебных ресурсов.
 * **Можно mock:** только необязательные third-party dependencies; mocks не заменяют mandatory UI, REST, unary gRPC и PostgreSQL integration.
-* **Опционально:** локальная оркестрация сервисов и Docker, если они уже поддерживаются выбранным System Under Test.
-* **Не предоставляется курсом:** готовый production-like backend или инфраструктура его развёртывания.
+* **Default orchestration:** локальный Docker Compose flow, реализуемый SUT-0.
+* **Не предоставляется:** production-ready backend, production deployment или
+  production credential management.
 
-Если выбранный System Under Test не удовлетворяет хотя бы одной mandatory capability или недоступен из CI, milestone 250 получает `FAIL`, и реализация не начинается до выбора подходящей системы.
+Другой SUT допускается только через отдельный compatibility review, который
+доказывает соответствие всем mandatory capabilities, scenario contracts,
+cleanup и CI requirements. Такой путь не является default и не меняет
+repository-owned SUT requirements.
+
+Если Educational Work Items не проходит Gate C или выбранный alternative SUT не
+проходит compatibility review, главы 253–256 остаются заблокированы.
 
 ## Размер проекта
 
 * Один repository и один бизнес-домен.
 * Десять milestones, соответствующих главам 250–259.
 * Девять mandatory automated scenarios.
-* Ориентир реализации: 30–45 часов после завершения главы 249, без учёта разработки или развёртывания самого System Under Test.
+* Ориентир реализации Automation QA Framework: 30–45 часов после завершения
+  главы 249 и готовности SUT-0; реализация SUT не входит в работу ученика.
 * Документация: один operational `README`, одна architecture diagram и минимум три кратких Architecture Decision Records.
 
 Проект автоматизирует representative workflow, а не полное покрытие продукта.
@@ -4859,7 +4871,7 @@ FROZEN
 * scheduled CI runs;
 * CI matrix;
 * gRPC streaming;
-* Docker;
+* дополнительный Docker mode сверх обязательного SUT-0 local flow;
 * performance observations без load-testing программы;
 * дополнительные database verification rules.
 
@@ -4869,7 +4881,7 @@ Optional work оценивается только после выполнени�
 
 Финальный проект не требует:
 
-* разработки System Under Test;
+* разработки или изменения System Under Test учеником;
 * полного покрытия продукта;
 * production deployment;
 * полноценного DevOps pipeline;
@@ -5010,10 +5022,10 @@ Architecture documentation содержит одну актуальную diagra
 
 ### Chapter 250
 
-* **Input:** frozen specification и доступные candidate systems.
-* **Deliverable:** выбранный System Under Test, scope matrix, девять scenario records, initial Definition of Done и effort plan.
-* **Evidence:** capabilities и CI availability подтверждены endpoint/database access checks без framework implementation.
-* **Failure:** отсутствует mandatory capability, data cleanup или CI access.
+* **Input:** frozen specification и repository-owned Educational Work Items contract.
+* **Deliverable:** подтверждённый default SUT scope, scope matrix, девять scenario records, initial Definition of Done и effort plan.
+* **Evidence:** planned capabilities и Gate C requirements трассируются к scenario portfolio без framework implementation.
+* **Failure:** mandatory capability, data cleanup или CI boundary не определены.
 * **Excluded:** разработка System Under Test и test code.
 * **Handoff:** approved scope и risks передаются в chapter 251.
 
@@ -5239,6 +5251,123 @@ Optional extensions не повышают score категории выше 10/1
 * Secrets boundary
 * Base fixtures
 * Первый CI-compatible command
+
+---
+
+## SUT-0 — Educational SUT Infrastructure Milestone
+
+**Статус:** authoritative unnumbered prerequisite.
+
+**Позиция:** после главы 252 и до главы 253. SUT-0 не получает номер главы и не
+изменяет нумерацию 250–259.
+
+**Назначение:** предоставить default repository-owned Educational Work Items SUT
+с воспроизводимыми UI, REST, unary gRPC и PostgreSQL boundaries, необходимыми
+для практической реализации глав 253–259.
+
+**Scope:**
+
+* отдельная application boundary `sut/`;
+* один TypeScript SUT process и отдельный PostgreSQL process;
+* server-rendered UI, versioned REST API и unary gRPC;
+* ordered migrations, deterministic seed и guarded reset;
+* authentication, test-data ownership и failure-safe cleanup;
+* liveness, readiness, local capability gate и CI-feasibility evidence;
+* Docker Compose local orchestration;
+* один root package и один lockfile.
+
+**Deliverables:**
+
+* runnable Educational Work Items SUT и PostgreSQL;
+* reviewed public UI, REST, gRPC и database contracts;
+* migrations, seed, health/readiness и cleanup boundaries;
+* reproducible local startup and shutdown;
+* mandatory capability report;
+* technical, security и operational review evidence.
+
+**Non-goals:**
+
+* production-ready application или deployment;
+* frontend framework, microservices, streaming gRPC или generalized platform;
+* teaching content глав 253–259;
+* реализация Automation QA Framework вместо ученика;
+* самостоятельный chapter, baseline или content-freeze unit.
+
+**Entry conditions:**
+
+* главы 250–252 существуют как reviewed prerequisites и не изменяются при
+  запуске implementation work;
+* Gate A specification review имеет `PASS`;
+* Gate B governance approval имеет `PASS`;
+* governance ADRs SUT-001–SUT-004 приняты;
+* implementation task явно ограничена разрешённой phase;
+* dependency versions проверяются до installation;
+* не требуются real secrets или production endpoints.
+
+**Implementation phases:**
+
+0. governance authorization;
+1. skeleton и PostgreSQL foundation;
+2. REST и authentication;
+3. server-rendered UI;
+4. unary gRPC и generated types;
+5. reset/readiness hardening;
+6. local capability gate;
+7. CI feasibility;
+8. reconciliation глав 250–251 и compatibility audit главы 252;
+9. Gate D и возврат к обычному chapter workflow.
+
+Каждая phase имеет отдельные entry, exit, evidence и stop conditions из
+`.meta/FINAL_PROJECT_SUT_SPEC.md`. Gate B разрешает только Phase 1; следующие
+phases требуют отдельного authorization после evidence предыдущей phase.
+
+**Exit conditions:**
+
+* Gate C имеет `PASS`;
+* clean-clone startup, migrations, seed и shutdown воспроизводимы;
+* UI, REST, unary gRPC, PostgreSQL и cleanup capabilities имеют runtime evidence;
+* security, least privilege, isolation и redaction reviews пройдены;
+* local capability gate имеет `PASS`;
+* CI startup feasibility подтверждена;
+* публичные contracts стабильны для глав 253–256.
+
+**Stop conditions:**
+
+* scope выходит за Educational Work Items;
+* mandatory capability не реализуема в утверждённой architecture;
+* unsafe cleanup, secret leakage или cross-run mutation;
+* migration, seed, startup или shutdown недетерминированы;
+* test framework импортирует SUT internals;
+* implementation выходит за явно разрешённую phase;
+* неизвестное prerequisite/evidence получает `BLOCKED`.
+
+**Ownership:**
+
+* Course Governance Reviewer владеет gates и scope;
+* SUT Implementation Owner владеет application infrastructure;
+* Database, Security, gRPC, UI и CI owners владеют соответствующими reviews;
+* Chapter Owners не получают ownership SUT internals.
+
+**Связи с курсом:**
+
+* главы 250–252 являются prerequisites и позднее сверяются с runtime evidence;
+* главы 253–256 зависят от Gate D и используют public SUT contracts;
+* глава 257 по-прежнему владеет cross-layer scenarios;
+* глава 258 по-прежнему владеет diagnostics, parallel execution и CI workflow;
+* глава 259 по-прежнему владеет final audit и scoring.
+
+Gate C подтверждает technical readiness всего SUT-0, но не разблокирует главы
+самостоятельно. Gate D дополнительно требует reconciliation глав 250–251,
+compatibility audit главы 252 и стабильность public contracts.
+
+**Review requirements:** каждая implementation phase проходит scoped technical
+review; перед Gate C обязательны architecture, security и operational reviews;
+перед Gate D выполняются baseline reconciliation и chapter-252 compatibility
+audit.
+
+SUT-0 не имеет самостоятельного `CONTENT FROZEN` status. Финальная
+content-freeze boundary остаётся ровно 250–259. SUT-0 не переносит teaching
+ownership из глав 253–259.
 
 ---
 

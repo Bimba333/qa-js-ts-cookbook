@@ -1,5 +1,5 @@
 export const bookEngineData = {
-  "cacheReads": 763,
+  "cacheReads": 769,
   "parts": [
     {
       "title": "Введение",
@@ -1222,6 +1222,14 @@ export const bookEngineData = {
             {
               "fallbackTitle": "Требования и критерии готовности проекта",
               "path": "docs/04-final-project/250-project-requirements-and-readiness-criteria.md"
+            },
+            {
+              "fallbackTitle": "Архитектурные решения и план реализации",
+              "path": "docs/04-final-project/251-architecture-decisions-and-implementation-plan.md"
+            },
+            {
+              "fallbackTitle": "Каркас, configuration и environments",
+              "path": "docs/04-final-project/252-framework-skeleton-configuration-and-environments.md"
             }
           ]
         }
@@ -15210,7 +15218,11 @@ export const bookEngineData = {
         "number": 249,
         "link": "/docs/03-automation-qa/249-architecture-review-and-framework-evolution"
       },
-      "next": null,
+      "next": {
+        "title": "Архитектурные решения и план реализации",
+        "number": 251,
+        "link": "/docs/04-final-project/251-architecture-decisions-and-implementation-plan"
+      },
       "sectionLink": {
         "title": "Финальный промышленный проект",
         "link": "/docs/04-final-project/250-project-requirements-and-readiness-criteria"
@@ -15218,8 +15230,8 @@ export const bookEngineData = {
       "progress": {
         "label": "Финальный проект",
         "current": 1,
-        "total": 1,
-        "bar": "████████████"
+        "total": 3,
+        "bar": "████░░░░░░░░"
       },
       "related": [],
       "card": {
@@ -15231,15 +15243,129 @@ export const bookEngineData = {
         "solutions": 24,
         "mermaid": 2
       }
+    },
+    "docs/04-final-project/251-architecture-decisions-and-implementation-plan.md": {
+      "path": "docs/04-final-project/251-architecture-decisions-and-implementation-plan.md",
+      "link": "/docs/04-final-project/251-architecture-decisions-and-implementation-plan",
+      "title": "Архитектурные решения и план реализации",
+      "number": 251,
+      "part": "Финальный проект",
+      "section": "Финальный промышленный проект",
+      "sectionIndex": 0,
+      "chapterIndex": 1,
+      "wordCount": 4530,
+      "readingMinutes": 26,
+      "h2": 27,
+      "h3": 1,
+      "examples": 0,
+      "tasks": 12,
+      "solutions": 24,
+      "mermaid": 3,
+      "miniProjects": 0,
+      "previous": {
+        "title": "Требования и критерии готовности проекта",
+        "number": 250,
+        "link": "/docs/04-final-project/250-project-requirements-and-readiness-criteria"
+      },
+      "next": {
+        "title": "Каркас, configuration и environments",
+        "number": 252,
+        "link": "/docs/04-final-project/252-framework-skeleton-configuration-and-environments"
+      },
+      "sectionLink": {
+        "title": "Финальный промышленный проект",
+        "link": "/docs/04-final-project/250-project-requirements-and-readiness-criteria"
+      },
+      "progress": {
+        "label": "Финальный проект",
+        "current": 2,
+        "total": 3,
+        "bar": "████████░░░░"
+      },
+      "related": [
+        {
+          "term": "Scope",
+          "title": "Scope",
+          "number": 7,
+          "link": "/docs/01-javascript/07-scope"
+        },
+        {
+          "term": "JSON",
+          "title": "JSON",
+          "number": 94,
+          "link": "/docs/01-javascript/94-json"
+        }
+      ],
+      "card": {
+        "chapterLabel": "Глава 251",
+        "title": "Архитектурные решения и план реализации",
+        "reading": 26,
+        "examples": 0,
+        "tasks": 12,
+        "solutions": 24,
+        "mermaid": 3
+      }
+    },
+    "docs/04-final-project/252-framework-skeleton-configuration-and-environments.md": {
+      "path": "docs/04-final-project/252-framework-skeleton-configuration-and-environments.md",
+      "link": "/docs/04-final-project/252-framework-skeleton-configuration-and-environments",
+      "title": "Каркас, configuration и environments",
+      "number": 252,
+      "part": "Финальный проект",
+      "section": "Финальный промышленный проект",
+      "sectionIndex": 0,
+      "chapterIndex": 2,
+      "wordCount": 2399,
+      "readingMinutes": 14,
+      "h2": 27,
+      "h3": 6,
+      "examples": 0,
+      "tasks": 14,
+      "solutions": 24,
+      "mermaid": 5,
+      "miniProjects": 0,
+      "previous": {
+        "title": "Архитектурные решения и план реализации",
+        "number": 251,
+        "link": "/docs/04-final-project/251-architecture-decisions-and-implementation-plan"
+      },
+      "next": null,
+      "sectionLink": {
+        "title": "Финальный промышленный проект",
+        "link": "/docs/04-final-project/250-project-requirements-and-readiness-criteria"
+      },
+      "progress": {
+        "label": "Финальный проект",
+        "current": 3,
+        "total": 3,
+        "bar": "████████████"
+      },
+      "related": [
+        {
+          "term": "Scope",
+          "title": "Scope",
+          "number": 7,
+          "link": "/docs/01-javascript/07-scope"
+        }
+      ],
+      "card": {
+        "chapterLabel": "Глава 252",
+        "title": "Каркас, configuration и environments",
+        "reading": 14,
+        "examples": 0,
+        "tasks": 14,
+        "solutions": 24,
+        "mermaid": 5
+      }
     }
   },
   "statistics": {
-    "chapters": 254,
-    "tasks": 2733,
-    "solutions": 5133,
+    "chapters": 256,
+    "tasks": 2759,
+    "solutions": 5181,
     "examples": 703,
-    "mermaid": 539,
+    "mermaid": 547,
     "miniProjects": 144,
-    "readingMinutes": 1033
+    "readingMinutes": 1073
   }
 }

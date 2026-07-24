@@ -386,3 +386,5 @@
 ## Раздел 1. Финальный промышленный проект
 
 * [Требования и критерии готовности проекта](docs/04-final-project/250-project-requirements-and-readiness-criteria.md)
+* [Архитектурные решения и план реализации](docs/04-final-project/251-architecture-decisions-and-implementation-plan.md)
+* [Каркас, configuration и environments](docs/04-final-project/252-framework-skeleton-configuration-and-environments.md)

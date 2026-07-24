@@ -1256,6 +1256,14 @@ export const sidebar = [
           {
             "text": "Глава 250. Требования и критерии готовности проекта",
             "link": "/docs/04-final-project/250-project-requirements-and-readiness-criteria"
+          },
+          {
+            "text": "Глава 251. Архитектурные решения и план реализации",
+            "link": "/docs/04-final-project/251-architecture-decisions-and-implementation-plan"
+          },
+          {
+            "text": "Глава 252. Каркас, configuration и environments",
+            "link": "/docs/04-final-project/252-framework-skeleton-configuration-and-environments"
           }
         ]
       }

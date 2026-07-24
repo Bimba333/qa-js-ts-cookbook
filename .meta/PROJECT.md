@@ -507,3 +507,45 @@ Codex не имеет права самостоятельно:
 * prerequisites удовлетворены;
 * roadmap drift не появился;
 * scope expansion не появился.
+
+---
+
+# 15. Educational SUT финального проекта
+
+Репозиторий предоставляет собственный учебный System Under Test для default
+пути финального проекта.
+
+Governance boundary:
+
+* domain: **Educational Work Items**;
+* application infrastructure размещается в отдельной границе `sut/`;
+* `examples/04-final-project/` остаётся Automation QA Framework читателя;
+* SUT и test framework используют один root package и один lockfile без
+  обязательного workspace;
+* SUT предоставляет реальные UI, REST, unary gRPC и PostgreSQL process
+  boundaries;
+* test framework обращается только к public transports и restricted database
+  verification boundary;
+* tests не импортируют внутренние модули SUT;
+* локальная воспроизводимость строится вокруг Docker Compose;
+* future CI integration обязана сохранять те же публичные contracts;
+* educational SUT не предназначен и не одобрен для production use.
+
+Ненумерованный milestone **SUT-0 — Educational SUT Infrastructure Milestone**
+является обязательной предпосылкой между главами 252 и 253. Его реализация
+выполняется по фазам и decision gates, зафиксированным в
+`.meta/ROADMAP.md` и `.meta/FINAL_PROJECT_SUT_SPEC.md`.
+
+SUT-0 предоставляет инфраструктуру, но не забирает teaching ownership:
+
+* глава 253 владеет UI Layer;
+* глава 254 владеет REST API Layer;
+* глава 255 владеет gRPC Layer;
+* глава 256 владеет Database Layer;
+* глава 257 владеет cross-layer scenarios;
+* глава 258 владеет diagnostics, parallel execution и CI;
+* глава 259 владеет final audit и scoring.
+
+Другой SUT может использоваться только через отдельно одобренный compatibility
+path. Default и единственный гарантированно поддерживаемый путь курса использует
+repository-owned Educational Work Items SUT.

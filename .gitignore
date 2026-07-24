@@ -1,6 +1,7 @@
 node_modules/
 
 dist/
+.sut-build/
 
 coverage/
 
@@ -11,5 +12,9 @@ blob-report/
 .vscode/settings.json
 
 .vitepress/.temp/
+
+examples/04-final-project/.env
+examples/04-final-project/.env.*
+!examples/04-final-project/.env.example
 
 .DS_Store
