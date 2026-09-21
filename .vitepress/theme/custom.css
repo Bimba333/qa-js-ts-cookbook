@@ -983,3 +983,182 @@
     padding: 16px;
   }
 }
+
+/* ============================================================
+   Проверяемые задачи
+   ============================================================ */
+
+.book-checked-tasks {
+  margin: 32px 0;
+}
+
+.code-task {
+  border: 1px solid var(--vp-c-divider);
+  border-radius: var(--book-radius);
+  padding: 18px 20px;
+  margin: 18px 0;
+  background: var(--vp-c-bg-soft);
+  border-left: 3px solid var(--vp-c-divider);
+}
+
+.code-task--solved { border-left-color: #16a34a; }
+.code-task--attempted { border-left-color: #d97706; }
+
+.code-task__header {
+  display: flex;
+  gap: 12px;
+  align-items: baseline;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.code-task__title { font-weight: 600; font-size: 17px; }
+
+.code-task__badges { display: flex; gap: 8px; }
+
+.code-task__badge {
+  font-size: 12px;
+  padding: 2px 8px;
+  border-radius: 999px;
+  background: var(--vp-c-default-soft);
+  color: var(--vp-c-text-2);
+  white-space: nowrap;
+}
+
+.code-task--solved .code-task__badge--status { background: rgba(22, 163, 74, 0.16); color: #16a34a; }
+.code-task--attempted .code-task__badge--status { background: rgba(217, 119, 6, 0.16); color: #d97706; }
+
+.code-task__prompt { margin: 10px 0 14px; }
+
+.code-task__editor {
+  width: 100%;
+  font-family: var(--vp-font-family-mono);
+  font-size: 13.5px;
+  line-height: 1.6;
+  padding: 12px 14px;
+  border-radius: var(--book-radius-sm);
+  border: 1px solid var(--vp-c-divider);
+  background: var(--vp-c-bg);
+  color: var(--vp-c-text-1);
+  resize: vertical;
+  tab-size: 2;
+}
+
+.code-task__actions { display: flex; gap: 10px; margin-top: 12px; flex-wrap: wrap; }
+
+.code-task__button {
+  font: inherit;
+  font-size: 14px;
+  padding: 7px 14px;
+  border-radius: var(--book-radius-sm);
+  border: 1px solid var(--vp-c-divider);
+  background: var(--vp-c-bg);
+  color: var(--vp-c-text-1);
+  cursor: pointer;
+}
+
+.code-task__button:hover:not(:disabled) { border-color: var(--vp-c-brand-1); }
+.code-task__button:disabled { opacity: 0.5; cursor: not-allowed; }
+
+.code-task__button--primary {
+  background: var(--vp-c-brand-1);
+  border-color: var(--vp-c-brand-1);
+  color: #fff;
+}
+
+.code-task__button--link {
+  border: none;
+  background: none;
+  color: var(--vp-c-brand-1);
+  padding-left: 0;
+}
+
+.code-task__hint-count {
+  display: inline-block;
+  margin-left: 6px;
+  font-size: 12px;
+  color: var(--vp-c-text-2);
+}
+
+.code-task__hints {
+  margin: 14px 0 0;
+  padding-left: 22px;
+  color: var(--vp-c-text-2);
+}
+
+.code-task__hints li { margin: 6px 0; }
+
+.code-task__fatal {
+  margin-top: 14px;
+  padding: 10px 12px;
+  border-radius: var(--book-radius-sm);
+  border: 1px solid #b42318;
+  background: rgba(180, 35, 24, 0.08);
+  color: #b42318;
+}
+
+.code-task__results { margin-top: 16px; }
+
+.code-task__summary { font-weight: 600; margin: 0 0 8px; }
+.code-task__summary--ok { color: #16a34a; }
+
+.code-task__results ul { list-style: none; padding: 0; margin: 0; }
+
+.code-task__results li {
+  display: grid;
+  grid-template-columns: 20px 1fr;
+  gap: 4px 8px;
+  padding: 6px 0;
+  border-top: 1px solid var(--vp-c-divider);
+}
+
+.code-task__mark { font-weight: 700; }
+.code-task__results .is-passed .code-task__mark { color: #16a34a; }
+.code-task__results .is-failed .code-task__mark { color: #b42318; }
+
+.code-task__check-message {
+  grid-column: 2;
+  font-family: var(--vp-font-family-mono);
+  font-size: 13px;
+  color: var(--vp-c-text-2);
+}
+
+.code-task__output,
+.code-task__solution-body { margin-top: 16px; }
+
+.code-task__output-title {
+  font-size: 13px;
+  color: var(--vp-c-text-2);
+  margin-bottom: 6px;
+}
+
+.code-task__output pre,
+.code-task__solution-body pre,
+.code-task__starter {
+  background: var(--book-console-bg);
+  color: var(--book-console-text);
+  padding: 12px 14px;
+  border-radius: var(--book-radius-sm);
+  overflow-x: auto;
+  margin: 0;
+}
+
+.code-task__solution { margin-top: 16px; }
+
+.code-task__solution-locked {
+  margin: 0;
+  font-size: 14px;
+  color: var(--vp-c-text-2);
+}
+
+.code-task__stand {
+  margin: 0 0 14px;
+  padding: 12px 14px;
+  border-radius: var(--book-radius-sm);
+  background: var(--vp-c-default-soft);
+}
+
+.code-task__stand p { margin: 6px 0 10px; }
+.code-task__stand pre { margin: 0; }
+
+.code-task__sandbox { display: none; }

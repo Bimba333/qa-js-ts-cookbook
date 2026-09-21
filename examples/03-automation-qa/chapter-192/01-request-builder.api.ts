@@ -1,41 +1,58 @@
-import { expect, test } from "@playwright/test";
-import { startLocalApi } from "../support/local-api.js";
+import { expect, test } from "../support/sut/fixtures.js";
+import type { WorkItemPriority } from "../support/sut/types.js";
 
-type TaskPayload = { title: string; completed: boolean };
+type WorkItemPayload = {
+  title: string;
+  description: string;
+  priority: WorkItemPriority;
+};
 
-class TaskBuilder {
-  private value: TaskPayload = { title: "Задача по умолчанию", completed: false };
+/**
+ * Builder задаёт разумные значения по умолчанию и позволяет менять только то,
+ * что важно для сценария. Тест перестаёт зависеть от полей, к которым он
+ * безразличен.
+ */
+class WorkItemBuilder {
+  private value: WorkItemPayload = {
+    title: "Задача по умолчанию",
+    description: "Описание по умолчанию",
+    priority: "MEDIUM",
+  };
 
   withTitle(title: string): this {
     this.value = { ...this.value, title };
     return this;
   }
 
-  completed(): this {
-    this.value = { ...this.value, completed: true };
+  withPriority(priority: WorkItemPriority): this {
+    this.value = { ...this.value, priority };
     return this;
   }
 
-  build(): TaskPayload {
+  /** Уникальность снимает конфликты между параллельными запусками. */
+  unique(marker: string): this {
+    return this.withTitle(`${this.value.title} ${marker}`);
+  }
+
+  build(): WorkItemPayload {
     return { ...this.value };
   }
 }
 
-test("строит данные и удаляет созданный ресурс", async ({ request }) => {
-  const api = await startLocalApi();
-  let taskId: string | undefined;
-  try {
-    const payload = new TaskBuilder().withTitle("Отчёт 192").completed().build();
-    const created = await request.post(`${api.baseURL}/tasks`, { data: payload });
-    expect(created.status()).toBe(201);
-    const location = created.headers().location;
-    expect(location).toMatch(/^\/tasks\/task-\d+$/);
-    if (location === undefined) throw new Error("Ответ создания не содержит Location");
-    taskId = location.slice("/tasks/".length);
-  } finally {
-    if (taskId !== undefined) {
-      await request.delete(`${api.baseURL}/tasks/${taskId}`);
-    }
-    await api.close();
-  }
+test("строит данные и убирает за собой", async ({ workItems }, testInfo) => {
+  const payload = new WorkItemBuilder()
+    .withTitle("Отчёт главы 192")
+    .withPriority("HIGH")
+    .unique(String(testInfo.testId))
+    .build();
+
+  const created = await workItems.createOrThrow(payload);
+
+  expect(created.title).toBe(payload.title);
+  expect(created.priority).toBe("HIGH");
+
+  // Очистка выполняется фикстурой в teardown, поэтому тест не обязан
+  // помнить про удаление даже при падении проверки выше.
+  const stored = await workItems.get(created.id);
+  expect(stored.status()).toBe(200);
 });

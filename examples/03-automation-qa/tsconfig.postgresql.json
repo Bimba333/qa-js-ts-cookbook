@@ -1,16 +1,24 @@
 {
   "compilerOptions": {
-    "lib": ["ESNext", "DOM"],
+    "lib": [
+      "ESNext",
+      "DOM"
+    ],
     "module": "NodeNext",
     "moduleResolution": "NodeNext",
     "noEmit": true,
     "strict": true,
     "target": "ESNext",
-    "types": ["node", "@playwright/test", "pg"]
+    "types": [
+      "node",
+      "@playwright/test",
+      "pg"
+    ]
   },
   "include": [
     "./playwright.postgresql.config.ts",
-    "./support/postgresql/**/*.ts",
+    "./support/sut/**/*.ts",
+    "../../sut/contracts/generated/grpc/**/*.ts",
     "./chapter-207/**/*.ts",
     "./chapter-208/**/*.ts",
     "./chapter-209/**/*.ts",

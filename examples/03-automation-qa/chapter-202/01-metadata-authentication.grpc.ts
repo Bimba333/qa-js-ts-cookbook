@@ -1,43 +1,84 @@
-import { Metadata, status } from "@grpc/grpc-js";
-import { expect, test } from "@playwright/test";
-import type { Task__Output } from "../generated/grpc/qa/tasks/v1/Task.js";
+import { status } from "@grpc/grpc-js";
+
+import { SUT_USERS } from "../support/sut/config.js";
+import { expect, test } from "../support/sut/fixtures.js";
 import {
   callUnary,
-  callUnaryWithMetadata,
-  createTaskServiceClient,
-  startLocalGrpcServer,
-} from "../support/grpc/local-grpc.js";
+  createWorkItemsClient,
+  deadlineAfter,
+  expectGrpcFailure,
+  metadataFor,
+  type WorkItem__Output,
+} from "../support/sut/grpc-client.js";
+import { issueToken } from "../support/sut/work-items-api.js";
 
-test("передаёт authorization и correlation id через metadata", async () => {
-  const server = await startLocalGrpcServer();
-  const client = createTaskServiceClient(server.endpoint);
-  const validMetadata = new Metadata();
-  validMetadata.set("authorization", "Bearer test-token");
-  validMetadata.set("x-correlation-id", "grpc-request-1");
+test("передаёт authorization и correlation id через metadata", async ({
+  request,
+  workItems,
+  testerToken,
+}) => {
+  const created = await workItems.createOrThrow({
+    title: "Authorized call",
+    description: "Проверка metadata",
+    priority: "LOW",
+  });
+
+  const client = createWorkItemsClient();
 
   try {
-    const valid = await callUnaryWithMetadata<Task__Output>((callback) =>
-      client.createAuthorizedTask({ title: "Authorized task" }, validMetadata, callback));
-    expect(valid.response.id).toBe("task-1");
-    expect(valid.initialMetadata.get("x-correlation-id")).toEqual(["grpc-request-1"]);
+    // Метаданные — это транспортный слой вызова: аутентификация и
+    // идентификатор запроса едут рядом с сообщением, а не внутри него.
+    const authorized = await callUnary<WorkItem__Output>((callback) =>
+      client.GetWorkItem(
+        { id: created.id },
+        metadataFor({
+          token: testerToken.accessToken,
+          correlationId: "grpc-request-1",
+        }),
+        deadlineAfter(5_000),
+        callback,
+      ),
+    );
+    expect(authorized.id).toBe(created.id);
 
-    await expect(callUnary<Task__Output>((callback) =>
-      client.createAuthorizedTask({ title: "Missing token" }, callback)))
-      .rejects.toMatchObject({ code: status.UNAUTHENTICATED });
+    // Без метаданных аутентификации вызов отклоняется.
+    const missing = await expectGrpcFailure(
+      callUnary((callback) =>
+        client.GetWorkItem({ id: created.id }, deadlineAfter(5_000), callback),
+      ),
+    );
+    expect(missing.code).toBe(status.UNAUTHENTICATED);
 
-    const invalidMetadata = new Metadata();
-    invalidMetadata.set("authorization", "Bearer invalid-token");
-    await expect(callUnary<Task__Output>((callback) =>
-      client.createAuthorizedTask({ title: "Invalid token" }, invalidMetadata, callback)))
-      .rejects.toMatchObject({ code: status.UNAUTHENTICATED });
+    const invalid = await expectGrpcFailure(
+      callUnary((callback) =>
+        client.GetWorkItem(
+          { id: created.id },
+          metadataFor({ token: "invalid-token-value-0000000000" }),
+          deadlineAfter(5_000),
+          callback,
+        ),
+      ),
+    );
+    expect(invalid.code).toBe(status.UNAUTHENTICATED);
 
-    const readOnlyMetadata = new Metadata();
-    readOnlyMetadata.set("authorization", "Bearer read-token");
-    await expect(callUnary<Task__Output>((callback) =>
-      client.createAuthorizedTask({ title: "Forbidden task" }, readOnlyMetadata, callback)))
-      .rejects.toMatchObject({ code: status.PERMISSION_DENIED });
+    // Роль viewer аутентифицирована, но изменять данные не может.
+    const viewer = await issueToken(request, SUT_USERS.viewer);
+    const forbidden = await expectGrpcFailure(
+      callUnary((callback) =>
+        client.TransitionWorkItem(
+          {
+            id: created.id,
+            targetStatus: "IN_PROGRESS",
+            expectedVersion: created.version,
+          },
+          metadataFor({ token: viewer.accessToken }),
+          deadlineAfter(5_000),
+          callback,
+        ),
+      ),
+    );
+    expect(forbidden.code).toBe(status.PERMISSION_DENIED);
   } finally {
     client.close();
-    await server.close();
   }
 });

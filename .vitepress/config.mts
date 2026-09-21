@@ -18,6 +18,7 @@ export default defineConfig({
     'practice/**',
     'solutions/**',
     'examples/**',
+    'sut/**',
     'playground/**',
     'scripts/**',
     'tests/**',

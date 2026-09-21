@@ -1,4 +1,10 @@
-name: educational-work-items-phase1
+name: educational-work-items
+
+# Учебный стенд целиком.
+#
+# Порядок запуска задан условиями зависимостей, а не ожиданием «на глаз»:
+# база должна стать healthy, миграции и seed — завершиться успешно, и только
+# потом стартует приложение.
 
 services:
   postgres:
@@ -25,6 +31,62 @@ services:
       retries: 30
       start_period: 5s
 
+  migrate:
+    build:
+      context: ..
+      dockerfile: sut/Dockerfile
+    image: educational-work-items-sut:local
+    restart: "no"
+    command: ["node", ".sut-build/src/database/migrate.js"]
+    environment: &database-environment
+      SUT_MODE: educational
+      SUT_DB_HOST: postgres
+      SUT_DB_PORT: "5432"
+      SUT_DB_NAME: educational_work_items
+    depends_on:
+      postgres:
+        condition: service_healthy
+
+  seed:
+    image: educational-work-items-sut:local
+    restart: "no"
+    command: ["node", ".sut-build/src/database/seed.js"]
+    environment: *database-environment
+    depends_on:
+      migrate:
+        condition: service_completed_successfully
+
+  sut-app:
+    image: educational-work-items-sut:local
+    restart: "no"
+    stop_grace_period: 10s
+    command: ["node", ".sut-build/src/main.js"]
+    environment:
+      <<: *database-environment
+      SUT_HTTP_HOST: 0.0.0.0
+      SUT_HTTP_PORT: "4310"
+      SUT_GRPC_HOST: 0.0.0.0
+      SUT_GRPC_PORT: "4311"
+    ports:
+      - "127.0.0.1:4310:4310"
+      - "127.0.0.1:4311:4311"
+    depends_on:
+      seed:
+        condition: service_completed_successfully
+    healthcheck:
+      # В slim-образе нет curl, поэтому проверка выполняется самим Node.
+      test:
+        [
+          "CMD",
+          "node",
+          "-e",
+          "fetch('http://127.0.0.1:4310/health/ready').then(r=>process.exit(r.ok?0:1)).catch(()=>process.exit(1))",
+        ]
+      interval: 3s
+      timeout: 5s
+      retries: 20
+      start_period: 5s
+
 volumes:
   postgres-data:
-    name: educational-work-items-phase1-postgres-data
+    name: educational-work-items-postgres-data

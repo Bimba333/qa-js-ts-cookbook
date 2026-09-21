@@ -39,6 +39,9 @@ Playwright загружает снимок при создании нового 
 
 ```text
 examples/03-automation-qa/chapter-178/auth.setup.ts
+```
+
+```text
 examples/03-automation-qa/chapter-178/01-authentication-state.ui.ts
 ```
 

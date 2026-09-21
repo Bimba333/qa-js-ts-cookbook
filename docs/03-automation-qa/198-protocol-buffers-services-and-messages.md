@@ -38,11 +38,14 @@ flowchart TD
 Кодировщик protobuf записывает номер поля вместе с типом представления и значением. Декодер сопоставляет номер с локальным описанием message. Неизвестные поля могут быть пропущены новым или старым участником, что поддерживает часть сценариев одновременной работы разных версий.
 
 ```text
-examples/03-automation-qa/proto/tasks.proto
+sut/contracts/proto/work_items.proto
+```
+
+```text
 examples/03-automation-qa/chapter-198/01-protobuf-contract.grpc.ts
 ```
 
-Пример читает локальный контракт и проверяет service, RPC signature и ключевые field numbers.
+Пример читает контракт учебного стенда и проверяет пакет с версией, service, RPC signature и ключевые field numbers.
 
 ## Главная ментальная модель
 

@@ -18,14 +18,29 @@ export function defaultMigrationDirectory(): string {
   return path.resolve(process.cwd(), "sut/migrations");
 }
 
+/**
+ * Каталог с fixtures существует только в рабочем дереве репозитория: в
+ * контейнере его нет. Отсутствующий разрешённый корень пропускается, иначе
+ * загрузка миграций падала бы там, где fixtures просто не нужны.
+ */
+async function resolveIfExists(candidate: string): Promise<string | null> {
+  try {
+    return await realpath(candidate);
+  } catch {
+    return null;
+  }
+}
+
 async function assertAllowedDirectory(directory: string): Promise<string> {
   const resolved = await realpath(directory);
-  const allowedRoots = [
-    await realpath(path.resolve(process.cwd(), "sut/migrations")),
-    await realpath(
-      path.resolve(process.cwd(), "sut/tests/fixtures/migrations"),
-    ),
-  ];
+  const allowedRoots = (
+    await Promise.all([
+      resolveIfExists(path.resolve(process.cwd(), "sut/migrations")),
+      resolveIfExists(
+        path.resolve(process.cwd(), "sut/tests/fixtures/migrations"),
+      ),
+    ])
+  ).filter((root): root is string => root !== null);
 
   if (
     !allowedRoots.some(

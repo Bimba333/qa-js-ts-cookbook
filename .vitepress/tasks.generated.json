@@ -1,0 +1,98 @@
+{
+  "01-javascript/07-scope": [
+    {
+      "id": "js-07-counter",
+      "title": "Счётчик на замыкании",
+      "difficulty": "easy",
+      "lang": "js",
+      "runner": "browser",
+      "prompt": "Напишите функцию `createCounter`, которая возвращает функцию-счётчик. Каждый вызов счётчика возвращает число на единицу больше предыдущего, начиная с единицы. Два независимо созданных счётчика не должны влиять друг на друга.",
+      "starter": "function createCounter() {\n  // Верните функцию, которая при каждом вызове отдаёт следующее число.\n}",
+      "hints": [
+        "Переменная, объявленная внутри createCounter, живёт дольше самого вызова, если на неё ссылается возвращённая функция.",
+        "Счётчик нужно хранить в scope функции createCounter, а не в global scope.",
+        "Возвращаемая функция может увеличивать переменную и сразу возвращать новое значение."
+      ],
+      "tests": [
+        {
+          "name": "первый вызов возвращает 1",
+          "code": "const next = createCounter();\nexpect(next()).toBe(1);"
+        },
+        {
+          "name": "последовательные вызовы увеличивают значение",
+          "code": "const next = createCounter();\nnext();\nnext();\nexpect(next()).toBe(3);"
+        },
+        {
+          "name": "счётчики независимы друг от друга",
+          "code": "const first = createCounter();\nconst second = createCounter();\nfirst();\nfirst();\nexpect(second()).toBe(1);"
+        },
+        {
+          "name": "счётчик не создаёт глобальную переменную",
+          "code": "const next = createCounter();\nnext();\nexpect(typeof globalThis.count).toBe('undefined');"
+        }
+      ],
+      "solution": "function createCounter() {\n  let count = 0;\n\n  return function next() {\n    count += 1;\n    return count;\n  };\n}",
+      "chapter": "01-javascript/07-scope"
+    },
+    {
+      "id": "js-07-shadowing",
+      "title": "Затенение переменной",
+      "difficulty": "easy",
+      "lang": "js",
+      "runner": "browser",
+      "prompt": "Функция `describeScope` должна вернуть массив из трёх строк: значение `level` в global scope, в function scope и в block scope. Объявите переменные так, чтобы внутренние scope затеняли внешние, и соберите значения в правильном порядке.",
+      "starter": "const level = 'global';\n\nfunction describeScope() {\n  // Объявите level со значением 'function',\n  // а внутри блока — со значением 'block'.\n  // Верните [значение global, значение function, значение block].\n}",
+      "hints": [
+        "Значение внешнего scope нужно сохранить до того, как его затенит внутреннее объявление.",
+        "Внутри блока { } объявление через let создаёт отдельную переменную.",
+        "Соберите значения по мере того, как они становятся видимыми: сначала внешнее, потом своё."
+      ],
+      "tests": [
+        {
+          "name": "возвращает три значения по порядку",
+          "code": "expect(describeScope()).toEqual(['global', 'function', 'block']);"
+        },
+        {
+          "name": "внешняя переменная не изменилась",
+          "code": "describeScope();\nexpect(level).toBe('global');"
+        }
+      ],
+      "solution": "const level = 'global';\n\nfunction describeScope() {\n  const outer = level;\n  const level2 = 'function';\n  let blockValue;\n\n  {\n    const level = 'block';\n    blockValue = level;\n  }\n\n  return [outer, level2, blockValue];\n}",
+      "chapter": "01-javascript/07-scope"
+    },
+    {
+      "id": "js-07-private-state",
+      "title": "Приватное состояние без глобальных переменных",
+      "difficulty": "medium",
+      "lang": "js",
+      "runner": "browser",
+      "prompt": "Напишите функцию `createStore`, которая возвращает объект с методами `add(item)`, `all()` и `size()`. Список элементов должен быть недоступен снаружи: изменить его можно только через `add`, а `all()` должен возвращать копию.",
+      "starter": "function createStore() {\n  // Верните объект с методами add, all и size.\n}",
+      "hints": [
+        "Массив, объявленный внутри createStore, виден только методам, созданным в том же scope.",
+        "Если all() вернёт сам массив, вызывающий код сможет изменить внутреннее состояние.",
+        "Копию массива можно получить через срез или расширение."
+      ],
+      "tests": [
+        {
+          "name": "новый store пуст",
+          "code": "const store = createStore();\nexpect(store.size()).toBe(0);\nexpect(store.all()).toEqual([]);"
+        },
+        {
+          "name": "add добавляет элементы по порядку",
+          "code": "const store = createStore();\nstore.add('a');\nstore.add('b');\nexpect(store.all()).toEqual(['a', 'b']);\nexpect(store.size()).toBe(2);"
+        },
+        {
+          "name": "all возвращает копию, а не внутренний массив",
+          "code": "const store = createStore();\nstore.add('a');\nconst items = store.all();\nitems.push('подделка');\nexpect(store.size()).toBe(1);"
+        },
+        {
+          "name": "stores не делят состояние",
+          "code": "const first = createStore();\nconst second = createStore();\nfirst.add('a');\nexpect(second.size()).toBe(0);"
+        }
+      ],
+      "solution": "function createStore() {\n  const items = [];\n\n  return {\n    add(item) {\n      items.push(item);\n    },\n    all() {\n      return [...items];\n    },\n    size() {\n      return items.length;\n    }\n  };\n}",
+      "chapter": "01-javascript/07-scope"
+    }
+  ]
+}

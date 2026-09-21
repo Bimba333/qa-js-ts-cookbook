@@ -1,0 +1,72 @@
+syntax = "proto3";
+
+package qa.educational.workitems.v1;
+
+// Учебный контракт Work Items.
+//
+// Timestamps передаются строкой в формате ISO 8601 (UTC), чтобы контракт
+// читался без well-known types и совпадал по форме с REST-ответом.
+
+enum WorkItemStatus {
+  WORK_ITEM_STATUS_UNSPECIFIED = 0;
+  NEW = 1;
+  IN_PROGRESS = 2;
+  DONE = 3;
+  CANCELLED = 4;
+}
+
+enum WorkItemPriority {
+  WORK_ITEM_PRIORITY_UNSPECIFIED = 0;
+  LOW = 1;
+  MEDIUM = 2;
+  HIGH = 3;
+}
+
+message WorkItem {
+  string id = 1;
+  string title = 2;
+  string description = 3;
+  WorkItemStatus status = 4;
+  WorkItemPriority priority = 5;
+  string owner_id = 6;
+  string created_by = 7;
+  string test_run_id = 8;
+  string creator_test_id = 9;
+  string created_at = 10;
+  string updated_at = 11;
+  int32 version = 12;
+}
+
+message GetWorkItemRequest {
+  string id = 1;
+}
+
+message SearchWorkItemsRequest {
+  WorkItemStatus status = 1;
+  WorkItemPriority priority = 2;
+  string owner_id = 3;
+  int32 limit = 4;
+  int32 offset = 5;
+}
+
+message SearchWorkItemsResponse {
+  repeated WorkItem items = 1;
+  int32 total = 2;
+}
+
+message TransitionWorkItemRequest {
+  string id = 1;
+  WorkItemStatus target_status = 2;
+  int32 expected_version = 3;
+}
+
+message TransitionWorkItemResponse {
+  WorkItem item = 1;
+}
+
+service WorkItemService {
+  rpc GetWorkItem(GetWorkItemRequest) returns (WorkItem);
+  rpc SearchWorkItems(SearchWorkItemsRequest) returns (SearchWorkItemsResponse);
+  rpc TransitionWorkItem(TransitionWorkItemRequest)
+      returns (TransitionWorkItemResponse);
+}

@@ -1,12 +1,12 @@
 import { createServer, type Server } from "node:http";
 
-import type { Phase1Readiness } from "./readiness.js";
+import type { SutReadiness } from "./readiness.js";
 
 export type HealthServerOptions = Readonly<{
   host?: string;
   port?: number;
   readinessTimeoutMs?: number;
-  readiness: () => Promise<Phase1Readiness>;
+  readiness: () => Promise<SutReadiness>;
 }>;
 
 export class HealthServer {
@@ -36,7 +36,7 @@ export class HealthServer {
         response.end(
           JSON.stringify({
             status: "PASS",
-            capability: "phase1-process-liveness",
+            capability: "process-liveness",
           }),
         );
         return;
@@ -61,7 +61,7 @@ export class HealthServer {
           response.end(
             JSON.stringify({
               status: "BLOCKED",
-              capability: "phase1-foundation",
+              capability: "sut-foundation",
               checks: [],
             }),
           );
@@ -75,7 +75,7 @@ export class HealthServer {
       response.end(
         JSON.stringify({
           status: "NOT_FOUND",
-          capability: "phase1-health-only",
+          capability: "health-only",
         }),
       );
     });

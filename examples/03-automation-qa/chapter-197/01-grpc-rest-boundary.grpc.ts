@@ -1,21 +1,22 @@
-import { expect, test } from "@playwright/test";
-import {
-  callUnary,
-  createTaskServiceClient,
-  startLocalGrpcServer,
-} from "../support/grpc/local-grpc.js";
+import { expect, test } from "../support/sut/fixtures.js";
 
-test("вызывает RPC method без подмены его HTTP-проверкой", async () => {
-  const server = await startLocalGrpcServer();
-  const client = createTaskServiceClient(server.endpoint);
+test("вызывает RPC method без подмены его HTTP-проверкой", async ({
+  workItems,
+  workItemsGrpc,
+}) => {
+  // Подготовка идёт через REST: создание записи — операция HTTP-границы.
+  const created = await workItems.createOrThrow({
+    title: "Проверить gRPC boundary",
+    description: "Одна предметная область, два транспорта",
+    priority: "MEDIUM",
+  });
 
-  try {
-    const task = await callUnary((callback) =>
-      client.createTask({ title: "Проверить gRPC boundary" }, callback));
+  // Проверка идёт через gRPC: вызывается именно RPC-метод, а не HTTP-эндпоинт.
+  // Успешный REST-ответ не доказывает, что работает gRPC-граница.
+  const received = await workItemsGrpc.getWorkItem(created.id);
 
-    expect(task).toMatchObject({ id: "task-1", title: "Проверить gRPC boundary" });
-  } finally {
-    client.close();
-    await server.close();
-  }
+  expect(received.id).toBe(created.id);
+  expect(received.title).toBe("Проверить gRPC boundary");
+  expect(received.status).toBe("NEW");
+  expect(received.version).toBe(1);
 });

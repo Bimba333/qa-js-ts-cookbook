@@ -1,36 +1,52 @@
 import { expect, test } from "@playwright/test";
-import { withIsolatedClient } from "../support/postgresql/postgresql-test-db.js";
+
+import { sandboxName, withSandboxClient } from "../support/sut/database.js";
 
 test("откатывает изменения внутри границы транзакции", async () => {
-  await withIsolatedClient(async ({ client }) => {
-    await client.query("BEGIN");
+  const table = sandboxName("tx_items");
+
+  await withSandboxClient(async (client) => {
+    await client.query(
+      `CREATE TABLE ${table} (
+         id text PRIMARY KEY,
+         title text NOT NULL
+       )`,
+    );
+
     try {
-      await client.query(
-        "INSERT INTO tasks (id, title, priority) VALUES ($1, $2, $3)",
-        ["task-212", "Rollback task", "high"],
-      );
-      let constraintErrorCode: unknown;
+      await client.query("BEGIN");
       try {
         await client.query(
-          "INSERT INTO tasks (id, title, priority) VALUES ($1, $2, $3)",
-          ["task-212", "Duplicate task", "low"],
+          `INSERT INTO ${table} (id, title) VALUES ($1, $2)`,
+          ["item-212", "Rollback item"],
         );
-      } catch (error) {
-        constraintErrorCode = error instanceof Error && "code" in error
-          ? error.code
-          : undefined;
+
+        // Нарушение уникальности первичного ключа.
+        await expect(
+          client.query(
+            `INSERT INTO ${table} (id, title) VALUES ($1, $2)`,
+            ["item-212", "Duplicate item"],
+          ),
+        ).rejects.toMatchObject({ code: "23505" });
+
+        // После ошибки транзакция переходит в состояние aborted:
+        // любой следующий запрос отклоняется до конца транзакции.
+        await expect(client.query("SELECT 1")).rejects.toMatchObject({
+          code: "25P02",
+        });
+      } finally {
+        await client.query("ROLLBACK");
       }
 
-      expect(constraintErrorCode).toBe("23505");
-      await expect(client.query("SELECT 1")).rejects.toMatchObject({ code: "25P02" });
+      // Откат вернул состояние к началу транзакции: успешная вставка
+      // тоже отменена, потому что границей владеет транзакция, а не запрос.
+      const remaining = await client.query(
+        `SELECT id FROM ${table} WHERE id = $1`,
+        ["item-212"],
+      );
+      expect(remaining.rows).toEqual([]);
     } finally {
-      await client.query("ROLLBACK");
+      await client.query(`DROP TABLE IF EXISTS ${table}`);
     }
-
-    const result = await client.query(
-      "SELECT id FROM tasks WHERE id = $1",
-      ["task-212"],
-    );
-    expect(result.rows).toEqual([]);
   });
 });

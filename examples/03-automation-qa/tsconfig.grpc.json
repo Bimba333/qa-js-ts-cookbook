@@ -1,17 +1,23 @@
 {
   "compilerOptions": {
-    "lib": ["ESNext", "DOM"],
+    "lib": [
+      "ESNext",
+      "DOM"
+    ],
     "module": "NodeNext",
     "moduleResolution": "NodeNext",
     "noEmit": true,
     "strict": true,
     "target": "ESNext",
-    "types": ["node", "@playwright/test"]
+    "types": [
+      "node",
+      "@playwright/test"
+    ]
   },
   "include": [
     "./playwright.grpc.config.ts",
-    "./support/grpc/**/*.ts",
-    "./generated/grpc/**/*.ts",
+    "./support/sut/**/*.ts",
+    "../../sut/contracts/generated/grpc/**/*.ts",
     "./chapter-197/**/*.ts",
     "./chapter-198/**/*.ts",
     "./chapter-199/**/*.ts",

@@ -1,39 +1,66 @@
 import { expect, test } from "@playwright/test";
-import { withIsolatedClient } from "../support/postgresql/postgresql-test-db.js";
-import { TasksRepository } from "../support/postgresql/tasks-repository.js";
+
+import { sandboxName, withSandboxClient } from "../support/sut/database.js";
 
 test("очищает принадлежащие тесту данные в порядке зависимостей", async () => {
-  await withIsolatedClient(async ({ client }) => {
-    const tasks = new TasksRepository(client);
-    await tasks.createOwner("owner-211", "QA Engineer");
-    await tasks.createTask({
-      id: "task-211",
-      title: "Owned test data",
-      priority: "low",
-      ownerId: "owner-211",
-    });
+  const owners = sandboxName("owners");
+  const items = sandboxName("items");
 
-    expect(await tasks.deleteTask("task-211")).toBe(1);
-    expect(await tasks.deleteTask("task-211")).toBe(0);
-
-    const ownerDelete = await client.query(
-      "DELETE FROM owners WHERE id = $1",
-      ["owner-211"],
+  await withSandboxClient(async (client) => {
+    // Учебная песочница: здесь тест владеет своими таблицами. Доменные
+    // таблицы стенда остаются доступны только для чтения.
+    await client.query(
+      `CREATE TABLE ${owners} (
+         id text PRIMARY KEY,
+         name text NOT NULL
+       )`,
     );
-    expect(ownerDelete.rowCount).toBe(1);
-  });
-
-  let failedSchema: string | undefined;
-  await expect(withIsolatedClient(async ({ schema }) => {
-    failedSchema = schema;
-    throw new Error("controlled scenario failure");
-  })).rejects.toThrow("controlled scenario failure");
-
-  await withIsolatedClient(async ({ client }) => {
-    const leakedSchema = await client.query<{ schema_name: string }>(
-      "SELECT nspname AS schema_name FROM pg_namespace WHERE nspname = $1",
-      [failedSchema],
+    await client.query(
+      `CREATE TABLE ${items} (
+         id text PRIMARY KEY,
+         title text NOT NULL,
+         owner_id text NOT NULL REFERENCES ${owners}(id)
+       )`,
     );
-    expect(leakedSchema.rows).toEqual([]);
+
+    try {
+      await client.query(
+        `INSERT INTO ${owners} (id, name) VALUES ($1, $2)`,
+        ["owner-211", "QA Engineer"],
+      );
+      await client.query(
+        `INSERT INTO ${items} (id, title, owner_id) VALUES ($1, $2, $3)`,
+        ["item-211", "Owned test data", "owner-211"],
+      );
+
+      // Удаление владельца раньше зависимой записи нарушает foreign key.
+      await expect(
+        client.query(`DELETE FROM ${owners} WHERE id = $1`, ["owner-211"]),
+      ).rejects.toMatchObject({ code: "23503" });
+
+      // Правильный порядок: сначала зависимые данные, потом владелец.
+      const firstDelete = await client.query(
+        `DELETE FROM ${items} WHERE id = $1`,
+        ["item-211"],
+      );
+      const repeatedDelete = await client.query(
+        `DELETE FROM ${items} WHERE id = $1`,
+        ["item-211"],
+      );
+
+      expect(firstDelete.rowCount).toBe(1);
+      // Повторная очистка безопасна: удалять нечего, ошибки нет.
+      expect(repeatedDelete.rowCount).toBe(0);
+
+      const ownerDelete = await client.query(
+        `DELETE FROM ${owners} WHERE id = $1`,
+        ["owner-211"],
+      );
+      expect(ownerDelete.rowCount).toBe(1);
+    } finally {
+      // Таблицы удаляются в обратном порядке зависимостей.
+      await client.query(`DROP TABLE IF EXISTS ${items}`);
+      await client.query(`DROP TABLE IF EXISTS ${owners}`);
+    }
   });
 });

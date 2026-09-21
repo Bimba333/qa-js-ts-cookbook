@@ -54,7 +54,7 @@ Unary call — один завершённый обмен: request привод�
 - Create RPC возвращает созданное message.
 - Get RPC возвращает message или `NOT_FOUND`.
 - Обёртка Promise сохраняет `ServiceError`.
-- `finally` закрывает client и локальный server.
+- `finally` закрывает client.
 
 ## Automation QA
 

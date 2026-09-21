@@ -1,39 +1,37 @@
-import { expect, test } from "@playwright/test";
-import { startLocalApi } from "../support/local-api.js";
+import { expect, test } from "../support/sut/fixtures.js";
+import { isWorkItem } from "../support/sut/types.js";
 
-test("разделяет HTTP-контракт и бизнес-результат", async ({ request }) => {
-  const api = await startLocalApi();
-  try {
-    const response = await request.post(`${api.baseURL}/tasks`, {
-      data: { title: "Критический отчёт", completed: false },
-    });
-    expect(response.status(), "ресурс должен быть создан").toBe(201);
-    const body: unknown = await response.json();
-    if (
-      typeof body !== "object"
-      || body === null
-      || !("id" in body)
-      || typeof body.id !== "string"
-      || !("title" in body)
-      || typeof body.title !== "string"
-      || !("completed" in body)
-      || typeof body.completed !== "boolean"
-    ) {
-      throw new Error("Ответ создания не соответствует обязательной форме");
-    }
+test("разделяет HTTP-контракт и бизнес-результат", async ({ workItems }) => {
+  const response = await workItems.create({
+    title: "Критический отчёт",
+    description: "Запись для проверки бизнес-правил",
+    priority: "HIGH",
+  });
 
-    expect(response.headers().location).toBe(`/tasks/${body.id}`);
-    expect(body.title, "API должен сохранить название без изменения").toBe("Критический отчёт");
-    expect(body.completed).toBe(false);
+  // HTTP-контракт: транспорт отработал так, как обещано.
+  expect(response.status(), "ресурс должен быть создан").toBe(201);
 
-    const stored = await request.get(`${api.baseURL}/tasks/${body.id}`);
-    expect(stored.status()).toBe(200);
-    expect(await stored.json()).toMatchObject({
-      id: body.id,
-      title: "Критический отчёт",
-      completed: false,
-    });
-  } finally {
-    await api.close();
+  const body: unknown = await response.json();
+  if (!isWorkItem(body)) {
+    throw new Error("Ответ создания не соответствует обязательной форме");
   }
+
+  // Бизнес-результат: сервер сам назначил начальный статус и версию,
+  // а переданные значения сохранил без изменения.
+  expect(body.title, "API должен сохранить название без изменения").toBe(
+    "Критический отчёт",
+  );
+  expect(body.priority).toBe("HIGH");
+  expect(body.status, "новая запись начинает жизненный цикл в NEW").toBe("NEW");
+  expect(body.version, "первая версия записи равна единице").toBe(1);
+
+  // Состояние действительно сохранено, а не только отражено в ответе.
+  const stored = await workItems.get(body.id);
+  expect(stored.status()).toBe(200);
+  expect(await stored.json()).toMatchObject({
+    id: body.id,
+    title: "Критический отчёт",
+    status: "NEW",
+    version: 1,
+  });
 });

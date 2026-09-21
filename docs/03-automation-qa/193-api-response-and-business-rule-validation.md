@@ -40,7 +40,7 @@ examples/03-automation-qa/chapter-193/01-response-validation.api.ts
 
 ```ts
 expect(response.status(), "ресурс должен быть создан").toBe(201);
-expect(response.headers().location).toBe(`/tasks/${body.id}`);
+expect(body.status, "новая запись начинает жизненный цикл в NEW").toBe("NEW");
 expect(body.title, "название должно сохраниться").toBe(expectedTitle);
 ```
 

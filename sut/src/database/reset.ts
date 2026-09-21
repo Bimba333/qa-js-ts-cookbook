@@ -10,6 +10,8 @@ try {
   logEvent("reset.completed", {
     removedWorkItems: result.removedWorkItems,
     removedUsers: result.removedUsers,
+    removedTestRuns: result.removedTestRuns,
+    removedAuditEvents: result.removedAuditEvents,
   });
 } catch (error) {
   logEvent("reset.failed", {

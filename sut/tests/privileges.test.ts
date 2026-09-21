@@ -2,13 +2,13 @@ import assert from "node:assert/strict";
 import { randomUUID } from "node:crypto";
 import test from "node:test";
 
-import { TESTER_USER_ID } from "../src/database/seed-runner.js";
+import { SEED_USERS, TESTER_USER_ID } from "../src/database/seed-runner.js";
 import { withRoleClient } from "./support/database.js";
 
 test("read-only role может читать, но не изменять данные", async () => {
   await withRoleClient("reader", async (client) => {
     const result = await client.query("SELECT id FROM users ORDER BY id");
-    assert.equal(result.rowCount, 2);
+    assert.equal(result.rowCount, SEED_USERS.length);
 
     await assert.rejects(
       client.query(
@@ -40,8 +40,14 @@ test("read-only role может читать, но не изменять дан�
 
 test("application role имеет CRUD только для Work Items", async () => {
   const id = randomUUID();
+  const testRunId = randomUUID();
 
   await withRoleClient("application", async (client) => {
+    // Начиная с миграции 004 запись ссылается на существующий test run.
+    await client.query(
+      "INSERT INTO test_runs (id, principal_id, source) VALUES ($1, $2, 'rest')",
+      [testRunId, TESTER_USER_ID],
+    );
     await client.query(
       `INSERT INTO work_items (
          id, title, description, status, priority, owner_id, created_by,
@@ -49,7 +55,7 @@ test("application role имеет CRUD только для Work Items", async ()
        )
        VALUES ($1, 'App role', 'Проверка минимальных прав', 'NEW', 'MEDIUM',
                $2, $2, $3, 'privilege-test')`,
-      [id, TESTER_USER_ID, randomUUID()],
+      [id, TESTER_USER_ID, testRunId],
     );
     await client.query(
       "UPDATE work_items SET status = 'IN_PROGRESS', version = version + 1 WHERE id = $1",
@@ -64,12 +70,30 @@ test("application role имеет CRUD только для Work Items", async ()
       ),
       /permission denied/,
     );
+    // Миграция 007 намеренно расширила чтение: приложение проверяет пароль
+    // при логине и отличает seed-строку до попытки записи. Права остались
+    // колоночными — расширено чтение, а не запись.
+    const credentials = await client.query(
+      "SELECT password_salt, password_hash, is_seed FROM users WHERE id = $1",
+      [TESTER_USER_ID],
+    );
+    assert.equal(credentials.rowCount, 1);
+
+    const seedMarker = await client.query(
+      "SELECT is_seed FROM work_items WHERE is_seed LIMIT 1",
+    );
+    assert.equal(seedMarker.rowCount, 1);
+
+    // Записывать эти колонки приложение по-прежнему не может.
     await assert.rejects(
-      client.query("SELECT is_seed FROM work_items LIMIT 1"),
+      client.query(
+        "UPDATE users SET password_hash = 'x' WHERE id = $1",
+        [TESTER_USER_ID],
+      ),
       /permission denied/,
     );
     await assert.rejects(
-      client.query("SELECT password_salt FROM users LIMIT 1"),
+      client.query("UPDATE work_items SET owner_id = $1", [TESTER_USER_ID]),
       /permission denied/,
     );
     await assert.rejects(

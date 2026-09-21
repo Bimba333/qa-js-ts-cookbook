@@ -6,8 +6,8 @@ try {
   logEvent("seed.started");
   const result = await applySeed(loadDatabaseConfig("migration"));
   logEvent("seed.completed", {
-    requiredUsers: result.requiredUsers,
-    totalSeedUsers: result.totalSeedUsers,
+    seedUsers: result.seedUsers,
+    seedWorkItems: result.seedWorkItems,
   });
 } catch (error) {
   logEvent("seed.failed", {

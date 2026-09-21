@@ -1,27 +1,47 @@
-import { expect, test } from "@playwright/test";
-import type { CreateTaskRequest } from "../generated/grpc/qa/tasks/v1/CreateTaskRequest.js";
-import type { Task__Output } from "../generated/grpc/qa/tasks/v1/Task.js";
+import { expect, test } from "../support/sut/fixtures.js";
 import {
   callUnary,
-  createTaskServiceClient,
-  startLocalGrpcServer,
-} from "../support/grpc/local-grpc.js";
+  createWorkItemsClient,
+  deadlineAfter,
+  metadataFor,
+  type GetWorkItemRequest,
+  type WorkItem__Output,
+} from "../support/sut/grpc-client.js";
 
-test("создаёт client из сгенерированного service API", async () => {
-  const server = await startLocalGrpcServer();
-  const client = createTaskServiceClient(server.endpoint);
-  const request: CreateTaskRequest = { title: "Generated client" };
+test("создаёт client из сгенерированного service API", async ({
+  workItems,
+  testerToken,
+}) => {
+  const created = await workItems.createOrThrow({
+    title: "Generated client",
+    description: "Проверка сгенерированного клиента",
+    priority: "LOW",
+  });
+
+  // Runtime stub собирается из .proto, а типы приходят из генератора.
+  // Ошибка в имени поля станет ошибкой компиляции, а не отказом в рантайме.
+  const client = createWorkItemsClient();
+  const request: GetWorkItemRequest = { id: created.id };
 
   try {
     await new Promise<void>((resolve, reject) => {
-      client.waitForReady(Date.now() + 1_000, (error) =>
-        error === undefined ? resolve() : reject(error));
+      client.waitForReady(Date.now() + 2_000, (error) =>
+        error === undefined ? resolve() : reject(error),
+      );
     });
 
-    const task = await callUnary<Task__Output>((callback) => client.createTask(request, callback));
-    expect(task.id).toBe("task-1");
+    const item = await callUnary<WorkItem__Output>((callback) =>
+      client.GetWorkItem(
+        request,
+        metadataFor({ token: testerToken.accessToken }),
+        deadlineAfter(5_000),
+        callback,
+      ),
+    );
+
+    expect(item.id).toBe(created.id);
+    expect(item.title).toBe("Generated client");
   } finally {
     client.close();
-    await server.close();
   }
 });

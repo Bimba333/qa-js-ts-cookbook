@@ -1,14 +1,26 @@
 import { expect, test } from "@playwright/test";
-import { readFile } from "node:fs/promises";
-import { fileURLToPath } from "node:url";
+
+import { readWorkItemsContract } from "../support/sut/contract.js";
 
 test("читает service, rpc и номера полей из proto-контракта", async () => {
-  const protoPath = fileURLToPath(new URL("../proto/tasks.proto", import.meta.url));
-  const contract = await readFile(protoPath, "utf8");
+  const contract = await readWorkItemsContract();
 
-  expect(contract).toContain("service TaskService");
-  expect(contract).toContain("rpc CreateTask(CreateTaskRequest) returns (Task)");
+  // Пакет с версией: несовместимое изменение потребует новой версии,
+  // а не тихой правки существующей.
+  expect(contract).toContain("package qa.educational.workitems.v1;");
+
+  expect(contract).toContain("service WorkItemService");
+  expect(contract).toContain(
+    "rpc GetWorkItem(GetWorkItemRequest) returns (WorkItem);",
+  );
+
+  // Номера полей — часть контракта на уровне байтов. Имя поля можно изменить,
+  // номер — нельзя: по нему стороны и находят значение.
   expect(contract).toMatch(/string id = 1;/);
   expect(contract).toMatch(/string title = 2;/);
-  expect(contract).toMatch(/repeated string labels = 4;/);
+  expect(contract).toMatch(/WorkItemStatus status = 4;/);
+  expect(contract).toMatch(/int32 version = 12;/);
+
+  // Нулевое значение enum зарезервировано за «не задано».
+  expect(contract).toContain("WORK_ITEM_STATUS_UNSPECIFIED = 0;");
 });

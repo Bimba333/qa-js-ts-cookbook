@@ -1,32 +1,30 @@
-import { expect, test as base } from "@playwright/test";
-import type { TasksGrpcClient } from "../support/grpc/tasks-grpc-client.js";
-import {
-  createTaskServiceClient,
-  startLocalGrpcServer,
-} from "../support/grpc/local-grpc.js";
-import { TasksGrpcClient as TasksClient } from "../support/grpc/tasks-grpc-client.js";
+import { expect, test } from "../support/sut/fixtures.js";
 
-type GrpcFixtures = {
-  tasksGrpc: TasksGrpcClient;
-};
+/**
+ * Фикстура `workItemsGrpc` отдаёт клиент предметной области.
+ *
+ * Тест не создаёт соединение, не собирает metadata и не задаёт deadline —
+ * всё это принадлежит адаптеру. Сценарий остаётся на языке домена, а смена
+ * транспорта не переписывает тесты.
+ */
+test("предоставляет domain client через fixture", async ({
+  workItems,
+  workItemsGrpc,
+}) => {
+  const created = await workItems.createOrThrow({
+    title: "Framework boundary",
+    description: "Клиент домена поверх сгенерированного stub",
+    priority: "MEDIUM",
+  });
 
-const test = base.extend<GrpcFixtures>({
-  tasksGrpc: async ({}, use) => {
-    const server = await startLocalGrpcServer();
-    const rawClient = createTaskServiceClient(server.endpoint);
+  const received = await workItemsGrpc.getWorkItem(created.id);
+  expect(received.id).toBe(created.id);
 
-    try {
-      await use(new TasksClient(rawClient));
-    } finally {
-      rawClient.close();
-      await server.close();
-    }
-  },
-});
+  const transitioned = await workItemsGrpc.transitionWorkItem({
+    id: created.id,
+    targetStatus: "CANCELLED",
+    expectedVersion: created.version,
+  });
 
-test("предоставляет domain client через fixture", async ({ tasksGrpc }) => {
-  const created = await tasksGrpc.create({ title: "Framework boundary" });
-  const received = await tasksGrpc.get(created.id);
-
-  expect(received).toEqual(created);
+  expect(transitioned.item?.status).toBe("CANCELLED");
 });

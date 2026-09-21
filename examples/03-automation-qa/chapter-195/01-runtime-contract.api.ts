@@ -1,32 +1,28 @@
-import { expect, test } from "@playwright/test";
-import { startLocalApi } from "../support/local-api.js";
+import { expect, test } from "../support/sut/fixtures.js";
+import { isApiError, isWorkItem } from "../support/sut/types.js";
 
-type Profile = { id: string; active: boolean };
+test("проверяет внешний JSON во время выполнения", async ({ workItems }) => {
+  const created = await workItems.createOrThrow({
+    title: "Запись для проверки контракта",
+    description: "Ответ проверяется guard-функцией",
+    priority: "LOW",
+  });
 
-const isProfile = (value: unknown): value is Profile => {
-  if (typeof value !== "object" || value === null) return false;
-  return "id" in value
-    && typeof value.id === "string"
-    && "active" in value
-    && typeof value.active === "boolean";
-};
+  const success: unknown = await (await workItems.get(created.id)).json();
 
-test("проверяет внешний JSON во время выполнения", async ({ request }) => {
-  const api = await startLocalApi();
-  try {
-    const response = await request.get(`${api.baseURL}/contracts/profile`);
-    const body: unknown = await response.json();
+  expect(isWorkItem(success), "успешный ответ обязан пройти guard").toBe(true);
+  expect(isApiError(success), "успешный ответ не является ошибкой").toBe(false);
 
-    expect(isProfile(body), "ответ должен соответствовать контракту Profile").toBe(true);
-    if (!isProfile(body)) throw new Error("Некорректный контракт Profile");
-    expect(body.active).toBe(true);
+  // Ответ с ошибкой имеет другую форму. Тип в TypeScript исчезает после
+  // компиляции, поэтому отличить их может только проверка во время выполнения.
+  const absentId = "00000000-0000-4000-8000-000000000000";
+  const failure: unknown = await (await workItems.get(absentId)).json();
 
-    const invalidResponse = await request.get(`${api.baseURL}/contracts/profile`, {
-      params: { variant: "invalid" },
-    });
-    const invalidBody: unknown = await invalidResponse.json();
-    expect(isProfile(invalidBody), "невалидный ответ не должен пройти guard").toBe(false);
-  } finally {
-    await api.close();
-  }
+  expect(isWorkItem(failure), "ответ с ошибкой не должен пройти guard").toBe(
+    false,
+  );
+  expect(isApiError(failure)).toBe(true);
+  if (!isApiError(failure)) throw new Error("Ожидался контракт ошибки");
+
+  expect(failure.correlationId).toMatch(/^[0-9a-f-]{36}$/);
 });

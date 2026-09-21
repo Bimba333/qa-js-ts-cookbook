@@ -16,7 +16,7 @@ export function logEvent(event: string, fields: SafeLogFields = {}): void {
   process.stdout.write(
     `${JSON.stringify({
       timestamp: new Date().toISOString(),
-      component: "educational-sut-phase1",
+      component: "educational-work-items-sut",
       event,
       ...safeFields,
     })}\n`,

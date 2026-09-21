@@ -1,0 +1,22 @@
+# Контекст сборки — корень репозитория, поэтому книга и артефакты
+# исключаются явно: в образ должны попасть только package-манифесты и sut/.
+node_modules
+**/node_modules
+.git
+.github
+.venv
+.vitepress
+.sut-build
+test-results
+docs
+en
+practice
+solutions
+examples
+playground
+assets
+public
+scripts
+tests
+.meta
+*.md

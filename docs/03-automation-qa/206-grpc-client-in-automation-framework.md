@@ -35,14 +35,13 @@ flowchart TD
 
 ## Внутренний механизм
 
-Fixture запускает локальный server, создаёт исходный client и обёртку, затем вызывает `use()`. В `finally` она закрывает исходный client и server. Обёртка не владеет переданным channel и не скрывает `ServiceError` при отклонении Promise.
+Fixture создаёт client к gRPC-границе стенда, оборачивает его в клиент предметной области и вызывает `use()`. После теста соединение закрывается. Обёртка не скрывает `ServiceError` при отклонении Promise: отказ остаётся наблюдаемым.
 
 ```text
-examples/03-automation-qa/support/grpc/tasks-grpc-client.ts
 examples/03-automation-qa/chapter-206/01-framework-client.grpc.ts
 ```
 
-Пример предоставляет `TasksGrpcClient` через custom fixture и сохраняет проверки create/get в теле теста.
+Пример предоставляет `WorkItemsGrpcClient` через fixture и сохраняет проверки в теле теста.
 
 ## Главная ментальная модель
 

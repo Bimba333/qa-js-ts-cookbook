@@ -10,7 +10,7 @@
   },
   "include": [
     "./playwright.api-foundations.config.ts",
-    "./support/local-api.ts",
+    "./support/sut/**/*.ts",
     "./chapter-186/**/*.ts",
     "./chapter-187/**/*.ts",
     "./chapter-188/**/*.ts",

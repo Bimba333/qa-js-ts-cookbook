@@ -1,24 +1,26 @@
-import { expect, test } from "@playwright/test";
-import type { Task__Output } from "../generated/grpc/qa/tasks/v1/Task.js";
-import {
-  callUnary,
-  createTaskServiceClient,
-  startLocalGrpcServer,
-} from "../support/grpc/local-grpc.js";
+import { expect, test } from "../support/sut/fixtures.js";
 
-test("получает один response на один unary request", async () => {
-  const server = await startLocalGrpcServer();
-  const client = createTaskServiceClient(server.endpoint);
+test("получает один response на один unary request", async ({
+  workItems,
+  workItemsGrpc,
+}) => {
+  const created = await workItems.createOrThrow({
+    title: "Unary call",
+    description: "Один запрос — один ответ",
+    priority: "MEDIUM",
+  });
 
-  try {
-    const created = await callUnary<Task__Output>((callback) =>
-      client.createTask({ title: "Unary call" }, callback));
-    const received = await callUnary<Task__Output>((callback) =>
-      client.getTask({ id: created.id }, callback));
+  const first = await workItemsGrpc.getWorkItem(created.id);
+  const second = await workItemsGrpc.getWorkItem(created.id);
 
-    expect(received).toEqual(created);
-  } finally {
-    client.close();
-    await server.close();
-  }
+  // Unary-вызов возвращает ровно одно сообщение и завершается.
+  // Повторный вызов — это новый запрос, а не продолжение предыдущего.
+  expect(second).toEqual(first);
+  expect(first.id).toBe(created.id);
+
+  // Тот же метод с другим аргументом возвращает другое сообщение:
+  // ответ определяется запросом, а не состоянием соединения.
+  const page = await workItemsGrpc.searchWorkItems({ limit: 2 });
+  expect(page.items.length).toBeLessThanOrEqual(2);
+  expect(page.total).toBeGreaterThan(0);
 });

@@ -5,7 +5,8 @@
   "type": "module",
   "scripts": {
     "docs:engine": "node scripts/book-engine/generate.mjs",
-    "docs:sidebar": "npm run docs:engine && node scripts/generate-sidebar.mjs",
+    "tasks:build": "node scripts/book-engine/generate-tasks.mjs",
+    "docs:sidebar": "npm run docs:engine && npm run tasks:build && node scripts/generate-sidebar.mjs",
     "docs:dev": "npm run docs:sidebar && vitepress dev .",
     "docs:build": "npm run docs:sidebar && vitepress build .",
     "docs:preview": "vitepress preview .",
@@ -23,26 +24,33 @@
     "sut:db:config": "docker compose -f sut/compose.yaml config --quiet",
     "sut:db:up": "docker compose -f sut/compose.yaml up -d --wait postgres",
     "sut:db:down": "docker compose -f sut/compose.yaml down",
+    "sut:up": "docker compose -f sut/compose.yaml up -d --build --wait sut-app",
+    "sut:down": "docker compose -f sut/compose.yaml down",
+    "sut:down:clean": "docker compose -f sut/compose.yaml down --volumes",
+    "sut:logs": "docker compose -f sut/compose.yaml logs -f sut-app",
+    "sut:smoke": "node sut/scripts/smoke.mjs",
     "sut:migrate": "npm run sut:build --silent && node .sut-build/src/database/migrate.js",
     "sut:seed": "npm run sut:build --silent && node .sut-build/src/database/seed.js",
     "sut:reset": "npm run sut:build --silent && node .sut-build/src/database/reset.js",
     "sut:health": "npm run sut:build --silent && node .sut-build/src/health/check.js",
     "sut:test:db": "npm run sut:build --silent && node sut/scripts/run-db-tests.mjs",
-    "sut:phase1:check": "node sut/scripts/phase1-check.mjs",
-    "grpc:generate": "proto-loader-gen-types --grpcLib=@grpc/grpc-js --outDir=examples/03-automation-qa/generated/grpc --includeDirs=examples/03-automation-qa/proto --enums=String --defaults --arrays --objects --oneofs --importFileExtension=.js tasks.proto",
-    "postgresql:test": "node scripts/run-postgresql-examples.mjs",
+    "sut:grpc:generate": "proto-loader-gen-types --grpcLib=@grpc/grpc-js --outDir=sut/contracts/generated/grpc --includeDirs=sut/contracts/proto --enums=String --defaults --arrays --objects --oneofs --importFileExtension=.js work_items.proto",
+    "qa:examples": "node scripts/run-qa-examples.mjs",
+    "qa:examples:typecheck": "node scripts/run-qa-examples.mjs --typecheck-only",
     "test:playwright": "playwright test",
     "test:playwright:list": "playwright test --list"
   },
-  "devDependencies": {
+  "dependencies": {
     "@grpc/grpc-js": "1.14.4",
     "@grpc/proto-loader": "0.8.1",
+    "pg": "8.22.0"
+  },
+  "devDependencies": {
     "@playwright/test": "1.61.1",
     "@types/node": "20.19.43",
     "@types/pg": "8.20.0",
     "allure-playwright": "3.10.2",
     "mermaid": "^11.16.0",
-    "pg": "8.22.0",
     "sucrase": "^3.35.1",
     "typescript": "^7.0.2",
     "vitepress": "^1.6.4"

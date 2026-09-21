@@ -1,15 +1,22 @@
 {
   "compilerOptions": {
-    "lib": ["ESNext", "DOM"],
+    "lib": [
+      "ESNext",
+      "DOM"
+    ],
     "module": "NodeNext",
     "moduleResolution": "NodeNext",
     "noEmit": true,
     "strict": true,
     "target": "ESNext",
-    "types": ["node", "@playwright/test"]
+    "types": [
+      "node",
+      "@playwright/test"
+    ]
   },
   "include": [
     "./playwright.ui-layer.config.ts",
+    "./support/sut/**/*.ts",
     "./chapter-176/**/*.ts",
     "./chapter-177/**/*.ts",
     "./chapter-178/**/*.ts",

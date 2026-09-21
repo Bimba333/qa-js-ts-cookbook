@@ -1,19 +1,25 @@
-import { expect, test } from "@playwright/test";
-import { withIsolatedClient } from "../support/postgresql/postgresql-test-db.js";
+import { findWorkItemRow, withReaderClient } from "../support/sut/database.js";
+import { expect, test } from "../support/sut/fixtures.js";
 
-test("проверяет конкретный факт в PostgreSQL", async () => {
-  await withIsolatedClient(async ({ client }) => {
-    await client.query(
-      "INSERT INTO tasks (id, title, priority) VALUES ($1, $2, $3)",
-      ["task-207", "Database boundary", "high"],
-    );
+test("проверяет конкретный факт в PostgreSQL", async ({ workItems }) => {
+  // Действие выполняется через публичную границу: тест не пишет в базу сам.
+  const created = await workItems.createOrThrow({
+    title: "Database boundary",
+    description: "Проверка сохранённого состояния",
+    priority: "HIGH",
+  });
 
-    const result = await client.query<{ id: string; title: string }>(
-      "SELECT id, title FROM tasks WHERE id = $1",
-      ["task-207"],
-    );
+  // База отвечает на вопрос, на который не отвечает HTTP-ответ:
+  // что именно сохранено на стороне системы.
+  await withReaderClient(async (client) => {
+    const row = await findWorkItemRow(client, created.id);
 
-    expect(result.rows).toEqual([{ id: "task-207", title: "Database boundary" }]);
+    expect(row).toBeDefined();
+    expect(row?.title).toBe("Database boundary");
+    expect(row?.priority).toBe("HIGH");
+    expect(row?.status).toBe("NEW");
+
+    // Признак seed отличает учебные данные от созданных тестом.
+    expect(row?.is_seed).toBe(false);
   });
 });
-

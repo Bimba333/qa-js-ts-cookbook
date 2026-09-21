@@ -1,9 +1,9 @@
 import { loadDatabaseConfig } from "../config/index.js";
 import { logEvent, safeErrorCode } from "../logging/logger.js";
-import { checkPhase1Readiness } from "./readiness.js";
+import { checkSutReadiness } from "./readiness.js";
 
 try {
-  const result = await checkPhase1Readiness(
+  const result = await checkSutReadiness(
     loadDatabaseConfig("reader"),
   );
   logEvent("readiness.checked", {

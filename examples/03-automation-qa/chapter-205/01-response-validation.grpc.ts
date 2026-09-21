@@ -1,45 +1,48 @@
 import { status } from "@grpc/grpc-js";
-import { expect, test } from "@playwright/test";
-import type { ListTasksResponse__Output } from "../generated/grpc/qa/tasks/v1/ListTasksResponse.js";
-import type { Task__Output } from "../generated/grpc/qa/tasks/v1/Task.js";
-import {
-  callUnary,
-  createTaskServiceClient,
-  startLocalGrpcServer,
-} from "../support/grpc/local-grpc.js";
 
-test("проверяет message и отсутствие side effect после отказа", async () => {
-  const server = await startLocalGrpcServer();
-  const client = createTaskServiceClient(server.endpoint);
+import { expect, test } from "../support/sut/fixtures.js";
+import { expectGrpcFailure } from "../support/sut/grpc-client.js";
 
-  try {
-    await expect(callUnary((callback) => client.createTask({ title: "" }, callback)))
-      .rejects.toMatchObject({
-        code: status.INVALID_ARGUMENT,
-        details: "title is required",
-      });
-    const afterFailure = await callUnary<ListTasksResponse__Output>((callback) =>
-      client.listTasks({}, callback));
-    expect(afterFailure.tasks).toEqual([]);
+test("проверяет message и отсутствие side effect после отказа", async ({
+  workItems,
+  workItemsGrpc,
+}) => {
+  const created = await workItems.createOrThrow({
+    title: "Business result",
+    description: "Проверка сообщения и состояния",
+    priority: "LOW",
+  });
 
-    const created = await callUnary<Task__Output>((callback) => client.createTask({
-      title: "Business result",
-      labels: ["qa"],
-      priority: "TASK_PRIORITY_LOW",
-    }, callback));
-    expect(created).toMatchObject({
-      id: "task-1",
-      title: "Business result",
-      completed: false,
-      labels: ["qa"],
-      priority: "TASK_PRIORITY_LOW",
-    });
+  // Отказ по устаревшей версии.
+  const conflict = await expectGrpcFailure(
+    workItemsGrpc.transitionWorkItem({
+      id: created.id,
+      targetStatus: "IN_PROGRESS",
+      expectedVersion: created.version + 10,
+    }),
+  );
+  expect(conflict.code).toBe(status.FAILED_PRECONDITION);
 
-    const persisted = await callUnary<Task__Output>((callback) =>
-      client.getTask({ id: created.id }, callback));
-    expect(persisted).toEqual(created);
-  } finally {
-    client.close();
-    await server.close();
-  }
+  // Отказ не оставил следа: статус и версия прежние.
+  const afterFailure = await workItemsGrpc.getWorkItem(created.id);
+  expect(afterFailure.status).toBe("NEW");
+  expect(afterFailure.version).toBe(created.version);
+
+  // Успешный вызов возвращает сообщение с обновлённым состоянием.
+  const transitioned = await workItemsGrpc.transitionWorkItem({
+    id: created.id,
+    targetStatus: "IN_PROGRESS",
+    expectedVersion: created.version,
+  });
+
+  expect(transitioned.item).toMatchObject({
+    id: created.id,
+    title: "Business result",
+    status: "IN_PROGRESS",
+    version: created.version + 1,
+  });
+
+  // Изменение действительно сохранено, а не только отражено в ответе.
+  const persisted = await workItemsGrpc.getWorkItem(created.id);
+  expect(persisted).toEqual(transitioned.item);
 });

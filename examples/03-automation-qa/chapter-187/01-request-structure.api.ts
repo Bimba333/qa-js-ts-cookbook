@@ -1,23 +1,31 @@
-import { expect, test } from "@playwright/test";
-import { startLocalApi } from "../support/local-api.js";
+import { expect, test } from "../support/sut/fixtures.js";
+import { toCreatorTestId } from "../support/sut/work-items-api.js";
 
-test("передаёт query, headers и JSON body", async ({ request }) => {
-  const api = await startLocalApi();
-  try {
-    const response = await request.post(`${api.baseURL}/inspect`, {
-      params: { source: "api test" },
-      headers: { "x-test-role": "qa" },
-      data: { title: "Новая задача" },
-    });
+test("передаёт query, headers и JSON body", async ({ workItems }, testInfo) => {
+  // Заголовок влияет на результат: сервер сохраняет идентификатор теста
+  // рядом с записью, поэтому след запроса виден в ответе.
+  const created = await workItems.createOrThrow({
+    title: "Запись со структурой запроса",
+    description: "Тело запроса определяет содержимое ресурса",
+    priority: "HIGH",
+  });
 
-    expect(await response.json()).toEqual({
-      method: "POST",
-      pathname: "/inspect",
-      query: { source: "api test" },
-      testRole: "qa",
-      body: { title: "Новая задача" },
-    });
-  } finally {
-    await api.close();
-  }
+  expect(created.creatorTestId).toBe(toCreatorTestId(testInfo.title));
+  expect(created.priority).toBe("HIGH");
+  expect(created.title).toBe("Запись со структурой запроса");
+
+  // Query-параметры не меняют состояние, а сужают выборку.
+  const filtered = await workItems.listOrThrow({
+    status: "NEW",
+    priority: "HIGH",
+    limit: 5,
+  });
+
+  expect(filtered.limit).toBe(5);
+  expect(filtered.items.length).toBeLessThanOrEqual(5);
+  expect(
+    filtered.items.every(
+      (item) => item.status === "NEW" && item.priority === "HIGH",
+    ),
+  ).toBe(true);
 });

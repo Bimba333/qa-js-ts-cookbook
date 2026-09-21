@@ -27,6 +27,20 @@ async function insertWorkItem(
   client: Parameters<Parameters<typeof inRollbackTransaction>[0]>[0],
   overrides: WorkItemOverrides = {},
 ): Promise<void> {
+  const testRunId =
+    overrides.testRunId === undefined ? randomUUID() : overrides.testRunId;
+
+  // Миграция 004 связала work_items с test_runs, поэтому run должен
+  // существовать до вставки записи.
+  if (testRunId !== null) {
+    await client.query(
+      `INSERT INTO test_runs (id, principal_id, source)
+       VALUES ($1, $2, 'rest')
+       ON CONFLICT (id) DO NOTHING`,
+      [testRunId, overrides.ownerId ?? TESTER_USER_ID],
+    );
+  }
+
   await client.query(
     `INSERT INTO work_items (
        id, title, description, status, priority, owner_id, created_by,
@@ -41,7 +55,7 @@ async function insertWorkItem(
       overrides.priority ?? "MEDIUM",
       overrides.ownerId ?? TESTER_USER_ID,
       overrides.createdBy ?? TESTER_USER_ID,
-      overrides.testRunId === undefined ? randomUUID() : overrides.testRunId,
+      testRunId,
       overrides.creatorTestId === undefined
         ? "schema-test"
         : overrides.creatorTestId,

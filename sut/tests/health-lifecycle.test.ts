@@ -5,7 +5,7 @@ import test from "node:test";
 
 import { loadDatabaseConfig } from "../src/config/index.js";
 import { runMigrations } from "../src/database/migration-runner.js";
-import { checkPhase1Readiness } from "../src/health/readiness.js";
+import { checkSutReadiness } from "../src/health/readiness.js";
 import { HealthServer } from "../src/health/server.js";
 import { installShutdownHandlers } from "../src/lifecycle/shutdown.js";
 import {
@@ -21,7 +21,7 @@ test("возвращает BLOCKED для недоступной database", asyn
     SUT_DB_PORT: "1",
     SUT_DB_CONNECTION_TIMEOUT_MS: "100",
   });
-  const result = await checkPhase1Readiness(config);
+  const result = await checkSutReadiness(config);
 
   assert.equal(result.status, "BLOCKED");
   assert.equal(
@@ -38,7 +38,7 @@ test("различает missing migrations и missing seed", async () => {
   await createTestSchema(migratedSchema);
 
   try {
-    const withoutMigrations = await checkPhase1Readiness(
+    const withoutMigrations = await checkSutReadiness(
       migrationConfig,
       emptySchema,
     );
@@ -53,7 +53,7 @@ test("различает missing migrations и missing seed", async () => {
       config: migrationConfig,
       schema: migratedSchema,
     });
-    const withoutSeed = await checkPhase1Readiness(
+    const withoutSeed = await checkSutReadiness(
       migrationConfig,
       migratedSchema,
     );
@@ -73,12 +73,12 @@ test("различает missing migrations и missing seed", async () => {
 });
 
 test("возвращает PASS только для полной Phase 1 foundation", async () => {
-  const result = await checkPhase1Readiness(
+  const result = await checkSutReadiness(
     loadDatabaseConfig("reader"),
   );
 
   assert.equal(result.status, "PASS");
-  assert.equal(result.capability, "phase1-foundation");
+  assert.equal(result.capability, "sut-foundation");
   assert.deepEqual(
     result.checks.map((check) => check.status),
     ["PASS", "PASS", "PASS"],
@@ -103,7 +103,7 @@ test("блокирует readiness при изменённом migration name", 
       ),
     );
 
-    const result = await checkPhase1Readiness(migrationConfig, schema);
+    const result = await checkSutReadiness(migrationConfig, schema);
     assert.equal(result.status, "BLOCKED");
     assert.equal(
       result.checks.find((check) => check.name === "migrations")?.status,
@@ -118,7 +118,7 @@ test("health server публикует только live и ready probes", async
   const server = new HealthServer({
     readiness: async () => ({
       status: "PASS",
-      capability: "phase1-foundation",
+      capability: "sut-foundation",
       checks: [],
     }),
   });
@@ -142,7 +142,7 @@ test("health server возвращает 503 для BLOCKED readiness", async ()
   const server = new HealthServer({
     readiness: async () => ({
       status: "BLOCKED",
-      capability: "phase1-foundation",
+      capability: "sut-foundation",
       checks: [
         { name: "database", status: "BLOCKED" },
       ],
@@ -217,13 +217,15 @@ test("signal handlers вызывают один shutdown и освобождаю
   assert.equal(process.listenerCount("SIGTERM"), initialSigterm);
 });
 
-test("health process завершается по SIGTERM после bounded cleanup", async () => {
+test("SUT process завершается по SIGTERM после bounded cleanup", async () => {
   const child = spawn(
     process.execPath,
     [path.resolve(process.cwd(), ".sut-build/src/main.js")],
     {
       cwd: process.cwd(),
-      env: process.env,
+      // Контейнер уже занимает штатные порты, поэтому дочерний
+      // процесс слушает отдельные.
+      env: { ...process.env, SUT_HTTP_PORT: "14310", SUT_GRPC_PORT: "14311" },
       stdio: ["ignore", "pipe", "pipe"],
     },
   );
@@ -240,11 +242,11 @@ test("health process завершается по SIGTERM после bounded clea
 
   const started = new Promise<void>((resolve, reject) => {
     const timeout = setTimeout(
-      () => reject(new Error("Health process startup timeout")),
+      () => reject(new Error("SUT process startup timeout")),
       3_000,
     );
     const inspect = (): void => {
-      if (stdout.includes('"event":"health.started"')) {
+      if (stdout.includes('"event":"sut.started"')) {
         clearTimeout(timeout);
         child.stdout.off("data", inspect);
         resolve();
@@ -255,7 +257,7 @@ test("health process завершается по SIGTERM после bounded clea
       clearTimeout(timeout);
       reject(
         new Error(
-          `Health process exited before startup: code=${code}, signal=${signal}, stderr=${stderr}`,
+          `SUT process exited before startup: code=${code}, signal=${signal}, stderr=${stderr}`,
         ),
       );
     });
@@ -271,7 +273,7 @@ test("health process завершается по SIGTERM после bounded clea
     }>((resolve, reject) => {
       const timeout = setTimeout(() => {
         child.kill("SIGKILL");
-        reject(new Error("Health process shutdown timeout"));
+        reject(new Error("SUT process shutdown timeout"));
       }, 3_000);
       child.once("exit", (code, signal) => {
         clearTimeout(timeout);
@@ -288,7 +290,7 @@ test("health process завершается по SIGTERM после bounded clea
   }
 });
 
-test("health process безопасно отклоняет invalid startup configuration", async () => {
+test("SUT process безопасно отклоняет invalid startup configuration", async () => {
   const child = spawn(
     process.execPath,
     [path.resolve(process.cwd(), ".sut-build/src/main.js")],
@@ -327,7 +329,7 @@ test("health process безопасно отклоняет invalid startup confi
   });
 
   assert.deepEqual(exit, { code: 1, signal: null });
-  assert.match(stdout, /"event":"health.startup.failed"/);
+  assert.match(stdout, /"event":"sut.startup.failed"/);
   assert.equal(stdout.includes("sut_bootstrap"), false);
   assert.equal(stderr, "");
 });

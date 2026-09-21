@@ -163,7 +163,7 @@ export function loadDatabaseConfig(
     throw new SUTConfigurationError(
       "invalid_role",
       userKey,
-      "Database role не соответствует разрешённой Phase 1 роли",
+      "Database role не соответствует разрешённой роли SUT",
     );
   }
 
@@ -210,7 +210,7 @@ export function toPoolConfig(config: DatabaseConfig): PoolConfig {
     password: config.password,
     connectionTimeoutMillis: config.connectionTimeoutMs,
     statement_timeout: config.statementTimeoutMs,
-    application_name: `educational-sut-phase1-${config.user}`,
+    application_name: `educational-work-items-sut-${config.user}`,
     max: 4,
   };
 }

@@ -1,24 +1,28 @@
-import { expect, test } from "@playwright/test";
-import { startLocalApi } from "../support/local-api.js";
+import { expect, test } from "../support/sut/fixtures.js";
 
-test("различает ресурс и идемпотентную операцию", async ({ request }) => {
-  const api = await startLocalApi();
-  try {
-    const first = await request.put(`${api.baseURL}/tasks/task-fixed`, {
-      data: { title: "Проверить отчёт", completed: false },
-    });
-    const second = await request.put(`${api.baseURL}/tasks/task-fixed`, {
-      data: { title: "Проверить отчёт", completed: false },
-    });
+test("различает безопасный запрос и идемпотентную операцию", async ({
+  workItems,
+}) => {
+  const created = await workItems.createOrThrow({
+    title: "Проверить отчёт",
+    description: "Запись для проверки идемпотентности",
+    priority: "MEDIUM",
+  });
 
-    expect(first.status()).toBe(200);
-    expect(second.status()).toBe(200);
-    expect(await second.json()).toEqual({
-      id: "task-fixed",
-      title: "Проверить отчёт",
-      completed: false,
-    });
-  } finally {
-    await api.close();
-  }
+  // GET безопасен: повторение не меняет состояние и возвращает тот же ресурс.
+  const firstRead = await workItems.get(created.id);
+  const secondRead = await workItems.get(created.id);
+
+  expect(firstRead.status()).toBe(200);
+  expect(secondRead.status()).toBe(200);
+  expect(await secondRead.json()).toEqual(await firstRead.json());
+
+  const firstDelete = await workItems.remove(created.id);
+  const secondDelete = await workItems.remove(created.id);
+
+  // DELETE идемпотентен по итоговому состоянию: ресурса нет после обоих
+  // вызовов. Но одинаковое состояние не обязано давать одинаковый статус.
+  expect(firstDelete.status()).toBe(204);
+  expect(secondDelete.status()).toBe(404);
+  expect((await workItems.get(created.id)).status()).toBe(404);
 });

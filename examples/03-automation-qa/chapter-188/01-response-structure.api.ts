@@ -1,16 +1,28 @@
-import { expect, test } from "@playwright/test";
-import { startLocalApi } from "../support/local-api.js";
+import { expect, test } from "../support/sut/fixtures.js";
+import { isWorkItem } from "../support/sut/types.js";
 
-test("проверяет уровни HTTP-ответа", async ({ request }) => {
-  const api = await startLocalApi();
-  try {
-    const response = await request.get(`${api.baseURL}/responses/accepted`);
+test("проверяет уровни HTTP-ответа", async ({ workItems }) => {
+  const response = await workItems.create({
+    title: "Запись для разбора ответа",
+    description: "Ответ проверяется по трём уровням",
+    priority: "LOW",
+  });
 
-    expect(response.status()).toBe(202);
-    expect(response.headers()["content-type"]).toContain("application/json");
-    expect(response.headers()["x-request-id"]).toBe("request-1");
-    expect(await response.json()).toEqual({ status: "queued", jobId: "job-1" });
-  } finally {
-    await api.close();
-  }
+  // Первый уровень — статус: создан новый ресурс.
+  expect(response.status()).toBe(201);
+
+  // Второй уровень — заголовки: тип содержимого и идентификатор запроса,
+  // по которому ответ связывается с логом и audit trail стенда.
+  const headers = response.headers();
+  expect(headers["content-type"]).toContain("application/json");
+  expect(headers["x-correlation-id"]).toMatch(/^[0-9a-f-]{36}$/);
+  expect(headers["cache-control"]).toBe("no-store");
+
+  // Третий уровень — тело: форма ресурса и значения, назначенные сервером.
+  const body: unknown = await response.json();
+  expect(isWorkItem(body)).toBe(true);
+  if (!isWorkItem(body)) throw new Error("Ответ не соответствует контракту");
+
+  expect(body.status).toBe("NEW");
+  expect(body.version).toBe(1);
 });

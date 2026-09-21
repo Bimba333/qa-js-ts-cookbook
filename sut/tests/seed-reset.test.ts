@@ -2,16 +2,21 @@ import assert from "node:assert/strict";
 import { randomUUID } from "node:crypto";
 import test from "node:test";
 
+import { hashPasswordWithSalt } from "../src/auth/password.js";
 import { loadDatabaseConfig } from "../src/config/index.js";
 import { resetEducationalDatabase } from "../src/database/reset-runner.js";
 import {
   applySeed,
+  SEED_USERS,
+  SEED_WORK_ITEM_COUNT,
   TESTER_USER_ID,
   VIEWER_USER_ID,
 } from "../src/database/seed-runner.js";
 import { withRoleClient } from "./support/database.js";
 
 const migrationConfig = loadDatabaseConfig("migration");
+
+const testerSeedUser = SEED_USERS.find((user) => user.id === TESTER_USER_ID)!;
 
 test("повторный seed остаётся idempotent и deterministic", async () => {
   const first = await applySeed(migrationConfig);
@@ -27,7 +32,8 @@ test("повторный seed остаётся idempotent и deterministic", asy
   const second = await applySeed(migrationConfig);
 
   assert.deepEqual(first, second);
-  assert.equal(second.requiredUsers, 2);
+  assert.equal(second.seedUsers, SEED_USERS.length);
+  assert.equal(second.seedWorkItems, SEED_WORK_ITEM_COUNT);
 
   await withRoleClient("reader", async (client) => {
     const rows = await client.query(
@@ -73,9 +79,13 @@ test("повторный seed остаётся idempotent и deterministic", asy
       "SELECT password_hash, is_active FROM users WHERE id = $1",
       [TESTER_USER_ID],
     );
+    const expected = await hashPasswordWithSalt(
+      testerSeedUser.password,
+      testerSeedUser.passwordSalt,
+    );
+
     assert.deepEqual(restored.rows[0], {
-      password_hash:
-        "phase1-placeholder-hash-tester-00000000000000000000000000000001",
+      password_hash: expected.hash,
       is_active: true,
     });
   });
@@ -86,6 +96,11 @@ test("reset удаляет только non-seed data и повторяется 
   const testRunId = randomUUID();
 
   await withRoleClient("application", async (client) => {
+    // test_run_id ссылается на существующий run начиная с миграции 004.
+    await client.query(
+      "INSERT INTO test_runs (id, principal_id, source) VALUES ($1, $2, 'rest')",
+      [testRunId, TESTER_USER_ID],
+    );
     await client.query(
       `INSERT INTO work_items (
          id, title, description, status, priority, owner_id, created_by,
@@ -119,7 +134,7 @@ test("reset удаляет только non-seed data и повторяется 
     );
 
     assert.equal(workItems.rowCount, 0);
-    assert.equal(seedUsers.rows[0]?.count, "2");
+    assert.equal(seedUsers.rows[0]?.count, String(SEED_USERS.length));
   });
 });
 

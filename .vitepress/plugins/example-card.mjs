@@ -502,11 +502,61 @@ function readMarkdown(filePath) {
   return fs.readFileSync(absPath, 'utf8')
 }
 
+let checkedTasksCache = null
+
+/** Задачи собираются отдельным шагом сборки: плагин читает готовые данные. */
+function loadCheckedTasks() {
+  if (checkedTasksCache) return checkedTasksCache
+
+  const dataPath = path.join(process.cwd(), '.vitepress', 'tasks.generated.json')
+  checkedTasksCache = fs.existsSync(dataPath)
+    ? JSON.parse(fs.readFileSync(dataPath, 'utf8'))
+    : {}
+
+  return checkedTasksCache
+}
+
+/** `practice/01-javascript/07-scope.md` и `en/practice/...` → `01-javascript/07-scope` */
+function chapterKeyFromEmbeddedPath(filePath) {
+  return filePath
+    .replace(/^en\//, '')
+    .replace(/^(practice|solutions|docs)\//, '')
+    .replace(/\.md$/, '')
+}
+
+function renderCheckedTasks(md, filePath, env) {
+  const tasks = loadCheckedTasks()[chapterKeyFromEmbeddedPath(filePath)]
+
+  if (!Array.isArray(tasks) || tasks.length === 0) {
+    return ''
+  }
+
+  const locale = env.bookLocale === 'en' ? 'en' : 'ru'
+  const heading = locale === 'en' ? 'Checked tasks' : 'Задачи с проверкой'
+  const headingId = locale === 'en' ? 'checked-tasks' : 'задачи-с-проверкой'
+
+  const cards = tasks
+    .map(task => {
+      const payload = Buffer.from(JSON.stringify(task), 'utf8').toString('base64')
+
+      return `<CodeTask task-b64="${payload}" />`
+    })
+    .join('\n')
+
+  return `
+<section class="book-checked-tasks">
+  <h2 id="${headingId}" tabindex="-1">${md.utils.escapeHtml(heading)}</h2>
+  ${cards}
+</section>
+`
+}
+
 function renderEmbeddedMarkdown(md, filePath, type, env) {
+  const checkedTasks = type === 'practice' ? renderCheckedTasks(md, filePath, env) : ''
   const markdown = readMarkdown(filePath)
 
   if (!markdown || !stripFirstHeading(markdown).trim()) {
-    return ''
+    return checkedTasks
   }
 
   const solutionPath = type === 'practice' ? solutionPathForPractice(filePath) : ''
@@ -531,6 +581,7 @@ function renderEmbeddedMarkdown(md, filePath, type, env) {
     .replace(/<a class="header-anchor"[^>]*>.*?<\/a>/gs, '')
 
   return `
+${checkedTasks}
 <section class="book-embedded book-embedded--${type}">
   ${title}
   ${rendered}
@@ -707,6 +758,7 @@ function publicLabelForPath(value) {
   if (/^solutions\//.test(value) || value === 'solutions/') return 'решения'
   if (/^examples\//.test(value) || value === 'examples/') return 'пример'
   if (/^playground\//.test(value) || value === 'playground/') return 'песочница'
+  if (/^sut\//.test(value) || value === 'sut/') return 'учебный стенд'
   return value
 }
 
@@ -717,6 +769,7 @@ function sanitizeRepositoryPaths(content) {
     .replace(/\bsolutions\/[^\s`]*/g, 'решения')
     .replace(/\bexamples\/[^\s`]*/g, 'пример')
     .replace(/\bplayground\/[^\s`]*/g, 'песочница')
+    .replace(/\bsut\/[^\s`]*/g, 'учебный стенд')
     .replace(/^docs\/$/gm, 'Главы книги')
     .replace(/^practice\/$/gm, 'Практика')
     .replace(/^solutions\/$/gm, 'Решения')
@@ -743,7 +796,7 @@ function renderStaticExample(md, filePath, locale = 'ru') {
 }
 
 function stripRepositoryDirs(content) {
-  return content.replace(/(\.\.\/)*\b(docs|practice|solutions|examples|playground)\/(?:[\w.-]+\/)*/g, '')
+  return content.replace(/(\.\.\/)*\b(docs|practice|solutions|examples|playground|sut)\/(?:[\w.-]+\/)*/g, '')
 }
 
 function renderMermaid(md, content) {
@@ -903,7 +956,7 @@ export function exampleCardPlugin(md) {
         : `<code>${md.utils.escapeHtml(token.content)}</code>`
     }
 
-    if (/^(docs|practice|solutions|examples|playground)\//.test(token.content)) {
+    if (/^(docs|practice|solutions|examples|playground|sut)\//.test(token.content)) {
       return `<code>${md.utils.escapeHtml(publicLabelForPath(token.content))}</code>`
     }
 
@@ -965,12 +1018,12 @@ export function exampleCardPlugin(md) {
 
     const isShellFence = /^(bash|sh|shell|zsh|console|cmd)$/.test(token.info.trim())
 
-    if (isShellFence && /\b(docs|practice|solutions|examples|playground)\//.test(token.content)) {
+    if (isShellFence && /\b(docs|practice|solutions|examples|playground|sut)\//.test(token.content)) {
       token.content = stripRepositoryDirs(token.content)
     }
 
     if (content.includes('\n')) {
-      if ((token.info === '' || token.info === 'text') && /\b(docs|practice|solutions|examples|playground)\//.test(content)) {
+      if ((token.info === '' || token.info === 'text') && /\b(docs|practice|solutions|examples|playground|sut)\//.test(content)) {
         token.content = sanitizeRepositoryPaths(token.content)
       }
 
@@ -990,7 +1043,12 @@ export function exampleCardPlugin(md) {
       return renderStaticExample(md, content, env.bookLocale)
     }
 
-    if ((token.info === '' || token.info === 'text') && /^(docs|practice|solutions|examples|playground)\/[^\s]*\/?$/.test(content) && !/\.(md|js|mjs|cjs|ts|json)$/.test(content) && !isExampleDir(content)) {
+    // Контракты учебного стенда (.proto) читаются как учебный материал.
+    if (/^sut\/contracts\/.+\.proto$/.test(content)) {
+      return renderStaticExample(md, content, env.bookLocale)
+    }
+
+    if ((token.info === '' || token.info === 'text') && /^(docs|practice|solutions|examples|playground|sut)\/[^\s]*\/?$/.test(content) && !/\.(md|js|mjs|cjs|ts|json)$/.test(content) && !isExampleDir(content)) {
       return ''
     }
 
