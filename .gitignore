@@ -18,3 +18,6 @@ examples/04-final-project/.env.*
 !examples/04-final-project/.env.example
 
 .DS_Store
+
+# Решения читателя для задач, проверяемых на стенде
+my-solutions/

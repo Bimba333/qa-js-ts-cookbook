@@ -273,7 +273,7 @@ function buildHarness() {
       value => typeof value === 'string' ? value : format(value)
     ).join(' '))
 
-    self.console = { log: write, info: write, warn: write, error: write, table: write }
+    self.console = { log: write, info: write, warn: write, error: write, table: write };
   `
 }
 
@@ -290,8 +290,10 @@ ${check.code}
     )
     .join('\n')
 
+  // Ведущая точка с запятой отделяет скрипт от harness: без неё вызов
+  // асинхронной функции склеивается с предыдущим выражением.
   return `
-(async () => {
+;(async () => {
 ${userCode}
 
 const __results = []

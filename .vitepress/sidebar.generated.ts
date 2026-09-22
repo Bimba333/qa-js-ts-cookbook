@@ -1170,11 +1170,11 @@ export const sidebar = [
             "link": "/docs/03-automation-qa/234-retry-policy"
           },
           {
-            "text": "Глава 235. Workers и shared resources",
+            "text": "Глава 235. Workers и общие ресурсы",
             "link": "/docs/03-automation-qa/235-workers-and-shared-resources"
           },
           {
-            "text": "Глава 236. Parallel execution",
+            "text": "Глава 236. Параллельное выполнение",
             "link": "/docs/03-automation-qa/236-parallel-execution"
           },
           {

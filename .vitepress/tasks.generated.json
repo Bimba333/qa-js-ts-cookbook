@@ -13,6 +13,7 @@
         "Счётчик нужно хранить в scope функции createCounter, а не в global scope.",
         "Возвращаемая функция может увеличивать переменную и сразу возвращать новое значение."
       ],
+      "standSetup": "",
       "tests": [
         {
           "name": "первый вызов возвращает 1",
@@ -47,6 +48,7 @@
         "Внутри блока { } объявление через let создаёт отдельную переменную.",
         "Соберите значения по мере того, как они становятся видимыми: сначала внешнее, потом своё."
       ],
+      "standSetup": "",
       "tests": [
         {
           "name": "возвращает три значения по порядку",
@@ -73,6 +75,7 @@
         "Если all() вернёт сам массив, вызывающий код сможет изменить внутреннее состояние.",
         "Копию массива можно получить через срез или расширение."
       ],
+      "standSetup": "",
       "tests": [
         {
           "name": "новый store пуст",
@@ -93,6 +96,193 @@
       ],
       "solution": "function createStore() {\n  const items = [];\n\n  return {\n    add(item) {\n      items.push(item);\n    },\n    all() {\n      return [...items];\n    },\n    size() {\n      return items.length;\n    }\n  };\n}",
       "chapter": "01-javascript/07-scope"
+    }
+  ],
+  "01-javascript/53-reduce": [
+    {
+      "id": "js-53-sum-durations",
+      "title": "Суммарная длительность прогона",
+      "difficulty": "easy",
+      "lang": "js",
+      "runner": "browser",
+      "prompt": "Напишите функцию `totalDuration(results)`, которая принимает массив результатов тестов вида `{ name, durationMs }` и возвращает суммарную длительность. Для пустого массива функция возвращает 0.",
+      "starter": "function totalDuration(results) {\n  // Сверните массив в одно число.\n}",
+      "hints": [
+        "Свёртка массива в одно значение — это reduce.",
+        "У reduce есть второй аргумент: начальное значение аккумулятора.",
+        "Без начального значения reduce на пустом массиве выбрасывает ошибку."
+      ],
+      "standSetup": "",
+      "tests": [
+        {
+          "name": "суммирует длительности",
+          "code": "expect(totalDuration([\n  { name: 'a', durationMs: 120 },\n  { name: 'b', durationMs: 80 }\n])).toBe(200);"
+        },
+        {
+          "name": "для пустого массива возвращает 0",
+          "code": "expect(totalDuration([])).toBe(0);"
+        },
+        {
+          "name": "работает с одним элементом",
+          "code": "expect(totalDuration([{ name: 'a', durationMs: 42 }])).toBe(42);"
+        },
+        {
+          "name": "не изменяет исходный массив",
+          "code": "const source = [{ name: 'a', durationMs: 10 }];\ntotalDuration(source);\nexpect(source).toEqual([{ name: 'a', durationMs: 10 }]);"
+        }
+      ],
+      "solution": "function totalDuration(results) {\n  return results.reduce((sum, result) => sum + result.durationMs, 0);\n}",
+      "chapter": "01-javascript/53-reduce"
+    },
+    {
+      "id": "js-53-group-by-status",
+      "title": "Группировка результатов по статусу",
+      "difficulty": "medium",
+      "lang": "js",
+      "runner": "browser",
+      "prompt": "Напишите функцию `groupByStatus(results)`, которая принимает массив `{ name, status }` и возвращает объект, где ключ — статус, а значение — массив имён тестов с этим статусом. Порядок имён должен совпадать с исходным.",
+      "starter": "function groupByStatus(results) {\n  // Соберите объект вида { passed: ['a'], failed: ['b'] }.\n}",
+      "hints": [
+        "Аккумулятором reduce может быть не только число, но и объект.",
+        "Перед добавлением имени нужно убедиться, что массив для этого статуса уже создан.",
+        "Возвращайте аккумулятор на каждом шаге, иначе следующая итерация получит undefined."
+      ],
+      "standSetup": "",
+      "tests": [
+        {
+          "name": "группирует по статусу",
+          "code": "expect(groupByStatus([\n  { name: 'a', status: 'passed' },\n  { name: 'b', status: 'failed' },\n  { name: 'c', status: 'passed' }\n])).toEqual({ passed: ['a', 'c'], failed: ['b'] });"
+        },
+        {
+          "name": "для пустого массива возвращает пустой объект",
+          "code": "expect(groupByStatus([])).toEqual({});"
+        },
+        {
+          "name": "сохраняет исходный порядок имён",
+          "code": "const grouped = groupByStatus([\n  { name: 'z', status: 'passed' },\n  { name: 'a', status: 'passed' }\n]);\nexpect(grouped.passed).toEqual(['z', 'a']);"
+        },
+        {
+          "name": "не изменяет исходный массив",
+          "code": "const source = [{ name: 'a', status: 'passed' }];\ngroupByStatus(source);\nexpect(source).toEqual([{ name: 'a', status: 'passed' }]);"
+        }
+      ],
+      "solution": "function groupByStatus(results) {\n  return results.reduce((groups, result) => {\n    if (!groups[result.status]) {\n      groups[result.status] = [];\n    }\n\n    groups[result.status].push(result.name);\n    return groups;\n  }, {});\n}",
+      "chapter": "01-javascript/53-reduce"
+    }
+  ],
+  "02-typescript/111-type-alias": [
+    {
+      "id": "ts-111-test-result-alias",
+      "title": "Type alias для результата теста",
+      "difficulty": "easy",
+      "lang": "ts",
+      "runner": "browser",
+      "prompt": "Объявите type alias `TestResult` с полями `name: string`, `status` (одно из `\"passed\" | \"failed\" | \"skipped\"`) и необязательным `durationMs: number`. Затем напишите функцию `describe(result: TestResult): string`, которая возвращает `\"<имя>: <статус>\"`, а при наличии длительности — `\"<имя>: <статус> (<мс> мс)\"`.",
+      "starter": "type TestResult = {\n  // Опишите поля результата теста.\n};\n\nfunction describe(result: TestResult): string {\n  // Верните строку по правилам из условия.\n  return '';\n}",
+      "hints": [
+        "Объединение literal types записывается через вертикальную черту.",
+        "Необязательное поле помечается знаком вопроса после имени.",
+        "Отсутствующее необязательное поле равно undefined — это и нужно проверить."
+      ],
+      "standSetup": "",
+      "tests": [
+        {
+          "name": "описывает результат без длительности",
+          "code": "expect(describe({ name: 'логин', status: 'passed' })).toBe('логин: passed');"
+        },
+        {
+          "name": "добавляет длительность, когда она задана",
+          "code": "expect(describe({ name: 'логин', status: 'failed', durationMs: 120 }))\n  .toBe('логин: failed (120 мс)');"
+        },
+        {
+          "name": "поддерживает статус skipped",
+          "code": "expect(describe({ name: 'экспорт', status: 'skipped' })).toBe('экспорт: skipped');"
+        },
+        {
+          "name": "нулевая длительность считается заданной",
+          "code": "expect(describe({ name: 'быстрый', status: 'passed', durationMs: 0 }))\n  .toBe('быстрый: passed (0 мс)');"
+        }
+      ],
+      "solution": "type TestResult = {\n  name: string;\n  status: 'passed' | 'failed' | 'skipped';\n  durationMs?: number;\n};\n\nfunction describe(result: TestResult): string {\n  const base = result.name + ': ' + result.status;\n\n  return result.durationMs === undefined\n    ? base\n    : base + ' (' + result.durationMs + ' мс)';\n}",
+      "chapter": "02-typescript/111-type-alias"
+    }
+  ],
+  "03-automation-qa/193-api-response-and-business-rule-validation": [
+    {
+      "id": "qa-193-version-conflict",
+      "title": "Конфликт версий при обновлении",
+      "difficulty": "medium",
+      "lang": "api",
+      "runner": "stand",
+      "prompt": "Создайте задачу через REST, обновите ей заголовок с правильной ожидаемой версией, а затем повторите обновление с той же — уже устаревшей — версией. Верните объект `{ created, updated, stale }` с тремя ответами стенда.",
+      "starter": "/**\n * api.post(path, body), api.get(path), api.patch(path, body), api.delete(path)\n * Каждый вызов возвращает { status, headers, body }.\n */\nexport default async function solve(api) {\n  // 1. Создайте задачу: POST /work-items\n  // 2. Обновите заголовок с expectedVersion от созданной записи\n  // 3. Повторите обновление с той же expectedVersion\n\n  return { created: null, updated: null, stale: null };\n}",
+      "hints": [
+        "Создание возвращает полную запись: в ней есть и идентификатор, и начальная версия.",
+        "Обновление требует поля expectedVersion — стенд сверяет его с текущей версией строки.",
+        "Успешное обновление увеличивает версию, поэтому повтор с прежним значением уже не совпадёт."
+      ],
+      "standSetup": "",
+      "tests": [
+        {
+          "name": "создание возвращает 201 и первую версию",
+          "code": "expect(result.created.status).toBe(201);\nexpect(result.created.body.version).toBe(1);"
+        },
+        {
+          "name": "первое обновление проходит и повышает версию",
+          "code": "expect(result.updated.status).toBe(200);\nexpect(result.updated.body.version).toBe(2);"
+        },
+        {
+          "name": "повтор с устаревшей версией даёт 409",
+          "code": "expect(result.stale.status).toBe(409);\nexpect(result.stale.body.code).toBe('VERSION_CONFLICT');"
+        },
+        {
+          "name": "отказ не изменил запись",
+          "code": "const current = await api.get('/work-items/' + result.created.body.id);\nexpect(current.body.version).toBe(2);\nexpect(current.body.title).toBe(result.updated.body.title);"
+        },
+        {
+          "name": "запись действительно сохранена в базе",
+          "code": "const stored = await query(\n  \"SELECT version FROM work_items WHERE id = '\" + result.created.body.id + \"'\"\n);\nexpect(Number(stored[0].version)).toBe(2);"
+        }
+      ],
+      "solution": "export default async function solve(api) {\n  const created = await api.post('/work-items', {\n    title: 'Задача для проверки конфликта версий',\n    description: 'Создана решением задачи',\n    priority: 'MEDIUM'\n  });\n\n  const updated = await api.patch('/work-items/' + created.body.id, {\n    title: 'Обновлённый заголовок',\n    expectedVersion: created.body.version\n  });\n\n  const stale = await api.patch('/work-items/' + created.body.id, {\n    title: 'Попытка записи из устаревшего состояния',\n    expectedVersion: created.body.version\n  });\n\n  return { created, updated, stale };\n}",
+      "chapter": "03-automation-qa/193-api-response-and-business-rule-validation"
+    }
+  ],
+  "03-automation-qa/207-postgresql-in-automation-qa": [
+    {
+      "id": "qa-207-seed-priorities",
+      "title": "Распределение задач по приоритетам",
+      "difficulty": "easy",
+      "lang": "sql",
+      "runner": "stand",
+      "prompt": "Напишите запрос, который возвращает количество seed-задач по каждому приоритету. Колонки: `priority` и `total`. Отсортируйте результат по приоритету по возрастанию. Учитывайте только учебные данные, созданные seed.",
+      "starter": "-- Верните priority и total по seed-задачам.\n-- Подсказка: служебный признак seed-строк — колонка is_seed.\nSELECT 1;",
+      "hints": [
+        "Записи, созданные тестами, отличаются от учебных значением колонки is_seed.",
+        "Количество по группам считается агрегатной функцией с группировкой по приоритету.",
+        "Колонку результата можно переименовать через AS, а порядок задать через ORDER BY."
+      ],
+      "standSetup": "await api.post('/work-items', {\n  title: 'Запись проверки, не относящаяся к seed',\n  description: 'Создана подготовкой задачи',\n  priority: 'LOW'\n});",
+      "tests": [
+        {
+          "name": "возвращает три строки — по одной на приоритет",
+          "code": "expect(rows).toHaveLength(3);"
+        },
+        {
+          "name": "колонки называются priority и total",
+          "code": "expect(Object.keys(rows[0]).sort()).toEqual(['priority', 'total']);"
+        },
+        {
+          "name": "приоритеты отсортированы по возрастанию",
+          "code": "expect(rows.map(row => row.priority)).toEqual(['HIGH', 'LOW', 'MEDIUM']);"
+        },
+        {
+          "name": "сумма совпадает с числом seed-задач",
+          "code": "const total = rows.reduce((sum, row) => sum + Number(row.total), 0);\nexpect(total).toBe(248);"
+        }
+      ],
+      "solution": "SELECT priority,\n       count(*) AS total\n  FROM work_items\n WHERE is_seed\n GROUP BY priority\n ORDER BY priority;",
+      "chapter": "03-automation-qa/207-postgresql-in-automation-qa"
     }
   ]
 }

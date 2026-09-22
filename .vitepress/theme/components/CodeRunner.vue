@@ -27,8 +27,7 @@ const T = {
   syntaxError: message => (isEn.value ? `Syntax error: ${message}` : `Ошибка синтаксиса: ${message}`),
   timeoutError: () => (isEn.value
     ? 'The code is taking too long. It may contain an infinite loop.'
-    : 'Код выполняется слишком долго. Возможно, в нем бесконечный цикл.'),
-  iframeTitle: () => (isEn.value ? 'Isolated example execution' : 'Изолированное выполнение примера')
+    : 'Код выполняется слишком долго. Возможно, в нем бесконечный цикл.')
 }
 
 const RUN_TIMEOUT_MS = 5000
@@ -58,12 +57,11 @@ const props = defineProps({
 const output = ref('')
 const error = ref('')
 const running = ref(false)
-const iframeSource = ref('')
-const iframeKey = ref(0)
-const runId = ref(0)
 const editableSource = ref('')
 let timeoutId = 0
 let graceTimeoutId = 0
+let worker = null
+let workerUrl = ''
 
 const initialSource = computed(() => {
   const binary = atob(props.sourceB64)
@@ -100,10 +98,6 @@ function hasExportStatements(source) {
   return /^\s*export\s/m.test(source)
 }
 
-function escapeScriptEnd(source) {
-  return source.replace(/<\/script/gi, '<\\/script')
-}
-
 function clearTimeoutIfNeeded() {
   if (timeoutId) {
     window.clearTimeout(timeoutId)
@@ -124,12 +118,19 @@ function finalizeRun() {
     output.value = T.noOutput()
   }
 
-  destroyIframe()
+  terminateWorker()
 }
 
-function destroyIframe() {
-  iframeSource.value = ''
-  iframeKey.value += 1
+function terminateWorker() {
+  if (worker) {
+    worker.terminate()
+    worker = null
+  }
+
+  if (workerUrl) {
+    URL.revokeObjectURL(workerUrl)
+    workerUrl = ''
+  }
 }
 
 function resetRunner() {
@@ -137,15 +138,28 @@ function resetRunner() {
   output.value = ''
   error.value = ''
   running.value = false
-  destroyIframe()
+  terminateWorker()
 
   if (!props.readonly) {
     editableSource.value = initialSource.value
   }
 }
 
+/**
+ * Убирает служебный адрес песочницы из стек-трейсов.
+ *
+ * Главы про call stack и отладку учат читать трассировку, а случайный
+ * идентификатор blob-адреса только мешает: вместо него показывается
+ * понятное имя файла примера.
+ */
+function sanitizeTrace(value) {
+  return String(value).replace(/blob:https?:\/\/[^/]+\/[0-9a-f-]+/gi, 'example.js')
+}
+
 function appendOutput(value) {
-  output.value = output.value ? `${output.value}\n${value}` : value
+  const line = sanitizeTrace(value)
+
+  output.value = output.value ? `${output.value}\n${line}` : line
 }
 
 async function prepareRunnableSource(source) {
@@ -168,24 +182,15 @@ async function prepareRunnableSource(source) {
   return transform(source, { transforms }).code
 }
 
-function createIframeSource(source) {
-  const safeSource = escapeScriptEnd(source)
-
-  return `<!doctype html>
-<html>
-<head>
-  <meta charset="utf-8">
-</head>
-<body>
-  <script>
-    const send = (type, value) => {
-      parent.postMessage({
-        source: 'book-code-runner',
-        runId: ${runId.value},
-        type,
-        value
-      }, '*')
-    }
+/**
+ * Код примера выполняется в Web Worker.
+ *
+ * У worker отдельный поток, поэтому бесконечный цикл в коде не блокирует
+ * страницу: основной поток остаётся живым и прерывает выполнение по таймауту.
+ */
+function createWorkerSource(source) {
+  return `
+    const send = (type, value) => postMessage({ type, value })
 
     const format = value => {
       if (typeof value === 'string') return value
@@ -201,41 +206,41 @@ function createIframeSource(source) {
 
     const write = (type, args) => send(type, Array.from(args).map(format).join(' '))
 
-    console.log = (...args) => write('log', args)
-    console.info = (...args) => write('log', args)
-    console.warn = (...args) => write('log', args)
-    console.error = (...args) => write('log', args)
-    console.table = value => send('log', format(value))
+    self.console = {
+      log: (...args) => write('log', args),
+      info: (...args) => write('log', args),
+      warn: (...args) => write('log', args),
+      error: (...args) => write('log', args),
+      table: value => send('log', format(value))
+    }
 
-    window.addEventListener('error', event => {
+    self.addEventListener('error', event => {
       send('error', event.message || ${JSON.stringify(T.runtimeError())})
     })
 
-    window.addEventListener('unhandledrejection', event => {
+    self.addEventListener('unhandledrejection', event => {
       send('error', event.reason?.message || format(event.reason))
     })
 
     var exports = {}
-    var module = { exports }
-  <\/script>
-  <script>
-// Async-обертка: разрешает top-level await и позволяет дождаться
+    var module = { exports };
+
+// Ведущая точка с запятой отделяет обёртку от предыдущего выражения.
+// Async-обертка разрешает top-level await и позволяет дождаться
 // завершения асинхронного кода перед сигналом done.
-(async () => {
-${safeSource}
+;(async () => {
+${source}
 })().then(
   () => send('done', ''),
   err => send('error', (err && err.message) || String(err))
 )
-  <\/script>
-</body>
-</html>`
+`
 }
 
 function handleMessage(event) {
   const message = event.data
 
-  if (!message || message.source !== 'book-code-runner' || message.runId !== runId.value) {
+  if (!message || typeof message.type !== 'string') {
     return
   }
 
@@ -244,10 +249,10 @@ function handleMessage(event) {
   }
 
   if (message.type === 'error') {
-    error.value = message.value || T.runtimeError()
+    error.value = sanitizeTrace(message.value || T.runtimeError())
     running.value = false
     clearTimeoutIfNeeded()
-    destroyIframe()
+    terminateWorker()
   }
 
   if (message.type === 'done') {
@@ -263,8 +268,7 @@ async function runCode() {
   clearTimeoutIfNeeded()
   output.value = ''
   error.value = ''
-  destroyIframe()
-  runId.value += 1
+  terminateWorker()
 
   if (isNodeOnly.value) {
     if (!props.readonly) {
@@ -286,19 +290,27 @@ async function runCode() {
     return
   }
 
-  window.removeEventListener('message', handleMessage)
-  window.addEventListener('message', handleMessage)
-
   await nextTick()
 
   timeoutId = window.setTimeout(() => {
+    // Worker прерывается принудительно: сам он остановиться уже не может.
     running.value = false
     error.value = T.timeoutError()
-    destroyIframe()
+    terminateWorker()
     clearTimeoutIfNeeded()
   }, RUN_TIMEOUT_MS)
 
-  iframeSource.value = createIframeSource(runnableSource)
+  const blob = new Blob([createWorkerSource(runnableSource)], { type: 'text/javascript' })
+
+  workerUrl = URL.createObjectURL(blob)
+  worker = new Worker(workerUrl)
+  worker.onmessage = handleMessage
+  worker.onerror = event => {
+    error.value = sanitizeTrace(event.message || T.runtimeError())
+    running.value = false
+    clearTimeoutIfNeeded()
+    terminateWorker()
+  }
 }
 
 function handleEditorTab(event) {
@@ -316,7 +328,7 @@ function handleEditorTab(event) {
 
 onBeforeUnmount(() => {
   clearTimeoutIfNeeded()
-  window.removeEventListener('message', handleMessage)
+  terminateWorker()
 })
 </script>
 
@@ -379,13 +391,5 @@ onBeforeUnmount(() => {
       </p>
     </div>
 
-    <iframe
-      v-if="iframeSource"
-      :key="iframeKey"
-      class="code-runner__iframe"
-      :title="T.iframeTitle()"
-      sandbox="allow-scripts"
-      :srcdoc="iframeSource"
-    />
   </div>
 </template>

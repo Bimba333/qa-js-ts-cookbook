@@ -6,6 +6,9 @@
   "scripts": {
     "docs:engine": "node scripts/book-engine/generate.mjs",
     "tasks:build": "node scripts/book-engine/generate-tasks.mjs",
+    "tasks:solutions": "node scripts/book-qa/check-task-solutions.mjs",
+    "tasks:check": "npm run tasks:solutions && node scripts/book-qa/check-code-task.mjs",
+    "task:verify": "node scripts/verify-task.mjs",
     "docs:sidebar": "npm run docs:engine && npm run tasks:build && node scripts/generate-sidebar.mjs",
     "docs:dev": "npm run docs:sidebar && vitepress dev .",
     "docs:build": "npm run docs:sidebar && vitepress build .",
@@ -38,7 +41,10 @@
     "qa:examples": "node scripts/run-qa-examples.mjs",
     "qa:examples:typecheck": "node scripts/run-qa-examples.mjs --typecheck-only",
     "test:playwright": "playwright test",
-    "test:playwright:list": "playwright test --list"
+    "test:playwright:list": "playwright test --list",
+    "examples:run": "node scripts/book-qa/run-all-examples.mjs",
+    "examples:check": "node scripts/book-qa/run-all-examples.mjs --baseline .meta/snapshots/examples-baseline.json",
+    "examples:baseline": "node scripts/book-qa/run-all-examples.mjs --out .meta/snapshots/examples-baseline.json"
   },
   "dependencies": {
     "@grpc/grpc-js": "1.14.4",

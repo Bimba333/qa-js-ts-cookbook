@@ -1,0 +1,3656 @@
+[
+  {
+    "chapter": "docs/01-javascript/01-what-is-javascript",
+    "title": "JS Песочница",
+    "outcome": "ok",
+    "text": "Песочница готова к работе!"
+  },
+  {
+    "chapter": "docs/01-javascript/01-what-is-javascript",
+    "title": "JS Песочница",
+    "outcome": "ok",
+    "text": "Песочница готова к работе!"
+  },
+  {
+    "chapter": "docs/01-javascript/01-what-is-javascript",
+    "title": "JS Песочница",
+    "outcome": "ok",
+    "text": "Песочница готова к работе!"
+  },
+  {
+    "chapter": "docs/01-javascript/01-what-is-javascript",
+    "title": "JS Пример 1. Node Runtime",
+    "outcome": "read-only",
+    "text": ""
+  },
+  {
+    "chapter": "docs/01-javascript/01-what-is-javascript",
+    "title": "JS Пример 2. Runtime Check",
+    "outcome": "read-only",
+    "text": ""
+  },
+  {
+    "chapter": "docs/01-javascript/01-what-is-javascript",
+    "title": "JS Пример 3. Browser Only Api",
+    "outcome": "ok",
+    "text": "document is available: false\nThis file is running in Node.js, so document is not available here."
+  },
+  {
+    "chapter": "docs/01-javascript/01-what-is-javascript",
+    "title": "JS Пример 4. Node Only Api",
+    "outcome": "read-only",
+    "text": ""
+  },
+  {
+    "chapter": "docs/01-javascript/02-how-javascript-works",
+    "title": "JS Пример 1. Valid Program",
+    "outcome": "ok",
+    "text": "Program started\nProgram finished"
+  },
+  {
+    "chapter": "docs/01-javascript/02-how-javascript-works",
+    "title": "JS Пример 2. Syntax Error",
+    "outcome": "intentional-error",
+    "text": "Uncaught SyntaxError: missing ) after argument list"
+  },
+  {
+    "chapter": "docs/01-javascript/02-how-javascript-works",
+    "title": "JS Пример 3. Engine Flow",
+    "outcome": "ok",
+    "text": "Source code was parsed successfully\nExecution has started"
+  },
+  {
+    "chapter": "docs/01-javascript/02-how-javascript-works",
+    "title": "JS Пример 4. Runtime Flow",
+    "outcome": "ok",
+    "text": "JavaScript is executing\nRuntime API: console output"
+  },
+  {
+    "chapter": "docs/01-javascript/03-execution-context",
+    "title": "JS Песочница",
+    "outcome": "ok",
+    "text": "Песочница готова к работе!"
+  },
+  {
+    "chapter": "docs/01-javascript/03-execution-context",
+    "title": "JS Пример 1. Global Context",
+    "outcome": "ok",
+    "text": "Global context: execution phase started\nGlobal context: execution phase finished"
+  },
+  {
+    "chapter": "docs/01-javascript/03-execution-context",
+    "title": "JS Пример 2. Function Context",
+    "outcome": "ok",
+    "text": "Global context: before function call\nFunction context: running printMessage\nGlobal context: after function call"
+  },
+  {
+    "chapter": "docs/01-javascript/03-execution-context",
+    "title": "JS Пример 3. Nested Contexts",
+    "outcome": "ok",
+    "text": "outerTask context: start\ninnerTask context: running\nouterTask context: finish"
+  },
+  {
+    "chapter": "docs/01-javascript/03-execution-context",
+    "title": "JS Пример 4. Context Lifecycle",
+    "outcome": "ok",
+    "text": "runStep context: created for this call\nrunStep context: finishes after this line\nrunStep context: created for this call\nrunStep context: finishes after this line"
+  },
+  {
+    "chapter": "docs/01-javascript/03-execution-context",
+    "title": "JS Пример 5. Registration Before Execution",
+    "outcome": "ok",
+    "text": "Function was registered before execution phase used it"
+  },
+  {
+    "chapter": "docs/01-javascript/03-execution-context",
+    "title": "JS Пример 6. Common Mistake",
+    "outcome": "ok",
+    "text": "Value before assignment: undefined\nValue after assignment: ready"
+  },
+  {
+    "chapter": "docs/01-javascript/04-call-stack",
+    "title": "JS Песочница",
+    "outcome": "ok",
+    "text": "Песочница готова к работе!"
+  },
+  {
+    "chapter": "docs/01-javascript/04-call-stack",
+    "title": "JS Пример 1. Single Call",
+    "outcome": "ok",
+    "text": "global context before call\ngreet context is running\nglobal context after call"
+  },
+  {
+    "chapter": "docs/01-javascript/04-call-stack",
+    "title": "JS Пример 2. Nested Calls",
+    "outcome": "ok",
+    "text": "first start\nsecond start\nthird\nsecond finish\nfirst finish"
+  },
+  {
+    "chapter": "docs/01-javascript/04-call-stack",
+    "title": "JS Пример 3. Stack Growth",
+    "outcome": "ok",
+    "text": "stack: global -> stepOne\nstack: global -> stepOne -> stepTwo\nstack: global -> stepOne -> stepTwo -> stepThree"
+  },
+  {
+    "chapter": "docs/01-javascript/04-call-stack",
+    "title": "JS Пример 4. Stack Pop",
+    "outcome": "ok",
+    "text": "outer before inner\ninner runs and then pops\nouter after inner"
+  },
+  {
+    "chapter": "docs/01-javascript/04-call-stack",
+    "title": "JS Пример 5. Stack Trace",
+    "outcome": "intentional-error",
+    "text": "Invalid user data"
+  },
+  {
+    "chapter": "docs/01-javascript/04-call-stack",
+    "title": "JS Пример 6. Stack Overflow Concept",
+    "outcome": "ok",
+    "text": "depth: 1\ndepth: 2\ndepth: 3\nStop before stack overflow"
+  },
+  {
+    "chapter": "docs/01-javascript/05-memory",
+    "title": "JS Песочница",
+    "outcome": "ok",
+    "text": "Песочница готова к работе!"
+  },
+  {
+    "chapter": "docs/01-javascript/05-memory",
+    "title": "JS Песочница",
+    "outcome": "ok",
+    "text": "Песочница готова к работе!"
+  },
+  {
+    "chapter": "docs/01-javascript/05-memory",
+    "title": "JS Песочница",
+    "outcome": "ok",
+    "text": "Песочница готова к работе!"
+  },
+  {
+    "chapter": "docs/01-javascript/05-memory",
+    "title": "JS Пример 1. Store Value",
+    "outcome": "ok",
+    "text": "Stored test status:\npassed"
+  },
+  {
+    "chapter": "docs/01-javascript/05-memory",
+    "title": "JS Пример 2. Read Value",
+    "outcome": "ok",
+    "text": "chromium\nchromium\nchromium"
+  },
+  {
+    "chapter": "docs/01-javascript/05-memory",
+    "title": "JS Пример 3. Update Value",
+    "outcome": "ok",
+    "text": "Before update: 1\nAfter update: 2"
+  },
+  {
+    "chapter": "docs/01-javascript/05-memory",
+    "title": "JS Пример 4. Function Memory",
+    "outcome": "ok",
+    "text": "admin"
+  },
+  {
+    "chapter": "docs/01-javascript/05-memory",
+    "title": "JS Пример 5. Lifetime",
+    "outcome": "ok",
+    "text": "https://example.com/login\nhttps://example.com"
+  },
+  {
+    "chapter": "docs/01-javascript/05-memory",
+    "title": "JS Пример 6. Temporary Data",
+    "outcome": "ok",
+    "text": "Test: login"
+  },
+  {
+    "chapter": "docs/01-javascript/06-variables",
+    "title": "JS Песочница",
+    "outcome": "ok",
+    "text": "Песочница готова к работе!"
+  },
+  {
+    "chapter": "docs/01-javascript/06-variables",
+    "title": "JS Пример 1. Declaration",
+    "outcome": "ok",
+    "text": "After declaration without initialization:\nundefined"
+  },
+  {
+    "chapter": "docs/01-javascript/06-variables",
+    "title": "JS Пример 2. Initialization",
+    "outcome": "ok",
+    "text": "https://example.com\ncreated"
+  },
+  {
+    "chapter": "docs/01-javascript/06-variables",
+    "title": "JS Пример 3. Assignment",
+    "outcome": "ok",
+    "text": "created"
+  },
+  {
+    "chapter": "docs/01-javascript/06-variables",
+    "title": "JS Пример 4. Reassignment",
+    "outcome": "ok",
+    "text": "Before reassignment: created\nAfter reassignment: ready"
+  },
+  {
+    "chapter": "docs/01-javascript/06-variables",
+    "title": "JS Пример 5. Var Let Const",
+    "outcome": "ok",
+    "text": "updated\nfinished\nhttps://example.com"
+  },
+  {
+    "chapter": "docs/01-javascript/06-variables",
+    "title": "JS Пример 6. Common Mistakes",
+    "outcome": "ok",
+    "text": "https://example.com\nready"
+  },
+  {
+    "chapter": "docs/01-javascript/07-scope",
+    "title": "JS Песочница",
+    "outcome": "ok",
+    "text": "Песочница готова к работе!"
+  },
+  {
+    "chapter": "docs/01-javascript/07-scope",
+    "title": "JS Пример 1. Global Scope",
+    "outcome": "ok",
+    "text": "https://example.com\nhttps://example.com"
+  },
+  {
+    "chapter": "docs/01-javascript/07-scope",
+    "title": "JS Пример 2. Function Scope",
+    "outcome": "ok",
+    "text": "Anna"
+  },
+  {
+    "chapter": "docs/01-javascript/07-scope",
+    "title": "JS Пример 3. Block Scope",
+    "outcome": "ok",
+    "text": "login\nactive"
+  },
+  {
+    "chapter": "docs/01-javascript/07-scope",
+    "title": "JS Пример 4. Shadowing",
+    "outcome": "ok",
+    "text": "local\nglobal"
+  },
+  {
+    "chapter": "docs/01-javascript/07-scope",
+    "title": "JS Пример 5. Scope Chain",
+    "outcome": "ok",
+    "text": "https://example.com/login"
+  },
+  {
+    "chapter": "docs/01-javascript/07-scope",
+    "title": "JS Пример 6. Common Mistakes",
+    "outcome": "ok",
+    "text": "Anna\nactive"
+  },
+  {
+    "chapter": "docs/01-javascript/08-lexical-environment",
+    "title": "JS Песочница",
+    "outcome": "ok",
+    "text": "Песочница готова к работе!"
+  },
+  {
+    "chapter": "docs/01-javascript/08-lexical-environment",
+    "title": "JS Пример 1. Global Environment",
+    "outcome": "ok",
+    "text": "https://example.com\nlogin"
+  },
+  {
+    "chapter": "docs/01-javascript/08-lexical-environment",
+    "title": "JS Пример 2. Function Environment",
+    "outcome": "ok",
+    "text": "qa-user"
+  },
+  {
+    "chapter": "docs/01-javascript/08-lexical-environment",
+    "title": "JS Пример 3. Nested Environments",
+    "outcome": "ok",
+    "text": "https://example.com/login"
+  },
+  {
+    "chapter": "docs/01-javascript/08-lexical-environment",
+    "title": "JS Пример 4. Environment Record",
+    "outcome": "ok",
+    "text": "qa-user\nactive"
+  },
+  {
+    "chapter": "docs/01-javascript/08-lexical-environment",
+    "title": "JS Пример 5. Lookup",
+    "outcome": "ok",
+    "text": "https://example.com/profile"
+  },
+  {
+    "chapter": "docs/01-javascript/08-lexical-environment",
+    "title": "JS Пример 6. Common Mistakes",
+    "outcome": "ok",
+    "text": "https://example.com/login"
+  },
+  {
+    "chapter": "docs/01-javascript/09-hoisting",
+    "title": "JS Песочница",
+    "outcome": "ok",
+    "text": "Песочница готова к работе!"
+  },
+  {
+    "chapter": "docs/01-javascript/09-hoisting",
+    "title": "JS Пример 1. Function Hoisting",
+    "outcome": "ok",
+    "text": "ready"
+  },
+  {
+    "chapter": "docs/01-javascript/09-hoisting",
+    "title": "JS Пример 2. Var Hoisting",
+    "outcome": "ok",
+    "text": "undefined\nAnna"
+  },
+  {
+    "chapter": "docs/01-javascript/09-hoisting",
+    "title": "JS Пример 3. Let Behavior",
+    "outcome": "ok",
+    "text": "admin"
+  },
+  {
+    "chapter": "docs/01-javascript/09-hoisting",
+    "title": "JS Пример 4. Const Behavior",
+    "outcome": "ok",
+    "text": "https://example.com"
+  },
+  {
+    "chapter": "docs/01-javascript/09-hoisting",
+    "title": "JS Пример 5. Declaration Vs Initialization",
+    "outcome": "ok",
+    "text": "undefined\ncreated"
+  },
+  {
+    "chapter": "docs/01-javascript/09-hoisting",
+    "title": "JS Пример 6. Common Mistakes",
+    "outcome": "ok",
+    "text": "setup started\nundefined\nstaging\nhttps://example.com"
+  },
+  {
+    "chapter": "docs/01-javascript/10-temporal-dead-zone",
+    "title": "JS Песочница",
+    "outcome": "ok",
+    "text": "Песочница готова к работе!"
+  },
+  {
+    "chapter": "docs/01-javascript/10-temporal-dead-zone",
+    "title": "JS Пример 1. Let Tdz",
+    "outcome": "ok",
+    "text": "Anna"
+  },
+  {
+    "chapter": "docs/01-javascript/10-temporal-dead-zone",
+    "title": "JS Пример 2. Const Tdz",
+    "outcome": "ok",
+    "text": "https://example.com"
+  },
+  {
+    "chapter": "docs/01-javascript/10-temporal-dead-zone",
+    "title": "JS Пример 3. Var Comparison",
+    "outcome": "ok",
+    "text": "undefined\ncreated"
+  },
+  {
+    "chapter": "docs/01-javascript/10-temporal-dead-zone",
+    "title": "JS Пример 4. Initialization",
+    "outcome": "ok",
+    "text": "undefined\nAnna"
+  },
+  {
+    "chapter": "docs/01-javascript/10-temporal-dead-zone",
+    "title": "JS Пример 5. Safe Access",
+    "outcome": "ok",
+    "text": "https://example.com\nAnna"
+  },
+  {
+    "chapter": "docs/01-javascript/10-temporal-dead-zone",
+    "title": "JS Пример 6. Common Mistakes",
+    "outcome": "ok",
+    "text": "https://example.com\nAnna\nready"
+  },
+  {
+    "chapter": "docs/01-javascript/11-primitive-types",
+    "title": "JS Песочница",
+    "outcome": "ok",
+    "text": "Песочница готова к работе!"
+  },
+  {
+    "chapter": "docs/01-javascript/11-primitive-types",
+    "title": "JS Пример 1. Number",
+    "outcome": "ok",
+    "text": "200\n2\nnumber"
+  },
+  {
+    "chapter": "docs/01-javascript/11-primitive-types",
+    "title": "JS Пример 2. String",
+    "outcome": "ok",
+    "text": "Anna\nactive\nstring"
+  },
+  {
+    "chapter": "docs/01-javascript/11-primitive-types",
+    "title": "JS Пример 3. Boolean",
+    "outcome": "ok",
+    "text": "true\nfalse\nboolean"
+  },
+  {
+    "chapter": "docs/01-javascript/11-primitive-types",
+    "title": "JS Пример 4. Null Undefined",
+    "outcome": "ok",
+    "text": "undefined\nnull\nundefined\nobject"
+  },
+  {
+    "chapter": "docs/01-javascript/11-primitive-types",
+    "title": "JS Пример 5. Symbol Bigint",
+    "outcome": "ok",
+    "text": "false\n9007199254740993\nsymbol\nbigint"
+  },
+  {
+    "chapter": "docs/01-javascript/11-primitive-types",
+    "title": "JS Пример 6. Typeof",
+    "outcome": "ok",
+    "text": "number\nstring\nboolean\nundefined\nobject\nsymbol\nbigint"
+  },
+  {
+    "chapter": "docs/01-javascript/12-object-type",
+    "title": "JS Песочница",
+    "outcome": "ok",
+    "text": "Песочница готова к работе!"
+  },
+  {
+    "chapter": "docs/01-javascript/12-object-type",
+    "title": "JS Пример 1. Create Object",
+    "outcome": "ok",
+    "text": "{\n  \"firstName\": \"Anna\",\n  \"lastName\": \"Smith\",\n  \"age\": 30,\n  \"isActive\": true\n}"
+  },
+  {
+    "chapter": "docs/01-javascript/12-object-type",
+    "title": "JS Пример 2. Read Properties",
+    "outcome": "ok",
+    "text": "Anna\nSmith\n30\ntrue"
+  },
+  {
+    "chapter": "docs/01-javascript/12-object-type",
+    "title": "JS Пример 3. Update Properties",
+    "outcome": "ok",
+    "text": "31\nfalse"
+  },
+  {
+    "chapter": "docs/01-javascript/12-object-type",
+    "title": "JS Пример 4. Add Properties",
+    "outcome": "ok",
+    "text": "admin\nnull\n{\n  \"firstName\": \"Anna\",\n  \"lastName\": \"Smith\",\n  \"age\": 30,\n  \"isActive\": true,\n  \"role\": \"admin\",\n  \"deletedAt\": null\n}"
+  },
+  {
+    "chapter": "docs/01-javascript/12-object-type",
+    "title": "JS Пример 5. Delete Properties",
+    "outcome": "ok",
+    "text": "{\n  \"firstName\": \"Anna\",\n  \"lastName\": \"Smith\"\n}\nundefined"
+  },
+  {
+    "chapter": "docs/01-javascript/12-object-type",
+    "title": "JS Пример 6. Nested Object",
+    "outcome": "ok",
+    "text": "Anna\nadmin\ntrue"
+  },
+  {
+    "chapter": "docs/01-javascript/13-references",
+    "title": "JS Песочница",
+    "outcome": "ok",
+    "text": "Песочница готова к работе!"
+  },
+  {
+    "chapter": "docs/01-javascript/13-references",
+    "title": "JS Пример 1. Primitive Copy",
+    "outcome": "ok",
+    "text": "Anna\nKate"
+  },
+  {
+    "chapter": "docs/01-javascript/13-references",
+    "title": "JS Пример 2. Object Reference",
+    "outcome": "ok",
+    "text": "Kate\nKate"
+  },
+  {
+    "chapter": "docs/01-javascript/13-references",
+    "title": "JS Пример 3. Two Variables",
+    "outcome": "ok",
+    "text": "Anna\nAnna\ntrue"
+  },
+  {
+    "chapter": "docs/01-javascript/13-references",
+    "title": "JS Пример 4. Update Through Reference",
+    "outcome": "ok",
+    "text": "admin\nadmin"
+  },
+  {
+    "chapter": "docs/01-javascript/13-references",
+    "title": "JS Пример 5. Reference Reassignment",
+    "outcome": "ok",
+    "text": "Anna\nKate"
+  },
+  {
+    "chapter": "docs/01-javascript/13-references",
+    "title": "JS Пример 6. Common Mistakes",
+    "outcome": "ok",
+    "text": "admin\nadmin"
+  },
+  {
+    "chapter": "docs/01-javascript/14-stack-and-heap",
+    "title": "JS Песочница",
+    "outcome": "ok",
+    "text": "Песочница готова к работе!"
+  },
+  {
+    "chapter": "docs/01-javascript/14-stack-and-heap",
+    "title": "JS Пример 1. Primitive Memory",
+    "outcome": "ok",
+    "text": "Anna\nKate"
+  },
+  {
+    "chapter": "docs/01-javascript/14-stack-and-heap",
+    "title": "JS Пример 2. Object Memory",
+    "outcome": "ok",
+    "text": "Anna\nuser"
+  },
+  {
+    "chapter": "docs/01-javascript/14-stack-and-heap",
+    "title": "JS Пример 3. Reference Sharing",
+    "outcome": "ok",
+    "text": "admin\nadmin"
+  },
+  {
+    "chapter": "docs/01-javascript/14-stack-and-heap",
+    "title": "JS Пример 4. Reassignment",
+    "outcome": "ok",
+    "text": "Anna\nKate"
+  },
+  {
+    "chapter": "docs/01-javascript/14-stack-and-heap",
+    "title": "JS Пример 5. Function Call",
+    "outcome": "ok",
+    "text": "admin"
+  },
+  {
+    "chapter": "docs/01-javascript/14-stack-and-heap",
+    "title": "JS Пример 6. Common Mistakes",
+    "outcome": "ok",
+    "text": "admin\nadmin"
+  },
+  {
+    "chapter": "docs/01-javascript/15-type-conversion",
+    "title": "JS Песочница",
+    "outcome": "ok",
+    "text": "Песочница готова к работе!"
+  },
+  {
+    "chapter": "docs/01-javascript/15-type-conversion",
+    "title": "JS Пример 1. Number Conversion",
+    "outcome": "ok",
+    "text": "200\n3\nnull"
+  },
+  {
+    "chapter": "docs/01-javascript/15-type-conversion",
+    "title": "JS Пример 2. String Conversion",
+    "outcome": "ok",
+    "text": "200\ntrue\nnull"
+  },
+  {
+    "chapter": "docs/01-javascript/15-type-conversion",
+    "title": "JS Пример 3. Boolean Conversion",
+    "outcome": "ok",
+    "text": "true\nfalse\nfalse\ntrue"
+  },
+  {
+    "chapter": "docs/01-javascript/15-type-conversion",
+    "title": "JS Пример 4. Implicit Conversion",
+    "outcome": "ok",
+    "text": "51\n4\n10"
+  },
+  {
+    "chapter": "docs/01-javascript/15-type-conversion",
+    "title": "JS Пример 5. Explicit Conversion",
+    "outcome": "ok",
+    "text": "6\n5\ntrue"
+  },
+  {
+    "chapter": "docs/01-javascript/15-type-conversion",
+    "title": "JS Пример 6. Common Mistakes",
+    "outcome": "ok",
+    "text": "true\n4"
+  },
+  {
+    "chapter": "docs/01-javascript/16-equality",
+    "title": "JS Песочница",
+    "outcome": "ok",
+    "text": "Песочница готова к работе!"
+  },
+  {
+    "chapter": "docs/01-javascript/16-equality",
+    "title": "JS Пример 1. Strict Equality",
+    "outcome": "ok",
+    "text": "false\ntrue"
+  },
+  {
+    "chapter": "docs/01-javascript/16-equality",
+    "title": "JS Пример 2. Loose Equality",
+    "outcome": "ok",
+    "text": "true\ntrue\ntrue"
+  },
+  {
+    "chapter": "docs/01-javascript/16-equality",
+    "title": "JS Пример 3. Object Is",
+    "outcome": "ok",
+    "text": "true\ntrue\nfalse\ntrue"
+  },
+  {
+    "chapter": "docs/01-javascript/16-equality",
+    "title": "JS Пример 4. Object Comparison",
+    "outcome": "ok",
+    "text": "false\ntrue"
+  },
+  {
+    "chapter": "docs/01-javascript/16-equality",
+    "title": "JS Пример 5. Nan",
+    "outcome": "ok",
+    "text": "null\nfalse\ntrue\ntrue"
+  },
+  {
+    "chapter": "docs/01-javascript/16-equality",
+    "title": "JS Пример 6. Common Mistakes",
+    "outcome": "ok",
+    "text": "true\nfalse\ntrue"
+  },
+  {
+    "chapter": "docs/01-javascript/17-operators",
+    "title": "JS Песочница",
+    "outcome": "ok",
+    "text": "Песочница готова к работе!"
+  },
+  {
+    "chapter": "docs/01-javascript/17-operators",
+    "title": "JS Пример 1. Arithmetic",
+    "outcome": "ok",
+    "text": "300\n250"
+  },
+  {
+    "chapter": "docs/01-javascript/17-operators",
+    "title": "JS Пример 2. Comparison",
+    "outcome": "ok",
+    "text": "true\ntrue\ntrue"
+  },
+  {
+    "chapter": "docs/01-javascript/17-operators",
+    "title": "JS Пример 3. Logical",
+    "outcome": "ok",
+    "text": "true\nfalse"
+  },
+  {
+    "chapter": "docs/01-javascript/17-operators",
+    "title": "JS Пример 4. Assignment",
+    "outcome": "ok",
+    "text": "1\n2"
+  },
+  {
+    "chapter": "docs/01-javascript/17-operators",
+    "title": "JS Пример 5. Special Operators",
+    "outcome": "ok",
+    "text": "string\ntrue\nfalse\ntrue"
+  },
+  {
+    "chapter": "docs/01-javascript/17-operators",
+    "title": "JS Пример 6. Common Mistakes",
+    "outcome": "ok",
+    "text": "31\n14\n20"
+  },
+  {
+    "chapter": "docs/01-javascript/18-conditionals",
+    "title": "JS Песочница",
+    "outcome": "ok",
+    "text": "Песочница готова к работе!"
+  },
+  {
+    "chapter": "docs/01-javascript/18-conditionals",
+    "title": "JS Пример 1. If",
+    "outcome": "ok",
+    "text": "Status is OK"
+  },
+  {
+    "chapter": "docs/01-javascript/18-conditionals",
+    "title": "JS Пример 2. If Else",
+    "outcome": "ok",
+    "text": "Report status error"
+  },
+  {
+    "chapter": "docs/01-javascript/18-conditionals",
+    "title": "JS Пример 3. Else If",
+    "outcome": "ok",
+    "text": "Not found"
+  },
+  {
+    "chapter": "docs/01-javascript/18-conditionals",
+    "title": "JS Пример 4. Switch",
+    "outcome": "ok",
+    "text": "Use staging config"
+  },
+  {
+    "chapter": "docs/01-javascript/18-conditionals",
+    "title": "JS Пример 5. Nested",
+    "outcome": "ok",
+    "text": "Valid user response"
+  },
+  {
+    "chapter": "docs/01-javascript/18-conditionals",
+    "title": "JS Пример 6. Common Mistakes",
+    "outcome": "ok",
+    "text": "This branch runs because assignment produced a truthy value\n200"
+  },
+  {
+    "chapter": "docs/01-javascript/19-loops",
+    "title": "JS Песочница",
+    "outcome": "ok",
+    "text": "Песочница готова к работе!"
+  },
+  {
+    "chapter": "docs/01-javascript/19-loops",
+    "title": "JS Пример 1. While",
+    "outcome": "ok",
+    "text": "Validate response 0\nValidate response 1\nValidate response 2"
+  },
+  {
+    "chapter": "docs/01-javascript/19-loops",
+    "title": "JS Пример 2. Do While",
+    "outcome": "ok",
+    "text": "Run attempt 1"
+  },
+  {
+    "chapter": "docs/01-javascript/19-loops",
+    "title": "JS Пример 3. For",
+    "outcome": "ok",
+    "text": "Validate response 0\nValidate response 1\nValidate response 2"
+  },
+  {
+    "chapter": "docs/01-javascript/19-loops",
+    "title": "JS Пример 4. Break Continue",
+    "outcome": "ok",
+    "text": "Validate response 0\nValidate response 2\nValidate response 3"
+  },
+  {
+    "chapter": "docs/01-javascript/19-loops",
+    "title": "JS Пример 5. Common Mistakes",
+    "outcome": "ok",
+    "text": "Attempt 1\nAttempt 2\nAttempt 3"
+  },
+  {
+    "chapter": "docs/01-javascript/19-loops",
+    "title": "JS Пример 6. Qa Example",
+    "outcome": "ok",
+    "text": "Valid response at index 0\nValid response at index 1\nInvalid response at index 2"
+  },
+  {
+    "chapter": "docs/01-javascript/20-error-handling",
+    "title": "JS Песочница",
+    "outcome": "ok",
+    "text": "Песочница готова к работе!"
+  },
+  {
+    "chapter": "docs/01-javascript/20-error-handling",
+    "title": "JS Пример 1. Runtime Error",
+    "outcome": "ok",
+    "text": "Runtime error was handled"
+  },
+  {
+    "chapter": "docs/01-javascript/20-error-handling",
+    "title": "JS Пример 2. Throw",
+    "outcome": "ok",
+    "text": "Expected status 200, received 500"
+  },
+  {
+    "chapter": "docs/01-javascript/20-error-handling",
+    "title": "JS Пример 3. Try Catch",
+    "outcome": "ok",
+    "text": "Could not parse response body\nProgram continues in controlled path"
+  },
+  {
+    "chapter": "docs/01-javascript/20-error-handling",
+    "title": "JS Пример 4. Finally",
+    "outcome": "ok",
+    "text": "Create temporary user\nHandle validation error\nDelete temporary user"
+  },
+  {
+    "chapter": "docs/01-javascript/20-error-handling",
+    "title": "JS Пример 5. Common Mistakes",
+    "outcome": "ok",
+    "text": "Something failed, but original details were hidden"
+  },
+  {
+    "chapter": "docs/01-javascript/20-error-handling",
+    "title": "JS Пример 6. Qa Example",
+    "outcome": "ok",
+    "text": "Test should stop: Expected status 200, received 500\nCleanup test data"
+  },
+  {
+    "chapter": "docs/01-javascript/21-function-declaration",
+    "title": "JS Песочница",
+    "outcome": "ok",
+    "text": "Песочница готова к работе!"
+  },
+  {
+    "chapter": "docs/01-javascript/21-function-declaration",
+    "title": "JS Пример 1. Duplication",
+    "outcome": "ok",
+    "text": "First response is valid\nSecond response is valid"
+  },
+  {
+    "chapter": "docs/01-javascript/21-function-declaration",
+    "title": "JS Пример 2. First Function",
+    "outcome": "ok",
+    "text": "Response status is valid"
+  },
+  {
+    "chapter": "docs/01-javascript/21-function-declaration",
+    "title": "JS Пример 3. Call Function",
+    "outcome": "ok",
+    "text": "Before function call\nFunction body is running\nAfter function call"
+  },
+  {
+    "chapter": "docs/01-javascript/21-function-declaration",
+    "title": "JS Пример 4. Multiple Calls",
+    "outcome": "ok",
+    "text": "Response status is valid\nResponse status is valid\nResponse status is valid"
+  },
+  {
+    "chapter": "docs/01-javascript/21-function-declaration",
+    "title": "JS Пример 5. Common Mistakes",
+    "outcome": "ok",
+    "text": "Function was declared\nFunction was not called yet"
+  },
+  {
+    "chapter": "docs/01-javascript/21-function-declaration",
+    "title": "JS Пример 6. Qa Example",
+    "outcome": "ok",
+    "text": "Create test user\nValidate user response\nDelete test user"
+  },
+  {
+    "chapter": "docs/01-javascript/22-function-expression",
+    "title": "JS Песочница",
+    "outcome": "ok",
+    "text": "Песочница готова к работе!"
+  },
+  {
+    "chapter": "docs/01-javascript/22-function-expression",
+    "title": "JS Пример 1. Function Value",
+    "outcome": "ok",
+    "text": "function"
+  },
+  {
+    "chapter": "docs/01-javascript/22-function-expression",
+    "title": "JS Пример 2. Function Expression",
+    "outcome": "ok",
+    "text": "User profile is valid"
+  },
+  {
+    "chapter": "docs/01-javascript/22-function-expression",
+    "title": "JS Пример 3. Call Expression",
+    "outcome": "ok",
+    "text": "Before call\nFunction body is running\nAfter call"
+  },
+  {
+    "chapter": "docs/01-javascript/22-function-expression",
+    "title": "JS Пример 4. Declaration Vs Expression",
+    "outcome": "ok",
+    "text": "Declaration validation\nExpression validation"
+  },
+  {
+    "chapter": "docs/01-javascript/22-function-expression",
+    "title": "JS Пример 5. Common Mistakes",
+    "outcome": "ok",
+    "text": "Function value is stored\nFunction body was not called yet\nStatus is valid"
+  },
+  {
+    "chapter": "docs/01-javascript/22-function-expression",
+    "title": "JS Пример 6. Qa Example",
+    "outcome": "ok",
+    "text": "Create test user\nValidate user profile\nDelete test user"
+  },
+  {
+    "chapter": "docs/01-javascript/23-arrow-functions",
+    "title": "JS Песочница",
+    "outcome": "ok",
+    "text": "Песочница готова к работе!"
+  },
+  {
+    "chapter": "docs/01-javascript/23-arrow-functions",
+    "title": "JS Пример 1. Arrow Basic",
+    "outcome": "ok",
+    "text": "Status is valid"
+  },
+  {
+    "chapter": "docs/01-javascript/23-arrow-functions",
+    "title": "JS Пример 2. Parameters",
+    "outcome": "ok",
+    "text": "Current status is valid\nStatus: 200\ntrue"
+  },
+  {
+    "chapter": "docs/01-javascript/23-arrow-functions",
+    "title": "JS Пример 3. Return",
+    "outcome": "ok",
+    "text": "true\ntrue"
+  },
+  {
+    "chapter": "docs/01-javascript/23-arrow-functions",
+    "title": "JS Пример 4. Expression Vs Arrow",
+    "outcome": "ok",
+    "text": "Function Expression validation\nArrow Function validation"
+  },
+  {
+    "chapter": "docs/01-javascript/23-arrow-functions",
+    "title": "JS Пример 5. Common Mistakes",
+    "outcome": "ok",
+    "text": "Function object is stored\nBody is not called yet\nStatus is valid"
+  },
+  {
+    "chapter": "docs/01-javascript/23-arrow-functions",
+    "title": "JS Пример 6. Qa Example",
+    "outcome": "ok",
+    "text": "Create test user\nStatus is successful: true\nValidate user profile"
+  },
+  {
+    "chapter": "docs/01-javascript/24-parameters",
+    "title": "JS Песочница",
+    "outcome": "ok",
+    "text": "Песочница готова к работе!"
+  },
+  {
+    "chapter": "docs/01-javascript/24-parameters",
+    "title": "JS Пример 1. No Parameters",
+    "outcome": "ok",
+    "text": "Test started"
+  },
+  {
+    "chapter": "docs/01-javascript/24-parameters",
+    "title": "JS Пример 2. One Parameter",
+    "outcome": "ok",
+    "text": "Status: 200"
+  },
+  {
+    "chapter": "docs/01-javascript/24-parameters",
+    "title": "JS Пример 3. Multiple Parameters",
+    "outcome": "ok",
+    "text": "Actual: 200\nExpected: 200\nMatch: true"
+  },
+  {
+    "chapter": "docs/01-javascript/24-parameters",
+    "title": "JS Пример 4. Missing Extra Arguments",
+    "outcome": "ok",
+    "text": "Received status: undefined\nReceived status: 200\nReceived status: 200"
+  },
+  {
+    "chapter": "docs/01-javascript/24-parameters",
+    "title": "JS Пример 5. Common Mistakes",
+    "outcome": "ok",
+    "text": "Actual: 200\nExpected: 201\nMatch: false\nActual: 201\nExpected: 200\nMatch: false"
+  },
+  {
+    "chapter": "docs/01-javascript/24-parameters",
+    "title": "JS Пример 6. Qa Example",
+    "outcome": "ok",
+    "text": "Validate API status\nActual: 200\nExpected: 200\nPassed: true"
+  },
+  {
+    "chapter": "docs/01-javascript/25-return",
+    "title": "JS Песочница",
+    "outcome": "ok",
+    "text": "Песочница готова к работе!"
+  },
+  {
+    "chapter": "docs/01-javascript/25-return",
+    "title": "JS Пример 1. Basic Return",
+    "outcome": "ok",
+    "text": "true"
+  },
+  {
+    "chapter": "docs/01-javascript/25-return",
+    "title": "JS Пример 2. Return Value",
+    "outcome": "ok",
+    "text": "Status is successful"
+  },
+  {
+    "chapter": "docs/01-javascript/25-return",
+    "title": "JS Пример 3. Multiple Return",
+    "outcome": "ok",
+    "text": "Status is successful\nStatus is not successful"
+  },
+  {
+    "chapter": "docs/01-javascript/25-return",
+    "title": "JS Пример 4. Implicit Undefined",
+    "outcome": "ok",
+    "text": "Status: 200\nReturn value: undefined"
+  },
+  {
+    "chapter": "docs/01-javascript/25-return",
+    "title": "JS Пример 5. Common Mistakes",
+    "outcome": "ok",
+    "text": "true\nPrinted function returned: undefined\nReturned function returned: true"
+  },
+  {
+    "chapter": "docs/01-javascript/25-return",
+    "title": "JS Пример 6. Qa Example",
+    "outcome": "ok",
+    "text": "API status check passed: true"
+  },
+  {
+    "chapter": "docs/01-javascript/26-rest",
+    "title": "JS Песочница",
+    "outcome": "ok",
+    "text": "Песочница готова к работе!"
+  },
+  {
+    "chapter": "docs/01-javascript/26-rest",
+    "title": "JS Пример 1. Rest Basic",
+    "outcome": "ok",
+    "text": "[\n  200,\n  201,\n  204\n]"
+  },
+  {
+    "chapter": "docs/01-javascript/26-rest",
+    "title": "JS Пример 2. Rest Array",
+    "outcome": "ok",
+    "text": "true\n[\n  200,\n  201\n]"
+  },
+  {
+    "chapter": "docs/01-javascript/26-rest",
+    "title": "JS Пример 3. Rest Position",
+    "outcome": "ok",
+    "text": "Expected: 200\nActual statuses: [\n  200,\n  201,\n  204\n]"
+  },
+  {
+    "chapter": "docs/01-javascript/26-rest",
+    "title": "JS Пример 4. Zero Many Arguments",
+    "outcome": "ok",
+    "text": "[]\n[\n  200\n]\n[\n  200,\n  201,\n  204\n]"
+  },
+  {
+    "chapter": "docs/01-javascript/26-rest",
+    "title": "JS Пример 5. Common Mistakes",
+    "outcome": "ok",
+    "text": "Messages: [\n  \"start\"\n]\nMessages: [\n  \"start\",\n  \"validate\",\n  \"finish\"\n]"
+  },
+  {
+    "chapter": "docs/01-javascript/26-rest",
+    "title": "JS Пример 6. Qa Example",
+    "outcome": "ok",
+    "text": "Expected status: 200\nReceived statuses: [\n  200,\n  200,\n  201\n]"
+  },
+  {
+    "chapter": "docs/01-javascript/27-spread",
+    "title": "JS Песочница",
+    "outcome": "ok",
+    "text": "Песочница готова к работе!"
+  },
+  {
+    "chapter": "docs/01-javascript/27-spread",
+    "title": "JS Пример 1. Array Spread",
+    "outcome": "ok",
+    "text": "200 201 204\n[\n  100,\n  200,\n  201,\n  204,\n  500\n]"
+  },
+  {
+    "chapter": "docs/01-javascript/27-spread",
+    "title": "JS Пример 2. Function Call",
+    "outcome": "ok",
+    "text": "First: 200\nSecond: 201\nThird: 204"
+  },
+  {
+    "chapter": "docs/01-javascript/27-spread",
+    "title": "JS Пример 3. Object Spread",
+    "outcome": "ok",
+    "text": "{\n  \"role\": \"admin\",\n  \"active\": true\n}"
+  },
+  {
+    "chapter": "docs/01-javascript/27-spread",
+    "title": "JS Пример 4. Copy Merge",
+    "outcome": "ok",
+    "text": "[\n  200,\n  201,\n  204,\n  301\n]\n{\n  \"retries\": 1,\n  \"baseUrl\": \"http://localhost\"\n}"
+  },
+  {
+    "chapter": "docs/01-javascript/27-spread",
+    "title": "JS Пример 5. Common Mistakes",
+    "outcome": "ok",
+    "text": "Rest collected: [\n  200,\n  201,\n  204\n]\nSpread expanded into call arguments"
+  },
+  {
+    "chapter": "docs/01-javascript/27-spread",
+    "title": "JS Пример 6. Qa Example",
+    "outcome": "ok",
+    "text": "{\n  \"active\": true,\n  \"role\": \"admin\",\n  \"email\": \"anna@example.com\"\n}\n200 201 204"
+  },
+  {
+    "chapter": "docs/01-javascript/28-closures",
+    "title": "JS Пример 1. First Closure",
+    "outcome": "ok",
+    "text": "Environment is reachable"
+  },
+  {
+    "chapter": "docs/01-javascript/28-closures",
+    "title": "JS Пример 2. Counter",
+    "outcome": "ok",
+    "text": "1\n2\n3"
+  },
+  {
+    "chapter": "docs/01-javascript/28-closures",
+    "title": "JS Пример 3. Independent Closures",
+    "outcome": "ok",
+    "text": "1\n2\n101\n102"
+  },
+  {
+    "chapter": "docs/01-javascript/28-closures",
+    "title": "JS Пример 4. Common Mistakes",
+    "outcome": "ok",
+    "text": "true\nfalse\ntrue"
+  },
+  {
+    "chapter": "docs/01-javascript/28-closures",
+    "title": "JS Пример 5. Memory Intuition",
+    "outcome": "ok",
+    "text": "Anna\nIvan"
+  },
+  {
+    "chapter": "docs/01-javascript/28-closures",
+    "title": "JS Пример 6. Qa Example",
+    "outcome": "ok",
+    "text": "true\nfalse"
+  },
+  {
+    "chapter": "docs/01-javascript/29-this",
+    "title": "JS Пример 1. Global Call",
+    "outcome": "ok",
+    "text": "undefined"
+  },
+  {
+    "chapter": "docs/01-javascript/29-this",
+    "title": "JS Пример 2. Method Call",
+    "outcome": "ok",
+    "text": "staging"
+  },
+  {
+    "chapter": "docs/01-javascript/29-this",
+    "title": "JS Пример 3. Detached Function",
+    "outcome": "ok",
+    "text": "TypeError: receiver is lost"
+  },
+  {
+    "chapter": "docs/01-javascript/29-this",
+    "title": "JS Пример 4. Arrow Preview",
+    "outcome": "ok",
+    "text": "Код выполнен без вывода."
+  },
+  {
+    "chapter": "docs/01-javascript/29-this",
+    "title": "JS Пример 5. Common Mistakes",
+    "outcome": "ok",
+    "text": "API: Request failed\nTypeError: call helper.log() to keep receiver"
+  },
+  {
+    "chapter": "docs/01-javascript/29-this",
+    "title": "JS Пример 6. Qa Example",
+    "outcome": "ok",
+    "text": "https://api.example.test/users\ntrue"
+  },
+  {
+    "chapter": "docs/01-javascript/30-call",
+    "title": "JS Пример 1. Basic Call",
+    "outcome": "ok",
+    "text": "https://api.example.test"
+  },
+  {
+    "chapter": "docs/01-javascript/30-call",
+    "title": "JS Пример 2. Detached Method",
+    "outcome": "ok",
+    "text": "https://api.example.test/users"
+  },
+  {
+    "chapter": "docs/01-javascript/30-call",
+    "title": "JS Пример 3. Call With Arguments",
+    "outcome": "ok",
+    "text": "GET https://api.example.test/users"
+  },
+  {
+    "chapter": "docs/01-javascript/30-call",
+    "title": "JS Пример 4. Reusing Methods",
+    "outcome": "ok",
+    "text": "https://users.example.test/list\nhttps://orders.example.test/list"
+  },
+  {
+    "chapter": "docs/01-javascript/30-call",
+    "title": "JS Пример 5. Common Mistakes",
+    "outcome": "ok",
+    "text": "true\ntrue"
+  },
+  {
+    "chapter": "docs/01-javascript/30-call",
+    "title": "JS Пример 6. Qa Example",
+    "outcome": "ok",
+    "text": "true\nfalse"
+  },
+  {
+    "chapter": "docs/01-javascript/31-apply",
+    "title": "JS Пример 1. Basic Apply",
+    "outcome": "ok",
+    "text": "https://api.example.test"
+  },
+  {
+    "chapter": "docs/01-javascript/31-apply",
+    "title": "JS Пример 2. Array Arguments",
+    "outcome": "ok",
+    "text": "POST https://api.example.test/users {\"name\":\"Anna\"}"
+  },
+  {
+    "chapter": "docs/01-javascript/31-apply",
+    "title": "JS Пример 3. Call Vs Apply",
+    "outcome": "ok",
+    "text": "https://api.example.test/users\nhttps://api.example.test/users"
+  },
+  {
+    "chapter": "docs/01-javascript/31-apply",
+    "title": "JS Пример 4. Common Mistakes",
+    "outcome": "ok",
+    "text": "true\nTypeError: second argument must be an argument list"
+  },
+  {
+    "chapter": "docs/01-javascript/31-apply",
+    "title": "JS Пример 5. Qa Example",
+    "outcome": "ok",
+    "text": "true"
+  },
+  {
+    "chapter": "docs/01-javascript/31-apply",
+    "title": "JS Пример 6. Parameter Mapping",
+    "outcome": "ok",
+    "text": "GET /users/1 -> 200 for users-api"
+  },
+  {
+    "chapter": "docs/01-javascript/32-bind",
+    "title": "JS Пример 1. Basic Bind",
+    "outcome": "ok",
+    "text": "staging"
+  },
+  {
+    "chapter": "docs/01-javascript/32-bind",
+    "title": "JS Пример 2. Bound Function",
+    "outcome": "ok",
+    "text": "https://api.example.test/users\nhttps://api.example.test/orders"
+  },
+  {
+    "chapter": "docs/01-javascript/32-bind",
+    "title": "JS Пример 3. Call Vs Bind",
+    "outcome": "ok",
+    "text": "staging /users 200\nstaging /orders 201"
+  },
+  {
+    "chapter": "docs/01-javascript/32-bind",
+    "title": "JS Пример 4. Common Mistakes",
+    "outcome": "ok",
+    "text": "After bind\nhttps://api.example.test"
+  },
+  {
+    "chapter": "docs/01-javascript/32-bind",
+    "title": "JS Пример 5. Qa Example",
+    "outcome": "ok",
+    "text": "billing staging /invoices passed\nbilling staging /payments failed"
+  },
+  {
+    "chapter": "docs/01-javascript/32-bind",
+    "title": "JS Пример 6. Reusable Helper",
+    "outcome": "ok",
+    "text": "smoke: login -> passed\nsmoke: checkout -> failed"
+  },
+  {
+    "chapter": "docs/01-javascript/33-objects",
+    "title": "JS Пример 1. Object Literal",
+    "outcome": "ok",
+    "text": "{\n  \"id\": 101,\n  \"name\": \"Anna\",\n  \"role\": \"admin\",\n  \"active\": true\n}"
+  },
+  {
+    "chapter": "docs/01-javascript/33-objects",
+    "title": "JS Пример 2. Read Properties",
+    "outcome": "ok",
+    "text": "Anna\nadmin"
+  },
+  {
+    "chapter": "docs/01-javascript/33-objects",
+    "title": "JS Пример 3. Update Properties",
+    "outcome": "ok",
+    "text": "owner\n2026-06-26"
+  },
+  {
+    "chapter": "docs/01-javascript/33-objects",
+    "title": "JS Пример 4. Bracket Notation",
+    "outcome": "ok",
+    "text": "admin\n2026-06-26"
+  },
+  {
+    "chapter": "docs/01-javascript/33-objects",
+    "title": "JS Пример 5. Common Mistakes",
+    "outcome": "ok",
+    "text": "undefined\nanna@example.test"
+  },
+  {
+    "chapter": "docs/01-javascript/33-objects",
+    "title": "JS Пример 6. Qa Example",
+    "outcome": "ok",
+    "text": "200\nAnna\nadmin"
+  },
+  {
+    "chapter": "docs/01-javascript/34-destructuring",
+    "title": "JS Пример 1. Basic Destructuring",
+    "outcome": "ok",
+    "text": "200\ncreated"
+  },
+  {
+    "chapter": "docs/01-javascript/34-destructuring",
+    "title": "JS Пример 2. Default Values",
+    "outcome": "ok",
+    "text": "https://api.example.test\n5000\nundefined"
+  },
+  {
+    "chapter": "docs/01-javascript/34-destructuring",
+    "title": "JS Пример 3. Renaming",
+    "outcome": "ok",
+    "text": "Anna\nadmin"
+  },
+  {
+    "chapter": "docs/01-javascript/34-destructuring",
+    "title": "JS Пример 4. Common Mistakes",
+    "outcome": "ok",
+    "text": "Anna\nAnna"
+  },
+  {
+    "chapter": "docs/01-javascript/34-destructuring",
+    "title": "JS Пример 5. Nested Preview",
+    "outcome": "ok",
+    "text": "Anna"
+  },
+  {
+    "chapter": "docs/01-javascript/34-destructuring",
+    "title": "JS Пример 6. Qa Example",
+    "outcome": "ok",
+    "text": "200\nAnna\nadmin\n340"
+  },
+  {
+    "chapter": "docs/01-javascript/35-optional-chaining",
+    "title": "JS Пример 1. Basic Optional Chaining",
+    "outcome": "ok",
+    "text": "Anna\nundefined"
+  },
+  {
+    "chapter": "docs/01-javascript/35-optional-chaining",
+    "title": "JS Пример 2. Nested Properties",
+    "outcome": "ok",
+    "text": "anna@example.test\nundefined"
+  },
+  {
+    "chapter": "docs/01-javascript/35-optional-chaining",
+    "title": "JS Пример 3. Short Circuit",
+    "outcome": "ok",
+    "text": "undefined\nexecution continues"
+  },
+  {
+    "chapter": "docs/01-javascript/35-optional-chaining",
+    "title": "JS Пример 4. Common Mistakes",
+    "outcome": "ok",
+    "text": "undefined"
+  },
+  {
+    "chapter": "docs/01-javascript/35-optional-chaining",
+    "title": "JS Пример 5. Method Preview",
+    "outcome": "ok",
+    "text": "report: test passed"
+  },
+  {
+    "chapter": "docs/01-javascript/35-optional-chaining",
+    "title": "JS Пример 6. Qa Example",
+    "outcome": "ok",
+    "text": "200\nAnna\nundefined"
+  },
+  {
+    "chapter": "docs/01-javascript/36-nullish-coalescing",
+    "title": "JS Пример 1. Basic Nullish",
+    "outcome": "ok",
+    "text": "3000"
+  },
+  {
+    "chapter": "docs/01-javascript/36-nullish-coalescing",
+    "title": "JS Пример 2. Undefined",
+    "outcome": "ok",
+    "text": "5000"
+  },
+  {
+    "chapter": "docs/01-javascript/36-nullish-coalescing",
+    "title": "JS Пример 3. Null",
+    "outcome": "ok",
+    "text": "not provided"
+  },
+  {
+    "chapter": "docs/01-javascript/36-nullish-coalescing",
+    "title": "JS Пример 4. Optional Chaining",
+    "outcome": "ok",
+    "text": "2"
+  },
+  {
+    "chapter": "docs/01-javascript/36-nullish-coalescing",
+    "title": "JS Пример 5. Common Mistakes",
+    "outcome": "ok",
+    "text": "0\nfalse"
+  },
+  {
+    "chapter": "docs/01-javascript/36-nullish-coalescing",
+    "title": "JS Пример 6. Qa Example",
+    "outcome": "ok",
+    "text": "Anna\nunknown city\n0"
+  },
+  {
+    "chapter": "docs/01-javascript/37-object-methods",
+    "title": "JS Пример 1. Basic Method",
+    "outcome": "ok",
+    "text": "Anna is admin"
+  },
+  {
+    "chapter": "docs/01-javascript/37-object-methods",
+    "title": "JS Пример 2. Method Call",
+    "outcome": "ok",
+    "text": "100"
+  },
+  {
+    "chapter": "docs/01-javascript/37-object-methods",
+    "title": "JS Пример 3. This Preview",
+    "outcome": "ok",
+    "text": "https://staging.example.test/users"
+  },
+  {
+    "chapter": "docs/01-javascript/37-object-methods",
+    "title": "JS Пример 4. Common Mistakes",
+    "outcome": "ok",
+    "text": "Anna\nfunction"
+  },
+  {
+    "chapter": "docs/01-javascript/37-object-methods",
+    "title": "JS Пример 5. Api Client",
+    "outcome": "ok",
+    "text": "GET https://api.example.test/users"
+  },
+  {
+    "chapter": "docs/01-javascript/37-object-methods",
+    "title": "JS Пример 6. Qa Example",
+    "outcome": "ok",
+    "text": "smoke: login -> true\nsmoke: checkout -> false"
+  },
+  {
+    "chapter": "docs/01-javascript/38-object-descriptors",
+    "title": "JS Пример 1. Basic Descriptor",
+    "outcome": "ok",
+    "text": "{\n  \"value\": \"staging\",\n  \"writable\": true,\n  \"enumerable\": true,\n  \"configurable\": true\n}"
+  },
+  {
+    "chapter": "docs/01-javascript/38-object-descriptors",
+    "title": "JS Пример 2. Readonly",
+    "outcome": "ok",
+    "text": "TypeError\nstaging"
+  },
+  {
+    "chapter": "docs/01-javascript/38-object-descriptors",
+    "title": "JS Пример 3. Hidden Property",
+    "outcome": "ok",
+    "text": "[\n  \"name\"\n]\nhelper-001"
+  },
+  {
+    "chapter": "docs/01-javascript/38-object-descriptors",
+    "title": "JS Пример 4. Define Property",
+    "outcome": "ok",
+    "text": "7000\n[\n  \"timeout\"\n]"
+  },
+  {
+    "chapter": "docs/01-javascript/38-object-descriptors",
+    "title": "JS Пример 5. Common Mistakes",
+    "outcome": "ok",
+    "text": "[]\n{\n  \"value\": \"staging\",\n  \"writable\": false,\n  \"enumerable\": false,\n  \"configurable\": false\n}"
+  },
+  {
+    "chapter": "docs/01-javascript/38-object-descriptors",
+    "title": "JS Пример 6. Qa Example",
+    "outcome": "ok",
+    "text": "[\n  \"baseUrl\"\n]\nrun-001\nTypeError\nhttps://api.example.test"
+  },
+  {
+    "chapter": "docs/01-javascript/39-prototype",
+    "title": "JS Пример 1. Duplicated Methods",
+    "outcome": "ok",
+    "text": "Anna [admin]\nKate [editor]\nfalse"
+  },
+  {
+    "chapter": "docs/01-javascript/39-prototype",
+    "title": "JS Пример 2. Shared Method",
+    "outcome": "ok",
+    "text": "Anna [admin]\nKate [editor]\ntrue"
+  },
+  {
+    "chapter": "docs/01-javascript/39-prototype",
+    "title": "JS Пример 3. Property Lookup",
+    "outcome": "ok",
+    "text": "Anna\nAnna [admin]\ntrue"
+  },
+  {
+    "chapter": "docs/01-javascript/39-prototype",
+    "title": "JS Пример 4. Common Mistakes",
+    "outcome": "ok",
+    "text": "Anna: created order\nKate: updated profile\nnone"
+  },
+  {
+    "chapter": "docs/01-javascript/39-prototype",
+    "title": "JS Пример 5. Page Object Preview",
+    "outcome": "ok",
+    "text": "Page object: LoginPage\nProfilePage -> open settings"
+  },
+  {
+    "chapter": "docs/01-javascript/39-prototype",
+    "title": "JS Пример 6. Qa Example",
+    "outcome": "ok",
+    "text": "staging: https://staging.example.test/users\nproduction: https://api.example.test/users"
+  },
+  {
+    "chapter": "docs/01-javascript/40-prototype-chain",
+    "title": "JS Пример 1. Basic Chain",
+    "outcome": "ok",
+    "text": "Page: LoginPage\nLoginPage: formatted error"
+  },
+  {
+    "chapter": "docs/01-javascript/40-prototype-chain",
+    "title": "JS Пример 2. Property Lookup",
+    "outcome": "ok",
+    "text": "users\n/api/users/42\nusers -> https://api.example.test"
+  },
+  {
+    "chapter": "docs/01-javascript/40-prototype-chain",
+    "title": "JS Пример 3. Shadowing",
+    "outcome": "ok",
+    "text": "local\nlocal"
+  },
+  {
+    "chapter": "docs/01-javascript/40-prototype-chain",
+    "title": "JS Пример 4. Common Mistakes",
+    "outcome": "ok",
+    "text": "page description"
+  },
+  {
+    "chapter": "docs/01-javascript/40-prototype-chain",
+    "title": "JS Пример 5. Framework Preview",
+    "outcome": "ok",
+    "text": "false\nStatusValidator: expected 200, actual 201"
+  },
+  {
+    "chapter": "docs/01-javascript/40-prototype-chain",
+    "title": "JS Пример 6. Qa Example",
+    "outcome": "ok",
+    "text": "/users/42\nUsersClient: https://api.example.test/users/42"
+  },
+  {
+    "chapter": "docs/01-javascript/41-classes",
+    "title": "JS Пример 1. First Class",
+    "outcome": "ok",
+    "text": "PageObject instance"
+  },
+  {
+    "chapter": "docs/01-javascript/41-classes",
+    "title": "JS Пример 2. Constructor",
+    "outcome": "ok",
+    "text": "LoginPage\n/profile"
+  },
+  {
+    "chapter": "docs/01-javascript/41-classes",
+    "title": "JS Пример 3. Methods",
+    "outcome": "ok",
+    "text": "LoginPage: /login\nProfilePage: /profile"
+  },
+  {
+    "chapter": "docs/01-javascript/41-classes",
+    "title": "JS Пример 4. Prototype Reminder",
+    "outcome": "ok",
+    "text": "true\ntrue"
+  },
+  {
+    "chapter": "docs/01-javascript/41-classes",
+    "title": "JS Пример 5. Common Mistakes",
+    "outcome": "ok",
+    "text": "LoginPage"
+  },
+  {
+    "chapter": "docs/01-javascript/41-classes",
+    "title": "JS Пример 6. Qa Example",
+    "outcome": "ok",
+    "text": "staging: https://staging.example.test/users\nproduction: https://api.example.test/users"
+  },
+  {
+    "chapter": "docs/01-javascript/42-class-inheritance",
+    "title": "JS Пример 1. First Inheritance",
+    "outcome": "ok",
+    "text": "open page\nsubmit login form"
+  },
+  {
+    "chapter": "docs/01-javascript/42-class-inheritance",
+    "title": "JS Пример 2. Shared Methods",
+    "outcome": "ok",
+    "text": "open page\nwait until page is ready"
+  },
+  {
+    "chapter": "docs/01-javascript/42-class-inheritance",
+    "title": "JS Пример 3. Overriding",
+    "outcome": "ok",
+    "text": "login page"
+  },
+  {
+    "chapter": "docs/01-javascript/42-class-inheritance",
+    "title": "JS Пример 4. Common Mistakes",
+    "outcome": "ok",
+    "text": "false\nopen page"
+  },
+  {
+    "chapter": "docs/01-javascript/42-class-inheritance",
+    "title": "JS Пример 5. Page Object",
+    "outcome": "ok",
+    "text": "open LoginPage\nlogin with user credentials\nProfilePage is ready"
+  },
+  {
+    "chapter": "docs/01-javascript/42-class-inheritance",
+    "title": "JS Пример 6. Qa Example",
+    "outcome": "ok",
+    "text": "users: /users/42\norders: /orders/100"
+  },
+  {
+    "chapter": "docs/01-javascript/43-super",
+    "title": "JS Пример 1. Basic Super",
+    "outcome": "ok",
+    "text": "open LoginPage and focus login form"
+  },
+  {
+    "chapter": "docs/01-javascript/43-super",
+    "title": "JS Пример 2. Extend Method",
+    "outcome": "ok",
+    "text": "Status mismatch: expected 200, actual 201"
+  },
+  {
+    "chapter": "docs/01-javascript/43-super",
+    "title": "JS Пример 3. This With Super",
+    "outcome": "ok",
+    "text": "QA: failed assertion [test run]"
+  },
+  {
+    "chapter": "docs/01-javascript/43-super",
+    "title": "JS Пример 4. Common Mistakes",
+    "outcome": "ok",
+    "text": "focus form on LoginPage"
+  },
+  {
+    "chapter": "docs/01-javascript/43-super",
+    "title": "JS Пример 5. Page Object",
+    "outcome": "ok",
+    "text": "open LoginPage, then focus username field\nLoginPage is ready"
+  },
+  {
+    "chapter": "docs/01-javascript/43-super",
+    "title": "JS Пример 6. Qa Example",
+    "outcome": "ok",
+    "text": "users: /users/42 [authenticated]"
+  },
+  {
+    "chapter": "docs/01-javascript/44-arrays",
+    "title": "JS Пример 1. First Array",
+    "outcome": "ok",
+    "text": "[\n  \"anna@example.test\",\n  \"kate@example.test\",\n  \"max@example.test\"\n]"
+  },
+  {
+    "chapter": "docs/01-javascript/44-arrays",
+    "title": "JS Пример 2. Indexes",
+    "outcome": "ok",
+    "text": "anna@example.test\nkate@example.test\nmax@example.test"
+  },
+  {
+    "chapter": "docs/01-javascript/44-arrays",
+    "title": "JS Пример 3. Update Elements",
+    "outcome": "ok",
+    "text": "kate.updated@example.test\n[\n  \"anna@example.test\",\n  \"kate.updated@example.test\",\n  \"max@example.test\"\n]"
+  },
+  {
+    "chapter": "docs/01-javascript/44-arrays",
+    "title": "JS Пример 4. Length",
+    "outcome": "ok",
+    "text": "3\n2\nmax@example.test"
+  },
+  {
+    "chapter": "docs/01-javascript/44-arrays",
+    "title": "JS Пример 5. Common Mistakes",
+    "outcome": "ok",
+    "text": "3\nundefined\nmax@example.test"
+  },
+  {
+    "chapter": "docs/01-javascript/44-arrays",
+    "title": "JS Пример 6. Qa Example",
+    "outcome": "ok",
+    "text": "anna@example.test\neditor\n2"
+  },
+  {
+    "chapter": "docs/01-javascript/45-push-pop",
+    "title": "JS Пример 1. Push",
+    "outcome": "ok",
+    "text": "[\n  \"Anna\",\n  \"Kate\"\n]\nKate"
+  },
+  {
+    "chapter": "docs/01-javascript/45-push-pop",
+    "title": "JS Пример 2. Pop",
+    "outcome": "ok",
+    "text": "[\n  \"Anna\"\n]\n1"
+  },
+  {
+    "chapter": "docs/01-javascript/45-push-pop",
+    "title": "JS Пример 3. Length",
+    "outcome": "ok",
+    "text": "0\n1\n0"
+  },
+  {
+    "chapter": "docs/01-javascript/45-push-pop",
+    "title": "JS Пример 4. Return Value",
+    "outcome": "ok",
+    "text": "POST /orders\n[\n  \"GET /users\"\n]"
+  },
+  {
+    "chapter": "docs/01-javascript/45-push-pop",
+    "title": "JS Пример 5. Common Mistakes",
+    "outcome": "ok",
+    "text": "Kate\n[\n  \"Anna\"\n]"
+  },
+  {
+    "chapter": "docs/01-javascript/45-push-pop",
+    "title": "JS Пример 6. Qa Example",
+    "outcome": "ok",
+    "text": "role expected admin, actual viewer\n1\nstatus expected 200, actual 500"
+  },
+  {
+    "chapter": "docs/01-javascript/46-shift-unshift",
+    "title": "JS Пример 1. Unshift",
+    "outcome": "ok",
+    "text": "[\n  \"POST /login\",\n  \"GET /users\",\n  \"GET /orders\"\n]"
+  },
+  {
+    "chapter": "docs/01-javascript/46-shift-unshift",
+    "title": "JS Пример 2. Shift",
+    "outcome": "ok",
+    "text": "POST /login\n[\n  \"GET /users\",\n  \"GET /orders\"\n]"
+  },
+  {
+    "chapter": "docs/01-javascript/46-shift-unshift",
+    "title": "JS Пример 3. Index Shifting",
+    "outcome": "ok",
+    "text": "GET /users\nPOST /login\nGET /users\nGET /orders"
+  },
+  {
+    "chapter": "docs/01-javascript/46-shift-unshift",
+    "title": "JS Пример 4. Return Value",
+    "outcome": "ok",
+    "text": "POST /login\n1"
+  },
+  {
+    "chapter": "docs/01-javascript/46-shift-unshift",
+    "title": "JS Пример 5. Common Mistakes",
+    "outcome": "ok",
+    "text": "POST /login\n[\n  \"GET /users\"\n]"
+  },
+  {
+    "chapter": "docs/01-javascript/46-shift-unshift",
+    "title": "JS Пример 6. Qa Example",
+    "outcome": "ok",
+    "text": "Execute first: POST /login\n[\n  \"GET /users\",\n  \"GET /orders\"\n]"
+  },
+  {
+    "chapter": "docs/01-javascript/47-splice",
+    "title": "JS Пример 1. Remove Test Case",
+    "outcome": "ok",
+    "text": "[\n  \"login smoke\",\n  \"pay order\",\n  \"logout smoke\"\n]\n[\n  \"deprecated checkout\"\n]"
+  },
+  {
+    "chapter": "docs/01-javascript/47-splice",
+    "title": "JS Пример 2. Insert Test Case",
+    "outcome": "ok",
+    "text": "[\n  \"login smoke\",\n  \"create order\",\n  \"apply discount\",\n  \"pay order\",\n  \"logout smoke\"\n]"
+  },
+  {
+    "chapter": "docs/01-javascript/47-splice",
+    "title": "JS Пример 3. Replace Test Case",
+    "outcome": "ok",
+    "text": "[\n  \"login smoke\",\n  \"create order\",\n  \"pay order\",\n  \"logout smoke\"\n]\n[\n  \"old payment check\"\n]"
+  },
+  {
+    "chapter": "docs/01-javascript/47-splice",
+    "title": "JS Пример 4. Return Value",
+    "outcome": "ok",
+    "text": "Updated plan: [\n  \"login smoke\",\n  \"create paid order\",\n  \"logout smoke\"\n]\nRemoved tests: [\n  \"create order\",\n  \"pay order\"\n]"
+  },
+  {
+    "chapter": "docs/01-javascript/47-splice",
+    "title": "JS Пример 5. Qa Suite Update",
+    "outcome": "ok",
+    "text": "[\n  \"login smoke\",\n  \"create order\",\n  \"apply discount\",\n  \"pay order with saved card\",\n  \"logout smoke\"\n]"
+  },
+  {
+    "chapter": "docs/01-javascript/48-slice",
+    "title": "JS Пример 1. Copy All",
+    "outcome": "ok",
+    "text": "[\n  \"login smoke\",\n  \"create order\",\n  \"apply discount\",\n  \"pay order\"\n]\n[\n  \"login smoke\",\n  \"create order\",\n  \"apply discount\",\n  \"pay order\"\n]"
+  },
+  {
+    "chapter": "docs/01-javascript/48-slice",
+    "title": "JS Пример 2. Copy Range",
+    "outcome": "ok",
+    "text": "[\n  \"login smoke\",\n  \"create order\"\n]"
+  },
+  {
+    "chapter": "docs/01-javascript/48-slice",
+    "title": "JS Пример 3. End Index",
+    "outcome": "ok",
+    "text": "[\n  \"create order\",\n  \"apply discount\"\n]"
+  },
+  {
+    "chapter": "docs/01-javascript/48-slice",
+    "title": "JS Пример 4. Splice Vs Slice",
+    "outcome": "ok",
+    "text": "slice source: [\n  \"login smoke\",\n  \"create order\",\n  \"pay order\"\n]\nslice result: [\n  \"create order\"\n]\nsplice source: [\n  \"login smoke\",\n  \"pay order\"\n]\nsplice result: [\n  \"create order\"\n]"
+  },
+  {
+    "chapter": "docs/01-javascript/48-slice",
+    "title": "JS Пример 5. Qa Snapshot",
+    "outcome": "ok",
+    "text": "Full plan: [\n  \"login smoke\",\n  \"create order\",\n  \"apply discount\",\n  \"pay order\",\n  \"logout smoke\"\n]\nPayment flow: [\n  \"apply discount\",\n  \"pay order\"\n]"
+  },
+  {
+    "chapter": "docs/01-javascript/49-iteration",
+    "title": "JS Пример 1. For Of Basic",
+    "outcome": "ok",
+    "text": "Prepare: login smoke\nPrepare: create order\nPrepare: apply discount\nPrepare: pay order"
+  },
+  {
+    "chapter": "docs/01-javascript/49-iteration",
+    "title": "JS Пример 2. Test Case Objects",
+    "outcome": "ok",
+    "text": "T-1: login smoke\nT-2: create order\nT-3: pay order"
+  },
+  {
+    "chapter": "docs/01-javascript/49-iteration",
+    "title": "JS Пример 3. From Snapshot",
+    "outcome": "ok",
+    "text": "Smoke run includes: login smoke\nSmoke run includes: create order"
+  },
+  {
+    "chapter": "docs/01-javascript/49-iteration",
+    "title": "JS Пример 4. Common Mistakes",
+    "outcome": "ok",
+    "text": "Current test case: login smoke\nCurrent test case: create order\nCurrent test case: pay order\nUse for...of when you need the element itself."
+  },
+  {
+    "chapter": "docs/01-javascript/49-iteration",
+    "title": "JS Пример 5. Qa Iteration",
+    "outcome": "ok",
+    "text": "Queue high priority test: login smoke\nQueue medium priority test: create order\nQueue high priority test: pay order"
+  },
+  {
+    "chapter": "docs/01-javascript/50-foreach",
+    "title": "JS Пример 1. Foreach Basic",
+    "outcome": "ok",
+    "text": "Run: login smoke\nRun: create order\nRun: pay order"
+  },
+  {
+    "chapter": "docs/01-javascript/50-foreach",
+    "title": "JS Пример 2. Test Case Action",
+    "outcome": "ok",
+    "text": "Register T-1: login smoke\nRegister T-2: create order\nRegister T-3: pay order"
+  },
+  {
+    "chapter": "docs/01-javascript/50-foreach",
+    "title": "JS Пример 3. Index Argument",
+    "outcome": "ok",
+    "text": "1. login smoke\n2. create order\n3. pay order"
+  },
+  {
+    "chapter": "docs/01-javascript/50-foreach",
+    "title": "JS Пример 4. No Returned Array",
+    "outcome": "ok",
+    "text": "Executed: login smoke\nExecuted: create order\nundefined"
+  },
+  {
+    "chapter": "docs/01-javascript/50-foreach",
+    "title": "JS Пример 5. Qa Runner",
+    "outcome": "ok",
+    "text": "Runner starts: login smoke\nRunner starts: create order\nRunner starts: pay order"
+  },
+  {
+    "chapter": "docs/01-javascript/51-map",
+    "title": "JS Пример 1. Map Titles",
+    "outcome": "ok",
+    "text": "[\n  \"login smoke\",\n  \"create order\",\n  \"pay order\"\n]"
+  },
+  {
+    "chapter": "docs/01-javascript/51-map",
+    "title": "JS Пример 2. Map Report Lines",
+    "outcome": "ok",
+    "text": "[\n  \"T-1: login smoke - passed\",\n  \"T-2: create order - failed\",\n  \"T-3: pay order - passed\"\n]"
+  },
+  {
+    "chapter": "docs/01-javascript/51-map",
+    "title": "JS Пример 3. Map Ci Payload",
+    "outcome": "ok",
+    "text": "[\n  {\n    \"testId\": \"T-1\",\n    \"name\": \"login smoke\",\n    \"priority\": \"high\"\n  },\n  {\n    \"testId\": \"T-2\",\n    \"name\": \"create order\",\n    \"priority\": \"high\"\n  },\n  {\n    \"testId\": \"T-3\",\n    \"name\": \"pay order\",\n    \"priority\": \"medium\"\n  }\n]"
+  },
+  {
+    "chapter": "docs/01-javascript/51-map",
+    "title": "JS Пример 4. Map Does Not Mutate",
+    "outcome": "ok",
+    "text": "Source: [\n  {\n    \"id\": \"T-1\",\n    \"title\": \"login smoke\",\n    \"status\": \"passed\",\n    \"priority\": \"high\"\n  },\n  {\n    \"id\": \"T-2\",\n    \"title\": \"create order\",\n    \"status\": \"failed\",\n    \"priority\": \"high\"\n  }\n]\nMapped: [\n  \"T-1: login smoke\",\n  \"T-2: create order\"\n]"
+  },
+  {
+    "chapter": "docs/01-javascript/51-map",
+    "title": "JS Пример 5. Common Mistakes",
+    "outcome": "ok",
+    "text": "Seen: T-1\nSeen: T-2\n[\n  null,\n  null\n]"
+  },
+  {
+    "chapter": "docs/01-javascript/52-filter",
+    "title": "JS Пример 1. Filter Failed",
+    "outcome": "ok",
+    "text": "[\n  {\n    \"id\": \"T-2\",\n    \"title\": \"create order\",\n    \"status\": \"failed\",\n    \"priority\": \"high\"\n  }\n]"
+  },
+  {
+    "chapter": "docs/01-javascript/52-filter",
+    "title": "JS Пример 2. Filter High Priority",
+    "outcome": "ok",
+    "text": "[\n  {\n    \"id\": \"T-1\",\n    \"title\": \"login smoke\",\n    \"status\": \"passed\",\n    \"priority\": \"high\"\n  },\n  {\n    \"id\": \"T-2\",\n    \"title\": \"create order\",\n    \"status\": \"failed\",\n    \"priority\": \"high\"\n  }\n]"
+  },
+  {
+    "chapter": "docs/01-javascript/52-filter",
+    "title": "JS Пример 3. Filter Ci Ready",
+    "outcome": "ok",
+    "text": "[\n  {\n    \"id\": \"T-1\",\n    \"title\": \"login smoke\",\n    \"status\": \"passed\",\n    \"priority\": \"high\"\n  },\n  {\n    \"id\": \"T-2\",\n    \"title\": \"create order\",\n    \"status\": \"failed\",\n    \"priority\": \"high\"\n  },\n  {\n    \"id\": \"T-3\",\n    \"title\": \"pay order\",\n    \"status\": \"passed\",\n    \"priority\": \"medium\"\n  }\n]"
+  },
+  {
+    "chapter": "docs/01-javascript/52-filter",
+    "title": "JS Пример 4. Filter Does Not Mutate",
+    "outcome": "ok",
+    "text": "Source: [\n  {\n    \"id\": \"T-1\",\n    \"title\": \"login smoke\",\n    \"status\": \"passed\",\n    \"priority\": \"high\"\n  },\n  {\n    \"id\": \"T-2\",\n    \"title\": \"create order\",\n    \"status\": \"failed\",\n    \"priority\": \"high\"\n  },\n  {\n    \"id\": \"T-3\",\n    \"title\": \"pay order\",\n    \"status\": \"passed\",\n    \"priority\": \"medium\"\n  }\n]\nFiltered: [\n  {\n    \"id\": \"T-2\",\n    \"title\": \"create order\",\n    \"status\": \"failed\",\n    \"priority\": \"high\"\n  }\n]"
+  },
+  {
+    "chapter": "docs/01-javascript/52-filter",
+    "title": "JS Пример 5. Common Mistakes",
+    "outcome": "ok",
+    "text": "[]"
+  },
+  {
+    "chapter": "docs/01-javascript/53-reduce",
+    "title": "JS Пример 1. Count Tests",
+    "outcome": "ok",
+    "text": "3"
+  },
+  {
+    "chapter": "docs/01-javascript/53-reduce",
+    "title": "JS Пример 2. Status Summary",
+    "outcome": "ok",
+    "text": "{\n  \"passed\": 2,\n  \"failed\": 1,\n  \"skipped\": 1\n}"
+  },
+  {
+    "chapter": "docs/01-javascript/53-reduce",
+    "title": "JS Пример 3. Priority Summary",
+    "outcome": "ok",
+    "text": "{\n  \"high\": 2,\n  \"medium\": 1,\n  \"low\": 1\n}"
+  },
+  {
+    "chapter": "docs/01-javascript/53-reduce",
+    "title": "JS Пример 4. Initial Value",
+    "outcome": "ok",
+    "text": "Test report:\nT-1: passed\nT-2: failed"
+  },
+  {
+    "chapter": "docs/01-javascript/53-reduce",
+    "title": "JS Пример 5. Common Mistakes",
+    "outcome": "ok",
+    "text": "T-1T-2"
+  },
+  {
+    "chapter": "docs/01-javascript/54-chaining",
+    "title": "JS Пример 1. Filter Map Chain",
+    "outcome": "ok",
+    "text": "[\n  \"T-1: login smoke\",\n  \"T-2: create order\"\n]"
+  },
+  {
+    "chapter": "docs/01-javascript/54-chaining",
+    "title": "JS Пример 2. Map Filter Chain",
+    "outcome": "ok",
+    "text": "[\n  {\n    \"label\": \"T-2: create order\",\n    \"status\": \"failed\"\n  }\n]"
+  },
+  {
+    "chapter": "docs/01-javascript/54-chaining",
+    "title": "JS Пример 3. Readable Steps",
+    "outcome": "ok",
+    "text": "[\n  \"T-2: create order\"\n]"
+  },
+  {
+    "chapter": "docs/01-javascript/54-chaining",
+    "title": "JS Пример 4. Ci Report Pipeline",
+    "outcome": "ok",
+    "text": "[\n  \"T-1 [high] passed\",\n  \"T-2 [high] failed\",\n  \"T-3 [medium] passed\"\n]"
+  },
+  {
+    "chapter": "docs/01-javascript/54-chaining",
+    "title": "JS Пример 5. Common Mistakes",
+    "outcome": "ok",
+    "text": "[]"
+  },
+  {
+    "chapter": "docs/01-javascript/55-find",
+    "title": "JS Пример 1. Find By Id",
+    "outcome": "ok",
+    "text": "{\n  \"id\": \"T-2\",\n  \"title\": \"create order\",\n  \"status\": \"failed\",\n  \"priority\": \"high\"\n}"
+  },
+  {
+    "chapter": "docs/01-javascript/55-find",
+    "title": "JS Пример 2. Find Failed",
+    "outcome": "ok",
+    "text": "{\n  \"id\": \"T-2\",\n  \"title\": \"create order\",\n  \"status\": \"failed\",\n  \"priority\": \"high\"\n}"
+  },
+  {
+    "chapter": "docs/01-javascript/55-find",
+    "title": "JS Пример 3. Find Missing",
+    "outcome": "ok",
+    "text": "undefined"
+  },
+  {
+    "chapter": "docs/01-javascript/55-find",
+    "title": "JS Пример 4. Find High Priority",
+    "outcome": "ok",
+    "text": "{\n  \"id\": \"T-1\",\n  \"title\": \"login smoke\",\n  \"status\": \"passed\",\n  \"priority\": \"high\"\n}"
+  },
+  {
+    "chapter": "docs/01-javascript/55-find",
+    "title": "JS Пример 5. Qa Gate",
+    "outcome": "ok",
+    "text": "Investigate T-2: create order"
+  },
+  {
+    "chapter": "docs/01-javascript/56-some",
+    "title": "JS Пример 1. Has Failed",
+    "outcome": "ok",
+    "text": "true"
+  },
+  {
+    "chapter": "docs/01-javascript/56-some",
+    "title": "JS Пример 2. Has High Priority",
+    "outcome": "ok",
+    "text": "true"
+  },
+  {
+    "chapter": "docs/01-javascript/56-some",
+    "title": "JS Пример 3. No Match",
+    "outcome": "ok",
+    "text": "false"
+  },
+  {
+    "chapter": "docs/01-javascript/56-some",
+    "title": "JS Пример 4. Ci Gate",
+    "outcome": "ok",
+    "text": "Block merge"
+  },
+  {
+    "chapter": "docs/01-javascript/56-some",
+    "title": "JS Пример 5. Common Mistakes",
+    "outcome": "ok",
+    "text": "false"
+  },
+  {
+    "chapter": "docs/01-javascript/57-every",
+    "title": "JS Пример 1. All Passed",
+    "outcome": "ok",
+    "text": "false"
+  },
+  {
+    "chapter": "docs/01-javascript/57-every",
+    "title": "JS Пример 2. All Have Priority",
+    "outcome": "ok",
+    "text": "true"
+  },
+  {
+    "chapter": "docs/01-javascript/57-every",
+    "title": "JS Пример 3. Release Gate",
+    "outcome": "ok",
+    "text": "Release blocked"
+  },
+  {
+    "chapter": "docs/01-javascript/57-every",
+    "title": "JS Пример 4. Empty Array",
+    "outcome": "ok",
+    "text": "true"
+  },
+  {
+    "chapter": "docs/01-javascript/57-every",
+    "title": "JS Пример 5. Common Mistakes",
+    "outcome": "ok",
+    "text": "true"
+  },
+  {
+    "chapter": "docs/01-javascript/58-includes",
+    "title": "JS Пример 1. Status Includes",
+    "outcome": "ok",
+    "text": "true"
+  },
+  {
+    "chapter": "docs/01-javascript/58-includes",
+    "title": "JS Пример 2. Priority Includes",
+    "outcome": "ok",
+    "text": "true"
+  },
+  {
+    "chapter": "docs/01-javascript/58-includes",
+    "title": "JS Пример 3. Id List",
+    "outcome": "ok",
+    "text": "true"
+  },
+  {
+    "chapter": "docs/01-javascript/58-includes",
+    "title": "JS Пример 4. Includes Vs Find",
+    "outcome": "ok",
+    "text": "true\n{\n  \"id\": \"T-1\",\n  \"title\": \"login smoke\",\n  \"status\": \"passed\",\n  \"priority\": \"high\"\n}"
+  },
+  {
+    "chapter": "docs/01-javascript/58-includes",
+    "title": "JS Пример 5. Qa Gate",
+    "outcome": "ok",
+    "text": "Statuses are valid"
+  },
+  {
+    "chapter": "docs/01-javascript/59-sort",
+    "title": "JS Пример 1. Sort By Id",
+    "outcome": "ok",
+    "text": "[\n  {\n    \"id\": \"T-1\",\n    \"title\": \"login smoke\",\n    \"status\": \"passed\",\n    \"priority\": \"high\"\n  },\n  {\n    \"id\": \"T-2\",\n    \"title\": \"create order\",\n    \"status\": \"failed\",\n    \"priority\": \"high\"\n  },\n  {\n    \"id\": \"T-3\",\n    \"title\": \"pay order\",\n    \"status\": \"passed\",\n    \"priority\": \"medium\"\n  },\n  {\n    \"id\": \"T-4\",\n    \"title\": \"logout smoke\",\n    \"status\": \"skipped\",\n    \"priority\": \"low\"\n  }\n]"
+  },
+  {
+    "chapter": "docs/01-javascript/59-sort",
+    "title": "JS Пример 2. Sort By Priority",
+    "outcome": "ok",
+    "text": "[\n  {\n    \"id\": \"T-1\",\n    \"title\": \"login smoke\",\n    \"status\": \"passed\",\n    \"priority\": \"high\"\n  },\n  {\n    \"id\": \"T-2\",\n    \"title\": \"create order\",\n    \"status\": \"failed\",\n    \"priority\": \"high\"\n  },\n  {\n    \"id\": \"T-3\",\n    \"title\": \"pay order\",\n    \"status\": \"passed\",\n    \"priority\": \"medium\"\n  },\n  {\n    \"id\": \"T-4\",\n    \"title\": \"logout smoke\",\n    \"status\": \"skipped\",\n    \"priority\": \"low\"\n  }\n]"
+  },
+  {
+    "chapter": "docs/01-javascript/59-sort",
+    "title": "JS Пример 3. Sort By Status",
+    "outcome": "ok",
+    "text": "[\n  {\n    \"id\": \"T-2\",\n    \"title\": \"create order\",\n    \"status\": \"failed\",\n    \"priority\": \"high\"\n  },\n  {\n    \"id\": \"T-4\",\n    \"title\": \"logout smoke\",\n    \"status\": \"skipped\",\n    \"priority\": \"low\"\n  },\n  {\n    \"id\": \"T-3\",\n    \"title\": \"pay order\",\n    \"status\": \"passed\",\n    \"priority\": \"medium\"\n  },\n  {\n    \"id\": \"T-1\",\n    \"title\": \"login smoke\",\n    \"status\": \"passed\",\n    \"priority\": \"high\"\n  }\n]"
+  },
+  {
+    "chapter": "docs/01-javascript/59-sort",
+    "title": "JS Пример 4. Sort Mutates",
+    "outcome": "ok",
+    "text": "[\n  {\n    \"id\": \"T-1\",\n    \"title\": \"login smoke\",\n    \"status\": \"passed\",\n    \"priority\": \"high\"\n  },\n  {\n    \"id\": \"T-2\",\n    \"title\": \"create order\",\n    \"status\": \"failed\",\n    \"priority\": \"high\"\n  },\n  {\n    \"id\": \"T-3\",\n    \"title\": \"pay order\",\n    \"status\": \"passed\",\n    \"priority\": \"medium\"\n  },\n  {\n    \"id\": \"T-4\",\n    \"title\": \"logout smoke\",\n    \"status\": \"skipped\",\n    \"priority\": \"low\"\n  }\n]\ntrue"
+  },
+  {
+    "chapter": "docs/01-javascript/59-sort",
+    "title": "JS Пример 5. Default Sort",
+    "outcome": "ok",
+    "text": "[\n  \"T-1\",\n  \"T-10\",\n  \"T-2\",\n  \"T-3\"\n]"
+  },
+  {
+    "chapter": "docs/01-javascript/60-reverse",
+    "title": "JS Пример 1. Reverse Basic",
+    "outcome": "ok",
+    "text": "[\n  {\n    \"id\": \"T-4\",\n    \"title\": \"logout smoke\",\n    \"status\": \"skipped\",\n    \"priority\": \"low\"\n  },\n  {\n    \"id\": \"T-3\",\n    \"title\": \"pay order\",\n    \"status\": \"passed\",\n    \"priority\": \"medium\"\n  },\n  {\n    \"id\": \"T-2\",\n    \"title\": \"create order\",\n    \"status\": \"failed\",\n    \"priority\": \"high\"\n  },\n  {\n    \"id\": \"T-1\",\n    \"title\": \"login smoke\",\n    \"status\": \"passed\",\n    \"priority\": \"high\"\n  }\n]"
+  },
+  {
+    "chapter": "docs/01-javascript/60-reverse",
+    "title": "JS Пример 2. Reverse After Sort",
+    "outcome": "ok",
+    "text": "[\n  {\n    \"id\": \"T-4\",\n    \"title\": \"logout smoke\",\n    \"status\": \"skipped\",\n    \"priority\": \"low\"\n  },\n  {\n    \"id\": \"T-3\",\n    \"title\": \"pay order\",\n    \"status\": \"passed\",\n    \"priority\": \"medium\"\n  },\n  {\n    \"id\": \"T-2\",\n    \"title\": \"create order\",\n    \"status\": \"failed\",\n    \"priority\": \"high\"\n  },\n  {\n    \"id\": \"T-1\",\n    \"title\": \"login smoke\",\n    \"status\": \"passed\",\n    \"priority\": \"high\"\n  }\n]"
+  },
+  {
+    "chapter": "docs/01-javascript/60-reverse",
+    "title": "JS Пример 3. Reverse Mutates",
+    "outcome": "ok",
+    "text": "[\n  {\n    \"id\": \"T-4\",\n    \"title\": \"logout smoke\",\n    \"status\": \"skipped\",\n    \"priority\": \"low\"\n  },\n  {\n    \"id\": \"T-3\",\n    \"title\": \"pay order\",\n    \"status\": \"passed\",\n    \"priority\": \"medium\"\n  },\n  {\n    \"id\": \"T-2\",\n    \"title\": \"create order\",\n    \"status\": \"failed\",\n    \"priority\": \"high\"\n  },\n  {\n    \"id\": \"T-1\",\n    \"title\": \"login smoke\",\n    \"status\": \"passed\",\n    \"priority\": \"high\"\n  }\n]\ntrue"
+  },
+  {
+    "chapter": "docs/01-javascript/60-reverse",
+    "title": "JS Пример 4. Debugging Order",
+    "outcome": "ok",
+    "text": "Analyze last executed first: T-4"
+  },
+  {
+    "chapter": "docs/01-javascript/60-reverse",
+    "title": "JS Пример 5. Rerun Strategy",
+    "outcome": "ok",
+    "text": "[\n  {\n    \"id\": \"T-3\",\n    \"title\": \"pay order\",\n    \"status\": \"passed\",\n    \"priority\": \"medium\"\n  },\n  {\n    \"id\": \"T-1\",\n    \"title\": \"login smoke\",\n    \"status\": \"passed\",\n    \"priority\": \"high\"\n  },\n  {\n    \"id\": \"T-4\",\n    \"title\": \"logout smoke\",\n    \"status\": \"skipped\",\n    \"priority\": \"low\"\n  },\n  {\n    \"id\": \"T-2\",\n    \"title\": \"create order\",\n    \"status\": \"failed\",\n    \"priority\": \"high\"\n  }\n]"
+  },
+  {
+    "chapter": "docs/01-javascript/61-execution-context",
+    "title": "JS Пример 1. Global Context",
+    "outcome": "ok",
+    "text": "a"
+  },
+  {
+    "chapter": "docs/01-javascript/61-execution-context",
+    "title": "JS Пример 2. Function Context",
+    "outcome": "ok",
+    "text": "inside a"
+  },
+  {
+    "chapter": "docs/01-javascript/61-execution-context",
+    "title": "JS Пример 3. Nested Contexts",
+    "outcome": "ok",
+    "text": "inside c"
+  },
+  {
+    "chapter": "docs/01-javascript/61-execution-context",
+    "title": "JS Пример 4. Context Per Call",
+    "outcome": "ok",
+    "text": "inside c, call 1\ninside c, call 2"
+  },
+  {
+    "chapter": "docs/01-javascript/62-call-stack",
+    "title": "JS Пример 1. Single Call",
+    "outcome": "ok",
+    "text": "before\na\nafter"
+  },
+  {
+    "chapter": "docs/01-javascript/62-call-stack",
+    "title": "JS Пример 2. A B C",
+    "outcome": "ok",
+    "text": "c\nb\na"
+  },
+  {
+    "chapter": "docs/01-javascript/62-call-stack",
+    "title": "JS Пример 3. Return Flow",
+    "outcome": "ok",
+    "text": "enter a\nenter b\nenter c\nleave c\nleave b\nleave a"
+  },
+  {
+    "chapter": "docs/01-javascript/62-call-stack",
+    "title": "JS Пример 4. Stack Trace",
+    "outcome": "ok",
+    "text": "Error: Failure inside c\n    at c (example.js:42:9)\n    at b (example.js:46:3)\n    at a (example.js:50:3)"
+  },
+  {
+    "chapter": "docs/01-javascript/63-memory-model",
+    "title": "JS Пример 1. Stack Values",
+    "outcome": "ok",
+    "text": "3"
+  },
+  {
+    "chapter": "docs/01-javascript/63-memory-model",
+    "title": "JS Пример 2. Heap Object",
+    "outcome": "ok",
+    "text": "Anna"
+  },
+  {
+    "chapter": "docs/01-javascript/63-memory-model",
+    "title": "JS Пример 3. Reference Mutation",
+    "outcome": "ok",
+    "text": "active"
+  },
+  {
+    "chapter": "docs/01-javascript/63-memory-model",
+    "title": "JS Пример 4. A B C Memory",
+    "outcome": "ok",
+    "text": "3\nAnna"
+  },
+  {
+    "chapter": "docs/01-javascript/64-hoisting-tdz",
+    "title": "JS Пример 1. Function Hoisting",
+    "outcome": "ok",
+    "text": "c"
+  },
+  {
+    "chapter": "docs/01-javascript/64-hoisting-tdz",
+    "title": "JS Пример 2. Var Hoisting",
+    "outcome": "ok",
+    "text": "undefined\ninside c"
+  },
+  {
+    "chapter": "docs/01-javascript/64-hoisting-tdz",
+    "title": "JS Пример 3. Tdz Caught",
+    "outcome": "ok",
+    "text": "ReferenceError"
+  },
+  {
+    "chapter": "docs/01-javascript/64-hoisting-tdz",
+    "title": "JS Пример 4. A B C Hoisting",
+    "outcome": "ok",
+    "text": "a -> b -> c"
+  },
+  {
+    "chapter": "docs/01-javascript/65-closures",
+    "title": "JS Пример 1. Closure Configuration",
+    "outcome": "ok",
+    "text": "https://example.test/login\nhttps://example.test/orders"
+  },
+  {
+    "chapter": "docs/01-javascript/65-closures",
+    "title": "JS Пример 2. Logger Factory",
+    "outcome": "ok",
+    "text": "[staging] start test\n[staging] finish test"
+  },
+  {
+    "chapter": "docs/01-javascript/65-closures",
+    "title": "JS Пример 3. Retry Manager",
+    "outcome": "ok",
+    "text": "true\ntrue\nfalse"
+  },
+  {
+    "chapter": "docs/01-javascript/65-closures",
+    "title": "JS Пример 4. Reporter State",
+    "outcome": "ok",
+    "text": "staging: login smoke -> passed\ntotal results: 1\nstaging: create order -> failed\ntotal results: 2"
+  },
+  {
+    "chapter": "docs/01-javascript/66-this",
+    "title": "JS Пример 1. Method This",
+    "outcome": "ok",
+    "text": "[smoke] start test"
+  },
+  {
+    "chapter": "docs/01-javascript/66-this",
+    "title": "JS Пример 2. Reporter This",
+    "outcome": "ok",
+    "text": "staging: login smoke -> passed"
+  },
+  {
+    "chapter": "docs/01-javascript/66-this",
+    "title": "JS Пример 3. Lost Context",
+    "outcome": "ok",
+    "text": "TypeError\ncontext lost"
+  },
+  {
+    "chapter": "docs/01-javascript/66-this",
+    "title": "JS Пример 4. Closure Vs This",
+    "outcome": "ok",
+    "text": "staging [api] request started"
+  },
+  {
+    "chapter": "docs/01-javascript/67-call-apply-bind",
+    "title": "JS Пример 1. Call",
+    "outcome": "ok",
+    "text": "staging: login smoke -> passed"
+  },
+  {
+    "chapter": "docs/01-javascript/67-call-apply-bind",
+    "title": "JS Пример 2. Apply",
+    "outcome": "ok",
+    "text": "staging: create order -> failed"
+  },
+  {
+    "chapter": "docs/01-javascript/67-call-apply-bind",
+    "title": "JS Пример 3. Bind",
+    "outcome": "ok",
+    "text": "[api] request started\n[api] request finished"
+  },
+  {
+    "chapter": "docs/01-javascript/67-call-apply-bind",
+    "title": "JS Пример 4. Restore Context",
+    "outcome": "ok",
+    "text": "staging: login smoke -> passed"
+  },
+  {
+    "chapter": "docs/01-javascript/68-context-management",
+    "title": "JS Пример 1. Framework Factory",
+    "outcome": "ok",
+    "text": "[staging] framework started"
+  },
+  {
+    "chapter": "docs/01-javascript/68-context-management",
+    "title": "JS Пример 2. Bound Reporter",
+    "outcome": "ok",
+    "text": "console reporter: login smoke -> passed"
+  },
+  {
+    "chapter": "docs/01-javascript/68-context-management",
+    "title": "JS Пример 3. Retry Manager",
+    "outcome": "ok",
+    "text": "true\ntrue\nfalse"
+  },
+  {
+    "chapter": "docs/01-javascript/68-context-management",
+    "title": "JS Пример 4. Complete Flow",
+    "outcome": "ok",
+    "text": "staging [runner] start login smoke\nconsole reporter: login smoke -> passed\nstaging [runner] finish login smoke"
+  },
+  {
+    "chapter": "docs/01-javascript/69-synchronous-execution",
+    "title": "JS Пример 1. Sync Runner",
+    "outcome": "ok",
+    "text": "[\n  \"environment prepared\",\n  \"login test executed\",\n  \"report created\"\n]"
+  },
+  {
+    "chapter": "docs/01-javascript/69-synchronous-execution",
+    "title": "JS Пример 2. Step Order",
+    "outcome": "ok",
+    "text": "1. read configuration\n2. prepare environment\n3. run test\n4. create report"
+  },
+  {
+    "chapter": "docs/01-javascript/69-synchronous-execution",
+    "title": "JS Пример 3. Blocking Work",
+    "outcome": "ok",
+    "text": "before preparation\nenvironment prepared\nafter preparation"
+  },
+  {
+    "chapter": "docs/01-javascript/69-synchronous-execution",
+    "title": "JS Пример 4. Qa Flow",
+    "outcome": "ok",
+    "text": "report: staging: login smoke passed"
+  },
+  {
+    "chapter": "docs/01-javascript/70-asynchronous-programming",
+    "title": "JS Пример 1. Delayed Report",
+    "outcome": "ok",
+    "text": "test started\ntest function finished\nreport generated later"
+  },
+  {
+    "chapter": "docs/01-javascript/70-asynchronous-programming",
+    "title": "JS Пример 2. Environment Preparation",
+    "outcome": "ok",
+    "text": "start preparation\ncontinue current code\nenvironment is ready"
+  },
+  {
+    "chapter": "docs/01-javascript/70-asynchronous-programming",
+    "title": "JS Пример 3. Wrong Assumption",
+    "outcome": "ok",
+    "text": "immediately after scheduling: not ready\ninside delayed operation: ready"
+  },
+  {
+    "chapter": "docs/01-javascript/70-asynchronous-programming",
+    "title": "JS Пример 4. Qa Flow",
+    "outcome": "ok",
+    "text": "runner started\ntest executed\nrunner can do other synchronous work\nreport created after test runner finished current work"
+  },
+  {
+    "chapter": "docs/01-javascript/71-callback",
+    "title": "JS Пример 1. Basic Callback",
+    "outcome": "ok",
+    "text": "login smoke: passed"
+  },
+  {
+    "chapter": "docs/01-javascript/71-callback",
+    "title": "JS Пример 2. Callback Data",
+    "outcome": "ok",
+    "text": "staging: login smoke passed"
+  },
+  {
+    "chapter": "docs/01-javascript/71-callback",
+    "title": "JS Пример 3. Callback Error",
+    "outcome": "ok",
+    "text": "login smoke: report generated"
+  },
+  {
+    "chapter": "docs/01-javascript/71-callback",
+    "title": "JS Пример 4. Qa Flow",
+    "outcome": "ok",
+    "text": "login smoke: passed"
+  },
+  {
+    "chapter": "docs/01-javascript/72-promise",
+    "title": "JS Пример 1. Basic Promise",
+    "outcome": "ok",
+    "text": "login smoke: report generated"
+  },
+  {
+    "chapter": "docs/01-javascript/72-promise",
+    "title": "JS Пример 2. Promise Result",
+    "outcome": "ok",
+    "text": "staging: login smoke passed"
+  },
+  {
+    "chapter": "docs/01-javascript/72-promise",
+    "title": "JS Пример 3. Promise Rejection",
+    "outcome": "ok",
+    "text": "error: test name is required"
+  },
+  {
+    "chapter": "docs/01-javascript/72-promise",
+    "title": "JS Пример 4. Qa Flow",
+    "outcome": "ok",
+    "text": "login smoke: passed"
+  },
+  {
+    "chapter": "docs/01-javascript/73-event-loop",
+    "title": "JS Пример 1. Event Loop Order",
+    "outcome": "ok",
+    "text": "runner: start\nrunner: finish current code\nnotification: completion scheduled\nreport: generated"
+  },
+  {
+    "chapter": "docs/01-javascript/73-event-loop",
+    "title": "JS Пример 2. Stack Before Deferred",
+    "outcome": "ok",
+    "text": "runner: start\ntest: executed\nrunner: current stack finished\nreport: uploaded"
+  },
+  {
+    "chapter": "docs/01-javascript/73-event-loop",
+    "title": "JS Пример 3. Coordinator Model",
+    "outcome": "ok",
+    "text": "runner: start\nenvironment: prepared\nrunner: synchronous work done\nnotification: sent before timer\nreport: generated later"
+  },
+  {
+    "chapter": "docs/01-javascript/73-event-loop",
+    "title": "JS Пример 4. Qa Flow",
+    "outcome": "ok",
+    "text": "framework: read configuration\nframework: execute test\nframework: notify completion\nframework: upload report"
+  },
+  {
+    "chapter": "docs/01-javascript/74-web-apis",
+    "title": "JS Пример 1. Runtime Api",
+    "outcome": "ok",
+    "text": "javascript: schedule report generation\njavascript: continue running current code\nruntime: report generation completed"
+  },
+  {
+    "chapter": "docs/01-javascript/74-web-apis",
+    "title": "JS Пример 2. Timeout Delegation",
+    "outcome": "ok",
+    "text": "runner: start\njavascript: ask runtime to wait\nrunner: current JavaScript code finished\nruntime callback: environment ready"
+  },
+  {
+    "chapter": "docs/01-javascript/74-web-apis",
+    "title": "JS Пример 3. Api Vs Language",
+    "outcome": "ok",
+    "text": "console is provided by the runtime\nPromise is a JavaScript object, but its callback is scheduled\nsetTimeout is also provided by the runtime"
+  },
+  {
+    "chapter": "docs/01-javascript/74-web-apis",
+    "title": "JS Пример 4. Qa Flow",
+    "outcome": "ok",
+    "text": "framework: generate report\nframework: continue after scheduling upload\nsmoke-report: uploaded by runtime callback"
+  },
+  {
+    "chapter": "docs/01-javascript/75-microtasks",
+    "title": "JS Пример 1. Promise Microtask",
+    "outcome": "ok",
+    "text": "runner: start\nrunner: finish current code\nmicrotask: validate result"
+  },
+  {
+    "chapter": "docs/01-javascript/75-microtasks",
+    "title": "JS Пример 2. Queue Microtask",
+    "outcome": "ok",
+    "text": "framework: execute test\nframework: current code done\nmicrotask: save test result"
+  },
+  {
+    "chapter": "docs/01-javascript/75-microtasks",
+    "title": "JS Пример 3. Microtask Before Timer",
+    "outcome": "ok",
+    "text": "runner: start\nrunner: finish current code\nmicrotask: notify completion\nmacrotask: upload report"
+  },
+  {
+    "chapter": "docs/01-javascript/75-microtasks",
+    "title": "JS Пример 4. Qa Flow",
+    "outcome": "ok",
+    "text": "framework: run test\nframework: current execution finished\nmicrotask: save result before report generation\nmacrotask: generate report"
+  },
+  {
+    "chapter": "docs/01-javascript/76-macrotasks",
+    "title": "JS Пример 1. Timeout Macrotask",
+    "outcome": "ok",
+    "text": "runner: start\nrunner: finish current code\nmacrotask: generate report"
+  },
+  {
+    "chapter": "docs/01-javascript/76-macrotasks",
+    "title": "JS Пример 2. Interval Macrotask",
+    "outcome": "ok",
+    "text": "macrotask: upload attempt 1\nmacrotask: upload attempt 2"
+  },
+  {
+    "chapter": "docs/01-javascript/76-macrotasks",
+    "title": "JS Пример 3. Macro After Micro",
+    "outcome": "ok",
+    "text": "runner: start\nrunner: finish current code\nmicrotask: save result\nmicrotask: notify completion\nmacrotask: generate report"
+  },
+  {
+    "chapter": "docs/01-javascript/76-macrotasks",
+    "title": "JS Пример 4. Qa Flow",
+    "outcome": "ok",
+    "text": "framework: execute tests\nframework: synchronous part complete\nmicrotask: mark run finished\nmacrotask: upload report\nmacrotask: notify dashboard"
+  },
+  {
+    "chapter": "docs/01-javascript/77-promise-api",
+    "title": "JS Пример 1. Then",
+    "outcome": "ok",
+    "text": "staging: login prepared"
+  },
+  {
+    "chapter": "docs/01-javascript/77-promise-api",
+    "title": "JS Пример 2. Catch",
+    "outcome": "ok",
+    "text": "login error: user name is required"
+  },
+  {
+    "chapter": "docs/01-javascript/77-promise-api",
+    "title": "JS Пример 3. Finally",
+    "outcome": "ok",
+    "text": "report uploaded\ncleanup finished"
+  },
+  {
+    "chapter": "docs/01-javascript/77-promise-api",
+    "title": "JS Пример 4. Qa Flow",
+    "outcome": "ok",
+    "text": "login smoke: passed\nreport generated\ncleanup finished"
+  },
+  {
+    "chapter": "docs/01-javascript/78-async-await",
+    "title": "JS Пример 1. Async Function",
+    "outcome": "ok",
+    "text": "staging: ready"
+  },
+  {
+    "chapter": "docs/01-javascript/78-async-await",
+    "title": "JS Пример 2. Await",
+    "outcome": "ok",
+    "text": "login completed\ntest executed"
+  },
+  {
+    "chapter": "docs/01-javascript/78-async-await",
+    "title": "JS Пример 3. Return Value",
+    "outcome": "ok",
+    "text": "report generated and uploaded"
+  },
+  {
+    "chapter": "docs/01-javascript/78-async-await",
+    "title": "JS Пример 4. Qa Flow",
+    "outcome": "ok",
+    "text": "staging: login smoke passed"
+  },
+  {
+    "chapter": "docs/01-javascript/79-async-error-handling",
+    "title": "JS Пример 1. Try Catch Await",
+    "outcome": "ok",
+    "text": "caught: user name is required"
+  },
+  {
+    "chapter": "docs/01-javascript/79-async-error-handling",
+    "title": "JS Пример 2. Rejected Promise",
+    "outcome": "ok",
+    "text": "screenshot error: page name is required"
+  },
+  {
+    "chapter": "docs/01-javascript/79-async-error-handling",
+    "title": "JS Пример 3. Error Propagation",
+    "outcome": "ok",
+    "text": "report error: logs are not available"
+  },
+  {
+    "chapter": "docs/01-javascript/79-async-error-handling",
+    "title": "JS Пример 4. Qa Flow",
+    "outcome": "ok",
+    "text": "test passed\nframework error: upload failed\ncleanup finished"
+  },
+  {
+    "chapter": "docs/01-javascript/80-parallel-async",
+    "title": "JS Пример 1. Promise All",
+    "outcome": "ok",
+    "text": "[\n  \"logs collected\",\n  \"screenshot captured\"\n]"
+  },
+  {
+    "chapter": "docs/01-javascript/80-parallel-async",
+    "title": "JS Пример 2. All Settled",
+    "outcome": "ok",
+    "text": "[\n  \"fulfilled\",\n  \"rejected\"\n]"
+  },
+  {
+    "chapter": "docs/01-javascript/80-parallel-async",
+    "title": "JS Пример 3. Race Any",
+    "outcome": "ok",
+    "text": "race: fast check passed\nany: fast check passed"
+  },
+  {
+    "chapter": "docs/01-javascript/80-parallel-async",
+    "title": "JS Пример 4. Qa Flow",
+    "outcome": "ok",
+    "text": "[\n  \"logs collected\",\n  \"screenshot captured\"\n]\nreport uploaded"
+  },
+  {
+    "chapter": "docs/01-javascript/81-iterable-protocol",
+    "title": "JS Пример 1. Array Iterable",
+    "outcome": "ok",
+    "text": "login test\ncheckout test\nreport test"
+  },
+  {
+    "chapter": "docs/01-javascript/81-iterable-protocol",
+    "title": "JS Пример 2. String Iterable",
+    "outcome": "ok",
+    "text": "Q\nA"
+  },
+  {
+    "chapter": "docs/01-javascript/81-iterable-protocol",
+    "title": "JS Пример 3. Map Set",
+    "outcome": "ok",
+    "text": "[\n  \"login\",\n  \"Anna\"\n]\n[\n  \"checkout\",\n  \"Maksim\"\n]\nhigh\nmedium\nlow"
+  },
+  {
+    "chapter": "docs/01-javascript/81-iterable-protocol",
+    "title": "JS Пример 4. Qa Collection",
+    "outcome": "ok",
+    "text": "T-1: login works\nT-2: checkout works"
+  },
+  {
+    "chapter": "docs/01-javascript/82-iterators",
+    "title": "JS Пример 1. Manual Next",
+    "outcome": "ok",
+    "text": "{\n  \"value\": \"login\",\n  \"done\": false\n}\n{\n  \"value\": \"checkout\",\n  \"done\": false\n}\n{\n  \"done\": true\n}"
+  },
+  {
+    "chapter": "docs/01-javascript/82-iterators",
+    "title": "JS Пример 2. Array Iterator",
+    "outcome": "ok",
+    "text": "logs\nscreenshot\ntrace"
+  },
+  {
+    "chapter": "docs/01-javascript/82-iterators",
+    "title": "JS Пример 3. Done Value",
+    "outcome": "ok",
+    "text": "{\n  \"value\": \"logs\",\n  \"done\": false\n}\n{\n  \"done\": true\n}"
+  },
+  {
+    "chapter": "docs/01-javascript/82-iterators",
+    "title": "JS Пример 4. Qa Iterator",
+    "outcome": "ok",
+    "text": "execute T-1: login\nexecute T-2: checkout"
+  },
+  {
+    "chapter": "docs/01-javascript/83-generators",
+    "title": "JS Пример 1. First Generator",
+    "outcome": "ok",
+    "text": "{\n  \"value\": \"login\",\n  \"done\": false\n}\n{\n  \"value\": \"checkout\",\n  \"done\": false\n}\n{\n  \"done\": true\n}"
+  },
+  {
+    "chapter": "docs/01-javascript/83-generators",
+    "title": "JS Пример 2. Yield Sequence",
+    "outcome": "ok",
+    "text": "collect logs\ncapture screenshot\nupload report"
+  },
+  {
+    "chapter": "docs/01-javascript/83-generators",
+    "title": "JS Пример 3. Generator For Of",
+    "outcome": "ok",
+    "text": "logs\nscreenshot\ntrace"
+  },
+  {
+    "chapter": "docs/01-javascript/83-generators",
+    "title": "JS Пример 4. Qa Generator",
+    "outcome": "ok",
+    "text": "log: browser.log\nscreenshot: failure.png\ntrace: trace.zip"
+  },
+  {
+    "chapter": "docs/01-javascript/84-custom-iteration",
+    "title": "JS Пример 1. Manual Iterable",
+    "outcome": "ok",
+    "text": "login\ncheckout"
+  },
+  {
+    "chapter": "docs/01-javascript/84-custom-iteration",
+    "title": "JS Пример 2. Generator Iterable",
+    "outcome": "ok",
+    "text": "login\ncheckout\nreport"
+  },
+  {
+    "chapter": "docs/01-javascript/84-custom-iteration",
+    "title": "JS Пример 3. Compare Approaches",
+    "outcome": "ok",
+    "text": "manual: login\ngenerator: checkout"
+  },
+  {
+    "chapter": "docs/01-javascript/84-custom-iteration",
+    "title": "JS Пример 4. Qa Suite",
+    "outcome": "ok",
+    "text": "smoke: T-1 login works\nsmoke: T-2 checkout works"
+  },
+  {
+    "chapter": "docs/01-javascript/85-javascript-modules",
+    "title": "JS Пример 1. Large Runner.Mjs",
+    "outcome": "ok",
+    "text": "[runner] run against https://example.test\nlogin test: passed"
+  },
+  {
+    "chapter": "docs/01-javascript/85-javascript-modules",
+    "title": "JS Пример 2. Config.Mjs",
+    "outcome": "ok",
+    "text": "Код выполнен без вывода."
+  },
+  {
+    "chapter": "docs/01-javascript/85-javascript-modules",
+    "title": "JS Пример 2. Logger.Mjs",
+    "outcome": "ok",
+    "text": "Код выполнен без вывода."
+  },
+  {
+    "chapter": "docs/01-javascript/85-javascript-modules",
+    "title": "JS Пример 2. Runner.Mjs",
+    "outcome": "read-only",
+    "text": ""
+  },
+  {
+    "chapter": "docs/01-javascript/85-javascript-modules",
+    "title": "JS Пример 3. Assertions.Mjs",
+    "outcome": "ok",
+    "text": "Код выполнен без вывода."
+  },
+  {
+    "chapter": "docs/01-javascript/85-javascript-modules",
+    "title": "JS Пример 3. Framework.Mjs",
+    "outcome": "read-only",
+    "text": ""
+  },
+  {
+    "chapter": "docs/01-javascript/85-javascript-modules",
+    "title": "JS Пример 3. Reporter.Mjs",
+    "outcome": "ok",
+    "text": "Код выполнен без вывода."
+  },
+  {
+    "chapter": "docs/01-javascript/85-javascript-modules",
+    "title": "JS Пример 4. Dependency Graph.Mjs",
+    "outcome": "read-only",
+    "text": ""
+  },
+  {
+    "chapter": "docs/01-javascript/86-module-systems",
+    "title": "JS Пример 1. Esm Config.Mjs",
+    "outcome": "ok",
+    "text": "Код выполнен без вывода."
+  },
+  {
+    "chapter": "docs/01-javascript/86-module-systems",
+    "title": "JS Пример 1. Esm Runner.Mjs",
+    "outcome": "read-only",
+    "text": ""
+  },
+  {
+    "chapter": "docs/01-javascript/86-module-systems",
+    "title": "JS Пример 2. Commonjs Config.Cjs",
+    "outcome": "ok",
+    "text": "Код выполнен без вывода."
+  },
+  {
+    "chapter": "docs/01-javascript/86-module-systems",
+    "title": "JS Пример 2. Commonjs Runner.Cjs",
+    "outcome": "read-only",
+    "text": ""
+  },
+  {
+    "chapter": "docs/01-javascript/86-module-systems",
+    "title": "JS Пример 3. Comparison.Mjs",
+    "outcome": "read-only",
+    "text": ""
+  },
+  {
+    "chapter": "docs/01-javascript/86-module-systems",
+    "title": "JS Пример 4. Qa Choice.Cjs",
+    "outcome": "read-only",
+    "text": ""
+  },
+  {
+    "chapter": "docs/01-javascript/87-garbage-collector",
+    "title": "JS Пример 1. Reachable Object",
+    "outcome": "ok",
+    "text": "passed\nreport is reachable through currentReport"
+  },
+  {
+    "chapter": "docs/01-javascript/87-garbage-collector",
+    "title": "JS Пример 2. Unreachable Object",
+    "outcome": "ok",
+    "text": "failed\nold report is no longer reachable through currentReport"
+  },
+  {
+    "chapter": "docs/01-javascript/87-garbage-collector",
+    "title": "JS Пример 3. Object Graph",
+    "outcome": "ok",
+    "text": "request sent\nstaging"
+  },
+  {
+    "chapter": "docs/01-javascript/87-garbage-collector",
+    "title": "JS Пример 4. Qa Report",
+    "outcome": "ok",
+    "text": "upload report: checkout test\nreport reference cleared after upload"
+  },
+  {
+    "chapter": "docs/01-javascript/88-memory-management",
+    "title": "JS Пример 1. Long Lived Reference",
+    "outcome": "ok",
+    "text": "2"
+  },
+  {
+    "chapter": "docs/01-javascript/88-memory-management",
+    "title": "JS Пример 2. Closure Retains Object",
+    "outcome": "ok",
+    "text": "api test: 2 logs"
+  },
+  {
+    "chapter": "docs/01-javascript/88-memory-management",
+    "title": "JS Пример 3. Timer Reference",
+    "outcome": "ok",
+    "text": "timer scheduled: true\nlogs: 2"
+  },
+  {
+    "chapter": "docs/01-javascript/88-memory-management",
+    "title": "JS Пример 4. Qa Cache Cleanup",
+    "outcome": "ok",
+    "text": "true\nfalse"
+  },
+  {
+    "chapter": "docs/01-javascript/89-performance",
+    "title": "JS Пример 1. Measure Duration",
+    "outcome": "ok",
+    "text": "test duration: 550\ncalculation time: 0"
+  },
+  {
+    "chapter": "docs/01-javascript/89-performance",
+    "title": "JS Пример 2. Avoid Duplicate Calculation",
+    "outcome": "ok",
+    "text": "total duration: 1200\naverage duration: 400"
+  },
+  {
+    "chapter": "docs/01-javascript/89-performance",
+    "title": "JS Пример 3. Avoid Unnecessary Work",
+    "outcome": "ok",
+    "text": "[\n  {\n    \"id\": \"T-2\",\n    \"status\": \"failed\",\n    \"priority\": \"high\"\n  }\n]"
+  },
+  {
+    "chapter": "docs/01-javascript/89-performance",
+    "title": "JS Пример 4. Qa Slow Tests",
+    "outcome": "ok",
+    "text": "slow tests:\nT-2: checkout creates order (1250ms)\nT-4: report export (1840ms)"
+  },
+  {
+    "chapter": "docs/01-javascript/90-debugging",
+    "title": "JS Пример 1. Reproduce Bug",
+    "outcome": "ok",
+    "text": "[]"
+  },
+  {
+    "chapter": "docs/01-javascript/90-debugging",
+    "title": "JS Пример 2. Isolate Condition",
+    "outcome": "ok",
+    "text": "expected status: failed\nactual status: fail\ncondition result: false"
+  },
+  {
+    "chapter": "docs/01-javascript/90-debugging",
+    "title": "JS Пример 3. Read Stack Trace",
+    "outcome": "ok",
+    "text": "Report summary is missing\nat parseReport (example.js:43:11)"
+  },
+  {
+    "chapter": "docs/01-javascript/90-debugging",
+    "title": "JS Пример 4. Qa Debug Report",
+    "outcome": "ok",
+    "text": "expected: paid\nactual: pending\nmatches: false"
+  },
+  {
+    "chapter": "docs/01-javascript/91-modern-javascript",
+    "title": "JS Пример 1. Modern Data Access",
+    "outcome": "ok",
+    "text": "checkout creates order: passed\nowner: qa-team\nbrowser: chromium"
+  },
+  {
+    "chapter": "docs/01-javascript/91-modern-javascript",
+    "title": "JS Пример 2. Async Helper Flow",
+    "outcome": "ok",
+    "text": "{\n  \"baseUrl\": \"https://example.test\",\n  \"retries\": 2\n}"
+  },
+  {
+    "chapter": "docs/01-javascript/91-modern-javascript",
+    "title": "JS Пример 3. Class And Report",
+    "outcome": "ok",
+    "text": "{\n  \"title\": \"login test\",\n  \"totalSteps\": 2\n}"
+  },
+  {
+    "chapter": "docs/01-javascript/91-modern-javascript",
+    "title": "JS Пример 4. Generator Log Reader",
+    "outcome": "ok",
+    "text": "[info] test started\n[info] page opened\n[error] assertion failed"
+  },
+  {
+    "chapter": "docs/01-javascript/92-javascript-best-practices",
+    "title": "JS Пример 1. Clear Naming",
+    "outcome": "ok",
+    "text": "true"
+  },
+  {
+    "chapter": "docs/01-javascript/92-javascript-best-practices",
+    "title": "JS Пример 2. Small Functions",
+    "outcome": "ok",
+    "text": "profile updates: passed\ntrue"
+  },
+  {
+    "chapter": "docs/01-javascript/92-javascript-best-practices",
+    "title": "JS Пример 3. Avoid Duplication",
+    "outcome": "ok",
+    "text": "{\n  \"name\": \"Anna\",\n  \"role\": \"admin\",\n  \"active\": true\n}\n{\n  \"name\": \"Ivan\",\n  \"role\": \"viewer\",\n  \"active\": true\n}"
+  },
+  {
+    "chapter": "docs/01-javascript/92-javascript-best-practices",
+    "title": "JS Пример 4. Defensive Helper",
+    "outcome": "ok",
+    "text": "T-42"
+  },
+  {
+    "chapter": "docs/01-javascript/93-error-objects",
+    "title": "JS Пример 1. Throw Error",
+    "outcome": "ok",
+    "text": "Error\nbaseUrl is required"
+  },
+  {
+    "chapter": "docs/01-javascript/93-error-objects",
+    "title": "JS Пример 2. Error Types",
+    "outcome": "ok",
+    "text": "RangeError\nretryCount must be between 0 and 5"
+  },
+  {
+    "chapter": "docs/01-javascript/93-error-objects",
+    "title": "JS Пример 3. Custom Error",
+    "outcome": "ok",
+    "text": "InvalidTestDataError\nemail is required"
+  },
+  {
+    "chapter": "docs/01-javascript/93-error-objects",
+    "title": "JS Пример 4. Qa Assertion Helper",
+    "outcome": "ok",
+    "text": "Error\nExpected status 200, received 500"
+  },
+  {
+    "chapter": "docs/01-javascript/94-json",
+    "title": "JS Пример 1. Stringify Request",
+    "outcome": "ok",
+    "text": "string\n{\"email\":\"qa@example.com\",\"password\":\"secret\",\"rememberMe\":true}"
+  },
+  {
+    "chapter": "docs/01-javascript/94-json",
+    "title": "JS Пример 2. Parse Response",
+    "outcome": "ok",
+    "text": "passed\n1200"
+  },
+  {
+    "chapter": "docs/01-javascript/94-json",
+    "title": "JS Пример 3. Unsupported Values",
+    "outcome": "ok",
+    "text": "{\"email\":\"qa@example.com\"}"
+  },
+  {
+    "chapter": "docs/01-javascript/94-json",
+    "title": "JS Пример 4. Circular Reference",
+    "outcome": "ok",
+    "text": "TypeError\nConverting circular structure to JSON\n    --> starting at object with constructor 'Object'\n    --- property 'self' closes the circle"
+  },
+  {
+    "chapter": "docs/01-javascript/94-json",
+    "title": "JS Пример 5. Qa Fixture",
+    "outcome": "ok",
+    "text": "{\"email\":\"qa@example.com\",\"role\":\"admin\"}\nqa@example.com"
+  },
+  {
+    "chapter": "docs/01-javascript/95-date",
+    "title": "JS Пример 1. Create Date",
+    "outcome": "ok",
+    "text": "true\n2026-06-28T10:00:00.000Z"
+  },
+  {
+    "chapter": "docs/01-javascript/95-date",
+    "title": "JS Пример 2. Timestamp",
+    "outcome": "ok",
+    "text": "1782640800000\nnumber\ntrue"
+  },
+  {
+    "chapter": "docs/01-javascript/95-date",
+    "title": "JS Пример 3. Compare Dates",
+    "outcome": "ok",
+    "text": "true"
+  },
+  {
+    "chapter": "docs/01-javascript/95-date",
+    "title": "JS Пример 4. Duration",
+    "outcome": "ok",
+    "text": "5000"
+  },
+  {
+    "chapter": "docs/01-javascript/95-date",
+    "title": "JS Пример 5. Invalid Date",
+    "outcome": "ok",
+    "text": "true"
+  },
+  {
+    "chapter": "docs/01-javascript/95-date",
+    "title": "JS Пример 6. Qa Token Expiration",
+    "outcome": "ok",
+    "text": "true"
+  },
+  {
+    "chapter": "docs/01-javascript/96-why-typescript",
+    "title": "JS Пример 1. Dynamic Data Shape",
+    "outcome": "ok",
+    "text": "{\n  \"role\": \"admin\"\n}"
+  },
+  {
+    "chapter": "docs/01-javascript/96-why-typescript",
+    "title": "JS Пример 2. Late Error",
+    "outcome": "ok",
+    "text": "chromium"
+  },
+  {
+    "chapter": "docs/01-javascript/96-why-typescript",
+    "title": "JS Пример 3. Refactor Risk",
+    "outcome": "ok",
+    "text": "{\n  \"status\": \"passed\"\n}"
+  },
+  {
+    "chapter": "docs/01-javascript/96-why-typescript",
+    "title": "JS Пример 4. Qa Contract Problem",
+    "outcome": "ok",
+    "text": "{\n  \"password\": \"secret\"\n}"
+  },
+  {
+    "chapter": "docs/02-typescript/97-typescript-compiler",
+    "title": "JS Пример 1. Compiler Input",
+    "outcome": "ok",
+    "text": "qa regression suite: 24 tests"
+  },
+  {
+    "chapter": "docs/02-typescript/97-typescript-compiler",
+    "title": "JS Пример 2. Compiler Feedback",
+    "outcome": "ok",
+    "text": "3 three"
+  },
+  {
+    "chapter": "docs/02-typescript/97-typescript-compiler",
+    "title": "JS Пример 3. Generated Javascript",
+    "outcome": "ok",
+    "text": "qa regression suite: 24 tests"
+  },
+  {
+    "chapter": "docs/03-automation-qa/166-playwright-and-playwright-test",
+    "title": "JS Пример 1. Minimal Test.Spec",
+    "outcome": "read-only",
+    "text": ""
+  },
+  {
+    "chapter": "docs/03-automation-qa/167-test-anatomy-and-execution-model",
+    "title": "JS Пример 1. Test Anatomy.Spec",
+    "outcome": "read-only",
+    "text": ""
+  },
+  {
+    "chapter": "docs/03-automation-qa/168-browser-browsercontext-and-page",
+    "title": "JS Пример 1. Context Isolation.Spec",
+    "outcome": "read-only",
+    "text": ""
+  },
+  {
+    "chapter": "docs/03-automation-qa/169-locator-and-element-search-strategy",
+    "title": "JS Пример 1. Resilient Locators.Spec",
+    "outcome": "read-only",
+    "text": ""
+  },
+  {
+    "chapter": "docs/03-automation-qa/170-user-actions",
+    "title": "JS Пример 1. User Actions.Spec",
+    "outcome": "read-only",
+    "text": ""
+  },
+  {
+    "chapter": "docs/03-automation-qa/171-web-first-assertions",
+    "title": "JS Пример 1. Web First Assertion.Spec",
+    "outcome": "read-only",
+    "text": ""
+  },
+  {
+    "chapter": "docs/03-automation-qa/172-auto-waiting-and-explicit-waits",
+    "title": "JS Пример 1. Condition Based Wait.Spec",
+    "outcome": "read-only",
+    "text": ""
+  },
+  {
+    "chapter": "docs/03-automation-qa/173-timeouts-and-wait-boundaries",
+    "title": "JS Пример 1. Scoped Timeout.Spec",
+    "outcome": "read-only",
+    "text": ""
+  },
+  {
+    "chapter": "docs/03-automation-qa/174-hooks-and-test-lifecycle",
+    "title": "JS Пример 1. Hook Order.Spec",
+    "outcome": "read-only",
+    "text": ""
+  },
+  {
+    "chapter": "docs/03-automation-qa/175-ui-test-isolation-and-browser-state",
+    "title": "JS Пример 1. Browser State Isolation.Spec",
+    "outcome": "read-only",
+    "text": ""
+  },
+  {
+    "chapter": "docs/03-automation-qa/176-built-in-fixtures",
+    "title": "JS Пример 1. Built In Fixtures.Ui",
+    "outcome": "read-only",
+    "text": ""
+  },
+  {
+    "chapter": "docs/03-automation-qa/177-custom-fixtures-and-dependency-graph",
+    "title": "JS Пример 1. Custom Fixture.Ui",
+    "outcome": "read-only",
+    "text": ""
+  },
+  {
+    "chapter": "docs/03-automation-qa/178-authentication-state-and-managed-sessions",
+    "title": "JS Пример 1. Authentication State.Ui",
+    "outcome": "read-only",
+    "text": ""
+  },
+  {
+    "chapter": "docs/03-automation-qa/178-authentication-state-and-managed-sessions",
+    "title": "JS Пример. Auth.Setup",
+    "outcome": "read-only",
+    "text": ""
+  },
+  {
+    "chapter": "docs/03-automation-qa/179-page-object",
+    "title": "JS Пример 1. Page Object.Ui",
+    "outcome": "read-only",
+    "text": ""
+  },
+  {
+    "chapter": "docs/03-automation-qa/180-component-objects-and-page-composition",
+    "title": "JS Пример 1. Component Composition.Ui",
+    "outcome": "read-only",
+    "text": ""
+  },
+  {
+    "chapter": "docs/03-automation-qa/181-frames",
+    "title": "JS Пример 1. Frame Locator.Ui",
+    "outcome": "read-only",
+    "text": ""
+  },
+  {
+    "chapter": "docs/03-automation-qa/182-tabs-windows-and-popups",
+    "title": "JS Пример 1. Popup Event.Ui",
+    "outcome": "read-only",
+    "text": ""
+  },
+  {
+    "chapter": "docs/03-automation-qa/183-dialogs-and-files",
+    "title": "JS Пример 1. Dialog And Files.Ui",
+    "outcome": "read-only",
+    "text": ""
+  },
+  {
+    "chapter": "docs/03-automation-qa/184-network-interception-and-mocking",
+    "title": "JS Пример 1. Network Control.Ui",
+    "outcome": "read-only",
+    "text": ""
+  },
+  {
+    "chapter": "docs/03-automation-qa/185-ui-layer-integration",
+    "title": "JS Пример 1. Integrated Ui Layer.Ui",
+    "outcome": "read-only",
+    "text": ""
+  },
+  {
+    "chapter": "docs/03-automation-qa/186-http-and-rest-for-api-testing",
+    "title": "JS Пример 1. Http Rest.Api",
+    "outcome": "read-only",
+    "text": ""
+  },
+  {
+    "chapter": "docs/03-automation-qa/187-http-request-structure",
+    "title": "JS Пример 1. Request Structure.Api",
+    "outcome": "read-only",
+    "text": ""
+  },
+  {
+    "chapter": "docs/03-automation-qa/188-http-response-structure",
+    "title": "JS Пример 1. Response Structure.Api",
+    "outcome": "read-only",
+    "text": ""
+  },
+  {
+    "chapter": "docs/03-automation-qa/189-api-request-context",
+    "title": "JS Пример 1. Api Request Context.Api",
+    "outcome": "read-only",
+    "text": ""
+  },
+  {
+    "chapter": "docs/03-automation-qa/190-api-client-and-http-boundary",
+    "title": "JS Пример 1. Api Client.Api",
+    "outcome": "read-only",
+    "text": ""
+  },
+  {
+    "chapter": "docs/03-automation-qa/191-api-authentication",
+    "title": "JS Пример 1. Api Authentication.Api",
+    "outcome": "read-only",
+    "text": ""
+  },
+  {
+    "chapter": "docs/03-automation-qa/192-request-builders-and-api-data-setup",
+    "title": "JS Пример 1. Request Builder.Api",
+    "outcome": "read-only",
+    "text": ""
+  },
+  {
+    "chapter": "docs/03-automation-qa/193-api-response-and-business-rule-validation",
+    "title": "JS Пример 1. Response Validation.Api",
+    "outcome": "read-only",
+    "text": ""
+  },
+  {
+    "chapter": "docs/03-automation-qa/194-negative-api-scenarios-and-errors",
+    "title": "JS Пример 1. Negative Scenarios.Api",
+    "outcome": "read-only",
+    "text": ""
+  },
+  {
+    "chapter": "docs/03-automation-qa/195-runtime-contract-validation",
+    "title": "JS Пример 1. Runtime Contract.Api",
+    "outcome": "read-only",
+    "text": ""
+  },
+  {
+    "chapter": "docs/03-automation-qa/196-combined-ui-and-api-scenarios",
+    "title": "JS Пример 1. Ui Api Scenario.Api",
+    "outcome": "read-only",
+    "text": ""
+  },
+  {
+    "chapter": "docs/03-automation-qa/197-grpc-and-rest-in-test-architecture",
+    "title": "JS Пример 1. Grpc Rest Boundary.Grpc",
+    "outcome": "read-only",
+    "text": ""
+  },
+  {
+    "chapter": "docs/03-automation-qa/198-protocol-buffers-services-and-messages",
+    "title": "JS Пример 1. Protobuf Contract.Grpc",
+    "outcome": "read-only",
+    "text": ""
+  },
+  {
+    "chapter": "docs/03-automation-qa/199-generated-code-and-grpc-client",
+    "title": "JS Пример 1. Generated Client.Grpc",
+    "outcome": "read-only",
+    "text": ""
+  },
+  {
+    "chapter": "docs/03-automation-qa/200-unary-grpc-calls",
+    "title": "JS Пример 1. Unary Call.Grpc",
+    "outcome": "read-only",
+    "text": ""
+  },
+  {
+    "chapter": "docs/03-automation-qa/201-protobuf-message-fields",
+    "title": "JS Пример 1. Protobuf Fields.Grpc",
+    "outcome": "read-only",
+    "text": ""
+  },
+  {
+    "chapter": "docs/03-automation-qa/202-grpc-metadata-and-authentication",
+    "title": "JS Пример 1. Metadata Authentication.Grpc",
+    "outcome": "read-only",
+    "text": ""
+  },
+  {
+    "chapter": "docs/03-automation-qa/203-grpc-deadlines-and-timeouts",
+    "title": "JS Пример 1. Deadline And Cancellation.Grpc",
+    "outcome": "read-only",
+    "text": ""
+  },
+  {
+    "chapter": "docs/03-automation-qa/204-grpc-statuses-and-error-handling",
+    "title": "JS Пример 1. Grpc Statuses.Grpc",
+    "outcome": "read-only",
+    "text": ""
+  },
+  {
+    "chapter": "docs/03-automation-qa/205-grpc-response-and-negative-scenario-validation",
+    "title": "JS Пример 1. Response Validation.Grpc",
+    "outcome": "read-only",
+    "text": ""
+  },
+  {
+    "chapter": "docs/03-automation-qa/206-grpc-client-in-automation-framework",
+    "title": "JS Пример 1. Framework Client.Grpc",
+    "outcome": "read-only",
+    "text": ""
+  },
+  {
+    "chapter": "docs/03-automation-qa/207-postgresql-in-automation-qa",
+    "title": "JS Пример 1. Database Boundary.Postgresql",
+    "outcome": "read-only",
+    "text": ""
+  },
+  {
+    "chapter": "docs/03-automation-qa/208-connections-pools-and-lifecycle",
+    "title": "JS Пример 1. Pool Lifecycle.Postgresql",
+    "outcome": "read-only",
+    "text": ""
+  },
+  {
+    "chapter": "docs/03-automation-qa/209-parameterized-queries",
+    "title": "JS Пример 1. Parameterized Query.Postgresql",
+    "outcome": "read-only",
+    "text": ""
+  },
+  {
+    "chapter": "docs/03-automation-qa/210-database-access-layer",
+    "title": "JS Пример 1. Database Access Layer.Postgresql",
+    "outcome": "read-only",
+    "text": ""
+  },
+  {
+    "chapter": "docs/03-automation-qa/211-database-data-setup-and-cleanup",
+    "title": "JS Пример 1. Data Lifecycle.Postgresql",
+    "outcome": "read-only",
+    "text": ""
+  },
+  {
+    "chapter": "docs/03-automation-qa/212-transactions-rollback-and-test-isolation",
+    "title": "JS Пример 1. Transaction Rollback.Postgresql",
+    "outcome": "read-only",
+    "text": ""
+  },
+  {
+    "chapter": "docs/03-automation-qa/213-eventual-consistency-and-polling",
+    "title": "JS Пример 1. Bounded Polling.Postgresql",
+    "outcome": "read-only",
+    "text": ""
+  },
+  {
+    "chapter": "docs/03-automation-qa/214-postgresql-api-grpc-data-comparison",
+    "title": "JS Пример 1. Database Transport Mapping.Postgresql",
+    "outcome": "read-only",
+    "text": ""
+  },
+  {
+    "chapter": "docs/03-automation-qa/215-data-conflicts-and-parallel-tests",
+    "title": "JS Пример 1. Unique Test Namespace.Postgresql",
+    "outcome": "read-only",
+    "text": ""
+  },
+  {
+    "chapter": "docs/03-automation-qa/216-playwright-configuration-and-execution-projects",
+    "title": "JS Пример 1. Execution Projects.Execution",
+    "outcome": "read-only",
+    "text": ""
+  },
+  {
+    "chapter": "docs/03-automation-qa/217-environments-variables-and-secrets",
+    "title": "JS Пример 1. Environment And Secrets.Execution",
+    "outcome": "read-only",
+    "text": ""
+  },
+  {
+    "chapter": "docs/03-automation-qa/218-configuration-loading-and-runtime-validation",
+    "title": "JS Пример 1. Runtime Config Validation.Execution",
+    "outcome": "read-only",
+    "text": ""
+  },
+  {
+    "chapter": "docs/03-automation-qa/219-test-data-organization",
+    "title": "JS Пример 1. Test Data Ownership.Execution",
+    "outcome": "read-only",
+    "text": ""
+  },
+  {
+    "chapter": "docs/03-automation-qa/220-builders-factories-and-unique-data",
+    "title": "JS Пример 1. Task Factory.Execution",
+    "outcome": "read-only",
+    "text": ""
+  },
+  {
+    "chapter": "docs/03-automation-qa/221-test-data-lifecycle",
+    "title": "JS Пример 1. Data Lifecycle.Execution",
+    "outcome": "read-only",
+    "text": ""
+  },
+  {
+    "chapter": "docs/03-automation-qa/222-helpers-and-reuse-boundaries",
+    "title": "JS Пример 1. Helper Boundary.Execution",
+    "outcome": "read-only",
+    "text": ""
+  },
+  {
+    "chapter": "docs/03-automation-qa/223-custom-assertions-and-soft-assertions",
+    "title": "JS Пример 1. Domain Assertion.Execution",
+    "outcome": "read-only",
+    "text": ""
+  },
+  {
+    "chapter": "docs/03-automation-qa/224-cross-layer-normalization-and-validation",
+    "title": "JS Пример 1. Cross Layer Normalization.Execution",
+    "outcome": "read-only",
+    "text": ""
+  },
+  {
+    "chapter": "docs/03-automation-qa/225-failure-investigation",
+    "title": "JS Пример 1. Failure Investigation.Diagnostics",
+    "outcome": "read-only",
+    "text": ""
+  },
+  {
+    "chapter": "docs/03-automation-qa/226-structured-logging",
+    "title": "JS Пример 1. Structured Logging.Diagnostics",
+    "outcome": "read-only",
+    "text": ""
+  },
+  {
+    "chapter": "docs/03-automation-qa/227-screenshots-videos-and-playwright-trace",
+    "title": "JS Пример 1. Ui Evidence.Diagnostics",
+    "outcome": "read-only",
+    "text": ""
+  },
+  {
+    "chapter": "docs/03-automation-qa/228-attachments-and-artifact-lifecycle",
+    "title": "JS Пример 1. Attachment Lifecycle.Diagnostics",
+    "outcome": "read-only",
+    "text": ""
+  },
+  {
+    "chapter": "docs/03-automation-qa/229-test-reporting-principles",
+    "title": "JS Пример 1. Report Contract.Diagnostics",
+    "outcome": "read-only",
+    "text": ""
+  },
+  {
+    "chapter": "docs/03-automation-qa/230-allure-reporting",
+    "title": "JS Пример 1. Allure Reporting.Diagnostics",
+    "outcome": "read-only",
+    "text": ""
+  },
+  {
+    "chapter": "docs/03-automation-qa/231-framework-diagnostic-flow",
+    "title": "JS Пример 1. Diagnostic Flow.Diagnostics",
+    "outcome": "read-only",
+    "text": ""
+  },
+  {
+    "chapter": "docs/03-automation-qa/232-causes-of-flaky-tests",
+    "title": "JS Пример 1. Flaky Classification.Stability",
+    "outcome": "read-only",
+    "text": ""
+  },
+  {
+    "chapter": "docs/03-automation-qa/233-investigation-and-quarantine-of-flaky-tests",
+    "title": "JS Пример 1. Quarantine Record.Stability",
+    "outcome": "read-only",
+    "text": ""
+  },
+  {
+    "chapter": "docs/03-automation-qa/234-retry-policy",
+    "title": "JS Пример 1. Retry And Repeat Identity.Stability",
+    "outcome": "read-only",
+    "text": ""
+  },
+  {
+    "chapter": "docs/03-automation-qa/234-retry-policy",
+    "title": "JS Пример 1. Retry Signal.Controlled",
+    "outcome": "read-only",
+    "text": ""
+  },
+  {
+    "chapter": "docs/03-automation-qa/235-workers-and-shared-resources",
+    "title": "JS Пример 1. Worker Owned Resource.Stability",
+    "outcome": "read-only",
+    "text": ""
+  },
+  {
+    "chapter": "docs/03-automation-qa/236-parallel-execution",
+    "title": "JS Пример 1. Parallel Isolation.Stability",
+    "outcome": "read-only",
+    "text": ""
+  },
+  {
+    "chapter": "docs/03-automation-qa/237-sharding",
+    "title": "JS Пример 1. Shard Independence.Stability",
+    "outcome": "read-only",
+    "text": ""
+  },
+  {
+    "chapter": "docs/03-automation-qa/238-tags-annotations-and-test-selection",
+    "title": "JS Пример 1. Tags And Selection.Stability",
+    "outcome": "read-only",
+    "text": ""
+  },
+  {
+    "chapter": "docs/03-automation-qa/239-ci-fundamentals-for-automation-qa",
+    "title": "JS Пример 1. Ci Run Contract.Ci",
+    "outcome": "read-only",
+    "text": ""
+  },
+  {
+    "chapter": "docs/03-automation-qa/245-layer-integration-and-dependency-flow",
+    "title": "JS Пример 1. Layer Dependency Flow.Integration",
+    "outcome": "read-only",
+    "text": ""
+  },
+  {
+    "chapter": "docs/03-automation-qa/246-composition-fixtures-and-configuration-flow",
+    "title": "JS Пример 1. Composition Fixture.Integration",
+    "outcome": "read-only",
+    "text": ""
+  },
+  {
+    "chapter": "docs/03-automation-qa/247-cross-layer-data-lifecycle",
+    "title": "JS Пример 1. Cross Layer Data Lifecycle.Integration",
+    "outcome": "read-only",
+    "text": ""
+  },
+  {
+    "chapter": "docs/03-automation-qa/248-diagnostics-stability-and-ci-in-architecture",
+    "title": "JS Пример 1. Integrated Diagnostics.Integration",
+    "outcome": "read-only",
+    "text": ""
+  },
+  {
+    "chapter": "docs/03-automation-qa/249-architecture-review-and-framework-evolution",
+    "title": "JS Пример 1. Architecture Review.Integration",
+    "outcome": "read-only",
+    "text": ""
+  }
+]

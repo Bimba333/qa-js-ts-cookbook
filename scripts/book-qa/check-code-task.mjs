@@ -5,12 +5,67 @@
  * со стартовым кодом, убеждается, что она падает, затем вставляет эталонное
  * решение и убеждается, что все проверки проходят и статус меняется.
  */
+import { spawn } from 'node:child_process'
+import net from 'node:net'
+
 import { chromium } from '@playwright/test'
 
-const BASE = process.env.BOOK_PREVIEW_URL ?? 'http://localhost:4173/qa-js-ts-cookbook'
-const CHAPTER = `${BASE}/docs/01-javascript/07-scope`
-
 const failures = []
+
+function findFreePort() {
+  return new Promise((resolve, reject) => {
+    const probe = net.createServer()
+
+    probe.unref()
+    probe.on('error', reject)
+    probe.listen(0, '127.0.0.1', () => {
+      const { port } = probe.address()
+
+      probe.close(() => resolve(port))
+    })
+  })
+}
+
+async function isReachable(url) {
+  try {
+    const response = await fetch(url, { redirect: 'follow' })
+
+    return response.ok
+  } catch {
+    return false
+  }
+}
+
+/**
+ * Поднимает собственный предпросмотр на свободном порту.
+ *
+ * Переиспользовать уже запущенный сервер нельзя: он мог быть запущен до
+ * пересборки и отдавать устаревшие файлы, из-за чего страница не оживает,
+ * а проверка падает без внятной причины.
+ */
+async function startPreview() {
+  const port = await findFreePort()
+  const base = `http://127.0.0.1:${port}/qa-js-ts-cookbook`
+  const server = spawn('npx', ['vitepress', 'preview', '.', '--port', String(port)], {
+    stdio: 'ignore'
+  })
+
+  for (let attempt = 0; attempt < 60; attempt += 1) {
+    await new Promise(resolve => setTimeout(resolve, 500))
+
+    if (await isReachable(`${base}/docs/01-javascript/07-scope`)) {
+      return { base, stop: () => server.kill('SIGTERM') }
+    }
+  }
+
+  server.kill('SIGKILL')
+  throw new Error('Не удалось запустить предпросмотр книги. Сначала выполните npm run docs:build.')
+}
+
+const preview = await startPreview()
+const BASE = preview.base
+const CHAPTER = `${BASE}/docs/01-javascript/07-scope`
+const stopPreview = preview.stop
 
 function check(name, condition, detail = '') {
   if (condition) {
@@ -46,10 +101,12 @@ try {
   const failedMarks = await task.locator('.code-task__results .is-failed').count()
   check('со стартовым кодом проверки падают', failedMarks > 0, `провалено: ${failedMarks}`)
 
+  // Сообщение может быть как несовпадением ожидания, так и ошибкой
+  // выполнения: важно, что читателю объясняют причину, а не просто «не прошло».
   const failMessage = await task.locator('.is-failed .code-task__check-message').first().innerText()
   check(
     'отчёт объясняет, что именно не сошлось',
-    /ожидалось/.test(failMessage),
+    failMessage.trim().length > 0 && !/^не прошло$/i.test(failMessage),
     failMessage
   )
 
@@ -102,8 +159,76 @@ try {
     'бесконечный цикл прерывается по таймауту',
     /слишком долго/.test(await loopTask.locator('.code-task__fatal').innerText())
   )
+  // TypeScript-задача: код должен транспилироваться перед запуском.
+  await page.goto(`${BASE}/docs/02-typescript/111-type-alias`, { waitUntil: 'load' })
+  const tsTask = page.locator('.code-task').first()
+  await tsTask.waitFor({ timeout: 10_000 })
+
+  const tsSolution = `type TestResult = {
+  name: string;
+  status: 'passed' | 'failed' | 'skipped';
+  durationMs?: number;
+};
+
+function describe(result: TestResult): string {
+  const base = result.name + ': ' + result.status;
+  return result.durationMs === undefined
+    ? base
+    : base + ' (' + result.durationMs + ' мс)';
+}`
+
+  await tsTask.locator('.code-task__editor').fill(tsSolution)
+  await tsTask.locator('.code-task__button--primary').click()
+  await tsTask.locator('.code-task__results').waitFor({ timeout: 15_000 })
+
+  const tsFailed = await tsTask.locator('.code-task__results .is-failed').count()
+  check('TypeScript-задача проходит проверки', tsFailed === 0, `провалено: ${tsFailed}`)
+
+  // Песочница примеров — единственное место, где читатель правит код,
+  // поэтому бесконечный цикл там не должен вешать страницу.
+  await page.goto(`${BASE}/docs/01-javascript/07-scope`, { waitUntil: 'load' })
+  const playground = page.locator('.code-runner--sandbox').first()
+  await playground.waitFor({ timeout: 10_000 })
+  await page.waitForTimeout(1500)
+
+  await playground.locator('.code-runner__editor').fill('while (true) {}')
+  await playground.locator('.code-runner__button').first().click()
+  await playground.locator('.code-runner__error').waitFor({ timeout: 20_000 })
+
+  check(
+    'бесконечный цикл в песочнице прерывается',
+    /слишком долго/.test(await playground.locator('.code-runner__error pre').innerText())
+  )
+
+  check(
+    'страница остаётся отзывчивой после зацикливания',
+    (await page.evaluate(() => Boolean(document.title))) === true
+  )
+
+  await playground.locator('.code-runner__editor').fill('console.log(2 + 2)')
+  await playground.locator('.code-runner__button').first().click()
+  await playground.locator('.code-runner__output').waitFor({ timeout: 15_000 })
+
+  check(
+    'песочница работает после прерывания',
+    (await playground.locator('.code-runner__output pre').innerText()).trim() === '4'
+  )
+
+  // Задача стенда не должна предлагать запуск в браузере.
+  await page.goto(`${BASE}/docs/03-automation-qa/207-postgresql-in-automation-qa`, {
+    waitUntil: 'load'
+  })
+  const standTask = page.locator('.code-task').first()
+  await standTask.waitFor({ timeout: 10_000 })
+
+  check('задача стенда не показывает редактор', (await standTask.locator('.code-task__editor').count()) === 0)
+  check(
+    'задача стенда показывает команду проверки',
+    (await standTask.locator('.code-task__stand').innerText()).includes('task:verify')
+  )
 } finally {
   await browser.close()
+  stopPreview()
 }
 
 console.log(`\nИтог: ${failures.length === 0 ? 'все проверки пройдены' : `не прошло: ${failures.join(', ')}`}`)

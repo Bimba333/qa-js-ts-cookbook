@@ -89,6 +89,16 @@ function validateTask(task, chapterKey, seenIds) {
     fail(`${where}/${task.id}: hints должен быть массивом строк`)
   }
 
+  // Подготовка данных нужна задачам, где без неё проверки не различают
+  // правильное и неправильное решение.
+  const standSetup = task.standSetup ?? ''
+  if (typeof standSetup !== 'string') {
+    fail(`${where}/${task.id}: standSetup должен быть строкой кода`)
+  }
+  if (standSetup !== '' && BROWSER_LANGS.has(task.lang)) {
+    fail(`${where}/${task.id}: standSetup применим только к задачам стенда`)
+  }
+
   return {
     id: task.id,
     title: task.title,
@@ -98,6 +108,7 @@ function validateTask(task, chapterKey, seenIds) {
     prompt: task.prompt,
     starter: task.starter,
     hints,
+    standSetup,
     tests: task.tests.map(check => ({ name: check.name, code: check.code })),
     solution: task.solution,
     chapter: chapterKey
