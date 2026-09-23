@@ -4,7 +4,7 @@
 
 Предыдущая глава объяснила Optional Chaining.
 
-Главная модель была такой:
+Главная модель была такой: `?.` безопасно проходит цепочку свойств и возвращает `undefined`, если звено отсутствует.
 
 Optional Chaining safely traverses nested properties, but it does not choose a fallback value.
 
@@ -138,6 +138,12 @@ const retries = config.retryPolicy?.retries ?? 2;
 
 Модель:
 
+```text
+value ?? fallback
+
+срабатывает только при null или undefined
+```
+
 Теперь `retries` becomes `2`.
 
 Важно:
@@ -221,6 +227,11 @@ const timeout = config.timeout ?? 5000;
 ```
 
 Модель:
+
+| Выражение | `0` | `''` | `null` |
+| --- | --- | --- | --- |
+| `value \|\| fallback` | заменит | заменит | заменит |
+| `value ?? fallback` | оставит | оставит | заменит |
 
 ### Evaluation order
 
@@ -474,7 +485,7 @@ It produces expression result.
 
 ---
 
-## Распространенные мифы
+## Распространённые мифы
 
 ### Миф: `??` заменяет любое "false-like" value
 
@@ -504,7 +515,7 @@ They solve different problems. Logical operators will be studied later. In this 
 
 ---
 
-## Типичные ошибки
+## Распространённые ошибки
 
 ### Ошибка 1. Ожидать replacement for `0`
 

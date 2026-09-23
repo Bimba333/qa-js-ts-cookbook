@@ -346,7 +346,10 @@ const testName = 'login';
 console.log(testName);
 ```
 
-Схема:
+```text
+Global Scope
+└── testName  ──→  [ 'login' ]
+```
 
 Global Scope удобен для stable configuration в маленьких примерах, но в больших тестовых проектах global mutable состояние часто создает проблемы. Это будет разобрано в Automation QA разделе главы.
 
@@ -366,7 +369,11 @@ prepareUser();
 
 `userName` видим внутри `prepareUser`.
 
-Диаграмма:
+```text
+Global Scope
+└── prepareUser Scope
+    └── userName  ──→  [ ... ]
+```
 
 Снаружи функции `userName` не видим:
 
@@ -401,7 +408,11 @@ if (true) {
 
 `expectedStatus` видим внутри блока.
 
-Диаграмма:
+```text
+Global Scope
+└── Block Scope { }
+    └── expectedStatus  ──→  [ ... ]
+```
 
 Снаружи блока identifier не видим:
 
@@ -435,7 +446,11 @@ function buildLoginUrl() {
 buildLoginUrl();
 ```
 
-Диаграмма nested scopes:
+```text
+Global Scope
+└── buildLoginUrl Scope
+    └── Block Scope { }
+```
 
 Внутренний scope может использовать identifiers из внешних scopes:
 
@@ -443,9 +458,9 @@ buildLoginUrl();
 
 Вложенный scope можно назвать child scope. Внешний scope — parent scope.
 
-В примере:
+В примере: блок внутри функции — child scope, сама функция — его parent, а Global Scope — родитель для функции.
 
-Модель rooms inside a building:
+Модель rooms inside a building: комнаты вложены одна в другую, и каждая внутренняя находится внутри внешней.
 
 Внутренняя комната может выйти взглядом наружу к parent rooms. Внешняя комната не видит private notes, лежащие внутри child room.
 
@@ -477,7 +492,11 @@ function createUser() {
 }
 ```
 
-Диаграмма:
+```text
+function Scope
+├── userName
+└── userRole
+```
 
 Эти identifiers помогают функции выполнить работу, но не становятся автоматически видимыми для всей программы.
 
@@ -549,7 +568,12 @@ local
 global
 ```
 
-Диаграмма shadowing:
+```text
+Global Scope
+└── status  ──→  [ 'global' ]
+    function Scope
+    └── status  ──→  [ 'local' ]   ← найдено первым
+```
 
 Когда engine находится внутри function scope:
 
@@ -581,7 +605,10 @@ Lifetime отвечает:
 How long is this information needed or active?
 ```
 
-Диаграмма:
+```text
+Scope     — где имя видно
+Lifetime  — как долго значение нужно
+```
 
 Пример:
 
@@ -605,7 +632,14 @@ Execution Context — рабочая среда выполнения. Scope оп
 
 Когда вызывается функция:
 
-Диаграмма:
+```mermaid
+flowchart TD
+    N1["вызов функции"]
+    N2["Execution Context"]
+    N3["Scope: какие имена видны"]
+    N1 --> N2
+    N2 --> N3
+```
 
 Lexical Environment объяснит внутреннюю структуру этой связи позже. Сейчас достаточно понимать: execution happens somewhere, and that "somewhere" has visible identifiers.
 
@@ -817,7 +851,7 @@ examples/01-javascript/chapter-07/06-common-mistakes.js
 
 ---
 
-## Распространенные мифы
+## Распространённые мифы
 
 ### Миф 1. Если функция была вызвана, ее variables становятся global
 
@@ -845,7 +879,7 @@ Visibility отвечает "где имя доступно". Lifetime отве�
 
 ---
 
-## Типичные ошибки
+## Распространённые ошибки
 
 ### Ошибка 1. Читать function-local variable снаружи
 
@@ -925,7 +959,7 @@ function printStatus() {
 
 Inside function `status` refers to local identifier.
 
-Исправленная модель:
+Исправленная модель: поиск имени начинается в ближайшем scope, поэтому внутри функции используется её собственный `status`, а внешний остаётся нетронутым.
 
 ### Ошибка 4. Использовать global mutable состояние в тестах
 

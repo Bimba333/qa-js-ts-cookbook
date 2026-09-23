@@ -207,6 +207,10 @@ The `-` operation expects numeric поведение.
 
 Implicit conversion схема:
 
+```text
+'5' - 1   →  движок сам приводит строку к числу  →  4
+```
+
 Какой тип ожидает эта операция?
 
 ```text
@@ -227,6 +231,10 @@ console.log(retries + 1);
 ```
 
 Explicit conversion схема:
+
+```text
+Number('5')  →  5      преобразование запрошено явно
+```
 
 Какой тип ожидает эта операция?
 
@@ -252,11 +260,24 @@ console.log(Number(undefined));
 
 Number conversion схема:
 
-Частые результаты:
+| Значение | `Number(...)` |
+| --- | --- |
+| `'42'` | `42` |
+| `''` | `0` |
+| `'abc'` | `NaN` |
+| `true` | `1` |
+| `null` | `0` |
+| `undefined` | `NaN` |
+
+Частые результаты: пустая строка и `null` дают `0`, а `undefined` и нечисловая строка — `NaN`.
 
 Operation expects Number:
 
 Схема:
+
+```text
+'abc'  →  Number(...)  →  NaN
+```
 
 ### NaN during conversion
 
@@ -268,6 +289,11 @@ console.log(Number(undefined));
 ```
 
 NaN схема:
+
+```text
+NaN — это значение типа Number, означающее «не число»
+NaN !== NaN
+```
 
 Какой тип ожидает эта операция?
 
@@ -291,11 +317,23 @@ console.log(String(undefined));
 
 String conversion схема:
 
-Частые результаты:
+| Значение | `String(...)` |
+| --- | --- |
+| `42` | `'42'` |
+| `null` | `'null'` |
+| `undefined` | `'undefined'` |
+| `[1, 2]` | `'1,2'` |
+| `{}` | `'[object Object]'` |
+
+Частые результаты: массив склеивается через запятую, а обычный объект даёт `[object Object]` — по этой строке в логах узнают случайное приведение объекта к строке.
 
 Operation expects String:
 
 Схема:
+
+```text
+42  →  String(...)  →  '42'
+```
 
 ### Boolean conversion
 
@@ -311,6 +349,10 @@ console.log(Boolean(null));
 
 Boolean conversion схема:
 
+```text
+значение  →  Boolean(...)  →  true или false
+```
+
 Boolean conversion используется, когда операция ожидает значение, похожее на условие.
 
 Detailed conditionals will be studied later. Here we only need conversion model.
@@ -320,6 +362,10 @@ Detailed conditionals will be studied later. Here we only need conversion model.
 Truthy value is a value that becomes `true` in Boolean conversion.
 
 Truthy значения схема:
+
+```text
+непустая строка, любое число кроме 0, объект, массив — даже пустой
+```
 
 Важно:
 
@@ -359,6 +405,11 @@ Falsy value is a value that becomes `false` in Boolean conversion.
 
 Falsy значения схема:
 
+```text
+falsy: false, 0, '', null, undefined, NaN
+всё остальное — truthy
+```
+
 Примеры:
 
 ```javascript
@@ -393,6 +444,10 @@ console.log(Number(String(5)));
 ```
 
 Схема:
+
+```text
+примитив  →  преобразование  →  примитив другого типа
+```
 
 Эта глава оставляет цепочки преобразований высокоуровневыми. Детали спецификации операторов здесь не нужны.
 
@@ -438,6 +493,10 @@ Explicit conversion is triggered by programmer.
 ### Текущее место в модели JavaScript
 
 Current position схема:
+
+```text
+типы значений  →  правила преобразования  →  поведение операторов
+```
 
 ### Complete conversion picture
 
@@ -583,7 +642,7 @@ Because JavaScript tried to convert string to Number but could not produce meani
 
 ---
 
-## Распространенные мифы
+## Распространённые мифы
 
 ### Миф: JavaScript converts значения randomly
 
@@ -611,7 +670,7 @@ Equality uses conversion in some cases, but comparisons have their own rules and
 
 ---
 
-## Типичные ошибки
+## Распространённые ошибки
 
 ### Ошибка 1. Add number to numeric string
 
@@ -737,6 +796,11 @@ const statusCode = Number(response.statusCode);
 ```
 
 Automation QA example схема:
+
+```text
+ответ API:  '0'   →  Boolean('0')  →  true
+ожидание:   ложь
+```
 
 ### Comparing JSON значения
 

@@ -181,6 +181,11 @@ if (statusCode === 200) {
 
 `if` схема:
 
+```text
+условие истинно  →  выполнить блок
+условие ложно    →  пропустить блок
+```
+
 Execution path:
 
 ### `if / else`
@@ -198,6 +203,11 @@ if (statusCode === 200) {
 ```
 
 `if / else` схема:
+
+```text
+условие истинно  →  блок if
+условие ложно    →  блок else
+```
 
 Exactly one path is chosen.
 
@@ -244,6 +254,14 @@ if (statusCode === 200) {
 
 Nested conditions схема:
 
+```text
+внешнее условие
+├── истинно → внутреннее условие
+│             ├── истинно → ветка A
+│             └── ложно   → ветка B
+└── ложно   → ветка C
+```
+
 Вложенные условия полезны, когда второе решение имеет смысл только внутри первого.
 
 Предупреждение о читаемости:
@@ -279,6 +297,10 @@ Switch branches:
 
 Default branch схема:
 
+```text
+ни одно условие не подошло  →  ветка по умолчанию
+```
+
 Default branch полезна, когда программа должна обработать неожиданные значения:
 
 ### Choosing execution path
@@ -286,6 +308,10 @@ Default branch полезна, когда программа должна обр
 Conditional execution means:
 
 Execution path схема:
+
+```text
+выполняется РОВНО ОДНА ветка из цепочки
+```
 
 Program does not run all branches in one decision.
 
@@ -313,7 +339,7 @@ if (isStatusOk && hasValidUser && isFastEnough) {
 }
 ```
 
-Пример читаемости:
+Пример читаемости: цепочка `if / else if / else` с короткими условиями читается сверху вниз как список правил, а глубокая вложенность заставляет удерживать в голове несколько условий сразу.
 
 Short-circuit evaluation details will be studied later. Here the goal is readable decision-making.
 
@@ -422,7 +448,7 @@ It is conditional expression syntax, but this chapter does not teach ternary in 
 
 ---
 
-## Распространенные мифы
+## Распространённые мифы
 
 ### Миф: `if` checks a line of code
 
@@ -452,7 +478,7 @@ More nesting often makes decision path harder to read.
 
 ---
 
-## Типичные ошибки
+## Распространённые ошибки
 
 ### Ошибка 1. Assignment вместо comparison
 

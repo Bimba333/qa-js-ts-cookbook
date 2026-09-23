@@ -172,9 +172,14 @@ JavaScript moves declarations to the top.
 
 Так думать не нужно.
 
-Правильная модель:
+Правильная модель: строки остаются на своих местах, но до выполнения кода engine уже знает об объявленных именах.
 
 Диаграмма Source Code:
+
+```text
+строка 1:  console.log(userName);   ← выполняется первой
+строка 2:  var userName = 'Anna';   ← но имя зарегистрировано раньше
+```
 
 Hoisting — это не перемещение. Hoisting — это наблюдаемое поведение после подготовки.
 
@@ -238,7 +243,19 @@ Execution Phase:
 
 Диаграмма Creation Phase:
 
+```text
+регистрация имён:
+  функции      → готовы целиком
+  var          → [ undefined ]
+  let / const  → зарегистрированы, доступа нет
+```
+
 Диаграмма Execution Phase:
+
+```text
+выполнение строк по порядку:
+  присваивания, вызовы, чтения
+```
 
 Что engine подготовил до execution:
 
@@ -281,7 +298,10 @@ Creation Phase:
 
 Execution Phase:
 
-Диаграмма Function Declaration registration:
+```text
+Creation Phase:   showMessage  ──→  [ функция целиком ]
+Execution Phase:  вызов работает и до строки объявления
+```
 
 Что engine подготовил до execution:
 
@@ -304,7 +324,10 @@ Creation Phase:
 
 Execution Phase:
 
-Диаграмма var registration:
+```text
+Creation Phase:   userName  ──→  [ undefined ]
+Execution Phase:  userName  ──→  [ 'Anna' ]
+```
 
 Здесь важно разделить declaration and initialization.
 
@@ -322,7 +345,10 @@ Creation Phase:
 
 Execution Phase:
 
-Диаграмма let registration:
+```text
+Creation Phase:   userName зарегистрирован, доступ запрещён
+Execution Phase:  на строке объявления доступ открывается
+```
 
 Подробный механизм TDZ будет в следующей главе. Сейчас нужно запомнить:
 
@@ -345,7 +371,10 @@ Creation Phase:
 
 Execution Phase:
 
-Диаграмма const registration:
+```text
+Creation Phase:   baseUrl зарегистрирован, доступ запрещён
+Execution Phase:  объявление и инициализация происходят одной строкой
+```
 
 `const` must be initialized at declaration. Это уже было в главе Variables. Здесь важно другое: declaration record exists before execution, but usable value appears only at initialization line.
 
@@ -359,7 +388,10 @@ var userName = 'Anna';
 
 Разделение:
 
-Диаграмма declaration vs initialization:
+```text
+declaration     — имя появилось в записях окружения
+initialization  — имени сопоставлено значение
+```
 
 Для function declaration:
 
@@ -426,11 +458,18 @@ Prepared records are used.
 
 ### Engine preparation movie
 
-Ментальный фильм engine:
+Ментальный фильм engine: сначала он быстро просматривает код и заводит записи обо всех объявлениях, а затем возвращается к началу и выполняет строки по порядку.
 
 ### Текущее место в модели JavaScript
 
-Теперь модель курса выглядит так:
+```mermaid
+flowchart LR
+    N1["Execution Context"]
+    N2["Creation Phase: регистрация"]
+    N3["Execution Phase: выполнение"]
+    N1 --> N2
+    N2 --> N3
+```
 
 Full position:
 
@@ -609,7 +648,7 @@ examples/01-javascript/chapter-09/06-common-mistakes.js
 
 ---
 
-## Распространенные мифы
+## Распространённые мифы
 
 ### Миф 1. JavaScript переносит declarations вверх файла
 
@@ -637,7 +676,7 @@ Hoisting is a direct consequence of Creation Phase and Lexical Environment prepa
 
 ---
 
-## Типичные ошибки
+## Распространённые ошибки
 
 ### Ошибка 1. Говорить, что код "переехал наверх"
 
@@ -740,6 +779,13 @@ runTest();
 ```
 
 Таблица анализа:
+
+| Объявление | После Creation Phase | Доступ до строки объявления |
+| --- | --- | --- |
+| `function` | готова целиком | работает |
+| `var` | `undefined` | даёт `undefined` |
+| `let` | зарегистрирован | ошибка |
+| `const` | зарегистрирован | ошибка |
 
 Мини-чек-лист:
 

@@ -160,6 +160,12 @@ function validateStatuses(...statusCodes) {
 
 Схема:
 
+```text
+validateStatuses(200, 201, 204)
+                 └──────┬──────┘
+                        └──→ statusCodes = [200, 201, 204]
+```
+
 Важно:
 
 Это не Spread syntax. Spread будет изучаться в следующей главе.
@@ -189,6 +195,11 @@ function validateStatuses(...statusCodes) {
 ```
 
 Модель:
+
+```text
+rest-параметр всегда получает массив,
+даже если аргументов не передали вовсе — тогда он пустой
+```
 
 Эта глава не изучает array methods. Пока важно только понять форму данных:
 
@@ -242,7 +253,13 @@ Parameter matching:
 
 Схема:
 
-Результат:
+```text
+validateStatuses(200, 200, 201, 204)
+                 └───────┬────────┘
+                         └──→ один массив из четырёх значений
+```
+
+Результат: внутри функции `statusCodes` равен `[200, 200, 201, 204]`.
 
 ### Zero collected значения
 
@@ -421,7 +438,7 @@ node examples/01-javascript/chapter-26/06-qa-example.js
 
 ---
 
-## Распространенные мифы
+## Распространённые мифы
 
 ### Миф: rest parameter собирает только один argument
 
@@ -451,7 +468,7 @@ Rest parameter собирает все remaining arguments в array.
 
 ---
 
-## Типичные ошибки
+## Распространённые ошибки
 
 ### Ошибка 1. Rest parameter не последний
 
@@ -507,7 +524,7 @@ function compareStatus(actualStatus, expectedStatus) {}
 
 ### Ошибка 5. Объяснять Rest через Spread
 
-В этой главе модель простая:
+В этой главе модель простая: rest собирает несколько аргументов в один массив при объявлении функции.
 
 Spread будет позже.
 
@@ -554,7 +571,7 @@ function validateStatuses(expectedStatus, ...actualStatuses) {
 }
 ```
 
-Пример QA-helper:
+Пример QA-helper: `function checkAll(expected, ...actual)` — первый аргумент обязателен, остальные собираются в массив для проверки.
 
 ### Collecting test data
 

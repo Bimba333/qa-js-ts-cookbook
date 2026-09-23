@@ -4,7 +4,7 @@
 
 Предыдущая глава объяснила Destructuring.
 
-Главная модель была такой:
+Главная модель была такой: destructuring извлекает значения из объекта и связывает их с именами.
 
 Destructuring удобно извлекает значения из existing properties.
 
@@ -195,6 +195,13 @@ response.body.user.profile?.name
 ```
 
 Модель:
+
+```text
+user?.profile?.email
+
+каждый шаг проверяет: есть ли значение
+нет  →  результат undefined, ошибки не будет
+```
 
 ### Operator `?.`
 
@@ -510,7 +517,7 @@ Optional Chaining helps safe reading. It does not prove that data is valid.
 
 ---
 
-## Распространенные мифы
+## Распространённые мифы
 
 ### Миф: Optional Chaining исправляет данные
 
@@ -538,7 +545,7 @@ Checkpoint нужен на каждом level that may be missing.
 
 ---
 
-## Типичные ошибки
+## Распространённые ошибки
 
 ### Ошибка 1. Поставить `?.` слишком поздно
 
@@ -772,7 +779,7 @@ solutions/01-javascript/35-optional-chaining.md
 
 Optional Chaining продолжает раздел Objects:
 
-Главная модель:
+Главная модель: `?.` прерывает цепочку на первом отсутствующем звене и возвращает `undefined` вместо ошибки.
 
 Optional Chaining is not a default value mechanism. It only performs safe traversal.
 

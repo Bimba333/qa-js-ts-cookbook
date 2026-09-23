@@ -153,6 +153,10 @@ Normal execution means code can continue step by step.
 
 Normal execution схема:
 
+```text
+строка 1 → строка 2 → строка 3 → результат
+```
+
 Пример:
 
 ```javascript
@@ -176,6 +180,11 @@ Abnormal execution происходит, когда операция падае�
 
 Abnormal execution схема:
 
+```text
+строка 1 → строка 2 → ОШИБКА
+           оставшиеся строки не выполняются
+```
+
 Что теперь происходит с выполнением?
 
 ```text
@@ -192,6 +201,11 @@ JSON.parse('not valid json');
 ```
 
 Runtime error схема:
+
+```text
+ошибка возникает во время выполнения,
+а не при разборе синтаксиса
+```
 
 Эта глава не объясняет внутреннее устройство stack trace. Stack traces будут изучены позже, когда отладка станет глубже.
 
@@ -215,6 +229,11 @@ if (statusCode !== 200) {
 
 `throw` схема:
 
+```text
+throw new Error('...')  →  выполнение прерывается,
+                           ошибка поднимается наверх
+```
+
 Что теперь происходит с выполнением?
 
 ```text
@@ -236,6 +255,10 @@ try {
 
 `try` схема:
 
+```text
+try { код, который может упасть }
+```
+
 `try` alone is not enough. It needs `catch` or `finally`.
 
 ### `catch`
@@ -252,6 +275,10 @@ try {
 ```
 
 `catch` схема:
+
+```text
+ошибка внутри try  →  управление переходит в catch
+```
 
 Что теперь происходит с выполнением?
 
@@ -276,6 +303,11 @@ try {
 
 `finally` схема:
 
+```text
+finally выполняется всегда:
+и при успехе, и при ошибке
+```
+
 At a high level, `finally` is used for cleanup-like work.
 
 ### try/catch flow
@@ -289,6 +321,11 @@ Exception path:
 If current place does not handle error, error propagates upward conceptually.
 
 Error propagation схема:
+
+```text
+ошибка не обработана здесь  →  поднимается к вызывающему коду
+не обработана нигде         →  программа завершается
+```
 
 Functions will make this model more important. They are the next chapter block.
 
@@ -423,7 +460,7 @@ Async error handling, Promise rejection and Event Loop interaction will be studi
 
 ---
 
-## Распространенные мифы
+## Распространённые мифы
 
 ### Миф: Error handling makes errors disappear
 
@@ -453,7 +490,7 @@ Handle errors where meaningful action can be taken.
 
 ---
 
-## Типичные ошибки
+## Распространённые ошибки
 
 ### Ошибка 1. Swallow error
 

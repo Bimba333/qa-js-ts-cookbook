@@ -140,7 +140,14 @@ isActive
 
 Эти значения are related. Они описывают одну entity: user.
 
-Диаграмма проблемы:
+```text
+firstName  ──→  [ 'Anna' ]
+lastName   ──→  [ 'Ivanova' ]
+age        ──→  [ 30 ]
+isActive   ──→  [ true ]
+
+связь между ними нигде не выражена
+```
 
 Engine видит отдельные значения. Читатель понимает, что они связаны. Код пока не выражает эту связь.
 
@@ -188,7 +195,13 @@ Primitive value представляет одно indivisible value.
 
 Object value groups multiple related значения under one entity.
 
-Диаграмма Primitive vs Объект:
+```text
+примитив:  status  ──→  [ 'active' ]
+
+объект:    user    ──→  ┌ firstName: 'Anna'
+                        │ age:       30
+                        └ isActive:  true
+```
 
 Важно:
 
@@ -212,7 +225,10 @@ const isActive = true;
 
 Object делает связь частью кода:
 
-Диаграмма why primitives become insufficient:
+```text
+было:  четыре независимых имени
+стало: одно имя user, внутри — четыре свойства
+```
 
 ### Что такое Object value
 
@@ -255,7 +271,12 @@ const user = {
 };
 ```
 
-Диаграмма property:
+```text
+property = имя + значение
+
+firstName  :  'Anna'
+   имя        значение
+```
 
 В object literal это выглядит так:
 
@@ -289,7 +310,7 @@ firstName
 lastName
 ```
 
-Ментальная модель dictionary:
+Ментальная модель dictionary: объект — это словарь, где по имени свойства находится значение, как слово и его перевод.
 
 Property name is not the same thing as variable identifier.
 
@@ -333,7 +354,9 @@ console.log(user.firstName);
 console.log(user.age);
 ```
 
-Диаграмма reading property:
+```text
+user.firstName  →  найти свойство firstName  →  'Anna'
+```
 
 Что engine делает прямо сейчас?
 
@@ -347,7 +370,9 @@ const user = {
 console.log(user.role);
 ```
 
-Концептуальный результат:
+```text
+user.role  →  свойство role не найдено  →  undefined
+```
 
 Это не означает, что object исчез или сломался. Это означает: under requested property name, value was not found.
 
@@ -366,7 +391,12 @@ user.age = 31;
 console.log(user.age);
 ```
 
-Диаграмма updating property:
+```text
+было:  age: 30
+стало: age: 31
+
+объект тот же, изменилось значение свойства
+```
 
 Что information is grouped together right now?
 
@@ -396,9 +426,12 @@ user.role = 'admin';
 console.log(user.role);
 ```
 
-Диаграмма adding property:
+```text
+было:  firstName, age
+стало: firstName, age, role
+```
 
-Это полезно, когда информация появляется по шагам:
+Это полезно, когда информация появляется по шагам: часть данных известна сразу, часть — после ответа сервиса.
 
 Но adding properties should be used carefully. В test code чаще лучше создавать object with expected structure explicitly, чтобы reader сразу видел required shape.
 
@@ -417,7 +450,12 @@ delete user.temporaryCode;
 console.log(user.temporaryCode);
 ```
 
-Диаграмма removing property:
+```text
+было:  firstName, temporaryCode
+стало: firstName
+
+обращение к удалённому свойству даёт undefined
+```
 
 At a high level, `delete` removes property from object. Это не глава про memory cleanup and Garbage Collector. Garbage Collector will be studied later.
 
@@ -440,7 +478,13 @@ const user = {
 };
 ```
 
-Диаграмма nested object:
+```text
+user
+├── firstName: 'Anna'
+└── settings
+    ├── theme: 'dark'
+    └── emailNotifications: true
+```
 
 Какая информация сгруппирована прямо сейчас?
 
@@ -536,7 +580,10 @@ but one property value changed.
 
 ### Текущее место в модели JavaScript
 
-К этому моменту модель курса выглядит так:
+```text
+примитив  →  одно неделимое значение
+объект    →  структура из связанных значений
+```
 
 Primitive chapter answered:
 
@@ -773,7 +820,7 @@ Yes, arrays и functions относятся к object значениям в Java
 
 ---
 
-## Распространенные мифы
+## Распространённые мифы
 
 ### Миф: Object is just many variables
 
@@ -811,7 +858,7 @@ For this chapter, nested object is simply grouped information inside grouped inf
 
 ---
 
-## Типичные ошибки
+## Распространённые ошибки
 
 ### Ошибка 1. Хранить связанную информацию в отдельных variables
 
@@ -973,7 +1020,13 @@ const responseUser = {
 };
 ```
 
-Диаграмма Automation QA object example:
+```text
+user
+├── id:       42
+├── email:    'anna@example.com'
+├── role:     'admin'
+└── isActive: true
+```
 
 ### JSON objects
 

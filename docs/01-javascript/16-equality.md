@@ -238,6 +238,11 @@ console.log(Object.is(+0, -0));
 
 Object.is схема:
 
+```text
+Object.is(a, b)  →  сравнение без преобразований,
+                    с особыми правилами для NaN и нулей
+```
+
 `Object.is()` спрашивает:
 
 > Are these exactly the same according to Object.is rules?
@@ -256,7 +261,12 @@ console.log(true === true);
 
 Primitive comparison схема:
 
-Примеры:
+```text
+'active' === 'active'  →  true    одно и то же значение
+1 === '1'              →  false   разные типы
+```
+
+Примеры: `2 === 2` истинно, `2 === '2'` ложно, `true === 1` ложно.
 
 Что именно сравнивается?
 
@@ -289,6 +299,10 @@ false
 
 Object comparison схема:
 
+```text
+{ a: 1 } === { a: 1 }   →  false   два разных объекта
+```
+
 Same reference:
 
 ```javascript
@@ -302,6 +316,10 @@ console.log(firstUser === sameUser);
 ```
 
 Схема:
+
+```text
+user === admin  →  true, если обе переменные хранят одну ссылку
+```
 
 Результат:
 
@@ -324,6 +342,13 @@ Identity and value are different questions.
 
 Identity vs value схема:
 
+```text
+identity  →  это один и тот же объект?
+value     →  одинаково ли содержимое?
+
+=== отвечает только на первый вопрос
+```
+
 Identical twins mental model:
 
 Two objects may look identical but still have different identity.
@@ -345,6 +370,11 @@ true
 ```
 
 NaN comparison схема:
+
+```text
+NaN === NaN        →  false
+Object.is(NaN, NaN) →  true
+```
 
 Что именно сравнивается?
 
@@ -372,6 +402,11 @@ false
 ```
 
 `+0` vs `-0` схема:
+
+```text
++0 === -0            →  true
+Object.is(+0, -0)    →  false
+```
 
 This is one of the few places where `Object.is()` has visibly different поведение.
 
@@ -506,7 +541,7 @@ Because object comparison checks identity, not shape.
 
 ---
 
-## Распространенные мифы
+## Распространённые мифы
 
 ### Миф: `==` means wrong and `===` means correct
 
@@ -536,7 +571,7 @@ Equality myths схема:
 
 ---
 
-## Типичные ошибки
+## Распространённые ошибки
 
 ### Ошибка 1. Rely on `==` accidentally
 
@@ -701,7 +736,7 @@ Equality отвечает:
 How does JavaScript decide whether two values are equal?
 ```
 
-Основная модель:
+Основная модель: `===` сравнивает значения примитивов и идентичность объектов, а сравнение содержимого объектов нужно писать самому.
 
 Primitive значения are compared by type and value with `===`.
 

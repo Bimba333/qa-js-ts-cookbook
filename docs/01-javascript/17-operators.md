@@ -128,6 +128,12 @@ docs/01-javascript/18-conditionals.md
 
 Диаграмма Operator overview:
 
+```text
+операторы
+├── по числу операндов: унарные, бинарные, тернарный
+└── по задаче: арифметика, сравнение, логика, присваивание, служебные
+```
+
 Operators are the language mechanism that transforms, combines and evaluates значения.
 
 Главный вопрос:
@@ -166,6 +172,11 @@ const valueType = typeof 'Anna';
 
 Unary operator схема:
 
+```text
+-x        один операнд
+typeof x  один операнд
+```
+
 Other unary examples:
 
 ```javascript
@@ -174,7 +185,7 @@ Other unary examples:
 typeof 200;
 ```
 
-Эта глава не перечисляет все unary operators. Она строит модель:
+Эта глава не перечисляет все unary operators. Она строит модель: у унарного оператора один операнд, и результат зависит только от него.
 
 ### Binary operators
 
@@ -186,6 +197,11 @@ const isExpected = 200 === 200;
 ```
 
 Binary operator схема:
+
+```text
+a + b     два операнда
+a === b   два операнда
+```
 
 Equality is also binary:
 
@@ -200,6 +216,10 @@ const label = isActive ? 'active' : 'inactive';
 Ternary means three operands.
 
 Ternary operator схема:
+
+```text
+условие ? значение1 : значение2     три операнда
+```
 
 Эта глава только вводит форму. Conditionals позже подробно объяснит принятие решений.
 
@@ -222,6 +242,13 @@ const totalPrice = itemPrice * itemCount;
 ```
 
 Arithmetic operators схема:
+
+| Оператор | Значение |
+| --- | --- |
+| `+` | сложение или склейка строк |
+| `-`, `*`, `/` | вычитание, умножение, деление |
+| `%` | остаток от деления |
+| `**` | возведение в степень |
 
 Примеры:
 
@@ -248,6 +275,12 @@ const isSuccess = statusCode === 200;
 
 Comparison operators схема:
 
+| Оператор | Значение |
+| --- | --- |
+| `===`, `!==` | сравнение без приведения типов |
+| `==`, `!=` | сравнение с приведением типов |
+| `<`, `>`, `<=`, `>=` | сравнение по порядку |
+
 Примеры:
 
 ```text
@@ -272,6 +305,12 @@ const canContinue = isStatusOk && hasUser;
 ```
 
 Logical operators схема:
+
+| Оператор | Результат |
+| --- | --- |
+| `&&` | первое ложное значение или последнее |
+| `\|\|` | первое истинное значение или последнее |
+| `!` | логическое отрицание |
 
 Common logical operators:
 
@@ -302,6 +341,12 @@ retryCount = 1;
 
 Assignment operators схема:
 
+| Оператор | Эквивалент |
+| --- | --- |
+| `=` | присвоить |
+| `+=` | `a = a + b` |
+| `??=` | присвоить, если `null` или `undefined` |
+
 Other assignment-like forms exist:
 
 ```javascript
@@ -323,6 +368,12 @@ console.log(typeof true);
 ```
 
 `typeof` схема:
+
+```text
+typeof 'a'      →  'string'
+typeof 42       →  'number'
+typeof undefined →  'undefined'
+```
 
 Automation QA uses `typeof` for debugging unexpected API значения:
 
@@ -353,6 +404,10 @@ delete user.temporaryCode;
 
 `delete` схема:
 
+```text
+delete user.role  →  свойство удалено из объекта
+```
+
 Эта глава не разбирает низкоуровневое поведение памяти или детали performance.
 
 ### `in`
@@ -369,6 +424,10 @@ console.log('role' in user);
 ```
 
 `in` схема:
+
+```text
+'role' in user  →  есть ли такое свойство
+```
 
 Результат:
 
@@ -397,6 +456,10 @@ console.log(createdAt instanceof Date);
 
 `instanceof` схема:
 
+```text
+value instanceof Error  →  создан ли объект этим классом
+```
+
 Эта глава только вводит оператор. Prototypes, constructors и classes будут изучены позже.
 
 ### Operator result
@@ -404,6 +467,10 @@ console.log(createdAt instanceof Date);
 Every operator produces a result.
 
 Operator result схема:
+
+```text
+любой оператор  →  выражение  →  значение
+```
 
 This result can be:
 
@@ -423,6 +490,11 @@ const result = 2 + 3 * 4;
 ```
 
 Концептуальная схема приоритета:
+
+```text
+1 + 2 * 3   →  умножение выполняется раньше  →  7
+(1 + 2) * 3 →  скобки меняют порядок         →  9
+```
 
 Эта глава не учит таблицы приоритета. Практическое правило пока такое:
 
@@ -474,7 +546,7 @@ Operator is the recipe action.
 
 An operator is not literally a function in syntax, but it can be imagined like:
 
-Пример:
+Например, `a === b || c === d` читается однозначно, а `a === b || c && d` уже требует знания приоритетов — и скобки здесь дешевле памяти.
 
 This model helps remember:
 
@@ -549,7 +621,7 @@ Yes, but at different levels. `in` helps verify object properties, `typeof` help
 
 ---
 
-## Распространенные мифы
+## Распространённые мифы
 
 ### Миф: Operators are just symbols
 
@@ -577,7 +649,7 @@ Understanding precedence concept is important, but readable code often uses pare
 
 ---
 
-## Типичные ошибки
+## Распространённые ошибки
 
 ### Ошибка 1. Ignore operator result
 

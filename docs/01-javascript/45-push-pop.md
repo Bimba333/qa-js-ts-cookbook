@@ -4,7 +4,7 @@
 
 Предыдущая глава объяснила Arrays.
 
-Главная модель была такой:
+Главная модель была такой: массив — упорядоченный список значений с доступом по индексу.
 
 Мы научились читать и заменять elements by index:
 
@@ -22,7 +22,7 @@ users[1] = 'Kate Updated';
 
 > How can an array grow or shrink?
 
-Например, API возвращает new users one by one:
+Например, API возвращает новых пользователей по одному, и каждого нужно добавить в конец накопленного списка.
 
 Нужно добавить Kate в конец collection.
 
@@ -275,7 +275,7 @@ new value: "Kate"
 
 Поток:
 
-Пример:
+Например: `plan.push('logout')` добавляет элемент и возвращает новую длину массива.
 
 When JavaScript executes:
 
@@ -292,7 +292,7 @@ const items = [];
 const removed = items.pop();
 ```
 
-Результат:
+Результат: `pop()` возвращает удалённый элемент, а массив становится короче на единицу.
 
 No element existed to remove.
 
@@ -422,7 +422,7 @@ But formal stacks are not the topic of this chapter.
 
 ---
 
-## Распространенные мифы
+## Распространённые мифы
 
 ### Миф: `push()` returns the added element
 
@@ -442,7 +442,7 @@ But formal stacks are not the topic of this chapter.
 
 ---
 
-## Типичные ошибки
+## Распространённые ошибки
 
 ### Ошибка 1. Expect `pop()` to return array
 
@@ -459,13 +459,13 @@ console.log(result.length);
 
 `result` is removed element, not array.
 
-Исправленная модель:
+Исправленная модель: `push()` возвращает новую длину массива, а не сам массив.
 
 ### Ошибка 2. Forget that original array changes
 
-Неправильная модель:
+Неправильная модель: будто `pop()` возвращает изменённый массив.
 
-Правильная модель:
+Правильная модель: `pop()` возвращает удалённый элемент, а изменяется исходный массив.
 
 ### Ошибка 3. Expect `pop()` to remove first element
 
@@ -520,7 +520,7 @@ responses.push('GET /users -> 200');
 responses.push('GET /orders -> 200');
 ```
 
-Ментальная модель:
+Ментальная модель: стопка — кладём сверху и снимаем сверху.
 
 ### Failed assertions
 

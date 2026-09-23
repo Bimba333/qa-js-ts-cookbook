@@ -175,6 +175,10 @@ Every loop has a lifecycle.
 
 Loop lifecycle схема:
 
+```text
+инициализация → проверка условия → тело → обновление → проверка условия → ...
+```
+
 Four core parts:
 
 ```text
@@ -194,6 +198,10 @@ let responseIndex = 0;
 
 Initialization схема:
 
+```text
+let i = 0        выполняется один раз перед циклом
+```
+
 Что повторяется?
 
 ```text
@@ -211,6 +219,10 @@ responseIndex < totalResponses
 
 Condition схема:
 
+```text
+i < items.length   проверяется перед каждой итерацией
+```
+
 Loop decision:
 
 ```text
@@ -227,6 +239,10 @@ console.log('Validate response');
 
 Body схема:
 
+```text
+тело выполняется только если условие истинно
+```
+
 Что повторяется?
 
 ```text
@@ -242,6 +258,10 @@ responseIndex += 1;
 ```
 
 Update схема:
+
+```text
+i++              выполняется после каждой итерации
+```
 
 Without update, loop may never stop.
 
@@ -273,6 +293,10 @@ while (responseIndex < totalResponses) {
 
 `while` схема:
 
+```text
+проверить условие → выполнить тело → повторить
+```
+
 Используйте `while`, когда количество повторений заранее неизвестно.
 
 ### `do...while`
@@ -289,6 +313,12 @@ do {
 ```
 
 `do...while` схема:
+
+```text
+выполнить тело → проверить условие → повторить
+
+тело выполняется минимум один раз
+```
 
 Key idea:
 
@@ -340,6 +370,10 @@ for (let attempt = 1; attempt <= 3; attempt += 1) {
 
 `break` схема:
 
+```text
+break  →  выйти из цикла целиком
+```
+
 Используйте `break`, когда loop нашёл нужное или должен остановиться раньше.
 
 ### `continue`
@@ -358,6 +392,10 @@ for (let responseIndex = 0; responseIndex < 3; responseIndex += 1) {
 
 `continue` схема:
 
+```text
+continue  →  пропустить остаток тела и перейти к следующей итерации
+```
+
 Используйте `continue`, когда текущий item нужно пропустить, но loop должен продолжаться.
 
 ### Avoiding infinite loops
@@ -373,6 +411,10 @@ while (attempt <= 3) {
 ```
 
 Infinite loop схема:
+
+```text
+условие никогда не становится ложным  →  цикл не завершается
+```
 
 Avoid it by ensuring update changes loop состояние:
 
@@ -491,7 +533,7 @@ Array iteration methods are important, but they rely on arrays and functions. Th
 
 ---
 
-## Распространенные мифы
+## Распространённые мифы
 
 ### Миф: Loop repeats automatically until data ends
 
@@ -519,7 +561,7 @@ Infinite loop usually means stopping condition never becomes false.
 
 ---
 
-## Типичные ошибки
+## Распространённые ошибки
 
 ### Ошибка 1. Missing update
 
@@ -639,7 +681,7 @@ Loops answer:
 What if the same decision or action must happen many times?
 ```
 
-Основная модель:
+Основная модель: цикл — это условие плюс тело, и выполнение повторяется ровно до тех пор, пока условие остаётся истинным.
 
 Main loop forms:
 

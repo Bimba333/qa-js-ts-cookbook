@@ -6,8 +6,6 @@
 
 Сначала Object Methods:
 
-Затем Prototype:
-
 Затем Prototype Chain:
 
 Теперь появляется следующий практический вопрос:
@@ -159,7 +157,7 @@ Class gives this recipe a language-level form.
 
 Class is a convenient syntax for creating similar objects with shared prototype methods.
 
-Главная модель:
+Главная модель: `class` — это удобная запись для создания объектов с общим поведением.
 
 Class declaration:
 
@@ -214,6 +212,10 @@ But methods are shared:
 Class does not remove prototype lookup.
 
 Модель высокого уровня:
+
+```text
+class  →  конструктор + методы в prototype
+```
 
 You do not need to manually write `PageObject.prototype` in this chapter.
 
@@ -395,6 +397,10 @@ Advanced constructor поведение будет изучаться позже
 
 Модель высокого уровня:
 
+```text
+new ClassName()  →  создать объект  →  выполнить конструктор  →  вернуть объект
+```
+
 ### Нужно ли всегда использовать classes?
 
 Нет.
@@ -403,7 +409,7 @@ Classes useful when you need many similar objects. For one small object, object 
 
 ---
 
-## Распространенные мифы
+## Распространённые мифы
 
 ### Миф: class создает новый object model
 
@@ -423,7 +429,7 @@ Classes useful when you need many similar objects. For one small object, object 
 
 ---
 
-## Типичные ошибки
+## Распространённые ошибки
 
 ### Ошибка 1. Забыть `new`
 
@@ -477,13 +483,13 @@ describePage() {
 
 ### Ошибка 3. Думать, что class method is own property
 
-Неправильная модель:
+Неправильная модель: будто `class` вводит в JavaScript принципиально новый механизм наследования.
 
-Правильная модель:
+Правильная модель: за классом стоит тот же prototype, только с более удобным синтаксисом.
 
 ### Ошибка 4. Перегружать constructor
 
-Неправильная модель:
+Неправильная модель: будто методы класса копируются в каждый созданный объект.
 
 Почему плохо:
 

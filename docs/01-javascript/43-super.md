@@ -4,7 +4,7 @@
 
 Предыдущая глава объяснила Class Inheritance.
 
-Главная модель была такой:
+Главная модель была такой: наследование продолжает цепочку поиска методов от дочернего класса к родительскому.
 
 Мы увидели, что derived class can reuse base class поведение:
 
@@ -28,13 +28,13 @@ console.log(loginPage.open('LoginPage'));
 
 > Что если derived method переопределяет base method, но все еще хочет использовать base поведение?
 
-Например:
+Например: дочернему конструктору нужно передать часть данных родительскому, а не заполнять их заново.
 
 Если просто override method, base method no longer runs for that call.
 
 `super` отвечает на этот вопрос.
 
-Главная модель главы:
+Главная модель главы: `super` — это способ обратиться к родительской реализации.
 
 Важно: `super` does not copy base code. `super` calls base поведение through the class relationship.
 
@@ -404,7 +404,7 @@ Constructor `super()` will be studied later when constructor inheritance becomes
 
 ---
 
-## Распространенные мифы
+## Распространённые мифы
 
 ### Миф: `super` means parent object
 
@@ -424,7 +424,7 @@ Constructor `super()` will be studied later when constructor inheritance becomes
 
 ---
 
-## Типичные ошибки
+## Распространённые ошибки
 
 ### Ошибка 1. Override and forget base поведение
 
@@ -459,9 +459,9 @@ open(pageName) {
 
 ### Ошибка 2. Think `super` changes объект выполнения
 
-Неправильная модель:
+Неправильная модель: будто `super` можно вызывать в любом месте дочернего конструктора.
 
-Правильная модель:
+Правильная модель: `super()` вызывается до первого обращения к `this` — иначе объект ещё не готов.
 
 ### Ошибка 3. Использовать `super`, когда нужна замена поведение
 
@@ -616,7 +616,7 @@ Overriding showed:
 but still reuse base behavior?
 ```
 
-Основная модель:
+Основная модель: `super` даёт доступ к родительскому конструктору и родительским методам из дочернего класса.
 
 `super` does not copy base code. It calls base поведение through the class relationship, while the объект выполнения model and prototype-chain mental model still matter.
 

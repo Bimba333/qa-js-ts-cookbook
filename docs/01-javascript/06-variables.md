@@ -2,7 +2,7 @@
 
 ## Связь с предыдущей главой
 
-В предыдущей главе была построена модель memory:
+В предыдущей главе была построена модель memory: значение хранится в некотором месте, а программа обращается к нему по имени.
 
 Теперь появляется следующий вопрос:
 
@@ -190,7 +190,11 @@ Variable is a named way to access stored information.
 const userName = 'Anna';
 ```
 
-engine не создает физическую коробку с наклейкой `userName` в том учебном смысле, который часто показывают новичкам. Более точная модель:
+engine не создаёт физическую коробку с наклейкой `userName` в том учебном смысле, который часто показывают новичкам. Более точная модель:
+
+```text
+запись в среде выполнения:  userName  ──→  [ 'Anna' ]
+```
 
 Что происходит внутри engine прямо сейчас:
 
@@ -237,7 +241,11 @@ const expectedStatus = 'active';
 const actualStatus = 'active';
 ```
 
-Схема:
+```text
+baseUrl         ──→  [ 'https://example.com' ]
+expectedStatus  ──→  [ 'active' ]
+actualStatus    ──→  [ 'active' ]
+```
 
 ### Declaration
 
@@ -250,6 +258,11 @@ let testStatus;
 Эта строка не дает meaningful value для теста. Она говорит engine:
 
 Диаграмма declaration:
+
+```text
+testStatus  ──→  [ ??? ]
+   имя есть      значения ещё нет
+```
 
 Declaration as registration:
 
@@ -275,7 +288,9 @@ undefined
 
 Концептуально:
 
-Диаграмма:
+```text
+testStatus  ──→  [ undefined ]
+```
 
 Что происходит внутри engine прямо сейчас:
 
@@ -295,7 +310,10 @@ let testStatus = 'created';
 
 Здесь одновременно происходят две вещи:
 
-Диаграмма initialization:
+```text
+declaration:     testStatus  ──→  [ ??? ]
+initialization:  testStatus  ──→  [ 'created' ]
+```
 
 Memory view:
 
@@ -319,7 +337,10 @@ testStatus = 'created';
 
 Первая строка — declaration. Вторая строка — assignment.
 
-Диаграмма assignment:
+```text
+строка 1:  testStatus  ──→  [ undefined ]
+строка 2:  testStatus  ──→  [ 'created' ]
+```
 
 Declaration vs assignment:
 
@@ -342,7 +363,12 @@ testStatus = 'ready';
 
 Концептуально:
 
-Диаграмма reassignment:
+```text
+было:  testStatus  ──→  [ 'created' ]
+стало: testStatus  ──→  [ 'ready' ]
+```
+
+Прежнее значение больше не доступно через это имя.
 
 Важно: один identifier не означает, что через него одновременно читаются все прошлые значения.
 
@@ -356,7 +382,11 @@ testStatus = 'created';  // assignment
 testStatus = 'ready';    // reassignment
 ```
 
-Схема:
+```text
+declaration      имя зарегистрировано
+assignment       имя получило значение впервые
+reassignment     значение заменено на другое
+```
 
 Сравнение:
 
@@ -402,7 +432,9 @@ const baseUrl = 'https://example.com';
 console.log(baseUrl);
 ```
 
-Модель:
+```text
+baseUrl  ──→  [ 'https://example.com' ]   связь зафиксирована
+```
 
 Нельзя:
 
@@ -436,7 +468,9 @@ testStatus = 'ready';
 console.log(testStatus);
 ```
 
-Модель:
+```text
+testStatus  ──→  [ 'created' ]  ──→  [ 'ready' ]
+```
 
 `let` подходит, когда значение действительно меняется по ходу выполнения.
 
@@ -722,7 +756,7 @@ Initialization — первое значение при объявлении. As
 
 ---
 
-## Распространенные мифы
+## Распространённые мифы
 
 ### Миф 1. Variable хранит value внутри себя как коробка
 
@@ -750,7 +784,7 @@ Declaration регистрирует имя. Assignment записывает val
 
 ---
 
-## Типичные ошибки
+## Распространённые ошибки
 
 ### Ошибка 1. Использовать `let` там, где значение не меняется
 
@@ -898,7 +932,7 @@ Line | Code                         | Operation
 4    | console.log(testStatus)      | read
 ```
 
-Практическое правило:
+Практическое правило: объявляйте через `const` по умолчанию и меняйте на `let` только тогда, когда действительно нужно переприсваивание.
 
 Это правило не заменяет понимание. Оно просто помогает писать более читаемый код.
 
@@ -946,7 +980,10 @@ console.log(expectedStatus);
 console.log(actualStatus);
 ```
 
-Схема:
+```text
+expectedStatus  ──→  [ 'active' ]   что ожидаем
+actualStatus    ──→  [ 'active' ]   что получили
+```
 
 Хорошие identifiers уменьшают количество ошибок при чтении теста.
 
@@ -992,7 +1029,7 @@ This named access may change.
 
 Variables нужны, чтобы программист мог работать с stored information через понятные names.
 
-Главная модель:
+Главная модель: имя — это способ обратиться к сохранённому значению, а declaration, assignment и reassignment — три разных момента в жизни этой связи.
 
 В этой главе были разобраны:
 

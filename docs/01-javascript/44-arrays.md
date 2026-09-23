@@ -165,7 +165,7 @@ Array solves ordered storage.
 
 Array is an ordered collection of значения.
 
-Главная модель:
+Главная модель: массив — это упорядоченный список значений, доступных по числовому индексу.
 
 Array literal:
 
@@ -215,6 +215,11 @@ const secondUser = users[1];
 
 Ментальная модель:
 
+```text
+index:  0        1        2
+value: 'login'  'order'  'logout'
+```
+
 ### Updating elements
 
 You can replace value at position:
@@ -223,7 +228,7 @@ You can replace value at position:
 users[1] = 'kate.updated@example.test';
 ```
 
-Ментальная модель:
+Ментальная модель: пронумерованные ячейки, где номер — это позиция, а не имя.
 
 This is element replacement.
 
@@ -266,7 +271,7 @@ Empty array contains no elements:
 const failedAssertions = [];
 ```
 
-Ментальная модель:
+Ментальная модель: `length` — не последний индекс, а количество элементов; последний индекс всегда на единицу меньше.
 
 It can represent:
 
@@ -518,7 +523,7 @@ Use array when order and positions matter.
 
 ---
 
-## Распространенные мифы
+## Распространённые мифы
 
 ### Миф: Array is just object with square brackets
 
@@ -538,7 +543,7 @@ Use array when order and positions matter.
 
 ---
 
-## Типичные ошибки
+## Распространённые ошибки
 
 ### Ошибка 1. Off-by-one
 

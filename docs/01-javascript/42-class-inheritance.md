@@ -4,7 +4,7 @@
 
 Предыдущая глава объяснила Classes.
 
-Главная модель была такой:
+Главная модель была такой: класс задаёт конструктор и общее поведение для создаваемых объектов.
 
 Мы специально не представляли class как новую объектную модель.
 
@@ -170,7 +170,7 @@ Inheritance lets derived classes reuse поведение from base class.
 
 Class Inheritance is поведение reuse between classes.
 
-Главная модель:
+Главная модель: наследование позволяет одному классу переиспользовать поведение другого.
 
 Base class contains общее поведение:
 
@@ -264,6 +264,11 @@ class LoginPage extends BasePage {}
 ```
 
 Модель высокого уровня:
+
+```text
+Child  →  extends  →  Parent
+поиск метода идёт от Child к Parent
+```
 
 This creates a relationship that allows method lookup to continue from derived class поведение to base class поведение.
 
@@ -395,7 +400,7 @@ examples/01-javascript/chapter-42/06-qa-example.js
 
 Нет.
 
-Более точная ментальная модель:
+Более точная ментальная модель: `extends` связывает прототипы двух классов, поэтому поиск метода продолжается в родителе.
 
 ### Inheritance заменяет Prototype Chain?
 
@@ -425,7 +430,7 @@ Derived class method with same name is found first.
 
 ---
 
-## Распространенные мифы
+## Распространённые мифы
 
 ### Миф: inheritance copies methods into derived class
 
@@ -445,15 +450,15 @@ Derived class method with same name is found first.
 
 ---
 
-## Типичные ошибки
+## Распространённые ошибки
 
 ### Ошибка 1. Копировать methods after creating base class
 
-Неправильная модель:
+Неправильная модель: будто наследование копирует методы родителя в дочерний класс.
 
 Что происходит:
 
-Исправленная модель:
+Исправленная модель: методы остаются в родителе, а дочерний класс лишь продолжает цепочку поиска.
 
 ### Ошибка 2. Put page-specific поведение into base class
 
@@ -463,7 +468,7 @@ Derived class method with same name is found first.
 
 `login()` belongs to `LoginPage`, not every page.
 
-Исправленная модель:
+Исправленная модель: переопределённый метод в дочернем классе находится первым и скрывает родительский, не удаляя его.
 
 ### Ошибка 3. Override accidentally
 
@@ -493,7 +498,7 @@ class LoginPage extends BasePage {
 
 ### Ошибка 4. Forget объект выполнения
 
-Неправильная модель:
+Неправильная модель: будто конструктор родителя вызывается сам собой.
 
 Правильная модель:
 
@@ -663,7 +668,7 @@ Class Inheritance отвечает:
 What if several classes need the same behavior?
 ```
 
-Основная модель:
+Основная модель: наследование — это продолжение цепочки поиска, а не копирование поведения.
 
 Inheritance does not copy methods. It creates a relationship between classes, while the already-learned prototype mechanism continues to perform property lookup.
 

@@ -424,7 +424,7 @@ node examples/01-javascript/chapter-27/06-qa-example.js
 
 ---
 
-## Распространенные мифы
+## Распространённые мифы
 
 ### Миф: три точки всегда означают одно и то же
 
@@ -454,7 +454,7 @@ Object spread выполняет top-level merge. Advanced object merging буд
 
 ---
 
-## Типичные ошибки
+## Распространённые ошибки
 
 ### Ошибка 1. Путать направление
 
@@ -574,7 +574,7 @@ validateThreeStatuses(...statuses);
 
 ### Readable test setup
 
-Пример QA-helper:
+Пример QA-helper: `validateThreeStatuses(...statuses)` раскладывает массив на отдельные аргументы — это обратная операция к rest из предыдущей главы.
 
 Spread helps compose data, but test setup must remain readable.
 

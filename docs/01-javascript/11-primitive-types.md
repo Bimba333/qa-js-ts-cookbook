@@ -185,7 +185,11 @@ Engine passes a value to console.log or assertion.
 
 JavaScript значения делятся на две большие группы:
 
-Диаграмма value hierarchy:
+```text
+значения JavaScript
+├── примитивные: Number, String, Boolean, Null, Undefined, Symbol, BigInt
+└── объектные:   Object, Array, Function, Date, ...
+```
 
 Почему деление важно:
 
@@ -217,7 +221,12 @@ const price = 19.99;
 const retryCount = 2;
 ```
 
-Диаграмма Number:
+```text
+Number  →  30      целое
+        →  19.99   дробное
+        →  NaN     не число
+        →  Infinity
+```
 
 JavaScript uses Number for integers and fractional значения.
 
@@ -242,7 +251,11 @@ const baseUrl = 'https://example.com';
 const status = 'active';
 ```
 
-Диаграмма String:
+```text
+String  →  'Anna'
+        →  'https://example.com'
+        →  ''      пустая строка — тоже значение
+```
 
 String value is text.
 
@@ -273,7 +286,10 @@ const isActive = true;
 const isDeleted = false;
 ```
 
-Диаграмма Boolean:
+```text
+Boolean  →  true
+         →  false
+```
 
 Boolean значения are used for yes/no, enabled/disabled, passed/failed, exists/not exists.
 
@@ -302,7 +318,9 @@ console.log(userName);
 undefined
 ```
 
-Диаграмма Undefined:
+```text
+объявили без значения  →  [ undefined ]
+```
 
 There is one `undefined` value.
 
@@ -324,7 +342,10 @@ If a поле is `undefined`, it may mean the поле was not present or was no
 const deletedAt = null;
 ```
 
-Диаграмма Null:
+```text
+null       →  значение отсутствует намеренно
+undefined  →  значение ещё не задано
+```
 
 Разница:
 
@@ -367,7 +388,9 @@ Even with same description, symbols are different:
 Symbol("id") !== Symbol("id")
 ```
 
-Диаграмма Symbol:
+```text
+Symbol('id')  ≠  Symbol('id')    два разных значения
+```
 
 Symbol is less common in everyday Automation QA code than Number, String, Boolean, Null and Undefined. Но его нужно знать как часть primitive types.
 
@@ -383,7 +406,10 @@ const largeId = 9007199254740993n;
 
 `n` at the end marks BigInt literal.
 
-Диаграмма BigInt:
+```text
+Number  →  ограничен по точности для больших целых
+BigInt  →  9007199254740993n    произвольно большие целые
+```
 
 BigInt is not the same as Number:
 
@@ -452,7 +478,10 @@ const upperName = 'ANNA';
 
 You now have another string value.
 
-Диаграмма primitive immutability:
+```text
+'Anna'  →  toUpperCase()  →  'ANNA'    новое значение
+'Anna'  остаётся прежним
+```
 
 Do not confuse:
 
@@ -475,7 +504,9 @@ Use the mental model from Variables carefully:
 const status = 'active';
 ```
 
-Схема:
+```text
+status  ──→  [ 'active' ]    связь зафиксирована через const
+```
 
 If reassignment is allowed:
 
@@ -484,7 +515,12 @@ let status = 'created';
 status = 'active';
 ```
 
-Схема:
+```text
+было:  status  ──→  [ 'created' ]
+стало: status  ──→  [ 'active' ]
+
+оба значения существуют независимо, изменилась только связь
+```
 
 Primitive value did not change. The label now refers to another primitive value.
 
@@ -677,7 +713,7 @@ Primitive значения immutable by nature. `const` prevents reassignment of
 
 ---
 
-## Распространенные мифы
+## Распространённые мифы
 
 ### Миф 1. Primitive значения are stored like small objects
 
@@ -705,7 +741,7 @@ They may look similar, but one is String and one is Number.
 
 ---
 
-## Типичные ошибки
+## Распространённые ошибки
 
 ### Ошибка 1. Comparing number with string
 
@@ -734,7 +770,7 @@ const actualStatusCode = 200;
 null and undefined both mean nothing, so they are same.
 ```
 
-Исправленная модель:
+Исправленная модель: `undefined` означает «значение ещё не задано», `null` — «отсутствие задано намеренно». Это разные факты, и различать их полезно при проверке данных.
 
 ### Ошибка 3. Trusting typeof null too much
 

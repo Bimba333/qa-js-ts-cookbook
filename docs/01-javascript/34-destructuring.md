@@ -4,7 +4,7 @@
 
 Предыдущая глава начала раздел Objects.
 
-Главная модель была такой:
+Главная модель была такой: объект группирует связанные значения и даёт доступ к ним по ключу.
 
 Например:
 
@@ -34,7 +34,7 @@ const userRole = user.role;
 
 Destructuring отвечает на этот вопрос.
 
-Главная модель главы:
+Главная модель главы: destructuring извлекает значения из объекта и сразу связывает их с именами.
 
 Важно сразу:
 
@@ -169,6 +169,11 @@ const { status, body, durationMs } = response;
 
 Модель:
 
+```text
+const { status, body } = response;
+       └─── имена совпадают с ключами ───┘
+```
+
 Что важно:
 
 ```text
@@ -216,6 +221,10 @@ const { name } = user;
 
 Модель:
 
+```text
+const { name } = user;   →  name получает значение user.name
+```
+
 Это не случайность. Matching происходит by property name.
 
 ### Property matching
@@ -247,7 +256,11 @@ console.log(email);
 
 Модель:
 
-Это продолжает правило из предыдущей главы:
+```text
+свойства нет  →  переменная получает undefined
+```
+
+Это продолжает правило из предыдущей главы: обращение к несуществующему свойству даёт `undefined`, а не ошибку.
 
 ### Default значения
 
@@ -258,6 +271,11 @@ const { role = 'guest' } = user;
 ```
 
 Модель:
+
+```text
+const { role = 'guest' } = user;
+       значение по умолчанию сработает только при undefined
+```
 
 Пример:
 
@@ -291,6 +309,11 @@ const { name: userName } = user;
 
 Модель:
 
+```text
+const { name: userName } = user;
+              └── новое имя переменной
+```
+
 Важно:
 
 Это частое место ошибок.
@@ -317,6 +340,10 @@ const {
 ```
 
 Высокоуровневая модель:
+
+```text
+объект  →  извлечь нужные поля  →  отдельные имена
+```
 
 В этой главе nested destructuring только preview. Deep nested patterns can become hard to read, and optional chaining will be studied next.
 
@@ -576,7 +603,7 @@ Variable получит `undefined`, если нет default value.
 
 ---
 
-## Распространенные мифы
+## Распространённые мифы
 
 ### Миф: destructuring - это просто короткий синтаксис
 
@@ -606,7 +633,7 @@ Object destructuring matches by property name.
 
 ---
 
-## Типичные ошибки
+## Распространённые ошибки
 
 ### Ошибка 1. Думать, что renaming создает обе variables
 
@@ -714,6 +741,10 @@ const { status, body } = apiResponse;
 ```
 
 Модель:
+
+```text
+const { status, body } = apiResponse;
+```
 
 ### Reading config значения
 
@@ -855,7 +886,7 @@ solutions/01-javascript/34-destructuring.md
 
 Destructuring продолжает тему Objects.
 
-Главная модель:
+Главная модель: destructuring — это способ назвать нужные части объекта в одну строку вместо серии обращений.
 
 Destructuring не создает новый object. Он создает variables from existing properties.
 

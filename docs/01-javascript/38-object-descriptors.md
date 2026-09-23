@@ -4,7 +4,7 @@
 
 Предыдущая глава объяснила Object Methods.
 
-Главная модель была такой:
+Главная модель была такой: метод — это функция, лежащая в свойстве объекта.
 
 До этого мы работали с properties как будто все они behave the same:
 
@@ -26,7 +26,9 @@ delete config.baseUrl;
 
 > Почему две properties с похожими значения могут behave differently?
 
-Например:
+Например: одно свойство можно переопределить, а другое — нет, хотя выглядят они одинаково.
+
+Например, свойство можно сделать нередактируемым или скрыть его из перебора — это задаётся дескриптором, а не самим значением.
 
 Ответ:
 
@@ -507,7 +509,7 @@ Most application code does not need explicit descriptors. They are most useful f
 
 ---
 
-## Распространенные мифы
+## Распространённые мифы
 
 ### Миф: property is only key and value
 
@@ -533,7 +535,7 @@ Descriptors are metadata controlling property operations.
 
 ---
 
-## Типичные ошибки
+## Распространённые ошибки
 
 ### Ошибка 1. Forgetting defineProperty defaults
 

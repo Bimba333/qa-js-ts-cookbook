@@ -326,6 +326,11 @@ adminName = 'Kate';
 
 Концептуальная схема:
 
+```text
+Stack — короткие записи выполнения и простые значения
+Heap  — объекты и структуры
+```
+
 Что помогает понять эта схема?
 
 ```text
@@ -348,6 +353,11 @@ const user = {
 
 Концептуальная схема:
 
+```text
+stack:  status  ──→  [ 'active' ]     значение прямо здесь
+heap:   user    ──→  ref  ──→  [ { ... } ]
+```
+
 Что помогает понять эта схема?
 
 ```text
@@ -359,6 +369,10 @@ Reference connects them.
 ### Variable → Reference → Object
 
 The core схема:
+
+```text
+переменная  →  ссылка  →  объект в heap
+```
 
 Expanded:
 
@@ -382,6 +396,11 @@ const admin = user;
 
 Object assignment схема:
 
+```text
+stack                      heap
+user  ──→ ref#1  ───────→  [ { name: 'Anna' } ]
+```
+
 Что помогает понять эта схема?
 
 ```text
@@ -393,6 +412,12 @@ Both references lead to the same object.
 ### Shared object
 
 Shared object схема:
+
+```text
+stack                      heap
+user  ──→ ref#1  ──┐
+admin ──→ ref#1  ──┴────→  [ { name: 'Anna' } ]
+```
 
 Что помогает понять эта схема?
 
@@ -408,6 +433,11 @@ adminUser.role = 'admin';
 ```
 
 Mutation схема:
+
+```text
+изменение свойства меняет объект в heap,
+ссылки в stack остаются прежними
+```
 
 Что помогает понять эта схема?
 
@@ -431,6 +461,11 @@ currentUser = {
 ```
 
 Reassignment схема:
+
+```text
+было:  currentUser ──→ ref#1 ──→ [ объект A ]
+стало: currentUser ──→ ref#2 ──→ [ объект B ]
+```
 
 Что помогает понять эта схема?
 
@@ -458,6 +493,12 @@ updateRole(testUser);
 
 Function call high-level схема:
 
+```text
+вызов функции  →  новая запись в stack
+                  локальные имена живут в ней
+возврат        →  запись снимается
+```
+
 After mutation:
 
 Что помогает понять эта схема?
@@ -483,6 +524,11 @@ const user = {
 
 Схема:
 
+```text
+примитив  →  значение хранится в записи выполнения
+объект    →  в записи хранится ссылка, объект лежит в heap
+```
+
 Что помогает понять эта схема?
 
 ```text
@@ -504,6 +550,11 @@ const sameUser = firstUser;
 ```
 
 Схема:
+
+```text
+запись выполнения исчезает после возврата,
+объект в heap живёт, пока на него есть ссылки
+```
 
 Что помогает понять эта схема?
 
@@ -553,6 +604,11 @@ We are learning a map for previously observed behavior.
 ### Myth vs reality
 
 Myth vs reality схема:
+
+```text
+миф:      «примитивы всегда в stack, объекты всегда в heap»
+реальность: это учебная модель; конкретное размещение решает движок
+```
 
 ### Переход к Type Conversion
 
@@ -667,7 +723,7 @@ No. Garbage Collector internals will be studied later. Here we only discuss diag
 
 ---
 
-## Распространенные мифы
+## Распространённые мифы
 
 ### Миф: The diagram is the engine
 
@@ -695,7 +751,7 @@ Garbage Collector is a separate topic with its own mechanisms.
 
 ---
 
-## Типичные ошибки
+## Распространённые ошибки
 
 ### Ошибка 1. Treat conceptual diagram as physical truth
 
@@ -790,6 +846,12 @@ adminPayload.role = 'admin';
 ```
 
 Схема:
+
+```text
+stack   →  что выполняется и какие имена активны
+heap    →  сами объекты
+ссылка  →  мост между ними
+```
 
 This explains why default request body changed unexpectedly.
 

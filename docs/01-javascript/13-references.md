@@ -150,9 +150,19 @@ Kate
 
 Диаграмма удивительного поведения:
 
+```text
+user  ──┐
+        ├──→  [ { name: 'Anna' } ]
+admin ──┘
+```
+
 Это невозможно объяснить моделью "каждая variable содержит собственный object".
 
 Нужна другая модель:
+
+```text
+переменная хранит НЕ объект, а ссылку на него
+```
 
 `user` and `admin` are two ways to reach the same object.
 
@@ -184,9 +194,13 @@ Reference is a conceptual connection from a variable to an object value.
 
 Диаграмма Object + Reference:
 
+```text
+user  ──→  ref#1  ──→  [ { name: 'Anna' } ]
+```
+
 Reference is not the object itself.
 
-Ментальная модель bookmark:
+Ментальная модель bookmark: закладка указывает на страницу, но сама страницей не является.
 
 Bookmark is not the page. Reference is not the object.
 
@@ -239,6 +253,11 @@ Kate
 
 Диаграмма primitive assignment:
 
+```text
+a  ──→  [ 1 ]
+b  ──→  [ 1 ]   собственная копия значения
+```
+
 At this conceptual level, assignment of primitive value gives another variable its own primitive value.
 
 Primitive comparison:
@@ -258,6 +277,12 @@ const admin = user;
 ```
 
 Диаграмма object assignment:
+
+```text
+user   ──┐
+         ├──→  [ один объект ]
+admin  ──┘
+```
 
 One object, two variables:
 
@@ -283,6 +308,12 @@ const currentUser = user;
 
 Shared object схема:
 
+```text
+user     ──┐
+admin    ──┼──→  [ один объект ]
+current  ──┘
+```
+
 This is not three users.
 
 This is:
@@ -292,7 +323,7 @@ one object
 three variables referring to it
 ```
 
-Ментальная модель multiple labels pointing to one folder:
+Ментальная модель multiple labels pointing to one folder: на одной папке может висеть несколько ярлыков, но папка остаётся одна.
 
 ### Reading through a reference
 
@@ -305,6 +336,10 @@ console.log(admin.name);
 Engine conceptually does:
 
 Диаграмма reading through reference:
+
+```text
+admin.name  →  пройти по ссылке  →  прочитать свойство name
+```
 
 Вопрос:
 
@@ -327,6 +362,14 @@ admin.name = 'Kate';
 Engine conceptually does:
 
 Диаграмма updating through reference:
+
+```text
+admin.name = 'Kate'
+
+user  ──┐
+        ├──→  [ { name: 'Kate' } ]
+admin ──┘
+```
 
 `user.name` тоже показывает `"Kate"`, потому что `user` ссылается на тот же object.
 
@@ -380,6 +423,13 @@ Kate
 
 Диаграмма reference reassignment:
 
+```text
+было:   currentUser ──→ [ объект A ]
+стало:  currentUser ──→ [ объект B ]
+
+объект A не изменился, изменилась ссылка
+```
+
 Вопрос:
 
 > На какой object сейчас ссылается `currentUser`?
@@ -428,6 +478,11 @@ console.log(firstUser === secondUser);
 ```
 
 Концептуальное сравнение объектов:
+
+```text
+{ a: 1 } === { a: 1 }   →  false   разные объекты
+user === admin          →  true    одна ссылка
+```
 
 Object comparison here is about identity:
 
@@ -478,6 +533,13 @@ console.log(user.name);
 ```
 
 Complete execution схема:
+
+```text
+1. создан объект              [ { name: 'Anna' } ]
+2. user получил ссылку        user  ──→ объект
+3. admin получил ту же ссылку admin ──→ объект
+4. изменение через admin      видно через user
+```
 
 ### Текущее место в модели JavaScript
 
@@ -699,7 +761,7 @@ Yes. Arrays are object значения, so variables can refer to the same arra
 
 ---
 
-## Распространенные мифы
+## Распространённые мифы
 
 ### Миф: variable contains object
 
@@ -744,7 +806,7 @@ References can be understood from observable поведение first. Stack & H
 
 ---
 
-## Типичные ошибки
+## Распространённые ошибки
 
 ### Ошибка 1. Неожиданно изменить shared object
 

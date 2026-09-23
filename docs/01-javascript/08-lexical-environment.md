@@ -327,7 +327,13 @@ function buildLoginUrl() {
 }
 ```
 
-Диаграмма:
+```text
+Environment вложенной функции
+├── Environment Record: fullUrl
+└── Outer ──→ Environment внешней функции
+              ├── Environment Record: baseUrl
+              └── Outer ──→ Global Environment
+```
 
 Это linked folders:
 
@@ -382,7 +388,10 @@ let status = 'created';
 status = 'ready';
 ```
 
-Модель:
+```text
+запись найдена в Environment Record  →  значение заменено
+status  ──→  [ 'ready' ]
+```
 
 `const`, `let`, `var` имеют разные правила регистрации и доступа. Hoisting и TDZ объяснят часть этих различий позже.
 
@@ -390,7 +399,11 @@ status = 'ready';
 
 Memory хранит information. Lexical Environment хранит records named access к этой information.
 
-Учебная схема:
+```text
+Environment Record        Memory
+   userName        ──→    [ 'Anna' ]
+   baseUrl         ──→    [ 'https://example.test' ]
+```
 
 Это не физическая карта памяти. Это conceptual relationship: Lexical Environment помогает engine понять, какой identifier к какой stored information относится.
 
@@ -447,13 +460,28 @@ function testLogin() {
 }
 ```
 
-Схема:
+```text
+inner Environment   → expectedStatus
+   ↓ Outer
+outer Environment   → userName
+   ↓ Outer
+Global Environment  → всё остальное
+```
 
 This is the chain of records:
 
 ### Текущее место главы в модели JavaScript
 
-Теперь модель выполнения стала глубже:
+```mermaid
+flowchart LR
+    N1["Execution Context"]
+    N2["Lexical Environment"]
+    N3["Environment Record"]
+    N4["Outer Environment Reference"]
+    N1 --> N2
+    N2 --> N3
+    N2 --> N4
+```
 
 Цепочка курса:
 
@@ -609,7 +637,7 @@ examples/01-javascript/chapter-08/06-common-mistakes.js
 
 ---
 
-## Распространенные мифы
+## Распространённые мифы
 
 ### Миф 1. Scope Chain существует только в голове программиста
 
@@ -637,7 +665,7 @@ Engine checks current Environment Record and follows Outer Environment Reference
 
 ---
 
-## Типичные ошибки
+## Распространённые ошибки
 
 ### Ошибка 1. Путать Environment Record и Memory
 
@@ -651,7 +679,7 @@ Environment Record is all memory.
 
 Environment Record хранит identifier records. Memory model шире и связана с хранением information during execution.
 
-Исправленная модель:
+Исправленная модель: Environment Record хранит записи об именах, а память хранит сами значения. Это два разных уровня одной модели.
 
 ### Ошибка 2. Путать Outer Environment Reference и Call Stack
 
@@ -665,7 +693,7 @@ Outer link follows the вызывающий код.
 
 Outer Environment Reference связан с lexical nesting, а не просто с тем, кто вызвал функцию. Подробности Closures будут изучаться позже.
 
-Исправленная модель:
+Исправленная модель: Outer Environment Reference определяется тем, где функция написана, а Call Stack — тем, кто её вызвал. Совпадать они не обязаны.
 
 ### Ошибка 3. Объяснять lookup поиском по всему файлу
 
@@ -675,7 +703,7 @@ Outer Environment Reference связан с lexical nesting, а не прост�
 Engine scans the whole file for matching name.
 ```
 
-Исправленная модель:
+Исправленная модель: поиск идёт по цепочке окружений от текущего к внешним и останавливается на первом найденном имени — файл целиком не просматривается.
 
 ### Ошибка 4. Углубляться в TDZ раньше времени
 
@@ -709,6 +737,13 @@ Hoisting and TDZ explain timing and access restrictions.
 
 Таблица анализа:
 
+| Вопрос | Что смотреть |
+| --- | --- |
+| какое окружение активно? | текущий Execution Context |
+| какие имена в нём есть? | Environment Record |
+| куда пойдёт поиск дальше? | Outer Environment Reference |
+| где поиск остановится? | Global Environment |
+
 Мини-чек-лист:
 
 ```text
@@ -736,7 +771,12 @@ function buildUserName() {
 }
 ```
 
-Концептуальная модель:
+```text
+Environment функции
+├── userName   (локальное)
+└── Outer ──→ Environment модуля
+              └── prefix
+```
 
 Тест не должен access `prefix`, потому что он не находится в accessible outer environment теста.
 
@@ -778,7 +818,7 @@ Playwright stack trace может привести в helper:
 
 Scope объясняет rules visibility. Lexical Environment объясняет conceptual internal structure behind these rules.
 
-Главная модель:
+Главная модель: у каждого окружения есть собственные записи об именах и ссылка на внешнее окружение — этой пары достаточно, чтобы объяснить любой поиск идентификатора.
 
 Identifier lookup conceptually идет так:
 

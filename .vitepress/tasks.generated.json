@@ -98,6 +98,1310 @@
       "chapter": "01-javascript/07-scope"
     }
   ],
+  "01-javascript/28-closures": [
+    {
+      "id": "js-28-run-counter",
+      "title": "Счётчик прогонов",
+      "difficulty": "easy",
+      "lang": "js",
+      "runner": "browser",
+      "prompt": "Напишите функцию `createRunCounter()`, которая возвращает функцию. Каждый её вызов увеличивает внутренний счётчик и возвращает новое значение, начиная с `1`. Два счётчика, созданных отдельно, не должны влиять друг на друга.",
+      "starter": "function createRunCounter() {\n  // Переменная счётчика должна остаться недоступной снаружи.\n}",
+      "hints": [
+        "Переменную объявляют во внешней функции, а изменяет её внутренняя.",
+        "Возвращать нужно саму функцию, а не результат её вызова.",
+        "Каждый вызов фабрики создаёт своё окружение — значит, свой счётчик."
+      ],
+      "standSetup": "",
+      "tests": [
+        {
+          "name": "первый вызов возвращает 1",
+          "code": "const next = createRunCounter();\nexpect(next()).toBe(1);"
+        },
+        {
+          "name": "счётчик растёт",
+          "code": "const next = createRunCounter();\nnext();\nnext();\nexpect(next()).toBe(3);"
+        },
+        {
+          "name": "два счётчика независимы",
+          "code": "const first = createRunCounter();\nconst second = createRunCounter();\nfirst();\nfirst();\nexpect(second()).toBe(1);"
+        },
+        {
+          "name": "внутренняя переменная недоступна снаружи",
+          "code": "const next = createRunCounter();\nnext();\nexpect(typeof next.count).toBe('undefined');"
+        }
+      ],
+      "solution": "function createRunCounter() {\n  let count = 0;\n\n  return () => {\n    count += 1;\n    return count;\n  };\n}",
+      "chapter": "01-javascript/28-closures"
+    },
+    {
+      "id": "js-28-logger-factory",
+      "title": "Фабрика логгеров с окружением",
+      "difficulty": "medium",
+      "lang": "js",
+      "runner": "browser",
+      "prompt": "Напишите функцию `createLogger(config)`, которая принимает объект `{ environment }` и возвращает функцию `log(message)`. Она возвращает строку вида `[preview] старт`. Важно: логгер должен читать **актуальное** значение `config.environment` в момент вызова, а не то, что было при создании.",
+      "starter": "function createLogger(config) {\n  // Замыкание хранит доступ к объекту, а не копию его полей.\n}",
+      "hints": [
+        "Замыкание сохраняет доступ к окружению, а не снимок значений.",
+        "Если скопировать environment в отдельную переменную при создании, актуальность потеряется.",
+        "Обращайтесь к полю объекта внутри возвращаемой функции."
+      ],
+      "standSetup": "",
+      "tests": [
+        {
+          "name": "подставляет окружение",
+          "code": "const log = createLogger({ environment: 'local' });\nexpect(log('старт')).toBe('[local] старт');"
+        },
+        {
+          "name": "видит изменение конфигурации после создания",
+          "code": "const config = { environment: 'local' };\nconst log = createLogger(config);\nconfig.environment = 'preview';\nexpect(log('старт')).toBe('[preview] старт');"
+        },
+        {
+          "name": "два логгера с разными конфигурациями независимы",
+          "code": "const first = createLogger({ environment: 'local' });\nconst second = createLogger({ environment: 'preview' });\nexpect(first('a') + ' | ' + second('b')).toBe('[local] a | [preview] b');"
+        },
+        {
+          "name": "сообщение подставляется как есть",
+          "code": "const log = createLogger({ environment: 'ci' });\nexpect(log('')).toBe('[ci] ');"
+        }
+      ],
+      "solution": "function createLogger(config) {\n  return (message) => `[${config.environment}] ${message}`;\n}",
+      "chapter": "01-javascript/28-closures"
+    }
+  ],
+  "01-javascript/29-this": [
+    {
+      "id": "js-29-reporter-method",
+      "title": "Метод, читающий своё состояние",
+      "difficulty": "easy",
+      "lang": "js",
+      "runner": "browser",
+      "prompt": "Напишите функцию `createReporter(name)`, которая возвращает объект с полем `name` и методом `describe(testName)`. Метод возвращает строку вида `console reporter: login` и должен брать имя из самого объекта через `this`.",
+      "starter": "function createReporter(name) {\n  return {\n    name,\n    describe(testName) {\n      // Возьмите имя отчёта из самого объекта.\n    }\n  };\n}",
+      "hints": [
+        "Внутри метода объект доступен через this.",
+        "Метод-стрелка в литерале объекта не получает сам объект — нужна обычная запись метода.",
+        "Строку удобно собрать шаблонным литералом."
+      ],
+      "standSetup": "",
+      "tests": [
+        {
+          "name": "подставляет имя отчёта",
+          "code": "const reporter = createReporter('console reporter');\nexpect(reporter.describe('login')).toBe('console reporter: login');"
+        },
+        {
+          "name": "работает после изменения поля",
+          "code": "const reporter = createReporter('первый');\nreporter.name = 'второй';\nexpect(reporter.describe('order')).toBe('второй: order');"
+        },
+        {
+          "name": "два отчёта независимы",
+          "code": "const first = createReporter('a');\nconst second = createReporter('b');\nexpect(first.describe('x') + ' | ' + second.describe('y')).toBe('a: x | b: y');"
+        },
+        {
+          "name": "метод читает состояние объекта, а не замкнутый параметр",
+          "code": "const reporter = createReporter('исходное');\nconst copy = { name: 'чужое', describe: reporter.describe };\nexpect(copy.describe('login')).toBe('чужое: login');"
+        }
+      ],
+      "solution": "function createReporter(name) {\n  return {\n    name,\n    describe(testName) {\n      return `${this.name}: ${testName}`;\n    }\n  };\n}",
+      "chapter": "01-javascript/29-this"
+    },
+    {
+      "id": "js-29-safe-callback",
+      "title": "Метод, переданный в колбэк",
+      "difficulty": "medium",
+      "lang": "js",
+      "runner": "browser",
+      "prompt": "Дан объект `counter` с полем `total` и методом `add(value)`, который увеличивает `this.total`. Напишите функцию `sumAll(counter, values)`, которая применяет метод к каждому элементу массива через `forEach()` и возвращает итоговое значение `counter.total`. Привязка объекта не должна теряться.",
+      "starter": "function sumAll(counter, values) {\n  // Переданный в forEach метод потеряет свой объект.\n\n  return counter.total;\n}",
+      "hints": [
+        "Метод, переданный как значение, вызывается без объекта перед точкой.",
+        "Сохранить привязку можно стрелочной обёрткой.",
+        "Проверьте, что counter.total действительно изменился."
+      ],
+      "standSetup": "",
+      "tests": [
+        {
+          "name": "суммирует значения",
+          "code": "const counter = { total: 0, add(value) { this.total += value; } };\nexpect(sumAll(counter, [1, 2, 3])).toBe(6);"
+        },
+        {
+          "name": "изменяет сам объект",
+          "code": "const counter = { total: 10, add(value) { this.total += value; } };\nsumAll(counter, [5]);\nexpect(counter.total).toBe(15);"
+        },
+        {
+          "name": "для пустого массива возвращает исходное значение",
+          "code": "const counter = { total: 7, add(value) { this.total += value; } };\nexpect(sumAll(counter, [])).toBe(7);"
+        },
+        {
+          "name": "не использует глобальное состояние",
+          "code": "const first = { total: 0, add(value) { this.total += value; } };\nconst second = { total: 0, add(value) { this.total += value; } };\nsumAll(first, [1, 1]);\nexpect(second.total).toBe(0);"
+        }
+      ],
+      "solution": "function sumAll(counter, values) {\n  values.forEach((value) => counter.add(value));\n\n  return counter.total;\n}",
+      "chapter": "01-javascript/29-this"
+    }
+  ],
+  "01-javascript/30-call": [
+    {
+      "id": "js-30-borrow-method",
+      "title": "Одолжить метод другому объекту",
+      "difficulty": "easy",
+      "lang": "js",
+      "runner": "browser",
+      "prompt": "Дана функция `describe()`, которая возвращает строку `<name>: <role>` из `this`. Напишите функцию `describeAs(target)`, которая выполняет `describe` с объектом `target` в качестве объекта выполнения и возвращает результат. Функция должна выполняться немедленно.",
+      "starter": "function describe() {\n  return `${this.name}: ${this.role}`;\n}\n\nfunction describeAs(target) {\n  // Выполните describe с чужим объектом прямо сейчас.\n}",
+      "hints": [
+        "Есть метод функции, который вызывает её немедленно с указанным объектом.",
+        "Первый аргумент этого метода задаёт объект выполнения.",
+        "Возвращать нужно результат вызова, а не саму функцию."
+      ],
+      "standSetup": "",
+      "tests": [
+        {
+          "name": "подставляет чужой объект",
+          "code": "expect(describeAs({ name: 'Анна', role: 'admin' })).toBe('Анна: admin');"
+        },
+        {
+          "name": "работает с другим объектом",
+          "code": "expect(describeAs({ name: 'Иван', role: 'qa' })).toBe('Иван: qa');"
+        },
+        {
+          "name": "возвращает строку, а не функцию",
+          "code": "expect(typeof describeAs({ name: 'a', role: 'b' })).toBe('string');"
+        },
+        {
+          "name": "исходная функция не изменяется",
+          "code": "describeAs({ name: 'a', role: 'b' });\nexpect(describe.call({ name: 'c', role: 'd' })).toBe('c: d');"
+        }
+      ],
+      "solution": "function describe() {\n  return `${this.name}: ${this.role}`;\n}\n\nfunction describeAs(target) {\n  return describe.call(target);\n}",
+      "chapter": "01-javascript/30-call"
+    },
+    {
+      "id": "js-30-format-with-args",
+      "title": "Передать объект и аргументы",
+      "difficulty": "medium",
+      "lang": "js",
+      "runner": "browser",
+      "prompt": "Дана функция `format(prefix, suffix)`, возвращающая строку `<prefix><name><suffix>` из `this`. Напишите функцию `formatFor(target, prefix, suffix)`, которая выполняет `format` с объектом `target` и переданными аргументами.",
+      "starter": "function format(prefix, suffix) {\n  return `${prefix}${this.name}${suffix}`;\n}\n\nfunction formatFor(target, prefix, suffix) {\n  // Аргументы передаются по одному после объекта выполнения.\n}",
+      "hints": [
+        "Первым аргументом идёт объект выполнения, остальные — аргументы самой функции.",
+        "Аргументы передаются по одному, а не массивом.",
+        "Порядок аргументов должен сохраниться."
+      ],
+      "standSetup": "",
+      "tests": [
+        {
+          "name": "подставляет объект и аргументы",
+          "code": "expect(formatFor({ name: 'login' }, '[', ']')).toBe('[login]');"
+        },
+        {
+          "name": "сохраняет порядок аргументов",
+          "code": "expect(formatFor({ name: 'order' }, '<<', '>>')).toBe('<<order>>');"
+        },
+        {
+          "name": "работает с пустыми аргументами",
+          "code": "expect(formatFor({ name: 'solo' }, '', '')).toBe('solo');"
+        },
+        {
+          "name": "не изменяет переданный объект",
+          "code": "const target = { name: 'login' };\nformatFor(target, '[', ']');\nexpect(target).toEqual({ name: 'login' });"
+        }
+      ],
+      "solution": "function format(prefix, suffix) {\n  return `${prefix}${this.name}${suffix}`;\n}\n\nfunction formatFor(target, prefix, suffix) {\n  return format.call(target, prefix, suffix);\n}",
+      "chapter": "01-javascript/30-call"
+    }
+  ],
+  "01-javascript/31-apply": [
+    {
+      "id": "js-31-apply-collected-args",
+      "title": "Аргументы уже собраны в массив",
+      "difficulty": "easy",
+      "lang": "js",
+      "runner": "browser",
+      "prompt": "Дана функция `join(separator, ending)`, возвращающая строку `<name><separator><role><ending>` из `this`. Напишите функцию `joinWith(target, args)`, где `args` — массив аргументов. Выполните `join` с объектом `target`, передав аргументы одной коллекцией.",
+      "starter": "function join(separator, ending) {\n  return `${this.name}${separator}${this.role}${ending}`;\n}\n\nfunction joinWith(target, args) {\n  // Аргументы уже лежат в массиве.\n}",
+      "hints": [
+        "Есть метод, принимающий аргументы одной коллекцией.",
+        "Первым по-прежнему идёт объект выполнения.",
+        "Разворачивать массив вручную не нужно."
+      ],
+      "standSetup": "",
+      "tests": [
+        {
+          "name": "передаёт аргументы массивом",
+          "code": "expect(joinWith({ name: 'Анна', role: 'admin' }, [' / ', '!'])).toBe('Анна / admin!');"
+        },
+        {
+          "name": "работает с другими значениями",
+          "code": "expect(joinWith({ name: 'a', role: 'b' }, ['-', ''])).toBe('a-b');"
+        },
+        {
+          "name": "не изменяет массив аргументов",
+          "code": "const args = [' / ', '!'];\njoinWith({ name: 'a', role: 'b' }, args);\nexpect(args).toEqual([' / ', '!']);"
+        },
+        {
+          "name": "возвращает строку",
+          "code": "expect(typeof joinWith({ name: 'a', role: 'b' }, ['-', ''])).toBe('string');"
+        }
+      ],
+      "solution": "function join(separator, ending) {\n  return `${this.name}${separator}${this.role}${ending}`;\n}\n\nfunction joinWith(target, args) {\n  return join.apply(target, args);\n}",
+      "chapter": "01-javascript/31-apply"
+    },
+    {
+      "id": "js-31-max-duration",
+      "title": "Максимум из массива длительностей",
+      "difficulty": "medium",
+      "lang": "js",
+      "runner": "browser",
+      "prompt": "Напишите функцию `maxDuration(results)`, которая принимает массив `{ name, durationMs }` и возвращает наибольшую длительность. Для пустого массива вернуть `0`. Используйте передачу собранных значений функции `Math.max` одной коллекцией.",
+      "starter": "function maxDuration(results) {\n  // Math.max принимает аргументы по одному.\n}",
+      "hints": [
+        "Сначала соберите длительности в массив.",
+        "Math.max не принимает массив — нужна передача аргументов коллекцией или spread.",
+        "Math.max() без аргументов возвращает -Infinity: пустой случай обработайте отдельно."
+      ],
+      "standSetup": "",
+      "tests": [
+        {
+          "name": "находит максимум",
+          "code": "expect(maxDuration([\n  { name: 'a', durationMs: 10 },\n  { name: 'b', durationMs: 300 },\n  { name: 'c', durationMs: 50 }\n])).toBe(300);"
+        },
+        {
+          "name": "для пустого массива возвращает 0",
+          "code": "expect(maxDuration([])).toBe(0);"
+        },
+        {
+          "name": "работает с одним элементом",
+          "code": "expect(maxDuration([{ name: 'a', durationMs: 42 }])).toBe(42);"
+        },
+        {
+          "name": "не изменяет исходный массив",
+          "code": "const source = [{ name: 'a', durationMs: 10 }];\nmaxDuration(source);\nexpect(source).toEqual([{ name: 'a', durationMs: 10 }]);"
+        }
+      ],
+      "solution": "function maxDuration(results) {\n  if (results.length === 0) {\n    return 0;\n  }\n\n  return Math.max.apply(null, results.map((result) => result.durationMs));\n}",
+      "chapter": "01-javascript/31-apply"
+    }
+  ],
+  "01-javascript/32-bind": [
+    {
+      "id": "js-32-bound-reporter",
+      "title": "Функция с закреплённым объектом",
+      "difficulty": "easy",
+      "lang": "js",
+      "runner": "browser",
+      "prompt": "Дан объект `reporter` с полем `prefix` и методом `line(text)`, который возвращает `<prefix>: <text>`. Напишите функцию `makeLine(reporter)`, которая возвращает **функцию** — её можно передать куда угодно, и она сохранит привязку к `reporter`. Сам метод вызывать не нужно.",
+      "starter": "function makeLine(reporter) {\n  // Верните функцию, а не результат вызова.\n}",
+      "hints": [
+        "Нужен метод функции, который не вызывает её, а создаёт новую с закреплённым объектом.",
+        "Возвращать надо саму функцию — вызов произойдёт позже.",
+        "Проверьте, что результат имеет тип function."
+      ],
+      "standSetup": "",
+      "tests": [
+        {
+          "name": "возвращает функцию",
+          "code": "const reporter = { prefix: 'api', line(text) { return `${this.prefix}: ${text}`; } };\nexpect(typeof makeLine(reporter)).toBe('function');"
+        },
+        {
+          "name": "сохраняет объект при вызове",
+          "code": "const reporter = { prefix: 'api', line(text) { return `${this.prefix}: ${text}`; } };\nconst line = makeLine(reporter);\nexpect(line('старт')).toBe('api: старт');"
+        },
+        {
+          "name": "работает после передачи в другой код",
+          "code": "const reporter = { prefix: 'ui', line(text) { return `${this.prefix}: ${text}`; } };\nconst line = makeLine(reporter);\nexpect(['a', 'b'].map(line)).toEqual(['ui: a', 'ui: b']);"
+        },
+        {
+          "name": "исходный метод остаётся прежним",
+          "code": "const reporter = { prefix: 'api', line(text) { return `${this.prefix}: ${text}`; } };\nmakeLine(reporter);\nexpect(reporter.line.call({ prefix: 'other' }, 'x')).toBe('other: x');"
+        }
+      ],
+      "solution": "function makeLine(reporter) {\n  return reporter.line.bind(reporter);\n}",
+      "chapter": "01-javascript/32-bind"
+    },
+    {
+      "id": "js-32-partial-prefix",
+      "title": "Частичное применение аргумента",
+      "difficulty": "medium",
+      "lang": "js",
+      "runner": "browser",
+      "prompt": "Дана функция `buildUrl(baseUrl, path)`, возвращающая `<baseUrl><path>`. Напишите функцию `urlBuilderFor(baseUrl)`, которая возвращает функцию одного аргумента `path`. Базовый адрес должен быть закреплён заранее, а не передаваться при каждом вызове.",
+      "starter": "function buildUrl(baseUrl, path) {\n  return `${baseUrl}${path}`;\n}\n\nfunction urlBuilderFor(baseUrl) {\n  // Первый аргумент закрепляется заранее.\n}",
+      "hints": [
+        "Аргументы, переданные при создании привязанной функции, закрепляются за ней.",
+        "Объект выполнения здесь не нужен — на его месте может стоять null.",
+        "Оставшийся аргумент передаётся при вызове."
+      ],
+      "standSetup": "",
+      "tests": [
+        {
+          "name": "подставляет базовый адрес",
+          "code": "const forStaging = urlBuilderFor('https://staging.test');\nexpect(forStaging('/orders')).toBe('https://staging.test/orders');"
+        },
+        {
+          "name": "два построителя независимы",
+          "code": "const first = urlBuilderFor('http://a');\nconst second = urlBuilderFor('http://b');\nexpect(first('/x') + ' | ' + second('/y')).toBe('http://a/x | http://b/y');"
+        },
+        {
+          "name": "возвращает функцию одного аргумента",
+          "code": "const forStaging = urlBuilderFor('http://a');\nexpect(typeof forStaging).toBe('function');"
+        },
+        {
+          "name": "подходит для передачи в map",
+          "code": "const forStaging = urlBuilderFor('http://a');\nexpect(['/x', '/y'].map(forStaging)).toEqual(['http://a/x', 'http://a/y']);"
+        }
+      ],
+      "solution": "function buildUrl(baseUrl, path) {\n  return `${baseUrl}${path}`;\n}\n\nfunction urlBuilderFor(baseUrl) {\n  return buildUrl.bind(null, baseUrl);\n}",
+      "chapter": "01-javascript/32-bind"
+    }
+  ],
+  "01-javascript/33-objects": [
+    {
+      "id": "js-33-read-optional-field",
+      "title": "Чтение поля, которого может не быть",
+      "difficulty": "easy",
+      "lang": "js",
+      "runner": "browser",
+      "prompt": "Напишите функцию `readRole(user)`, которая возвращает значение поля `role`. Если поля нет, вернуть строку `guest`. Отличайте отсутствие поля от значения `null`: для `null` тоже нужно вернуть `guest`, а для пустой строки — вернуть пустую строку.",
+      "starter": "function readRole(user) {\n  // Отсутствующее поле даёт undefined.\n}",
+      "hints": [
+        "Обращение к несуществующему свойству возвращает undefined, а не ошибку.",
+        "Подменять нужно только undefined и null.",
+        "Пустая строка — валидное значение, её заменять нельзя."
+      ],
+      "standSetup": "",
+      "tests": [
+        {
+          "name": "возвращает существующее значение",
+          "code": "expect(readRole({ role: 'admin' })).toBe('admin');"
+        },
+        {
+          "name": "подставляет guest при отсутствии поля",
+          "code": "expect(readRole({})).toBe('guest');"
+        },
+        {
+          "name": "подставляет guest при null",
+          "code": "expect(readRole({ role: null })).toBe('guest');"
+        },
+        {
+          "name": "пустую строку сохраняет",
+          "code": "expect(readRole({ role: '' })).toBe('');"
+        }
+      ],
+      "solution": "function readRole(user) {\n  return user.role ?? 'guest';\n}",
+      "chapter": "01-javascript/33-objects"
+    },
+    {
+      "id": "js-33-update-without-mutation",
+      "title": "Обновить поле, не меняя исходный объект",
+      "difficulty": "medium",
+      "lang": "js",
+      "runner": "browser",
+      "prompt": "Напишите функцию `withStatus(item, status)`, которая возвращает **новый** объект со всеми полями исходного и заменённым полем `status`. Исходный объект изменяться не должен.",
+      "starter": "function withStatus(item, status) {\n  // Верните копию с изменённым полем.\n}",
+      "hints": [
+        "Присваивание свойства изменит исходный объект.",
+        "Копию с дополнением удобно собрать через spread.",
+        "Порядок важен: новое значение должно перекрыть старое."
+      ],
+      "standSetup": "",
+      "tests": [
+        {
+          "name": "заменяет поле",
+          "code": "expect(withStatus({ id: 1, status: 'new' }, 'done'))\n  .toEqual({ id: 1, status: 'done' });"
+        },
+        {
+          "name": "не изменяет исходный объект",
+          "code": "const source = { id: 1, status: 'new' };\nwithStatus(source, 'done');\nexpect(source.status).toBe('new');"
+        },
+        {
+          "name": "возвращает новый объект",
+          "code": "const source = { id: 1, status: 'new' };\nexpect(withStatus(source, 'done') === source).toBe(false);"
+        },
+        {
+          "name": "добавляет поле, если его не было",
+          "code": "expect(withStatus({ id: 1 }, 'done')).toEqual({ id: 1, status: 'done' });"
+        }
+      ],
+      "solution": "function withStatus(item, status) {\n  return { ...item, status };\n}",
+      "chapter": "01-javascript/33-objects"
+    }
+  ],
+  "01-javascript/34-destructuring": [
+    {
+      "id": "js-34-extract-response-parts",
+      "title": "Извлечь части ответа",
+      "difficulty": "easy",
+      "lang": "js",
+      "runner": "browser",
+      "prompt": "Напишите функцию `describeResponse(response)`, которая через деструктуризацию извлекает `status` и `body` и возвращает строку вида `200: ok`. Если `status` отсутствует, использовать значение `0`.",
+      "starter": "function describeResponse(response) {\n  // Деструктуризация поддерживает значения по умолчанию.\n}",
+      "hints": [
+        "Значение по умолчанию задаётся прямо в деструктуризации.",
+        "Оно срабатывает только при undefined.",
+        "Строку удобно собрать шаблонным литералом."
+      ],
+      "standSetup": "",
+      "tests": [
+        {
+          "name": "извлекает поля",
+          "code": "expect(describeResponse({ status: 200, body: 'ok' })).toBe('200: ok');"
+        },
+        {
+          "name": "подставляет ноль при отсутствии статуса",
+          "code": "expect(describeResponse({ body: 'ok' })).toBe('0: ok');"
+        },
+        {
+          "name": "не изменяет исходный объект",
+          "code": "const source = { status: 200, body: 'ok' };\ndescribeResponse(source);\nexpect(source).toEqual({ status: 200, body: 'ok' });"
+        },
+        {
+          "name": "работает с пустым телом",
+          "code": "expect(describeResponse({ status: 204, body: '' })).toBe('204: ');"
+        }
+      ],
+      "solution": "function describeResponse(response) {\n  const { status = 0, body } = response;\n\n  return `${status}: ${body}`;\n}",
+      "chapter": "01-javascript/34-destructuring"
+    },
+    {
+      "id": "js-34-rename-and-default",
+      "title": "Переименование с значением по умолчанию",
+      "difficulty": "medium",
+      "lang": "js",
+      "runner": "browser",
+      "prompt": "Напишите функцию `toTestCase(raw)`, которая из объекта `{ name, prio }` возвращает `{ title, priority }`: `title` берётся из `name`, `priority` — из `prio` со значением по умолчанию `LOW`. Используйте деструктуризацию с переименованием.",
+      "starter": "function toTestCase(raw) {\n  // Переименование и значение по умолчанию задаются вместе.\n}",
+      "hints": [
+        "Синтаксис переименования: { name: title }.",
+        "Значение по умолчанию ставится после нового имени.",
+        "Значение по умолчанию срабатывает только при undefined, но не при null."
+      ],
+      "standSetup": "",
+      "tests": [
+        {
+          "name": "переименовывает поля",
+          "code": "expect(toTestCase({ name: 'login', prio: 'HIGH' }))\n  .toEqual({ title: 'login', priority: 'HIGH' });"
+        },
+        {
+          "name": "подставляет LOW при отсутствии приоритета",
+          "code": "expect(toTestCase({ name: 'login' }))\n  .toEqual({ title: 'login', priority: 'LOW' });"
+        },
+        {
+          "name": "null приоритет остаётся null",
+          "code": "expect(toTestCase({ name: 'login', prio: null }).priority).toBe(null);"
+        },
+        {
+          "name": "не изменяет исходный объект",
+          "code": "const source = { name: 'login', prio: 'HIGH' };\ntoTestCase(source);\nexpect(source).toEqual({ name: 'login', prio: 'HIGH' });"
+        }
+      ],
+      "solution": "function toTestCase(raw) {\n  const { name: title, prio: priority = 'LOW' } = raw;\n\n  return { title, priority };\n}",
+      "chapter": "01-javascript/34-destructuring"
+    }
+  ],
+  "01-javascript/35-optional-chaining": [
+    {
+      "id": "js-35-nested-email",
+      "title": "Доступ к вложенному полю",
+      "difficulty": "easy",
+      "lang": "js",
+      "runner": "browser",
+      "prompt": "Напишите функцию `readEmail(response)`, которая возвращает `response.body.user.email`. Если любое звено отсутствует, вернуть `null` вместо ошибки.",
+      "starter": "function readEmail(response) {\n  // Опциональная цепочка прерывается на первом отсутствующем звене.\n}",
+      "hints": [
+        "Опциональная цепочка возвращает undefined, если звено отсутствует.",
+        "Требуется именно null, а не undefined — значение нужно подменить.",
+        "Подменять следует и undefined, и null."
+      ],
+      "standSetup": "",
+      "tests": [
+        {
+          "name": "возвращает вложенное значение",
+          "code": "expect(readEmail({ body: { user: { email: 'a@b.test' } } })).toBe('a@b.test');"
+        },
+        {
+          "name": "нет user — возвращает null",
+          "code": "expect(readEmail({ body: {} })).toBe(null);"
+        },
+        {
+          "name": "нет body — возвращает null",
+          "code": "expect(readEmail({})).toBe(null);"
+        },
+        {
+          "name": "ошибки не возникает",
+          "code": "let thrown = false;\ntry { readEmail({}); } catch (error) { thrown = true; }\nexpect(thrown).toBe(false);"
+        }
+      ],
+      "solution": "function readEmail(response) {\n  return response?.body?.user?.email ?? null;\n}",
+      "chapter": "01-javascript/35-optional-chaining"
+    },
+    {
+      "id": "js-35-safe-method-call",
+      "title": "Вызов метода, которого может не быть",
+      "difficulty": "medium",
+      "lang": "js",
+      "runner": "browser",
+      "prompt": "Напишите функцию `describeSafely(reporter)`, которая вызывает `reporter.describe()` и возвращает результат. Если объекта нет или у него нет метода `describe`, вернуть строку `нет описания` без ошибки.",
+      "starter": "function describeSafely(reporter) {\n  // Опциональная цепочка работает и для вызова метода.\n}",
+      "hints": [
+        "Для безопасного вызова есть форма ?.() — она проверяет наличие метода.",
+        "Если метода нет, результатом будет undefined.",
+        "Подменить нужно и undefined, и null."
+      ],
+      "standSetup": "",
+      "tests": [
+        {
+          "name": "вызывает существующий метод",
+          "code": "expect(describeSafely({ describe: () => 'отчёт' })).toBe('отчёт');"
+        },
+        {
+          "name": "нет метода — возвращает заглушку",
+          "code": "expect(describeSafely({})).toBe('нет описания');"
+        },
+        {
+          "name": "нет объекта — возвращает заглушку",
+          "code": "expect(describeSafely(undefined)).toBe('нет описания');"
+        },
+        {
+          "name": "ошибки не возникает",
+          "code": "let thrown = false;\ntry { describeSafely({}); } catch (error) { thrown = true; }\nexpect(thrown).toBe(false);"
+        }
+      ],
+      "solution": "function describeSafely(reporter) {\n  return reporter?.describe?.() ?? 'нет описания';\n}",
+      "chapter": "01-javascript/35-optional-chaining"
+    }
+  ],
+  "01-javascript/36-nullish-coalescing": [
+    {
+      "id": "js-36-retry-default",
+      "title": "Значение по умолчанию без потери нуля",
+      "difficulty": "easy",
+      "lang": "js",
+      "runner": "browser",
+      "prompt": "Напишите функцию `readRetries(config)`, которая возвращает `config.retries`. Если значение не задано, вернуть `2`. Ноль является допустимым значением и заменяться не должен.",
+      "starter": "function readRetries(config) {\n  // Оператор || заменит и ноль.\n}",
+      "hints": [
+        "Оператор || срабатывает на любом ложном значении, включая 0.",
+        "Нужен оператор, реагирующий только на null и undefined.",
+        "Значение 0 должно доходить до вызывающего кода без изменений."
+      ],
+      "standSetup": "",
+      "tests": [
+        {
+          "name": "возвращает заданное значение",
+          "code": "expect(readRetries({ retries: 5 })).toBe(5);"
+        },
+        {
+          "name": "ноль сохраняется",
+          "code": "expect(readRetries({ retries: 0 })).toBe(0);"
+        },
+        {
+          "name": "при отсутствии подставляет 2",
+          "code": "expect(readRetries({})).toBe(2);"
+        },
+        {
+          "name": "при null подставляет 2",
+          "code": "expect(readRetries({ retries: null })).toBe(2);"
+        }
+      ],
+      "solution": "function readRetries(config) {\n  return config.retries ?? 2;\n}",
+      "chapter": "01-javascript/36-nullish-coalescing"
+    },
+    {
+      "id": "js-36-resolve-config",
+      "title": "Собрать конфигурацию из двух источников",
+      "difficulty": "medium",
+      "lang": "js",
+      "runner": "browser",
+      "prompt": "Напишите функцию `resolveConfig(fromEnv, defaults)`, которая возвращает объект с полями `baseUrl`, `retries` и `verbose`. Для каждого поля берётся значение из `fromEnv`, а если оно `null` или `undefined` — из `defaults`. Значения `0`, `false` и пустая строка из `fromEnv` считаются заданными.",
+      "starter": "function resolveConfig(fromEnv, defaults) {\n  // Для каждого поля нужна проверка только на null и undefined.\n}",
+      "hints": [
+        "Оператор || испортит false, 0 и пустую строку.",
+        "Нужен оператор, реагирующий только на null и undefined.",
+        "Полей три — правило для каждого одинаковое."
+      ],
+      "standSetup": "",
+      "tests": [
+        {
+          "name": "берёт значения из окружения",
+          "code": "expect(resolveConfig(\n  { baseUrl: 'http://a', retries: 3, verbose: true },\n  { baseUrl: 'http://b', retries: 1, verbose: false }\n)).toEqual({ baseUrl: 'http://a', retries: 3, verbose: true });"
+        },
+        {
+          "name": "подставляет значения по умолчанию",
+          "code": "expect(resolveConfig({}, { baseUrl: 'http://b', retries: 1, verbose: false }))\n  .toEqual({ baseUrl: 'http://b', retries: 1, verbose: false });"
+        },
+        {
+          "name": "false и ноль из окружения сохраняются",
+          "code": "expect(resolveConfig(\n  { retries: 0, verbose: false },\n  { baseUrl: 'http://b', retries: 5, verbose: true }\n)).toEqual({ baseUrl: 'http://b', retries: 0, verbose: false });"
+        },
+        {
+          "name": "пустая строка из окружения сохраняется",
+          "code": "expect(resolveConfig({ baseUrl: '' }, { baseUrl: 'http://b', retries: 1, verbose: false }).baseUrl)\n  .toBe('');"
+        }
+      ],
+      "solution": "function resolveConfig(fromEnv, defaults) {\n  return {\n    baseUrl: fromEnv.baseUrl ?? defaults.baseUrl,\n    retries: fromEnv.retries ?? defaults.retries,\n    verbose: fromEnv.verbose ?? defaults.verbose\n  };\n}",
+      "chapter": "01-javascript/36-nullish-coalescing"
+    }
+  ],
+  "01-javascript/41-classes": [
+    {
+      "id": "js-41-test-run-class",
+      "title": "Класс с состоянием прогона",
+      "difficulty": "easy",
+      "lang": "js",
+      "runner": "browser",
+      "prompt": "Напишите класс `TestRun`, который принимает имя прогона в конструктор, имеет метод `add(status)` для учёта результата и метод `summary()`, возвращающий строку вида `smoke: 2 passed, 1 failed`. Учитываются только статусы `passed` и `failed`.",
+      "starter": "class TestRun {\n  constructor(name) {\n    // Сохраните имя и счётчики.\n  }\n\n  add(status) {\n    // Увеличьте нужный счётчик.\n  }\n\n  summary() {\n    // Соберите строку отчёта.\n  }\n}",
+      "hints": [
+        "Состояние хранится в полях экземпляра через this.",
+        "Методы класса лежат в прототипе, но работают с состоянием конкретного объекта.",
+        "Неизвестные статусы учитывать не нужно."
+      ],
+      "standSetup": "",
+      "tests": [
+        {
+          "name": "считает результаты",
+          "code": "const run = new TestRun('smoke');\nrun.add('passed');\nrun.add('passed');\nrun.add('failed');\nexpect(run.summary()).toBe('smoke: 2 passed, 1 failed');"
+        },
+        {
+          "name": "новый прогон начинается с нулей",
+          "code": "expect(new TestRun('empty').summary()).toBe('empty: 0 passed, 0 failed');"
+        },
+        {
+          "name": "два прогона независимы",
+          "code": "const first = new TestRun('a');\nconst second = new TestRun('b');\nfirst.add('passed');\nexpect(second.summary()).toBe('b: 0 passed, 0 failed');"
+        },
+        {
+          "name": "неизвестный статус не учитывается",
+          "code": "const run = new TestRun('smoke');\nrun.add('skipped');\nexpect(run.summary()).toBe('smoke: 0 passed, 0 failed');"
+        }
+      ],
+      "solution": "class TestRun {\n  constructor(name) {\n    this.name = name;\n    this.passed = 0;\n    this.failed = 0;\n  }\n\n  add(status) {\n    if (status === 'passed') {\n      this.passed += 1;\n    }\n\n    if (status === 'failed') {\n      this.failed += 1;\n    }\n  }\n\n  summary() {\n    return `${this.name}: ${this.passed} passed, ${this.failed} failed`;\n  }\n}",
+      "chapter": "01-javascript/41-classes"
+    },
+    {
+      "id": "js-41-methods-in-prototype",
+      "title": "Методы живут в прототипе",
+      "difficulty": "medium",
+      "lang": "js",
+      "runner": "browser",
+      "prompt": "Напишите класс `Reporter` с полем `prefix` и методом `line(text)`, возвращающим `<prefix>: <text>`. Затем напишите функцию `sharesMethod(first, second)`, которая возвращает `true`, если два экземпляра используют **один и тот же** объект метода, а не собственные копии.",
+      "starter": "class Reporter {\n  constructor(prefix) {\n    // Только состояние, без методов в конструкторе.\n  }\n\n  line(text) {\n    // Метод класса.\n  }\n}\n\nfunction sharesMethod(first, second) {\n  // Сравните ссылки на метод у двух экземпляров.\n}",
+      "hints": [
+        "Методы класса создаются один раз и лежат в прототипе.",
+        "Если присвоить функцию в конструкторе, у каждого объекта будет своя копия.",
+        "Сравнивать нужно ссылки на функции через ===."
+      ],
+      "standSetup": "",
+      "tests": [
+        {
+          "name": "метод работает",
+          "code": "expect(new Reporter('api').line('старт')).toBe('api: старт');"
+        },
+        {
+          "name": "экземпляры делят один метод",
+          "code": "expect(sharesMethod(new Reporter('a'), new Reporter('b'))).toBe(true);"
+        },
+        {
+          "name": "метод не является собственным свойством объекта",
+          "code": "expect(Object.hasOwn(new Reporter('a'), 'line')).toBe(false);"
+        },
+        {
+          "name": "состояние у экземпляров своё",
+          "code": "const first = new Reporter('a');\nconst second = new Reporter('b');\nexpect(first.line('x') + ' | ' + second.line('x')).toBe('a: x | b: x');"
+        }
+      ],
+      "solution": "class Reporter {\n  constructor(prefix) {\n    this.prefix = prefix;\n  }\n\n  line(text) {\n    return `${this.prefix}: ${text}`;\n  }\n}\n\nfunction sharesMethod(first, second) {\n  return first.line === second.line;\n}",
+      "chapter": "01-javascript/41-classes"
+    }
+  ],
+  "01-javascript/42-class-inheritance": [
+    {
+      "id": "js-42-extend-reporter",
+      "title": "Наследник с дополненным поведением",
+      "difficulty": "medium",
+      "lang": "js",
+      "runner": "browser",
+      "prompt": "Дан класс `BaseReporter` с методом `line(text)`, возвращающим `<prefix>: <text>`. Напишите класс `TimedReporter`, который наследует его и переопределяет `line`, добавляя в конец ` [ms]` — где `ms` берётся из поля `durationMs`, переданного вторым аргументом конструктора. Родительскую реализацию нужно переиспользовать.",
+      "starter": "class BaseReporter {\n  constructor(prefix) {\n    this.prefix = prefix;\n  }\n\n  line(text) {\n    return `${this.prefix}: ${text}`;\n  }\n}\n\nclass TimedReporter extends BaseReporter {\n  // Конструктор должен передать prefix родителю.\n}",
+      "hints": [
+        "Конструктор наследника вызывает родительский до обращения к this.",
+        "Родительскую реализацию метода можно вызвать через super.",
+        "Дополнение приписывается к результату родительского метода."
+      ],
+      "standSetup": "",
+      "tests": [
+        {
+          "name": "дополняет родительский результат",
+          "code": "expect(new TimedReporter('api', 120).line('старт')).toBe('api: старт [120]');"
+        },
+        {
+          "name": "остаётся экземпляром родителя",
+          "code": "expect(new TimedReporter('api', 1) instanceof BaseReporter).toBe(true);"
+        },
+        {
+          "name": "родительский класс не изменился",
+          "code": "expect(new BaseReporter('api').line('старт')).toBe('api: старт');"
+        },
+        {
+          "name": "два наследника независимы",
+          "code": "const first = new TimedReporter('a', 1);\nconst second = new TimedReporter('b', 2);\nexpect(first.line('x') + ' | ' + second.line('x')).toBe('a: x [1] | b: x [2]');"
+        }
+      ],
+      "solution": "class BaseReporter {\n  constructor(prefix) {\n    this.prefix = prefix;\n  }\n\n  line(text) {\n    return `${this.prefix}: ${text}`;\n  }\n}\n\nclass TimedReporter extends BaseReporter {\n  constructor(prefix, durationMs) {\n    super(prefix);\n    this.durationMs = durationMs;\n  }\n\n  line(text) {\n    return `${super.line(text)} [${this.durationMs}]`;\n  }\n}",
+      "chapter": "01-javascript/42-class-inheritance"
+    },
+    {
+      "id": "js-42-super-before-this",
+      "title": "Порядок вызова super",
+      "difficulty": "medium",
+      "lang": "js",
+      "runner": "browser",
+      "prompt": "Напишите функцию `tryBuild(makeInstance)`, которая вызывает переданную функцию и возвращает `{ ok: true }` при успехе или `{ ok: false, isReferenceError: true }`, если была выброшена `ReferenceError`. Это позволит проверить, что обращение к `this` до `super()` в конструкторе наследника недопустимо.",
+      "starter": "function tryBuild(makeInstance) {\n  // Отличите ReferenceError от других ошибок.\n}",
+      "hints": [
+        "Ошибку нужно поймать и проверить её тип.",
+        "Проверка типа выполняется через instanceof.",
+        "При успехе поле isReferenceError не возвращается."
+      ],
+      "standSetup": "",
+      "tests": [
+        {
+          "name": "успешное создание",
+          "code": "class Ok { constructor() { this.value = 1; } }\nexpect(tryBuild(() => new Ok())).toEqual({ ok: true });"
+        },
+        {
+          "name": "обращение к this до super даёт ReferenceError",
+          "code": "class Parent { constructor() { this.a = 1; } }\nclass Broken extends Parent {\n  constructor() { this.b = 2; super(); }\n}\nexpect(tryBuild(() => new Broken())).toEqual({ ok: false, isReferenceError: true });"
+        },
+        {
+          "name": "корректный наследник создаётся",
+          "code": "class Parent { constructor() { this.a = 1; } }\nclass Good extends Parent {\n  constructor() { super(); this.b = 2; }\n}\nexpect(tryBuild(() => new Good())).toEqual({ ok: true });"
+        },
+        {
+          "name": "другие ошибки не считаются ReferenceError",
+          "code": "expect(tryBuild(() => { throw new TypeError('другая'); }))\n  .toEqual({ ok: false, isReferenceError: false });"
+        }
+      ],
+      "solution": "function tryBuild(makeInstance) {\n  try {\n    makeInstance();\n\n    return { ok: true };\n  } catch (error) {\n    return { ok: false, isReferenceError: error instanceof ReferenceError };\n  }\n}",
+      "chapter": "01-javascript/42-class-inheritance"
+    }
+  ],
+  "01-javascript/44-arrays": [
+    {
+      "id": "js-44-last-item",
+      "title": "Последний элемент плана",
+      "difficulty": "easy",
+      "lang": "js",
+      "runner": "browser",
+      "prompt": "Напишите функцию `lastStep(plan)`, которая возвращает последний элемент массива. Для пустого массива функция возвращает `null`. Индекс вычислите через длину массива.",
+      "starter": "function lastStep(plan) {\n  // Последний индекс не равен length.\n}",
+      "hints": [
+        "length — это количество элементов, а не последний индекс.",
+        "Последний индекс на единицу меньше длины.",
+        "Пустой массив нужно обработать отдельно, иначе индекс станет -1."
+      ],
+      "standSetup": "",
+      "tests": [
+        {
+          "name": "возвращает последний элемент",
+          "code": "expect(lastStep(['login', 'order', 'logout'])).toBe('logout');"
+        },
+        {
+          "name": "для пустого массива возвращает null",
+          "code": "expect(lastStep([])).toBe(null);"
+        },
+        {
+          "name": "работает с одним элементом",
+          "code": "expect(lastStep(['solo'])).toBe('solo');"
+        },
+        {
+          "name": "не изменяет исходный массив",
+          "code": "const source = ['a', 'b'];\nlastStep(source);\nexpect(source).toEqual(['a', 'b']);"
+        }
+      ],
+      "solution": "function lastStep(plan) {\n  if (plan.length === 0) {\n    return null;\n  }\n\n  return plan[plan.length - 1];\n}",
+      "chapter": "01-javascript/44-arrays"
+    },
+    {
+      "id": "js-44-step-positions",
+      "title": "Позиции шагов для отчёта",
+      "difficulty": "medium",
+      "lang": "js",
+      "runner": "browser",
+      "prompt": "Напишите функцию `stepPositions(plan)`, которая принимает массив строк и возвращает массив объектов `{ position, step }`, где `position` — номер шага начиная с единицы. Порядок сохраняется.",
+      "starter": "function stepPositions(plan) {\n  // Индекс начинается с нуля, а номер шага — с единицы.\n}",
+      "hints": [
+        "Длина результата совпадает с длиной исходного массива.",
+        "Колбэк получает второй аргумент — индекс.",
+        "Возвращайте новый объект на каждый элемент."
+      ],
+      "standSetup": "",
+      "tests": [
+        {
+          "name": "нумерует шаги с единицы",
+          "code": "expect(stepPositions(['login', 'order'])).toEqual([\n  { position: 1, step: 'login' },\n  { position: 2, step: 'order' }\n]);"
+        },
+        {
+          "name": "для пустого массива возвращает пустой массив",
+          "code": "expect(stepPositions([])).toEqual([]);"
+        },
+        {
+          "name": "сохраняет длину",
+          "code": "expect(stepPositions(['a', 'b', 'c']).length).toBe(3);"
+        },
+        {
+          "name": "не изменяет исходный массив",
+          "code": "const source = ['a'];\nstepPositions(source);\nexpect(source).toEqual(['a']);"
+        }
+      ],
+      "solution": "function stepPositions(plan) {\n  return plan.map((step, index) => ({ position: index + 1, step }));\n}",
+      "chapter": "01-javascript/44-arrays"
+    }
+  ],
+  "01-javascript/45-push-pop": [
+    {
+      "id": "js-45-append-step",
+      "title": "Добавить шаг и вернуть длину",
+      "difficulty": "easy",
+      "lang": "js",
+      "runner": "browser",
+      "prompt": "Напишите функцию `appendStep(plan, step)`, которая добавляет шаг в конец массива и возвращает новое количество шагов. Исходный массив изменяется — это ожидаемое поведение.",
+      "starter": "function appendStep(plan, step) {\n  // Метод добавления в конец сам возвращает новую длину.\n}",
+      "hints": [
+        "Для добавления в конец есть отдельный метод.",
+        "Он возвращает новую длину массива, а не сам массив.",
+        "Возвращать нужно именно длину."
+      ],
+      "standSetup": "",
+      "tests": [
+        {
+          "name": "возвращает новую длину",
+          "code": "expect(appendStep(['login'], 'order')).toBe(2);"
+        },
+        {
+          "name": "добавляет элемент в конец",
+          "code": "const plan = ['login'];\nappendStep(plan, 'order');\nexpect(plan).toEqual(['login', 'order']);"
+        },
+        {
+          "name": "работает с пустым массивом",
+          "code": "expect(appendStep([], 'first')).toBe(1);"
+        },
+        {
+          "name": "возвращает число, а не массив",
+          "code": "expect(typeof appendStep(['a'], 'b')).toBe('number');"
+        }
+      ],
+      "solution": "function appendStep(plan, step) {\n  return plan.push(step);\n}",
+      "chapter": "01-javascript/45-push-pop"
+    },
+    {
+      "id": "js-45-take-last",
+      "title": "Забрать последний шаг",
+      "difficulty": "medium",
+      "lang": "js",
+      "runner": "browser",
+      "prompt": "Напишите функцию `takeLast(plan)`, которая удаляет последний элемент массива и возвращает объект `{ removed, left }`, где `removed` — удалённый элемент (или `null` для пустого массива), а `left` — количество оставшихся шагов.",
+      "starter": "function takeLast(plan) {\n  // Метод удаления с конца возвращает сам удалённый элемент.\n}",
+      "hints": [
+        "Метод удаления с конца возвращает удалённый элемент, а не массив.",
+        "На пустом массиве он возвращает undefined — это нужно превратить в null.",
+        "Количество оставшихся элементов доступно после удаления."
+      ],
+      "standSetup": "",
+      "tests": [
+        {
+          "name": "возвращает удалённый элемент и остаток",
+          "code": "expect(takeLast(['login', 'order'])).toEqual({ removed: 'order', left: 1 });"
+        },
+        {
+          "name": "изменяет исходный массив",
+          "code": "const plan = ['login', 'order'];\ntakeLast(plan);\nexpect(plan).toEqual(['login']);"
+        },
+        {
+          "name": "для пустого массива возвращает null",
+          "code": "expect(takeLast([])).toEqual({ removed: null, left: 0 });"
+        },
+        {
+          "name": "работает с одним элементом",
+          "code": "expect(takeLast(['solo'])).toEqual({ removed: 'solo', left: 0 });"
+        }
+      ],
+      "solution": "function takeLast(plan) {\n  const removed = plan.length === 0 ? null : plan.pop();\n\n  return { removed, left: plan.length };\n}",
+      "chapter": "01-javascript/45-push-pop"
+    }
+  ],
+  "01-javascript/46-shift-unshift": [
+    {
+      "id": "js-46-take-next-task",
+      "title": "Взять следующую задачу из очереди",
+      "difficulty": "easy",
+      "lang": "js",
+      "runner": "browser",
+      "prompt": "Напишите функцию `takeNext(queue)`, которая забирает первый элемент очереди и возвращает его. Для пустой очереди вернуть `null`. Очередь изменяется.",
+      "starter": "function takeNext(queue) {\n  // Метод удаления с начала возвращает удалённый элемент.\n}",
+      "hints": [
+        "Для удаления с начала есть отдельный метод.",
+        "Он возвращает удалённый элемент, а не массив.",
+        "На пустом массиве результат — undefined, его нужно превратить в null."
+      ],
+      "standSetup": "",
+      "tests": [
+        {
+          "name": "возвращает первый элемент",
+          "code": "expect(takeNext(['login', 'order'])).toBe('login');"
+        },
+        {
+          "name": "сдвигает остальные элементы",
+          "code": "const queue = ['login', 'order', 'pay'];\ntakeNext(queue);\nexpect(queue).toEqual(['order', 'pay']);"
+        },
+        {
+          "name": "для пустой очереди возвращает null",
+          "code": "expect(takeNext([])).toBe(null);"
+        },
+        {
+          "name": "после изъятия индексы смещаются",
+          "code": "const queue = ['a', 'b'];\ntakeNext(queue);\nexpect(queue[0]).toBe('b');"
+        }
+      ],
+      "solution": "function takeNext(queue) {\n  if (queue.length === 0) {\n    return null;\n  }\n\n  return queue.shift();\n}",
+      "chapter": "01-javascript/46-shift-unshift"
+    },
+    {
+      "id": "js-46-priority-first",
+      "title": "Приоритетная задача в начало",
+      "difficulty": "medium",
+      "lang": "js",
+      "runner": "browser",
+      "prompt": "Напишите функцию `addPriority(queue, task)`, которая ставит задачу в начало очереди и возвращает объект `{ total, firstChanged }`. Поле `total` — новая длина очереди, `firstChanged` — `true`, если первый элемент изменился (для пустой очереди это тоже считается изменением).",
+      "starter": "function addPriority(queue, task) {\n  // Сравните первый элемент до и после вставки.\n}",
+      "hints": [
+        "Метод вставки в начало возвращает новую длину массива.",
+        "Первый элемент нужно запомнить до вставки.",
+        "Для пустой очереди прежнего первого элемента не было — считайте это изменением."
+      ],
+      "standSetup": "",
+      "tests": [
+        {
+          "name": "ставит задачу в начало",
+          "code": "const queue = ['order'];\naddPriority(queue, 'login');\nexpect(queue).toEqual(['login', 'order']);"
+        },
+        {
+          "name": "возвращает новую длину",
+          "code": "expect(addPriority(['order'], 'login').total).toBe(2);"
+        },
+        {
+          "name": "сообщает об изменении первого элемента",
+          "code": "expect(addPriority(['order'], 'login').firstChanged).toBe(true);"
+        },
+        {
+          "name": "для пустой очереди тоже считается изменением",
+          "code": "expect(addPriority([], 'login')).toEqual({ total: 1, firstChanged: true });"
+        }
+      ],
+      "solution": "function addPriority(queue, task) {\n  const previousFirst = queue.length === 0 ? null : queue[0];\n  const total = queue.unshift(task);\n\n  return { total, firstChanged: queue[0] !== previousFirst };\n}",
+      "chapter": "01-javascript/46-shift-unshift"
+    }
+  ],
+  "01-javascript/49-iteration": [
+    {
+      "id": "js-49-first-failed-name",
+      "title": "Найти первое падение с выходом из цикла",
+      "difficulty": "easy",
+      "lang": "js",
+      "runner": "browser",
+      "prompt": "Напишите функцию `firstFailedName(results)`, которая проходит по массиву `{ name, status }` циклом `for...of` и возвращает имя первого упавшего теста. Если упавших нет, вернуть `null`. Обход должен прекращаться на первом совпадении.",
+      "starter": "function firstFailedName(results) {\n  for (const result of results) {\n    // Верните имя сразу, как нашли.\n  }\n\n  return null;\n}",
+      "hints": [
+        "for...of даёт сами элементы, а не индексы.",
+        "return внутри цикла прекращает и цикл, и функцию.",
+        "Если цикл дошёл до конца, значит совпадений не было."
+      ],
+      "standSetup": "",
+      "tests": [
+        {
+          "name": "находит первое падение",
+          "code": "expect(firstFailedName([\n  { name: 'login', status: 'passed' },\n  { name: 'order', status: 'failed' },\n  { name: 'pay', status: 'failed' }\n])).toBe('order');"
+        },
+        {
+          "name": "если падений нет, возвращает null",
+          "code": "expect(firstFailedName([{ name: 'login', status: 'passed' }])).toBe(null);"
+        },
+        {
+          "name": "для пустого массива возвращает null",
+          "code": "expect(firstFailedName([])).toBe(null);"
+        },
+        {
+          "name": "не изменяет исходный массив",
+          "code": "const source = [{ name: 'order', status: 'failed' }];\nfirstFailedName(source);\nexpect(source).toEqual([{ name: 'order', status: 'failed' }]);"
+        }
+      ],
+      "solution": "function firstFailedName(results) {\n  for (const result of results) {\n    if (result.status === 'failed') {\n      return result.name;\n    }\n  }\n\n  return null;\n}",
+      "chapter": "01-javascript/49-iteration"
+    },
+    {
+      "id": "js-49-numbered-steps",
+      "title": "Обход с индексом через entries",
+      "difficulty": "medium",
+      "lang": "js",
+      "runner": "browser",
+      "prompt": "Напишите функцию `numberedSteps(plan)`, которая проходит по массиву строк и возвращает массив строк вида `\"1) login\"`. Используйте `for...of` вместе с `entries()`, а не ручной счётчик.",
+      "starter": "function numberedSteps(plan) {\n  const lines = [];\n\n  // entries() даёт пары [индекс, значение].\n\n  return lines;\n}",
+      "hints": [
+        "entries() возвращает пары «индекс — значение».",
+        "Пару удобно разложить деструктуризацией прямо в заголовке цикла.",
+        "Номер в отчёте на единицу больше индекса."
+      ],
+      "standSetup": "",
+      "tests": [
+        {
+          "name": "нумерует шаги",
+          "code": "expect(numberedSteps(['login', 'order'])).toEqual(['1) login', '2) order']);"
+        },
+        {
+          "name": "для пустого массива возвращает пустой массив",
+          "code": "expect(numberedSteps([])).toEqual([]);"
+        },
+        {
+          "name": "работает с одним элементом",
+          "code": "expect(numberedSteps(['solo'])).toEqual(['1) solo']);"
+        },
+        {
+          "name": "не изменяет исходный массив",
+          "code": "const source = ['a', 'b'];\nnumberedSteps(source);\nexpect(source).toEqual(['a', 'b']);"
+        }
+      ],
+      "solution": "function numberedSteps(plan) {\n  const lines = [];\n\n  for (const [index, step] of plan.entries()) {\n    lines.push(`${index + 1}) ${step}`);\n  }\n\n  return lines;\n}",
+      "chapter": "01-javascript/49-iteration"
+    }
+  ],
+  "01-javascript/50-foreach": [
+    {
+      "id": "js-50-collect-failed-names",
+      "title": "Собрать имена упавших тестов",
+      "difficulty": "easy",
+      "lang": "js",
+      "runner": "browser",
+      "prompt": "Напишите функцию `collectFailedNames(results)`, которая принимает массив результатов вида `{ name, status }` и возвращает массив имён тестов со статусом `\"failed\"`. Обход выполните через `forEach()`, накапливая имена в подготовленный массив.",
+      "starter": "function collectFailedNames(results) {\n  const failed = [];\n\n  // Пройдите по results и добавьте нужные имена в failed.\n\n  return failed;\n}",
+      "hints": [
+        "forEach() ничего не возвращает — результат нужно накапливать самостоятельно.",
+        "Внутри колбэка проверьте статус и добавьте имя в подготовленный массив.",
+        "Возвращать нужно накопленный массив, а не результат вызова forEach()."
+      ],
+      "standSetup": "",
+      "tests": [
+        {
+          "name": "возвращает имена упавших тестов",
+          "code": "expect(collectFailedNames([\n  { name: 'login', status: 'passed' },\n  { name: 'order', status: 'failed' },\n  { name: 'pay', status: 'failed' }\n])).toEqual(['order', 'pay']);"
+        },
+        {
+          "name": "для пустого массива возвращает пустой массив",
+          "code": "expect(collectFailedNames([])).toEqual([]);"
+        },
+        {
+          "name": "если упавших нет, возвращает пустой массив",
+          "code": "expect(collectFailedNames([{ name: 'login', status: 'passed' }])).toEqual([]);"
+        },
+        {
+          "name": "сохраняет исходный порядок",
+          "code": "expect(collectFailedNames([\n  { name: 'z', status: 'failed' },\n  { name: 'a', status: 'failed' }\n])).toEqual(['z', 'a']);"
+        },
+        {
+          "name": "не изменяет исходный массив",
+          "code": "const source = [{ name: 'login', status: 'failed' }];\ncollectFailedNames(source);\nexpect(source).toEqual([{ name: 'login', status: 'failed' }]);"
+        }
+      ],
+      "solution": "function collectFailedNames(results) {\n  const failed = [];\n\n  results.forEach((result) => {\n    if (result.status === 'failed') {\n      failed.push(result.name);\n    }\n  });\n\n  return failed;\n}",
+      "chapter": "01-javascript/50-foreach"
+    },
+    {
+      "id": "js-50-build-report-lines",
+      "title": "Строки отчёта с номерами",
+      "difficulty": "medium",
+      "lang": "js",
+      "runner": "browser",
+      "prompt": "Напишите функцию `buildReportLines(results)`, которая принимает массив `{ name, status }` и возвращает массив строк вида `\"1. login — passed\"`. Нумерация начинается с единицы. Используйте второй аргумент колбэка `forEach()` — индекс элемента.",
+      "starter": "function buildReportLines(results) {\n  const lines = [];\n\n  // Колбэк forEach получает элемент и его индекс.\n\n  return lines;\n}",
+      "hints": [
+        "Колбэк forEach() принимает три аргумента: элемент, индекс и сам массив.",
+        "Индекс начинается с нуля, а нумерация в отчёте — с единицы.",
+        "Строку удобно собрать шаблонным литералом."
+      ],
+      "standSetup": "",
+      "tests": [
+        {
+          "name": "нумерует строки с единицы",
+          "code": "expect(buildReportLines([\n  { name: 'login', status: 'passed' },\n  { name: 'order', status: 'failed' }\n])).toEqual(['1. login — passed', '2. order — failed']);"
+        },
+        {
+          "name": "для пустого массива возвращает пустой массив",
+          "code": "expect(buildReportLines([])).toEqual([]);"
+        },
+        {
+          "name": "работает с одним элементом",
+          "code": "expect(buildReportLines([{ name: 'solo', status: 'skipped' }]))\n  .toEqual(['1. solo — skipped']);"
+        },
+        {
+          "name": "не изменяет исходный массив",
+          "code": "const source = [{ name: 'login', status: 'passed' }];\nbuildReportLines(source);\nexpect(source).toEqual([{ name: 'login', status: 'passed' }]);"
+        }
+      ],
+      "solution": "function buildReportLines(results) {\n  const lines = [];\n\n  results.forEach((result, index) => {\n    lines.push(`${index + 1}. ${result.name} — ${result.status}`);\n  });\n\n  return lines;\n}",
+      "chapter": "01-javascript/50-foreach"
+    }
+  ],
+  "01-javascript/51-map": [
+    {
+      "id": "js-51-titles-from-results",
+      "title": "Список названий тестов",
+      "difficulty": "easy",
+      "lang": "js",
+      "runner": "browser",
+      "prompt": "Напишите функцию `testTitles(results)`, которая принимает массив `{ name, durationMs }` и возвращает массив названий в верхнем регистре. Длина результата должна совпадать с длиной исходного массива.",
+      "starter": "function testTitles(results) {\n  // Преобразуйте каждый элемент в строку названия.\n}",
+      "hints": [
+        "Нужен метод, который собирает возвращённые значения в новый массив.",
+        "У строк есть метод toUpperCase().",
+        "Не забудьте вернуть значение из колбэка: без return получится массив undefined."
+      ],
+      "standSetup": "",
+      "tests": [
+        {
+          "name": "преобразует названия",
+          "code": "expect(testTitles([\n  { name: 'login', durationMs: 10 },\n  { name: 'order', durationMs: 20 }\n])).toEqual(['LOGIN', 'ORDER']);"
+        },
+        {
+          "name": "сохраняет длину массива",
+          "code": "expect(testTitles([\n  { name: 'a', durationMs: 1 },\n  { name: 'b', durationMs: 2 },\n  { name: 'c', durationMs: 3 }\n]).length).toBe(3);"
+        },
+        {
+          "name": "для пустого массива возвращает пустой массив",
+          "code": "expect(testTitles([])).toEqual([]);"
+        },
+        {
+          "name": "не изменяет исходный массив",
+          "code": "const source = [{ name: 'login', durationMs: 10 }];\ntestTitles(source);\nexpect(source).toEqual([{ name: 'login', durationMs: 10 }]);"
+        }
+      ],
+      "solution": "function testTitles(results) {\n  return results.map((result) => result.name.toUpperCase());\n}",
+      "chapter": "01-javascript/51-map"
+    },
+    {
+      "id": "js-51-mark-slow-tests",
+      "title": "Пометить медленные тесты",
+      "difficulty": "medium",
+      "lang": "js",
+      "runner": "browser",
+      "prompt": "Напишите функцию `markSlow(results, limitMs)`, которая принимает массив `{ name, durationMs }` и возвращает новый массив, где у каждого элемента добавлено поле `isSlow`: `true`, если `durationMs` строго больше `limitMs`. Исходные объекты изменяться не должны.",
+      "starter": "function markSlow(results, limitMs) {\n  // Верните НОВЫЕ объекты, а не изменённые исходные.\n}",
+      "hints": [
+        "map() создаёт новый массив, но объекты внутри остаются теми же — если вернуть исходную ссылку.",
+        "Копию объекта с дополнительным полем удобно собрать через spread.",
+        "Сравнение строгое: ровно limitMs медленным не считается."
+      ],
+      "standSetup": "",
+      "tests": [
+        {
+          "name": "помечает медленные тесты",
+          "code": "expect(markSlow([\n  { name: 'fast', durationMs: 10 },\n  { name: 'slow', durationMs: 300 }\n], 100)).toEqual([\n  { name: 'fast', durationMs: 10, isSlow: false },\n  { name: 'slow', durationMs: 300, isSlow: true }\n]);"
+        },
+        {
+          "name": "граничное значение медленным не считается",
+          "code": "expect(markSlow([{ name: 'edge', durationMs: 100 }], 100)[0].isSlow).toBe(false);"
+        },
+        {
+          "name": "не изменяет исходные объекты",
+          "code": "const source = [{ name: 'slow', durationMs: 300 }];\nmarkSlow(source, 100);\nexpect(source).toEqual([{ name: 'slow', durationMs: 300 }]);"
+        },
+        {
+          "name": "для пустого массива возвращает пустой массив",
+          "code": "expect(markSlow([], 100)).toEqual([]);"
+        }
+      ],
+      "solution": "function markSlow(results, limitMs) {\n  return results.map((result) => ({\n    ...result,\n    isSlow: result.durationMs > limitMs\n  }));\n}",
+      "chapter": "01-javascript/51-map"
+    }
+  ],
+  "01-javascript/52-filter": [
+    {
+      "id": "js-52-only-failed",
+      "title": "Отобрать упавшие тесты",
+      "difficulty": "easy",
+      "lang": "js",
+      "runner": "browser",
+      "prompt": "Напишите функцию `onlyFailed(results)`, которая принимает массив `{ name, status }` и возвращает новый массив только с теми элементами, у которых `status` равен `\"failed\"`. Сами объекты преобразовывать не нужно.",
+      "starter": "function onlyFailed(results) {\n  // Отберите подходящие элементы.\n}",
+      "hints": [
+        "Нужен метод, который оставляет элементы по условию.",
+        "Предикат должен вернуть значение, истинное для подходящих элементов.",
+        "Количество элементов может уменьшиться, но сами элементы остаются прежними."
+      ],
+      "standSetup": "",
+      "tests": [
+        {
+          "name": "оставляет только упавшие",
+          "code": "expect(onlyFailed([\n  { name: 'login', status: 'passed' },\n  { name: 'order', status: 'failed' }\n])).toEqual([{ name: 'order', status: 'failed' }]);"
+        },
+        {
+          "name": "если подходящих нет, возвращает пустой массив",
+          "code": "expect(onlyFailed([{ name: 'login', status: 'passed' }])).toEqual([]);"
+        },
+        {
+          "name": "для пустого массива возвращает пустой массив",
+          "code": "expect(onlyFailed([])).toEqual([]);"
+        },
+        {
+          "name": "не изменяет исходный массив",
+          "code": "const source = [\n  { name: 'login', status: 'passed' },\n  { name: 'order', status: 'failed' }\n];\nonlyFailed(source);\nexpect(source.length).toBe(2);"
+        }
+      ],
+      "solution": "function onlyFailed(results) {\n  return results.filter((result) => result.status === 'failed');\n}",
+      "chapter": "01-javascript/52-filter"
+    },
+    {
+      "id": "js-52-drop-empty-titles",
+      "title": "Убрать записи без названия",
+      "difficulty": "medium",
+      "lang": "js",
+      "runner": "browser",
+      "prompt": "Напишите функцию `withTitle(items)`, которая принимает массив объектов `{ title }` и оставляет только те, у которых `title` — непустая строка. Значения `null`, `undefined`, пустая строка и строка из пробелов не подходят.",
+      "starter": "function withTitle(items) {\n  // Проверьте каждое значение title явно.\n}",
+      "hints": [
+        "Предикат filter() проверяет истинность, поэтому 0 и пустая строка отсеются сами — но этого мало.",
+        "Строка из пробелов истинна: нужна проверка после trim().",
+        "Значение может оказаться не строкой — учтите это в условии."
+      ],
+      "standSetup": "",
+      "tests": [
+        {
+          "name": "оставляет записи с названием",
+          "code": "expect(withTitle([{ title: 'login' }, { title: '' }]))\n  .toEqual([{ title: 'login' }]);"
+        },
+        {
+          "name": "отсеивает строку из пробелов",
+          "code": "expect(withTitle([{ title: '   ' }])).toEqual([]);"
+        },
+        {
+          "name": "отсеивает null и undefined",
+          "code": "expect(withTitle([{ title: null }, { title: undefined }])).toEqual([]);"
+        },
+        {
+          "name": "отсеивает значения, не являющиеся строкой",
+          "code": "expect(withTitle([{ title: 42 }])).toEqual([]);"
+        },
+        {
+          "name": "для пустого массива возвращает пустой массив",
+          "code": "expect(withTitle([])).toEqual([]);"
+        }
+      ],
+      "solution": "function withTitle(items) {\n  return items.filter((item) => typeof item.title === 'string' && item.title.trim() !== '');\n}",
+      "chapter": "01-javascript/52-filter"
+    }
+  ],
   "01-javascript/53-reduce": [
     {
       "id": "js-53-sum-durations",
@@ -170,6 +1474,959 @@
       "chapter": "01-javascript/53-reduce"
     }
   ],
+  "01-javascript/54-chaining": [
+    {
+      "id": "js-54-failed-report-lines",
+      "title": "Отчёт только по упавшим",
+      "difficulty": "medium",
+      "lang": "js",
+      "runner": "browser",
+      "prompt": "Напишите функцию `failedReport(results)`, которая принимает массив `{ name, status, durationMs }` и возвращает массив строк вида `\"order (120 мс)\"` — только для упавших тестов. Порядок сохраняется. Соберите результат цепочкой методов.",
+      "starter": "function failedReport(results) {\n  // Сначала сократите набор, затем преобразуйте.\n}",
+      "hints": [
+        "Цепочка возможна, пока каждый шаг возвращает массив.",
+        "Отбор перед преобразованием дешевле: меньше элементов доходит до второго шага.",
+        "Строку удобно собрать шаблонным литералом."
+      ],
+      "standSetup": "",
+      "tests": [
+        {
+          "name": "собирает строки по упавшим",
+          "code": "expect(failedReport([\n  { name: 'login', status: 'passed', durationMs: 10 },\n  { name: 'order', status: 'failed', durationMs: 120 }\n])).toEqual(['order (120 мс)']);"
+        },
+        {
+          "name": "если упавших нет, возвращает пустой массив",
+          "code": "expect(failedReport([\n  { name: 'login', status: 'passed', durationMs: 10 }\n])).toEqual([]);"
+        },
+        {
+          "name": "сохраняет исходный порядок",
+          "code": "expect(failedReport([\n  { name: 'z', status: 'failed', durationMs: 1 },\n  { name: 'a', status: 'failed', durationMs: 2 }\n])).toEqual(['z (1 мс)', 'a (2 мс)']);"
+        },
+        {
+          "name": "не изменяет исходный массив",
+          "code": "const source = [{ name: 'order', status: 'failed', durationMs: 5 }];\nfailedReport(source);\nexpect(source).toEqual([{ name: 'order', status: 'failed', durationMs: 5 }]);"
+        }
+      ],
+      "solution": "function failedReport(results) {\n  return results\n    .filter((result) => result.status === 'failed')\n    .map((result) => `${result.name} (${result.durationMs} мс)`);\n}",
+      "chapter": "01-javascript/54-chaining"
+    },
+    {
+      "id": "js-54-slowest-three-names",
+      "title": "Три самых медленных теста",
+      "difficulty": "hard",
+      "lang": "js",
+      "runner": "browser",
+      "prompt": "Напишите функцию `slowestThree(results)`, которая принимает массив `{ name, durationMs }` и возвращает массив имён трёх самых медленных тестов по убыванию длительности. Если тестов меньше трёх, вернуть все. Исходный массив изменяться не должен.",
+      "starter": "function slowestThree(results) {\n  // Помните: sort() изменяет исходный массив.\n}",
+      "hints": [
+        "sort() сортирует на месте — сначала нужна копия.",
+        "Компаратор возвращает число: для убывания вычитайте наоборот.",
+        "Ограничить количество поможет slice()."
+      ],
+      "standSetup": "",
+      "tests": [
+        {
+          "name": "возвращает три самых медленных по убыванию",
+          "code": "expect(slowestThree([\n  { name: 'a', durationMs: 10 },\n  { name: 'b', durationMs: 300 },\n  { name: 'c', durationMs: 50 },\n  { name: 'd', durationMs: 200 }\n])).toEqual(['b', 'd', 'c']);"
+        },
+        {
+          "name": "если тестов меньше трёх, возвращает все",
+          "code": "expect(slowestThree([\n  { name: 'a', durationMs: 10 },\n  { name: 'b', durationMs: 30 }\n])).toEqual(['b', 'a']);"
+        },
+        {
+          "name": "для пустого массива возвращает пустой массив",
+          "code": "expect(slowestThree([])).toEqual([]);"
+        },
+        {
+          "name": "не изменяет исходный массив",
+          "code": "const source = [\n  { name: 'a', durationMs: 10 },\n  { name: 'b', durationMs: 300 }\n];\nslowestThree(source);\nexpect(source[0].name).toBe('a');"
+        }
+      ],
+      "solution": "function slowestThree(results) {\n  return [...results]\n    .sort((first, second) => second.durationMs - first.durationMs)\n    .slice(0, 3)\n    .map((result) => result.name);\n}",
+      "chapter": "01-javascript/54-chaining"
+    }
+  ],
+  "01-javascript/55-find": [
+    {
+      "id": "js-55-find-by-id",
+      "title": "Найти тест по идентификатору",
+      "difficulty": "easy",
+      "lang": "js",
+      "runner": "browser",
+      "prompt": "Напишите функцию `findById(results, id)`, которая возвращает первый элемент массива `{ id, name }` с указанным `id`. Если элемент не найден, функция должна выбросить ошибку с сообщением `Тест <id> не найден`.",
+      "starter": "function findById(results, id) {\n  // find() вернёт undefined, если ничего не подошло.\n}",
+      "hints": [
+        "Метод поиска первого подходящего элемента возвращает undefined при неудаче.",
+        "Результат нужно проверить до того, как обращаться к его свойствам.",
+        "Сообщение собирается шаблонным литералом."
+      ],
+      "standSetup": "",
+      "tests": [
+        {
+          "name": "находит элемент по id",
+          "code": "expect(findById([{ id: 1, name: 'login' }, { id: 2, name: 'order' }], 2))\n  .toEqual({ id: 2, name: 'order' });"
+        },
+        {
+          "name": "возвращает первый подходящий",
+          "code": "expect(findById([{ id: 1, name: 'first' }, { id: 1, name: 'second' }], 1).name)\n  .toBe('first');"
+        },
+        {
+          "name": "бросает понятную ошибку, если не найдено",
+          "code": "let message = '';\ntry { findById([{ id: 1, name: 'login' }], 99); }\ncatch (error) { message = error.message; }\nexpect(message).toBe('Тест 99 не найден');"
+        },
+        {
+          "name": "бросает ошибку на пустом массиве",
+          "code": "let thrown = false;\ntry { findById([], 1); } catch (error) { thrown = true; }\nexpect(thrown).toBe(true);"
+        }
+      ],
+      "solution": "function findById(results, id) {\n  const found = results.find((result) => result.id === id);\n\n  if (!found) {\n    throw new Error(`Тест ${id} не найден`);\n  }\n\n  return found;\n}",
+      "chapter": "01-javascript/55-find"
+    },
+    {
+      "id": "js-55-first-failed-index",
+      "title": "Позиция первого падения",
+      "difficulty": "medium",
+      "lang": "js",
+      "runner": "browser",
+      "prompt": "Напишите функцию `firstFailedPosition(results)`, которая возвращает человекочитаемый номер первого упавшего теста в массиве `{ name, status }`. Нумерация начинается с единицы. Если упавших нет, вернуть `0`.",
+      "starter": "function firstFailedPosition(results) {\n  // Нужен индекс, а не сам элемент.\n}",
+      "hints": [
+        "Для позиции есть парный метод поиска, возвращающий индекс.",
+        "При неудаче он возвращает -1 — это значение нужно обработать.",
+        "Индекс начинается с нуля, а нумерация — с единицы."
+      ],
+      "standSetup": "",
+      "tests": [
+        {
+          "name": "возвращает номер первого упавшего",
+          "code": "expect(firstFailedPosition([\n  { name: 'login', status: 'passed' },\n  { name: 'order', status: 'failed' }\n])).toBe(2);"
+        },
+        {
+          "name": "если упавших нет, возвращает 0",
+          "code": "expect(firstFailedPosition([{ name: 'login', status: 'passed' }])).toBe(0);"
+        },
+        {
+          "name": "для пустого массива возвращает 0",
+          "code": "expect(firstFailedPosition([])).toBe(0);"
+        },
+        {
+          "name": "первый элемент даёт номер 1",
+          "code": "expect(firstFailedPosition([{ name: 'a', status: 'failed' }])).toBe(1);"
+        }
+      ],
+      "solution": "function firstFailedPosition(results) {\n  const index = results.findIndex((result) => result.status === 'failed');\n\n  return index === -1 ? 0 : index + 1;\n}",
+      "chapter": "01-javascript/55-find"
+    }
+  ],
+  "01-javascript/56-some": [
+    {
+      "id": "js-56-has-failure",
+      "title": "Есть ли хотя бы одно падение",
+      "difficulty": "easy",
+      "lang": "js",
+      "runner": "browser",
+      "prompt": "Напишите функцию `hasFailure(results)`, которая принимает массив `{ name, status }` и возвращает `true`, если хотя бы один тест имеет статус `\"failed\"`. Результат должен быть строго логическим значением.",
+      "starter": "function hasFailure(results) {\n  // Нужен ответ «да или нет», а не список.\n}",
+      "hints": [
+        "Есть метод, отвечающий на вопрос «есть ли хотя бы один подходящий».",
+        "Он возвращает Boolean независимо от того, что вернул предикат.",
+        "На пустом массиве ответ — false."
+      ],
+      "standSetup": "",
+      "tests": [
+        {
+          "name": "находит падение",
+          "code": "expect(hasFailure([\n  { name: 'login', status: 'passed' },\n  { name: 'order', status: 'failed' }\n])).toBe(true);"
+        },
+        {
+          "name": "если падений нет, возвращает false",
+          "code": "expect(hasFailure([{ name: 'login', status: 'passed' }])).toBe(false);"
+        },
+        {
+          "name": "для пустого массива возвращает false",
+          "code": "expect(hasFailure([])).toBe(false);"
+        },
+        {
+          "name": "результат строго логический",
+          "code": "expect(typeof hasFailure([{ name: 'a', status: 'failed' }])).toBe('boolean');"
+        }
+      ],
+      "solution": "function hasFailure(results) {\n  return results.some((result) => result.status === 'failed');\n}",
+      "chapter": "01-javascript/56-some"
+    },
+    {
+      "id": "js-56-no-duplicate-names",
+      "title": "Проверить отсутствие дубликатов",
+      "difficulty": "medium",
+      "lang": "js",
+      "runner": "browser",
+      "prompt": "Напишите функцию `hasDuplicateNames(results)`, которая принимает массив `{ name }` и возвращает `true`, если какое-то имя встречается более одного раза. Используйте индекс элемента и сравнение с позицией первого вхождения.",
+      "starter": "function hasDuplicateNames(results) {\n  // Предикат получает не только элемент, но и его индекс.\n}",
+      "hints": [
+        "Предикат принимает второй аргумент — индекс текущего элемента.",
+        "У массива есть метод поиска позиции первого вхождения значения.",
+        "Если позиция первого вхождения не совпадает с текущим индексом, это дубликат."
+      ],
+      "standSetup": "",
+      "tests": [
+        {
+          "name": "находит дубликат",
+          "code": "expect(hasDuplicateNames([{ name: 'login' }, { name: 'login' }])).toBe(true);"
+        },
+        {
+          "name": "если дубликатов нет, возвращает false",
+          "code": "expect(hasDuplicateNames([{ name: 'login' }, { name: 'order' }])).toBe(false);"
+        },
+        {
+          "name": "для пустого массива возвращает false",
+          "code": "expect(hasDuplicateNames([])).toBe(false);"
+        },
+        {
+          "name": "один элемент дубликатом не является",
+          "code": "expect(hasDuplicateNames([{ name: 'solo' }])).toBe(false);"
+        },
+        {
+          "name": "находит дубликат не подряд",
+          "code": "expect(hasDuplicateNames([\n  { name: 'a' }, { name: 'b' }, { name: 'a' }\n])).toBe(true);"
+        }
+      ],
+      "solution": "function hasDuplicateNames(results) {\n  const names = results.map((result) => result.name);\n\n  return names.some((name, index) => names.indexOf(name) !== index);\n}",
+      "chapter": "01-javascript/56-some"
+    }
+  ],
+  "01-javascript/57-every": [
+    {
+      "id": "js-57-all-passed",
+      "title": "Все тесты прошли",
+      "difficulty": "easy",
+      "lang": "js",
+      "runner": "browser",
+      "prompt": "Напишите функцию `allPassed(results)`, которая принимает массив `{ name, status }` и возвращает `true`, только если прогон непустой и все тесты имеют статус `\"passed\"`. Пустой прогон успешным не считается.",
+      "starter": "function allPassed(results) {\n  // Учтите, что на пустом массиве every() возвращает true.\n}",
+      "hints": [
+        "Есть метод, проверяющий условие для всех элементов.",
+        "На пустом массиве он возвращает true — это нужно обработать отдельно.",
+        "Сначала убедитесь, что элементы вообще есть."
+      ],
+      "standSetup": "",
+      "tests": [
+        {
+          "name": "все прошли",
+          "code": "expect(allPassed([\n  { name: 'login', status: 'passed' },\n  { name: 'order', status: 'passed' }\n])).toBe(true);"
+        },
+        {
+          "name": "одно падение делает результат ложным",
+          "code": "expect(allPassed([\n  { name: 'login', status: 'passed' },\n  { name: 'order', status: 'failed' }\n])).toBe(false);"
+        },
+        {
+          "name": "пустой прогон успешным не считается",
+          "code": "expect(allPassed([])).toBe(false);"
+        },
+        {
+          "name": "результат строго логический",
+          "code": "expect(typeof allPassed([{ name: 'a', status: 'passed' }])).toBe('boolean');"
+        }
+      ],
+      "solution": "function allPassed(results) {\n  return results.length > 0 && results.every((result) => result.status === 'passed');\n}",
+      "chapter": "01-javascript/57-every"
+    },
+    {
+      "id": "js-57-required-fields-present",
+      "title": "Все записи заполнены",
+      "difficulty": "medium",
+      "lang": "js",
+      "runner": "browser",
+      "prompt": "Напишите функцию `allHaveFields(items, fields)`, которая принимает массив объектов и массив обязательных имён полей. Функция возвращает `true`, если у каждого объекта присутствуют все указанные поля со значением, отличным от `undefined` и `null`. Пустой массив объектов считается допустимым.",
+      "starter": "function allHaveFields(items, fields) {\n  // Проверка нужна по каждому объекту и по каждому полю.\n}",
+      "hints": [
+        "Здесь нужны две вложенные проверки «для всех».",
+        "Значение 0 и пустая строка являются допустимыми — проверяйте только undefined и null.",
+        "Для пустого массива объектов ответ — true."
+      ],
+      "standSetup": "",
+      "tests": [
+        {
+          "name": "все поля на месте",
+          "code": "expect(allHaveFields([{ id: 1, name: 'a' }], ['id', 'name'])).toBe(true);"
+        },
+        {
+          "name": "отсутствующее поле даёт false",
+          "code": "expect(allHaveFields([{ id: 1 }], ['id', 'name'])).toBe(false);"
+        },
+        {
+          "name": "null и undefined не считаются заполненными",
+          "code": "expect(allHaveFields([{ id: null, name: 'a' }], ['id', 'name'])).toBe(false);"
+        },
+        {
+          "name": "ноль и пустая строка считаются заполненными",
+          "code": "expect(allHaveFields([{ id: 0, name: '' }], ['id', 'name'])).toBe(true);"
+        },
+        {
+          "name": "пустой массив объектов допустим",
+          "code": "expect(allHaveFields([], ['id'])).toBe(true);"
+        }
+      ],
+      "solution": "function allHaveFields(items, fields) {\n  return items.every((item) =>\n    fields.every((field) => item[field] !== undefined && item[field] !== null));\n}",
+      "chapter": "01-javascript/57-every"
+    }
+  ],
+  "01-javascript/58-includes": [
+    {
+      "id": "js-58-status-allowed",
+      "title": "Статус входит в допустимый набор",
+      "difficulty": "easy",
+      "lang": "js",
+      "runner": "browser",
+      "prompt": "Напишите функцию `isAllowedStatus(status)`, которая возвращает `true`, если переданное значение входит в набор `\"passed\"`, `\"failed\"`, `\"skipped\"`. Сравнение должно учитывать тип: число или строка в другом регистре не подходят.",
+      "starter": "const ALLOWED = ['passed', 'failed', 'skipped'];\n\nfunction isAllowedStatus(status) {\n  // Проверьте наличие значения в наборе.\n}",
+      "hints": [
+        "Для проверки наличия значения есть метод, не требующий предиката.",
+        "Он сравнивает строго: тип тоже должен совпадать.",
+        "Возвращать нужно результат проверки, а не сам набор."
+      ],
+      "standSetup": "",
+      "tests": [
+        {
+          "name": "допустимый статус",
+          "code": "expect(isAllowedStatus('failed')).toBe(true);"
+        },
+        {
+          "name": "недопустимый статус",
+          "code": "expect(isAllowedStatus('broken')).toBe(false);"
+        },
+        {
+          "name": "другой регистр не подходит",
+          "code": "expect(isAllowedStatus('Passed')).toBe(false);"
+        },
+        {
+          "name": "значение другого типа не подходит",
+          "code": "expect(isAllowedStatus(0)).toBe(false);"
+        }
+      ],
+      "solution": "const ALLOWED = ['passed', 'failed', 'skipped'];\n\nfunction isAllowedStatus(status) {\n  return ALLOWED.includes(status);\n}",
+      "chapter": "01-javascript/58-includes"
+    },
+    {
+      "id": "js-58-find-item-by-field",
+      "title": "Наличие записи по полю",
+      "difficulty": "medium",
+      "lang": "js",
+      "runner": "browser",
+      "prompt": "Напишите функцию `hasItemWithName(items, name)`, которая проверяет, есть ли в массиве объектов `{ name }` запись с указанным именем. Учтите, что `includes()` для объектов сравнивает ссылки и здесь не подходит.",
+      "starter": "function hasItemWithName(items, name) {\n  // includes() сравнит ссылки, а не поля.\n}",
+      "hints": [
+        "Для объектов includes() проверяет идентичность ссылки, а не содержимое.",
+        "Нужен метод, принимающий предикат и отвечающий «да или нет».",
+        "Сравнивать нужно конкретное поле объекта."
+      ],
+      "standSetup": "",
+      "tests": [
+        {
+          "name": "находит запись по имени",
+          "code": "expect(hasItemWithName([{ name: 'login' }, { name: 'order' }], 'order')).toBe(true);"
+        },
+        {
+          "name": "если записи нет, возвращает false",
+          "code": "expect(hasItemWithName([{ name: 'login' }], 'order')).toBe(false);"
+        },
+        {
+          "name": "для пустого массива возвращает false",
+          "code": "expect(hasItemWithName([], 'login')).toBe(false);"
+        },
+        {
+          "name": "сравнение учитывает регистр",
+          "code": "expect(hasItemWithName([{ name: 'login' }], 'Login')).toBe(false);"
+        }
+      ],
+      "solution": "function hasItemWithName(items, name) {\n  return items.some((item) => item.name === name);\n}",
+      "chapter": "01-javascript/58-includes"
+    }
+  ],
+  "01-javascript/59-sort": [
+    {
+      "id": "js-59-sort-durations",
+      "title": "Сортировка длительностей по возрастанию",
+      "difficulty": "easy",
+      "lang": "js",
+      "runner": "browser",
+      "prompt": "Напишите функцию `sortedDurations(durations)`, которая принимает массив чисел и возвращает **новый** массив, отсортированный по возрастанию. Исходный массив изменяться не должен.",
+      "starter": "function sortedDurations(durations) {\n  // sort() сортирует на месте и сравнивает как строки без компаратора.\n}",
+      "hints": [
+        "Без компаратора значения приводятся к строкам: [10, 9] станет [10, 9].",
+        "sort() изменяет исходный массив — сначала нужна копия.",
+        "Компаратор возвращает число: отрицательное, ноль или положительное."
+      ],
+      "standSetup": "",
+      "tests": [
+        {
+          "name": "сортирует по величине, а не как строки",
+          "code": "expect(sortedDurations([10, 9, 1, 80])).toEqual([1, 9, 10, 80]);"
+        },
+        {
+          "name": "не изменяет исходный массив",
+          "code": "const source = [10, 9, 1];\nsortedDurations(source);\nexpect(source).toEqual([10, 9, 1]);"
+        },
+        {
+          "name": "для пустого массива возвращает пустой массив",
+          "code": "expect(sortedDurations([])).toEqual([]);"
+        },
+        {
+          "name": "возвращает новый массив",
+          "code": "const source = [2, 1];\nexpect(sortedDurations(source) === source).toBe(false);"
+        }
+      ],
+      "solution": "function sortedDurations(durations) {\n  return [...durations].sort((first, second) => first - second);\n}",
+      "chapter": "01-javascript/59-sort"
+    },
+    {
+      "id": "js-59-sort-by-status-then-name",
+      "title": "Сортировка по статусу, затем по имени",
+      "difficulty": "hard",
+      "lang": "js",
+      "runner": "browser",
+      "prompt": "Напишите функцию `sortResults(results)`, которая возвращает новый массив `{ name, status }`, отсортированный так: сначала все `failed`, затем остальные; внутри группы — по имени по возрастанию. Исходный массив изменяться не должен.",
+      "starter": "function sortResults(results) {\n  // Компаратор может учитывать два признака по очереди.\n}",
+      "hints": [
+        "Сначала сравните принадлежность к группе failed, потом имена.",
+        "Для строк удобно использовать localeCompare().",
+        "Если первый признак равен, компаратор должен перейти ко второму."
+      ],
+      "standSetup": "",
+      "tests": [
+        {
+          "name": "упавшие идут первыми",
+          "code": "expect(sortResults([\n  { name: 'b', status: 'passed' },\n  { name: 'a', status: 'failed' }\n])).toEqual([\n  { name: 'a', status: 'failed' },\n  { name: 'b', status: 'passed' }\n]);"
+        },
+        {
+          "name": "внутри группы сортировка по имени",
+          "code": "expect(sortResults([\n  { name: 'z', status: 'failed' },\n  { name: 'a', status: 'failed' }\n]).map((r) => r.name)).toEqual(['a', 'z']);"
+        },
+        {
+          "name": "не изменяет исходный массив",
+          "code": "const source = [\n  { name: 'b', status: 'passed' },\n  { name: 'a', status: 'failed' }\n];\nsortResults(source);\nexpect(source[0].name).toBe('b');"
+        },
+        {
+          "name": "для пустого массива возвращает пустой массив",
+          "code": "expect(sortResults([])).toEqual([]);"
+        }
+      ],
+      "solution": "function sortResults(results) {\n  return [...results].sort((first, second) => {\n    const firstFailed = first.status === 'failed' ? 0 : 1;\n    const secondFailed = second.status === 'failed' ? 0 : 1;\n\n    if (firstFailed !== secondFailed) {\n      return firstFailed - secondFailed;\n    }\n\n    return first.name.localeCompare(second.name);\n  });\n}",
+      "chapter": "01-javascript/59-sort"
+    }
+  ],
+  "01-javascript/60-reverse": [
+    {
+      "id": "js-60-reversed-copy",
+      "title": "Обратный порядок без изменения исходного",
+      "difficulty": "easy",
+      "lang": "js",
+      "runner": "browser",
+      "prompt": "Напишите функцию `reversedPlan(plan)`, которая возвращает новый массив с элементами в обратном порядке. Исходный массив изменяться не должен.",
+      "starter": "function reversedPlan(plan) {\n  // reverse() переворачивает массив на месте.\n}",
+      "hints": [
+        "reverse() изменяет исходный массив и возвращает его же.",
+        "Чтобы сохранить исходный порядок, работайте с копией.",
+        "Копию массива можно получить через spread."
+      ],
+      "standSetup": "",
+      "tests": [
+        {
+          "name": "переворачивает порядок",
+          "code": "expect(reversedPlan(['login', 'order', 'logout']))\n  .toEqual(['logout', 'order', 'login']);"
+        },
+        {
+          "name": "не изменяет исходный массив",
+          "code": "const source = ['a', 'b', 'c'];\nreversedPlan(source);\nexpect(source).toEqual(['a', 'b', 'c']);"
+        },
+        {
+          "name": "возвращает новый массив",
+          "code": "const source = ['a', 'b'];\nexpect(reversedPlan(source) === source).toBe(false);"
+        },
+        {
+          "name": "для пустого массива возвращает пустой массив",
+          "code": "expect(reversedPlan([])).toEqual([]);"
+        }
+      ],
+      "solution": "function reversedPlan(plan) {\n  return [...plan].reverse();\n}",
+      "chapter": "01-javascript/60-reverse"
+    },
+    {
+      "id": "js-60-last-events-first",
+      "title": "Последние события в начале",
+      "difficulty": "medium",
+      "lang": "js",
+      "runner": "browser",
+      "prompt": "Напишите функцию `latestEvents(events, limit)`, которая принимает массив строк в порядке появления и возвращает не более `limit` последних событий, начиная с самого нового. Исходный массив изменяться не должен.",
+      "starter": "function latestEvents(events, limit) {\n  // Сначала возьмите нужный хвост, затем переверните копию.\n}",
+      "hints": [
+        "Последние N элементов можно взять отрицательным индексом в slice().",
+        "slice() уже возвращает новый массив — его можно переворачивать безопасно.",
+        "Если элементов меньше лимита, вернуть нужно все.",
+        "Отдельно проверьте нулевой лимит: slice(-0) вернёт весь массив."
+      ],
+      "standSetup": "",
+      "tests": [
+        {
+          "name": "возвращает последние события первыми",
+          "code": "expect(latestEvents(['a', 'b', 'c', 'd'], 2)).toEqual(['d', 'c']);"
+        },
+        {
+          "name": "если элементов меньше лимита, возвращает все",
+          "code": "expect(latestEvents(['a', 'b'], 5)).toEqual(['b', 'a']);"
+        },
+        {
+          "name": "не изменяет исходный массив",
+          "code": "const source = ['a', 'b', 'c'];\nlatestEvents(source, 2);\nexpect(source).toEqual(['a', 'b', 'c']);"
+        },
+        {
+          "name": "для пустого массива возвращает пустой массив",
+          "code": "expect(latestEvents([], 3)).toEqual([]);"
+        },
+        {
+          "name": "нулевой лимит даёт пустой результат",
+          "code": "expect(latestEvents(['a', 'b', 'c'], 0)).toEqual([]);"
+        }
+      ],
+      "solution": "function latestEvents(events, limit) {\n  if (limit <= 0) {\n    return [];\n  }\n\n  return events.slice(-limit).reverse();\n}",
+      "chapter": "01-javascript/60-reverse"
+    }
+  ],
+  "01-javascript/71-callback": [
+    {
+      "id": "js-71-error-first-callback",
+      "title": "Колбэк с ошибкой первым аргументом",
+      "difficulty": "easy",
+      "lang": "js",
+      "runner": "browser",
+      "prompt": "Напишите функцию `readConfig(source, callback)`, которая вызывает `callback` по соглашению «ошибка первым аргументом». Если `source` — непустая строка, вызвать `callback(null, { source })`. Иначе вызвать `callback(new Error(\"источник не задан\"))` без второго аргумента.",
+      "starter": "function readConfig(source, callback) {\n  // Первым аргументом идёт ошибка или null.\n}",
+      "hints": [
+        "При успехе первый аргумент — null, второй — результат.",
+        "При ошибке второй аргумент не передаётся вовсе.",
+        "После вызова колбэка в ветке ошибки нужно прекратить выполнение."
+      ],
+      "standSetup": "",
+      "tests": [
+        {
+          "name": "при успехе передаёт null и результат",
+          "code": "let captured = null;\nreadConfig('config.json', (error, config) => { captured = { error, config }; });\nexpect(captured).toEqual({ error: null, config: { source: 'config.json' } });"
+        },
+        {
+          "name": "при ошибке передаёт объект Error",
+          "code": "let captured = null;\nreadConfig('', (error, config) => { captured = { isError: error instanceof Error, config }; });\nexpect(captured).toEqual({ isError: true, config: undefined });"
+        },
+        {
+          "name": "сообщение об ошибке понятное",
+          "code": "let message = '';\nreadConfig('', (error) => { message = error.message; });\nexpect(message).toBe('источник не задан');"
+        },
+        {
+          "name": "колбэк вызывается ровно один раз",
+          "code": "let calls = 0;\nreadConfig('config.json', () => { calls += 1; });\nexpect(calls).toBe(1);"
+        }
+      ],
+      "solution": "function readConfig(source, callback) {\n  if (typeof source !== 'string' || source === '') {\n    callback(new Error('источник не задан'));\n    return;\n  }\n\n  callback(null, { source });\n}",
+      "chapter": "01-javascript/71-callback"
+    },
+    {
+      "id": "js-71-run-steps-with-callback",
+      "title": "Прогон шагов с отчётом через колбэк",
+      "difficulty": "medium",
+      "lang": "js",
+      "runner": "browser",
+      "prompt": "Напишите функцию `runSteps(steps, onStep)`, которая для каждого шага вызывает `onStep(step, position)`, где `position` начинается с единицы, и возвращает количество выполненных шагов. Возвращаемые значения `onStep` игнорируются.",
+      "starter": "function runSteps(steps, onStep) {\n  // Колбэк получает шаг и его номер.\n}",
+      "hints": [
+        "Колбэк вызывается для каждого элемента.",
+        "Нумерация в отчёте начинается с единицы, а индекс — с нуля.",
+        "Возвращать нужно количество шагов, а не результат обхода."
+      ],
+      "standSetup": "",
+      "tests": [
+        {
+          "name": "вызывает колбэк для каждого шага",
+          "code": "const seen = [];\nrunSteps(['login', 'order'], (step, position) => seen.push(position + ':' + step));\nexpect(seen).toEqual(['1:login', '2:order']);"
+        },
+        {
+          "name": "возвращает количество шагов",
+          "code": "expect(runSteps(['a', 'b', 'c'], () => {})).toBe(3);"
+        },
+        {
+          "name": "для пустого списка колбэк не вызывается",
+          "code": "let calls = 0;\nconst total = runSteps([], () => { calls += 1; });\nexpect([calls, total]).toEqual([0, 0]);"
+        },
+        {
+          "name": "игнорирует значения, возвращённые колбэком",
+          "code": "expect(runSteps(['a'], () => 'что-то')).toBe(1);"
+        }
+      ],
+      "solution": "function runSteps(steps, onStep) {\n  steps.forEach((step, index) => {\n    onStep(step, index + 1);\n  });\n\n  return steps.length;\n}",
+      "chapter": "01-javascript/71-callback"
+    }
+  ],
+  "01-javascript/72-promise": [
+    {
+      "id": "js-72-resolve-status",
+      "title": "Промис со статусом прогона",
+      "difficulty": "easy",
+      "lang": "js",
+      "runner": "browser",
+      "prompt": "Напишите функцию `loadStatus(value)`, которая возвращает Promise. Если `value` равно `\"failed\"`, промис отклоняется ошибкой с сообщением `прогон упал`. В остальных случаях промис успешно завершается значением `{ status: value }`.",
+      "starter": "function loadStatus(value) {\n  // Верните Promise, а не само значение.\n}",
+      "hints": [
+        "Готовый промис можно получить через Promise.resolve и Promise.reject.",
+        "Отклонённый промис принимает объект ошибки.",
+        "Функция должна возвращать промис в обоих случаях."
+      ],
+      "standSetup": "",
+      "tests": [
+        {
+          "name": "успешный случай возвращает значение",
+          "code": "const value = await loadStatus('passed');\nexpect(value).toEqual({ status: 'passed' });"
+        },
+        {
+          "name": "возвращает именно промис",
+          "code": "expect(loadStatus('passed') instanceof Promise).toBe(true);"
+        },
+        {
+          "name": "при failed промис отклоняется",
+          "code": "let message = '';\ntry { await loadStatus('failed'); } catch (error) { message = error.message; }\nexpect(message).toBe('прогон упал');"
+        },
+        {
+          "name": "отклонение приходит объектом Error",
+          "code": "let isError = false;\ntry { await loadStatus('failed'); } catch (error) { isError = error instanceof Error; }\nexpect(isError).toBe(true);"
+        }
+      ],
+      "solution": "function loadStatus(value) {\n  if (value === 'failed') {\n    return Promise.reject(new Error('прогон упал'));\n  }\n\n  return Promise.resolve({ status: value });\n}",
+      "chapter": "01-javascript/72-promise"
+    },
+    {
+      "id": "js-72-chain-with-recovery",
+      "title": "Цепочка с восстановлением после ошибки",
+      "difficulty": "medium",
+      "lang": "js",
+      "runner": "browser",
+      "prompt": "Напишите функцию `statusOrDefault(promise)`, которая принимает промис и возвращает промис со строкой статуса. Если исходный промис успешен, вернуть его значение в верхнем регистре. Если отклонён — вернуть строку `unknown`. Решение постройте на `then()` и `catch()`.",
+      "starter": "function statusOrDefault(promise) {\n  // catch() возвращает промис, и цепочка продолжается как успешная.\n}",
+      "hints": [
+        "then() возвращает новый промис со значением обработчика.",
+        "catch() тоже возвращает промис — его значение идёт дальше по цепочке.",
+        "Возвращать нужно результат цепочки, а не исходный промис."
+      ],
+      "standSetup": "",
+      "tests": [
+        {
+          "name": "успешное значение приводится к верхнему регистру",
+          "code": "expect(await statusOrDefault(Promise.resolve('passed'))).toBe('PASSED');"
+        },
+        {
+          "name": "при отклонении возвращает unknown",
+          "code": "const rejected = Promise.reject(new Error('x'));\nrejected.catch(() => {});\nexpect(await statusOrDefault(rejected)).toBe('unknown');"
+        },
+        {
+          "name": "результат всегда успешный промис",
+          "code": "const source = Promise.reject(new Error('x'));\nsource.catch(() => {});\nlet failed = false;\ntry { await statusOrDefault(source); }\ncatch (error) { failed = true; }\nexpect(failed).toBe(false);"
+        },
+        {
+          "name": "возвращает промис",
+          "code": "expect(statusOrDefault(Promise.resolve('passed')) instanceof Promise).toBe(true);"
+        }
+      ],
+      "solution": "function statusOrDefault(promise) {\n  return promise\n    .then((value) => value.toUpperCase())\n    .catch(() => 'unknown');\n}",
+      "chapter": "01-javascript/72-promise"
+    }
+  ],
+  "01-javascript/73-event-loop": [
+    {
+      "id": "js-73-execution-order",
+      "title": "Порядок выполнения очередей",
+      "difficulty": "medium",
+      "lang": "js",
+      "runner": "browser",
+      "prompt": "Напишите функцию `collectOrder()`, которая возвращает промис с массивом строк в порядке их фактического выполнения. Внутри нужно добавить `\"синхронно\"` сразу, `\"микрозадача\"` через `queueMicrotask`, `\"таймер\"` через `setTimeout` с нулевой задержкой — и дождаться всех.",
+      "starter": "function collectOrder() {\n  const order = [];\n\n  // Добавьте три записи разными способами и дождитесь таймера.\n}",
+      "hints": [
+        "Синхронная запись попадает в массив немедленно.",
+        "Микрозадача выполняется после синхронного кода, но раньше таймера.",
+        "Чтобы дождаться таймера, оберните его в промис и верните его."
+      ],
+      "standSetup": "",
+      "tests": [
+        {
+          "name": "синхронная запись идёт первой",
+          "code": "const order = await collectOrder();\nexpect(order[0]).toBe('синхронно');"
+        },
+        {
+          "name": "микрозадача выполняется раньше таймера",
+          "code": "const order = await collectOrder();\nexpect(order.indexOf('микрозадача') < order.indexOf('таймер')).toBe(true);"
+        },
+        {
+          "name": "порядок полностью определён",
+          "code": "expect(await collectOrder()).toEqual(['синхронно', 'микрозадача', 'таймер']);"
+        },
+        {
+          "name": "возвращает промис",
+          "code": "expect(collectOrder() instanceof Promise).toBe(true);"
+        }
+      ],
+      "solution": "function collectOrder() {\n  const order = [];\n\n  order.push('синхронно');\n  queueMicrotask(() => order.push('микрозадача'));\n\n  return new Promise((resolve) => {\n    setTimeout(() => {\n      order.push('таймер');\n      resolve(order);\n    }, 0);\n  });\n}",
+      "chapter": "01-javascript/73-event-loop"
+    },
+    {
+      "id": "js-73-wait-for-condition",
+      "title": "Ожидание условия вместо паузы",
+      "difficulty": "hard",
+      "lang": "js",
+      "runner": "browser",
+      "prompt": "Напишите функцию `waitFor(read, timeoutMs)`, которая повторно вызывает `read()` и возвращает промис с первым истинным результатом. Первая проверка выполняется сразу, без начальной паузы. Если за `timeoutMs` условие не выполнилось, промис отклоняется ошибкой `условие не выполнено`.",
+      "starter": "async function waitFor(read, timeoutMs) {\n  // Первая проверка идёт до любой паузы.\n}",
+      "hints": [
+        "Проверку удобно делать в цикле с ограничением по времени.",
+        "Между попытками нужна короткая асинхронная пауза, а не блокирующий цикл.",
+        "Проверка «сразу» означает, что первый вызов read() происходит до первой паузы."
+      ],
+      "standSetup": "",
+      "tests": [
+        {
+          "name": "возвращает готовое значение сразу",
+          "code": "expect(await waitFor(() => 'готово', 100)).toBe('готово');"
+        },
+        {
+          "name": "первая проверка выполняется без паузы",
+          "code": "let calls = 0;\nawait waitFor(() => { calls += 1; return calls >= 1 ? 'ok' : null; }, 100);\nexpect(calls).toBe(1);"
+        },
+        {
+          "name": "дожидается появления значения",
+          "code": "let calls = 0;\nconst value = await waitFor(() => { calls += 1; return calls >= 3 ? 'позже' : null; }, 500);\nexpect(value).toBe('позже');"
+        },
+        {
+          "name": "отклоняется по истечении времени",
+          "code": "let message = '';\ntry { await waitFor(() => null, 50); } catch (error) { message = error.message; }\nexpect(message).toBe('условие не выполнено');"
+        }
+      ],
+      "solution": "async function waitFor(read, timeoutMs) {\n  const deadline = Date.now() + timeoutMs;\n\n  while (true) {\n    const value = read();\n\n    if (value) {\n      return value;\n    }\n\n    if (Date.now() >= deadline) {\n      throw new Error('условие не выполнено');\n    }\n\n    await new Promise((resolve) => setTimeout(resolve, 10));\n  }\n}",
+      "chapter": "01-javascript/73-event-loop"
+    }
+  ],
+  "01-javascript/78-async-await": [
+    {
+      "id": "js-78-await-sequence",
+      "title": "Последовательные шаги через await",
+      "difficulty": "easy",
+      "lang": "js",
+      "runner": "browser",
+      "prompt": "Напишите функцию `runInOrder(steps)`, которая принимает массив функций, возвращающих промисы, выполняет их **по очереди** и возвращает массив результатов в том же порядке. Следующий шаг начинается только после завершения предыдущего.",
+      "starter": "async function runInOrder(steps) {\n  // Каждый шаг должен дождаться предыдущего.\n}",
+      "hints": [
+        "Последовательность создаёт расположение await, а не сам язык.",
+        "Промисы нельзя создавать заранее все сразу — иначе они начнут выполняться параллельно.",
+        "Собирать результаты удобно в обычный массив."
+      ],
+      "standSetup": "",
+      "tests": [
+        {
+          "name": "возвращает результаты в порядке шагов",
+          "code": "expect(await runInOrder([\n  () => Promise.resolve('a'),\n  () => Promise.resolve('b')\n])).toEqual(['a', 'b']);"
+        },
+        {
+          "name": "шаги выполняются последовательно",
+          "code": "const order = [];\nawait runInOrder([\n  async () => { order.push('начало 1'); order.push('конец 1'); },\n  async () => { order.push('начало 2'); order.push('конец 2'); }\n]);\nexpect(order).toEqual(['начало 1', 'конец 1', 'начало 2', 'конец 2']);"
+        },
+        {
+          "name": "для пустого списка возвращает пустой массив",
+          "code": "expect(await runInOrder([])).toEqual([]);"
+        },
+        {
+          "name": "возвращает промис",
+          "code": "expect(runInOrder([]) instanceof Promise).toBe(true);"
+        }
+      ],
+      "solution": "async function runInOrder(steps) {\n  const results = [];\n\n  for (const step of steps) {\n    results.push(await step());\n  }\n\n  return results;\n}",
+      "chapter": "01-javascript/78-async-await"
+    },
+    {
+      "id": "js-78-catch-needs-await",
+      "title": "Перехват ошибки асинхронной операции",
+      "difficulty": "medium",
+      "lang": "js",
+      "runner": "browser",
+      "prompt": "Напишите функцию `safeRun(operation)`, которая вызывает асинхронную функцию `operation` и возвращает объект `{ ok: true, value }` при успехе или `{ ok: false, message }` при ошибке. Ошибка должна быть перехвачена внутри функции, а не уходить наружу.",
+      "starter": "async function safeRun(operation) {\n  try {\n    // Без await ошибка не попадёт в catch.\n  } catch (error) {\n    // Верните описание ошибки.\n  }\n}",
+      "hints": [
+        "Без await вызов вернёт отклонённый промис, и catch не сработает.",
+        "В блоке try перед возвратом промиса await обязателен.",
+        "В message передавайте текст ошибки, а не сам объект."
+      ],
+      "standSetup": "",
+      "tests": [
+        {
+          "name": "успешный случай",
+          "code": "expect(await safeRun(async () => 42)).toEqual({ ok: true, value: 42 });"
+        },
+        {
+          "name": "ошибка перехвачена",
+          "code": "expect(await safeRun(async () => { throw new Error('упало'); }))\n  .toEqual({ ok: false, message: 'упало' });"
+        },
+        {
+          "name": "наружу ошибка не уходит",
+          "code": "let escaped = false;\ntry { await safeRun(async () => { throw new Error('упало'); }); }\ncatch (error) { escaped = true; }\nexpect(escaped).toBe(false);"
+        },
+        {
+          "name": "работает с функцией, возвращающей промис",
+          "code": "expect(await safeRun(() => Promise.resolve('ok'))).toEqual({ ok: true, value: 'ok' });"
+        }
+      ],
+      "solution": "async function safeRun(operation) {\n  try {\n    const value = await operation();\n\n    return { ok: true, value };\n  } catch (error) {\n    return { ok: false, message: error.message };\n  }\n}",
+      "chapter": "01-javascript/78-async-await"
+    }
+  ],
+  "01-javascript/80-parallel-async": [
+    {
+      "id": "js-80-run-together",
+      "title": "Запустить операции вместе",
+      "difficulty": "easy",
+      "lang": "js",
+      "runner": "browser",
+      "prompt": "Напишите функцию `runTogether(operations)`, которая принимает массив функций, возвращающих промисы, запускает их одновременно и возвращает массив результатов в порядке аргументов. Если хотя бы одна операция отклонена, результат тоже отклоняется.",
+      "starter": "async function runTogether(operations) {\n  // Сначала запустите все операции, потом дождитесь.\n}",
+      "hints": [
+        "Параллельность даёт момент запуска, а не комбинатор.",
+        "Сначала создайте промисы, затем передайте их комбинатору.",
+        "Порядок результатов соответствует порядку аргументов, а не завершения."
+      ],
+      "standSetup": "",
+      "tests": [
+        {
+          "name": "возвращает результаты по порядку аргументов",
+          "code": "expect(await runTogether([\n  () => new Promise((resolve) => setTimeout(() => resolve('медленный'), 30)),\n  () => Promise.resolve('быстрый')\n])).toEqual(['медленный', 'быстрый']);"
+        },
+        {
+          "name": "операции запускаются до ожидания",
+          "code": "const started = [];\nawait runTogether([\n  async () => { started.push('первая'); },\n  async () => { started.push('вторая'); }\n]);\nexpect(started).toEqual(['первая', 'вторая']);"
+        },
+        {
+          "name": "отклонение одной операции отклоняет результат",
+          "code": "let message = '';\ntry {\n  await runTogether([\n    () => Promise.reject(new Error('сбой')),\n    () => Promise.resolve('ок')\n  ]);\n} catch (error) { message = error.message; }\nexpect(message).toBe('сбой');"
+        },
+        {
+          "name": "для пустого списка возвращает пустой массив",
+          "code": "expect(await runTogether([])).toEqual([]);"
+        }
+      ],
+      "solution": "async function runTogether(operations) {\n  const promises = operations.map((operation) => operation());\n\n  return Promise.all(promises);\n}",
+      "chapter": "01-javascript/80-parallel-async"
+    },
+    {
+      "id": "js-80-report-all-outcomes",
+      "title": "Отчёт по всем операциям, включая упавшие",
+      "difficulty": "medium",
+      "lang": "js",
+      "runner": "browser",
+      "prompt": "Напишите функцию `reportAll(operations)`, которая запускает все операции и возвращает массив объектов `{ ok, value }` или `{ ok, message }` для каждой — независимо от того, упала она или нет. Сам результат никогда не отклоняется.",
+      "starter": "async function reportAll(operations) {\n  // Нужен комбинатор, который не падает на первой ошибке.\n}",
+      "hints": [
+        "Есть комбинатор, который ждёт все операции и сообщает статус каждой.",
+        "В его результате у каждого элемента есть поле status.",
+        "Успешный элемент содержит value, отклонённый — reason."
+      ],
+      "standSetup": "",
+      "tests": [
+        {
+          "name": "сообщает и об успехах, и об ошибках",
+          "code": "expect(await reportAll([\n  () => Promise.resolve('ок'),\n  () => Promise.reject(new Error('сбой'))\n])).toEqual([\n  { ok: true, value: 'ок' },\n  { ok: false, message: 'сбой' }\n]);"
+        },
+        {
+          "name": "результат не отклоняется",
+          "code": "let failed = false;\ntry { await reportAll([() => Promise.reject(new Error('x'))]); }\ncatch (error) { failed = true; }\nexpect(failed).toBe(false);"
+        },
+        {
+          "name": "сохраняет порядок операций",
+          "code": "const report = await reportAll([\n  () => new Promise((resolve) => setTimeout(() => resolve('поздний'), 30)),\n  () => Promise.resolve('ранний')\n]);\nexpect(report.map((item) => item.value)).toEqual(['поздний', 'ранний']);"
+        },
+        {
+          "name": "для пустого списка возвращает пустой массив",
+          "code": "expect(await reportAll([])).toEqual([]);"
+        }
+      ],
+      "solution": "async function reportAll(operations) {\n  const settled = await Promise.allSettled(operations.map((operation) => operation()));\n\n  return settled.map((item) => item.status === 'fulfilled'\n    ? { ok: true, value: item.value }\n    : { ok: false, message: item.reason.message });\n}",
+      "chapter": "01-javascript/80-parallel-async"
+    }
+  ],
+  "02-typescript/104-any-and-unknown": [
+    {
+      "id": "ts-104-parse-unknown-status",
+      "title": "Разбор неизвестного значения",
+      "difficulty": "medium",
+      "lang": "ts",
+      "runner": "browser",
+      "prompt": "Напишите функцию `readStatus(value: unknown): string`, которая возвращает строку статуса. Если `value` — непустая строка, вернуть её. Если это объект с полем `status` типа строка, вернуть это поле. Во всех остальных случаях вернуть `\"unknown\"`. Приведение через `as` использовать нельзя — только настоящие проверки.",
+      "starter": "function readStatus(value: unknown): string {\n  // unknown нельзя использовать без проверки.\n  return 'unknown';\n}",
+      "hints": [
+        "Для примитивов подходит typeof.",
+        "Перед обращением к полю нужно убедиться, что значение — объект и не null.",
+        "Оператор in даёт доступ к свойству у суженного object."
+      ],
+      "standSetup": "",
+      "tests": [
+        {
+          "name": "непустая строка возвращается как есть",
+          "code": "expect(readStatus('passed')).toBe('passed');"
+        },
+        {
+          "name": "читает поле status у объекта",
+          "code": "expect(readStatus({ status: 'failed' })).toBe('failed');"
+        },
+        {
+          "name": "пустая строка не считается статусом",
+          "code": "expect(readStatus('')).toBe('unknown');"
+        },
+        {
+          "name": "null и число дают unknown",
+          "code": "expect(readStatus(null) + '|' + readStatus(42)).toBe('unknown|unknown');"
+        },
+        {
+          "name": "объект без поля status даёт unknown",
+          "code": "expect(readStatus({ name: 'a' })).toBe('unknown');"
+        }
+      ],
+      "solution": "function readStatus(value: unknown): string {\n  if (typeof value === 'string' && value !== '') {\n    return value;\n  }\n\n  if (typeof value === 'object' && value !== null && 'status' in value) {\n    const status = (value as { status: unknown }).status;\n\n    if (typeof status === 'string') {\n      return status;\n    }\n  }\n\n  return 'unknown';\n}",
+      "chapter": "02-typescript/104-any-and-unknown"
+    },
+    {
+      "id": "ts-104-safe-error-message",
+      "title": "Сообщение из пойманного значения",
+      "difficulty": "easy",
+      "lang": "ts",
+      "runner": "browser",
+      "prompt": "Напишите функцию `toMessage(error: unknown): string`, которая возвращает текст ошибки. Для объекта `Error` вернуть его `message`, для строки — саму строку, для остального — результат приведения к строке.",
+      "starter": "function toMessage(error: unknown): string {\n  // В catch может прийти что угодно, не только Error.\n  return '';\n}",
+      "hints": [
+        "Принадлежность классу проверяется через instanceof.",
+        "Строку можно отличить через typeof.",
+        "Для остальных значений подойдёт String(...)."
+      ],
+      "standSetup": "",
+      "tests": [
+        {
+          "name": "достаёт message из Error",
+          "code": "expect(toMessage(new Error('упало'))).toBe('упало');"
+        },
+        {
+          "name": "строку возвращает как есть",
+          "code": "expect(toMessage('строка')).toBe('строка');"
+        },
+        {
+          "name": "число приводит к строке",
+          "code": "expect(toMessage(42)).toBe('42');"
+        },
+        {
+          "name": "работает с подклассом Error",
+          "code": "class ConfigError extends Error {}\nexpect(toMessage(new ConfigError('нет конфигурации'))).toBe('нет конфигурации');"
+        }
+      ],
+      "solution": "function toMessage(error: unknown): string {\n  if (error instanceof Error) {\n    return error.message;\n  }\n\n  if (typeof error === 'string') {\n    return error;\n  }\n\n  return String(error);\n}",
+      "chapter": "02-typescript/104-any-and-unknown"
+    }
+  ],
   "02-typescript/111-type-alias": [
     {
       "id": "ts-111-test-result-alias",
@@ -205,6 +2462,302 @@
       ],
       "solution": "type TestResult = {\n  name: string;\n  status: 'passed' | 'failed' | 'skipped';\n  durationMs?: number;\n};\n\nfunction describe(result: TestResult): string {\n  const base = result.name + ': ' + result.status;\n\n  return result.durationMs === undefined\n    ? base\n    : base + ' (' + result.durationMs + ' мс)';\n}",
       "chapter": "02-typescript/111-type-alias"
+    }
+  ],
+  "02-typescript/118-union-types": [
+    {
+      "id": "ts-118-status-label",
+      "title": "Разбор объединения статусов",
+      "difficulty": "easy",
+      "lang": "ts",
+      "runner": "browser",
+      "prompt": "Объявите тип `Status` как объединение `\"passed\" | \"failed\" | \"skipped\"` и напишите функцию `label(status: Status): string`, возвращающую `\"пройден\"`, `\"упал\"` или `\"пропущен\"` соответственно.",
+      "starter": "type Status = // объединение трёх литералов\n  string;\n\nfunction label(status: Status): string {\n  // Разберите все варианты.\n  return '';\n}",
+      "hints": [
+        "Объединение литеральных типов записывается через вертикальную черту.",
+        "Разбор удобно сделать через switch или последовательность сравнений.",
+        "Все три варианта должны быть покрыты."
+      ],
+      "standSetup": "",
+      "tests": [
+        {
+          "name": "passed",
+          "code": "expect(label('passed')).toBe('пройден');"
+        },
+        {
+          "name": "failed",
+          "code": "expect(label('failed')).toBe('упал');"
+        },
+        {
+          "name": "skipped",
+          "code": "expect(label('skipped')).toBe('пропущен');"
+        },
+        {
+          "name": "разные статусы дают разные подписи",
+          "code": "expect(new Set([label('passed'), label('failed'), label('skipped')]).size).toBe(3);"
+        }
+      ],
+      "solution": "type Status = 'passed' | 'failed' | 'skipped';\n\nfunction label(status: Status): string {\n  switch (status) {\n    case 'passed':\n      return 'пройден';\n    case 'failed':\n      return 'упал';\n    default:\n      return 'пропущен';\n  }\n}",
+      "chapter": "02-typescript/118-union-types"
+    },
+    {
+      "id": "ts-118-discriminated-result",
+      "title": "Размеченное объединение результата",
+      "difficulty": "medium",
+      "lang": "ts",
+      "runner": "browser",
+      "prompt": "Объявите тип `Outcome` как объединение `{ ok: true; value: string }` и `{ ok: false; message: string }`. Напишите функцию `describeOutcome(outcome: Outcome): string`, которая возвращает значение при успехе и строку `\"ошибка: <сообщение>\"` при неудаче. Обращаться к полю, которого нет в текущей ветке, нельзя.",
+      "starter": "type Outcome =\n  | { ok: true; value: string }\n  | { ok: false; message: string };\n\nfunction describeOutcome(outcome: Outcome): string {\n  // Сузьте объединение по полю ok.\n  return '';\n}",
+      "hints": [
+        "Поле ok является различителем: по нему сужается объединение.",
+        "После проверки ok === true доступно только поле value.",
+        "В ветке else доступно только message."
+      ],
+      "standSetup": "",
+      "tests": [
+        {
+          "name": "успешный результат",
+          "code": "expect(describeOutcome({ ok: true, value: 'готово' })).toBe('готово');"
+        },
+        {
+          "name": "неуспешный результат",
+          "code": "expect(describeOutcome({ ok: false, message: 'нет доступа' }))\n  .toBe('ошибка: нет доступа');"
+        },
+        {
+          "name": "пустое значение сохраняется",
+          "code": "expect(describeOutcome({ ok: true, value: '' })).toBe('');"
+        },
+        {
+          "name": "пустое сообщение обрабатывается",
+          "code": "expect(describeOutcome({ ok: false, message: '' })).toBe('ошибка: ');"
+        }
+      ],
+      "solution": "type Outcome =\n  | { ok: true; value: string }\n  | { ok: false; message: string };\n\nfunction describeOutcome(outcome: Outcome): string {\n  if (outcome.ok) {\n    return outcome.value;\n  }\n\n  return 'ошибка: ' + outcome.message;\n}",
+      "chapter": "02-typescript/118-union-types"
+    }
+  ],
+  "02-typescript/129-user-defined-type-guards": [
+    {
+      "id": "ts-129-is-work-item",
+      "title": "Функция-страж для ответа API",
+      "difficulty": "medium",
+      "lang": "ts",
+      "runner": "browser",
+      "prompt": "Объявите тип `WorkItem` с полями `id: string` и `version: number`. Напишите предикат `isWorkItem(value: unknown): value is WorkItem`, который выполняет **настоящие** проверки формы. Приведение через `as` вместо проверки недопустимо.",
+      "starter": "type WorkItem = {\n  id: string;\n  version: number;\n};\n\nfunction isWorkItem(value: unknown): value is WorkItem {\n  // Проверьте границу объекта и тип каждого поля.\n  return false;\n}",
+      "hints": [
+        "Сначала проверьте, что значение — объект и не null.",
+        "Оператор in даёт доступ к свойству у суженного object.",
+        "Для каждого поля нужна отдельная проверка типа."
+      ],
+      "standSetup": "",
+      "tests": [
+        {
+          "name": "подходящий объект",
+          "code": "expect(isWorkItem({ id: 'a', version: 1 })).toBe(true);"
+        },
+        {
+          "name": "неверный тип поля",
+          "code": "expect(isWorkItem({ id: 'a', version: '1' })).toBe(false);"
+        },
+        {
+          "name": "отсутствующее поле",
+          "code": "expect(isWorkItem({ id: 'a' })).toBe(false);"
+        },
+        {
+          "name": "null и массив не подходят",
+          "code": "expect(isWorkItem(null) || isWorkItem([])).toBe(false);"
+        },
+        {
+          "name": "лишние поля не мешают",
+          "code": "expect(isWorkItem({ id: 'a', version: 1, extra: true })).toBe(true);"
+        }
+      ],
+      "solution": "type WorkItem = {\n  id: string;\n  version: number;\n};\n\nfunction isWorkItem(value: unknown): value is WorkItem {\n  if (typeof value !== 'object' || value === null) {\n    return false;\n  }\n\n  return 'id' in value\n    && typeof (value as { id: unknown }).id === 'string'\n    && 'version' in value\n    && typeof (value as { version: unknown }).version === 'number';\n}",
+      "chapter": "02-typescript/129-user-defined-type-guards"
+    },
+    {
+      "id": "ts-129-parse-or-throw",
+      "title": "Разбор с понятной ошибкой",
+      "difficulty": "medium",
+      "lang": "ts",
+      "runner": "browser",
+      "prompt": "Используя предикат из предыдущей задачи как образец, напишите функцию `parseWorkItem(value: unknown)`, которая возвращает объект с полями `id: string` и `version: number`, а при несоответствии формы выбрасывает ошибку с сообщением `ответ не соответствует контракту WorkItem`.",
+      "starter": "function parseWorkItem(value: unknown): { id: string; version: number } {\n  // Сначала проверка, потом использование.\n  throw new Error('не реализовано');\n}",
+      "hints": [
+        "Проверку формы удобно вынести в отдельный предикат.",
+        "Сообщение об ошибке должно совпадать точно.",
+        "После успешной проверки поля доступны без приведения."
+      ],
+      "standSetup": "",
+      "tests": [
+        {
+          "name": "возвращает разобранное значение",
+          "code": "expect(parseWorkItem({ id: 'a', version: 2 })).toEqual({ id: 'a', version: 2 });"
+        },
+        {
+          "name": "бросает ошибку с точным сообщением",
+          "code": "let message = '';\ntry { parseWorkItem({ id: 'a' }); } catch (error) { message = (error as Error).message; }\nexpect(message).toBe('ответ не соответствует контракту WorkItem');"
+        },
+        {
+          "name": "бросает ошибку на null",
+          "code": "let thrown = false;\ntry { parseWorkItem(null); } catch (error) { thrown = true; }\nexpect(thrown).toBe(true);"
+        },
+        {
+          "name": "лишние поля не мешают разбору",
+          "code": "expect(parseWorkItem({ id: 'a', version: 1, extra: 'x' }).id).toBe('a');"
+        }
+      ],
+      "solution": "function parseWorkItem(value: unknown): { id: string; version: number } {\n  const isWorkItem = (candidate: unknown): candidate is { id: string; version: number } => {\n    if (typeof candidate !== 'object' || candidate === null) {\n      return false;\n    }\n\n    return 'id' in candidate\n      && typeof (candidate as { id: unknown }).id === 'string'\n      && 'version' in candidate\n      && typeof (candidate as { version: unknown }).version === 'number';\n  };\n\n  if (!isWorkItem(value)) {\n    throw new Error('ответ не соответствует контракту WorkItem');\n  }\n\n  return { id: value.id, version: value.version };\n}",
+      "chapter": "02-typescript/129-user-defined-type-guards"
+    }
+  ],
+  "02-typescript/133-generic-functions": [
+    {
+      "id": "ts-133-first-or-null",
+      "title": "Дженерик-функция для первого элемента",
+      "difficulty": "easy",
+      "lang": "ts",
+      "runner": "browser",
+      "prompt": "Напишите дженерик-функцию `firstOrNull<T>(items: T[]): T | null`, которая возвращает первый элемент массива или `null` для пустого массива. Тип результата должен сохранять тип элементов.",
+      "starter": "function firstOrNull<T>(items: T[]): T | null {\n  // Пустой массив обрабатывается отдельно.\n  return null;\n}",
+      "hints": [
+        "Параметр типа T связывает вход и выход функции.",
+        "Для пустого массива обращение по индексу даёт undefined, а нужен null.",
+        "Возвращать нужно первый элемент, а не его копию."
+      ],
+      "standSetup": "",
+      "tests": [
+        {
+          "name": "возвращает первый элемент",
+          "code": "expect(firstOrNull(['a', 'b'])).toBe('a');"
+        },
+        {
+          "name": "для пустого массива возвращает null",
+          "code": "expect(firstOrNull([])).toBe(null);"
+        },
+        {
+          "name": "работает с объектами",
+          "code": "expect(firstOrNull([{ id: 1 }, { id: 2 }])).toEqual({ id: 1 });"
+        },
+        {
+          "name": "возвращает тот же объект, а не копию",
+          "code": "const item = { id: 1 };\nexpect(firstOrNull([item]) === item).toBe(true);"
+        }
+      ],
+      "solution": "function firstOrNull<T>(items: T[]): T | null {\n  return items.length === 0 ? null : items[0];\n}",
+      "chapter": "02-typescript/133-generic-functions"
+    },
+    {
+      "id": "ts-133-group-by-key",
+      "title": "Группировка по значению поля",
+      "difficulty": "hard",
+      "lang": "ts",
+      "runner": "browser",
+      "prompt": "Напишите дженерик-функцию `groupBy<T>(items: T[], readKey: (item: T) => string)`, которая возвращает объект, где ключ — результат `readKey`, а значение — массив элементов с этим ключом. Порядок элементов внутри группы сохраняется.",
+      "starter": "function groupBy<T>(items: T[], readKey: (item: T) => string): Record<string, T[]> {\n  // Аккумулятором может быть объект.\n  return {};\n}",
+      "hints": [
+        "Тип ключа задан как string, а тип элементов остаётся параметром.",
+        "Перед добавлением нужно убедиться, что массив для ключа существует.",
+        "Порядок внутри группы должен совпадать с исходным."
+      ],
+      "standSetup": "",
+      "tests": [
+        {
+          "name": "группирует по статусу",
+          "code": "expect(groupBy(\n  [{ name: 'a', status: 'passed' }, { name: 'b', status: 'failed' }, { name: 'c', status: 'passed' }],\n  (item) => item.status\n)).toEqual({\n  passed: [{ name: 'a', status: 'passed' }, { name: 'c', status: 'passed' }],\n  failed: [{ name: 'b', status: 'failed' }]\n});"
+        },
+        {
+          "name": "для пустого массива возвращает пустой объект",
+          "code": "expect(groupBy([], (item: string) => item)).toEqual({});"
+        },
+        {
+          "name": "сохраняет порядок внутри группы",
+          "code": "expect(groupBy(['z', 'a', 'zz'], (item) => String(item.length)))\n  .toEqual({ '1': ['z', 'a'], '2': ['zz'] });"
+        },
+        {
+          "name": "не изменяет исходный массив",
+          "code": "const source = ['a', 'b'];\ngroupBy(source, (item) => item);\nexpect(source).toEqual(['a', 'b']);"
+        }
+      ],
+      "solution": "function groupBy<T>(items: T[], readKey: (item: T) => string): Record<string, T[]> {\n  return items.reduce<Record<string, T[]>>((groups, item) => {\n    const key = readKey(item);\n\n    if (!groups[key]) {\n      groups[key] = [];\n    }\n\n    groups[key].push(item);\n\n    return groups;\n  }, {});\n}",
+      "chapter": "02-typescript/133-generic-functions"
+    }
+  ],
+  "03-automation-qa/188-http-response-structure": [
+    {
+      "id": "qa-188-read-response-levels",
+      "title": "Три уровня ответа при создании",
+      "difficulty": "easy",
+      "lang": "api",
+      "runner": "stand",
+      "prompt": "Создайте задачу через `POST /work-items` и верните объект `{ created, fetched }`: первый — ответ на создание, второй — ответ на чтение созданной записи по её идентификатору. Проверки посмотрят код состояния, заголовки и тело.",
+      "starter": "/**\n * api.post(path, body), api.get(path), api.patch(path, body), api.delete(path)\n * Каждый вызов возвращает { status, headers, body }.\n */\nexport default async function solve(api) {\n  // 1. Создайте задачу: POST /work-items\n  // 2. Прочитайте её по идентификатору из ответа\n\n  return { created: null, fetched: null };\n}",
+      "hints": [
+        "Создание возвращает полную запись — идентификатор берётся из её тела.",
+        "Ключи заголовков в ответе приведены к нижнему регистру.",
+        "Чтение выполняется по пути с идентификатором."
+      ],
+      "standSetup": "",
+      "tests": [
+        {
+          "name": "создание возвращает 201",
+          "code": "expect(result.created.status).toBe(201);"
+        },
+        {
+          "name": "ответ на создание содержит JSON",
+          "code": "expect(String(result.created.headers['content-type'])).toContain('application/json');"
+        },
+        {
+          "name": "созданная запись начинается в статусе NEW и первой версии",
+          "code": "expect(result.created.body.status).toBe('NEW');\nexpect(result.created.body.version).toBe(1);"
+        },
+        {
+          "name": "чтение возвращает ту же запись",
+          "code": "expect(result.fetched.status).toBe(200);\nexpect(result.fetched.body.id).toBe(result.created.body.id);"
+        },
+        {
+          "name": "запись действительно сохранена на стенде",
+          "code": "const current = await api.get('/work-items/' + result.created.body.id);\nexpect(current.status).toBe(200);"
+        }
+      ],
+      "solution": "export default async function solve(api) {\n  const created = await api.post('/work-items', {\n    title: 'Проверка структуры ответа',\n    description: 'Создана задачей главы 188',\n    priority: 'MEDIUM'\n  });\n\n  const fetched = await api.get('/work-items/' + created.body.id);\n\n  return { created, fetched };\n}",
+      "chapter": "03-automation-qa/188-http-response-structure"
+    },
+    {
+      "id": "qa-188-missing-resource",
+      "title": "Ответ на неизвестный идентификатор",
+      "difficulty": "medium",
+      "lang": "api",
+      "runner": "stand",
+      "prompt": "Запросите задачу по заведомо несуществующему идентификатору `00000000-0000-4000-8000-000000000000` и верните объект `{ missing }` с ответом стенда. Ответ должен приходить обычным образом, без выбрасывания исключения.",
+      "starter": "export default async function solve(api) {\n  // Неуспешный код состояния — это тоже полученный ответ.\n\n  return { missing: null };\n}",
+      "hints": [
+        "Код 4xx приходит обычным ответом, а не исключением.",
+        "Идентификатор нужно подставить в путь запроса.",
+        "В теле отказа стенд сообщает машиночитаемый код."
+      ],
+      "standSetup": "",
+      "tests": [
+        {
+          "name": "возвращается 404",
+          "code": "expect(result.missing.status).toBe(404);"
+        },
+        {
+          "name": "тело содержит машиночитаемый код",
+          "code": "expect(typeof result.missing.body.code).toBe('string');"
+        },
+        {
+          "name": "ответ пришёл, а не исключение",
+          "code": "expect(result.missing).toBeTruthy();"
+        },
+        {
+          "name": "тип содержимого — JSON",
+          "code": "expect(String(result.missing.headers['content-type'])).toContain('application/json');"
+        }
+      ],
+      "solution": "export default async function solve(api) {\n  const missing = await api.get('/work-items/00000000-0000-4000-8000-000000000000');\n\n  return { missing };\n}",
+      "chapter": "03-automation-qa/188-http-response-structure"
     }
   ],
   "03-automation-qa/193-api-response-and-business-rule-validation": [
@@ -248,6 +2801,78 @@
       "chapter": "03-automation-qa/193-api-response-and-business-rule-validation"
     }
   ],
+  "03-automation-qa/194-negative-api-scenarios-and-errors": [
+    {
+      "id": "qa-194-empty-title-rejected",
+      "title": "Отказ при пустом обязательном поле",
+      "difficulty": "medium",
+      "lang": "api",
+      "runner": "stand",
+      "prompt": "Попробуйте создать задачу с пустым `title` и верните объект `{ rejected, listBefore, listAfter }`: ответ стенда на отказ, а также ответы `GET /work-items?limit=1` до и после попытки. Проверки убедятся, что отказ произошёл по правильной причине и не создал запись.",
+      "starter": "export default async function solve(api) {\n  // 1. Прочитайте состояние до попытки\n  // 2. Отправьте POST с пустым title\n  // 3. Прочитайте состояние после\n\n  return { rejected: null, listBefore: null, listAfter: null };\n}",
+      "hints": [
+        "Отказ приходит обычным ответом: исключения ждать не нужно.",
+        "Стенд сообщает машиночитаемый код ошибки в теле.",
+        "Отсутствие побочного эффекта проверяется сравнением состояния до и после."
+      ],
+      "standSetup": "",
+      "tests": [
+        {
+          "name": "отказ имеет код состояния 4xx",
+          "code": "expect(result.rejected.status >= 400 && result.rejected.status < 500).toBe(true);"
+        },
+        {
+          "name": "в теле отказа есть машиночитаемый код",
+          "code": "expect(typeof result.rejected.body.code).toBe('string');"
+        },
+        {
+          "name": "общее количество записей не изменилось",
+          "code": "expect(result.listAfter.body.total).toBe(result.listBefore.body.total);"
+        },
+        {
+          "name": "оба чтения прошли успешно",
+          "code": "expect(result.listBefore.status).toBe(200);\nexpect(result.listAfter.status).toBe(200);"
+        }
+      ],
+      "solution": "export default async function solve(api) {\n  const listBefore = await api.get('/work-items?limit=1');\n\n  const rejected = await api.post('/work-items', {\n    title: '',\n    description: 'Пустой заголовок недопустим',\n    priority: 'LOW'\n  });\n\n  const listAfter = await api.get('/work-items?limit=1');\n\n  return { rejected, listBefore, listAfter };\n}",
+      "chapter": "03-automation-qa/194-negative-api-scenarios-and-errors"
+    },
+    {
+      "id": "qa-194-unknown-priority",
+      "title": "Недопустимое значение приоритета",
+      "difficulty": "medium",
+      "lang": "api",
+      "runner": "stand",
+      "prompt": "Отправьте создание задачи с приоритетом `URGENT`, которого нет в контракте, и верните объект `{ rejected, valid }`: ответ на недопустимое значение и ответ на корректное создание с приоритетом `HIGH`. Так проверка отличит отказ по значению от общей неработоспособности стенда.",
+      "starter": "export default async function solve(api) {\n  // Сначала недопустимое значение, затем корректное.\n\n  return { rejected: null, valid: null };\n}",
+      "hints": [
+        "Недопустимое значение поля — это отказ по семантике, а не по разбору запроса.",
+        "Второй запрос нужен, чтобы показать: стенд работает, отказ относится к значению.",
+        "Корректное создание возвращает код 201."
+      ],
+      "standSetup": "",
+      "tests": [
+        {
+          "name": "недопустимый приоритет отклонён",
+          "code": "expect(result.rejected.status >= 400 && result.rejected.status < 500).toBe(true);"
+        },
+        {
+          "name": "в отказе есть код ошибки",
+          "code": "expect(typeof result.rejected.body.code).toBe('string');"
+        },
+        {
+          "name": "корректное создание проходит",
+          "code": "expect(result.valid.status).toBe(201);\nexpect(result.valid.body.priority).toBe('HIGH');"
+        },
+        {
+          "name": "созданная запись доступна для чтения",
+          "code": "const current = await api.get('/work-items/' + result.valid.body.id);\nexpect(current.status).toBe(200);"
+        }
+      ],
+      "solution": "export default async function solve(api) {\n  const rejected = await api.post('/work-items', {\n    title: 'Недопустимый приоритет',\n    description: 'Значение URGENT отсутствует в контракте',\n    priority: 'URGENT'\n  });\n\n  const valid = await api.post('/work-items', {\n    title: 'Корректный приоритет',\n    description: 'Значение HIGH допустимо',\n    priority: 'HIGH'\n  });\n\n  return { rejected, valid };\n}",
+      "chapter": "03-automation-qa/194-negative-api-scenarios-and-errors"
+    }
+  ],
   "03-automation-qa/207-postgresql-in-automation-qa": [
     {
       "id": "qa-207-seed-priorities",
@@ -283,6 +2908,159 @@
       ],
       "solution": "SELECT priority,\n       count(*) AS total\n  FROM work_items\n WHERE is_seed\n GROUP BY priority\n ORDER BY priority;",
       "chapter": "03-automation-qa/207-postgresql-in-automation-qa"
+    }
+  ],
+  "03-automation-qa/209-parameterized-queries": [
+    {
+      "id": "qa-209-count-by-status",
+      "title": "Количество задач по статусам",
+      "difficulty": "easy",
+      "lang": "sql",
+      "runner": "stand",
+      "prompt": "Напишите запрос, который возвращает количество seed-задач по каждому статусу. Колонки: `status` и `total`. Отсортируйте по статусу по возрастанию. Записи, созданные тестами, учитывать не нужно.",
+      "starter": "-- Верните status и total по seed-задачам.\nSELECT 1;",
+      "hints": [
+        "Учебные строки отличаются значением колонки is_seed.",
+        "Количество по группам считается агрегатной функцией с группировкой.",
+        "Порядок задаётся через ORDER BY, имя колонки — через AS."
+      ],
+      "standSetup": "await api.post('/work-items', {\n  title: 'Запись проверки, не относящаяся к seed',\n  description: 'Создана подготовкой задачи',\n  priority: 'LOW'\n});",
+      "tests": [
+        {
+          "name": "возвращает четыре строки — по одной на статус",
+          "code": "expect(rows).toHaveLength(4);"
+        },
+        {
+          "name": "колонки называются status и total",
+          "code": "expect(Object.keys(rows[0]).sort()).toEqual(['status', 'total']);"
+        },
+        {
+          "name": "статусы отсортированы по возрастанию",
+          "code": "expect(rows.map(row => row.status)).toEqual(['CANCELLED', 'DONE', 'IN_PROGRESS', 'NEW']);"
+        },
+        {
+          "name": "сумма совпадает с числом seed-задач",
+          "code": "const total = rows.reduce((sum, row) => sum + Number(row.total), 0);\nexpect(total).toBe(248);"
+        }
+      ],
+      "solution": "SELECT status,\n       count(*) AS total\n  FROM work_items\n WHERE is_seed\n GROUP BY status\n ORDER BY status;",
+      "chapter": "03-automation-qa/209-parameterized-queries"
+    },
+    {
+      "id": "qa-209-null-order-and-limit",
+      "title": "Порядок с NULL и ограничение выборки",
+      "difficulty": "medium",
+      "lang": "sql",
+      "runner": "stand",
+      "prompt": "Напишите запрос, который возвращает три seed-задачи с колонками `title` и `description`, отсортированные так: сначала записи с заполненным описанием, затем с `NULL`; внутри групп — по `title` по возрастанию. Верните ровно три строки.",
+      "starter": "-- Три seed-задачи: сначала с описанием, затем без.\nSELECT 1;",
+      "hints": [
+        "При сортировке по возрастанию NULL по умолчанию попадают в конец.",
+        "Порядок NULL можно задать явно через NULLS FIRST или NULLS LAST.",
+        "Количество строк ограничивается через LIMIT."
+      ],
+      "standSetup": "",
+      "tests": [
+        {
+          "name": "возвращает ровно три строки",
+          "code": "expect(rows).toHaveLength(3);"
+        },
+        {
+          "name": "колонки называются title и description",
+          "code": "expect(Object.keys(rows[0]).sort()).toEqual(['description', 'title']);"
+        },
+        {
+          "name": "записи с описанием идут раньше пустых",
+          "code": "const filled = rows.filter(row => row.description !== null).length;\nconst firstNullIndex = rows.findIndex(row => row.description === null);\nexpect(firstNullIndex === -1 || firstNullIndex === filled).toBe(true);"
+        },
+        {
+          "name": "заголовки внутри выборки отсортированы",
+          "code": "const titles = rows.filter(row => row.description !== null).map(row => row.title);\nexpect(titles).toEqual([...titles].sort());"
+        }
+      ],
+      "solution": "SELECT title,\n       description\n  FROM work_items\n WHERE is_seed\n ORDER BY description NULLS LAST, title\n LIMIT 3;",
+      "chapter": "03-automation-qa/209-parameterized-queries"
+    }
+  ],
+  "03-automation-qa/211-database-data-setup-and-cleanup": [
+    {
+      "id": "qa-211-cleanup-is-idempotent",
+      "title": "Повторное удаление безопасно",
+      "difficulty": "medium",
+      "lang": "api",
+      "runner": "stand",
+      "prompt": "Создайте задачу, удалите её, затем попробуйте удалить ещё раз. Верните объект `{ created, firstDelete, secondDelete, afterDelete }`, где последний — ответ на чтение удалённой записи. Проверки убедятся, что повторное удаление не ломает сценарий.",
+      "starter": "export default async function solve(api) {\n  // 1. Создайте задачу\n  // 2. Удалите её\n  // 3. Повторите удаление\n  // 4. Прочитайте запись после удаления\n\n  return { created: null, firstDelete: null, secondDelete: null, afterDelete: null };\n}",
+      "hints": [
+        "Удаление выполняется по идентификатору созданной записи.",
+        "Повторное удаление не должно выбрасывать исключение — это обычный ответ.",
+        "Чтение удалённой записи сообщает о её отсутствии."
+      ],
+      "standSetup": "",
+      "tests": [
+        {
+          "name": "создание проходит",
+          "code": "expect(result.created.status).toBe(201);"
+        },
+        {
+          "name": "первое удаление успешно",
+          "code": "expect(result.firstDelete.status >= 200 && result.firstDelete.status < 300).toBe(true);"
+        },
+        {
+          "name": "повторное удаление не ломает сценарий",
+          "code": "expect(result.secondDelete.status >= 200 && result.secondDelete.status < 500).toBe(true);"
+        },
+        {
+          "name": "после удаления запись не читается",
+          "code": "expect(result.afterDelete.status).toBe(404);"
+        },
+        {
+          "name": "запись действительно удалена со стенда",
+          "code": "const current = await api.get('/work-items/' + result.created.body.id);\nexpect(current.status).toBe(404);"
+        }
+      ],
+      "solution": "export default async function solve(api) {\n  const created = await api.post('/work-items', {\n    title: 'Запись для проверки очистки',\n    description: 'Создана задачей главы 211',\n    priority: 'LOW'\n  });\n\n  const id = created.body.id;\n  const firstDelete = await api.delete('/work-items/' + id);\n  const secondDelete = await api.delete('/work-items/' + id);\n  const afterDelete = await api.get('/work-items/' + id);\n\n  return { created, firstDelete, secondDelete, afterDelete };\n}",
+      "chapter": "03-automation-qa/211-database-data-setup-and-cleanup"
+    },
+    {
+      "id": "qa-211-unique-title-per-run",
+      "title": "Уникальные данные для параллельного запуска",
+      "difficulty": "medium",
+      "lang": "api",
+      "runner": "stand",
+      "prompt": "Создайте две задачи с уникальными заголовками, построенными от общего префикса, и верните объект `{ first, second, found }`, где `found` — ответ на `GET /work-items?limit=100`. Заголовки не должны совпадать между собой.",
+      "starter": "export default async function solve(api) {\n  // Уникальность заголовка обеспечивает сам сценарий.\n\n  return { first: null, second: null, found: null };\n}",
+      "hints": [
+        "Уникальный суффикс можно получить из счётчика или случайного значения.",
+        "Оба заголовка должны отличаться, иначе записи станут неразличимы.",
+        "Чтение списка нужно, чтобы убедиться: обе записи попали на стенд.",
+        "Максимальный размер страницы у стенда — 100; большее значение отклоняется."
+      ],
+      "standSetup": "",
+      "tests": [
+        {
+          "name": "обе записи созданы",
+          "code": "expect(result.first.status).toBe(201);\nexpect(result.second.status).toBe(201);"
+        },
+        {
+          "name": "заголовки различаются",
+          "code": "expect(result.first.body.title === result.second.body.title).toBe(false);"
+        },
+        {
+          "name": "идентификаторы различаются",
+          "code": "expect(result.first.body.id === result.second.body.id).toBe(false);"
+        },
+        {
+          "name": "обе записи доступны для чтения",
+          "code": "const a = await api.get('/work-items/' + result.first.body.id);\nconst b = await api.get('/work-items/' + result.second.body.id);\nexpect(a.status + b.status).toBe(400);"
+        },
+        {
+          "name": "список читается успешно",
+          "code": "expect(result.found.status).toBe(200);"
+        }
+      ],
+      "solution": "export default async function solve(api) {\n  const prefix = 'Проверка-211-' + Math.floor(Math.random() * 1_000_000);\n\n  const first = await api.post('/work-items', {\n    title: prefix + '-1',\n    description: 'Первая запись сценария',\n    priority: 'LOW'\n  });\n\n  const second = await api.post('/work-items', {\n    title: prefix + '-2',\n    description: 'Вторая запись сценария',\n    priority: 'HIGH'\n  });\n\n  const found = await api.get('/work-items?limit=100');\n\n  return { first, second, found };\n}",
+      "chapter": "03-automation-qa/211-database-data-setup-and-cleanup"
     }
   ]
 }
