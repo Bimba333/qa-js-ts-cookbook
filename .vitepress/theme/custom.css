@@ -1622,3 +1622,93 @@
 
 .code-task__pane--report > .code-task__solution { margin-top: 14px; }
 
+/* ============================================================
+   Навигация: список глав и оглавление страницы — одна система
+
+   Обе панели решают одну задачу — показать, где читатель находится.
+   Пока они стояли на разных подложках, с разной плотностью строк и
+   по-разному набранными заголовками, они выглядели как части разных
+   сайтов.
+   ============================================================ */
+
+:root {
+  --vp-sidebar-bg-color: var(--book-paper);
+}
+
+.VPSidebar {
+  background: var(--book-paper);
+  border-right: 1px solid var(--book-rule);
+}
+
+/* Рубрики обеих панелей набраны одинаково: моноширинный, разрядка, капитель. */
+.VPSidebarItem.level-0 > .item .text,
+.VPDocAsideOutline .outline-title {
+  font-family: var(--book-mono);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--book-ink-3);
+}
+
+.VPSidebarItem.level-0 > .item {
+  padding-bottom: 6px;
+}
+
+/* Разделы внутри части — второй уровень рубрики. */
+.VPSidebarItem.level-1 > .item .text {
+  font-family: var(--vp-font-family-base);
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--book-ink-2);
+}
+
+/* Одинаковая плотность строк: 24px в обеих панелях. */
+.VPSidebarItem .link .text,
+.VPDocAsideOutline .outline-link {
+  font-size: 14px;
+  line-height: 24px;
+  color: var(--book-ink-2);
+}
+
+.VPDocAsideOutline .outline-link:hover,
+.VPSidebarItem .link:hover .text {
+  color: var(--book-ink);
+}
+
+.VPDocAsideOutline .outline-link.active {
+  color: var(--vp-c-brand-1);
+  font-weight: 500;
+}
+
+/* Указатель текущего места одинаков слева и справа: прямая линия, не точка. */
+.VPDocAsideOutline .outline-marker {
+  width: 2px;
+  border-radius: 0;
+  background: var(--vp-c-brand-1);
+}
+
+/* Линия идёт ПОД рубрикой в обеих панелях: она открывает раздел,
+   а не отделяет его от следующего. */
+.VPDocAside .outline-title,
+.VPSidebarItem.level-0 > .item {
+  padding-bottom: 6px;
+  margin-bottom: 8px;
+  border-bottom: 1px solid var(--book-rule);
+}
+
+.VPSidebarItem.level-0 {
+  padding-bottom: 18px;
+}
+
+.VPSidebarItem.is-active > .item .link .text {
+  color: var(--vp-c-brand-1);
+  font-weight: 600;
+}
+
+/* Переход по шагу главы не должен прятать цель под верхней панелью. */
+.vp-doc h2,
+.code-task {
+  scroll-margin-top: 88px;
+}
+

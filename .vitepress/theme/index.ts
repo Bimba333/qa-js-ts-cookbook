@@ -1,6 +1,7 @@
 import { h } from 'vue'
 import DefaultTheme from 'vitepress/theme'
 import CodeRunner from './components/CodeRunner.vue'
+import ChapterSteps from './components/ChapterSteps.vue'
 import CodeTask from './components/CodeTask.vue'
 import HomeBoard from './components/HomeBoard.vue'
 import MermaidChart from './components/MermaidChart.vue'
@@ -17,6 +18,7 @@ export default {
   },
   enhanceApp({ app }) {
     app.component('CodeRunner', CodeRunner)
+    app.component('ChapterSteps', ChapterSteps)
     app.component('CodeTask', CodeTask)
     app.component('HomeBoard', HomeBoard)
     app.component('MermaidChart', MermaidChart)

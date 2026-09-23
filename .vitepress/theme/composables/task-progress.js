@@ -202,6 +202,18 @@ export function readAllProgress() {
   return { ...readAll() }
 }
 
+/**
+ * Реактивный доступ к тем же данным.
+ *
+ * Полоса шагов главы живёт на одной странице с задачами, поэтому ей нужно
+ * не «прочитать один раз», а видеть изменение сразу после проверки.
+ */
+export function progressState() {
+  readAll()
+
+  return state
+}
+
 export function clearAllProgress() {
   state.value = {}
   persist()

@@ -486,7 +486,11 @@ onBeforeUnmount(() => {
 </script>
 
 <template>
-  <section class="code-task" :class="`code-task--${status}`">
+  <section
+    :id="`task-${task.id}`"
+    class="code-task"
+    :class="`code-task--${status}`"
+  >
     <header class="code-task__header">
       <div class="code-task__title">{{ task.title }}</div>
       <div class="code-task__badges">

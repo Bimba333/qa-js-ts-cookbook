@@ -25,8 +25,8 @@ const UI = {
     examples: 'Примеров',
     tasks: 'Задач',
     diagrams: 'Диаграмм',
-    tasksHeading: 'Задачи',
-    tasksHeadingId: 'задачи',
+    tasksHeading: 'Практика',
+    tasksHeadingId: 'практика',
     chapterProgressLabel: 'Прогресс части книги',
     chapterInfoLabel: 'Информация о главе',
     of: 'из',
@@ -41,8 +41,8 @@ const UI = {
     examples: 'Examples',
     tasks: 'Tasks',
     diagrams: 'Diagrams',
-    tasksHeading: 'Tasks',
-    tasksHeadingId: 'tasks',
+    tasksHeading: 'Practice',
+    tasksHeadingId: 'practice',
     chapterProgressLabel: 'Book part progress',
     chapterInfoLabel: 'Chapter information',
     of: 'of',
@@ -115,6 +115,22 @@ function pagePathFromEnv(env) {
   }
 
   return ''
+}
+
+/**
+ * Полоса шагов главы.
+ *
+ * Компонент получает ключ главы и сам находит её задачи: числа и состояния
+ * должны совпадать с движком, а не дублироваться в разметке.
+ */
+function chapterStepsTag(chapter) {
+  const key = String(chapter.path).replace(/^docs\//, '').replace(/\.md$/, '')
+
+  if (!loadCheckedTasks()[key]) {
+    return ''
+  }
+
+  return `<ChapterSteps chapter="${escapeHtml(key)}" />`
 }
 
 function renderBookStat(label, value) {
@@ -226,6 +242,7 @@ function renderChapterCard(chapter, locale = 'ru', displayTitle) {
     ${meta.join('\n    ')}
   </div>
   ${progress}
+  ${chapterStepsTag(chapter)}
 </section>
 `
 }
@@ -552,7 +569,9 @@ function renderCheckedTasks(md, filePath, env) {
 }
 
 function renderEmbeddedMarkdown(md, filePath, type, env) {
-  const checkedTasks = type === 'practice' ? renderCheckedTasks(md, filePath, env) : ''
+  // Задачи с проверкой — отдельный раздел главы, а не часть практики:
+  // теория, теоретические вопросы и задачи должны читаться как три разных шага.
+  const checkedTasks = ''
   const markdown = readMarkdown(filePath)
 
   if (!markdown || !stripFirstHeading(markdown).trim()) {
@@ -730,28 +749,6 @@ function setTokenAttr(token, name, value) {
   }
 }
 
-function renameInlineToken(token, value) {
-  token.content = value
-
-  if (!token.children?.length) {
-    return
-  }
-
-  let textWasSet = false
-
-  for (const child of token.children) {
-    if (!textWasSet && child.type === 'text') {
-      child.content = value
-      child.hidden = false
-      textWasSet = true
-      continue
-    }
-
-    child.content = ''
-    child.hidden = true
-  }
-}
-
 function publicLabelForPath(value) {
   if (/^docs\//.test(value) || value === 'docs/') return 'глава книги'
   if (/^practice\//.test(value) || value === 'practice/') return 'практика'
@@ -889,6 +886,32 @@ export function exampleCardPlugin(md) {
         )
       }
     }
+
+    // Раздел задач ставится ПЕРЕД практикой: так порядок главы совпадает с
+    // полосой шагов — теория, теоретические вопросы, задачи.
+    const chapterKey = base.replace(/^docs\//, '').replace(/\.md$/, '')
+    const tasksSection = renderCheckedTasks(md, `practice/${chapterKey}.md`, state.env)
+
+    if (tasksSection) {
+      // Раздел практики называется по-разному: в старых главах «Практика»,
+      // в новых он подставляется движком как «Задачи». Задачи с проверкой
+      // должны стоять перед любым из них — сразу после теоретических вопросов.
+      const practiceTitles = /^(Практика|Practice|Задачи|Tasks)$/
+      const practiceHeading = state.tokens.findIndex(
+        (token, index) =>
+          token.type === 'heading_open' &&
+          token.tag === 'h2' &&
+          practiceTitles.test(state.tokens[index + 1]?.content?.trim() ?? '')
+      )
+
+      const marker = htmlToken(state, tasksSection)
+
+      if (practiceHeading >= 0) {
+        state.tokens.splice(practiceHeading, 0, marker)
+      } else {
+        state.tokens.push(marker)
+      }
+    }
   })
 
   md.core.ruler.after('book_engine_blocks', 'book_hide_service_sections', state => {
@@ -931,9 +954,10 @@ export function exampleCardPlugin(md) {
           headingClose?.type === 'heading_close' &&
           isSupportHeading(headingInline.content)
         ) {
+          // Раздел практики сохраняет своё имя: рядом с «Задачами с проверкой»
+          // прежнее переименование в «Задачи» давало два похожих заголовка.
           if (headingInline.content.trim() === 'Практика') {
-            renameInlineToken(headingInline, 'Задачи')
-            setTokenAttr(headingOpen, 'id', 'задачи')
+            setTokenAttr(headingOpen, 'id', 'практика')
           } else {
             headingOpen.hidden = true
             headingInline.hidden = true
