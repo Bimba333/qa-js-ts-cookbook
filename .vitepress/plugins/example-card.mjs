@@ -823,6 +823,12 @@ export function exampleCardPlugin(md) {
     state.env.bookLocale = locale
 
     if (base === 'index.md') {
+      // Русская главная собрана компонентом рабочего стола и считает
+      // задачи сама: вторая сводка рядом дала бы другие числа.
+      if (locale === 'ru') {
+        return
+      }
+
       const insertAfter = state.tokens.findIndex(token => token.type === 'heading_close' && token.tag === 'h1')
       const stats = htmlToken(state, renderBookStats(locale))
 

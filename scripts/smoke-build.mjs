@@ -48,9 +48,26 @@ if (!exists(indexPath)) {
 } else {
   const indexHtml = read(indexPath)
 
-  if (!indexHtml.includes('book-stats')) {
-    fail('На главной странице нет блока статистики книги')
+  // Главная — рабочий стол: она должна показывать объём книги и вход в работу.
+  // Блок статистики из плагина на ней больше не нужен: числа считает компонент.
+  if (!indexHtml.includes('home-board__title')) {
+    fail('На главной странице нет рабочего стола')
   }
+
+  if (!indexHtml.includes('home-board__facts')) {
+    fail('На главной странице нет сводки по объёму книги')
+  }
+
+  if (!/Начать с введения|Продолжить/.test(indexHtml)) {
+    fail('На главной странице нет входа в работу')
+  }
+}
+
+// Английская главная осталась на прежней раскладке: у неё свой блок статистики.
+const enIndexPath = path.join(DIST, 'en', 'index.html')
+
+if (exists(enIndexPath) && !read(enIndexPath).includes('book-stats')) {
+  fail('На английской главной нет блока статистики книги')
 }
 
 const jsHtmlFiles = walk(path.join(DIST, 'docs', '01-javascript'))

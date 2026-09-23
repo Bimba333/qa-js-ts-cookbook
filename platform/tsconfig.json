@@ -1,0 +1,15 @@
+{
+  "compilerOptions": {
+    "declaration": false,
+    "lib": ["ES2022"],
+    "module": "NodeNext",
+    "moduleResolution": "NodeNext",
+    "noEmitOnError": true,
+    "outDir": "../.platform-build",
+    "rootDir": ".",
+    "strict": true,
+    "target": "ES2022",
+    "types": ["node"]
+  },
+  "include": ["./src/**/*.ts"]
+}

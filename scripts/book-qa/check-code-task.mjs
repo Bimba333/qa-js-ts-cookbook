@@ -91,7 +91,7 @@ try {
 
   check(
     'задача начинается со статуса «Не начата»',
-    (await task.locator('.code-task__badge--status').innerText()) === 'Не начата'
+    ((await task.locator('.code-task__badge--status').textContent()).trim()) === 'Не начата'
   )
 
   // Стартовый код не решает задачу: проверки обязаны упасть.
@@ -112,12 +112,39 @@ try {
 
   check(
     'статус стал «Есть попытки»',
-    (await task.locator('.code-task__badge--status').innerText()) === 'Есть попытки'
+    ((await task.locator('.code-task__badge--status').textContent()).trim()) === 'Есть попытки'
+  )
+
+  // Решение не должно открываться после первой же проверки.
+  check(
+    'после одной попытки решение закрыто',
+    (await task.locator('.code-task__solution-locked').count()) === 1
+  )
+
+  const lockMessage = await task.locator('.code-task__solution-locked').innerText()
+  check(
+    'сообщение называет, чего не хватает',
+    /ещё попыток: 1/.test(lockMessage) && /нераскрытых подсказок/.test(lockMessage),
+    lockMessage
   )
 
   // Подсказки открываются по одной.
   await task.getByRole('button', { name: /Подсказка/ }).click()
   check('подсказка открывается', (await task.locator('.code-task__hints li').count()) === 1)
+
+  // Вторая попытка и все подсказки открывают решение честным путём.
+  await task.getByRole('button', { name: '✓ Проверить' }).click()
+  await task.locator('.code-task__summary').waitFor({ timeout: 10_000 })
+
+  const hintButton = task.getByRole('button', { name: /Подсказка/ })
+  while (await hintButton.isEnabled()) {
+    await hintButton.click()
+  }
+
+  check(
+    'после попыток и подсказок решение открывается',
+    (await task.getByRole('button', { name: 'Показать решение' }).count()) === 1
+  )
 
   // Эталонное решение должно проходить все проверки.
   const solution = `function createCounter() {
@@ -138,7 +165,7 @@ try {
 
   check(
     'статус стал «Решена»',
-    (await task.locator('.code-task__badge--status').innerText()) === 'Решена'
+    ((await task.locator('.code-task__badge--status').textContent()).trim()) === 'Решена'
   )
 
   // Прогресс переживает перезагрузку страницы.
@@ -147,8 +174,44 @@ try {
   await afterReload.locator('.code-task__badge--status').waitFor()
   check(
     'прогресс сохраняется между посещениями',
-    (await afterReload.locator('.code-task__badge--status').innerText()) === 'Решена'
+    ((await afterReload.locator('.code-task__badge--status').textContent()).trim()) === 'Решена'
   )
+
+  // Отказ от самостоятельного решения: отдельная задача, чтобы не смешивать
+  // с той, которую только что решили.
+  await page.goto(`${BASE}/docs/01-javascript/15-type-conversion`, { waitUntil: 'load' })
+  const surrenderTask = page.locator('.code-task').first()
+  await surrenderTask.waitFor({ timeout: 10_000 })
+
+  check(
+    'до попыток решение закрыто',
+    (await surrenderTask.locator('.code-task__solution-locked').count()) === 1
+  )
+
+  page.once('dialog', dialog => dialog.accept())
+  await surrenderTask.getByRole('button', { name: 'Сдаться и открыть решение' }).click()
+  await surrenderTask.locator('.code-task__solution-body').waitFor({ timeout: 5000 })
+
+  check(
+    'после отказа решение показано',
+    (await surrenderTask.locator('.code-task__solution-body').isVisible())
+  )
+  check(
+    'отказ отмечен в интерфейсе',
+    (await surrenderTask.locator('.code-task__solution-note').innerText())
+      .includes('без самостоятельного разбора')
+  )
+
+  await page.reload({ waitUntil: 'domcontentloaded' })
+  const afterSurrender = page.locator('.code-task').first()
+  await afterSurrender.locator('.code-task__badge--status').waitFor()
+  check(
+    'отказ помнится между посещениями',
+    (await afterSurrender.getByRole('button', { name: /решение/i }).count()) >= 1
+  )
+
+  await page.goto(`${BASE}/docs/01-javascript/07-scope`, { waitUntil: 'load' })
+  await page.locator('.code-task').first().waitFor({ timeout: 10_000 })
 
   // Бесконечный цикл не должен вешать страницу.
   const loopTask = page.locator('.code-task').first()

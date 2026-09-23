@@ -1,41 +1,80 @@
 /* ============================================================
-   Палитра книги: индиго-акцент вместо стандартного зеленого.
+   Визуальный язык книги: инженерная тетрадь.
+
+   Язык взят из предметной области — отчёта тест-ранера и рабочей тетради:
+   антиква для чтения, моноширинный шрифт для данных и меток, тонкие линии
+   вместо теней и скруглений. Синий — единственный акцент; зелёный и красный
+   означают только результат проверки и больше ничего.
    ============================================================ */
 
 :root {
-  --vp-c-brand-1: #4f46e5;
-  --vp-c-brand-2: #4338ca;
-  --vp-c-brand-3: #6366f1;
-  --vp-c-brand-soft: rgba(99, 102, 241, 0.14);
+  --vp-c-brand-1: #1d4e89;
+  --vp-c-brand-2: #17406f;
+  --vp-c-brand-3: #2a5f9e;
+  --vp-c-brand-soft: rgba(29, 78, 137, 0.10);
 
-  --book-radius: 14px;
-  --book-radius-sm: 10px;
-  --book-shadow: 0 1px 2px rgba(17, 24, 39, 0.04), 0 4px 16px rgba(17, 24, 39, 0.06);
-  --book-shadow-hover: 0 2px 4px rgba(17, 24, 39, 0.06), 0 10px 28px rgba(17, 24, 39, 0.1);
-  --book-card-gradient: linear-gradient(135deg, rgba(99, 102, 241, 0.08), rgba(14, 165, 233, 0.05));
-  --book-console-bg: #16181d;
-  --book-console-text: #d7dbe2;
+  --book-ink: #11171b;
+  --book-ink-2: #47545c;
+  --book-ink-3: #72808a;
+  --book-paper: #eef1ec;
+  --book-surface: #f7f9f5;
+  --book-rule: #ccd4cc;
+  --book-rule-soft: #dfe5de;
+
+  /* Семантика состояний: отдельная от акцента и используется только по делу. */
+  --book-pass: #2f7a4d;
+  --book-pass-soft: #dcecdf;
+  --book-fail: #b23a2e;
+  --book-fail-soft: #f3dedb;
+  --book-started: #9c6413;
+  --book-started-soft: #f0e4cf;
+
+  --book-serif: "Iowan Old Style", Charter, "Palatino Linotype", Palatino, Georgia, serif;
+  --book-mono: var(--vp-font-family-mono);
+
+  --book-radius: 3px;
+  --book-radius-sm: 2px;
+  --book-shadow: none;
+  --book-shadow-hover: none;
+  --book-card-gradient: none;
+  --book-console-bg: #11171b;
+  --book-console-text: #dfe5de;
 }
 
 .dark {
-  --vp-c-brand-1: #a5b4fc;
-  --vp-c-brand-2: #c7d2fe;
-  --vp-c-brand-3: #818cf8;
-  --vp-c-brand-soft: rgba(129, 140, 248, 0.16);
+  --vp-c-brand-1: #78a9dd;
+  --vp-c-brand-2: #9cc2ea;
+  --vp-c-brand-3: #5d90c6;
+  --vp-c-brand-soft: rgba(120, 169, 221, 0.14);
 
-  --book-shadow: 0 1px 2px rgba(0, 0, 0, 0.3), 0 4px 16px rgba(0, 0, 0, 0.25);
-  --book-shadow-hover: 0 2px 4px rgba(0, 0, 0, 0.35), 0 10px 28px rgba(0, 0, 0, 0.35);
-  --book-card-gradient: linear-gradient(135deg, rgba(129, 140, 248, 0.12), rgba(56, 189, 248, 0.06));
-  --book-console-bg: #0d0f13;
-  --book-console-text: #cfd4dc;
+  --book-ink: #e8ecea;
+  --book-ink-2: #a3b1b8;
+  --book-ink-3: #7a888f;
+  --book-paper: #0d1216;
+  --book-surface: #141b21;
+  --book-rule: #2a353d;
+  --book-rule-soft: #1e272e;
+
+  --book-pass: #6cbd8b;
+  --book-pass-soft: #14291d;
+  --book-fail: #e07b6b;
+  --book-fail-soft: #2c1a17;
+  --book-started: #d2a35c;
+  --book-started-soft: #2a2015;
+
+  --book-shadow: none;
+  --book-shadow-hover: none;
+  --book-card-gradient: none;
+  --book-console-bg: #090d10;
+  --book-console-text: #cfd8d4;
 }
 
-/* Кнопка hero на главной */
+/* Заголовок главной страницы: сплошной цвет вместо градиента и размытого пятна. */
 :root {
-  --vp-home-hero-name-color: transparent;
-  --vp-home-hero-name-background: linear-gradient(120deg, #4f46e5 30%, #0ea5e9);
-  --vp-home-hero-image-background-image: linear-gradient(-45deg, rgba(99, 102, 241, 0.5), rgba(14, 165, 233, 0.5));
-  --vp-home-hero-image-filter: blur(56px);
+  --vp-home-hero-name-color: var(--book-ink);
+  --vp-home-hero-name-background: none;
+  --vp-home-hero-image-background-image: none;
+  --vp-home-hero-image-filter: none;
 }
 
 /* ============================================================
@@ -1162,3 +1201,424 @@
 .code-task__stand pre { margin: 0; }
 
 .code-task__sandbox { display: none; }
+
+/* ============================================================
+   Визуальный язык: применение к содержимому
+   ============================================================ */
+
+.vp-doc {
+  font-family: var(--book-serif);
+  font-size: 17px;
+  line-height: 1.65;
+}
+
+.vp-doc h1,
+.vp-doc h2,
+.vp-doc h3,
+.vp-doc h4 {
+  font-family: var(--book-serif);
+  text-wrap: balance;
+}
+
+/* Подзаголовки разделов главы работают как рубрики тетради. */
+.vp-doc h2 {
+  border-top: 1px solid var(--book-rule);
+  border-bottom: 0;
+  padding-top: 18px;
+}
+
+.vp-doc code,
+.vp-doc kbd {
+  font-family: var(--book-mono);
+}
+
+/* Код, таблицы и цитаты: линии вместо скруглений и заливок. */
+.vp-doc div[class*="language-"] {
+  border-radius: var(--book-radius);
+  border: 1px solid var(--book-rule);
+  box-shadow: none;
+}
+
+.vp-doc table {
+  border: 1px solid var(--book-rule);
+}
+
+.vp-doc th {
+  font-family: var(--book-mono);
+  font-size: 12px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--book-ink-3);
+  font-weight: 600;
+}
+
+.vp-doc blockquote {
+  border-left: 2px solid var(--vp-c-brand-1);
+  background: var(--vp-c-brand-soft);
+  padding: 10px 16px;
+  border-radius: 0;
+}
+
+.vp-doc blockquote > p {
+  font-family: var(--book-serif);
+  color: var(--book-ink-2);
+}
+
+/* Цифры в таблицах и счётчиках выравниваются по разрядам. */
+.vp-doc table td,
+.book-chapter-card__meta,
+.code-task__badge {
+  font-variant-numeric: tabular-nums;
+}
+
+/* ============================================================
+   Подложка: бумага, поверхности, линии
+   ============================================================ */
+
+:root {
+  --vp-c-bg: var(--book-paper);
+  --vp-c-bg-alt: var(--book-surface);
+  --vp-c-bg-soft: var(--book-surface);
+  --vp-c-bg-elv: var(--book-surface);
+  --vp-c-divider: var(--book-rule);
+  --vp-c-gutter: var(--book-rule);
+  --vp-c-border: var(--book-rule);
+  --vp-c-text-1: var(--book-ink);
+  --vp-c-text-2: var(--book-ink-2);
+  --vp-c-text-3: var(--book-ink-3);
+}
+
+.dark {
+  --vp-c-bg: var(--book-paper);
+  --vp-c-bg-alt: var(--book-surface);
+  --vp-c-bg-soft: var(--book-surface);
+  --vp-c-bg-elv: var(--book-surface);
+}
+
+/* ============================================================
+   Шапка главы: рубрика тетради, а не карточка-плашка
+   ============================================================ */
+
+.book-chapter-card {
+  margin: 0 0 32px;
+  padding: 0 0 18px;
+  border: 0;
+  border-bottom: 2px solid var(--book-ink);
+  border-radius: 0;
+  background: none;
+  box-shadow: none;
+}
+
+.book-chapter-card__eyebrow {
+  display: block;
+  margin-bottom: 6px;
+  padding: 0;
+  border-radius: 0;
+  background: none;
+  color: var(--book-ink-3);
+  font-family: var(--book-mono);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.16em;
+}
+
+.book-chapter-card__title {
+  font-family: var(--book-serif);
+  font-size: 40px;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  margin: 0 0 14px !important;
+}
+
+.book-chapter-card__meta {
+  gap: 0 22px;
+  font-family: var(--book-mono);
+  font-size: 12px;
+  color: var(--book-ink-2);
+}
+
+/* Метки главы перестают быть «пилюлями»: это колонки данных, а не кнопки. */
+.book-chapter-card__meta span {
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  background: none;
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+}
+
+.book-chapter-card__progress {
+  margin-top: 14px;
+  gap: 14px;
+}
+
+.book-chapter-card__progress-track {
+  flex: 0 1 260px;
+  height: 4px;
+  border-radius: 0;
+  background: var(--book-rule-soft);
+}
+
+.book-chapter-card__progress-track i {
+  border-radius: 0;
+  background: var(--vp-c-brand-1);
+}
+
+.book-chapter-card__progress-text {
+  font-family: var(--book-mono);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  color: var(--book-ink-3);
+}
+
+@media (max-width: 640px) {
+  .book-chapter-card__title { font-size: 30px; }
+}
+
+/* Первый раздел главы идёт сразу за её шапкой: вторая линия подряд
+   выглядела бы как ошибка вёрстки, а не как рубрика. */
+.book-chapter-card + h2,
+.book-chapter-card + h2.vp-doc h2 {
+  border-top: 0;
+  padding-top: 0;
+  margin-top: 22px;
+}
+
+/* Внутри шапки главы значения отделяются от подписей начертанием,
+   а не рамками: это строка данных, а не набор кнопок. */
+.book-chapter-card__meta span {
+  color: var(--book-ink-3);
+}
+
+.book-chapter-card__meta span::first-letter {
+  letter-spacing: 0;
+}
+
+/* ============================================================
+   Задача: рабочая зона, а не примечание в тексте
+
+   Блок отделяется от чтения самой формой: плотная рамка, служебная
+   строка сверху, отчёт проверок набран как вывод ранера.
+   ============================================================ */
+
+.code-task {
+  border: 1px solid var(--book-ink);
+  border-left: 1px solid var(--book-ink);
+  border-radius: 0;
+  background: var(--book-surface);
+  padding: 0;
+  margin: 24px 0;
+}
+
+.code-task--solved,
+.code-task--attempted { border-left-width: 1px; }
+
+.code-task__header {
+  align-items: center;
+  gap: 10px 16px;
+  padding: 12px 18px;
+  border-bottom: 1px solid var(--book-rule);
+  background: var(--book-paper);
+}
+
+.code-task__title {
+  font-family: var(--book-serif);
+  font-size: 19px;
+  font-weight: 600;
+}
+
+/* Сложность и состояние — метки данных, а не кнопки. */
+.code-task__badge {
+  border-radius: 0;
+  border: 1px solid var(--book-rule);
+  background: transparent;
+  font-family: var(--book-mono);
+  font-size: 10px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 3px 8px;
+}
+
+.code-task--solved .code-task__badge--status {
+  color: var(--book-pass);
+  border-color: var(--book-pass);
+  background: var(--book-pass-soft);
+}
+
+.code-task--attempted .code-task__badge--status {
+  color: var(--book-started);
+  border-color: var(--book-started);
+  background: var(--book-started-soft);
+}
+
+/* Селекторы с .vp-doc: иначе базовые правила документа перебивают отступы
+   рабочей зоны, и условие задачи прилипает к рамке. */
+.vp-doc .code-task__prompt,
+.vp-doc .code-task__hints,
+.vp-doc .code-task__editor,
+.vp-doc .code-task__actions,
+.vp-doc .code-task__results,
+.vp-doc .code-task__solution,
+.vp-doc .code-task__stand,
+.vp-doc .code-task__console,
+.vp-doc .code-task__fatal {
+  margin-left: 18px;
+  margin-right: 18px;
+}
+
+.vp-doc .code-task__prompt {
+  font-family: var(--book-serif);
+  margin-top: 14px;
+}
+
+.code-task__prompt code,
+.code-task__hints code {
+  font-family: var(--book-mono);
+  font-size: 0.86em;
+  background: var(--vp-c-brand-soft);
+  padding: 1px 5px;
+  border-radius: 2px;
+}
+
+.code-task__editor {
+  border-radius: 0;
+  border: 1px solid var(--book-rule);
+}
+
+.code-task__button {
+  border-radius: 0;
+  font-family: var(--vp-font-family-base);
+  font-weight: 600;
+}
+
+/* Отчёт проверок: колонка статуса, ровные строки, объяснение под той,
+   что не сошлась. */
+.code-task__results {
+  border: 1px solid var(--book-rule);
+  background: var(--vp-c-bg);
+  margin-bottom: 18px;
+  padding: 0;
+}
+
+.code-task__summary {
+  margin: 0;
+  padding: 9px 14px;
+  border-bottom: 1px solid var(--book-rule);
+  font-family: var(--book-mono);
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  color: var(--book-ink-2);
+}
+
+.code-task__summary--ok { color: var(--book-pass); }
+
+.code-task__results li {
+  display: grid;
+  grid-template-columns: 18px 1fr;
+  gap: 10px;
+  padding: 8px 14px;
+  border-bottom: 1px solid var(--book-rule-soft);
+  font-family: var(--book-mono);
+  font-size: 13px;
+  background: transparent;
+}
+
+.code-task__results li:last-child { border-bottom: 0; }
+
+.code-task__results .is-failed { background: var(--book-fail-soft); }
+.code-task__results .is-passed .code-task__mark { color: var(--book-pass); }
+.code-task__results .is-failed .code-task__mark { color: var(--book-fail); }
+
+.code-task__check-message {
+  color: var(--book-fail);
+  font-size: 12px;
+}
+
+.code-task__solution,
+.code-task__stand,
+.code-task__console,
+.code-task__fatal { margin-bottom: 18px; }
+
+.code-task__solution-locked {
+  font-family: var(--book-mono);
+  font-size: 12px;
+  color: var(--book-ink-3);
+}
+
+@media (max-width: 640px) {
+  .vp-doc .code-task__prompt,
+  .vp-doc .code-task__hints,
+  .vp-doc .code-task__editor,
+  .vp-doc .code-task__actions,
+  .vp-doc .code-task__results,
+  .vp-doc .code-task__solution,
+  .vp-doc .code-task__stand,
+  .vp-doc .code-task__console,
+  .vp-doc .code-task__fatal {
+    margin-left: 12px;
+    margin-right: 12px;
+  }
+}
+
+/* ============================================================
+   Задача на широком экране: чтение и работа разведены
+
+   Блок выходит за колонку прозы и делится на две панели: слева пишут,
+   справа читают результат. На узком экране панели просто складываются.
+   ============================================================ */
+
+.vp-doc .code-task__work {
+  display: grid;
+  gap: 0;
+}
+
+@media (min-width: 1280px) {
+  .code-task {
+    /* Выход за колонку чтения: рабочая зона шире текста, и это видно. */
+    margin-left: -64px;
+    margin-right: -64px;
+  }
+
+  .vp-doc .code-task__work {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    gap: 0;
+  }
+
+  .code-task__pane--input { border-right: 1px solid var(--book-rule); }
+
+  .vp-doc .code-task__pane > * {
+    margin-left: 18px;
+    margin-right: 18px;
+  }
+
+  .code-task__pane--report {
+    background: var(--vp-c-bg);
+  }
+
+  /* Отчёт держится перед глазами, пока читатель правит код. */
+  .code-task__pane--report > .code-task__results {
+    position: sticky;
+    top: 84px;
+  }
+}
+
+@media (min-width: 1280px) and (max-width: 1440px) {
+  .code-task { margin-left: -32px; margin-right: -32px; }
+}
+
+/* Пустая правая панель не должна выглядеть поломкой: до первой проверки
+   там подсказка, что здесь появится. Текст живёт в компоненте — у книги
+   две локали. */
+.vp-doc .code-task__waiting {
+  padding: 16px 18px;
+  font-family: var(--book-mono);
+  font-size: 12px;
+  color: var(--book-ink-3);
+  margin: 0 18px;
+}
+
+.code-task__pane--report > .code-task__solution { margin-top: 14px; }
+

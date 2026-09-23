@@ -5,6 +5,7 @@ import { useData } from 'vitepress'
 import {
   readTaskProgress,
   recordAttempt,
+  recordSurrender,
   recordHintUsage,
   resetTaskProgress,
   TASK_STATUS
@@ -52,10 +53,49 @@ const T = {
     })[value] ?? value,
   hintsLeft: count =>
     isEn.value ? `${count} hint(s) left` : `Подсказок осталось: ${count}`,
-  solutionLocked: () =>
+  solutionLocked: (attemptsLeft, hintsLeft) => {
+    const parts = []
+
+    if (attemptsLeft > 0) {
+      parts.push(isEn.value
+        ? `${attemptsLeft} more check run(s)`
+        : `ещё попыток: ${attemptsLeft}`)
+    }
+
+    if (hintsLeft > 0) {
+      parts.push(isEn.value
+        ? `${hintsLeft} unopened hint(s)`
+        : `нераскрытых подсказок: ${hintsLeft}`)
+    }
+
+    return isEn.value
+      ? `Solution opens after you try yourself — ${parts.join(', ')}.`
+      : `Решение откроется после самостоятельной работы — ${parts.join(', ')}.`
+  },
+  surrender: () => (isEn.value ? 'Give up and show solution' : 'Сдаться и открыть решение'),
+  surrenderConfirm: () =>
     isEn.value
-      ? 'Try solving it yourself first — the solution opens after a check run.'
-      : 'Сначала попробуйте решить сами — решение откроется после проверки.'
+      ? 'Open the solution without solving it? The task will stay marked as unsolved.'
+      : 'Открыть решение, не решив задачу? Задача останется неразобранной.',
+  surrendered: () =>
+    isEn.value ? 'Solution opened without solving' : 'Решение открыто без самостоятельного разбора',
+  waiting: () => (isEn.value ? 'The check report appears here' : 'Отчёт проверок появится здесь')
+}
+
+/**
+ * Условие и подсказки пишутся с обратными кавычками, как в markdown.
+ *
+ * Плагин книги их не обрабатывает — задача попадает на страницу как данные,
+ * а не как текст главы. Поэтому разметку раскрывает сам компонент, и только
+ * одну: остальное осталось бы дырой для чужого HTML.
+ */
+function withInlineCode(text) {
+  const escaped = String(text)
+    .replaceAll('&', '&amp;')
+    .replaceAll('<', '&lt;')
+    .replaceAll('>', '&gt;')
+
+  return escaped.replace(/`([^`]+)`/g, '<code>$1</code>')
 }
 
 const RUN_TIMEOUT_MS = 5000
@@ -74,6 +114,11 @@ const fatalError = ref('')
 const running = ref(false)
 const revealedHints = ref(0)
 const solutionVisible = ref(false)
+const surrendered = ref(false)
+
+// Сколько самостоятельных попыток должно быть до открытия решения.
+// Одной мало: её делают нажатием «Проверить» по стартовому коду.
+const REQUIRED_ATTEMPTS = 2
 const status = ref(TASK_STATUS.notStarted)
 const attempts = ref(0)
 let timeoutId = 0
@@ -89,6 +134,7 @@ watch(
     fatalError.value = ''
     revealedHints.value = 0
     solutionVisible.value = false
+    surrendered.value = false
   },
   { immediate: true }
 )
@@ -99,6 +145,7 @@ onMounted(() => {
   status.value = saved.status
   attempts.value = saved.attempts
   revealedHints.value = saved.hintsUsed ?? 0
+  surrendered.value = saved.surrendered === true
 })
 
 const isStandTask = computed(() => task.value.runner === 'stand')
@@ -107,8 +154,17 @@ const allPassed = computed(
   () => results.value.length > 0 && passedCount.value === results.value.length
 )
 const hintsLeft = computed(() => Math.max(0, task.value.hints.length - revealedHints.value))
+/**
+ * Решение открывается тремя путями: задача решена, читатель прошёл весь путь
+ * самостоятельных попыток и подсказок, либо явно отказался продолжать.
+ *
+ * Прежнее правило открывало ответ после первой же проверки — то есть сразу
+ * после нажатия «Проверить» по стартовому коду.
+ */
+const attemptsLeft = computed(() => Math.max(0, REQUIRED_ATTEMPTS - attempts.value))
+const earnedSolution = computed(() => attemptsLeft.value === 0 && hintsLeft.value === 0)
 const canRevealSolution = computed(
-  () => status.value === TASK_STATUS.solved || attempts.value > 0
+  () => status.value === TASK_STATUS.solved || surrendered.value || earnedSolution.value
 )
 
 const statusLabel = computed(() => {
@@ -164,6 +220,17 @@ function resetTask() {
   status.value = TASK_STATUS.notStarted
   attempts.value = 0
   revealedHints.value = 0
+  surrendered.value = false
+}
+
+function surrender() {
+  const confirmed = window.confirm(T.surrenderConfirm())
+
+  if (!confirmed) return
+
+  surrendered.value = true
+  solutionVisible.value = true
+  recordSurrender(task.value.id)
 }
 
 function buildHarness() {
@@ -428,7 +495,7 @@ onBeforeUnmount(() => {
       </div>
     </header>
 
-    <p class="code-task__prompt">{{ task.prompt }}</p>
+    <p class="code-task__prompt" v-html="withInlineCode(task.prompt)"></p>
 
     <template v-if="isStandTask">
       <div class="code-task__stand">
@@ -441,6 +508,8 @@ npm run task:verify {{ task.id }}</code></pre>
     </template>
 
     <template v-else>
+      <div class="code-task__work">
+        <div class="code-task__pane code-task__pane--input">
       <textarea
         v-model="source"
         class="code-task__editor"
@@ -466,8 +535,17 @@ npm run task:verify {{ task.id }}</code></pre>
       </div>
 
       <ol v-if="revealedHints" class="code-task__hints">
-        <li v-for="hint in task.hints.slice(0, revealedHints)" :key="hint">{{ hint }}</li>
+        <li
+          v-for="hint in task.hints.slice(0, revealedHints)"
+          :key="hint"
+          v-html="withInlineCode(hint)"
+        ></li>
       </ol>
+
+        </div>
+
+        <div class="code-task__pane code-task__pane--report">
+      <p v-if="!results.length && !fatalError" class="code-task__waiting">{{ T.waiting() }}</p>
 
       <p v-if="fatalError" class="code-task__fatal" role="alert">{{ fatalError }}</p>
 
@@ -503,14 +581,25 @@ npm run task:verify {{ task.id }}</code></pre>
         >
           {{ solutionVisible ? T.hideSolution() : T.showSolution() }}
         </button>
-        <p v-else class="code-task__solution-locked">{{ T.solutionLocked() }}</p>
+        <template v-else>
+          <p class="code-task__solution-locked">
+            {{ T.solutionLocked(attemptsLeft, hintsLeft) }}
+          </p>
+          <button class="code-task__button code-task__button--link" @click="surrender">
+            {{ T.surrender() }}
+          </button>
+        </template>
 
         <div v-if="solutionVisible" class="code-task__solution-body">
           <div class="code-task__output-title">{{ T.solutionTitle() }}</div>
+          <p v-if="surrendered && status !== 'solved'" class="code-task__solution-note">
+            {{ T.surrendered() }}
+          </p>
           <pre><code>{{ task.solution }}</code></pre>
         </div>
       </div>
-
+        </div>
+      </div>
     </template>
   </section>
 </template>

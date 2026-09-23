@@ -63,7 +63,8 @@ export default defineConfig({
               { text: 'Automation QA', link: '/docs/03-automation-qa/160-what-is-automation-qa-framework' },
               { text: 'Финальный проект', link: '/docs/04-final-project/250-project-requirements-and-readiness-criteria' }
             ]
-          }
+          },
+          { text: 'Прогресс', link: '/docs/progress' }
         ],
 
         sidebar,

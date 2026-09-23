@@ -50,7 +50,9 @@ onMounted(() => {
 </script>
 
 <template>
-  <template v-if="frontmatter.layout !== 'home'">
+  <!-- Переключатели нужны только там, где панели есть: на главной и на
+       страницах без списка глав им нечего сворачивать. -->
+  <template v-if="frontmatter.layout !== 'home' && frontmatter.sidebar !== false">
     <button
       class="book-panel-toggle book-panel-toggle--left"
       type="button"
