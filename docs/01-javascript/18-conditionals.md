@@ -345,6 +345,18 @@ Short-circuit evaluation details will be studied later. Here the goal is readabl
 
 ---
 
+Условие всегда приводится к булеву значению:
+
+```mermaid
+flowchart TD
+    A["выражение условия"] --> B["приведение к булеву значению"]
+    B --> C{"истина?"}
+    C -- "да" --> D["ветка if"]
+    C -- "нет" --> E["ветка else или else if"]
+    F["switch"] --> G["сравнение через ==="]
+    G --> H["default, если совпадений нет"]
+```
+
 ## Внутренний механизм
 
 На концептуальном уровне:

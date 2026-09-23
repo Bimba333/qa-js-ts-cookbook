@@ -170,6 +170,18 @@ function mapRowToResponse(row: UserRow): UserResponse {
 type AssertStatus = (response: ApiResponse<unknown>, expectedStatus: number) => void;
 ```
 
+Запускаемые версии этих примеров находятся в:
+
+```text
+examples/02-typescript/chapter-158/
+```
+
+`01-api-response.ts` — дженерик-тип ответа и тело пользователя.
+
+`02-assertion-helper.ts` — проверка ответа с типизированным телом.
+
+`03-api-response-diagnostic.ts` — обращение к полю, которого нет в теле (намеренная ошибка).
+
 ## Automation QA
 
 В QA-проекте TypeScript полезен для:

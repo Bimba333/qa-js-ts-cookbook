@@ -132,6 +132,18 @@ interface Builder<Data = unknown> {
 }
 ```
 
+Запускаемые версии этих примеров находятся в:
+
+```text
+examples/02-typescript/chapter-138/
+```
+
+`01-default-response.ts` — параметр-тип со значением по умолчанию.
+
+`02-default-with-constraint.ts` — значение по умолчанию вместе с ограничением.
+
+`03-default-diagnostic.ts` — тип по умолчанию всё равно требует поля (намеренная ошибка).
+
 ## Automation QA
 
 Для ответов вспомогательных функций удобно иметь безопасный default:

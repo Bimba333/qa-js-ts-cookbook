@@ -134,6 +134,18 @@ class EntityStore<Entity extends { id: string }> {
 }
 ```
 
+Запускаемые версии этих примеров находятся в:
+
+```text
+examples/02-typescript/chapter-137/
+```
+
+`01-typed-storage.ts` — дженерик-класс хранилища.
+
+`02-entity-store.ts` — дженерик-класс с ограничением по `id`.
+
+`03-class-diagnostic.ts` — значение чужого типа в типизированном хранилище (намеренная ошибка).
+
 ## Automation QA
 
 Builder может возвращать разные типы тестовых данных:

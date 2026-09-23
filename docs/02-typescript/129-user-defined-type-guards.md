@@ -179,6 +179,18 @@ function format(value: unknown): string {
 }
 ```
 
+Запускаемые версии этих примеров находятся в:
+
+```text
+examples/02-typescript/chapter-129/
+```
+
+`01-type-predicate.ts` — предикат `value is ApiSuccess`.
+
+`02-reusable-guard.ts` — переиспользуемый страж результата теста.
+
+`03-false-guard-danger.ts` — страж, подтверждающий только часть формы.
+
 ## Automation QA
 
 В QA-проекте guard полезен на границе с внешними данными:

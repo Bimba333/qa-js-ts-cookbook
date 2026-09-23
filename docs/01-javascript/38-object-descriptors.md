@@ -295,6 +295,18 @@ This is a common beginner mistake.
 
 ---
 
+У каждого свойства есть скрытые настройки:
+
+```mermaid
+flowchart TD
+    A["свойство"] --> B["value: значение"]
+    A --> C["writable: можно ли менять"]
+    A --> D["enumerable: видно ли при переборе"]
+    A --> E["configurable: можно ли удалить<br/>и перенастроить"]
+    F["присваивание obj.x = 1"] --> G["все флаги true"]
+    H["defineProperty без флагов"] --> I["все флаги false"]
+```
+
 ## Внутренний механизм
 
 When JavaScript performs an operation on property, it checks rules.

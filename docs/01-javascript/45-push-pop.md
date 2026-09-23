@@ -258,6 +258,19 @@ We do not study formal Stack data structure here. This is only intuition for add
 
 ---
 
+Обе операции работают с концом массива:
+
+```mermaid
+flowchart TD
+    A["массив"] --> B["push: добавить в конец"]
+    B --> C["возвращает новую длину"]
+    A --> D["pop: забрать последний"]
+    D --> E["возвращает удалённый элемент"]
+    E --> F["пустой массив даёт undefined"]
+    C --> G["исходный массив изменён"]
+    E --> G
+```
+
 ## Внутренний механизм
 
 When JavaScript executes:

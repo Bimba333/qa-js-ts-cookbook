@@ -145,6 +145,18 @@ type TitleArgs = Parameters<typeof buildTitle>;
 type Title = ReturnType<typeof buildTitle>;
 ```
 
+Запускаемые версии этих примеров находятся в:
+
+```text
+examples/02-typescript/chapter-145/
+```
+
+`01-object-utilities.ts` — `Partial` и `Pick` для типа объекта.
+
+`02-function-utilities.ts` — `Parameters` и `ReturnType`.
+
+`03-utility-diagnostic.ts` — значение, исключённое через `Exclude` (намеренная ошибка).
+
 ## Automation QA
 
 Utility types хорошо подходят для test data и API-моделей:

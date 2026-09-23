@@ -125,6 +125,18 @@ interface ResultInfo {
 
 Такая склейка не превращает TypeScript в систему runtime-расширения объектов.
 
+Запускаемые версии этих примеров находятся в:
+
+```text
+examples/02-typescript/chapter-154/
+```
+
+`01-interface-merging.ts` — два объявления интерфейса склеиваются.
+
+`02-type-alias-no-merging-diagnostic.ts` — повторный `type` с тем же именем (намеренная ошибка).
+
+`03-incompatible-merge-diagnostic.ts` — конфликт типов при склейке (намеренная ошибка).
+
 ## Automation QA
 
 Для внутренних контрактов лучше использовать объединение деклараций осторожно.

@@ -141,6 +141,18 @@ type OnlyString<Value> = Value extends string ? Value : never;
 type StringPart = OnlyString<string | number | boolean>;
 ```
 
+Запускаемые версии этих примеров находятся в:
+
+```text
+examples/02-typescript/chapter-143/
+```
+
+`01-is-string.ts` — условный тип с ветками `true` и `false`.
+
+`02-filter-union.ts` — фильтрация объединения через `never`.
+
+`03-conditional-diagnostic.ts` — выбрана не та ветка условного типа (намеренная ошибка).
+
 ## Automation QA
 
 Conditional types полезны для вспомогательных типов:

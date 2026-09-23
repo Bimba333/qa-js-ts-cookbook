@@ -4415,6 +4415,51 @@
       "chapter": "02-typescript/104-any-and-unknown"
     }
   ],
+  "02-typescript/107-tuples": [
+    {
+      "id": "ts-107-parse-range",
+      "title": "Кортеж вместо объекта",
+      "difficulty": "medium",
+      "lang": "ts",
+      "runner": "browser",
+      "prompt": "Напишите `parseRange(value: string): [number, number]` — разбор строки вида `10-20` в кортеж из двух чисел. Порядок сохраняется как в строке. Если формат не подходит или границы не числа, выбросьте ошибку `некорректный диапазон`.",
+      "starter": "function parseRange(value: string): [number, number] {\n  // Кортеж фиксирует длину и типы позиций.\n  return [0, 0];\n}",
+      "hints": [
+        "Разделитель встречается ровно один раз.",
+        "Number(\"\") даёт 0 — пустую часть нужно отсеять отдельно.",
+        "Сообщение об ошибке должно совпадать дословно."
+      ],
+      "standSetup": "",
+      "tests": [
+        {
+          "name": "разбирает обычный диапазон",
+          "code": "expect(parseRange('10-20')).toEqual([10, 20]);"
+        },
+        {
+          "name": "порядок не исправляется",
+          "code": "expect(parseRange('20-10')).toEqual([20, 10]);"
+        },
+        {
+          "name": "длина результата всегда два",
+          "code": "expect(parseRange('0-0')).toHaveLength(2);"
+        },
+        {
+          "name": "нечисловая граница отвергается",
+          "code": "let message = '';\ntry { parseRange('a-2'); } catch (error) { message = error.message; }\nexpect(message).toBe('некорректный диапазон');"
+        },
+        {
+          "name": "отсутствие разделителя отвергается",
+          "code": "let message = '';\ntry { parseRange('10'); } catch (error) { message = error.message; }\nexpect(message).toBe('некорректный диапазон');"
+        },
+        {
+          "name": "пустая граница отвергается",
+          "code": "let message = '';\ntry { parseRange('10-'); } catch (error) { message = error.message; }\nexpect(message).toBe('некорректный диапазон');"
+        }
+      ],
+      "solution": "function parseRange(value: string): [number, number] {\n  const parts = value.split('-');\n\n  if (parts.length !== 2) {\n    throw new Error('некорректный диапазон');\n  }\n\n  const [rawFrom, rawTo] = parts;\n\n  if (rawFrom.trim() === '' || rawTo.trim() === '') {\n    throw new Error('некорректный диапазон');\n  }\n\n  const from = Number(rawFrom);\n  const to = Number(rawTo);\n\n  if (Number.isNaN(from) || Number.isNaN(to)) {\n    throw new Error('некорректный диапазон');\n  }\n\n  return [from, to];\n}",
+      "chapter": "02-typescript/107-tuples"
+    }
+  ],
   "02-typescript/111-type-alias": [
     {
       "id": "ts-111-test-result-alias",
@@ -4793,6 +4838,51 @@
       "chapter": "02-typescript/127-narrowing"
     }
   ],
+  "02-typescript/128-built-in-type-guards": [
+    {
+      "id": "ts-128-describe-value",
+      "title": "Разбор значения встроенными проверками",
+      "difficulty": "medium",
+      "lang": "ts",
+      "runner": "browser",
+      "prompt": "Напишите `describeValue(value: unknown): string`, возвращающую одно из слов: `null`, `array`, `date`, `object`, `number`, `string`, `boolean`, `function`, `undefined`, `other`. Порядок проверок важен: `null` и массив опознаются раньше, чем объект, а `NaN` считается `other`.",
+      "starter": "function describeValue(value: unknown): string {\n  // typeof, Array.isArray и instanceof различают разные случаи.\n  return 'other';\n}",
+      "hints": [
+        "typeof null возвращает \"object\" — этот случай проверяется первым.",
+        "Массив и дата тоже имеют typeof \"object\".",
+        "NaN ловится через Number.isNaN, а не сравнением."
+      ],
+      "standSetup": "",
+      "tests": [
+        {
+          "name": "null опознаётся раньше объекта",
+          "code": "expect(describeValue(null)).toBe('null');"
+        },
+        {
+          "name": "массив отличается от объекта",
+          "code": "expect(describeValue([])).toBe('array');\nexpect(describeValue({})).toBe('object');"
+        },
+        {
+          "name": "дата опознаётся отдельно",
+          "code": "expect(describeValue(new Date(0))).toBe('date');"
+        },
+        {
+          "name": "примитивы опознаются по typeof",
+          "code": "expect(describeValue(1)).toBe('number');\nexpect(describeValue('a')).toBe('string');\nexpect(describeValue(false)).toBe('boolean');"
+        },
+        {
+          "name": "функция и undefined",
+          "code": "expect(describeValue(() => {})).toBe('function');\nexpect(describeValue(undefined)).toBe('undefined');"
+        },
+        {
+          "name": "NaN не считается числом",
+          "code": "expect(describeValue(NaN)).toBe('other');"
+        }
+      ],
+      "solution": "function describeValue(value: unknown): string {\n  if (value === null) return 'null';\n  if (Array.isArray(value)) return 'array';\n  if (value instanceof Date) return 'date';\n\n  const kind = typeof value;\n\n  if (kind === 'number') {\n    return Number.isNaN(value) ? 'other' : 'number';\n  }\n\n  if (kind === 'object' || kind === 'string' || kind === 'boolean'\n    || kind === 'function' || kind === 'undefined') {\n    return kind;\n  }\n\n  return 'other';\n}",
+      "chapter": "02-typescript/128-built-in-type-guards"
+    }
+  ],
   "02-typescript/129-user-defined-type-guards": [
     {
       "id": "ts-129-is-work-item",
@@ -5085,6 +5175,86 @@
       "chapter": "02-typescript/133-generic-functions"
     }
   ],
+  "02-typescript/134-generic-constraints": [
+    {
+      "id": "ts-134-longest-by-length",
+      "title": "Ограничение по форме",
+      "difficulty": "medium",
+      "lang": "ts",
+      "runner": "browser",
+      "prompt": "Напишите `longest<T extends { length: number }>(items: T[]): T | undefined` — функцию, возвращающую элемент с наибольшей длиной. При равной длине возвращается первый встреченный. Для пустого массива — `undefined`.",
+      "starter": "function longest<T extends { length: number }>(items: T[]): T | undefined {\n  return undefined;\n}",
+      "hints": [
+        "Ограничение extends { length: number } допускает и строки, и массивы.",
+        "Возвращать нужно сам элемент, а не его длину.",
+        "При равенстве длины первый найденный не заменяется."
+      ],
+      "standSetup": "",
+      "tests": [
+        {
+          "name": "находит самую длинную строку",
+          "code": "expect(longest(['ab', 'abcd', 'a'])).toBe('abcd');"
+        },
+        {
+          "name": "работает с массивами",
+          "code": "const target = [1, 2, 3];\nexpect(longest([[1], target, [1, 2]])).toBe(target);"
+        },
+        {
+          "name": "при равной длине берётся первый",
+          "code": "expect(longest(['ab', 'cd'])).toBe('ab');"
+        },
+        {
+          "name": "пустой массив даёт undefined",
+          "code": "expect(longest([])).toBeUndefined();"
+        },
+        {
+          "name": "элемент нулевой длины тоже возвращается",
+          "code": "expect(longest([''])).toBe('');"
+        }
+      ],
+      "solution": "function longest<T extends { length: number }>(items: T[]): T | undefined {\n  let best: T | undefined = undefined;\n\n  for (const item of items) {\n    if (best === undefined || item.length > best.length) {\n      best = item;\n    }\n  }\n\n  return best;\n}",
+      "chapter": "02-typescript/134-generic-constraints"
+    },
+    {
+      "id": "ts-134-merge-defaults",
+      "title": "Слияние с настройками по умолчанию",
+      "difficulty": "hard",
+      "lang": "ts",
+      "runner": "browser",
+      "prompt": "Напишите `withDefaults<T extends object>(defaults: T, overrides: Partial<T>): T`. Поля `overrides` перекрывают значения по умолчанию, но **только** если значение не `undefined`. Исходные объекты изменяться не должны.",
+      "starter": "function withDefaults<T extends object>(defaults: T, overrides: Partial<T>): T {\n  return { ...defaults, ...overrides };\n}",
+      "hints": [
+        "Распространение объекта копирует и явные undefined — это и есть ловушка.",
+        "Перекрывать стоит поэлементно, с проверкой значения.",
+        "Ни один из аргументов не должен измениться."
+      ],
+      "standSetup": "",
+      "tests": [
+        {
+          "name": "перекрывает заданные поля",
+          "code": "expect(withDefaults({ retries: 1, timeout: 5000 }, { retries: 3 }))\n  .toEqual({ retries: 3, timeout: 5000 });"
+        },
+        {
+          "name": "явный undefined не затирает значение по умолчанию",
+          "code": "expect(withDefaults({ retries: 1 }, { retries: undefined }))\n  .toEqual({ retries: 1 });"
+        },
+        {
+          "name": "значение false и 0 перекрывают",
+          "code": "expect(withDefaults({ debug: true, retries: 3 }, { debug: false, retries: 0 }))\n  .toEqual({ debug: false, retries: 0 });"
+        },
+        {
+          "name": "исходные объекты не меняются",
+          "code": "const defaults = { retries: 1 };\nconst overrides = { retries: 3 };\nwithDefaults(defaults, overrides);\nexpect(defaults.retries).toBe(1);\nexpect(overrides.retries).toBe(3);"
+        },
+        {
+          "name": "пустые перекрытия возвращают копию",
+          "code": "const defaults = { retries: 1 };\nconst merged = withDefaults(defaults, {});\nexpect(merged).toEqual({ retries: 1 });\nexpect(merged === defaults).toBe(false);"
+        }
+      ],
+      "solution": "function withDefaults<T extends object>(defaults: T, overrides: Partial<T>): T {\n  const result = { ...defaults };\n\n  for (const key of Object.keys(overrides) as (keyof T)[]) {\n    const value = overrides[key];\n\n    if (value !== undefined) {\n      result[key] = value as T[keyof T];\n    }\n  }\n\n  return result;\n}",
+      "chapter": "02-typescript/134-generic-constraints"
+    }
+  ],
   "02-typescript/141-indexed-access-types": [
     {
       "id": "ts-141-pluck-values",
@@ -5165,6 +5335,86 @@
       "chapter": "02-typescript/141-indexed-access-types"
     }
   ],
+  "02-typescript/142-mapped-types": [
+    {
+      "id": "ts-142-freeze-snapshot",
+      "title": "Снимок только для чтения",
+      "difficulty": "medium",
+      "lang": "ts",
+      "runner": "browser",
+      "prompt": "Объявите отображённый тип `Snapshot<T> = { readonly [K in keyof T]: T[K] }` и функцию `snapshot<T extends object>(source: T): Snapshot<T>`, которая возвращает замороженную копию объекта. Изменение копии не должно влиять на исходный объект и не должно проходить: копия заморожена.",
+      "starter": "type Snapshot<T> = {\n  readonly [K in keyof T]: T[K];\n};\n\nfunction snapshot<T extends object>(source: T): Snapshot<T> {\n  return source;\n}",
+      "hints": [
+        "readonly в типе проверяется только компилятором — во время выполнения нужна заморозка.",
+        "Возвращать надо копию, а не сам объект.",
+        "Object.freeze возвращает тот же объект, который ему передали."
+      ],
+      "standSetup": "",
+      "tests": [
+        {
+          "name": "копия равна исходному объекту",
+          "code": "expect(snapshot({ id: 'a', version: 1 })).toEqual({ id: 'a', version: 1 });"
+        },
+        {
+          "name": "возвращается не тот же объект",
+          "code": "const source = { id: 'a' };\nexpect(snapshot(source) === source).toBe(false);"
+        },
+        {
+          "name": "копия заморожена",
+          "code": "expect(Object.isFrozen(snapshot({ id: 'a' }))).toBe(true);"
+        },
+        {
+          "name": "изменение копии не проходит",
+          "code": "const copy = snapshot({ version: 1 });\ntry { copy.version = 2; } catch (error) { /* строгий режим бросает */ }\nexpect(copy.version).toBe(1);"
+        },
+        {
+          "name": "исходный объект остаётся изменяемым",
+          "code": "const source = { version: 1 };\nsnapshot(source);\nsource.version = 2;\nexpect(source.version).toBe(2);"
+        }
+      ],
+      "solution": "type Snapshot<T> = {\n  readonly [K in keyof T]: T[K];\n};\n\nfunction snapshot<T extends object>(source: T): Snapshot<T> {\n  return Object.freeze({ ...source });\n}",
+      "chapter": "02-typescript/142-mapped-types"
+    },
+    {
+      "id": "ts-142-optional-map",
+      "title": "Все поля становятся необязательными",
+      "difficulty": "hard",
+      "lang": "ts",
+      "runner": "browser",
+      "prompt": "Объявите `Draft<T> = { [K in keyof T]?: T[K] }` и напишите `toDraft<T extends object>(source: T, keep: (keyof T)[]): Draft<T>` — функцию, оставляющую только перечисленные поля. Поля со значением `undefined` в результат не попадают, даже если перечислены.",
+      "starter": "type Draft<T> = {\n  [K in keyof T]?: T[K];\n};\n\nfunction toDraft<T extends object>(source: T, keep: (keyof T)[]): Draft<T> {\n  return {};\n}",
+      "hints": [
+        "Модификатор ? в отображённом типе делает необязательным каждое поле.",
+        "Отсутствие ключа и значение undefined различаются через Object.keys.",
+        "Повторяющиеся ключи не должны создавать дублей."
+      ],
+      "standSetup": "",
+      "tests": [
+        {
+          "name": "оставляет перечисленные поля",
+          "code": "expect(toDraft({ id: 'a', version: 1, note: 'x' }, ['id', 'version']))\n  .toEqual({ id: 'a', version: 1 });"
+        },
+        {
+          "name": "поле со значением undefined не попадает",
+          "code": "const source = { id: 'a', note: undefined };\nexpect(Object.keys(toDraft(source, ['id', 'note']))).toEqual(['id']);"
+        },
+        {
+          "name": "значение null сохраняется",
+          "code": "expect(toDraft({ note: null }, ['note'])).toEqual({ note: null });"
+        },
+        {
+          "name": "пустой список полей даёт пустой черновик",
+          "code": "expect(toDraft({ id: 'a' }, [])).toEqual({});"
+        },
+        {
+          "name": "повтор ключа не создаёт дублей",
+          "code": "expect(Object.keys(toDraft({ id: 'a' }, ['id', 'id']))).toHaveLength(1);"
+        }
+      ],
+      "solution": "type Draft<T> = {\n  [K in keyof T]?: T[K];\n};\n\nfunction toDraft<T extends object>(source: T, keep: (keyof T)[]): Draft<T> {\n  const draft: Draft<T> = {};\n\n  for (const key of keep) {\n    const value = source[key];\n\n    if (value !== undefined) {\n      draft[key] = value;\n    }\n  }\n\n  return draft;\n}",
+      "chapter": "02-typescript/142-mapped-types"
+    }
+  ],
   "02-typescript/145-utility-types": [
     {
       "id": "ts-145-pick-fields",
@@ -5235,6 +5485,92 @@
       ],
       "solution": "type DraftItem = {\n  title?: string;\n  priority?: string;\n};\n\nfunction toComplete(draft: DraftItem): Required<DraftItem> | null {\n  const { title, priority } = draft;\n\n  if (!title || !priority) {\n    return null;\n  }\n\n  return { title, priority };\n}",
       "chapter": "02-typescript/145-utility-types"
+    }
+  ],
+  "02-typescript/156-typed-configuration-and-test-data": [
+    {
+      "id": "ts-156-read-config",
+      "title": "Чтение конфигурации с проверкой",
+      "difficulty": "hard",
+      "lang": "ts",
+      "runner": "browser",
+      "prompt": "Напишите `readConfig(env: Record<string, string | undefined>): Config`, где `Config = { baseUrl: string; retries: number; headless: boolean }`. Значения берутся из `BASE_URL`, `RETRIES`, `HEADLESS`. `BASE_URL` обязателен — без него ошибка `BASE_URL не задан`. `RETRIES` по умолчанию `0`, нечисловое значение — ошибка `RETRIES не число`. `HEADLESS` считается истинным только для строки `true`, по умолчанию `true`.",
+      "starter": "type Config = {\n  baseUrl: string;\n  retries: number;\n  headless: boolean;\n};\n\nfunction readConfig(env: Record<string, string | undefined>): Config {\n  // Границу конфигурации проверяют один раз — здесь.\n  return { baseUrl: '', retries: 0, headless: true };\n}",
+      "hints": [
+        "Значение переменной окружения всегда строка или undefined.",
+        "Пустая строка — это тоже «не задано».",
+        "Number(\"\") равно нулю: проверять надо до преобразования."
+      ],
+      "standSetup": "",
+      "tests": [
+        {
+          "name": "читает все три значения",
+          "code": "expect(readConfig({ BASE_URL: 'http://x', RETRIES: '3', HEADLESS: 'false' }))\n  .toEqual({ baseUrl: 'http://x', retries: 3, headless: false });"
+        },
+        {
+          "name": "значения по умолчанию применяются",
+          "code": "expect(readConfig({ BASE_URL: 'http://x' }))\n  .toEqual({ baseUrl: 'http://x', retries: 0, headless: true });"
+        },
+        {
+          "name": "отсутствие адреса — ошибка",
+          "code": "let message = '';\ntry { readConfig({}); } catch (error) { message = error.message; }\nexpect(message).toBe('BASE_URL не задан');"
+        },
+        {
+          "name": "пустой адрес тоже ошибка",
+          "code": "let message = '';\ntry { readConfig({ BASE_URL: '' }); } catch (error) { message = error.message; }\nexpect(message).toBe('BASE_URL не задан');"
+        },
+        {
+          "name": "нечисловое число попыток — ошибка",
+          "code": "let message = '';\ntry { readConfig({ BASE_URL: 'http://x', RETRIES: 'три' }); }\ncatch (error) { message = error.message; }\nexpect(message).toBe('RETRIES не число');"
+        },
+        {
+          "name": "произвольная строка не включает режим окна",
+          "code": "expect(readConfig({ BASE_URL: 'http://x', HEADLESS: 'yes' }).headless).toBe(false);"
+        }
+      ],
+      "solution": "type Config = {\n  baseUrl: string;\n  retries: number;\n  headless: boolean;\n};\n\nfunction readConfig(env: Record<string, string | undefined>): Config {\n  const baseUrl = env.BASE_URL;\n\n  if (baseUrl === undefined || baseUrl === '') {\n    throw new Error('BASE_URL не задан');\n  }\n\n  const rawRetries = env.RETRIES;\n  let retries = 0;\n\n  if (rawRetries !== undefined && rawRetries !== '') {\n    retries = Number(rawRetries);\n\n    if (!Number.isFinite(retries)) {\n      throw new Error('RETRIES не число');\n    }\n  }\n\n  const rawHeadless = env.HEADLESS;\n  const headless = rawHeadless === undefined ? true : rawHeadless === 'true';\n\n  return { baseUrl, retries, headless };\n}",
+      "chapter": "02-typescript/156-typed-configuration-and-test-data"
+    }
+  ],
+  "02-typescript/157-typed-page-objects-fixtures-and-helpers": [
+    {
+      "id": "ts-157-typed-page-object",
+      "title": "Page Object поверх типизированной страницы",
+      "difficulty": "hard",
+      "lang": "ts",
+      "runner": "browser",
+      "prompt": "Опишите тип `PageLike` с методами `goto(path: string): Promise<void>`, `fill(selector: string, value: string): Promise<void>` и `click(selector: string): Promise<void>`. Напишите класс `LoginPage`, принимающий `PageLike` в конструкторе и имеющий метод `login(user: string, password: string): Promise<void>`, который открывает `/login`, заполняет `#username` и `#password` и нажимает `#submit` — именно в этом порядке.",
+      "starter": "type PageLike = {\n  goto(path: string): Promise<void>;\n  fill(selector: string, value: string): Promise<void>;\n  click(selector: string): Promise<void>;\n};\n\nclass LoginPage {\n  constructor(private readonly page: PageLike) {}\n\n  async login(user: string, password: string): Promise<void> {\n    // Страница знает селекторы, тест знает только шаги.\n  }\n}",
+      "hints": [
+        "Page Object скрывает селекторы: наружу видны только шаги.",
+        "Каждое действие асинхронно — его нужно дождаться.",
+        "Проверки смотрят на порядок вызовов."
+      ],
+      "standSetup": "",
+      "tests": [
+        {
+          "name": "шаги выполняются в нужном порядке",
+          "code": "const calls = [];\nconst page = {\n  goto: async (path) => { calls.push('goto:' + path); },\n  fill: async (selector, value) => { calls.push('fill:' + selector + '=' + value); },\n  click: async (selector) => { calls.push('click:' + selector); }\n};\nawait new LoginPage(page).login('tester', 'secret');\nexpect(calls).toEqual([\n  'goto:/login',\n  'fill:#username=tester',\n  'fill:#password=secret',\n  'click:#submit'\n]);"
+        },
+        {
+          "name": "значения не подставляются жёстко",
+          "code": "const filled = [];\nconst page = {\n  goto: async () => {},\n  fill: async (selector, value) => { filled.push(value); },\n  click: async () => {}\n};\nawait new LoginPage(page).login('admin', 'p@ss');\nexpect(filled).toEqual(['admin', 'p@ss']);"
+        },
+        {
+          "name": "каждое действие дожидается предыдущего",
+          "code": "const order = [];\nconst delay = ms => new Promise(resolve => setTimeout(resolve, ms));\nconst page = {\n  goto: async () => { await delay(5); order.push('goto'); },\n  fill: async () => { order.push('fill'); },\n  click: async () => { order.push('click'); }\n};\nawait new LoginPage(page).login('a', 'b');\nexpect(order).toEqual(['goto', 'fill', 'fill', 'click']);"
+        },
+        {
+          "name": "метод возвращает промис",
+          "code": "const page = { goto: async () => {}, fill: async () => {}, click: async () => {} };\nconst returned = new LoginPage(page).login('a', 'b');\nexpect(typeof returned.then).toBe('function');\nawait returned;"
+        },
+        {
+          "name": "ошибка страницы не проглатывается",
+          "code": "const page = {\n  goto: async () => { throw new Error('страница недоступна'); },\n  fill: async () => {},\n  click: async () => {}\n};\nlet message = '';\ntry { await new LoginPage(page).login('a', 'b'); }\ncatch (error) { message = error.message; }\nexpect(message).toBe('страница недоступна');"
+        }
+      ],
+      "solution": "type PageLike = {\n  goto(path: string): Promise<void>;\n  fill(selector: string, value: string): Promise<void>;\n  click(selector: string): Promise<void>;\n};\n\nclass LoginPage {\n  constructor(private readonly page: PageLike) {}\n\n  async login(user: string, password: string): Promise<void> {\n    await this.page.goto('/login');\n    await this.page.fill('#username', user);\n    await this.page.fill('#password', password);\n    await this.page.click('#submit');\n  }\n}",
+      "chapter": "02-typescript/157-typed-page-objects-fixtures-and-helpers"
     }
   ],
   "02-typescript/158-typed-api-clients-and-assertions": [
@@ -5457,6 +5793,92 @@
       ],
       "solution": "export default async function solve({ page }) {\n  await page.goto('/login');\n  await page.getByLabel('Логин').fill('educational_tester');\n  await page.getByLabel('Пароль').fill('educational-tester-password');\n  await page.getByRole('button', { name: 'Войти' }).click();\n\n  await page.goto('/work-items');\n\n  // click ждёт доступности ссылки, waitForURL — завершения перехода.\n  await page.getByRole('table').getByRole('link').first().click();\n  await page.waitForURL(/\\/work-items\\/[^/]+$/);\n\n  const heading = page.getByRole('heading').first();\n\n  return { url: page.url(), heading: await heading.innerText() };\n}",
       "chapter": "03-automation-qa/172-auto-waiting-and-explicit-waits"
+    }
+  ],
+  "03-automation-qa/184-network-interception-and-mocking": [
+    {
+      "id": "qa-184-stub-list-page",
+      "title": "Подмена ответа сервера",
+      "difficulty": "hard",
+      "lang": "playwright",
+      "runner": "stand",
+      "prompt": "Войдите как `educational_tester` с паролем `educational-tester-password`, перехватите запрос страницы `/work-items` и ответьте на него собственной разметкой с заголовком `Подменённый список` — так, чтобы настоящий сервер этот запрос не обработал. Верните `{ heading, intercepted }`: текст заголовка открытой страницы и число перехваченных запросов. Данные на стенде изменяться не должны.",
+      "starter": "export default async function solve({ page }) {\n  // page.route перехватывает запрос до того, как он уйдёт на сервер.\n\n  return { heading: '', intercepted: 0 };\n}",
+      "hints": [
+        "Перехват задаётся до перехода на страницу.",
+        "Обработчик может ответить сам, а может пропустить запрос дальше.",
+        "Подменённый ответ должен быть разметкой, иначе браузер не покажет заголовок."
+      ],
+      "standSetup": "",
+      "tests": [
+        {
+          "name": "страница показала подменённый заголовок",
+          "code": "expect(result.heading.trim()).toBe('Подменённый список');"
+        },
+        {
+          "name": "перехват сработал ровно один раз",
+          "code": "expect(result.intercepted).toBe(1);"
+        },
+        {
+          "name": "открыт адрес списка задач",
+          "code": "expect(page.url()).toContain('/work-items');"
+        },
+        {
+          "name": "настоящий список на стенде не изменился",
+          "code": "const response = await api.get('/work-items?limit=5');\nexpect(response.status).toBe(200);\nexpect(response.body.items.length > 0).toBe(true);"
+        },
+        {
+          "name": "подменённая разметка видна в браузере",
+          "code": "expect(await page.getByRole('heading', { name: 'Подменённый список' }).isVisible()).toBe(true);"
+        }
+      ],
+      "solution": "export default async function solve({ page }) {\n  await page.goto('/login');\n  await page.getByLabel('Логин').fill('educational_tester');\n  await page.getByLabel('Пароль').fill('educational-tester-password');\n  await page.getByRole('button', { name: 'Войти' }).click();\n\n  let intercepted = 0;\n\n  await page.route('**/work-items', async route => {\n    intercepted += 1;\n\n    await route.fulfill({\n      status: 200,\n      contentType: 'text/html; charset=utf-8',\n      body: '<html><body><h1>Подменённый список</h1></body></html>'\n    });\n  });\n\n  await page.goto('/work-items');\n\n  const heading = page.getByRole('heading', { name: 'Подменённый список' });\n\n  return { heading: await heading.innerText(), intercepted };\n}",
+      "chapter": "03-automation-qa/184-network-interception-and-mocking"
+    }
+  ],
+  "03-automation-qa/186-http-and-rest-for-api-testing": [
+    {
+      "id": "qa-186-methods-and-meaning",
+      "title": "Метод определяет смысл запроса",
+      "difficulty": "medium",
+      "lang": "api",
+      "runner": "stand",
+      "prompt": "Покажите разницу между методами на одной записи. Создайте задачу с заголовком `Смысл метода`, затем выполните: чтение той же записи дважды, удаление и повторное чтение. Верните `{ created, readFirst, readSecond, deleted, readAfterDelete }` — пять ответов стенда. Обрабатывать отказ как исключение не нужно: клиент возвращает ответ с кодом состояния.",
+      "starter": "export default async function solve(api) {\n  // Чтение не меняет состояние, удаление меняет.\n\n  return {\n    created: null,\n    readFirst: null,\n    readSecond: null,\n    deleted: null,\n    readAfterDelete: null\n  };\n}",
+      "hints": [
+        "Повторное чтение должно давать тот же результат.",
+        "Удаление возвращает ответ без тела.",
+        "После удаления запись читаться не должна."
+      ],
+      "standSetup": "",
+      "tests": [
+        {
+          "name": "создание вернуло 201",
+          "code": "expect(result.created.status).toBe(201);"
+        },
+        {
+          "name": "два чтения подряд дали одно и то же",
+          "code": "expect(result.readFirst.status).toBe(200);\nexpect(result.readSecond.status).toBe(200);\nexpect(result.readSecond.body.version).toBe(result.readFirst.body.version);"
+        },
+        {
+          "name": "чтение не изменило запись",
+          "code": "expect(result.readFirst.body.version).toBe(result.created.body.version);"
+        },
+        {
+          "name": "удаление прошло",
+          "code": "expect(result.deleted.status === 204 || result.deleted.status === 200).toBe(true);"
+        },
+        {
+          "name": "после удаления запись не читается",
+          "code": "expect(result.readAfterDelete.status).toBe(404);"
+        },
+        {
+          "name": "запись действительно исчезла со стенда",
+          "code": "const again = await api.get('/work-items/' + result.created.body.id);\nexpect(again.status).toBe(404);"
+        }
+      ],
+      "solution": "export default async function solve(api) {\n  const created = await api.post('/work-items', {\n    title: 'Смысл метода',\n    description: 'Чтение, удаление, повторное чтение',\n    priority: 'LOW'\n  });\n\n  const path = '/work-items/' + created.body.id;\n\n  const readFirst = await api.get(path);\n  const readSecond = await api.get(path);\n  const deleted = await api.delete(path);\n  const readAfterDelete = await api.get(path);\n\n  return { created, readFirst, readSecond, deleted, readAfterDelete };\n}",
+      "chapter": "03-automation-qa/186-http-and-rest-for-api-testing"
     }
   ],
   "03-automation-qa/187-http-request-structure": [
@@ -5724,6 +6146,51 @@
       ],
       "solution": "export default async function solve(api) {\n  const rejected = await api.post('/work-items', {\n    title: 'Недопустимый приоритет',\n    description: 'Значение URGENT отсутствует в контракте',\n    priority: 'URGENT'\n  });\n\n  const valid = await api.post('/work-items', {\n    title: 'Корректный приоритет',\n    description: 'Значение HIGH допустимо',\n    priority: 'HIGH'\n  });\n\n  return { rejected, valid };\n}",
       "chapter": "03-automation-qa/194-negative-api-scenarios-and-errors"
+    }
+  ],
+  "03-automation-qa/195-runtime-contract-validation": [
+    {
+      "id": "qa-195-validate-response-shape",
+      "title": "Проверка контракта ответа",
+      "difficulty": "hard",
+      "lang": "api",
+      "runner": "stand",
+      "prompt": "Напишите проверку контракта и примените её дважды. Контракт элемента: `id` — непустая строка, `title`, `status` и `priority` — строки, `version` — целое число не меньше нуля. Отсутствующее поле — тоже нарушение. Прочитайте `GET /work-items?limit=5` и проверьте элементы ответа, а затем прогоните ту же проверку по заведомо неверному набору из стартового кода. Верните `{ checked, violations, brokenViolations, sample }`: число проверенных элементов ответа, нарушения в ответе, нарушения в неверном наборе и первый элемент выборки.",
+      "starter": "const BROKEN = [\n  { id: '', title: 'пустой идентификатор', status: 'NEW', priority: 'LOW', version: 1 },\n  { id: 'WI-2', title: 42, status: 'NEW', priority: 'LOW', version: 1 },\n  { id: 'WI-3', title: 'нет версии', status: 'NEW', priority: 'LOW' },\n  { id: 'WI-4', title: 'дробная версия', status: 'NEW', priority: 'LOW', version: 1.5 }\n];\n\nexport default async function solve(api) {\n  const response = await api.get('/work-items?limit=5');\n\n  // Одна и та же проверка применяется к ответу и к неверному набору.\n\n  return { checked: 0, violations: [], brokenViolations: [], sample: null };\n}",
+      "hints": [
+        "Проверку удобно вынести в отдельную функцию: она нужна дважды.",
+        "Отсутствующее поле и поле неверного типа — разные случаи, но оба нарушения.",
+        "Number.isInteger отличает целое от дробного и от строки."
+      ],
+      "standSetup": "",
+      "tests": [
+        {
+          "name": "проверено пять элементов ответа",
+          "code": "expect(result.checked).toBe(5);"
+        },
+        {
+          "name": "в ответе стенда нарушений нет",
+          "code": "expect(result.violations).toEqual([]);"
+        },
+        {
+          "name": "неверный набор даёт нарушения",
+          "code": "expect(result.brokenViolations.length >= 4).toBe(true);"
+        },
+        {
+          "name": "нарушения описаны текстом",
+          "code": "expect(result.brokenViolations.every(item => typeof item === 'string')).toBe(true);"
+        },
+        {
+          "name": "образец содержит обязательные поля",
+          "code": "expect(typeof result.sample.id).toBe('string');\nexpect(result.sample.id.length > 0).toBe(true);\nexpect(Number.isInteger(result.sample.version)).toBe(true);"
+        },
+        {
+          "name": "выборка ограничена пятью записями",
+          "code": "const limited = await api.get('/work-items?limit=5');\nexpect(limited.body.items).toHaveLength(5);"
+        }
+      ],
+      "solution": "const BROKEN = [\n  { id: '', title: 'пустой идентификатор', status: 'NEW', priority: 'LOW', version: 1 },\n  { id: 'WI-2', title: 42, status: 'NEW', priority: 'LOW', version: 1 },\n  { id: 'WI-3', title: 'нет версии', status: 'NEW', priority: 'LOW' },\n  { id: 'WI-4', title: 'дробная версия', status: 'NEW', priority: 'LOW', version: 1.5 }\n];\n\nfunction findViolations(item, index) {\n  const problems = [];\n\n  if (typeof item.id !== 'string' || item.id === '') {\n    problems.push('элемент ' + index + ': id не является непустой строкой');\n  }\n\n  for (const field of ['title', 'status', 'priority']) {\n    if (typeof item[field] !== 'string') {\n      problems.push('элемент ' + index + ': ' + field + ' не является строкой');\n    }\n  }\n\n  if (!Number.isInteger(item.version) || item.version < 0) {\n    problems.push('элемент ' + index + ': version не является целым неотрицательным');\n  }\n\n  return problems;\n}\n\nexport default async function solve(api) {\n  const response = await api.get('/work-items?limit=5');\n  const items = response.body.items;\n\n  return {\n    checked: items.length,\n    violations: items.flatMap(findViolations),\n    brokenViolations: BROKEN.flatMap(findViolations),\n    sample: items[0] ?? null\n  };\n}",
+      "chapter": "03-automation-qa/195-runtime-contract-validation"
     }
   ],
   "03-automation-qa/207-postgresql-in-automation-qa": [
@@ -6038,6 +6505,96 @@
       ],
       "solution": "export default async function solve(api) {\n  // Метка живёт в заголовке: она уникальна, поэтому чужие записи под неё не попадут.\n  const marker = 'run-' + Date.now() + '-' + Math.floor(Math.random() * 100000);\n\n  const created = await api.post('/work-items', {\n    title: 'Параллельный прогон ' + marker,\n    description: 'Запись этого теста',\n    priority: 'LOW'\n  });\n\n  // Своя запись создана последней, поэтому нужна последняя страница.\n  const first = await api.get('/work-items?limit=100');\n  const offset = Math.max(0, first.body.total - 100);\n  const lastPage = await api.get('/work-items?limit=100&offset=' + offset);\n  const items = lastPage.body.items;\n\n  const matches = items.filter(item => item.title.includes(marker)).length;\n  const neighbours = items.filter(item => item.title === 'Параллельный прогон').length;\n\n  return { marker, id: created.body.id, matches, neighbours };\n}",
       "chapter": "03-automation-qa/215-data-conflicts-and-parallel-tests"
+    }
+  ],
+  "03-automation-qa/220-builders-factories-and-unique-data": [
+    {
+      "id": "qa-220-work-item-builder",
+      "title": "Строитель тестовых данных",
+      "difficulty": "medium",
+      "lang": "js",
+      "runner": "browser",
+      "prompt": "Напишите `createWorkItemBuilder()` — строитель с методами `withTitle`, `withPriority` и `build`. Методы настройки возвращают строитель, чтобы вызовы соединялись в цепочку. `build` отдаёт объект `{ title, description, priority }` со значениями по умолчанию `description: \"Создано строителем\"` и `priority: \"MEDIUM\"`. Заголовок по умолчанию — `Задача <n>`, где `n` — номер вызова `build` у этого строителя, начиная с 1. Каждый `build` возвращает **новый** объект.",
+      "starter": "function createWorkItemBuilder() {\n  // Значения по умолчанию, настройка цепочкой, новый объект на каждый build.\n  return {\n    withTitle(title) { return this; },\n    withPriority(priority) { return this; },\n    build() { return {}; }\n  };\n}",
+      "hints": [
+        "Настройки хранятся в замыкании, а не в возвращаемом объекте.",
+        "Чтобы цепочка работала, метод настройки возвращает сам строитель.",
+        "Счётчик увеличивается только при сборке."
+      ],
+      "standSetup": "",
+      "tests": [
+        {
+          "name": "значения по умолчанию заполнены",
+          "code": "expect(createWorkItemBuilder().build())\n  .toEqual({ title: 'Задача 1', description: 'Создано строителем', priority: 'MEDIUM' });"
+        },
+        {
+          "name": "настройка работает цепочкой",
+          "code": "const item = createWorkItemBuilder()\n  .withTitle('Вход')\n  .withPriority('HIGH')\n  .build();\nexpect(item.title).toBe('Вход');\nexpect(item.priority).toBe('HIGH');"
+        },
+        {
+          "name": "номер увеличивается с каждой сборкой",
+          "code": "const builder = createWorkItemBuilder();\nexpect(builder.build().title).toBe('Задача 1');\nexpect(builder.build().title).toBe('Задача 2');"
+        },
+        {
+          "name": "разные строители считают независимо",
+          "code": "const first = createWorkItemBuilder();\nfirst.build();\nexpect(createWorkItemBuilder().build().title).toBe('Задача 1');"
+        },
+        {
+          "name": "каждая сборка даёт новый объект",
+          "code": "const builder = createWorkItemBuilder().withTitle('Вход');\nconst a = builder.build();\nconst b = builder.build();\nexpect(a === b).toBe(false);\na.priority = 'LOW';\nexpect(b.priority).toBe('MEDIUM');"
+        },
+        {
+          "name": "заданный заголовок не перезаписывается счётчиком",
+          "code": "const builder = createWorkItemBuilder().withTitle('Вход');\nbuilder.build();\nexpect(builder.build().title).toBe('Вход');"
+        }
+      ],
+      "solution": "function createWorkItemBuilder() {\n  let title = null;\n  let priority = 'MEDIUM';\n  let built = 0;\n\n  const builder = {\n    withTitle(value) {\n      title = value;\n      return builder;\n    },\n    withPriority(value) {\n      priority = value;\n      return builder;\n    },\n    build() {\n      built += 1;\n\n      return {\n        title: title ?? 'Задача ' + built,\n        description: 'Создано строителем',\n        priority\n      };\n    }\n  };\n\n  return builder;\n}",
+      "chapter": "03-automation-qa/220-builders-factories-and-unique-data"
+    }
+  ],
+  "03-automation-qa/223-custom-assertions-and-soft-assertions": [
+    {
+      "id": "qa-223-soft-assertions",
+      "title": "Мягкие проверки",
+      "difficulty": "hard",
+      "lang": "js",
+      "runner": "browser",
+      "prompt": "Напишите `createSoftAssert()` со свойствами `check(name, condition)` и `verify()`. `check` записывает неудачу и **не** прерывает выполнение. `verify` ничего не делает, если неудач нет, и выбрасывает ошибку с сообщением `Не пройдено проверок: <n>: <имена через запятую>`, если они есть. Имена перечисляются в порядке проверок.",
+      "starter": "function createSoftAssert() {\n  return {\n    check(name, condition) {},\n    verify() {}\n  };\n}",
+      "hints": [
+        "Мягкая проверка копит неудачи, а не бросает исключение сразу.",
+        "Сообщение собирается только в момент verify.",
+        "Успешная проверка в список не попадает."
+      ],
+      "standSetup": "",
+      "tests": [
+        {
+          "name": "без неудач verify молчит",
+          "code": "const soft = createSoftAssert();\nsoft.check('первая', true);\nsoft.check('вторая', true);\nsoft.verify();\nexpect(true).toBe(true);"
+        },
+        {
+          "name": "неудачная проверка не прерывает выполнение",
+          "code": "const soft = createSoftAssert();\nlet reached = false;\nsoft.check('первая', false);\nreached = true;\nexpect(reached).toBe(true);"
+        },
+        {
+          "name": "verify сообщает обо всех неудачах",
+          "code": "const soft = createSoftAssert();\nsoft.check('первая', false);\nsoft.check('вторая', true);\nsoft.check('третья', false);\nlet message = '';\ntry { soft.verify(); } catch (error) { message = error.message; }\nexpect(message).toBe('Не пройдено проверок: 2: первая, третья');"
+        },
+        {
+          "name": "порядок имён сохраняется",
+          "code": "const soft = createSoftAssert();\nsoft.check('b', false);\nsoft.check('a', false);\nlet message = '';\ntry { soft.verify(); } catch (error) { message = error.message; }\nexpect(message).toContain('b, a');"
+        },
+        {
+          "name": "ложное значение считается неудачей",
+          "code": "const soft = createSoftAssert();\nsoft.check('пусто', '');\nsoft.check('ноль', 0);\nlet message = '';\ntry { soft.verify(); } catch (error) { message = error.message; }\nexpect(message).toBe('Не пройдено проверок: 2: пусто, ноль');"
+        },
+        {
+          "name": "разные наборы проверок независимы",
+          "code": "const first = createSoftAssert();\nfirst.check('x', false);\nconst second = createSoftAssert();\nsecond.check('y', true);\nsecond.verify();\nexpect(true).toBe(true);"
+        }
+      ],
+      "solution": "function createSoftAssert() {\n  const failed = [];\n\n  return {\n    check(name, condition) {\n      if (!condition) {\n        failed.push(name);\n      }\n    },\n    verify() {\n      if (failed.length === 0) {\n        return;\n      }\n\n      throw new Error(\n        'Не пройдено проверок: ' + failed.length + ': ' + failed.join(', ')\n      );\n    }\n  };\n}",
+      "chapter": "03-automation-qa/223-custom-assertions-and-soft-assertions"
     }
   ]
 }

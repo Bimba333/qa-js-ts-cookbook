@@ -144,6 +144,18 @@ interface Page<Data> {
 }
 ```
 
+Запускаемые версии этих примеров находятся в:
+
+```text
+examples/02-typescript/chapter-136/
+```
+
+`01-api-response-alias.ts` — дженерик-псевдоним `ApiResponse<Data>`.
+
+`02-builder-interface.ts` — дженерик-интерфейс строителя данных.
+
+`03-unused-type-parameter.ts` — параметр-тип, который нигде не используется (намеренная ошибка).
+
 ## Automation QA
 
 Обобщённая модель ответа помогает описывать разные API-ответы одной формой:

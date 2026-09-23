@@ -16,7 +16,12 @@ const tests = [
 
 const startedAt = Date.now();
 const totalDuration = runSuite(tests);
-const finishedAt = Date.now();
+const elapsedMs = Date.now() - startedAt;
 
+// Сумма длительностей — это данные: она одинакова на любой машине.
 console.log(`test duration: ${totalDuration}`);
-console.log(`calculation time: ${finishedAt - startedAt}`);
+
+// Время самого расчёта — измерение. Печатать его число бессмысленно:
+// на другой машине или при другой нагрузке оно будет другим.
+// Воспроизводимый вывод даёт сравнение с порогом.
+console.log(`calculation under 50ms: ${elapsedMs < 50}`);

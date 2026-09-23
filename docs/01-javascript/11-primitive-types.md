@@ -548,6 +548,17 @@ Next chapter will answer:
 
 ---
 
+Две категории значений ведут себя по-разному:
+
+```mermaid
+flowchart TD
+    A["значение"] --> B{"примитив или объект?"}
+    B -- "примитив" --> C["number, string, boolean,<br/>undefined, null, symbol, bigint"]
+    C --> D["неизменяем: операция<br/>создаёт новое значение"]
+    B -- "объект" --> E["хранит свойства<br/>и может меняться"]
+    F["typeof null"] --> G["'object' — историческая особенность"]
+```
+
 ## Внутренний механизм
 
 At this stage we keep the mechanism conceptual.

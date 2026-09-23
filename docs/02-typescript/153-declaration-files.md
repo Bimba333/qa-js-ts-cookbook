@@ -131,6 +131,18 @@ declare class LegacyReporter {
 
 Все эти объявления нужны для проверки типов. Реализация должна прийти из JavaScript-кода или среды выполнения.
 
+Запускаемые версии этих примеров находятся в:
+
+```text
+examples/02-typescript/chapter-153/
+```
+
+`01-local-declare.ts` — `declare function` без реализации.
+
+`02-declare-runtime-safety.ts` — описание объекта, которого нет в коде.
+
+`03-declaration-mismatch-diagnostic.ts` — вызов, противоречащий декларации (намеренная ошибка).
+
 ## Automation QA
 
 Если в проекте есть старый JavaScript helper, декларация может описать его API:

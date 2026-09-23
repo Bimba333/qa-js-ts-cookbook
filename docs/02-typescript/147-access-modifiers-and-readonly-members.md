@@ -165,6 +165,18 @@ class TestRun {
 
 `id` становится публичным readonly-свойством экземпляра. `status` становится private-свойством.
 
+Запускаемые версии этих примеров находятся в:
+
+```text
+examples/02-typescript/chapter-147/
+```
+
+`01-access-modifiers.ts` — `private` поле и публичный метод.
+
+`02-parameter-properties.ts` — параметры-свойства в конструкторе.
+
+`03-access-diagnostics.ts` — запись в `private readonly` поле (намеренная ошибка).
+
 ## Automation QA
 
 Для Page Object-подобного класса можно оставить наружу только действия:

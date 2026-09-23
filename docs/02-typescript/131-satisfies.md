@@ -157,6 +157,18 @@ const reportConfig = {
 const exactMode: "summary" = reportConfig.mode;
 ```
 
+Запускаемые версии этих примеров находятся в:
+
+```text
+examples/02-typescript/chapter-131/
+```
+
+`01-satisfies-config.ts` — проверка конфигурации без потери значений.
+
+`02-literal-preservation.ts` — сохранение литерального типа поля.
+
+`03-invalid-satisfies.ts` — несоответствие типу при `satisfies` (намеренная ошибка).
+
 ## Automation QA
 
 В QA-проекте `satisfies` удобно использовать для статических настроек:

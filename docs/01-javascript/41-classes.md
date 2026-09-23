@@ -225,6 +225,18 @@ This is why classes fit naturally after Prototype and Prototype Chain.
 
 ---
 
+`class` — это запись поверх прототипов:
+
+```mermaid
+flowchart TD
+    A["class Page"] --> B["constructor: создание экземпляра"]
+    B --> C["собственные поля экземпляра"]
+    A --> D["методы"]
+    D --> E["живут в прототипе,<br/>а не в каждом экземпляре"]
+    C --> F["экземпляр"]
+    E --> F
+```
+
 ## Внутренний механизм
 
 When JavaScript evaluates:

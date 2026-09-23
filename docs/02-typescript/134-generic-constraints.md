@@ -127,6 +127,18 @@ function hasItems<Collection extends { length: number }>(collection: Collection)
 const result = hasItems(["login", "checkout"]);
 ```
 
+Запускаемые версии этих примеров находятся в:
+
+```text
+examples/02-typescript/chapter-134/
+```
+
+`01-entity-constraint.ts` — ограничение `extends { id: string }`.
+
+`02-length-constraint.ts` — ограничение по `length` для строк и массивов.
+
+`03-constraint-diagnostic.ts` — аргумент, не удовлетворяющий ограничению (намеренная ошибка).
+
 ## Automation QA
 
 В тестовых данных часто есть общие поля:

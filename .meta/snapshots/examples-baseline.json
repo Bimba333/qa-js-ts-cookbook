@@ -2943,7 +2943,7 @@
     "chapter": "docs/01-javascript/89-performance",
     "title": "JS Пример 1. Measure Duration",
     "outcome": "ok",
-    "text": "test duration: 550\ncalculation time: 0"
+    "text": "test duration: 550\ncalculation under 50ms: true"
   },
   {
     "chapter": "docs/01-javascript/89-performance",
@@ -3150,6 +3150,1122 @@
     "text": "{\n  \"password\": \"secret\"\n}"
   },
   {
+    "chapter": "docs/02-typescript/100-tsconfig-json",
+    "title": "JS Пример 1. Project Boundary",
+    "outcome": "ok",
+    "text": "Run tests/api, save report to reports/html"
+  },
+  {
+    "chapter": "docs/02-typescript/100-tsconfig-json",
+    "title": "JS Пример 3. Project Rules",
+    "outcome": "ok",
+    "text": "Selected browser: chromium"
+  },
+  {
+    "chapter": "docs/02-typescript/101-strict-mode",
+    "title": "JS Пример 1. Without Clear Value",
+    "outcome": "ok",
+    "text": "https://api.example.test"
+  },
+  {
+    "chapter": "docs/02-typescript/101-strict-mode",
+    "title": "JS Пример 2. Strict Requires Clarity",
+    "outcome": "ok",
+    "text": "https://api.example.test/users/42"
+  },
+  {
+    "chapter": "docs/02-typescript/101-strict-mode",
+    "title": "JS Пример 3. Strict Catches Missing Case",
+    "outcome": "ok",
+    "text": "https://api.example.test"
+  },
+  {
+    "chapter": "docs/02-typescript/102-type-annotations-and-type-inference",
+    "title": "JS Пример 1. Inference",
+    "outcome": "ok",
+    "text": "checkout: retries=2, smoke=true"
+  },
+  {
+    "chapter": "docs/02-typescript/102-type-annotations-and-type-inference",
+    "title": "JS Пример 2. Annotation Boundary",
+    "outcome": "ok",
+    "text": "api smoke run #12"
+  },
+  {
+    "chapter": "docs/02-typescript/102-type-annotations-and-type-inference",
+    "title": "JS Пример 3. Too Wide Type",
+    "outcome": "ok",
+    "text": "three"
+  },
+  {
+    "chapter": "docs/02-typescript/103-primitive-types",
+    "title": "JS Пример 1. Primitive Config",
+    "outcome": "ok",
+    "text": "https://api.example.test timeout=5000 debug=false"
+  },
+  {
+    "chapter": "docs/02-typescript/103-primitive-types",
+    "title": "JS Пример 2. Primitive Mismatch",
+    "outcome": "ok",
+    "text": "2 2"
+  },
+  {
+    "chapter": "docs/02-typescript/103-primitive-types",
+    "title": "JS Пример 3. Null And Undefined",
+    "outcome": "ok",
+    "text": "selectedBrowser: null\nenvName: undefined"
+  },
+  {
+    "chapter": "docs/02-typescript/104-any-and-unknown",
+    "title": "JS Пример 1. Any Loses Checking",
+    "outcome": "ok",
+    "text": "ok\nruntime error was hidden from TypeScript by any"
+  },
+  {
+    "chapter": "docs/02-typescript/104-any-and-unknown",
+    "title": "JS Пример 2. Unknown Requires Check",
+    "outcome": "ok",
+    "text": "READY\nvalue is not a string"
+  },
+  {
+    "chapter": "docs/02-typescript/104-any-and-unknown",
+    "title": "JS Пример 3. Api Data",
+    "outcome": "ok",
+    "text": "response has status"
+  },
+  {
+    "chapter": "docs/02-typescript/105-void-and-never",
+    "title": "JS Пример 1. Void Logger",
+    "outcome": "ok",
+    "text": "step: open checkout page"
+  },
+  {
+    "chapter": "docs/02-typescript/105-void-and-never",
+    "title": "JS Пример 2. Never Throws",
+    "outcome": "ok",
+    "text": "test was stopped by an error"
+  },
+  {
+    "chapter": "docs/02-typescript/105-void-and-never",
+    "title": "JS Пример 3. Assertion Helper",
+    "outcome": "ok",
+    "text": "https://api.example.test"
+  },
+  {
+    "chapter": "docs/02-typescript/106-arrays",
+    "title": "JS Пример 1. String Array",
+    "outcome": "ok",
+    "text": "suite: smoke\nsuite: regression\nsuite: api"
+  },
+  {
+    "chapter": "docs/02-typescript/106-arrays",
+    "title": "JS Пример 2. Array Of Objects",
+    "outcome": "ok",
+    "text": "Anna: admin\nIvan: viewer"
+  },
+  {
+    "chapter": "docs/02-typescript/106-arrays",
+    "title": "JS Пример 3. Readonly Array",
+    "outcome": "ok",
+    "text": "local -> staging -> production"
+  },
+  {
+    "chapter": "docs/02-typescript/107-tuples",
+    "title": "JS Пример 1. Basic Tuple",
+    "outcome": "ok",
+    "text": "200: OK"
+  },
+  {
+    "chapter": "docs/02-typescript/107-tuples",
+    "title": "JS Пример 2. Optional Element",
+    "outcome": "ok",
+    "text": "[\n  \"login form\",\n  true\n]\n[\n  \"checkout submit\",\n  false,\n  \"timeout\"\n]"
+  },
+  {
+    "chapter": "docs/02-typescript/107-tuples",
+    "title": "JS Пример 3. Readonly Tuple",
+    "outcome": "ok",
+    "text": "viewport: 1280x720"
+  },
+  {
+    "chapter": "docs/02-typescript/108-object-types",
+    "title": "JS Пример 1. Required Properties",
+    "outcome": "ok",
+    "text": "1: Anna, active=true"
+  },
+  {
+    "chapter": "docs/02-typescript/108-object-types",
+    "title": "JS Пример 2. Nested Object",
+    "outcome": "ok",
+    "text": "RUN-42: https://api.example.test"
+  },
+  {
+    "chapter": "docs/02-typescript/108-object-types",
+    "title": "JS Пример 3. Response Object",
+    "outcome": "ok",
+    "text": "{\n  \"statusCode\": 200,\n  \"statusText\": true\n}"
+  },
+  {
+    "chapter": "docs/02-typescript/109-optional-and-readonly-properties",
+    "title": "JS Пример 1. Optional Property",
+    "outcome": "ok",
+    "text": "login form\nbutton is disabled"
+  },
+  {
+    "chapter": "docs/02-typescript/109-optional-and-readonly-properties",
+    "title": "JS Пример 2. Readonly Property",
+    "outcome": "ok",
+    "text": "{\n  \"baseUrl\": \"https://other.example.test\",\n  \"timeoutMs\": 7000\n}"
+  },
+  {
+    "chapter": "docs/02-typescript/109-optional-and-readonly-properties",
+    "title": "JS Пример 3. Test Metadata",
+    "outcome": "ok",
+    "text": "T-102: checkout submit"
+  },
+  {
+    "chapter": "docs/02-typescript/110-index-signatures",
+    "title": "JS Пример 1. String Index Signature",
+    "outcome": "ok",
+    "text": "{\n  \"suite\": \"smoke\",\n  \"owner\": \"qa\",\n  \"priority\": \"high\"\n}"
+  },
+  {
+    "chapter": "docs/02-typescript/110-index-signatures",
+    "title": "JS Пример 2. Number Index Signature",
+    "outcome": "ok",
+    "text": "OK"
+  },
+  {
+    "chapter": "docs/02-typescript/110-index-signatures",
+    "title": "JS Пример 3. Headers Metadata",
+    "outcome": "ok",
+    "text": "{\n  \"accept\": \"application/json\",\n  \"retries\": 2\n}"
+  },
+  {
+    "chapter": "docs/02-typescript/111-type-alias",
+    "title": "JS Пример 1. Basic Type Alias",
+    "outcome": "ok",
+    "text": "Anna"
+  },
+  {
+    "chapter": "docs/02-typescript/111-type-alias",
+    "title": "JS Пример 2. Test Data Type",
+    "outcome": "ok",
+    "text": "qa@example.test"
+  },
+  {
+    "chapter": "docs/02-typescript/111-type-alias",
+    "title": "JS Пример 3. Api Payload",
+    "outcome": "ok",
+    "text": "qa@example.test"
+  },
+  {
+    "chapter": "docs/02-typescript/112-interface",
+    "title": "JS Пример 1. Basic Interface",
+    "outcome": "ok",
+    "text": "login form"
+  },
+  {
+    "chapter": "docs/02-typescript/112-interface",
+    "title": "JS Пример 2. Method Signature",
+    "outcome": "ok",
+    "text": "[report] test started"
+  },
+  {
+    "chapter": "docs/02-typescript/112-interface",
+    "title": "JS Пример 3. Extend Interface",
+    "outcome": "ok",
+    "text": "smoke: 0"
+  },
+  {
+    "chapter": "docs/02-typescript/113-interface-vs-type-alias",
+    "title": "JS Пример 1. Interface Contract",
+    "outcome": "ok",
+    "text": "ready"
+  },
+  {
+    "chapter": "docs/02-typescript/113-interface-vs-type-alias",
+    "title": "JS Пример 2. Type Alias Data",
+    "outcome": "ok",
+    "text": "reports/smoke"
+  },
+  {
+    "chapter": "docs/02-typescript/113-interface-vs-type-alias",
+    "title": "JS Пример 3. Practical Choice",
+    "outcome": "ok",
+    "text": "api smoke: true"
+  },
+  {
+    "chapter": "docs/02-typescript/114-structural-typing",
+    "title": "JS Пример 1. Shape Compatibility",
+    "outcome": "ok",
+    "text": "shape is compatible"
+  },
+  {
+    "chapter": "docs/02-typescript/114-structural-typing",
+    "title": "JS Пример 2. Extra Properties",
+    "outcome": "ok",
+    "text": "{\n  \"id\": \"T-1\",\n  \"title\": \"login\",\n  \"priority\": \"high\"\n} {\n  \"id\": \"T-2\",\n  \"title\": \"checkout\",\n  \"priority\": \"high\"\n}"
+  },
+  {
+    "chapter": "docs/02-typescript/114-structural-typing",
+    "title": "JS Пример 3. Module Like Objects",
+    "outcome": "ok",
+    "text": "[file] open checkout page"
+  },
+  {
+    "chapter": "docs/02-typescript/115-literal-types",
+    "title": "JS Пример 1. String Literal",
+    "outcome": "ok",
+    "text": "status: passed"
+  },
+  {
+    "chapter": "docs/02-typescript/115-literal-types",
+    "title": "JS Пример 2. Number Boolean Literals",
+    "outcome": "ok",
+    "text": "retries=3, critical=true"
+  },
+  {
+    "chapter": "docs/02-typescript/115-literal-types",
+    "title": "JS Пример 3. Environment Name",
+    "outcome": "ok",
+    "text": "staging production"
+  },
+  {
+    "chapter": "docs/02-typescript/116-as-const",
+    "title": "JS Пример 1. Literal Inference",
+    "outcome": "ok",
+    "text": "staging staging"
+  },
+  {
+    "chapter": "docs/02-typescript/116-as-const",
+    "title": "JS Пример 2. Readonly Object",
+    "outcome": "ok",
+    "text": "{\n  \"environment\": \"staging\",\n  \"retries\": 3\n}"
+  },
+  {
+    "chapter": "docs/02-typescript/116-as-const",
+    "title": "JS Пример 3. Readonly Tuple",
+    "outcome": "ok",
+    "text": "passed"
+  },
+  {
+    "chapter": "docs/02-typescript/117-enum",
+    "title": "JS Пример 1. String Enum",
+    "outcome": "ok",
+    "text": "passed"
+  },
+  {
+    "chapter": "docs/02-typescript/117-enum",
+    "title": "JS Пример 2. Numeric Enum",
+    "outcome": "ok",
+    "text": "1"
+  },
+  {
+    "chapter": "docs/02-typescript/117-enum",
+    "title": "JS Пример 3. Status Enum",
+    "outcome": "ok",
+    "text": "passed passed"
+  },
+  {
+    "chapter": "docs/02-typescript/118-union-types",
+    "title": "JS Пример 1. Status Union",
+    "outcome": "ok",
+    "text": "passed"
+  },
+  {
+    "chapter": "docs/02-typescript/118-union-types",
+    "title": "JS Пример 2. Nullable Value",
+    "outcome": "ok",
+    "text": "no error"
+  },
+  {
+    "chapter": "docs/02-typescript/118-union-types",
+    "title": "JS Пример 3. Api Result Union",
+    "outcome": "ok",
+    "text": "200"
+  },
+  {
+    "chapter": "docs/02-typescript/119-intersection-types",
+    "title": "JS Пример 1. Object Intersection",
+    "outcome": "ok",
+    "text": "{\n  \"title\": \"login\",\n  \"durationMs\": 120\n}"
+  },
+  {
+    "chapter": "docs/02-typescript/119-intersection-types",
+    "title": "JS Пример 2. Shared Metadata",
+    "outcome": "ok",
+    "text": "{\n  \"title\": \"checkout\",\n  \"status\": \"passed\",\n  \"owner\": \"qa\",\n  \"suite\": \"smoke\"\n}"
+  },
+  {
+    "chapter": "docs/02-typescript/119-intersection-types",
+    "title": "JS Пример 3. Conflicting Intersection",
+    "outcome": "ok",
+    "text": "{\n  \"id\": \"T-1\"\n}"
+  },
+  {
+    "chapter": "docs/02-typescript/120-type-composition-in-practice",
+    "title": "JS Пример 1. Test Status Model",
+    "outcome": "ok",
+    "text": "{\n  \"title\": \"login\",\n  \"status\": \"passed\"\n}"
+  },
+  {
+    "chapter": "docs/02-typescript/120-type-composition-in-practice",
+    "title": "JS Пример 2. Report Entry",
+    "outcome": "ok",
+    "text": "{\n  \"title\": \"checkout\",\n  \"durationMs\": 300,\n  \"status\": \"failed\",\n  \"errorMessage\": \"button is disabled\"\n}"
+  },
+  {
+    "chapter": "docs/02-typescript/120-type-composition-in-practice",
+    "title": "JS Пример 3. Api Result Model",
+    "outcome": "ok",
+    "text": "{\n  \"endpoint\": \"/users\",\n  \"status\": \"success\",\n  \"statusCode\": 200\n}"
+  },
+  {
+    "chapter": "docs/02-typescript/121-function-types",
+    "title": "JS Пример 1. Parameter And Return",
+    "outcome": "ok",
+    "text": "status: passed"
+  },
+  {
+    "chapter": "docs/02-typescript/121-function-types",
+    "title": "JS Пример 2. Function Type Expression",
+    "outcome": "ok",
+    "text": "status: failed"
+  },
+  {
+    "chapter": "docs/02-typescript/121-function-types",
+    "title": "JS Пример 3. Method Signature",
+    "outcome": "ok",
+    "text": "report status: passed"
+  },
+  {
+    "chapter": "docs/02-typescript/122-optional-default-and-rest-parameters",
+    "title": "JS Пример 1. Optional And Default",
+    "outcome": "ok",
+    "text": "login\nsmoke: checkout\nretries: 2"
+  },
+  {
+    "chapter": "docs/02-typescript/122-optional-default-and-rest-parameters",
+    "title": "JS Пример 2. Rest Parameters",
+    "outcome": "ok",
+    "text": "smoke, critical, api"
+  },
+  {
+    "chapter": "docs/02-typescript/122-optional-default-and-rest-parameters",
+    "title": "JS Пример 3. Invalid Parameter Order",
+    "outcome": "ok",
+    "text": "smoke: login"
+  },
+  {
+    "chapter": "docs/02-typescript/123-callback-types",
+    "title": "JS Пример 1. Result Handler",
+    "outcome": "ok",
+    "text": "TEST PASSED"
+  },
+  {
+    "chapter": "docs/02-typescript/123-callback-types",
+    "title": "JS Пример 2. Predicate Callback",
+    "outcome": "ok",
+    "text": "true"
+  },
+  {
+    "chapter": "docs/02-typescript/123-callback-types",
+    "title": "JS Пример 3. Void Callback",
+    "outcome": "ok",
+    "text": "setup complete"
+  },
+  {
+    "chapter": "docs/02-typescript/124-function-overloads",
+    "title": "JS Пример 1. Find Test Overload",
+    "outcome": "ok",
+    "text": "101\nlogin"
+  },
+  {
+    "chapter": "docs/02-typescript/124-function-overloads",
+    "title": "JS Пример 2. Union Vs Overload",
+    "outcome": "ok",
+    "text": "target: 7\ntarget: checkout"
+  },
+  {
+    "chapter": "docs/02-typescript/124-function-overloads",
+    "title": "JS Пример 3. Invalid Overload",
+    "outcome": "ok",
+    "text": "true"
+  },
+  {
+    "chapter": "docs/02-typescript/125-this-parameter",
+    "title": "JS Пример 1. This Parameter",
+    "outcome": "ok",
+    "text": "5"
+  },
+  {
+    "chapter": "docs/02-typescript/125-this-parameter",
+    "title": "JS Пример 2. Method Vs Function",
+    "outcome": "ok",
+    "text": "[report] ready"
+  },
+  {
+    "chapter": "docs/02-typescript/125-this-parameter",
+    "title": "JS Пример 3. Callback Context",
+    "outcome": "intentional-error",
+    "text": "Cannot read properties of undefined (reading 'prefix')"
+  },
+  {
+    "chapter": "docs/02-typescript/126-async-function-types",
+    "title": "JS Пример 1. Async Return Type",
+    "outcome": "ok",
+    "text": "passed"
+  },
+  {
+    "chapter": "docs/02-typescript/126-async-function-types",
+    "title": "JS Пример 2. Rejected Promise",
+    "outcome": "ok",
+    "text": "setup failed"
+  },
+  {
+    "chapter": "docs/02-typescript/126-async-function-types",
+    "title": "JS Пример 3. Async Helper Contract",
+    "outcome": "ok",
+    "text": "ready 2"
+  },
+  {
+    "chapter": "docs/02-typescript/127-narrowing",
+    "title": "JS Пример 1. If Narrowing",
+    "outcome": "ok",
+    "text": "not ok"
+  },
+  {
+    "chapter": "docs/02-typescript/127-narrowing",
+    "title": "JS Пример 2. Return Based Narrowing",
+    "outcome": "ok",
+    "text": "TIMEOUT\nno error"
+  },
+  {
+    "chapter": "docs/02-typescript/127-narrowing",
+    "title": "JS Пример 3. Invalid Access Before Narrowing",
+    "outcome": "ok",
+    "text": "OK"
+  },
+  {
+    "chapter": "docs/02-typescript/128-built-in-type-guards",
+    "title": "JS Пример 1. Typeof And Truthiness",
+    "outcome": "ok",
+    "text": "smoke\ncount: 0\nempty"
+  },
+  {
+    "chapter": "docs/02-typescript/128-built-in-type-guards",
+    "title": "JS Пример 2. In And Instanceof",
+    "outcome": "ok",
+    "text": "created\nunauthorized"
+  },
+  {
+    "chapter": "docs/02-typescript/128-built-in-type-guards",
+    "title": "JS Пример 3. Invalid In On Unknown",
+    "outcome": "ok",
+    "text": "true"
+  },
+  {
+    "chapter": "docs/02-typescript/129-user-defined-type-guards",
+    "title": "JS Пример 1. Type Predicate",
+    "outcome": "ok",
+    "text": "ready"
+  },
+  {
+    "chapter": "docs/02-typescript/129-user-defined-type-guards",
+    "title": "JS Пример 2. Reusable Guard",
+    "outcome": "ok",
+    "text": "passed: 120ms"
+  },
+  {
+    "chapter": "docs/02-typescript/129-user-defined-type-guards",
+    "title": "JS Пример 3. False Guard Danger",
+    "outcome": "ok",
+    "text": "true"
+  },
+  {
+    "chapter": "docs/02-typescript/130-type-assertions",
+    "title": "JS Пример 1. Type Assertion After Check",
+    "outcome": "ok",
+    "text": "{\n  \"status\": \"passed\"\n}"
+  },
+  {
+    "chapter": "docs/02-typescript/130-type-assertions",
+    "title": "JS Пример 2. Non Null Assertion",
+    "outcome": "ok",
+    "text": "PASSED"
+  },
+  {
+    "chapter": "docs/02-typescript/130-type-assertions",
+    "title": "JS Пример 3. Dangerous Assertion",
+    "outcome": "ok",
+    "text": "2"
+  },
+  {
+    "chapter": "docs/02-typescript/131-satisfies",
+    "title": "JS Пример 1. Satisfies Config",
+    "outcome": "ok",
+    "text": "2"
+  },
+  {
+    "chapter": "docs/02-typescript/131-satisfies",
+    "title": "JS Пример 2. Literal Preservation",
+    "outcome": "ok",
+    "text": "summary"
+  },
+  {
+    "chapter": "docs/02-typescript/131-satisfies",
+    "title": "JS Пример 3. Invalid Satisfies",
+    "outcome": "ok",
+    "text": "{\n  \"baseUrl\": \"https://service.local\",\n  \"retries\": \"2\"\n}"
+  },
+  {
+    "chapter": "docs/02-typescript/132-exhaustive-checks-with-never",
+    "title": "JS Пример 1. Exhaustive Switch",
+    "outcome": "ok",
+    "text": "passed in 83ms"
+  },
+  {
+    "chapter": "docs/02-typescript/132-exhaustive-checks-with-never",
+    "title": "JS Пример 2. Missing Case Diagnostic",
+    "outcome": "ok",
+    "text": "unknown"
+  },
+  {
+    "chapter": "docs/02-typescript/132-exhaustive-checks-with-never",
+    "title": "JS Пример 3. Report State Processing",
+    "outcome": "ok",
+    "text": "attempt 2"
+  },
+  {
+    "chapter": "docs/02-typescript/133-generic-functions",
+    "title": "JS Пример 1. First Generic",
+    "outcome": "ok",
+    "text": "passed\n1"
+  },
+  {
+    "chapter": "docs/02-typescript/133-generic-functions",
+    "title": "JS Пример 2. Wrap With Meta",
+    "outcome": "ok",
+    "text": "passed"
+  },
+  {
+    "chapter": "docs/02-typescript/133-generic-functions",
+    "title": "JS Пример 3. Generic Is Not Any",
+    "outcome": "ok",
+    "text": "u-1"
+  },
+  {
+    "chapter": "docs/02-typescript/134-generic-constraints",
+    "title": "JS Пример 1. Entity Constraint",
+    "outcome": "ok",
+    "text": "u-1"
+  },
+  {
+    "chapter": "docs/02-typescript/134-generic-constraints",
+    "title": "JS Пример 2. Length Constraint",
+    "outcome": "ok",
+    "text": "true\ntrue"
+  },
+  {
+    "chapter": "docs/02-typescript/134-generic-constraints",
+    "title": "JS Пример 3. Constraint Diagnostic",
+    "outcome": "ok",
+    "text": "entity:undefined"
+  },
+  {
+    "chapter": "docs/02-typescript/135-keyof-constraints",
+    "title": "JS Пример 1. Pick Value",
+    "outcome": "ok",
+    "text": "2"
+  },
+  {
+    "chapter": "docs/02-typescript/135-keyof-constraints",
+    "title": "JS Пример 2. Keyof Diagnostic",
+    "outcome": "ok",
+    "text": "undefined"
+  },
+  {
+    "chapter": "docs/02-typescript/135-keyof-constraints",
+    "title": "JS Пример 3. Environment Helper",
+    "outcome": "ok",
+    "text": "https://staging.example.test"
+  },
+  {
+    "chapter": "docs/02-typescript/136-generic-type-aliases-and-interfaces",
+    "title": "JS Пример 1. Api Response Alias",
+    "outcome": "ok",
+    "text": "user@example.test"
+  },
+  {
+    "chapter": "docs/02-typescript/136-generic-type-aliases-and-interfaces",
+    "title": "JS Пример 2. Builder Interface",
+    "outcome": "ok",
+    "text": "admin"
+  },
+  {
+    "chapter": "docs/02-typescript/136-generic-type-aliases-and-interfaces",
+    "title": "JS Пример 3. Unused Type Parameter",
+    "outcome": "ok",
+    "text": "undefined"
+  },
+  {
+    "chapter": "docs/02-typescript/137-generic-classes",
+    "title": "JS Пример 1. Typed Storage",
+    "outcome": "ok",
+    "text": "[\n  \"passed\"\n]"
+  },
+  {
+    "chapter": "docs/02-typescript/137-generic-classes",
+    "title": "JS Пример 2. Entity Store",
+    "outcome": "ok",
+    "text": "{\n  \"id\": \"u-1\",\n  \"role\": \"admin\"\n}"
+  },
+  {
+    "chapter": "docs/02-typescript/137-generic-classes",
+    "title": "JS Пример 3. Class Diagnostic",
+    "outcome": "ok",
+    "text": "Код выполнен без вывода."
+  },
+  {
+    "chapter": "docs/02-typescript/138-default-generic-parameters",
+    "title": "JS Пример 1. Default Response",
+    "outcome": "ok",
+    "text": "200\nu-1"
+  },
+  {
+    "chapter": "docs/02-typescript/138-default-generic-parameters",
+    "title": "JS Пример 2. Default With Constraint",
+    "outcome": "ok",
+    "text": "base\nadmin"
+  },
+  {
+    "chapter": "docs/02-typescript/138-default-generic-parameters",
+    "title": "JS Пример 3. Default Diagnostic",
+    "outcome": "ok",
+    "text": "{\n  \"entity\": {}\n}"
+  },
+  {
+    "chapter": "docs/02-typescript/139-keyof",
+    "title": "JS Пример 1. Keyof Fields",
+    "outcome": "ok",
+    "text": "qa@example.com"
+  },
+  {
+    "chapter": "docs/02-typescript/139-keyof",
+    "title": "JS Пример 2. Locator Map",
+    "outcome": "ok",
+    "text": "[data-test='login']"
+  },
+  {
+    "chapter": "docs/02-typescript/139-keyof",
+    "title": "JS Пример 3. Keyof Diagnostic",
+    "outcome": "ok",
+    "text": "passwordInput"
+  },
+  {
+    "chapter": "docs/02-typescript/140-typeof-type-query",
+    "title": "JS Пример 1. Typeof Config",
+    "outcome": "ok",
+    "text": "https://dev.example.com"
+  },
+  {
+    "chapter": "docs/02-typescript/140-typeof-type-query",
+    "title": "JS Пример 2. Typeof Statuses",
+    "outcome": "ok",
+    "text": "passed"
+  },
+  {
+    "chapter": "docs/02-typescript/140-typeof-type-query",
+    "title": "JS Пример 3. Typeof Diagnostic",
+    "outcome": "ok",
+    "text": "failed"
+  },
+  {
+    "chapter": "docs/02-typescript/141-indexed-access-types",
+    "title": "JS Пример 1. Response Body",
+    "outcome": "ok",
+    "text": "u-1"
+  },
+  {
+    "chapter": "docs/02-typescript/141-indexed-access-types",
+    "title": "JS Пример 2. Array Item",
+    "outcome": "ok",
+    "text": "opens login page"
+  },
+  {
+    "chapter": "docs/02-typescript/141-indexed-access-types",
+    "title": "JS Пример 3. Indexed Access Diagnostic",
+    "outcome": "ok",
+    "text": "qa@example.com"
+  },
+  {
+    "chapter": "docs/02-typescript/142-mapped-types",
+    "title": "JS Пример 1. Field Flags",
+    "outcome": "ok",
+    "text": "true"
+  },
+  {
+    "chapter": "docs/02-typescript/142-mapped-types",
+    "title": "JS Пример 2. Field Errors",
+    "outcome": "ok",
+    "text": "Address is required"
+  },
+  {
+    "chapter": "docs/02-typescript/142-mapped-types",
+    "title": "JS Пример 3. Mapped Type Diagnostic",
+    "outcome": "ok",
+    "text": "{\n  \"id\": 123\n}"
+  },
+  {
+    "chapter": "docs/02-typescript/143-conditional-types",
+    "title": "JS Пример 1. Is String",
+    "outcome": "ok",
+    "text": "true false"
+  },
+  {
+    "chapter": "docs/02-typescript/143-conditional-types",
+    "title": "JS Пример 2. Filter Union",
+    "outcome": "ok",
+    "text": "ready"
+  },
+  {
+    "chapter": "docs/02-typescript/143-conditional-types",
+    "title": "JS Пример 3. Conditional Diagnostic",
+    "outcome": "ok",
+    "text": "passed"
+  },
+  {
+    "chapter": "docs/02-typescript/144-infer",
+    "title": "JS Пример 1. Array Item Infer",
+    "outcome": "ok",
+    "text": "qa@example.com"
+  },
+  {
+    "chapter": "docs/02-typescript/144-infer",
+    "title": "JS Пример 2. Promise Value",
+    "outcome": "ok",
+    "text": "u-1"
+  },
+  {
+    "chapter": "docs/02-typescript/144-infer",
+    "title": "JS Пример 3. Infer Diagnostic",
+    "outcome": "ok",
+    "text": "text"
+  },
+  {
+    "chapter": "docs/02-typescript/145-utility-types",
+    "title": "JS Пример 1. Object Utilities",
+    "outcome": "ok",
+    "text": "viewer qa@example.com"
+  },
+  {
+    "chapter": "docs/02-typescript/145-utility-types",
+    "title": "JS Пример 2. Function Utilities",
+    "outcome": "ok",
+    "text": "Smoke: opens login page"
+  },
+  {
+    "chapter": "docs/02-typescript/145-utility-types",
+    "title": "JS Пример 3. Utility Diagnostic",
+    "outcome": "ok",
+    "text": "skipped"
+  },
+  {
+    "chapter": "docs/02-typescript/146-typed-classes",
+    "title": "JS Пример 1. Typed Class",
+    "outcome": "ok",
+    "text": "opens login page (2)"
+  },
+  {
+    "chapter": "docs/02-typescript/146-typed-classes",
+    "title": "JS Пример 2. Instance Type",
+    "outcome": "ok",
+    "text": "passed: loads dashboard"
+  },
+  {
+    "chapter": "docs/02-typescript/146-typed-classes",
+    "title": "JS Пример 3. Class Diagnostics",
+    "outcome": "ok",
+    "text": "{\n  \"title\": 123\n}"
+  },
+  {
+    "chapter": "docs/02-typescript/147-access-modifiers-and-readonly-members",
+    "title": "JS Пример 1. Access Modifiers",
+    "outcome": "ok",
+    "text": "2"
+  },
+  {
+    "chapter": "docs/02-typescript/147-access-modifiers-and-readonly-members",
+    "title": "JS Пример 2. Parameter Properties",
+    "outcome": "ok",
+    "text": "run-1 finished"
+  },
+  {
+    "chapter": "docs/02-typescript/147-access-modifiers-and-readonly-members",
+    "title": "JS Пример 3. Access Diagnostics",
+    "outcome": "ok",
+    "text": "https://other.test/login"
+  },
+  {
+    "chapter": "docs/02-typescript/148-abstract-classes",
+    "title": "JS Пример 1. Abstract Page",
+    "outcome": "ok",
+    "text": "https://app.test/users"
+  },
+  {
+    "chapter": "docs/02-typescript/148-abstract-classes",
+    "title": "JS Пример 2. Abstract Report",
+    "outcome": "ok",
+    "text": "Report: Smoke\npassed\nfailed"
+  },
+  {
+    "chapter": "docs/02-typescript/148-abstract-classes",
+    "title": "JS Пример 3. Abstract Diagnostics",
+    "outcome": "ok",
+    "text": "undefined"
+  },
+  {
+    "chapter": "docs/02-typescript/149-implements-and-override",
+    "title": "JS Пример 1. Implements Contract",
+    "outcome": "ok",
+    "text": "Expected success, received error"
+  },
+  {
+    "chapter": "docs/02-typescript/149-implements-and-override",
+    "title": "JS Пример 2. Override Method",
+    "outcome": "ok",
+    "text": "{\n  \"value\": \"passed\"\n}"
+  },
+  {
+    "chapter": "docs/02-typescript/149-implements-and-override",
+    "title": "JS Пример 3. Implements Diagnostics",
+    "outcome": "ok",
+    "text": "smoke"
+  },
+  {
+    "chapter": "docs/02-typescript/150-typescript-and-javascript-modules",
+    "title": "JS Пример 1. Import Export",
+    "outcome": "read-only",
+    "text": ""
+  },
+  {
+    "chapter": "docs/02-typescript/150-typescript-and-javascript-modules",
+    "title": "JS Пример 2. Default Export",
+    "outcome": "read-only",
+    "text": ""
+  },
+  {
+    "chapter": "docs/02-typescript/150-typescript-and-javascript-modules",
+    "title": "JS Пример 3. Type As Value Diagnostic",
+    "outcome": "intentional-error",
+    "text": "TestMeta is not defined"
+  },
+  {
+    "chapter": "docs/02-typescript/150-typescript-and-javascript-modules",
+    "title": "JS Пример. Report Line",
+    "outcome": "ok",
+    "text": "Код выполнен без вывода."
+  },
+  {
+    "chapter": "docs/02-typescript/150-typescript-and-javascript-modules",
+    "title": "JS Пример. Report Name",
+    "outcome": "ok",
+    "text": "Код выполнен без вывода."
+  },
+  {
+    "chapter": "docs/02-typescript/151-type-only-imports-and-exports",
+    "title": "JS Пример 1. Import Type",
+    "outcome": "read-only",
+    "text": ""
+  },
+  {
+    "chapter": "docs/02-typescript/151-type-only-imports-and-exports",
+    "title": "JS Пример 2. Type Only Class Diagnostic",
+    "outcome": "read-only",
+    "text": ""
+  },
+  {
+    "chapter": "docs/02-typescript/151-type-only-imports-and-exports",
+    "title": "JS Пример 3. Export Type",
+    "outcome": "read-only",
+    "text": ""
+  },
+  {
+    "chapter": "docs/02-typescript/151-type-only-imports-and-exports",
+    "title": "JS Пример. Environment Config",
+    "outcome": "ok",
+    "text": "Код выполнен без вывода."
+  },
+  {
+    "chapter": "docs/02-typescript/151-type-only-imports-and-exports",
+    "title": "JS Пример. Report Types",
+    "outcome": "ok",
+    "text": "Код выполнен без вывода."
+  },
+  {
+    "chapter": "docs/02-typescript/151-type-only-imports-and-exports",
+    "title": "JS Пример. Report Writer",
+    "outcome": "ok",
+    "text": "Код выполнен без вывода."
+  },
+  {
+    "chapter": "docs/02-typescript/152-module-resolution",
+    "title": "JS Пример 1. Relative Import",
+    "outcome": "read-only",
+    "text": ""
+  },
+  {
+    "chapter": "docs/02-typescript/152-module-resolution",
+    "title": "JS Пример 2. Dependent Module",
+    "outcome": "read-only",
+    "text": ""
+  },
+  {
+    "chapter": "docs/02-typescript/152-module-resolution",
+    "title": "JS Пример 3. Missing Module Diagnostic",
+    "outcome": "read-only",
+    "text": ""
+  },
+  {
+    "chapter": "docs/02-typescript/152-module-resolution",
+    "title": "JS Пример. Format Title",
+    "outcome": "ok",
+    "text": "Код выполнен без вывода."
+  },
+  {
+    "chapter": "docs/02-typescript/152-module-resolution",
+    "title": "JS Пример. Report File",
+    "outcome": "read-only",
+    "text": ""
+  },
+  {
+    "chapter": "docs/02-typescript/153-declaration-files",
+    "title": "JS Пример 1. Local Declare",
+    "outcome": "ok",
+    "text": "function"
+  },
+  {
+    "chapter": "docs/02-typescript/153-declaration-files",
+    "title": "JS Пример 2. Declare Runtime Safety",
+    "outcome": "ok",
+    "text": "function"
+  },
+  {
+    "chapter": "docs/02-typescript/153-declaration-files",
+    "title": "JS Пример 3. Declaration Mismatch Diagnostic",
+    "outcome": "intentional-error",
+    "text": "createReportLine is not defined"
+  },
+  {
+    "chapter": "docs/02-typescript/154-declaration-merging",
+    "title": "JS Пример 1. Interface Merging",
+    "outcome": "ok",
+    "text": "login passed"
+  },
+  {
+    "chapter": "docs/02-typescript/154-declaration-merging",
+    "title": "JS Пример 2. Type Alias No Merging Diagnostic",
+    "outcome": "ok",
+    "text": "user-1"
+  },
+  {
+    "chapter": "docs/02-typescript/154-declaration-merging",
+    "title": "JS Пример 3. Incompatible Merge Diagnostic",
+    "outcome": "ok",
+    "text": "passed"
+  },
+  {
+    "chapter": "docs/02-typescript/155-compiler-options-for-real-projects",
+    "title": "JS Пример 1. Compiler Options Model",
+    "outcome": "ok",
+    "text": "ES2022 ES2022 true"
+  },
+  {
+    "chapter": "docs/02-typescript/155-compiler-options-for-real-projects",
+    "title": "JS Пример 2. Lib Does Not Polyfill",
+    "outcome": "ok",
+    "text": "lib: false"
+  },
+  {
+    "chapter": "docs/02-typescript/155-compiler-options-for-real-projects",
+    "title": "JS Пример 3. Strict Option Diagnostic",
+    "outcome": "ok",
+    "text": "true"
+  },
+  {
+    "chapter": "docs/02-typescript/156-typed-configuration-and-test-data",
+    "title": "JS Пример 1. Environment Config",
+    "outcome": "ok",
+    "text": "https://staging.example.test"
+  },
+  {
+    "chapter": "docs/02-typescript/156-typed-configuration-and-test-data",
+    "title": "JS Пример 2. Test Data Model",
+    "outcome": "ok",
+    "text": "admin@example.test, viewer@example.test"
+  },
+  {
+    "chapter": "docs/02-typescript/156-typed-configuration-and-test-data",
+    "title": "JS Пример 3. Invalid Config Diagnostic",
+    "outcome": "ok",
+    "text": "[\n  \"local\",\n  \"staging\"\n]"
+  },
+  {
+    "chapter": "docs/02-typescript/157-typed-page-objects-fixtures-and-helpers",
+    "title": "JS Пример 1. Page Object Contract",
+    "outcome": "ok",
+    "text": "open https://staging.example.test/login\nlogin admin@example.test with password length 6"
+  },
+  {
+    "chapter": "docs/02-typescript/157-typed-page-objects-fixtures-and-helpers",
+    "title": "JS Пример 2. Fixture And Helper Contracts",
+    "outcome": "ok",
+    "text": "open login page\nlogin on staging: passed"
+  },
+  {
+    "chapter": "docs/02-typescript/157-typed-page-objects-fixtures-and-helpers",
+    "title": "JS Пример 3. Page Object Contract Diagnostic",
+    "outcome": "ok",
+    "text": "class BrokenLoginPage  {\n  async open() {\n    console.log(\"open login page\");\n  }\n\n  // @ts-expect-error Метод login должен возвращать Promise<void>.\n  login(email, password) {\n    console.log(password.length);\n    console.log(`login ${email}`);\n    return email;\n  }\n}"
+  },
+  {
+    "chapter": "docs/02-typescript/158-typed-api-clients-and-assertions",
+    "title": "JS Пример 1. Api Response",
+    "outcome": "ok",
+    "text": "admin@example.test"
+  },
+  {
+    "chapter": "docs/02-typescript/158-typed-api-clients-and-assertions",
+    "title": "JS Пример 2. Assertion Helper",
+    "outcome": "ok",
+    "text": "user-1"
+  },
+  {
+    "chapter": "docs/02-typescript/158-typed-api-clients-and-assertions",
+    "title": "JS Пример 3. Api Response Diagnostic",
+    "outcome": "ok",
+    "text": "200"
+  },
+  {
+    "chapter": "docs/02-typescript/159-maintaining-large-typescript-test-projects",
+    "title": "JS Пример 1. Public Type Api",
+    "outcome": "ok",
+    "text": "info: login"
+  },
+  {
+    "chapter": "docs/02-typescript/159-maintaining-large-typescript-test-projects",
+    "title": "JS Пример 2. Refactoring Feedback",
+    "outcome": "ok",
+    "text": "true"
+  },
+  {
+    "chapter": "docs/02-typescript/159-maintaining-large-typescript-test-projects",
+    "title": "JS Пример 3. Public Api Diagnostic",
+    "outcome": "ok",
+    "text": "3 function shouldRetry(attempt, policy) {\n  return attempt < policy.maxAttempts;\n}"
+  },
+  {
     "chapter": "docs/02-typescript/97-typescript-compiler",
     "title": "JS Пример 1. Compiler Input",
     "outcome": "ok",
@@ -3166,6 +4282,66 @@
     "title": "JS Пример 3. Generated Javascript",
     "outcome": "ok",
     "text": "qa regression suite: 24 tests"
+  },
+  {
+    "chapter": "docs/02-typescript/98-type-checking-vs-runtime",
+    "title": "JS Пример 1. Runtime Javascript",
+    "outcome": "ok",
+    "text": "PASSED"
+  },
+  {
+    "chapter": "docs/02-typescript/98-type-checking-vs-runtime",
+    "title": "JS Пример 2. Type Checking Before Runtime",
+    "outcome": "intentional-error",
+    "text": "status.toUpperCase is not a function"
+  },
+  {
+    "chapter": "docs/02-typescript/98-type-checking-vs-runtime",
+    "title": "JS Пример 3. Runtime Still Executes Js",
+    "outcome": "ok",
+    "text": "status.toUpperCase is not a function"
+  },
+  {
+    "chapter": "docs/02-typescript/99-type-erasure",
+    "title": "JS Пример 1. Source Types",
+    "outcome": "ok",
+    "text": "https://api.example.test 5000"
+  },
+  {
+    "chapter": "docs/02-typescript/99-type-erasure",
+    "title": "JS Пример 2. After Type Erasure",
+    "outcome": "ok",
+    "text": "https://api.example.test 5000"
+  },
+  {
+    "chapter": "docs/02-typescript/99-type-erasure",
+    "title": "JS Пример 3. Runtime Validation Needed",
+    "outcome": "ok",
+    "text": "ok"
+  },
+  {
+    "chapter": "docs/03-automation-qa/160-what-is-automation-qa-framework",
+    "title": "JS Пример 1. Script And Boundary",
+    "outcome": "ok",
+    "text": "Проверка order-42 в https://staging.example.test"
+  },
+  {
+    "chapter": "docs/03-automation-qa/162-architectural-layers-and-dependency-flow",
+    "title": "JS Пример 1. Composition Root",
+    "outcome": "ok",
+    "text": "Чтение статуса order-42\ncreated"
+  },
+  {
+    "chapter": "docs/03-automation-qa/164-automated-test-lifecycle",
+    "title": "JS Пример 1. Lifecycle Cleanup",
+    "outcome": "ok",
+    "text": "Сценарий выполнен\nДанные очищены\nСохранено ошибок: 2"
+  },
+  {
+    "chapter": "docs/03-automation-qa/165-project-structure-and-module-boundaries",
+    "title": "JS Пример 1. Public Module Api",
+    "outcome": "ok",
+    "text": "{\n  \"id\": \"order-42\",\n  \"status\": \"created\"\n}"
   },
   {
     "chapter": "docs/03-automation-qa/166-playwright-and-playwright-test",

@@ -152,6 +152,18 @@ function pair<Expected, Actual>(expected: Expected, actual: Actual) {
 const comparison = pair(200, "200");
 ```
 
+Запускаемые версии этих примеров находятся в:
+
+```text
+examples/02-typescript/chapter-133/
+```
+
+`01-first-generic.ts` — дженерик-функция для разных типов элементов.
+
+`02-wrap-with-meta.ts` — сохранение типа значения при упаковке.
+
+`03-generic-is-not-any.ts` — обращение к полю параметра-типа (намеренная ошибка).
+
 ## Automation QA
 
 Обобщённые функции полезны для вспомогательных функций, которые не должны терять тип данных:

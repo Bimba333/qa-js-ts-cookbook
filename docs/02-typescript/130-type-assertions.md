@@ -143,6 +143,18 @@ function firstStatus(statuses: string[]): string {
 
 Во втором примере разработчик берет ответственность за то, что массив не пустой.
 
+Запускаемые версии этих примеров находятся в:
+
+```text
+examples/02-typescript/chapter-130/
+```
+
+`01-type-assertion-after-check.ts` — утверждение типа после настоящей проверки.
+
+`02-non-null-assertion.ts` — оператор `!` и его цена.
+
+`03-dangerous-assertion.ts` — `as` между несовместимыми типами (намеренная ошибка).
+
 ## Automation QA
 
 В QA-коде assertion иногда встречается после явной проверки:

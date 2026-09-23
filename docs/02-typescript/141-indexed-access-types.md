@@ -153,6 +153,18 @@ type Suite = {
 type SuiteTest = Suite["tests"][number];
 ```
 
+Запускаемые версии этих примеров находятся в:
+
+```text
+examples/02-typescript/chapter-141/
+```
+
+`01-response-body.ts` — тип вложенного поля через `Type["key"]`.
+
+`02-array-item.ts` — тип элемента массива через `[number]`.
+
+`03-indexed-access-diagnostic.ts` — обращение к несуществующему полю типа (намеренная ошибка).
+
 ## Automation QA
 
 Если API helper возвращает общий response type, можно переиспользовать части:

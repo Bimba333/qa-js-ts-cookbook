@@ -177,6 +177,18 @@ function read(response: Success | Failure): string {
 
 Оператор `in` — это обычная JavaScript-проверка наличия ключа. Он учитывает собственные и унаследованные свойства. Сам факт наличия ключа не проверяет тип значения в этом свойстве и не делает весь внешний объект валидным.
 
+Запускаемые версии этих примеров находятся в:
+
+```text
+examples/02-typescript/chapter-128/
+```
+
+`01-typeof-and-truthiness.ts` — `typeof` для примитивов и ветка по умолчанию.
+
+`02-in-and-instanceof.ts` — `in` для полей и `instanceof` для `Error`.
+
+`03-invalid-in-on-unknown.ts` — `in` по значению `unknown` (намеренная ошибка).
+
 ## Automation QA
 
 В Automation QA часто нужно обработать результат helper-функции:

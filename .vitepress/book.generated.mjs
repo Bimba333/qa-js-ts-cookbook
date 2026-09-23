@@ -1847,14 +1847,14 @@ export const bookEngineData = {
       "section": "Основы языка",
       "sectionIndex": 0,
       "chapterIndex": 5,
-      "wordCount": 2113,
+      "wordCount": 2116,
       "readingMinutes": 12,
       "h2": 20,
       "h3": 50,
       "examples": 7,
       "tasks": 29,
       "solutions": 26,
-      "mermaid": 10,
+      "mermaid": 11,
       "miniProjects": 1,
       "previous": {
         "title": "Memory",
@@ -1909,7 +1909,7 @@ export const bookEngineData = {
         "examples": 7,
         "tasks": 29,
         "solutions": 26,
-        "mermaid": 10
+        "mermaid": 11
       }
     },
     "docs/01-javascript/07-scope.md": {
@@ -2143,14 +2143,14 @@ export const bookEngineData = {
       "section": "Основы языка",
       "sectionIndex": 0,
       "chapterIndex": 9,
-      "wordCount": 1669,
+      "wordCount": 1678,
       "readingMinutes": 10,
       "h2": 20,
       "h3": 45,
       "examples": 7,
       "tasks": 25,
       "solutions": 25,
-      "mermaid": 2,
+      "mermaid": 3,
       "miniProjects": 1,
       "previous": {
         "title": "Hoisting",
@@ -2205,7 +2205,7 @@ export const bookEngineData = {
         "examples": 7,
         "tasks": 25,
         "solutions": 25,
-        "mermaid": 2
+        "mermaid": 3
       }
     },
     "docs/01-javascript/11-primitive-types.md": {
@@ -2217,14 +2217,14 @@ export const bookEngineData = {
       "section": "Основы языка",
       "sectionIndex": 0,
       "chapterIndex": 10,
-      "wordCount": 1797,
-      "readingMinutes": 10,
+      "wordCount": 1803,
+      "readingMinutes": 11,
       "h2": 20,
       "h3": 47,
       "examples": 7,
       "tasks": 24,
       "solutions": 21,
-      "mermaid": 7,
+      "mermaid": 8,
       "miniProjects": 1,
       "previous": {
         "title": "Temporal Dead Zone",
@@ -2275,11 +2275,11 @@ export const bookEngineData = {
       "card": {
         "chapterLabel": "Глава 11",
         "title": "Primitive Types",
-        "reading": 10,
+        "reading": 11,
         "examples": 7,
         "tasks": 24,
         "solutions": 21,
-        "mermaid": 7
+        "mermaid": 8
       }
     },
     "docs/01-javascript/12-object-type.md": {
@@ -2291,14 +2291,14 @@ export const bookEngineData = {
       "section": "Основы языка",
       "sectionIndex": 0,
       "chapterIndex": 11,
-      "wordCount": 2156,
-      "readingMinutes": 12,
+      "wordCount": 2162,
+      "readingMinutes": 13,
       "h2": 20,
       "h3": 52,
       "examples": 7,
       "tasks": 47,
       "solutions": 34,
-      "mermaid": 4,
+      "mermaid": 5,
       "miniProjects": 1,
       "previous": {
         "title": "Primitive Types",
@@ -2349,11 +2349,11 @@ export const bookEngineData = {
       "card": {
         "chapterLabel": "Глава 12",
         "title": "Object Type",
-        "reading": 12,
+        "reading": 13,
         "examples": 7,
         "tasks": 47,
         "solutions": 34,
-        "mermaid": 4
+        "mermaid": 5
       }
     },
     "docs/01-javascript/13-references.md": {
@@ -2365,14 +2365,14 @@ export const bookEngineData = {
       "section": "Основы языка",
       "sectionIndex": 0,
       "chapterIndex": 12,
-      "wordCount": 1910,
+      "wordCount": 1917,
       "readingMinutes": 11,
       "h2": 20,
       "h3": 49,
       "examples": 7,
       "tasks": 39,
       "solutions": 28,
-      "mermaid": 0,
+      "mermaid": 1,
       "miniProjects": 1,
       "previous": {
         "title": "Object Type",
@@ -2421,7 +2421,7 @@ export const bookEngineData = {
         "examples": 7,
         "tasks": 39,
         "solutions": 28,
-        "mermaid": 0
+        "mermaid": 1
       }
     },
     "docs/01-javascript/14-stack-and-heap.md": {
@@ -2507,14 +2507,14 @@ export const bookEngineData = {
       "section": "Основы языка",
       "sectionIndex": 0,
       "chapterIndex": 14,
-      "wordCount": 1517,
+      "wordCount": 1522,
       "readingMinutes": 9,
       "h2": 20,
       "h3": 49,
       "examples": 7,
       "tasks": 39,
       "solutions": 31,
-      "mermaid": 0,
+      "mermaid": 1,
       "miniProjects": 1,
       "previous": {
         "title": "Stack & Heap",
@@ -2557,7 +2557,7 @@ export const bookEngineData = {
         "examples": 7,
         "tasks": 39,
         "solutions": 31,
-        "mermaid": 0
+        "mermaid": 1
       }
     },
     "docs/01-javascript/16-equality.md": {
@@ -2569,14 +2569,14 @@ export const bookEngineData = {
       "section": "Основы языка",
       "sectionIndex": 0,
       "chapterIndex": 15,
-      "wordCount": 1363,
+      "wordCount": 1369,
       "readingMinutes": 8,
       "h2": 20,
       "h3": 44,
       "examples": 7,
       "tasks": 37,
       "solutions": 29,
-      "mermaid": 0,
+      "mermaid": 1,
       "miniProjects": 1,
       "previous": {
         "title": "Type Conversion",
@@ -2619,7 +2619,7 @@ export const bookEngineData = {
         "examples": 7,
         "tasks": 37,
         "solutions": 29,
-        "mermaid": 0
+        "mermaid": 1
       }
     },
     "docs/01-javascript/17-operators.md": {
@@ -2631,14 +2631,14 @@ export const bookEngineData = {
       "section": "Управление программой",
       "sectionIndex": 1,
       "chapterIndex": 0,
-      "wordCount": 1450,
+      "wordCount": 1457,
       "readingMinutes": 9,
       "h2": 20,
       "h3": 44,
       "examples": 7,
       "tasks": 45,
       "solutions": 35,
-      "mermaid": 1,
+      "mermaid": 2,
       "miniProjects": 1,
       "previous": {
         "title": "Equality",
@@ -2687,7 +2687,7 @@ export const bookEngineData = {
         "examples": 7,
         "tasks": 45,
         "solutions": 35,
-        "mermaid": 1
+        "mermaid": 2
       }
     },
     "docs/01-javascript/18-conditionals.md": {
@@ -2699,14 +2699,14 @@ export const bookEngineData = {
       "section": "Управление программой",
       "sectionIndex": 1,
       "chapterIndex": 1,
-      "wordCount": 1108,
+      "wordCount": 1114,
       "readingMinutes": 7,
       "h2": 20,
       "h3": 40,
       "examples": 7,
       "tasks": 37,
       "solutions": 27,
-      "mermaid": 0,
+      "mermaid": 1,
       "miniProjects": 1,
       "previous": {
         "title": "Operators",
@@ -2743,7 +2743,7 @@ export const bookEngineData = {
         "examples": 7,
         "tasks": 37,
         "solutions": 27,
-        "mermaid": 0
+        "mermaid": 1
       }
     },
     "docs/01-javascript/19-loops.md": {
@@ -2755,14 +2755,14 @@ export const bookEngineData = {
       "section": "Управление программой",
       "sectionIndex": 1,
       "chapterIndex": 2,
-      "wordCount": 1135,
+      "wordCount": 1142,
       "readingMinutes": 7,
       "h2": 20,
       "h3": 44,
       "examples": 7,
       "tasks": 42,
       "solutions": 29,
-      "mermaid": 0,
+      "mermaid": 1,
       "miniProjects": 1,
       "previous": {
         "title": "Conditionals",
@@ -2792,7 +2792,7 @@ export const bookEngineData = {
         "examples": 7,
         "tasks": 42,
         "solutions": 29,
-        "mermaid": 0
+        "mermaid": 1
       }
     },
     "docs/01-javascript/20-error-handling.md": {
@@ -2804,14 +2804,14 @@ export const bookEngineData = {
       "section": "Управление программой",
       "sectionIndex": 1,
       "chapterIndex": 3,
-      "wordCount": 1209,
+      "wordCount": 1218,
       "readingMinutes": 7,
       "h2": 20,
       "h3": 45,
       "examples": 7,
       "tasks": 38,
       "solutions": 26,
-      "mermaid": 1,
+      "mermaid": 2,
       "miniProjects": 1,
       "previous": {
         "title": "Loops",
@@ -2866,7 +2866,7 @@ export const bookEngineData = {
         "examples": 7,
         "tasks": 38,
         "solutions": 26,
-        "mermaid": 1
+        "mermaid": 2
       }
     },
     "docs/01-javascript/21-function-declaration.md": {
@@ -2878,14 +2878,14 @@ export const bookEngineData = {
       "section": "Functions",
       "sectionIndex": 2,
       "chapterIndex": 0,
-      "wordCount": 1079,
-      "readingMinutes": 6,
+      "wordCount": 1085,
+      "readingMinutes": 7,
       "h2": 20,
       "h3": 41,
       "examples": 7,
       "tasks": 38,
       "solutions": 29,
-      "mermaid": 0,
+      "mermaid": 1,
       "miniProjects": 1,
       "previous": {
         "title": "Error Handling",
@@ -2924,11 +2924,11 @@ export const bookEngineData = {
       "card": {
         "chapterLabel": "Глава 21",
         "title": "Function Declaration",
-        "reading": 6,
+        "reading": 7,
         "examples": 7,
         "tasks": 38,
         "solutions": 29,
-        "mermaid": 0
+        "mermaid": 1
       }
     },
     "docs/01-javascript/22-function-expression.md": {
@@ -2940,14 +2940,14 @@ export const bookEngineData = {
       "section": "Functions",
       "sectionIndex": 2,
       "chapterIndex": 1,
-      "wordCount": 1407,
+      "wordCount": 1415,
       "readingMinutes": 8,
       "h2": 20,
       "h3": 44,
       "examples": 7,
       "tasks": 36,
       "solutions": 27,
-      "mermaid": 0,
+      "mermaid": 1,
       "miniProjects": 1,
       "previous": {
         "title": "Function Declaration",
@@ -2984,7 +2984,7 @@ export const bookEngineData = {
         "examples": 7,
         "tasks": 36,
         "solutions": 27,
-        "mermaid": 0
+        "mermaid": 1
       }
     },
     "docs/01-javascript/23-arrow-functions.md": {
@@ -2996,14 +2996,14 @@ export const bookEngineData = {
       "section": "Functions",
       "sectionIndex": 2,
       "chapterIndex": 2,
-      "wordCount": 1474,
+      "wordCount": 1479,
       "readingMinutes": 9,
       "h2": 20,
       "h3": 43,
       "examples": 7,
       "tasks": 40,
       "solutions": 32,
-      "mermaid": 1,
+      "mermaid": 2,
       "miniProjects": 1,
       "previous": {
         "title": "Function Expression",
@@ -3040,7 +3040,7 @@ export const bookEngineData = {
         "examples": 7,
         "tasks": 40,
         "solutions": 32,
-        "mermaid": 1
+        "mermaid": 2
       }
     },
     "docs/01-javascript/24-parameters.md": {
@@ -3052,14 +3052,14 @@ export const bookEngineData = {
       "section": "Functions",
       "sectionIndex": 2,
       "chapterIndex": 3,
-      "wordCount": 1177,
+      "wordCount": 1183,
       "readingMinutes": 7,
       "h2": 20,
       "h3": 44,
       "examples": 7,
       "tasks": 35,
       "solutions": 28,
-      "mermaid": 1,
+      "mermaid": 2,
       "miniProjects": 1,
       "previous": {
         "title": "Arrow Functions",
@@ -3089,7 +3089,7 @@ export const bookEngineData = {
         "examples": 7,
         "tasks": 35,
         "solutions": 28,
-        "mermaid": 1
+        "mermaid": 2
       }
     },
     "docs/01-javascript/25-return.md": {
@@ -3101,14 +3101,14 @@ export const bookEngineData = {
       "section": "Functions",
       "sectionIndex": 2,
       "chapterIndex": 4,
-      "wordCount": 1119,
+      "wordCount": 1127,
       "readingMinutes": 7,
       "h2": 20,
       "h3": 43,
       "examples": 7,
       "tasks": 36,
       "solutions": 28,
-      "mermaid": 1,
+      "mermaid": 2,
       "miniProjects": 1,
       "previous": {
         "title": "Parameters",
@@ -3145,7 +3145,7 @@ export const bookEngineData = {
         "examples": 7,
         "tasks": 36,
         "solutions": 28,
-        "mermaid": 1
+        "mermaid": 2
       }
     },
     "docs/01-javascript/26-rest.md": {
@@ -3157,14 +3157,14 @@ export const bookEngineData = {
       "section": "Functions",
       "sectionIndex": 2,
       "chapterIndex": 5,
-      "wordCount": 1134,
+      "wordCount": 1142,
       "readingMinutes": 7,
       "h2": 20,
       "h3": 41,
       "examples": 7,
       "tasks": 36,
       "solutions": 29,
-      "mermaid": 1,
+      "mermaid": 2,
       "miniProjects": 1,
       "previous": {
         "title": "Return",
@@ -3194,7 +3194,7 @@ export const bookEngineData = {
         "examples": 7,
         "tasks": 36,
         "solutions": 29,
-        "mermaid": 1
+        "mermaid": 2
       }
     },
     "docs/01-javascript/27-spread.md": {
@@ -3206,14 +3206,14 @@ export const bookEngineData = {
       "section": "Functions",
       "sectionIndex": 2,
       "chapterIndex": 6,
-      "wordCount": 1091,
+      "wordCount": 1096,
       "readingMinutes": 7,
       "h2": 20,
       "h3": 42,
       "examples": 7,
       "tasks": 37,
       "solutions": 28,
-      "mermaid": 0,
+      "mermaid": 1,
       "miniProjects": 1,
       "previous": {
         "title": "Rest Parameters",
@@ -3256,7 +3256,7 @@ export const bookEngineData = {
         "examples": 7,
         "tasks": 37,
         "solutions": 28,
-        "mermaid": 0
+        "mermaid": 1
       }
     },
     "docs/01-javascript/28-closures.md": {
@@ -3416,14 +3416,14 @@ export const bookEngineData = {
       "section": "Functions",
       "sectionIndex": 2,
       "chapterIndex": 9,
-      "wordCount": 1322,
+      "wordCount": 1328,
       "readingMinutes": 8,
       "h2": 20,
       "h3": 31,
       "examples": 7,
       "tasks": 32,
       "solutions": 21,
-      "mermaid": 16,
+      "mermaid": 17,
       "miniProjects": 1,
       "previous": {
         "title": "this",
@@ -3466,7 +3466,7 @@ export const bookEngineData = {
         "examples": 7,
         "tasks": 32,
         "solutions": 21,
-        "mermaid": 16
+        "mermaid": 17
       }
     },
     "docs/01-javascript/31-apply.md": {
@@ -3478,14 +3478,14 @@ export const bookEngineData = {
       "section": "Functions",
       "sectionIndex": 2,
       "chapterIndex": 10,
-      "wordCount": 1097,
+      "wordCount": 1105,
       "readingMinutes": 7,
       "h2": 20,
       "h3": 29,
       "examples": 7,
       "tasks": 31,
       "solutions": 20,
-      "mermaid": 12,
+      "mermaid": 13,
       "miniProjects": 1,
       "previous": {
         "title": "call()",
@@ -3528,7 +3528,7 @@ export const bookEngineData = {
         "examples": 7,
         "tasks": 31,
         "solutions": 20,
-        "mermaid": 12
+        "mermaid": 13
       }
     },
     "docs/01-javascript/32-bind.md": {
@@ -3540,14 +3540,14 @@ export const bookEngineData = {
       "section": "Functions",
       "sectionIndex": 2,
       "chapterIndex": 11,
-      "wordCount": 1541,
+      "wordCount": 1548,
       "readingMinutes": 9,
       "h2": 21,
       "h3": 68,
       "examples": 7,
       "tasks": 54,
       "solutions": 28,
-      "mermaid": 0,
+      "mermaid": 1,
       "miniProjects": 0,
       "previous": {
         "title": "apply()",
@@ -3590,7 +3590,7 @@ export const bookEngineData = {
         "examples": 7,
         "tasks": 54,
         "solutions": 28,
-        "mermaid": 0
+        "mermaid": 1
       }
     },
     "docs/01-javascript/33-objects.md": {
@@ -3602,14 +3602,14 @@ export const bookEngineData = {
       "section": "Objects",
       "sectionIndex": 3,
       "chapterIndex": 0,
-      "wordCount": 1696,
+      "wordCount": 1702,
       "readingMinutes": 10,
       "h2": 21,
       "h3": 78,
       "examples": 7,
       "tasks": 59,
       "solutions": 33,
-      "mermaid": 0,
+      "mermaid": 1,
       "miniProjects": 0,
       "previous": {
         "title": "bind()",
@@ -3664,7 +3664,7 @@ export const bookEngineData = {
         "examples": 7,
         "tasks": 59,
         "solutions": 33,
-        "mermaid": 0
+        "mermaid": 1
       }
     },
     "docs/01-javascript/34-destructuring.md": {
@@ -3676,14 +3676,14 @@ export const bookEngineData = {
       "section": "Objects",
       "sectionIndex": 3,
       "chapterIndex": 1,
-      "wordCount": 1320,
+      "wordCount": 1328,
       "readingMinutes": 8,
       "h2": 21,
       "h3": 70,
       "examples": 7,
       "tasks": 53,
       "solutions": 29,
-      "mermaid": 0,
+      "mermaid": 1,
       "miniProjects": 0,
       "previous": {
         "title": "Objects",
@@ -3720,7 +3720,7 @@ export const bookEngineData = {
         "examples": 7,
         "tasks": 53,
         "solutions": 29,
-        "mermaid": 0
+        "mermaid": 1
       }
     },
     "docs/01-javascript/35-optional-chaining.md": {
@@ -3732,14 +3732,14 @@ export const bookEngineData = {
       "section": "Objects",
       "sectionIndex": 3,
       "chapterIndex": 2,
-      "wordCount": 1284,
+      "wordCount": 1290,
       "readingMinutes": 8,
       "h2": 21,
       "h3": 71,
       "examples": 7,
       "tasks": 46,
       "solutions": 24,
-      "mermaid": 0,
+      "mermaid": 1,
       "miniProjects": 0,
       "previous": {
         "title": "Destructuring",
@@ -3769,7 +3769,7 @@ export const bookEngineData = {
         "examples": 7,
         "tasks": 46,
         "solutions": 24,
-        "mermaid": 0
+        "mermaid": 1
       }
     },
     "docs/01-javascript/36-nullish-coalescing.md": {
@@ -3781,14 +3781,14 @@ export const bookEngineData = {
       "section": "Objects",
       "sectionIndex": 3,
       "chapterIndex": 3,
-      "wordCount": 1095,
+      "wordCount": 1100,
       "readingMinutes": 7,
       "h2": 21,
       "h3": 73,
       "examples": 7,
       "tasks": 52,
       "solutions": 29,
-      "mermaid": 0,
+      "mermaid": 1,
       "miniProjects": 0,
       "previous": {
         "title": "Optional Chaining",
@@ -3825,7 +3825,7 @@ export const bookEngineData = {
         "examples": 7,
         "tasks": 52,
         "solutions": 29,
-        "mermaid": 0
+        "mermaid": 1
       }
     },
     "docs/01-javascript/37-object-methods.md": {
@@ -3837,14 +3837,14 @@ export const bookEngineData = {
       "section": "Objects",
       "sectionIndex": 3,
       "chapterIndex": 4,
-      "wordCount": 1391,
+      "wordCount": 1397,
       "readingMinutes": 8,
       "h2": 21,
       "h3": 71,
       "examples": 7,
       "tasks": 41,
       "solutions": 23,
-      "mermaid": 0,
+      "mermaid": 1,
       "miniProjects": 0,
       "previous": {
         "title": "Nullish Coalescing",
@@ -3887,7 +3887,7 @@ export const bookEngineData = {
         "examples": 7,
         "tasks": 41,
         "solutions": 23,
-        "mermaid": 0
+        "mermaid": 1
       }
     },
     "docs/01-javascript/38-object-descriptors.md": {
@@ -3899,14 +3899,14 @@ export const bookEngineData = {
       "section": "Objects",
       "sectionIndex": 3,
       "chapterIndex": 5,
-      "wordCount": 1356,
+      "wordCount": 1362,
       "readingMinutes": 8,
       "h2": 21,
       "h3": 75,
       "examples": 7,
       "tasks": 45,
       "solutions": 23,
-      "mermaid": 0,
+      "mermaid": 1,
       "miniProjects": 0,
       "previous": {
         "title": "Object Methods",
@@ -3949,7 +3949,7 @@ export const bookEngineData = {
         "examples": 7,
         "tasks": 45,
         "solutions": 23,
-        "mermaid": 0
+        "mermaid": 1
       }
     },
     "docs/01-javascript/39-prototype.md": {
@@ -4079,14 +4079,14 @@ export const bookEngineData = {
       "section": "Objects",
       "sectionIndex": 3,
       "chapterIndex": 8,
-      "wordCount": 1445,
+      "wordCount": 1450,
       "readingMinutes": 9,
       "h2": 21,
       "h3": 68,
       "examples": 8,
       "tasks": 38,
       "solutions": 22,
-      "mermaid": 0,
+      "mermaid": 1,
       "miniProjects": 0,
       "previous": {
         "title": "Prototype Chain",
@@ -4129,7 +4129,7 @@ export const bookEngineData = {
         "examples": 8,
         "tasks": 38,
         "solutions": 22,
-        "mermaid": 0
+        "mermaid": 1
       }
     },
     "docs/01-javascript/42-class-inheritance.md": {
@@ -4141,14 +4141,14 @@ export const bookEngineData = {
       "section": "Objects",
       "sectionIndex": 3,
       "chapterIndex": 9,
-      "wordCount": 1388,
+      "wordCount": 1392,
       "readingMinutes": 8,
       "h2": 21,
       "h3": 66,
       "examples": 8,
       "tasks": 40,
       "solutions": 22,
-      "mermaid": 0,
+      "mermaid": 1,
       "miniProjects": 0,
       "previous": {
         "title": "Classes",
@@ -4191,7 +4191,7 @@ export const bookEngineData = {
         "examples": 8,
         "tasks": 40,
         "solutions": 22,
-        "mermaid": 0
+        "mermaid": 1
       }
     },
     "docs/01-javascript/43-super.md": {
@@ -4203,14 +4203,14 @@ export const bookEngineData = {
       "section": "Objects",
       "sectionIndex": 3,
       "chapterIndex": 10,
-      "wordCount": 1363,
+      "wordCount": 1371,
       "readingMinutes": 8,
       "h2": 21,
       "h3": 64,
       "examples": 8,
       "tasks": 40,
       "solutions": 21,
-      "mermaid": 0,
+      "mermaid": 1,
       "miniProjects": 0,
       "previous": {
         "title": "Class Inheritance",
@@ -4253,7 +4253,7 @@ export const bookEngineData = {
         "examples": 8,
         "tasks": 40,
         "solutions": 21,
-        "mermaid": 0
+        "mermaid": 1
       }
     },
     "docs/01-javascript/44-arrays.md": {
@@ -4265,14 +4265,14 @@ export const bookEngineData = {
       "section": "Arrays",
       "sectionIndex": 4,
       "chapterIndex": 0,
-      "wordCount": 1269,
+      "wordCount": 1279,
       "readingMinutes": 8,
       "h2": 21,
       "h3": 72,
       "examples": 8,
       "tasks": 36,
       "solutions": 22,
-      "mermaid": 0,
+      "mermaid": 1,
       "miniProjects": 0,
       "previous": {
         "title": "super",
@@ -4309,7 +4309,7 @@ export const bookEngineData = {
         "examples": 8,
         "tasks": 36,
         "solutions": 22,
-        "mermaid": 0
+        "mermaid": 1
       }
     },
     "docs/01-javascript/45-push-pop.md": {
@@ -4321,14 +4321,14 @@ export const bookEngineData = {
       "section": "Arrays",
       "sectionIndex": 4,
       "chapterIndex": 1,
-      "wordCount": 1288,
+      "wordCount": 1294,
       "readingMinutes": 8,
       "h2": 21,
       "h3": 67,
       "examples": 8,
       "tasks": 36,
       "solutions": 22,
-      "mermaid": 0,
+      "mermaid": 1,
       "miniProjects": 0,
       "previous": {
         "title": "Arrays",
@@ -4365,7 +4365,7 @@ export const bookEngineData = {
         "examples": 8,
         "tasks": 36,
         "solutions": 22,
-        "mermaid": 0
+        "mermaid": 1
       }
     },
     "docs/01-javascript/46-shift-unshift.md": {
@@ -4377,14 +4377,14 @@ export const bookEngineData = {
       "section": "Arrays",
       "sectionIndex": 4,
       "chapterIndex": 2,
-      "wordCount": 1400,
+      "wordCount": 1407,
       "readingMinutes": 8,
       "h2": 21,
       "h3": 70,
       "examples": 8,
       "tasks": 42,
       "solutions": 19,
-      "mermaid": 3,
+      "mermaid": 4,
       "miniProjects": 0,
       "previous": {
         "title": "push() and pop()",
@@ -4414,7 +4414,7 @@ export const bookEngineData = {
         "examples": 8,
         "tasks": 42,
         "solutions": 19,
-        "mermaid": 3
+        "mermaid": 4
       }
     },
     "docs/01-javascript/47-splice.md": {
@@ -4426,14 +4426,14 @@ export const bookEngineData = {
       "section": "Arrays",
       "sectionIndex": 4,
       "chapterIndex": 3,
-      "wordCount": 1076,
-      "readingMinutes": 6,
+      "wordCount": 1082,
+      "readingMinutes": 7,
       "h2": 16,
       "h3": 9,
       "examples": 6,
       "tasks": 9,
       "solutions": 13,
-      "mermaid": 2,
+      "mermaid": 3,
       "miniProjects": 1,
       "previous": {
         "title": "shift() and unshift()",
@@ -4459,11 +4459,11 @@ export const bookEngineData = {
       "card": {
         "chapterLabel": "Глава 47",
         "title": "splice()",
-        "reading": 6,
+        "reading": 7,
         "examples": 6,
         "tasks": 9,
         "solutions": 13,
-        "mermaid": 2
+        "mermaid": 3
       }
     },
     "docs/01-javascript/48-slice.md": {
@@ -4475,14 +4475,14 @@ export const bookEngineData = {
       "section": "Arrays",
       "sectionIndex": 4,
       "chapterIndex": 4,
-      "wordCount": 820,
+      "wordCount": 825,
       "readingMinutes": 5,
       "h2": 16,
       "h3": 8,
       "examples": 6,
       "tasks": 7,
       "solutions": 11,
-      "mermaid": 1,
+      "mermaid": 2,
       "miniProjects": 1,
       "previous": {
         "title": "splice()",
@@ -4512,7 +4512,7 @@ export const bookEngineData = {
         "examples": 6,
         "tasks": 7,
         "solutions": 11,
-        "mermaid": 1
+        "mermaid": 2
       }
     },
     "docs/01-javascript/49-iteration.md": {
@@ -4524,14 +4524,14 @@ export const bookEngineData = {
       "section": "Arrays",
       "sectionIndex": 4,
       "chapterIndex": 5,
-      "wordCount": 893,
+      "wordCount": 898,
       "readingMinutes": 5,
       "h2": 16,
       "h3": 9,
       "examples": 6,
       "tasks": 7,
       "solutions": 11,
-      "mermaid": 0,
+      "mermaid": 1,
       "miniProjects": 1,
       "previous": {
         "title": "slice()",
@@ -4561,7 +4561,7 @@ export const bookEngineData = {
         "examples": 6,
         "tasks": 7,
         "solutions": 11,
-        "mermaid": 0
+        "mermaid": 1
       }
     },
     "docs/01-javascript/50-foreach.md": {
@@ -4573,14 +4573,14 @@ export const bookEngineData = {
       "section": "Arrays",
       "sectionIndex": 4,
       "chapterIndex": 6,
-      "wordCount": 796,
+      "wordCount": 803,
       "readingMinutes": 5,
       "h2": 16,
       "h3": 9,
       "examples": 6,
       "tasks": 7,
       "solutions": 11,
-      "mermaid": 0,
+      "mermaid": 1,
       "miniProjects": 1,
       "previous": {
         "title": "Iteration",
@@ -4617,7 +4617,7 @@ export const bookEngineData = {
         "examples": 6,
         "tasks": 7,
         "solutions": 11,
-        "mermaid": 0
+        "mermaid": 1
       }
     },
     "docs/01-javascript/51-map.md": {
@@ -4629,14 +4629,14 @@ export const bookEngineData = {
       "section": "Arrays",
       "sectionIndex": 4,
       "chapterIndex": 7,
-      "wordCount": 886,
+      "wordCount": 891,
       "readingMinutes": 5,
       "h2": 16,
       "h3": 8,
       "examples": 6,
       "tasks": 7,
       "solutions": 11,
-      "mermaid": 0,
+      "mermaid": 1,
       "miniProjects": 1,
       "previous": {
         "title": "forEach()",
@@ -4666,7 +4666,7 @@ export const bookEngineData = {
         "examples": 6,
         "tasks": 7,
         "solutions": 11,
-        "mermaid": 0
+        "mermaid": 1
       }
     },
     "docs/01-javascript/52-filter.md": {
@@ -4678,14 +4678,14 @@ export const bookEngineData = {
       "section": "Arrays",
       "sectionIndex": 4,
       "chapterIndex": 8,
-      "wordCount": 839,
+      "wordCount": 845,
       "readingMinutes": 5,
       "h2": 16,
       "h3": 9,
       "examples": 6,
       "tasks": 7,
       "solutions": 11,
-      "mermaid": 0,
+      "mermaid": 1,
       "miniProjects": 1,
       "previous": {
         "title": "map()",
@@ -4715,7 +4715,7 @@ export const bookEngineData = {
         "examples": 6,
         "tasks": 7,
         "solutions": 11,
-        "mermaid": 0
+        "mermaid": 1
       }
     },
     "docs/01-javascript/53-reduce.md": {
@@ -4727,14 +4727,14 @@ export const bookEngineData = {
       "section": "Arrays",
       "sectionIndex": 4,
       "chapterIndex": 9,
-      "wordCount": 937,
+      "wordCount": 943,
       "readingMinutes": 6,
       "h2": 16,
       "h3": 9,
       "examples": 6,
       "tasks": 7,
       "solutions": 11,
-      "mermaid": 0,
+      "mermaid": 1,
       "miniProjects": 1,
       "previous": {
         "title": "filter()",
@@ -4764,7 +4764,7 @@ export const bookEngineData = {
         "examples": 6,
         "tasks": 7,
         "solutions": 11,
-        "mermaid": 0
+        "mermaid": 1
       }
     },
     "docs/01-javascript/54-chaining.md": {
@@ -4776,14 +4776,14 @@ export const bookEngineData = {
       "section": "Arrays",
       "sectionIndex": 4,
       "chapterIndex": 10,
-      "wordCount": 919,
+      "wordCount": 924,
       "readingMinutes": 6,
       "h2": 16,
       "h3": 9,
       "examples": 6,
       "tasks": 7,
       "solutions": 11,
-      "mermaid": 0,
+      "mermaid": 1,
       "miniProjects": 1,
       "previous": {
         "title": "reduce()",
@@ -4813,7 +4813,7 @@ export const bookEngineData = {
         "examples": 6,
         "tasks": 7,
         "solutions": 11,
-        "mermaid": 0
+        "mermaid": 1
       }
     },
     "docs/01-javascript/55-find.md": {
@@ -4825,14 +4825,14 @@ export const bookEngineData = {
       "section": "Arrays",
       "sectionIndex": 4,
       "chapterIndex": 11,
-      "wordCount": 865,
+      "wordCount": 870,
       "readingMinutes": 5,
       "h2": 16,
       "h3": 9,
       "examples": 6,
       "tasks": 7,
       "solutions": 11,
-      "mermaid": 0,
+      "mermaid": 1,
       "miniProjects": 1,
       "previous": {
         "title": "Chaining basics",
@@ -4862,7 +4862,7 @@ export const bookEngineData = {
         "examples": 6,
         "tasks": 7,
         "solutions": 11,
-        "mermaid": 0
+        "mermaid": 1
       }
     },
     "docs/01-javascript/56-some.md": {
@@ -4874,14 +4874,14 @@ export const bookEngineData = {
       "section": "Arrays",
       "sectionIndex": 4,
       "chapterIndex": 12,
-      "wordCount": 772,
+      "wordCount": 778,
       "readingMinutes": 5,
       "h2": 16,
       "h3": 9,
       "examples": 6,
       "tasks": 7,
       "solutions": 11,
-      "mermaid": 0,
+      "mermaid": 1,
       "miniProjects": 1,
       "previous": {
         "title": "find()",
@@ -4911,7 +4911,7 @@ export const bookEngineData = {
         "examples": 6,
         "tasks": 7,
         "solutions": 11,
-        "mermaid": 0
+        "mermaid": 1
       }
     },
     "docs/01-javascript/57-every.md": {
@@ -4923,14 +4923,14 @@ export const bookEngineData = {
       "section": "Arrays",
       "sectionIndex": 4,
       "chapterIndex": 13,
-      "wordCount": 818,
+      "wordCount": 824,
       "readingMinutes": 5,
       "h2": 16,
       "h3": 9,
       "examples": 6,
       "tasks": 7,
       "solutions": 11,
-      "mermaid": 0,
+      "mermaid": 1,
       "miniProjects": 1,
       "previous": {
         "title": "some()",
@@ -4960,7 +4960,7 @@ export const bookEngineData = {
         "examples": 6,
         "tasks": 7,
         "solutions": 11,
-        "mermaid": 0
+        "mermaid": 1
       }
     },
     "docs/01-javascript/58-includes.md": {
@@ -4972,14 +4972,14 @@ export const bookEngineData = {
       "section": "Arrays",
       "sectionIndex": 4,
       "chapterIndex": 14,
-      "wordCount": 827,
+      "wordCount": 834,
       "readingMinutes": 5,
       "h2": 16,
       "h3": 9,
       "examples": 6,
       "tasks": 7,
       "solutions": 11,
-      "mermaid": 0,
+      "mermaid": 1,
       "miniProjects": 1,
       "previous": {
         "title": "every()",
@@ -5009,7 +5009,7 @@ export const bookEngineData = {
         "examples": 6,
         "tasks": 7,
         "solutions": 11,
-        "mermaid": 0
+        "mermaid": 1
       }
     },
     "docs/01-javascript/59-sort.md": {
@@ -5021,14 +5021,14 @@ export const bookEngineData = {
       "section": "Arrays",
       "sectionIndex": 4,
       "chapterIndex": 15,
-      "wordCount": 891,
+      "wordCount": 896,
       "readingMinutes": 5,
       "h2": 16,
       "h3": 10,
       "examples": 6,
       "tasks": 6,
       "solutions": 10,
-      "mermaid": 0,
+      "mermaid": 1,
       "miniProjects": 1,
       "previous": {
         "title": "includes()",
@@ -5058,7 +5058,7 @@ export const bookEngineData = {
         "examples": 6,
         "tasks": 6,
         "solutions": 10,
-        "mermaid": 0
+        "mermaid": 1
       }
     },
     "docs/01-javascript/60-reverse.md": {
@@ -5070,14 +5070,14 @@ export const bookEngineData = {
       "section": "Arrays",
       "sectionIndex": 4,
       "chapterIndex": 16,
-      "wordCount": 771,
+      "wordCount": 777,
       "readingMinutes": 5,
       "h2": 16,
       "h3": 8,
       "examples": 6,
       "tasks": 6,
       "solutions": 10,
-      "mermaid": 0,
+      "mermaid": 1,
       "miniProjects": 1,
       "previous": {
         "title": "sort()",
@@ -5107,7 +5107,7 @@ export const bookEngineData = {
         "examples": 6,
         "tasks": 6,
         "solutions": 10,
-        "mermaid": 0
+        "mermaid": 1
       }
     },
     "docs/01-javascript/61-execution-context.md": {
@@ -5329,14 +5329,14 @@ export const bookEngineData = {
       "section": "Execution Model Revisited",
       "sectionIndex": 5,
       "chapterIndex": 3,
-      "wordCount": 1077,
-      "readingMinutes": 6,
+      "wordCount": 1084,
+      "readingMinutes": 7,
       "h2": 18,
       "h3": 11,
       "examples": 5,
       "tasks": 5,
       "solutions": 10,
-      "mermaid": 0,
+      "mermaid": 1,
       "miniProjects": 0,
       "previous": {
         "title": "Memory Model",
@@ -5387,11 +5387,11 @@ export const bookEngineData = {
       "card": {
         "chapterLabel": "Глава 64",
         "title": "Hoisting + TDZ",
-        "reading": 6,
+        "reading": 7,
         "examples": 5,
         "tasks": 5,
         "solutions": 10,
-        "mermaid": 0
+        "mermaid": 1
       }
     },
     "docs/01-javascript/65-closures.md": {
@@ -5545,14 +5545,14 @@ export const bookEngineData = {
       "section": "Function Context",
       "sectionIndex": 6,
       "chapterIndex": 2,
-      "wordCount": 951,
+      "wordCount": 960,
       "readingMinutes": 6,
       "h2": 19,
       "h3": 9,
       "examples": 5,
       "tasks": 6,
       "solutions": 10,
-      "mermaid": 0,
+      "mermaid": 1,
       "miniProjects": 1,
       "previous": {
         "title": "this: углубленное повторение",
@@ -5595,7 +5595,7 @@ export const bookEngineData = {
         "examples": 5,
         "tasks": 6,
         "solutions": 10,
-        "mermaid": 0
+        "mermaid": 1
       }
     },
     "docs/01-javascript/68-context-management.md": {
@@ -5607,14 +5607,14 @@ export const bookEngineData = {
       "section": "Function Context",
       "sectionIndex": 6,
       "chapterIndex": 3,
-      "wordCount": 1063,
+      "wordCount": 1069,
       "readingMinutes": 6,
       "h2": 20,
       "h3": 9,
       "examples": 5,
       "tasks": 6,
       "solutions": 10,
-      "mermaid": 0,
+      "mermaid": 1,
       "miniProjects": 1,
       "previous": {
         "title": "call(), apply(), bind()",
@@ -5657,7 +5657,7 @@ export const bookEngineData = {
         "examples": 5,
         "tasks": 6,
         "solutions": 10,
-        "mermaid": 0
+        "mermaid": 1
       }
     },
     "docs/01-javascript/69-synchronous-execution.md": {
@@ -5669,14 +5669,14 @@ export const bookEngineData = {
       "section": "Async JavaScript",
       "sectionIndex": 7,
       "chapterIndex": 0,
-      "wordCount": 1038,
+      "wordCount": 1043,
       "readingMinutes": 6,
       "h2": 17,
       "h3": 9,
       "examples": 5,
       "tasks": 10,
       "solutions": 10,
-      "mermaid": 0,
+      "mermaid": 1,
       "miniProjects": 1,
       "previous": {
         "title": "Практическое управление контекстом",
@@ -5731,7 +5731,7 @@ export const bookEngineData = {
         "examples": 5,
         "tasks": 10,
         "solutions": 10,
-        "mermaid": 0
+        "mermaid": 1
       }
     },
     "docs/01-javascript/70-asynchronous-programming.md": {
@@ -5743,14 +5743,14 @@ export const bookEngineData = {
       "section": "Async JavaScript",
       "sectionIndex": 7,
       "chapterIndex": 1,
-      "wordCount": 1060,
+      "wordCount": 1067,
       "readingMinutes": 6,
       "h2": 17,
       "h3": 10,
       "examples": 5,
       "tasks": 6,
       "solutions": 10,
-      "mermaid": 0,
+      "mermaid": 1,
       "miniProjects": 1,
       "previous": {
         "title": "Synchronous Execution",
@@ -5793,7 +5793,7 @@ export const bookEngineData = {
         "examples": 5,
         "tasks": 6,
         "solutions": 10,
-        "mermaid": 0
+        "mermaid": 1
       }
     },
     "docs/01-javascript/71-callback.md": {
@@ -5805,14 +5805,14 @@ export const bookEngineData = {
       "section": "Async JavaScript",
       "sectionIndex": 7,
       "chapterIndex": 2,
-      "wordCount": 978,
+      "wordCount": 984,
       "readingMinutes": 6,
       "h2": 18,
       "h3": 9,
       "examples": 5,
       "tasks": 9,
       "solutions": 10,
-      "mermaid": 0,
+      "mermaid": 1,
       "miniProjects": 1,
       "previous": {
         "title": "Asynchronous Programming",
@@ -5867,7 +5867,7 @@ export const bookEngineData = {
         "examples": 5,
         "tasks": 9,
         "solutions": 10,
-        "mermaid": 0
+        "mermaid": 1
       }
     },
     "docs/01-javascript/72-promise.md": {
@@ -6003,14 +6003,14 @@ export const bookEngineData = {
       "section": "Async JavaScript",
       "sectionIndex": 7,
       "chapterIndex": 5,
-      "wordCount": 971,
+      "wordCount": 978,
       "readingMinutes": 6,
       "h2": 18,
       "h3": 9,
       "examples": 5,
       "tasks": 6,
       "solutions": 10,
-      "mermaid": 0,
+      "mermaid": 1,
       "miniProjects": 1,
       "previous": {
         "title": "Event Loop",
@@ -6059,7 +6059,7 @@ export const bookEngineData = {
         "examples": 5,
         "tasks": 6,
         "solutions": 10,
-        "mermaid": 0
+        "mermaid": 1
       }
     },
     "docs/01-javascript/75-microtasks.md": {
@@ -6071,14 +6071,14 @@ export const bookEngineData = {
       "section": "Async JavaScript",
       "sectionIndex": 7,
       "chapterIndex": 6,
-      "wordCount": 800,
+      "wordCount": 805,
       "readingMinutes": 5,
       "h2": 17,
       "h3": 8,
       "examples": 5,
       "tasks": 6,
       "solutions": 10,
-      "mermaid": 0,
+      "mermaid": 1,
       "miniProjects": 1,
       "previous": {
         "title": "Web APIs",
@@ -6127,7 +6127,7 @@ export const bookEngineData = {
         "examples": 5,
         "tasks": 6,
         "solutions": 10,
-        "mermaid": 0
+        "mermaid": 1
       }
     },
     "docs/01-javascript/76-macrotasks.md": {
@@ -6139,14 +6139,14 @@ export const bookEngineData = {
       "section": "Async JavaScript",
       "sectionIndex": 7,
       "chapterIndex": 7,
-      "wordCount": 882,
+      "wordCount": 890,
       "readingMinutes": 5,
       "h2": 17,
       "h3": 8,
       "examples": 5,
       "tasks": 6,
       "solutions": 10,
-      "mermaid": 0,
+      "mermaid": 1,
       "miniProjects": 1,
       "previous": {
         "title": "Microtasks",
@@ -6195,7 +6195,7 @@ export const bookEngineData = {
         "examples": 5,
         "tasks": 6,
         "solutions": 10,
-        "mermaid": 0
+        "mermaid": 1
       }
     },
     "docs/01-javascript/77-promise-api.md": {
@@ -6337,14 +6337,14 @@ export const bookEngineData = {
       "section": "Async JavaScript",
       "sectionIndex": 7,
       "chapterIndex": 10,
-      "wordCount": 844,
+      "wordCount": 850,
       "readingMinutes": 5,
       "h2": 15,
       "h3": 8,
       "examples": 5,
       "tasks": 6,
       "solutions": 10,
-      "mermaid": 0,
+      "mermaid": 1,
       "miniProjects": 1,
       "previous": {
         "title": "async и await",
@@ -6387,7 +6387,7 @@ export const bookEngineData = {
         "examples": 5,
         "tasks": 6,
         "solutions": 10,
-        "mermaid": 0
+        "mermaid": 1
       }
     },
     "docs/01-javascript/80-parallel-async.md": {
@@ -6399,14 +6399,14 @@ export const bookEngineData = {
       "section": "Async JavaScript",
       "sectionIndex": 7,
       "chapterIndex": 11,
-      "wordCount": 948,
+      "wordCount": 954,
       "readingMinutes": 6,
       "h2": 15,
       "h3": 8,
       "examples": 5,
       "tasks": 6,
       "solutions": 10,
-      "mermaid": 1,
+      "mermaid": 2,
       "miniProjects": 1,
       "previous": {
         "title": "Error Handling in Asynchronous Code",
@@ -6449,7 +6449,7 @@ export const bookEngineData = {
         "examples": 5,
         "tasks": 6,
         "solutions": 10,
-        "mermaid": 1
+        "mermaid": 2
       }
     },
     "docs/01-javascript/81-iterable-protocol.md": {
@@ -6461,14 +6461,14 @@ export const bookEngineData = {
       "section": "Iteration Protocols",
       "sectionIndex": 8,
       "chapterIndex": 0,
-      "wordCount": 825,
+      "wordCount": 833,
       "readingMinutes": 5,
       "h2": 15,
       "h3": 7,
       "examples": 5,
       "tasks": 6,
       "solutions": 10,
-      "mermaid": 0,
+      "mermaid": 1,
       "miniProjects": 1,
       "previous": {
         "title": "Parallel Asynchronous Operations",
@@ -6517,7 +6517,7 @@ export const bookEngineData = {
         "examples": 5,
         "tasks": 6,
         "solutions": 10,
-        "mermaid": 0
+        "mermaid": 1
       }
     },
     "docs/01-javascript/82-iterators.md": {
@@ -6529,14 +6529,14 @@ export const bookEngineData = {
       "section": "Iteration Protocols",
       "sectionIndex": 8,
       "chapterIndex": 1,
-      "wordCount": 766,
+      "wordCount": 773,
       "readingMinutes": 5,
       "h2": 15,
       "h3": 8,
       "examples": 5,
       "tasks": 6,
       "solutions": 10,
-      "mermaid": 0,
+      "mermaid": 1,
       "miniProjects": 1,
       "previous": {
         "title": "Iterable Protocol",
@@ -6566,7 +6566,7 @@ export const bookEngineData = {
         "examples": 5,
         "tasks": 6,
         "solutions": 10,
-        "mermaid": 0
+        "mermaid": 1
       }
     },
     "docs/01-javascript/83-generators.md": {
@@ -6578,14 +6578,14 @@ export const bookEngineData = {
       "section": "Iteration Protocols",
       "sectionIndex": 8,
       "chapterIndex": 2,
-      "wordCount": 700,
+      "wordCount": 706,
       "readingMinutes": 4,
       "h2": 15,
       "h3": 7,
       "examples": 5,
       "tasks": 6,
       "solutions": 10,
-      "mermaid": 0,
+      "mermaid": 1,
       "miniProjects": 1,
       "previous": {
         "title": "Iterators",
@@ -6622,7 +6622,7 @@ export const bookEngineData = {
         "examples": 5,
         "tasks": 6,
         "solutions": 10,
-        "mermaid": 0
+        "mermaid": 1
       }
     },
     "docs/01-javascript/84-custom-iteration.md": {
@@ -6634,14 +6634,14 @@ export const bookEngineData = {
       "section": "Iteration Protocols",
       "sectionIndex": 8,
       "chapterIndex": 3,
-      "wordCount": 823,
+      "wordCount": 829,
       "readingMinutes": 5,
       "h2": 15,
       "h3": 10,
       "examples": 5,
       "tasks": 6,
       "solutions": 10,
-      "mermaid": 0,
+      "mermaid": 1,
       "miniProjects": 1,
       "previous": {
         "title": "Generators",
@@ -6684,7 +6684,7 @@ export const bookEngineData = {
         "examples": 5,
         "tasks": 6,
         "solutions": 10,
-        "mermaid": 0
+        "mermaid": 1
       }
     },
     "docs/01-javascript/85-javascript-modules.md": {
@@ -6937,14 +6937,14 @@ export const bookEngineData = {
       "section": "Engineering Practice",
       "sectionIndex": 11,
       "chapterIndex": 0,
-      "wordCount": 828,
+      "wordCount": 836,
       "readingMinutes": 5,
       "h2": 15,
       "h3": 4,
       "examples": 5,
       "tasks": 6,
       "solutions": 10,
-      "mermaid": 2,
+      "mermaid": 3,
       "miniProjects": 1,
       "previous": {
         "title": "Memory Management",
@@ -6981,7 +6981,7 @@ export const bookEngineData = {
         "examples": 5,
         "tasks": 6,
         "solutions": 10,
-        "mermaid": 2
+        "mermaid": 3
       }
     },
     "docs/01-javascript/90-debugging.md": {
@@ -6993,14 +6993,14 @@ export const bookEngineData = {
       "section": "Engineering Practice",
       "sectionIndex": 11,
       "chapterIndex": 1,
-      "wordCount": 992,
+      "wordCount": 999,
       "readingMinutes": 6,
       "h2": 15,
       "h3": 9,
       "examples": 5,
       "tasks": 6,
       "solutions": 10,
-      "mermaid": 2,
+      "mermaid": 3,
       "miniProjects": 1,
       "previous": {
         "title": "Performance",
@@ -7030,7 +7030,7 @@ export const bookEngineData = {
         "examples": 5,
         "tasks": 6,
         "solutions": 10,
-        "mermaid": 2
+        "mermaid": 3
       }
     },
     "docs/01-javascript/91-modern-javascript.md": {
@@ -7042,14 +7042,14 @@ export const bookEngineData = {
       "section": "JavaScript Conclusion",
       "sectionIndex": 12,
       "chapterIndex": 0,
-      "wordCount": 753,
+      "wordCount": 761,
       "readingMinutes": 5,
       "h2": 14,
       "h3": 6,
       "examples": 5,
       "tasks": 6,
       "solutions": 10,
-      "mermaid": 1,
+      "mermaid": 2,
       "miniProjects": 1,
       "previous": {
         "title": "Debugging",
@@ -7079,6 +7079,12 @@ export const bookEngineData = {
           "link": "/docs/01-javascript/29-this"
         },
         {
+          "term": "Promise",
+          "title": "Promise",
+          "number": 72,
+          "link": "/docs/01-javascript/72-promise"
+        },
+        {
           "term": "async/await",
           "title": "async и await",
           "number": 78,
@@ -7092,7 +7098,7 @@ export const bookEngineData = {
         "examples": 5,
         "tasks": 6,
         "solutions": 10,
-        "mermaid": 1
+        "mermaid": 2
       }
     },
     "docs/01-javascript/92-javascript-best-practices.md": {
@@ -7104,14 +7110,14 @@ export const bookEngineData = {
       "section": "JavaScript Conclusion",
       "sectionIndex": 12,
       "chapterIndex": 1,
-      "wordCount": 777,
+      "wordCount": 784,
       "readingMinutes": 5,
       "h2": 14,
       "h3": 7,
       "examples": 5,
       "tasks": 6,
       "solutions": 10,
-      "mermaid": 1,
+      "mermaid": 2,
       "miniProjects": 1,
       "previous": {
         "title": "Modern JavaScript Features",
@@ -7141,7 +7147,7 @@ export const bookEngineData = {
         "examples": 5,
         "tasks": 6,
         "solutions": 10,
-        "mermaid": 1
+        "mermaid": 2
       }
     },
     "docs/01-javascript/93-error-objects.md": {
@@ -7153,14 +7159,14 @@ export const bookEngineData = {
       "section": "JavaScript Conclusion",
       "sectionIndex": 12,
       "chapterIndex": 2,
-      "wordCount": 858,
+      "wordCount": 866,
       "readingMinutes": 5,
       "h2": 15,
       "h3": 9,
       "examples": 5,
       "tasks": 6,
       "solutions": 10,
-      "mermaid": 0,
+      "mermaid": 1,
       "miniProjects": 1,
       "previous": {
         "title": "JavaScript Best Practices",
@@ -7203,7 +7209,7 @@ export const bookEngineData = {
         "examples": 5,
         "tasks": 6,
         "solutions": 10,
-        "mermaid": 0
+        "mermaid": 1
       }
     },
     "docs/01-javascript/94-json.md": {
@@ -7215,14 +7221,14 @@ export const bookEngineData = {
       "section": "JavaScript Conclusion",
       "sectionIndex": 12,
       "chapterIndex": 3,
-      "wordCount": 808,
+      "wordCount": 813,
       "readingMinutes": 5,
       "h2": 15,
       "h3": 8,
       "examples": 6,
       "tasks": 6,
       "solutions": 10,
-      "mermaid": 0,
+      "mermaid": 1,
       "miniProjects": 1,
       "previous": {
         "title": "Error Objects",
@@ -7259,7 +7265,7 @@ export const bookEngineData = {
         "examples": 6,
         "tasks": 6,
         "solutions": 10,
-        "mermaid": 0
+        "mermaid": 1
       }
     },
     "docs/01-javascript/95-date.md": {
@@ -7271,14 +7277,14 @@ export const bookEngineData = {
       "section": "JavaScript Conclusion",
       "sectionIndex": 12,
       "chapterIndex": 4,
-      "wordCount": 804,
+      "wordCount": 812,
       "readingMinutes": 5,
       "h2": 15,
       "h3": 9,
       "examples": 7,
       "tasks": 6,
       "solutions": 10,
-      "mermaid": 0,
+      "mermaid": 1,
       "miniProjects": 1,
       "previous": {
         "title": "JSON",
@@ -7315,7 +7321,7 @@ export const bookEngineData = {
         "examples": 7,
         "tasks": 6,
         "solutions": 10,
-        "mermaid": 0
+        "mermaid": 1
       }
     },
     "docs/01-javascript/96-why-typescript.md": {
@@ -7327,14 +7333,14 @@ export const bookEngineData = {
       "section": "JavaScript Conclusion",
       "sectionIndex": 12,
       "chapterIndex": 5,
-      "wordCount": 917,
+      "wordCount": 925,
       "readingMinutes": 6,
       "h2": 15,
       "h3": 8,
       "examples": 5,
       "tasks": 6,
       "solutions": 10,
-      "mermaid": 3,
+      "mermaid": 4,
       "miniProjects": 1,
       "previous": {
         "title": "Date",
@@ -7371,7 +7377,7 @@ export const bookEngineData = {
         "examples": 5,
         "tasks": 6,
         "solutions": 10,
-        "mermaid": 3
+        "mermaid": 4
       }
     },
     "docs/02-typescript/97-typescript-compiler.md": {
@@ -7936,14 +7942,14 @@ export const bookEngineData = {
       "section": "Объектные контракты",
       "sectionIndex": 2,
       "chapterIndex": 0,
-      "wordCount": 729,
+      "wordCount": 738,
       "readingMinutes": 5,
       "h2": 15,
       "h3": 9,
       "examples": 1,
       "tasks": 6,
       "solutions": 10,
-      "mermaid": 0,
+      "mermaid": 1,
       "miniProjects": 1,
       "previous": {
         "title": "Tuples",
@@ -7973,7 +7979,7 @@ export const bookEngineData = {
         "examples": 1,
         "tasks": 6,
         "solutions": 10,
-        "mermaid": 0
+        "mermaid": 1
       }
     },
     "docs/02-typescript/109-optional-and-readonly-properties.md": {
@@ -7985,14 +7991,14 @@ export const bookEngineData = {
       "section": "Объектные контракты",
       "sectionIndex": 2,
       "chapterIndex": 1,
-      "wordCount": 776,
+      "wordCount": 782,
       "readingMinutes": 5,
       "h2": 15,
       "h3": 9,
       "examples": 1,
       "tasks": 6,
       "solutions": 10,
-      "mermaid": 0,
+      "mermaid": 1,
       "miniProjects": 1,
       "previous": {
         "title": "Object Types",
@@ -8029,7 +8035,7 @@ export const bookEngineData = {
         "examples": 1,
         "tasks": 6,
         "solutions": 10,
-        "mermaid": 0
+        "mermaid": 1
       }
     },
     "docs/02-typescript/110-index-signatures.md": {
@@ -8041,14 +8047,14 @@ export const bookEngineData = {
       "section": "Объектные контракты",
       "sectionIndex": 2,
       "chapterIndex": 2,
-      "wordCount": 795,
+      "wordCount": 803,
       "readingMinutes": 5,
       "h2": 15,
       "h3": 9,
       "examples": 1,
       "tasks": 6,
       "solutions": 10,
-      "mermaid": 0,
+      "mermaid": 1,
       "miniProjects": 1,
       "previous": {
         "title": "Optional and Readonly Properties",
@@ -8078,7 +8084,7 @@ export const bookEngineData = {
         "examples": 1,
         "tasks": 6,
         "solutions": 10,
-        "mermaid": 0
+        "mermaid": 1
       }
     },
     "docs/02-typescript/111-type-alias.md": {
@@ -8090,14 +8096,14 @@ export const bookEngineData = {
       "section": "Объектные контракты",
       "sectionIndex": 2,
       "chapterIndex": 3,
-      "wordCount": 761,
+      "wordCount": 766,
       "readingMinutes": 5,
       "h2": 15,
       "h3": 9,
       "examples": 1,
       "tasks": 6,
       "solutions": 10,
-      "mermaid": 0,
+      "mermaid": 1,
       "miniProjects": 1,
       "previous": {
         "title": "Index Signatures",
@@ -8134,7 +8140,7 @@ export const bookEngineData = {
         "examples": 1,
         "tasks": 6,
         "solutions": 10,
-        "mermaid": 0
+        "mermaid": 1
       }
     },
     "docs/02-typescript/112-interface.md": {
@@ -8146,14 +8152,14 @@ export const bookEngineData = {
       "section": "Объектные контракты",
       "sectionIndex": 2,
       "chapterIndex": 4,
-      "wordCount": 684,
+      "wordCount": 689,
       "readingMinutes": 4,
       "h2": 15,
       "h3": 9,
       "examples": 1,
       "tasks": 6,
       "solutions": 10,
-      "mermaid": 0,
+      "mermaid": 1,
       "miniProjects": 1,
       "previous": {
         "title": "Type Alias",
@@ -8183,7 +8189,7 @@ export const bookEngineData = {
         "examples": 1,
         "tasks": 6,
         "solutions": 10,
-        "mermaid": 0
+        "mermaid": 1
       }
     },
     "docs/02-typescript/113-interface-vs-type-alias.md": {
@@ -8195,14 +8201,14 @@ export const bookEngineData = {
       "section": "Объектные контракты",
       "sectionIndex": 2,
       "chapterIndex": 5,
-      "wordCount": 744,
+      "wordCount": 750,
       "readingMinutes": 5,
       "h2": 15,
       "h3": 10,
       "examples": 1,
       "tasks": 6,
       "solutions": 10,
-      "mermaid": 0,
+      "mermaid": 1,
       "miniProjects": 1,
       "previous": {
         "title": "Interface",
@@ -8232,7 +8238,7 @@ export const bookEngineData = {
         "examples": 1,
         "tasks": 6,
         "solutions": 10,
-        "mermaid": 0
+        "mermaid": 1
       }
     },
     "docs/02-typescript/114-structural-typing.md": {
@@ -8293,14 +8299,14 @@ export const bookEngineData = {
       "section": "Значения как типы и композиция",
       "sectionIndex": 3,
       "chapterIndex": 0,
-      "wordCount": 816,
+      "wordCount": 821,
       "readingMinutes": 5,
       "h2": 15,
       "h3": 9,
       "examples": 1,
       "tasks": 6,
       "solutions": 10,
-      "mermaid": 0,
+      "mermaid": 1,
       "miniProjects": 1,
       "previous": {
         "title": "Structural Typing",
@@ -8330,7 +8336,7 @@ export const bookEngineData = {
         "examples": 1,
         "tasks": 6,
         "solutions": 10,
-        "mermaid": 0
+        "mermaid": 1
       }
     },
     "docs/02-typescript/116-as-const.md": {
@@ -8342,14 +8348,14 @@ export const bookEngineData = {
       "section": "Значения как типы и композиция",
       "sectionIndex": 3,
       "chapterIndex": 1,
-      "wordCount": 816,
+      "wordCount": 824,
       "readingMinutes": 5,
       "h2": 15,
       "h3": 10,
       "examples": 1,
       "tasks": 6,
       "solutions": 10,
-      "mermaid": 0,
+      "mermaid": 1,
       "miniProjects": 1,
       "previous": {
         "title": "Literal Types",
@@ -8379,7 +8385,7 @@ export const bookEngineData = {
         "examples": 1,
         "tasks": 6,
         "solutions": 10,
-        "mermaid": 0
+        "mermaid": 1
       }
     },
     "docs/02-typescript/117-enum.md": {
@@ -8391,14 +8397,14 @@ export const bookEngineData = {
       "section": "Значения как типы и композиция",
       "sectionIndex": 3,
       "chapterIndex": 2,
-      "wordCount": 845,
+      "wordCount": 851,
       "readingMinutes": 5,
       "h2": 15,
       "h3": 10,
       "examples": 1,
       "tasks": 6,
       "solutions": 10,
-      "mermaid": 0,
+      "mermaid": 1,
       "miniProjects": 1,
       "previous": {
         "title": "as const",
@@ -8435,7 +8441,7 @@ export const bookEngineData = {
         "examples": 1,
         "tasks": 6,
         "solutions": 10,
-        "mermaid": 0
+        "mermaid": 1
       }
     },
     "docs/02-typescript/118-union-types.md": {
@@ -8447,14 +8453,14 @@ export const bookEngineData = {
       "section": "Значения как типы и композиция",
       "sectionIndex": 3,
       "chapterIndex": 3,
-      "wordCount": 715,
-      "readingMinutes": 4,
+      "wordCount": 721,
+      "readingMinutes": 5,
       "h2": 15,
       "h3": 10,
       "examples": 1,
       "tasks": 6,
       "solutions": 10,
-      "mermaid": 0,
+      "mermaid": 1,
       "miniProjects": 1,
       "previous": {
         "title": "Enum",
@@ -8487,11 +8493,11 @@ export const bookEngineData = {
       "card": {
         "chapterLabel": "Глава 118",
         "title": "Union Types",
-        "reading": 4,
+        "reading": 5,
         "examples": 1,
         "tasks": 6,
         "solutions": 10,
-        "mermaid": 0
+        "mermaid": 1
       }
     },
     "docs/02-typescript/119-intersection-types.md": {
@@ -8503,14 +8509,14 @@ export const bookEngineData = {
       "section": "Значения как типы и композиция",
       "sectionIndex": 3,
       "chapterIndex": 4,
-      "wordCount": 753,
+      "wordCount": 759,
       "readingMinutes": 5,
       "h2": 15,
       "h3": 9,
       "examples": 1,
       "tasks": 6,
       "solutions": 10,
-      "mermaid": 0,
+      "mermaid": 1,
       "miniProjects": 1,
       "previous": {
         "title": "Union Types",
@@ -8540,7 +8546,7 @@ export const bookEngineData = {
         "examples": 1,
         "tasks": 6,
         "solutions": 10,
-        "mermaid": 0
+        "mermaid": 1
       }
     },
     "docs/02-typescript/120-type-composition-in-practice.md": {
@@ -8552,14 +8558,14 @@ export const bookEngineData = {
       "section": "Значения как типы и композиция",
       "sectionIndex": 3,
       "chapterIndex": 5,
-      "wordCount": 784,
+      "wordCount": 788,
       "readingMinutes": 5,
       "h2": 15,
       "h3": 9,
       "examples": 1,
       "tasks": 6,
       "solutions": 10,
-      "mermaid": 0,
+      "mermaid": 1,
       "miniProjects": 1,
       "previous": {
         "title": "Intersection Types",
@@ -8596,7 +8602,7 @@ export const bookEngineData = {
         "examples": 1,
         "tasks": 6,
         "solutions": 10,
-        "mermaid": 0
+        "mermaid": 1
       }
     },
     "docs/02-typescript/121-function-types.md": {
@@ -8608,14 +8614,14 @@ export const bookEngineData = {
       "section": "Типизация функций",
       "sectionIndex": 4,
       "chapterIndex": 0,
-      "wordCount": 834,
+      "wordCount": 839,
       "readingMinutes": 5,
       "h2": 15,
       "h3": 10,
       "examples": 1,
       "tasks": 6,
       "solutions": 11,
-      "mermaid": 0,
+      "mermaid": 1,
       "miniProjects": 1,
       "previous": {
         "title": "Type Composition in Practice",
@@ -8645,7 +8651,7 @@ export const bookEngineData = {
         "examples": 1,
         "tasks": 6,
         "solutions": 11,
-        "mermaid": 0
+        "mermaid": 1
       }
     },
     "docs/02-typescript/122-optional-default-and-rest-parameters.md": {
@@ -8657,14 +8663,14 @@ export const bookEngineData = {
       "section": "Типизация функций",
       "sectionIndex": 4,
       "chapterIndex": 1,
-      "wordCount": 802,
+      "wordCount": 810,
       "readingMinutes": 5,
       "h2": 15,
       "h3": 9,
       "examples": 1,
       "tasks": 6,
       "solutions": 11,
-      "mermaid": 0,
+      "mermaid": 1,
       "miniProjects": 1,
       "previous": {
         "title": "Function Types",
@@ -8694,7 +8700,7 @@ export const bookEngineData = {
         "examples": 1,
         "tasks": 6,
         "solutions": 11,
-        "mermaid": 0
+        "mermaid": 1
       }
     },
     "docs/02-typescript/123-callback-types.md": {
@@ -8706,14 +8712,14 @@ export const bookEngineData = {
       "section": "Типизация функций",
       "sectionIndex": 4,
       "chapterIndex": 2,
-      "wordCount": 704,
+      "wordCount": 710,
       "readingMinutes": 4,
       "h2": 15,
       "h3": 10,
       "examples": 1,
       "tasks": 6,
       "solutions": 11,
-      "mermaid": 0,
+      "mermaid": 1,
       "miniProjects": 1,
       "previous": {
         "title": "Optional, Default and Rest Parameters",
@@ -8750,7 +8756,7 @@ export const bookEngineData = {
         "examples": 1,
         "tasks": 6,
         "solutions": 11,
-        "mermaid": 0
+        "mermaid": 1
       }
     },
     "docs/02-typescript/124-function-overloads.md": {
@@ -8762,14 +8768,14 @@ export const bookEngineData = {
       "section": "Типизация функций",
       "sectionIndex": 4,
       "chapterIndex": 3,
-      "wordCount": 748,
+      "wordCount": 753,
       "readingMinutes": 5,
       "h2": 15,
       "h3": 9,
       "examples": 1,
       "tasks": 6,
       "solutions": 11,
-      "mermaid": 0,
+      "mermaid": 1,
       "miniProjects": 1,
       "previous": {
         "title": "Callback Types",
@@ -8806,7 +8812,7 @@ export const bookEngineData = {
         "examples": 1,
         "tasks": 6,
         "solutions": 11,
-        "mermaid": 0
+        "mermaid": 1
       }
     },
     "docs/02-typescript/125-this-parameter.md": {
@@ -8818,14 +8824,14 @@ export const bookEngineData = {
       "section": "Типизация функций",
       "sectionIndex": 4,
       "chapterIndex": 4,
-      "wordCount": 750,
+      "wordCount": 758,
       "readingMinutes": 5,
       "h2": 15,
       "h3": 9,
       "examples": 1,
       "tasks": 6,
       "solutions": 11,
-      "mermaid": 0,
+      "mermaid": 1,
       "miniProjects": 1,
       "previous": {
         "title": "Function Overloads",
@@ -8862,7 +8868,7 @@ export const bookEngineData = {
         "examples": 1,
         "tasks": 6,
         "solutions": 11,
-        "mermaid": 0
+        "mermaid": 1
       }
     },
     "docs/02-typescript/126-async-function-types.md": {
@@ -8874,14 +8880,14 @@ export const bookEngineData = {
       "section": "Типизация функций",
       "sectionIndex": 4,
       "chapterIndex": 5,
-      "wordCount": 770,
+      "wordCount": 774,
       "readingMinutes": 5,
       "h2": 15,
       "h3": 10,
       "examples": 1,
       "tasks": 6,
       "solutions": 11,
-      "mermaid": 0,
+      "mermaid": 1,
       "miniProjects": 1,
       "previous": {
         "title": "this Parameter",
@@ -8930,7 +8936,7 @@ export const bookEngineData = {
         "examples": 1,
         "tasks": 6,
         "solutions": 11,
-        "mermaid": 0
+        "mermaid": 1
       }
     },
     "docs/02-typescript/127-narrowing.md": {
@@ -8942,11 +8948,11 @@ export const bookEngineData = {
       "section": "Narrowing и безопасные ветвления",
       "sectionIndex": 5,
       "chapterIndex": 0,
-      "wordCount": 720,
-      "readingMinutes": 4,
+      "wordCount": 747,
+      "readingMinutes": 5,
       "h2": 15,
       "h3": 6,
-      "examples": 0,
+      "examples": 1,
       "tasks": 4,
       "solutions": 28,
       "mermaid": 2,
@@ -8975,8 +8981,8 @@ export const bookEngineData = {
       "card": {
         "chapterLabel": "Глава 127",
         "title": "Narrowing",
-        "reading": 4,
-        "examples": 0,
+        "reading": 5,
+        "examples": 1,
         "tasks": 4,
         "solutions": 28,
         "mermaid": 2
@@ -8991,11 +8997,11 @@ export const bookEngineData = {
       "section": "Narrowing и безопасные ветвления",
       "sectionIndex": 5,
       "chapterIndex": 1,
-      "wordCount": 756,
+      "wordCount": 788,
       "readingMinutes": 5,
       "h2": 15,
       "h3": 7,
-      "examples": 0,
+      "examples": 1,
       "tasks": 4,
       "solutions": 28,
       "mermaid": 2,
@@ -9032,7 +9038,7 @@ export const bookEngineData = {
         "chapterLabel": "Глава 128",
         "title": "Built-in Type Guards",
         "reading": 5,
-        "examples": 0,
+        "examples": 1,
         "tasks": 4,
         "solutions": 28,
         "mermaid": 2
@@ -9047,11 +9053,11 @@ export const bookEngineData = {
       "section": "Narrowing и безопасные ветвления",
       "sectionIndex": 5,
       "chapterIndex": 2,
-      "wordCount": 679,
+      "wordCount": 704,
       "readingMinutes": 4,
       "h2": 15,
       "h3": 6,
-      "examples": 0,
+      "examples": 1,
       "tasks": 4,
       "solutions": 28,
       "mermaid": 2,
@@ -9081,7 +9087,7 @@ export const bookEngineData = {
         "chapterLabel": "Глава 129",
         "title": "User Defined Type Guards",
         "reading": 4,
-        "examples": 0,
+        "examples": 1,
         "tasks": 4,
         "solutions": 28,
         "mermaid": 2
@@ -9096,11 +9102,11 @@ export const bookEngineData = {
       "section": "Narrowing и безопасные ветвления",
       "sectionIndex": 5,
       "chapterIndex": 3,
-      "wordCount": 726,
+      "wordCount": 753,
       "readingMinutes": 5,
       "h2": 15,
       "h3": 6,
-      "examples": 0,
+      "examples": 1,
       "tasks": 4,
       "solutions": 28,
       "mermaid": 2,
@@ -9130,7 +9136,7 @@ export const bookEngineData = {
         "chapterLabel": "Глава 130",
         "title": "Type Assertions",
         "reading": 5,
-        "examples": 0,
+        "examples": 1,
         "tasks": 4,
         "solutions": 28,
         "mermaid": 2
@@ -9145,11 +9151,11 @@ export const bookEngineData = {
       "section": "Narrowing и безопасные ветвления",
       "sectionIndex": 5,
       "chapterIndex": 4,
-      "wordCount": 727,
+      "wordCount": 754,
       "readingMinutes": 5,
       "h2": 15,
       "h3": 6,
-      "examples": 0,
+      "examples": 1,
       "tasks": 4,
       "solutions": 28,
       "mermaid": 2,
@@ -9179,7 +9185,7 @@ export const bookEngineData = {
         "chapterLabel": "Глава 131",
         "title": "satisfies",
         "reading": 5,
-        "examples": 0,
+        "examples": 1,
         "tasks": 4,
         "solutions": 28,
         "mermaid": 2
@@ -9194,11 +9200,11 @@ export const bookEngineData = {
       "section": "Narrowing и безопасные ветвления",
       "sectionIndex": 5,
       "chapterIndex": 5,
-      "wordCount": 677,
+      "wordCount": 704,
       "readingMinutes": 4,
       "h2": 15,
       "h3": 6,
-      "examples": 0,
+      "examples": 1,
       "tasks": 4,
       "solutions": 28,
       "mermaid": 2,
@@ -9235,7 +9241,7 @@ export const bookEngineData = {
         "chapterLabel": "Глава 132",
         "title": "Exhaustive Checks with never",
         "reading": 4,
-        "examples": 0,
+        "examples": 1,
         "tasks": 4,
         "solutions": 28,
         "mermaid": 2
@@ -9250,11 +9256,11 @@ export const bookEngineData = {
       "section": "Generics",
       "sectionIndex": 6,
       "chapterIndex": 0,
-      "wordCount": 690,
+      "wordCount": 718,
       "readingMinutes": 4,
       "h2": 15,
       "h3": 7,
-      "examples": 0,
+      "examples": 1,
       "tasks": 4,
       "solutions": 28,
       "mermaid": 2,
@@ -9291,7 +9297,7 @@ export const bookEngineData = {
         "chapterLabel": "Глава 133",
         "title": "Generic Functions",
         "reading": 4,
-        "examples": 0,
+        "examples": 1,
         "tasks": 4,
         "solutions": 28,
         "mermaid": 2
@@ -9306,11 +9312,11 @@ export const bookEngineData = {
       "section": "Generics",
       "sectionIndex": 6,
       "chapterIndex": 1,
-      "wordCount": 633,
+      "wordCount": 662,
       "readingMinutes": 4,
       "h2": 15,
       "h3": 7,
-      "examples": 0,
+      "examples": 1,
       "tasks": 4,
       "solutions": 28,
       "mermaid": 2,
@@ -9340,7 +9346,7 @@ export const bookEngineData = {
         "chapterLabel": "Глава 134",
         "title": "Generic Constraints",
         "reading": 4,
-        "examples": 0,
+        "examples": 1,
         "tasks": 4,
         "solutions": 28,
         "mermaid": 2
@@ -9355,11 +9361,11 @@ export const bookEngineData = {
       "section": "Generics",
       "sectionIndex": 6,
       "chapterIndex": 2,
-      "wordCount": 594,
+      "wordCount": 622,
       "readingMinutes": 4,
       "h2": 15,
       "h3": 6,
-      "examples": 0,
+      "examples": 1,
       "tasks": 4,
       "solutions": 28,
       "mermaid": 1,
@@ -9389,7 +9395,7 @@ export const bookEngineData = {
         "chapterLabel": "Глава 135",
         "title": "keyof Constraints",
         "reading": 4,
-        "examples": 0,
+        "examples": 1,
         "tasks": 4,
         "solutions": 28,
         "mermaid": 1
@@ -9404,11 +9410,11 @@ export const bookEngineData = {
       "section": "Generics",
       "sectionIndex": 6,
       "chapterIndex": 3,
-      "wordCount": 651,
+      "wordCount": 676,
       "readingMinutes": 4,
       "h2": 15,
       "h3": 6,
-      "examples": 0,
+      "examples": 1,
       "tasks": 4,
       "solutions": 28,
       "mermaid": 2,
@@ -9438,7 +9444,7 @@ export const bookEngineData = {
         "chapterLabel": "Глава 136",
         "title": "Generic Type Aliases and Interfaces",
         "reading": 4,
-        "examples": 0,
+        "examples": 1,
         "tasks": 4,
         "solutions": 28,
         "mermaid": 2
@@ -9453,11 +9459,11 @@ export const bookEngineData = {
       "section": "Generics",
       "sectionIndex": 6,
       "chapterIndex": 4,
-      "wordCount": 586,
+      "wordCount": 613,
       "readingMinutes": 4,
       "h2": 15,
       "h3": 7,
-      "examples": 0,
+      "examples": 1,
       "tasks": 4,
       "solutions": 28,
       "mermaid": 1,
@@ -9494,7 +9500,7 @@ export const bookEngineData = {
         "chapterLabel": "Глава 137",
         "title": "Generic Classes",
         "reading": 4,
-        "examples": 0,
+        "examples": 1,
         "tasks": 4,
         "solutions": 28,
         "mermaid": 1
@@ -9509,11 +9515,11 @@ export const bookEngineData = {
       "section": "Generics",
       "sectionIndex": 6,
       "chapterIndex": 5,
-      "wordCount": 599,
+      "wordCount": 631,
       "readingMinutes": 4,
       "h2": 15,
       "h3": 6,
-      "examples": 0,
+      "examples": 1,
       "tasks": 4,
       "solutions": 28,
       "mermaid": 1,
@@ -9543,7 +9549,7 @@ export const bookEngineData = {
         "chapterLabel": "Глава 138",
         "title": "Default Generic Parameters",
         "reading": 4,
-        "examples": 0,
+        "examples": 1,
         "tasks": 4,
         "solutions": 28,
         "mermaid": 1
@@ -9558,11 +9564,11 @@ export const bookEngineData = {
       "section": "Операции над типами",
       "sectionIndex": 7,
       "chapterIndex": 0,
-      "wordCount": 750,
+      "wordCount": 780,
       "readingMinutes": 5,
       "h2": 15,
       "h3": 6,
-      "examples": 0,
+      "examples": 1,
       "tasks": 4,
       "solutions": 28,
       "mermaid": 1,
@@ -9592,7 +9598,7 @@ export const bookEngineData = {
         "chapterLabel": "Глава 139",
         "title": "keyof",
         "reading": 5,
-        "examples": 0,
+        "examples": 1,
         "tasks": 4,
         "solutions": 28,
         "mermaid": 1
@@ -9607,11 +9613,11 @@ export const bookEngineData = {
       "section": "Операции над типами",
       "sectionIndex": 7,
       "chapterIndex": 1,
-      "wordCount": 679,
+      "wordCount": 706,
       "readingMinutes": 4,
       "h2": 15,
       "h3": 7,
-      "examples": 0,
+      "examples": 1,
       "tasks": 4,
       "solutions": 28,
       "mermaid": 1,
@@ -9641,7 +9647,7 @@ export const bookEngineData = {
         "chapterLabel": "Глава 140",
         "title": "typeof Type Query",
         "reading": 4,
-        "examples": 0,
+        "examples": 1,
         "tasks": 4,
         "solutions": 28,
         "mermaid": 1
@@ -9656,11 +9662,11 @@ export const bookEngineData = {
       "section": "Операции над типами",
       "sectionIndex": 7,
       "chapterIndex": 2,
-      "wordCount": 563,
+      "wordCount": 593,
       "readingMinutes": 4,
       "h2": 15,
       "h3": 6,
-      "examples": 0,
+      "examples": 1,
       "tasks": 4,
       "solutions": 28,
       "mermaid": 1,
@@ -9690,7 +9696,7 @@ export const bookEngineData = {
         "chapterLabel": "Глава 141",
         "title": "Indexed Access Types",
         "reading": 4,
-        "examples": 0,
+        "examples": 1,
         "tasks": 4,
         "solutions": 28,
         "mermaid": 1
@@ -9705,11 +9711,11 @@ export const bookEngineData = {
       "section": "Операции над типами",
       "sectionIndex": 7,
       "chapterIndex": 3,
-      "wordCount": 563,
+      "wordCount": 592,
       "readingMinutes": 4,
       "h2": 15,
       "h3": 6,
-      "examples": 0,
+      "examples": 1,
       "tasks": 4,
       "solutions": 28,
       "mermaid": 1,
@@ -9739,7 +9745,7 @@ export const bookEngineData = {
         "chapterLabel": "Глава 142",
         "title": "Mapped Types",
         "reading": 4,
-        "examples": 0,
+        "examples": 1,
         "tasks": 4,
         "solutions": 28,
         "mermaid": 1
@@ -9754,11 +9760,11 @@ export const bookEngineData = {
       "section": "Операции над типами",
       "sectionIndex": 7,
       "chapterIndex": 4,
-      "wordCount": 615,
+      "wordCount": 646,
       "readingMinutes": 4,
       "h2": 15,
       "h3": 6,
-      "examples": 0,
+      "examples": 1,
       "tasks": 4,
       "solutions": 28,
       "mermaid": 1,
@@ -9795,7 +9801,7 @@ export const bookEngineData = {
         "chapterLabel": "Глава 143",
         "title": "Conditional Types",
         "reading": 4,
-        "examples": 0,
+        "examples": 1,
         "tasks": 4,
         "solutions": 28,
         "mermaid": 1
@@ -9810,11 +9816,11 @@ export const bookEngineData = {
       "section": "Операции над типами",
       "sectionIndex": 7,
       "chapterIndex": 5,
-      "wordCount": 550,
+      "wordCount": 578,
       "readingMinutes": 4,
       "h2": 15,
       "h3": 6,
-      "examples": 0,
+      "examples": 1,
       "tasks": 4,
       "solutions": 28,
       "mermaid": 1,
@@ -9851,7 +9857,7 @@ export const bookEngineData = {
         "chapterLabel": "Глава 144",
         "title": "infer",
         "reading": 4,
-        "examples": 0,
+        "examples": 1,
         "tasks": 4,
         "solutions": 28,
         "mermaid": 1
@@ -9866,11 +9872,11 @@ export const bookEngineData = {
       "section": "Операции над типами",
       "sectionIndex": 7,
       "chapterIndex": 6,
-      "wordCount": 562,
+      "wordCount": 589,
       "readingMinutes": 4,
       "h2": 15,
       "h3": 7,
-      "examples": 0,
+      "examples": 1,
       "tasks": 4,
       "solutions": 28,
       "mermaid": 1,
@@ -9907,7 +9913,7 @@ export const bookEngineData = {
         "chapterLabel": "Глава 145",
         "title": "Utility Types",
         "reading": 4,
-        "examples": 0,
+        "examples": 1,
         "tasks": 4,
         "solutions": 28,
         "mermaid": 1
@@ -9922,11 +9928,11 @@ export const bookEngineData = {
       "section": "Классы и объектные контракты",
       "sectionIndex": 8,
       "chapterIndex": 0,
-      "wordCount": 690,
+      "wordCount": 719,
       "readingMinutes": 4,
       "h2": 15,
       "h3": 6,
-      "examples": 0,
+      "examples": 1,
       "tasks": 4,
       "solutions": 28,
       "mermaid": 1,
@@ -9969,7 +9975,7 @@ export const bookEngineData = {
         "chapterLabel": "Глава 146",
         "title": "Typed Classes",
         "reading": 4,
-        "examples": 0,
+        "examples": 1,
         "tasks": 4,
         "solutions": 28,
         "mermaid": 1
@@ -9984,11 +9990,11 @@ export const bookEngineData = {
       "section": "Классы и объектные контракты",
       "sectionIndex": 8,
       "chapterIndex": 1,
-      "wordCount": 632,
+      "wordCount": 659,
       "readingMinutes": 4,
       "h2": 15,
       "h3": 7,
-      "examples": 0,
+      "examples": 1,
       "tasks": 4,
       "solutions": 28,
       "mermaid": 1,
@@ -10025,7 +10031,7 @@ export const bookEngineData = {
         "chapterLabel": "Глава 147",
         "title": "Access Modifiers and readonly Members",
         "reading": 4,
-        "examples": 0,
+        "examples": 1,
         "tasks": 4,
         "solutions": 28,
         "mermaid": 1
@@ -10040,11 +10046,11 @@ export const bookEngineData = {
       "section": "Классы и объектные контракты",
       "sectionIndex": 8,
       "chapterIndex": 2,
-      "wordCount": 650,
+      "wordCount": 680,
       "readingMinutes": 4,
       "h2": 15,
       "h3": 6,
-      "examples": 0,
+      "examples": 1,
       "tasks": 4,
       "solutions": 28,
       "mermaid": 1,
@@ -10081,7 +10087,7 @@ export const bookEngineData = {
         "chapterLabel": "Глава 148",
         "title": "Abstract Classes",
         "reading": 4,
-        "examples": 0,
+        "examples": 1,
         "tasks": 4,
         "solutions": 28,
         "mermaid": 1
@@ -10096,11 +10102,11 @@ export const bookEngineData = {
       "section": "Классы и объектные контракты",
       "sectionIndex": 8,
       "chapterIndex": 3,
-      "wordCount": 590,
+      "wordCount": 614,
       "readingMinutes": 4,
       "h2": 15,
       "h3": 7,
-      "examples": 0,
+      "examples": 1,
       "tasks": 4,
       "solutions": 28,
       "mermaid": 1,
@@ -10137,7 +10143,7 @@ export const bookEngineData = {
         "chapterLabel": "Глава 149",
         "title": "implements and override",
         "reading": 4,
-        "examples": 0,
+        "examples": 1,
         "tasks": 4,
         "solutions": 28,
         "mermaid": 1
@@ -10152,11 +10158,11 @@ export const bookEngineData = {
       "section": "Модули и декларации",
       "sectionIndex": 9,
       "chapterIndex": 0,
-      "wordCount": 715,
-      "readingMinutes": 4,
+      "wordCount": 755,
+      "readingMinutes": 5,
       "h2": 15,
       "h3": 6,
-      "examples": 0,
+      "examples": 1,
       "tasks": 4,
       "solutions": 28,
       "mermaid": 1,
@@ -10192,8 +10198,8 @@ export const bookEngineData = {
       "card": {
         "chapterLabel": "Глава 150",
         "title": "TypeScript and JavaScript Modules",
-        "reading": 4,
-        "examples": 0,
+        "reading": 5,
+        "examples": 1,
         "tasks": 4,
         "solutions": 28,
         "mermaid": 1
@@ -10208,11 +10214,11 @@ export const bookEngineData = {
       "section": "Модули и декларации",
       "sectionIndex": 9,
       "chapterIndex": 1,
-      "wordCount": 708,
-      "readingMinutes": 4,
+      "wordCount": 762,
+      "readingMinutes": 5,
       "h2": 15,
       "h3": 7,
-      "examples": 0,
+      "examples": 1,
       "tasks": 4,
       "solutions": 28,
       "mermaid": 1,
@@ -10241,8 +10247,8 @@ export const bookEngineData = {
       "card": {
         "chapterLabel": "Глава 151",
         "title": "Type-only Imports and Exports",
-        "reading": 4,
-        "examples": 0,
+        "reading": 5,
+        "examples": 1,
         "tasks": 4,
         "solutions": 28,
         "mermaid": 1
@@ -10257,11 +10263,11 @@ export const bookEngineData = {
       "section": "Модули и декларации",
       "sectionIndex": 9,
       "chapterIndex": 2,
-      "wordCount": 761,
+      "wordCount": 798,
       "readingMinutes": 5,
       "h2": 15,
       "h3": 6,
-      "examples": 0,
+      "examples": 1,
       "tasks": 4,
       "solutions": 28,
       "mermaid": 1,
@@ -10291,7 +10297,7 @@ export const bookEngineData = {
         "chapterLabel": "Глава 152",
         "title": "Module Resolution",
         "reading": 5,
-        "examples": 0,
+        "examples": 1,
         "tasks": 4,
         "solutions": 28,
         "mermaid": 1
@@ -10306,11 +10312,11 @@ export const bookEngineData = {
       "section": "Модули и декларации",
       "sectionIndex": 9,
       "chapterIndex": 3,
-      "wordCount": 724,
+      "wordCount": 751,
       "readingMinutes": 5,
       "h2": 15,
       "h3": 6,
-      "examples": 0,
+      "examples": 1,
       "tasks": 4,
       "solutions": 28,
       "mermaid": 1,
@@ -10340,7 +10346,7 @@ export const bookEngineData = {
         "chapterLabel": "Глава 153",
         "title": "Declaration Files",
         "reading": 5,
-        "examples": 0,
+        "examples": 1,
         "tasks": 4,
         "solutions": 28,
         "mermaid": 1
@@ -10355,11 +10361,11 @@ export const bookEngineData = {
       "section": "Модули и декларации",
       "sectionIndex": 9,
       "chapterIndex": 4,
-      "wordCount": 662,
+      "wordCount": 692,
       "readingMinutes": 4,
       "h2": 15,
       "h3": 6,
-      "examples": 0,
+      "examples": 1,
       "tasks": 4,
       "solutions": 28,
       "mermaid": 1,
@@ -10389,7 +10395,7 @@ export const bookEngineData = {
         "chapterLabel": "Глава 154",
         "title": "Declaration Merging",
         "reading": 4,
-        "examples": 0,
+        "examples": 1,
         "tasks": 4,
         "solutions": 28,
         "mermaid": 1
@@ -10404,11 +10410,11 @@ export const bookEngineData = {
       "section": "Модули и декларации",
       "sectionIndex": 9,
       "chapterIndex": 5,
-      "wordCount": 834,
+      "wordCount": 862,
       "readingMinutes": 5,
       "h2": 15,
       "h3": 7,
-      "examples": 0,
+      "examples": 1,
       "tasks": 4,
       "solutions": 28,
       "mermaid": 1,
@@ -10438,7 +10444,7 @@ export const bookEngineData = {
         "chapterLabel": "Глава 155",
         "title": "Compiler Options for Real Projects",
         "reading": 5,
-        "examples": 0,
+        "examples": 1,
         "tasks": 4,
         "solutions": 28,
         "mermaid": 1
@@ -10453,11 +10459,11 @@ export const bookEngineData = {
       "section": "Проектная практика",
       "sectionIndex": 10,
       "chapterIndex": 0,
-      "wordCount": 748,
+      "wordCount": 775,
       "readingMinutes": 5,
       "h2": 15,
       "h3": 6,
-      "examples": 0,
+      "examples": 1,
       "tasks": 4,
       "solutions": 28,
       "mermaid": 1,
@@ -10494,7 +10500,7 @@ export const bookEngineData = {
         "chapterLabel": "Глава 156",
         "title": "Typed Configuration and Test Data",
         "reading": 5,
-        "examples": 0,
+        "examples": 1,
         "tasks": 4,
         "solutions": 28,
         "mermaid": 1
@@ -10509,11 +10515,11 @@ export const bookEngineData = {
       "section": "Проектная практика",
       "sectionIndex": 10,
       "chapterIndex": 1,
-      "wordCount": 777,
+      "wordCount": 804,
       "readingMinutes": 5,
       "h2": 15,
       "h3": 6,
-      "examples": 0,
+      "examples": 1,
       "tasks": 4,
       "solutions": 28,
       "mermaid": 1,
@@ -10550,7 +10556,7 @@ export const bookEngineData = {
         "chapterLabel": "Глава 157",
         "title": "Typed Page Objects, Fixtures and Helpers",
         "reading": 5,
-        "examples": 0,
+        "examples": 1,
         "tasks": 4,
         "solutions": 28,
         "mermaid": 1
@@ -10565,11 +10571,11 @@ export const bookEngineData = {
       "section": "Проектная практика",
       "sectionIndex": 10,
       "chapterIndex": 2,
-      "wordCount": 721,
+      "wordCount": 752,
       "readingMinutes": 5,
       "h2": 15,
       "h3": 6,
-      "examples": 0,
+      "examples": 1,
       "tasks": 4,
       "solutions": 28,
       "mermaid": 1,
@@ -10606,7 +10612,7 @@ export const bookEngineData = {
         "chapterLabel": "Глава 158",
         "title": "Typed API Clients and Assertions",
         "reading": 5,
-        "examples": 0,
+        "examples": 1,
         "tasks": 4,
         "solutions": 28,
         "mermaid": 1
@@ -10621,11 +10627,11 @@ export const bookEngineData = {
       "section": "Проектная практика",
       "sectionIndex": 10,
       "chapterIndex": 3,
-      "wordCount": 897,
-      "readingMinutes": 5,
+      "wordCount": 926,
+      "readingMinutes": 6,
       "h2": 15,
       "h3": 6,
-      "examples": 0,
+      "examples": 1,
       "tasks": 4,
       "solutions": 28,
       "mermaid": 1,
@@ -10654,8 +10660,8 @@ export const bookEngineData = {
       "card": {
         "chapterLabel": "Глава 159",
         "title": "Maintaining Large TypeScript Test Projects",
-        "reading": 5,
-        "examples": 0,
+        "reading": 6,
+        "examples": 1,
         "tasks": 4,
         "solutions": 28,
         "mermaid": 1
@@ -10726,14 +10732,14 @@ export const bookEngineData = {
       "section": "Основы Automation QA Framework",
       "sectionIndex": 0,
       "chapterIndex": 1,
-      "wordCount": 837,
+      "wordCount": 847,
       "readingMinutes": 5,
       "h2": 17,
       "h3": 6,
       "examples": 0,
       "tasks": 0,
       "solutions": 24,
-      "mermaid": 0,
+      "mermaid": 1,
       "miniProjects": 0,
       "previous": {
         "title": "Что такое Automation QA Framework",
@@ -10763,7 +10769,7 @@ export const bookEngineData = {
         "examples": 0,
         "tasks": 0,
         "solutions": 24,
-        "mermaid": 0
+        "mermaid": 1
       }
     },
     "docs/03-automation-qa/162-architectural-layers-and-dependency-flow.md": {
@@ -10831,14 +10837,14 @@ export const bookEngineData = {
       "section": "Основы Automation QA Framework",
       "sectionIndex": 0,
       "chapterIndex": 3,
-      "wordCount": 787,
+      "wordCount": 794,
       "readingMinutes": 5,
       "h2": 17,
       "h3": 6,
       "examples": 0,
       "tasks": 0,
       "solutions": 24,
-      "mermaid": 0,
+      "mermaid": 1,
       "miniProjects": 0,
       "previous": {
         "title": "Архитектурные слои и поток зависимостей",
@@ -10868,7 +10874,7 @@ export const bookEngineData = {
         "examples": 0,
         "tasks": 0,
         "solutions": 24,
-        "mermaid": 0
+        "mermaid": 1
       }
     },
     "docs/03-automation-qa/164-automated-test-lifecycle.md": {
@@ -10936,14 +10942,14 @@ export const bookEngineData = {
       "section": "Основы Automation QA Framework",
       "sectionIndex": 0,
       "chapterIndex": 5,
-      "wordCount": 845,
+      "wordCount": 853,
       "readingMinutes": 5,
       "h2": 17,
       "h3": 6,
       "examples": 1,
       "tasks": 0,
       "solutions": 24,
-      "mermaid": 0,
+      "mermaid": 1,
       "miniProjects": 0,
       "previous": {
         "title": "Жизненный цикл автотеста",
@@ -10980,7 +10986,7 @@ export const bookEngineData = {
         "examples": 1,
         "tasks": 0,
         "solutions": 24,
-        "mermaid": 0
+        "mermaid": 1
       }
     },
     "docs/03-automation-qa/166-playwright-and-playwright-test.md": {
@@ -11146,14 +11152,14 @@ export const bookEngineData = {
       "section": "Playwright Test и основы UI-автоматизации",
       "sectionIndex": 1,
       "chapterIndex": 3,
-      "wordCount": 1066,
+      "wordCount": 1075,
       "readingMinutes": 6,
       "h2": 17,
       "h3": 6,
       "examples": 1,
       "tasks": 0,
       "solutions": 24,
-      "mermaid": 0,
+      "mermaid": 1,
       "miniProjects": 0,
       "previous": {
         "title": "Browser, BrowserContext и Page",
@@ -11183,7 +11189,7 @@ export const bookEngineData = {
         "examples": 1,
         "tasks": 0,
         "solutions": 24,
-        "mermaid": 0
+        "mermaid": 1
       }
     },
     "docs/03-automation-qa/170-user-actions.md": {
@@ -11195,14 +11201,14 @@ export const bookEngineData = {
       "section": "Playwright Test и основы UI-автоматизации",
       "sectionIndex": 1,
       "chapterIndex": 4,
-      "wordCount": 1007,
+      "wordCount": 1013,
       "readingMinutes": 6,
       "h2": 17,
       "h3": 6,
       "examples": 1,
       "tasks": 0,
       "solutions": 24,
-      "mermaid": 0,
+      "mermaid": 1,
       "miniProjects": 0,
       "previous": {
         "title": "Locator и стратегия поиска элементов",
@@ -11239,7 +11245,7 @@ export const bookEngineData = {
         "examples": 1,
         "tasks": 0,
         "solutions": 24,
-        "mermaid": 0
+        "mermaid": 1
       }
     },
     "docs/03-automation-qa/171-web-first-assertions.md": {
@@ -11706,14 +11712,14 @@ export const bookEngineData = {
       "section": "Fixtures и архитектура UI-слоя",
       "sectionIndex": 2,
       "chapterIndex": 4,
-      "wordCount": 1078,
-      "readingMinutes": 6,
+      "wordCount": 1082,
+      "readingMinutes": 7,
       "h2": 18,
       "h3": 6,
       "examples": 1,
       "tasks": 0,
       "solutions": 24,
-      "mermaid": 0,
+      "mermaid": 1,
       "miniProjects": 0,
       "previous": {
         "title": "Page Object",
@@ -11739,11 +11745,11 @@ export const bookEngineData = {
       "card": {
         "chapterLabel": "Глава 180",
         "title": "Component Objects и композиция страниц",
-        "reading": 6,
+        "reading": 7,
         "examples": 1,
         "tasks": 0,
         "solutions": 24,
-        "mermaid": 0
+        "mermaid": 1
       }
     },
     "docs/03-automation-qa/181-frames.md": {
@@ -11755,14 +11761,14 @@ export const bookEngineData = {
       "section": "Fixtures и архитектура UI-слоя",
       "sectionIndex": 2,
       "chapterIndex": 5,
-      "wordCount": 1040,
+      "wordCount": 1047,
       "readingMinutes": 6,
       "h2": 18,
       "h3": 6,
       "examples": 1,
       "tasks": 0,
       "solutions": 24,
-      "mermaid": 0,
+      "mermaid": 1,
       "miniProjects": 0,
       "previous": {
         "title": "Component Objects и композиция страниц",
@@ -11792,7 +11798,7 @@ export const bookEngineData = {
         "examples": 1,
         "tasks": 0,
         "solutions": 24,
-        "mermaid": 0
+        "mermaid": 1
       }
     },
     "docs/03-automation-qa/182-tabs-windows-and-popups.md": {
@@ -11804,14 +11810,14 @@ export const bookEngineData = {
       "section": "Fixtures и архитектура UI-слоя",
       "sectionIndex": 2,
       "chapterIndex": 6,
-      "wordCount": 1051,
+      "wordCount": 1055,
       "readingMinutes": 6,
       "h2": 18,
       "h3": 7,
       "examples": 1,
       "tasks": 0,
       "solutions": 24,
-      "mermaid": 0,
+      "mermaid": 1,
       "miniProjects": 0,
       "previous": {
         "title": "Frames",
@@ -11848,7 +11854,7 @@ export const bookEngineData = {
         "examples": 1,
         "tasks": 0,
         "solutions": 24,
-        "mermaid": 0
+        "mermaid": 1
       }
     },
     "docs/03-automation-qa/183-dialogs-and-files.md": {
@@ -11860,14 +11866,14 @@ export const bookEngineData = {
       "section": "Fixtures и архитектура UI-слоя",
       "sectionIndex": 2,
       "chapterIndex": 7,
-      "wordCount": 999,
+      "wordCount": 1005,
       "readingMinutes": 6,
       "h2": 18,
       "h3": 6,
       "examples": 1,
       "tasks": 0,
       "solutions": 24,
-      "mermaid": 0,
+      "mermaid": 1,
       "miniProjects": 0,
       "previous": {
         "title": "Вкладки, окна и popups",
@@ -11904,7 +11910,7 @@ export const bookEngineData = {
         "examples": 1,
         "tasks": 0,
         "solutions": 24,
-        "mermaid": 0
+        "mermaid": 1
       }
     },
     "docs/03-automation-qa/184-network-interception-and-mocking.md": {
@@ -11916,14 +11922,14 @@ export const bookEngineData = {
       "section": "Fixtures и архитектура UI-слоя",
       "sectionIndex": 2,
       "chapterIndex": 8,
-      "wordCount": 1154,
+      "wordCount": 1159,
       "readingMinutes": 7,
       "h2": 18,
       "h3": 7,
       "examples": 1,
       "tasks": 0,
       "solutions": 24,
-      "mermaid": 0,
+      "mermaid": 1,
       "miniProjects": 0,
       "previous": {
         "title": "Диалоги и работа с файлами",
@@ -11960,7 +11966,7 @@ export const bookEngineData = {
         "examples": 1,
         "tasks": 0,
         "solutions": 24,
-        "mermaid": 0
+        "mermaid": 1
       }
     },
     "docs/03-automation-qa/185-ui-layer-integration.md": {
@@ -12077,14 +12083,14 @@ export const bookEngineData = {
       "section": "Тестирование REST API",
       "sectionIndex": 3,
       "chapterIndex": 1,
-      "wordCount": 1143,
+      "wordCount": 1150,
       "readingMinutes": 7,
       "h2": 18,
       "h3": 7,
       "examples": 1,
       "tasks": 0,
       "solutions": 24,
-      "mermaid": 0,
+      "mermaid": 1,
       "miniProjects": 0,
       "previous": {
         "title": "HTTP и REST для API-тестирования",
@@ -12121,7 +12127,7 @@ export const bookEngineData = {
         "examples": 1,
         "tasks": 0,
         "solutions": 24,
-        "mermaid": 0
+        "mermaid": 1
       }
     },
     "docs/03-automation-qa/188-http-response-structure.md": {
@@ -12133,14 +12139,14 @@ export const bookEngineData = {
       "section": "Тестирование REST API",
       "sectionIndex": 3,
       "chapterIndex": 2,
-      "wordCount": 1189,
+      "wordCount": 1194,
       "readingMinutes": 7,
       "h2": 18,
       "h3": 7,
       "examples": 1,
       "tasks": 0,
       "solutions": 24,
-      "mermaid": 0,
+      "mermaid": 1,
       "miniProjects": 0,
       "previous": {
         "title": "Структура HTTP-запроса",
@@ -12177,7 +12183,7 @@ export const bookEngineData = {
         "examples": 1,
         "tasks": 0,
         "solutions": 24,
-        "mermaid": 0
+        "mermaid": 1
       }
     },
     "docs/03-automation-qa/189-api-request-context.md": {
@@ -12294,14 +12300,14 @@ export const bookEngineData = {
       "section": "Тестирование REST API",
       "sectionIndex": 3,
       "chapterIndex": 5,
-      "wordCount": 1204,
+      "wordCount": 1211,
       "readingMinutes": 7,
       "h2": 18,
       "h3": 7,
       "examples": 1,
       "tasks": 0,
       "solutions": 24,
-      "mermaid": 0,
+      "mermaid": 1,
       "miniProjects": 0,
       "previous": {
         "title": "API Client и граница HTTP-слоя",
@@ -12331,7 +12337,7 @@ export const bookEngineData = {
         "examples": 1,
         "tasks": 0,
         "solutions": 24,
-        "mermaid": 0
+        "mermaid": 1
       }
     },
     "docs/03-automation-qa/192-request-builders-and-api-data-setup.md": {
@@ -12343,14 +12349,14 @@ export const bookEngineData = {
       "section": "Тестирование REST API",
       "sectionIndex": 3,
       "chapterIndex": 6,
-      "wordCount": 1200,
+      "wordCount": 1207,
       "readingMinutes": 7,
       "h2": 18,
       "h3": 8,
       "examples": 1,
       "tasks": 0,
       "solutions": 24,
-      "mermaid": 0,
+      "mermaid": 1,
       "miniProjects": 0,
       "previous": {
         "title": "Аутентификация API",
@@ -12393,7 +12399,7 @@ export const bookEngineData = {
         "examples": 1,
         "tasks": 0,
         "solutions": 24,
-        "mermaid": 0
+        "mermaid": 1
       }
     },
     "docs/03-automation-qa/193-api-response-and-business-rule-validation.md": {
@@ -12405,14 +12411,14 @@ export const bookEngineData = {
       "section": "Тестирование REST API",
       "sectionIndex": 3,
       "chapterIndex": 7,
-      "wordCount": 1158,
+      "wordCount": 1164,
       "readingMinutes": 7,
       "h2": 18,
       "h3": 7,
       "examples": 1,
       "tasks": 0,
       "solutions": 24,
-      "mermaid": 0,
+      "mermaid": 1,
       "miniProjects": 0,
       "previous": {
         "title": "Request Builders и подготовка данных через API",
@@ -12449,7 +12455,7 @@ export const bookEngineData = {
         "examples": 1,
         "tasks": 0,
         "solutions": 24,
-        "mermaid": 0
+        "mermaid": 1
       }
     },
     "docs/03-automation-qa/194-negative-api-scenarios-and-errors.md": {
@@ -12461,14 +12467,14 @@ export const bookEngineData = {
       "section": "Тестирование REST API",
       "sectionIndex": 3,
       "chapterIndex": 8,
-      "wordCount": 1171,
+      "wordCount": 1177,
       "readingMinutes": 7,
       "h2": 18,
       "h3": 7,
       "examples": 1,
       "tasks": 0,
       "solutions": 24,
-      "mermaid": 0,
+      "mermaid": 1,
       "miniProjects": 0,
       "previous": {
         "title": "Проверка API-ответов и бизнес-правил",
@@ -12505,7 +12511,7 @@ export const bookEngineData = {
         "examples": 1,
         "tasks": 0,
         "solutions": 24,
-        "mermaid": 0
+        "mermaid": 1
       }
     },
     "docs/03-automation-qa/195-runtime-contract-validation.md": {
@@ -12727,14 +12733,14 @@ export const bookEngineData = {
       "section": "Тестирование gRPC",
       "sectionIndex": 4,
       "chapterIndex": 2,
-      "wordCount": 1155,
+      "wordCount": 1162,
       "readingMinutes": 7,
       "h2": 18,
       "h3": 7,
       "examples": 1,
       "tasks": 0,
       "solutions": 24,
-      "mermaid": 0,
+      "mermaid": 1,
       "miniProjects": 0,
       "previous": {
         "title": "Protocol Buffers: сервисы и сообщения",
@@ -12771,7 +12777,7 @@ export const bookEngineData = {
         "examples": 1,
         "tasks": 0,
         "solutions": 24,
-        "mermaid": 0
+        "mermaid": 1
       }
     },
     "docs/03-automation-qa/200-unary-grpc-calls.md": {
@@ -12845,14 +12851,14 @@ export const bookEngineData = {
       "section": "Тестирование gRPC",
       "sectionIndex": 4,
       "chapterIndex": 4,
-      "wordCount": 1173,
+      "wordCount": 1183,
       "readingMinutes": 7,
       "h2": 18,
       "h3": 7,
       "examples": 1,
       "tasks": 0,
       "solutions": 24,
-      "mermaid": 0,
+      "mermaid": 1,
       "miniProjects": 0,
       "previous": {
         "title": "Unary gRPC-вызовы",
@@ -12882,7 +12888,7 @@ export const bookEngineData = {
         "examples": 1,
         "tasks": 0,
         "solutions": 24,
-        "mermaid": 0
+        "mermaid": 1
       }
     },
     "docs/03-automation-qa/202-grpc-metadata-and-authentication.md": {
@@ -13005,14 +13011,14 @@ export const bookEngineData = {
       "section": "Тестирование gRPC",
       "sectionIndex": 4,
       "chapterIndex": 7,
-      "wordCount": 1068,
+      "wordCount": 1073,
       "readingMinutes": 6,
       "h2": 18,
       "h3": 7,
       "examples": 1,
       "tasks": 0,
       "solutions": 24,
-      "mermaid": 0,
+      "mermaid": 1,
       "miniProjects": 0,
       "previous": {
         "title": "Deadlines и timeouts gRPC",
@@ -13049,7 +13055,7 @@ export const bookEngineData = {
         "examples": 1,
         "tasks": 0,
         "solutions": 24,
-        "mermaid": 0
+        "mermaid": 1
       }
     },
     "docs/03-automation-qa/205-grpc-response-and-negative-scenario-validation.md": {
@@ -13061,14 +13067,14 @@ export const bookEngineData = {
       "section": "Тестирование gRPC",
       "sectionIndex": 4,
       "chapterIndex": 8,
-      "wordCount": 1049,
+      "wordCount": 1057,
       "readingMinutes": 6,
       "h2": 18,
       "h3": 7,
       "examples": 1,
       "tasks": 0,
       "solutions": 24,
-      "mermaid": 0,
+      "mermaid": 1,
       "miniProjects": 0,
       "previous": {
         "title": "Статусы gRPC и обработка ошибок",
@@ -13105,7 +13111,7 @@ export const bookEngineData = {
         "examples": 1,
         "tasks": 0,
         "solutions": 24,
-        "mermaid": 0
+        "mermaid": 1
       }
     },
     "docs/03-automation-qa/206-grpc-client-in-automation-framework.md": {
@@ -13271,14 +13277,14 @@ export const bookEngineData = {
       "section": "Тестирование PostgreSQL",
       "sectionIndex": 5,
       "chapterIndex": 2,
-      "wordCount": 1127,
+      "wordCount": 1136,
       "readingMinutes": 7,
       "h2": 17,
       "h3": 7,
       "examples": 1,
       "tasks": 6,
       "solutions": 24,
-      "mermaid": 0,
+      "mermaid": 1,
       "miniProjects": 0,
       "previous": {
         "title": "Connections, pools и lifecycle",
@@ -13308,7 +13314,7 @@ export const bookEngineData = {
         "examples": 1,
         "tasks": 6,
         "solutions": 24,
-        "mermaid": 0
+        "mermaid": 1
       }
     },
     "docs/03-automation-qa/210-database-access-layer.md": {
@@ -13320,14 +13326,14 @@ export const bookEngineData = {
       "section": "Тестирование PostgreSQL",
       "sectionIndex": 5,
       "chapterIndex": 3,
-      "wordCount": 1124,
+      "wordCount": 1132,
       "readingMinutes": 7,
       "h2": 17,
       "h3": 7,
       "examples": 1,
       "tasks": 6,
       "solutions": 24,
-      "mermaid": 0,
+      "mermaid": 1,
       "miniProjects": 0,
       "previous": {
         "title": "Parameterized queries",
@@ -13370,7 +13376,7 @@ export const bookEngineData = {
         "examples": 1,
         "tasks": 6,
         "solutions": 24,
-        "mermaid": 0
+        "mermaid": 1
       }
     },
     "docs/03-automation-qa/211-database-data-setup-and-cleanup.md": {
@@ -13696,14 +13702,14 @@ export const bookEngineData = {
       "section": "Конфигурация, тестовые данные и общая инфраструктура",
       "sectionIndex": 6,
       "chapterIndex": 1,
-      "wordCount": 1082,
+      "wordCount": 1088,
       "readingMinutes": 7,
       "h2": 17,
       "h3": 7,
       "examples": 1,
       "tasks": 6,
       "solutions": 24,
-      "mermaid": 0,
+      "mermaid": 1,
       "miniProjects": 0,
       "previous": {
         "title": "Конфигурация Playwright и execution projects",
@@ -13733,7 +13739,7 @@ export const bookEngineData = {
         "examples": 1,
         "tasks": 6,
         "solutions": 24,
-        "mermaid": 0
+        "mermaid": 1
       }
     },
     "docs/03-automation-qa/218-configuration-loading-and-runtime-validation.md": {
@@ -13794,14 +13800,14 @@ export const bookEngineData = {
       "section": "Конфигурация, тестовые данные и общая инфраструктура",
       "sectionIndex": 6,
       "chapterIndex": 3,
-      "wordCount": 1082,
+      "wordCount": 1091,
       "readingMinutes": 7,
       "h2": 17,
       "h3": 7,
       "examples": 1,
       "tasks": 6,
       "solutions": 24,
-      "mermaid": 0,
+      "mermaid": 1,
       "miniProjects": 0,
       "previous": {
         "title": "Загрузка и runtime validation конфигурации",
@@ -13838,7 +13844,7 @@ export const bookEngineData = {
         "examples": 1,
         "tasks": 6,
         "solutions": 24,
-        "mermaid": 0
+        "mermaid": 1
       }
     },
     "docs/03-automation-qa/220-builders-factories-and-unique-data.md": {
@@ -13850,14 +13856,14 @@ export const bookEngineData = {
       "section": "Конфигурация, тестовые данные и общая инфраструктура",
       "sectionIndex": 6,
       "chapterIndex": 4,
-      "wordCount": 1079,
-      "readingMinutes": 6,
+      "wordCount": 1086,
+      "readingMinutes": 7,
       "h2": 17,
       "h3": 6,
       "examples": 1,
       "tasks": 6,
       "solutions": 24,
-      "mermaid": 0,
+      "mermaid": 1,
       "miniProjects": 0,
       "previous": {
         "title": "Организация test data",
@@ -13890,11 +13896,11 @@ export const bookEngineData = {
       "card": {
         "chapterLabel": "Глава 220",
         "title": "Builders, factories и уникальные данные",
-        "reading": 6,
+        "reading": 7,
         "examples": 1,
         "tasks": 6,
         "solutions": 24,
-        "mermaid": 0
+        "mermaid": 1
       }
     },
     "docs/03-automation-qa/221-test-data-lifecycle.md": {
@@ -13962,14 +13968,14 @@ export const bookEngineData = {
       "section": "Конфигурация, тестовые данные и общая инфраструктура",
       "sectionIndex": 6,
       "chapterIndex": 6,
-      "wordCount": 1051,
+      "wordCount": 1057,
       "readingMinutes": 6,
       "h2": 17,
       "h3": 6,
       "examples": 1,
       "tasks": 6,
       "solutions": 24,
-      "mermaid": 0,
+      "mermaid": 1,
       "miniProjects": 0,
       "previous": {
         "title": "Жизненный цикл тестовых данных",
@@ -13999,7 +14005,7 @@ export const bookEngineData = {
         "examples": 1,
         "tasks": 6,
         "solutions": 24,
-        "mermaid": 0
+        "mermaid": 1
       }
     },
     "docs/03-automation-qa/223-custom-assertions-and-soft-assertions.md": {
@@ -14178,14 +14184,14 @@ export const bookEngineData = {
       "section": "Диагностика и отчётность",
       "sectionIndex": 7,
       "chapterIndex": 1,
-      "wordCount": 1105,
+      "wordCount": 1113,
       "readingMinutes": 7,
       "h2": 17,
       "h3": 7,
       "examples": 1,
       "tasks": 6,
       "solutions": 24,
-      "mermaid": 0,
+      "mermaid": 1,
       "miniProjects": 0,
       "previous": {
         "title": "Расследование падения автотеста",
@@ -14222,7 +14228,7 @@ export const bookEngineData = {
         "examples": 1,
         "tasks": 6,
         "solutions": 24,
-        "mermaid": 0
+        "mermaid": 1
       }
     },
     "docs/03-automation-qa/227-screenshots-videos-and-playwright-trace.md": {
@@ -14283,14 +14289,14 @@ export const bookEngineData = {
       "section": "Диагностика и отчётность",
       "sectionIndex": 7,
       "chapterIndex": 3,
-      "wordCount": 957,
+      "wordCount": 965,
       "readingMinutes": 6,
       "h2": 17,
       "h3": 7,
       "examples": 1,
       "tasks": 6,
       "solutions": 24,
-      "mermaid": 0,
+      "mermaid": 1,
       "miniProjects": 0,
       "previous": {
         "title": "Screenshots, videos и Playwright Trace",
@@ -14327,7 +14333,7 @@ export const bookEngineData = {
         "examples": 1,
         "tasks": 6,
         "solutions": 24,
-        "mermaid": 0
+        "mermaid": 1
       }
     },
     "docs/03-automation-qa/229-test-reporting-principles.md": {
@@ -14339,14 +14345,14 @@ export const bookEngineData = {
       "section": "Диагностика и отчётность",
       "sectionIndex": 7,
       "chapterIndex": 4,
-      "wordCount": 1053,
+      "wordCount": 1058,
       "readingMinutes": 6,
       "h2": 17,
       "h3": 7,
       "examples": 1,
       "tasks": 6,
       "solutions": 24,
-      "mermaid": 0,
+      "mermaid": 1,
       "miniProjects": 0,
       "previous": {
         "title": "Attachments и lifecycle артефактов",
@@ -14376,7 +14382,7 @@ export const bookEngineData = {
         "examples": 1,
         "tasks": 6,
         "solutions": 24,
-        "mermaid": 0
+        "mermaid": 1
       }
     },
     "docs/03-automation-qa/230-allure-reporting.md": {
@@ -14388,14 +14394,14 @@ export const bookEngineData = {
       "section": "Диагностика и отчётность",
       "sectionIndex": 7,
       "chapterIndex": 5,
-      "wordCount": 1030,
+      "wordCount": 1037,
       "readingMinutes": 6,
       "h2": 17,
       "h3": 7,
       "examples": 1,
       "tasks": 6,
       "solutions": 24,
-      "mermaid": 0,
+      "mermaid": 1,
       "miniProjects": 0,
       "previous": {
         "title": "Принципы тестовой отчётности",
@@ -14432,7 +14438,7 @@ export const bookEngineData = {
         "examples": 1,
         "tasks": 6,
         "solutions": 24,
-        "mermaid": 0
+        "mermaid": 1
       }
     },
     "docs/03-automation-qa/231-framework-diagnostic-flow.md": {
@@ -14794,14 +14800,14 @@ export const bookEngineData = {
       "section": "Стабильность и масштабирование выполнения",
       "sectionIndex": 8,
       "chapterIndex": 6,
-      "wordCount": 1078,
-      "readingMinutes": 6,
+      "wordCount": 1083,
+      "readingMinutes": 7,
       "h2": 17,
       "h3": 7,
       "examples": 1,
       "tasks": 6,
       "solutions": 24,
-      "mermaid": 0,
+      "mermaid": 1,
       "miniProjects": 0,
       "previous": {
         "title": "Sharding",
@@ -14827,11 +14833,11 @@ export const bookEngineData = {
       "card": {
         "chapterLabel": "Глава 238",
         "title": "Tags, annotations и test selection",
-        "reading": 6,
+        "reading": 7,
         "examples": 1,
         "tasks": 6,
         "solutions": 24,
-        "mermaid": 0
+        "mermaid": 1
       }
     },
     "docs/03-automation-qa/239-ci-fundamentals-for-automation-qa.md": {
@@ -14941,14 +14947,14 @@ export const bookEngineData = {
       "section": "CI и эксплуатация проекта",
       "sectionIndex": 9,
       "chapterIndex": 2,
-      "wordCount": 971,
+      "wordCount": 975,
       "readingMinutes": 6,
       "h2": 17,
       "h3": 6,
       "examples": 0,
       "tasks": 6,
       "solutions": 24,
-      "mermaid": 0,
+      "mermaid": 1,
       "miniProjects": 0,
       "previous": {
         "title": "GitHub Actions pipeline",
@@ -14978,7 +14984,7 @@ export const bookEngineData = {
         "examples": 0,
         "tasks": 6,
         "solutions": 24,
-        "mermaid": 0
+        "mermaid": 1
       }
     },
     "docs/03-automation-qa/242-environments-and-secrets-in-ci.md": {
@@ -14990,14 +14996,14 @@ export const bookEngineData = {
       "section": "CI и эксплуатация проекта",
       "sectionIndex": 9,
       "chapterIndex": 3,
-      "wordCount": 1093,
+      "wordCount": 1101,
       "readingMinutes": 7,
       "h2": 17,
       "h3": 6,
       "examples": 0,
       "tasks": 6,
       "solutions": 24,
-      "mermaid": 0,
+      "mermaid": 1,
       "miniProjects": 0,
       "previous": {
         "title": "Browsers и системные зависимости в CI",
@@ -15034,7 +15040,7 @@ export const bookEngineData = {
         "examples": 0,
         "tasks": 6,
         "solutions": 24,
-        "mermaid": 0
+        "mermaid": 1
       }
     },
     "docs/03-automation-qa/243-artifacts-and-reports-in-ci.md": {
@@ -15354,14 +15360,14 @@ export const bookEngineData = {
       "section": "Интеграция Automation Framework",
       "sectionIndex": 10,
       "chapterIndex": 4,
-      "wordCount": 1083,
+      "wordCount": 1090,
       "readingMinutes": 7,
       "h2": 17,
       "h3": 7,
       "examples": 1,
       "tasks": 6,
       "solutions": 24,
-      "mermaid": 0,
+      "mermaid": 1,
       "miniProjects": 0,
       "previous": {
         "title": "Диагностика, стабильность и CI в общей архитектуре",
@@ -15391,7 +15397,7 @@ export const bookEngineData = {
         "examples": 1,
         "tasks": 6,
         "solutions": 24,
-        "mermaid": 0
+        "mermaid": 1
       }
     },
     "docs/04-final-project/250-project-requirements-and-readiness-criteria.md": {
@@ -15562,9 +15568,9 @@ export const bookEngineData = {
     "chapters": 256,
     "tasks": 2759,
     "solutions": 5181,
-    "examples": 708,
-    "mermaid": 573,
+    "examples": 741,
+    "mermaid": 695,
     "miniProjects": 144,
-    "readingMinutes": 1698
+    "readingMinutes": 1711
   }
 }

@@ -136,6 +136,18 @@ class TextReportWriter extends ReportWriter {
 
 Конкретный класс получает готовый `writeHeader()` и обязан реализовать `writeBody()`.
 
+Запускаемые версии этих примеров находятся в:
+
+```text
+examples/02-typescript/chapter-148/
+```
+
+`01-abstract-page.ts` — абстрактный базовый экран и его наследник.
+
+`02-abstract-report.ts` — готовый метод базы и обязательная реализация.
+
+`03-abstract-diagnostics.ts` — попытка создать абстрактный класс (намеренная ошибка).
+
 ## Automation QA
 
 Базовую модель страницы можно описать через `abstract class`:

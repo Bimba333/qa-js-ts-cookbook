@@ -181,6 +181,18 @@ function getErrorMessage(error: string | Error): string {
 }
 ```
 
+Запускаемые версии этих примеров находятся в:
+
+```text
+examples/02-typescript/chapter-127/
+```
+
+`01-if-narrowing.ts` — сужение объединения сравнением в `if`.
+
+`02-return-based-narrowing.ts` — сужение ранним возвратом.
+
+`03-invalid-access-before-narrowing.ts` — обращение к методу до сужения (намеренная ошибка).
+
 ## Automation QA
 
 В тестовом проекте один helper может возвращать разные состояния:

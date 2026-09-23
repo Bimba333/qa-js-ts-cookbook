@@ -147,6 +147,18 @@ function label(state: JobState): string {
 }
 ```
 
+Запускаемые версии этих примеров находятся в:
+
+```text
+examples/02-typescript/chapter-132/
+```
+
+`01-exhaustive-switch.ts` — ветка `default` с `never`.
+
+`02-missing-case-diagnostic.ts` — необработанный вариант объединения (намеренная ошибка).
+
+`03-report-state-processing.ts` — разбор состояния задачи по всем вариантам.
+
 ## Automation QA
 
 В отчетах тестового проекта статус часто имеет ограниченный набор вариантов:

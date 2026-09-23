@@ -129,6 +129,18 @@ class PrettyJsonReporter extends JsonReporter {
 }
 ```
 
+Запускаемые версии этих примеров находятся в:
+
+```text
+examples/02-typescript/chapter-149/
+```
+
+`01-implements-contract.ts` — класс, реализующий интерфейс.
+
+`02-override-method.ts` — `override` при переопределении метода.
+
+`03-implements-diagnostics.ts` — нереализованный метод интерфейса (намеренная ошибка).
+
 ## Automation QA
 
 Component object может реализовать общий контракт:

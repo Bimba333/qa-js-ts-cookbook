@@ -132,6 +132,18 @@ type ItemOf<List> = List extends Array<infer Item> ? Item : never;
 type TestName = ItemOf<string[]>;
 ```
 
+Запускаемые версии этих примеров находятся в:
+
+```text
+examples/02-typescript/chapter-144/
+```
+
+`01-array-item-infer.ts` — извлечение типа элемента через `infer`.
+
+`02-promise-value.ts` — извлечение типа значения промиса.
+
+`03-infer-diagnostic.ts` — `never`, когда шаблон не совпал (намеренная ошибка).
+
 ## Automation QA
 
 Async helpers часто возвращают `Promise`:

@@ -148,6 +148,18 @@ function decideRetry(attempt: number, maxAttempts: number): RetryDecision {
 }
 ```
 
+Запускаемые версии этих примеров находятся в:
+
+```text
+examples/02-typescript/chapter-157/
+```
+
+`01-page-object-contract.ts` — интерфейс страницы и его реализация.
+
+`02-fixture-and-helper-contracts.ts` — типы фикстур и контракт helper-функции.
+
+`03-page-object-contract-diagnostic.ts` — неполная реализация интерфейса (намеренная ошибка).
+
 ## Automation QA
 
 В реальном QA-проекте типы помогают договориться:

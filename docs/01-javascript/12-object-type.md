@@ -522,6 +522,18 @@ Array is an object-like value for ordered collections. Functions are callable ob
 
 ---
 
+Объект — набор пар, доступных четырьмя операциями:
+
+```mermaid
+flowchart TD
+    A["объект"] --> B["пары «ключ — значение»"]
+    B --> C["чтение свойства"]
+    B --> D["добавление свойства"]
+    B --> E["изменение свойства"]
+    B --> F["удаление свойства"]
+    G["обращение к отсутствующему ключу"] --> H["undefined, а не ошибка"]
+```
+
 ## Внутренний механизм
 
 Эта глава не объясняет References, Stack & Heap или Garbage Collector. Но нужно понять conceptual internal mechanism: что engine делает с grouped information.

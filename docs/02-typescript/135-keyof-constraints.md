@@ -136,6 +136,18 @@ const config = {
 const retries = pickValue(config, "retries");
 ```
 
+Запускаемые версии этих примеров находятся в:
+
+```text
+examples/02-typescript/chapter-135/
+```
+
+`01-pick-value.ts` — `Key extends keyof ObjectType` и тип результата.
+
+`02-keyof-diagnostic.ts` — несуществующий ключ (намеренная ошибка).
+
+`03-environment-helper.ts` — чтение настройки окружения по ключу.
+
 ## Automation QA
 
 Во вспомогательной функции для конфигурации можно запретить несуществующие ключи:

@@ -87,7 +87,14 @@ function chapterPages() {
       if (!entry.name.endsWith('.md')) continue
 
       const markdown = fs.readFileSync(full, 'utf8')
-      if (!/examples\/[\w./-]+\.(js|mjs|cjs|ts)/.test(markdown)) continue
+
+      // Глава встраивает примеры двумя способами: ссылкой на файл и ссылкой
+      // на каталог. Второй вариант используют почти все главы TypeScript,
+      // и без него страницы с примерами не попадали в прогон вообще.
+      const referencesFile = /examples\/[\w./-]+\.(js|mjs|cjs|ts)/.test(markdown)
+      const referencesDirectory = /examples\/[\w./-]+\//.test(markdown)
+
+      if (!referencesFile && !referencesDirectory) continue
 
       pages.add(path.relative(ROOT, full).replace(/\\/g, '/').replace(/\.md$/, ''))
     }

@@ -476,6 +476,18 @@ Do not memorize the table mechanically. Use the question:
 
 ---
 
+Преобразование бывает видимым и незаметным:
+
+```mermaid
+flowchart TD
+    A["значение одного типа"] --> B{"как происходит преобразование?"}
+    B -- "явно: Number, String, Boolean" --> C["видно в коде"]
+    B -- "неявно: этого потребовал оператор" --> D["результат нужно знать заранее"]
+    C --> E["число, строка или булево значение"]
+    D --> E
+    F["нечисловая строка в число"] --> G["NaN"]
+```
+
 ## Внутренний механизм
 
 At a conceptual level, conversion follows a decision flow.
