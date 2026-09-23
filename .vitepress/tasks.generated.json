@@ -98,6 +98,970 @@
       "chapter": "01-javascript/07-scope"
     }
   ],
+  "01-javascript/15-type-conversion": [
+    {
+      "id": "js-15-parse-retry-count",
+      "title": "Разбор числа из переменной окружения",
+      "difficulty": "easy",
+      "lang": "js",
+      "runner": "browser",
+      "prompt": "Напишите функцию `parseRetries(raw)`, которая принимает строку из переменной окружения и возвращает целое число попыток. Если значение не является числом, вернуть `0`. Пустая строка и строка из пробелов числом не считаются.",
+      "starter": "function parseRetries(raw) {\n  // Number('') даёт 0, а не NaN — это нужно учесть.\n}",
+      "hints": [
+        "Number('') возвращает 0, поэтому пустую строку нужно отсечь отдельно.",
+        "Нечисловая строка даёт NaN, а NaN не равен самому себе.",
+        "Проверить результат удобно через Number.isFinite."
+      ],
+      "standSetup": "",
+      "tests": [
+        {
+          "name": "разбирает число",
+          "code": "expect(parseRetries('3')).toBe(3);"
+        },
+        {
+          "name": "пустая строка даёт 0",
+          "code": "expect(parseRetries('')).toBe(0);"
+        },
+        {
+          "name": "строка из пробелов даёт 0",
+          "code": "expect(parseRetries('   ')).toBe(0);"
+        },
+        {
+          "name": "нечисловая строка даёт 0",
+          "code": "expect(parseRetries('abc')).toBe(0);"
+        },
+        {
+          "name": "ноль остаётся нулём",
+          "code": "expect(parseRetries('0')).toBe(0);"
+        }
+      ],
+      "solution": "function parseRetries(raw) {\n  if (typeof raw !== 'string' || raw.trim() === '') {\n    return 0;\n  }\n\n  const parsed = Number(raw);\n\n  return Number.isFinite(parsed) ? parsed : 0;\n}",
+      "chapter": "01-javascript/15-type-conversion"
+    },
+    {
+      "id": "js-15-describe-value",
+      "title": "Безопасное описание значения для журнала",
+      "difficulty": "medium",
+      "lang": "js",
+      "runner": "browser",
+      "prompt": "Напишите функцию `describeValue(value)`, которая возвращает строку для журнала. Для строки — саму строку, для числа и boolean — их строковое представление, для `null` — `\"null\"`, для `undefined` — `\"undefined\"`, для массива — элементы через запятую, для объекта — `\"[object]\"` вместо `[object Object]`.",
+      "starter": "function describeValue(value) {\n  // String({}) даёт [object Object] — это бесполезно в журнале.\n}",
+      "hints": [
+        "String(null) и String(undefined) уже дают нужные строки.",
+        "Массив определяется через Array.isArray, а не через typeof.",
+        "Обычный объект нужно обработать до общего приведения к строке."
+      ],
+      "standSetup": "",
+      "tests": [
+        {
+          "name": "строка возвращается как есть",
+          "code": "expect(describeValue('готово')).toBe('готово');"
+        },
+        {
+          "name": "число и boolean приводятся к строке",
+          "code": "expect(describeValue(42) + '|' + describeValue(true)).toBe('42|true');"
+        },
+        {
+          "name": "null и undefined описываются словами",
+          "code": "expect(describeValue(null) + '|' + describeValue(undefined)).toBe('null|undefined');"
+        },
+        {
+          "name": "массив перечисляется через запятую",
+          "code": "expect(describeValue(['a', 'b'])).toBe('a,b');"
+        },
+        {
+          "name": "объект не превращается в [object Object]",
+          "code": "expect(describeValue({ a: 1 })).toBe('[object]');"
+        }
+      ],
+      "solution": "function describeValue(value) {\n  if (Array.isArray(value)) {\n    return value.join(',');\n  }\n\n  if (typeof value === 'object' && value !== null) {\n    return '[object]';\n  }\n\n  return String(value);\n}",
+      "chapter": "01-javascript/15-type-conversion"
+    }
+  ],
+  "01-javascript/16-equality": [
+    {
+      "id": "js-16-same-value",
+      "title": "Сравнение с учётом особых значений",
+      "difficulty": "medium",
+      "lang": "js",
+      "runner": "browser",
+      "prompt": "Напишите функцию `sameValue(first, second)`, которая возвращает `true`, если значения считаются одинаковыми: обычные значения сравниваются строго, `NaN` равен `NaN`, а `+0` и `-0` считаются **разными**.",
+      "starter": "function sameValue(first, second) {\n  // Оператор === не различает нули и не считает NaN равным себе.\n}",
+      "hints": [
+        "Строгое равенство даёт false для пары NaN и true для +0 и -0.",
+        "В языке есть встроенная функция сравнения с нужными правилами.",
+        "Возвращать нужно строго логическое значение."
+      ],
+      "standSetup": "",
+      "tests": [
+        {
+          "name": "одинаковые строки равны",
+          "code": "expect(sameValue('a', 'a')).toBe(true);"
+        },
+        {
+          "name": "NaN равен NaN",
+          "code": "expect(sameValue(NaN, NaN)).toBe(true);"
+        },
+        {
+          "name": "плюс ноль и минус ноль различаются",
+          "code": "expect(sameValue(0, -0)).toBe(false);"
+        },
+        {
+          "name": "разные типы не равны",
+          "code": "expect(sameValue(1, '1')).toBe(false);"
+        },
+        {
+          "name": "разные объекты не равны",
+          "code": "expect(sameValue({ a: 1 }, { a: 1 })).toBe(false);"
+        }
+      ],
+      "solution": "function sameValue(first, second) {\n  return Object.is(first, second);\n}",
+      "chapter": "01-javascript/16-equality"
+    },
+    {
+      "id": "js-16-shallow-equal",
+      "title": "Сравнение объектов по содержимому",
+      "difficulty": "medium",
+      "lang": "js",
+      "runner": "browser",
+      "prompt": "Напишите функцию `shallowEqual(first, second)`, которая возвращает `true`, если у объектов одинаковый набор ключей и все значения строго равны. Вложенные объекты сравнивать по содержимому не нужно — только верхний уровень.",
+      "starter": "function shallowEqual(first, second) {\n  // Оператор === сравнивает ссылки, а нужно содержимое.\n}",
+      "hints": [
+        "Сначала сравните количество ключей.",
+        "Затем проверьте каждое значение по ключу.",
+        "Вложенный объект сравнивается по ссылке — это ожидаемо."
+      ],
+      "standSetup": "",
+      "tests": [
+        {
+          "name": "одинаковое содержимое",
+          "code": "expect(shallowEqual({ a: 1, b: 'x' }, { a: 1, b: 'x' })).toBe(true);"
+        },
+        {
+          "name": "разные значения",
+          "code": "expect(shallowEqual({ a: 1 }, { a: 2 })).toBe(false);"
+        },
+        {
+          "name": "лишний ключ",
+          "code": "expect(shallowEqual({ a: 1 }, { a: 1, b: 2 })).toBe(false);"
+        },
+        {
+          "name": "порядок ключей не важен",
+          "code": "expect(shallowEqual({ a: 1, b: 2 }, { b: 2, a: 1 })).toBe(true);"
+        },
+        {
+          "name": "вложенные объекты сравниваются по ссылке",
+          "code": "const nested = { n: 1 };\nexpect(shallowEqual({ a: nested }, { a: nested })).toBe(true);\nexpect(shallowEqual({ a: { n: 1 } }, { a: { n: 1 } })).toBe(false);"
+        }
+      ],
+      "solution": "function shallowEqual(first, second) {\n  const firstKeys = Object.keys(first);\n  const secondKeys = Object.keys(second);\n\n  if (firstKeys.length !== secondKeys.length) {\n    return false;\n  }\n\n  return firstKeys.every((key) => first[key] === second[key]);\n}",
+      "chapter": "01-javascript/16-equality"
+    }
+  ],
+  "01-javascript/17-operators": [
+    {
+      "id": "js-17-duration-summary",
+      "title": "Среднее и остаток от деления",
+      "difficulty": "easy",
+      "lang": "js",
+      "runner": "browser",
+      "prompt": "Напишите функцию `durationSummary(durations)`, которая принимает массив чисел и возвращает объект `{ total, average, remainder }`: сумму, среднее с округлением вниз и остаток от деления суммы на количество. Для пустого массива вернуть все нули.",
+      "starter": "function durationSummary(durations) {\n  // Деление на ноль даёт NaN или Infinity — пустой случай обработайте отдельно.\n}",
+      "hints": [
+        "Остаток от деления даёт оператор %.",
+        "Округление вниз выполняется Math.floor.",
+        "Для пустого массива делить нельзя."
+      ],
+      "standSetup": "",
+      "tests": [
+        {
+          "name": "считает сумму, среднее и остаток",
+          "code": "expect(durationSummary([10, 20, 31])).toEqual({ total: 61, average: 20, remainder: 1 });"
+        },
+        {
+          "name": "для пустого массива все нули",
+          "code": "expect(durationSummary([])).toEqual({ total: 0, average: 0, remainder: 0 });"
+        },
+        {
+          "name": "делится без остатка",
+          "code": "expect(durationSummary([10, 30])).toEqual({ total: 40, average: 20, remainder: 0 });"
+        },
+        {
+          "name": "работает с одним элементом",
+          "code": "expect(durationSummary([7])).toEqual({ total: 7, average: 7, remainder: 0 });"
+        }
+      ],
+      "solution": "function durationSummary(durations) {\n  if (durations.length === 0) {\n    return { total: 0, average: 0, remainder: 0 };\n  }\n\n  const total = durations.reduce((sum, value) => sum + value, 0);\n\n  return {\n    total,\n    average: Math.floor(total / durations.length),\n    remainder: total % durations.length\n  };\n}",
+      "chapter": "01-javascript/17-operators"
+    },
+    {
+      "id": "js-17-logical-result-value",
+      "title": "Что возвращают логические операторы",
+      "difficulty": "medium",
+      "lang": "js",
+      "runner": "browser",
+      "prompt": "Напишите функцию `pickLabel(primary, fallback)`, которая возвращает `primary`, если это непустая строка, иначе `fallback`. Затем напишите функцию `firstTruthy(values)`, которая возвращает первое истинное значение массива или `null`, если такого нет. Обе функции должны возвращать сами значения, а не логический результат.",
+      "starter": "function pickLabel(primary, fallback) {\n  // Логический оператор возвращает значение, а не true или false.\n}\n\nfunction firstTruthy(values) {\n  // Верните само значение, а не признак его наличия.\n}",
+      "hints": [
+        "Оператор || возвращает первое истинное значение или последнее.",
+        "Пустая строка ложна, поэтому она сама отсеется.",
+        "Для поиска в массиве подойдёт метод, возвращающий элемент."
+      ],
+      "standSetup": "",
+      "tests": [
+        {
+          "name": "берёт основное значение",
+          "code": "expect(pickLabel('готово', 'нет данных')).toBe('готово');"
+        },
+        {
+          "name": "подставляет запасное при пустой строке",
+          "code": "expect(pickLabel('', 'нет данных')).toBe('нет данных');"
+        },
+        {
+          "name": "находит первое истинное значение",
+          "code": "expect(firstTruthy([0, '', 'первое', 'второе'])).toBe('первое');"
+        },
+        {
+          "name": "если истинных нет, возвращает null",
+          "code": "expect(firstTruthy([0, '', null])).toBe(null);"
+        },
+        {
+          "name": "для пустого массива возвращает null",
+          "code": "expect(firstTruthy([])).toBe(null);"
+        }
+      ],
+      "solution": "function pickLabel(primary, fallback) {\n  return primary || fallback;\n}\n\nfunction firstTruthy(values) {\n  const found = values.find((value) => Boolean(value));\n\n  return found === undefined ? null : found;\n}",
+      "chapter": "01-javascript/17-operators"
+    }
+  ],
+  "01-javascript/18-conditionals": [
+    {
+      "id": "js-18-status-exit-code",
+      "title": "Код завершения по статусу прогона",
+      "difficulty": "easy",
+      "lang": "js",
+      "runner": "browser",
+      "prompt": "Напишите функцию `exitCode(results)`, которая возвращает `1`, если среди результатов есть хотя бы один `failed`; `0`, если все `passed` или `skipped`; и `2` для пустого прогона — потому что запуск без тестов успешным считать нельзя.",
+      "starter": "function exitCode(results) {\n  // Выполняется ровно одна ветка.\n}",
+      "hints": [
+        "Пустой прогон стоит проверить первым.",
+        "Наличие хотя бы одного падения проверяется одним обходом.",
+        "Все три ветки должны быть покрыты."
+      ],
+      "standSetup": "",
+      "tests": [
+        {
+          "name": "есть падение — код 1",
+          "code": "expect(exitCode([\n  { status: 'passed' },\n  { status: 'failed' }\n])).toBe(1);"
+        },
+        {
+          "name": "все прошли — код 0",
+          "code": "expect(exitCode([{ status: 'passed' }, { status: 'skipped' }])).toBe(0);"
+        },
+        {
+          "name": "пустой прогон — код 2",
+          "code": "expect(exitCode([])).toBe(2);"
+        },
+        {
+          "name": "только пропущенные — код 0",
+          "code": "expect(exitCode([{ status: 'skipped' }])).toBe(0);"
+        }
+      ],
+      "solution": "function exitCode(results) {\n  if (results.length === 0) {\n    return 2;\n  }\n\n  if (results.some((result) => result.status === 'failed')) {\n    return 1;\n  }\n\n  return 0;\n}",
+      "chapter": "01-javascript/18-conditionals"
+    },
+    {
+      "id": "js-18-priority-order",
+      "title": "Числовой вес приоритета",
+      "difficulty": "medium",
+      "lang": "js",
+      "runner": "browser",
+      "prompt": "Напишите функцию `priorityWeight(priority)`, которая возвращает `0` для `HIGH`, `1` для `MEDIUM`, `2` для `LOW` и `3` для любого другого значения. Такой вес удобно использовать для сортировки.",
+      "starter": "function priorityWeight(priority) {\n  // Неизвестное значение должно попадать в ветку по умолчанию.\n}",
+      "hints": [
+        "Разбор набора значений удобно сделать через switch.",
+        "Ветка по умолчанию обязательна: набор может расшириться.",
+        "Регистр значений важен — подстраивать его не нужно."
+      ],
+      "standSetup": "",
+      "tests": [
+        {
+          "name": "известные значения",
+          "code": "expect([priorityWeight('HIGH'), priorityWeight('MEDIUM'), priorityWeight('LOW')])\n  .toEqual([0, 1, 2]);"
+        },
+        {
+          "name": "неизвестное значение уходит в конец",
+          "code": "expect(priorityWeight('URGENT')).toBe(3);"
+        },
+        {
+          "name": "другой регистр считается неизвестным",
+          "code": "expect(priorityWeight('high')).toBe(3);"
+        },
+        {
+          "name": "подходит для сортировки",
+          "code": "const sorted = ['LOW', 'HIGH', 'MEDIUM']\n  .sort((a, b) => priorityWeight(a) - priorityWeight(b));\nexpect(sorted).toEqual(['HIGH', 'MEDIUM', 'LOW']);"
+        }
+      ],
+      "solution": "function priorityWeight(priority) {\n  switch (priority) {\n    case 'HIGH':\n      return 0;\n    case 'MEDIUM':\n      return 1;\n    case 'LOW':\n      return 2;\n    default:\n      return 3;\n  }\n}",
+      "chapter": "01-javascript/18-conditionals"
+    }
+  ],
+  "01-javascript/19-loops": [
+    {
+      "id": "js-19-first-index-of-status",
+      "title": "Поиск с досрочным выходом",
+      "difficulty": "easy",
+      "lang": "js",
+      "runner": "browser",
+      "prompt": "Напишите функцию `indexOfStatus(results, status)`, которая возвращает индекс первого результата с указанным статусом или `-1`, если такого нет. Используйте обычный цикл и прекращайте обход на первом совпадении.",
+      "starter": "function indexOfStatus(results, status) {\n  // Возврат из цикла прекращает и цикл, и функцию.\n}",
+      "hints": [
+        "Классический цикл даёт доступ к индексу напрямую.",
+        "return внутри цикла прекращает обход.",
+        "Если цикл дошёл до конца, совпадений не было."
+      ],
+      "standSetup": "",
+      "tests": [
+        {
+          "name": "находит первое совпадение",
+          "code": "expect(indexOfStatus([\n  { status: 'passed' },\n  { status: 'failed' },\n  { status: 'failed' }\n], 'failed')).toBe(1);"
+        },
+        {
+          "name": "если совпадений нет, возвращает -1",
+          "code": "expect(indexOfStatus([{ status: 'passed' }], 'failed')).toBe(-1);"
+        },
+        {
+          "name": "для пустого массива возвращает -1",
+          "code": "expect(indexOfStatus([], 'failed')).toBe(-1);"
+        },
+        {
+          "name": "первый элемент даёт индекс 0",
+          "code": "expect(indexOfStatus([{ status: 'failed' }], 'failed')).toBe(0);"
+        }
+      ],
+      "solution": "function indexOfStatus(results, status) {\n  for (let index = 0; index < results.length; index += 1) {\n    if (results[index].status === status) {\n      return index;\n    }\n  }\n\n  return -1;\n}",
+      "chapter": "01-javascript/19-loops"
+    },
+    {
+      "id": "js-19-retry-until-success",
+      "title": "Повтор до успеха с ограничением",
+      "difficulty": "medium",
+      "lang": "js",
+      "runner": "browser",
+      "prompt": "Напишите функцию `retryUntil(attempt, maxAttempts)`, которая вызывает функцию `attempt(number)` начиная с номера `1`, пока та не вернёт истинное значение. Верните объект `{ value, attempts }`. Если за `maxAttempts` попыток успеха не было, вернуть `{ value: null, attempts: maxAttempts }`.",
+      "starter": "function retryUntil(attempt, maxAttempts) {\n  // Счётчик попыток должен отражать фактическое число вызовов.\n}",
+      "hints": [
+        "Номер попытки начинается с единицы.",
+        "При успехе цикл нужно прекратить.",
+        "При исчерпании попыток число вызовов равно maxAttempts."
+      ],
+      "standSetup": "",
+      "tests": [
+        {
+          "name": "успех с первой попытки",
+          "code": "expect(retryUntil(() => 'готово', 3)).toEqual({ value: 'готово', attempts: 1 });"
+        },
+        {
+          "name": "успех с третьей попытки",
+          "code": "expect(retryUntil((number) => number === 3 ? 'позже' : null, 5))\n  .toEqual({ value: 'позже', attempts: 3 });"
+        },
+        {
+          "name": "попытки исчерпаны",
+          "code": "expect(retryUntil(() => null, 2)).toEqual({ value: null, attempts: 2 });"
+        },
+        {
+          "name": "число вызовов совпадает с отчётом",
+          "code": "let calls = 0;\nconst report = retryUntil(() => { calls += 1; return null; }, 4);\nexpect(calls).toBe(report.attempts);"
+        }
+      ],
+      "solution": "function retryUntil(attempt, maxAttempts) {\n  for (let number = 1; number <= maxAttempts; number += 1) {\n    const value = attempt(number);\n\n    if (value) {\n      return { value, attempts: number };\n    }\n  }\n\n  return { value: null, attempts: maxAttempts };\n}",
+      "chapter": "01-javascript/19-loops"
+    }
+  ],
+  "01-javascript/20-error-handling": [
+    {
+      "id": "js-20-parse-json-safely",
+      "title": "Разбор JSON без падения",
+      "difficulty": "easy",
+      "lang": "js",
+      "runner": "browser",
+      "prompt": "Напишите функцию `parseBody(text)`, которая возвращает разобранный объект или `null`, если текст не является корректным JSON. Исключение наружу уходить не должно.",
+      "starter": "function parseBody(text) {\n  // JSON.parse выбрасывает SyntaxError на некорректном тексте.\n}",
+      "hints": [
+        "Разбор нужно обернуть в try/catch.",
+        "В блоке catch достаточно вернуть null.",
+        "Пустая строка тоже не является корректным JSON."
+      ],
+      "standSetup": "",
+      "tests": [
+        {
+          "name": "разбирает корректный JSON",
+          "code": "expect(parseBody('{\"status\":\"ok\"}')).toEqual({ status: 'ok' });"
+        },
+        {
+          "name": "некорректный текст даёт null",
+          "code": "expect(parseBody('{не json}')).toBe(null);"
+        },
+        {
+          "name": "пустая строка даёт null",
+          "code": "expect(parseBody('')).toBe(null);"
+        },
+        {
+          "name": "исключение наружу не уходит",
+          "code": "let thrown = false;\ntry { parseBody('<html>'); } catch (error) { thrown = true; }\nexpect(thrown).toBe(false);"
+        }
+      ],
+      "solution": "function parseBody(text) {\n  try {\n    return JSON.parse(text);\n  } catch (error) {\n    return null;\n  }\n}",
+      "chapter": "01-javascript/20-error-handling"
+    },
+    {
+      "id": "js-20-finally-runs-always",
+      "title": "Очистка выполняется при любом исходе",
+      "difficulty": "medium",
+      "lang": "js",
+      "runner": "browser",
+      "prompt": "Напишите функцию `withCleanup(operation, cleanup)`, которая вызывает `operation()` и всегда вызывает `cleanup()` — и при успехе, и при ошибке. При успехе вернуть `{ ok: true, value }`, при ошибке — `{ ok: false, message }`. Ошибка наружу не уходит.",
+      "starter": "function withCleanup(operation, cleanup) {\n  // Очистка должна выполняться в блоке finally.\n}",
+      "hints": [
+        "Блок finally выполняется независимо от исхода.",
+        "Возврат из try не отменяет finally.",
+        "В message передавайте текст ошибки."
+      ],
+      "standSetup": "",
+      "tests": [
+        {
+          "name": "успешный случай",
+          "code": "let cleaned = false;\nconst report = withCleanup(() => 42, () => { cleaned = true; });\nexpect([report, cleaned]).toEqual([{ ok: true, value: 42 }, true]);"
+        },
+        {
+          "name": "очистка выполняется после ошибки",
+          "code": "let cleaned = false;\nconst report = withCleanup(() => { throw new Error('упало'); }, () => { cleaned = true; });\nexpect([report, cleaned]).toEqual([{ ok: false, message: 'упало' }, true]);"
+        },
+        {
+          "name": "ошибка наружу не уходит",
+          "code": "let thrown = false;\ntry { withCleanup(() => { throw new Error('x'); }, () => {}); }\ncatch (error) { thrown = true; }\nexpect(thrown).toBe(false);"
+        },
+        {
+          "name": "очистка вызывается ровно один раз",
+          "code": "let calls = 0;\nwithCleanup(() => 1, () => { calls += 1; });\nexpect(calls).toBe(1);"
+        }
+      ],
+      "solution": "function withCleanup(operation, cleanup) {\n  try {\n    return { ok: true, value: operation() };\n  } catch (error) {\n    return { ok: false, message: error.message };\n  } finally {\n    cleanup();\n  }\n}",
+      "chapter": "01-javascript/20-error-handling"
+    }
+  ],
+  "01-javascript/21-function-declaration": [
+    {
+      "id": "js-21-extract-validation",
+      "title": "Вынести повторяющуюся проверку",
+      "difficulty": "easy",
+      "lang": "js",
+      "runner": "browser",
+      "prompt": "Объявите функцию `isSuccessful(statusCode)`, которая возвращает `true` для кодов от `200` до `299` включительно. Затем напишите функцию `countSuccessful(codes)`, которая использует первую и возвращает количество успешных кодов.",
+      "starter": "function isSuccessful(statusCode) {\n  // Диапазон успеха — от 200 до 299.\n}\n\nfunction countSuccessful(codes) {\n  // Переиспользуйте isSuccessful.\n}",
+      "hints": [
+        "Границы диапазона входят в него.",
+        "Вторая функция не должна повторять условие — она вызывает первую.",
+        "Количество подходящих элементов удобно получить отбором."
+      ],
+      "standSetup": "",
+      "tests": [
+        {
+          "name": "границы диапазона включены",
+          "code": "expect([isSuccessful(200), isSuccessful(299)]).toEqual([true, true]);"
+        },
+        {
+          "name": "коды вне диапазона не успешны",
+          "code": "expect([isSuccessful(199), isSuccessful(300), isSuccessful(404)])\n  .toEqual([false, false, false]);"
+        },
+        {
+          "name": "считает успешные коды",
+          "code": "expect(countSuccessful([200, 201, 404, 500, 204])).toBe(3);"
+        },
+        {
+          "name": "для пустого массива возвращает 0",
+          "code": "expect(countSuccessful([])).toBe(0);"
+        }
+      ],
+      "solution": "function isSuccessful(statusCode) {\n  return statusCode >= 200 && statusCode <= 299;\n}\n\nfunction countSuccessful(codes) {\n  return codes.filter((code) => isSuccessful(code)).length;\n}",
+      "chapter": "01-javascript/21-function-declaration"
+    },
+    {
+      "id": "js-21-callable-before-declaration",
+      "title": "Вызов до строки объявления",
+      "difficulty": "medium",
+      "lang": "js",
+      "runner": "browser",
+      "prompt": "Напишите функцию `buildReport(results)`, которая возвращает строку из числа пройденных и упавших тестов вида `2 passed / 1 failed`. Вспомогательную функцию `countByStatus(results, status)` объявите **после** её первого использования — объявления функций доступны до своей строки.",
+      "starter": "function buildReport(results) {\n  // Вызовите countByStatus здесь, а объявите её ниже.\n}\n\n// Объявление вспомогательной функции — после buildReport.",
+      "hints": [
+        "Объявление через function доступно до своей строки в тексте.",
+        "Это отличает его от функции, присвоенной переменной.",
+        "Вспомогательная функция считает элементы с нужным статусом."
+      ],
+      "standSetup": "",
+      "tests": [
+        {
+          "name": "собирает отчёт",
+          "code": "expect(buildReport([\n  { status: 'passed' },\n  { status: 'failed' },\n  { status: 'passed' }\n])).toBe('2 passed / 1 failed');"
+        },
+        {
+          "name": "пустой прогон даёт нули",
+          "code": "expect(buildReport([])).toBe('0 passed / 0 failed');"
+        },
+        {
+          "name": "пропущенные не учитываются",
+          "code": "expect(buildReport([{ status: 'skipped' }])).toBe('0 passed / 0 failed');"
+        },
+        {
+          "name": "вспомогательная функция доступна отдельно",
+          "code": "expect(countByStatus([{ status: 'passed' }], 'passed')).toBe(1);"
+        }
+      ],
+      "solution": "function buildReport(results) {\n  const passed = countByStatus(results, 'passed');\n  const failed = countByStatus(results, 'failed');\n\n  return passed + ' passed / ' + failed + ' failed';\n}\n\nfunction countByStatus(results, status) {\n  return results.filter((result) => result.status === status).length;\n}",
+      "chapter": "01-javascript/21-function-declaration"
+    }
+  ],
+  "01-javascript/22-function-expression": [
+    {
+      "id": "js-22-function-as-value",
+      "title": "Функция как значение в таблице",
+      "difficulty": "medium",
+      "lang": "js",
+      "runner": "browser",
+      "prompt": "Создайте объект `formatters`, где ключ — имя формата, а значение — функция преобразования: `short` возвращает имя теста, `full` — строку `<имя> — <статус>`. Затем напишите функцию `format(result, kind)`, которая выбирает форматтер по имени и применяет его. Для неизвестного формата вернуть строку `неизвестный формат`.",
+      "starter": "const formatters = {\n  // Значениями свойств могут быть функции.\n};\n\nfunction format(result, kind) {\n  // Выберите функцию по ключу и вызовите её.\n}",
+      "hints": [
+        "Функция — обычное значение, её можно положить в свойство объекта.",
+        "Перед вызовом нужно убедиться, что значение по ключу существует.",
+        "Проверка типа значения надёжнее проверки наличия ключа."
+      ],
+      "standSetup": "",
+      "tests": [
+        {
+          "name": "короткий формат",
+          "code": "expect(format({ name: 'login', status: 'passed' }, 'short')).toBe('login');"
+        },
+        {
+          "name": "полный формат",
+          "code": "expect(format({ name: 'login', status: 'passed' }, 'full')).toBe('login — passed');"
+        },
+        {
+          "name": "неизвестный формат",
+          "code": "expect(format({ name: 'login', status: 'passed' }, 'xml')).toBe('неизвестный формат');"
+        },
+        {
+          "name": "форматтеры доступны как значения",
+          "code": "expect(typeof formatters.short).toBe('function');"
+        }
+      ],
+      "solution": "const formatters = {\n  short: (result) => result.name,\n  full: (result) => result.name + ' — ' + result.status\n};\n\nfunction format(result, kind) {\n  const formatter = formatters[kind];\n\n  return typeof formatter === 'function' ? formatter(result) : 'неизвестный формат';\n}",
+      "chapter": "01-javascript/22-function-expression"
+    },
+    {
+      "id": "js-22-named-expression-in-trace",
+      "title": "Имя функции в выражении",
+      "difficulty": "medium",
+      "lang": "js",
+      "runner": "browser",
+      "prompt": "Объявите через выражение функцию с внутренним именем `validateStatusCode` и присвойте её переменной `check`. Функция бросает ошибку `недопустимый код: <код>` для кодов вне диапазона 100–599 и возвращает код в остальных случаях. Внутреннее имя должно быть видно в свойстве `name`.",
+      "starter": "const check = function /* имя */ (statusCode) {\n  // Проверьте диапазон и бросьте ошибку при выходе за него.\n};",
+      "hints": [
+        "Имя ставится между ключевым словом и скобками.",
+        "Свойство name у функции доступно для чтения.",
+        "Сообщение об ошибке собирается из текста и кода."
+      ],
+      "standSetup": "",
+      "tests": [
+        {
+          "name": "допустимый код возвращается",
+          "code": "expect(check(200)).toBe(200);"
+        },
+        {
+          "name": "границы диапазона допустимы",
+          "code": "expect([check(100), check(599)]).toEqual([100, 599]);"
+        },
+        {
+          "name": "недопустимый код бросает ошибку",
+          "code": "let message = '';\ntry { check(42); } catch (error) { message = error.message; }\nexpect(message).toBe('недопустимый код: 42');"
+        },
+        {
+          "name": "внутреннее имя видно в свойстве name",
+          "code": "expect(check.name).toBe('validateStatusCode');"
+        }
+      ],
+      "solution": "const check = function validateStatusCode(statusCode) {\n  if (statusCode < 100 || statusCode > 599) {\n    throw new Error('недопустимый код: ' + statusCode);\n  }\n\n  return statusCode;\n};",
+      "chapter": "01-javascript/22-function-expression"
+    }
+  ],
+  "01-javascript/23-arrow-functions": [
+    {
+      "id": "js-23-predicate-set",
+      "title": "Набор коротких предикатов",
+      "difficulty": "easy",
+      "lang": "js",
+      "runner": "browser",
+      "prompt": "Объявите три стрелочные функции с неявным возвратом: `isFailed(result)`, `isSlow(result)` — длительность строго больше 1000 — и `isProblem(result)` — упал или медленный. Каждая возвращает логическое значение.",
+      "starter": "const isFailed = (result) => /* без фигурных скобок */ false;\n\nconst isSlow = (result) => false;\n\nconst isProblem = (result) => false;",
+      "hints": [
+        "Без фигурных скобок стрелка возвращает результат выражения.",
+        "Сравнение строгое: ровно 1000 медленным не считается.",
+        "Третья функция переиспользует первые две."
+      ],
+      "standSetup": "",
+      "tests": [
+        {
+          "name": "определяет падение",
+          "code": "expect(isFailed({ status: 'failed', durationMs: 10 })).toBe(true);"
+        },
+        {
+          "name": "граница длительности не считается медленной",
+          "code": "expect(isSlow({ status: 'passed', durationMs: 1000 })).toBe(false);"
+        },
+        {
+          "name": "медленный успешный тест — проблема",
+          "code": "expect(isProblem({ status: 'passed', durationMs: 5000 })).toBe(true);"
+        },
+        {
+          "name": "быстрый успешный тест проблемой не является",
+          "code": "expect(isProblem({ status: 'passed', durationMs: 10 })).toBe(false);"
+        },
+        {
+          "name": "предикаты подходят для отбора",
+          "code": "expect([\n  { status: 'failed', durationMs: 1 },\n  { status: 'passed', durationMs: 1 }\n].filter(isProblem).length).toBe(1);"
+        }
+      ],
+      "solution": "const isFailed = (result) => result.status === 'failed';\n\nconst isSlow = (result) => result.durationMs > 1000;\n\nconst isProblem = (result) => isFailed(result) || isSlow(result);",
+      "chapter": "01-javascript/23-arrow-functions"
+    },
+    {
+      "id": "js-23-return-object-literal",
+      "title": "Возврат объекта из стрелки",
+      "difficulty": "medium",
+      "lang": "js",
+      "runner": "browser",
+      "prompt": "Объявите стрелочную функцию `toSummary`, которая из объекта `{ name, status, durationMs }` возвращает `{ title, isOk }`: `title` — имя, `isOk` — признак статуса `passed`. Используйте неявный возврат объекта.",
+      "starter": "const toSummary = (result) => /* объект в неявном возврате */ ({});",
+      "hints": [
+        "Объект в неявном возврате оборачивается в круглые скобки.",
+        "Без скобок фигурные будут восприняты как тело функции.",
+        "Лишние поля в результат попадать не должны."
+      ],
+      "standSetup": "",
+      "tests": [
+        {
+          "name": "успешный результат",
+          "code": "expect(toSummary({ name: 'login', status: 'passed', durationMs: 10 }))\n  .toEqual({ title: 'login', isOk: true });"
+        },
+        {
+          "name": "упавший результат",
+          "code": "expect(toSummary({ name: 'order', status: 'failed', durationMs: 10 }))\n  .toEqual({ title: 'order', isOk: false });"
+        },
+        {
+          "name": "лишние поля не попадают в результат",
+          "code": "expect(Object.keys(toSummary({ name: 'a', status: 'passed', durationMs: 1 })).sort())\n  .toEqual(['isOk', 'title']);"
+        },
+        {
+          "name": "подходит для преобразования массива",
+          "code": "expect([{ name: 'a', status: 'passed' }].map(toSummary))\n  .toEqual([{ title: 'a', isOk: true }]);"
+        }
+      ],
+      "solution": "const toSummary = (result) => ({\n  title: result.name,\n  isOk: result.status === 'passed'\n});",
+      "chapter": "01-javascript/23-arrow-functions"
+    }
+  ],
+  "01-javascript/24-parameters": [
+    {
+      "id": "js-24-default-parameters",
+      "title": "Параметры со значениями по умолчанию",
+      "difficulty": "easy",
+      "lang": "js",
+      "runner": "browser",
+      "prompt": "Напишите функцию `buildUrl(path, baseUrl = \"http://127.0.0.1:4310\", query = {})`, которая собирает адрес. Параметры запроса добавляются через `?` и склеиваются через `&`. Если объект запроса пуст, знака вопроса быть не должно.",
+      "starter": "function buildUrl(path, baseUrl = 'http://127.0.0.1:4310', query = {}) {\n  // Пустой объект запроса не должен давать знак вопроса.\n}",
+      "hints": [
+        "Значение по умолчанию срабатывает только при undefined.",
+        "Пары ключ-значение удобно собрать из Object.entries.",
+        "Проверьте, что пар вообще есть, прежде чем добавлять вопросительный знак."
+      ],
+      "standSetup": "",
+      "tests": [
+        {
+          "name": "использует значения по умолчанию",
+          "code": "expect(buildUrl('/work-items')).toBe('http://127.0.0.1:4310/work-items');"
+        },
+        {
+          "name": "добавляет параметры запроса",
+          "code": "expect(buildUrl('/work-items', 'http://a', { status: 'NEW', limit: 10 }))\n  .toBe('http://a/work-items?status=NEW&limit=10');"
+        },
+        {
+          "name": "пустой объект запроса не добавляет знак вопроса",
+          "code": "expect(buildUrl('/work-items', 'http://a', {})).toBe('http://a/work-items');"
+        },
+        {
+          "name": "явный undefined включает значение по умолчанию",
+          "code": "expect(buildUrl('/x', undefined, {})).toBe('http://127.0.0.1:4310/x');"
+        }
+      ],
+      "solution": "function buildUrl(path, baseUrl = 'http://127.0.0.1:4310', query = {}) {\n  const pairs = Object.entries(query).map(([key, value]) => key + '=' + value);\n\n  return pairs.length === 0\n    ? baseUrl + path\n    : baseUrl + path + '?' + pairs.join('&');\n}",
+      "chapter": "01-javascript/24-parameters"
+    },
+    {
+      "id": "js-24-destructured-options",
+      "title": "Объект настроек в параметрах",
+      "difficulty": "medium",
+      "lang": "js",
+      "runner": "browser",
+      "prompt": "Напишите функцию `describeRun({ name, retries = 0, verbose = false } = {})`, которая возвращает строку вида `login: 2 попытки` или `login: 0 попыток (подробно)`. Вызов без аргументов должен работать и давать `без имени: 0 попыток`.",
+      "starter": "function describeRun({ name, retries = 0, verbose = false } = {}) {\n  // Вызов без аргументов тоже должен работать.\n}",
+      "hints": [
+        "Значение по умолчанию у самого параметра нужно для вызова без аргументов.",
+        "Отсутствующее имя нужно заменить строкой «без имени».",
+        "Слово «попытки» менять по числу не требуется — используйте «попыток» для нуля."
+      ],
+      "standSetup": "",
+      "tests": [
+        {
+          "name": "обычный вызов",
+          "code": "expect(describeRun({ name: 'login', retries: 2 })).toBe('login: 2 попытки');"
+        },
+        {
+          "name": "подробный режим",
+          "code": "expect(describeRun({ name: 'login', verbose: true })).toBe('login: 0 попыток (подробно)');"
+        },
+        {
+          "name": "вызов без аргументов",
+          "code": "expect(describeRun()).toBe('без имени: 0 попыток');"
+        },
+        {
+          "name": "пустой объект настроек",
+          "code": "expect(describeRun({})).toBe('без имени: 0 попыток');"
+        }
+      ],
+      "solution": "function describeRun({ name, retries = 0, verbose = false } = {}) {\n  const title = name ?? 'без имени';\n  const word = retries === 0 ? 'попыток' : 'попытки';\n  const base = title + ': ' + retries + ' ' + word;\n\n  return verbose ? base + ' (подробно)' : base;\n}",
+      "chapter": "01-javascript/24-parameters"
+    }
+  ],
+  "01-javascript/25-return": [
+    {
+      "id": "js-25-early-return-guard",
+      "title": "Ранний возврат вместо вложенных условий",
+      "difficulty": "easy",
+      "lang": "js",
+      "runner": "browser",
+      "prompt": "Напишите функцию `validateItem(item)`, которая возвращает строку с первой найденной проблемой или `null`, если проблем нет. Проверки по порядку: объект отсутствует — `нет данных`; пустое имя — `нет имени`; отрицательная длительность — `отрицательная длительность`. Используйте ранние возвраты.",
+      "starter": "function validateItem(item) {\n  // Первая найденная проблема прекращает проверку.\n}",
+      "hints": [
+        "Ранний возврат прекращает выполнение функции сразу.",
+        "Порядок проверок важен: возвращается первая проблема.",
+        "Отсутствие проблем даёт null."
+      ],
+      "standSetup": "",
+      "tests": [
+        {
+          "name": "нет объекта",
+          "code": "expect(validateItem(null)).toBe('нет данных');"
+        },
+        {
+          "name": "пустое имя",
+          "code": "expect(validateItem({ name: '', durationMs: 1 })).toBe('нет имени');"
+        },
+        {
+          "name": "отрицательная длительность",
+          "code": "expect(validateItem({ name: 'login', durationMs: -5 })).toBe('отрицательная длительность');"
+        },
+        {
+          "name": "корректный объект",
+          "code": "expect(validateItem({ name: 'login', durationMs: 0 })).toBe(null);"
+        },
+        {
+          "name": "возвращается ПЕРВАЯ проблема",
+          "code": "expect(validateItem({ name: '', durationMs: -5 })).toBe('нет имени');"
+        }
+      ],
+      "solution": "function validateItem(item) {\n  if (!item) {\n    return 'нет данных';\n  }\n\n  if (!item.name) {\n    return 'нет имени';\n  }\n\n  if (item.durationMs < 0) {\n    return 'отрицательная длительность';\n  }\n\n  return null;\n}",
+      "chapter": "01-javascript/25-return"
+    },
+    {
+      "id": "js-25-missing-return",
+      "title": "Функция без возврата",
+      "difficulty": "medium",
+      "lang": "js",
+      "runner": "browser",
+      "prompt": "Напишите функцию `applyAll(value, steps)`, которая последовательно применяет к значению функции из массива. Если какой-то шаг ничего не вернул, его результат игнорируется и в следующий шаг передаётся прежнее значение — так забытый `return` не обнуляет цепочку.",
+      "starter": "function applyAll(value, steps) {\n  // Шаг без возврата даёт undefined — прежнее значение нужно сохранить.\n}",
+      "hints": [
+        "Функция без return возвращает undefined.",
+        "Перед заменой значения проверьте результат шага.",
+        "Значение null считается осмысленным и заменяет прежнее."
+      ],
+      "standSetup": "",
+      "tests": [
+        {
+          "name": "применяет шаги по очереди",
+          "code": "expect(applyAll(2, [(x) => x + 1, (x) => x * 10])).toBe(30);"
+        },
+        {
+          "name": "шаг без возврата не обнуляет значение",
+          "code": "expect(applyAll(5, [(x) => { x + 1; }, (x) => x * 2])).toBe(10);"
+        },
+        {
+          "name": "пустой список шагов возвращает исходное значение",
+          "code": "expect(applyAll('готово', [])).toBe('готово');"
+        },
+        {
+          "name": "null от шага заменяет значение",
+          "code": "expect(applyAll(1, [() => null])).toBe(null);"
+        }
+      ],
+      "solution": "function applyAll(value, steps) {\n  let current = value;\n\n  for (const step of steps) {\n    const next = step(current);\n\n    if (next !== undefined) {\n      current = next;\n    }\n  }\n\n  return current;\n}",
+      "chapter": "01-javascript/25-return"
+    }
+  ],
+  "01-javascript/26-rest": [
+    {
+      "id": "js-26-collect-status-codes",
+      "title": "Собрать произвольное число аргументов",
+      "difficulty": "easy",
+      "lang": "js",
+      "runner": "browser",
+      "prompt": "Напишите функцию `allSuccessful(...codes)`, которая принимает произвольное число кодов и возвращает `true`, только если аргументов хотя бы один и все они в диапазоне 200–299.",
+      "starter": "function allSuccessful(...codes) {\n  // Rest-параметр всегда даёт массив.\n}",
+      "hints": [
+        "Rest-параметр собирает аргументы в массив, даже если их нет.",
+        "Вызов без аргументов даёт пустой массив — это не успех.",
+        "Проверка «все подходят» выполняется одним обходом."
+      ],
+      "standSetup": "",
+      "tests": [
+        {
+          "name": "все коды успешны",
+          "code": "expect(allSuccessful(200, 201, 204)).toBe(true);"
+        },
+        {
+          "name": "один неуспешный код делает результат ложным",
+          "code": "expect(allSuccessful(200, 404)).toBe(false);"
+        },
+        {
+          "name": "вызов без аргументов даёт false",
+          "code": "expect(allSuccessful()).toBe(false);"
+        },
+        {
+          "name": "один успешный код",
+          "code": "expect(allSuccessful(200)).toBe(true);"
+        }
+      ],
+      "solution": "function allSuccessful(...codes) {\n  return codes.length > 0 && codes.every((code) => code >= 200 && code <= 299);\n}",
+      "chapter": "01-javascript/26-rest"
+    },
+    {
+      "id": "js-26-required-and-rest",
+      "title": "Обязательный параметр перед остаточным",
+      "difficulty": "medium",
+      "lang": "js",
+      "runner": "browser",
+      "prompt": "Напишите функцию `matchExpected(expected, ...actual)`, которая возвращает объект `{ total, matched, mismatched }`: сколько значений передано, сколько совпало с ожидаемым и сколько нет. Сравнение строгое.",
+      "starter": "function matchExpected(expected, ...actual) {\n  // Остаточный параметр идёт последним.\n}",
+      "hints": [
+        "Остаточный параметр может быть только последним в списке.",
+        "Сравнение строгое: тип тоже должен совпадать.",
+        "Сумма совпавших и несовпавших равна общему количеству."
+      ],
+      "standSetup": "",
+      "tests": [
+        {
+          "name": "считает совпадения",
+          "code": "expect(matchExpected('passed', 'passed', 'failed', 'passed'))\n  .toEqual({ total: 3, matched: 2, mismatched: 1 });"
+        },
+        {
+          "name": "без переданных значений все нули",
+          "code": "expect(matchExpected('passed')).toEqual({ total: 0, matched: 0, mismatched: 0 });"
+        },
+        {
+          "name": "сравнение строгое",
+          "code": "expect(matchExpected(1, '1')).toEqual({ total: 1, matched: 0, mismatched: 1 });"
+        },
+        {
+          "name": "сумма частей равна общему числу",
+          "code": "const report = matchExpected('a', 'a', 'b', 'a', 'c');\nexpect(report.matched + report.mismatched).toBe(report.total);"
+        }
+      ],
+      "solution": "function matchExpected(expected, ...actual) {\n  const matched = actual.filter((value) => value === expected).length;\n\n  return {\n    total: actual.length,\n    matched,\n    mismatched: actual.length - matched\n  };\n}",
+      "chapter": "01-javascript/26-rest"
+    }
+  ],
+  "01-javascript/27-spread": [
+    {
+      "id": "js-27-merge-config",
+      "title": "Слияние настроек через spread",
+      "difficulty": "easy",
+      "lang": "js",
+      "runner": "browser",
+      "prompt": "Напишите функцию `mergeConfig(base, override)`, которая возвращает новый объект: поля `override` перекрывают поля `base`. Исходные объекты изменяться не должны, а поле со значением `undefined` в `override` **должно** перекрывать базовое.",
+      "starter": "function mergeConfig(base, override) {\n  // Порядок в spread определяет, кто перекрывает кого.\n}",
+      "hints": [
+        "Порядок важен: последний источник перекрывает предыдущие.",
+        "spread копирует и свойства со значением undefined.",
+        "Исходные объекты остаются без изменений."
+      ],
+      "standSetup": "",
+      "tests": [
+        {
+          "name": "переопределяет поля",
+          "code": "expect(mergeConfig({ retries: 1, verbose: false }, { retries: 3 }))\n  .toEqual({ retries: 3, verbose: false });"
+        },
+        {
+          "name": "добавляет новые поля",
+          "code": "expect(mergeConfig({ a: 1 }, { b: 2 })).toEqual({ a: 1, b: 2 });"
+        },
+        {
+          "name": "не изменяет исходные объекты",
+          "code": "const base = { retries: 1 };\nmergeConfig(base, { retries: 3 });\nexpect(base).toEqual({ retries: 1 });"
+        },
+        {
+          "name": "undefined в override перекрывает базовое значение",
+          "code": "expect(mergeConfig({ a: 1 }, { a: undefined }).a).toBe(undefined);"
+        }
+      ],
+      "solution": "function mergeConfig(base, override) {\n  return { ...base, ...override };\n}",
+      "chapter": "01-javascript/27-spread"
+    },
+    {
+      "id": "js-27-shallow-copy-limit",
+      "title": "Граница поверхностной копии",
+      "difficulty": "medium",
+      "lang": "js",
+      "runner": "browser",
+      "prompt": "Напишите функцию `copyRun(run)`, которая возвращает копию объекта `{ name, tags }` так, чтобы изменение массива `tags` в копии **не** затрагивало исходный объект. Поверхностной копии здесь недостаточно.",
+      "starter": "function copyRun(run) {\n  // spread копирует верхний уровень, но не вложенный массив.\n}",
+      "hints": [
+        "Поверхностная копия оставляет вложенный массив общим.",
+        "Массив тоже нужно скопировать.",
+        "Проверьте оба направления: изменение копии и изменение исходного."
+      ],
+      "standSetup": "",
+      "tests": [
+        {
+          "name": "копия содержит те же значения",
+          "code": "expect(copyRun({ name: 'smoke', tags: ['ui'] })).toEqual({ name: 'smoke', tags: ['ui'] });"
+        },
+        {
+          "name": "изменение массива в копии не затрагивает исходный",
+          "code": "const source = { name: 'smoke', tags: ['ui'] };\ncopyRun(source).tags.push('api');\nexpect(source.tags).toEqual(['ui']);"
+        },
+        {
+          "name": "изменение исходного не затрагивает копию",
+          "code": "const source = { name: 'smoke', tags: ['ui'] };\nconst copy = copyRun(source);\nsource.tags.push('api');\nexpect(copy.tags).toEqual(['ui']);"
+        },
+        {
+          "name": "возвращается новый объект",
+          "code": "const source = { name: 'smoke', tags: [] };\nexpect(copyRun(source) === source).toBe(false);"
+        }
+      ],
+      "solution": "function copyRun(run) {\n  return { ...run, tags: [...run.tags] };\n}",
+      "chapter": "01-javascript/27-spread"
+    }
+  ],
   "01-javascript/28-closures": [
     {
       "id": "js-28-run-counter",
@@ -746,6 +1710,298 @@
       "chapter": "01-javascript/36-nullish-coalescing"
     }
   ],
+  "01-javascript/37-object-methods": [
+    {
+      "id": "js-37-object-entries-report",
+      "title": "Отчёт из объекта через entries",
+      "difficulty": "easy",
+      "lang": "js",
+      "runner": "browser",
+      "prompt": "Напишите функцию `countsToLines(counts)`, которая принимает объект вида `{ passed: 2, failed: 1 }` и возвращает массив строк `\"passed: 2\"`, отсортированный по ключу. Для пустого объекта вернуть пустой массив.",
+      "starter": "function countsToLines(counts) {\n  // Объект нельзя обойти циклом for...of напрямую.\n}",
+      "hints": [
+        "Пары «ключ — значение» даёт Object.entries.",
+        "Результат entries — обычный массив, его можно сортировать и преобразовывать.",
+        "Сортировка строк выполняется компаратором или localeCompare."
+      ],
+      "standSetup": "",
+      "tests": [
+        {
+          "name": "собирает строки",
+          "code": "expect(countsToLines({ passed: 2, failed: 1 })).toEqual(['failed: 1', 'passed: 2']);"
+        },
+        {
+          "name": "для пустого объекта возвращает пустой массив",
+          "code": "expect(countsToLines({})).toEqual([]);"
+        },
+        {
+          "name": "сортирует по ключу независимо от порядка полей",
+          "code": "expect(countsToLines({ z: 1, a: 2 })).toEqual(['a: 2', 'z: 1']);"
+        },
+        {
+          "name": "не изменяет исходный объект",
+          "code": "const source = { passed: 1 };\ncountsToLines(source);\nexpect(source).toEqual({ passed: 1 });"
+        }
+      ],
+      "solution": "function countsToLines(counts) {\n  return Object.entries(counts)\n    .sort(([first], [second]) => first.localeCompare(second))\n    .map(([key, value]) => key + ': ' + value);\n}",
+      "chapter": "01-javascript/37-object-methods"
+    },
+    {
+      "id": "js-37-own-property-check",
+      "title": "Проверка собственного свойства",
+      "difficulty": "medium",
+      "lang": "js",
+      "runner": "browser",
+      "prompt": "Напишите функцию `hasOwnField(item, field)`, которая возвращает `true`, только если свойство принадлежит **самому объекту**, а не унаследовано. Свойства из прототипа учитываться не должны.",
+      "starter": "function hasOwnField(item, field) {\n  // Оператор in находит и унаследованные свойства.\n}",
+      "hints": [
+        "Оператор in проверяет всю цепочку прототипов.",
+        "Для собственных свойств есть отдельная проверка.",
+        "Значение undefined у собственного свойства всё равно считается своим."
+      ],
+      "standSetup": "",
+      "tests": [
+        {
+          "name": "находит собственное свойство",
+          "code": "expect(hasOwnField({ name: 'login' }, 'name')).toBe(true);"
+        },
+        {
+          "name": "унаследованное свойство не считается своим",
+          "code": "const parent = { shared: 1 };\nconst child = Object.create(parent);\nexpect(hasOwnField(child, 'shared')).toBe(false);"
+        },
+        {
+          "name": "отсутствующее свойство",
+          "code": "expect(hasOwnField({ name: 'login' }, 'status')).toBe(false);"
+        },
+        {
+          "name": "собственное свойство со значением undefined считается своим",
+          "code": "expect(hasOwnField({ name: undefined }, 'name')).toBe(true);"
+        },
+        {
+          "name": "оператор in дал бы другой ответ",
+          "code": "const parent = { shared: 1 };\nconst child = Object.create(parent);\nexpect(('shared' in child) === hasOwnField(child, 'shared')).toBe(false);"
+        }
+      ],
+      "solution": "function hasOwnField(item, field) {\n  return Object.hasOwn(item, field);\n}",
+      "chapter": "01-javascript/37-object-methods"
+    }
+  ],
+  "01-javascript/38-object-descriptors": [
+    {
+      "id": "js-38-readonly-field",
+      "title": "Свойство только для чтения",
+      "difficulty": "medium",
+      "lang": "js",
+      "runner": "browser",
+      "prompt": "Напишите функцию `withFrozenId(item, id)`, которая возвращает объект с полем `id`, недоступным для изменения и не участвующим в переборе ключей. Остальные поля `item` остаются обычными.",
+      "starter": "function withFrozenId(item, id) {\n  // Поведение свойства задаётся дескриптором.\n}",
+      "hints": [
+        "Дескриптор задаётся через Object.defineProperty.",
+        "За изменяемость отвечает writable, за перебор — enumerable.",
+        "По умолчанию оба признака равны false."
+      ],
+      "standSetup": "",
+      "tests": [
+        {
+          "name": "значение читается",
+          "code": "expect(withFrozenId({ name: 'login' }, 'x-1').id).toBe('x-1');"
+        },
+        {
+          "name": "изменение не проходит",
+          "code": "const item = withFrozenId({ name: 'login' }, 'x-1');\ntry { item.id = 'другое'; } catch (error) { /* в строгом режиме бросает */ }\nexpect(item.id).toBe('x-1');"
+        },
+        {
+          "name": "поле не попадает в перебор ключей",
+          "code": "expect(Object.keys(withFrozenId({ name: 'login' }, 'x-1'))).toEqual(['name']);"
+        },
+        {
+          "name": "остальные поля остаются обычными",
+          "code": "const item = withFrozenId({ name: 'login' }, 'x-1');\nitem.name = 'order';\nexpect(item.name).toBe('order');"
+        }
+      ],
+      "solution": "function withFrozenId(item, id) {\n  const result = { ...item };\n\n  Object.defineProperty(result, 'id', { value: id });\n\n  return result;\n}",
+      "chapter": "01-javascript/38-object-descriptors"
+    },
+    {
+      "id": "js-38-freeze-is-shallow",
+      "title": "Заморозка действует на один уровень",
+      "difficulty": "medium",
+      "lang": "js",
+      "runner": "browser",
+      "prompt": "Напишите функцию `describeFreeze(config)`, которая замораживает объект и возвращает `{ topFrozen, nestedFrozen }`: заморожен ли сам объект и заморожен ли вложенный объект `nested`. Задача показывает, что заморозка поверхностная.",
+      "starter": "function describeFreeze(config) {\n  // Object.freeze действует только на верхний уровень.\n}",
+      "hints": [
+        "Проверить состояние помогает Object.isFrozen.",
+        "Вложенный объект остаётся изменяемым.",
+        "Возвращать нужно два признака, а не сам объект."
+      ],
+      "standSetup": "",
+      "tests": [
+        {
+          "name": "верхний уровень заморожен",
+          "code": "expect(describeFreeze({ a: 1, nested: { b: 2 } }).topFrozen).toBe(true);"
+        },
+        {
+          "name": "вложенный объект не заморожен",
+          "code": "expect(describeFreeze({ a: 1, nested: { b: 2 } }).nestedFrozen).toBe(false);"
+        },
+        {
+          "name": "вложенный объект действительно изменяем",
+          "code": "const config = { a: 1, nested: { b: 2 } };\ndescribeFreeze(config);\nconfig.nested.b = 99;\nexpect(config.nested.b).toBe(99);"
+        },
+        {
+          "name": "верхний уровень изменить нельзя",
+          "code": "const config = { a: 1, nested: { b: 2 } };\ndescribeFreeze(config);\ntry { config.a = 99; } catch (error) { /* строгий режим бросает */ }\nexpect(config.a).toBe(1);"
+        }
+      ],
+      "solution": "function describeFreeze(config) {\n  Object.freeze(config);\n\n  return {\n    topFrozen: Object.isFrozen(config),\n    nestedFrozen: Object.isFrozen(config.nested)\n  };\n}",
+      "chapter": "01-javascript/38-object-descriptors"
+    }
+  ],
+  "01-javascript/39-prototype": [
+    {
+      "id": "js-39-shared-behavior",
+      "title": "Общее поведение через прототип",
+      "difficulty": "medium",
+      "lang": "js",
+      "runner": "browser",
+      "prompt": "Напишите функцию `createReporter(prefix)`, которая создаёт объект с собственным полем `prefix` и методом `line(text)`, взятым из **общего** прототипа. Метод возвращает `<prefix>: <text>`. Два объекта должны делить один и тот же метод.",
+      "starter": "const reporterProto = {\n  // Метод здесь будет общим для всех созданных объектов.\n};\n\nfunction createReporter(prefix) {\n  // Создайте объект с указанным прототипом.\n}",
+      "hints": [
+        "Создать объект с заданным прототипом позволяет Object.create.",
+        "Собственные поля присваиваются после создания.",
+        "Метод должен читать prefix через this."
+      ],
+      "standSetup": "",
+      "tests": [
+        {
+          "name": "метод работает",
+          "code": "expect(createReporter('api').line('старт')).toBe('api: старт');"
+        },
+        {
+          "name": "метод не является собственным свойством",
+          "code": "expect(Object.hasOwn(createReporter('api'), 'line')).toBe(false);"
+        },
+        {
+          "name": "объекты делят один метод",
+          "code": "expect(createReporter('a').line === createReporter('b').line).toBe(true);"
+        },
+        {
+          "name": "состояние у объектов своё",
+          "code": "const first = createReporter('a');\nconst second = createReporter('b');\nexpect(first.line('x') + ' | ' + second.line('x')).toBe('a: x | b: x');"
+        }
+      ],
+      "solution": "const reporterProto = {\n  line(text) {\n    return this.prefix + ': ' + text;\n  }\n};\n\nfunction createReporter(prefix) {\n  const reporter = Object.create(reporterProto);\n  reporter.prefix = prefix;\n\n  return reporter;\n}",
+      "chapter": "01-javascript/39-prototype"
+    },
+    {
+      "id": "js-39-own-wins-over-proto",
+      "title": "Собственное свойство перекрывает прототип",
+      "difficulty": "medium",
+      "lang": "js",
+      "runner": "browser",
+      "prompt": "Напишите функцию `describeLookup(parent, child, key)`, которая возвращает объект `{ value, source }`: значение по ключу и строку `own`, если свойство собственное, `proto` — если найдено в прототипе, `none` — если не найдено нигде. Объект `child` создаётся с прототипом `parent`.",
+      "starter": "function describeLookup(parent, child, key) {\n  // Поиск начинается с самого объекта.\n}",
+      "hints": [
+        "Сначала нужно связать объекты: child получает parent как прототип.",
+        "Собственное свойство проверяется отдельно от унаследованного.",
+        "Отсутствие свойства в цепочке даёт значение undefined."
+      ],
+      "standSetup": "",
+      "tests": [
+        {
+          "name": "собственное свойство выигрывает",
+          "code": "expect(describeLookup({ a: 'из прототипа' }, { a: 'своё' }, 'a'))\n  .toEqual({ value: 'своё', source: 'own' });"
+        },
+        {
+          "name": "находит свойство в прототипе",
+          "code": "expect(describeLookup({ a: 'из прототипа' }, {}, 'a'))\n  .toEqual({ value: 'из прототипа', source: 'proto' });"
+        },
+        {
+          "name": "свойства нет нигде",
+          "code": "expect(describeLookup({}, {}, 'a')).toEqual({ value: undefined, source: 'none' });"
+        },
+        {
+          "name": "исходные объекты не изменяются",
+          "code": "const parent = { a: 1 };\nconst child = { b: 2 };\ndescribeLookup(parent, child, 'a');\nexpect(Object.hasOwn(child, 'a')).toBe(false);"
+        }
+      ],
+      "solution": "function describeLookup(parent, child, key) {\n  const linked = Object.create(parent);\n  Object.assign(linked, child);\n\n  if (Object.hasOwn(linked, key)) {\n    return { value: linked[key], source: 'own' };\n  }\n\n  if (key in linked) {\n    return { value: linked[key], source: 'proto' };\n  }\n\n  return { value: undefined, source: 'none' };\n}",
+      "chapter": "01-javascript/39-prototype"
+    }
+  ],
+  "01-javascript/40-prototype-chain": [
+    {
+      "id": "js-40-chain-depth",
+      "title": "Глубина цепочки прототипов",
+      "difficulty": "medium",
+      "lang": "js",
+      "runner": "browser",
+      "prompt": "Напишите функцию `protoDepth(value)`, которая возвращает количество звеньев цепочки прототипов до `null`. Для объекта, созданного литералом, глубина равна `1`, для объекта без прототипа — `0`.",
+      "starter": "function protoDepth(value) {\n  // Цепочка заканчивается значением null.\n}",
+      "hints": [
+        "Следующее звено даёт Object.getPrototypeOf.",
+        "Цепочка заканчивается, когда прототип равен null.",
+        "Объект без прототипа создаётся через Object.create(null)."
+      ],
+      "standSetup": "",
+      "tests": [
+        {
+          "name": "литерал объекта — одно звено",
+          "code": "expect(protoDepth({})).toBe(1);"
+        },
+        {
+          "name": "объект без прототипа — ноль звеньев",
+          "code": "expect(protoDepth(Object.create(null))).toBe(0);"
+        },
+        {
+          "name": "дополнительное звено удлиняет цепочку",
+          "code": "expect(protoDepth(Object.create({}))).toBe(2);"
+        },
+        {
+          "name": "массив длиннее обычного объекта",
+          "code": "expect(protoDepth([]) > protoDepth({})).toBe(true);"
+        }
+      ],
+      "solution": "function protoDepth(value) {\n  let depth = 0;\n  let current = Object.getPrototypeOf(value);\n\n  while (current !== null) {\n    depth += 1;\n    current = Object.getPrototypeOf(current);\n  }\n\n  return depth;\n}",
+      "chapter": "01-javascript/40-prototype-chain"
+    },
+    {
+      "id": "js-40-method-this-binding",
+      "title": "Чему равен this у найденного метода",
+      "difficulty": "medium",
+      "lang": "js",
+      "runner": "browser",
+      "prompt": "Дан прототип с методом `whoAmI()`, возвращающим `this.name`. Напишите функцию `callOn(proto, own)`, которая создаёт объект с прототипом `proto`, копирует в него поля `own` и возвращает результат вызова метода. Проверки покажут, что `this` указывает на объект вызова, а не на место хранения метода.",
+      "starter": "function callOn(proto, own) {\n  // Метод найден в прототипе, но this — объект вызова.\n}",
+      "hints": [
+        "Объект с нужным прототипом создаётся через Object.create.",
+        "Собственные поля копируются после создания.",
+        "Метод вызывается через созданный объект."
+      ],
+      "standSetup": "",
+      "tests": [
+        {
+          "name": "this указывает на объект вызова",
+          "code": "const proto = { whoAmI() { return this.name; } };\nexpect(callOn(proto, { name: 'свой' })).toBe('свой');"
+        },
+        {
+          "name": "имя из прототипа используется, если своего нет",
+          "code": "const proto = { name: 'из прототипа', whoAmI() { return this.name; } };\nexpect(callOn(proto, {})).toBe('из прототипа');"
+        },
+        {
+          "name": "собственное имя перекрывает прототип",
+          "code": "const proto = { name: 'из прототипа', whoAmI() { return this.name; } };\nexpect(callOn(proto, { name: 'своё' })).toBe('своё');"
+        },
+        {
+          "name": "прототип не изменяется",
+          "code": "const proto = { name: 'из прототипа', whoAmI() { return this.name; } };\ncallOn(proto, { name: 'своё' });\nexpect(proto.name).toBe('из прототипа');"
+        }
+      ],
+      "solution": "function callOn(proto, own) {\n  const item = Object.create(proto);\n  Object.assign(item, own);\n\n  return item.whoAmI();\n}",
+      "chapter": "01-javascript/40-prototype-chain"
+    }
+  ],
   "01-javascript/41-classes": [
     {
       "id": "js-41-test-run-class",
@@ -888,6 +2144,78 @@
       ],
       "solution": "function tryBuild(makeInstance) {\n  try {\n    makeInstance();\n\n    return { ok: true };\n  } catch (error) {\n    return { ok: false, isReferenceError: error instanceof ReferenceError };\n  }\n}",
       "chapter": "01-javascript/42-class-inheritance"
+    }
+  ],
+  "01-javascript/43-super": [
+    {
+      "id": "js-43-extend-with-super-call",
+      "title": "Расширение родительского метода",
+      "difficulty": "medium",
+      "lang": "js",
+      "runner": "browser",
+      "prompt": "Дан класс `Client` с методом `describe()`, возвращающим `<baseUrl>`. Напишите класс `AuthClient`, который принимает второй аргумент `role`, переиспользует родительский конструктор и метод, а `describe()` возвращает `<baseUrl> как <role>`.",
+      "starter": "class Client {\n  constructor(baseUrl) {\n    this.baseUrl = baseUrl;\n  }\n\n  describe() {\n    return this.baseUrl;\n  }\n}\n\nclass AuthClient extends Client {\n  // Конструктор и метод должны переиспользовать родительские.\n}",
+      "hints": [
+        "Родительский конструктор вызывается через super перед обращением к this.",
+        "Родительская реализация метода доступна через super.",
+        "Дополнение приписывается к результату родительского метода."
+      ],
+      "standSetup": "",
+      "tests": [
+        {
+          "name": "расширяет родительский результат",
+          "code": "expect(new AuthClient('http://a', 'admin').describe()).toBe('http://a как admin');"
+        },
+        {
+          "name": "остаётся экземпляром родителя",
+          "code": "expect(new AuthClient('http://a', 'admin') instanceof Client).toBe(true);"
+        },
+        {
+          "name": "родительский класс не изменился",
+          "code": "expect(new Client('http://a').describe()).toBe('http://a');"
+        },
+        {
+          "name": "baseUrl сохранён родительским конструктором",
+          "code": "expect(new AuthClient('http://a', 'qa').baseUrl).toBe('http://a');"
+        }
+      ],
+      "solution": "class Client {\n  constructor(baseUrl) {\n    this.baseUrl = baseUrl;\n  }\n\n  describe() {\n    return this.baseUrl;\n  }\n}\n\nclass AuthClient extends Client {\n  constructor(baseUrl, role) {\n    super(baseUrl);\n    this.role = role;\n  }\n\n  describe() {\n    return super.describe() + ' как ' + this.role;\n  }\n}",
+      "chapter": "01-javascript/43-super"
+    },
+    {
+      "id": "js-43-super-in-static",
+      "title": "Цепочка из трёх уровней",
+      "difficulty": "hard",
+      "lang": "js",
+      "runner": "browser",
+      "prompt": "Постройте три класса: `Base` с методом `steps()`, возвращающим `[\"base\"]`; `Middle`, который добавляет `\"middle\"`; и `Top`, который добавляет `\"top\"`. Каждый уровень должен переиспользовать результат предыдущего через `super`, а не перечислять шаги заново.",
+      "starter": "class Base {\n  steps() {\n    return ['base'];\n  }\n}\n\nclass Middle extends Base {\n  // Добавьте свой шаг к результату родителя.\n}\n\nclass Top extends Middle {\n  // И ещё один уровень.\n}",
+      "hints": [
+        "Каждый уровень вызывает super.steps() и дополняет результат.",
+        "Новый массив удобно собрать через spread.",
+        "Исходный массив родителя изменять не нужно."
+      ],
+      "standSetup": "",
+      "tests": [
+        {
+          "name": "полная цепочка",
+          "code": "expect(new Top().steps()).toEqual(['base', 'middle', 'top']);"
+        },
+        {
+          "name": "средний уровень",
+          "code": "expect(new Middle().steps()).toEqual(['base', 'middle']);"
+        },
+        {
+          "name": "базовый уровень не изменился",
+          "code": "expect(new Base().steps()).toEqual(['base']);"
+        },
+        {
+          "name": "повторные вызовы дают тот же результат",
+          "code": "const top = new Top();\ntop.steps();\nexpect(top.steps()).toEqual(['base', 'middle', 'top']);"
+        }
+      ],
+      "solution": "class Base {\n  steps() {\n    return ['base'];\n  }\n}\n\nclass Middle extends Base {\n  steps() {\n    return [...super.steps(), 'middle'];\n  }\n}\n\nclass Top extends Middle {\n  steps() {\n    return [...super.steps(), 'top'];\n  }\n}",
+      "chapter": "01-javascript/43-super"
     }
   ],
   "01-javascript/44-arrays": [
@@ -1104,6 +2432,154 @@
       ],
       "solution": "function addPriority(queue, task) {\n  const previousFirst = queue.length === 0 ? null : queue[0];\n  const total = queue.unshift(task);\n\n  return { total, firstChanged: queue[0] !== previousFirst };\n}",
       "chapter": "01-javascript/46-shift-unshift"
+    }
+  ],
+  "01-javascript/47-splice": [
+    {
+      "id": "js-47-insert-step",
+      "title": "Вставка шага в середину плана",
+      "difficulty": "easy",
+      "lang": "js",
+      "runner": "browser",
+      "prompt": "Напишите функцию `insertAt(plan, index, step)`, которая вставляет шаг на указанную позицию, ничего не удаляя, и возвращает объект `{ removed, length }`: массив удалённых элементов и новую длину плана. Исходный массив изменяется — это ожидаемое поведение.",
+      "starter": "function insertAt(plan, index, step) {\n  // Второй аргумент splice отвечает за количество удаляемых элементов.\n}",
+      "hints": [
+        "Чтобы ничего не удалить, вторым аргументом передают ноль.",
+        "splice возвращает массив удалённых элементов, а не изменённый массив.",
+        "Новая длина доступна после операции."
+      ],
+      "standSetup": "",
+      "tests": [
+        {
+          "name": "вставляет на нужную позицию",
+          "code": "const plan = ['login', 'pay'];\ninsertAt(plan, 1, 'discount');\nexpect(plan).toEqual(['login', 'discount', 'pay']);"
+        },
+        {
+          "name": "ничего не удаляет",
+          "code": "expect(insertAt(['login', 'pay'], 1, 'discount').removed).toEqual([]);"
+        },
+        {
+          "name": "возвращает новую длину",
+          "code": "expect(insertAt(['login', 'pay'], 1, 'discount').length).toBe(3);"
+        },
+        {
+          "name": "вставка в конец работает",
+          "code": "const plan = ['login'];\ninsertAt(plan, 1, 'logout');\nexpect(plan).toEqual(['login', 'logout']);"
+        }
+      ],
+      "solution": "function insertAt(plan, index, step) {\n  const removed = plan.splice(index, 0, step);\n\n  return { removed, length: plan.length };\n}",
+      "chapter": "01-javascript/47-splice"
+    },
+    {
+      "id": "js-47-index-shift-after-splice",
+      "title": "Индексы после изменения середины",
+      "difficulty": "medium",
+      "lang": "js",
+      "runner": "browser",
+      "prompt": "Напишите функцию `replaceStep(plan, target, replacement)`, которая заменяет первое вхождение `target` на `replacement` и возвращает объект `{ replaced, index }`: признак того, что замена произошла, и позицию, где она случилась. Если шага нет, вернуть `{ replaced: false, index: -1 }`.",
+      "starter": "function replaceStep(plan, target, replacement) {\n  // Позицию нужно найти до изменения массива.\n}",
+      "hints": [
+        "Позицию элемента ищут до вызова splice.",
+        "Отсутствие элемента даёт -1 — этот случай обрабатывается отдельно.",
+        "Замена — это удаление одного элемента и вставка другого."
+      ],
+      "standSetup": "",
+      "tests": [
+        {
+          "name": "заменяет элемент",
+          "code": "const plan = ['login', 'pay', 'logout'];\nreplaceStep(plan, 'pay', 'refund');\nexpect(plan).toEqual(['login', 'refund', 'logout']);"
+        },
+        {
+          "name": "сообщает позицию замены",
+          "code": "expect(replaceStep(['login', 'pay'], 'pay', 'refund'))\n  .toEqual({ replaced: true, index: 1 });"
+        },
+        {
+          "name": "если шага нет, массив не меняется",
+          "code": "const plan = ['login'];\nconst report = replaceStep(plan, 'pay', 'refund');\nexpect([plan, report]).toEqual([['login'], { replaced: false, index: -1 }]);"
+        },
+        {
+          "name": "заменяет только первое вхождение",
+          "code": "const plan = ['pay', 'pay'];\nreplaceStep(plan, 'pay', 'refund');\nexpect(plan).toEqual(['refund', 'pay']);"
+        }
+      ],
+      "solution": "function replaceStep(plan, target, replacement) {\n  const index = plan.indexOf(target);\n\n  if (index === -1) {\n    return { replaced: false, index: -1 };\n  }\n\n  plan.splice(index, 1, replacement);\n\n  return { replaced: true, index };\n}",
+      "chapter": "01-javascript/47-splice"
+    }
+  ],
+  "01-javascript/48-slice": [
+    {
+      "id": "js-48-take-page",
+      "title": "Страница результатов",
+      "difficulty": "easy",
+      "lang": "js",
+      "runner": "browser",
+      "prompt": "Напишите функцию `page(items, pageNumber, size)`, которая возвращает страницу элементов. Нумерация страниц начинается с единицы. Исходный массив изменяться не должен, а выход за границы даёт пустой массив.",
+      "starter": "function page(items, pageNumber, size) {\n  // Конец диапазона в slice не включается.\n}",
+      "hints": [
+        "Начало страницы вычисляется из номера и размера.",
+        "Конец диапазона в slice не включается.",
+        "Выход за границы массива сам даёт пустой результат."
+      ],
+      "standSetup": "",
+      "tests": [
+        {
+          "name": "первая страница",
+          "code": "expect(page(['a', 'b', 'c', 'd'], 1, 2)).toEqual(['a', 'b']);"
+        },
+        {
+          "name": "вторая страница",
+          "code": "expect(page(['a', 'b', 'c', 'd'], 2, 2)).toEqual(['c', 'd']);"
+        },
+        {
+          "name": "страница за границами пуста",
+          "code": "expect(page(['a', 'b'], 5, 2)).toEqual([]);"
+        },
+        {
+          "name": "не изменяет исходный массив",
+          "code": "const source = ['a', 'b', 'c'];\npage(source, 1, 2);\nexpect(source).toEqual(['a', 'b', 'c']);"
+        },
+        {
+          "name": "неполная последняя страница",
+          "code": "expect(page(['a', 'b', 'c'], 2, 2)).toEqual(['c']);"
+        }
+      ],
+      "solution": "function page(items, pageNumber, size) {\n  const start = (pageNumber - 1) * size;\n\n  return items.slice(start, start + size);\n}",
+      "chapter": "01-javascript/48-slice"
+    },
+    {
+      "id": "js-48-snapshot-is-shallow",
+      "title": "Снимок списка и его граница",
+      "difficulty": "medium",
+      "lang": "js",
+      "runner": "browser",
+      "prompt": "Напишите функцию `snapshot(items)`, которая возвращает копию массива, защищённую от изменения **состава** исходного списка. Проверки покажут, что такая копия поверхностная: изменение объекта внутри видно в обоих массивах.",
+      "starter": "function snapshot(items) {\n  // Копия массива не делает копий его элементов.\n}",
+      "hints": [
+        "Полную копию массива даёт вызов slice без аргументов.",
+        "Добавление элемента в исходный массив копию не затронет.",
+        "Изменение объекта-элемента будет видно в обоих массивах — это ожидаемо."
+      ],
+      "standSetup": "",
+      "tests": [
+        {
+          "name": "копия содержит те же элементы",
+          "code": "expect(snapshot(['a', 'b'])).toEqual(['a', 'b']);"
+        },
+        {
+          "name": "добавление в исходный не влияет на копию",
+          "code": "const source = ['a'];\nconst copy = snapshot(source);\nsource.push('b');\nexpect(copy).toEqual(['a']);"
+        },
+        {
+          "name": "возвращается новый массив",
+          "code": "const source = ['a'];\nexpect(snapshot(source) === source).toBe(false);"
+        },
+        {
+          "name": "копия поверхностная: объект внутри общий",
+          "code": "const item = { n: 1 };\nconst copy = snapshot([item]);\ncopy[0].n = 99;\nexpect(item.n).toBe(99);"
+        }
+      ],
+      "solution": "function snapshot(items) {\n  return items.slice();\n}",
+      "chapter": "01-javascript/48-slice"
     }
   ],
   "01-javascript/49-iteration": [
@@ -2207,6 +3683,78 @@
       "chapter": "01-javascript/73-event-loop"
     }
   ],
+  "01-javascript/77-promise-api": [
+    {
+      "id": "js-77-finally-keeps-value",
+      "title": "finally не меняет результат",
+      "difficulty": "medium",
+      "lang": "js",
+      "runner": "browser",
+      "prompt": "Напишите функцию `withTeardown(promise, teardown)`, которая вызывает `teardown()` при любом исходе и возвращает промис с прежним результатом: значение при успехе, отклонение при ошибке. Возвращаемое из `teardown` значение влиять на результат не должно.",
+      "starter": "function withTeardown(promise, teardown) {\n  // Очистка не должна вмешиваться в результат цепочки.\n}",
+      "hints": [
+        "Есть метод цепочки, выполняющийся при любом исходе.",
+        "Его возвращаемое значение игнорируется.",
+        "Отклонение должно дойти до вызывающего кода."
+      ],
+      "standSetup": "",
+      "tests": [
+        {
+          "name": "значение сохраняется",
+          "code": "expect(await withTeardown(Promise.resolve('готово'), () => 'другое')).toBe('готово');"
+        },
+        {
+          "name": "очистка выполняется при успехе",
+          "code": "let called = false;\nawait withTeardown(Promise.resolve(1), () => { called = true; });\nexpect(called).toBe(true);"
+        },
+        {
+          "name": "очистка выполняется при ошибке",
+          "code": "const source = Promise.reject(new Error('сбой'));\nsource.catch(() => {});\nlet called = false;\ntry { await withTeardown(source, () => { called = true; }); } catch (error) {}\nexpect(called).toBe(true);"
+        },
+        {
+          "name": "отклонение доходит до вызывающего кода",
+          "code": "const source = Promise.reject(new Error('сбой'));\nsource.catch(() => {});\nlet message = '';\ntry { await withTeardown(source, () => {}); } catch (error) { message = error.message; }\nexpect(message).toBe('сбой');"
+        }
+      ],
+      "solution": "function withTeardown(promise, teardown) {\n  return promise.finally(() => {\n    teardown();\n  });\n}",
+      "chapter": "01-javascript/77-promise-api"
+    },
+    {
+      "id": "js-77-catch-position",
+      "title": "Положение catch в цепочке",
+      "difficulty": "medium",
+      "lang": "js",
+      "runner": "browser",
+      "prompt": "Напишите функцию `safeTransform(promise, transform)`, которая применяет `transform` к значению промиса и возвращает промис со строкой. Если исходный промис отклонён **или** преобразование бросило ошибку, вернуть строку `сбой`. Обработчик ошибок должен ловить оба случая.",
+      "starter": "function safeTransform(promise, transform) {\n  // catch ловит ошибки только тех звеньев, что стоят выше него.\n}",
+      "hints": [
+        "Обработчик ошибок ставится после преобразования, а не до.",
+        "Ошибка из обработчика успеха уходит в следующий catch по цепочке.",
+        "Возвращать нужно результат цепочки."
+      ],
+      "standSetup": "",
+      "tests": [
+        {
+          "name": "успешное преобразование",
+          "code": "expect(await safeTransform(Promise.resolve('ok'), (v) => v.toUpperCase())).toBe('OK');"
+        },
+        {
+          "name": "отклонённый исходный промис",
+          "code": "const source = Promise.reject(new Error('x'));\nsource.catch(() => {});\nexpect(await safeTransform(source, (v) => v)).toBe('сбой');"
+        },
+        {
+          "name": "ошибка внутри преобразования",
+          "code": "expect(await safeTransform(Promise.resolve('ok'), () => { throw new Error('x'); }))\n  .toBe('сбой');"
+        },
+        {
+          "name": "результат всегда успешный промис",
+          "code": "let failed = false;\ntry { await safeTransform(Promise.resolve('ok'), () => { throw new Error('x'); }); }\ncatch (error) { failed = true; }\nexpect(failed).toBe(false);"
+        }
+      ],
+      "solution": "function safeTransform(promise, transform) {\n  return promise\n    .then((value) => transform(value))\n    .catch(() => 'сбой');\n}",
+      "chapter": "01-javascript/77-promise-api"
+    }
+  ],
   "01-javascript/78-async-await": [
     {
       "id": "js-78-await-sequence",
@@ -2279,6 +3827,78 @@
       "chapter": "01-javascript/78-async-await"
     }
   ],
+  "01-javascript/79-async-error-handling": [
+    {
+      "id": "js-79-return-await-in-try",
+      "title": "return await внутри try",
+      "difficulty": "hard",
+      "lang": "js",
+      "runner": "browser",
+      "prompt": "Напишите функцию `loadOrDefault(load, fallback)`, которая возвращает результат асинхронной функции `load`, а при её отклонении — значение `fallback`. Обработка должна происходить **внутри** функции: наружу отклонение не уходит.",
+      "starter": "async function loadOrDefault(load, fallback) {\n  try {\n    // Без await отклонение пройдёт мимо catch.\n  } catch (error) {\n    return fallback;\n  }\n}",
+      "hints": [
+        "Возврат промиса из try выходит из блока до его отклонения.",
+        "Чтобы catch увидел ошибку, промис нужно развернуть внутри блока.",
+        "Значение fallback возвращается как есть."
+      ],
+      "standSetup": "",
+      "tests": [
+        {
+          "name": "успешное значение",
+          "code": "expect(await loadOrDefault(async () => 'данные', 'запасное')).toBe('данные');"
+        },
+        {
+          "name": "при отклонении возвращает запасное значение",
+          "code": "expect(await loadOrDefault(async () => { throw new Error('x'); }, 'запасное'))\n  .toBe('запасное');"
+        },
+        {
+          "name": "отклонение наружу не уходит",
+          "code": "let failed = false;\ntry { await loadOrDefault(async () => { throw new Error('x'); }, 'запасное'); }\ncatch (error) { failed = true; }\nexpect(failed).toBe(false);"
+        },
+        {
+          "name": "работает с функцией, возвращающей отклонённый промис",
+          "code": "const load = () => { const p = Promise.reject(new Error('x')); p.catch(() => {}); return p; };\nexpect(await loadOrDefault(load, 'запасное')).toBe('запасное');"
+        }
+      ],
+      "solution": "async function loadOrDefault(load, fallback) {\n  try {\n    return await load();\n  } catch (error) {\n    return fallback;\n  }\n}",
+      "chapter": "01-javascript/79-async-error-handling"
+    },
+    {
+      "id": "js-79-error-with-cause",
+      "title": "Проброс с сохранением причины",
+      "difficulty": "medium",
+      "lang": "js",
+      "runner": "browser",
+      "prompt": "Напишите функцию `withContext(operation, context)`, которая выполняет асинхронную операцию и при ошибке бросает новую ошибку с сообщением `<context>: <исходное сообщение>`, сохраняя исходную ошибку в поле `cause`.",
+      "starter": "async function withContext(operation, context) {\n  // Исходная ошибка не должна потеряться.\n}",
+      "hints": [
+        "Исходная причина передаётся вторым аргументом конструктора ошибки.",
+        "Сообщение собирается из контекста и текста исходной ошибки.",
+        "При успехе значение возвращается без изменений."
+      ],
+      "standSetup": "",
+      "tests": [
+        {
+          "name": "успешное значение проходит без изменений",
+          "code": "expect(await withContext(async () => 42, 'чтение конфигурации')).toBe(42);"
+        },
+        {
+          "name": "сообщение дополняется контекстом",
+          "code": "let message = '';\ntry { await withContext(async () => { throw new Error('файл не найден'); }, 'чтение'); }\ncatch (error) { message = error.message; }\nexpect(message).toBe('чтение: файл не найден');"
+        },
+        {
+          "name": "исходная ошибка сохранена в cause",
+          "code": "let causeMessage = '';\ntry { await withContext(async () => { throw new Error('файл не найден'); }, 'чтение'); }\ncatch (error) { causeMessage = error.cause.message; }\nexpect(causeMessage).toBe('файл не найден');"
+        },
+        {
+          "name": "брошенное значение является объектом Error",
+          "code": "let isError = false;\ntry { await withContext(async () => { throw new Error('x'); }, 'ctx'); }\ncatch (error) { isError = error instanceof Error; }\nexpect(isError).toBe(true);"
+        }
+      ],
+      "solution": "async function withContext(operation, context) {\n  try {\n    return await operation();\n  } catch (error) {\n    throw new Error(context + ': ' + error.message, { cause: error });\n  }\n}",
+      "chapter": "01-javascript/79-async-error-handling"
+    }
+  ],
   "01-javascript/80-parallel-async": [
     {
       "id": "js-80-run-together",
@@ -2349,6 +3969,374 @@
       ],
       "solution": "async function reportAll(operations) {\n  const settled = await Promise.allSettled(operations.map((operation) => operation()));\n\n  return settled.map((item) => item.status === 'fulfilled'\n    ? { ok: true, value: item.value }\n    : { ok: false, message: item.reason.message });\n}",
       "chapter": "01-javascript/80-parallel-async"
+    }
+  ],
+  "01-javascript/81-iterable-protocol": [
+    {
+      "id": "js-81-make-iterable",
+      "title": "Сделать объект пригодным для for...of",
+      "difficulty": "medium",
+      "lang": "js",
+      "runner": "browser",
+      "prompt": "Напишите функцию `createRange(from, to)`, которая возвращает объект, пригодный для `for...of` и spread: он выдаёт числа от `from` до `to` включительно. Обход должен быть повторяемым — второй проход даёт те же значения.",
+      "starter": "function createRange(from, to) {\n  // Объекту нужен метод с ключом Symbol.iterator.\n}",
+      "hints": [
+        "Пригодность для for...of даёт метод с ключом Symbol.iterator.",
+        "Проще всего объявить его методом-генератором.",
+        "Метод вызывается на каждый обход, поэтому повторяемость получается сама."
+      ],
+      "standSetup": "",
+      "tests": [
+        {
+          "name": "работает со spread",
+          "code": "expect([...createRange(1, 3)]).toEqual([1, 2, 3]);"
+        },
+        {
+          "name": "обход повторяем",
+          "code": "const range = createRange(1, 2);\nexpect([[...range], [...range]]).toEqual([[1, 2], [1, 2]]);"
+        },
+        {
+          "name": "пустой диапазон",
+          "code": "expect([...createRange(3, 1)]).toEqual([]);"
+        },
+        {
+          "name": "работает в for...of",
+          "code": "const seen = [];\nfor (const value of createRange(5, 7)) seen.push(value);\nexpect(seen).toEqual([5, 6, 7]);"
+        }
+      ],
+      "solution": "function createRange(from, to) {\n  return {\n    *[Symbol.iterator]() {\n      for (let value = from; value <= to; value += 1) {\n        yield value;\n      }\n    }\n  };\n}",
+      "chapter": "01-javascript/81-iterable-protocol"
+    },
+    {
+      "id": "js-81-is-iterable",
+      "title": "Проверка пригодности к обходу",
+      "difficulty": "easy",
+      "lang": "js",
+      "runner": "browser",
+      "prompt": "Напишите функцию `isIterable(value)`, которая возвращает `true`, если значение можно обойти через `for...of`. Строка и массив пригодны, обычный объект, `null` и число — нет.",
+      "starter": "function isIterable(value) {\n  // Пригодность определяется наличием метода с известным ключом.\n}",
+      "hints": [
+        "Проверять нужно наличие метода с ключом Symbol.iterator.",
+        "Обращение к свойству у null выбрасывает ошибку.",
+        "Проверка типа значения надёжнее проверки истинности."
+      ],
+      "standSetup": "",
+      "tests": [
+        {
+          "name": "массив и строка пригодны",
+          "code": "expect([isIterable([]), isIterable('qa')]).toEqual([true, true]);"
+        },
+        {
+          "name": "обычный объект непригоден",
+          "code": "expect(isIterable({ a: 1 })).toBe(false);"
+        },
+        {
+          "name": "null и число непригодны",
+          "code": "expect([isIterable(null), isIterable(42)]).toEqual([false, false]);"
+        },
+        {
+          "name": "Map и Set пригодны",
+          "code": "expect([isIterable(new Map()), isIterable(new Set())]).toEqual([true, true]);"
+        },
+        {
+          "name": "ошибки не возникает",
+          "code": "let thrown = false;\ntry { isIterable(undefined); } catch (error) { thrown = true; }\nexpect(thrown).toBe(false);"
+        }
+      ],
+      "solution": "function isIterable(value) {\n  return value !== null\n    && value !== undefined\n    && typeof value[Symbol.iterator] === 'function';\n}",
+      "chapter": "01-javascript/81-iterable-protocol"
+    }
+  ],
+  "01-javascript/83-generators": [
+    {
+      "id": "js-83-lazy-ids",
+      "title": "Ленивый генератор идентификаторов",
+      "difficulty": "medium",
+      "lang": "js",
+      "runner": "browser",
+      "prompt": "Напишите функцию-генератор `idSequence(prefix)`, которая бесконечно выдаёт строки `<prefix>-1`, `<prefix>-2` и так далее. Затем напишите функцию `takeIds(generator, count)`, которая берёт из него указанное число значений.",
+      "starter": "function* idSequence(prefix) {\n  // Бесконечный цикл безопасен: значения вычисляются по требованию.\n}\n\nfunction takeIds(generator, count) {\n  // Возьмите ровно count значений.\n}",
+      "hints": [
+        "Функция-генератор объявляется через function*.",
+        "Бесконечный цикл в генераторе не зависает: значения выдаются по запросу.",
+        "Значения берутся вызовами next() или обходом с ограничением."
+      ],
+      "standSetup": "",
+      "tests": [
+        {
+          "name": "выдаёт последовательные идентификаторы",
+          "code": "expect(takeIds(idSequence('task'), 3)).toEqual(['task-1', 'task-2', 'task-3']);"
+        },
+        {
+          "name": "нулевое количество даёт пустой массив",
+          "code": "expect(takeIds(idSequence('task'), 0)).toEqual([]);"
+        },
+        {
+          "name": "два генератора независимы",
+          "code": "const first = idSequence('a');\ntakeIds(first, 2);\nexpect(takeIds(idSequence('b'), 1)).toEqual(['b-1']);"
+        },
+        {
+          "name": "продолжает с места остановки",
+          "code": "const generator = idSequence('task');\ntakeIds(generator, 2);\nexpect(takeIds(generator, 1)).toEqual(['task-3']);"
+        }
+      ],
+      "solution": "function* idSequence(prefix) {\n  let number = 1;\n\n  while (true) {\n    yield prefix + '-' + number;\n    number += 1;\n  }\n}\n\nfunction takeIds(generator, count) {\n  const values = [];\n\n  for (let index = 0; index < count; index += 1) {\n    values.push(generator.next().value);\n  }\n\n  return values;\n}",
+      "chapter": "01-javascript/83-generators"
+    },
+    {
+      "id": "js-83-return-not-in-spread",
+      "title": "Что попадает в результат обхода",
+      "difficulty": "medium",
+      "lang": "js",
+      "runner": "browser",
+      "prompt": "Напишите функцию-генератор `steps()`, которая выдаёт `\"first\"` и `\"second\"`, а затем возвращает через `return` значение `\"done\"`. Напишите функции `collectBySpread()` и `collectByNext()`: первая собирает значения через spread, вторая — ручным обходом, включая значение из `return`.",
+      "starter": "function* steps() {\n  // Два yield и один return.\n}\n\nfunction collectBySpread() {\n  // Spread берёт только значения с done: false.\n}\n\nfunction collectByNext() {\n  // Ручной обход видит и значение из return.\n}",
+      "hints": [
+        "Значение из return приходит вместе с done: true.",
+        "Spread и for...of такие значения игнорируют.",
+        "Ручной обход через next() позволяет их получить."
+      ],
+      "standSetup": "",
+      "tests": [
+        {
+          "name": "spread не включает значение из return",
+          "code": "expect(collectBySpread()).toEqual(['first', 'second']);"
+        },
+        {
+          "name": "ручной обход включает значение из return",
+          "code": "expect(collectByNext()).toEqual(['first', 'second', 'done']);"
+        },
+        {
+          "name": "генератор сам является iterable",
+          "code": "expect(typeof steps()[Symbol.iterator]).toBe('function');"
+        },
+        {
+          "name": "повторный обход начинается сначала",
+          "code": "expect(collectBySpread()).toEqual(collectBySpread());"
+        }
+      ],
+      "solution": "function* steps() {\n  yield 'first';\n  yield 'second';\n\n  return 'done';\n}\n\nfunction collectBySpread() {\n  return [...steps()];\n}\n\nfunction collectByNext() {\n  const generator = steps();\n  const values = [];\n\n  while (true) {\n    const step = generator.next();\n    values.push(step.value);\n\n    if (step.done) {\n      return values;\n    }\n  }\n}",
+      "chapter": "01-javascript/83-generators"
+    }
+  ],
+  "01-javascript/93-error-objects": [
+    {
+      "id": "js-93-custom-error-class",
+      "title": "Собственный класс ошибки",
+      "difficulty": "medium",
+      "lang": "js",
+      "runner": "browser",
+      "prompt": "Объявите класс `ConfigError`, наследующий `Error`, с корректным полем `name`. Напишите функцию `describeError(error)`, которая возвращает `{ name, message, isConfigError }`, различая ошибки по типу, а не по тексту.",
+      "starter": "class ConfigError extends Error {\n  // Поле name нужно задать явно.\n}\n\nfunction describeError(error) {\n  // Тип проверяется через instanceof.\n}",
+      "hints": [
+        "Без явного присваивания name останется значением Error.",
+        "Конструктор родителя вызывается через super.",
+        "Принадлежность классу проверяется через instanceof."
+      ],
+      "standSetup": "",
+      "tests": [
+        {
+          "name": "имя класса задано",
+          "code": "expect(new ConfigError('нет файла').name).toBe('ConfigError');"
+        },
+        {
+          "name": "остаётся объектом Error",
+          "code": "expect(new ConfigError('x') instanceof Error).toBe(true);"
+        },
+        {
+          "name": "различает свой тип ошибки",
+          "code": "expect(describeError(new ConfigError('нет файла')))\n  .toEqual({ name: 'ConfigError', message: 'нет файла', isConfigError: true });"
+        },
+        {
+          "name": "обычная ошибка не считается своей",
+          "code": "expect(describeError(new Error('другое')).isConfigError).toBe(false);"
+        }
+      ],
+      "solution": "class ConfigError extends Error {\n  constructor(message, options) {\n    super(message, options);\n    this.name = 'ConfigError';\n  }\n}\n\nfunction describeError(error) {\n  return {\n    name: error.name,\n    message: error.message,\n    isConfigError: error instanceof ConfigError\n  };\n}",
+      "chapter": "01-javascript/93-error-objects"
+    },
+    {
+      "id": "js-93-serialize-error",
+      "title": "Ошибка в журнал",
+      "difficulty": "medium",
+      "lang": "js",
+      "runner": "browser",
+      "prompt": "Напишите функцию `toLogEntry(error)`, которая возвращает объект `{ name, message, hasStack }` для записи в журнал. Обычная сериализация ошибки теряет данные, поэтому поля нужно извлечь явно. Для значения, не являющегося ошибкой, вернуть `{ name: \"Unknown\", message: String(value), hasStack: false }`.",
+      "starter": "function toLogEntry(error) {\n  // JSON.stringify(error) возвращает пустой объект.\n}",
+      "hints": [
+        "Поля message и stack не перечисляемые, поэтому теряются при сериализации.",
+        "Извлекать их нужно явно по имени.",
+        "Значение может вообще не быть ошибкой."
+      ],
+      "standSetup": "",
+      "tests": [
+        {
+          "name": "извлекает поля ошибки",
+          "code": "const entry = toLogEntry(new Error('упало'));\nexpect([entry.name, entry.message, entry.hasStack]).toEqual(['Error', 'упало', true]);"
+        },
+        {
+          "name": "обычная сериализация действительно теряет данные",
+          "code": "expect(JSON.stringify(new Error('упало'))).toBe('{}');"
+        },
+        {
+          "name": "значение не из Error описывается отдельно",
+          "code": "expect(toLogEntry('строка'))\n  .toEqual({ name: 'Unknown', message: 'строка', hasStack: false });"
+        },
+        {
+          "name": "подкласс ошибки сохраняет своё имя",
+          "code": "class MyError extends Error { constructor(m) { super(m); this.name = 'MyError'; } }\nexpect(toLogEntry(new MyError('x')).name).toBe('MyError');"
+        }
+      ],
+      "solution": "function toLogEntry(error) {\n  if (!(error instanceof Error)) {\n    return { name: 'Unknown', message: String(error), hasStack: false };\n  }\n\n  return {\n    name: error.name,\n    message: error.message,\n    hasStack: typeof error.stack === 'string'\n  };\n}",
+      "chapter": "01-javascript/93-error-objects"
+    }
+  ],
+  "01-javascript/94-json": [
+    {
+      "id": "js-94-safe-stringify",
+      "title": "Сериализация без потерь и падений",
+      "difficulty": "hard",
+      "lang": "js",
+      "runner": "browser",
+      "prompt": "Напишите функцию `safeStringify(value)`, которая возвращает строку JSON. Циклическая ссылка не должна приводить к ошибке: повторно встреченный объект заменяется строкой `\"[circular]\"`. При любой другой ошибке сериализации вернуть `null`.",
+      "starter": "function safeStringify(value) {\n  // JSON.stringify принимает вторым аргументом функцию замены.\n}",
+      "hints": [
+        "Вторым аргументом JSON.stringify принимает функцию замены значений.",
+        "Уже встреченные объекты удобно запоминать в Set.",
+        "BigInt по-прежнему вызывает ошибку — её нужно перехватить."
+      ],
+      "standSetup": "",
+      "tests": [
+        {
+          "name": "обычный объект сериализуется",
+          "code": "expect(safeStringify({ a: 1 })).toBe('{\"a\":1}');"
+        },
+        {
+          "name": "циклическая ссылка не роняет функцию",
+          "code": "const cyclic = { name: 'a' };\ncyclic.self = cyclic;\nexpect(safeStringify(cyclic)).toContain('[circular]');"
+        },
+        {
+          "name": "BigInt даёт null вместо исключения",
+          "code": "expect(safeStringify({ big: 1n })).toBe(null);"
+        },
+        {
+          "name": "массивы сериализуются",
+          "code": "expect(safeStringify([1, 'a'])).toBe('[1,\"a\"]');"
+        }
+      ],
+      "solution": "function safeStringify(value) {\n  const seen = new Set();\n\n  try {\n    return JSON.stringify(value, (key, current) => {\n      if (typeof current === 'object' && current !== null) {\n        if (seen.has(current)) {\n          return '[circular]';\n        }\n\n        seen.add(current);\n      }\n\n      return current;\n    });\n  } catch (error) {\n    return null;\n  }\n}",
+      "chapter": "01-javascript/94-json"
+    },
+    {
+      "id": "js-94-revive-dates",
+      "title": "Восстановление типов при разборе",
+      "difficulty": "medium",
+      "lang": "js",
+      "runner": "browser",
+      "prompt": "Напишите функцию `parseWithDates(text, dateFields)`, которая разбирает JSON и превращает указанные поля в объекты `Date`. Остальные поля остаются как есть. При некорректном тексте вернуть `null`.",
+      "starter": "function parseWithDates(text, dateFields) {\n  // JSON.parse принимает вторым аргументом функцию преобразования.\n}",
+      "hints": [
+        "Вторым аргументом JSON.parse принимает функцию преобразования значений.",
+        "Она получает имя ключа и значение.",
+        "Некорректный текст выбрасывает SyntaxError."
+      ],
+      "standSetup": "",
+      "tests": [
+        {
+          "name": "превращает указанные поля в даты",
+          "code": "const parsed = parseWithDates('{\"createdAt\":\"2026-09-22T10:00:00.000Z\"}', ['createdAt']);\nexpect(parsed.createdAt instanceof Date).toBe(true);"
+        },
+        {
+          "name": "значение даты восстановлено верно",
+          "code": "const parsed = parseWithDates('{\"createdAt\":\"2026-09-22T10:00:00.000Z\"}', ['createdAt']);\nexpect(parsed.createdAt.toISOString()).toBe('2026-09-22T10:00:00.000Z');"
+        },
+        {
+          "name": "остальные поля не трогаются",
+          "code": "const parsed = parseWithDates('{\"name\":\"login\",\"createdAt\":\"2026-09-22T10:00:00.000Z\"}', ['createdAt']);\nexpect(parsed.name).toBe('login');"
+        },
+        {
+          "name": "некорректный текст даёт null",
+          "code": "expect(parseWithDates('{не json}', [])).toBe(null);"
+        }
+      ],
+      "solution": "function parseWithDates(text, dateFields) {\n  try {\n    return JSON.parse(text, (key, value) =>\n      dateFields.includes(key) ? new Date(value) : value);\n  } catch (error) {\n    return null;\n  }\n}",
+      "chapter": "01-javascript/94-json"
+    }
+  ],
+  "01-javascript/95-date": [
+    {
+      "id": "js-95-normalize-to-utc",
+      "title": "Нормализация даты в UTC",
+      "difficulty": "medium",
+      "lang": "js",
+      "runner": "browser",
+      "prompt": "Напишите функцию `toUtcString(value)`, которая принимает строку или объект `Date` и возвращает строку ISO в UTC. Для некорректной даты вернуть `null`, не выбрасывая ошибку.",
+      "starter": "function toUtcString(value) {\n  // new Date('не дата') не бросает — он даёт Invalid Date.\n}",
+      "hints": [
+        "Некорректная дата не выбрасывает ошибку, а даёт Invalid Date.",
+        "Проверить её можно через Number.isNaN(date.getTime()).",
+        "Строку в UTC даёт toISOString."
+      ],
+      "standSetup": "",
+      "tests": [
+        {
+          "name": "строка приводится к UTC",
+          "code": "expect(toUtcString('2026-09-22T10:00:00Z')).toBe('2026-09-22T10:00:00.000Z');"
+        },
+        {
+          "name": "смещение учитывается",
+          "code": "expect(toUtcString('2026-09-22T13:00:00+03:00')).toBe('2026-09-22T10:00:00.000Z');"
+        },
+        {
+          "name": "объект Date тоже принимается",
+          "code": "expect(toUtcString(new Date('2026-09-22T10:00:00Z'))).toBe('2026-09-22T10:00:00.000Z');"
+        },
+        {
+          "name": "некорректная дата даёт null",
+          "code": "expect(toUtcString('не дата')).toBe(null);"
+        },
+        {
+          "name": "ошибки не возникает",
+          "code": "let thrown = false;\ntry { toUtcString('мусор'); } catch (error) { thrown = true; }\nexpect(thrown).toBe(false);"
+        }
+      ],
+      "solution": "function toUtcString(value) {\n  const date = value instanceof Date ? value : new Date(value);\n\n  return Number.isNaN(date.getTime()) ? null : date.toISOString();\n}",
+      "chapter": "01-javascript/95-date"
+    },
+    {
+      "id": "js-95-duration-between",
+      "title": "Длительность между двумя моментами",
+      "difficulty": "easy",
+      "lang": "js",
+      "runner": "browser",
+      "prompt": "Напишите функцию `durationMs(start, end)`, которая возвращает длительность в миллисекундах между двумя датами. Порядок аргументов не важен: результат всегда неотрицательный. Для некорректных дат вернуть `null`.",
+      "starter": "function durationMs(start, end) {\n  // Вычитание дат даёт разницу в миллисекундах.\n}",
+      "hints": [
+        "Вычитание объектов Date даёт число миллисекунд.",
+        "Абсолютное значение даёт Math.abs.",
+        "Некорректную дату нужно отсечь до вычисления."
+      ],
+      "standSetup": "",
+      "tests": [
+        {
+          "name": "считает разницу",
+          "code": "expect(durationMs(new Date('2026-09-22T10:00:00Z'), new Date('2026-09-23T10:00:00Z')))\n  .toBe(86400000);"
+        },
+        {
+          "name": "порядок аргументов не важен",
+          "code": "expect(durationMs(new Date('2026-09-23T10:00:00Z'), new Date('2026-09-22T10:00:00Z')))\n  .toBe(86400000);"
+        },
+        {
+          "name": "одинаковые моменты дают ноль",
+          "code": "const moment = new Date('2026-09-22T10:00:00Z');\nexpect(durationMs(moment, moment)).toBe(0);"
+        },
+        {
+          "name": "некорректная дата даёт null",
+          "code": "expect(durationMs(new Date('не дата'), new Date())).toBe(null);"
+        }
+      ],
+      "solution": "function durationMs(start, end) {\n  if (Number.isNaN(start.getTime()) || Number.isNaN(end.getTime())) {\n    return null;\n  }\n\n  return Math.abs(end.getTime() - start.getTime());\n}",
+      "chapter": "01-javascript/95-date"
     }
   ],
   "02-typescript/104-any-and-unknown": [
@@ -2464,6 +4452,119 @@
       "chapter": "02-typescript/111-type-alias"
     }
   ],
+  "02-typescript/113-interface-vs-type-alias": [
+    {
+      "id": "ts-113-interface-extends",
+      "title": "Расширение интерфейса",
+      "difficulty": "easy",
+      "lang": "ts",
+      "runner": "browser",
+      "prompt": "Объявите `interface BaseItem { id: string; title: string }` и `interface TrackedItem extends BaseItem { version: number }`. Напишите `describeItem(item: TrackedItem): string`, возвращающую `<id>/<title>/v<version>`.",
+      "starter": "interface BaseItem {\n  id: string;\n  title: string;\n}\n\ninterface TrackedItem extends BaseItem {\n  version: number;\n}\n\nfunction describeItem(item: TrackedItem): string {\n  return '';\n}",
+      "hints": [
+        "Наследник видит поля базового интерфейса как свои.",
+        "Разделитель — косая черта.",
+        "Перед номером версии стоит буква v."
+      ],
+      "standSetup": "",
+      "tests": [
+        {
+          "name": "собирает описание из трёх полей",
+          "code": "expect(describeItem({ id: 'WI-1', title: 'login', version: 2 }))\n  .toBe('WI-1/login/v2');"
+        },
+        {
+          "name": "работает с нулевой версией",
+          "code": "expect(describeItem({ id: 'WI-9', title: 'draft', version: 0 }))\n  .toBe('WI-9/draft/v0');"
+        },
+        {
+          "name": "не подставляет фиксированные значения",
+          "code": "expect(describeItem({ id: 'A', title: 'B', version: 11 })).toBe('A/B/v11');"
+        }
+      ],
+      "solution": "interface BaseItem {\n  id: string;\n  title: string;\n}\n\ninterface TrackedItem extends BaseItem {\n  version: number;\n}\n\nfunction describeItem(item: TrackedItem): string {\n  return item.id + '/' + item.title + '/v' + item.version;\n}",
+      "chapter": "02-typescript/113-interface-vs-type-alias"
+    },
+    {
+      "id": "ts-113-union-needs-alias",
+      "title": "Там, где интерфейс не подходит",
+      "difficulty": "medium",
+      "lang": "ts",
+      "runner": "browser",
+      "prompt": "Объединение нельзя описать интерфейсом — только псевдонимом типа. Объявите `type Identifier = string | number` и напишите `toKey(id: Identifier): string`, которая возвращает строку: число превращается в строку с префиксом `n:`, строка — с префиксом `s:`. Пустая строка и `NaN` недопустимы — в этих случаях выбрасывайте ошибку с сообщением `некорректный идентификатор`.",
+      "starter": "type Identifier = string | number;\n\nfunction toKey(id: Identifier): string {\n  return '';\n}",
+      "hints": [
+        "Различить варианты объединения помогает typeof.",
+        "NaN не равен сам себе — это удобный способ его поймать.",
+        "Сообщение об ошибке должно совпадать дословно."
+      ],
+      "standSetup": "",
+      "tests": [
+        {
+          "name": "число получает префикс n:",
+          "code": "expect(toKey(42)).toBe('n:42');"
+        },
+        {
+          "name": "строка получает префикс s:",
+          "code": "expect(toKey('WI-1')).toBe('s:WI-1');"
+        },
+        {
+          "name": "пустая строка недопустима",
+          "code": "let message = '';\ntry { toKey(''); } catch (error) { message = error.message; }\nexpect(message).toBe('некорректный идентификатор');"
+        },
+        {
+          "name": "NaN недопустим",
+          "code": "let message = '';\ntry { toKey(NaN); } catch (error) { message = error.message; }\nexpect(message).toBe('некорректный идентификатор');"
+        },
+        {
+          "name": "ноль остаётся допустимым",
+          "code": "expect(toKey(0)).toBe('n:0');"
+        }
+      ],
+      "solution": "type Identifier = string | number;\n\nfunction toKey(id: Identifier): string {\n  if (typeof id === 'number') {\n    if (Number.isNaN(id)) {\n      throw new Error('некорректный идентификатор');\n    }\n\n    return 'n:' + id;\n  }\n\n  if (id === '') {\n    throw new Error('некорректный идентификатор');\n  }\n\n  return 's:' + id;\n}",
+      "chapter": "02-typescript/113-interface-vs-type-alias"
+    }
+  ],
+  "02-typescript/116-as-const": [
+    {
+      "id": "ts-116-frozen-statuses",
+      "title": "Список допустимых статусов",
+      "difficulty": "medium",
+      "lang": "ts",
+      "runner": "browser",
+      "prompt": "Объявите `const STATUSES = [...] as const` со значениями `NEW`, `IN_PROGRESS`, `DONE` и тип `Status = typeof STATUSES[number]`. Напишите `isStatus(value: unknown): value is Status`, которая проверяет принадлежность значения списку. Проверка должна читать сам список, а не повторять значения строками.",
+      "starter": "const STATUSES = ['NEW', 'IN_PROGRESS', 'DONE'] as const;\n\ntype Status = typeof STATUSES[number];\n\nfunction isStatus(value: unknown): value is Status {\n  return false;\n}",
+      "hints": [
+        "as const делает массив доступным только для чтения и сохраняет литералы.",
+        "typeof STATUSES[number] — это объединение элементов массива.",
+        "Проверку принадлежности даёт includes у массива."
+      ],
+      "standSetup": "",
+      "tests": [
+        {
+          "name": "известный статус распознаётся",
+          "code": "expect(isStatus('NEW')).toBe(true);\nexpect(isStatus('DONE')).toBe(true);"
+        },
+        {
+          "name": "неизвестное значение отвергается",
+          "code": "expect(isStatus('CLOSED')).toBe(false);"
+        },
+        {
+          "name": "не строковое значение отвергается",
+          "code": "expect(isStatus(0)).toBe(false);\nexpect(isStatus(null)).toBe(false);"
+        },
+        {
+          "name": "проверка опирается на список, а не на копию значений",
+          "code": "expect(STATUSES.every(status => isStatus(status))).toBe(true);\nexpect(STATUSES).toHaveLength(3);"
+        },
+        {
+          "name": "список не изменяется во время выполнения",
+          "code": "expect(STATUSES[0]).toBe('NEW');\nexpect(STATUSES[2]).toBe('DONE');"
+        }
+      ],
+      "solution": "const STATUSES = ['NEW', 'IN_PROGRESS', 'DONE'] as const;\n\ntype Status = typeof STATUSES[number];\n\nfunction isStatus(value: unknown): value is Status {\n  return typeof value === 'string'\n    && (STATUSES as readonly string[]).includes(value);\n}",
+      "chapter": "02-typescript/116-as-const"
+    }
+  ],
   "02-typescript/118-union-types": [
     {
       "id": "ts-118-status-label",
@@ -2534,6 +4635,162 @@
       ],
       "solution": "type Outcome =\n  | { ok: true; value: string }\n  | { ok: false; message: string };\n\nfunction describeOutcome(outcome: Outcome): string {\n  if (outcome.ok) {\n    return outcome.value;\n  }\n\n  return 'ошибка: ' + outcome.message;\n}",
       "chapter": "02-typescript/118-union-types"
+    }
+  ],
+  "02-typescript/122-optional-default-and-rest-parameters": [
+    {
+      "id": "ts-122-build-url",
+      "title": "Адрес с необязательными параметрами",
+      "difficulty": "medium",
+      "lang": "ts",
+      "runner": "browser",
+      "prompt": "Напишите `buildUrl(path: string, params?: Record<string, string | number>, base = \"http://127.0.0.1:4310\"): string`. Результат — `<base><path>` плюс строка запроса, если параметры переданы и непусты. Ключи в строке запроса идут в порядке передачи, значения кодируются `encodeURIComponent`.",
+      "starter": "function buildUrl(\n  path: string,\n  params?: Record<string, string | number>,\n  base = 'http://127.0.0.1:4310'\n): string {\n  return base + path;\n}",
+      "hints": [
+        "Параметр со значением по умолчанию остаётся необязательным при вызове.",
+        "Пустой объект параметров не должен добавлять вопросительный знак.",
+        "Числовое значение перед кодированием превращается в строку."
+      ],
+      "standSetup": "",
+      "tests": [
+        {
+          "name": "без параметров возвращается базовый адрес",
+          "code": "expect(buildUrl('/work-items')).toBe('http://127.0.0.1:4310/work-items');"
+        },
+        {
+          "name": "параметры добавляются в порядке передачи",
+          "code": "expect(buildUrl('/work-items', { status: 'NEW', limit: 10 }))\n  .toBe('http://127.0.0.1:4310/work-items?status=NEW&limit=10');"
+        },
+        {
+          "name": "пустой объект не добавляет вопросительный знак",
+          "code": "expect(buildUrl('/work-items', {})).toBe('http://127.0.0.1:4310/work-items');"
+        },
+        {
+          "name": "значение кодируется",
+          "code": "expect(buildUrl('/search', { q: 'a b&c' }))\n  .toBe('http://127.0.0.1:4310/search?q=a%20b%26c');"
+        },
+        {
+          "name": "база заменяется третьим аргументом",
+          "code": "expect(buildUrl('/x', undefined, 'https://stand.test'))\n  .toBe('https://stand.test/x');"
+        }
+      ],
+      "solution": "function buildUrl(\n  path: string,\n  params?: Record<string, string | number>,\n  base = 'http://127.0.0.1:4310'\n): string {\n  const entries = params === undefined ? [] : Object.entries(params);\n\n  if (entries.length === 0) {\n    return base + path;\n  }\n\n  const query = entries\n    .map(([key, value]) => key + '=' + encodeURIComponent(String(value)))\n    .join('&');\n\n  return base + path + '?' + query;\n}",
+      "chapter": "02-typescript/122-optional-default-and-rest-parameters"
+    },
+    {
+      "id": "ts-122-rest-steps",
+      "title": "Остаточные параметры",
+      "difficulty": "medium",
+      "lang": "ts",
+      "runner": "browser",
+      "prompt": "Напишите `describeScenario(name: string, ...steps: string[]): string`. Результат — `<name>: шаг1 → шаг2 → шаг3`. Если шагов нет, верните `<name>: шагов нет`. Пустые строки и строки из пробелов шагами не считаются.",
+      "starter": "function describeScenario(name: string, ...steps: string[]): string {\n  return '';\n}",
+      "hints": [
+        "Остаточный параметр всегда массив, даже когда аргументов нет.",
+        "Отфильтровать пустые шаги надо до проверки на пустоту.",
+        "Разделитель между шагами — пробел, стрелка, пробел."
+      ],
+      "standSetup": "",
+      "tests": [
+        {
+          "name": "шаги соединяются стрелкой",
+          "code": "expect(describeScenario('Вход', 'открыть', 'заполнить', 'отправить'))\n  .toBe('Вход: открыть → заполнить → отправить');"
+        },
+        {
+          "name": "без шагов возвращается заглушка",
+          "code": "expect(describeScenario('Вход')).toBe('Вход: шагов нет');"
+        },
+        {
+          "name": "пустые шаги отбрасываются",
+          "code": "expect(describeScenario('Вход', 'открыть', '', '   ', 'отправить'))\n  .toBe('Вход: открыть → отправить');"
+        },
+        {
+          "name": "единственный шаг не получает разделителя",
+          "code": "expect(describeScenario('Вход', 'открыть')).toBe('Вход: открыть');"
+        },
+        {
+          "name": "все шаги пустые — как будто их нет",
+          "code": "expect(describeScenario('Вход', '', '  ')).toBe('Вход: шагов нет');"
+        }
+      ],
+      "solution": "function describeScenario(name: string, ...steps: string[]): string {\n  const meaningful = steps.filter(step => step.trim() !== '');\n\n  if (meaningful.length === 0) {\n    return name + ': шагов нет';\n  }\n\n  return name + ': ' + meaningful.join(' → ');\n}",
+      "chapter": "02-typescript/122-optional-default-and-rest-parameters"
+    }
+  ],
+  "02-typescript/127-narrowing": [
+    {
+      "id": "ts-127-narrow-config-value",
+      "title": "Сужение значения из конфигурации",
+      "difficulty": "medium",
+      "lang": "ts",
+      "runner": "browser",
+      "prompt": "Напишите функцию `readTimeout(value: unknown): number`, которая возвращает число таймаута. Допустимы число и строка, содержащая число. Отрицательные значения и всё остальное дают `5000`. Сужение выполняйте проверками, а не приведением через `as`.",
+      "starter": "function readTimeout(value: unknown): number {\n  // typeof сужает unknown до конкретного типа.\n  return 5000;\n}",
+      "hints": [
+        "Для примитивов сужение выполняет typeof.",
+        "Строку нужно преобразовать и проверить результат.",
+        "Отрицательное значение и NaN одинаково недопустимы."
+      ],
+      "standSetup": "",
+      "tests": [
+        {
+          "name": "число возвращается как есть",
+          "code": "expect(readTimeout(1000)).toBe(1000);"
+        },
+        {
+          "name": "строка с числом разбирается",
+          "code": "expect(readTimeout('2500')).toBe(2500);"
+        },
+        {
+          "name": "отрицательное значение заменяется",
+          "code": "expect(readTimeout(-1)).toBe(5000);"
+        },
+        {
+          "name": "нечисловая строка заменяется",
+          "code": "expect(readTimeout('быстро')).toBe(5000);"
+        },
+        {
+          "name": "null и объект заменяются",
+          "code": "expect(readTimeout(null) + readTimeout({})).toBe(10000);"
+        }
+      ],
+      "solution": "function readTimeout(value: unknown): number {\n  if (typeof value === 'number' && Number.isFinite(value) && value >= 0) {\n    return value;\n  }\n\n  if (typeof value === 'string') {\n    const parsed = Number(value);\n\n    if (value.trim() !== '' && Number.isFinite(parsed) && parsed >= 0) {\n      return parsed;\n    }\n  }\n\n  return 5000;\n}",
+      "chapter": "02-typescript/127-narrowing"
+    },
+    {
+      "id": "ts-127-narrow-union-member",
+      "title": "Сужение объединения по форме",
+      "difficulty": "medium",
+      "lang": "ts",
+      "runner": "browser",
+      "prompt": "Объявите тип `Source` как объединение `string` и `{ url: string }`. Напишите функцию `readUrl(source: Source): string`, которая возвращает саму строку или поле `url`. Обращаться к полю объединения без сужения нельзя.",
+      "starter": "type Source = string | { url: string };\n\nfunction readUrl(source: Source): string {\n  // У значения объединения доступны только общие члены.\n  return '';\n}",
+      "hints": [
+        "Сначала отделите строку через typeof.",
+        "После этого остаётся только объектный вариант.",
+        "Поле url доступно лишь в суженной ветке."
+      ],
+      "standSetup": "",
+      "tests": [
+        {
+          "name": "строка возвращается как есть",
+          "code": "expect(readUrl('http://a')).toBe('http://a');"
+        },
+        {
+          "name": "объект даёт поле url",
+          "code": "expect(readUrl({ url: 'http://b' })).toBe('http://b');"
+        },
+        {
+          "name": "пустая строка сохраняется",
+          "code": "expect(readUrl('')).toBe('');"
+        },
+        {
+          "name": "пустой url сохраняется",
+          "code": "expect(readUrl({ url: '' })).toBe('');"
+        }
+      ],
+      "solution": "type Source = string | { url: string };\n\nfunction readUrl(source: Source): string {\n  if (typeof source === 'string') {\n    return source;\n  }\n\n  return source.url;\n}",
+      "chapter": "02-typescript/127-narrowing"
     }
   ],
   "02-typescript/129-user-defined-type-guards": [
@@ -2612,6 +4869,150 @@
       "chapter": "02-typescript/129-user-defined-type-guards"
     }
   ],
+  "02-typescript/131-satisfies": [
+    {
+      "id": "ts-131-satisfies-config",
+      "title": "Конфигурация под satisfies",
+      "difficulty": "medium",
+      "lang": "ts",
+      "runner": "browser",
+      "prompt": "Объявите тип `EnvConfig = { baseUrl: string; retries: number }` и константу `config`, описанную через `satisfies EnvConfig` (без аннотации типа). Затем напишите `describeConfig(): string`, возвращающую строку вида `<baseUrl> ×<retries>`. Значения: `http://127.0.0.1:8080` и `3`.",
+      "starter": "type EnvConfig = {\n  baseUrl: string;\n  retries: number;\n};\n\nconst config = {\n  // ваши значения\n} satisfies EnvConfig;\n\nfunction describeConfig(): string {\n  return '';\n}",
+      "hints": [
+        "satisfies проверяет объект на соответствие типу, но оставляет конкретные значения.",
+        "Обращаться к полям надо через config, а не через литералы в строке.",
+        "Разделитель между адресом и числом — пробел и символ ×."
+      ],
+      "standSetup": "",
+      "tests": [
+        {
+          "name": "строка собрана из полей конфигурации",
+          "code": "expect(describeConfig()).toBe('http://127.0.0.1:8080 ×3');"
+        },
+        {
+          "name": "адрес хранится в конфигурации",
+          "code": "expect(config.baseUrl).toBe('http://127.0.0.1:8080');"
+        },
+        {
+          "name": "число попыток — число, а не строка",
+          "code": "expect(typeof config.retries).toBe('number');"
+        },
+        {
+          "name": "описание читает актуальные поля",
+          "code": "expect(describeConfig()).toContain(String(config.retries));"
+        }
+      ],
+      "solution": "type EnvConfig = {\n  baseUrl: string;\n  retries: number;\n};\n\nconst config = {\n  baseUrl: 'http://127.0.0.1:8080',\n  retries: 3\n} satisfies EnvConfig;\n\nfunction describeConfig(): string {\n  return config.baseUrl + ' ×' + config.retries;\n}",
+      "chapter": "02-typescript/131-satisfies"
+    },
+    {
+      "id": "ts-131-satisfies-keeps-literals",
+      "title": "Ключи остаются известными",
+      "difficulty": "hard",
+      "lang": "ts",
+      "runner": "browser",
+      "prompt": "Объявите карту таймаутов `timeouts` через `satisfies Record<string, number>` с ключами `short: 1000`, `normal: 5000`, `long: 30000`. Напишите `listTimeouts(): string[]`, которая возвращает ключи в порядке возрастания значения. Порядок объявления должен быть неважен: сортируйте по значению, а не полагайтесь на порядок ключей.",
+      "starter": "const timeouts = {\n  // ваши значения\n} satisfies Record<string, number>;\n\nfunction listTimeouts(): string[] {\n  return [];\n}",
+      "hints": [
+        "Object.entries даёт пары «ключ — значение».",
+        "Сортировать нужно по значению, а вернуть только ключи.",
+        "Тип Record<string, number> допускает любые ключи, поэтому опираться стоит на данные."
+      ],
+      "standSetup": "",
+      "tests": [
+        {
+          "name": "ключи отсортированы по значению",
+          "code": "expect(listTimeouts()).toEqual(['short', 'normal', 'long']);"
+        },
+        {
+          "name": "значения заданы верно",
+          "code": "expect(timeouts.short).toBe(1000);\nexpect(timeouts.normal).toBe(5000);\nexpect(timeouts.long).toBe(30000);"
+        },
+        {
+          "name": "возвращается ровно три ключа",
+          "code": "expect(listTimeouts()).toHaveLength(3);"
+        },
+        {
+          "name": "список собирается из объекта, а не записан руками",
+          "code": "expect(listTimeouts()).toEqual(\n  Object.entries(timeouts).sort((a, b) => a[1] - b[1]).map(pair => pair[0])\n);"
+        }
+      ],
+      "solution": "const timeouts = {\n  short: 1000,\n  normal: 5000,\n  long: 30000\n} satisfies Record<string, number>;\n\nfunction listTimeouts(): string[] {\n  return Object.entries(timeouts)\n    .sort((a, b) => a[1] - b[1])\n    .map(([name]) => name);\n}",
+      "chapter": "02-typescript/131-satisfies"
+    }
+  ],
+  "02-typescript/132-exhaustive-checks-with-never": [
+    {
+      "id": "ts-132-exhaustive-status",
+      "title": "Проверка полноты разбора",
+      "difficulty": "medium",
+      "lang": "ts",
+      "runner": "browser",
+      "prompt": "Объявите тип `Status` как `\"passed\" | \"failed\" | \"skipped\"` и функцию `weight(status: Status): number`, возвращающую `0`, `1` и `2`. В ветке по умолчанию бросьте ошибку `неизвестный статус: <значение>` — так нераспознанное значение обнаружится во время выполнения, а не пройдёт молча.",
+      "starter": "type Status = 'passed' | 'failed' | 'skipped';\n\nfunction weight(status: Status): number {\n  // Ветка по умолчанию должна сообщать о неизвестном значении.\n  return 0;\n}",
+      "hints": [
+        "Все объявленные варианты нужно разобрать явно.",
+        "Ветка по умолчанию не возвращает значение, а бросает ошибку.",
+        "Сообщение собирается из текста и самого значения."
+      ],
+      "standSetup": "",
+      "tests": [
+        {
+          "name": "известные значения",
+          "code": "expect([weight('passed'), weight('failed'), weight('skipped')]).toEqual([0, 1, 2]);"
+        },
+        {
+          "name": "неизвестное значение бросает ошибку",
+          "code": "let message = '';\ntry { weight('broken' as never); } catch (error) { message = (error as Error).message; }\nexpect(message).toBe('неизвестный статус: broken');"
+        },
+        {
+          "name": "ошибка является объектом Error",
+          "code": "let isError = false;\ntry { weight('x' as never); } catch (error) { isError = error instanceof Error; }\nexpect(isError).toBe(true);"
+        },
+        {
+          "name": "подходит для сортировки",
+          "code": "const sorted: Status[] = ['skipped', 'passed', 'failed'];\nexpect(sorted.sort((a, b) => weight(a) - weight(b))).toEqual(['passed', 'failed', 'skipped']);"
+        }
+      ],
+      "solution": "type Status = 'passed' | 'failed' | 'skipped';\n\nfunction weight(status: Status): number {\n  switch (status) {\n    case 'passed':\n      return 0;\n    case 'failed':\n      return 1;\n    case 'skipped':\n      return 2;\n    default: {\n      const unknownStatus: never = status;\n\n      throw new Error('неизвестный статус: ' + String(unknownStatus));\n    }\n  }\n}",
+      "chapter": "02-typescript/132-exhaustive-checks-with-never"
+    },
+    {
+      "id": "ts-132-exhaustive-outcome",
+      "title": "Полный разбор размеченного объединения",
+      "difficulty": "hard",
+      "lang": "ts",
+      "runner": "browser",
+      "prompt": "Объявите тип `Event` как объединение `{ kind: \"start\" }`, `{ kind: \"finish\"; durationMs: number }` и `{ kind: \"error\"; message: string }`. Напишите функцию `render(event: Event): string`, возвращающую `\"старт\"`, `\"финиш за <мс> мс\"` или `\"ошибка: <сообщение>\"`. Неизвестный вид события должен приводить к ошибке.",
+      "starter": "type Event =\n  | { kind: 'start' }\n  | { kind: 'finish'; durationMs: number }\n  | { kind: 'error'; message: string };\n\nfunction render(event: Event): string {\n  // Поле kind является различителем.\n  return '';\n}",
+      "hints": [
+        "Сужение выполняется по полю kind.",
+        "В каждой ветке доступны только её собственные поля.",
+        "Ветка по умолчанию бросает ошибку с указанием вида события."
+      ],
+      "standSetup": "",
+      "tests": [
+        {
+          "name": "событие старта",
+          "code": "expect(render({ kind: 'start' })).toBe('старт');"
+        },
+        {
+          "name": "событие завершения",
+          "code": "expect(render({ kind: 'finish', durationMs: 120 })).toBe('финиш за 120 мс');"
+        },
+        {
+          "name": "событие ошибки",
+          "code": "expect(render({ kind: 'error', message: 'нет доступа' })).toBe('ошибка: нет доступа');"
+        },
+        {
+          "name": "неизвестный вид бросает ошибку",
+          "code": "let thrown = false;\ntry { render({ kind: 'unknown' } as never); } catch (error) { thrown = true; }\nexpect(thrown).toBe(true);"
+        }
+      ],
+      "solution": "type Event =\n  | { kind: 'start' }\n  | { kind: 'finish'; durationMs: number }\n  | { kind: 'error'; message: string };\n\nfunction render(event: Event): string {\n  switch (event.kind) {\n    case 'start':\n      return 'старт';\n    case 'finish':\n      return 'финиш за ' + event.durationMs + ' мс';\n    case 'error':\n      return 'ошибка: ' + event.message;\n    default: {\n      const unknownEvent: never = event;\n\n      throw new Error('неизвестное событие: ' + JSON.stringify(unknownEvent));\n    }\n  }\n}",
+      "chapter": "02-typescript/132-exhaustive-checks-with-never"
+    }
+  ],
   "02-typescript/133-generic-functions": [
     {
       "id": "ts-133-first-or-null",
@@ -2682,6 +5083,421 @@
       ],
       "solution": "function groupBy<T>(items: T[], readKey: (item: T) => string): Record<string, T[]> {\n  return items.reduce<Record<string, T[]>>((groups, item) => {\n    const key = readKey(item);\n\n    if (!groups[key]) {\n      groups[key] = [];\n    }\n\n    groups[key].push(item);\n\n    return groups;\n  }, {});\n}",
       "chapter": "02-typescript/133-generic-functions"
+    }
+  ],
+  "02-typescript/141-indexed-access-types": [
+    {
+      "id": "ts-141-pluck-values",
+      "title": "Сбор значений одного поля",
+      "difficulty": "medium",
+      "lang": "ts",
+      "runner": "browser",
+      "prompt": "Напишите `pluck<T, K extends keyof T>(items: T[], key: K): T[K][]` — функцию, которая собирает значения одного поля из массива объектов. Элементы, у которых поле отсутствует или равно `undefined`, в результат не попадают. Тип элемента результата описывается индексным доступом `T[K]`.",
+      "starter": "function pluck<T, K extends keyof T>(items: T[], key: K): T[K][] {\n  // Пропускайте элементы без значения.\n  return [];\n}",
+      "hints": [
+        "Запись T[K] — это тип значения поля K у типа T.",
+        "Отсутствующее поле и явный undefined выглядят одинаково.",
+        "Значения нельзя преобразовывать: число должно остаться числом."
+      ],
+      "standSetup": "",
+      "tests": [
+        {
+          "name": "собирает строковые значения",
+          "code": "expect(pluck([{ id: 'a' }, { id: 'b' }], 'id')).toEqual(['a', 'b']);"
+        },
+        {
+          "name": "пропускает элементы без значения",
+          "code": "const items = [{ id: 'a' }, {}, { id: 'c' }] as { id?: string }[];\nexpect(pluck(items, 'id')).toEqual(['a', 'c']);"
+        },
+        {
+          "name": "числа остаются числами",
+          "code": "const values = pluck([{ version: 0 }, { version: 2 }], 'version');\nexpect(values).toEqual([0, 2]);\nexpect(typeof values[0]).toBe('number');"
+        },
+        {
+          "name": "значение null сохраняется",
+          "code": "expect(pluck([{ note: null }], 'note')).toEqual([null]);"
+        },
+        {
+          "name": "пустой массив даёт пустой результат",
+          "code": "expect(pluck([], 'id')).toEqual([]);"
+        }
+      ],
+      "solution": "function pluck<T, K extends keyof T>(items: T[], key: K): T[K][] {\n  const values: T[K][] = [];\n\n  for (const item of items) {\n    const value = item[key];\n\n    if (value !== undefined) {\n      values.push(value);\n    }\n  }\n\n  return values;\n}",
+      "chapter": "02-typescript/141-indexed-access-types"
+    },
+    {
+      "id": "ts-141-group-by-field",
+      "title": "Группировка по значению поля",
+      "difficulty": "hard",
+      "lang": "ts",
+      "runner": "browser",
+      "prompt": "Напишите `groupBy<T, K extends keyof T>(items: T[], key: K): Map<T[K], T[]>`. Ключ карты — значение поля, значение — массив элементов в исходном порядке. Map, а не объект: значением ключа может быть число или булево.",
+      "starter": "function groupBy<T, K extends keyof T>(items: T[], key: K): Map<T[K], T[]> {\n  return new Map();\n}",
+      "hints": [
+        "Map сохраняет тип ключа, объект превратил бы его в строку.",
+        "Для каждого элемента нужно либо создать группу, либо дополнить существующую.",
+        "Порядок внутри группы — порядок исходного массива."
+      ],
+      "standSetup": "",
+      "tests": [
+        {
+          "name": "группирует по строковому полю",
+          "code": "const grouped = groupBy(\n  [{ status: 'OPEN', id: 1 }, { status: 'DONE', id: 2 }, { status: 'OPEN', id: 3 }],\n  'status'\n);\nexpect(grouped.get('OPEN').map(item => item.id)).toEqual([1, 3]);"
+        },
+        {
+          "name": "число не превращается в строку",
+          "code": "const grouped = groupBy([{ level: 1 }, { level: 1 }], 'level');\nexpect(grouped.get(1)).toHaveLength(2);\nexpect(grouped.get('1')).toBeUndefined();"
+        },
+        {
+          "name": "булево значение остаётся ключом",
+          "code": "const grouped = groupBy([{ done: true }, { done: false }], 'done');\nexpect(grouped.get(true)).toHaveLength(1);\nexpect(grouped.get(false)).toHaveLength(1);"
+        },
+        {
+          "name": "пустой массив даёт пустую карту",
+          "code": "expect(groupBy([], 'any').size).toBe(0);"
+        },
+        {
+          "name": "исходный массив не меняется",
+          "code": "const items = [{ status: 'OPEN' }];\ngroupBy(items, 'status');\nexpect(items).toHaveLength(1);"
+        }
+      ],
+      "solution": "function groupBy<T, K extends keyof T>(items: T[], key: K): Map<T[K], T[]> {\n  const groups = new Map<T[K], T[]>();\n\n  for (const item of items) {\n    const groupKey = item[key];\n    const group = groups.get(groupKey);\n\n    if (group === undefined) {\n      groups.set(groupKey, [item]);\n    } else {\n      group.push(item);\n    }\n  }\n\n  return groups;\n}",
+      "chapter": "02-typescript/141-indexed-access-types"
+    }
+  ],
+  "02-typescript/145-utility-types": [
+    {
+      "id": "ts-145-pick-fields",
+      "title": "Проекция объекта по списку полей",
+      "difficulty": "medium",
+      "lang": "ts",
+      "runner": "browser",
+      "prompt": "Напишите дженерик-функцию `pickFields<T, K extends keyof T>(item: T, keys: K[]): Pick<T, K>`, которая возвращает новый объект только с указанными полями. Отсутствующие в объекте ключи в результат попадать не должны.",
+      "starter": "function pickFields<T extends object, K extends keyof T>(item: T, keys: K[]): Pick<T, K> {\n  // Собирайте новый объект, а не изменяйте исходный.\n  return {} as Pick<T, K>;\n}",
+      "hints": [
+        "Ограничение K extends keyof T допускает только существующие ключи.",
+        "Перед копированием стоит убедиться, что свойство есть у объекта.",
+        "Исходный объект изменяться не должен."
+      ],
+      "standSetup": "",
+      "tests": [
+        {
+          "name": "оставляет указанные поля",
+          "code": "expect(pickFields({ id: 1, name: 'a', extra: true }, ['id', 'name']))\n  .toEqual({ id: 1, name: 'a' });"
+        },
+        {
+          "name": "пустой список ключей даёт пустой объект",
+          "code": "expect(pickFields({ id: 1 }, [])).toEqual({});"
+        },
+        {
+          "name": "не изменяет исходный объект",
+          "code": "const source = { id: 1, name: 'a' };\npickFields(source, ['id']);\nexpect(source).toEqual({ id: 1, name: 'a' });"
+        },
+        {
+          "name": "отсутствующее свойство не добавляется",
+          "code": "const partial = { id: 1 } as { id: number; name?: string };\nexpect(Object.keys(pickFields(partial, ['id', 'name']))).toEqual(['id']);"
+        }
+      ],
+      "solution": "function pickFields<T extends object, K extends keyof T>(item: T, keys: K[]): Pick<T, K> {\n  const result = {} as Pick<T, K>;\n\n  for (const key of keys) {\n    if (Object.hasOwn(item, key as string)) {\n      result[key] = item[key];\n    }\n  }\n\n  return result;\n}",
+      "chapter": "02-typescript/145-utility-types"
+    },
+    {
+      "id": "ts-145-required-fields-check",
+      "title": "Проверка заполненности обязательных полей",
+      "difficulty": "medium",
+      "lang": "ts",
+      "runner": "browser",
+      "prompt": "Объявите тип `DraftItem` с необязательными полями `title?: string` и `priority?: string`. Напишите функцию `toComplete(draft: DraftItem): Required<DraftItem> | null`, которая возвращает объект со всеми заполненными полями или `null`, если хотя бы одно отсутствует. Пустая строка считается незаполненным значением.",
+      "starter": "type DraftItem = {\n  title?: string;\n  priority?: string;\n};\n\nfunction toComplete(draft: DraftItem): Required<DraftItem> | null {\n  // Required убирает необязательность, но проверить значения нужно самому.\n  return null;\n}",
+      "hints": [
+        "Тип Required описывает результат, но не проверяет данные.",
+        "Проверять нужно и отсутствие поля, и пустую строку.",
+        "Возвращать следует новый объект."
+      ],
+      "standSetup": "",
+      "tests": [
+        {
+          "name": "полный черновик проходит",
+          "code": "expect(toComplete({ title: 'login', priority: 'HIGH' }))\n  .toEqual({ title: 'login', priority: 'HIGH' });"
+        },
+        {
+          "name": "отсутствующее поле даёт null",
+          "code": "expect(toComplete({ title: 'login' })).toBe(null);"
+        },
+        {
+          "name": "пустая строка считается незаполненной",
+          "code": "expect(toComplete({ title: '', priority: 'HIGH' })).toBe(null);"
+        },
+        {
+          "name": "пустой черновик даёт null",
+          "code": "expect(toComplete({})).toBe(null);"
+        }
+      ],
+      "solution": "type DraftItem = {\n  title?: string;\n  priority?: string;\n};\n\nfunction toComplete(draft: DraftItem): Required<DraftItem> | null {\n  const { title, priority } = draft;\n\n  if (!title || !priority) {\n    return null;\n  }\n\n  return { title, priority };\n}",
+      "chapter": "02-typescript/145-utility-types"
+    }
+  ],
+  "02-typescript/158-typed-api-clients-and-assertions": [
+    {
+      "id": "ts-158-typed-client-parse",
+      "title": "Типизированный клиент с проверкой ответа",
+      "difficulty": "hard",
+      "lang": "ts",
+      "runner": "browser",
+      "prompt": "Напишите `fetchItem(transport, id)`, где `transport: (path: string) => Promise<unknown>`. Функция запрашивает `/work-items/<id>` и возвращает объект типа `{ id: string; version: number }`. Форму ответа нужно проверить в runtime: если ответ не объект или поля имеют неверный тип, выбросьте ошибку `неожиданная форма ответа`. Использовать `as` для подмены проверки нельзя — проверки подают неверные данные и ждут ошибку.",
+      "starter": "type WorkItem = {\n  id: string;\n  version: number;\n};\n\ntype Transport = (path: string) => Promise<unknown>;\n\nasync function fetchItem(transport: Transport, id: string): Promise<WorkItem> {\n  const payload = await transport('/work-items/' + id);\n\n  // Проверьте форму ответа перед тем, как его вернуть.\n  return payload as WorkItem;\n}",
+      "hints": [
+        "Тип ответа объявлен как unknown — его нужно проверить, а не утверждать.",
+        "null тоже имеет typeof \"object\".",
+        "Проверять надо и наличие полей, и их типы."
+      ],
+      "standSetup": "",
+      "tests": [
+        {
+          "name": "корректный ответ возвращается как есть",
+          "code": "const transport = async () => ({ id: 'WI-1', version: 2 });\nexpect(await fetchItem(transport, 'WI-1')).toEqual({ id: 'WI-1', version: 2 });"
+        },
+        {
+          "name": "путь собирается из идентификатора",
+          "code": "let requested = '';\nconst transport = async (path) => { requested = path; return { id: 'x', version: 1 }; };\nawait fetchItem(transport, 'WI-7');\nexpect(requested).toBe('/work-items/WI-7');"
+        },
+        {
+          "name": "неверный тип поля отвергается",
+          "code": "const transport = async () => ({ id: 'WI-1', version: '2' });\nlet message = '';\ntry { await fetchItem(transport, 'WI-1'); } catch (error) { message = error.message; }\nexpect(message).toBe('неожиданная форма ответа');"
+        },
+        {
+          "name": "отсутствующее поле отвергается",
+          "code": "const transport = async () => ({ id: 'WI-1' });\nlet message = '';\ntry { await fetchItem(transport, 'WI-1'); } catch (error) { message = error.message; }\nexpect(message).toBe('неожиданная форма ответа');"
+        },
+        {
+          "name": "null отвергается",
+          "code": "const transport = async () => null;\nlet message = '';\ntry { await fetchItem(transport, 'WI-1'); } catch (error) { message = error.message; }\nexpect(message).toBe('неожиданная форма ответа');"
+        }
+      ],
+      "solution": "type WorkItem = {\n  id: string;\n  version: number;\n};\n\ntype Transport = (path: string) => Promise<unknown>;\n\nfunction isWorkItem(value: unknown): value is WorkItem {\n  if (typeof value !== 'object' || value === null) {\n    return false;\n  }\n\n  const candidate = value as Record<string, unknown>;\n\n  return typeof candidate.id === 'string'\n    && typeof candidate.version === 'number';\n}\n\nasync function fetchItem(transport: Transport, id: string): Promise<WorkItem> {\n  const payload = await transport('/work-items/' + id);\n\n  if (!isWorkItem(payload)) {\n    throw new Error('неожиданная форма ответа');\n  }\n\n  return payload;\n}",
+      "chapter": "02-typescript/158-typed-api-clients-and-assertions"
+    }
+  ],
+  "03-automation-qa/169-locator-and-element-search-strategy": [
+    {
+      "id": "qa-169-find-login-form",
+      "title": "Найти поля формы входа",
+      "difficulty": "easy",
+      "lang": "playwright",
+      "runner": "stand",
+      "prompt": "Откройте страницу входа стенда (`/login`) и найдите поля логина и пароля по их подписям, а кнопку отправки — по роли и доступному имени. Верните объект `{ loginVisible, passwordVisible, buttonName }`, где первые два — результаты проверки видимости, третий — текст кнопки.",
+      "starter": "/**\n * Решение получает { page, baseUrl, api }.\n * page — обычная страница Playwright.\n */\nexport default async function solve({ page }) {\n  // 1. Перейдите на /login\n  // 2. Найдите поля по подписям, кнопку — по роли\n\n  return { loginVisible: false, passwordVisible: false, buttonName: '' };\n}",
+      "hints": [
+        "Поля с подписями удобно искать через getByLabel.",
+        "Кнопку находят через getByRole с доступным именем.",
+        "Видимость проверяется методом isVisible, текст — innerText или textContent."
+      ],
+      "standSetup": "",
+      "tests": [
+        {
+          "name": "поле логина найдено и видимо",
+          "code": "expect(result.loginVisible).toBe(true);"
+        },
+        {
+          "name": "поле пароля найдено и видимо",
+          "code": "expect(result.passwordVisible).toBe(true);"
+        },
+        {
+          "name": "кнопка отправки называется «Войти»",
+          "code": "expect(result.buttonName.trim()).toBe('Войти');"
+        },
+        {
+          "name": "страница входа действительно открыта",
+          "code": "expect(page.url()).toContain('/login');"
+        }
+      ],
+      "solution": "export default async function solve({ page }) {\n  await page.goto('/login');\n\n  const login = page.getByLabel('Логин');\n  const password = page.getByLabel('Пароль');\n  const button = page.getByRole('button', { name: 'Войти' });\n\n  return {\n    loginVisible: await login.isVisible(),\n    passwordVisible: await password.isVisible(),\n    buttonName: await button.innerText()\n  };\n}",
+      "chapter": "03-automation-qa/169-locator-and-element-search-strategy"
+    },
+    {
+      "id": "qa-169-count-list-items",
+      "title": "Сузить набор совпадений",
+      "difficulty": "medium",
+      "lang": "playwright",
+      "runner": "stand",
+      "prompt": "Войдите на стенд как `educational_tester` с паролем `educational-tester-password`, откройте список задач и верните объект `{ rowsTotal, filteredTotal }`: количество строк списка без фильтра и после применения фильтра по статусу `NEW` через адрес `/work-items?status=NEW`. Записи создавать не нужно.",
+      "starter": "export default async function solve({ page }) {\n  // 1. Войдите через форму на /login\n  // 2. Откройте /work-items и посчитайте строки\n  // 3. Откройте /work-items?status=NEW и посчитайте снова\n\n  return { rowsTotal: 0, filteredTotal: 0 };\n}",
+      "hints": [
+        "После заполнения формы вход выполняется нажатием кнопки.",
+        "Количество совпадений локатора даёт метод count.",
+        "Фильтр можно применить прямо через адрес страницы."
+      ],
+      "standSetup": "",
+      "tests": [
+        {
+          "name": "без фильтра строки найдены",
+          "code": "expect(result.rowsTotal > 0).toBe(true);"
+        },
+        {
+          "name": "фильтр сокращает набор или оставляет его равным",
+          "code": "expect(result.filteredTotal <= result.rowsTotal).toBe(true);"
+        },
+        {
+          "name": "после фильтра строки остались",
+          "code": "expect(result.filteredTotal > 0).toBe(true);"
+        },
+        {
+          "name": "страница осталась на списке задач",
+          "code": "expect(page.url()).toContain('/work-items');"
+        }
+      ],
+      "solution": "export default async function solve({ page }) {\n  await page.goto('/login');\n  await page.getByLabel('Логин').fill('educational_tester');\n  await page.getByLabel('Пароль').fill('educational-tester-password');\n  await page.getByRole('button', { name: 'Войти' }).click();\n\n  await page.goto('/work-items');\n  const rowsTotal = await page.getByRole('row').count();\n\n  await page.goto('/work-items?status=NEW');\n  const filteredTotal = await page.getByRole('row').count();\n\n  return { rowsTotal, filteredTotal };\n}",
+      "chapter": "03-automation-qa/169-locator-and-element-search-strategy"
+    }
+  ],
+  "03-automation-qa/171-web-first-assertions": [
+    {
+      "id": "qa-171-expect-heading",
+      "title": "Проверка состояния страницы с ожиданием",
+      "difficulty": "easy",
+      "lang": "playwright",
+      "runner": "stand",
+      "prompt": "Откройте страницу входа и дождитесь заголовка «Вход в систему» через web-first проверку `expect(locator).toBeVisible()`. Верните объект `{ waited, title }`: первый — `true`, если проверка прошла, второй — текст заголовка страницы. Функция `expect` доступна через импорт `@playwright/test`.",
+      "starter": "import { expect as pwExpect } from '@playwright/test';\n\nexport default async function solve({ page }) {\n  // Проверка с ожиданием повторяет запрос к DOM до совпадения.\n\n  return { waited: false, title: '' };\n}",
+      "hints": [
+        "Web-first проверка получает локатор, а не снятое значение.",
+        "Она сама повторяет обращение к DOM до таймаута.",
+        "Текст заголовка можно прочитать после успешной проверки."
+      ],
+      "standSetup": "",
+      "tests": [
+        {
+          "name": "проверка прошла",
+          "code": "expect(result.waited).toBe(true);"
+        },
+        {
+          "name": "заголовок прочитан",
+          "code": "expect(result.title.trim()).toBe('Вход в систему');"
+        },
+        {
+          "name": "страница входа открыта",
+          "code": "expect(page.url()).toContain('/login');"
+        },
+        {
+          "name": "заголовок виден и после решения",
+          "code": "expect(await page.getByRole('heading', { name: 'Вход в систему' }).isVisible()).toBe(true);"
+        }
+      ],
+      "solution": "import { expect as pwExpect } from '@playwright/test';\n\nexport default async function solve({ page }) {\n  await page.goto('/login');\n\n  const heading = page.getByRole('heading', { name: 'Вход в систему' });\n  await pwExpect(heading).toBeVisible();\n\n  return { waited: true, title: await heading.innerText() };\n}",
+      "chapter": "03-automation-qa/171-web-first-assertions"
+    },
+    {
+      "id": "qa-171-absent-element",
+      "title": "Проверка отсутствия элемента",
+      "difficulty": "medium",
+      "lang": "playwright",
+      "runner": "stand",
+      "prompt": "Откройте страницу входа и убедитесь, что на ней нет кнопки «Выйти». Верните объект `{ logoutCount, hidden }`: количество совпадений локатора кнопки и результат проверки её отсутствия через web-first проверку.",
+      "starter": "import { expect as pwExpect } from '@playwright/test';\n\nexport default async function solve({ page }) {\n  // Для отсутствующего элемента подходят toHaveCount(0) и toBeHidden().\n\n  return { logoutCount: -1, hidden: false };\n}",
+      "hints": [
+        "Количество совпадений даёт метод count и проверка toHaveCount.",
+        "Для отсутствующего элемента проходят и toBeHidden, и toHaveCount(0).",
+        "Разница в смысле: «скрыт» против «отсутствует»."
+      ],
+      "standSetup": "",
+      "tests": [
+        {
+          "name": "кнопки выхода на странице нет",
+          "code": "expect(result.logoutCount).toBe(0);"
+        },
+        {
+          "name": "проверка отсутствия прошла",
+          "code": "expect(result.hidden).toBe(true);"
+        },
+        {
+          "name": "страница входа открыта",
+          "code": "expect(page.url()).toContain('/login');"
+        },
+        {
+          "name": "форма входа при этом на месте",
+          "code": "expect(await page.getByLabel('Логин').isVisible()).toBe(true);"
+        }
+      ],
+      "solution": "import { expect as pwExpect } from '@playwright/test';\n\nexport default async function solve({ page }) {\n  await page.goto('/login');\n\n  const logout = page.getByRole('button', { name: 'Выйти' });\n  await pwExpect(logout).toHaveCount(0);\n\n  return { logoutCount: await logout.count(), hidden: true };\n}",
+      "chapter": "03-automation-qa/171-web-first-assertions"
+    }
+  ],
+  "03-automation-qa/172-auto-waiting-and-explicit-waits": [
+    {
+      "id": "qa-172-wait-for-navigation",
+      "title": "Ожидание вместо паузы",
+      "difficulty": "medium",
+      "lang": "playwright",
+      "runner": "stand",
+      "prompt": "Войдите как `educational_tester` с паролем `educational-tester-password` и откройте карточку первой задачи из списка `/work-items`. Переход должен дождаться загрузки страницы без фиксированной паузы: `waitForTimeout` и `setTimeout` использовать нельзя. Верните объект `{ url, heading }`: адрес карточки и текст её заголовка.",
+      "starter": "export default async function solve({ page }) {\n  // Ссылка в списке ведёт на карточку. Переход надо дождаться, а не переждать.\n\n  return { url: '', heading: '' };\n}",
+      "hints": [
+        "Автоожидание встроено в действия: click ждёт, пока элемент станет доступен.",
+        "Ожидание конкретного элемента надёжнее ожидания времени.",
+        "Ссылка на карточку — это заголовок задачи в таблице."
+      ],
+      "standSetup": "",
+      "tests": [
+        {
+          "name": "открыта карточка задачи",
+          "code": "expect(/\\/work-items\\/[^/]+$/.test(result.url)).toBe(true);"
+        },
+        {
+          "name": "заголовок карточки прочитан",
+          "code": "expect(result.heading.trim().length > 0).toBe(true);"
+        },
+        {
+          "name": "браузер остался на той же карточке",
+          "code": "expect(page.url()).toBe(result.url);"
+        },
+        {
+          "name": "карточка отображает ту же задачу",
+          "code": "const id = result.url.split('/').pop();\nconst response = await api.get('/work-items/' + id);\nexpect(response.status).toBe(200);"
+        }
+      ],
+      "solution": "export default async function solve({ page }) {\n  await page.goto('/login');\n  await page.getByLabel('Логин').fill('educational_tester');\n  await page.getByLabel('Пароль').fill('educational-tester-password');\n  await page.getByRole('button', { name: 'Войти' }).click();\n\n  await page.goto('/work-items');\n\n  // click ждёт доступности ссылки, waitForURL — завершения перехода.\n  await page.getByRole('table').getByRole('link').first().click();\n  await page.waitForURL(/\\/work-items\\/[^/]+$/);\n\n  const heading = page.getByRole('heading').first();\n\n  return { url: page.url(), heading: await heading.innerText() };\n}",
+      "chapter": "03-automation-qa/172-auto-waiting-and-explicit-waits"
+    }
+  ],
+  "03-automation-qa/187-http-request-structure": [
+    {
+      "id": "qa-187-request-parts",
+      "title": "Части запроса: путь, параметры, тело",
+      "difficulty": "medium",
+      "lang": "api",
+      "runner": "stand",
+      "prompt": "Соберите три разных запроса и верните объект `{ created, filtered, updated }`. `created` — ответ на создание задачи с заголовком `Структура запроса`, описанием `Метод, путь, тело` и приоритетом `LOW` (тело запроса). `filtered` — ответ на `GET /work-items` с параметрами строки запроса `priority=LOW` и `limit=100`. `updated` — ответ на изменение созданной задачи: статус `IN_PROGRESS` и `expectedVersion`, равный текущей версии записи.",
+      "starter": "export default async function solve(api) {\n  // Создание — тело запроса, выборка — параметры строки запроса,\n  // изменение — путь с идентификатором плюс тело.\n\n  return { created: null, filtered: null, updated: null };\n}",
+      "hints": [
+        "Параметры строки запроса пишутся после вопросительного знака в пути.",
+        "Идентификатор созданной записи приходит в теле ответа на создание.",
+        "Изменение требует указать версию, от которой оно делается."
+      ],
+      "standSetup": "",
+      "tests": [
+        {
+          "name": "создание вернуло 201",
+          "code": "expect(result.created.status).toBe(201);"
+        },
+        {
+          "name": "выборка отфильтрована по приоритету",
+          "code": "expect(result.filtered.status).toBe(200);\nexpect(result.filtered.body.items.every(item => item.priority === 'LOW')).toBe(true);"
+        },
+        {
+          "name": "созданная запись попала в выборку",
+          "code": "expect(result.filtered.body.items.some(item => item.id === result.created.body.id)).toBe(true);"
+        },
+        {
+          "name": "изменение прошло и подняло версию",
+          "code": "expect(result.updated.status).toBe(200);\nexpect(result.updated.body.version).toBe(result.created.body.version + 1);"
+        },
+        {
+          "name": "новый статус сохранён на стенде",
+          "code": "const response = await api.get('/work-items/' + result.created.body.id);\nexpect(response.body.status).toBe('IN_PROGRESS');"
+        }
+      ],
+      "solution": "export default async function solve(api) {\n  const created = await api.post('/work-items', {\n    title: 'Структура запроса',\n    description: 'Метод, путь, тело',\n    priority: 'LOW'\n  });\n\n  const filtered = await api.get('/work-items?priority=LOW&limit=100');\n\n  const updated = await api.patch('/work-items/' + created.body.id, {\n    status: 'IN_PROGRESS',\n    expectedVersion: created.body.version\n  });\n\n  return { created, filtered, updated };\n}",
+      "chapter": "03-automation-qa/187-http-request-structure"
     }
   ],
   "03-automation-qa/188-http-response-structure": [
@@ -2758,6 +5574,43 @@
       ],
       "solution": "export default async function solve(api) {\n  const missing = await api.get('/work-items/00000000-0000-4000-8000-000000000000');\n\n  return { missing };\n}",
       "chapter": "03-automation-qa/188-http-response-structure"
+    }
+  ],
+  "03-automation-qa/191-api-authentication": [
+    {
+      "id": "qa-191-auth-required",
+      "title": "Доступ без учётных данных",
+      "difficulty": "medium",
+      "lang": "api",
+      "runner": "stand",
+      "prompt": "Проверьте, что защищённый маршрут требует аутентификации. Верните объект `{ withToken, withoutToken }`: ответ обычного клиента на `GET /work-items?limit=1` и ответ запроса **без** заголовка авторизации. Второй запрос выполните сами через `fetch` по адресу из `baseUrl`.",
+      "starter": "/**\n * Помимо api доступен baseUrl — адрес REST-границы стенда.\n */\nexport default async function solve(api, baseUrl) {\n  // Первый запрос — через api, второй — без заголовка авторизации.\n\n  return { withToken: null, withoutToken: null };\n}",
+      "hints": [
+        "Обычный клиент уже отправляет заголовок авторизации.",
+        "Запрос без заголовка нужно собрать самостоятельно.",
+        "Отказ приходит обычным ответом, а не исключением."
+      ],
+      "standSetup": "",
+      "tests": [
+        {
+          "name": "с токеном запрос проходит",
+          "code": "expect(result.withToken.status).toBe(200);"
+        },
+        {
+          "name": "без токена доступ закрыт",
+          "code": "expect(result.withoutToken.status).toBe(401);"
+        },
+        {
+          "name": "отказ содержит машиночитаемый код",
+          "code": "expect(typeof result.withoutToken.body.code).toBe('string');"
+        },
+        {
+          "name": "секрет в ответе не раскрывается",
+          "code": "expect(JSON.stringify(result.withoutToken.body)).toContain('code');"
+        }
+      ],
+      "solution": "export default async function solve(api, baseUrl) {\n  const withToken = await api.get('/work-items?limit=1');\n\n  const response = await fetch(baseUrl + '/api/v1/work-items?limit=1');\n  const text = await response.text();\n\n  const withoutToken = {\n    status: response.status,\n    body: text.length > 0 ? JSON.parse(text) : null\n  };\n\n  return { withToken, withoutToken };\n}",
+      "chapter": "03-automation-qa/191-api-authentication"
     }
   ],
   "03-automation-qa/193-api-response-and-business-rule-validation": [
@@ -3061,6 +5914,130 @@
       ],
       "solution": "export default async function solve(api) {\n  const prefix = 'Проверка-211-' + Math.floor(Math.random() * 1_000_000);\n\n  const first = await api.post('/work-items', {\n    title: prefix + '-1',\n    description: 'Первая запись сценария',\n    priority: 'LOW'\n  });\n\n  const second = await api.post('/work-items', {\n    title: prefix + '-2',\n    description: 'Вторая запись сценария',\n    priority: 'HIGH'\n  });\n\n  const found = await api.get('/work-items?limit=100');\n\n  return { first, second, found };\n}",
       "chapter": "03-automation-qa/211-database-data-setup-and-cleanup"
+    }
+  ],
+  "03-automation-qa/213-eventual-consistency-and-polling": [
+    {
+      "id": "qa-213-poll-until-visible",
+      "title": "Опрос вместо паузы",
+      "difficulty": "hard",
+      "lang": "api",
+      "runner": "stand",
+      "prompt": "Напишите опрос состояния. Создайте задачу с приоритетом `HIGH` и заголовком `Ожидание согласованности`, затем дождитесь её появления в выборке `GET /work-items?priority=HIGH&limit=100` — повторяя запрос, пока запись не найдётся, но не дольше 5 секунд и не чаще одного запроса в 100 мс. Верните `{ id, attempts, found }`: идентификатор созданной записи, число выполненных запросов выборки и признак успеха. Превышение времени — ошибка с сообщением `запись не появилась за отведённое время`.",
+      "starter": "export default async function solve(api) {\n  const created = await api.post('/work-items', {\n    title: 'Ожидание согласованности',\n    description: 'Проверка опроса',\n    priority: 'HIGH'\n  });\n\n  // Опрос: повторять запрос до условия, а не спать фиксированное время.\n\n  return { id: created.body.id, attempts: 0, found: false };\n}",
+      "hints": [
+        "Опрос — это цикл с условием выхода по успеху и по времени.",
+        "Паузу между попытками даёт промис с setTimeout.",
+        "Число попыток считается по запросам выборки, а не по паузам."
+      ],
+      "standSetup": "",
+      "tests": [
+        {
+          "name": "запись найдена",
+          "code": "expect(result.found).toBe(true);"
+        },
+        {
+          "name": "выполнен хотя бы один запрос выборки",
+          "code": "expect(result.attempts >= 1).toBe(true);"
+        },
+        {
+          "name": "опрос не выродился в бесконечный цикл",
+          "code": "expect(result.attempts <= 50).toBe(true);"
+        },
+        {
+          "name": "созданная запись существует на стенде",
+          "code": "const response = await api.get('/work-items/' + result.id);\nexpect(response.status).toBe(200);\nexpect(response.body.priority).toBe('HIGH');"
+        },
+        {
+          "name": "запись видна в той же выборке",
+          "code": "const response = await api.get('/work-items?priority=HIGH&limit=100');\nexpect(response.body.items.some(item => item.id === result.id)).toBe(true);"
+        }
+      ],
+      "solution": "const sleep = ms => new Promise(resolve => setTimeout(resolve, ms));\n\nexport default async function solve(api) {\n  const created = await api.post('/work-items', {\n    title: 'Ожидание согласованности',\n    description: 'Проверка опроса',\n    priority: 'HIGH'\n  });\n\n  const id = created.body.id;\n  const deadline = Date.now() + 5000;\n  let attempts = 0;\n\n  while (Date.now() < deadline) {\n    const response = await api.get('/work-items?priority=HIGH&limit=100');\n    attempts += 1;\n\n    if (response.body.items.some(item => item.id === id)) {\n      return { id, attempts, found: true };\n    }\n\n    await sleep(100);\n  }\n\n  throw new Error('запись не появилась за отведённое время');\n}",
+      "chapter": "03-automation-qa/213-eventual-consistency-and-polling"
+    }
+  ],
+  "03-automation-qa/214-postgresql-api-grpc-data-comparison": [
+    {
+      "id": "qa-214-api-matches-database",
+      "title": "Сверка ответа API с базой",
+      "difficulty": "medium",
+      "lang": "api",
+      "runner": "stand",
+      "prompt": "Создайте задачу с заголовком `Сверка слоёв`, описанием `Данные для сравнения` и приоритетом `MEDIUM`, затем прочитайте её через `GET /work-items/<id>`. Верните `{ id, api }`: идентификатор и тело ответа чтения. Проверки сравнят его с записью в базе — поля должны совпасть без преобразований на стороне решения.",
+      "starter": "export default async function solve(api) {\n  // Создайте запись и прочитайте её отдельным запросом.\n\n  return { id: '', api: null };\n}",
+      "hints": [
+        "Ответ на создание и ответ на чтение — разные запросы.",
+        "Возвращать надо тело ответа целиком, ничего не переименовывая.",
+        "Идентификатор приходит в ответе на создание."
+      ],
+      "standSetup": "",
+      "tests": [
+        {
+          "name": "запись создана и прочитана",
+          "code": "expect(typeof result.id).toBe('string');\nexpect(result.api.id).toBe(result.id);"
+        },
+        {
+          "name": "заголовок совпадает с базой",
+          "code": "const titleRows = await query(\"select title from work_items where id = '\" + result.id + \"'\");\nexpect(titleRows).toHaveLength(1);\nexpect(titleRows[0].title).toBe(result.api.title);"
+        },
+        {
+          "name": "приоритет и статус совпадают с базой",
+          "code": "const stateRows = await query(\"select priority, status from work_items where id = '\" + result.id + \"'\");\nexpect(stateRows[0].priority).toBe(result.api.priority);\nexpect(stateRows[0].status).toBe(result.api.status);"
+        },
+        {
+          "name": "версия совпадает с базой и является числом",
+          "code": "const versionRows = await query(\"select version from work_items where id = '\" + result.id + \"'\");\nexpect(Number(versionRows[0].version)).toBe(result.api.version);\nexpect(typeof result.api.version).toBe('number');"
+        },
+        {
+          "name": "заголовок задан условием задачи",
+          "code": "expect(result.api.title).toBe('Сверка слоёв');"
+        }
+      ],
+      "solution": "export default async function solve(api) {\n  const created = await api.post('/work-items', {\n    title: 'Сверка слоёв',\n    description: 'Данные для сравнения',\n    priority: 'MEDIUM'\n  });\n\n  const id = created.body.id;\n  const read = await api.get('/work-items/' + id);\n\n  return { id, api: read.body };\n}",
+      "chapter": "03-automation-qa/214-postgresql-api-grpc-data-comparison"
+    }
+  ],
+  "03-automation-qa/215-data-conflicts-and-parallel-tests": [
+    {
+      "id": "qa-215-unique-data-per-run",
+      "title": "Своя запись среди чужих",
+      "difficulty": "hard",
+      "lang": "api",
+      "runner": "stand",
+      "prompt": "На стенде уже есть записи с заголовком `Параллельный прогон` — их создала подготовка задачи, как будто рядом работают другие тесты. Создайте **свою** запись так, чтобы её можно было отличить от чужих, и найдите её в общей выборке. Записи отсортированы по времени создания, а страница вмещает не больше 100 штук — ваша окажется на последней. Верните `{ marker, id, matches, neighbours }`: признак, по которому запись опознаётся, её идентификатор, число записей выборки, подходящих под признак, и число записей с заголовком `Параллельный прогон`. Искать по заголовку `Параллельный прогон` нельзя — он не ваш.",
+      "starter": "export default async function solve(api) {\n  // Признак должен быть уникальным: одинаковый заголовок ничего не различает.\n\n  return { marker: '', id: '', matches: 0, neighbours: 0 };\n}",
+      "hints": [
+        "Отличать записи должен сам тест, а не порядок их создания.",
+        "Уникальность даёт значение, которое не повторится в другом прогоне.",
+        "Соседние записи считаются по заголовку, своя — по признаку.",
+        "Поле total в ответе выборки подсказывает, какой нужен offset."
+      ],
+      "standSetup": "for (const index of [1, 2, 3]) {\n  await api.post('/work-items', {\n    title: 'Параллельный прогон',\n    description: 'Запись соседнего теста номер ' + index,\n    priority: 'LOW'\n  });\n}",
+      "tests": [
+        {
+          "name": "признак не пуст и не совпадает с чужим заголовком",
+          "code": "expect(result.marker.length > 0).toBe(true);\nexpect(result.marker).toBeTruthy();\nexpect(result.marker === 'Параллельный прогон').toBe(false);"
+        },
+        {
+          "name": "по признаку находится ровно одна запись",
+          "code": "expect(result.matches).toBe(1);"
+        },
+        {
+          "name": "соседние записи существуют и не мешают",
+          "code": "expect(result.neighbours >= 3).toBe(true);"
+        },
+        {
+          "name": "найденная запись действительно своя",
+          "code": "const response = await api.get('/work-items/' + result.id);\nexpect(response.status).toBe(200);\nexpect(JSON.stringify(response.body)).toContain(result.marker);"
+        },
+        {
+          "name": "признак выдержал бы второй прогон",
+          "code": "const probe = await api.get('/work-items?limit=100');\nconst tail = await api.get('/work-items?limit=100&offset=' + Math.max(0, probe.body.total - 100));\nconst found = tail.body.items.filter(item => JSON.stringify(item).includes(result.marker));\nexpect(found).toHaveLength(1);"
+        }
+      ],
+      "solution": "export default async function solve(api) {\n  // Метка живёт в заголовке: она уникальна, поэтому чужие записи под неё не попадут.\n  const marker = 'run-' + Date.now() + '-' + Math.floor(Math.random() * 100000);\n\n  const created = await api.post('/work-items', {\n    title: 'Параллельный прогон ' + marker,\n    description: 'Запись этого теста',\n    priority: 'LOW'\n  });\n\n  // Своя запись создана последней, поэтому нужна последняя страница.\n  const first = await api.get('/work-items?limit=100');\n  const offset = Math.max(0, first.body.total - 100);\n  const lastPage = await api.get('/work-items?limit=100&offset=' + offset);\n  const items = lastPage.body.items;\n\n  const matches = items.filter(item => item.title.includes(marker)).length;\n  const neighbours = items.filter(item => item.title === 'Параллельный прогон').length;\n\n  return { marker, id: created.body.id, matches, neighbours };\n}",
+      "chapter": "03-automation-qa/215-data-conflicts-and-parallel-tests"
     }
   ]
 }

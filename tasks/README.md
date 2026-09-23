@@ -11,7 +11,7 @@ export default [
     id: 'js-07-counter',          // уникален во всей книге, латиница и дефисы
     title: 'Счётчик на замыкании',
     difficulty: 'easy',            // easy | medium | hard
-    lang: 'js',                    // js | ts | api | sql
+    lang: 'js',                    // js | ts | api | sql | playwright
     prompt: 'Что нужно сделать.',  // условие задачи
     starter: `function createCounter() {\n  // ваш код\n}`,
     hints: [
@@ -63,12 +63,26 @@ standSetup: `await api.post('/work-items', {
 | --- | --- |
 | `js`, `ts` | В браузере, в песочнице страницы |
 | `api`, `sql` | Локально против учебного стенда через CLI |
-| `playwright` | **ранера пока нет** — см. предупреждение ниже |
+| `playwright` | Локально, в настоящем браузере против учебного стенда |
 
-> **`lang: 'playwright'` пока не поддержан.** В `scripts/verify-task.mjs` задача с
-> любым языком, кроме `sql`, выполняется как `api`-задача: решение получает объект
-> `api`, а не `page` и не браузер. Пока ранер не расширен, задачи с этим языком
-> заводить нельзя — проверка не будет делать того, что обещает условие.
+Решение задачи `playwright` экспортирует функцию, получающую объект
+`{ page, baseUrl, api }`:
+
+```js
+export default async function solve({ page }) {
+  await page.goto('/login');
+
+  return { title: await page.getByRole('heading').innerText() };
+}
+```
+
+Проверкам доступны `result`, `page`, `api`, `baseUrl` и `query`. Браузер
+закрывается после проверок, поэтому обращаться к `page` в них можно.
+
+> **Ограничение:** данные, созданные через интерфейс, принадлежат test run
+> сессии UI, а не токену API, поэтому `api.cleanup()` их **не удаляет**.
+> Пока это не решено, задачи уровня интерфейса должны читать состояние стенда,
+> а не создавать записи.
 
 Задачи с языком стенда требуют `npm run sut:up` и проверяются командой
 `npm run task:verify <id>`.

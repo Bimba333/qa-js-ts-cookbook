@@ -183,7 +183,55 @@ async function runApiTask(task, file, api) {
     throw new Error('Файл решения должен экспортировать функцию по умолчанию')
   }
 
-  return { result: await module.default(api), api }
+  // Вторым аргументом идёт адрес стенда: он нужен решениям, которые
+  // выполняют запрос в обход подготовленного клиента — например, без токена.
+  return { result: await module.default(api, HTTP_BASE), api, baseUrl: HTTP_BASE }
+}
+
+/**
+ * Выполняет решение уровня интерфейса в настоящем браузере.
+ *
+ * Решение получает `page` и `baseUrl`, поэтому работает так же, как обычный
+ * UI-тест. Браузер закрывается всегда: иначе процесс проверки не завершится.
+ *
+ * Важно: данные, созданные через интерфейс, принадлежат test run сессии UI,
+ * а не токену API — `api.cleanup()` их не удаляет. Поэтому задачи уровня
+ * интерфейса читают состояние, а не создают записи.
+ */
+async function runPlaywrightTask(task, file, api) {
+  const module = await import(`${pathToFileURL(file).href}?t=${Date.now()}`)
+
+  if (typeof module.default !== 'function') {
+    throw new Error('Файл решения должен экспортировать функцию по умолчанию')
+  }
+
+  let chromium
+
+  try {
+    ({ chromium } = await import('@playwright/test'))
+  } catch {
+    throw new Error('Playwright не установлен. Выполните: npm install')
+  }
+
+  const browser = await chromium.launch()
+  const browserContext = await browser.newContext({ baseURL: HTTP_BASE })
+  const page = await browserContext.newPage()
+
+  // Браузер закрывает вызывающий код: проверки выполняются после решения
+  // и должны видеть ту же страницу.
+  const dispose = async () => {
+    await browserContext.close()
+    await browser.close()
+  }
+
+  try {
+    const result = await module.default({ page, baseUrl: HTTP_BASE, api })
+
+    return { result, api, page, baseUrl: HTTP_BASE, dispose }
+  } catch (error) {
+    await dispose()
+    throw error
+  }
 }
 
 async function main() {
@@ -237,10 +285,13 @@ async function main() {
   try {
     await runStandSetup(task, api)
 
-    context =
-      task.lang === 'sql'
-        ? await runSqlTask(task, file, api)
-        : await runApiTask(task, file, api)
+    if (task.lang === 'sql') {
+      context = await runSqlTask(task, file, api)
+    } else if (task.lang === 'playwright') {
+      context = await runPlaywrightTask(task, file, api)
+    } else {
+      context = await runApiTask(task, file, api)
+    }
 
     if (context.skipped) {
       console.log('Файл решения ещё не изменён — напишите решение и запустите проверку снова.')
@@ -259,10 +310,21 @@ async function main() {
           'result',
           'api',
           'query',
+          'baseUrl',
+          'page',
           check.code
         )
 
-        await run(expect, context.rows, context.rowCount, context.result, context.api, query)
+        await run(
+          expect,
+          context.rows,
+          context.rowCount,
+          context.result,
+          context.api,
+          query,
+          context.baseUrl,
+          context.page
+        )
         console.log(`  ✓  ${check.name}`)
         passed += 1
       } catch (error) {
@@ -275,6 +337,10 @@ async function main() {
     process.exitCode = 1
     return
   } finally {
+    // Браузер закрывается до очистки: иначе открытая страница может держать
+    // соединение, и процесс проверки не завершится.
+    if (context?.dispose) await context.dispose()
+
     // Данные подготовки и решения принадлежат одному запуску и удаляются
     // вместе с ним — учебная база остаётся в исходном состоянии.
     await api.cleanup()
