@@ -16,7 +16,7 @@ const OUTPUT = path.join(ROOT, '.vitepress', 'tasks.generated.json')
 
 const DIFFICULTIES = new Set(['easy', 'medium', 'hard'])
 const BROWSER_LANGS = new Set(['js', 'ts'])
-const STAND_LANGS = new Set(['playwright', 'api', 'sql'])
+const STAND_LANGS = new Set(['playwright', 'api', 'sql', 'grpc'])
 const ID_PATTERN = /^[a-z0-9]+(-[a-z0-9]+)*$/
 
 function fail(message) {
@@ -99,11 +99,22 @@ function validateTask(task, chapterKey, seenIds) {
     fail(`${where}/${task.id}: standSetup применим только к задачам стенда`)
   }
 
+  // Решение с записью выполняется внутри транзакции, которую ранер всегда
+  // откатывает: стенд общий, и следы от решения читателя на нём недопустимы.
+  const transaction = task.transaction ?? false
+  if (typeof transaction !== 'boolean') {
+    fail(`${where}/${task.id}: transaction должен быть булевым`)
+  }
+  if (transaction && task.lang !== 'sql') {
+    fail(`${where}/${task.id}: transaction применим только к задачам с lang: 'sql'`)
+  }
+
   return {
     id: task.id,
     title: task.title,
     difficulty: task.difficulty,
     lang: task.lang,
+    transaction,
     runner: BROWSER_LANGS.has(task.lang) ? 'browser' : 'stand',
     prompt: task.prompt,
     starter: task.starter,

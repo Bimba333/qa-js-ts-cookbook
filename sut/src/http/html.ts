@@ -78,6 +78,7 @@ export function renderPage(options: LayoutOptions): string {
 <body>
 <header class="app-header">
   <a href="/work-items">Educational Work Items</a>
+  ${user ? `<a href="/playground" data-testid="playground-link">Учебная площадка</a>` : ""}
   ${
     user
       ? `<div>

@@ -2,6 +2,7 @@ import { loadDatabaseConfig, loadServerConfig } from "./config/index.js";
 import { Database } from "./database/database.js";
 import { GrpcServer } from "./grpc/server.js";
 import { createHealthRoutes } from "./http/health-routes.js";
+import { createPlaygroundRoutes } from "./http/playground-routes.js";
 import { createRestRoutes } from "./http/rest-routes.js";
 import { HttpServer } from "./http/server.js";
 import { createUiRoutes } from "./http/ui-routes.js";
@@ -51,6 +52,7 @@ try {
     routes: [
       ...createHealthRoutes(verificationDatabase),
       ...createRestRoutes({ authService, workItemService }),
+      ...createPlaygroundRoutes({ authService }),
       ...createUiRoutes({ authService, workItemService }),
     ],
   });

@@ -19,6 +19,8 @@ const TASKS_FILE = path.join(ROOT, '.vitepress', 'tasks.generated.json')
 const WORKSPACE = path.join(ROOT, 'my-solutions')
 
 const HTTP_BASE = process.env.SUT_BASE_URL ?? 'http://127.0.0.1:4310'
+const GRPC_TARGET = process.env.SUT_GRPC_TARGET ?? '127.0.0.1:4311'
+const PROTO_PATH = path.join(ROOT, 'sut/contracts/proto/work_items.proto')
 const API_BASE = `${HTTP_BASE}/api/v1`
 
 const DATABASE = {
@@ -140,6 +142,7 @@ async function createApiClient(creatorTestId) {
 
   return {
     testRunId,
+    accessToken,
     get: (pathname) => request('GET', pathname),
     post: (pathname, body) => request('POST', pathname, body),
     patch: (pathname, body) => request('PATCH', pathname, body),
@@ -156,10 +159,32 @@ async function runSqlTask(task, file, api) {
   }
 
   return withReaderClient(async client => {
-    const result = await client.query(query)
+    if (!task.transaction) {
+      return toSqlContext(await client.query(query), api)
+    }
 
-    return { rows: result.rows, rowCount: result.rowCount, api }
+    // Решение может писать: транзакция откатывается всегда, поэтому на общем
+    // стенде не остаётся ни строк, ни созданных объектов схемы.
+    await client.query('BEGIN')
+
+    try {
+      return toSqlContext(await client.query(query), api)
+    } finally {
+      await client.query('ROLLBACK')
+    }
   })
+}
+
+/**
+ * Приводит результат к одной форме.
+ *
+ * Запрос из нескольких инструкций возвращает массив результатов — проверкам
+ * нужен последний, иначе `rows` оказывается undefined и падает вся задача.
+ */
+function toSqlContext(result, api) {
+  const last = Array.isArray(result) ? result[result.length - 1] : result
+
+  return { rows: last?.rows ?? [], rowCount: last?.rowCount ?? 0, api }
 }
 
 /**
@@ -186,6 +211,71 @@ async function runApiTask(task, file, api) {
   // Вторым аргументом идёт адрес стенда: он нужен решениям, которые
   // выполняют запрос в обход подготовленного клиента — например, без токена.
   return { result: await module.default(api, HTTP_BASE), api, baseUrl: HTTP_BASE }
+}
+
+/**
+ * Выполняет решение уровня gRPC против стенда.
+ *
+ * Контракт берётся из `sut/contracts/proto` — того же файла, по которому
+ * работает сервер, поэтому расхождение клиента и сервера видно сразу.
+ *
+ * Решение получает готовый client и metadata с токеном, но не получает
+ * обёртки над callback: превращение вызова в промис — это и есть тема глав
+ * про unary-вызовы, и читатель пишет его сам.
+ */
+async function runGrpcTask(task, file, api) {
+  const module = await import(`${pathToFileURL(file).href}?t=${Date.now()}`)
+
+  if (typeof module.default !== 'function') {
+    throw new Error('Файл решения должен экспортировать функцию по умолчанию')
+  }
+
+  let grpc
+  let protoLoader
+
+  try {
+    grpc = await import('@grpc/grpc-js')
+    protoLoader = await import('@grpc/proto-loader')
+  } catch {
+    throw new Error('Пакеты gRPC не установлены. Выполните: npm install')
+  }
+
+  const definition = protoLoader.loadSync(PROTO_PATH, {
+    keepCase: false,
+    longs: String,
+    enums: String,
+    defaults: true,
+    oneofs: true
+  })
+
+  const loaded = grpc.loadPackageDefinition(definition)
+  const Service = loaded.qa.educational.workitems.v1.WorkItemService
+  const client = new Service(GRPC_TARGET, grpc.credentials.createInsecure())
+
+  const metadata = new grpc.Metadata()
+  metadata.set('authorization', `Bearer ${api.accessToken}`)
+  metadata.set('creator-test-id', `task.${task.id}`)
+
+  // Канал закрывает вызывающий код: проверки выполняются после решения.
+  const dispose = async () => {
+    client.close()
+  }
+
+  const context = { client, metadata, grpc, token: api.accessToken, target: GRPC_TARGET, api }
+
+  try {
+    return {
+      result: await module.default(context),
+      api,
+      grpc,
+      client,
+      metadata,
+      dispose
+    }
+  } catch (error) {
+    await dispose()
+    throw error
+  }
 }
 
 /**
@@ -278,6 +368,10 @@ async function main() {
   console.log(`Задача: ${task.title}`)
   console.log(`Решение: ${relative}\n`)
 
+  // Текст решения нужен проверкам глав, где предмет урока — форма кода,
+  // а не только результат: например, что селекторы живут в page object.
+  const solutionSource = fs.readFileSync(file, 'utf8')
+
   const api = await createApiClient(`task.${task.id}`)
   let context
   let passed = 0
@@ -289,6 +383,8 @@ async function main() {
       context = await runSqlTask(task, file, api)
     } else if (task.lang === 'playwright') {
       context = await runPlaywrightTask(task, file, api)
+    } else if (task.lang === 'grpc') {
+      context = await runGrpcTask(task, file, api)
     } else {
       context = await runApiTask(task, file, api)
     }
@@ -312,6 +408,10 @@ async function main() {
           'query',
           'baseUrl',
           'page',
+          'source',
+          'grpc',
+          'client',
+          'metadata',
           check.code
         )
 
@@ -323,7 +423,11 @@ async function main() {
           context.api,
           query,
           context.baseUrl,
-          context.page
+          context.page,
+          solutionSource,
+          context.grpc,
+          context.client,
+          context.metadata
         )
         console.log(`  ✓  ${check.name}`)
         passed += 1

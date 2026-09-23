@@ -36,6 +36,35 @@ export async function readBody(request: IncomingMessage): Promise<string> {
   return Buffer.concat(chunks).toString("utf8");
 }
 
+/**
+ * То же чтение, но без превращения в строку.
+ *
+ * Загруженный файл может быть не текстом, и перевод в utf8 испортил бы и
+ * содержимое, и подсчёт размера. Учебная страница показывает именно размер,
+ * поэтому байты нужны как есть.
+ */
+export async function readRawBody(request: IncomingMessage): Promise<Buffer> {
+  const chunks: Buffer[] = [];
+  let size = 0;
+
+  for await (const chunk of request) {
+    const buffer = chunk as Buffer;
+    size += buffer.length;
+
+    if (size > MAX_BODY_BYTES) {
+      request.pause();
+      throw new DomainError(
+        "PAYLOAD_TOO_LARGE",
+        `Тело запроса превышает ${MAX_BODY_BYTES} байт`,
+      );
+    }
+
+    chunks.push(buffer);
+  }
+
+  return Buffer.concat(chunks);
+}
+
 export async function readJsonBody(
   request: IncomingMessage,
 ): Promise<Record<string, unknown>> {
