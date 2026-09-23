@@ -16,5 +16,17 @@ export default defineConfig({
     {
       name: "foundation",
     },
+    {
+      // Слой интерфейса работает против поднятого стенда, поэтому у него
+      // свой каталог, свои границы времени и включённые доказательства.
+      name: "ui",
+      testDir: "./tests/ui",
+      timeout: 30_000,
+      expect: { timeout: 5_000 },
+      use: {
+        screenshot: "only-on-failure",
+        video: "off",
+      },
+    },
   ],
 });

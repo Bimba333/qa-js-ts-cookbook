@@ -1,5 +1,5 @@
 export const bookEngineData = {
-  "cacheReads": 769,
+  "cacheReads": 772,
   "parts": [
     {
       "title": "Введение",
@@ -1230,6 +1230,10 @@ export const bookEngineData = {
             {
               "fallbackTitle": "Каркас, configuration и environments",
               "path": "docs/04-final-project/252-framework-skeleton-configuration-and-environments.md"
+            },
+            {
+              "fallbackTitle": "UI Layer, Page Objects и fixtures",
+              "path": "docs/04-final-project/253-ui-layer-page-objects-and-fixtures.md"
             }
           ]
         }
@@ -15435,8 +15439,8 @@ export const bookEngineData = {
       "progress": {
         "label": "Финальный проект",
         "current": 1,
-        "total": 3,
-        "bar": "████░░░░░░░░"
+        "total": 4,
+        "bar": "███░░░░░░░░░"
       },
       "related": [],
       "card": {
@@ -15484,8 +15488,8 @@ export const bookEngineData = {
       "progress": {
         "label": "Финальный проект",
         "current": 2,
-        "total": 3,
-        "bar": "████████░░░░"
+        "total": 4,
+        "bar": "██████░░░░░░"
       },
       "related": [
         {
@@ -15534,7 +15538,11 @@ export const bookEngineData = {
         "number": 251,
         "link": "/docs/04-final-project/251-architecture-decisions-and-implementation-plan"
       },
-      "next": null,
+      "next": {
+        "title": "UI Layer, Page Objects и fixtures",
+        "number": 253,
+        "link": "/docs/04-final-project/253-ui-layer-page-objects-and-fixtures"
+      },
       "sectionLink": {
         "title": "Финальный промышленный проект",
         "link": "/docs/04-final-project/250-project-requirements-and-readiness-criteria"
@@ -15542,8 +15550,8 @@ export const bookEngineData = {
       "progress": {
         "label": "Финальный проект",
         "current": 3,
-        "total": 3,
-        "bar": "████████████"
+        "total": 4,
+        "bar": "█████████░░░"
       },
       "related": [
         {
@@ -15562,15 +15570,73 @@ export const bookEngineData = {
         "solutions": 24,
         "mermaid": 5
       }
+    },
+    "docs/04-final-project/253-ui-layer-page-objects-and-fixtures.md": {
+      "path": "docs/04-final-project/253-ui-layer-page-objects-and-fixtures.md",
+      "link": "/docs/04-final-project/253-ui-layer-page-objects-and-fixtures",
+      "title": "UI Layer, Page Objects и fixtures",
+      "number": 253,
+      "part": "Финальный проект",
+      "section": "Финальный промышленный проект",
+      "sectionIndex": 0,
+      "chapterIndex": 3,
+      "wordCount": 1218,
+      "readingMinutes": 7,
+      "h2": 19,
+      "h3": 6,
+      "examples": 0,
+      "tasks": 0,
+      "solutions": 0,
+      "mermaid": 1,
+      "miniProjects": 0,
+      "previous": {
+        "title": "Каркас, configuration и environments",
+        "number": 252,
+        "link": "/docs/04-final-project/252-framework-skeleton-configuration-and-environments"
+      },
+      "next": null,
+      "sectionLink": {
+        "title": "Финальный промышленный проект",
+        "link": "/docs/04-final-project/250-project-requirements-and-readiness-criteria"
+      },
+      "progress": {
+        "label": "Финальный проект",
+        "current": 4,
+        "total": 4,
+        "bar": "████████████"
+      },
+      "related": [
+        {
+          "term": "this",
+          "title": "this",
+          "number": 29,
+          "link": "/docs/01-javascript/29-this"
+        },
+        {
+          "term": "Promise",
+          "title": "Promise",
+          "number": 72,
+          "link": "/docs/01-javascript/72-promise"
+        }
+      ],
+      "card": {
+        "chapterLabel": "Глава 253",
+        "title": "UI Layer, Page Objects и fixtures",
+        "reading": 7,
+        "examples": 0,
+        "tasks": 0,
+        "solutions": 0,
+        "mermaid": 1
+      }
     }
   },
   "statistics": {
-    "chapters": 256,
+    "chapters": 257,
     "tasks": 2759,
     "solutions": 5181,
     "examples": 741,
-    "mermaid": 695,
+    "mermaid": 696,
     "miniProjects": 144,
-    "readingMinutes": 1711
+    "readingMinutes": 1718
   }
 }

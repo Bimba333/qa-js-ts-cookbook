@@ -388,3 +388,4 @@
 * [Требования и критерии готовности проекта](docs/04-final-project/250-project-requirements-and-readiness-criteria.md)
 * [Архитектурные решения и план реализации](docs/04-final-project/251-architecture-decisions-and-implementation-plan.md)
 * [Каркас, configuration и environments](docs/04-final-project/252-framework-skeleton-configuration-and-environments.md)
+* [UI Layer, Page Objects и fixtures](docs/04-final-project/253-ui-layer-page-objects-and-fixtures.md)

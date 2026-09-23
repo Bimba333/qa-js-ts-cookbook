@@ -1264,6 +1264,10 @@ export const sidebar = [
           {
             "text": "Глава 252. Каркас, configuration и environments",
             "link": "/docs/04-final-project/252-framework-skeleton-configuration-and-environments"
+          },
+          {
+            "text": "Глава 253. UI Layer, Page Objects и fixtures",
+            "link": "/docs/04-final-project/253-ui-layer-page-objects-and-fixtures"
           }
         ]
       }
