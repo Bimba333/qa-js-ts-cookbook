@@ -16,15 +16,26 @@ const active = ref('theory')
 
 // Разметка страницы — единый поток, поэтому разделы находятся один раз
 // после монтирования и дальше только показываются или скрываются.
-let segments = null
+// Ссылка реактивна: от найденных разделов зависит состав шагов.
+const segments = ref(null)
 
 const tasks = computed(() => tasksByChapter[props.chapter] ?? [])
 
 const steps = computed(() => {
-  const list = [
-    { key: 'theory', kind: 'theory', label: 'Т', title: 'Теория', state: 'theory' },
-    { key: 'questions', kind: 'questions', label: '?', title: 'Вопросы для самопроверки', state: 'questions' }
-  ]
+  const found = segments.value
+  const list = [{ key: 'theory', kind: 'theory', label: 'Т', title: 'Теория', state: 'theory' }]
+
+  // Вопросы и практика есть не в каждой главе, а задачи с проверкой — тем
+  // более: шаг появляется только там, где ему соответствует содержимое.
+  if (found?.questions.length) {
+    list.push({
+      key: 'questions',
+      kind: 'questions',
+      label: '?',
+      title: 'Вопросы для самопроверки',
+      state: 'questions'
+    })
+  }
 
   tasks.value.forEach((task, index) => {
     const state = ready.value
@@ -49,7 +60,7 @@ const steps = computed(() => {
     })
   })
 
-  if (segments?.practice.length) {
+  if (found?.practice.length) {
     list.push({ key: 'practice', kind: 'practice', label: 'П', title: 'Практика', state: 'practice' })
   }
 
@@ -118,18 +129,20 @@ function show(nodes, visible) {
 }
 
 function apply() {
-  if (!segments) return
+  const found = segments.value
+
+  if (!found) return
 
   const step = activeStep.value
 
-  show(segments.theory, step.kind === 'theory')
-  show(segments.questions, step.kind === 'questions')
-  show(segments.practice, step.kind === 'practice')
+  show(found.theory, step.kind === 'theory')
+  show(found.questions, step.kind === 'questions')
+  show(found.practice, step.kind === 'practice')
 
-  if (segments.tasks) {
-    segments.tasks.classList.toggle('chapter-step-hidden', step.kind !== 'task')
+  if (found.tasks) {
+    found.tasks.classList.toggle('chapter-step-hidden', step.kind !== 'task')
 
-    const cards = segments.tasks.querySelectorAll('.code-task')
+    const cards = found.tasks.querySelectorAll('.code-task')
 
     cards.forEach((card, index) => {
       card.classList.toggle('chapter-step-hidden', index !== step.index)
@@ -188,24 +201,26 @@ onMounted(() => {
 
   if (!container) return
 
-  segments = collectSegments(container)
+  segments.value = collectSegments(container)
 
   openFromHash()
   apply()
 })
 
 onBeforeUnmount(() => {
+  const found = segments.value
+
   // Страница уходит целиком, но при навигации внутри сайта элементы могут
   // переиспользоваться: возвращаем их в обычное состояние.
-  if (!segments) return
+  if (!found) return
 
-  show(segments.theory, true)
-  show(segments.questions, true)
-  show(segments.practice, true)
+  show(found.theory, true)
+  show(found.questions, true)
+  show(found.practice, true)
 
-  if (segments.tasks) {
-    segments.tasks.classList.remove('chapter-step-hidden')
-    segments.tasks
+  if (found.tasks) {
+    found.tasks.classList.remove('chapter-step-hidden')
+    found.tasks
       .querySelectorAll('.code-task')
       .forEach(card => card.classList.remove('chapter-step-hidden'))
   }
@@ -215,7 +230,7 @@ watch(progress, apply, { deep: true })
 </script>
 
 <template>
-  <nav v-if="tasks.length" class="chapter-steps" aria-label="Шаги главы">
+  <nav v-if="steps.length > 1" class="chapter-steps" aria-label="Шаги главы">
     <button
       class="chapter-steps__arrow"
       type="button"
@@ -254,7 +269,9 @@ watch(progress, apply, { deep: true })
     >→</button>
 
     <span class="chapter-steps__current">{{ activeStep?.title }}</span>
-    <span class="chapter-steps__counter">решено {{ solved }} / {{ tasks.length }}</span>
+    <span v-if="tasks.length" class="chapter-steps__counter">
+      решено {{ solved }} / {{ tasks.length }}
+    </span>
   </nav>
 </template>
 

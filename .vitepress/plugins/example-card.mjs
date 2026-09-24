@@ -126,10 +126,9 @@ function pagePathFromEnv(env) {
 function chapterStepsTag(chapter) {
   const key = String(chapter.path).replace(/^docs\//, '').replace(/\.md$/, '')
 
-  if (!loadCheckedTasks()[key]) {
-    return ''
-  }
-
+  // Полоса подключается к каждой главе: вопросы и практика есть почти
+  // везде, а задачи с проверкой — только в части глав. Сам компонент
+  // покажет ровно те шаги, которым нашлось содержимое.
   return `<ChapterSteps chapter="${escapeHtml(key)}" />`
 }
 
