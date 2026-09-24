@@ -267,7 +267,7 @@
    выравниваем стрелку по его реальной кромке. */
 @media (min-width: 1440px) {
   .book-panel-toggle--left {
-    left: calc((100% - (var(--vp-layout-max-width) - 64px)) / 2 + var(--vp-sidebar-width) - 32px);
+    left: var(--book-sidebar-actual);
   }
 
   html.book-sidebar-hidden .book-panel-toggle--left {
@@ -1737,22 +1737,47 @@
 }
 
 /*
- * Ширина списка глав.
+ * Фактическая ширина списка глав.
  *
  * Тема считает её как «половина свободного места плюс ширина сайдбара».
  * При увеличенном макете в диапазоне 1440–1700px первое слагаемое становится
- * отрицательным, и панель сжималась до 172px, обрезая названия глав.
- * Ограничение нулём убирает это сжатие, не трогая поведение на широких экранах.
+ * отрицательным: панель сжималась до 172px и обрезала названия глав, а отступ
+ * содержимого и кнопка сворачивания считались по той же формуле — текст уезжал
+ * под панель, а кнопка пряталась за ней.
+ *
+ * Поэтому ширина считается один раз в переменную, и по ней выравнивается всё:
+ * сама панель, отступ содержимого, локальная навигация и кнопка.
  */
+:root {
+  --book-sidebar-actual: var(--vp-sidebar-width);
+}
+
 @media (min-width: 1440px) {
-  .VPSidebar {
-    width: max(
+  :root {
+    --book-sidebar-actual: max(
       var(--vp-sidebar-width),
       calc(
-        (100% - (var(--vp-layout-max-width) - 64px)) / 2 +
+        (100vw - (var(--vp-layout-max-width) - 64px)) / 2 +
         var(--vp-sidebar-width) - 32px
       )
-    ) !important;
+    );
+  }
+
+  /* Свёрнутая панель не занимает места: расчёт не должен её возвращать. */
+  html.book-sidebar-hidden {
+    --book-sidebar-actual: 0px;
+  }
+
+  .VPSidebar {
+    width: var(--book-sidebar-actual) !important;
+  }
+
+  .VPContent.has-sidebar {
+    padding-left: var(--book-sidebar-actual) !important;
+  }
+
+  .VPLocalNav.has-sidebar {
+    padding-left: var(--book-sidebar-actual) !important;
   }
 }
 
