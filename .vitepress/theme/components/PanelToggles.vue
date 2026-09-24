@@ -67,18 +67,5 @@ onMounted(() => {
       </svg>
     </button>
 
-    <button
-      class="book-panel-toggle book-panel-toggle--right"
-      type="button"
-      :title="outlineHidden ? 'Показать оглавление страницы' : 'Скрыть оглавление страницы'"
-      :aria-label="outlineHidden ? 'Показать оглавление страницы' : 'Скрыть оглавление страницы'"
-      :aria-expanded="!outlineHidden"
-      @click="toggleOutline"
-    >
-      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-        <polyline v-if="outlineHidden" points="15 6 9 12 15 18" />
-        <polyline v-else points="9 6 15 12 9 18" />
-      </svg>
-    </button>
   </template>
 </template>

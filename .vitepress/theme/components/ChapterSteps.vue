@@ -1,5 +1,5 @@
 <script setup>
-import { computed, onMounted, ref } from 'vue'
+import { computed, nextTick, onBeforeUnmount, onMounted, ref, watch } from 'vue'
 import tasksByChapter from '../../tasks.generated.json'
 import { TASK_STATUS, progressState } from '../composables/task-progress.js'
 
@@ -7,40 +7,26 @@ const props = defineProps({
   chapter: { type: String, required: true }
 })
 
-// Прогресс живёт в браузере: до монтирования все шаги выглядят нерешёнными,
-// иначе отрисованная на сервере полоса разошлась бы с настоящей.
+const QUESTION_HEADINGS = ['Проверьте себя', 'Быстрая проверка', 'Quick Check']
+const PRACTICE_HEADINGS = ['Практика', 'Practice']
+
 const progress = ref({})
 const ready = ref(false)
+const active = ref('theory')
 
-onMounted(() => {
-  progress.value = progressState().value ?? {}
-  ready.value = true
-})
+// Разметка страницы — единый поток, поэтому разделы находятся один раз
+// после монтирования и дальше только показываются или скрываются.
+let segments = null
 
 const tasks = computed(() => tasksByChapter[props.chapter] ?? [])
 
 const steps = computed(() => {
-  const theory = {
-    key: 'theory',
-    kind: 'theory',
-    label: 'Т',
-    title: 'Теория главы',
-    state: 'theory',
-    href: null
-  }
+  const list = [
+    { key: 'theory', kind: 'theory', label: 'Т', title: 'Теория', state: 'theory' },
+    { key: 'questions', kind: 'questions', label: '?', title: 'Вопросы для самопроверки', state: 'questions' }
+  ]
 
-  // Теоретические вопросы — отдельный шаг: они проверяют понимание,
-  // а не код, и потому не смешиваются с задачами.
-  const questions = {
-    key: 'questions',
-    kind: 'questions',
-    label: '?',
-    title: 'Теоретические вопросы',
-    state: 'questions',
-    href: '#questions'
-  }
-
-  const taskSteps = tasks.value.map((task, index) => {
+  tasks.value.forEach((task, index) => {
     const state = ready.value
       ? progress.value[task.id]?.status ?? TASK_STATUS.notStarted
       : TASK_STATUS.notStarted
@@ -51,90 +37,240 @@ const steps = computed(() => {
       [TASK_STATUS.notStarted]: 'не начата'
     }[state]
 
-    return {
-      key: task.id,
+    list.push({
+      key: `task-${index}`,
       kind: 'task',
+      index,
       label: String(index + 1),
       title: `${task.title} — ${stateTitle}`,
+      taskId: task.id,
       state,
-      href: `#task-${task.id}`,
       stand: task.runner === 'stand'
-    }
+    })
   })
 
-  return [theory, questions, ...taskSteps]
+  if (segments?.practice.length) {
+    list.push({ key: 'practice', kind: 'practice', label: 'П', title: 'Практика', state: 'practice' })
+  }
+
+  return list
 })
 
 const solved = computed(() =>
   steps.value.filter(step => step.state === TASK_STATUS.solved).length)
 
-const QUESTION_HEADINGS = ['Проверьте себя', 'Быстрая проверка', 'Quick Check']
+const activeIndex = computed(() => steps.value.findIndex(step => step.key === active.value))
+const activeStep = computed(() => steps.value[activeIndex.value] ?? steps.value[0])
 
-function findQuestionsSection() {
-  const headings = document.querySelectorAll('.vp-doc h2')
+function headingText(node) {
+  return node.textContent?.replace('​', '').trim() ?? ''
+}
 
-  for (const heading of headings) {
-    const text = heading.textContent?.replace('\u200b', '').trim() ?? ''
+/**
+ * Делит содержимое главы на шаги.
+ *
+ * Границы — заголовки второго уровня: до самопроверки идёт теория, дальше
+ * вопросы, затем блок задач с проверкой и практика. Карточка главы и сама
+ * полоса в деление не попадают: они видны на любом шаге.
+ */
+function collectSegments(container) {
+  const found = { theory: [], questions: [], tasks: null, practice: [], always: [] }
+  let current = 'theory'
 
-    if (QUESTION_HEADINGS.some(title => text.startsWith(title))) {
-      return heading
+  for (const node of container.children) {
+    if (node.classList.contains('book-chapter-card') || node.classList.contains('chapter-steps')) {
+      continue
     }
+
+    // Песочница — инструмент, а не часть раздела: она нужна и при чтении
+    // теории, и при решении задачи, поэтому в деление на шаги не попадает.
+    if (node.querySelector?.('.code-runner--sandbox')) {
+      found.always.push(node)
+      continue
+    }
+
+    if (node.classList.contains('book-checked-tasks')) {
+      found.tasks = node
+      current = 'practice'
+      continue
+    }
+
+    if (node.tagName === 'H2') {
+      const text = headingText(node)
+
+      if (QUESTION_HEADINGS.some(title => text.startsWith(title))) {
+        current = 'questions'
+      } else if (PRACTICE_HEADINGS.some(title => text.startsWith(title))) {
+        current = 'practice'
+      }
+    }
+
+    found[current].push(node)
   }
 
-  return null
+  return found
 }
 
-function goTo(step, event) {
-  event.preventDefault()
-
-  const target = step.kind === 'questions'
-    ? findQuestionsSection()
-    : step.href
-      ? document.querySelector(step.href)
-      : document.querySelector('.book-chapter-card')
-
-  if (!target) return
-
-  target.scrollIntoView({ behavior: 'smooth', block: 'start' })
-
-  if (step.kind === 'task') {
-    // Адрес обновляется без перезагрузки: ссылкой на задачу можно поделиться.
-    history.replaceState(null, '', step.href)
+function show(nodes, visible) {
+  for (const node of nodes) {
+    node.classList.toggle('chapter-step-hidden', !visible)
   }
 }
+
+function apply() {
+  if (!segments) return
+
+  const step = activeStep.value
+
+  show(segments.theory, step.kind === 'theory')
+  show(segments.questions, step.kind === 'questions')
+  show(segments.practice, step.kind === 'practice')
+
+  if (segments.tasks) {
+    segments.tasks.classList.toggle('chapter-step-hidden', step.kind !== 'task')
+
+    const cards = segments.tasks.querySelectorAll('.code-task')
+
+    cards.forEach((card, index) => {
+      card.classList.toggle('chapter-step-hidden', index !== step.index)
+    })
+  }
+}
+
+function select(key, { scroll = true } = {}) {
+  active.value = key
+
+  nextTick(() => {
+    apply()
+
+    if (!scroll) return
+
+    // Шаг всегда открывается сверху: иначе читатель попадает в середину
+    // нового содержимого на позиции прокрутки от предыдущего.
+    const anchor = document.querySelector('.chapter-steps')
+
+    if (anchor) {
+      const top = anchor.getBoundingClientRect().top + window.scrollY - 72
+
+      window.scrollTo({ top: Math.max(0, top), behavior: 'smooth' })
+    }
+  })
+}
+
+function move(offset) {
+  const next = steps.value[activeIndex.value + offset]
+
+  if (next) select(next.key)
+}
+
+function openFromHash() {
+  const hash = decodeURIComponent(window.location.hash.replace('#', ''))
+
+  if (!hash) return false
+
+  const taskIndex = tasks.value.findIndex(task => `task-${task.id}` === hash)
+
+  if (taskIndex >= 0) {
+    active.value = `task-${taskIndex}`
+
+    return true
+  }
+
+  return false
+}
+
+onMounted(() => {
+  progress.value = progressState().value ?? {}
+  ready.value = true
+
+  const card = document.querySelector('.book-chapter-card')
+  const container = card?.parentElement
+
+  if (!container) return
+
+  segments = collectSegments(container)
+
+  openFromHash()
+  apply()
+})
+
+onBeforeUnmount(() => {
+  // Страница уходит целиком, но при навигации внутри сайта элементы могут
+  // переиспользоваться: возвращаем их в обычное состояние.
+  if (!segments) return
+
+  show(segments.theory, true)
+  show(segments.questions, true)
+  show(segments.practice, true)
+
+  if (segments.tasks) {
+    segments.tasks.classList.remove('chapter-step-hidden')
+    segments.tasks
+      .querySelectorAll('.code-task')
+      .forEach(card => card.classList.remove('chapter-step-hidden'))
+  }
+})
+
+watch(progress, apply, { deep: true })
 </script>
 
 <template>
   <nav v-if="tasks.length" class="chapter-steps" aria-label="Шаги главы">
-    <ol class="chapter-steps__list">
+    <button
+      class="chapter-steps__arrow"
+      type="button"
+      :disabled="activeIndex <= 0"
+      aria-label="Предыдущий шаг"
+      @click="move(-1)"
+    >←</button>
+
+    <ol class="chapter-steps__list" role="tablist">
       <li v-for="step in steps" :key="step.key">
-        <a
+        <button
+          type="button"
+          role="tab"
           class="chapter-steps__step"
           :class="[
             `chapter-steps__step--${step.state}`,
-            { 'chapter-steps__step--stand': step.stand }
+            {
+              'chapter-steps__step--stand': step.stand,
+              'chapter-steps__step--active': step.key === active
+            }
           ]"
-          :href="step.href ?? '#'"
+          :aria-selected="step.key === active"
           :title="step.title"
           :aria-label="step.title"
-          @click="goTo(step, $event)"
-        >{{ step.label }}</a>
+          @click="select(step.key)"
+        >{{ step.label }}</button>
       </li>
     </ol>
 
-    <span class="chapter-steps__counter">
-      {{ solved }} / {{ tasks.length }}
-    </span>
+    <button
+      class="chapter-steps__arrow"
+      type="button"
+      :disabled="activeIndex >= steps.length - 1"
+      aria-label="Следующий шаг"
+      @click="move(1)"
+    >→</button>
+
+    <span class="chapter-steps__current">{{ activeStep?.title }}</span>
+    <span class="chapter-steps__counter">решено {{ solved }} / {{ tasks.length }}</span>
   </nav>
 </template>
 
 <style scoped>
 .chapter-steps {
+  position: sticky;
+  top: var(--vp-nav-height, 64px);
+  z-index: 5;
   display: flex;
   align-items: center;
-  gap: 14px;
+  gap: 10px;
   flex-wrap: wrap;
-  margin: 14px 0 0;
+  margin: 0 0 24px;
+  padding: 10px 0;
+  background: var(--vp-c-bg);
+  border-bottom: 1px solid var(--book-rule);
 }
 
 .chapter-steps__list {
@@ -146,7 +282,8 @@ function goTo(step, event) {
   padding: 0;
 }
 
-.chapter-steps__step {
+.chapter-steps__step,
+.chapter-steps__arrow {
   display: grid;
   place-items: center;
   width: 26px;
@@ -157,23 +294,24 @@ function goTo(step, event) {
   font-family: var(--book-mono);
   font-size: 11px;
   line-height: 1;
-  text-decoration: none;
-  transition: border-color 0.15s ease, color 0.15s ease;
+  cursor: pointer;
+  padding: 0;
 }
 
-.chapter-steps__step:hover {
+.chapter-steps__arrow:disabled {
+  opacity: 0.35;
+  cursor: default;
+}
+
+.chapter-steps__step:hover,
+.chapter-steps__arrow:not(:disabled):hover {
   border-color: var(--book-ink);
   color: var(--book-ink);
 }
 
-/* Первый шаг — теория: он всегда доступен и потому отмечен чернилами,
-   а не цветом состояния. */
-.chapter-steps__step--theory {
-  border-color: var(--book-ink);
-  color: var(--book-ink);
-}
-
-.chapter-steps__step--questions {
+.chapter-steps__step--theory,
+.chapter-steps__step--questions,
+.chapter-steps__step--practice {
   border-color: var(--book-ink);
   color: var(--book-ink);
 }
@@ -196,7 +334,19 @@ function goTo(step, event) {
   clip-path: polygon(0 0, 100% 0, 100% 72%, 72% 100%, 0 100%);
 }
 
+/* Текущий шаг отмечен снизу, как закладка: заливка уже занята состоянием. */
+.chapter-steps__step--active {
+  box-shadow: inset 0 -3px 0 var(--vp-c-brand-1);
+}
+
+.chapter-steps__current {
+  font-family: var(--book-serif);
+  font-size: 15px;
+  color: var(--book-ink);
+}
+
 .chapter-steps__counter {
+  margin-left: auto;
   font-family: var(--book-mono);
   font-size: 11px;
   letter-spacing: 0.08em;
@@ -204,12 +354,13 @@ function goTo(step, event) {
   font-variant-numeric: tabular-nums;
 }
 
-.chapter-steps__step:focus-visible {
+.chapter-steps__step:focus-visible,
+.chapter-steps__arrow:focus-visible {
   outline: 2px solid var(--vp-c-brand-1);
   outline-offset: 2px;
 }
 
-@media (prefers-reduced-motion: reduce) {
-  .chapter-steps__step { transition: none; }
+@media (max-width: 640px) {
+  .chapter-steps__current { display: none; }
 }
 </style>

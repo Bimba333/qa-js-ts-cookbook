@@ -67,6 +67,22 @@ const BASE = preview.base
 const CHAPTER = `${BASE}/docs/01-javascript/07-scope`
 const stopPreview = preview.stop
 
+/**
+ * Открывает шаг главы с задачами.
+ *
+ * Глава разбита на шаги, и задачи скрыты, пока шаг не выбран: проверка
+ * должна пройти тем же путём, что и читатель.
+ */
+async function openTaskStep(page, index = 0) {
+  const steps = page.locator('.chapter-steps__step')
+
+  if ((await steps.count()) === 0) return
+
+  // Первые два шага — теория и вопросы, дальше идут задачи.
+  await steps.nth(2 + index).click()
+  await page.locator('.code-task').first().waitFor({ state: 'visible', timeout: 10_000 })
+}
+
 function check(name, condition, detail = '') {
   if (condition) {
     console.log(`  PASS  ${name}`)
@@ -81,6 +97,12 @@ const page = await browser.newPage()
 
 try {
   await page.goto(CHAPTER, { waitUntil: 'domcontentloaded' })
+
+  // Глава открывается на теории, поэтому раздел задач появляется после
+  // выбора шага — проверка идёт тем же путём, что и читатель.
+  check('полоса шагов главы отрисована', (await page.locator('.chapter-steps__step').count()) > 2)
+
+  await openTaskStep(page)
 
   const heading = page.getByRole('heading', { name: 'Задачи с проверкой' })
   await heading.waitFor({ timeout: 10_000 })
@@ -170,6 +192,8 @@ try {
 
   // Прогресс переживает перезагрузку страницы.
   await page.reload({ waitUntil: 'domcontentloaded' })
+  await openTaskStep(page)
+
   const afterReload = page.locator('.code-task').first()
   await afterReload.locator('.code-task__badge--status').waitFor()
   check(
@@ -180,6 +204,8 @@ try {
   // Отказ от самостоятельного решения: отдельная задача, чтобы не смешивать
   // с той, которую только что решили.
   await page.goto(`${BASE}/docs/01-javascript/15-type-conversion`, { waitUntil: 'load' })
+  await openTaskStep(page)
+
   const surrenderTask = page.locator('.code-task').first()
   await surrenderTask.waitFor({ timeout: 10_000 })
 
@@ -203,6 +229,8 @@ try {
   )
 
   await page.reload({ waitUntil: 'domcontentloaded' })
+  await openTaskStep(page)
+
   const afterSurrender = page.locator('.code-task').first()
   await afterSurrender.locator('.code-task__badge--status').waitFor()
   check(
@@ -211,7 +239,7 @@ try {
   )
 
   await page.goto(`${BASE}/docs/01-javascript/07-scope`, { waitUntil: 'load' })
-  await page.locator('.code-task').first().waitFor({ timeout: 10_000 })
+  await openTaskStep(page)
 
   // Бесконечный цикл не должен вешать страницу.
   const loopTask = page.locator('.code-task').first()
@@ -224,6 +252,8 @@ try {
   )
   // TypeScript-задача: код должен транспилироваться перед запуском.
   await page.goto(`${BASE}/docs/02-typescript/111-type-alias`, { waitUntil: 'load' })
+  await openTaskStep(page)
+
   const tsTask = page.locator('.code-task').first()
   await tsTask.waitFor({ timeout: 10_000 })
 
@@ -281,6 +311,8 @@ function describe(result: TestResult): string {
   await page.goto(`${BASE}/docs/03-automation-qa/207-postgresql-in-automation-qa`, {
     waitUntil: 'load'
   })
+  await openTaskStep(page)
+
   const standTask = page.locator('.code-task').first()
   await standTask.waitFor({ timeout: 10_000 })
 

@@ -242,7 +242,6 @@ function renderChapterCard(chapter, locale = 'ru', displayTitle) {
     ${meta.join('\n    ')}
   </div>
   ${progress}
-  ${chapterStepsTag(chapter)}
 </section>
 `
 }
@@ -865,7 +864,10 @@ export function exampleCardPlugin(md) {
       state.tokens[h1Index + 2].hidden = true
     }
 
-    state.tokens.unshift(htmlToken(state, renderChapterCard(chapter, locale, displayTitle)))
+    state.tokens.unshift(
+      htmlToken(state, renderChapterCard(chapter, locale, displayTitle)),
+      ...(chapterStepsTag(chapter) ? [htmlToken(state, chapterStepsTag(chapter))] : [])
+    )
 
     // Новые главы не ссылаются на файл практики явно — подключаем задачи
     // автоматически, если файл практики существует и не пуст.

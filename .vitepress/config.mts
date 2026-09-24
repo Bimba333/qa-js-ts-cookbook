@@ -69,10 +69,9 @@ export default defineConfig({
 
         sidebar,
 
-        outline: {
-          label: 'На странице',
-          level: [2, 3]
-        },
+        // Оглавление страницы отключено: навигацию по главе ведёт полоса
+        // шагов, а дублирующий список разделов только спорил с ней.
+        outline: false,
 
         docFooter: {
           prev: 'Предыдущая',
@@ -102,10 +101,9 @@ export default defineConfig({
 
         sidebar: sidebarEn,
 
-        outline: {
-          label: 'On this page',
-          level: [2, 3]
-        },
+        // Оглавление страницы отключено: навигацию по главе ведёт полоса
+        // шагов, а дублирующий список разделов только спорил с ней.
+        outline: false,
 
         docFooter: {
           prev: 'Previous',
