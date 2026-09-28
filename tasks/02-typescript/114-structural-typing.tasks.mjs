@@ -33,7 +33,7 @@ function runStructural() {
     hints: [
       'Совместимость определяется набором свойств, а не объявленным именем типа.',
       'Экземпляр класса тоже просто объект с методом.',
-      'Число вызовов считает сама функция collect.'
+      'Число вызовов считает сама функция `collect`.'
     ],
     tests: [
       {
@@ -49,14 +49,14 @@ function runStructural() {
         code: `expect(runStructural().fromArrayLike).toBe(2);`
       },
       {
-        name: 'collect действительно вызывает write',
+        name: '`collect` действительно вызывает `write`',
         code: `const written: string[] = [];
 const count = collect({ write: line => { written.push(line); } }, ['a', 'b', 'c']);
 expect(count).toBe(3);
 expect(written).toEqual(['a', 'b', 'c']);`
       },
       {
-        name: 'пустой список не вызывает write',
+        name: 'пустой список не вызывает `write`',
         code: `let calls = 0;
 expect(collect({ write: () => { calls += 1; } }, [])).toBe(0);
 expect(calls).toBe(0);`

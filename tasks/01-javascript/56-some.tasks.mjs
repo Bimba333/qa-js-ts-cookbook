@@ -13,8 +13,8 @@ export default [
 }`,
     hints: [
       'Есть метод, отвечающий на вопрос «есть ли хотя бы один подходящий».',
-      'Он возвращает Boolean независимо от того, что вернул предикат.',
-      'На пустом массиве ответ — false.'
+      'Он возвращает логическое значение независимо от того, что вернул предикат.',
+      'На пустом массиве ответ — `false`.'
     ],
     tests: [
       {
@@ -25,11 +25,11 @@ export default [
 ])).toBe(true);`
       },
       {
-        name: 'если падений нет, возвращает false',
+        name: 'если падений нет, возвращает `false`',
         code: `expect(hasFailure([{ name: 'login', status: 'passed' }])).toBe(false);`
       },
       {
-        name: 'для пустого массива возвращает false',
+        name: 'для пустого массива возвращает `false`',
         code: `expect(hasFailure([])).toBe(false);`
       },
       {
@@ -65,11 +65,11 @@ export default [
         code: `expect(hasDuplicateNames([{ name: 'login' }, { name: 'login' }])).toBe(true);`
       },
       {
-        name: 'если дубликатов нет, возвращает false',
+        name: 'если дубликатов нет, возвращает `false`',
         code: `expect(hasDuplicateNames([{ name: 'login' }, { name: 'order' }])).toBe(false);`
       },
       {
-        name: 'для пустого массива возвращает false',
+        name: 'для пустого массива возвращает `false`',
         code: `expect(hasDuplicateNames([])).toBe(false);`
       },
       {

@@ -17,9 +17,9 @@ function snapshot<T extends object>(source: T): Snapshot<T> {
   return source;
 }`,
     hints: [
-      'readonly в типе проверяется только компилятором — во время выполнения нужна заморозка.',
+      '`readonly` в типе проверяется только компилятором — во время выполнения нужна заморозка.',
       'Возвращать надо копию, а не сам объект.',
-      'Object.freeze возвращает тот же объект, который ему передали.'
+      '`Object.freeze` возвращает тот же объект, который ему передали.'
     ],
     tests: [
       {
@@ -77,7 +77,7 @@ function toDraft<T extends object>(source: T, keep: (keyof T)[]): Draft<T> {
 }`,
     hints: [
       'Модификатор ? в отображённом типе делает необязательным каждое поле.',
-      'Отсутствие ключа и значение undefined различаются через Object.keys.',
+      'Отсутствие ключа и значение `undefined` различаются через `Object.keys`.',
       'Повторяющиеся ключи не должны создавать дублей.'
     ],
     tests: [
@@ -87,12 +87,12 @@ function toDraft<T extends object>(source: T, keep: (keyof T)[]): Draft<T> {
   .toEqual({ id: 'a', version: 1 });`
       },
       {
-        name: 'поле со значением undefined не попадает',
+        name: 'поле со значением `undefined` не попадает',
         code: `const source = { id: 'a', note: undefined };
 expect(Object.keys(toDraft(source, ['id', 'note']))).toEqual(['id']);`
       },
       {
-        name: 'значение null сохраняется',
+        name: 'значение `null` сохраняется',
         code: `expect(toDraft({ note: null }, ['note'])).toEqual({ note: null });`
       },
       {

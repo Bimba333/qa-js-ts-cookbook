@@ -1,11 +1,11 @@
 export default [
   {
     id: 'qa-179-login-page-object',
-    title: 'Page Object для входа и списка',
+    title: 'Объект страницы для входа и списка',
     difficulty: 'hard',
     lang: 'playwright',
     prompt:
-      'Опишите два page object. `LoginPage` с методами `open()` и ' +
+      'Опишите два объекта страниц. `LoginPage` с методами `open()` и ' +
       '`login(user, password)`. `WorkItemsPage` с методами `open()`, ' +
       '`rowCount()` и `titles()`. Селекторы должны жить внутри классов: в теле ' +
       '`solve` не должно быть ни одного обращения к `page.locator`, `getByRole` ' +
@@ -40,7 +40,7 @@ export default async function solve({ page }) {
   return { rows: 0, titles: [], url: '' };
 }`,
     hints: [
-      'Page object скрывает селекторы: наружу видны только шаги.',
+      'Объект страницы скрывает селекторы: наружу видны только шаги.',
       'Заголовок задачи в таблице — это ссылка на карточку.',
       'Сценарий читается как последовательность действий, а не как поиск элементов.'
     ],

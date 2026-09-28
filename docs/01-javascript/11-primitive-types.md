@@ -1,4 +1,4 @@
-# Primitive Types
+# Примитивные типы
 
 ## Связь с предыдущей главой
 
@@ -144,9 +144,9 @@ const deletedAt = null;
 
 ## Теория
 
-### Что такое value
+### Что такое значение
 
-Value — конкретная информация, с которой работает JavaScript program.
+Значение — конкретная информация, с которой работает программа.
 
 ```javascript
 const testName = 'login';
@@ -162,7 +162,7 @@ const isPassed = true;
 true
 ```
 
-Variable names:
+Имена переменных:
 
 ```text
 testName
@@ -170,18 +170,19 @@ retryCount
 isPassed
 ```
 
-Не путайте:
+Не путайте имя и значение: `testName` — это имя, `'login'` — значение, на которое
+имя указывает.
 
-Что engine делает прямо сейчас:
+Что движок делает прямо сейчас:
 
 ```text
-Engine reads a value.
-Engine stores a value.
-Engine compares a value.
-Engine passes a value to console.log or assertion.
+движок читает значение
+движок сохраняет значение
+движок сравнивает значения
+движок передаёт значение в console.log или в проверку
 ```
 
-### Почему JavaScript делит значения на primitive and object значения
+### Почему JavaScript делит значения на примитивные и объектные
 
 JavaScript значения делятся на две большие группы:
 
@@ -193,27 +194,51 @@ JavaScript значения делятся на две большие групп
 
 Почему деление важно:
 
-Objects, arrays, functions, dates and references will be studied later. Сейчас важно понять primitive значения before structured значения.
+Объекты, массивы, функции, даты и ссылки будут изучаться позже. Сейчас важно понять примитивные значения до составных.
 
-### Primitive vs Object overview
+### Примитивы и объекты: общий взгляд
 
-Primitive значения are atomic for our current mental model.
+Примитивные значения в нашей текущей модели неделимы.
 
-Object значения are different:
+Объектные значения устроены иначе:
 
-Не нужно сейчас объяснять objects через memory, references or heap. Это будущие главы.
+```text
+примитив  —  одно неделимое значение: 30, 'active', true
+объект    —  набор значений под общим именем: { status: 'active', code: 200 }
+```
+
+Не нужно сейчас объяснять объекты через память, ссылки или кучу. Это будущие главы.
 
 Сейчас достаточно:
 
-### Primitive categories
+```text
+примитив нельзя разобрать на части — его можно только заменить целиком
+```
 
-JavaScript has seven primitive types:
+### Категории примитивов
+
+В JavaScript семь примитивных типов:
+
+```text
+number     bigint     string     boolean
+undefined  null       symbol
+```
 
 Каждый отвечает на свой вопрос:
 
-### Number
+| Тип | Вопрос, на который отвечает значение |
+| --- | --- |
+| `number` | сколько, какой размер, какой код ответа |
+| `bigint` | сколько, если число не помещается в `number` |
+| `string` | какой текст |
+| `boolean` | да или нет |
+| `undefined` | значение не задавали |
+| `null` | значение задали намеренно пустым |
+| `symbol` | уникальный ключ, который нельзя повторить случайно |
 
-Number — primitive type для numeric значения.
+### Тип `number`
+
+`number` — примитивный тип для числовых значений.
 
 ```javascript
 const age = 30;
@@ -228,9 +253,9 @@ Number  →  30      целое
         →  Infinity
 ```
 
-JavaScript uses Number for integers and fractional значения.
+JavaScript использует `number` и для целых, и для дробных значений.
 
-Special numeric значения like `NaN` and `Infinity` exist, but detailed number поведение will be studied later with operators and comparisons.
+Особые числовые значения вроде `NaN` и `Infinity` существуют, но подробное поведение чисел будет изучаться позже, вместе с операторами и сравнениями.
 
 Automation QA:
 
@@ -239,11 +264,11 @@ const expectedStatusCode = 200;
 const actualStatusCode = 200;
 ```
 
-Если API returns status code as number, assertion should compare number with number, not string with number.
+Если API возвращает код ответа числом, проверка должна сравнивать число с числом, а не строку с числом.
 
-### String
+### Тип `string`
 
-String — primitive type для text значения.
+`string` — примитивный тип для текстовых значений.
 
 ```javascript
 const userName = 'Anna';
@@ -257,7 +282,7 @@ String  →  'Anna'
         →  ''      пустая строка — тоже значение
 ```
 
-String value is text.
+Значение типа `string` — это текст.
 
 Это разные значения.
 
@@ -268,11 +293,11 @@ const statusCodeFromText = '200';
 const statusCodeFromResponse = 200;
 ```
 
-Они look similar, but they are different primitive types.
+Они выглядят похоже, но это разные примитивные типы.
 
-### Boolean
+### Тип `boolean`
 
-Boolean — primitive type with only two значения:
+`boolean` — примитивный тип, у которого всего два значения:
 
 ```text
 true
@@ -291,7 +316,7 @@ Boolean  →  true
          →  false
 ```
 
-Boolean значения are used for yes/no, enabled/disabled, passed/failed, exists/not exists.
+Булевы значения используют для пар «да/нет», «включено/выключено», «прошло/упало», «есть/нет».
 
 Automation QA:
 
@@ -300,11 +325,11 @@ const expectedIsActive = true;
 const actualIsActive = true;
 ```
 
-Do not compare boolean with string `"true"` unless API really returns string.
+Не сравнивайте булево значение со строкой `"true"`, если только API действительно не возвращает строку.
 
-### Undefined
+### Тип `undefined`
 
-`undefined` — primitive value that often means value was not assigned or result is missing.
+`undefined` — примитивное значение, которое обычно означает, что значение не задано или результат отсутствует.
 
 ```javascript
 let userName;
@@ -322,21 +347,21 @@ undefined
 объявили без значения  →  [ undefined ]
 ```
 
-There is one `undefined` value.
+Значение `undefined` существует в единственном экземпляре.
 
-Common situation:
+Обычная ситуация: переменную объявили, но значение ещё не присвоили.
 
-Automation QA:
+В автотестах `undefined` чаще всего приходит из ответа сервиса — поля просто нет:
 
 ```javascript
 const responseField = undefined;
 ```
 
-If a поле is `undefined`, it may mean the поле was not present or was not assigned. JSON itself does not represent `undefined`; JSON details will be studied later with API testing.
+Если поле равно `undefined`, это может означать, что поля не было или значение ему не присвоили. Сам JSON не умеет представлять `undefined`; детали JSON будут изучаться позже, вместе с тестированием API.
 
-### Null
+### Значение `null`
 
-`null` — primitive value for intentional absence.
+`null` — примитивное значение для намеренного отсутствия.
 
 ```javascript
 const deletedAt = null;
@@ -347,9 +372,10 @@ null       →  значение отсутствует намеренно
 undefined  →  значение ещё не задано
 ```
 
-Разница:
+Разница проявляется в источнике: `null` кто-то записал намеренно, `undefined`
+означает, что значения не было вовсе.
 
-Automation QA:
+В ответе сервиса встречаются оба варианта:
 
 ```json
 {
@@ -357,7 +383,7 @@ Automation QA:
 }
 ```
 
-This usually means system intentionally says: there is no deletion date.
+Обычно это означает, что система намеренно сообщает: даты удаления нет.
 
 Важное замечание про `typeof`:
 
@@ -371,18 +397,18 @@ typeof null;
 object
 ```
 
-This is a historical JavaScript поведение. It does not mean `null` is an object. `null` is a primitive value.
+Это историческое поведение JavaScript. Оно не означает, что `null` является объектом. `null` — примитивное значение.
 
 ### Symbol
 
-Symbol — primitive type for unique значения.
+`symbol` — примитивный тип для уникальных значений.
 
 ```javascript
 const firstId = Symbol('id');
 const secondId = Symbol('id');
 ```
 
-Even with same description, symbols are different:
+Даже с одинаковым описанием символы различны:
 
 ```text
 Symbol("id") !== Symbol("id")
@@ -392,36 +418,39 @@ Symbol("id") !== Symbol("id")
 Symbol('id')  ≠  Symbol('id')    два разных значения
 ```
 
-Symbol is less common in everyday Automation QA code than Number, String, Boolean, Null and Undefined. Но его нужно знать как часть primitive types.
+`symbol` встречается в повседневном коде автоматизации реже, чем число, строка, булево значение, `null` и `undefined`. Но его нужно знать как часть примитивных типов.
 
-Object property symbols and advanced use cases will be studied later with objects.
+Символы как ключи свойств и более сложные случаи будут изучаться позже, вместе с объектами.
 
-### BigInt
+### Тип `bigint`
 
-BigInt — primitive type for very large integers.
+`bigint` — примитивный тип для очень больших целых чисел.
 
 ```javascript
 const largeId = 9007199254740993n;
 ```
 
-`n` at the end marks BigInt literal.
+Буква `n` в конце помечает литерал `bigint`.
 
 ```text
 Number  →  ограничен по точности для больших целых
 BigInt  →  9007199254740993n    произвольно большие целые
 ```
 
-BigInt is not the same as Number:
+`bigint` — это не то же самое, что `number`: сложение значений разных типов
+запрещено и даёт `TypeError` прямо во время выполнения.
 
-Automation QA:
+```javascript
+10n + 5;   // TypeError: Cannot mix BigInt and other types
+```
 
-BigInt can appear around very large IDs, but many APIs send large IDs как строки to avoid precision problems.
+`bigint` может встретиться рядом с очень большими идентификаторами, но многие API присылают такие идентификаторы строками, чтобы не терять точность.
 
-Detailed numeric limits and conversions will be studied later.
+Подробные числовые пределы и преобразования будут изучаться позже.
 
-### typeof
+### Оператор `typeof`
 
-`typeof` returns a string describing the type category of a value.
+`typeof` возвращает строку с названием категории типа значения.
 
 ```javascript
 typeof 30;
@@ -429,7 +458,7 @@ typeof 'Anna';
 typeof true;
 ```
 
-Диаграмма typeof results:
+Схема результатов `typeof`:
 
 ```text
 Value       | typeof result
@@ -449,54 +478,56 @@ Symbol()    | "symbol"
 typeof null === "object"
 ```
 
-This is historical поведение. In the mental model of this chapter:
+Это историческое поведение. В модели этой главы:
 
 ```text
 null is primitive
 typeof null is "object"
 ```
 
-Do not use `typeof null` as proof that null is object.
+Не используйте `typeof null` как доказательство того, что `null` — объект.
 
-### Primitive immutability
+### Неизменяемость примитивов
 
-Primitive значения are immutable.
+Примитивные значения неизменяемы.
 
-This means the value itself cannot be changed.
+Это означает, что само значение нельзя изменить.
 
 ```javascript
 const userName = 'Anna';
 ```
 
-The string value `'Anna'` cannot be modified internally.
+Строковое значение `'Anna'` нельзя изменить изнутри.
 
-If you create another value:
+Если создать другое значение:
 
 ```javascript
 const upperName = 'ANNA';
 ```
 
-You now have another string value.
+Теперь у вас есть другое строковое значение.
 
 ```text
 'Anna'  →  toUpperCase()  →  'ANNA'    новое значение
 'Anna'  остаётся прежним
 ```
 
-Do not confuse:
+Не путайте изменение значения и замену значения: примитив изменить нельзя,
+можно только связать имя с другим значением.
 
-With `let`:
+С `let`:
 
 ```javascript
 let status = 'created';
 status = 'ready';
 ```
 
-The primitive value `'created'` was not mutated into `'ready'`. The identifier `status` now points to a different primitive value.
+Примитивное значение `'created'` не превратилось в `'ready'`. Имя `status` теперь указывает на другое примитивное значение.
 
-### Labels pointing to значения
+### Имена, указывающие на значения
 
-Use the mental model from Variables carefully:
+Аккуратно используйте модель из главы про переменные: имя указывает на значение,
+а не содержит его.
 
 Пример:
 
@@ -508,7 +539,7 @@ const status = 'active';
 status  ──→  [ 'active' ]    связь зафиксирована через const
 ```
 
-If reassignment is allowed:
+Если повторное присваивание разрешено:
 
 ```javascript
 let status = 'created';
@@ -522,29 +553,39 @@ status = 'active';
 оба значения существуют независимо, изменилась только связь
 ```
 
-Primitive value did not change. The label now refers to another primitive value.
+Примитивное значение не изменилось. Имя теперь указывает на другое примитивное значение.
 
 ### Текущее место в модели JavaScript
 
-Теперь курс переходит от execution model к value model.
+Теперь курс переходит от модели выполнения к модели значений.
 
-Current position:
+Текущая позиция:
+
+```text
+главы 02-10  —  как выполняется код
+глава 11     —  из чего состоят значения, с которыми он работает
+```
 
 Эта глава:
 
-### Переход к Object Type
+```text
+отвечает на вопрос «какие бывают неделимые значения»
+и готовит вопрос следующей главы: «а как устроены составные»
+```
 
-Primitive значения are fundamental indivisible значения.
+### Переход к объектам
 
-Objects are different.
+Примитивные значения — основные неделимые значения.
 
-Do not try to explain object поведение through primitive rules.
+Объекты устроены иначе.
 
-Next chapter will answer:
+Не пытайтесь объяснить поведение объектов правилами примитивов.
 
-> Каким видом значения является object и почему он ведёт себя иначе?
+Следующая глава ответит на вопрос:
 
-### Complete primitive overview
+> Каким видом значения является объект и почему он ведёт себя иначе?
+
+### Полный обзор примитивов
 
 ---
 
@@ -561,37 +602,37 @@ flowchart TD
 
 ## Внутренний механизм
 
-At this stage we keep the mechanism conceptual.
+На этом этапе мы держим механизм концептуальным.
 
-When engine sees a literal:
+Когда движок видит литерал:
 
 ```javascript
 const age = 30;
 ```
 
-It works with a Number primitive value.
+Он работает с примитивным числовым значением.
 
-When engine sees:
+Когда движок видит:
 
 ```javascript
 const userName = 'Anna';
 ```
 
-It works with a String primitive value.
+Он работает с примитивным строковым значением.
 
-When engine compares primitive значения, it сравнивает значения themselves. Equality details will be studied later, but the basic mental model is:
+Когда движок сравнивает примитивные значения, он сравнивает сами значения. Детали равенства будут изучаться позже, но базовая модель такая:
 
-С каким видом значения engine работает прямо сейчас:
+С каким видом значения движок работает прямо сейчас:
 
-No memory layout, Stack & Heap, wrappers or references are needed for this chapter.
+Ни устройство памяти, ни стек с кучей, ни обёртки и ссылки для этой главы не нужны.
 
 ---
 
 ## Ментальная модель
 
-### Atoms
+### Атомы
 
-Primitive значения are like atoms in the current model.
+Примитивные значения в текущей модели похожи на атомы.
 
 Примеры:
 
@@ -602,25 +643,25 @@ true
 null
 ```
 
-### Indivisible значения
+### Неделимые значения
 
-Primitive value is not a structure you open in this chapter.
+Примитивное значение в этой главе — не структура, которую можно открыть.
 
-Objects will be different.
+С объектами будет иначе.
 
-### Immutable значения
+### Неизменяемые значения
 
-Primitive значения do not change internally.
+Примитивные значения не меняются изнутри.
 
-### Labels pointing to значения
+### Имена, указывающие на значения
 
-Variables are labels pointing to primitive значения.
+Переменные — это имена, указывающие на примитивные значения.
 
-### Catalog of value types
+### Каталог типов значений
 
-Think of primitive types as catalog categories.
+Представьте примитивные типы как категории каталога.
 
-When reading code, classify the value:
+Читая код, определяйте категорию значения:
 
 ```text
 What kind of value is this?
@@ -638,7 +679,7 @@ examples/01-javascript/chapter-11/
 
 Запускайте их из корня проекта.
 
-### Пример 1. Number
+### Пример 1. Числа
 
 Файл:
 
@@ -646,9 +687,9 @@ examples/01-javascript/chapter-11/
 examples/01-javascript/chapter-11/01-number.js
 ```
 
-Показывает Number значения in test-like data.
+Показывает числовые значения в данных, похожих на тестовые.
 
-### Пример 2. String
+### Пример 2. Строки
 
 Файл:
 
@@ -656,9 +697,9 @@ examples/01-javascript/chapter-11/01-number.js
 examples/01-javascript/chapter-11/02-string.js
 ```
 
-Показывает String значения.
+Показывает строковые значения.
 
-### Пример 3. Boolean
+### Пример 3. Булевы значения
 
 Файл:
 
@@ -666,9 +707,9 @@ examples/01-javascript/chapter-11/02-string.js
 examples/01-javascript/chapter-11/03-boolean.js
 ```
 
-Показывает Boolean значения for flags.
+Показывает булевы значения в роли флагов.
 
-### Пример 4. Null and Undefined
+### Пример 4. `null` и `undefined`
 
 Файл:
 
@@ -676,9 +717,9 @@ examples/01-javascript/chapter-11/03-boolean.js
 examples/01-javascript/chapter-11/04-null-undefined.js
 ```
 
-Показывает difference between `null` and `undefined`.
+Показывает разницу между `null` и `undefined`.
 
-### Пример 5. Symbol and BigInt
+### Пример 5. `symbol` и `bigint`
 
 Файл:
 
@@ -686,9 +727,9 @@ examples/01-javascript/chapter-11/04-null-undefined.js
 examples/01-javascript/chapter-11/05-symbol-bigint.js
 ```
 
-Показывает less common primitive значения.
+Показывает менее распространённые примитивные значения.
 
-### Пример 6. typeof
+### Пример 6. `typeof`
 
 Файл:
 
@@ -696,65 +737,65 @@ examples/01-javascript/chapter-11/05-symbol-bigint.js
 examples/01-javascript/chapter-11/06-typeof.js
 ```
 
-Показывает `typeof` results, including historical `typeof null`.
+Показывает результаты `typeof`, включая исторический случай с `null`.
 
 ---
 
 ## Частые вопросы
 
-### Primitive value — это просто маленькое значение?
+### Примитивное значение — это просто маленькое значение?
 
-Нет. Primitive means fundamental indivisible value category. String can be long, but still primitive.
+Нет. Примитивное означает основную неделимую категорию значения. Строка может быть длинной и всё равно остаётся примитивом.
 
-### `null` — object?
+### `null` — это объект?
 
-Нет. `null` является primitive. `typeof null` возвращает `"object"` из-за исторического поведения JavaScript.
+Нет. `null` является примитивом. `typeof null` возвращает `"object"` из-за исторического поведения JavaScript.
 
 ### `undefined` и `null` одно и то же?
 
-Нет. `undefined` often means not assigned / missing. `null` usually means intentional absence.
+Нет. `undefined` обычно означает «не задано» или «отсутствует». `null` обычно означает намеренное отсутствие.
 
-### `const` делает primitive immutable?
+### `const` делает примитив неизменяемым?
 
-Primitive значения immutable by nature. `const` prevents reassignment of identifier. Это разные идеи.
+Примитивные значения неизменяемы по своей природе. `const` запрещает повторное присваивание имени. Это разные идеи.
 
-### Нужно ли часто использовать Symbol and BigInt in tests?
+### Нужно ли часто использовать `symbol` и `bigint` в тестах?
 
-Не часто. But they are part of the language and may appear in libraries, IDs or advanced code.
+Не часто. Но они являются частью языка и могут встретиться в библиотеках, идентификаторах или сложном коде.
 
 ---
 
 ## Распространённые мифы
 
-### Миф 1. Primitive значения are stored like small objects
+### Миф 1. Примитивные значения хранятся как маленькие объекты
 
 Реальность:
 
-Do not explain primitives through objects. Objects are different and will be studied later.
+Не объясняйте примитивы через объекты. Объекты устроены иначе и будут изучаться позже.
 
-### Миф 2. `typeof null` proves null is object
-
-Реальность:
-
-`typeof null` returns `"object"`, but `null` is primitive.
-
-### Миф 3. `const status = "active"` means string became protected by const
+### Миф 2. `typeof null` доказывает, что `null` — объект
 
 Реальность:
 
-String primitive is immutable already. `const` protects identifier from reassignment.
+`typeof null` возвращает `"object"`, но `null` является примитивом.
 
-### Миф 4. `"200"` and `200` are basically same
+### Миф 3. `const status = "active"` делает строку защищённой
 
 Реальность:
 
-They may look similar, but one is String and one is Number.
+Строковый примитив и так неизменяем. `const` защищает имя от повторного присваивания.
+
+### Миф 4. `"200"` и `200` — практически одно и то же
+
+Реальность:
+
+Они могут выглядеть похоже, но одно является строкой, а другое числом.
 
 ---
 
 ## Распространённые ошибки
 
-### Ошибка 1. Comparing number with string
+### Ошибка 1. Сравнивать число со строкой
 
 Неправильная модель:
 
@@ -764,7 +805,7 @@ They may look similar, but one is String and one is Number.
 
 Что произошло:
 
-Types are different.
+Типы разные.
 
 Исправленный подход:
 
@@ -773,7 +814,7 @@ const expectedStatusCode = 200;
 const actualStatusCode = 200;
 ```
 
-### Ошибка 2. Treating null and undefined as identical
+### Ошибка 2. Считать `null` и `undefined` одинаковыми
 
 Неправильная модель:
 
@@ -783,7 +824,7 @@ null and undefined both mean nothing, so they are same.
 
 Исправленная модель: `undefined` означает «значение ещё не задано», `null` — «отсутствие задано намеренно». Это разные факты, и различать их полезно при проверке данных.
 
-### Ошибка 3. Trusting typeof null too much
+### Ошибка 3. Слишком доверять `typeof null`
 
 Неправильный вывод:
 
@@ -798,7 +839,7 @@ typeof null is historical behavior.
 null is primitive.
 ```
 
-### Ошибка 4. Confusing reassignment with mutation
+### Ошибка 4. Путать повторное присваивание с изменением
 
 Код:
 
@@ -809,13 +850,13 @@ status = 'ready';
 
 Что произошло:
 
-Identifier now refers to another primitive value. The string `'created'` was not mutated.
+Имя теперь указывает на другое примитивное значение. Строка `'created'` не изменилась.
 
 ---
 
 ## Практическое использование
 
-When reading code, classify значения:
+Читая код, определяйте категорию значения:
 
 ```text
 1. Is this value primitive or object?
@@ -839,7 +880,7 @@ null        | Null          | "object"
 Symbol()    | Symbol        | "symbol"
 ```
 
-Practical rule:
+Практическое правило:
 
 ```text
 Assertions should compare values intentionally,
@@ -850,20 +891,20 @@ not only visually similar output.
 
 ## Использование в Automation QA
 
-### Expected значения in assertions
+### Ожидаемые значения в проверках
 
-Assertions often compare primitive значения:
+Проверки часто сравнивают примитивные значения:
 
 ```javascript
 const expectedStatus = 'active';
 const actualStatus = 'active';
 ```
 
-Both are String primitive значения.
+Оба являются строковыми примитивами.
 
-### API response validation
+### Проверка ответа API
 
-API response значения may be numbers, strings, booleans or null.
+Значения в ответе API могут быть числами, строками, булевыми значениями или `null`.
 
 ```javascript
 const expectedStatusCode = 200;
@@ -871,24 +912,25 @@ const expectedIsActive = true;
 const expectedDeletedAt = null;
 ```
 
-QA engineer should know what kind of value is expected.
+Инженер по автоматизации должен знать, какого вида значение ожидается.
 
-### Comparing primitive значения
+### Сравнение примитивных значений
 
-Before comparing:
+Перед сравнением убедитесь, что оба значения одного вида. Число `200` и строка
+`'200'` — разные примитивные значения, и строгое сравнение даст `false`.
 
-Do not compare:
+Не сравнивайте:
 
 ```text
 expected: 200
 actual: "200"
 ```
 
-unless the system intentionally returns string.
+если только система намеренно не возвращает строку.
 
-### Test data preparation
+### Подготовка тестовых данных
 
-Good test data shows value type through naming:
+Хорошие тестовые данные показывают тип значения через имя:
 
 ```javascript
 const expectedUserName = 'Anna';
@@ -897,9 +939,9 @@ const expectedIsActive = true;
 const expectedDeletedAt = null;
 ```
 
-### Reading JSON значения
+### Чтение значений из JSON
 
-JSON commonly contains:
+JSON обычно содержит:
 
 ```json
 {
@@ -910,21 +952,22 @@ JSON commonly contains:
 }
 ```
 
-These correspond to primitive значения in JavaScript after parsing. `undefined` is not a JSON value.
+После разбора они соответствуют примитивным значениям JavaScript. Значения `undefined` в JSON не существует.
 
-### Choosing correct assertion types
+### Выбор правильного типа проверки
 
-Assertion should match type intent:
+Проверка должна соответствовать замыслу:
 
-This prevents false confidence in tests.
+Это избавляет от ложной уверенности в тестах.
 
 ---
 
 ## Итоги
 
-Primitive значения are the fundamental indivisible значения of JavaScript.
+Примитивные значения — основные неделимые значения JavaScript.
 
-JavaScript значения divide into:
+Значения делятся на две группы: примитивные (неделимые) и объектные
+(составные).
 
 Эта глава изучила примитивные значения:
 
@@ -938,61 +981,74 @@ Symbol
 BigInt
 ```
 
-Primitive значения are immutable. Reassignment changes which value an identifier refers to; it does not mutate the primitive value itself.
+Примитивные значения неизменяемы. Повторное присваивание меняет то, на какое значение указывает имя; само примитивное значение при этом не меняется.
 
-Objects are different and will be studied separately in the next chapter.
+Объекты устроены иначе и будут изучаться отдельно в следующей главе.
 
 ---
 
 ## Что нужно запомнить
 
-✓ Value is the actual information JavaScript works with.
+✓ Значение — это та информация, с которой работает JavaScript.
 
-✓ Primitive значения are fundamental indivisible значения.
+✓ Примитивные значения — основные неделимые значения.
 
-✓ JavaScript has primitive значения and object значения.
+✓ Значения делятся на примитивные и объектные.
 
-✓ Number represents numeric значения.
+✓ `number` представляет числовые значения.
 
-✓ String represents text значения.
+✓ `string` представляет текстовые значения.
 
-✓ Boolean has only `true` and `false`.
+✓ `boolean` имеет только `true` и `false`.
 
-✓ `undefined` often means not assigned / missing.
+✓ `undefined` обычно означает «не задано» или «отсутствует».
 
-✓ `null` usually means intentional absence.
+✓ `null` обычно означает намеренное отсутствие.
 
-✓ `Symbol` creates unique primitive значения.
+✓ `symbol` создаёт уникальные примитивные значения.
 
-✓ `BigInt` represents large integer значения.
+✓ `bigint` представляет большие целые значения.
 
-✓ `typeof null` returns `"object"`, but `null` is primitive.
+✓ `typeof null` возвращает `"object"`, но `null` является примитивом.
 
-✓ Primitive значения are immutable.
+✓ Примитивные значения неизменяемы.
 
 ---
 
 ## Проверьте себя
 
-1. Что такое value?
+1. Что такое значение?
 
-2. Почему JavaScript divides значения into primitive and object значения?
+2. Почему JavaScript делит значения на примитивные и объектные?
 
-3. Какие primitive types есть в JavaScript?
+3. Какие примитивные типы есть в JavaScript?
 
-4. Чем Number отличается от String?
+4. Чем число отличается от строки?
 
-5. Чем Boolean отличается от string `"true"`?
+5. Чем булево значение отличается от строки `"true"`?
 
 6. Чем `undefined` отличается от `null`?
 
-7. Почему `typeof null` can be confusing?
+7. Почему `typeof null` сбивает с толку?
 
-8. Что означает primitive immutability?
+8. Что означает неизменяемость примитивов?
 
 9. Почему `"200"` и `200` не одно и то же?
 
-10. Почему objects will be studied separately?
+10. Почему объекты изучаются отдельно?
+
+### Ответы
+
+1. Единица данных, с которой работает программа: число, строка, булево значение, объект. Всё, что можно сохранить под именем и передать дальше.
+2. Потому что они ведут себя по-разному. Примитив неделим и копируется целиком; объект состоит из свойств, и имена хранят ссылку на него, а не сам объект.
+3. `number`, `bigint`, `string`, `boolean`, `undefined`, `null` и `symbol`.
+4. Число описывает количество и участвует в арифметике; строка описывает текст. `200` и `'200'` могут выглядеть одинаково в выводе, но это разные значения разных типов.
+5. `true` — булево значение, с ним работают условия. `"true"` — текст из четырёх символов, и он остаётся текстом, даже если пришёл из ответа сервера. Сравнение с булевым значением через `===` даст `false`.
+6. `undefined` означает, что значение не задавали: переменная объявлена без значения, свойства нет, функция ничего не вернула. `null` задают намеренно как «значение есть, и оно пустое».
+7. `typeof null` возвращает `'object'` — это давняя ошибка языка, сохранённая ради совместимости. `null` остаётся примитивом.
+8. Примитив нельзя изменить по частям — его можно только заменить целиком. Операции над строкой не меняют её, а создают новую.
+9. Это значения разных типов. `'200'` — текст, сравнение через `===` с числом даст `false`, а сложение с числом даст строку, а не сумму. В тестах это частая причина расхождения с кодом ответа.
+10. У объектов другая модель: имена хранят ссылки, изменение через одно имя видно через другое, а сравнение сравнивает не содержимое. Это отдельная тема, которую нельзя объяснить на примитивах.
 
 ---
 
@@ -1004,7 +1060,7 @@ Objects are different and will be studied separately in the next chapter.
 practice/01-javascript/11-primitive-types.md
 ```
 
-Перед практикой запустите примеры из раздела «Примеры кода» и для каждого value запишите primitive type and `typeof` result.
+Перед практикой запустите примеры из раздела «Примеры кода» и для каждого значения запишите примитивный тип и результат `typeof`.
 
 ---
 
@@ -1016,4 +1072,4 @@ practice/01-javascript/11-primitive-types.md
 solutions/01-javascript/11-primitive-types.md
 ```
 
-Открывайте решения после самостоятельной попытки. В этой главе важно сравнивать не только вывод, но и kind of value.
+Открывайте решения после самостоятельной попытки. В этой главе важно сравнивать не только вывод, но и вид значения.

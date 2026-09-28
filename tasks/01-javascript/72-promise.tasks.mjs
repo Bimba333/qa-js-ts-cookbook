@@ -13,7 +13,7 @@ export default [
   // Верните Promise, а не само значение.
 }`,
     hints: [
-      'Готовый промис можно получить через Promise.resolve и Promise.reject.',
+      'Готовый промис можно получить через `Promise.resolve` и `Promise.reject`.',
       'Отклонённый промис принимает объект ошибки.',
       'Функция должна возвращать промис в обоих случаях.'
     ],
@@ -28,7 +28,7 @@ expect(value).toEqual({ status: 'passed' });`
         code: `expect(loadStatus('passed') instanceof Promise).toBe(true);`
       },
       {
-        name: 'при failed промис отклоняется',
+        name: 'при `failed` промис отклоняется',
         code: `let message = '';
 try { await loadStatus('failed'); } catch (error) { message = error.message; }
 expect(message).toBe('прогон упал');`
@@ -63,8 +63,8 @@ expect(isError).toBe(true);`
   // catch() возвращает промис, и цепочка продолжается как успешная.
 }`,
     hints: [
-      'then() возвращает новый промис со значением обработчика.',
-      'catch() тоже возвращает промис — его значение идёт дальше по цепочке.',
+      '`then()` возвращает новый промис со значением обработчика.',
+      '`catch()` тоже возвращает промис — его значение идёт дальше по цепочке.',
       'Возвращать нужно результат цепочки, а не исходный промис.'
     ],
     tests: [
@@ -73,7 +73,7 @@ expect(isError).toBe(true);`
         code: `expect(await statusOrDefault(Promise.resolve('passed'))).toBe('PASSED');`
       },
       {
-        name: 'при отклонении возвращает unknown',
+        name: 'при отклонении возвращает `unknown`',
         code: `const rejected = Promise.reject(new Error('x'));
 rejected.catch(() => {});
 expect(await statusOrDefault(rejected)).toBe('unknown');`

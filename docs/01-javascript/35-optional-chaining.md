@@ -1,4 +1,4 @@
-# Optional Chaining
+# Опциональная цепочка
 
 ## Связь с предыдущей главой
 
@@ -176,7 +176,7 @@ Code safely continues.
 
 ## Теория
 
-Optional Chaining существует для safe property access in chains where some level can be `null` or `undefined`.
+Безопасное чтение цепочки существует для доступа к свойствам там, где какой-то уровень может быть `null` или `undefined`.
 
 Обычная цепочка:
 
@@ -184,11 +184,11 @@ Optional Chaining существует для safe property access in chains whe
 response.body.user.profile.name
 ```
 
-читает каждый уровень без safety checkpoint:
+читает каждый уровень без проверки:
 
-Если intermediate level is `undefined`, следующий property access throws.
+Если промежуточный уровень равен `undefined`, следующее обращение к свойству выбрасывает ошибку.
 
-Optional Chaining добавляет checkpoint:
+Оператор `?.` добавляет проверку:
 
 ```javascript
 response.body.user.profile?.name
@@ -203,9 +203,10 @@ user?.profile?.email
 нет  →  результат undefined, ошибки не будет
 ```
 
-### Operator `?.`
+### Оператор `?.`
 
-`?.` означает:
+`?.` означает: если значение слева — `null` или `undefined`, остановиться и
+вернуть `undefined`; иначе продолжить обращение.
 
 Пример:
 
@@ -213,11 +214,11 @@ user?.profile?.email
 const city = user.profile?.address?.city;
 ```
 
-Каждый `?.` ставит checkpoint.
+Каждый `?.` ставит проверку.
 
-### Nested properties
+### Вложенные свойства
 
-Nested data in Automation QA common:
+Вложенные данные в автоматизации тестов встречаются часто:
 
 ```javascript
 const response = {
@@ -231,19 +232,19 @@ const response = {
 };
 ```
 
-Safe access:
+Безопасное обращение:
 
 ```javascript
 const email = response.body.user.profile?.email;
 ```
 
-Если `profile` есть, result is email.
+Если `profile` есть, результатом будет адрес почты.
 
-Если `profile` missing, result is `undefined`.
+Если `profile` отсутствует, результат — `undefined`.
 
-### Short-circuiting
+### Короткое замыкание
 
-Short-circuiting означает early stop.
+Короткое замыкание означает раннюю остановку.
 
 Пример:
 
@@ -251,39 +252,39 @@ Short-circuiting означает early stop.
 const name = response.body.user.profile?.name;
 ```
 
-Если `profile` is `undefined`, JavaScript не пытается читать `.name`.
+Если `profile` равен `undefined`, JavaScript не пытается читать `.name`.
 
-### Undefined result
+### Результат `undefined`
 
-Optional Chaining returns `undefined` when it stops safely.
+При безопасной остановке оператор возвращает `undefined`.
 
-Это не default value.
+Это не значение по умолчанию.
 
-### Comparison with ordinary access
+### Сравнение с обычным обращением
 
-Ordinary access:
+Обычное обращение:
 
 ```javascript
 response.body.user.profile.name;
 ```
 
-Optional Chaining:
+Опциональная цепочка:
 
 ```javascript
 response.body.user.profile?.name;
 ```
 
-### Optional method call preview
+### Безопасный вызов метода: предварительный взгляд
 
-Optional Chaining can also be used with method calls:
+Оператор `?.` можно использовать и с вызовами методов:
 
 ```javascript
 reporter.log?.('test passed');
 ```
 
-High-level meaning:
+Смысл на высоком уровне:
 
-Эта глава только предварительно показывает optional method calls. Продвинутые формы вызова здесь не изучаются.
+Эта глава только показывает такую форму. Более сложные варианты вызова здесь не изучаются.
 
 ---
 
@@ -308,69 +309,102 @@ flowchart TD
 const city = response.body.user.profile?.address?.city;
 ```
 
-Концептуальный поток engine:
+Концептуальный ход работы движка:
 
-### Property access flow
+```text
+1. вычислить значение слева от ?.
+2. значение null или undefined  →  вернуть undefined и остановить цепочку
+3. иначе                        →  прочитать свойство и продолжить дальше
+```
 
-### Existing path
+### Порядок чтения цепочки
 
-### Missing path
+Цепочка читается слева направо, и каждый `?.` проверяет только то значение,
+которое стоит непосредственно перед ним.
 
-### Object unchanged
+```text
+response.body.user.profile   ←  обычное чтение, без защиты
+     ?.address               ←  проверяется profile
+        ?.city               ←  проверяется address
+```
 
-Optional Chaining only reads.
+### Когда путь существует
 
-It does not add missing properties.
+```text
+profile  →  объект
+address  →  объект
+city     →  'Berlin'
+```
 
-It does not create fallback objects.
+Все проверки пройдены, результат — обычное значение свойства.
 
-It does not change response.
+### Когда путь обрывается
 
-### Variable assignment
+```text
+profile  →  undefined
+```
+
+Цепочка останавливается сразу: `address` и `city` не читаются вовсе, а всё
+выражение даёт `undefined`. Это и есть короткое замыкание — оно защищает от
+ошибки `cannot read property of undefined`.
+
+### Объект не изменился
+
+Оператор только читает.
+
+Он не добавляет отсутствующих свойств.
+
+Он не создаёт запасных объектов.
+
+Он не меняет ответ.
+
+### Присваивание переменной
 
 ```javascript
 const name = response.body.user.profile?.name;
 ```
 
-If path exists:
+Если путь существует:
 
 ```text
 name = 'Anna'
 ```
 
-If path stops:
+Если путь обрывается:
 
 ```text
 name = undefined
 ```
 
-The variable receives the result of traversal.
+Переменная получает результат обхода цепочки.
 
 ---
 
 ## Ментальная модель
 
-Представьте hallway with doors:
+Представьте коридор с дверями:
 
-Ordinary access идет вперед и ожидает, что каждая дверь существует.
+Обычное обращение идёт вперёд и ожидает, что каждая дверь существует.
 
-Optional Chaining ставит checkpoint:
+Оператор `?.` ставит проверку перед каждой дверью, к которой он приписан: если
+двери нет, дальше идти не нужно.
 
-Staircase model:
+Модель лестницы:
 
 ```text
-Step 1: response
-Step 2: body
-Step 3: user
-Step 4: profile
-Step 5: name
+шаг 1: response
+шаг 2: body
+шаг 3: user
+шаг 4: profile
+шаг 5: name
 ```
 
-If a step is missing:
+Если шаг отсутствует, мост обрывается — и опциональная цепочка возвращает
+`undefined` вместо попытки пройти дальше.
 
-Bridge segments:
-
-Главная модель:
+Главная модель: `?.` проверяет только текущее звено. Он не гарантирует, что
+дойдёт до конца, и не подставляет значение по умолчанию — это работа
+оператора `??` из следующей главы.
 
 ---
 
@@ -393,7 +427,7 @@ node examples/01-javascript/chapter-35/05-method-preview.js
 node examples/01-javascript/chapter-35/06-qa-example.js
 ```
 
-### Пример 1. Basic Optional Chaining
+### Пример 1. Базовое безопасное чтение
 
 ```javascript
 const user = {
@@ -408,7 +442,7 @@ console.log(user.profile?.name);
 console.log(userWithoutProfile.profile?.name);
 ```
 
-### Пример 2. Nested properties
+### Пример 2. Вложенные свойства
 
 ```javascript
 const response = {
@@ -425,7 +459,7 @@ console.log(response.body.user.profile?.email);
 console.log(response.body.user.settings?.theme);
 ```
 
-### Пример 3. Short-circuit
+### Пример 3. Короткое замыкание
 
 ```javascript
 const response = {
@@ -452,9 +486,9 @@ const name = response.body.user?.profile?.name;
 console.log(name);
 ```
 
-Optional Chaining must be placed at each level that may be missing.
+Проверку нужно ставить на каждом уровне, который может отсутствовать.
 
-### Пример 5. Method preview
+### Пример 5. Вызов метода
 
 ```javascript
 const reporter = {
@@ -469,7 +503,7 @@ reporter.log?.('test passed');
 silentReporter.log?.('test skipped');
 ```
 
-### Пример 6. QA example
+### Пример 6. Пример из автоматизации тестов
 
 ```javascript
 const apiResponse = {
@@ -496,25 +530,32 @@ console.log(userTheme);
 
 ## Частые вопросы
 
-### Optional Chaining задает default value?
+### Задаёт ли `?.` значение по умолчанию?
 
 Нет.
 
-Default value будет темой следующей главы: Nullish Coalescing.
+Значения по умолчанию будут темой следующей главы.
 
-### Optional Chaining меняет object?
+### Меняет ли `?.` объект?
 
 Нет.
 
-Он только читает цепочку safely.
+Он только безопасно читает цепочку.
 
 ### Почему возвращается `undefined`, а не ошибка?
 
-Потому что `?.` tells JavaScript:
+Потому что `?.` сообщает JavaScript:
+
+```text
+«отсутствие значения здесь — ожидаемая ситуация, а не ошибка»
+```
+
+Оператор ставят там, где отсутствие данных допустимо. Если поле обязано быть,
+`?.` только спрячет настоящую проблему до более позднего места.
 
 ### Нужно ли ставить `?.` на каждом уровне?
 
-Только на тех уровнях, которые могут быть `null` or `undefined`.
+Только на тех уровнях, которые могут быть `null` или `undefined`.
 
 Если `response.body` тоже может отсутствовать, нужно:
 
@@ -522,39 +563,39 @@ Default value будет темой следующей главы: Nullish Coale
 response.body?.user?.profile?.name
 ```
 
-### Это замена validation?
+### Это замена проверке данных?
 
 Нет.
 
-Optional Chaining helps safe reading. It does not prove that data is valid.
+Оператор помогает безопасно читать. Он не доказывает, что данные корректны.
 
 ---
 
 ## Распространённые мифы
 
-### Миф: Optional Chaining исправляет данные
+### Миф: `?.` исправляет данные
 
 Реальность:
 
-Он не исправляет response and does not add missing properties.
+Он не исправляет ответ и не добавляет отсутствующих свойств.
 
-### Миф: Optional Chaining возвращает пустую строку или `null`
-
-Реальность:
-
-When it stops, result is `undefined`.
-
-### Миф: Optional Chaining - это просто короткая запись многих `if`
+### Миф: `?.` возвращает пустую строку или `null`
 
 Реальность:
 
-Главная идея не в краткости, а в safe traversal of property chain.
+При остановке результатом будет `undefined`.
 
-### Миф: Optional Chaining можно поставить только один раз в начале
+### Миф: `?.` — просто короткая запись нескольких `if`
 
 Реальность:
 
-Checkpoint нужен на каждом level that may be missing.
+Главная идея не в краткости, а в безопасном обходе цепочки свойств.
+
+### Миф: `?.` можно поставить только один раз, в начале
+
+Реальность:
+
+Проверка нужна на каждом уровне, который может отсутствовать.
 
 ---
 
@@ -568,7 +609,7 @@ Checkpoint нужен на каждом level that may be missing.
 response.body.user.profile?.name;
 ```
 
-Если `user` missing, code still throws before reaching `profile?.`.
+Если `user` отсутствует, код всё равно упадёт до того, как дойдёт до `profile?.`.
 
 Исправление:
 
@@ -576,13 +617,13 @@ response.body.user.profile?.name;
 response.body.user?.profile?.name;
 ```
 
-### Ошибка 2. Ожидать default value
+### Ошибка 2. Ожидать значение по умолчанию
 
 ```javascript
 const theme = user.settings?.theme;
 ```
 
-If settings missing:
+Если настройки отсутствуют:
 
 ```text
 theme = undefined
@@ -594,25 +635,25 @@ theme = undefined
 theme = 'default'
 ```
 
-Default value будет изучаться в Nullish Coalescing.
+Значения по умолчанию будут изучаться в следующей главе.
 
 ### Ошибка 3. Скрыть обязательную ошибку
 
-Если property must exist, Optional Chaining может замаскировать проблему.
+Если свойство обязано быть, оператор может замаскировать проблему.
 
-Use Optional Chaining for truly optional paths.
+Используйте его для действительно необязательных путей.
 
-### Ошибка 4. Думать, что object стал безопасным навсегда
+### Ошибка 4. Думать, что объект стал безопасным навсегда
 
-Optional Chaining protects only the chain where it is used.
+Оператор защищает только ту цепочку, где он записан.
 
-Other property access can still throw.
+Другие обращения к свойствам по-прежнему могут упасть.
 
 ---
 
 ## Практическое использование
 
-Optional Chaining useful when object shape is partially optional.
+Оператор полезен, когда структура объекта частично необязательна.
 
 ### Необязательные API-поля
 
@@ -620,25 +661,25 @@ Optional Chaining useful when object shape is partially optional.
 const middleName = response.body.user.profile?.middleName;
 ```
 
-### Nested response objects
+### Вложенные объекты ответа
 
 ```javascript
 const city = response.body.user.profile?.address?.city;
 ```
 
-### Optional configuration
+### Необязательная конфигурация
 
 ```javascript
 const retryCount = config.retryPolicy?.retries;
 ```
 
-### Assertion helpers
+### Вспомогательные проверки
 
 ```javascript
 const actualRole = response.body.user?.role;
 ```
 
-The helper can safely read optional поле and then decide what assertion should do.
+Вспомогательная функция может безопасно прочитать необязательное поле и затем решить, что делать проверке.
 
 ---
 
@@ -646,111 +687,44 @@ The helper can safely read optional поле and then decide what assertion shou
 
 ### Необязательные API-поля
 
-Some API поля appear only for specific users:
+Некоторые поля ответа появляются только для определённых пользователей: у
+администратора есть список прав, у обычного пользователя такого поля нет вовсе.
 
-Optional Chaining:
+Опциональная цепочка:
 
 ```javascript
 const permissions = response.body.user.permissions?.items;
 ```
 
-### Nested response objects
+### Вложенные объекты ответа
 
-API response can contain deeply nested data:
+Ответ API может содержать глубоко вложенные данные:
 
 ```javascript
 const country = response.body.user.profile?.address?.country;
 ```
 
-If address missing, test code does not crash during reading.
+Если адрес отсутствует, код теста не падает при чтении.
 
-### Optional configuration
+### Необязательная конфигурация
 
 ```javascript
 const retries = config.retryPolicy?.retries;
 ```
 
-This reads optional config safely. It does not provide default retries. That comes next with Nullish Coalescing.
+Так безопасно читается необязательная настройка. Значения по умолчанию он не даёт — это тема следующей главы.
 
-### Payload validation
+### Проверка тела запроса
 
 ```javascript
 const promoCode = payload.discount?.promoCode;
 ```
 
-Useful when поле is optional.
+Полезно, когда поле необязательно.
 
-### Assertion helpers
+### Вспомогательные проверки
 
-Optional Chaining can make helper robust, but it must not hide required data bugs.
-
----
-
-## Диаграммы главы
-
-### 1. Why Optional Chaining exists
-
-### 2. Nested object
-
-### 3. Missing intermediate object
-
-### 4. Property access flow
-
-### 5. Safe stopping
-
-### 6. Undefined result
-
-### 7. Short-circuit
-
-### 8. Comparison with ordinary access
-
-### 9. Текущая модель JavaScript
-
-### 10. QA API response
-
-### 11. Читаемость
-
-### 12. Типичные ошибки
-
-### 13. Optional method call preview
-
-### 14. Object traversal
-
-### 15. Existing path
-
-### 16. Missing path
-
-### 17. Checkpoint model
-
-### 18. Hallway analogy
-
-### 19. Staircase analogy
-
-### 20. Execution timeline
-
-### 21. Переход к Nullish Coalescing
-
-### 22. Object unchanged
-
-### 23. Safe access
-
-### 24. Variable assignment
-
-### 25. API payload example
-
-### 26. Assertion helper
-
-### 27. Краткая ментальная модель
-
-### 28. Complete Optional Chaining model
-
-### 29. Property chain
-
-### 30. Early stop
-
-### 31. Undefined propagation
-
-### 32. Итоговая схема
+Оператор делает вспомогательную функцию устойчивой, но он не должен прятать ошибки в обязательных данных.
 
 ---
 
@@ -784,32 +758,32 @@ practice/01-javascript/35-optional-chaining.md
 solutions/01-javascript/35-optional-chaining.md
 ```
 
-Не открывайте решения до самостоятельной попытки. Главный навык главы - понимать, где chain stops and why result becomes `undefined`.
+Не открывайте решения до самостоятельной попытки. Главный навык главы — понимать, где цепочка останавливается и почему результатом становится `undefined`.
 
 ---
 
 ## Итоги
 
-Optional Chaining продолжает раздел Objects:
+Безопасное чтение цепочки продолжает раздел про объекты:
 
 Главная модель: `?.` прерывает цепочку на первом отсутствующем звене и возвращает `undefined` вместо ошибки.
 
-Optional Chaining is not a default value mechanism. It only performs safe traversal.
+Это не механизм значений по умолчанию. Он только безопасно обходит цепочку.
 
 ---
 
 ## Что нужно запомнить
 
-* Optional Chaining нужен для safe property access.
-* `?.` checks whether current value is `null` or `undefined` before continuing.
-* If current value is `null` or `undefined`, chain stops.
-* Safe stop returns `undefined`.
-* Optional Chaining does not create default значения.
-* Optional Chaining does not change object.
-* `?.` should be placed before levels that may be missing.
-* Optional method calls exist, but advanced cases come later.
-* In Automation QA, Optional Chaining helps with optional API поля, nested responses and optional config.
-* Nullish Coalescing will explain fallback значения in the next chapter.
+* Оператор `?.` нужен для безопасного обращения к свойствам.
+* Он проверяет, не равно ли текущее значение `null` или `undefined`, прежде чем продолжить.
+* Если текущее значение `null` или `undefined`, цепочка останавливается.
+* Безопасная остановка даёт `undefined`.
+* Оператор не создаёт значений по умолчанию.
+* Оператор не меняет объект.
+* `?.` ставят перед уровнями, которые могут отсутствовать.
+* Безопасный вызов метода существует, но более сложные случаи будут позже.
+* В автоматизации тестов оператор помогает с необязательными полями ответа, вложенными структурами и необязательной настройкой.
+* Значения по умолчанию будут объяснены в следующей главе.
 
 ---
 
@@ -817,13 +791,27 @@ Optional Chaining is not a default value mechanism. It only performs safe traver
 
 Ответьте без запуска кода.
 
-1. Какую проблему решает Optional Chaining?
-2. Что делает operator `?.`?
-3. Что произойдет, если current value is `undefined`?
-4. Почему Optional Chaining returns `undefined` вместо throwing?
-5. Задает ли Optional Chaining default value?
-6. Меняет ли Optional Chaining source object?
-7. Почему `?.` иногда нужно ставить на нескольких levels?
-8. Когда Optional Chaining может скрыть проблему?
-9. Где Optional Chaining полезен в Automation QA?
-10. Какая следующая тема логически продолжает Optional Chaining?
+1. Какую задачу решает безопасное чтение цепочки?
+2. Что делает оператор `?.`?
+3. Что произойдёт, если текущее значение равно `undefined`?
+4. Почему оператор возвращает `undefined`, а не выбрасывает ошибку?
+5. Задаёт ли оператор значение по умолчанию?
+6. Меняет ли оператор исходный объект?
+7. Почему `?.` иногда нужно ставить на нескольких уровнях?
+8. Когда оператор может скрыть проблему?
+9. Где он полезен в автоматизации тестов?
+10. Какая следующая тема логически продолжает эту?
+
+### Ответы
+
+1. Чтение цепочки свойств, в которой промежуточное значение может отсутствовать. Без него обращение к свойству у `undefined` останавливает программу ошибкой.
+2. Проверяет значение слева от себя: если оно `null` или `undefined`, вся цепочка сразу даёт `undefined`, иначе чтение продолжается.
+3. Цепочка останавливается: свойства правее не читаются, результат — `undefined`.
+4. Потому что оператор ставят там, где отсутствие данных — ожидаемая ситуация. Ошибка означала бы, что произошло что-то непредвиденное.
+5. Нет. Он только безопасно читает; значение по умолчанию задаёт `??`.
+6. Нет. Он ничего не создаёт и не дописывает — только читает.
+7. Потому что каждый `?.` проверяет лишь то значение, которое стоит непосредственно перед ним. Если отсутствовать может и промежуточный объект, защищать нужно и его.
+8. Когда поле обязано быть. Тогда `?.` превращает настоящую ошибку данных в тихий `undefined`, и тест падает позже, в неочевидном месте.
+9. При разборе ответов с необязательными частями: дополнительные поля, вложенные объекты, которых может не быть при некоторых сценариях.
+10. Значения по умолчанию: `??` подставляет запасное значение там, где получился `undefined`.
+

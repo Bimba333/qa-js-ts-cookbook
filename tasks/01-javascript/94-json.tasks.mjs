@@ -13,9 +13,9 @@ export default [
   // JSON.stringify принимает вторым аргументом функцию замены.
 }`,
     hints: [
-      'Вторым аргументом JSON.stringify принимает функцию замены значений.',
+      'Вторым аргументом `JSON.stringify` принимает функцию замены значений.',
       'Уже встреченные объекты удобно запоминать в Set.',
-      'BigInt по-прежнему вызывает ошибку — её нужно перехватить.'
+      '`BigInt` по-прежнему вызывает ошибку — её нужно перехватить.'
     ],
     tests: [
       {
@@ -29,7 +29,7 @@ cyclic.self = cyclic;
 expect(safeStringify(cyclic)).toContain('[circular]');`
       },
       {
-        name: 'BigInt даёт null вместо исключения',
+        name: '`BigInt` даёт `null` вместо исключения',
         code: `expect(safeStringify({ big: 1n })).toBe(null);`
       },
       {
@@ -71,9 +71,9 @@ expect(safeStringify(cyclic)).toContain('[circular]');`
   // JSON.parse принимает вторым аргументом функцию преобразования.
 }`,
     hints: [
-      'Вторым аргументом JSON.parse принимает функцию преобразования значений.',
+      'Вторым аргументом `JSON.parse` принимает функцию преобразования значений.',
       'Она получает имя ключа и значение.',
-      'Некорректный текст выбрасывает SyntaxError.'
+      'Некорректный текст выбрасывает `SyntaxError`.'
     ],
     tests: [
       {
@@ -92,7 +92,7 @@ expect(parsed.createdAt.toISOString()).toBe('2026-09-22T10:00:00.000Z');`
 expect(parsed.name).toBe('login');`
       },
       {
-        name: 'некорректный текст даёт null',
+        name: 'некорректный текст даёт `null`',
         code: `expect(parseWithDates('{не json}', [])).toBe(null);`
       }
     ],

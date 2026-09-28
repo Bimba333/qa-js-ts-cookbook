@@ -1,7 +1,7 @@
 export default [
   {
     id: 'js-27-merge-config',
-    title: 'Слияние настроек через spread',
+    title: 'Слияние настроек через раскрытие',
     difficulty: 'easy',
     lang: 'js',
     prompt:
@@ -13,7 +13,7 @@ export default [
 }`,
     hints: [
       'Порядок важен: последний источник перекрывает предыдущие.',
-      'spread копирует и свойства со значением undefined.',
+      'Раскрытие копирует и свойства со значением `undefined`.',
       'Исходные объекты остаются без изменений.'
     ],
     tests: [
@@ -33,7 +33,7 @@ mergeConfig(base, { retries: 3 });
 expect(base).toEqual({ retries: 1 });`
       },
       {
-        name: 'undefined в override перекрывает базовое значение',
+        name: '`undefined` в переопределении перекрывает базовое значение',
         code: `expect(mergeConfig({ a: 1 }, { a: undefined }).a).toBe(undefined);`
       }
     ],

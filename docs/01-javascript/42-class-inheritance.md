@@ -1,4 +1,4 @@
-# Class Inheritance
+# Наследование классов
 
 ## Связь с предыдущей главой
 
@@ -168,11 +168,11 @@ Inheritance lets derived classes reuse поведение from base class.
 
 ## Теория
 
-Class Inheritance is поведение reuse between classes.
+Наследование классов — переиспользование поведения между классами.
 
 Главная модель: наследование позволяет одному классу переиспользовать поведение другого.
 
-Base class contains общее поведение:
+Базовый класс содержит общее поведение:
 
 ```javascript
 class BasePage {
@@ -186,7 +186,7 @@ class BasePage {
 }
 ```
 
-Derived class reuses it:
+Производный класс его переиспользует:
 
 ```javascript
 class LoginPage extends BasePage {
@@ -196,7 +196,7 @@ class LoginPage extends BasePage {
 }
 ```
 
-Now instance can use both:
+Теперь экземпляр может использовать оба:
 
 ```javascript
 const loginPage = new LoginPage();
@@ -207,31 +207,49 @@ console.log(loginPage.login());
 
 Концептуально:
 
+```text
+open()   —  метод базового класса, у LoginPage своего такого нет
+login()  —  собственный метод LoginPage
+```
+
+Оба вызова выглядят одинаково: откуда взялся метод, на месте вызова не видно.
+
 ### `extends`
 
-`extends` creates relationship between classes.
+`extends` создаёт связь между классами.
 
-It means:
+Это означает:
 
-Do not read `extends` as copying methods.
+```text
+экземпляры LoginPage могут пользоваться методами BasePage
+```
 
-More accurate model:
+Не читайте `extends` как копирование методов.
 
-### Inherited methods
+Более точная модель:
 
-Inherited method is method available to derived class instance through the class/prototype relationship.
+```text
+экземпляр  →  прототип LoginPage  →  прототип BasePage
+```
 
-This is why the previous chapters matter.
+Методы остаются каждый в своём классе, а связь между классами позволяет до
+них дойти.
 
-Inheritance is not a new search model.
+### Унаследованные методы
+
+Унаследованный метод — метод, доступный экземпляру производного класса через связь классов и прототипов.
+
+Именно поэтому предыдущие главы важны.
+
+Наследование — не новая модель поиска.
 
 ```text
 Prototype lookup still works
 ```
 
-### Overriding
+### Переопределение
 
-Derived class can define method with same name as base class.
+Производный класс может объявить метод с тем же именем, что и базовый.
 
 ```javascript
 class LoginPage extends BasePage {
@@ -243,15 +261,15 @@ class LoginPage extends BasePage {
 
 Теперь:
 
-This is overriding.
+Это переопределение.
 
-It follows the same priority idea:
+Оно подчиняется той же идее приоритета:
 
 ```text
 closer method wins
 ```
 
-We do not explain `super` in this chapter. Calling base поведение from overridden method is the next chapter.
+Мы не объясняем `super` в этой главе. Вызов базового поведения из переопределённого метода — тема следующей.
 
 ---
 
@@ -269,7 +287,7 @@ flowchart TD
 
 ## Внутренний механизм
 
-When JavaScript sees:
+Когда JavaScript видит:
 
 ```javascript
 class LoginPage extends BasePage {}
@@ -282,19 +300,26 @@ Child  →  extends  →  Parent
 поиск метода идёт от Child к Parent
 ```
 
-This creates a relationship that allows method lookup to continue from derived class поведение to base class поведение.
+Так создаётся связь, которая позволяет поиску метода продолжиться от поведения производного класса к поведению базового.
 
-If code calls:
+Если код вызывает:
 
 ```javascript
 loginPage.waitReady();
 ```
 
-Engine mentally follows:
+Движок мысленно проходит цепочку:
 
-Then call happens with the same объект выполнения rule:
+```text
+loginPage                    собственные свойства → метода нет
+LoginPage.prototype          → нет
+BasePage.prototype           → ЕСТЬ waitReady
+```
 
-So inside inherited method:
+Затем вызов происходит по тому же правилу объекта выполнения: `this` — это
+`loginPage`, а не `BasePage.prototype`, где метод найден.
+
+Поэтому внутри унаследованного метода:
 
 ```javascript
 waitReady() {
@@ -302,31 +327,31 @@ waitReady() {
 }
 ```
 
-`this` refers to the actual объект выполнения:
+`this` указывает на фактический объект выполнения:
 
-Method location and объект выполнения are still different concepts.
+Место, где лежит метод, и объект выполнения по-прежнему разные вещи.
 
-### Prototype reminder
+### Напоминание о прототипах
 
-The exact internal structure is more detailed than this chapter needs.
+Точное внутреннее устройство подробнее, чем нужно этой главе.
 
-But the important high-level connection is:
+Но важная связь на высоком уровне такая:
 
-That is enough for this chapter.
+Для этой главы этого достаточно.
 
 ---
 
 ## Ментальная модель
 
-Inheritance can be understood as shared manual.
+Наследование можно понимать как общую инструкцию.
 
-When поведение is missing in specialized manual, JavaScript can use common manual.
-
-Other useful analogies:
+Когда нужного поведения нет в частной инструкции, JavaScript может использовать общую.
 
 Это ментальные модели, а не формальные определения.
 
-The technical idea remains:
+Техническая идея остаётся прежней: наследование связывает прототипы. Экземпляр
+наследника ссылается на прототип наследника, тот — на прототип родителя, и
+поиск метода идёт по этой цепочке.
 
 ---
 
@@ -344,7 +369,7 @@ examples/01-javascript/chapter-42/
 node examples/01-javascript/chapter-42/01-first-inheritance.js
 ```
 
-### Пример 1. First inheritance
+### Пример 1. Первое наследование
 
 Файл:
 
@@ -352,9 +377,9 @@ node examples/01-javascript/chapter-42/01-first-inheritance.js
 examples/01-javascript/chapter-42/01-first-inheritance.js
 ```
 
-Показывает `BasePage` and `LoginPage extends BasePage`.
+Показывает `BasePage` и `LoginPage extends BasePage`.
 
-### Пример 2. Shared methods
+### Пример 2. Общие методы
 
 Файл:
 
@@ -362,9 +387,9 @@ examples/01-javascript/chapter-42/01-first-inheritance.js
 examples/01-javascript/chapter-42/02-shared-methods.js
 ```
 
-Показывает several derived classes using same base methods.
+Показывает несколько производных классов, использующих одни базовые методы.
 
-### Пример 3. Overriding
+### Пример 3. Переопределение
 
 Файл:
 
@@ -372,7 +397,7 @@ examples/01-javascript/chapter-42/02-shared-methods.js
 examples/01-javascript/chapter-42/03-overriding.js
 ```
 
-Показывает method with same name in derived class.
+Показывает метод с тем же именем в производном классе.
 
 ### Пример 4. Типичные ошибки
 
@@ -382,9 +407,9 @@ examples/01-javascript/chapter-42/03-overriding.js
 examples/01-javascript/chapter-42/04-common-mistakes.js
 ```
 
-Показывает that inheritance does not copy methods into instance.
+Показывает, что наследование не копирует методы в экземпляр.
 
-### Пример 5. Page Object
+### Пример 5. Объект страницы
 
 Файл:
 
@@ -392,9 +417,9 @@ examples/01-javascript/chapter-42/04-common-mistakes.js
 examples/01-javascript/chapter-42/05-page-object.js
 ```
 
-Показывает realistic BasePage/LoginPage/ProfilePage model.
+Показывает реалистичную модель базовой страницы, страницы входа и страницы профиля.
 
-### Пример 6. QA example
+### Пример 6. Пример из автоматизации тестов
 
 Файл:
 
@@ -402,7 +427,7 @@ examples/01-javascript/chapter-42/05-page-object.js
 examples/01-javascript/chapter-42/06-qa-example.js
 ```
 
-Показывает base API client поведение reused by service clients.
+Показывает поведение базового клиента API, переиспользуемое клиентами сервисов.
 
 ---
 
@@ -414,75 +439,84 @@ examples/01-javascript/chapter-42/06-qa-example.js
 
 Более точная ментальная модель: `extends` связывает прототипы двух классов, поэтому поиск метода продолжается в родителе.
 
-### Inheritance заменяет Prototype Chain?
+### Наследование заменяет цепочку прототипов?
 
 Нет.
 
-Inheritance builds on prototype lookup.
+Наследование построено на поиске по прототипу.
 
-### Нужно ли всегда использовать inheritance?
+### Нужно ли всегда использовать наследование?
 
 Нет.
 
-Inheritance полезен when there is real общее поведение between classes. Если общего поведение мало, inheritance может усложнить код.
+Наследование полезно, когда между классами есть настоящее общее поведение. Если общего мало, наследование усложняет код.
 
-Composition vs inheritance будет отдельной темой позже.
+Композиция против наследования будет отдельной темой позже.
 
 ### Почему `super` не объясняется здесь?
 
-Потому что сначала нужно понять simple поведение reuse.
+Потому что сначала нужно понять простое переиспользование поведения.
 
 Следующая глава объяснит:
 
-### Можно ли override inherited method?
+```text
+как переопределённый метод может вызвать версию базового класса,
+а не заменить её целиком
+```
+
+### Можно ли переопределить унаследованный метод?
 
 Да.
 
-Derived class method with same name is found first.
+Метод производного класса с тем же именем находится первым.
 
 ---
 
 ## Распространённые мифы
 
-### Миф: inheritance copies methods into derived class
+### Миф: наследование копирует методы в производный класс
 
-Реальность: methods are reused through class/prototype relationship.
+Реальность: методы переиспользуются через связь классов и прототипов.
 
-### Миф: base class should contain everything
+### Миф: базовый класс должен содержать всё
 
-Реальность: base class should contain common поведение only.
+Реальность: базовый класс должен содержать только общее поведение.
 
-### Миф: overriding removes base method
+### Миф: переопределение удаляет базовый метод
 
-Реальность: overriding changes which method lookup finds first for this derived class.
+Реальность: переопределение меняет то, какой метод поиск находит первым для этого производного класса.
 
-### Миф: inheritance is always better than duplication
+### Миф: наследование всегда лучше дублирования
 
-Реальность: inheritance can reduce duplication, but unclear hierarchies hurt readability.
+Реальность: наследование уменьшает дублирование, но непонятная иерархия вредит читаемости.
 
 ---
 
 ## Распространённые ошибки
 
-### Ошибка 1. Копировать methods after creating base class
+### Ошибка 1. Копировать методы после создания базового класса
 
 Неправильная модель: будто наследование копирует методы родителя в дочерний класс.
 
-Что происходит:
+Что происходит на самом деле: `extends` связывает прототипы, а не копирует
+методы. В дочернем прототипе метода родителя нет — он находится шагом дальше по
+цепочке.
 
 Исправленная модель: методы остаются в родителе, а дочерний класс лишь продолжает цепочку поиска.
 
-### Ошибка 2. Put page-specific поведение into base class
+### Ошибка 2. Класть поведение конкретной страницы в базовый класс
 
-Неправильный дизайн:
+Неправильный дизайн: метод `login()` объявлен в `BasePage`, чтобы «не
+дублировать».
 
-Почему плохо:
+Почему плохо: он появляется у всех страниц, включая те, где входа нет. Иерархия
+начинает обещать поведение, которого у объекта нет.
 
-`login()` belongs to `LoginPage`, not every page.
+`login()` принадлежит странице входа, а не каждой странице.
 
 Исправленная модель: переопределённый метод в дочернем классе находится первым и скрывает родительский, не удаляя его.
 
-### Ошибка 3. Override accidentally
+### Ошибка 3. Переопределить метод случайно
 
 Неправильный код:
 
@@ -502,65 +536,92 @@ class LoginPage extends BasePage {
 
 Что произошло:
 
-`LoginPage.open()` shadows inherited `BasePage.open()`.
+`LoginPage.open()` затеняет унаследованный `BasePage.open()`.
 
-Если это было intentional, fine.
+Если это было намеренно — хорошо.
 
-Если accidental, method name should be changed.
+Если случайно — имя метода нужно изменить.
 
-### Ошибка 4. Forget объект выполнения
+### Ошибка 4. Забыть про объект выполнения
 
 Неправильная модель: будто конструктор родителя вызывается сам собой.
 
-Правильная модель:
+Правильная модель: конструктор наследника обязан вызвать `super()` явно, и до
+этого вызова обращаться к `this` нельзя — объект ещё не готов. Обращение выше
+даёт `ReferenceError`.
 
 ---
 
 ## Практическое использование
 
-Inheritance useful when:
+Наследование полезно, когда у нескольких классов действительно общее поведение и
+общая роль в предметной области.
 
 Примеры:
 
-* base page actions;
-* common API client поведение;
-* shared validator formatting;
-* framework reporting helpers;
-* common test data builders.
+* действия базовой страницы;
+* общее поведение клиента API;
+* общее форматирование проверок;
+* вспомогательные средства отчётности фреймворка;
+* общие сборщики тестовых данных.
 
-Good inheritance:
-
-Bad inheritance:
+| | Удачное наследование | Неудачное |
+| --- | --- | --- |
+| что общего | роль в предметной области | случайно похожий код |
+| что в базовом классе | то, что верно для ВСЕХ наследников | то, что нужно одному |
+| глубина | один-два уровня | четыре и больше |
+| читаемость | иерархия объясняет домен | иерархия прячет дублирование |
 
 Вопрос читаемости:
 
-> Does the hierarchy explain the domain, or only hide duplicated code?
+> Объясняет ли иерархия предметную область или только прячет дублированный код?
 
-Эта глава не сравнивает inheritance и composition глубоко. Это обсуждение будет позже.
+Эта глава не сравнивает наследование и композицию глубоко. Это обсуждение будет позже.
 
 ---
 
 ## Использование в Automation QA
 
-### BasePage
+### Базовый объект страницы
 
-Common page поведение:
+Общее поведение страниц:
 
-Specific pages:
+```text
+open()        —  открыть страницу по её адресу
+waitReady()   —  дождаться готовности
+```
 
-This keeps common actions in one place.
+Конкретные страницы:
 
-### API base client
+```text
+LoginPage     —  login()
+ProfilePage   —  updateEmail()
+```
 
-Common API поведение:
+Так общие действия остаются в одном месте.
 
-Specific clients:
+### Базовый клиент API
 
-### Reusable validators
+Общее поведение API:
 
-Base validator:
+```text
+buildUrl()      —  собрать адрес из baseUrl и пути
+sendRequest()   —  отправить запрос и вернуть ответ
+```
 
-Specific validators:
+Конкретные клиенты:
+
+```text
+UsersClient     —  createUser(), getUser()
+OrdersClient    —  createOrder()
+```
+
+### Переиспользуемые проверки
+
+Базовая проверка задаёт общую форму: как формируется сообщение об ошибке и как
+возвращается результат.
+
+Конкретные проверки добавляют только своё правило:
 
 ```text
 StatusValidator
@@ -568,113 +629,23 @@ RoleValidator
 SchemaValidator
 ```
 
-The goal is not to build deep hierarchies.
+Цель не в том, чтобы строить глубокие иерархии.
 
-The goal is to keep shared framework поведение explicit and readable.
-
----
-
-## Диаграммы главы
-
-### 1. Why inheritance exists
-
-### 2. Duplicated class methods
-
-```text
-LoginPage.open()
-ProfilePage.open()
-OrdersPage.open()
-```
-
-### 3. Base class
-
-### 4. Derived class
-
-### 5. Shared поведение
-
-### 6. extends
-
-### 7. Method reuse
-
-### 8. Overriding
-
-### 9. Текущая модель JavaScript
-
-### 10. Prototype reminder
-
-### 11. QA Page Objects
-
-### 12. API client hierarchy
-
-### 13. Читаемость
-
-### 14. Типичные ошибки
-
-### 15. Method lookup
-
-### 16. Prototype behind extends
-
-### 17. Object creation
-
-### 18. Shared toolkit
-
-### 19. Family recipe
-
-### 20. Company handbook
-
-### 21. Base responsibility
-
-### 22. Derived responsibility
-
-### 23. Override flow
-
-### 24. Краткая ментальная модель
-
-### 25. Complete inheritance model
-
-### 26. Object relationship
-
-### 27. Class relationship
-
-### 28. Lookup reminder
-
-### 29. Receiver reminder
-
-### 30. Переход к super
-
-### 31. Переход к composition
-
-### 32. Framework example
-
-### 33. Shared validator
-
-### 34. Build hierarchy
-
-### 35. Object evolution
-
-### 36. Принадлежность поведения
-
-### 37. Prototype connection
-
-### 38. Override lookup
-
-### 39. Shared methods
-
-### 40. Итоговая схема
+Цель в том, чтобы общее поведение фреймворка оставалось явным и читаемым.
 
 ---
 
 ## Итоги
 
-Class Inheritance continues the Classes chapter.
+Наследование классов продолжает главу про классы.
 
-Classes answered:
+Классы ответили:
 
 ```text
 How to create many similar objects conveniently?
 ```
 
-Class Inheritance отвечает:
+Наследование отвечает:
 
 ```text
 What if several classes need the same behavior?
@@ -682,57 +653,70 @@ What if several classes need the same behavior?
 
 Основная модель: наследование — это продолжение цепочки поиска, а не копирование поведения.
 
-Inheritance does not copy methods. It creates a relationship between classes, while the already-learned prototype mechanism continues to perform property lookup.
+Наследование не копирует методы. Оно создаёт связь между классами, а поиск свойств по-прежнему выполняет уже изученный механизм прототипов.
 
-The next chapter will explain `super`: how a derived class can call поведение from its base class.
+Следующая глава объяснит `super`: как производный класс может вызвать поведение базового.
 
 ---
 
 ## Что нужно запомнить
 
-✓ Inheritance reuses поведение between classes.
+✓ Наследование переиспользует поведение между классами.
 
-✓ Base class contains common поведение.
+✓ Базовый класс содержит общее поведение.
 
-✓ Derived class contains specific поведение.
+✓ Производный класс содержит частное поведение.
 
-✓ `extends` creates relationship between classes.
+✓ `extends` создаёт связь между классами.
 
-✓ Inherited methods are found through lookup, not copied.
+✓ Унаследованные методы находятся поиском, а не копируются.
 
-✓ Derived method can override base method.
+✓ Метод производного класса может переопределить базовый.
 
-✓ Closer method wins during lookup.
+✓ При поиске побеждает более близкий метод.
 
-✓ Receiver remains the actual object used in method call.
+✓ Объектом выполнения остаётся тот объект, через который вызван метод.
 
-✓ Inheritance builds on prototype lookup.
+✓ Наследование построено на поиске по прототипу.
 
-✓ `super` is the next chapter.
+✓ `super` — тема следующей главы.
 
 ---
 
 ## Проверьте себя
 
-1. What problem does class inheritance solve?
+1. Какую задачу решает наследование классов?
 
-2. Какое поведение относится к base class?
+2. Какое поведение относится к базовому классу?
 
-3. Какое поведение относится к derived class?
+3. Какое поведение относится к производному классу?
 
-4. Does `extends` copy methods?
+4. Копирует ли `extends` методы?
 
-5. How is inheritance related to Prototype Chain?
+5. Как наследование связано с цепочкой прототипов?
 
-6. What is method overriding?
+6. Что такое переопределение метода?
 
-7. Which method wins if derived and base class define the same name?
+7. Какой метод побеждает, если производный и базовый класс объявляют одно имя?
 
-8. What is the объект выполнения during `loginPage.open()`?
+8. Каким будет объект выполнения при вызове `loginPage.open()`?
 
-9. Why can copying identical methods into every class be a bad idea?
+9. Почему копировать одинаковые методы в каждый класс — плохая идея?
 
-10. What will the next chapter explain?
+10. Что объяснит следующая глава?
+
+### Ответы
+
+1. Повторение одинакового поведения в нескольких классах: общее выносится в базовый класс, а различия остаются в производных.
+2. То, что одинаково для всех потомков: открыть страницу, дождаться готовности, собрать адрес запроса.
+3. То, что свойственно только ему: вход на странице логина, создание пользователя в клиенте пользователей.
+4. Нет. Он создаёт связь между классами, по которой экземпляр доходит до методов базового класса.
+5. Это та же цепочка поиска: экземпляр — прототип производного класса — прототип базового класса.
+6. Объявление в производном классе метода с тем же именем, что и в базовом. При вызове побеждает метод производного класса.
+7. Метод производного класса: поиск начинается ближе к объекту и останавливается на первом совпадении.
+8. Сам объект `loginPage` — независимо от того, в каком классе найден метод.
+9. Изменение придётся вносить в каждый класс, и одно место обычно пропускают. Кроме того, из кода перестаёт быть видно, что поведение общее.
+10. Как переопределённый метод может вызвать версию базового класса вместо того, чтобы заменить её целиком.
 
 ---
 

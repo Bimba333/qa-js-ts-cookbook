@@ -18,7 +18,7 @@ export default [
 }`,
     hints: [
       'Последний созданный ресурс обычно зависит от предыдущих — отсюда обратный порядок.',
-      'Ошибка одного dispose не должна остановить остальные.',
+      'Ошибка одного `dispose` не должна остановить остальные.',
       'После очистки список зарегистрированного должен опустеть.'
     ],
     tests: [
@@ -42,7 +42,7 @@ expect(done).toEqual(['база']);
 expect(failed).toEqual(['файл']);`
       },
       {
-        name: 'асинхронный dispose дожидается',
+        name: 'асинхронный `dispose` дожидается',
         code: `const finished = [];
 const asyncScope = createCleanupScope();
 asyncScope.register('медленный', async () => {

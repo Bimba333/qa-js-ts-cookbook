@@ -1,4 +1,4 @@
-# Hoisting
+# Подъём объявлений
 
 ## Связь с предыдущей главой
 
@@ -172,22 +172,22 @@ JavaScript moves declarations to the top.
 
 Так думать не нужно.
 
-Правильная модель: строки остаются на своих местах, но до выполнения кода engine уже знает об объявленных именах.
+Правильная модель: строки остаются на своих местах, но до выполнения кода движок уже знает об объявленных именах.
 
-Диаграмма Source Code:
+Схема исходного кода:
 
 ```text
 строка 1:  console.log(userName);   ← выполняется первой
 строка 2:  var userName = 'Anna';   ← но имя зарегистрировано раньше
 ```
 
-Hoisting — это не перемещение. Hoisting — это наблюдаемое поведение после подготовки.
+Подъём объявлений — это не перемещение. Это наблюдаемое поведение после подготовки.
 
 ### Что программист наблюдает
 
 Программист видит три разных поведения.
 
-Function Declaration:
+Объявление функции:
 
 ```javascript
 printStatus();
@@ -221,7 +221,7 @@ undefined
 let status = 'ready';
 ```
 
-До строки initialization access fails. TDZ explains why; следующая глава будет полностью об этом.
+До строки инициализации доступ невозможен. Почему — объяснит временная мёртвая зона; следующая глава будет полностью об этом.
 
 Вопрос:
 
@@ -231,17 +231,14 @@ Why does var produce undefined?
 Why do let/const fail before initialization?
 ```
 
-Ответ начинается в Creation Phase.
+Ответ начинается в фазе подготовки.
 
-### Creation Phase revisited
+### Фаза подготовки ещё раз
 
-Execution Context создается в два крупных шага:
+Контекст выполнения создаётся в два крупных шага: сначала движок регистрирует
+имена, потом выполняет строки по порядку.
 
-Creation Phase:
-
-Execution Phase:
-
-Диаграмма Creation Phase:
+Схема фазы подготовки:
 
 ```text
 регистрация имён:
@@ -250,14 +247,14 @@ Execution Phase:
   let / const  → зарегистрированы, доступа нет
 ```
 
-Диаграмма Execution Phase:
+Схема фазы выполнения:
 
 ```text
 выполнение строк по порядку:
   присваивания, вызовы, чтения
 ```
 
-Что engine подготовил до execution:
+Что движок подготовил до выполнения:
 
 ```text
 Identifier records.
@@ -267,13 +264,13 @@ var bindings with undefined.
 let/const bindings not initialized yet.
 ```
 
-### Lexical Environment before execution
+### Лексическое окружение до выполнения
 
-Во время Creation Phase engine подготавливает Lexical Environment.
+Во время фазы подготовки движок подготавливает лексическое окружение.
 
-Environment Record до выполнения:
+Запись окружения до выполнения:
 
-Это conceptual diagram, не спецификация.
+Это концептуальная схема, а не спецификация.
 
 Важно:
 
@@ -282,9 +279,9 @@ Registration happens before execution.
 Initialization may happen later during execution.
 ```
 
-### Function Declaration registration
+### Регистрация объявления функции
 
-Function declaration регистрируется во время Creation Phase так, что function can be called before its line.
+Объявление функции регистрируется во время фазы подготовки так, что функцию можно вызвать до её строки.
 
 ```javascript
 printStatus();
@@ -294,25 +291,21 @@ function printStatus() {
 }
 ```
 
-Creation Phase:
-
-Execution Phase:
-
 ```text
-Creation Phase:   showMessage  ──→  [ функция целиком ]
-Execution Phase:  вызов работает и до строки объявления
+фаза подготовки:   showMessage  ──→  [ функция целиком ]
+фаза выполнения:  вызов работает и до строки объявления
 ```
 
-Что engine подготовил до execution:
+Что движок подготовил до выполнения:
 
 ```text
-Identifier printStatus.
-Callable function binding.
+имя printStatus зарегистрировано
+связано с вызываемой функцией
 ```
 
-### var registration
+### Регистрация `var`
 
-`var` declaration тоже учитывается во время Creation Phase.
+Объявление через `var` тоже учитывается во время фазы подготовки.
 
 ```javascript
 console.log(userName);
@@ -320,20 +313,16 @@ console.log(userName);
 var userName = 'Anna';
 ```
 
-Creation Phase:
-
-Execution Phase:
-
 ```text
-Creation Phase:   userName  ──→  [ undefined ]
-Execution Phase:  userName  ──→  [ 'Anna' ]
+фаза подготовки:   userName  ──→  [ undefined ]
+фаза выполнения:  userName  ──→  [ 'Anna' ]
 ```
 
-Здесь важно разделить declaration and initialization.
+Здесь важно разделить объявление и инициализацию.
 
-### let registration
+### Регистрация `let`
 
-`let` declaration тоже регистрируется во время Creation Phase, но не behaves like `var`.
+Объявление через `let` тоже регистрируется во время фазы подготовки, но ведёт себя иначе, чем `var`.
 
 ```javascript
 // console.log(userRole);
@@ -341,13 +330,9 @@ Execution Phase:  userName  ──→  [ 'Anna' ]
 let userRole = 'admin';
 ```
 
-Creation Phase:
-
-Execution Phase:
-
 ```text
-Creation Phase:   userName зарегистрирован, доступ запрещён
-Execution Phase:  на строке объявления доступ открывается
+фаза подготовки:   userName зарегистрирован, доступ запрещён
+фаза выполнения:  на строке объявления доступ открывается
 ```
 
 Подробный механизм TDZ будет в следующей главе. Сейчас нужно запомнить:
@@ -357,9 +342,9 @@ let is registered during Creation Phase.
 It is not initialized like var.
 ```
 
-### const registration
+### Регистрация `const`
 
-`const` похож на `let` в том, что identifier is registered during Creation Phase, but not initialized until execution reaches declaration line.
+`const` похож на `let` тем, что имя регистрируется во время фазы подготовки, но не инициализируется, пока выполнение не дойдёт до строки объявления.
 
 ```javascript
 // console.log(baseUrl);
@@ -367,20 +352,16 @@ It is not initialized like var.
 const baseUrl = 'https://example.com';
 ```
 
-Creation Phase:
-
-Execution Phase:
-
 ```text
-Creation Phase:   baseUrl зарегистрирован, доступ запрещён
-Execution Phase:  объявление и инициализация происходят одной строкой
+фаза подготовки:   baseUrl зарегистрирован, доступ запрещён
+фаза выполнения:  объявление и инициализация происходят одной строкой
 ```
 
-`const` must be initialized at declaration. Это уже было в главе Variables. Здесь важно другое: declaration record exists before execution, but usable value appears only at initialization line.
+`const` обязан получить значение при объявлении. Это уже было в главе про переменные. Здесь важно другое: запись об имени существует до выполнения, а пригодное значение появляется только на строке инициализации.
 
-### Declaration vs initialization
+### Объявление и инициализация
 
-Hoisting невозможно понять без разделения declaration и initialization.
+Подъём объявлений невозможно понять без разделения объявления и инициализации.
 
 ```javascript
 var userName = 'Anna';
@@ -393,15 +374,30 @@ declaration     — имя появилось в записях окружени
 initialization  — имени сопоставлено значение
 ```
 
-Для function declaration:
+Для объявления функции:
+
+```text
+declaration и initialization происходят вместе, до выполнения:
+имя сразу связано с готовой функцией
+```
 
 Для `var`:
 
+```text
+declaration — до выполнения, значение при этом undefined
+initialization — на строке с присваиванием
+```
+
 Для `let` / `const`:
+
+```text
+declaration — до выполнения, но без значения и без доступа
+initialization — на строке с объявлением, и только с этого момента имя читаемо
+```
 
 ### Почему функции ведут себя иначе
 
-Function declarations ведут себя иначе, потому что во время Creation Phase engine подготавливает для них вызываемый binding.
+Объявления функций ведут себя иначе, потому что во время фазы подготовки движок сразу связывает имя с готовой к вызову функцией.
 
 ```javascript
 runTest();
@@ -413,15 +409,35 @@ function runTest() {
 
 До выполнения:
 
-Then line 1 can call `runTest`.
+```text
+Environment Record
+  runTest → функция (готова к вызову)
+```
 
-Это полезно, потому что function declarations описывают переиспользуемые действия:
+Тогда первая строка уже может вызвать `runTest`.
 
-`var userName = 'Anna'` is different:
+Это полезно, потому что объявления функций описывают переиспользуемые действия:
 
-So:
+```text
+порядок объявления функций в файле не диктует порядок их вызова —
+вспомогательную функцию можно описать ниже места, где она используется
+```
 
-### Complete Creation Phase timeline
+`var userName = 'Anna'` ведёт себя иначе:
+
+```text
+Environment Record
+  userName → undefined
+```
+
+Итак:
+
+```text
+вызов функции до её объявления   — работает
+чтение var до присваивания        — даёт undefined, а не значение
+```
+
+### Полная временная шкала фазы подготовки
 
 Для кода:
 
@@ -439,15 +455,29 @@ function printStatus() {
 }
 ```
 
-Creation Phase временная шкала:
+Временная шкала фазы подготовки:
 
-Environment Record до выполнения:
+```text
+1. найдено объявление function printStatus  → имя связано с функцией
+2. найдено объявление var userName          → имя заведено со значением undefined
+3. найдено объявление let userRole          → имя заведено, доступа нет
+4. найдено объявление const baseUrl         → имя заведено, доступа нет
+```
 
-### Execution timeline
+Запись окружения до выполнения:
 
-Execution выполняет source code в исходном порядке.
+```text
+printStatus → функция
+userName    → undefined
+userRole    → не инициализировано (доступ запрещён)
+baseUrl     → не инициализировано (доступ запрещён)
+```
 
-Execution временная шкала:
+### Временная шкала выполнения
+
+Выполнение идёт по исходному коду в исходном порядке.
+
+Временная шкала выполнения:
 
 ```text
 Source code order is preserved.
@@ -456,9 +486,9 @@ No declaration moved.
 Prepared records are used.
 ```
 
-### Engine preparation movie
+### Фильм о подготовке движка
 
-Ментальный фильм engine: сначала он быстро просматривает код и заводит записи обо всех объявлениях, а затем возвращается к началу и выполняет строки по порядку.
+Мысленный фильм: сначала движок быстро просматривает код и заводит записи обо всех объявлениях, а затем возвращается к началу и выполняет строки по порядку.
 
 ### Текущее место в модели JavaScript
 
@@ -471,7 +501,14 @@ flowchart LR
     N2 --> N3
 ```
 
-Full position:
+Полное положение:
+
+```text
+Call Stack          — какой Execution Context активен
+Execution Context   — Creation Phase, затем Execution Phase
+Lexical Environment — где живут подготовленные записи
+Hoisting            — видимый результат того, что записи готовы заранее
+```
 
 ### Переход к TDZ
 
@@ -482,27 +519,49 @@ If let and const are registered during Creation Phase,
 why does accessing them before initialization throw an error?
 ```
 
-Это вопрос Temporal Dead Zone.
+Это вопрос временной мёртвой зоны.
 
-TDZ — период между registration `let` / `const` during Creation Phase and initialization during Execution Phase, когда access is not allowed. Подробная глава о TDZ будет следующей.
+Временная мёртвая зона — период между регистрацией `let` и `const` в фазе подготовки и их инициализацией в фазе выполнения, когда доступ запрещён. Подробная глава будет следующей.
 
 ---
 
 ## Внутренний механизм
 
-Hoisting — observable result подготовки declarations.
+Подъём объявлений — наблюдаемый результат подготовки объявлений.
 
 Внутренний механизм:
 
-Для function declaration:
+```text
+до первой выполненной строки engine проходит код текущего context
+и заводит запись на каждое объявление, которое в нём встретил
+```
+
+Для объявления функции:
+
+```text
+запись создана и сразу содержит функцию
+```
 
 Для `var`:
 
+```text
+запись создана и содержит undefined
+```
+
 Для `let`:
+
+```text
+запись создана, но помечена как неинициализированная
+```
 
 Для `const`:
 
-Что engine подготовил до execution started:
+```text
+запись создана, помечена как неинициализированная,
+и значение можно будет задать ровно один раз
+```
+
+Что движок подготовил до начала выполнения:
 
 ```text
 Function declarations.
@@ -515,27 +574,45 @@ const identifiers in uninitialized state.
 
 ## Ментальная модель
 
-### Preparing a classroom before students arrive
+### Подготовка класса до прихода учеников
 
 Представьте класс до начала занятия.
 
-Execution — это когда students arrive and work begins.
+Выполнение — это когда ученики пришли и работа началась.
 
-### Filling a registration list
+### Заполнение списка участников
 
-Environment Record похож на registration list.
+Запись окружения похожа на список зарегистрированных участников.
 
-### Reserving places before work starts
+### Бронирование мест до начала работы
 
-`let` and `const` можно представить как reserved places:
+`let` и `const` можно представить как забронированные места:
+
+```text
+место в списке занято, но сесть на него пока нельзя —
+табличка «занято» стоит до строки объявления
+```
 
 `var`:
 
-Function Declaration:
+```text
+место занято и на нём уже кто-то сидит — заглушка undefined
+```
 
-### Preparation versus execution
+Объявление функции:
+
+```text
+место занято тем, кто действительно пришёл: функция готова к работе сразу
+```
+
+### Подготовка против выполнения
 
 Главное разделение:
+
+```text
+Подготовка — engine заводит записи об объявлениях.
+Выполнение — engine идёт по строкам сверху вниз.
+```
 
 Никогда не заменяйте это на:
 
@@ -562,7 +639,7 @@ examples/01-javascript/chapter-09/
 
 Запускайте их из корня проекта.
 
-### Пример 1. Function hoisting
+### Пример 1. Подъём объявления функции
 
 Файл:
 
@@ -570,9 +647,9 @@ examples/01-javascript/chapter-09/
 examples/01-javascript/chapter-09/01-function-hoisting.js
 ```
 
-Показывает, что function declaration можно вызвать до её строки, потому что Creation Phase подготовила её.
+Показывает, что объявленную функцию можно вызвать до её строки, потому что фаза подготовки её подготовила.
 
-### Пример 2. var hoisting
+### Пример 2. Подъём `var`
 
 Файл:
 
@@ -582,7 +659,7 @@ examples/01-javascript/chapter-09/02-var-hoisting.js
 
 Показывает, что `var` регистрируется со значением `undefined` до строки присваивания.
 
-### Пример 3. поведение let
+### Пример 3. Поведение `let`
 
 Файл:
 
@@ -590,9 +667,9 @@ examples/01-javascript/chapter-09/02-var-hoisting.js
 examples/01-javascript/chapter-09/03-let-behavior.js
 ```
 
-Показывает безопасный доступ после initialization и содержит закомментированную строку, которая будет разобрана в следующей главе про TDZ.
+Показывает безопасный доступ после инициализации и содержит закомментированную строку, которая будет разобрана в следующей главе про временную мёртвую зону.
 
-### Пример 4. поведение const
+### Пример 4. Поведение `const`
 
 Файл:
 
@@ -600,9 +677,9 @@ examples/01-javascript/chapter-09/03-let-behavior.js
 examples/01-javascript/chapter-09/04-const-behavior.js
 ```
 
-Показывает safe access после required initialization.
+Показывает безопасный доступ после обязательной инициализации.
 
-### Пример 5. Declaration vs initialization
+### Пример 5. Объявление и инициализация
 
 Файл:
 
@@ -610,7 +687,7 @@ examples/01-javascript/chapter-09/04-const-behavior.js
 examples/01-javascript/chapter-09/05-declaration-vs-initialization.js
 ```
 
-Показывает, что declaration и assignment — разные части.
+Показывает, что объявление и присваивание — разные части.
 
 ### Пример 6. Типичные ошибки
 
@@ -620,59 +697,59 @@ examples/01-javascript/chapter-09/05-declaration-vs-initialization.js
 examples/01-javascript/chapter-09/06-common-mistakes.js
 ```
 
-Показывает типичные мифы через безопасные comments and corrected code.
+Показывает типичные мифы через безопасные комментарии и исправленный код.
 
 ---
 
 ## Частые вопросы
 
-### Hoisting действительно поднимает код?
+### Подъём действительно поднимает код?
 
-Нет. Source code не меняет порядок. Engine подготавливает declarations during Creation Phase, а execution идет по исходным строкам.
+Нет. Исходный код не меняет порядок. Движок подготавливает объявления во время фазы подготовки, а выполнение идёт по исходным строкам.
 
-### Почему function declaration можно вызвать до объявления?
+### Почему объявленную функцию можно вызвать до объявления?
 
-Потому что Creation Phase registers function declaration as callable binding before Execution Phase starts.
+Потому что фаза подготовки связывает имя функции с готовой к вызову функцией ещё до начала выполнения.
 
 ### Почему `var` дает `undefined`?
 
-Потому что `var` declaration registered during Creation Phase with `undefined`, а assignment happens later during Execution Phase.
+Потому что объявление `var` регистрируется в фазе подготовки со значением `undefined`, а присваивание происходит позже, в фазе выполнения.
 
 ### Почему `let` и `const` не дают `undefined` как `var`?
 
-Они тоже registered during Creation Phase, but not initialized like `var`. Подробный ответ — TDZ — следующая глава.
+Они тоже регистрируются в фазе подготовки, но не инициализируются, как `var`. Подробный ответ — временная мёртвая зона — в следующей главе.
 
-### Нужно ли использовать Hoisting intentionally?
+### Нужно ли специально пользоваться подъёмом объявлений?
 
-В новом коде лучше не писать так, чтобы reader relied on Hoisting. Понимать Hoisting нужно для чтения existing and legacy code.
+В новом коде лучше не писать так, чтобы читатель полагался на подъём. Понимать его нужно для чтения существующего и старого кода.
 
 ---
 
 ## Распространённые мифы
 
-### Миф 1. JavaScript переносит declarations вверх файла
+### Миф 1. JavaScript переносит объявления вверх файла
 
 Реальность:
 
-Source code stays in place. Engine prepares declaration records before execution.
+Исходный код остаётся на месте. Движок готовит записи об объявлениях до выполнения.
 
-### Миф 2. Hoisting работает одинаково для всех declarations
+### Миф 2. Подъём работает одинаково для всех объявлений
 
 Реальность:
 
-Function declarations, `var`, `let` и `const` имеют разное поведение при подготовке.
+Объявления функций, `var`, `let` и `const` ведут себя при подготовке по-разному.
 
 ### Миф 3. `var a = 5` полностью выполняется до первой строки
 
 Реальность:
 
-Declaration part подготавливается. Assignment `a = 5` происходит, когда выполнение доходит до строки.
+Подготавливается только объявление. Присваивание `a = 5` происходит, когда выполнение доходит до строки.
 
-### Миф 4. Hoisting — это редкая странность
+### Миф 4. Подъём объявлений — это редкая странность
 
 Реальность:
 
-Hoisting is a direct consequence of Creation Phase and Lexical Environment preparation.
+Подъём объявлений — прямое следствие фазы подготовки и подготовки лексического окружения.
 
 ---
 
@@ -688,7 +765,7 @@ var userName = "Anna" moved to top.
 
 Что произошло:
 
-Код не moving. Engine prepared identifier record.
+Код не перемещается. Движок заранее подготовил запись об имени.
 
 Исправленная модель:
 
@@ -697,7 +774,7 @@ Creation Phase registered userName with undefined.
 Execution Phase later assigned "Anna".
 ```
 
-### Ошибка 2. Ожидать value у `var` до assignment
+### Ошибка 2. Ожидать значение у `var` до присваивания
 
 Неправильный код:
 
@@ -721,9 +798,9 @@ undefined
 
 Почему:
 
-Only declaration is prepared with `undefined`; assignment happens later.
+Подготавливается только объявление, со значением `undefined`; присваивание происходит позже.
 
-### Ошибка 3. Объяснять `let` / `const` как "not hoisted"
+### Ошибка 3. Объяснять `let` и `const` фразой «не поднимаются»
 
 Неправильная модель:
 
@@ -738,9 +815,9 @@ let and const are registered during Creation Phase,
 but access before initialization is restricted.
 ```
 
-TDZ explains this next.
+Это объяснит следующая глава про временную мёртвую зону.
 
-### Ошибка 4. Полагаться на Hoisting в новом коде
+### Ошибка 4. Полагаться на подъём объявлений в новом коде
 
 Неправильный стиль:
 
@@ -780,7 +857,7 @@ runTest();
 
 Таблица анализа:
 
-| Объявление | После Creation Phase | Доступ до строки объявления |
+| Объявление | После фазы подготовки | Доступ до строки объявления |
 | --- | --- | --- |
 | `function` | готова целиком | работает |
 | `var` | `undefined` | даёт `undefined` |
@@ -802,9 +879,9 @@ runTest();
 
 ## Использование в Automation QA
 
-### Reading legacy JavaScript
+### Чтение старого кода JavaScript
 
-В старых helper files можно встретить:
+В старых вспомогательных файлах можно встретить:
 
 ```javascript
 runSetup();
@@ -814,11 +891,11 @@ function runSetup() {
 }
 ```
 
-Это работает не потому, что код переместился. Function declaration была подготовлена во время Creation Phase.
+Это работает не потому, что код переместился. Объявление функции было подготовлено во время фазы подготовки.
 
-### Отладка старых helper-файлов
+### Отладка старых вспомогательных файлов
 
-Legacy code часто использует `var`:
+В старом коде часто используется `var`:
 
 ```javascript
 console.log(environmentName);
@@ -826,17 +903,17 @@ console.log(environmentName);
 var environmentName = 'staging';
 ```
 
-Если вывод равен `undefined`, проблема не в `console.log`. Engine подготовил `environmentName` как `undefined`, но присваивание происходит позже.
+Если вывод равен `undefined`, проблема не в `console.log`. Движок подготовил `environmentName` как `undefined`, но присваивание происходит позже.
 
-### Understanding function declarations in frameworks
+### Как читать объявления функций во фреймворках
 
-В существующих test frameworks могут быть function declarations below usage.
+В существующих тестовых фреймворках объявления функций могут стоять ниже места использования.
 
-Hoisting model помогает читать такой код without panic.
+Модель подъёма объявлений помогает читать такой код спокойно.
 
-### Avoiding myths in Playwright or Node.js codebases
+### Как избегать мифов в кодовой базе Playwright или Node.js
 
-В Playwright tests лучше писать код так, чтобы reader did not need to mentally simulate Hoisting.
+В тестах Playwright лучше писать код так, чтобы читателю не приходилось мысленно проигрывать подъём объявлений.
 
 ```javascript
 function buildUserName() {
@@ -846,7 +923,7 @@ function buildUserName() {
 const userName = buildUserName();
 ```
 
-Читаемость важнее демонстрации знания Hoisting.
+Читаемость важнее демонстрации знания подъёма объявлений.
 
 Правило для Automation QA:
 
@@ -859,7 +936,7 @@ Avoid relying on Hoisting in new test code.
 
 ## Итоги
 
-Hoisting — это не перемещение кода.
+Подъём объявлений — это не перемещение кода.
 
 Главная модель:
 
@@ -869,51 +946,51 @@ of the engine preparing declarations
 during the Creation Phase.
 ```
 
-Source code остается в исходном порядке. Engine создает Execution Context, входит в Creation Phase, подготавливает Lexical Environment and Environment Records, registers declarations, and only then starts Execution Phase.
+Исходный код остаётся в исходном порядке. Движок создаёт контекст выполнения, входит в фазу подготовки, готовит лексическое окружение и записи об именах, регистрирует объявления и только затем начинает фазу выполнения.
 
-Разные declarations behave differently:
+Разные объявления ведут себя по-разному:
 
-Следующая глава объяснит Temporal Dead Zone: почему `let` и `const` registered during Creation Phase, но access before initialization fails.
+Следующая глава объяснит временную мёртвую зону: почему `let` и `const` зарегистрированы в фазе подготовки, но доступ к ним до инициализации даёт ошибку.
 
 ---
 
 ## Что нужно запомнить
 
-✓ Hoisting is not moving code.
+✓ Подъём объявлений — это не перемещение кода.
 
-✓ Source code never changes position.
+✓ Исходный код никогда не меняет порядок.
 
-✓ Hoisting comes from Creation Phase.
+✓ Подъём объявлений возникает из фазы подготовки.
 
-✓ Creation Phase prepares Lexical Environment.
+✓ Фаза подготовки готовит лексическое окружение.
 
-✓ Environment Record receives declaration records before execution.
+✓ Запись окружения получает записи об объявлениях до выполнения.
 
-✓ Function declarations are registered as callable.
+✓ Объявления функций регистрируются готовыми к вызову.
 
-✓ `var` is registered with `undefined`.
+✓ `var` регистрируется со значением `undefined`.
 
-✓ `let` and `const` are registered but not initialized.
+✓ `let` и `const` регистрируются, но не инициализируются.
 
-✓ Declaration and initialization are different operations.
+✓ Объявление и инициализация — разные операции.
 
-✓ Execution Phase выполняет код в исходном порядке.
+✓ Фаза выполнения выполняет код в исходном порядке.
 
-✓ TDZ explains `let` / `const` access before initialization in the next chapter.
+✓ Временная мёртвая зона объяснит доступ к `let` и `const` до инициализации в следующей главе.
 
 ---
 
 ## Проверьте себя
 
-1. Почему Hoisting существует?
+1. Почему подъём объявлений существует?
 
-2. Почему неправильно говорить, что JavaScript moves code upward?
+2. Почему неправильно говорить, что JavaScript переносит код вверх?
 
-3. Что происходит during Creation Phase?
+3. Что происходит во время фазы подготовки?
 
-4. Что происходит during Execution Phase?
+4. Что происходит во время фазы выполнения?
 
-5. Как регистрируется function declaration?
+5. Как регистрируется объявление функции?
 
 6. Как регистрируется `var`?
 
@@ -921,9 +998,22 @@ Source code остается в исходном порядке. Engine созд
 
 8. Как регистрируется `const`?
 
-9. Чем declaration отличается от initialization?
+9. Чем объявление отличается от инициализации?
 
 10. Почему следующая тема — TDZ?
+
+### Ответы
+
+1. Движок готовит контекст до выполнения: проходит код и заводит записи обо всех объявлениях. Подъём — видимый результат этой подготовки.
+2. Код никуда не перемещается: строки остаются на своих местах и выполняются в исходном порядке. Раньше происходит только регистрация имён.
+3. Создаётся окружение и заводятся записи об объявлениях: функции сразу готовы к вызову, `var` получает `undefined`, `let` и `const` заводятся без доступа.
+4. Движок выполняет строки сверху вниз, используя уже подготовленные записи.
+5. Имя сразу связывается с готовой функцией, поэтому вызвать её можно и до строки объявления.
+6. Имя заводится со значением `undefined`. Чтение до строки присваивания не ошибка, но и значения не даёт.
+7. Имя заводится, но помечается как неинициализированное: обращение к нему до объявления даёт ошибку.
+8. Так же, как `let`, плюс значение можно будет задать ровно один раз — на строке объявления.
+9. Объявление заводит имя, инициализация впервые связывает его со значением. У функций это происходит одновременно, у `var` — в разные моменты, у `let` и `const` — с запретом доступа между ними.
+10. Потому что `let` и `const` зарегистрированы заранее, но читать их нельзя. Промежуток между регистрацией и инициализацией и есть временная мёртвая зона.
 
 ---
 
@@ -935,7 +1025,7 @@ Source code остается в исходном порядке. Engine созд
 practice/01-javascript/09-hoisting.md
 ```
 
-Перед практикой запустите примеры из раздела «Примеры кода» и для каждого файла составьте Creation Phase / Execution Phase timeline.
+Перед практикой запустите примеры из раздела «Примеры кода» и для каждого файла составьте временную шкалу подготовки и выполнения.
 
 ---
 

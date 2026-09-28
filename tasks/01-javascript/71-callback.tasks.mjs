@@ -13,13 +13,13 @@ export default [
   // Первым аргументом идёт ошибка или null.
 }`,
     hints: [
-      'При успехе первый аргумент — null, второй — результат.',
+      'При успехе первый аргумент — `null`, второй — результат.',
       'При ошибке второй аргумент не передаётся вовсе.',
       'После вызова колбэка в ветке ошибки нужно прекратить выполнение.'
     ],
     tests: [
       {
-        name: 'при успехе передаёт null и результат',
+        name: 'при успехе передаёт `null` и результат',
         code: `let captured = null;
 readConfig('config.json', (error, config) => { captured = { error, config }; });
 expect(captured).toEqual({ error: null, config: { source: 'config.json' } });`

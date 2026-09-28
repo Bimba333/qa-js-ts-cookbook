@@ -12,9 +12,9 @@ export default [
   // new Date('не дата') не бросает — он даёт Invalid Date.
 }`,
     hints: [
-      'Некорректная дата не выбрасывает ошибку, а даёт Invalid Date.',
-      'Проверить её можно через Number.isNaN(date.getTime()).',
-      'Строку в UTC даёт toISOString.'
+      'Некорректная дата не выбрасывает ошибку, а даёт `Invalid Date`.',
+      'Проверить её можно через `Number.isNaN(date.getTime())`.',
+      'Строку в UTC даёт `toISOString`.'
     ],
     tests: [
       {
@@ -30,7 +30,7 @@ export default [
         code: `expect(toUtcString(new Date('2026-09-22T10:00:00Z'))).toBe('2026-09-22T10:00:00.000Z');`
       },
       {
-        name: 'некорректная дата даёт null',
+        name: 'некорректная дата даёт `null`',
         code: `expect(toUtcString('не дата')).toBe(null);`
       },
       {
@@ -61,7 +61,7 @@ expect(thrown).toBe(false);`
 }`,
     hints: [
       'Вычитание объектов Date даёт число миллисекунд.',
-      'Абсолютное значение даёт Math.abs.',
+      'Абсолютное значение даёт `Math.abs`.',
       'Некорректную дату нужно отсечь до вычисления.'
     ],
     tests: [
@@ -81,7 +81,7 @@ expect(thrown).toBe(false);`
 expect(durationMs(moment, moment)).toBe(0);`
       },
       {
-        name: 'некорректная дата даёт null',
+        name: 'некорректная дата даёт `null`',
         code: `expect(durationMs(new Date('не дата'), new Date())).toBe(null);`
       }
     ],

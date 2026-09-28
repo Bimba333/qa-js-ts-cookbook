@@ -1,7 +1,7 @@
 export default [
   {
     id: 'qa-206-domain-client',
-    title: 'Клиент предметной области поверх stub',
+    title: 'Клиент предметной области поверх сгенерированного',
     difficulty: 'hard',
     lang: 'grpc',
     prompt:

@@ -27,7 +27,7 @@ export default [
         code: `expect(result.url).toContain('status=DONE');`
       },
       {
-        name: 'в таблице остались только задачи со статусом DONE',
+        name: 'в таблице остались только задачи со статусом `DONE`',
         code: `expect(result.statuses.length > 0).toBe(true);
 expect(result.statuses.every(value => value === 'DONE')).toBe(true);`
       },

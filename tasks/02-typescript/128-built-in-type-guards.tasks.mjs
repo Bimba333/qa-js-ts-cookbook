@@ -14,13 +14,13 @@ export default [
   return 'other';
 }`,
     hints: [
-      'typeof null возвращает "object" — этот случай проверяется первым.',
-      'Массив и дата тоже имеют typeof "object".',
-      'NaN ловится через Number.isNaN, а не сравнением.'
+      '`typeof null` возвращает `"object"` — этот случай проверяется первым.',
+      'Массив и дата тоже имеют `typeof "object"`.',
+      '`NaN` ловится через `Number.isNaN`, а не сравнением.'
     ],
     tests: [
       {
-        name: 'null опознаётся раньше объекта',
+        name: '`null` опознаётся раньше объекта',
         code: `expect(describeValue(null)).toBe('null');`
       },
       {
@@ -33,18 +33,18 @@ expect(describeValue({})).toBe('object');`
         code: `expect(describeValue(new Date(0))).toBe('date');`
       },
       {
-        name: 'примитивы опознаются по typeof',
+        name: 'примитивы опознаются по `typeof`',
         code: `expect(describeValue(1)).toBe('number');
 expect(describeValue('a')).toBe('string');
 expect(describeValue(false)).toBe('boolean');`
       },
       {
-        name: 'функция и undefined',
+        name: 'функция и `undefined`',
         code: `expect(describeValue(() => {})).toBe('function');
 expect(describeValue(undefined)).toBe('undefined');`
       },
       {
-        name: 'NaN не считается числом',
+        name: '`NaN` не считается числом',
         code: `expect(describeValue(NaN)).toBe('other');`
       }
     ],

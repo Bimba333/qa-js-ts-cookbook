@@ -1,11 +1,11 @@
 export default [
   {
     id: 'ts-111-test-result-alias',
-    title: 'Type alias для результата теста',
+    title: 'Псевдоним типа для результата теста',
     difficulty: 'easy',
     lang: 'ts',
     prompt:
-      'Объявите type alias `TestResult` с полями `name: string`, `status` ' +
+      'Объявите псевдоним типа `TestResult` с полями `name: string`, `status` ' +
       '(одно из `"passed" | "failed" | "skipped"`) и необязательным `durationMs: number`. ' +
       'Затем напишите функцию `describe(result: TestResult): string`, которая возвращает ' +
       '`"<имя>: <статус>"`, а при наличии длительности — `"<имя>: <статус> (<мс> мс)"`.',
@@ -18,9 +18,9 @@ function describe(result: TestResult): string {
   return '';
 }`,
     hints: [
-      'Объединение literal types записывается через вертикальную черту.',
+      'Объединение литеральных типов записывается через вертикальную черту.',
       'Необязательное поле помечается знаком вопроса после имени.',
-      'Отсутствующее необязательное поле равно undefined — это и нужно проверить.'
+      'Отсутствующее необязательное поле равно `undefined` — это и нужно проверить.'
     ],
     tests: [
       {
@@ -33,7 +33,7 @@ function describe(result: TestResult): string {
   .toBe('логин: failed (120 мс)');`
       },
       {
-        name: 'поддерживает статус skipped',
+        name: 'поддерживает статус `skipped`',
         code: `expect(describe({ name: 'экспорт', status: 'skipped' })).toBe('экспорт: skipped');`
       },
       {

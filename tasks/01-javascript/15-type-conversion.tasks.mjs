@@ -12,9 +12,9 @@ export default [
   // Number('') даёт 0, а не NaN — это нужно учесть.
 }`,
     hints: [
-      'Number(\'\') возвращает 0, поэтому пустую строку нужно отсечь отдельно.',
-      'Нечисловая строка даёт NaN, а NaN не равен самому себе.',
-      'Проверить результат удобно через Number.isFinite.'
+      '`Number(\'\')` возвращает `0`, поэтому пустую строку нужно отсечь отдельно.',
+      'Нечисловая строка даёт `NaN`, а `NaN` не равен самому себе.',
+      'Проверить результат удобно через `Number.isFinite`.'
     ],
     tests: [
       {
@@ -56,15 +56,15 @@ export default [
     lang: 'js',
     prompt:
       'Напишите функцию `describeValue(value)`, которая возвращает строку для журнала. ' +
-      'Для строки — саму строку, для числа и boolean — их строковое представление, ' +
+      'Для строки — саму строку, для числа и логического значения — их строковое представление, ' +
       'для `null` — `"null"`, для `undefined` — `"undefined"`, для массива — элементы ' +
       'через запятую, для объекта — `"[object]"` вместо `[object Object]`.',
     starter: `function describeValue(value) {
   // String({}) даёт [object Object] — это бесполезно в журнале.
 }`,
     hints: [
-      'String(null) и String(undefined) уже дают нужные строки.',
-      'Массив определяется через Array.isArray, а не через typeof.',
+      '`String(null)` и `String(undefined)` уже дают нужные строки.',
+      'Массив определяется через `Array.isArray`, а не через `typeof`.',
       'Обычный объект нужно обработать до общего приведения к строке.'
     ],
     tests: [
@@ -73,11 +73,11 @@ export default [
         code: `expect(describeValue('готово')).toBe('готово');`
       },
       {
-        name: 'число и boolean приводятся к строке',
+        name: 'число и логическое значение приводятся к строке',
         code: `expect(describeValue(42) + '|' + describeValue(true)).toBe('42|true');`
       },
       {
-        name: 'null и undefined описываются словами',
+        name: '`null` и `undefined` описываются словами',
         code: `expect(describeValue(null) + '|' + describeValue(undefined)).toBe('null|undefined');`
       },
       {
@@ -85,7 +85,7 @@ export default [
         code: `expect(describeValue(['a', 'b'])).toBe('a,b');`
       },
       {
-        name: 'объект не превращается в [object Object]',
+        name: 'объект не превращается в `[object Object]`',
         code: `expect(describeValue({ a: 1 })).toBe('[object]');`
       }
     ],

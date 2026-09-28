@@ -1,4 +1,4 @@
-# Conditionals
+# Условные конструкции
 
 ## Связь с предыдущей главой
 
@@ -138,28 +138,48 @@ Programs do not guess:
 
 ## Теория
 
-### Зачем существуют conditionals
+### Зачем существуют условные конструкции
 
-Without conditionals, program would execute every line in the same order.
+Без условий программа выполняла бы все строки в одном и том же порядке.
 
-But real programs need decisions:
+Но настоящим программам нужно принимать решения:
 
-Conditionals существуют, потому что программам нужно выбирать пути выполнения.
+```text
+ответ 200  →  проверять тело ответа
+ответ 500  →  сообщить об ошибке, тело уже не важно
+```
 
-Decision tree:
+Условные конструкции существуют, потому что программам нужно выбирать пути выполнения.
 
-### Expression → Boolean
+Дерево решений:
 
-Condition usually starts with expression.
+```text
+            условие
+            ├── истинно → одна ветка кода
+            └── ложно   → другая ветка кода
+```
+
+### Выражение → логическое значение
+
+Условие обычно начинается с выражения.
 
 ```javascript
 const statusCode = 500;
 const isSuccess = statusCode === 200;
 ```
 
-Expression → Boolean:
+Выражение → логическое значение:
 
-Operator → Условие:
+```text
+statusCode === 200   →   true или false
+```
+
+Оператор → условие:
+
+```text
+оператор сравнения даёт булево значение,
+а условие — это место, где такое значение используют для выбора ветки
+```
 
 Какое решение принимает программа?
 
@@ -169,7 +189,7 @@ Is statusCode equal to expected success code?
 
 ### `if`
 
-`if` выполняет block только когда результат condition это позволяет.
+`if` выполняет блок только когда результат условия это позволяет.
 
 ```javascript
 const statusCode = 200;
@@ -186,11 +206,16 @@ if (statusCode === 200) {
 условие ложно    →  пропустить блок
 ```
 
-Execution path:
+Путь выполнения:
+
+```text
+statusCode равен 200  →  строка console.log выполняется
+statusCode иной        →  выполнение продолжается после блока
+```
 
 ### `if / else`
 
-`else` provides an alternative path.
+`else` даёт запасной путь.
 
 ```javascript
 const statusCode = 500;
@@ -209,11 +234,11 @@ if (statusCode === 200) {
 условие ложно    →  блок else
 ```
 
-Exactly one path is chosen.
+Выполняется ровно один путь.
 
 ### `else if`
 
-`else if` creates a decision chain.
+`else if` создаёт цепочку решений.
 
 ```javascript
 const statusCode = 404;
@@ -229,7 +254,7 @@ if (statusCode === 200) {
 }
 ```
 
-`else if` chain:
+Цепочка `else if`:
 
 Какое решение принимает программа?
 
@@ -237,9 +262,9 @@ if (statusCode === 200) {
 Which status category does this response belong to?
 ```
 
-### Nested conditions
+### Вложенные условия
 
-Nested condition means condition inside another condition.
+Вложенное условие — условие внутри другого условия.
 
 ```javascript
 const statusCode = 200;
@@ -252,7 +277,7 @@ if (statusCode === 200) {
 }
 ```
 
-Nested conditions схема:
+Схема вложенных условий:
 
 ```text
 внешнее условие
@@ -266,9 +291,15 @@ Nested conditions схема:
 
 Предупреждение о читаемости:
 
-### `switch` overview
+```text
+два уровня вложенности читаются,
+три и больше — почти всегда признак того,
+что условие стоит вынести в отдельную функцию или переписать цепочкой else if
+```
 
-`switch` chooses branch based on one expression value.
+### Обзор `switch`
+
+`switch` выбирает ветку по значению одного выражения.
 
 ```javascript
 const environment = 'staging';
@@ -285,41 +316,69 @@ switch (environment) {
 }
 ```
 
-Switch overview:
+Обзор `switch`:
 
-Switch branches:
+```text
+значение выражения сравнивается с каждым case по очереди,
+пока не найдено совпадение
+```
 
-Эта глава оставляет `switch` на высоком уровне. Продвинутое поведение switch будет изучено позже при необходимости.
+Ветки `switch`:
 
-### Default branch
+```text
+environment === 'local'    →  ветка 'local'
+environment === 'staging'  →  ветка 'staging'   ← совпало здесь
+ни одно не совпало         →  ветка default
+```
 
-`default` is fallback branch.
+`break` завершает выбранную ветку: без него выполнение продолжится в
+следующей.
 
-Default branch схема:
+Эта глава оставляет `switch` на высоком уровне. Более сложное его поведение будет изучено позже, при необходимости.
+
+### Ветка по умолчанию
+
+`default` — запасная ветка.
+
+Схема запасной ветки:
 
 ```text
 ни одно условие не подошло  →  ветка по умолчанию
 ```
 
-Default branch полезна, когда программа должна обработать неожиданные значения:
+Запасная ветка полезна, когда программа должна обработать неожиданные значения:
 
-### Choosing execution path
+```javascript
+switch (environment) {
+  case 'staging':
+    console.log('Use staging URL');
+    break;
+  default:
+    console.log('Unknown environment: ' + environment);
+}
+```
 
-Conditional execution means:
+Без `default` неизвестное окружение прошло бы молча, и тест запустился бы не
+там, где ожидалось.
 
-Execution path схема:
+### Выбор пути выполнения
+
+Условное выполнение означает, что движок выбирает **одну** ветку по результату
+проверки, а остальные пропускает целиком — их код не выполняется вовсе.
+
+Схема пути выполнения:
 
 ```text
 выполняется РОВНО ОДНА ветка из цепочки
 ```
 
-Program does not run all branches in one decision.
+Программа не выполняет все ветки одного решения.
 
-### Readable conditional logic
+### Читаемая условная логика
 
-Readable conditional answers one clear question.
+Читаемое условие отвечает на один ясный вопрос.
 
-Poor readability:
+Плохая читаемость:
 
 ```javascript
 if (statusCode === 200 && hasUserId && !isDeleted && responseTimeMs < 500) {
@@ -327,7 +386,7 @@ if (statusCode === 200 && hasUserId && !isDeleted && responseTimeMs < 500) {
 }
 ```
 
-More readable:
+Читается лучше:
 
 ```javascript
 const isStatusOk = statusCode === 200;
@@ -341,7 +400,7 @@ if (isStatusOk && hasValidUser && isFastEnough) {
 
 Пример читаемости: цепочка `if / else if / else` с короткими условиями читается сверху вниз как список правил, а глубокая вложенность заставляет удерживать в голове несколько условий сразу.
 
-Short-circuit evaluation details will be studied later. Here the goal is readable decision-making.
+Детали короткого замыкания будут изучаться позже. Здесь цель — понятное принятие решений.
 
 ---
 
@@ -359,35 +418,42 @@ flowchart TD
 
 ## Внутренний механизм
 
-На концептуальном уровне:
-
-Complete conditional picture:
-
-Текущее место в модели JavaScript:
-
-Переход к Loops:
-
 ---
 
 ## Ментальная модель
 
-### Railway switch
+### Железнодорожная стрелка
 
-Conditional is the switch. Expression result sets the direction.
+Условие — это стрелка. Результат выражения задаёт направление.
 
-### Crossroads
+### Развилка
 
-Program reaches decision point and chooses one route.
+Программа доходит до точки решения и выбирает один маршрут.
 
-### Traffic light
+### Светофор
 
-Status code decision is similar:
+Решение по коду ответа устроено так же:
 
-### Decision tree
+```text
+зелёный  →  ехать         200  →  проверять тело ответа
+красный  →  стоять        500  →  сообщить об ошибке
+```
 
-### Security checkpoint
+### Дерево решений
 
-Programs do not guess. They check a result and choose path.
+Цепочка условий — это дерево: каждая развилка отсекает часть путей, и до
+конца доходит ровно одна ветка.
+
+```text
+statusCode
+├── 200        → успех
+├── 400…499    → ошибка запроса
+└── 500 и выше → ошибка сервера
+```
+
+### Пункт контроля
+
+Программы не угадывают. Они проверяют результат и выбирают путь.
 
 ---
 
@@ -412,87 +478,85 @@ node examples/01-javascript/chapter-18/06-common-mistakes.js
 
 ### 01-if.js
 
-Shows one success path.
+Показывает один успешный путь.
 
 ### 02-if-else.js
 
-Shows success path and failure path.
+Показывает успешный путь и путь отказа.
 
 ### 03-else-if.js
 
-Shows status code decision chain.
+Показывает цепочку решений по коду ответа.
 
 ### 04-switch.js
 
-Shows environment selection.
+Показывает выбор окружения.
 
 ### 05-nested.js
 
-Shows nested response validation.
+Показывает вложенную проверку ответа.
 
 ### 06-common-mistakes.js
 
-Shows assignment inside condition mistake.
+Показывает ошибку с присваиванием внутри условия.
 
 ---
 
 ## Частые вопросы
 
-### Does JavaScript randomly choose a branch?
+### JavaScript выбирает ветку случайно?
 
-No. It evaluates expression first, then chooses path based on result.
+Нет. Сначала вычисляется выражение, затем по результату выбирается путь.
 
-### Does every condition have to be Boolean?
+### Каждое условие обязано быть булевым?
 
-Condition is evaluated as a decision. Boolean значения are clearest. Truthy/falsy поведение exists, but explicit Boolean expressions are usually more readable.
+Условие вычисляется как решение. Булевы значения понятнее всего. Истинность и ложность работают и для других значений, но явные булевы выражения обычно читаются лучше.
 
-### Should I avoid nested conditions?
+### Нужно ли избегать вложенных условий?
 
-Не всегда. Используйте вложенность, когда внутреннее решение имеет смысл только внутри внешнего. Избегайте глубокой вложенности, когда named expressions или ранняя структура читаются понятнее.
+Не всегда. Используйте вложенность, когда внутреннее решение имеет смысл только внутри внешнего. Избегайте глубокой вложенности, когда именованные выражения или ранний выход читаются понятнее.
 
-### Is `switch` better than `else if`?
+### `switch` лучше, чем `else if`?
 
-Не всегда. `switch` полезен, когда одно значение сравнивается с несколькими известными cases. `else if` гибче для разных expressions.
+Не всегда. `switch` полезен, когда одно значение сравнивается с несколькими известными вариантами. `else if` гибче для разных выражений.
 
-### Is ternary a conditional?
+### Тернарный оператор — это условная конструкция?
 
-It is conditional expression syntax, but this chapter does not teach ternary in depth. It will be used later where appropriate.
+Это условное выражение, но подробно тернарный оператор в этой главе не разбирается. Он будет использоваться дальше там, где уместен.
 
 ---
 
 ## Распространённые мифы
 
-### Миф: `if` checks a line of code
+### Миф: `if` проверяет строку кода
 
 Реальность:
 
-`if` evaluates an expression result.
+`if` вычисляет результат выражения.
 
-### Миф: All branches run and JavaScript chooses вывод
-
-Реальность:
-
-Only selected path runs.
-
-### Миф: More nesting means more precise code
+### Миф: выполняются все ветки, а JavaScript выбирает вывод
 
 Реальность:
 
-More nesting often makes decision path harder to read.
+Выполняется только выбранный путь.
 
-### Миф: `switch` is only old syntax
+### Миф: чем больше вложенности, тем точнее код
 
 Реальность:
 
-`switch` is useful for choosing among known cases of one value.
+Чем глубже вложенность, тем труднее прочитать путь решения.
 
-Схема типичных ошибок:
+### Миф: `switch` — устаревший синтаксис
+
+Реальность:
+
+`switch` полезен для выбора среди известных вариантов одного значения.
 
 ---
 
 ## Распространённые ошибки
 
-### Ошибка 1. Assignment вместо comparison
+### Ошибка 1. Присваивание вместо сравнения
 
 ```javascript
 let statusCode = 500;
@@ -502,7 +566,7 @@ if (statusCode = 200) {
 }
 ```
 
-This updates `statusCode` вместо comparing it.
+Это обновляет `statusCode`, а не сравнивает его.
 
 Правильно:
 
@@ -512,7 +576,7 @@ if (statusCode === 200) {
 }
 ```
 
-### Ошибка 2. Unclear truthy/falsy condition
+### Ошибка 2. Неясное условие на истинность
 
 ```javascript
 if (responseBody.id) {
@@ -520,11 +584,11 @@ if (responseBody.id) {
 }
 ```
 
-Если `id` может быть `0`, это condition может вводить в заблуждение. Используйте явные проверки, когда это нужно.
+Если `id` может быть равен `0`, такое условие вводит в заблуждение. Используйте явные проверки там, где это нужно.
 
-### Ошибка 3. Missing `else`
+### Ошибка 3. Пропущенный `else`
 
-If failure path matters, write it.
+Если путь отказа важен, опишите его.
 
 ```javascript
 if (statusCode === 200) {
@@ -534,19 +598,19 @@ if (statusCode === 200) {
 }
 ```
 
-### Ошибка 4. Deep nesting
+### Ошибка 4. Глубокая вложенность
 
-Hard to read, hard to debug.
+Трудно читать и трудно разбирать при падении.
 
-### Ошибка 5. Missing `default` in switch
+### Ошибка 5. Пропущенный `default` в `switch`
 
-If unexpected value is possible, default branch makes поведение explicit.
+Если неожиданное значение возможно, запасная ветка делает поведение явным.
 
 ---
 
 ## Практическое использование
 
-Conditionals используются, когда программе нужно выбрать:
+Условные конструкции используются, когда программе нужно выбрать:
 
 ```text
 Continue or stop
@@ -570,7 +634,7 @@ Run assertion A or assertion B
 
 ## Использование в Automation QA
 
-### Status code validation
+### Проверка кода ответа
 
 ```javascript
 if (statusCode === 200) {
@@ -580,9 +644,14 @@ if (statusCode === 200) {
 }
 ```
 
-QA decision example:
+Пример решения:
 
-### Retry logic
+```text
+проверка тела ответа имеет смысл только при коде 200 —
+иначе тест проверял бы содержимое страницы ошибки
+```
+
+### Логика повторов
 
 ```javascript
 if (statusCode >= 500) {
@@ -590,9 +659,9 @@ if (statusCode >= 500) {
 }
 ```
 
-Full retry loops will be studied in the next chapter.
+Полные циклы повторов будут изучаться в следующей главе.
 
-### Environment selection
+### Выбор окружения
 
 ```javascript
 switch (environment) {
@@ -607,13 +676,13 @@ switch (environment) {
 }
 ```
 
-### Skipping tests
+### Пропуск тестов
 
 На высоком уровне:
 
-Framework-specific skipping will be studied later.
+Пропуск тестов средствами фреймворка будет изучаться позже.
 
-### Choosing assertions
+### Выбор проверок
 
 ```javascript
 if (responseType === 'user') {
@@ -627,7 +696,7 @@ if (responseType === 'user') {
 
 ## Итоги
 
-Conditionals answer:
+Условия отвечают:
 
 ```text
 What can a program do with operator results?
@@ -641,7 +710,7 @@ Conditional evaluates that result.
 Exactly one execution path is chosen.
 ```
 
-Main forms:
+Основные формы:
 
 ```text
 if
@@ -652,7 +721,7 @@ switch
 default branch
 ```
 
-The next chapter, Loops, отвечает:
+Следующая глава, про циклы, отвечает:
 
 ```text
 What if the same decision has to be made many times?
@@ -662,17 +731,17 @@ What if the same decision has to be made many times?
 
 ## Что нужно запомнить
 
-* Conditional execution starts with evaluated expression.
-* Program does not guess.
-* `if` выполняет block, когда выбран путь condition.
-* `else` provides alternative path.
-* `else if` builds decision chain.
-* Nested conditions represent decisions inside decisions.
-* `switch` chooses among cases for one value.
-* `default` handles fallback path.
-* Exactly one path is chosen in one `if / else` decision.
-* Readable conditions use clear names and explicit intent.
-* Conditionals are central to Automation QA decisions.
+* Условное выполнение начинается с вычисленного выражения.
+* Программа не угадывает.
+* `if` выполняет блок, когда выбран путь условия.
+* `else` даёт запасной путь.
+* `else if` строит цепочку решений.
+* Вложенные условия описывают решения внутри решений.
+* `switch` выбирает среди вариантов для одного значения.
+* `default` обрабатывает запасной путь.
+* В одном решении `if / else` выполняется ровно один путь.
+* Читаемые условия используют ясные имена и явно выраженное намерение.
+* Условные конструкции лежат в основе решений в автоматизации тестов.
 
 ---
 
@@ -680,16 +749,29 @@ What if the same decision has to be made many times?
 
 Ответьте без запуска кода.
 
-1. Почему существуют conditionals?
+1. Почему существуют условные конструкции?
 2. Что происходит до того, как JavaScript выбирает ветку?
 3. Что делает `if`?
 4. Что добавляет `else`?
-5. When is `else if` useful?
-6. When is nesting useful?
+5. Когда полезен `else if`?
+6. Когда полезна вложенность?
 7. Что вычисляет `switch`?
-8. Что такое `default` branch?
-9. Почему conditions должны быть читаемыми?
-10. Как эта глава ведёт к Loops?
+8. Что такое ветка `default`?
+9. Почему условия должны быть читаемыми?
+10. Как эта глава ведёт к циклам?
+
+### Ответы
+
+1. Программе нужно выбирать путь: при коде ответа 200 проверять тело, при 500 — сообщать об ошибке. Без условий все строки выполнялись бы подряд всегда.
+2. Вычисляется выражение условия, и его результат определяет выбор. Ветка выбирается по значению, а не по тексту условия.
+3. Выполняет блок, если условие истинно, и пропускает его, если ложно.
+4. Запасной путь: блок, который выполняется, когда условие оказалось ложным. Без него при ложном условии не выполняется ничего.
+5. Когда вариантов больше двух и они проверяются по очереди: код ответа 200, затем диапазон 400, затем 500.
+6. Когда второе решение имеет смысл только внутри первого: например, проверять тело ответа есть смысл лишь после того, как код ответа оказался успешным.
+7. Значение одного выражения, которое затем по очереди сравнивается с вариантами `case`.
+8. Ветка, которая выполняется, если ни один вариант не совпал. Без неё неизвестное значение проходит молча.
+9. Условие описывает решение, которое принимает программа. Если его нельзя прочитать вслух одной фразой, при разборе падения придётся заново выводить его смысл.
+10. Условие выбирает путь один раз. Дальше возникает вопрос, как повторять действие, пока условие выполняется, — это и есть циклы.
 
 ---
 
@@ -701,7 +783,7 @@ What if the same decision has to be made many times?
 practice/01-javascript/18-conditionals.md
 ```
 
-Сначала отвечайте без запуска там, где нужно predict вывод. Главная цель - определить evaluated expression and chosen path.
+Сначала отвечайте без запуска там, где нужно предсказать вывод. Главная цель — определить вычисляемое выражение и выбранный путь.
 
 ---
 
@@ -713,4 +795,4 @@ practice/01-javascript/18-conditionals.md
 solutions/01-javascript/18-conditionals.md
 ```
 
-Читайте решения после самостоятельной попытки. Проверяйте reasoning: what decision is the program making?
+Читайте решения после самостоятельной попытки. Проверяйте рассуждение: какое решение принимает программа?

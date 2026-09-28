@@ -1,4 +1,4 @@
-# Classes
+# Классы
 
 ## Связь с предыдущей главой
 
@@ -155,11 +155,11 @@ Class gives this recipe a language-level form.
 
 ## Теория
 
-Class is a convenient syntax for creating similar objects with shared prototype methods.
+Класс — удобная запись для создания похожих объектов с общими методами в прототипе.
 
 Главная модель: `class` — это удобная запись для создания объектов с общим поведением.
 
-Class declaration:
+Объявление класса:
 
 ```javascript
 class PageObject {
@@ -174,27 +174,34 @@ class PageObject {
 }
 ```
 
-Создание instance:
+Создание экземпляра:
 
 ```javascript
 const loginPage = new PageObject('LoginPage', '/login');
 ```
 
-В этой главе `new` рассматривается только как syntax for creating class instance. Advanced поведение of `new` will be studied later.
+В этой главе `new` рассматривается только как запись для создания экземпляра. Более сложное его поведение будет изучаться позже.
 
 Что важно сейчас:
 
-### Constructor
+```text
+class     —  описание, как устроен объект такого вида
+new       —  создание одного конкретного объекта по этому описанию
+```
 
-Constructor is special method that runs when new instance is created.
+Само описание объектов не создаёт: их создаёт каждый вызов `new`.
 
-Constructor отвечает:
+### Конструктор
 
-> What own data should each new object receive?
+Конструктор — особый метод, который выполняется при создании нового экземпляра.
 
-### Instance
+Конструктор отвечает на вопрос:
 
-Instance is object created from class.
+> Какие собственные данные должен получить каждый новый объект?
+
+### Экземпляр
+
+Экземпляр — объект, созданный по классу.
 
 Например:
 
@@ -203,13 +210,23 @@ const loginPage = new PageObject('LoginPage', '/login');
 const profilePage = new PageObject('ProfilePage', '/profile');
 ```
 
-Each instance has own data:
+У каждого экземпляра свои данные:
 
-But methods are shared:
+```text
+loginPage    →  name: 'LoginPage',   path: '/login'
+profilePage  →  name: 'ProfilePage', path: '/profile'
+```
 
-### Relationship with prototypes
+Но методы общие:
 
-Class does not remove prototype lookup.
+```text
+метод describe существует в одном экземпляре
+и работает с данными того объекта, через который вызван
+```
+
+### Связь с прототипами
+
+Класс не отменяет поиск по прототипу.
 
 Модель высокого уровня:
 
@@ -217,11 +234,11 @@ Class does not remove prototype lookup.
 class  →  конструктор + методы в prototype
 ```
 
-You do not need to manually write `PageObject.prototype` in this chapter.
+Писать `PageObject.prototype` вручную в этой главе не нужно.
 
-But you must understand the relationship:
+Но связь понимать обязательно:
 
-This is why classes fit naturally after Prototype and Prototype Chain.
+Именно поэтому классы естественно идут после прототипа и цепочки прототипов.
 
 ---
 
@@ -239,71 +256,88 @@ flowchart TD
 
 ## Внутренний механизм
 
-When JavaScript evaluates:
+Когда JavaScript вычисляет:
 
 ```javascript
 const loginPage = new PageObject('LoginPage', '/login');
 ```
 
-Mentally:
+Мысленно происходит следующее:
 
-After creation:
+```text
+1. создан пустой объект
+2. его прототипом назначен PageObject.prototype
+3. вызван constructor с this = этот объект
+4. constructor записал name и url как СОБСТВЕННЫЕ свойства
+5. объект возвращён и связан с именем loginPage
+```
 
-When code calls:
+После создания собственные данные лежат в экземпляре, а методы — в прототипе:
+
+```text
+loginPage             name: 'LoginPage', url: '/login'
+  └─ прототип         describePage()
+```
+
+Когда код вызывает:
 
 ```javascript
 loginPage.describePage();
 ```
 
-Lookup still works:
+Поиск по-прежнему работает по цепочке: в самом `loginPage` метода нет, он
+находится в прототипе.
 
-Напоминание про объект выполнения:
+Напоминание про объект выполнения: `this` определяет форма вызова, а не место
+хранения метода — слева от точки стоит `loginPage`, он и станет `this`.
 
-Inside method:
+Внутри метода:
 
 ```javascript
 return `${this.name}: ${this.url}`;
 ```
 
-`this.name` reads from instance:
+`this.name` читается из экземпляра — из собственных свойств того объекта, через
+который метод вызвали. Поэтому один метод в прототипе обслуживает сколько угодно
+страниц.
 
-This is the same model from `this`, Prototype and Prototype Chain chapters.
+Это та же модель, что в главах про `this`, прототип и цепочку прототипов.
 
-### Syntactic sugar
+### Синтаксический сахар
 
-After the mental model is clear, we can say the common phrase:
+Когда мысленная модель ясна, можно произнести и расхожую фразу:
 
-Class syntax is often described as syntactic sugar over prototype-based object creation.
+Запись класса часто называют синтаксическим сахаром над созданием объектов через прототипы.
 
-Значение:
+Значение этой фразы конкретное: `class` не добавил нового механизма. Тот же
+результат достижим через функцию-конструктор и `prototype` — класс лишь убирает
+повторяющуюся ручную работу и делает намерение видимым.
 
-Do not reduce the whole chapter to this phrase. It is useful only after you understand what repetitive work class removes.
+Не сводите всю главу к этой фразе. Она полезна только после того, как понятно, какую повторяющуюся работу класс убирает.
 
 ---
 
 ## Ментальная модель
 
-Class is an object recipe.
+Класс — это рецепт объекта.
 
 Важно отделять учебную аналогию от технического определения.
 
-В этой главе слова `recipe`, `blueprint`, `template`, `factory` and `cookie cutter` используются как mental models.
+В этой главе слова «рецепт», «чертёж», «шаблон», «фабрика» и «форма для печенья» используются как мысленные модели.
 
-Они помогают понять назначение classes:
+Они помогают понять назначение классов:
 
-Но это не формальное определение class в JavaScript.
+Но это не формальное определение класса в JavaScript.
 
-Мы используем эти аналогии, чтобы увидеть проблему repeated object creation and the role of class syntax. Внутренние детали языка здесь не раскрываются и будут появляться только тогда, когда станут нужны для следующих тем.
+Мы используем эти аналогии, чтобы увидеть задачу повторяющегося создания объектов и роль записи класса. Внутренние детали языка здесь не раскрываются и появятся только тогда, когда понадобятся для следующих тем.
 
-Factory blueprint:
+Чертёж, форма для печенья, проект здания, производственная линия — все эти
+модели говорят об одном: описание создаётся один раз, а объекты по нему —
+много раз.
 
-Cookie cutter:
-
-Building template:
-
-Production line:
-
-Важное различие:
+Важное различие: чертёж не является зданием. Класс — это описание, экземпляр —
+результат его применения. Свойства принадлежат экземпляру, а методы обычно
+лежат в прототипе и существуют в одном экземпляре на всех.
 
 ---
 
@@ -321,7 +355,7 @@ examples/01-javascript/chapter-41/
 node examples/01-javascript/chapter-41/01-first-class.js
 ```
 
-### Пример 1. First class
+### Пример 1. Первый класс
 
 Файл:
 
@@ -329,9 +363,9 @@ node examples/01-javascript/chapter-41/01-first-class.js
 examples/01-javascript/chapter-41/01-first-class.js
 ```
 
-Показывает minimal class and instance creation.
+Показывает минимальный класс и создание экземпляра.
 
-### Пример 2. Constructor
+### Пример 2. Конструктор
 
 Файл:
 
@@ -339,9 +373,9 @@ examples/01-javascript/chapter-41/01-first-class.js
 examples/01-javascript/chapter-41/02-constructor.js
 ```
 
-Показывает how constructor writes own data.
+Показывает, как конструктор записывает собственные данные.
 
-### Пример 3. Methods
+### Пример 3. Методы
 
 Файл:
 
@@ -349,9 +383,9 @@ examples/01-javascript/chapter-41/02-constructor.js
 examples/01-javascript/chapter-41/03-methods.js
 ```
 
-Показывает shared methods used by different instances.
+Показывает общие методы, используемые разными экземплярами.
 
-### Пример 4. Prototype reminder
+### Пример 4. Напоминание о прототипе
 
 Файл:
 
@@ -359,7 +393,7 @@ examples/01-javascript/chapter-41/03-methods.js
 examples/01-javascript/chapter-41/04-prototype-reminder.js
 ```
 
-Показывает high-level relationship between class method and prototype lookup.
+Показывает на высоком уровне связь между методом класса и поиском по прототипу.
 
 ### Пример 5. Типичные ошибки
 
@@ -369,9 +403,9 @@ examples/01-javascript/chapter-41/04-prototype-reminder.js
 examples/01-javascript/chapter-41/05-common-mistakes.js
 ```
 
-Показывает mistake: forgetting `this` inside class method.
+Показывает ошибку: забытый `this` внутри метода класса.
 
-### Пример 6. QA example
+### Пример 6. Пример из автоматизации тестов
 
 Файл:
 
@@ -379,31 +413,31 @@ examples/01-javascript/chapter-41/05-common-mistakes.js
 examples/01-javascript/chapter-41/06-qa-example.js
 ```
 
-Показывает API client class with own config and shared methods.
+Показывает класс клиента API со своей настройкой и общими методами.
 
 ---
 
 ## Частые вопросы
 
-### Class заменяет prototype?
+### Класс заменяет прототип?
 
 Нет.
 
-Class does not replace prototype. Class uses prototype.
+Класс не заменяет прототип. Класс его использует.
 
-### JavaScript стал class-based language?
+### JavaScript стал языком на основе классов?
 
 Нет.
 
-В этой главе важно не менять mental model. Objects still use prototypes.
+В этой главе важно не менять мысленную модель. Объекты по-прежнему используют прототипы.
 
-### Constructor - это обычный method?
+### Конструктор — это обычный метод?
 
-Constructor has special role during instance creation. It runs when the new instance is created and prepares own data.
+У конструктора особая роль при создании экземпляра. Он выполняется при создании нового объекта и готовит его собственные данные.
 
-Advanced constructor поведение будет изучаться позже.
+Более сложное поведение конструктора будет изучаться позже.
 
-### Methods inside class copied into every instance?
+Методы внутри класса копируются в каждый экземпляр?
 
 Нет.
 
@@ -413,31 +447,31 @@ Advanced constructor поведение будет изучаться позже
 new ClassName()  →  создать объект  →  выполнить конструктор  →  вернуть объект
 ```
 
-### Нужно ли всегда использовать classes?
+### Нужно ли всегда использовать классы?
 
 Нет.
 
-Classes useful when you need many similar objects. For one small object, object literal may be clearer.
+Классы полезны, когда нужно много похожих объектов. Для одного небольшого объекта литерал может быть понятнее.
 
 ---
 
 ## Распространённые мифы
 
-### Миф: class создает новый object model
+### Миф: класс создаёт новую модель объектов
 
-Реальность: class gives convenient syntax over prototype-based object creation.
+Реальность: класс даёт удобную запись над созданием объектов через прототипы.
 
-### Миф: class methods are copied to every instance
+### Миф: методы класса копируются в каждый экземпляр
 
-Реальность: methods are shared through prototype lookup.
+Реальность: методы общие и доступны через поиск по прототипу.
 
-### Миф: constructor is for business logic
+### Миф: конструктор нужен для бизнес-логики
 
-Реальность: constructor should primarily initialize the new object. Heavy business logic makes instances harder to create and test.
+Реальность: конструктор должен прежде всего подготовить новый объект. Тяжёлая логика усложняет создание экземпляров и их проверку.
 
-### Миф: classes are required for Automation QA
+### Миф: классы обязательны в автоматизации тестов
 
-Реальность: classes are useful for Page Objects and framework objects, but not every helper must be a class.
+Реальность: классы полезны для объектов страниц и объектов фреймворка, но не каждая вспомогательная функция должна быть классом.
 
 ---
 
@@ -453,7 +487,7 @@ const loginPage = PageObject('LoginPage', '/login');
 
 Что произошло:
 
-`class` must be called with `new`.
+`class` нужно вызывать через `new`.
 
 Исправленный вариант:
 
@@ -463,9 +497,9 @@ const loginPage = new PageObject('LoginPage', '/login');
 
 Почему:
 
-Class describes how to create instance. `new` starts instance creation.
+Класс описывает, как создать экземпляр. `new` запускает создание.
 
-### Ошибка 2. Забыть `this` inside method
+### Ошибка 2. Забыть `this` внутри метода
 
 Неправильный код:
 
@@ -483,7 +517,7 @@ class PageObject {
 
 Что произошло:
 
-`name` is variable lookup, not instance property lookup.
+Это поиск переменной, а не свойства экземпляра.
 
 Исправленный вариант:
 
@@ -493,72 +527,109 @@ describePage() {
 }
 ```
 
-### Ошибка 3. Думать, что class method is own property
+### Ошибка 3. Думать, что метод класса — собственное свойство
 
 Неправильная модель: будто `class` вводит в JavaScript принципиально новый механизм наследования.
 
-Правильная модель: за классом стоит тот же prototype, только с более удобным синтаксисом.
+Правильная модель: за классом стоит тот же прототип, только с более удобным синтаксисом.
 
-### Ошибка 4. Перегружать constructor
+### Ошибка 4. Перегружать конструктор
 
 Неправильная модель: будто методы класса копируются в каждый созданный объект.
 
 Почему плохо:
 
-Instance creation becomes unpredictable.
+Создание экземпляра становится непредсказуемым.
 
-Исправленная модель:
+Исправленная модель: конструктор только принимает зависимости и записывает
+состояние. Сетевые запросы, чтение файлов и обращения к стенду выполняются
+отдельными методами — тогда создание объекта дёшево и не может упасть.
 
 ---
 
 ## Практическое использование
 
-Use class when:
+Используйте класс, когда нужно создавать много похожих объектов: у них общее
+поведение и своя настройка.
 
 Примеры:
 
-* Page Objects;
-* API clients;
-* validators;
-* request builders;
-* configuration wrappers;
-* framework service objects.
+* объекты страниц;
+* клиенты API;
+* проверки;
+* построители запросов;
+* обёртки конфигурации;
+* служебные объекты фреймворка.
 
-Do not use class only because it looks serious.
+Не используйте класс только потому, что он выглядит солиднее.
 
-Good class design:
+Признаки хорошего класса простые: у него есть состояние, которое живёт между
+вызовами методов, и несколько операций над этим состоянием. Если состояния нет
+и метод один, обычная функция читается лучше.
 
 ---
 
 ## Использование в Automation QA
 
-### Page Objects
+### Объекты страниц
 
-Page Objects are natural class candidates:
+Объекты страниц — естественные кандидаты на класс:
 
-This creates readable test code:
+```text
+у каждой страницы своё состояние — адрес и элементы,
+а поведение (открыть, заполнить, проверить) одинаково по форме
+```
+
+Так получается читаемый код теста:
 
 ```javascript
 const loginPage = new LoginPage('/login');
 ```
 
-### API clients
+### Клиенты API
 
-API client class can keep environment config as own data:
+Класс клиента API может хранить настройку окружения как свои данные:
 
-### Reusable validators
+```javascript
+class ApiClient {
+  constructor(baseUrl) {
+    this.baseUrl = baseUrl;
+  }
 
-Validator class:
+  buildUrl(path) {
+    return this.baseUrl + path;
+  }
+}
+```
 
-### Request builders
+### Переиспользуемые проверки
 
-Request builder class can collect request data and provide methods for building payloads.
+Класс проверки:
 
-Detailed builder patterns will appear later in Automation QA architecture sections.
+```javascript
+class StatusValidator {
+  constructor(expectedStatus) {
+    this.expectedStatus = expectedStatus;
+  }
 
-### Framework objects
+  check(actualStatus) {
+    return actualStatus === this.expectedStatus;
+  }
+}
+```
 
-Classes help make framework objects explicit:
+Ожидаемое значение задаётся один раз при создании, а проверка вызывается
+сколько угодно раз.
+
+### Построители запросов
+
+Класс-сборщик запроса может собирать данные запроса и предоставлять методы для построения тела.
+
+Подробные приёмы сборки появятся позже, в разделах про архитектуру фреймворка.
+
+### Объекты фреймворка
+
+Классы помогают сделать объекты фреймворка явными:
 
 ```text
 Reporter
@@ -568,167 +639,92 @@ DatabaseClient
 PageObject
 ```
 
-But they should still be small and readable.
-
----
-
-## Диаграммы главы
-
-### 1. Why classes exist
-
-### 2. Manual creation
-
-### 3. Repeated setup
-
-```text
-object A setup
-object B setup
-object C setup
-```
-
-### 4. Class template
-
-### 5. Instance creation
-
-### 6. Constructor
-
-### 7. Methods
-
-### 8. Prototype reminder
-
-### 9. Текущая модель JavaScript
-
-### 10. Object creation flow
-
-### 11. QA Page Object example
-
-### 12. API client example
-
-### 13. Test user example
-
-### 14. Читаемость
-
-### 15. Типичные ошибки
-
-### 16. Blueprint analogy
-
-### 17. Cookie cutter analogy
-
-### 18. Factory analogy
-
-### 19. Recipe analogy
-
-### 20. Constructor flow
-
-### 21. Instance lifecycle
-
-### 22. Shared methods
-
-### 23. Own data
-
-### 24. Prototype behind class
-
-### 25. Class to prototype
-
-### 26. Object relationship
-
-### 27. Краткая ментальная модель
-
-### 28. Complete class model
-
-### 29. Build process
-
-### 30. Receiver reminder
-
-### 31. Constructor execution
-
-### 32. Shared поведение reuse
-
-### 33. Переход к Inheritance
-
-### 34. Переход к extends
-
-### 35. Object evolution
-
-### 36. Production line
-
-### 37. Object identity
-
-### 38. Prototype lookup still works
-
-### 39. Hidden prototype
-
-### 40. Итоговая схема
+Но они всё равно должны оставаться маленькими и читаемыми.
 
 ---
 
 ## Итоги
 
-Classes appear after Prototype and Prototype Chain naturally.
+Классы естественно появляются после прототипа и цепочки прототипов.
 
-Prototype showed:
+Прототип показал, где лежит общее поведение.
 
-Prototype Chain showed:
+Цепочка прототипов показала, как идёт поиск, если свойства нет ни в объекте, ни в
+его прототипе.
 
-Classes answer:
+Классы отвечают на следующий вопрос:
 
 ```text
-How to create many similar objects more conveniently?
+как удобнее создавать много похожих объектов?
 ```
 
-Class gives object creation a readable template:
+Класс даёт созданию объектов читаемый шаблон: конструктор задаёт собственные
+данные, методы класса попадают в прототип и остаются общими.
 
-Classes do not replace prototypes. Classes use prototypes.
+Классы не заменяют прототипы. Классы их используют.
 
-The next chapter will explain class inheritance: how one class can reuse поведение from another class.
+Следующая глава объяснит наследование классов: как один класс может переиспользовать поведение другого.
 
 ---
 
 ## Что нужно запомнить
 
-✓ Class is a convenient template for creating similar objects.
+✓ Класс — удобный шаблон для создания похожих объектов.
 
-✓ Constructor runs during instance creation.
+✓ Конструктор выполняется при создании экземпляра.
 
-✓ Constructor usually initializes own data.
+✓ Конструктор обычно задаёт собственные данные.
 
-✓ Instance is object created from class.
+✓ Экземпляр — объект, созданный по классу.
 
-✓ Class methods are shared through prototype lookup.
+✓ Методы класса общие и доступны через поиск по прототипу.
 
-✓ Classes do not replace prototypes.
+✓ Классы не заменяют прототипы.
 
-✓ Classes use prototypes.
+✓ Классы используют прототипы.
 
-✓ `this` inside method refers to объект выполнения during ordinary invocation.
+✓ `this` внутри метода при обычном вызове указывает на объект выполнения.
 
-✓ Use classes when repeated object creation becomes clearer.
+✓ Используйте классы, когда повторяющееся создание объектов становится от этого понятнее.
 
-✓ Inheritance is a separate topic for the next chapter.
+✓ Наследование — отдельная тема следующей главы.
 
 ---
 
 ## Проверьте себя
 
-1. What repetitive work does class remove?
+1. Какую повторяющуюся работу убирает класс?
 
-2. What does constructor usually do?
+2. Что обычно делает конструктор?
 
-3. What is an instance?
+3. Что такое экземпляр?
 
-4. Where does instance own data live?
+4. Где живут собственные данные экземпляра?
 
-5. Are class methods copied into every instance?
+5. Копируются ли методы класса в каждый экземпляр?
 
-6. Why does class not replace prototypes?
+6. Почему класс не заменяет прототипы?
 
-7. What does `new Class(...)` start?
+7. Что запускает `new Class(...)`?
 
-8. Why should constructor not contain too much business logic?
+8. Почему конструктор не должен содержать много бизнес-логики?
 
-9. How are classes useful for Page Objects?
+9. Чем классы полезны для объектов страниц?
 
-10. What topic comes next after classes?
+10. Какая тема идёт после классов?
+
+### Ответы
+
+1. Ручное создание одинаково устроенных объектов и ручную привязку общего поведения: класс описывает и то и другое один раз.
+2. Задаёт собственные данные нового объекта: записывает в него значения, переданные при создании.
+3. Объект, созданный по классу через `new`.
+4. В самом объекте — это его собственные свойства.
+5. Нет. Методы лежат в одном месте, а экземпляры доходят до них по цепочке прототипов.
+6. Класс — более удобная запись того же механизма. Поиск методов по-прежнему идёт по цепочке прототипов.
+7. Создание нового объекта: он создаётся, выполняется конструктор, и готовый объект возвращается.
+8. Конструктор отвечает за готовность объекта к работе. Если в нём делаются запросы и вычисления, создание объекта перестаёт быть предсказуемым, а проверить такой класс становится трудно.
+9. У каждой страницы своё состояние — адрес, элементы, — а набор действий по форме одинаков. Класс описывает действия один раз, а состояние задаёт при создании.
+10. Наследование классов: как один класс переиспользует поведение другого.
 
 ---
 

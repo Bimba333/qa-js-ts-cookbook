@@ -1,7 +1,7 @@
 export default [
   {
     id: 'ts-117-enum-leaves-code',
-    title: 'Enum оставляет объект во время выполнения',
+    title: 'Перечисление оставляет объект во время выполнения',
     difficulty: 'medium',
     lang: 'ts',
     prompt:
@@ -9,7 +9,7 @@ export default [
       '`enum Status { NEW = "NEW", DONE = "DONE" }`. Напишите ' +
       '`describeRuntime()`, возвращающую объект ' +
       '`{ priorityIsObject, statusIsObject, reverseLookup, statusReverse, names }`: ' +
-      'признаки того, что оба enum существуют во время выполнения как объекты; ' +
+      'признаки того, что оба перечисления существуют во время выполнения как объекты; ' +
       '`reverseLookup` — значение `Priority[1]`; `statusReverse` — значение ' +
       '`Status["DONE"]`; `names` — ключи `Priority`, у которых значение является ' +
       'числом.',
@@ -28,23 +28,23 @@ function describeRuntime() {
   };
 }`,
     hints: [
-      'После компиляции enum превращается в обычный объект.',
-      'У числового enum ключи есть и для имён, и для чисел.',
+      'После компиляции перечисление превращается в обычный объект.',
+      'У числового перечисления ключи есть и для имён, и для чисел.',
       'Отобрать нужные ключи помогает проверка типа значения.'
     ],
     tests: [
       {
-        name: 'оба enum существуют во время выполнения',
+        name: 'оба перечисления существуют во время выполнения',
         code: `const described = describeRuntime();
 expect(described.priorityIsObject).toBe(true);
 expect(described.statusIsObject).toBe(true);`
       },
       {
-        name: 'числовой enum даёт обратное отображение',
+        name: 'числовое перечисление даёт обратное отображение',
         code: `expect(describeRuntime().reverseLookup).toBe('MEDIUM');`
       },
       {
-        name: 'строковый enum обратного отображения не имеет',
+        name: 'строковое перечисление обратного отображения не имеет',
         code: `expect(describeRuntime().statusReverse).toBe('DONE');
 expect(Status['DONE']).toBe('DONE');
 expect(Status[0]).toBeUndefined();`

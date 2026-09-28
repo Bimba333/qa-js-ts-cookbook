@@ -1,4 +1,4 @@
-# Temporal Dead Zone
+# Временная мёртвая зона
 
 ## Связь с предыдущей главой
 
@@ -163,7 +163,7 @@ undefined
 
 ### Наблюдаемое поведение
 
-Сначала посмотрим на три cases.
+Сначала посмотрим на три случая.
 
 `var`:
 
@@ -185,7 +185,7 @@ undefined
 let status = 'ready';
 ```
 
-Если раскомментировать read before initialization:
+Если раскомментировать чтение до инициализации:
 
 ```text
 ReferenceError
@@ -199,7 +199,7 @@ ReferenceError
 const baseUrl = 'https://example.com';
 ```
 
-Если раскомментировать read before initialization:
+Если раскомментировать чтение до инициализации:
 
 ```text
 ReferenceError
@@ -207,7 +207,12 @@ ReferenceError
 
 Наблюдение:
 
-### Почему простое объяснение "not hoisted" неверно
+```text
+var  до объявления  →  undefined     (ошибки нет, значение бессмысленное)
+let  до объявления  →  ReferenceError (ошибка сразу, на первой же попытке)
+```
+
+### Почему простое объяснение «не поднимаются» неверно
 
 Если сказать:
 
@@ -215,19 +220,19 @@ ReferenceError
 let and const are not hoisted
 ```
 
-то возникает неправильная модель: будто `let` и `const` вообще неизвестны engine до строки объявления.
+то возникает неправильная модель: будто `let` и `const` вообще неизвестны движку до строки объявления.
 
-Но это не та модель, которую мы строили в Hoisting.
+Но это не та модель, которую мы строили в главе про подъём объявлений.
 
-Более точная модель: имя зарегистрировано в Creation Phase, но помечено как недоступное до инициализации.
+Более точная модель: имя зарегистрировано в фазе подготовки, но помечено как недоступное до инициализации.
 
-То есть проблема не в том, что identifier неизвестен. Проблема в его состояние.
+То есть проблема не в том, что имя неизвестно. Проблема в его состоянии.
 
-### Что такое Temporal Dead Zone
+### Что такое временная мёртвая зона
 
 Теперь можно ввести термин.
 
-Temporal Dead Zone, или TDZ, — период от начала scope до initialization `let` или `const`, когда identifier already exists in Environment Record, but access is forbidden.
+Временная мёртвая зона — период от начала области видимости до инициализации `let` или `const`, когда имя уже существует в записи окружения, но доступ к нему запрещён.
 
 Важно:
 
@@ -238,11 +243,20 @@ TDZ is about identifier state before initialization.
 
 ### Почему существует TDZ
 
-TDZ exists to prevent reading `let` and `const` before the program has explicitly initialized them.
+Она существует, чтобы нельзя было прочитать `let` и `const` до того, как программа явно задала им значение.
 
 Без TDZ:
 
+```text
+чтение до инициализации вернуло бы undefined,
+и тест упал бы где-то дальше — на сравнении или на запросе
+```
+
 С TDZ:
+
+```text
+чтение до инициализации останавливает программу на самой строке чтения
+```
 
 TDZ делает ошибки заметнее.
 
@@ -252,13 +266,19 @@ TDZ делает ошибки заметнее.
 const baseUrl = 'https://example.com';
 ```
 
-Если `baseUrl` нужен до declaration line, программа должна явно показать проблему, а не silently return `undefined`.
+Если `baseUrl` нужен до строки объявления, программа должна явно показать проблему, а не тихо вернуть `undefined`.
 
-Что состояние identifier прямо сейчас:
+В каком состоянии имя прямо сейчас:
 
-### Registration vs initialization
+```text
+имя baseUrl         — существует в записях окружения
+значение            — ещё не задано
+доступ на чтение    — запрещён до строки объявления
+```
 
-Registration:
+### Регистрация и инициализация
+
+Регистрация:
 
 ```text
 Engine creates identifier record.
@@ -270,13 +290,13 @@ Engine creates identifier record.
 Engine gives identifier its first usable value.
 ```
 
-Диаграмма registration:
+Схема регистрации:
 
 ```text
 Creation Phase:  userName зарегистрирован, значения нет, доступ запрещён
 ```
 
-Диаграмма initialization:
+Схема инициализации:
 
 ```text
 строка объявления:  userName  ──→  [ 'Anna' ]   доступ открыт
@@ -284,11 +304,11 @@ Creation Phase:  userName зарегистрирован, значения не�
 
 TDZ существует между этими двумя состояниями.
 
-### When TDZ begins
+### Когда начинается мёртвая зона
 
-TDZ начинается, когда выполнение входит в scope, содержащий объявление `let` или `const`.
+Зона начинается, когда выполнение входит в область видимости, содержащую объявление `let` или `const`.
 
-Для global scope:
+Для глобальной области:
 
 ```javascript
 // console.log(user);
@@ -298,7 +318,13 @@ let user = 'Anna';
 
 Временная шкала:
 
-Для block scope:
+```text
+начало программы     →  user зарегистрирован, TDZ началась
+строка console.log   →  попытка чтения внутри TDZ → ReferenceError
+строка let user      →  инициализация, TDZ закончилась бы здесь
+```
+
+Для области блока:
 
 ```javascript
 if (true) {
@@ -310,9 +336,17 @@ if (true) {
 
 Временная шкала:
 
-### When TDZ ends
+```text
+вход в блок          →  status зарегистрирован, TDZ началась
+строка console.log   →  попытка чтения внутри TDZ → ReferenceError
+строка let status    →  инициализация, TDZ закончилась
+```
 
-TDZ заканчивается, когда выполнение доходит до объявления и происходит initialization.
+TDZ блока начинается не с начала программы, а со входа в сам блок.
+
+### Когда заканчивается мёртвая зона
+
+Зона заканчивается, когда выполнение доходит до объявления и происходит инициализация.
 
 ```javascript
 let user = 'Anna';
@@ -322,11 +356,21 @@ console.log(user);
 
 Временная шкала:
 
-В каком состоянии этот identifier прямо сейчас:
+```text
+начало scope       →  TDZ
+строка let user    →  инициализация значением 'Anna', TDZ закончилась
+строка console.log →  чтение разрешено, выводится 'Anna'
+```
 
-### TDZ for let
+В каком состоянии это имя прямо сейчас:
 
-`let` can be declared without immediate meaningful value:
+```text
+на момент console.log — имя существует, значение задано, доступ открыт
+```
+
+### Мёртвая зона для `let`
+
+`let` можно объявить без осмысленного начального значения:
 
 ```javascript
 let user;
@@ -340,17 +384,29 @@ console.log(user);
 undefined
 ```
 
-Почему это не TDZ error?
+Почему это не ошибка временной мёртвой зоны?
 
-Потому что execution reached declaration line. `user` was initialized, even if its value is `undefined`.
+Потому что выполнение дошло до строки объявления. Имя `user` было инициализировано, пусть и значением `undefined`.
 
-let lifecycle:
+Время жизни `let`:
+
+```text
+для `let user;`
+регистрация  →  TDZ  →  строка объявления: инициализация значением undefined
+```
 
 Для `let user = 'Anna'`:
 
-### TDZ for const
+```text
+регистрация  →  TDZ  →  строка объявления: инициализация значением 'Anna'
+```
 
-`const` must be initialized at declaration.
+Разница только в том, какое значение получает имя: TDZ заканчивается в обоих
+случаях на строке объявления.
+
+### Мёртвая зона для `const`
+
+`const` обязан получить значение при объявлении.
 
 ```javascript
 const baseUrl = 'https://example.com';
@@ -358,7 +414,13 @@ const baseUrl = 'https://example.com';
 console.log(baseUrl);
 ```
 
-const lifecycle:
+Время жизни `const` в этом примере:
+
+```text
+начало области │ имя baseUrl зарегистрировано, доступа НЕТ
+строка const   │ имя инициализировано, доступ открыт
+console.log    │ значение прочитано
+```
 
 Нельзя:
 
@@ -366,13 +428,13 @@ const lifecycle:
 // const baseUrl;
 ```
 
-Это syntax error, потому что `const` требует initialization at declaration.
+Это синтаксическая ошибка, потому что `const` требует инициализации прямо при объявлении.
 
 TDZ для `const` похож на TDZ для `let`, но есть дополнительное правило: объявление без инициализации недопустимо вовсе — это ошибка синтаксиса, а не выполнения.
 
-### Почему var ведёт себя иначе
+### Почему `var` ведёт себя иначе
 
-`var` ведёт себя иначе, потому что Creation Phase инициализирует его значением `undefined`.
+`var` ведёт себя иначе, потому что фаза подготовки инициализирует его значением `undefined`.
 
 ```javascript
 console.log(user);
@@ -380,19 +442,24 @@ console.log(user);
 var user = 'Anna';
 ```
 
-var lifecycle comparison:
+Сравнение жизненного цикла:
 
 | | `var` | `let` и `const` |
 | --- | --- | --- |
-| после Creation Phase | `undefined` | доступа нет |
+| после фазы подготовки | `undefined` | доступа нет |
 | чтение до объявления | возвращает `undefined` | `ReferenceError` |
 | ошибка заметна | нет | сразу |
 
 Именно поэтому:
 
-### ReferenceError before initialization
+```text
+`var` прячет ошибку за значением undefined,
+`let` и `const` показывают её на той строке, где она допущена
+```
 
-Когда code пытается access `let` / `const` before initialization, engine throws ReferenceError.
+### Ошибка при обращении до инициализации
+
+Когда код пытается обратиться к `let` или `const` до инициализации, движок выбрасывает `ReferenceError`.
 
 ```javascript
 // console.log(user);
@@ -406,21 +473,41 @@ let user = 'Anna';
 ReferenceError: Cannot access 'user' before initialization
 ```
 
-Что состояние identifier прямо сейчас:
+В каком состоянии имя прямо сейчас:
 
-Это важный момент: ReferenceError здесь не означает, что engine вообще не знает identifier. Он знает identifier, но запрещает доступ к нему до initialization.
+```text
+имя user существует, но помечено как неинициализированное
+```
 
-### Lexical Environment during TDZ
+Об этом говорит и текст ошибки: `cannot access 'user'`, а не `'user' is not defined`.
 
-Во время TDZ Environment Record уже содержит identifier record.
+Это важный момент: `ReferenceError` здесь не означает, что движок вообще не знает имени. Он знает имя, но запрещает доступ к нему до инициализации.
 
-Access attempt:
+### Лексическое окружение во время зоны
 
-Это отличается от missing identifier:
+Во время зоны запись окружения уже содержит запись об имени.
 
-Обе ситуации могут быть ReferenceError, но причины разные:
+Попытка обращения:
 
-### Environment Record before initialization
+```text
+имя найдено в Environment Record  →  запись не инициализирована  →  ReferenceError
+```
+
+Это отличается от случая, когда имени нет вовсе:
+
+```text
+имя не найдено ни в одном environment цепочки  →  ReferenceError
+```
+
+Обе ситуации дают `ReferenceError`, но причины разные:
+
+| | до инициализации | имени нет вообще |
+| --- | --- | --- |
+| запись в окружении | есть | нет |
+| текст ошибки | `Cannot access 'user' before initialization` | `user is not defined` |
+| что исправлять | порядок строк | опечатку или отсутствующее объявление |
+
+### Запись окружения до инициализации
 
 Для кода:
 
@@ -434,27 +521,50 @@ var status = 'created';
 
 До выполнения:
 
-Before initialization line:
-
-After initialization lines:
-
-### Identifier состояние transitions
-
-Identifier состояние transitions:
-
-Для `var`:
-
-Comparison table:
-
 ```text
-Declaration | Creation Phase state     | Before line access | Initialization
-------------|--------------------------|--------------------|----------------
-var         | initialized as undefined | allowed            | assignment line
-let         | uninitialized            | ReferenceError     | declaration line
-const       | uninitialized            | ReferenceError     | declaration line
+user   → не инициализировано (доступ запрещён)
+role   → не инициализировано (доступ запрещён)
+status → undefined
 ```
 
-### Complete execution movie
+До строки инициализации:
+
+```text
+чтение user   → ReferenceError
+чтение role   → ReferenceError
+чтение status → undefined
+```
+
+После строк инициализации:
+
+```text
+user   → 'Anna'
+role   → 'admin'
+status → 'created'
+```
+
+### Смена состояний имени
+
+Смена состояний имени для `let` и `const`:
+
+```text
+зарегистрировано без значения  →  инициализировано  →  доступно
+        ▲                              ▲
+   начало области              строка объявления
+```
+
+Для `var` состояний на одно меньше: он получает `undefined` уже при регистрации,
+поэтому «недоступного» периода у него нет.
+
+Таблица сравнения:
+
+| Объявление | Состояние в фазе подготовки | Обращение до строки | Инициализация |
+| --- | --- | --- | --- |
+| `var` | инициализировано как `undefined` | разрешено | строка присваивания |
+| `let` | не инициализировано | `ReferenceError` | строка объявления |
+| `const` | не инициализировано | `ReferenceError` | строка объявления |
+
+### Полный фильм выполнения
 
 Для кода:
 
@@ -470,15 +580,33 @@ console.log(role);
 console.log(status);
 ```
 
-Movie:
+Фильм:
+
+```text
+подготовка   user и role заведены без доступа, status заведён как undefined
+строка 1     let user = 'Anna'   — доступ к user открыт
+строка 2     const role = 'admin' — доступ к role открыт
+строка 3     var status = ...     — status получил 'created'
+строки 4-6   все три имени читаются без ошибок
+```
 
 ### Текущее место в модели JavaScript
 
 Текущая позиция:
 
-Full path:
+```text
+Hoisting  →  записи об объявлениях готовятся заранее
+TDZ       →  часть этих записей заранее недоступна
+```
 
-TDZ completes the explanation of `let` and `const` Hoisting:
+Полный путь:
+
+```text
+Execution Context → Creation Phase → Environment Record →
+состояние записи → доступ разрешён или ReferenceError
+```
+
+Временная мёртвая зона достраивает объяснение подъёма `let` и `const`:
 
 ```text
 They are registered.
@@ -487,13 +615,13 @@ They are temporarily locked.
 They become usable after initialization.
 ```
 
-### Переход к Functions
+### Переход к функциям
 
-Следующая большая группа тем постепенно приведет к значения, types, operators and functions. Functions will later explain how parameters, return значения and function calls create more situations where Scope and Lexical Environment matter.
+Следующая большая группа тем постепенно приведёт к значениям, типам, операторам и функциям. Функции позже объяснят, как параметры, возвращаемые значения и вызовы создают новые ситуации, где важны область видимости и лексическое окружение.
 
 Мост:
 
-Функции как отдельная тема будут изучаться позже; сейчас достаточно помнить, что every function call can create its own execution environment.
+Функции как отдельная тема будут изучаться позже; сейчас достаточно помнить, что каждый вызов функции может создавать собственную среду выполнения.
 
 ---
 
@@ -512,27 +640,33 @@ flowchart TD
 
 ## Внутренний механизм
 
-TDZ mechanism на conceptual level:
+Механизм зоны на концептуальном уровне состоит из двух состояний имени:
 
-В каком состоянии этот identifier прямо сейчас:
+```text
+let / const │ зарегистрировано, НЕ инициализировано  →  обращение даёт ReferenceError
+            │ инициализировано                        →  обращение разрешено
 
-Для `var`:
+var         │ зарегистрировано и инициализировано как undefined с самого начала
+```
 
-TDZ is not a place in memory. It is a period of execution where an identifier has a restricted состояние.
+Именно поэтому `typeof` не спасает: у имени в зоне уже есть состояние, и
+обращение к нему — ошибка, а не «имя не найдено».
+
+Временная мёртвая зона — не место в памяти. Это период выполнения, в котором у имени ограниченное состояние.
 
 ---
 
 ## Ментальная модель
 
-### Reserved parking place
+### Забронированное парковочное место
 
-`let` / `const` похожи на reserved parking place.
+`let` и `const` похожи на забронированное парковочное место.
 
-Identifier exists, но access forbidden.
+Имя существует, но доступ запрещён.
 
-### Locked room
+### Запертая комната
 
-TDZ похож на locked room.
+Зона похожа на запертую комнату.
 
 ```text
 Room exists.
@@ -541,19 +675,27 @@ Engine knows the room.
 Door is locked until initialization.
 ```
 
-### Sealed storage box
+### Запечатанная коробка
 
-Environment Record has a sealed box.
+В записи окружения лежит запечатанная коробка.
 
-Reading before initialization:
+Чтение до инициализации:
 
-After initialization:
+```text
+коробка стоит на полке и подписана, но запечатана — открыть нельзя
+```
 
-### Registration before permission
+После инициализации:
 
-TDZ lives between registration and permission.
+```text
+на строке объявления печать снята: содержимое доступно
+```
 
-### Waiting until activation
+### Регистрация до разрешения
+
+Зона живёт между регистрацией и разрешением доступа.
+
+### Ожидание активации
 
 Итоговая модель:
 
@@ -575,7 +717,7 @@ examples/01-javascript/chapter-10/
 
 Запускайте их из корня проекта.
 
-### Пример 1. let TDZ
+### Пример 1. Зона у `let`
 
 Файл:
 
@@ -583,9 +725,9 @@ examples/01-javascript/chapter-10/
 examples/01-javascript/chapter-10/01-let-tdz.js
 ```
 
-Показывает safe access after initialization и содержит закомментированный unsafe access.
+Показывает безопасный доступ после инициализации и содержит закомментированное небезопасное обращение.
 
-### Пример 2. const TDZ
+### Пример 2. Зона у `const`
 
 Файл:
 
@@ -593,9 +735,9 @@ examples/01-javascript/chapter-10/01-let-tdz.js
 examples/01-javascript/chapter-10/02-const-tdz.js
 ```
 
-Показывает, что `const` becomes readable only after initialization.
+Показывает, что `const` становится читаемым только после инициализации.
 
-### Пример 3. var comparison
+### Пример 3. Сравнение с `var`
 
 Файл:
 
@@ -603,9 +745,9 @@ examples/01-javascript/chapter-10/02-const-tdz.js
 examples/01-javascript/chapter-10/03-var-comparison.js
 ```
 
-Показывает, что `var` readable as `undefined` before assignment.
+Показывает, что `var` читается как `undefined` до присваивания.
 
-### Пример 4. Initialization
+### Пример 4. Инициализация
 
 Файл:
 
@@ -613,9 +755,9 @@ examples/01-javascript/chapter-10/03-var-comparison.js
 examples/01-javascript/chapter-10/04-initialization.js
 ```
 
-Показывает момент, когда `let` declaration without value still initializes identifier with `undefined`.
+Показывает момент, когда объявление `let` без значения всё равно инициализирует имя значением `undefined`.
 
-### Пример 5. Safe access
+### Пример 5. Безопасный доступ
 
 Файл:
 
@@ -623,7 +765,7 @@ examples/01-javascript/chapter-10/04-initialization.js
 examples/01-javascript/chapter-10/05-safe-access.js
 ```
 
-Показывает безопасный порядок declaration before read.
+Показывает безопасный порядок: объявление раньше чтения.
 
 ### Пример 6. Типичные ошибки
 
@@ -633,65 +775,65 @@ examples/01-javascript/chapter-10/05-safe-access.js
 examples/01-javascript/chapter-10/06-common-mistakes.js
 ```
 
-Показывает common TDZ mistakes через comments and corrected code.
+Показывает типичные ошибки через комментарии и исправленный код.
 
 ---
 
 ## Частые вопросы
 
-### `let` и `const` hoisted?
+### `let` и `const` поднимаются?
 
-Да, если под Hoisting понимать registration during Creation Phase. Но они не initialized like `var`, поэтому access before initialization forbidden.
+Да, если под подъёмом понимать регистрацию в фазе подготовки. Но они не инициализируются, как `var`, поэтому доступ до инициализации запрещён.
 
-### Почему тогда говорят "let is not hoisted"?
+### Почему тогда говорят «`let` не поднимается»?
 
-Так иногда упрощают для новичков. В этой книге мы используем более точную модель: registered but not initialized.
+Так иногда упрощают для новичков. В этой книге мы используем более точную модель: зарегистрирован, но не инициализирован.
 
 ### TDZ — это ошибка?
 
-Нет. TDZ — это период. Ошибка появляется, если code tries to access identifier during that period.
+Нет. Это период. Ошибка появляется, если код пытается обратиться к имени в течение этого периода.
 
 ### Почему `var` не имеет TDZ в таком же смысле?
 
-Потому что `var` initialized with `undefined` during Creation Phase, so access is allowed before assignment.
+Потому что `var` инициализируется значением `undefined` в фазе подготовки, поэтому доступ до присваивания разрешён.
 
-### TDZ есть только в global scope?
+### Зона есть только в глобальной области?
 
-Нет. TDZ применяется к `let` / `const` в их scope: global, function или block.
+Нет. Она действует для `let` и `const` в их области: глобальной, функции или блока.
 
 ---
 
 ## Распространённые мифы
 
-### Миф 1. `let` и `const` не hoisted
+### Миф 1. `let` и `const` не поднимаются
 
 Реальность:
 
-Они registered during Creation Phase, but access is forbidden until initialization.
+Они регистрируются в фазе подготовки, но доступ запрещён до инициализации.
 
-### Миф 2. ReferenceError значит, что engine не знает identifier
+### Миф 2. `ReferenceError` значит, что движок не знает имени
 
 Реальность:
 
-В TDZ engine знает identifier, но запрещает доступ потому что он не инициализирован.
+В зоне движок знает имя, но запрещает доступ, потому что оно не инициализировано.
 
 ### Миф 3. TDZ — это физическая зона в памяти
 
 Реальность:
 
-TDZ — период between registration and initialization.
+Зона — это период между регистрацией и инициализацией.
 
-### Миф 4. `let user;` остается в TDZ навсегда, пока нет value
+### Миф 4. `let user;` остаётся в зоне навсегда, пока нет значения
 
 Реальность:
 
-Когда execution reaches `let user;`, identifier initializes with `undefined`, and TDZ ends.
+Когда выполнение доходит до `let user;`, имя инициализируется значением `undefined`, и зона заканчивается.
 
 ---
 
 ## Распространённые ошибки
 
-### Ошибка 1. Читать `let` до declaration line
+### Ошибка 1. Читать `let` до строки объявления
 
 Неправильный код:
 
@@ -703,7 +845,7 @@ let user = 'Anna';
 
 Что произошло:
 
-Access before initialization would throw ReferenceError.
+Обращение до инициализации выбросило бы `ReferenceError`.
 
 Исправленный вариант:
 
@@ -723,7 +865,7 @@ const before initialization behaves like var.
 
 Реальность:
 
-`const` is registered but uninitialized until declaration line.
+`const` зарегистрирован, но не инициализирован до строки объявления.
 
 Исправленный вариант:
 
@@ -733,7 +875,7 @@ const baseUrl = 'https://example.com';
 console.log(baseUrl);
 ```
 
-### Ошибка 3. Говорить "not hoisted"
+### Ошибка 3. Говорить «не поднимается»
 
 Неправильная формулировка:
 
@@ -748,9 +890,9 @@ let and const are registered during Creation Phase,
 but access before initialization is forbidden.
 ```
 
-### Ошибка 4. Путать missing identifier и TDZ
+### Ошибка 4. Путать отсутствующее имя и временную мёртвую зону
 
-Missing identifier:
+Отсутствующее имя:
 
 ```javascript
 // console.log(unknownUser);
@@ -764,13 +906,13 @@ TDZ:
 let user = 'Anna';
 ```
 
-Оба могут дать ReferenceError, но причины разные.
+Оба случая дают `ReferenceError`, но причины разные.
 
 ---
 
 ## Практическое использование
 
-Правило для чтения кода: увидев `ReferenceError` с формулировкой «cannot access before initialization», ищите объявление **ниже** по тексту — имя существует, но ещё недоступно.
+Правило для чтения кода: увидев ошибку с формулировкой `cannot access before initialization`, ищите объявление **ниже** по тексту — имя существует, но ещё недоступно.
 
 Порядок анализа:
 
@@ -805,27 +947,27 @@ Use let only when state changes.
 
 ## Использование в Automation QA
 
-### Почему modern Playwright code prefers const
+### Почему в современном коде тестов предпочитают `const`
 
-В тестах значения often should not be reassigned:
+В тестах значения часто не должны переназначаться:
 
 ```javascript
 const baseUrl = 'https://example.com';
 const expectedStatus = 'active';
 ```
 
-`const` делает intention explicit:
+`const` делает намерение явным:
 
 ```text
 This identifier is initialized here.
 This identifier will not be reassigned.
 ```
 
-TDZ помогает: access before initialization fails loudly вместо silently returning `undefined`.
+Временная мёртвая зона помогает: обращение до инициализации падает громко, а не возвращает тихий `undefined`.
 
-### Interpreting ReferenceError correctly
+### Как правильно читать `ReferenceError`
 
-Если Playwright helper падает с:
+Если вспомогательная функция Playwright падает с сообщением:
 
 ```text
 ReferenceError: Cannot access 'baseUrl' before initialization
@@ -845,7 +987,7 @@ baseUrl is in TDZ.
 Code reads it before initialization.
 ```
 
-### Reading TDZ errors in helper files
+### Чтение таких ошибок во вспомогательных файлах
 
 Ошибка часто выглядит так:
 
@@ -855,7 +997,7 @@ Code reads it before initialization.
 const baseUrl = 'https://example.com';
 ```
 
-Проблема — declaration order.
+Проблема — порядок объявлений.
 
 Исправление:
 
@@ -864,17 +1006,17 @@ const baseUrl = 'https://example.com';
 const loginUrl = baseUrl + '/login';
 ```
 
-### Avoiding declaration order mistakes
+### Как избегать ошибок в порядке объявлений
 
-В test code лучше располагать dependencies before usage:
+В коде тестов лучше располагать зависимости до места использования:
 
-Так reader and engine see initialized значения before access.
+Так и читатель, и движок видят инициализированные значения раньше обращения.
 
 ---
 
 ## Итоги
 
-Temporal Dead Zone объясняет, почему `let` и `const` known to engine but inaccessible before initialization.
+Временная мёртвая зона объясняет, почему `let` и `const` известны движку, но недоступны до инициализации.
 
 Главная модель:
 
@@ -884,59 +1026,72 @@ The engine already knows about it.
 Access is temporarily forbidden until initialization.
 ```
 
-TDZ начинается, когда scope стартует и identifier зарегистрирован, но ещё не инициализирован. TDZ заканчивается, когда выполнение доходит до строки объявления и происходит initialization.
+Зона начинается, когда область видимости стартует и имя зарегистрировано, но ещё не инициализировано. Заканчивается, когда выполнение доходит до строки объявления и происходит инициализация.
 
-`var` ведёт себя иначе, потому что инициализируется значением `undefined` во время Creation Phase.
+`var` ведёт себя иначе, потому что инициализируется значением `undefined` во время фазы подготовки.
 
-Do not say `let` and `const` are "not hoisted." A more precise model is: they are registered during Creation Phase, but access before initialization is forbidden.
+Не говорите, что `let` и `const` «не поднимаются». Более точная модель: они регистрируются в фазе подготовки, но доступ до инициализации запрещён.
 
 ---
 
 ## Что нужно запомнить
 
-✓ TDZ is a period, not a physical place.
+✓ Временная мёртвая зона — это период, а не место в памяти.
 
-✓ TDZ начинается при старте scope.
+✓ Зона начинается при старте области видимости.
 
-✓ TDZ заканчивается при initialization.
+✓ Зона заканчивается при инициализации.
 
-✓ `let` and `const` are registered during Creation Phase.
+✓ `let` и `const` регистрируются в фазе подготовки.
 
-✓ `let` and `const` are not initialized immediately.
+✓ `let` и `const` не инициализируются сразу.
 
-✓ Access before initialization throws ReferenceError.
+✓ Обращение до инициализации выбрасывает `ReferenceError`.
 
-✓ `var` is initialized with `undefined` during Creation Phase.
+✓ `var` инициализируется значением `undefined` в фазе подготовки.
 
 ✓ `let user;` завершает TDZ, когда выполняется строка объявления.
 
-✓ `const` must be initialized at declaration.
+✓ `const` обязан быть инициализирован при объявлении.
 
-✓ Do not say `let` / `const` are "not hoisted."
+✓ Не говорите, что `let` и `const` «не поднимаются».
 
 ---
 
 ## Проверьте себя
 
-1. Что такое Temporal Dead Zone?
+1. Что такое временная мёртвая зона?
 
 2. Почему TDZ существует?
 
-3. Когда TDZ begins?
+3. Когда зона начинается?
 
-4. Когда TDZ ends?
+4. Когда зона заканчивается?
 
-5. Что значит registration?
+5. Что значит регистрация?
 
-6. Что значит initialization?
+6. Что значит инициализация?
 
-7. Почему `let` before initialization gives ReferenceError?
+7. Почему обращение к `let` до инициализации даёт `ReferenceError`?
 
-8. Почему `const` before initialization gives ReferenceError?
+8. Почему обращение к `const` до инициализации даёт `ReferenceError`?
 
-9. Почему `var` behaves differently?
+9. Почему `var` ведёт себя иначе?
 
-10. Почему фраза "let/const are not hoisted" неточная?
+10. Почему фраза «`let` и `const` не поднимаются» неточная?
+
+### Ответы
+
+1. Промежуток от входа в область видимости до строки объявления `let` или `const`, в котором имя уже существует, но доступ к нему запрещён.
+2. Чтобы чтение значения до его задания было ошибкой, а не тихим `undefined`. Ошибка возникает там, где допущена, а не проявляется позже искажённым результатом.
+3. При входе в область видимости, содержащую объявление: для глобальных имён — в начале программы, для имён блока — при входе в блок.
+4. На строке объявления, когда происходит инициализация. С этого момента имя можно читать.
+5. Имя заведено в записях окружения. Движок знает о его существовании, но значения у него ещё нет.
+6. Имени впервые сопоставлено значение. Только после этого чтение разрешено.
+7. Запись существует, но помечена как неинициализированная, и движок запрещает доступ. Текст ошибки это и говорит: `cannot access ... before initialization`.
+8. По той же причине: запись заведена без значения. Дополнительно `const` требует задать значение прямо в объявлении.
+9. `var` инициализируется при подготовке значением `undefined`, поэтому запрета на чтение нет — есть бессмысленный результат.
+10. Регистрация у них происходит так же заранее, как у `var`. Отличается не регистрация, а состояние записи: она заведена, но недоступна. Фраза «не поднимаются» подсказывает, будто имя вообще неизвестно, — и тогда непонятно, почему ошибка говорит о доступе, а не об отсутствии.
 
 ---
 
@@ -948,7 +1103,7 @@ Do not say `let` and `const` are "not hoisted." A more precise model is: they ar
 practice/01-javascript/10-temporal-dead-zone.md
 ```
 
-Перед практикой запустите примеры из раздела «Примеры кода» и для каждого identifier выпишите состояние: registered, uninitialized, initialized, readable.
+Перед практикой запустите примеры из раздела «Примеры кода» и для каждого имени выпишите состояние: зарегистрировано, не инициализировано, инициализировано, доступно для чтения.
 
 ---
 
@@ -960,4 +1115,4 @@ practice/01-javascript/10-temporal-dead-zone.md
 solutions/01-javascript/10-temporal-dead-zone.md
 ```
 
-Открывайте решения после самостоятельной попытки. В этой главе важно сравнивать не только вывод, но и состояние identifier на каждой строке.
+Открывайте решения после самостоятельной попытки. В этой главе важно сравнивать не только вывод, но и состояние имени на каждой строке.

@@ -6,7 +6,7 @@ export default [
     lang: 'playwright',
     prompt:
       'Откройте страницу входа и дождитесь заголовка «Вход в систему» через ' +
-      'web-first проверку `expect(locator).toBeVisible()`. Верните объект ' +
+      'проверку, умеющую ждать: `expect(locator).toBeVisible()`. Верните объект ' +
       '`{ waited, title }`: первый — `true`, если проверка прошла, второй — текст ' +
       'заголовка страницы. Функция `expect` доступна через импорт ' +
       '`@playwright/test`.',
@@ -18,7 +18,7 @@ export default async function solve({ page }) {
   return { waited: false, title: '' };
 }`,
     hints: [
-      'Web-first проверка получает локатор, а не снятое значение.',
+      'Проверка, умеющая ждать, получает локатор, а не снятое значение.',
       'Она сама повторяет обращение к DOM до таймаута.',
       'Текст заголовка можно прочитать после успешной проверки.'
     ],
@@ -60,7 +60,7 @@ export default async function solve({ page }) {
     prompt:
       'Откройте страницу входа и убедитесь, что на ней нет кнопки «Выйти». ' +
       'Верните объект `{ logoutCount, hidden }`: количество совпадений локатора ' +
-      'кнопки и результат проверки её отсутствия через web-first проверку.',
+      'кнопки и результат проверки её отсутствия через проверку, умеющую ждать.',
     starter: `import { expect as pwExpect } from '@playwright/test';
 
 export default async function solve({ page }) {
@@ -69,8 +69,8 @@ export default async function solve({ page }) {
   return { logoutCount: -1, hidden: false };
 }`,
     hints: [
-      'Количество совпадений даёт метод count и проверка toHaveCount.',
-      'Для отсутствующего элемента проходят и toBeHidden, и toHaveCount(0).',
+      'Количество совпадений даёт метод `count` и проверка `toHaveCount`.',
+      'Для отсутствующего элемента проходят и `toBeHidden`, и `toHaveCount(0)`.',
       'Разница в смысле: «скрыт» против «отсутствует».'
     ],
     tests: [

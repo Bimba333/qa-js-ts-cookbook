@@ -1,4 +1,4 @@
-# Stack & Heap
+# Стек и куча
 
 ## Связь с предыдущей главой
 
@@ -185,9 +185,9 @@ Property update changes the shared object.
 
 ## Теория
 
-### Почему programmers use Stack & Heap diagrams
+### Зачем программисты рисуют схемы стека и кучи
 
-Stack & Heap diagrams answer practical questions:
+Такие схемы отвечают на практические вопросы:
 
 ```text
 Where do I draw variable names?
@@ -230,11 +230,11 @@ It explains behavior.
 It is not a promise of exact engine layout.
 ```
 
-### Stack as a conceptual model
+### Стек как концептуальная модель
 
-Stack in this chapter is a conceptual area where we draw active execution data: variable entries, primitive значения and references.
+Стек в этой главе — концептуальная область, где мы рисуем данные активного выполнения: записи о переменных, примитивные значения и ссылки.
 
-Stack concept:
+Понятие стека:
 
 ```mermaid
 flowchart TD
@@ -255,7 +255,7 @@ Which primitive values are easy to show directly.
 Which variables point to objects elsewhere in the diagram.
 ```
 
-This continues earlier chapters:
+Это продолжает предыдущие главы:
 
 ```mermaid
 flowchart TD
@@ -268,13 +268,13 @@ flowchart TD
     N3 --> N4
 ```
 
-Function call details are still high-level in this chapter. Execution Context and Call Stack internals were introduced earlier; here we only connect them to the conceptual memory picture.
+Детали вызова функции в этой главе остаются на высоком уровне. Контекст выполнения и устройство стека вызовов вводились раньше; здесь мы лишь связываем их с концептуальной картиной памяти.
 
-### Heap as a conceptual model
+### Куча как концептуальная модель
 
-Heap in this chapter is a conceptual area where we draw object значения.
+Куча в этой главе — концептуальная область, где мы рисуем объектные значения.
 
-Heap concept:
+Понятие кучи:
 
 ```mermaid
 flowchart TD
@@ -301,21 +301,21 @@ Objects can be mutated through references.
 Objects can outlive one specific variable entry while still reachable.
 ```
 
-Do not read this as:
+Не читайте это как:
 
 ```text
 Every engine physically stores every object exactly here.
 ```
 
-Read it as:
+Читайте это как:
 
 ```text
 The conceptual model represents object values separately from variable entries.
 ```
 
-### Primitive значения in the conceptual model
+### Примитивные значения в концептуальной модели
 
-Primitive value схема:
+Схема примитивного значения:
 
 ```javascript
 let userName = 'Anna';
@@ -340,9 +340,17 @@ Primitive assignment is shown as independent values in this model.
 
 Присваивание примитива:
 
-### Object значения in the conceptual model
+```text
+Stack
+  userName   [ 'Anna' ]
+  adminName  [ 'Anna' ]   ← отдельная запись с такой же копией значения
+```
 
-Object value схема:
+Две независимые записи: изменение одной не касается другой.
+
+### Объектные значения в концептуальной модели
+
+Схема объектного значения:
 
 ```javascript
 const user = {
@@ -366,15 +374,15 @@ Object value is drawn as grouped information.
 Reference connects them.
 ```
 
-### Variable → Reference → Object
+### Переменная → ссылка → объект
 
-The core схема:
+Главная схема:
 
 ```text
 переменная  →  ссылка  →  объект в heap
 ```
 
-Expanded:
+После раскрытия:
 
 Что помогает понять эта схема?
 
@@ -384,7 +392,7 @@ The reference is not the object.
 The object is the grouped value reached through reference.
 ```
 
-### Object assignment
+### Присваивание объекта
 
 ```javascript
 const user = {
@@ -394,7 +402,7 @@ const user = {
 const admin = user;
 ```
 
-Object assignment схема:
+Схема присваивания объекта:
 
 ```text
 stack                      heap
@@ -409,9 +417,9 @@ There are two variable entries.
 Both references lead to the same object.
 ```
 
-### Shared object
+### Общий объект
 
-Shared object схема:
+Схема общего объекта:
 
 ```text
 stack                      heap
@@ -426,13 +434,13 @@ Mutating through any of these variables affects Object A.
 All other variables that refer to Object A observe the change.
 ```
 
-### Mutation
+### Изменение объекта
 
 ```javascript
 adminUser.role = 'admin';
 ```
 
-Mutation схема:
+Схема изменения:
 
 ```text
 изменение свойства меняет объект в heap,
@@ -446,7 +454,7 @@ The reference did not change.
 The object property changed.
 ```
 
-### Reassignment
+### Повторное присваивание
 
 ```javascript
 let currentUser = {
@@ -460,7 +468,7 @@ currentUser = {
 };
 ```
 
-Reassignment схема:
+Схема смены ссылки:
 
 ```text
 было:  currentUser ──→ ref#1 ──→ [ объект A ]
@@ -475,9 +483,9 @@ It does not mutate Object A.
 It does not move firstUser.
 ```
 
-### Function calls and Stack at a high level
+### Вызовы функций и стек на высоком уровне
 
-Function calls create active work. Earlier chapters explained Execution Context and Call Stack. Here we draw a simplified memory map.
+Вызовы функций создают активную работу. Предыдущие главы объяснили контекст выполнения и стек вызовов. Здесь мы рисуем упрощённую карту памяти.
 
 ```javascript
 function updateRole(user) {
@@ -491,7 +499,7 @@ const testUser = {
 updateRole(testUser);
 ```
 
-Function call high-level схема:
+Схема вызова функции на высоком уровне:
 
 ```text
 вызов функции  →  новая запись в stack
@@ -499,7 +507,7 @@ Function call high-level схема:
 возврат        →  запись снимается
 ```
 
-After mutation:
+После изменения:
 
 Что помогает понять эта схема?
 
@@ -508,11 +516,11 @@ Function parameter can refer to same object as outer variable.
 Mutation inside function changes shared object.
 ```
 
-Function internals, parameters and return поведение will be studied in detail later. This is only high-level connection.
+Внутреннее устройство функций, параметры и возврат будут подробно изучаться позже. Здесь только связь на высоком уровне.
 
-### Nested object
+### Вложенный объект
 
-Nested object conceptual схема:
+Концептуальная схема вложенного объекта:
 
 ```javascript
 const user = {
@@ -537,11 +545,11 @@ Several levels can be connected.
 Changing nested property may affect shared nested object.
 ```
 
-Detailed copying of nested objects will be studied later with spread, structured data and immutability patterns.
+Подробное копирование вложенных объектов будет изучаться позже, вместе с раскрытием, структурами данных и неизменяемостью.
 
-### Identity
+### Идентичность
 
-Object identity схема:
+Схема тождественности объектов:
 
 ```javascript
 const firstUser = { name: 'Anna' };
@@ -564,9 +572,9 @@ firstUser and secondUser refer to different objects.
 Same-looking properties do not mean same identity.
 ```
 
-### Complete execution picture
+### Полная картина выполнения
 
-For the common example:
+Для типичного примера:
 
 ```javascript
 const user = {
@@ -582,15 +590,39 @@ console.log(user.name);
 
 Полная картина выполнения:
 
+```text
+Stack                    Heap
+  user   ──────┐
+               ├───────→ { name: 'Anna' }   создан один объект
+  admin  ──────┘         { name: 'Kate' }   свойство изменено через admin
+
+console.log(user.name)  →  'Kate'
+```
+
+В стеке две записи, в куче — один объект: поэтому изменение через одно имя
+видно через другое.
+
 ---
 
 ## Внутренний механизм
 
-Эта глава не описывает точные внутренние детали JavaScript engine.
+Эта глава не описывает точное внутреннее устройство движка JavaScript.
 
-Real engines are sophisticated:
+Настоящие движки устроены сложнее:
 
-The model in this chapter is intentionally conceptual:
+```text
+настоящие движки оптимизируют размещение значений,
+могут хранить объект не в куче, переиспользовать строки
+и перемещать данные во время сборки мусора
+```
+
+Модель в этой главе намеренно концептуальна:
+
+```text
+схема нужна, чтобы объяснить наблюдаемое поведение —
+почему примитивы независимы, а объекты общие, —
+а не чтобы описать реальное устройство памяти движка
+```
 
 ### Текущее место в модели JavaScript
 
@@ -601,30 +633,26 @@ We are not learning a new syntax feature.
 We are learning a map for previously observed behavior.
 ```
 
-### Myth vs reality
+### Миф и реальность
 
-Myth vs reality схема:
+Схема «миф и реальность»:
 
 ```text
 миф:      «примитивы всегда в stack, объекты всегда в heap»
 реальность: это учебная модель; конкретное размещение решает движок
 ```
 
-### Переход к Type Conversion
+### Переход к преобразованию типов
 
-Stack & Heap explains how we visualize значения and object references.
-
-Next, the course shifts to another kind of поведение:
-
-Переход к Equality and Type Conversion:
+Стек и куча объясняют, как мы представляем значения и ссылки на объекты.
 
 ---
 
 ## Ментальная модель
 
-### Desk and archive
+### Стол и архив
 
-Stack-like area is like a desk. Heap-like area is like an archive.
+Область стека похожа на рабочий стол. Область кучи — на архив.
 
 Что помогает понять эта модель?
 
@@ -634,23 +662,36 @@ Larger grouped information lives in folders.
 Notes point from desk to folders.
 ```
 
-### Sticky notes pointing to folders
+### Записки, указывающие на папки
 
-Multiple sticky notes can point to one folder:
+Несколько записок могут указывать на одну папку:
 
-### Workspace and storage
+```text
+записка user   ──→ папка «данные пользователя»
+записка admin  ──→ та же папка
+```
 
-The workspace shows what is active. Storage shows grouped objects.
+Выбросить одну записку — не то же самое, что выбросить папку.
 
-### Index cards
+### Рабочее место и хранилище
 
-Reference is like an index card:
+Рабочее место показывает, что активно сейчас. Хранилище — сгруппированные объекты.
+
+### Карточки картотеки
+
+Ссылка похожа на картотечную карточку:
+
+```text
+на карточке написано не содержимое, а то, где содержимое лежит
+```
+
+Скопировать карточку — значит получить второй способ дойти до того же места.
 
 ### Концептуальная карта
 
-Best mental model:
+Лучшая мысленная модель:
 
-The map helps navigate. It is not the full physical world.
+Карта помогает ориентироваться. Она не является самим миром.
 
 ---
 
@@ -675,85 +716,85 @@ node examples/01-javascript/chapter-14/06-common-mistakes.js
 
 ### 01-primitive-memory.js
 
-Показывает conceptual primitive assignment.
+Показывает концептуальное присваивание примитива.
 
 ### 02-object-memory.js
 
-Показывает object value as grouped information reached through variable.
+Показывает объектное значение как сгруппированную информацию, доступную через переменную.
 
 ### 03-reference-sharing.js
 
-Показывает shared object through two variables.
+Показывает общий объект, доступный через две переменные.
 
 ### 04-reassignment.js
 
-Показывает difference between mutation and reassignment.
+Показывает разницу между изменением объекта и сменой ссылки.
 
 ### 05-function-call.js
 
-Показывает high-level function call and object mutation through parameter.
+Показывает вызов функции на высоком уровне и изменение объекта через параметр.
 
 ### 06-common-mistakes.js
 
-Показывает accidental shared request body mutation.
+Показывает случайное изменение общего тела запроса.
 
 ---
 
 ## Частые вопросы
 
-### Is Stack & Heap the real engine implementation?
+### Стек и куча — это настоящая реализация движка?
 
-No. It is a conceptual model used to understand поведение. Real engines are more sophisticated.
+Нет. Это концептуальная модель для понимания поведения. Настоящие движки устроены сложнее.
 
-### Are primitives always physically on Stack?
+### Примитивы всегда физически лежат в стеке?
 
-Эта глава не делает физических утверждений. На схемах primitive значения часто рисуются в Stack-like области, потому что это помогает объяснить поведение присваивания.
+Эта глава не делает физических утверждений. На схемах примитивные значения часто рисуют в области стека, потому что это помогает объяснить поведение присваивания.
 
-### Are objects always physically on Heap?
+### Объекты всегда физически лежат в куче?
 
-Эта глава не учит физические правила хранения. Она говорит: object значения рисуются в Heap-like области в концептуальной модели.
+Эта глава не учит физическим правилам хранения. Она говорит: объектные значения рисуют в области кучи в концептуальной модели.
 
 ### Зачем использовать модель, если она не точная?
 
-Because it explains observable поведение well enough for reasoning, debugging and learning references.
+Потому что она достаточно хорошо объясняет наблюдаемое поведение для рассуждения, разбора ошибок и изучения ссылок.
 
-### Does this chapter teach Garbage Collector?
+### Эта глава объясняет сборщик мусора?
 
-No. Garbage Collector internals will be studied later. Here we only discuss diagrams for значения, references and objects.
+Нет. Устройство сборщика мусора будет изучаться позже. Здесь мы говорим только о схемах для значений, ссылок и объектов.
 
 ---
 
 ## Распространённые мифы
 
-### Миф: The diagram is the engine
+### Миф: схема — это и есть движок
 
 Реальность:
 
-The diagram is a conceptual map.
+Схема — концептуальная карта.
 
-### Миф: Objects are literally always in the exact same place shown by the drawing
-
-Реальность:
-
-The conceptual model represents objects separately from variable entries. Real engine layout can differ.
-
-### Миф: Stack & Heap explains all JavaScript поведение
+### Миф: объекты всегда лежат ровно там, где нарисованы
 
 Реальность:
 
-It explains a subset: references, sharing, mutation, reassignment and identity. It does not explain all language semantics.
+Концептуальная модель показывает объекты отдельно от записей о переменных. Настоящее размещение в движке может отличаться.
 
-### Миф: If I know Stack & Heap, I know Garbage Collector
+### Миф: стек и куча объясняют всё поведение JavaScript
 
 Реальность:
 
-Garbage Collector is a separate topic with its own mechanisms.
+Они объясняют часть: ссылки, общие объекты, изменение, смену ссылки и тождественность. Всю семантику языка они не описывают.
+
+### Миф: если я знаю стек и кучу, я знаю сборщик мусора
+
+Реальность:
+
+Сборка мусора — отдельная тема со своими механизмами.
 
 ---
 
 ## Распространённые ошибки
 
-### Ошибка 1. Treat conceptual diagram as physical truth
+### Ошибка 1. Считать концептуальную схему физической правдой
 
 Правильный взгляд:
 
@@ -762,9 +803,15 @@ Use diagram to reason.
 Do not overclaim implementation.
 ```
 
-### Ошибка 2. Draw two objects after direct assignment
+### Ошибка 2. Рисовать два объекта после прямого присваивания
 
 Неправильно:
+
+```text
+Stack          Heap
+  user   ────→ { name: 'Anna' }
+  admin  ────→ { name: 'Anna' }   ← второго объекта здесь нет
+```
 
 Для:
 
@@ -774,9 +821,16 @@ const admin = user;
 
 Лучше:
 
-### Ошибка 3. Confuse reassignment with mutation
+```text
+Stack          Heap
+  user   ──┐
+           ├─→ { name: 'Anna' }
+  admin  ──┘
+```
 
-Mutation:
+### Ошибка 3. Путать смену ссылки с изменением объекта
+
+Изменение объекта:
 
 ```text
 same reference
@@ -792,13 +846,13 @@ new reference
 different object
 ```
 
-### Ошибка 4. Ignore shared nested objects
+### Ошибка 4. Не замечать общие вложенные объекты
 
-Nested object can also be shared in conceptual diagrams.
+Вложенный объект в концептуальных схемах тоже может быть общим.
 
-### Ошибка 5. Debug flaky tests without drawing shared состояние
+### Ошибка 5. Разбирать нестабильные тесты, не рисуя общее состояние
 
-If shared request body changes unexpectedly, draw:
+Если общее тело запроса меняется неожиданно, нарисуйте:
 
 ```text
 which variables point to which object
@@ -809,14 +863,14 @@ which helper changed which property
 
 ## Практическое использование
 
-Stack & Heap diagrams are useful when:
+Схемы стека и кучи полезны, когда:
 
-* object is changed unexpectedly;
-* helper mutates вход;
-* test data is reused;
-* expected and actual objects look suspiciously connected;
-* reassignment does not affect old variable;
-* same-looking objects compare unexpectedly.
+* объект изменился неожиданно;
+* вспомогательная функция изменяет то, что ей передали;
+* тестовые данные переиспользуются;
+* ожидаемый и фактический объекты выглядят подозрительно связанными;
+* смена ссылки не влияет на прежнюю переменную;
+* одинаково выглядящие объекты сравниваются неожиданным образом.
 
 Практический чек-лист:
 
@@ -834,7 +888,7 @@ Stack & Heap diagrams are useful when:
 
 ## Использование в Automation QA
 
-### Shared request bodies
+### Общие тела запросов
 
 ```javascript
 const defaultPayload = {
@@ -853,19 +907,19 @@ heap    →  сами объекты
 ссылка  →  мост между ними
 ```
 
-This explains why default request body changed unexpectedly.
+Это объясняет, почему тело запроса по умолчанию изменилось неожиданно.
 
-### Fixture mutation
+### Изменение данных фикстуры
 
-A fixture may return object. If test mutates it, another part of setup may observe changed состояние if same object is reused.
+Фикстура может вернуть объект. Если тест его изменит, другая часть подготовки увидит изменённое состояние — при условии, что используется тот же объект.
 
-### Object reuse
+### Переиспользование объекта
 
-Переиспользование object не плохо само по себе. Риск появляется, когда изменяется mutable shared object.
+Переиспользовать объект не плохо само по себе. Риск появляется, когда изменяется общий изменяемый объект.
 
-### Payload preparation
+### Подготовка тела запроса
 
-Safer first-level preparation:
+Более безопасная подготовка первого уровня:
 
 ```javascript
 const adminPayload = {
@@ -874,11 +928,11 @@ const adminPayload = {
 };
 ```
 
-Spread details will be studied later. Here it means: create a new first-level object вместо assigning same reference.
+Детали раскрытия будут изучаться позже. Здесь оно означает: создать новый объект первого уровня вместо присваивания той же ссылки.
 
-### Отладка shared состояние
+### Разбор общего состояния
 
-When Playwright test is flaky, ask:
+Когда тест Playwright нестабилен, спросите:
 
 ```text
 Was the same object reused?
@@ -887,15 +941,15 @@ Did fixture return shared object?
 Did one test change data used by another test?
 ```
 
-Схемы памяти помогают, потому что flaky-поведение часто возникает из скрытого общего состояния.
+Схемы памяти помогают, потому что нестабильность часто возникает из скрытого общего состояния.
 
 ---
 
 ## Итоги
 
-Stack & Heap diagrams are conceptual tools.
+Схемы стека и кучи — концептуальные инструменты.
 
-They help visualize:
+Они помогают представить:
 
 ```text
 Primitive values
@@ -908,29 +962,36 @@ Function calls at a high level
 Identity
 ```
 
-They do not precisely describe every JavaScript engine.
+Они не описывают точно устройство каждого движка.
 
-Core mental model:
+Основная мысленная модель: примитивные значения удобно представлять лежащими
+рядом с именем, а объектные — отдельно, с именем-указателем на них.
 
-Use this model as a map:
+```text
+стек (кадры вызовов)          куча (объекты)
+ ├─ statusCode: 200
+ └─ user: ссылка ──────────→  { name: 'Anna' }
+```
 
-Next chapter moves from memory visualization to value transformation: Type Conversion.
+Используйте эту модель как карту:
+
+Следующая глава переходит от изображения памяти к преобразованию значений — к приведению типов.
 
 ---
 
 ## Что нужно запомнить
 
-* Stack & Heap diagrams are conceptual tools.
-* They explain observable JavaScript поведение.
-* They are not exact descriptions of every JavaScript engine.
-* Stack-like area shows active names and references in diagrams.
-* Heap-like area shows object значения in diagrams.
-* Primitive значения are often drawn directly in stack-like area.
-* Object variables are drawn as references to object значения.
-* Direct object assignment shares reference.
-* Mutation changes shared object.
-* Reassignment changes what variable refers to.
-* Function parameters can refer to the same object as вызывающий код variables.
+* Схемы стека и кучи — концептуальные инструменты.
+* Они объясняют наблюдаемое поведение JavaScript.
+* Они не являются точным описанием каждого движка.
+* Область стека на схемах показывает активные имена и ссылки.
+* Область кучи на схемах показывает объектные значения.
+* Примитивные значения часто рисуют прямо в области стека.
+* Переменные с объектами рисуют как ссылки на объектные значения.
+* Прямое присваивание объекта делает ссылку общей.
+* Изменение меняет общий объект.
+* Смена ссылки меняет то, на что указывает переменная.
+* Параметры функции могут ссылаться на тот же объект, что и переменные вызывающего кода.
 * Рисуйте схемы при отладке общего состояния в тестах.
 
 ---
@@ -939,16 +1000,29 @@ Next chapter moves from memory visualization to value transformation: Type Conve
 
 Ответьте без запуска кода.
 
-1. Зачем программисты используют схемы Stack и Heap?
-2. Что означает Stack в этой концептуальной главе?
-3. Что означает Heap в этой концептуальной главе?
-4. Почему нельзя считать схему точной реализацией engine?
-5. Как нарисовать primitive assignment?
-6. Как нарисовать object assignment?
-7. Что меняется при mutation?
-8. Что меняется при reassignment?
-9. Почему helper function может изменить объект вызывающего кода?
-10. Как схемы памяти помогают отлаживать flaky tests?
+1. Зачем программисты используют схемы стека и кучи?
+2. Что означает стек в этой концептуальной главе?
+3. Что означает куча в этой концептуальной главе?
+4. Почему нельзя считать схему точной реализацией движка?
+5. Как нарисовать присваивание примитива?
+6. Как нарисовать присваивание объекта?
+7. Что меняется при изменении объекта?
+8. Что меняется при смене ссылки?
+9. Почему вспомогательная функция может изменить объект вызывающего кода?
+10. Как схемы памяти помогают разбирать нестабильные тесты?
+
+### Ответы
+
+1. Чтобы объяснить наблюдаемую разницу между примитивами и объектами: почему одни независимы, а другие общие. Схема — инструмент рассуждения, а не описание устройства движка.
+2. Место коротких записей выполнения: имена текущих вызовов и простые значения.
+3. Место, где живут объекты и структуры, на которые эти записи ссылаются.
+4. Реальные движки оптимизируют размещение значений, переиспользуют строки и перемещают данные при сборке мусора. Схема нужна для объяснения поведения, а не для описания реализации.
+5. Две независимые записи в стеке, в каждой своя копия значения.
+6. Две записи в стеке и одна стрелка от каждой к одному объекту в куче.
+7. Меняется содержимое объекта в куче. Стрелки остаются прежними, поэтому изменение видно через все имена.
+8. Меняется стрелка: имя начинает указывать на другой объект. Прежний объект не изменился, и другие имена по-прежнему ведут к нему.
+9. Потому что внутрь функции передаётся ссылка, а не копия объекта. Функция работает с тем же объектом, и изменение остаётся после возврата.
+10. Нестабильный тест часто возникает из общего изменяемого состояния: один прогон изменил объект, на который смотрит другой. Схема показывает, где стрелки ведут в одно место, и подсказывает, что копировать.
 
 ---
 
@@ -972,4 +1046,4 @@ practice/01-javascript/14-stack-and-heap.md
 solutions/01-javascript/14-stack-and-heap.md
 ```
 
-Читайте решения после самостоятельной попытки и сравнивайте не только вывод, но и diagram reasoning.
+Читайте решения после самостоятельной попытки и сравнивайте не только вывод, но и рассуждение по схеме.

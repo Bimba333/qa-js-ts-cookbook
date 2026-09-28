@@ -38,59 +38,59 @@ export const sidebar = [
             "link": "/docs/01-javascript/02-how-javascript-works"
           },
           {
-            "text": "Глава 3. Execution Context",
+            "text": "Глава 3. Контекст выполнения",
             "link": "/docs/01-javascript/03-execution-context"
           },
           {
-            "text": "Глава 4. Call Stack",
+            "text": "Глава 4. Стек вызовов",
             "link": "/docs/01-javascript/04-call-stack"
           },
           {
-            "text": "Глава 5. Memory",
+            "text": "Глава 5. Память",
             "link": "/docs/01-javascript/05-memory"
           },
           {
-            "text": "Глава 6. Variables",
+            "text": "Глава 6. Переменные",
             "link": "/docs/01-javascript/06-variables"
           },
           {
-            "text": "Глава 7. Scope",
+            "text": "Глава 7. Область видимости",
             "link": "/docs/01-javascript/07-scope"
           },
           {
-            "text": "Глава 8. Lexical Environment",
+            "text": "Глава 8. Лексическое окружение",
             "link": "/docs/01-javascript/08-lexical-environment"
           },
           {
-            "text": "Глава 9. Hoisting",
+            "text": "Глава 9. Подъём объявлений",
             "link": "/docs/01-javascript/09-hoisting"
           },
           {
-            "text": "Глава 10. Temporal Dead Zone",
+            "text": "Глава 10. Временная мёртвая зона",
             "link": "/docs/01-javascript/10-temporal-dead-zone"
           },
           {
-            "text": "Глава 11. Primitive Types",
+            "text": "Глава 11. Примитивные типы",
             "link": "/docs/01-javascript/11-primitive-types"
           },
           {
-            "text": "Глава 12. Object Type",
+            "text": "Глава 12. Объектный тип",
             "link": "/docs/01-javascript/12-object-type"
           },
           {
-            "text": "Глава 13. References",
+            "text": "Глава 13. Ссылки",
             "link": "/docs/01-javascript/13-references"
           },
           {
-            "text": "Глава 14. Stack & Heap",
+            "text": "Глава 14. Стек и куча",
             "link": "/docs/01-javascript/14-stack-and-heap"
           },
           {
-            "text": "Глава 15. Type Conversion",
+            "text": "Глава 15. Преобразование типов",
             "link": "/docs/01-javascript/15-type-conversion"
           },
           {
-            "text": "Глава 16. Equality",
+            "text": "Глава 16. Равенство",
             "link": "/docs/01-javascript/16-equality"
           }
         ]
@@ -100,19 +100,19 @@ export const sidebar = [
         "collapsed": true,
         "items": [
           {
-            "text": "Глава 17. Operators",
+            "text": "Глава 17. Операторы",
             "link": "/docs/01-javascript/17-operators"
           },
           {
-            "text": "Глава 18. Conditionals",
+            "text": "Глава 18. Условные конструкции",
             "link": "/docs/01-javascript/18-conditionals"
           },
           {
-            "text": "Глава 19. Loops",
+            "text": "Глава 19. Циклы",
             "link": "/docs/01-javascript/19-loops"
           },
           {
-            "text": "Глава 20. Error Handling",
+            "text": "Глава 20. Обработка ошибок",
             "link": "/docs/01-javascript/20-error-handling"
           }
         ]
@@ -122,51 +122,51 @@ export const sidebar = [
         "collapsed": true,
         "items": [
           {
-            "text": "Глава 21. Function Declaration",
+            "text": "Глава 21. Объявление функции",
             "link": "/docs/01-javascript/21-function-declaration"
           },
           {
-            "text": "Глава 22. Function Expression",
+            "text": "Глава 22. Функциональное выражение",
             "link": "/docs/01-javascript/22-function-expression"
           },
           {
-            "text": "Глава 23. Arrow Functions",
+            "text": "Глава 23. Стрелочные функции",
             "link": "/docs/01-javascript/23-arrow-functions"
           },
           {
-            "text": "Глава 24. Parameters",
+            "text": "Глава 24. Параметры",
             "link": "/docs/01-javascript/24-parameters"
           },
           {
-            "text": "Глава 25. Return",
+            "text": "Глава 25. Возврат значения",
             "link": "/docs/01-javascript/25-return"
           },
           {
-            "text": "Глава 26. Rest Parameters",
+            "text": "Глава 26. Параметры сбора",
             "link": "/docs/01-javascript/26-rest"
           },
           {
-            "text": "Глава 27. Spread",
+            "text": "Глава 27. Раскрытие",
             "link": "/docs/01-javascript/27-spread"
           },
           {
-            "text": "Глава 28. Closures",
+            "text": "Глава 28. Замыкания",
             "link": "/docs/01-javascript/28-closures"
           },
           {
-            "text": "Глава 29. this",
+            "text": "Глава 29. Ключевое слово `this`",
             "link": "/docs/01-javascript/29-this"
           },
           {
-            "text": "Глава 30. call()",
+            "text": "Глава 30. Метод `call()`",
             "link": "/docs/01-javascript/30-call"
           },
           {
-            "text": "Глава 31. apply()",
+            "text": "Глава 31. Метод `apply()`",
             "link": "/docs/01-javascript/31-apply"
           },
           {
-            "text": "Глава 32. bind()",
+            "text": "Глава 32. Метод `bind()`",
             "link": "/docs/01-javascript/32-bind"
           }
         ]
@@ -176,47 +176,47 @@ export const sidebar = [
         "collapsed": true,
         "items": [
           {
-            "text": "Глава 33. Objects",
+            "text": "Глава 33. Объекты",
             "link": "/docs/01-javascript/33-objects"
           },
           {
-            "text": "Глава 34. Destructuring",
+            "text": "Глава 34. Деструктуризация",
             "link": "/docs/01-javascript/34-destructuring"
           },
           {
-            "text": "Глава 35. Optional Chaining",
+            "text": "Глава 35. Опциональная цепочка",
             "link": "/docs/01-javascript/35-optional-chaining"
           },
           {
-            "text": "Глава 36. Nullish Coalescing",
+            "text": "Глава 36. Нулевое слияние",
             "link": "/docs/01-javascript/36-nullish-coalescing"
           },
           {
-            "text": "Глава 37. Object Methods",
+            "text": "Глава 37. Методы объекта",
             "link": "/docs/01-javascript/37-object-methods"
           },
           {
-            "text": "Глава 38. Object Descriptors",
+            "text": "Глава 38. Дескрипторы свойств",
             "link": "/docs/01-javascript/38-object-descriptors"
           },
           {
-            "text": "Глава 39. Prototype",
+            "text": "Глава 39. Прототип",
             "link": "/docs/01-javascript/39-prototype"
           },
           {
-            "text": "Глава 40. Prototype Chain",
+            "text": "Глава 40. Цепочка прототипов",
             "link": "/docs/01-javascript/40-prototype-chain"
           },
           {
-            "text": "Глава 41. Classes",
+            "text": "Глава 41. Классы",
             "link": "/docs/01-javascript/41-classes"
           },
           {
-            "text": "Глава 42. Class Inheritance",
+            "text": "Глава 42. Наследование классов",
             "link": "/docs/01-javascript/42-class-inheritance"
           },
           {
-            "text": "Глава 43. super",
+            "text": "Глава 43. Ключевое слово `super`",
             "link": "/docs/01-javascript/43-super"
           }
         ]
@@ -226,71 +226,71 @@ export const sidebar = [
         "collapsed": true,
         "items": [
           {
-            "text": "Глава 44. Arrays",
+            "text": "Глава 44. Массивы",
             "link": "/docs/01-javascript/44-arrays"
           },
           {
-            "text": "Глава 45. push() and pop()",
+            "text": "Глава 45. `push()` и `pop()`",
             "link": "/docs/01-javascript/45-push-pop"
           },
           {
-            "text": "Глава 46. shift() and unshift()",
+            "text": "Глава 46. `shift()` и `unshift()`",
             "link": "/docs/01-javascript/46-shift-unshift"
           },
           {
-            "text": "Глава 47. splice()",
+            "text": "Глава 47. Метод `splice()`",
             "link": "/docs/01-javascript/47-splice"
           },
           {
-            "text": "Глава 48. slice()",
+            "text": "Глава 48. Метод `slice()`",
             "link": "/docs/01-javascript/48-slice"
           },
           {
-            "text": "Глава 49. Iteration",
+            "text": "Глава 49. Перебор массива",
             "link": "/docs/01-javascript/49-iteration"
           },
           {
-            "text": "Глава 50. forEach()",
+            "text": "Глава 50. Метод `forEach()`",
             "link": "/docs/01-javascript/50-foreach"
           },
           {
-            "text": "Глава 51. map()",
+            "text": "Глава 51. Метод `map()`",
             "link": "/docs/01-javascript/51-map"
           },
           {
-            "text": "Глава 52. filter()",
+            "text": "Глава 52. Метод `filter()`",
             "link": "/docs/01-javascript/52-filter"
           },
           {
-            "text": "Глава 53. reduce()",
+            "text": "Глава 53. Метод `reduce()`",
             "link": "/docs/01-javascript/53-reduce"
           },
           {
-            "text": "Глава 54. Chaining basics",
+            "text": "Глава 54. Цепочки вызовов",
             "link": "/docs/01-javascript/54-chaining"
           },
           {
-            "text": "Глава 55. find()",
+            "text": "Глава 55. Метод `find()`",
             "link": "/docs/01-javascript/55-find"
           },
           {
-            "text": "Глава 56. some()",
+            "text": "Глава 56. Метод `some()`",
             "link": "/docs/01-javascript/56-some"
           },
           {
-            "text": "Глава 57. every()",
+            "text": "Глава 57. Метод `every()`",
             "link": "/docs/01-javascript/57-every"
           },
           {
-            "text": "Глава 58. includes()",
+            "text": "Глава 58. Метод `includes()`",
             "link": "/docs/01-javascript/58-includes"
           },
           {
-            "text": "Глава 59. sort()",
+            "text": "Глава 59. Метод `sort()`",
             "link": "/docs/01-javascript/59-sort"
           },
           {
-            "text": "Глава 60. reverse()",
+            "text": "Глава 60. Метод `reverse()`",
             "link": "/docs/01-javascript/60-reverse"
           }
         ]
@@ -300,19 +300,19 @@ export const sidebar = [
         "collapsed": true,
         "items": [
           {
-            "text": "Глава 61. Execution Context: углубленное повторение",
+            "text": "Глава 61. Контекст выполнения: углублённое повторение",
             "link": "/docs/01-javascript/61-execution-context"
           },
           {
-            "text": "Глава 62. Call Stack: углубленное повторение",
+            "text": "Глава 62. Стек вызовов: углублённое повторение",
             "link": "/docs/01-javascript/62-call-stack"
           },
           {
-            "text": "Глава 63. Memory Model",
+            "text": "Глава 63. Модель памяти",
             "link": "/docs/01-javascript/63-memory-model"
           },
           {
-            "text": "Глава 64. Hoisting + TDZ",
+            "text": "Глава 64. Подъём объявлений и временная мёртвая зона",
             "link": "/docs/01-javascript/64-hoisting-tdz"
           }
         ]
@@ -322,15 +322,15 @@ export const sidebar = [
         "collapsed": true,
         "items": [
           {
-            "text": "Глава 65. Closures: углубленное повторение",
+            "text": "Глава 65. Замыкания: углублённое повторение",
             "link": "/docs/01-javascript/65-closures"
           },
           {
-            "text": "Глава 66. this: углубленное повторение",
+            "text": "Глава 66. `this`: углублённое повторение",
             "link": "/docs/01-javascript/66-this"
           },
           {
-            "text": "Глава 67. call(), apply(), bind()",
+            "text": "Глава 67. `call()`, `apply()`, `bind()`",
             "link": "/docs/01-javascript/67-call-apply-bind"
           },
           {
@@ -344,51 +344,51 @@ export const sidebar = [
         "collapsed": true,
         "items": [
           {
-            "text": "Глава 69. Synchronous Execution",
+            "text": "Глава 69. Синхронное выполнение",
             "link": "/docs/01-javascript/69-synchronous-execution"
           },
           {
-            "text": "Глава 70. Asynchronous Programming",
+            "text": "Глава 70. Асинхронное программирование",
             "link": "/docs/01-javascript/70-asynchronous-programming"
           },
           {
-            "text": "Глава 71. Callback",
+            "text": "Глава 71. Обратный вызов",
             "link": "/docs/01-javascript/71-callback"
           },
           {
-            "text": "Глава 72. Promise",
+            "text": "Глава 72. Промис",
             "link": "/docs/01-javascript/72-promise"
           },
           {
-            "text": "Глава 73. Event Loop",
+            "text": "Глава 73. Событийный цикл",
             "link": "/docs/01-javascript/73-event-loop"
           },
           {
-            "text": "Глава 74. Web APIs",
+            "text": "Глава 74. Браузерные API",
             "link": "/docs/01-javascript/74-web-apis"
           },
           {
-            "text": "Глава 75. Microtasks",
+            "text": "Глава 75. Микрозадачи",
             "link": "/docs/01-javascript/75-microtasks"
           },
           {
-            "text": "Глава 76. Macrotasks",
+            "text": "Глава 76. Макрозадачи",
             "link": "/docs/01-javascript/76-macrotasks"
           },
           {
-            "text": "Глава 77. Promise API",
+            "text": "Глава 77. Методы `Promise`",
             "link": "/docs/01-javascript/77-promise-api"
           },
           {
-            "text": "Глава 78. async и await",
+            "text": "Глава 78. `async` и `await`",
             "link": "/docs/01-javascript/78-async-await"
           },
           {
-            "text": "Глава 79. Error Handling in Asynchronous Code",
+            "text": "Глава 79. Обработка ошибок в асинхронном коде",
             "link": "/docs/01-javascript/79-async-error-handling"
           },
           {
-            "text": "Глава 80. Parallel Asynchronous Operations",
+            "text": "Глава 80. Параллельные асинхронные операции",
             "link": "/docs/01-javascript/80-parallel-async"
           }
         ]
@@ -398,19 +398,19 @@ export const sidebar = [
         "collapsed": true,
         "items": [
           {
-            "text": "Глава 81. Iterable Protocol",
+            "text": "Глава 81. Протокол перебора",
             "link": "/docs/01-javascript/81-iterable-protocol"
           },
           {
-            "text": "Глава 82. Iterators",
+            "text": "Глава 82. Итераторы",
             "link": "/docs/01-javascript/82-iterators"
           },
           {
-            "text": "Глава 83. Generators",
+            "text": "Глава 83. Генераторы",
             "link": "/docs/01-javascript/83-generators"
           },
           {
-            "text": "Глава 84. Custom Iteration",
+            "text": "Глава 84. Собственный перебор",
             "link": "/docs/01-javascript/84-custom-iteration"
           }
         ]
@@ -420,11 +420,11 @@ export const sidebar = [
         "collapsed": true,
         "items": [
           {
-            "text": "Глава 85. JavaScript Modules",
+            "text": "Глава 85. Модули JavaScript",
             "link": "/docs/01-javascript/85-javascript-modules"
           },
           {
-            "text": "Глава 86. Module Systems",
+            "text": "Глава 86. Системы модулей",
             "link": "/docs/01-javascript/86-module-systems"
           }
         ]
@@ -434,11 +434,11 @@ export const sidebar = [
         "collapsed": true,
         "items": [
           {
-            "text": "Глава 87. Garbage Collector",
+            "text": "Глава 87. Сборщик мусора",
             "link": "/docs/01-javascript/87-garbage-collector"
           },
           {
-            "text": "Глава 88. Memory Management",
+            "text": "Глава 88. Управление памятью",
             "link": "/docs/01-javascript/88-memory-management"
           }
         ]
@@ -448,11 +448,11 @@ export const sidebar = [
         "collapsed": true,
         "items": [
           {
-            "text": "Глава 89. Performance",
+            "text": "Глава 89. Производительность",
             "link": "/docs/01-javascript/89-performance"
           },
           {
-            "text": "Глава 90. Debugging",
+            "text": "Глава 90. Отладка",
             "link": "/docs/01-javascript/90-debugging"
           }
         ]
@@ -462,15 +462,15 @@ export const sidebar = [
         "collapsed": true,
         "items": [
           {
-            "text": "Глава 91. Modern JavaScript Features",
+            "text": "Глава 91. Возможности современного JavaScript",
             "link": "/docs/01-javascript/91-modern-javascript"
           },
           {
-            "text": "Глава 92. JavaScript Best Practices",
+            "text": "Глава 92. Хорошие практики JavaScript",
             "link": "/docs/01-javascript/92-javascript-best-practices"
           },
           {
-            "text": "Глава 93. Error Objects",
+            "text": "Глава 93. Объекты ошибок",
             "link": "/docs/01-javascript/93-error-objects"
           },
           {
@@ -478,7 +478,7 @@ export const sidebar = [
             "link": "/docs/01-javascript/94-json"
           },
           {
-            "text": "Глава 95. Date",
+            "text": "Глава 95. Дата и время",
             "link": "/docs/01-javascript/95-date"
           },
           {
@@ -498,15 +498,15 @@ export const sidebar = [
         "collapsed": true,
         "items": [
           {
-            "text": "Глава 97. TypeScript Compiler",
+            "text": "Глава 97. Компилятор TypeScript",
             "link": "/docs/02-typescript/97-typescript-compiler"
           },
           {
-            "text": "Глава 98. Type Checking vs Runtime",
+            "text": "Глава 98. Проверка типов и выполнение",
             "link": "/docs/02-typescript/98-type-checking-vs-runtime"
           },
           {
-            "text": "Глава 99. Type Erasure",
+            "text": "Глава 99. Стирание типов",
             "link": "/docs/02-typescript/99-type-erasure"
           },
           {
@@ -514,7 +514,7 @@ export const sidebar = [
             "link": "/docs/02-typescript/100-tsconfig-json"
           },
           {
-            "text": "Глава 101. strict mode",
+            "text": "Глава 101. Строгий режим",
             "link": "/docs/02-typescript/101-strict-mode"
           }
         ]
@@ -524,27 +524,27 @@ export const sidebar = [
         "collapsed": true,
         "items": [
           {
-            "text": "Глава 102. Type Annotations and Type Inference",
+            "text": "Глава 102. Аннотации типов и вывод типов",
             "link": "/docs/02-typescript/102-type-annotations-and-type-inference"
           },
           {
-            "text": "Глава 103. Primitive Types",
+            "text": "Глава 103. Примитивные типы",
             "link": "/docs/02-typescript/103-primitive-types"
           },
           {
-            "text": "Глава 104. any и unknown",
+            "text": "Глава 104. `any` и `unknown`",
             "link": "/docs/02-typescript/104-any-and-unknown"
           },
           {
-            "text": "Глава 105. void и never",
+            "text": "Глава 105. `void` и `never`",
             "link": "/docs/02-typescript/105-void-and-never"
           },
           {
-            "text": "Глава 106. Arrays",
+            "text": "Глава 106. Массивы",
             "link": "/docs/02-typescript/106-arrays"
           },
           {
-            "text": "Глава 107. Tuples",
+            "text": "Глава 107. Кортежи",
             "link": "/docs/02-typescript/107-tuples"
           }
         ]
@@ -554,31 +554,31 @@ export const sidebar = [
         "collapsed": true,
         "items": [
           {
-            "text": "Глава 108. Object Types",
+            "text": "Глава 108. Объектные типы",
             "link": "/docs/02-typescript/108-object-types"
           },
           {
-            "text": "Глава 109. Optional and Readonly Properties",
+            "text": "Глава 109. Необязательные и неизменяемые свойства",
             "link": "/docs/02-typescript/109-optional-and-readonly-properties"
           },
           {
-            "text": "Глава 110. Index Signatures",
+            "text": "Глава 110. Индексные сигнатуры",
             "link": "/docs/02-typescript/110-index-signatures"
           },
           {
-            "text": "Глава 111. Type Alias",
+            "text": "Глава 111. Псевдоним типа",
             "link": "/docs/02-typescript/111-type-alias"
           },
           {
-            "text": "Глава 112. Interface",
+            "text": "Глава 112. Интерфейс",
             "link": "/docs/02-typescript/112-interface"
           },
           {
-            "text": "Глава 113. Interface vs Type Alias",
+            "text": "Глава 113. Интерфейс и псевдоним типа",
             "link": "/docs/02-typescript/113-interface-vs-type-alias"
           },
           {
-            "text": "Глава 114. Structural Typing",
+            "text": "Глава 114. Структурная типизация",
             "link": "/docs/02-typescript/114-structural-typing"
           }
         ]
@@ -588,27 +588,27 @@ export const sidebar = [
         "collapsed": true,
         "items": [
           {
-            "text": "Глава 115. Literal Types",
+            "text": "Глава 115. Литеральные типы",
             "link": "/docs/02-typescript/115-literal-types"
           },
           {
-            "text": "Глава 116. as const",
+            "text": "Глава 116. Утверждение `as const`",
             "link": "/docs/02-typescript/116-as-const"
           },
           {
-            "text": "Глава 117. Enum",
+            "text": "Глава 117. Перечисления",
             "link": "/docs/02-typescript/117-enum"
           },
           {
-            "text": "Глава 118. Union Types",
+            "text": "Глава 118. Объединения типов",
             "link": "/docs/02-typescript/118-union-types"
           },
           {
-            "text": "Глава 119. Intersection Types",
+            "text": "Глава 119. Пересечения типов",
             "link": "/docs/02-typescript/119-intersection-types"
           },
           {
-            "text": "Глава 120. Type Composition in Practice",
+            "text": "Глава 120. Композиция типов на практике",
             "link": "/docs/02-typescript/120-type-composition-in-practice"
           }
         ]
@@ -618,27 +618,27 @@ export const sidebar = [
         "collapsed": true,
         "items": [
           {
-            "text": "Глава 121. Function Types",
+            "text": "Глава 121. Типы функций",
             "link": "/docs/02-typescript/121-function-types"
           },
           {
-            "text": "Глава 122. Optional, Default and Rest Parameters",
+            "text": "Глава 122. Необязательные параметры, значения по умолчанию и сбор аргументов",
             "link": "/docs/02-typescript/122-optional-default-and-rest-parameters"
           },
           {
-            "text": "Глава 123. Callback Types",
+            "text": "Глава 123. Типы обратных вызовов",
             "link": "/docs/02-typescript/123-callback-types"
           },
           {
-            "text": "Глава 124. Function Overloads",
+            "text": "Глава 124. Перегрузки функций",
             "link": "/docs/02-typescript/124-function-overloads"
           },
           {
-            "text": "Глава 125. this Parameter",
+            "text": "Глава 125. Параметр `this`",
             "link": "/docs/02-typescript/125-this-parameter"
           },
           {
-            "text": "Глава 126. Async Function Types",
+            "text": "Глава 126. Типы асинхронных функций",
             "link": "/docs/02-typescript/126-async-function-types"
           }
         ]
@@ -648,27 +648,27 @@ export const sidebar = [
         "collapsed": true,
         "items": [
           {
-            "text": "Глава 127. Narrowing",
+            "text": "Глава 127. Сужение типов",
             "link": "/docs/02-typescript/127-narrowing"
           },
           {
-            "text": "Глава 128. Built-in Type Guards",
+            "text": "Глава 128. Встроенные проверки типа",
             "link": "/docs/02-typescript/128-built-in-type-guards"
           },
           {
-            "text": "Глава 129. User Defined Type Guards",
+            "text": "Глава 129. Собственные проверки типа",
             "link": "/docs/02-typescript/129-user-defined-type-guards"
           },
           {
-            "text": "Глава 130. Type Assertions",
+            "text": "Глава 130. Утверждения о типе",
             "link": "/docs/02-typescript/130-type-assertions"
           },
           {
-            "text": "Глава 131. satisfies",
+            "text": "Глава 131. Оператор `satisfies`",
             "link": "/docs/02-typescript/131-satisfies"
           },
           {
-            "text": "Глава 132. Exhaustive Checks with never",
+            "text": "Глава 132. Проверка полноты через `never`",
             "link": "/docs/02-typescript/132-exhaustive-checks-with-never"
           }
         ]
@@ -678,27 +678,27 @@ export const sidebar = [
         "collapsed": true,
         "items": [
           {
-            "text": "Глава 133. Generic Functions",
+            "text": "Глава 133. Обобщённые функции",
             "link": "/docs/02-typescript/133-generic-functions"
           },
           {
-            "text": "Глава 134. Generic Constraints",
+            "text": "Глава 134. Ограничения обобщений",
             "link": "/docs/02-typescript/134-generic-constraints"
           },
           {
-            "text": "Глава 135. keyof Constraints",
+            "text": "Глава 135. Ограничения через `keyof`",
             "link": "/docs/02-typescript/135-keyof-constraints"
           },
           {
-            "text": "Глава 136. Generic Type Aliases and Interfaces",
+            "text": "Глава 136. Обобщённые псевдонимы типов и интерфейсы",
             "link": "/docs/02-typescript/136-generic-type-aliases-and-interfaces"
           },
           {
-            "text": "Глава 137. Generic Classes",
+            "text": "Глава 137. Обобщённые классы",
             "link": "/docs/02-typescript/137-generic-classes"
           },
           {
-            "text": "Глава 138. Default Generic Parameters",
+            "text": "Глава 138. Значения параметров типа по умолчанию",
             "link": "/docs/02-typescript/138-default-generic-parameters"
           }
         ]
@@ -708,31 +708,31 @@ export const sidebar = [
         "collapsed": true,
         "items": [
           {
-            "text": "Глава 139. keyof",
+            "text": "Глава 139. Оператор `keyof`",
             "link": "/docs/02-typescript/139-keyof"
           },
           {
-            "text": "Глава 140. typeof Type Query",
+            "text": "Глава 140. Запрос типа через `typeof`",
             "link": "/docs/02-typescript/140-typeof-type-query"
           },
           {
-            "text": "Глава 141. Indexed Access Types",
+            "text": "Глава 141. Индексный доступ к типам",
             "link": "/docs/02-typescript/141-indexed-access-types"
           },
           {
-            "text": "Глава 142. Mapped Types",
+            "text": "Глава 142. Отображённые типы",
             "link": "/docs/02-typescript/142-mapped-types"
           },
           {
-            "text": "Глава 143. Conditional Types",
+            "text": "Глава 143. Условные типы",
             "link": "/docs/02-typescript/143-conditional-types"
           },
           {
-            "text": "Глава 144. infer",
+            "text": "Глава 144. Ключевое слово `infer`",
             "link": "/docs/02-typescript/144-infer"
           },
           {
-            "text": "Глава 145. Utility Types",
+            "text": "Глава 145. Служебные типы",
             "link": "/docs/02-typescript/145-utility-types"
           }
         ]
@@ -742,19 +742,19 @@ export const sidebar = [
         "collapsed": true,
         "items": [
           {
-            "text": "Глава 146. Typed Classes",
+            "text": "Глава 146. Типизированные классы",
             "link": "/docs/02-typescript/146-typed-classes"
           },
           {
-            "text": "Глава 147. Access Modifiers and readonly Members",
+            "text": "Глава 147. Модификаторы доступа и неизменяемые члены",
             "link": "/docs/02-typescript/147-access-modifiers-and-readonly-members"
           },
           {
-            "text": "Глава 148. Abstract Classes",
+            "text": "Глава 148. Абстрактные классы",
             "link": "/docs/02-typescript/148-abstract-classes"
           },
           {
-            "text": "Глава 149. implements and override",
+            "text": "Глава 149. `implements` и `override`",
             "link": "/docs/02-typescript/149-implements-and-override"
           }
         ]
@@ -764,27 +764,27 @@ export const sidebar = [
         "collapsed": true,
         "items": [
           {
-            "text": "Глава 150. TypeScript and JavaScript Modules",
+            "text": "Глава 150. Модули TypeScript и JavaScript",
             "link": "/docs/02-typescript/150-typescript-and-javascript-modules"
           },
           {
-            "text": "Глава 151. Type-only Imports and Exports",
+            "text": "Глава 151. Импорт и экспорт только типов",
             "link": "/docs/02-typescript/151-type-only-imports-and-exports"
           },
           {
-            "text": "Глава 152. Module Resolution",
+            "text": "Глава 152. Разрешение модулей",
             "link": "/docs/02-typescript/152-module-resolution"
           },
           {
-            "text": "Глава 153. Declaration Files",
+            "text": "Глава 153. Файлы объявлений",
             "link": "/docs/02-typescript/153-declaration-files"
           },
           {
-            "text": "Глава 154. Declaration Merging",
+            "text": "Глава 154. Слияние объявлений",
             "link": "/docs/02-typescript/154-declaration-merging"
           },
           {
-            "text": "Глава 155. Compiler Options for Real Projects",
+            "text": "Глава 155. Настройки компилятора для реальных проектов",
             "link": "/docs/02-typescript/155-compiler-options-for-real-projects"
           }
         ]
@@ -794,19 +794,19 @@ export const sidebar = [
         "collapsed": true,
         "items": [
           {
-            "text": "Глава 156. Typed Configuration and Test Data",
+            "text": "Глава 156. Типизированная настройка и тестовые данные",
             "link": "/docs/02-typescript/156-typed-configuration-and-test-data"
           },
           {
-            "text": "Глава 157. Typed Page Objects, Fixtures and Helpers",
+            "text": "Глава 157. Типизированные объекты страниц, фикстуры и вспомогательные функции",
             "link": "/docs/02-typescript/157-typed-page-objects-fixtures-and-helpers"
           },
           {
-            "text": "Глава 158. Typed API Clients and Assertions",
+            "text": "Глава 158. Типизированные клиенты API и проверки",
             "link": "/docs/02-typescript/158-typed-api-clients-and-assertions"
           },
           {
-            "text": "Глава 159. Maintaining Large TypeScript Test Projects",
+            "text": "Глава 159. Сопровождение больших тестовых проектов на TypeScript",
             "link": "/docs/02-typescript/159-maintaining-large-typescript-test-projects"
           }
         ]
@@ -822,7 +822,7 @@ export const sidebar = [
         "collapsed": true,
         "items": [
           {
-            "text": "Глава 160. Что такое Automation QA Framework",
+            "text": "Глава 160. Что такое фреймворк автоматизации тестов",
             "link": "/docs/03-automation-qa/160-what-is-automation-qa-framework"
           },
           {
@@ -860,7 +860,7 @@ export const sidebar = [
             "link": "/docs/03-automation-qa/167-test-anatomy-and-execution-model"
           },
           {
-            "text": "Глава 168. Browser, BrowserContext и Page",
+            "text": "Глава 168. `Browser`, `BrowserContext` и `Page`",
             "link": "/docs/03-automation-qa/168-browser-browsercontext-and-page"
           },
           {
@@ -872,19 +872,19 @@ export const sidebar = [
             "link": "/docs/03-automation-qa/170-user-actions"
           },
           {
-            "text": "Глава 171. Web-first assertions",
+            "text": "Глава 171. Проверки, умеющие ждать",
             "link": "/docs/03-automation-qa/171-web-first-assertions"
           },
           {
-            "text": "Глава 172. Auto-waiting и явные ожидания",
+            "text": "Глава 172. Автоматические и явные ожидания",
             "link": "/docs/03-automation-qa/172-auto-waiting-and-explicit-waits"
           },
           {
-            "text": "Глава 173. Timeouts и границы ожидания",
+            "text": "Глава 173. Сроки ожидания и их границы",
             "link": "/docs/03-automation-qa/173-timeouts-and-wait-boundaries"
           },
           {
-            "text": "Глава 174. Hooks и жизненный цикл теста",
+            "text": "Глава 174. Хуки и жизненный цикл теста",
             "link": "/docs/03-automation-qa/174-hooks-and-test-lifecycle"
           },
           {
@@ -898,31 +898,31 @@ export const sidebar = [
         "collapsed": true,
         "items": [
           {
-            "text": "Глава 176. Built-in fixtures",
+            "text": "Глава 176. Встроенные фикстуры",
             "link": "/docs/03-automation-qa/176-built-in-fixtures"
           },
           {
-            "text": "Глава 177. Custom fixtures и граф зависимостей",
+            "text": "Глава 177. Собственные фикстуры и граф зависимостей",
             "link": "/docs/03-automation-qa/177-custom-fixtures-and-dependency-graph"
           },
           {
-            "text": "Глава 178. Authentication state и управляемые сессии",
+            "text": "Глава 178. Состояние аутентификации и управляемые сессии",
             "link": "/docs/03-automation-qa/178-authentication-state-and-managed-sessions"
           },
           {
-            "text": "Глава 179. Page Object",
+            "text": "Глава 179. Объект страницы",
             "link": "/docs/03-automation-qa/179-page-object"
           },
           {
-            "text": "Глава 180. Component Objects и композиция страниц",
+            "text": "Глава 180. Объекты компонентов и композиция страниц",
             "link": "/docs/03-automation-qa/180-component-objects-and-page-composition"
           },
           {
-            "text": "Глава 181. Frames",
+            "text": "Глава 181. Фреймы",
             "link": "/docs/03-automation-qa/181-frames"
           },
           {
-            "text": "Глава 182. Вкладки, окна и popups",
+            "text": "Глава 182. Вкладки, окна и всплывающие окна",
             "link": "/docs/03-automation-qa/182-tabs-windows-and-popups"
           },
           {
@@ -930,7 +930,7 @@ export const sidebar = [
             "link": "/docs/03-automation-qa/183-dialogs-and-files"
           },
           {
-            "text": "Глава 184. Network interception и mocking",
+            "text": "Глава 184. Перехват сетевых запросов и подмена ответов",
             "link": "/docs/03-automation-qa/184-network-interception-and-mocking"
           },
           {
@@ -960,7 +960,7 @@ export const sidebar = [
             "link": "/docs/03-automation-qa/189-api-request-context"
           },
           {
-            "text": "Глава 190. API Client и граница HTTP-слоя",
+            "text": "Глава 190. Клиент API и граница слоя HTTP",
             "link": "/docs/03-automation-qa/190-api-client-and-http-boundary"
           },
           {
@@ -968,7 +968,7 @@ export const sidebar = [
             "link": "/docs/03-automation-qa/191-api-authentication"
           },
           {
-            "text": "Глава 192. Request Builders и подготовка данных через API",
+            "text": "Глава 192. Построители запросов и подготовка данных через API",
             "link": "/docs/03-automation-qa/192-request-builders-and-api-data-setup"
           },
           {
@@ -1002,11 +1002,11 @@ export const sidebar = [
             "link": "/docs/03-automation-qa/198-protocol-buffers-services-and-messages"
           },
           {
-            "text": "Глава 199. Сгенерированный код и создание gRPC Client",
+            "text": "Глава 199. Сгенерированный код и создание клиента gRPC",
             "link": "/docs/03-automation-qa/199-generated-code-and-grpc-client"
           },
           {
-            "text": "Глава 200. Unary gRPC-вызовы",
+            "text": "Глава 200. Унарные вызовы gRPC",
             "link": "/docs/03-automation-qa/200-unary-grpc-calls"
           },
           {
@@ -1014,11 +1014,11 @@ export const sidebar = [
             "link": "/docs/03-automation-qa/201-protobuf-message-fields"
           },
           {
-            "text": "Глава 202. Metadata и аутентификация gRPC",
+            "text": "Глава 202. Метаданные и аутентификация gRPC",
             "link": "/docs/03-automation-qa/202-grpc-metadata-and-authentication"
           },
           {
-            "text": "Глава 203. Deadlines и timeouts gRPC",
+            "text": "Глава 203. Крайние сроки и сроки ожидания gRPC",
             "link": "/docs/03-automation-qa/203-grpc-deadlines-and-timeouts"
           },
           {
@@ -1030,7 +1030,7 @@ export const sidebar = [
             "link": "/docs/03-automation-qa/205-grpc-response-and-negative-scenario-validation"
           },
           {
-            "text": "Глава 206. gRPC Client в Automation Framework",
+            "text": "Глава 206. Клиент gRPC во фреймворке автоматизации",
             "link": "/docs/03-automation-qa/206-grpc-client-in-automation-framework"
           }
         ]
@@ -1044,27 +1044,27 @@ export const sidebar = [
             "link": "/docs/03-automation-qa/207-postgresql-in-automation-qa"
           },
           {
-            "text": "Глава 208. Connections, pools и lifecycle",
+            "text": "Глава 208. Подключения, пулы и время жизни",
             "link": "/docs/03-automation-qa/208-connections-pools-and-lifecycle"
           },
           {
-            "text": "Глава 209. Parameterized queries",
+            "text": "Глава 209. Параметризованные запросы",
             "link": "/docs/03-automation-qa/209-parameterized-queries"
           },
           {
-            "text": "Глава 210. Database Access Layer",
+            "text": "Глава 210. Слой доступа к базе данных",
             "link": "/docs/03-automation-qa/210-database-access-layer"
           },
           {
-            "text": "Глава 211. Подготовка и очистка данных в database",
+            "text": "Глава 211. Подготовка и очистка данных в базе",
             "link": "/docs/03-automation-qa/211-database-data-setup-and-cleanup"
           },
           {
-            "text": "Глава 212. Transactions, rollback и test isolation",
+            "text": "Глава 212. Транзакции, откат и изоляция тестов",
             "link": "/docs/03-automation-qa/212-transactions-rollback-and-test-isolation"
           },
           {
-            "text": "Глава 213. Eventual consistency и polling",
+            "text": "Глава 213. Согласованность в конечном счёте и периодический опрос",
             "link": "/docs/03-automation-qa/213-eventual-consistency-and-polling"
           },
           {
@@ -1082,23 +1082,23 @@ export const sidebar = [
         "collapsed": true,
         "items": [
           {
-            "text": "Глава 216. Конфигурация Playwright и execution projects",
+            "text": "Глава 216. Конфигурация Playwright и проекты запуска",
             "link": "/docs/03-automation-qa/216-playwright-configuration-and-execution-projects"
           },
           {
-            "text": "Глава 217. Окружения, переменные и secrets",
+            "text": "Глава 217. Окружения, переменные и секреты",
             "link": "/docs/03-automation-qa/217-environments-variables-and-secrets"
           },
           {
-            "text": "Глава 218. Загрузка и runtime validation конфигурации",
+            "text": "Глава 218. Загрузка конфигурации и её проверка во время выполнения",
             "link": "/docs/03-automation-qa/218-configuration-loading-and-runtime-validation"
           },
           {
-            "text": "Глава 219. Организация test data",
+            "text": "Глава 219. Организация тестовых данных",
             "link": "/docs/03-automation-qa/219-test-data-organization"
           },
           {
-            "text": "Глава 220. Builders, factories и уникальные данные",
+            "text": "Глава 220. Построители, фабрики и уникальные данные",
             "link": "/docs/03-automation-qa/220-builders-factories-and-unique-data"
           },
           {
@@ -1106,11 +1106,11 @@ export const sidebar = [
             "link": "/docs/03-automation-qa/221-test-data-lifecycle"
           },
           {
-            "text": "Глава 222. Helpers и границы повторного использования",
+            "text": "Глава 222. Вспомогательные функции и границы повторного использования",
             "link": "/docs/03-automation-qa/222-helpers-and-reuse-boundaries"
           },
           {
-            "text": "Глава 223. Пользовательские проверки и soft assertions",
+            "text": "Глава 223. Пользовательские и мягкие проверки",
             "link": "/docs/03-automation-qa/223-custom-assertions-and-soft-assertions"
           },
           {
@@ -1132,11 +1132,11 @@ export const sidebar = [
             "link": "/docs/03-automation-qa/226-structured-logging"
           },
           {
-            "text": "Глава 227. Screenshots, videos и Playwright Trace",
+            "text": "Глава 227. Снимки экрана, видеозаписи и трассировка Playwright",
             "link": "/docs/03-automation-qa/227-screenshots-videos-and-playwright-trace"
           },
           {
-            "text": "Глава 228. Attachments и lifecycle артефактов",
+            "text": "Глава 228. Вложения и жизненный цикл артефактов",
             "link": "/docs/03-automation-qa/228-attachments-and-artifact-lifecycle"
           },
           {
@@ -1148,7 +1148,7 @@ export const sidebar = [
             "link": "/docs/03-automation-qa/230-allure-reporting"
           },
           {
-            "text": "Глава 231. Диагностический поток Framework",
+            "text": "Глава 231. Диагностический поток фреймворка",
             "link": "/docs/03-automation-qa/231-framework-diagnostic-flow"
           }
         ]
@@ -1158,15 +1158,15 @@ export const sidebar = [
         "collapsed": true,
         "items": [
           {
-            "text": "Глава 232. Причины flaky tests",
+            "text": "Глава 232. Причины нестабильных тестов",
             "link": "/docs/03-automation-qa/232-causes-of-flaky-tests"
           },
           {
-            "text": "Глава 233. Расследование и quarantine flaky tests",
+            "text": "Глава 233. Расследование и карантин нестабильных тестов",
             "link": "/docs/03-automation-qa/233-investigation-and-quarantine-of-flaky-tests"
           },
           {
-            "text": "Глава 234. Retry policy",
+            "text": "Глава 234. Политика повторов",
             "link": "/docs/03-automation-qa/234-retry-policy"
           },
           {
@@ -1178,11 +1178,11 @@ export const sidebar = [
             "link": "/docs/03-automation-qa/236-parallel-execution"
           },
           {
-            "text": "Глава 237. Sharding",
+            "text": "Глава 237. Сегментирование",
             "link": "/docs/03-automation-qa/237-sharding"
           },
           {
-            "text": "Глава 238. Tags, annotations и test selection",
+            "text": "Глава 238. Теги, аннотации и выбор тестов",
             "link": "/docs/03-automation-qa/238-tags-annotations-and-test-selection"
           }
         ]
@@ -1192,19 +1192,19 @@ export const sidebar = [
         "collapsed": true,
         "items": [
           {
-            "text": "Глава 239. CI fundamentals для Automation QA",
+            "text": "Глава 239. Основы CI для автоматизации тестов",
             "link": "/docs/03-automation-qa/239-ci-fundamentals-for-automation-qa"
           },
           {
-            "text": "Глава 240. GitHub Actions pipeline",
+            "text": "Глава 240. Конвейер GitHub Actions",
             "link": "/docs/03-automation-qa/240-github-actions-pipeline"
           },
           {
-            "text": "Глава 241. Browsers и системные зависимости в CI",
+            "text": "Глава 241. Браузеры и системные зависимости в CI",
             "link": "/docs/03-automation-qa/241-browsers-and-system-dependencies-in-ci"
           },
           {
-            "text": "Глава 242. Environments и secrets в CI",
+            "text": "Глава 242. Окружения и секреты в CI",
             "link": "/docs/03-automation-qa/242-environments-and-secrets-in-ci"
           },
           {
@@ -1212,7 +1212,7 @@ export const sidebar = [
             "link": "/docs/03-automation-qa/243-artifacts-and-reports-in-ci"
           },
           {
-            "text": "Глава 244. CI jobs, sharding и диагностика запусков",
+            "text": "Глава 244. Задачи CI, сегментирование и диагностика запусков",
             "link": "/docs/03-automation-qa/244-ci-jobs-sharding-and-run-diagnostics"
           }
         ]
@@ -1222,11 +1222,11 @@ export const sidebar = [
         "collapsed": true,
         "items": [
           {
-            "text": "Глава 245. Интеграция слоёв и dependency flow",
+            "text": "Глава 245. Интеграция слоёв и поток зависимостей",
             "link": "/docs/03-automation-qa/245-layer-integration-and-dependency-flow"
           },
           {
-            "text": "Глава 246. Composition fixtures и configuration flow",
+            "text": "Глава 246. Фикстуры композиции и поток конфигурации",
             "link": "/docs/03-automation-qa/246-composition-fixtures-and-configuration-flow"
           },
           {
@@ -1238,7 +1238,7 @@ export const sidebar = [
             "link": "/docs/03-automation-qa/248-diagnostics-stability-and-ci-in-architecture"
           },
           {
-            "text": "Глава 249. Architecture review и эволюция Framework",
+            "text": "Глава 249. Разбор архитектуры и эволюция фреймворка",
             "link": "/docs/03-automation-qa/249-architecture-review-and-framework-evolution"
           }
         ]
@@ -1262,12 +1262,36 @@ export const sidebar = [
             "link": "/docs/04-final-project/251-architecture-decisions-and-implementation-plan"
           },
           {
-            "text": "Глава 252. Каркас, configuration и environments",
+            "text": "Глава 252. Каркас, конфигурация и окружения",
             "link": "/docs/04-final-project/252-framework-skeleton-configuration-and-environments"
           },
           {
-            "text": "Глава 253. UI Layer, Page Objects и fixtures",
+            "text": "Глава 253. Слой интерфейса, объекты страниц и фикстуры",
             "link": "/docs/04-final-project/253-ui-layer-page-objects-and-fixtures"
+          },
+          {
+            "text": "Глава 254. Слой REST, клиент и подготовка данных",
+            "link": "/docs/04-final-project/254-rest-layer-client-and-data-setup"
+          },
+          {
+            "text": "Глава 255. Слой gRPC, унарные вызовы и коды состояния",
+            "link": "/docs/04-final-project/255-grpc-layer-unary-calls-and-statuses"
+          },
+          {
+            "text": "Глава 256. Слой базы данных, пул и проверка состояния",
+            "link": "/docs/04-final-project/256-database-layer-pool-and-state-verification"
+          },
+          {
+            "text": "Глава 257. Межслойные сценарии, каноническая модель и владение данными",
+            "link": "/docs/04-final-project/257-cross-layer-scenarios-and-data-ownership"
+          },
+          {
+            "text": "Глава 258. Диагностика, отчёт и запуск в CI",
+            "link": "/docs/04-final-project/258-diagnostics-reporting-and-ci"
+          },
+          {
+            "text": "Глава 259. Финальный аудит и решение о выпуске",
+            "link": "/docs/04-final-project/259-final-audit-and-release-decision"
           }
         ]
       }

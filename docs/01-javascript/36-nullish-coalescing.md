@@ -1,4 +1,4 @@
-# Nullish Coalescing
+# Нулевое слияние
 
 ## Связь с предыдущей главой
 
@@ -154,25 +154,31 @@ value ?? fallback
 
 ## Теория
 
-Nullish Coalescing exists because not every value that looks "empty" means "absent".
+Оператор `??` существует потому, что не всякое значение, выглядящее «пустым», означает «отсутствует».
 
-В JavaScript:
+В JavaScript ложными считаются и `0`, и `''`, и `false` — а это часто вполне
+осмысленные значения: ноль повторов, пустой заголовок, отключённый флаг.
 
-`??` asks exactly one question:
-
-```text
-Is the left side null or undefined?
-```
-
-It does not ask:
+`??` задаёт ровно один вопрос:
 
 ```text
-Is the value false-like?
+слева null или undefined?
 ```
 
-We will not study truthy/falsy or logical operators here. The only distinction in this chapter is:
+Он не спрашивает:
 
-### Syntax
+```text
+значение ложное?
+```
+
+Истинность, ложность и логические операторы здесь не изучаются. Единственное различие в этой главе:
+
+```text
+значение отсутствует  —  null или undefined
+значение есть         —  всё остальное, включая 0, '' и false
+```
+
+### Синтаксис
 
 ```javascript
 const result = value ?? fallback;
@@ -180,27 +186,32 @@ const result = value ?? fallback;
 
 Значение:
 
-### Nullish значения
+```text
+левая часть — null или undefined  →  результат равен fallback
+в остальных случаях               →  результат равен левой части
+```
 
-Nullish значения are:
+### Отсутствующие значения
+
+Отсутствующими считаются:
 
 ```text
 null
 undefined
 ```
 
-Only these two trigger fallback.
+Только эти два включают запасное значение.
 
 ```javascript
 console.log(undefined ?? 'fallback');
 console.log(null ?? 'fallback');
 ```
 
-Both use fallback.
+В обоих случаях берётся запасное значение.
 
-### Existing значения
+### Существующие значения
 
-Values that are not `null` or `undefined` are preserved:
+Значения, которые не равны `null` и `undefined`, сохраняются:
 
 ```javascript
 console.log(0 ?? 10);
@@ -216,11 +227,11 @@ false
 
 ```
 
-The third вывод is empty string. It is preserved.
+Третий вывод — пустая строка. Она сохраняется.
 
-### Fallback значения
+### Запасное значение
 
-Fallback value is used only when current value is `null` or `undefined`.
+Запасное значение используется только тогда, когда текущее равно `null` или `undefined`.
 
 ```javascript
 const timeout = config.timeout ?? 5000;
@@ -233,41 +244,48 @@ const timeout = config.timeout ?? 5000;
 | `value \|\| fallback` | заменит | заменит | заменит |
 | `value ?? fallback` | оставит | оставит | заменит |
 
-### Evaluation order
+### Порядок вычисления
 
-JavaScript evaluates left side first:
+JavaScript сначала вычисляет левую часть:
 
-### Short-circuiting
+```text
+1. вычислить левую часть
+2. результат null или undefined  →  вычислить и вернуть правую
+3. иначе                         →  вернуть левую, правую не вычислять
+```
 
-If left side is not `null` and not `undefined`, fallback is not needed.
+### Короткое замыкание
 
-This is short-circuiting at a high level.
+Если левая часть не `null` и не `undefined`, запасное значение не нужно.
 
-### Optional Chaining + `??`
+Это короткое замыкание на высоком уровне.
 
-The most natural combination:
+### Опциональная цепочка и `??`
+
+Самое естественное сочетание:
 
 ```javascript
 const retries = config.retryPolicy?.retries ?? 2;
 ```
 
-Two-step model:
+Двухшаговая модель: сначала безопасно прочитать путь, затем подставить значение
+по умолчанию, если прочитанного нет.
 
-Optional Chaining отвечает:
-
-```text
-Can I safely read this path?
-```
-
-Nullish Coalescing отвечает:
+Оператор `?.` отвечает:
 
 ```text
-What should I use if result is null or undefined?
+можно ли безопасно прочитать этот путь?
 ```
 
-### Comparison with `||` preview
+Оператор `??` отвечает:
 
-`||` will be studied with logical operators later.
+```text
+что использовать, если результат null или undefined?
+```
+
+### Сравнение с `||`
+
+Оператор `||` будет изучаться позже, вместе с логическими операторами.
 
 Пока достаточно запомнить высокоуровневую разницу:
 
@@ -276,21 +294,21 @@ What should I use if result is null or undefined?
 || has broader logical behavior
 ```
 
-That is why:
+Именно поэтому:
 
 ```javascript
 console.log(0 ?? 10);
 ```
 
-keeps `0`.
+сохраняет `0`.
 
-This matters in QA config:
+Это важно в настройках тестов:
 
 ```javascript
 const retries = config.retries ?? 2;
 ```
 
-If `retries` is intentionally `0`, `??` keeps `0`.
+Если `retries` намеренно равно `0`, `??` сохранит `0`.
 
 ---
 
@@ -313,37 +331,66 @@ flowchart TD
 const timeout = config.timeout ?? 5000;
 ```
 
-Концептуальный поток engine:
+Концептуальный ход работы движка:
 
-### Value inspection
+```text
+1. прочитать config.timeout
+2. проверить, равно ли значение null или undefined
+3. равно    →  результатом становится 5000
+4. не равно →  результатом становится само значение
+```
 
-### Undefined path
+### Что именно проверяется
 
-### Null path
+Проверяется ровно одно: отсутствует значение или нет. Тип и «осмысленность»
+значения оператор не интересуют.
 
-### Existing value path
+### Свойства нет в объекте
 
-### Variable assignment
+```text
+config.timeout  →  undefined  →  результат 5000
+```
+
+### Свойство есть и равно `null`
+
+```text
+config.timeout  →  null  →  результат 5000
+```
+
+`null` здесь обычно означает «сервер явно вернул пустое значение», и подстановка
+по умолчанию так же уместна, как при отсутствующем поле.
+
+### Свойство есть и содержит значение
+
+```text
+config.timeout  →  0  →  результат 0
+```
+
+Именно этим `??` отличается от `||`: ноль, пустая строка и `false` — настоящие
+значения настройки, и заменять их нельзя.
+
+### Присваивание переменной
 
 ```javascript
 const retries = config.retryPolicy?.retries ?? 2;
 ```
 
-Engine conceptual поток:
+Концептуальный ход работы движка:
 
-Source object remains unchanged.
+Исходный объект остаётся неизменным.
 
 ---
 
 ## Ментальная модель
 
-Представьте backup plan.
+Представьте запасной план.
 
-Spare key model:
+Модель запасного ключа: основной ключ берут, если он есть; запасной — только
+когда основного нет вовсе.
 
-Fallback box:
-
-Главная модель:
+Главная модель: `??` реагирует ровно на два значения — `null` и `undefined`.
+`false`, `0` и пустая строка для него нормальные значения и подмене не
+подлежат.
 
 ---
 
@@ -366,7 +413,7 @@ node examples/01-javascript/chapter-36/05-common-mistakes.js
 node examples/01-javascript/chapter-36/06-qa-example.js
 ```
 
-### Пример 1. Basic nullish
+### Пример 1. Базовое использование
 
 ```javascript
 const configuredTimeout = 3000;
@@ -375,7 +422,7 @@ const timeout = configuredTimeout ?? 5000;
 console.log(timeout);
 ```
 
-### Пример 2. Undefined
+### Пример 2. `undefined`
 
 ```javascript
 const config = {};
@@ -385,7 +432,7 @@ const timeout = config.timeout ?? 5000;
 console.log(timeout);
 ```
 
-### Пример 3. Null
+### Пример 3. `null`
 
 ```javascript
 const user = {
@@ -397,7 +444,7 @@ const middleName = user.middleName ?? 'not provided';
 console.log(middleName);
 ```
 
-### Пример 4. Optional Chaining
+### Пример 4. Вместе с безопасным чтением
 
 ```javascript
 const config = {};
@@ -421,9 +468,9 @@ console.log(config.verbose ?? true);
 console.log(config.label ?? 'default');
 ```
 
-`??` keeps `0`, `false` and empty string.
+`??` сохраняет `0`, `false` и пустую строку.
 
-### Пример 6. QA example
+### Пример 6. Пример из автоматизации тестов
 
 ```javascript
 const apiResponse = {
@@ -458,14 +505,14 @@ console.log(retries);
 
 Нет.
 
-`??` replaces only:
+`??` подменяет только:
 
 ```text
 null
 undefined
 ```
 
-It keeps:
+Он сохраняет:
 
 ```text
 0
@@ -474,31 +521,31 @@ false
 NaN
 ```
 
-### `??` это то же самое, что Optional Chaining?
+### `??` — это то же самое, что безопасное чтение цепочки?
 
 Нет.
 
-### `??` меняет source object?
+### Меняет ли `??` исходный объект?
 
 Нет.
 
-It produces expression result.
+Он даёт результат выражения.
 
 ### Когда использовать `??`?
 
-Когда fallback should be used only for `null` or `undefined`.
+Когда запасное значение нужно подставлять только вместо `null` или `undefined`.
 
-### Нужно ли использовать `??` после каждого Optional Chaining?
+### Нужно ли использовать `??` после каждого `?.`?
 
 Нет.
 
-Если `undefined` is acceptable result, fallback не нужен.
+Если `undefined` — приемлемый результат, запасное значение не нужно.
 
 ---
 
 ## Распространённые мифы
 
-### Миф: `??` заменяет любое "false-like" value
+### Миф: `??` заменяет любое «похожее на ложь» значение
 
 Реальность:
 
@@ -506,29 +553,29 @@ It produces expression result.
 only null and undefined
 ```
 
-### Миф: `??` исправляет данные в object
+### Миф: `??` исправляет данные в объекте
 
 Реальность:
 
-It chooses result value. It does not write back to object.
+Он выбирает результат выражения. В объект он ничего не записывает.
 
-### Миф: `??` нужен только после Optional Chaining
+### Миф: `??` нужен только после безопасного чтения
 
 Реальность:
 
-Optional Chaining + `??` is common, but `??` can work with any expression result.
+Связка `?.` и `??` встречается часто, но `??` работает с любым результатом выражения.
 
 ### Миф: `??` всегда лучше `||`
 
 Реальность:
 
-They solve different problems. Logical operators will be studied later. In this chapter, use `??` when fallback is only for `null` or `undefined`.
+Они решают разные задачи. Логические операторы будут изучаться позже. В этой главе используйте `??`, когда запасное значение нужно только для `null` или `undefined`.
 
 ---
 
 ## Распространённые ошибки
 
-### Ошибка 1. Ожидать replacement for `0`
+### Ошибка 1. Ожидать замену для `0`
 
 ```javascript
 const retries = 0 ?? 2;
@@ -540,9 +587,9 @@ const retries = 0 ?? 2;
 0
 ```
 
-`0` is not `null` and not `undefined`.
+`0` не равен ни `null`, ни `undefined`.
 
-### Ошибка 2. Ожидать replacement for `false`
+### Ошибка 2. Ожидать замену для `false`
 
 ```javascript
 const verbose = false ?? true;
@@ -554,7 +601,7 @@ const verbose = false ?? true;
 false
 ```
 
-### Ошибка 3. Думать, что fallback writes into object
+### Ошибка 3. Думать, что запасное значение записывается в объект
 
 ```javascript
 const config = {};
@@ -563,17 +610,17 @@ const timeout = config.timeout ?? 5000;
 console.log(config.timeout);
 ```
 
-`config.timeout` remains `undefined`.
+`config.timeout` остаётся `undefined`.
 
-### Ошибка 4. Использовать fallback там, где missing value should fail
+### Ошибка 4. Подставлять запасное значение там, где отсутствие должно ломать тест
 
-If API поле is required, fallback can hide a contract problem.
+Если поле ответа обязательно, запасное значение может скрыть нарушение контракта.
 
 ---
 
 ## Практическое использование
 
-### Configuration defaults
+### Значения конфигурации по умолчанию
 
 ```javascript
 const timeout = config.timeout ?? 5000;
@@ -586,43 +633,43 @@ const retries = config.retries ?? 2;
 const middleName = user.middleName ?? 'not provided';
 ```
 
-### Retry counts
+### Счётчики повторов
 
 ```javascript
 const retries = config.retryPolicy?.retries ?? 2;
 ```
 
-If retries is `0`, `??` keeps `0`.
+Если число повторов равно `0`, `??` сохранит `0`.
 
-### Timeout значения
+### Значения сроков ожидания
 
 ```javascript
 const timeoutMs = config.timeouts?.api ?? 5000;
 ```
 
-### Assertion helpers
+### Вспомогательные проверки
 
 ```javascript
 const displayName = response.body.user.profile?.displayName ?? response.body.user.profile?.name;
 ```
 
-This keeps fallback logic explicit.
+Так логика запасных значений остаётся явной.
 
 ---
 
 ## Использование в Automation QA
 
-### Configuration defaults
+### Значения конфигурации по умолчанию
 
-Automation frameworks often use config objects:
+Фреймворки автоматизации часто используют объекты настройки:
 
 ```javascript
 const timeout = testConfig.timeout ?? 5000;
 ```
 
-If timeout is missing, use default.
+Если срок ожидания отсутствует, берётся значение по умолчанию.
 
-If timeout is `0`, keep `0`.
+Если срок ожидания равен `0`, сохраняется `0`.
 
 ### Необязательные API-поля
 
@@ -630,91 +677,23 @@ If timeout is `0`, keep `0`.
 const city = response.body.user.profile?.address?.city ?? 'unknown';
 ```
 
-Optional Chaining safely reads. `??` chooses fallback.
+Оператор `?.` безопасно читает. `??` выбирает запасное значение.
 
-### Retry counts
+### Счётчики повторов
 
 ```javascript
 const retries = config.retryPolicy?.retries ?? 2;
 ```
 
-This is important because `0` may mean "do not retry".
+Это важно, потому что `0` может означать «не повторять».
 
-### Assertion helpers
+### Вспомогательные проверки
 
 ```javascript
 const label = response.body.user.profile?.label ?? 'unlabeled user';
 ```
 
-Helper receives a stable value without changing source response.
-
----
-
-## Диаграммы главы
-
-### 1. Why ?? exists
-
-### 2. Optional Chaining → ??
-
-### 3. Value inspection
-
-### 4. Fallback decision
-
-### 5. Null
-
-### 6. Undefined
-
-### 7. Existing value
-
-### 8. Evaluation flow
-
-### 9. Short-circuit
-
-### 10. QA configuration
-
-### 11. API response
-
-### 12. Читаемость
-
-### 13. Типичные ошибки
-
-### 14. || preview
-
-### 15. Текущая модель JavaScript
-
-### 16. Complete ?? model
-
-### 17. Reserve value
-
-### 18. Backup plan
-
-### 19. Decision tree
-
-### 20. Variable assignment
-
-### 21. Fallback timeline
-
-### 22. Automation QA config
-
-### 23. Optional API поле
-
-### 24. Chaining with ?.
-
-### 25. Краткая ментальная модель
-
-### 26. Existing value preserved
-
-### 27. Nullish значения only
-
-### 28. Safe traversal + fallback
-
-### 29. Undefined path
-
-### 30. Complete flow
-
-### 31. Переход к Object Methods
-
-### 32. Итоговая схема
+Вспомогательная функция получает предсказуемое значение, не меняя исходный ответ.
 
 ---
 
@@ -748,30 +727,33 @@ practice/01-javascript/36-nullish-coalescing.md
 solutions/01-javascript/36-nullish-coalescing.md
 ```
 
-Не открывайте решения до самостоятельной попытки. Главный навык главы - понимать, когда fallback is used and when original value is preserved.
+Не открывайте решения до самостоятельной попытки. Главный навык главы — понимать, когда берётся запасное значение, а когда сохраняется исходное.
 
 ---
 
 ## Итоги
 
-Nullish Coalescing продолжает Optional Chaining.
+Оператор `??` продолжает тему безопасного чтения цепочки.
 
-Главная модель:
+Главная модель: `?.` отвечает за безопасный проход по звеньям, `??` — за
+значение по умолчанию в конце. Вместе они дают привычную строку
+`response?.body?.retries ?? 0`, где отсутствие данных и значение `0` остаются
+различимыми.
 
 ---
 
 ## Что нужно запомнить
 
-* `??` exists for fallback значения.
-* Fallback is used only for `null` and `undefined`.
-* `??` keeps `0`, `false`, `''` and `NaN`.
-* `??` does not change source object.
-* Left side is evaluated first.
-* If left side is not nullish, fallback is not needed.
-* Optional Chaining and `??` work naturally together.
-* `??` is not the same as `||`.
-* In QA, `??` is useful for config defaults and optional API поля.
-* Object Methods are the next step: objects can contain поведение as well as data.
+* `??` существует для запасных значений.
+* Запасное значение берётся только для `null` и `undefined`.
+* `??` сохраняет `0`, `false`, `''` и `NaN`.
+* `??` не меняет исходный объект.
+* Левая часть вычисляется первой.
+* Если левая часть не отсутствует, запасное значение не нужно.
+* Безопасное чтение и `??` естественно работают вместе.
+* `??` — это не то же самое, что `||`.
+* В тестах `??` полезен для значений настройки по умолчанию и необязательных полей ответа.
+* Методы объектов — следующий шаг: объекты могут содержать не только данные, но и поведение.
 
 ---
 
@@ -780,12 +762,26 @@ Nullish Coalescing продолжает Optional Chaining.
 Ответьте без запуска кода.
 
 1. Какую проблему решает `??`?
-2. Какие значения are nullish?
-3. Когда fallback is used?
-4. Почему `0 ?? 2` returns `0`?
-5. Почему `undefined ?? 2` returns `2`?
-6. Меняет ли `??` source object?
-7. Как Optional Chaining and `??` work together?
-8. Чем `??` differs from `||` at high level?
-9. Где `??` useful in Automation QA?
-10. Какая следующая тема логически продолжает Objects section?
+2. Какие значения считаются отсутствующими?
+3. Когда берётся запасное значение?
+4. Почему `0 ?? 2` даёт `0`?
+5. Почему `undefined ?? 2` даёт `2`?
+6. Меняет ли `??` исходный объект?
+7. Как безопасное чтение и `??` работают вместе?
+8. Чем `??` отличается от `||` на высоком уровне?
+9. Где `??` полезен в автоматизации тестов?
+10. Какая следующая тема логически продолжает раздел про объекты?
+
+### Ответы
+
+1. Подстановку значения по умолчанию ровно там, где значения нет, — и только там.
+2. `null` и `undefined`. Больше ничего.
+3. Когда левая часть равна `null` или `undefined`.
+4. `0` — настоящее значение, а не отсутствие значения. Оператор его не заменяет.
+5. `undefined` означает, что значения нет, поэтому берётся запасное.
+6. Нет. Он только вычисляет результат выражения.
+7. `?.` безопасно доходит до нужного поля и при обрыве цепочки даёт `undefined`, а `??` превращает этот `undefined` в осмысленное значение по умолчанию.
+8. `||` заменяет любое ложное значение, включая `0`, `''` и `false`. `??` реагирует только на отсутствие значения.
+9. В настройках запуска: нулевое число повторов, пустой префикс, выключённый флаг — законные значения, и `||` молча заменил бы их на умолчания.
+10. Методы объектов: поведение, которое живёт рядом с данными.
+

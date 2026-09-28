@@ -22,7 +22,7 @@ export default [
     hints: [
       'Журнал удобно пополнять в самом исполнителе, а не в хуках.',
       'Падение теста не должно прерывать оставшиеся тесты.',
-      'finally гарантирует попытку уборки.'
+      '`finally` гарантирует попытку уборки.'
     ],
     tests: [
       {
@@ -73,7 +73,7 @@ expect(failing.log).toEqual(['падает', 'afterEach']);`
 expect(mixed.results.map(item => item.status)).toEqual(['failed', 'passed']);`
       },
       {
-        name: 'падение beforeEach помечает тест упавшим',
+        name: 'падение `beforeEach` помечает тест упавшим',
         code: `const broken = await runSuite({
   beforeEach: () => { throw new Error('подготовка не удалась'); },
   afterEach: () => {},
@@ -83,7 +83,7 @@ expect(broken.results).toEqual([{ name: 'тест', status: 'failed' }]);
 expect(broken.log).toEqual(['beforeEach', 'afterEach']);`
       },
       {
-        name: 'падение beforeAll отменяет тесты, но не afterAll',
+        name: 'падение `beforeAll` отменяет тесты, но не `afterAll`',
         code: `const noRun = await runSuite({
   beforeAll: () => { throw new Error('общая подготовка не удалась'); },
   afterAll: () => {},

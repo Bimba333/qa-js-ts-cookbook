@@ -14,7 +14,7 @@ export default [
 }`,
     hints: [
       'Остаток от деления даёт оператор %.',
-      'Округление вниз выполняется Math.floor.',
+      'Округление вниз выполняется `Math.floor`.',
       'Для пустого массива делить нельзя.'
     ],
     tests: [
@@ -87,11 +87,11 @@ function firstTruthy(values) {
         code: `expect(firstTruthy([0, '', 'первое', 'второе'])).toBe('первое');`
       },
       {
-        name: 'если истинных нет, возвращает null',
+        name: 'если истинных нет, возвращает `null`',
         code: `expect(firstTruthy([0, '', null])).toBe(null);`
       },
       {
-        name: 'для пустого массива возвращает null',
+        name: 'для пустого массива возвращает `null`',
         code: `expect(firstTruthy([])).toBe(null);`
       }
     ],

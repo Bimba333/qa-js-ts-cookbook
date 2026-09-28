@@ -11,7 +11,7 @@ export default [
       'контекст с этим состоянием и откройте в нём `/work-items` **без входа**. ' +
       'Для сравнения откройте `/work-items` ещё и в третьем контексте — без ' +
       'состояния. Верните `{ cookieNames, restoredUrl, anonymousUrl, restoredRows }`: ' +
-      'имена cookie из снятого состояния, адрес в контексте с состоянием, адрес ' +
+      'имена куки из снятого состояния, адрес в контексте с состоянием, адрес ' +
       'в контексте без него и число строк таблицы в восстановленном контексте. ' +
       'Созданные контексты закройте.',
     starter: `export default async function solve({ page, baseUrl }) {
@@ -20,13 +20,13 @@ export default [
   return { cookieNames: [], restoredUrl: '', anonymousUrl: '', restoredRows: 0 };
 }`,
     hints: [
-      'storageState возвращает объект с cookie и данными хранилищ.',
-      'Новый контекст принимает это состояние параметром storageState.',
+      '`storageState` возвращает объект с куки и данными хранилищ.',
+      'Новый контекст принимает это состояние параметром `storageState`.',
       'Третий контекст нужен, чтобы показать разницу.'
     ],
     tests: [
       {
-        name: 'в состоянии есть cookie сессии',
+        name: 'в состоянии есть куки сессии',
         code: `expect(result.cookieNames.length > 0).toBe(true);`
       },
       {

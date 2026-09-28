@@ -13,7 +13,7 @@ export default [
 }`,
     hints: [
       'Значение по умолчанию задаётся прямо в деструктуризации.',
-      'Оно срабатывает только при undefined.',
+      'Оно срабатывает только при `undefined`.',
       'Строку удобно собрать шаблонным литералом.'
     ],
     tests: [
@@ -57,9 +57,9 @@ expect(source).toEqual({ status: 200, body: 'ok' });`
   // Переименование и значение по умолчанию задаются вместе.
 }`,
     hints: [
-      'Синтаксис переименования: { name: title }.',
+      'Синтаксис переименования: `{ name: title }`.',
       'Значение по умолчанию ставится после нового имени.',
-      'Значение по умолчанию срабатывает только при undefined, но не при null.'
+      'Значение по умолчанию срабатывает только при `undefined`, но не при `null`.'
     ],
     tests: [
       {
@@ -68,12 +68,12 @@ expect(source).toEqual({ status: 200, body: 'ok' });`
   .toEqual({ title: 'login', priority: 'HIGH' });`
       },
       {
-        name: 'подставляет LOW при отсутствии приоритета',
+        name: 'подставляет `LOW` при отсутствии приоритета',
         code: `expect(toTestCase({ name: 'login' }))
   .toEqual({ title: 'login', priority: 'LOW' });`
       },
       {
-        name: 'null приоритет остаётся null',
+        name: 'приоритет `null` остаётся `null`',
         code: `expect(toTestCase({ name: 'login', prio: null }).priority).toBe(null);`
       },
       {

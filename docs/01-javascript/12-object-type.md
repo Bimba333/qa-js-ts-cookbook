@@ -1,4 +1,4 @@
-# Object Type
+# Объектный тип
 
 ## Связь с предыдущей главой
 
@@ -189,11 +189,11 @@ const expectedUser = {
 
 ## Теория
 
-### Primitive vs Object
+### Примитив и объект
 
-Primitive value представляет одно indivisible value.
+Примитивное значение представляет одно неделимое значение.
 
-Object value groups multiple related значения under one entity.
+Объектное значение группирует несколько связанных значений в одну сущность.
 
 ```text
 примитив:  status  ──→  [ 'active' ]
@@ -205,13 +205,13 @@ Object value groups multiple related значения under one entity.
 
 Важно:
 
-Object is also a value.
+Объект — тоже значение.
 
-То есть `user` не является набором случайных variables. `user` gives named access to one Object value, а внутри этого Object value есть related information.
+То есть `user` не является набором случайных переменных. `user` даёт именованный доступ к одному объектному значению, а внутри этого значения лежит связанная информация.
 
-### Почему primitive значения становятся недостаточными
+### Почему примитивных значений становится недостаточно
 
-Primitive значения хороши, когда нужно выразить одну вещь:
+Примитивные значения хороши, когда нужно выразить одну вещь:
 
 ```javascript
 const statusCode = 200;
@@ -219,20 +219,24 @@ const userName = 'Anna';
 const isActive = true;
 ```
 
-Но они становятся неудобными, когда появляется entity:
+Но они становятся неудобными, когда появляется сущность — пользователь, ответ
+сервиса, запись в базе. У сущности несколько признаков, и они связаны между
+собой.
 
-Если хранить все отдельно, связь существует только в голове программиста:
+Если хранить всё отдельно, связь существует только в голове программиста:
+передать «пользователя» в функцию нельзя, придётся передавать четыре аргумента и
+следить за их порядком.
 
-Object делает связь частью кода:
+Объект делает связь частью кода:
 
 ```text
 было:  четыре независимых имени
 стало: одно имя user, внутри — четыре свойства
 ```
 
-### Что такое Object value
+### Что такое объектное значение
 
-Object value - structured value that contains properties.
+Объектное значение — составное значение, которое содержит свойства.
 
 Но лучше начать не с определения, а с наблюдения:
 
@@ -244,11 +248,20 @@ const user = {
 };
 ```
 
-Что information is grouped together right now?
+Какая информация сгруппирована прямо сейчас? Имя, фамилия и возраст — три
+признака одного человека.
 
-Object structure:
+Структура объекта:
 
-Object полезен, потому что позволяет программе представить одну концептуальную сущность:
+```text
+user
+ ├─ firstName : 'Anna'
+ ├─ lastName  : 'Ivanova'
+ └─ age       : 30
+```
+
+Объект полезен тем, что даёт программе одно имя для целой сущности: его можно
+передать, вернуть, сравнить и записать в массив как единое значение.
 
 В коде:
 
@@ -261,9 +274,9 @@ const user = {
 };
 ```
 
-### Properties
+### Свойства
 
-Property - элемент object, состоящий из property name and property value.
+Свойство — элемент объекта, состоящий из имени свойства и его значения.
 
 ```javascript
 const user = {
@@ -278,23 +291,30 @@ firstName  :  'Anna'
    имя        значение
 ```
 
-В object literal это выглядит так:
+В литерале объекта это выглядит так:
 
-Property name отвечает:
-
-```text
-What is this piece of information called?
+```javascript
+const user = {
+  firstName: 'Anna',
+  //  ↑ имя      ↑ значение
+};
 ```
 
-Property value отвечает:
+Имя свойства отвечает на вопрос:
+
+```text
+как называется эта часть информации?
+```
+
+Значение свойства отвечает на вопрос:
 
 ```text
 What information is stored under this name?
 ```
 
-### Property names
+### Имена свойств
 
-Property name is the name used to access information inside object.
+Имя свойства — то, по чему обращаются к информации внутри объекта.
 
 ```javascript
 const user = {
@@ -303,16 +323,16 @@ const user = {
 };
 ```
 
-Property names:
+Имена свойств:
 
 ```text
 firstName
 lastName
 ```
 
-Ментальная модель dictionary: объект — это словарь, где по имени свойства находится значение, как слово и его перевод.
+Мысленная модель словаря: объект — это словарь, где по имени свойства находится значение, как слово и его перевод.
 
-Property name is not the same thing as variable identifier.
+Имя свойства — не то же самое, что имя переменной.
 
 ```javascript
 const user = {
@@ -322,9 +342,17 @@ const user = {
 
 Здесь:
 
-### Property значения
+```text
+user       — имя переменной, по нему находят объект
+firstName  — имя свойства, оно существует только внутри объекта
+```
 
-Property value is the actual value stored under property name.
+Имя свойства не участвует в поиске по цепочке окружений: его ищут в самом
+объекте.
+
+### Значения свойств
+
+Значение свойства — те данные, которые лежат под этим именем.
 
 ```javascript
 const user = {
@@ -334,15 +362,22 @@ const user = {
 };
 ```
 
-Property значения:
+Значения свойств могут быть любого типа:
 
-Object может group primitive значения:
+```text
+firstName : 'Anna'   строка
+age       : 30       число
+isActive  : true     булево значение
+```
 
-Позже object может group other objects too. Nested objects are introduced conceptually in this chapter, but detailed internal поведение will be studied later.
+Объект здесь группирует три примитивных значения — по отдельности они ничего не
+сообщают друг о друге, вместе описывают одного пользователя.
 
-### Reading properties
+Позже объект сможет группировать и другие объекты. Вложенные объекты вводятся в этой главе концептуально, а их внутреннее поведение будет изучаться позже.
 
-Чтобы прочитать information inside object, используем property access:
+### Чтение свойств
+
+Чтобы прочитать информацию внутри объекта, используют обращение к свойству:
 
 ```javascript
 const user = {
@@ -358,9 +393,9 @@ console.log(user.age);
 user.firstName  →  найти свойство firstName  →  'Anna'
 ```
 
-Что engine делает прямо сейчас?
+Что движок делает прямо сейчас?
 
-Если property does not exist, result is `undefined`:
+Если свойства не существует, результатом будет `undefined`:
 
 ```javascript
 const user = {
@@ -374,11 +409,11 @@ console.log(user.role);
 user.role  →  свойство role не найдено  →  undefined
 ```
 
-Это не означает, что object исчез или сломался. Это означает: under requested property name, value was not found.
+Это не означает, что объект исчез или сломался. Это означает: под запрошенным именем свойства значение не найдено.
 
-### Updating properties
+### Обновление свойств
 
-Object can represent changing состояние of the same entity.
+Объект может представлять меняющееся состояние одной и той же сущности.
 
 ```javascript
 const user = {
@@ -398,7 +433,7 @@ console.log(user.age);
 объект тот же, изменилось значение свойства
 ```
 
-Что information is grouped together right now?
+Какая информация сгруппирована прямо сейчас?
 
 Важно:
 
@@ -410,11 +445,11 @@ const user = {
 user.age = 31;
 ```
 
-`const` prevents reassignment of the `user` identifier. It does not mean every property of the object is frozen. Почему так происходит internally, будет объяснено в главе про References. Сейчас достаточно понимать поведение: object property can be updated.
+`const` запрещает повторное присваивание имени `user`. Он не означает, что каждое свойство объекта заморожено. Почему так происходит внутри, будет объяснено в главе про ссылки. Сейчас достаточно понимать поведение: свойство объекта можно изменить.
 
-### Adding properties
+### Добавление свойств
 
-Object can be extended with new information.
+Объект можно дополнить новой информацией.
 
 ```javascript
 const user = {
@@ -433,11 +468,11 @@ console.log(user.role);
 
 Это полезно, когда информация появляется по шагам: часть данных известна сразу, часть — после ответа сервиса.
 
-Но adding properties should be used carefully. В test code чаще лучше создавать object with expected structure explicitly, чтобы reader сразу видел required shape.
+Но добавлять свойства нужно осторожно. В коде тестов чаще лучше создавать объект с ожидаемой структурой явно, чтобы читатель сразу видел нужную форму.
 
-### Deleting properties
+### Удаление свойств
 
-Property can be removed from object:
+Свойство можно удалить из объекта:
 
 ```javascript
 const user = {
@@ -457,13 +492,13 @@ console.log(user.temporaryCode);
 обращение к удалённому свойству даёт undefined
 ```
 
-At a high level, `delete` removes property from object. Это не глава про memory cleanup and Garbage Collector. Garbage Collector will be studied later.
+На высоком уровне `delete` удаляет свойство из объекта. Это не глава про очистку памяти и сборщик мусора — он будет изучаться позже.
 
-Что information is grouped together right now?
+Какая информация сгруппирована прямо сейчас?
 
-### Nested objects
+### Вложенные объекты
 
-Sometimes one grouped entity contains another grouped entity.
+Иногда одна сгруппированная сущность содержит внутри другую.
 
 ```javascript
 const user = {
@@ -488,15 +523,22 @@ user
 
 Какая информация сгруппирована прямо сейчас?
 
-Reading nested property:
+Чтение вложенного свойства:
 
 ```javascript
 console.log(user.profile.firstName);
 ```
 
-Концептуально:
+Концептуально это два шага чтения: сначала из `user` берётся свойство `profile`
+(само объектное значение), затем из него — `firstName`.
 
-Nested objects are common in API responses:
+```text
+user . profile . firstName
+└──┘   └─────┘   └───────┘
+объект  объект    строка
+```
+
+Вложенные объекты часто встречаются в ответах API:
 
 ```json
 {
@@ -508,17 +550,28 @@ Nested objects are common in API responses:
 }
 ```
 
-В этой главе nested object is only a grouping model. References and deeper internal поведение will be studied later.
+В этой главе вложенный объект — только модель группировки. Ссылки и более глубокое внутреннее поведение будут изучаться позже.
 
-### Arrays and functions are also objects
+### Массивы и функции — тоже объекты
 
-JavaScript has many object значения.
+В JavaScript много разновидностей объектных значений.
 
-Array is an object-like value for ordered collections. Functions are callable object значения. Date and other built-in objects provide specialized поведение.
+Массив — объектное значение для упорядоченных коллекций. Функции — вызываемые объектные значения. Даты и другие встроенные объекты дают специализированное поведение.
 
-Подробно arrays, functions, Date, prototypes and built-in object поведение will be studied later. Сейчас важно не перегружать главу: current object model is about grouping related information with properties.
+Подробно массивы, функции, даты, прототипы и поведение встроенных объектов будут изучаться позже. Сейчас важно не перегружать главу: текущая модель объекта — про группировку связанной информации в свойствах.
 
-Диаграмма object hierarchy:
+Схема разновидностей объектов:
+
+```text
+объектное значение
+├── обычный объект   { id: 1 }        группировка свойств
+├── массив           [1, 2, 3]        упорядоченная коллекция
+├── функция          () => {}         вызываемый объект
+└── встроенные       new Date()       специализированное поведение
+```
+
+Все четыре строки — объектные значения: они живут в куче и доступны по ссылке.
+Различается только поведение, которое к ним добавлено.
 
 ---
 
@@ -536,11 +589,11 @@ flowchart TD
 
 ## Внутренний механизм
 
-Эта глава не объясняет References, Stack & Heap или Garbage Collector. Но нужно понять conceptual internal mechanism: что engine делает с grouped information.
+Эта глава не объясняет ссылки, стек с кучей и сборку мусора. Но нужно понять концептуальный внутренний механизм: что движок делает со сгруппированной информацией.
 
-### Object creation
+### Создание объекта
 
-Когда engine выполняет object literal:
+Когда движок выполняет литерал объекта:
 
 ```javascript
 const user = {
@@ -549,17 +602,34 @@ const user = {
 };
 ```
 
-Он создает Object value with properties.
+Он создаёт объектное значение со свойствами.
 
-Object lifecycle:
+Время жизни объекта:
 
-### Property lookup inside object
+```text
+1. вычисляются значения свойств: 'Anna', 30
+2. создаётся объект с двумя свойствами
+3. имя user связывается с этим объектом
+4. объект живёт, пока на него ссылается хотя бы одно имя
+```
 
-Когда code reads `user.firstName`, engine does not read all properties. It looks for one property name.
+### Поиск свойства внутри объекта
+
+Когда код читает `user.firstName`, движок не просматривает все свойства. Он ищет одно имя.
 
 Полный процесс поиска:
 
-This is the mechanism behind many beginner errors:
+```text
+1. по имени user найти объект
+2. в объекте найти свойство с именем firstName
+3. свойство есть  → вернуть его значение
+4. свойства нет   → вернуть undefined, без ошибки
+```
+
+Отсутствующее свойство не ошибка — в отличие от отсутствующего имени
+переменной.
+
+Это механизм, стоящий за множеством ошибок новичков:
 
 ```javascript
 const user = {
@@ -569,11 +639,11 @@ const user = {
 console.log(user.firstname);
 ```
 
-`firstName` and `firstname` are different property names.
+`firstName` и `firstname` — разные имена свойств.
 
-### Updating grouped information
+### Обновление сгруппированной информации
 
-When property is updated, object still represents the same conceptual entity.
+Когда свойство обновляется, объект по-прежнему представляет ту же смысловую сущность.
 
 После:
 
@@ -597,47 +667,49 @@ but one property value changed.
 объект    →  структура из связанных значений
 ```
 
-Primitive chapter answered:
+Глава про примитивы отвечала на вопрос:
 
 ```text
 What kind of single value is this?
 ```
 
-Object chapter отвечает:
+Глава про объекты отвечает:
 
 ```text
 What related information belongs together?
 ```
 
-### Переход к References
+### Переход к ссылкам
 
-Object creates the next natural question.
+Объект порождает следующий естественный вопрос.
 
-But if Object value can contain multiple properties:
+Если объектное значение может содержать несколько свойств, то что именно хранит
+переменная — сам объект или способ его найти?
 
-This is the bridge to References:
+Это мост к теме ссылок: две переменные могут указывать на один и тот же объект, и
+тогда изменение через одну будет видно через другую.
 
-References будут изучены в следующей главе. Эта глава намеренно останавливается до этого механизма.
+Ссылки будут изучены в следующей главе. Эта глава намеренно останавливается перед этим механизмом.
 
 ---
 
 ## Ментальная модель
 
-### Folder with documents
+### Папка с документами
 
-Object похож на folder with documents.
+Объект похож на папку с документами.
 
-Каждый document имеет name и content. Вместе они относятся к одной folder.
+У каждого документа есть имя и содержимое. Вместе они относятся к одной папке.
 
-### Profile card
+### Карточка профиля
 
-Object can be seen as a profile card:
+Объект можно представить как карточку профиля:
 
-Это особенно близко к API and UI testing. UI often displays profile card; API often returns profile object.
+Это особенно близко к тестированию интерфейса и API. Интерфейс часто показывает карточку профиля, API часто возвращает объект профиля.
 
-### Dictionary
+### Словарь
 
-Object also works like dictionary:
+Объект работает и как словарь:
 
 ```text
 Key        Value
@@ -648,19 +720,26 @@ age       30
 isActive  true
 ```
 
-Property name is like key. Property value is like dictionary value.
+Имя свойства похоже на ключ. Значение свойства — на перевод слова.
 
-### Database record
+### Запись в базе данных
 
-Object can represent one record:
+Объект может представлять одну запись — строку таблицы, элемент списка, ответ на
+один запрос:
 
-In tests, this mental model helps compare expected object with API response or database row.
+```javascript
+const workItem = { id: 'T-1', title: 'Отчёт', status: 'NEW' };
+```
 
-### Temporary grouping
+В тестах эта модель помогает сравнивать ожидаемый объект с ответом API или строкой базы данных.
 
-Object can also be temporary workspace:
+### Временная группировка
 
-This is useful in helpers:
+Объект может быть и временным рабочим местом: он собирает вместе данные, которые
+нужны одному шагу, и дальше не используется.
+
+Это полезно во вспомогательных функциях — вместо четырёх параметров функция
+принимает один объект, и вызов становится читаемым:
 
 ```javascript
 const loginData = {
@@ -669,7 +748,7 @@ const loginData = {
 };
 ```
 
-Object отвечает:
+Объект отвечает:
 
 ```text
 Which pieces of information should travel together?
@@ -698,7 +777,7 @@ node examples/01-javascript/chapter-12/06-nested-object.js
 
 ### 01-create-object.js
 
-Этот пример показывает creation of one Object value:
+Этот пример показывает создание одного объектного значения:
 
 ```javascript
 const user = {
@@ -711,7 +790,7 @@ const user = {
 console.log(user);
 ```
 
-Что information is grouped together right now?
+Какая информация сгруппирована прямо сейчас?
 
 ```text
 All basic user profile information.
@@ -719,46 +798,46 @@ All basic user profile information.
 
 ### 02-read-properties.js
 
-Этот пример показывает reading properties:
+Этот пример показывает чтение свойств:
 
 ```javascript
 console.log(user.firstName);
 console.log(user.age);
 ```
 
-Engine reads one property value at a time.
+Движок читает по одному значению свойства за раз.
 
 ### 03-update-properties.js
 
-Этот пример показывает updating existing properties:
+Этот пример показывает обновление существующих свойств:
 
 ```javascript
 user.age = 31;
 user.isActive = false;
 ```
 
-Object still represents the same user, but grouped information changed.
+Объект по-прежнему представляет того же пользователя, но сгруппированная информация изменилась.
 
 ### 04-add-properties.js
 
-Этот пример показывает adding properties:
+Этот пример показывает добавление свойств:
 
 ```javascript
 user.role = 'admin';
 user.deletedAt = null;
 ```
 
-Object now contains more information about the same entity.
+Теперь объект содержит больше информации о той же сущности.
 
 ### 05-delete-properties.js
 
-Этот пример показывает удаление property на высоком уровне:
+Этот пример показывает удаление свойства на высоком уровне:
 
 ```javascript
 delete user.temporaryCode;
 ```
 
-Property больше не принадлежит object.
+Свойство больше не принадлежит объекту.
 
 ### 06-nested-object.js
 
@@ -776,7 +855,7 @@ const user = {
 };
 ```
 
-Object содержит grouped information, а некоторые properties сами являются grouped objects.
+Объект содержит сгруппированную информацию, а некоторые свойства сами являются сгруппированными объектами.
 
 ---
 
@@ -784,11 +863,11 @@ Object содержит grouped information, а некоторые properties с
 
 ### `Object` и `object` означают одно и то же?
 
-В тексте курса `Object` чаще всего означает JavaScript Object Type. В обычном тексте `object` может означать конкретное object value.
+В тексте курса «Объект» с большой буквы означает тип объекта в JavaScript. В обычном тексте «объект» может означать конкретное объектное значение.
 
 ### Почему `const user = {}` позволяет менять `user.age`?
 
-`const` защищает identifier от reassignment.
+`const` защищает имя от повторного присваивания.
 
 ```javascript
 const user = {
@@ -798,15 +877,15 @@ const user = {
 user.age = 31;
 ```
 
-Этот код обновляет property внутри object. Почему это возможно internally, будет объяснено в главе про References. Сейчас важно запомнить observable поведение: `const` не означает immutable object.
+Этот код обновляет свойство внутри объекта. Почему это возможно внутри, будет объяснено в главе про ссылки. Сейчас важно запомнить наблюдаемое поведение: `const` не делает объект неизменяемым.
 
-### Чем object отличается от JSON?
+### Чем объект отличается от JSON?
 
-JavaScript object — это runtime value внутри JavaScript-программы. JSON — это текстовый формат данных, который часто используется в API-коммуникации.
+Объект JavaScript — это значение внутри работающей программы. JSON — текстовый формат данных, который часто используется при обмене через API.
 
-JSON will be studied later in API testing. Сейчас достаточно понимать, что API responses often look like object structures, but JSON itself is text before it is parsed.
+JSON будет изучаться позже, вместе с тестированием API. Сейчас достаточно понимать, что ответы API часто выглядят как структуры объектов, но сам JSON до разбора является текстом.
 
-### Что произойдет при чтении отсутствующего property?
+### Что произойдёт при чтении отсутствующего свойства?
 
 На этом уровне:
 
@@ -824,27 +903,27 @@ console.log(user.role);
 undefined
 ```
 
-Engine did not find property name `role` inside object.
+Движок не нашёл имя свойства `role` внутри объекта.
 
-### Arrays and functions are objects too?
+### Массивы и функции — тоже объекты?
 
-Yes, arrays и functions относятся к object значениям в JavaScript. But arrays are for ordered collections, and functions are callable значения. Dedicated chapters will explain them later.
+Да, массивы и функции относятся к объектным значениям. Но массивы нужны для упорядоченных коллекций, а функции — вызываемые значения. Отдельные главы объяснят их позже.
 
 ---
 
 ## Распространённые мифы
 
-### Миф: Object is just many variables
+### Миф: объект — это просто много переменных
 
 Реальность:
 
-Object is one value that groups related properties.
+Объект — одно значение, которое группирует связанные свойства.
 
-### Миф: `const` makes object immutable
+### Миф: `const` делает объект неизменяемым
 
 Реальность:
 
-`const` prevents reassignment of identifier, not property updates.
+`const` запрещает повторное присваивание имени, а не изменение свойств.
 
 ```javascript
 const user = {
@@ -856,23 +935,23 @@ user.age = 31; // works
 
 Техники неизменяемости объектов существуют, но относятся к будущим главам.
 
-### Миф: Missing property means object is broken
+### Миф: отсутствующее свойство означает, что объект сломан
 
 Реальность:
 
-Missing property means requested property name was not found.
+Отсутствующее свойство означает, что запрошенное имя не найдено.
 
-### Миф: Nested object must be understood through Stack & Heap immediately
+### Миф: вложенный объект нужно сразу объяснять через стек и кучу
 
 Реальность:
 
-For this chapter, nested object is simply grouped information inside grouped information. Stack & Heap and References will come later.
+Для этой главы вложенный объект — просто сгруппированная информация внутри сгруппированной информации. Стек, куча и ссылки придут позже.
 
 ---
 
 ## Распространённые ошибки
 
-### Ошибка 1. Хранить связанную информацию в отдельных variables
+### Ошибка 1. Хранить связанную информацию в отдельных переменных
 
 Плохо:
 
@@ -900,7 +979,7 @@ const user = {
 Object makes relationship explicit.
 ```
 
-### Ошибка 2. Путать property name with value
+### Ошибка 2. Путать имя свойства и его значение
 
 ```javascript
 const user = {
@@ -910,7 +989,15 @@ const user = {
 
 Здесь:
 
-### Ошибка 3. Ошибиться в регистре property name
+```text
+role     — имя свойства, по нему ищут значение
+'admin'  — само значение, оно хранится под этим именем
+```
+
+Путаница видна в коде вида `user.admin`: так ищут свойство с именем `admin`,
+которого в объекте нет, и получают `undefined`.
+
+### Ошибка 3. Ошибиться в регистре имени свойства
 
 ```javascript
 const user = {
@@ -926,9 +1013,9 @@ console.log(user.firstname);
 undefined
 ```
 
-`firstName` and `firstname` are different property names.
+`firstName` и `firstname` — разные имена свойств.
 
-### Ошибка 4. Добавлять properties неявно и усложнять shape
+### Ошибка 4. Добавлять свойства неявно и усложнять структуру
 
 ```javascript
 const user = {
@@ -940,7 +1027,7 @@ user.permissions = ['read'];
 user.lastLoginAt = null;
 ```
 
-Иногда это нормально. Но в тестах expected object часто понятнее, когда shape виден при создании:
+Иногда это нормально. Но в тестах ожидаемый объект часто понятнее, когда его структура видна при создании:
 
 ```javascript
 const expectedUser = {
@@ -951,25 +1038,25 @@ const expectedUser = {
 };
 ```
 
-Arrays will be studied later. Here the point is object shape readability.
+Массивы будут изучаться позже. Здесь важна читаемость структуры объекта.
 
-### Ошибка 5. Объяснять object через references слишком рано
+### Ошибка 5. Объяснять объект через ссылки слишком рано
 
-References are important, but not the first question. First understand what Object does conceptually:
+Ссылки важны, но это не первый вопрос. Сначала нужно понять, что объект делает концептуально:
 
 ```text
 Object groups related information.
 ```
 
-Then next chapter will explain how JavaScript works with object значения internally.
+Затем следующая глава объяснит, как JavaScript работает с объектными значениями внутри.
 
 ---
 
 ## Практическое использование
 
-Objects appear whenever code needs to represent an entity.
+Объекты появляются всюду, где коду нужно представить сущность.
 
-### User profile
+### Профиль пользователя
 
 ```javascript
 const user = {
@@ -986,7 +1073,7 @@ const user = {
 Information about one user.
 ```
 
-### Test configuration
+### Конфигурация теста
 
 ```javascript
 const config = {
@@ -996,7 +1083,7 @@ const config = {
 };
 ```
 
-Object groups settings that should be read together.
+Объект группирует настройки, которые читаются вместе.
 
 ### Ожидаемый API-результат
 
@@ -1009,19 +1096,19 @@ const expectedUser = {
 };
 ```
 
-Object makes expected structure visible.
+Объект делает ожидаемую структуру видимой.
 
-### Complete object overview
+### Полный обзор объекта
 
 ---
 
 ## Использование в Automation QA
 
-Automation QA code works with objects постоянно.
+Код автоматизации тестов работает с объектами постоянно.
 
-### API response objects
+### Объекты ответа API
 
-API response often describes one entity:
+Ответ API часто описывает одну сущность:
 
 ```javascript
 const responseUser = {
@@ -1040,9 +1127,9 @@ user
 └── isActive: true
 ```
 
-### JSON objects
+### Объекты JSON
 
-REST API often sends JSON that looks like object structure:
+REST API часто присылает JSON, который выглядит как структура объекта:
 
 ```json
 {
@@ -1052,11 +1139,11 @@ REST API often sends JSON that looks like object structure:
 }
 ```
 
-After parsing, test code usually works with a JavaScript object value. JSON parsing details will be studied later in API testing.
+После разбора код теста обычно работает с объектным значением JavaScript. Детали разбора JSON будут изучаться позже, вместе с тестированием API.
 
-### User profile objects
+### Объекты профиля пользователя
 
-UI tests often compare displayed profile with expected object:
+Тесты интерфейса часто сравнивают показанный профиль с ожидаемым объектом:
 
 ```javascript
 const expectedProfile = {
@@ -1066,11 +1153,11 @@ const expectedProfile = {
 };
 ```
 
-This is easier to maintain than separate expected variables.
+Такой код поддерживать проще, чем набор отдельных ожидаемых переменных.
 
-### Configuration objects
+### Объекты конфигурации
 
-Test frameworks use objects for configuration:
+Тестовые фреймворки используют объекты для настройки:
 
 ```javascript
 const browserConfig = {
@@ -1080,9 +1167,18 @@ const browserConfig = {
 };
 ```
 
-Even before learning Playwright configuration deeply, the shape is understandable:
+Даже до подробного изучения настроек Playwright форма понятна:
 
-### Test data objects
+```text
+один объект — одна настройка запуска
+имя свойства  — что настраиваем
+значение      — как именно
+```
+
+Такую настройку можно передать одним аргументом и прочитать целиком, не
+разбирая её на отдельные переменные.
+
+### Объекты тестовых данных
 
 ```javascript
 const registrationData = {
@@ -1092,13 +1188,13 @@ const registrationData = {
 };
 ```
 
-Object keeps related вход значения together.
+Объект держит связанные входные значения вместе.
 
-### Expected vs actual object structure
+### Ожидаемая и фактическая структура объекта
 
-Many test failures are not about one wrong primitive value. They are about wrong structure.
+Многие падения тестов связаны не с одним неверным примитивным значением, а с неверной структурой.
 
-The tester must ask:
+Тестировщик должен спросить себя:
 
 ```text
 Which properties should this object have?
@@ -1106,23 +1202,25 @@ Which values should be under these property names?
 Which nested objects are expected?
 ```
 
-That is object thinking.
+Это и есть мышление в терминах объектов.
 
 ---
 
 ## Итоги
 
-Primitive значения represent one indivisible value.
+Примитивные значения представляют одно неделимое значение.
 
-Object значения group multiple related значения under one entity.
+Объектные значения группируют несколько связанных значений в одну сущность.
 
-Object содержит properties:
+Объект содержит свойства — пары «имя и значение».
 
-С object можно выполнять базовые операции:
+С объектом можно выполнять базовые операции: читать свойство, добавлять новое,
+изменять существующее, удалять.
 
-Nested objects представляют grouped information внутри grouped information:
+Вложенные объекты представляют сгруппированную информацию внутри сгруппированной
+информации: `user.profile.firstName` — три уровня одной записи.
 
-Arrays и functions тоже относятся к object значения, но их детали будут разобраны в отдельных главах.
+Массивы и функции тоже относятся к объектным значениям, но их детали будут разобраны в отдельных главах.
 
 Следующая глава отвечает на следующий естественный вопрос:
 
@@ -1131,24 +1229,24 @@ If objects contain multiple values,
 how does JavaScript work with them internally?
 ```
 
-That is the topic of References.
+Это тема главы про ссылки.
 
 ---
 
 ## Что нужно запомнить
 
-* Object is a JavaScript value.
-* Object groups related information.
-* Property consists of property name and property value.
-* Property names are used to read information from object.
-* Missing property access produces `undefined` at this level.
-* Updating property changes grouped information.
-* Adding property expands object shape.
-* Deleting property removes information from object at a high level.
-* Nested object means grouped information inside grouped information.
-* `const` does not make object properties immutable.
-* Arrays and functions are object значения, but they will be studied separately.
-* Do not explain objects through References before understanding why objects exist.
+* Объект — это значение JavaScript.
+* Объект группирует связанную информацию.
+* Свойство состоит из имени и значения.
+* Имена свойств используют, чтобы читать информацию из объекта.
+* Обращение к отсутствующему свойству на этом уровне даёт `undefined`.
+* Обновление свойства меняет сгруппированную информацию.
+* Добавление свойства расширяет структуру объекта.
+* Удаление свойства убирает информацию из объекта на высоком уровне.
+* Вложенный объект — это сгруппированная информация внутри сгруппированной информации.
+* `const` не делает свойства объекта неизменяемыми.
+* Массивы и функции — объектные значения, но они будут изучаться отдельно.
+* Не объясняйте объекты через ссылки раньше, чем станет понятно, зачем объекты нужны.
 
 ---
 
@@ -1156,16 +1254,29 @@ That is the topic of References.
 
 Ответьте без запуска кода.
 
-1. Почему four separate primitive значения may be worse than one object?
-2. Что такое property?
-3. Чем property name отличается от property value?
-4. Что произойдет при чтении missing property?
+1. Почему четыре отдельных примитивных значения могут быть хуже одного объекта?
+2. Что такое свойство?
+3. Чем имя свойства отличается от его значения?
+4. Что произойдёт при чтении отсутствующего свойства?
 5. Что меняется после `user.age = 31`?
 6. Что делает `delete user.temporaryCode` на базовом уровне?
-7. Почему nested object полезен для API response?
-8. Почему `const user = {}` does not make object immutable?
-9. Какие QA-сценарии чаще всего используют objects?
-10. Какой вопрос будет отвечать следующая глава про References?
+7. Почему вложенный объект полезен для ответа API?
+8. Почему `const user = {}` не делает объект неизменяемым?
+9. Какие сценарии автоматизации чаще всего используют объекты?
+10. На какой вопрос будет отвечать следующая глава про ссылки?
+
+### Ответы
+
+1. Четыре переменные об одной сущности легко рассинхронизировать: одну обновили, другую забыли. Объект делает их одним значением — его целиком передают, возвращают и сравнивают.
+2. Пара «имя — значение» внутри объекта. Имя свойства существует только внутри этого объекта.
+3. Имя свойства — способ найти значение внутри объекта, значение — сами данные. `user.role` — обращение по имени `role`, а `'admin'` — то, что под ним лежит.
+4. Вернётся `undefined`, ошибки не будет. Отсутствующее свойство — обычный результат, в отличие от отсутствующего имени переменной.
+5. Если свойство `age` было, его значение заменяется; если не было, оно добавляется в объект. Само имя `user` при этом не меняется — оно по-прежнему ведёт к тому же объекту.
+6. Удаляет свойство из объекта. После этого чтение по тому же имени даёт `undefined`, как будто свойства никогда не было.
+7. Ответ API сам по себе вложенный: у заказа есть покупатель, у покупателя — адрес. Вложенный объект сохраняет эту структуру, вместо того чтобы разворачивать её в плоский набор имён.
+8. `const` запрещает присвоить переменной другой объект, но не запрещает менять свойства этого объекта. Запрет относится к имени, а не к содержимому.
+9. Тело запроса, ответ API, тестовые данные, настройки запуска, описание ожидаемого результата — почти всё, кроме отдельных чисел и строк.
+10. Что на самом деле хранит имя, когда речь идёт об объекте, и почему изменение через одно имя видно через другое.
 
 ---
 
@@ -1177,9 +1288,9 @@ That is the topic of References.
 practice/01-javascript/12-object-type.md
 ```
 
-Выполняйте задания после чтения главы и запуска examples.
+Выполняйте задания после чтения главы и запуска примеров.
 
-Сначала отвечайте без решений. Цель практики - научиться видеть object shape and grouped information, а не просто повторить syntax.
+Сначала отвечайте без решений. Цель практики — научиться видеть структуру объекта и сгруппированную информацию, а не просто повторить синтаксис.
 
 ---
 
@@ -1191,4 +1302,4 @@ practice/01-javascript/12-object-type.md
 solutions/01-javascript/12-object-type.md
 ```
 
-Читайте решения после самостоятельной попытки. В этой теме важно сравнивать не только final answer, но и reasoning: какая информация сгруппирована, какие property names используются и где object shape отличается от ожидания.
+Читайте решения после самостоятельной попытки. В этой теме важно сравнивать не только итоговый ответ, но и рассуждение: какая информация сгруппирована, какие имена свойств используются и где структура объекта отличается от ожидания.

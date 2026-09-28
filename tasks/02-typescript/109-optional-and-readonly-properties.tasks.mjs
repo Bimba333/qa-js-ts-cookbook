@@ -1,7 +1,7 @@
 export default [
   {
     id: 'ts-109-absent-is-not-undefined',
-    title: 'Отсутствие свойства и значение undefined',
+    title: 'Отсутствие свойства и значение `undefined`',
     difficulty: 'medium',
     lang: 'ts',
     prompt:
@@ -21,7 +21,7 @@ function freezeConfig<T extends object>(config: T): Readonly<T> {
 }`,
     hints: [
       'Наличие ключа проверяется отдельно от его значения.',
-      'Object.hasOwn отвечает именно на вопрос о наличии.',
+      '`Object.hasOwn` отвечает именно на вопрос о наличии.',
       'Заморозка должна касаться копии, а не исходного объекта.'
     ],
     tests: [
@@ -30,11 +30,11 @@ function freezeConfig<T extends object>(config: T): Readonly<T> {
         code: `expect(describeField({}, 'title')).toBe('отсутствует');`
       },
       {
-        name: 'ключ есть, значение undefined',
+        name: 'ключ есть, значение `undefined`',
         code: `expect(describeField({ title: undefined }, 'title')).toBe('пусто');`
       },
       {
-        name: 'null, ноль и пустая строка — это значения',
+        name: '`null`, ноль и пустая строка — это значения',
         code: `expect(describeField({ title: null }, 'title')).toBe('есть значение');
 expect(describeField({ retries: 0 }, 'retries')).toBe('есть значение');
 expect(describeField({ title: '' }, 'title')).toBe('есть значение');`

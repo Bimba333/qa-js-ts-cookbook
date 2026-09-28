@@ -15,7 +15,7 @@ export default [
 }`,
     hints: [
       'Запись T[K] — это тип значения поля K у типа T.',
-      'Отсутствующее поле и явный undefined выглядят одинаково.',
+      'Отсутствующее поле и явный `undefined` выглядят одинаково.',
       'Значения нельзя преобразовывать: число должно остаться числом.'
     ],
     tests: [
@@ -35,7 +35,7 @@ expect(values).toEqual([0, 2]);
 expect(typeof values[0]).toBe('number');`
       },
       {
-        name: 'значение null сохраняется',
+        name: 'значение `null` сохраняется',
         code: `expect(pluck([{ note: null }], 'note')).toEqual([null]);`
       },
       {

@@ -21,7 +21,7 @@ export default [
 }`,
     hints: [
       'Уровень и сообщение — обязательные поля, остальное приходит из контекста.',
-      'Циклическую ссылку обнаруживает JSON.stringify — он бросает ошибку.',
+      'Циклическую ссылку обнаруживает `JSON.stringify` — он бросает ошибку.',
       'Замена секретов выполняется по значению, а не по имени поля.'
     ],
     tests: [
@@ -56,7 +56,7 @@ expect(masked[0].password).toBe('***');
 expect(masked[0].note).toBe('ok');`
       },
       {
-        name: 'undefined в запись не попадает',
+        name: '`undefined` в запись не попадает',
         code: `const sparse = [];
 const sparseLogger = createLogger(record => sparse.push(record), { testId: 'T-4', secrets: [] });
 sparseLogger.info('шаг', { known: 1, unknown: undefined });

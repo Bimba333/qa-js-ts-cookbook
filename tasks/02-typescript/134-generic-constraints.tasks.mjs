@@ -12,7 +12,7 @@ export default [
   return undefined;
 }`,
     hints: [
-      'Ограничение extends { length: number } допускает и строки, и массивы.',
+      'Ограничение `extends { length: number }` допускает и строки, и массивы.',
       'Возвращать нужно сам элемент, а не его длину.',
       'При равенстве длины первый найденный не заменяется.'
     ],
@@ -31,7 +31,7 @@ expect(longest([[1], target, [1, 2]])).toBe(target);`
         code: `expect(longest(['ab', 'cd'])).toBe('ab');`
       },
       {
-        name: 'пустой массив даёт undefined',
+        name: 'пустой массив даёт `undefined`',
         code: `expect(longest([])).toBeUndefined();`
       },
       {
@@ -65,7 +65,7 @@ expect(longest([[1], target, [1, 2]])).toBe(target);`
   return { ...defaults, ...overrides };
 }`,
     hints: [
-      'Распространение объекта копирует и явные undefined — это и есть ловушка.',
+      'Раскрытие объекта копирует и явные `undefined` — это и есть ловушка.',
       'Перекрывать стоит поэлементно, с проверкой значения.',
       'Ни один из аргументов не должен измениться.'
     ],
@@ -76,12 +76,12 @@ expect(longest([[1], target, [1, 2]])).toBe(target);`
   .toEqual({ retries: 3, timeout: 5000 });`
       },
       {
-        name: 'явный undefined не затирает значение по умолчанию',
+        name: 'явный `undefined` не затирает значение по умолчанию',
         code: `expect(withDefaults({ retries: 1 }, { retries: undefined }))
   .toEqual({ retries: 1 });`
       },
       {
-        name: 'значение false и 0 перекрывают',
+        name: 'значения `false` и `0` перекрывают',
         code: `expect(withDefaults({ debug: true, retries: 3 }, { debug: false, retries: 0 }))
   .toEqual({ debug: false, retries: 0 });`
       },

@@ -42,7 +42,7 @@ expect(result.filtered.every(status => status === 'DONE')).toBe(true);`
 expect(fields.every(field => field in result.sample)).toBe(true);`
       },
       {
-        name: 'строковые поля приходят строками, а не undefined',
+        name: 'строковые поля приходят строками, а не `undefined`',
         code: `expect(typeof result.sample.creatorTestId).toBe('string');
 expect(typeof result.sample.testRunId).toBe('string');`
       },

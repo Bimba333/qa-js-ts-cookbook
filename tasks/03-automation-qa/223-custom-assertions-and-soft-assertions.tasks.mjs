@@ -18,12 +18,12 @@ export default [
 }`,
     hints: [
       'Мягкая проверка копит неудачи, а не бросает исключение сразу.',
-      'Сообщение собирается только в момент verify.',
+      'Сообщение собирается только в момент `verify`.',
       'Успешная проверка в список не попадает.'
     ],
     tests: [
       {
-        name: 'без неудач verify молчит',
+        name: 'без неудач `verify` молчит',
         code: `const soft = createSoftAssert();
 soft.check('первая', true);
 soft.check('вторая', true);
@@ -39,7 +39,7 @@ reached = true;
 expect(reached).toBe(true);`
       },
       {
-        name: 'verify сообщает обо всех неудачах',
+        name: '`verify` сообщает обо всех неудачах',
         code: `const soft = createSoftAssert();
 soft.check('первая', false);
 soft.check('вторая', true);

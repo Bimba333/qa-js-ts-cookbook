@@ -1,4 +1,4 @@
-# push() and pop()
+# `push()` и `pop()`
 
 ## Связь с предыдущей главой
 
@@ -160,9 +160,9 @@ const users = ['Anna', 'Kate'];
 
 ## Теория
 
-`push()` добавляет один или несколько elements в конец array.
+`push()` добавляет один или несколько элементов в конец массива.
 
-В этой главе мы фокусируемся на одном element за раз:
+В этой главе мы сосредоточены на одном элементе за раз:
 
 ```javascript
 const users = ['Anna'];
@@ -170,17 +170,19 @@ const users = ['Anna'];
 users.push('Kate');
 ```
 
-До:
+```text
+до:     ['Anna']              length 1
+после:  ['Anna', 'Kate']      length 2
+```
 
-После:
+Важно: `push()` изменяет **существующий** массив, а не создаёт новый. Все имена,
+указывающие на этот массив, увидят новый элемент.
 
-Важно:
+Неизменяемость мы пока не обсуждаем.
 
-We are not discussing immutability yet.
+### Зачем нужен `push()`
 
-### Why `push()` exists
-
-`push()` exists because arrays often need to grow after creation.
+`push()` существует потому, что массивам часто нужно расти после создания.
 
 Примеры:
 
@@ -199,7 +201,7 @@ How do we add a new last element?
 
 ### `pop()`
 
-`pop()` removes the last element from an array and returns removed value.
+`pop()` удаляет последний элемент массива и возвращает удалённое значение.
 
 ```javascript
 const users = ['Anna', 'Kate'];
@@ -209,7 +211,15 @@ const removedUser = users.pop();
 
 До:
 
+```text
+['Anna', 'Kate']
+```
+
 После:
+
+```text
+['Anna']
+```
 
 Возвращаемое значение:
 
@@ -219,9 +229,14 @@ const removedUser = users.pop();
 
 Важно:
 
-### Why `pop()` exists
+```text
+исходный массив изменён,
+а возвращён удалённый элемент, а не новый массив
+```
 
-`pop()` exists because sometimes last element should be removed.
+### Зачем нужен `pop()`
+
+`pop()` существует потому, что иногда последний элемент нужно убрать.
 
 Примеры:
 
@@ -238,23 +253,29 @@ remove last temporary value
 How do we remove and get the last element?
 ```
 
-### Length as consequence
+### Длина как следствие
 
-`push()` adds a new element to the end.
+`push()` добавляет новый элемент в конец.
 
-Because the array now contains one more element, `length` increases.
+Поскольку теперь в массиве на один элемент больше, `length` увеличивается.
 
-`pop()` removes the last element.
+`pop()` удаляет последний элемент.
 
-Because the array now contains one fewer element, `length` decreases.
+Поскольку теперь в массиве на один элемент меньше, `length` уменьшается.
 
-### Stack intuition
+### Интуиция о стеке
 
-High-level only:
+Только на высоком уровне: и `push()`, и `pop()` работают с одним и тем же концом
+массива — последним.
 
-This is similar to stack of plates:
+```text
+push  →  добавить в конец
+pop   →  забрать с конца
+```
 
-We do not study formal Stack data structure here. This is only intuition for adding/removing from the end.
+Это похоже на стопку тарелок: берут и кладут сверху.
+
+Формальную структуру данных «стек» мы здесь не изучаем. Это только интуиция для добавления и удаления с конца.
 
 ---
 
@@ -273,13 +294,13 @@ flowchart TD
 
 ## Внутренний механизм
 
-When JavaScript executes:
+Когда JavaScript выполняет:
 
 ```javascript
 users.push('Kate');
 ```
 
-Engine has:
+У движка есть:
 
 ```text
 array: users
@@ -290,15 +311,16 @@ new value: "Kate"
 
 Например: `plan.push('logout')` добавляет элемент и возвращает новую длину массива.
 
-When JavaScript executes:
+Когда JavaScript выполняет:
 
 ```javascript
 const removed = users.pop();
 ```
 
-Engine:
+Движок читает последний элемент, удаляет его из массива, уменьшает `length` на
+единицу и возвращает удалённое значение.
 
-If array is empty:
+Если массив пуст:
 
 ```javascript
 const items = [];
@@ -307,25 +329,21 @@ const removed = items.pop();
 
 Результат: `pop()` возвращает удалённый элемент, а массив становится короче на единицу.
 
-No element existed to remove.
+Удалять было нечего.
 
 ---
 
 ## Ментальная модель
 
-Growing bookshelf:
+Растущая книжная полка, стопка тарелок и поезд с прицепленным последним
+вагоном — все три аналогии описывают одно: изменения происходят только на одном
+конце.
 
-Stack of plates:
+Поезд, у которого отцепили последний вагон, и блокнот с новой последней
+страницей — обе аналогии про один конец списка.
 
-Train gaining last car:
-
-Train losing last car:
-
-Notebook with new last page:
-
-Expandable list:
-
-Центральная модель:
+Центральная модель: `push()` и `pop()` работают только с концом массива.
+Именно поэтому они не сдвигают остальные элементы и не меняют их индексы.
 
 ---
 
@@ -343,7 +361,7 @@ examples/01-javascript/chapter-45/
 node examples/01-javascript/chapter-45/01-push.js
 ```
 
-### Пример 1. push
+### Пример 1. `push()`
 
 Файл:
 
@@ -351,9 +369,9 @@ node examples/01-javascript/chapter-45/01-push.js
 examples/01-javascript/chapter-45/01-push.js
 ```
 
-Показывает adding new last element.
+Показывает добавление нового последнего элемента.
 
-### Пример 2. pop
+### Пример 2. `pop()`
 
 Файл:
 
@@ -361,9 +379,9 @@ examples/01-javascript/chapter-45/01-push.js
 examples/01-javascript/chapter-45/02-pop.js
 ```
 
-Показывает removing last element.
+Показывает удаление последнего элемента.
 
-### Пример 3. length
+### Пример 3. Длина
 
 Файл:
 
@@ -371,7 +389,7 @@ examples/01-javascript/chapter-45/02-pop.js
 examples/01-javascript/chapter-45/03-length.js
 ```
 
-Показывает how `length` reflects the current number of elements.
+Показывает, как `length` отражает текущее количество элементов.
 
 ### Пример 4. Возвращаемое значение
 
@@ -381,7 +399,7 @@ examples/01-javascript/chapter-45/03-length.js
 examples/01-javascript/chapter-45/04-return-value.js
 ```
 
-Показывает that `pop()` returns removed value.
+Показывает, что `pop()` возвращает удалённое значение.
 
 ### Пример 5. Типичные ошибки
 
@@ -391,9 +409,9 @@ examples/01-javascript/chapter-45/04-return-value.js
 examples/01-javascript/chapter-45/05-common-mistakes.js
 ```
 
-Показывает mistake: expecting `pop()` to return array.
+Показывает ошибку: ожидание, что `pop()` вернёт массив.
 
-### Пример 6. QA example
+### Пример 6. Пример из автоматизации тестов
 
 Файл:
 
@@ -401,63 +419,63 @@ examples/01-javascript/chapter-45/05-common-mistakes.js
 examples/01-javascript/chapter-45/06-qa-example.js
 ```
 
-Показывает collecting failed assertions.
+Показывает накопление проваленных проверок.
 
 ---
 
 ## Частые вопросы
 
-### `push()` создает новый array?
+### `push()` создаёт новый массив?
 
 Нет.
 
-In this chapter model:
+В модели этой главы:
 
-Immutability will be discussed later.
+Неизменяемость будет обсуждаться позже.
 
-### `pop()` создает новый array?
+### `pop()` создаёт новый массив?
 
 Нет.
 
 ### Что возвращает `pop()`?
 
-Removed last element.
+Удалённый последний элемент.
 
-### What happens when pop from empty array?
+### Что будет при `pop()` из пустого массива?
 
-Array remains empty.
+Массив останется пустым.
 
-### Is this a stack?
+### Это стек?
 
-At a high level, adding/removing from the end resembles stack поведение.
+На высоком уровне добавление и удаление с конца похожи на поведение стека.
 
-But formal stacks are not the topic of this chapter.
+Но формальные стеки не являются темой этой главы.
 
 ---
 
 ## Распространённые мифы
 
-### Миф: `push()` returns the added element
+### Миф: `push()` возвращает добавленный элемент
 
-Реальность: this chapter focuses on adding elements to the end. The key learning goal is that the array receives one more element, and only then `length` reflects the new count. Do not rely on guessed return значения.
+Реальность: эта глава сосредоточена на добавлении элементов в конец. Главное — что в массиве стало на один элемент больше и только после этого `length` отражает новое количество. Не полагайтесь на угаданные возвращаемые значения.
 
-### Миф: `pop()` returns the changed array
+### Миф: `pop()` возвращает изменённый массив
 
-Реальность: `pop()` returns removed last element.
+Реальность: `pop()` возвращает удалённый последний элемент.
 
-### Миф: `pop()` from empty array is always a crash
+### Миф: `pop()` из пустого массива всегда падает
 
-Реальность: it returns `undefined`.
+Реальность: он возвращает `undefined`.
 
-### Миф: `push()` and `pop()` work at the beginning
+### Миф: `push()` и `pop()` работают с началом
 
-Реальность: both operate at the end of array. Beginning operations are next chapter.
+Реальность: оба работают с концом массива. Операции с началом — тема следующей главы.
 
 ---
 
 ## Распространённые ошибки
 
-### Ошибка 1. Expect `pop()` to return array
+### Ошибка 1. Ожидать, что `pop()` вернёт массив
 
 Неправильный код:
 
@@ -470,38 +488,46 @@ console.log(result.length);
 
 Что произошло:
 
-`result` is removed element, not array.
+`result` — удалённый элемент, а не массив.
 
 Исправленная модель: `push()` возвращает новую длину массива, а не сам массив.
 
-### Ошибка 2. Forget that original array changes
+### Ошибка 2. Забыть, что исходный массив меняется
 
 Неправильная модель: будто `pop()` возвращает изменённый массив.
 
 Правильная модель: `pop()` возвращает удалённый элемент, а изменяется исходный массив.
 
-### Ошибка 3. Expect `pop()` to remove first element
+### Ошибка 3. Ожидать, что `pop()` удалит первый элемент
 
 Неправильно:
 
+```javascript
+const first = users.pop(); // это последний элемент, а не первый
+```
+
 Правильно:
 
-### Ошибка 4. Ignore empty array
+```javascript
+const first = users.shift(); // удаляет первый элемент
+```
+
+### Ошибка 4. Не учитывать пустой массив
 
 ```javascript
 const failedAssertions = [];
 const lastFailure = failedAssertions.pop();
 ```
 
-`lastFailure` is `undefined`.
+`lastFailure` равен `undefined`.
 
-Before using removed value, code should account for empty collection.
+Перед использованием удалённого значения код должен учитывать, что коллекция могла быть пустой.
 
 ---
 
 ## Практическое использование
 
-Use `push()` when new value arrives and should become last element:
+Используйте `push()`, когда новое значение должно стать последним элементом:
 
 ```text
 new API response
@@ -510,21 +536,23 @@ new executed request
 new test result
 ```
 
-Use `pop()` when last value should be removed and used:
+Используйте `pop()`, когда последнее значение нужно убрать и использовать:
 
 ```text
-last collected item
-last temporary result
-last request in simple history
+последний собранный элемент
+последний промежуточный результат
+последний запрос в простой истории
 ```
 
-Читаемость:
+Читаемость: имя переменной должно объяснять, почему берётся именно последний
+элемент. `results.pop()` без пояснения читается хуже, чем `lastResponse`,
+которому присвоен результат.
 
 ---
 
 ## Использование в Automation QA
 
-### Accumulating API responses
+### Накопление ответов API
 
 ```javascript
 const responses = [];
@@ -535,7 +563,7 @@ responses.push('GET /orders -> 200');
 
 Ментальная модель: стопка — кладём сверху и снимаем сверху.
 
-### Failed assertions
+### Непройденные проверки
 
 ```javascript
 const failedAssertions = [];
@@ -543,195 +571,108 @@ const failedAssertions = [];
 failedAssertions.push('status expected 200, actual 500');
 ```
 
-Empty array means no failures yet.
+Пустой массив означает, что падений пока нет.
 
-After push:
+После добавления:
 
 ```text
 one failure collected
 ```
 
-### Executed requests
+### Выполненные запросы
 
-`pop()` can retrieve last executed request in simple history model.
+`pop()` может достать последний выполненный запрос в простой модели истории.
 
-### Browser history high level
+### История браузера на высоком уровне
 
 На высоком уровне:
 
-We are not implementing browser history here.
+Историю браузера мы здесь не реализуем.
 
-### Collected test results
+### Собранные результаты тестов
 
-`push()` is natural when results appear one after another.
-
----
-
-## Диаграммы главы
-
-### 1. Why push exists
-
-### 2. Why pop exists
-
-### 3. Array growth
-
-### 4. Array shrink
-
-### 5. Before push
-
-### 6. After push
-
-### 7. Before pop
-
-### 8. After pop
-
-### 9. Element count growth
-
-### 10. Element count shrink
-
-### 11. Возвращаемое значение pop
-
-### 12. Текущая модель JavaScript
-
-### 13. Stack intuition
-
-### 14. QA failed assertions
-
-### 15. API users
-
-### 16. Test queue preview
-
-### 17. Читаемость
-
-### 18. Типичные ошибки
-
-### 19. Bookshelf analogy
-
-```text
-book 0
-book 1 <- new last book
-```
-
-### 20. Plate stack
-
-### 21. Train analogy
-
-```text
-train + last car
-train - last car
-```
-
-### 22. Notebook analogy
-
-```text
-last page added
-last page removed
-```
-
-### 23. Complete push model
-
-### 24. Полная модель pop
-
-### 25. Element lifecycle
-
-### 26. Last element
-
-### 27. Push flow
-
-### 28. Pop flow
-
-### 29. Length timeline
-
-### 30. Ordered collection reminder
-
-### 31. Краткая ментальная модель
-
-```text
-push adds at end
-pop removes from end
-```
-
-### 32. Переход к shift()
-
-### 33. Переход к loops
-
-### 34. QA framework example
-
-### 35. API response growth
-
-### 36. Removed value
-
-### 37. Array evolution
-
-### 38. Итоговая схема
+`push()` естественен, когда результаты появляются один за другим.
 
 ---
 
 ## Итоги
 
-The previous chapter introduced arrays as ordered collections.
+Предыдущая глава ввела массивы как упорядоченные коллекции.
 
 Эта глава ответила:
 
 ```text
-How can array grow or shrink?
+как массив может расти и уменьшаться?
 ```
 
-`push()`:
+`push()` добавляет элемент в конец и возвращает новую длину.
 
-`pop()`:
+`pop()` удаляет последний элемент и возвращает его значение.
 
-Both methods change the existing array.
+Оба метода меняют существующий массив.
 
-The next chapter will explain `shift()` and `unshift()`: changing arrays at the beginning вместо the end.
+Следующая глава объяснит `shift()` и `unshift()`: изменение массива с начала, а не с конца.
 
 ---
 
 ## Что нужно запомнить
 
-✓ `push()` adds value to the end of array.
+✓ `push()` добавляет значение в конец массива.
 
-✓ `push()` changes existing array.
+✓ `push()` меняет существующий массив.
 
-✓ After `push()` array contains one more element, so `length` increases.
+✓ После `push()` в массиве на один элемент больше, поэтому `length` увеличивается.
 
-✓ `pop()` removes last element.
+✓ `pop()` удаляет последний элемент.
 
-✓ `pop()` changes existing array.
+✓ `pop()` меняет существующий массив.
 
-✓ `pop()` returns removed value.
+✓ `pop()` возвращает удалённое значение.
 
-✓ After `pop()` array contains one fewer element, so `length` decreases.
+✓ После `pop()` в массиве на один элемент меньше, поэтому `length` уменьшается.
 
-✓ `pop()` from empty array returns `undefined`.
+✓ `pop()` из пустого массива возвращает `undefined`.
 
-✓ `push()` and `pop()` operate at the end.
+✓ `push()` и `pop()` работают с концом массива.
 
-✓ Beginning operations are the next chapter.
+✓ Операции с началом — тема следующей главы.
 
 ---
 
 ## Проверьте себя
 
-1. What problem does `push()` solve?
+1. Какую задачу решает `push()`?
 
-2. What problem does `pop()` solve?
+2. Какую задачу решает `pop()`?
 
-3. Why does `length` increase after `push()`?
+3. Почему `length` увеличивается после `push()`?
 
-4. What does `pop()` return?
+4. Что возвращает `pop()`?
 
-5. Does `pop()` return the changed array?
+5. Возвращает ли `pop()` изменённый массив?
 
-6. What happens when `pop()` is called on empty array?
+6. Что происходит при вызове `pop()` на пустом массиве?
 
-7. Which end of array do `push()` and `pop()` use?
+7. С каким концом массива работают `push()` и `pop()`?
 
-8. Why is stack intuition useful only at high level here?
+8. Почему аналогия со стеком полезна здесь только на высоком уровне?
 
-9. How can `push()` be useful for failed assertions?
+9. Чем `push()` полезен для проваленных проверок?
 
-10. What will the next chapter explain?
+10. Что объяснит следующая глава?
+
+### Ответы
+
+1. Добавление элемента в конец массива: накопление результатов по ходу выполнения.
+2. Удаление последнего элемента и получение его значения.
+3. Потому что в массиве появилась новая позиция. Длина — это количество позиций.
+4. Удалённый элемент.
+5. Нет. Массив изменяется на месте, а возвращается именно удалённый элемент.
+6. Возвращает `undefined`, массив остаётся пустым. Ошибки не будет, и это частая причина незаметных ошибок в коде.
+7. Конец массива. Индексы остальных элементов при этом не меняются.
+8. Она объясняет порядок «последним положили — первым взяли», но не описывает устройство массива. Массив остаётся коллекцией с доступом по любому индексу.
+9. Проваленные проверки накапливаются в списке по ходу теста, а в конце по нему видно всё сразу, а не только первое падение.
+10. Как добавлять и удалять элементы в начале массива.
 
 ---
 

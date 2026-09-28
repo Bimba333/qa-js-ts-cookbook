@@ -1,4 +1,4 @@
-# Prototype Chain
+# Цепочка прототипов
 
 ## Связь с предыдущей главой
 
@@ -232,7 +232,7 @@ flowchart TD
 
 ## Теория
 
-Prototype Chain - это последовательность objects, по которой JavaScript ищет property.
+Цепочка прототипов — последовательность объектов, по которой JavaScript ищет свойство.
 
 Не начинаем с `Object.prototype`.
 
@@ -240,13 +240,13 @@ Prototype Chain - это последовательность objects, по ко
 
 Начинаем с действия:
 
-Если property не найдена на current object, engine переходит к prototype.
+Если свойство не найдено в текущем объекте, движок переходит к его прототипу.
 
-Если property не найдена на prototype, engine переходит к prototype of that prototype.
+Если свойство не найдено и там, движок переходит к прототипу этого прототипа.
 
-Так появляется chain.
+Так появляется цепочка.
 
-### Lookup algorithm
+### Алгоритм поиска
 
 Упрощенная модель:
 
@@ -255,117 +255,142 @@ Prototype Chain - это последовательность objects, по ко
 поиск идёт вверх и останавливается на первом совпадении
 ```
 
-Если JavaScript дошел до конца chain and property was not found:
+Если JavaScript дошёл до конца цепочки, а свойство не найдено:
+
+```text
+чтение свойства  →  undefined, без ошибки
+вызов метода     →  TypeError: ... is not a function
+```
+
+Отсутствие свойства в конце цепочки — обычный результат, а не сбой поиска.
 
 ### `Object.prototype`
 
-Most ordinary objects eventually lead to `Object.prototype`.
+Большинство обычных объектов в итоге приводят к `Object.prototype`.
 
-`Object.prototype` contains common properties available to many ordinary objects.
+`Object.prototype` содержит общие свойства, доступные многим обычным объектам.
 
-В этой главе не нужно запоминать его полный набор properties. Важно понять место:
+В этой главе не нужно запоминать полный набор его свойств. Важно понять место:
 
-Если property не найдена и там, lookup ends.
+Если свойство не найдено и там, поиск заканчивается.
 
-### End of chain
+### Конец цепочки
 
 У цепочки есть конец.
 
 Концептуально:
 
-Когда next prototype больше нет, JavaScript stops searching.
+Когда следующего прототипа больше нет, JavaScript прекращает поиск.
 
-Именно поэтому missing property becomes `undefined`.
+Именно поэтому отсутствующее свойство даёт `undefined`.
 
-### Own property priority
+### Приоритет собственного свойства
 
-Если property найдена на current object, JavaScript не идет дальше.
+Если свойство найдено в текущем объекте, JavaScript дальше не идёт.
 
-Prototype value с тем же name не используется.
+Значение с тем же именем из прототипа не используется.
 
-### Shadowing
+### Затенение
 
-Shadowing happens when a property on a closer object hides property with same name later in chain.
+Перекрытие происходит, когда свойство более близкого объекта скрывает одноимённое свойство дальше по цепочке.
 
-Lookup result:
+Результат поиска:
 
-Prototype property still exists.
+Свойство прототипа по-прежнему существует.
 
-It is just not reached for this lookup.
+Просто при этом поиске до него не доходит.
 
-### Property overriding
+### Переопределение свойства
 
-Property overriding is practical effect of shadowing:
+Переопределение свойства — практическое следствие перекрытия:
 
 Например, общий метод `describe()` можно переопределить прямо на одном объекте — тогда для него будет использоваться собственная версия, а для остальных — общая.
 
-Lookup chooses special one.
+Поиск выбирает более частный вариант.
 
 ---
 
 ## Внутренний механизм
 
-Рассмотрим chain from QA example:
-
-Engine receives:
+Рассмотрим цепочку из примера автоматизации:
 
 ```text
-property name: "formatError"
-start object: loginPage
+loginPage  →  pageBehavior  →  frameworkBehavior  →  Object.prototype  →  null
 ```
 
-Step by step:
+Движок получает:
 
-Lookup stops immediately:
+```text
+имя свойства: "formatError"
+начальный объект: loginPage
+```
 
-If returned value is a function and call form is:
+Шаг за шагом:
+
+```text
+1. loginPage           собственные свойства → нет
+2. pageBehavior        → нет
+3. frameworkBehavior   → ЕСТЬ, вернуть значение
+```
+
+Поиск останавливается сразу на шаге 3: до `Object.prototype` он не доходит.
+
+Если найденное значение — функция и форма вызова такая:
 
 ```javascript
 loginPage.formatError();
 ```
 
-объект выполнения reminder:
-
-The method location does not automatically become объект выполнения.
-
-```text
-Location: frameworkBehavior
-Receiver: loginPage
-```
-
-This connects Prototype Chain with the previous chapters about `this`.
-
-### Why does JavaScript stop searching?
-
-JavaScript stops for two reasons:
-
-or:
-
-It does not keep searching after a found property because lookup has a clear priority rule:
+Напоминание об объекте выполнения: `this` определяет форма вызова, а не место
+хранения метода.
 
 ```text
-closer property wins
+где лежит метод: frameworkBehavior
+кто станет this: loginPage
 ```
 
-It does not search forever because every chain has an end.
+Это связывает цепочку прототипов с предыдущими главами про `this`.
+
+### Почему JavaScript прекращает поиск?
+
+JavaScript останавливается по двум причинам: либо свойство найдено, либо цепочка
+закончилась.
+
+```text
+свойство найдено      →  вернуть значение, дальше не идти
+дошли до null         →  вернуть undefined
+```
+
+Он не продолжает искать после найденного свойства, потому что у поиска есть ясное
+правило приоритета:
+
+```text
+побеждает ближайшее свойство
+```
+
+Он не ищет вечно, потому что у каждой цепочки есть конец.
 
 ---
 
 ## Ментальная модель
 
-Prototype Chain можно представить как chain of libraries.
+Цепочку прототипов можно представить как цепочку библиотек.
 
-Вы ищете instruction:
+Вы ищете инструкцию — например, «как отформатировать сообщение об ошибке».
 
-Если в первой библиотеке нет нужной книги, вы идете в следующую:
+Если в первой библиотеке нет нужной книги, вы идёте в следующую:
+
+```text
+своя полка  →  библиотека отдела  →  центральная библиотека  →  дальше некуда
+```
 
 Если нашли, поиск заканчивается.
 
 Если не нашли нигде, результата нет.
 
-Другие mental models:
-
-Главная мысль:
+Главная мысль: поиск свойства идёт по цепочке в одну сторону — от объекта к
+его прототипу и дальше, до `null`. Остановка происходит на первом совпадении,
+поэтому свойство ближе к объекту затеняет такое же свойство выше по цепочке.
 
 ---
 
@@ -383,7 +408,7 @@ examples/01-javascript/chapter-40/
 node examples/01-javascript/chapter-40/01-basic-chain.js
 ```
 
-### Пример 1. Basic chain
+### Пример 1. Базовая цепочка
 
 Файл:
 
@@ -391,9 +416,11 @@ node examples/01-javascript/chapter-40/01-basic-chain.js
 examples/01-javascript/chapter-40/01-basic-chain.js
 ```
 
-Показывает:
+Показывает цепочку из трёх звеньев: `loginPage` → `pageBehavior` →
+`frameworkBehavior`. Метод `formatError` лежит в самом дальнем звене, но
+доступен странице.
 
-### Пример 2. Property lookup
+### Пример 2. Поиск свойства
 
 Файл:
 
@@ -401,9 +428,9 @@ examples/01-javascript/chapter-40/01-basic-chain.js
 examples/01-javascript/chapter-40/02-property-lookup.js
 ```
 
-Показывает lookup order from own property to shared framework поведение.
+Показывает порядок поиска от собственного свойства до общего поведения фреймворка.
 
-### Пример 3. Shadowing
+### Пример 3. Перекрытие
 
 Файл:
 
@@ -411,7 +438,9 @@ examples/01-javascript/chapter-40/02-property-lookup.js
 examples/01-javascript/chapter-40/03-shadowing.js
 ```
 
-Показывает:
+Показывает перекрытие: своё свойство `status` объекта `testRun` закрывает
+одноимённое свойство прототипа. Поиск останавливается на первом совпадении,
+поэтому и метод из прототипа читает уже своё значение.
 
 ### Пример 4. Типичные ошибки
 
@@ -421,9 +450,9 @@ examples/01-javascript/chapter-40/03-shadowing.js
 examples/01-javascript/chapter-40/04-common-mistakes.js
 ```
 
-Показывает ошибку ожидания, что far prototype wins over closer property.
+Показывает ошибочное ожидание, что дальний прототип победит более близкое свойство.
 
-### Пример 5. Framework preview
+### Пример 5. Слои фреймворка
 
 Файл:
 
@@ -431,9 +460,9 @@ examples/01-javascript/chapter-40/04-common-mistakes.js
 examples/01-javascript/chapter-40/05-framework-preview.js
 ```
 
-Показывает layered framework поведение.
+Показывает многослойное поведение фреймворка.
 
-### Пример 6. QA example
+### Пример 6. Пример из автоматизации тестов
 
 Файл:
 
@@ -441,304 +470,263 @@ examples/01-javascript/chapter-40/05-framework-preview.js
 examples/01-javascript/chapter-40/06-qa-example.js
 ```
 
-Показывает API client lookup through client-specific, service-level and framework-level поведение.
+Показывает поиск в клиенте API через уровни клиента, сервиса и фреймворка.
 
 ---
 
 ## Частые вопросы
 
-### Prototype Chain - это inheritance hierarchy?
+### Цепочка прототипов — это иерархия наследования?
 
 Нет.
 
-В этой главе Prototype Chain is lookup algorithm.
+В этой главе цепочка прототипов — алгоритм поиска.
 
-Inheritance as architecture will appear later. Здесь важно понять search path.
+Наследование как архитектура появится позже. Здесь важно понять путь поиска.
 
-### Почему JavaScript не ищет property во всех objects проекта?
+### Почему JavaScript не ищет свойство во всех объектах проекта?
 
-Потому что lookup follows only one connected chain.
+Потому что поиск идёт только по одной связанной цепочке.
 
-Unrelated objects are not searched.
+Несвязанные объекты не просматриваются.
 
-### Почему own property wins?
+### Почему собственное свойство побеждает?
 
-Because lookup starts from current object.
+Потому что поиск начинается с текущего объекта.
 
-Это делает local override predictable.
+Это делает локальное переопределение предсказуемым.
 
-### Почему missing property gives `undefined`?
+### Почему отсутствующее свойство даёт `undefined`?
 
-Because lookup ended without finding property.
+Потому что поиск закончился, не найдя свойства.
 
 ### Что такое `Object.prototype`?
 
-`Object.prototype` is common prototype near the end of many ordinary object chains.
+`Object.prototype` — общий прототип ближе к концу цепочек многих обычных объектов.
 
-В этой главе достаточно понимать его position in lookup. Detailed built-in поведение будет встречаться позже по мере необходимости.
+В этой главе достаточно понимать его место в поиске. Подробное поведение встроенных объектов будет встречаться позже, по мере необходимости.
 
 ---
 
 ## Распространённые мифы
 
-### Миф: Prototype Chain копирует properties вниз
+### Миф: цепочка прототипов копирует свойства вниз
 
-Реальность: lookup reads through the chain. It does not copy properties into object.
+Реальность: поиск читает по цепочке. Свойства в объект он не копирует.
 
-### Миф: самый дальний prototype важнее
+### Миф: самый дальний прототип важнее
 
-Реальность: closer property wins.
+Реальность: побеждает более близкое свойство.
 
-### Миф: Prototype Chain нужен только для classes
+### Миф: цепочка прототипов нужна только для классов
 
-Реальность: Prototype Chain exists for ordinary property lookup. Classes will use related mechanisms later, but the algorithm already exists now.
+Реальность: цепочка существует для обычного поиска свойств. Классы позже используют связанные механизмы, но сам алгоритм работает уже сейчас.
 
-### Миф: missing property always throws
+### Миф: отсутствующее свойство всегда вызывает ошибку
 
-Реальность: simple property read returns `undefined` when lookup ends without result.
+Реальность: простое чтение свойства возвращает `undefined`, когда поиск закончился без результата.
 
 ---
 
 ## Распространённые ошибки
 
-### Ошибка 1. Ожидать, что prototype overrides own property
+### Ошибка 1. Ожидать, что прототип перекроет собственное свойство
 
-Неправильная модель: будто свойство из prototype перекрывает собственное свойство объекта.
+Неправильная модель: будто свойство из прототипа перекрывает собственное свойство объекта.
 
 Что происходит:
 
 Исправленная модель: поиск начинается с самого объекта, поэтому собственное свойство всегда выигрывает.
 
-### Ошибка 2. Думать, что method объект выполнения is where method was found
+### Ошибка 2. Думать, что объект выполнения — там, где найден метод
 
 Неправильная модель: будто `this` указывает на объект, в котором метод был найден.
 
-Что происходит при ordinary call:
+Что происходит при обычном вызове:
 
 Исправленная модель: `this` указывает на объект, через который метод был вызван, независимо от места его хранения.
 
-### Ошибка 3. Делать слишком глубокие chains
+### Ошибка 3. Делать слишком глубокие цепочки
 
-Неправильный дизайн:
+Неправильный дизайн: пять-шесть уровней прототипов, где каждый добавляет по
+одному методу.
 
 Что произошло:
 
-* сложно понять, где property found;
-* сложно debug;
-* сложно explain поведение to team.
+* сложно понять, где найдено свойство;
+* сложно разбирать падения;
+* сложно объяснить поведение команде.
 
 Исправленный подход:
 
 ```text
-prefer shallow, readable object relationships
+предпочитайте неглубокие и читаемые связи между объектами
 ```
 
-### Ошибка 4. Считать missing property ошибкой всегда
+### Ошибка 4. Считать отсутствующее свойство ошибкой всегда
 
-Неправильное ожидание:
+Неправильное ожидание: обращение к несуществующему свойству должно падать.
 
-Реальность:
+Реальность: поиск дойдёт до конца цепочки и вернёт `undefined`. Ошибки в этот
+момент нет.
 
-Ошибка появится later if code tries to use `undefined` incorrectly.
+Ошибка появится позже, если код попытается неправильно использовать `undefined`.
 
 ---
 
 ## Практическое использование
 
-Prototype Chain помогает читать код, где поведение organized in layers.
+Цепочка прототипов помогает читать код, где поведение организовано слоями.
 
 Например: общие проверки лежат в одном объекте, специфичные — в другом, а конкретный объект дополняет их своими данными.
 
 Такая модель может быть полезной, если нужно:
 
-* separate object-specific data from shared actions;
-* provide default поведение;
-* override поведение locally;
-* understand where method was found;
-* debug unexpected property значения.
+* отделять данные конкретного объекта от общих действий;
+* задавать поведение по умолчанию;
+* переопределять поведение локально;
+* понимать, где был найден метод;
+* разбирать неожиданные значения свойств.
 
-Но deep chain is not automatically good architecture.
+Но глубокая цепочка не является хорошей архитектурой сама по себе.
 
-Readable code matters:
+Читаемость кода важнее: чем длиннее цепочка, тем труднее ответить на вопрос
+«откуда взялся этот метод». В тестовом проекте это обычно значит, что два-три
+уровня — предел, после которого композиция понятнее наследования.
 
 ---
 
 ## Использование в Automation QA
 
-### Layered Page Objects
+### Слои объектов страниц
 
-Page Objects may have layers:
+У объектов страниц могут быть слои:
 
-Lookup explains why `loginPage.formatError()` can work even if `formatError` is not own property.
+```text
+loginPage  →  общее поведение страниц  →  общее поведение фреймворка
+```
 
-### API client hierarchy
+Поиск объясняет, почему `loginPage.formatError()` работает, даже если `formatError` не является собственным свойством.
 
-API clients often combine:
+### Иерархия клиентов API
 
-Example model:
+Клиенты API часто сочетают:
 
-### Assertion infrastructure
+```text
+своё состояние    —  адрес окружения, заголовки
+общий слой        —  построение запроса и разбор ответа
+базовый слой      —  логирование и обработка ошибок
+```
 
-Assertion helpers may share:
+Пример модели:
 
-This can help reuse formatting and error reporting.
+```text
+stagingClient  →  httpClientBehavior  →  frameworkBehavior
+```
 
-### Отладка unexpected methods
+### Инфраструктура проверок
 
-If method exists but not directly in object:
+Вспомогательные проверки могут разделять:
 
-Prototype Chain gives the mental route:
+```text
+формат сообщения об ошибке
+способ записи результата в отчёт
+```
+
+Это помогает переиспользовать форматирование и вывод сообщений об ошибках.
+
+### Разбор неожиданных методов
+
+Если метод существует, но не находится прямо в объекте, цепочка прототипов
+даёт мысленный маршрут поиска:
+
+```text
+сам объект          →  нет
+его прототип        →  нет
+прототип прототипа  →  найден здесь
+```
+
+Тот же маршрут проходит и движок. `Object.getPrototypeOf()` позволяет пройти
+его вручную и увидеть, на каком шаге метод нашёлся.
 
 ---
 
-## Диаграммы главы
-
-### 1. Why Prototype Chain exists
-
-### 2. Lookup continuation
-
-### 3. Multiple prototype levels
-
-### 4. Property search
-
-### 5. Lookup timeline
-
-```text
-t1 object
-t2 prototype A
-t3 prototype B
-t4 result
-```
-
-### 6. Current object
-
-### 7. First prototype
-
-### 8. Second prototype
-
-### 9. Object.prototype
-
-### 10. End of chain
-
-### 11. Property found
-
-### 12. Property missing
-
-### 13. Shadowing
-
-### 14. Own property priority
-
-### 15. Shared поведение
-
-### 16. QA framework example
-
-### 17. API client example
-
-### 18. Page Object example
-
-### 19. Читаемость
-
-### 20. Типичные ошибки
-
-### 21. Escalation analogy
-
-### 22. Library analogy
-
-### 23. Manager analogy
-
-### 24. Complete lookup model
-
-### 25. Object relationship
-
-### 26. Search flow
-
-### 27. Undefined result
-
-### 28. Принадлежность свойства
-
-### 29. Receiver reminder
-
-### 30. Method lookup
-
-### 31. Краткая ментальная модель
-
-### 32. Complete chain
-
-### 33. Object evolution
-
-### 34. Переход к Classes
-
-### 35. Переход к new
-
-### 36. Internal lookup
-
-### 37. Property override
-
-### 38. Итоговая схема
-
 ## Итоги
 
-Prototype Chain продолжает модель Prototype.
+Цепочка прототипов продолжает модель прототипа.
 
-Prototype отвечал:
+Прототип отвечал на вопрос: что делать, если свойства нет в самом объекте?
 
-Prototype Chain отвечает:
+Цепочка отвечает на следующий: что делать, если его нет и в прототипе?
 
-Это не скрытая магия и не обязательная class hierarchy.
+Это не скрытая магия и не обязательная иерархия классов.
 
-Это lookup algorithm:
+Это алгоритм поиска:
 
-Own properties have priority. Closer properties shadow farther properties. If lookup reaches the end of chain without result, simple property read returns `undefined`.
+Собственные свойства имеют приоритет. Более близкие свойства перекрывают более дальние. Если поиск дошёл до конца цепочки без результата, простое чтение свойства даёт `undefined`.
 
-Следующая глава покажет, как classes make object creation with shared prototypes more convenient.
+Следующая глава покажет, как классы делают создание объектов с общими прототипами удобнее.
 
 ---
 
 ## Что нужно запомнить
 
-✓ Prototype Chain is repeated property lookup through prototypes.
+✓ Цепочка прототипов — повторяющийся поиск свойства по прототипам.
 
-✓ JavaScript checks current object before prototypes.
+✓ JavaScript проверяет текущий объект раньше прототипов.
 
-✓ Own property wins over inherited property.
+✓ Собственное свойство побеждает унаследованное.
 
-✓ Shadowing means closer property hides farther property with same name.
+✓ Перекрытие означает, что более близкое свойство скрывает более дальнее с тем же именем.
 
-✓ Lookup stops when property is found.
+✓ Поиск останавливается, когда свойство найдено.
 
-✓ Lookup also stops when chain ends.
+✓ Поиск останавливается и когда цепочка закончилась.
 
-✓ Missing property after full lookup gives `undefined`.
+✓ Отсутствующее свойство после полного поиска даёт `undefined`.
 
-✓ `Object.prototype` is near the end of many ordinary object chains.
+✓ `Object.prototype` находится ближе к концу цепочек многих обычных объектов.
 
-✓ Method location and объект выполнения are different concepts.
+✓ Место, где лежит метод, и объект выполнения — разные вещи.
 
-✓ Prototype Chain is lookup algorithm, not inheritance hierarchy.
+✓ Цепочка прототипов — алгоритм поиска, а не иерархия наследования.
 
 ---
 
 ## Проверьте себя
 
-1. What problem does Prototype Chain solve?
+1. Какую задачу решает цепочка прототипов?
 
-2. Where does lookup start?
+2. С чего начинается поиск?
 
-3. What happens if property is found on current object?
+3. Что произойдёт, если свойство найдено в текущем объекте?
 
-4. What happens if property is not found on current object?
+4. Что произойдёт, если свойство не найдено в текущем объекте?
 
-5. Why does JavaScript stop searching?
+5. Почему JavaScript прекращает поиск?
 
-6. What is shadowing?
+6. Что такое перекрытие?
 
-7. Why does own property win over inherited property?
+7. Почему собственное свойство побеждает унаследованное?
 
-8. What is the role of `Object.prototype` in this chapter?
+8. Какова роль `Object.prototype` в этой главе?
 
-9. What result appears when property is not found anywhere?
+9. Какой результат получается, если свойство не найдено нигде?
 
-10. Why is Prototype Chain not primarily an inheritance hierarchy?
+10. Почему цепочка прототипов — не в первую очередь иерархия наследования?
+
+### Ответы
+
+1. Поиск свойства не в одном прототипе, а в нескольких связанных уровнях: объект — общее поведение — базовое поведение.
+2. С самого объекта.
+3. Поиск сразу заканчивается, возвращается найденное значение.
+4. Поиск переходит к прототипу и повторяется там.
+5. На первом совпадении: дальше искать незачем, значение уже найдено.
+6. Перекрытие: своё свойство объекта закрывает одноимённое свойство прототипа.
+7. Потому что поиск начинается с самого объекта и останавливается на первом совпадении — до прототипа дело просто не доходит.
+8. Это обычный конец цепочки для большинства объектов. Его прототип — `null`, и на нём поиск прекращается.
+9. `undefined` при чтении свойства; при попытке вызвать его как метод — `TypeError`.
+10. Потому что это механизм поиска, а не описание родства сущностей. На нём можно построить иерархию, но сам он отвечает лишь на вопрос, где продолжать искать свойство.
 
 ---
 

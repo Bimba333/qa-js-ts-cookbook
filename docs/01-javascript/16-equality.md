@@ -1,4 +1,4 @@
-# Equality
+# Равенство
 
 ## Связь с предыдущей главой
 
@@ -145,9 +145,9 @@ Equality overview:
 
 ## Теория
 
-### Зачем нужно equality
+### Зачем нужно равенство
 
-Programs constantly make decisions:
+Программы постоянно принимают решения:
 
 ```text
 Is response status expected?
@@ -166,23 +166,29 @@ const expectedStatusCode = 200;
 console.log(statusCode === expectedStatusCode);
 ```
 
-Equality is needed to answer:
+Равенство нужно, чтобы ответить на вопрос:
 
 ```text
 Do these two values match according to this comparison rule?
 ```
 
-### Почему в JavaScript несколько equality operators
+### Почему в JavaScript несколько операторов равенства
 
-JavaScript was designed to be flexible with значения from different contexts. That flexibility produced two common comparison modes:
+JavaScript задумывался гибким к значениям из разных источников. Эта гибкость породила два распространённых режима сравнения:
 
-Later, `Object.is()` became useful for a few exact edge cases.
+Позже для нескольких особых случаев стал полезен `Object.is()`.
 
-Comparison questions:
+Вопросы сравнения:
 
-### Strict equality `===`
+| Оператор | Вопрос, на который он отвечает |
+| --- | --- |
+| `===` | одинаковы ли тип и значение |
+| `==` | можно ли привести значения к общему типу так, чтобы они совпали |
+| `Object.is()` | то же, что `===`, но `NaN` равен `NaN`, а `0` и `-0` различны |
 
-Strict equality does not perform type conversion.
+### Строгое равенство `===`
+
+Строгое равенство не выполняет преобразования типов.
 
 ```javascript
 console.log(5 === '5');
@@ -194,17 +200,26 @@ console.log(5 === '5');
 false
 ```
 
-`===` поток:
+Поток `===`:
 
-`===` without conversion:
+```text
+5 === '5'
+ │      │
+ │      └─ тип: string
+ └──────── тип: number
+типы разные → результат false, значения даже не сравниваются
+```
+
+Преобразования здесь не происходит вовсе — это главное свойство строгого
+сравнения.
 
 `===` спрашивает:
 
-> Are these already the same type and value?
+> Совпадают ли у них уже сейчас и тип, и значение?
 
-### Loose equality `==`
+### Нестрогое равенство `==`
 
-Loose equality may perform conversion before comparison.
+Нестрогое равенство может выполнить преобразование перед сравнением.
 
 ```javascript
 console.log(5 == '5');
@@ -216,19 +231,27 @@ console.log(5 == '5');
 true
 ```
 
-`==` поток:
+Поток `==`:
 
-Type conversion before `==`:
+```text
+5 == '5'
+типы разные → привести к сравнимому виду
+'5' → 5
+5 == 5 → true
+```
+
+Преобразование выполняется автоматически и по правилам, которые нужно помнить —
+именно поэтому в тестах предпочитают `===`.
 
 `==` спрашивает:
 
-> Can these значения become comparable?
+> Можно ли привести эти значения к сравнимому виду?
 
-Это полезно только когда conversion действительно нужна. Большей части тестового кода стоит избегать скрытого преобразования при сравнении.
+Это полезно только когда преобразование действительно нужно. Большей части тестового кода стоит избегать скрытого преобразования при сравнении.
 
 ### `Object.is()`
 
-`Object.is()` is a comparison function with its own exact semantics.
+`Object.is()` — функция сравнения со своей точной семантикой.
 
 ```javascript
 console.log(Object.is(5, 5));
@@ -236,7 +259,7 @@ console.log(Object.is(NaN, NaN));
 console.log(Object.is(+0, -0));
 ```
 
-Object.is схема:
+Схема `Object.is()`:
 
 ```text
 Object.is(a, b)  →  сравнение без преобразований,
@@ -245,13 +268,13 @@ Object.is(a, b)  →  сравнение без преобразований,
 
 `Object.is()` спрашивает:
 
-> Are these exactly the same according to Object.is rules?
+> Совпадают ли они точно по правилам `Object.is()`?
 
-Detailed SameValue algorithm is not part of this chapter.
+Подробный алгоритм сравнения не входит в эту главу.
 
-### Primitive comparison
+### Сравнение примитивов
 
-Primitive значения are compared by value.
+Примитивные значения сравниваются по значению.
 
 ```javascript
 console.log(200 === 200);
@@ -259,7 +282,7 @@ console.log('admin' === 'admin');
 console.log(true === true);
 ```
 
-Primitive comparison схема:
+Схема сравнения примитивов:
 
 ```text
 'active' === 'active'  →  true    одно и то же значение
@@ -275,9 +298,9 @@ For primitives with ===:
 type and value.
 ```
 
-### Object comparison
+### Сравнение объектов
 
-Objects are compared by identity, not by shape.
+Объекты сравниваются по тождественности, а не по структуре.
 
 ```javascript
 const firstUser = {
@@ -297,13 +320,13 @@ console.log(firstUser === secondUser);
 false
 ```
 
-Object comparison схема:
+Схема сравнения объектов:
 
 ```text
 { a: 1 } === { a: 1 }   →  false   два разных объекта
 ```
 
-Same reference:
+Та же ссылка:
 
 ```javascript
 const firstUser = {
@@ -334,13 +357,13 @@ For objects:
 whether both variables refer to the same object.
 ```
 
-Deep equality libraries, JSON comparison and testing framework object matchers will be studied later.
+Библиотеки глубокого сравнения, сравнение JSON и сопоставители объектов в тестовых фреймворках будут изучаться позже.
 
-### Identity vs value
+### Тождественность и значение
 
-Identity and value are different questions.
+Тождественность и значение — разные вопросы.
 
-Identity vs value схема:
+Схема «тождественность против значения»:
 
 ```text
 identity  →  это один и тот же объект?
@@ -349,13 +372,13 @@ value     →  одинаково ли содержимое?
 === отвечает только на первый вопрос
 ```
 
-Identical twins mental model:
+Мысленная модель близнецов:
 
-Two objects may look identical but still have different identity.
+Два объекта могут выглядеть одинаково и при этом иметь разную тождественность.
 
-### NaN comparison
+### Сравнение с `NaN`
 
-`NaN` is special.
+`NaN` — особый случай.
 
 ```javascript
 console.log(NaN === NaN);
@@ -369,7 +392,7 @@ false
 true
 ```
 
-NaN comparison схема:
+Схема сравнения `NaN`:
 
 ```text
 NaN === NaN        →  false
@@ -383,11 +406,11 @@ Object.is(NaN, NaN) →  true
 Object.is() has special NaN semantics.
 ```
 
-In practice, `Number.isNaN()` is often used to check `NaN`. Detailed Number utilities will be covered later.
+На практике для проверки на `NaN` часто используют `Number.isNaN()`. Подробно числовые функции будут разобраны позже.
 
-### `+0` and `-0`
+### `+0` и `-0`
 
-For most everyday code, `+0` and `-0` behave as equal with `===`.
+В большинстве повседневного кода `+0` и `-0` ведут себя как равные при сравнении через `===`.
 
 ```javascript
 console.log(+0 === -0);
@@ -401,20 +424,31 @@ true
 false
 ```
 
-`+0` vs `-0` схема:
+Схема «`+0` против `-0`»:
 
 ```text
 +0 === -0            →  true
 Object.is(+0, -0)    →  false
 ```
 
-This is one of the few places where `Object.is()` has visibly different поведение.
+Это одно из немногих мест, где поведение `Object.is()` заметно отличается.
 
-### Decision tree
+### Дерево решений
 
-Recommended decision tree:
+Рекомендуемая стратегия сравнения:
 
-Recommended comparison strategy:
+```text
+Что сравниваем?
+├── примитивы одного типа        →  ===
+├── примитивы разных типов       →  привести явно, затем ===
+├── «есть ли значение вообще»    →  value == null   (ловит null и undefined)
+├── объекты по содержимому       →  сравнить поля или глубокое сравнение
+└── объекты по идентичности      →  ===
+```
+
+Единственное оправданное применение `==` — строка `value == null`: она
+короче и честнее, чем две проверки подряд. Во всех остальных случаях
+нестрогое равенство прячет расхождение типов, которое тест обязан заметить.
 
 ---
 
@@ -433,55 +467,87 @@ flowchart TD
 
 ## Внутренний механизм
 
-At a conceptual level, equality is an operation with a chosen comparison rule.
+На концептуальном уровне равенство — это операция с выбранным правилом сравнения.
 
-### Complete comparison picture
+### Полная картина сравнения
+
+```text
+1. выбран оператор сравнения
+2. === и Object.is  →  типы разные, результат false, преобразований нет
+3. ==               →  типы разные, значения приводятся к общему типу
+4. оба значения — объекты  →  сравниваются ссылки, а не свойства
+5. оба значения — примитивы →  сравниваются сами значения
+```
 
 ### Текущее место в модели JavaScript
 
 Что именно сравнивается?
 
-### Переход к Operators
+```text
+примитивы  —  сами значения
+объекты    —  ссылки: один и тот же объект или разные
+```
 
-Equality operators are only one group of operators.
+### Переход к операторам
 
-Next chapter expands the question:
+Операторы равенства — лишь одна группа операторов.
+
+Следующая глава расширяет вопрос:
 
 ```text
 How do JavaScript operators transform, combine and evaluate values?
 ```
 
-Переход к Operators:
+Переход к операторам:
+
+```text
+Equality   —  один вопрос: совпадают ли значения
+Operators  —  весь набор операций над значениями, сравнение лишь его часть
+```
 
 ---
 
 ## Ментальная модель
 
-### Passport check
+### Проверка паспорта
 
-`===` is like passport check:
+`===` похож на проверку паспорта:
 
-If type differs, `===` says false.
+Если тип отличается, `===` отвечает «нет».
 
 ### Переводчик перед сравнением
 
-`==` is like translator before comparison:
+`==` похож на переводчика перед сравнением:
 
-### Fingerprint
+```text
+'5' == 5  →  переводчик приводит строку к числу, затем сравнивает
+```
 
-`Object.is()` is like fingerprint for special exact cases:
+Переводчик удобен, пока вы точно знаете правила перевода; в тестах это редко
+так, поэтому по умолчанию берут `===`.
 
-### Identical twins
+### Отпечаток пальца
 
-Objects with same shape are like identical twins:
+`Object.is()` похож на отпечаток пальца для особых точных случаев:
 
-Two objects may look the same but are not the same object.
+```text
+Object.is(NaN, NaN)  →  true   (=== даёт false)
+Object.is(0, -0)     →  false  (=== даёт true)
+```
 
-### Labels on boxes
+Отпечаток различает то, что обычное сравнение считает одинаковым, и наоборот.
 
-Variables are labels. Objects are boxes.
+### Однояйцевые близнецы
 
-If two labels point to same box, object equality by identity is true.
+Объекты одинаковой формы похожи на близнецов:
+
+Два объекта могут выглядеть одинаково и не быть одним объектом.
+
+### Подписи на коробках
+
+Переменные — это подписи. Объекты — коробки.
+
+Если две подписи указывают на одну коробку, объекты равны по тождественности.
 
 ---
 
@@ -506,87 +572,85 @@ node examples/01-javascript/chapter-16/06-common-mistakes.js
 
 ### 01-strict-equality.js
 
-Shows `===` without conversion.
+Показывает `===` без преобразования.
 
 ### 02-loose-equality.js
 
-Shows `==` with conversion.
+Показывает `==` с преобразованием.
 
 ### 03-object-is.js
 
-Shows `Object.is()` edge cases.
+Показывает особые случаи `Object.is()`.
 
 ### 04-object-comparison.js
 
-Shows object identity comparison.
+Показывает сравнение объектов по тождественности.
 
 ### 05-nan.js
 
-Shows why `NaN` needs special attention.
+Показывает, почему `NaN` требует особого внимания.
 
 ### 06-common-mistakes.js
 
-Shows hidden conversion mistake in test-like data.
+Показывает скрытую ошибку преобразования на данных, похожих на тестовые.
 
 ---
 
 ## Частые вопросы
 
-### Should I always use `===`?
+### Всегда ли использовать `===`?
 
-Use `===` by default. It avoids hidden type conversion and makes comparisons easier to reason about.
+По умолчанию — да. Он избавляет от скрытого преобразования типов и делает сравнения понятнее.
 
-### Is `==` always bad?
+### `==` всегда плох?
 
-Нет. Это опасно при случайном использовании. Используйте это только тогда, когда правила conversion действительно нужны и понятны.
+Нет. Он опасен при случайном использовании. Применяйте его только тогда, когда правила преобразования действительно нужны и понятны.
 
 ### Зачем существует `Object.is()`?
 
-It handles a few exact comparison cases differently, especially `NaN` and `+0` / `-0`.
+Он иначе обрабатывает несколько точных случаев сравнения, прежде всего `NaN` и `+0` с `-0`.
 
 ### Почему два одинаково выглядящих объекта не равны?
 
-Because object comparison checks identity, not shape.
+Потому что сравнение объектов проверяет тождественность, а не структуру.
 
-### Как test frameworks глубоко сравнивают объекты?
+### Как тестовые фреймворки глубоко сравнивают объекты?
 
-Тестовые фреймворки и инструменты глубокого сравнения имеют свои механизмы. Они будут разобраны позже, когда появятся testing frameworks.
+У тестовых фреймворков и инструментов глубокого сравнения свои механизмы. Они будут разобраны позже, когда дойдём до фреймворков.
 
 ---
 
 ## Распространённые мифы
 
-### Миф: `==` means wrong and `===` means correct
+### Миф: `==` означает «неправильно», а `===` — «правильно»
 
 Реальность:
 
-`==` means comparison with possible conversion. `===` means comparison without conversion. Practical recommendation is to prefer `===`, but the real difference is semantic.
+`==` означает сравнение с возможным преобразованием. `===` — сравнение без преобразования. Практическая рекомендация — предпочитать `===`, но настоящая разница смысловая.
 
-### Миф: Objects with same properties are equal
-
-Реальность:
-
-Objects are compared by identity.
-
-### Миф: `Object.is()` is just another spelling for `===`
+### Миф: объекты с одинаковыми свойствами равны
 
 Реальность:
 
-They are similar in many common cases, but differ for `NaN` and `+0` / `-0`.
+Объекты сравниваются по тождественности.
 
-### Миф: Equality can be learned as a table
+### Миф: `Object.is()` — просто другая запись для `===`
 
 Реальность:
 
-Tables help, but reasoning starts with: what exactly is being compared?
+В большинстве обычных случаев они похожи, но различаются для `NaN` и для `+0` с `-0`.
 
-Equality myths схема:
+### Миф: равенство можно выучить по таблице
+
+Реальность:
+
+Таблицы помогают, но рассуждение начинается с вопроса: что именно сравнивается?
 
 ---
 
 ## Распространённые ошибки
 
-### Ошибка 1. Rely on `==` accidentally
+### Ошибка 1. Случайно положиться на `==`
 
 ```javascript
 const expectedStatus = 200;
@@ -601,9 +665,9 @@ console.log(expectedStatus == actualStatus);
 true
 ```
 
-The test may pass while actual type is wrong.
+Тест может пройти, хотя фактический тип неверен.
 
-### Ошибка 2. Compare objects by shape with `===`
+### Ошибка 2. Сравнивать объекты по структуре через `===`
 
 ```javascript
 const expectedUser = {
@@ -623,7 +687,7 @@ console.log(expectedUser === actualUser);
 false
 ```
 
-### Ошибка 3. Forget `NaN`
+### Ошибка 3. Забыть про `NaN`
 
 ```javascript
 console.log(NaN === NaN);
@@ -635,19 +699,19 @@ console.log(NaN === NaN);
 false
 ```
 
-### Ошибка 4. Use Object.is everywhere
+### Ошибка 4. Использовать `Object.is()` везде
 
-`Object.is()` is useful, but not the default comparison tool for all code.
+`Object.is()` полезен, но он не инструмент сравнения по умолчанию для всего кода.
 
-### Ошибка 5. Compare before parsing
+### Ошибка 5. Сравнивать до разбора значения
 
-If API returns `"200"` and test expects `200`, parse intentionally before comparison or assert that API really returns string.
+Если API возвращает `"200"`, а тест ожидает `200`, разберите значение намеренно перед сравнением или проверьте, что API действительно возвращает строку.
 
 ---
 
 ## Практическое использование
 
-Practical comparison strategy:
+Практическая стратегия сравнения:
 
 ```text
 1. Prefer === by default.
@@ -657,7 +721,7 @@ Practical comparison strategy:
 5. For objects, know whether you need identity or structure.
 ```
 
-QA assertion example:
+Пример проверки:
 
 ```javascript
 const actualStatusCode = Number('200');
@@ -668,13 +732,22 @@ console.log(actualStatusCode === expectedStatusCode);
 
 Схема:
 
----
+```text
+Number('200')  ──► 200          приведение выполнено осознанно
+     200       ──► 200          ожидаемое значение
+                   │
+                   ▼
+              200 === 200  ──►  true
+```
+
+Приведение сделано до сравнения и видно в коде. Сравнение остаётся строгим,
+поэтому строка, случайно попавшая в ответ вместо числа, тест не пройдёт.
 
 ## Использование в Automation QA
 
-### Почему assertions обычно используют strict equality
+### Почему проверки обычно используют строгое равенство
 
-Tests should reveal type mismatches, not hide them.
+Тесты должны выявлять несовпадение типов, а не прятать его.
 
 ```javascript
 const expectedStatusCode = 200;
@@ -689,22 +762,22 @@ console.log(expectedStatusCode === actualStatusCode);
 false
 ```
 
-Это полезно, потому что API вернул String, а не Number.
+Это полезно, потому что API вернул строку, а не число.
 
-### Comparing API значения
+### Сравнение значений из API
 
-If API contract says number:
+Если контракт API говорит, что это число:
 
 ```text
 Expected: 200 as Number
 Actual:   "200" as String
 ```
 
-Do not let `==` hide this mismatch.
+Не позволяйте `==` скрыть это несовпадение.
 
-### Comparing parsed значения
+### Сравнение разобранных значений
 
-If API intentionally returns string and test needs Number for calculation:
+Если API намеренно возвращает строку, а тесту нужно число для вычисления:
 
 ```javascript
 const actualStatusCode = Number('200');
@@ -713,7 +786,7 @@ const expectedStatusCode = 200;
 console.log(actualStatusCode === expectedStatusCode);
 ```
 
-### Comparing object references
+### Сравнение ссылок на объекты
 
 ```javascript
 const expectedUser = {
@@ -725,9 +798,9 @@ const actualUser = {
 };
 ```
 
-`expectedUser === actualUser` checks identity, not structure. Testing frameworks provide matchers for structure comparison. They will be studied later.
+`expectedUser === actualUser` проверяет тождественность, а не структуру. Тестовые фреймворки дают сопоставители для сравнения структуры. Они будут изучаться позже.
 
-### Avoiding hidden conversion bugs
+### Как избегать скрытых ошибок преобразования
 
 Чек-лист:
 
@@ -743,7 +816,7 @@ const actualUser = {
 
 ## Итоги
 
-Equality отвечает:
+Равенство отвечает:
 
 ```text
 How does JavaScript decide whether two values are equal?
@@ -751,11 +824,11 @@ How does JavaScript decide whether two values are equal?
 
 Основная модель: `===` сравнивает значения примитивов и идентичность объектов, а сравнение содержимого объектов нужно писать самому.
 
-Primitive значения are compared by type and value with `===`.
+Примитивные значения сравниваются по типу и значению через `===`.
 
-Objects are compared by identity.
+Объекты сравниваются по тождественности.
 
-Recommended strategy:
+Рекомендуемая стратегия:
 
 ```text
 Prefer === by default.
@@ -767,19 +840,19 @@ Use Object.is() for the few cases where its semantics are specifically needed.
 
 ## Что нужно запомнить
 
-* Equality is a comparison operation.
-* Always ask: what exactly is being compared?
-* `==` may convert значения before comparison.
-* `===` never performs type conversion.
-* `Object.is()` has its own comparison semantics.
-* Primitive значения compare by value and type with `===`.
-* Objects compare by identity.
-* Same-looking objects are not necessarily equal.
-* `NaN === NaN` is false.
-* `Object.is(NaN, NaN)` is true.
-* `+0 === -0` is true.
-* `Object.is(+0, -0)` is false.
-* Prefer `===` by default in test code.
+* Равенство — это операция сравнения.
+* Всегда спрашивайте: что именно сравнивается?
+* `==` может преобразовать значения перед сравнением.
+* `===` никогда не выполняет преобразования типов.
+* У `Object.is()` своя семантика сравнения.
+* Примитивные значения сравниваются по значению и типу через `===`.
+* Объекты сравниваются по тождественности.
+* Одинаково выглядящие объекты не обязательно равны.
+* `NaN === NaN` даёт `false`.
+* `Object.is(NaN, NaN)` даёт `true`.
+* `+0 === -0` даёт `true`.
+* `Object.is(+0, -0)` даёт `false`.
+* В коде тестов по умолчанию предпочитайте `===`.
 
 ---
 
@@ -791,12 +864,25 @@ Use Object.is() for the few cases where its semantics are specifically needed.
 2. Какой вопрос задаёт `==`?
 3. Какой вопрос задаёт `===`?
 4. Какой вопрос задаёт `Object.is()`?
-5. Do objects compare by shape or identity?
+5. Объекты сравниваются по структуре или по тождественности?
 6. Почему два одинаково выглядящих объекта могут быть не равны?
 7. Что особенного в `NaN === NaN`?
 8. Что особенного в `Object.is(+0, -0)`?
-9. Почему QA assertions обычно предпочитают strict equality?
-10. When is `==` acceptable?
+9. Почему в проверках обычно предпочитают строгое равенство?
+10. Когда `==` допустим?
+
+### Ответы
+
+1. `==` приводит значения к общему типу и потому считает их равными. `===` сравнивает без преобразования: типы разные — результат `false`.
+2. «Можно ли привести эти значения к общему типу так, чтобы они совпали?»
+3. «Одинаковы ли у них тип и значение?»
+4. То же, что `===`, но с двумя исключениями: `NaN` считается равным `NaN`, а `0` и `-0` — различными.
+5. По тождественности. Сравнивается, один это объект или разные, а не совпадают ли свойства.
+6. Потому что это два разных объекта. Совпадение свойств не делает их одним значением.
+7. Результат `false`. `NaN` не равен ничему, включая самого себя, — поэтому проверять на `NaN` сравнением бесполезно.
+8. Результат `false`. Это одно из двух мест, где `Object.is()` строже обычного сравнения: `+0 === -0` даёт `true`.
+9. Потому что проверка не должна проходить из-за приведения типов. Если сервер вернул `'200'` вместо `200`, тест обязан это заметить, а не счесть значения равными.
+10. Когда намеренно проверяют «значение отсутствует» сразу для `null` и `undefined`: `value == null`. В остальных случаях лучше выразить намерение явно.
 
 ---
 
@@ -808,7 +894,7 @@ Use Object.is() for the few cases where its semantics are specifically needed.
 practice/01-javascript/16-equality.md
 ```
 
-Сначала решайте без запуска. Главная цель - reasoning, not memorized tables.
+Сначала решайте без запуска. Главная цель — рассуждение, а не заученные таблицы.
 
 ---
 
@@ -820,4 +906,4 @@ practice/01-javascript/16-equality.md
 solutions/01-javascript/16-equality.md
 ```
 
-Читайте решения после самостоятельной попытки. Проверяйте вопрос: what exactly is being compared?
+Читайте решения после самостоятельной попытки. Проверяйте вопрос: что именно сравнивается?

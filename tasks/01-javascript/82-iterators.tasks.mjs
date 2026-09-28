@@ -21,8 +21,8 @@ function drain(iterator) {
 }`,
     hints: [
       'Состояние обхода живёт в самом итераторе, а не в коллекции.',
-      'Возврат себя из Symbol.iterator делает итератор пригодным для for...of.',
-      'Обход останавливается, когда done становится истинным.'
+      'Возврат себя из `Symbol.iterator` делает итератор пригодным для `for...of`.',
+      'Обход останавливается, когда `done` становится истинным.'
     ],
     tests: [
       {
@@ -40,7 +40,7 @@ iterator.next();
 expect(iterator.next()).toEqual({ value: undefined, done: true });`
       },
       {
-        name: 'итератор годится для for...of',
+        name: 'итератор годится для `for...of`',
         code: `const collected = [];
 for (const value of createIterator([1, 2, 3])) {
   collected.push(value);
@@ -54,7 +54,7 @@ expect([...iterator]).toEqual([1, 2]);
 expect([...iterator]).toEqual([]);`
       },
       {
-        name: 'drain собирает оставшееся',
+        name: '`drain` собирает оставшееся',
         code: `const iterator = createIterator(['a', 'b', 'c']);
 iterator.next();
 expect(drain(iterator)).toEqual(['b', 'c']);`

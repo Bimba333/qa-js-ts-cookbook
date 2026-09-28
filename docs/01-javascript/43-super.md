@@ -1,4 +1,4 @@
-# super
+# Ключевое слово `super`
 
 ## Связь с предыдущей главой
 
@@ -158,13 +158,13 @@ class LoginPage extends BasePage {
 
 ## Теория
 
-`super.method()` calls base class method from derived class method.
+`super.method()` вызывает метод базового класса из метода производного.
 
 Но не начинайте с синтаксиса.
 
 Начинайте с вопроса:
 
-> Какое base поведение используется повторно?
+> Какое базовое поведение используется повторно?
 
 Пример:
 
@@ -185,43 +185,77 @@ class LoginPage extends BasePage {
 
 Теперь:
 
-### Override without `super`
+```text
+loginPage.open('LoginPage')  →  'open LoginPage and focus login form'
+```
 
-### Override with `super`
+### Переопределение без `super`
 
-### Base method call
+Метод наследника полностью заменяет базовый: базовая реализация не выполняется
+вовсе.
 
-`super.open(pageName)` means:
+```text
+'focus login form'      ←  от BasePage не осталось ничего
+```
 
-It does not mean:
+### Переопределение с `super`
+
+Метод наследника дополняет базовый: сначала выполняется базовая реализация,
+затем к её результату добавляется своё.
+
+```text
+'open LoginPage'  +  ' and focus login form'
+```
+
+### Вызов базового метода
+
+`super.open(pageName)` означает:
+
+```text
+выполнить метод open, взятый из базового класса
+```
+
+Это не означает:
 
 ```text
 copy BasePage.open()
 ```
 
-It means:
+Это означает:
 
 ```text
 call BasePage behavior through class relationship
 ```
 
-### Relationship with `this`
+### Связь с `this`
 
 Важно:
 
-`super` chooses where method is taken from.
+```text
+super.open(pageName)  →  this внутри базового метода — тот же loginPage
+```
 
-`this` still describes which object the method works with.
+`super` выбирает, откуда берётся метод.
 
-### Relationship with prototype lookup
+`this` по-прежнему описывает, с каким объектом метод работает.
 
-`super` does not erase prototype-chain model.
+### Связь с поиском по прототипу
 
-High-level:
+`super` не отменяет модель цепочки прототипов.
 
-The class relationship created by `extends` tells JavaScript where base поведение is.
+На высоком уровне:
 
-We do not need advanced prototype internals in this chapter.
+```text
+обычный вызов  —  поиск метода начинается с самого объекта
+super          —  поиск начинается сразу с базового класса
+```
+
+Поэтому `super.open()` внутри `open()` не приводит к бесконечному вызову
+самого себя.
+
+Связь между классами, созданная через `extends`, сообщает JavaScript, где находится базовое поведение.
+
+Углубляться в устройство прототипов в этой главе не нужно.
 
 ---
 
@@ -238,7 +272,7 @@ flowchart TD
 
 ## Внутренний механизм
 
-Consider:
+Рассмотрим:
 
 ```javascript
 const loginPage = new LoginPage();
@@ -246,25 +280,33 @@ const loginPage = new LoginPage();
 loginPage.open('LoginPage');
 ```
 
-Шаг 1:
+Шаг 1: вызывается `loginPage.open('LoginPage')`.
 
-Шаг 2:
+Шаг 2: метод `open` найден в `LoginPage` — поиск останавливается здесь.
 
-Шаг 3:
+Шаг 3: выполняется тело переопределённого метода, `this` равен `loginPage`.
 
-Шаг 4:
+Шаг 4: встречается `super.open(pageName)`.
 
-Шаг 5:
+Шаг 5: метод `open` берётся из `BasePage`, а не из `LoginPage`.
 
-Шаг 6:
+Шаг 6: базовый метод выполняется с тем же `this` и возвращает строку.
 
-Шаг 7:
+Шаг 7: результат базового метода дополняется и возвращается наружу.
 
-Complete поток:
+Полный ход выполнения:
+
+```text
+loginPage.open()  →  LoginPage.open  →  super  →  BasePage.open
+                                                   ↓
+                                             результат базового
+                                                   ↓
+                                        дополнен и возвращён
+```
 
 ### Что происходит с `this`?
 
-If base method uses `this`:
+Если базовый метод использует `this`:
 
 ```javascript
 class BasePage {
@@ -274,36 +316,42 @@ class BasePage {
 }
 ```
 
-And derived instance has `prefix`:
+А у экземпляра производного класса есть `prefix`:
 
 ```javascript
 const loginPage = new LoginPage();
 loginPage.prefix = 'page';
 ```
 
-Then `super.label('LoginPage')` still uses `this` as `loginPage`.
+То `super.label('LoginPage')` по-прежнему использует `this`, равный `loginPage`.
 
-This is why `super` and `this` must not be confused.
+Именно поэтому `super` и `this` нельзя путать.
 
 ---
 
 ## Ментальная модель
 
-`super` is like calling the base manual from specialized procedure.
+`super` похож на обращение к общей инструкции из частной процедуры.
 
-Сначала использовать стандартную процедуру:
+```text
+дочерний метод
+ ├─ super.open()     сначала выполнить стандартную процедуру родителя
+ └─ своё дополнение  затем сделать то, что нужно этой странице
+```
 
-Extend common recipe:
+Все три привычные аналогии — «сначала общая инструкция», «дополнить общий
+рецепт», «спросить реализацию родителя» — про одно: наследник не заменяет
+поведение родителя, а опирается на него.
 
-Ask parent implementation:
-
-Foundation and specialization:
-
-Central idea:
+Фундамент и надстройка: наследник достраивает то, что уже сделал родитель, а
+не заменяет его целиком.
 
 Это ментальные модели, а не формальные определения.
 
-The technical idea for this chapter:
+Техническая идея для этой главы: `super` — это ссылка на реализацию родителя.
+В конструкторе `super()` вызывает конструктор родителя, в методе
+`super.method()` вызывает родительскую версию метода, не теряя текущего объекта
+выполнения.
 
 ---
 
@@ -321,7 +369,7 @@ examples/01-javascript/chapter-43/
 node examples/01-javascript/chapter-43/01-basic-super.js
 ```
 
-### Пример 1. Basic super
+### Пример 1. Базовый `super`
 
 Файл:
 
@@ -329,9 +377,9 @@ node examples/01-javascript/chapter-43/01-basic-super.js
 examples/01-javascript/chapter-43/01-basic-super.js
 ```
 
-Показывает `super.open()` inside derived `open()`.
+Показывает `super.open()` внутри переопределённого `open()`.
 
-### Пример 2. Extend method
+### Пример 2. Дополнение метода
 
 Файл:
 
@@ -339,9 +387,9 @@ examples/01-javascript/chapter-43/01-basic-super.js
 examples/01-javascript/chapter-43/02-extend-method.js
 ```
 
-Показывает base result plus derived-specific text.
+Показывает результат базового метода плюс текст производного.
 
-### Пример 3. this with super
+### Пример 3. `this` вместе с `super`
 
 Файл:
 
@@ -349,7 +397,7 @@ examples/01-javascript/chapter-43/02-extend-method.js
 examples/01-javascript/chapter-43/03-this-with-super.js
 ```
 
-Показывает that base method called through `super` still works with объект выполнения object.
+Показывает, что базовый метод, вызванный через `super`, по-прежнему работает с объектом выполнения.
 
 ### Пример 4. Типичные ошибки
 
@@ -359,9 +407,9 @@ examples/01-javascript/chapter-43/03-this-with-super.js
 examples/01-javascript/chapter-43/04-common-mistakes.js
 ```
 
-Показывает override without `super`: base поведение is not reused.
+Показывает переопределение без `super`: базовое поведение не переиспользуется.
 
-### Пример 5. Page Object
+### Пример 5. Объект страницы
 
 Файл:
 
@@ -369,9 +417,9 @@ examples/01-javascript/chapter-43/04-common-mistakes.js
 examples/01-javascript/chapter-43/05-page-object.js
 ```
 
-Показывает `BasePage.open()` and `LoginPage.open()` extending it.
+Показывает `BasePage.open()` и дополняющий его `LoginPage.open()`.
 
-### Пример 6. QA example
+### Пример 6. Пример из автоматизации тестов
 
 Файл:
 
@@ -379,65 +427,65 @@ examples/01-javascript/chapter-43/05-page-object.js
 examples/01-javascript/chapter-43/06-qa-example.js
 ```
 
-Показывает base API client request description extended by service client.
+Показывает описание запроса базового клиента API, дополненное клиентом сервиса.
 
 ---
 
 ## Частые вопросы
 
-### `super` копирует код base method?
+### `super` копирует код базового метода?
 
 Нет.
 
-`super.method()` calls base поведение. It does not copy method body into derived class.
+`super.method()` вызывает базовое поведение. Тело метода в производный класс он не копирует.
 
 ### `super` и `this` - одно и то же?
 
 Нет.
 
-### Почему нельзя просто скопировать base method code?
+### Почему нельзя просто скопировать код базового метода?
 
-Copy creates duplication.
+Копия создаёт дублирование.
 
-If base поведение changes, copied code must be updated manually.
+Если базовое поведение изменится, копию придётся править вручную.
 
-### Это то же самое, что `super()` in constructor?
+### Это то же самое, что `super()` в конструкторе?
 
 Нет.
 
-Эта глава объясняет `super.method()` внутри methods.
+Эта глава объясняет `super.method()` внутри методов.
 
-Constructor `super()` will be studied later when constructor inheritance becomes necessary.
+`super()` в конструкторе будет изучаться позже, когда понадобится наследование конструкторов.
 
-### Можно ли использовать `super` without overriding?
+### Можно ли использовать `super` без переопределения?
 
-`super.method()` is useful inside derived поведение when you need base поведение as part of derived поведение. The core case in this chapter is override plus extension.
+`super.method()` полезен внутри производного поведения, когда базовое нужно как его часть. Основной случай в этой главе — переопределение с дополнением.
 
 ---
 
 ## Распространённые мифы
 
-### Миф: `super` means parent object
+### Миф: `super` означает родительский объект
 
-Реальность: in this chapter `super.method()` is a way to call base class поведение through class relationship.
+Реальность: в этой главе `super.method()` — способ вызвать поведение базового класса через связь классов.
 
-### Миф: `super` changes `this`
+### Миф: `super` меняет `this`
 
-Реальность: base method called through `super` still works with the current объект выполнения.
+Реальность: базовый метод, вызванный через `super`, по-прежнему работает с текущим объектом выполнения.
 
-### Миф: `super` copies base method
+### Миф: `super` копирует базовый метод
 
-Реальность: it calls base поведение.
+Реальность: он вызывает базовое поведение.
 
-### Миф: every override should call `super`
+### Миф: каждое переопределение должно вызывать `super`
 
-Реальность: иногда override намеренно заменяет поведение. Используйте `super`, когда base поведение нужно переиспользовать.
+Реальность: иногда переопределение намеренно заменяет поведение. Используйте `super`, когда базовое поведение нужно переиспользовать.
 
 ---
 
 ## Распространённые ошибки
 
-### Ошибка 1. Override and forget base поведение
+### Ошибка 1. Переопределить и забыть базовое поведение
 
 Неправильный код:
 
@@ -457,7 +505,7 @@ class LoginPage extends BasePage {
 
 Что произошло:
 
-`LoginPage.open()` replaced base поведение.
+`LoginPage.open()` заменил базовое поведение.
 
 Исправленный вариант:
 
@@ -468,7 +516,7 @@ open(pageName) {
 }
 ```
 
-### Ошибка 2. Think `super` changes объект выполнения
+### Ошибка 2. Думать, что `super` меняет объект выполнения
 
 Неправильная модель: будто `super` можно вызывать в любом месте дочернего конструктора.
 
@@ -476,186 +524,186 @@ open(pageName) {
 
 ### Ошибка 3. Использовать `super`, когда нужна замена поведение
 
-Sometimes derived method should fully replace base поведение.
+Иногда производный метод должен полностью заменить базовое поведение.
 
-If so:
+Если так:
 
-The decision is semantic:
+```text
+базовый метод не вызывают — наследник описывает поведение целиком
+```
 
-### Ошибка 4. Try to use `super()` here
+Решение принимается по смыслу:
 
-Эта глава не про constructor `super()`.
+```text
+дополняем базовое поведение  →  нужен super
+заменяем базовое поведение   →  super не нужен
+```
 
-Wrong direction for this chapter:
+Вопрос решается смыслом, а не привычкой всегда вызывать `super`.
 
-Current topic:
+### Ошибка 4. Пытаться использовать здесь `super()`
+
+Эта глава не про `super()` в конструкторе.
+
+Неверное направление для этой главы:
+
+```text
+super() в конструкторе — тема главы о конструкторах наследников
+```
+
+Текущая тема:
+
+```text
+super.method() в обычном методе — вызов базовой реализации
+```
 
 ---
 
 ## Практическое использование
 
-Используйте `super.method()`, когда:
+Используйте `super.method()`, когда поведение родителя нужно выполнить целиком, а
+затем добавить своё.
 
-Good examples:
+Удачные примеры:
 
-* base page open + page-specific preparation;
-* base request description + service-specific label;
-* base validation formatting + specialized validation message;
-* base framework logging + feature-specific context.
+* открытие базовой страницы плюс подготовка конкретной;
+* описание базового запроса плюс метка конкретного сервиса;
+* базовое форматирование проверки плюс частное сообщение;
+* базовое журналирование фреймворка плюс контекст конкретной возможности.
 
-Avoid `super` when:
+Не используйте `super`, когда:
+
+```text
+базовое поведение в этом случае не нужно вовсе
+```
 
 Правило читаемости:
+
+```text
+super в начале метода — базовое поведение, затем своё;
+это самый предсказуемый порядок для читателя
+```
 
 ---
 
 ## Использование в Automation QA
 
-### BasePage.open()
+### Метод `open()` базовой страницы
 
-Base page:
+Базовая страница:
 
-Login page:
-
-### API client
-
-Base API client:
-
-Users client:
-
-### Validators
-
-Base validator:
-
-Status validator:
-
----
-
-## Диаграммы главы
-
-### 1. Зачем существует super
-
-### 2. Base method
-
-### 3. Derived override
-
-### 4. Reuse base поведение
-
-### 5. Extend поведение
-
-### 6. `super.method()`
-
-### 7. Base call flow
-
-### 8. Derived method flow
-
-### 9. Текущая модель JavaScript
-
-### 10. Prototype lookup reminder
-
-### 11. Receiver reminder
-
-### 12. `this` inside base method
-
-### 13. QA BasePage example
-
-### 14. LoginPage example
-
-### 15. API client example
-
-### 16. Читаемость
-
-### 17. Типичные ошибки
-
-### 18. Override without super
-
-### 19. Override with super
-
-### 20. Method composition
-
-### 21. Краткая ментальная модель
-
-### 22. Complete super model
-
-### 23. Base manual analogy
-
-### 24. Recipe analogy
-
-### 25. Procedure analogy
-
-### 26. Object relationship
-
-### 27. Class relationship
-
-### 28. Lookup relationship
-
-### 29. Receiver relationship
-
-```text
-method source: base
-receiver: derived instance
+```javascript
+class BasePage {
+  open(pageName) {
+    return `open ${pageName}`;
+  }
+}
 ```
 
-### 30. Переход к constructor super
+Страница входа:
 
-### 31. Переход к advanced inheritance
+```javascript
+class LoginPage extends BasePage {
+  open(pageName) {
+    return `${super.open(pageName)} and focus login form`;
+  }
+}
+```
 
-### 32. Framework example
+### Клиент API
 
-### 33. Validation helper
+Базовый клиент API:
 
-### 34. Derived extension
+```javascript
+class BaseClient {
+  describeRequest(path) {
+    return `GET ${path}`;
+  }
+}
+```
 
-### 35. Принадлежность поведения
+Клиент пользователей:
 
-### 36. Итоговая схема
+```javascript
+class UsersClient extends BaseClient {
+  describeRequest(path) {
+    return `${super.describeRequest(path)} [users]`;
+  }
+}
+```
+
+### Проверки
+
+Базовая проверка:
+
+```javascript
+class BaseValidator {
+  describe() {
+    return 'validator';
+  }
+}
+```
+
+```javascript
+class StatusValidator extends BaseValidator {
+  describe() {
+    return `${super.describe()} статуса ответа`;
+  }
+}
+
+console.log(new StatusValidator().describe());
+```
+
+Наследник дополняет описание родителя, а не переписывает его. Если позже
+изменится базовая формулировка, изменится и результат наследника — дублировать
+строку не пришлось.
 
 ---
 
 ## Итоги
 
-`super` appears after Class Inheritance naturally.
+`super` естественно появляется после наследования классов.
 
-Inheritance showed:
+Наследование показало, как дочерний класс получает поведение родителя.
 
-Overriding showed:
+Переопределение показало, как дочерний класс может заменить это поведение своим.
 
-`super` отвечает:
+`super` отвечает на следующий вопрос:
 
 ```text
-Как derived method может переопределить base method
-but still reuse base behavior?
+как переопределить метод родителя
+и при этом переиспользовать его поведение?
 ```
 
 Основная модель: `super` даёт доступ к родительскому конструктору и родительским методам из дочернего класса.
 
-`super` does not copy base code. It calls base поведение through the class relationship, while the объект выполнения model and prototype-chain mental model still matter.
+`super` не копирует базовый код. Он вызывает базовое поведение через связь классов, а модель объекта выполнения и цепочки прототипов по-прежнему важны.
 
-The next chapter starts the Arrays section.
+Следующая глава начинает раздел про массивы.
 
 ---
 
 ## Что нужно запомнить
 
-✓ `super.method()` calls base class поведение from derived method.
+✓ `super.method()` вызывает поведение базового класса из метода производного.
 
-✓ `super` is most useful when override should extend base поведение.
+✓ `super` полезнее всего, когда переопределение должно дополнить базовое поведение.
 
-✓ `super` does not copy base code.
+✓ `super` не копирует базовый код.
 
-✓ `super` and `this` are different concepts.
+✓ `super` и `this` — разные вещи.
 
-✓ Base method called through `super` still uses current объект выполнения.
+✓ Базовый метод, вызванный через `super`, по-прежнему использует текущий объект выполнения.
 
-✓ Override without `super` replaces base поведение for that method call.
+✓ Переопределение без `super` заменяет базовое поведение для этого вызова.
 
-✓ Override with `super` reuses and extends base поведение.
+✓ Переопределение с `super` переиспользует и дополняет базовое поведение.
 
-✓ Constructor `super()` is a future topic.
+✓ `super()` в конструкторе — будущая тема.
 
-✓ Prototype-chain mental model still matters.
+✓ Модель цепочки прототипов по-прежнему важна.
 
-✓ Next section begins Arrays.
+✓ Следующий раздел начинает массивы.
 
 ---
 
@@ -663,23 +711,36 @@ The next chapter starts the Arrays section.
 
 1. Какую проблему решает `super`?
 
-2. В чем разница между override с `super` и без `super`?
+2. В чём разница между переопределением с `super` и без него?
 
-3. Does `super.method()` copy base method code?
+3. Копирует ли `super.method()` код базового метода?
 
-4. Какое base поведение переиспользуется в `LoginPage.open()`?
+4. Какое базовое поведение переиспользуется в `LoginPage.open()`?
 
-5. На что указывает `this` внутри base method, вызванного через `super`?
+5. На что указывает `this` внутри базового метода, вызванного через `super`?
 
-6. Почему использовать `super`, а не копировать код base method?
+6. Почему использовать `super`, а не копировать код базового метода?
 
-7. When should an override avoid `super`?
+7. Когда переопределению не нужен `super`?
 
-8. Почему constructor `super()` здесь не рассматривается?
+8. Почему `super()` в конструкторе здесь не рассматривается?
 
-9. Чем `super` полезен в Page Objects?
+9. Чем `super` полезен в объектах страниц?
 
 10. Какой раздел идет дальше?
+
+### Ответы
+
+1. Позволяет переопределённому методу дополнить базовую реализацию, а не заменить её целиком.
+2. Без `super` базовый метод не выполняется вовсе. С `super` сначала выполняется базовая реализация, а затем к её результату добавляется своё.
+3. Нет. Он вызывает метод, лежащий в базовом классе, по связи между классами.
+4. Общая часть открытия страницы: то, что делает `BasePage.open()` для любой страницы. `LoginPage` добавляет к этому только своё — фокус на форме входа.
+5. На тот же объект, через который вызван переопределённый метод. `super` меняет, откуда берётся метод, а не для какого объекта он выполняется.
+6. Копия живёт своей жизнью: изменение базового поведения придётся повторять в каждом потомке. `super` оставляет общую часть в одном месте.
+7. Когда производный класс описывает поведение целиком и базовая реализация в этом случае не нужна.
+8. `super()` в конструкторе решает другую задачу — подготовку объекта перед обращением к `this`. Эта глава о вызове базового метода из обычного метода.
+9. Общее для всех страниц действие описывается один раз в базовом классе, а конкретная страница добавляет к нему свой шаг, не переписывая общую часть.
+10. Массивы: упорядоченные коллекции значений.
 
 ---
 

@@ -22,9 +22,9 @@ function readConfig(env: Record<string, string | undefined>): Config {
   return { baseUrl: '', retries: 0, headless: true };
 }`,
     hints: [
-      'Значение переменной окружения всегда строка или undefined.',
+      'Значение переменной окружения всегда строка или `undefined`.',
       'Пустая строка — это тоже «не задано».',
-      'Number("") равно нулю: проверять надо до преобразования.'
+      '`Number("")` равно нулю: проверять надо до преобразования.'
     ],
     tests: [
       {

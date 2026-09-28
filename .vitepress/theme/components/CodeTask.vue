@@ -326,8 +326,15 @@ function buildHarness() {
           try {
             actual()
           } catch (error) {
-            if (expected instanceof RegExp && !expected.test(error.message)) {
-              failure('сообщение ошибки ' + format(error.message) + ' не соответствует ' + String(expected))
+            // Строка сверяется на вхождение: текст ошибки движка несёт лишние
+            // подробности, и требовать полного совпадения бессмысленно.
+            const message = String(error && error.message !== undefined ? error.message : error)
+            if (expected instanceof RegExp) {
+              if (!expected.test(message)) {
+                failure('сообщение ошибки ' + format(message) + ' не соответствует ' + String(expected))
+              }
+            } else if (expected !== undefined && !message.includes(String(expected))) {
+              failure('сообщение ошибки ' + format(message) + ' не содержит ' + format(expected))
             }
             return
           }
@@ -564,7 +571,7 @@ npm run task:verify {{ task.id }}</code></pre>
             :class="result.ok ? 'is-passed' : 'is-failed'"
           >
             <span class="code-task__mark">{{ result.ok ? '✓' : '✕' }}</span>
-            <span class="code-task__check-name">{{ result.name }}</span>
+            <span class="code-task__check-name" v-html="withInlineCode(result.name)"></span>
             <span v-if="!result.ok && result.message" class="code-task__check-message">
               {{ result.message }}
             </span>

@@ -12,9 +12,9 @@ export default [
   // Цепочка заканчивается значением null.
 }`,
     hints: [
-      'Следующее звено даёт Object.getPrototypeOf.',
-      'Цепочка заканчивается, когда прототип равен null.',
-      'Объект без прототипа создаётся через Object.create(null).'
+      'Следующее звено даёт `Object.getPrototypeOf`.',
+      'Цепочка заканчивается, когда прототип равен `null`.',
+      'Объект без прототипа создаётся через `Object.create(null)`.'
     ],
     tests: [
       {
@@ -49,7 +49,7 @@ export default [
 
   {
     id: 'js-40-method-this-binding',
-    title: 'Чему равен this у найденного метода',
+    title: 'Чему равен `this` у найденного метода',
     difficulty: 'medium',
     lang: 'js',
     prompt:
@@ -61,13 +61,13 @@ export default [
   // Метод найден в прототипе, но this — объект вызова.
 }`,
     hints: [
-      'Объект с нужным прототипом создаётся через Object.create.',
+      'Объект с нужным прототипом создаётся через `Object.create`.',
       'Собственные поля копируются после создания.',
       'Метод вызывается через созданный объект.'
     ],
     tests: [
       {
-        name: 'this указывает на объект вызова',
+        name: '`this` указывает на объект вызова',
         code: `const proto = { whoAmI() { return this.name; } };
 expect(callOn(proto, { name: 'свой' })).toBe('свой');`
       },

@@ -58,7 +58,7 @@ export default async function solve({ page }) {
         code: `expect(result.rows > 0).toBe(true);`
       },
       {
-        name: 'в таблице только задачи со статусом NEW',
+        name: 'в таблице только задачи со статусом `NEW`',
         code: `const statuses = await page.locator('tbody tr td:nth-child(2)').allInnerTexts();
 expect(statuses.every(value => value.trim() === 'NEW')).toBe(true);`
       }

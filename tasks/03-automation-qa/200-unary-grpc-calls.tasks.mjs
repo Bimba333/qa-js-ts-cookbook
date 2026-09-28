@@ -1,7 +1,7 @@
 export default [
   {
     id: 'qa-200-unary-call',
-    title: 'Unary-вызов и его результат',
+    title: 'Унарный вызов и его результат',
     difficulty: 'hard',
     lang: 'grpc',
     prompt:
@@ -19,9 +19,9 @@ export default [
   return { total: 0, listed: null, item: null };
 }`,
     hints: [
-      'Промис создаётся вокруг вызова: resolve в колбэке без ошибки, reject — с ошибкой.',
+      'Промис создаётся вокруг вызова: `resolve` в обратном вызове без ошибки, `reject` — с ошибкой.',
       'Метаданные передаются вторым аргументом, до колбэка.',
-      'Ответ GetWorkItem — сама запись, а не обёртка вокруг неё.'
+      'Ответ `GetWorkItem` — сама запись, а не обёртка вокруг неё.'
     ],
     tests: [
       {

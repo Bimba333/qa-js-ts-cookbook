@@ -1,4 +1,4 @@
-# Error Handling
+# Обработка ошибок
 
 ## Связь с предыдущей главой
 
@@ -147,11 +147,11 @@ That is the purpose of error handling.
 
 ## Теория
 
-### Normal execution
+### Обычное выполнение
 
-Normal execution means code can continue step by step.
+Нормальное выполнение означает, что код может продолжаться шаг за шагом.
 
-Normal execution схема:
+Схема нормального выполнения:
 
 ```text
 строка 1 → строка 2 → строка 3 → результат
@@ -166,19 +166,27 @@ const body = JSON.parse(rawBody);
 console.log(body.id);
 ```
 
-Safe execution model:
+Модель безопасного выполнения:
 
-### Что такое error
+```text
+тело ответа — валидный JSON   →  разбор удался, строка console.log выполняется
+тело ответа — не JSON          →  разбор падает, следующая строка не выполняется
+```
 
-An error is a signal that normal execution cannot continue as expected.
+Безопасное выполнение означает не «ошибок не будет», а «для ошибки заранее
+описан путь».
 
-Error is not just "bad вывод". It changes execution flow.
+### Что такое ошибка
 
-### Abnormal execution
+Ошибка — сигнал о том, что нормальное выполнение не может продолжаться как задумано.
 
-Abnormal execution происходит, когда операция падает и normal path прерывается.
+Ошибка — это не просто «плохой вывод». Она меняет ход выполнения.
 
-Abnormal execution схема:
+### Аварийное выполнение
+
+Аварийное выполнение происходит, когда операция падает и нормальный путь прерывается.
+
+Схема аварийного выполнения:
 
 ```text
 строка 1 → строка 2 → ОШИБКА
@@ -192,32 +200,40 @@ Either error is handled
 or it continues upward and program/test stops.
 ```
 
-### Runtime errors
+### Ошибки времени выполнения
 
-Runtime error happens while program is running.
+Ошибка времени выполнения возникает во время работы программы.
 
 ```javascript
 JSON.parse('not valid json');
 ```
 
-Runtime error схема:
+Схема ошибки времени выполнения:
 
 ```text
 ошибка возникает во время выполнения,
 а не при разборе синтаксиса
 ```
 
-Эта глава не объясняет внутреннее устройство stack trace. Stack traces будут изучены позже, когда отладка станет глубже.
+Эта глава не объясняет внутреннее устройство трассировки стека. Трассировки будут изучены позже, когда разбор падений станет глубже.
 
 ### Почему программы останавливаются
 
-If an error is not handled, JavaScript cannot safely continue the normal path.
+Если ошибка не обработана, JavaScript не может безопасно продолжать нормальный путь.
 
-Continue vs stop:
+Продолжить или остановиться:
+
+```text
+ошибка обработана     →  выполнение продолжается по запасному пути
+ошибка не обработана  →  выполнение текущего пути прекращается
+```
+
+Продолжать нормальный путь после ошибки означало бы работать с данными,
+которых нет.
 
 ### `throw`
 
-`throw` creates an error path intentionally.
+`throw` намеренно создаёт путь ошибки.
 
 ```javascript
 const statusCode = 500;
@@ -240,11 +256,11 @@ throw new Error('...')  →  выполнение прерывается,
 Statements after throw in the same normal path do not run.
 ```
 
-Custom Error classes — будущая тема. Эта глава использует встроенный `Error`.
+Собственные классы ошибок — будущая тема. Эта глава использует встроенный `Error`.
 
 ### `try`
 
-`try` marks a block where an error may happen.
+`try` помечает блок, в котором может возникнуть ошибка.
 
 ```javascript
 try {
@@ -259,11 +275,11 @@ try {
 try { код, который может упасть }
 ```
 
-`try` alone is not enough. It needs `catch` or `finally`.
+Одного `try` недостаточно. Ему нужен `catch` или `finally`.
 
 ### `catch`
 
-`catch` handles error from `try`.
+`catch` обрабатывает ошибку из `try`.
 
 ```javascript
 try {
@@ -289,7 +305,7 @@ Program can continue after catch if appropriate.
 
 ### `finally`
 
-`finally` runs after `try` / `catch`, whether error happened or not.
+`finally` выполняется после `try` и `catch` независимо от того, была ли ошибка.
 
 ```javascript
 try {
@@ -308,45 +324,78 @@ finally выполняется всегда:
 и при успехе, и при ошибке
 ```
 
-At a high level, `finally` is used for cleanup-like work.
+На высоком уровне `finally` используют для завершающих действий вроде очистки.
 
-### try/catch flow
+### Ход выполнения `try` и `catch`
 
-Try/catch поток:
+Поток `try` и `catch`:
 
-Exception path:
+```text
+try      →  код выполнился без ошибок  →  catch пропускается
+         →  finally выполняется
+```
 
-### Error propagation
+Путь исключения:
 
-If current place does not handle error, error propagates upward conceptually.
+```text
+try      →  строка упала  →  оставшиеся строки try пропускаются
+         →  catch получает объект ошибки и выполняется
+         →  finally выполняется
+```
 
-Error propagation схема:
+`finally` выполняется в обоих случаях — на этом и строится очистка.
+
+### Распространение ошибки
+
+Если текущее место не обрабатывает ошибку, она концептуально поднимается выше.
+
+Схема подъёма ошибки:
 
 ```text
 ошибка не обработана здесь  →  поднимается к вызывающему коду
 не обработана нигде         →  программа завершается
 ```
 
-Functions will make this model more important. They are the next chapter block.
+Функции сделают эту модель важнее. Они идут следующим блоком.
 
-### Choosing where to handle errors
+### Где обрабатывать ошибки
 
-Not every error should be handled immediately.
+Не каждую ошибку нужно обрабатывать немедленно.
 
-Decision after error:
-
-In Automation QA:
-
-### Multiple operations
-
-Multiple operations in `try`:
-
-If parse fails:
-
-Что теперь происходит с выполнением?
+Решение после ошибки:
 
 ```text
-Execution jumps from failing operation to error handling path.
+здесь известно, что делать дальше   →  обработать ошибку на месте
+здесь известно только, что упало    →  дать ошибке подняться выше
+```
+
+В автоматизации тестов:
+
+```text
+ошибка разбора ответа  →  обработать: тест может сообщить понятную причину
+ошибка сети в шаге     →  обычно пропустить наверх: тест должен упасть
+```
+
+Поглощённая ошибка опаснее упавшего теста: тест продолжается на неверных
+данных и падает позже, в неочевидном месте.
+
+### Несколько операций
+
+```javascript
+try {
+  const raw = readResponse();      // 1
+  const data = JSON.parse(raw);    // 2 — здесь возможна ошибка
+  saveReport(data);                // 3
+} catch (error) {
+  console.log('не удалось обработать ответ');
+}
+```
+
+Если разбор на шаге 2 не удался, шаг 3 **не выполняется**: управление сразу
+переходит в `catch`.
+
+```text
+Выполнение переходит от упавшей операции к обработчику ошибки.
 ```
 
 ---
@@ -369,38 +418,53 @@ flowchart TD
 Концептуально:
 
 ```text
-Normal execution flows forward.
-Error interrupts normal execution.
-Error handling decides what happens next.
+Обычное выполнение идёт вперёд.
+Ошибка прерывает обычное выполнение.
+Обработка ошибки решает, что произойдёт дальше.
 ```
 
-Error lifecycle:
+Время жизни ошибки:
 
-Complete error handling picture:
+```text
+1. операция не может выполниться → создан объект ошибки
+2. выполнение прерывается на этой строке
+3. ищется ближайший подходящий catch
+4. нашли    → выполняется catch, затем finally, дальше код продолжается
+   не нашли  → ошибка уходит выше по стеку вызовов
+5. не поймали нигде → программа завершается с ненулевым кодом
+```
 
-Текущее место в модели JavaScript:
+Шаг 5 объясняет, почему необработанная ошибка в тестовом прогоне роняет весь
+процесс, а не один шаг.
 
-Переход к Functions:
-
-Functions сделают error propagation понятнее, потому что errors часто проходят через границы функций.
+Функции сделают подъём ошибок понятнее, потому что ошибки часто проходят через границы функций.
 
 ---
 
 ## Ментальная модель
 
-### Emergency stop button
+### Кнопка аварийной остановки
 
-Error is the emergency stop for normal execution.
+Ошибка — аварийная остановка нормального выполнения.
 
-### Factory failure
+### Остановка на производстве
 
-### Blocked railway
+Неисправная деталь останавливает линию, а не едет дальше по конвейеру: иначе
+брак попадёт в готовое изделие.
 
-### Airport security stop
+### Перекрытый путь
 
-### Interrupted conveyor
+Ошибка перекрывает основной путь выполнения. `catch` — это стрелка на запасную
+ветку: если её нет, состав просто не едет дальше.
 
-Program execution normally flows forward. Errors interrupt normal execution. Error handling decides what happens next.
+### Досмотр в аэропорту
+
+Проверка либо пропускает дальше, либо останавливает — промежуточного
+«пропустим и разберёмся потом» нет.
+
+### Остановленный конвейер
+
+Обычно выполнение программы движется вперёд. Ошибки его прерывают. Обработка ошибок решает, что будет дальше.
 
 ---
 
@@ -425,87 +489,85 @@ node examples/01-javascript/chapter-20/06-qa-example.js
 
 ### 01-runtime-error.js
 
-Shows runtime error caused by invalid JSON, handled so example can continue.
+Показывает ошибку времени выполнения из-за неверного JSON, обработанную так, чтобы пример мог продолжиться.
 
 ### 02-throw.js
 
-Shows intentional error path with `throw`.
+Показывает намеренный путь ошибки через `throw`.
 
 ### 03-try-catch.js
 
-Shows controlled handling of parsing failure.
+Показывает контролируемую обработку неудачного разбора.
 
 ### 04-finally.js
 
-Shows cleanup path.
+Показывает путь очистки.
 
 ### 05-common-mistakes.js
 
-Shows catching error but hiding useful information.
+Показывает перехват ошибки с потерей полезной информации.
 
 ### 06-qa-example.js
 
-Shows API validation scenario.
+Показывает сценарий проверки API.
 
 ---
 
 ## Частые вопросы
 
-### Should every error be caught?
+### Нужно ли ловить каждую ошибку?
 
-Нет. Ловите errors, когда текущий уровень может осмысленно их обработать. Иначе дайте им уронить тест или распространиться дальше.
+Нет. Ловите ошибки, когда текущий уровень может осмысленно их обработать. Иначе дайте им уронить тест или подняться выше.
 
-### Is catch for ignoring errors?
+### `catch` нужен, чтобы игнорировать ошибки?
 
-No. Catch is for handling errors. Ignoring errors usually hides real problems.
+Нет. `catch` нужен, чтобы их обрабатывать. Игнорирование обычно прячет настоящие проблемы.
 
-### Does finally mean success?
+### `finally` означает успех?
 
-No. `finally` runs after success or failure. It does not mean operation succeeded.
+Нет. `finally` выполняется и после успеха, и после ошибки. Он не означает, что операция удалась.
 
-### Are assertion failures errors?
+### Падение проверки — это ошибка?
 
-In test frameworks, assertion failures are represented as failures/errors. Framework-specific mechanics will be studied later.
+В тестовых фреймворках падение проверки представлено как ошибка. Механика конкретных фреймворков будет изучаться позже.
 
-### Как работают async errors?
+### Как работают ошибки в асинхронном коде?
 
-Async error handling, Promise rejection and Event Loop interaction will be studied later.
+Обработка асинхронных ошибок, отклонение промисов и взаимодействие с событийным циклом будут изучаться позже.
 
 ---
 
 ## Распространённые мифы
 
-### Миф: Error handling makes errors disappear
+### Миф: обработка ошибок заставляет ошибки исчезнуть
 
 Реальность:
 
-Error handling decides what to do with errors.
+Обработка ошибок решает, что с ними делать.
 
-### Миф: catch should always continue execution
-
-Реальность:
-
-Sometimes correct поведение is to stop.
-
-### Миф: finally выполняется только когда есть error
+### Миф: `catch` всегда должен продолжать выполнение
 
 Реальность:
 
-`finally` runs after both success and failure paths.
+Иногда правильное поведение — остановиться.
 
-### Миф: All errors should be handled at the place they happen
+### Миф: `finally` выполняется, только когда есть ошибка
 
 Реальность:
 
-Handle errors where meaningful action can be taken.
+`finally` выполняется и после успеха, и после отказа.
 
-Типичные ошибки:
+### Миф: все ошибки нужно обрабатывать там, где они произошли
+
+Реальность:
+
+Обрабатывайте ошибки там, где можно предпринять осмысленное действие.
 
 ---
 
 ## Распространённые ошибки
 
-### Ошибка 1. Swallow error
+### Ошибка 1. Проглотить ошибку
 
 ```javascript
 try {
@@ -514,21 +576,21 @@ try {
 }
 ```
 
-The test loses information.
+Тест теряет информацию.
 
-### Ошибка 2. Continue after critical setup failure
+### Ошибка 2. Продолжать после отказа в критичной подготовке
 
-If login setup failed, continuing test may produce misleading failures.
+Если подготовка входа не удалась, продолжение теста даст вводящие в заблуждение падения.
 
-### Ошибка 3. Catch too much
+### Ошибка 3. Ловить слишком много
 
-One large `try` block around unrelated operations makes it hard to know what failed.
+Один большой блок `try` вокруг несвязанных операций мешает понять, что именно упало.
 
-### Ошибка 4. Forget finally cleanup
+### Ошибка 4. Забыть про очистку в `finally`
 
-If setup created temporary data, cleanup may be needed even after error.
+Если подготовка создала временные данные, очистка может понадобиться даже после ошибки.
 
-### Ошибка 5. Throw unclear error
+### Ошибка 5. Бросить непонятную ошибку
 
 ```javascript
 throw new Error('Failed');
@@ -544,7 +606,7 @@ throw new Error('Expected status 200, received 500');
 
 ## Практическое использование
 
-Use error handling when:
+Используйте обработку ошибок, когда:
 
 ```text
 operation can fail
@@ -568,11 +630,11 @@ error message should be improved
 
 ## Использование в Automation QA
 
-### Assertion failures
+### Непройденные проверки
 
-Assertions падают, когда expected condition не выполнено. Test frameworks обрабатывают такие failures. Детали framework будут позже.
+Проверки падают, когда ожидаемое условие не выполнено. Тестовые фреймворки обрабатывают такие падения. Детали фреймворков будут позже.
 
-### API validation
+### Проверка ответа API
 
 ```javascript
 if (statusCode !== 200) {
@@ -580,9 +642,14 @@ if (statusCode !== 200) {
 }
 ```
 
-QA failure example:
+Пример падения:
 
-### Parsing JSON
+```text
+без throw:  тест продолжится и будет искать поля в теле ошибки
+с throw:    тест останавливается там, где ответ впервые оказался не тем
+```
+
+### Разбор JSON
 
 ```javascript
 try {
@@ -593,13 +660,13 @@ try {
 }
 ```
 
-### Failing test setup
+### Отказ при подготовке теста
 
-If setup cannot create user, test should usually stop.
+Если подготовка не может создать пользователя, тест обычно должен остановиться.
 
-### Logging errors
+### Запись ошибок в журнал
 
-Log enough context:
+Записывайте достаточно контекста:
 
 ```text
 which operation failed
@@ -608,7 +675,7 @@ what was expected
 what error message appeared
 ```
 
-### Cleanup in finally
+### Очистка в `finally`
 
 ```javascript
 try {
@@ -618,15 +685,15 @@ try {
 }
 ```
 
-Cleanup logic in real frameworks will be studied later.
+Очистка в настоящих фреймворках будет изучаться позже.
 
-### Deciding whether test should stop
+### Как решить, должен ли тест остановиться
 
 ---
 
 ## Итоги
 
-Error Handling completes the Program Control section.
+Обработка ошибок завершает раздел про управление ходом программы.
 
 Основная модель:
 
@@ -636,7 +703,7 @@ Errors do not disappear automatically.
 JavaScript provides mechanisms for deciding how execution continues.
 ```
 
-Main constructs:
+Основные конструкции:
 
 ```text
 throw
@@ -645,26 +712,26 @@ catch
 finally
 ```
 
-Final section bridge:
+Переход к следующему разделу:
 
-Functions are the next abstraction: they let us give names to reusable поведение and create clearer boundaries for execution and errors.
+Функции — следующая ступень абстракции: они позволяют давать имена переиспользуемому поведению и создают более чёткие границы для выполнения и ошибок.
 
 ---
 
 ## Что нужно запомнить
 
-* Normal execution flows forward.
-* Runtime errors interrupt normal execution.
-* Error handling decides what happens next.
-* `throw` starts error path intentionally.
-* `try` marks code that may fail.
-* `catch` handles error.
-* `finally` runs after success or failure.
-* Errors can propagate conceptually to outer levels.
-* Do not catch errors just to hide them.
-* In QA, errors should produce useful failure information.
-* Cleanup часто относится к `finally`.
-* Functions are the next abstraction after program control.
+* Нормальное выполнение движется вперёд.
+* Ошибки времени выполнения его прерывают.
+* Обработка ошибок решает, что будет дальше.
+* `throw` намеренно начинает путь ошибки.
+* `try` помечает код, который может упасть.
+* `catch` обрабатывает ошибку.
+* `finally` выполняется и после успеха, и после отказа.
+* Ошибки концептуально поднимаются на внешние уровни.
+* Не ловите ошибки только для того, чтобы их спрятать.
+* В тестах ошибки должны давать полезную информацию о падении.
+* Очистка часто относится к `finally`.
+* Функции — следующая абстракция после управления ходом программы.
 
 ---
 
@@ -672,16 +739,29 @@ Functions are the next abstraction: they let us give names to reusable пове�
 
 Ответьте без запуска кода.
 
-1. Что такое normal execution?
-2. Что такое abnormal execution?
-3. Что такое runtime error?
-4. Почему программа может остановиться после error?
+1. Что такое нормальное выполнение?
+2. Что такое аварийное выполнение?
+3. Что такое ошибка времени выполнения?
+4. Почему программа может остановиться после ошибки?
 5. Что делает `throw`?
 6. Что отмечает `try`?
 7. Что делает `catch`?
 8. Что гарантирует `finally` на высоком уровне?
-9. When should error be handled locally?
-10. Как эта глава ведёт к Functions?
+9. Когда ошибку стоит обработать на месте?
+10. Как эта глава ведёт к функциям?
+
+### Ответы
+
+1. Выполнение, при котором строки идут по порядку и каждая операция завершается ожидаемо.
+2. Выполнение, прерванное ошибкой: оставшиеся строки текущего пути не выполняются.
+3. Ошибка, возникшая во время выполнения, а не при разборе кода: неверный JSON, обращение к свойству отсутствующего объекта, недоступная сеть.
+4. Продолжать нормальный путь после ошибки означало бы работать с данными, которых нет. Если ошибка нигде не обработана, выполнение прекращается.
+5. Намеренно создаёт ошибку и прерывает нормальный путь выполнения с этого места.
+6. Участок кода, во время которого ошибка должна быть перехвачена, а не уйти выше.
+7. Получает объект ошибки и выполняет запасной путь.
+8. Что его блок выполнится в обоих случаях — и при успехе, и при ошибке. На этом строится освобождение ресурсов.
+9. Когда в этом месте известно, что делать дальше: подставить значение по умолчанию или сообщить понятную причину. Если известно только то, что упало, ошибку лучше пропустить выше.
+10. Ошибка редко остаётся в одной строке: она поднимается через вызовы. Чтобы понять этот путь, нужно понимать, что такое вызов функции и как он возвращает управление.
 
 ---
 
@@ -693,7 +773,7 @@ Functions are the next abstraction: they let us give names to reusable пове�
 practice/01-javascript/20-error-handling.md
 ```
 
-Сначала решайте predict вывод задания без запуска. Главная цель - понять execution поток: normal path, error path, catch, finally.
+Сначала решайте задания на предсказание вывода без запуска. Главная цель — понять ход выполнения: нормальный путь, путь ошибки, `catch`, `finally`.
 
 ---
 
@@ -705,4 +785,4 @@ practice/01-javascript/20-error-handling.md
 solutions/01-javascript/20-error-handling.md
 ```
 
-Читайте решения после самостоятельной попытки. Проверяйте reasoning: what happens to execution now?
+Читайте решения после самостоятельной попытки. Проверяйте рассуждение: что происходит с выполнением сейчас?

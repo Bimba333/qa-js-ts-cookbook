@@ -7,7 +7,7 @@ export default [
     prompt:
       'Соберите слой интерфейса как граф объектов. Напишите фабрику ' +
       '`createUiLayer(page)`, которая возвращает `{ login, workItems, card }` — ' +
-      'три page object. `login` умеет `open()` и `signIn(user, password)`; ' +
+      'три объекта страниц. `login` умеет `open()` и `signIn(user, password)`; ' +
       '`workItems` — `open()`, `firstTitle()` и `openFirst()` (переходит в ' +
       'карточку первой записи); `card` — `heading()` и `url()`. Объекты ' +
       'создаются один раз на вызов фабрики и используют одну и ту же `page`. ' +

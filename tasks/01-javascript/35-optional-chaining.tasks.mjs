@@ -12,9 +12,9 @@ export default [
   // Опциональная цепочка прерывается на первом отсутствующем звене.
 }`,
     hints: [
-      'Опциональная цепочка возвращает undefined, если звено отсутствует.',
-      'Требуется именно null, а не undefined — значение нужно подменить.',
-      'Подменять следует и undefined, и null.'
+      'Опциональная цепочка возвращает `undefined`, если звено отсутствует.',
+      'Требуется именно `null`, а не `undefined` — значение нужно подменить.',
+      'Подменять следует и `undefined`, и `null`.'
     ],
     tests: [
       {
@@ -22,11 +22,11 @@ export default [
         code: `expect(readEmail({ body: { user: { email: 'a@b.test' } } })).toBe('a@b.test');`
       },
       {
-        name: 'нет user — возвращает null',
+        name: 'нет `user` — возвращает `null`',
         code: `expect(readEmail({ body: {} })).toBe(null);`
       },
       {
-        name: 'нет body — возвращает null',
+        name: 'нет `body` — возвращает `null`',
         code: `expect(readEmail({})).toBe(null);`
       },
       {
@@ -55,8 +55,8 @@ expect(thrown).toBe(false);`
 }`,
     hints: [
       'Для безопасного вызова есть форма ?.() — она проверяет наличие метода.',
-      'Если метода нет, результатом будет undefined.',
-      'Подменить нужно и undefined, и null.'
+      'Если метода нет, результатом будет `undefined`.',
+      'Подменить нужно и `undefined`, и `null`.'
     ],
     tests: [
       {

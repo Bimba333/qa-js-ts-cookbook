@@ -23,7 +23,7 @@ export default [
   get size(): number { return 0; }
 }`,
     hints: [
-      'Ограничение по id позволяет искать запись, не зная остальных полей.',
+      'Ограничение по `id` позволяет искать запись, не зная остальных полей.',
       'Замена по месту отличается от удаления и добавления в конец.',
       'Возврат внутреннего массива открыл бы хранилище для изменений снаружи.'
     ],
@@ -57,7 +57,7 @@ expect(store.size).toBe(0);`
         code: `expect(new EntityStore<{ id: string }>().findById('нет')).toBeUndefined();`
       },
       {
-        name: 'all возвращает копию',
+        name: '`all` возвращает копию',
         code: `const store = new EntityStore<{ id: string }>();
 store.add({ id: 'a' });
 const items = store.all() as { id: string }[];

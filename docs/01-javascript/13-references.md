@@ -1,4 +1,4 @@
-# References
+# Ссылки
 
 ## Связь с предыдущей главой
 
@@ -174,41 +174,42 @@ admin ──┘
 
 ## Теория
 
-### Почему references exist
+### Почему ссылки существуют
 
-Objects can be large, structured and mutable.
+Объекты могут быть большими, составными и изменяемыми.
 
-Если бы every assignment of object created a full independent copy, JavaScript programs became harder to reason about and less practical:
+Если бы каждое присваивание объекта создавало полную независимую копию, программы стало бы труднее понимать, а работа с ними стала бы непрактичной:
 
-Instead JavaScript allows variables to refer to object значения.
+Вместо этого JavaScript позволяет переменным ссылаться на объектные значения.
 
 Концептуальная идея:
 
-Reference exists to let code work with object значения without treating every object assignment as independent duplication.
+Ссылка существует, чтобы код мог работать с объектными значениями, не превращая каждое присваивание в копирование.
 
-### Что такое reference conceptually
+### Что такое ссылка на концептуальном уровне
 
-Reference is a conceptual connection from a variable to an object value.
+Ссылка — это концептуальная связь между переменной и объектным значением.
 
-Не запоминайте это как implementation detail. В этой главе reference means:
+Не запоминайте это как деталь реализации. В этой главе ссылка означает: переменная
+не содержит объект, а указывает на него.
 
-Диаграмма Object + Reference:
+Схема «объект и ссылка»:
 
 ```text
 user  ──→  ref#1  ──→  [ { name: 'Anna' } ]
 ```
 
-Reference is not the object itself.
+Ссылка — это не сам объект.
 
-Ментальная модель bookmark: закладка указывает на страницу, но сама страницей не является.
+Мысленная модель закладки: закладка указывает на страницу, но сама страницей не является.
 
-Bookmark is not the page. Reference is not the object.
+Закладка — не страница. Ссылка — не объект.
 
-### Reference vs object
+### Ссылка и объект
 
-Object is the value with properties.
+Объект — это значение со свойствами.
 
-Reference is how variable reaches that object.
+Ссылка — это то, как переменная до него добирается.
 
 ```javascript
 const user = {
@@ -216,23 +217,24 @@ const user = {
 };
 ```
 
-Концептуально:
+Концептуально здесь два разных явления: сам объект со свойствами и имя, которое
+на него указывает.
 
-Object отвечает:
+Объект отвечает на вопрос:
 
 ```text
 What information is grouped together?
 ```
 
-Reference отвечает:
+Ссылка отвечает на вопрос:
 
 ```text
 Which object does this variable refer to?
 ```
 
-### Primitive assignment
+### Присваивание примитива
 
-Primitive значения behave differently.
+Примитивные значения ведут себя иначе.
 
 ```javascript
 let userName = 'Anna';
@@ -251,22 +253,22 @@ Anna
 Kate
 ```
 
-Диаграмма primitive assignment:
+Схема присваивания примитива:
 
 ```text
 a  ──→  [ 1 ]
 b  ──→  [ 1 ]   собственная копия значения
 ```
 
-At this conceptual level, assignment of primitive value gives another variable its own primitive value.
+На этом концептуальном уровне присваивание примитивного значения даёт другой переменной её собственное значение.
 
-Primitive comparison:
+Сравнение примитивов:
 
-This is why changing `adminName` does not affect `userName`.
+Именно поэтому изменение `adminName` не влияет на `userName`.
 
-### Object assignment
+### Присваивание объекта
 
-Object assignment behaves differently.
+Присваивание объекта ведёт себя иначе.
 
 ```javascript
 const user = {
@@ -276,7 +278,7 @@ const user = {
 const admin = user;
 ```
 
-Диаграмма object assignment:
+Схема присваивания объекта:
 
 ```text
 user   ──┐
@@ -284,17 +286,17 @@ user   ──┐
 admin  ──┘
 ```
 
-One object, two variables:
+Один объект, две переменные:
 
-На какой object сейчас ссылается `admin`?
+На какой объект сейчас ссылается `admin`?
 
 ```text
 The same object as user.
 ```
 
-### Multiple variables referring to one object
+### Несколько переменных, ссылающихся на один объект
 
-Several variables can refer to one object:
+На один объект могут ссылаться несколько переменных:
 
 ```javascript
 const user = {
@@ -306,7 +308,7 @@ const admin = user;
 const currentUser = user;
 ```
 
-Shared object схема:
+Схема общего объекта:
 
 ```text
 user     ──┐
@@ -314,28 +316,29 @@ admin    ──┼──→  [ один объект ]
 current  ──┘
 ```
 
-This is not three users.
+Это не три пользователя.
 
-This is:
+Это:
 
 ```text
 one object
 three variables referring to it
 ```
 
-Ментальная модель multiple labels pointing to one folder: на одной папке может висеть несколько ярлыков, но папка остаётся одна.
+Мысленная модель нескольких ярлыков на одну папку: ярлыков может быть много, но папка остаётся одна.
 
-### Reading through a reference
+### Чтение через ссылку
 
-When code reads:
+Когда код читает:
 
 ```javascript
 console.log(admin.name);
 ```
 
-Engine conceptually does:
+Движок концептуально делает так: читает значение имени `admin` (это ссылка),
+переходит по ней к объекту и берёт из него свойство `name`.
 
-Диаграмма reading through reference:
+Схема чтения через ссылку:
 
 ```text
 admin.name  →  пройти по ссылке  →  прочитать свойство name
@@ -343,7 +346,7 @@ admin.name  →  пройти по ссылке  →  прочитать сво�
 
 Вопрос:
 
-> На какой object сейчас ссылается `admin`?
+> На какой объект сейчас ссылается `admin`?
 
 Ответ:
 
@@ -351,17 +354,18 @@ admin.name  →  пройти по ссылке  →  прочитать сво�
 The object that contains name: "Anna".
 ```
 
-### Updating through a reference
+### Изменение через ссылку
 
-When code updates:
+Когда код изменяет:
 
 ```javascript
 admin.name = 'Kate';
 ```
 
-Engine conceptually does:
+Движок концептуально делает так: переходит по ссылке к объекту и записывает новое
+значение в его свойство. Сама ссылка при этом не меняется.
 
-Диаграмма updating through reference:
+Схема изменения через ссылку:
 
 ```text
 admin.name = 'Kate'
@@ -371,33 +375,37 @@ user  ──┐
 admin ──┘
 ```
 
-`user.name` тоже показывает `"Kate"`, потому что `user` ссылается на тот же object.
+`user.name` тоже показывает `"Kate"`, потому что `user` ссылается на тот же объект.
 
-### Assigning one reference to another variable
+### Присваивание одной ссылки другой переменной
 
-This line:
+Эта строка:
 
 ```javascript
 const admin = user;
 ```
 
-does not create a new object.
+не создаёт нового объекта.
 
-It makes `admin` refer to the same object as `user`.
-
-Variables + References:
-
-This is the central idea of the chapter:
+Оно делает так, что `admin` ссылается на тот же объект, что и `user`.
 
 ```text
-Variables do not contain objects.
-Variables refer to object values.
-Multiple variables can refer to the same object.
+user   ──┐
+         ├──→  [ { name: 'Anna' } ]
+admin  ──┘
 ```
 
-### Reference reassignment
+Это центральная идея главы:
 
-If variable is declared with `let`, it can later refer to another object.
+```text
+Переменные не содержат объекты.
+Переменные ссылаются на объектные значения.
+Несколько переменных могут ссылаться на один и тот же объект.
+```
+
+### Смена ссылки
+
+Если переменная объявлена через `let`, позже она может начать ссылаться на другой объект.
 
 ```javascript
 let currentUser = {
@@ -421,7 +429,7 @@ Anna
 Kate
 ```
 
-Диаграмма reference reassignment:
+Схема смены ссылки:
 
 ```text
 было:   currentUser ──→ [ объект A ]
@@ -432,9 +440,9 @@ Kate
 
 Вопрос:
 
-> На какой object сейчас ссылается `currentUser`?
+> На какой объект сейчас ссылается `currentUser`?
 
-After reassignment:
+После повторного присваивания:
 
 ```text
 Object B.
@@ -442,7 +450,7 @@ Object B.
 
 Вопрос:
 
-> На какой object сейчас ссылается `admin`?
+> На какой объект сейчас ссылается `admin`?
 
 Ответ:
 
@@ -450,9 +458,9 @@ Object B.
 Object A.
 ```
 
-### Identity vs copied primitive значения
+### Тождественность и копии примитивов
 
-Primitive значения are compared as значения.
+Примитивные значения сравниваются как значения.
 
 ```javascript
 const firstName = 'Anna';
@@ -463,7 +471,7 @@ console.log(firstName === secondName);
 
 Концептуально:
 
-Object значения are different. Two objects with same properties are still two different objects.
+С объектами иначе. Два объекта с одинаковыми свойствами остаются двумя разными объектами.
 
 ```javascript
 const firstUser = {
@@ -484,29 +492,39 @@ console.log(firstUser === secondUser);
 user === admin          →  true    одна ссылка
 ```
 
-Object comparison here is about identity:
+Сравнение объектов здесь — вопрос тождественности:
 
 ```text
 Do both variables refer to the same object?
 ```
 
-not:
+а не:
 
 ```text
 Do both objects have same-looking properties?
 ```
 
-Detailed equality rules will be studied in a later chapter. Сейчас важно понять identity concept.
+Подробные правила равенства будут изучаться в отдельной главе. Сейчас важно понять саму идею тождественности.
 
 ### Почему примитивы ведут себя иначе
 
-Primitive значения are indivisible.
+Примитивные значения неделимы.
 
-Object значения are structured and can be updated through properties.
+Объектные значения составные, и их можно изменять через свойства.
 
-Because objects are worked with through references, changing property through one variable can be observed through another variable referring to the same object.
+Поскольку с объектами работают через ссылки, изменение свойства через одну переменную видно через другую, которая ссылается на тот же объект.
 
-Common comparison:
+Частое сравнение:
+
+| | Примитив | Объект |
+| --- | --- | --- |
+| Что хранит имя | само значение | ссылку на значение |
+| Присваивание другой переменной | копирует значение | копирует ссылку |
+| Изменение через вторую переменную | первую не затрагивает | видно через первую |
+
+Отсюда правило для тестов: если проверка сравнивает объект, полученный из
+подготовки, и объект из ответа, нужно решить заранее — сравнивается
+содержимое или идентичность.
 
 ---
 
@@ -523,13 +541,20 @@ flowchart TD
 
 ## Внутренний механизм
 
-В этой главе internal mechanism remains conceptual.
+В этой главе внутренний механизм остаётся концептуальным.
 
-Мы не говорим, где именно находятся objects physically. Мы не используем Stack & Heap. Мы не называем reference address. Это будет позже.
+Мы не говорим, где именно объекты находятся физически. Мы не используем стек и кучу. Мы не называем ссылку адресом. Это будет позже.
 
 Сейчас механизм такой:
 
-### Complete reference flow
+```text
+1. литерал объекта создаёт один объект
+2. имя хранит не объект, а ссылку на него
+3. присваивание имени копирует ссылку, а не объект
+4. обращение к свойству идёт по ссылке к тому же объекту
+```
+
+### Полный путь ссылки
 
 ```javascript
 const user = {
@@ -543,7 +568,7 @@ admin.name = 'Kate';
 console.log(user.name);
 ```
 
-Complete execution схема:
+Полная схема выполнения:
 
 ```text
 1. создан объект              [ { name: 'Anna' } ]
@@ -554,19 +579,35 @@ Complete execution схема:
 
 ### Текущее место в модели JavaScript
 
-The current block:
+Текущий блок:
+
+```text
+Primitive Types  —  значения, которые копируются целиком
+Object Type      —  значения, состоящие из свойств
+References       —  как имена связаны с такими значениями
+```
 
 ### Схема типичных ошибок
 
-### Переход к Stack & Heap
+Все типичные ошибки этой главы растут из одного места: имя считают
+владельцем объекта, а не ссылкой на него.
 
-References explain поведение:
+| Ожидание | Что происходит на самом деле |
+| --- | --- |
+| присваивание объекта делает копию | копируется ссылка, объект остаётся один |
+| изменение через второе имя не заденет первое | изменение видно через оба имени |
+| два одинаковых по виду объекта равны | сравниваются ссылки, и результат `false` |
+| функция не может изменить переданный объект | внутри функции та же ссылка, изменение остаётся после возврата |
+
+### Переход к стеку и куче
+
+Ссылки объясняют поведение:
 
 ```text
 Several variables can refer to one object.
 ```
 
-But they do not yet explain the common memory picture:
+Но они пока не объясняют привычную картину памяти:
 
 ```text
 Where are primitive values conceptually placed?
@@ -574,41 +615,39 @@ Where are object values conceptually placed?
 Why do diagrams often show Stack and Heap?
 ```
 
-Next chapter answers those questions. It will introduce Stack & Heap as a conceptual model, not as a precise engine implementation.
-
-Bridge схема:
+Следующая глава отвечает на эти вопросы. Она введёт стек и кучу как концептуальную модель, а не как точную реализацию движка.
 
 ---
 
 ## Ментальная модель
 
-### Library catalog card
+### Карточка библиотечного каталога
 
-Reference похожа на library catalog card.
+Ссылка похожа на карточку библиотечного каталога.
 
-Two cards can point to the same book. Editing the book changes what both cards lead to.
+Две карточки могут указывать на одну книгу. Правка в книге меняет то, к чему ведут обе.
 
-### Bookmark in a book
+### Закладка в книге
 
-Bookmark tells you where to go. It is not the page.
+Закладка говорит, куда идти. Она не является страницей.
 
-Variable reference leads to object. It is not the object itself.
+Ссылка переменной ведёт к объекту. Она не является самим объектом.
 
-### Address written on paper
+### Адрес, записанный на бумаге
 
-Use this only as a conceptual navigation metaphor, not as implementation.
+Используйте это только как метафору навигации, а не как описание реализации.
 
-The note is not the room. Reference is not the object.
+Записка — не комната. Ссылка — не объект.
 
-### Shared key to one room
+### Общий ключ от одной комнаты
 
-Several people can have keys to the same room.
+Ключи от одной комнаты могут быть у нескольких человек.
 
-If one person changes the whiteboard in that room, everyone entering the same room sees the change.
+Если один из них что-то напишет на доске в этой комнате, это увидят все, кто туда войдёт.
 
-### Multiple labels pointing to one folder
+### Несколько ярлыков на одну папку
 
-This model is useful for test data:
+Эта модель полезна для тестовых данных:
 
 ```text
 expectedUser and actualUser should not accidentally point to the same mutable object.
@@ -637,7 +676,7 @@ node examples/01-javascript/chapter-13/06-common-mistakes.js
 
 ### 01-primitive-copy.js
 
-Показывает primitive assignment:
+Показывает присваивание примитива:
 
 ```javascript
 let userName = 'Anna';
@@ -649,11 +688,11 @@ console.log(userName);
 console.log(adminName);
 ```
 
-`userName` remains `'Anna'`.
+`userName` остаётся `'Anna'`.
 
 ### 02-object-reference.js
 
-Показывает object assignment:
+Показывает присваивание объекта:
 
 ```javascript
 const user = {
@@ -667,11 +706,11 @@ admin.name = 'Kate';
 console.log(user.name);
 ```
 
-`user` and `admin` refer to the same object.
+`user` и `admin` ссылаются на один и тот же объект.
 
 ### 03-two-variables.js
 
-Показывает one object, two variables:
+Показывает один объект и две переменные:
 
 ```javascript
 const user = {
@@ -682,11 +721,11 @@ const user = {
 const currentUser = user;
 ```
 
-Both variables read from the same object.
+Обе переменные читают из одного объекта.
 
 ### 04-update-through-reference.js
 
-Показывает updating through reference:
+Показывает изменение через ссылку:
 
 ```javascript
 currentUser.role = 'admin';
@@ -696,7 +735,7 @@ currentUser.role = 'admin';
 
 ### 05-reference-reassignment.js
 
-Показывает reference reassignment with `let`:
+Показывает смену ссылки через `let`:
 
 ```javascript
 let currentUser = { name: 'Anna' };
@@ -705,11 +744,11 @@ const firstUser = currentUser;
 currentUser = { name: 'Kate' };
 ```
 
-`currentUser` now refers to another object.
+Теперь `currentUser` ссылается на другой объект.
 
 ### 06-common-mistakes.js
 
-Показывает common mistake with expected object mutation:
+Показывает типичную ошибку — изменение ожидаемого объекта:
 
 ```javascript
 const expectedUser = {
@@ -720,23 +759,23 @@ const actualUser = expectedUser;
 actualUser.name = 'Kate';
 ```
 
-Both variables refer to one object.
+Обе переменные ссылаются на один объект.
 
 ---
 
 ## Частые вопросы
 
-### Reference is the same as object?
+### Ссылка — это то же самое, что объект?
 
-No.
+Нет.
 
-### Reference is a pointer?
+### Ссылка — это указатель?
 
-This course does not use pointer implementation here. Reference is introduced as a language concept and mental model. Implementation details and engine internals are not needed for this chapter.
+В этом курсе мы не разбираем здесь реализацию указателей. Ссылка вводится как понятие языка и мысленная модель. Детали реализации и устройство движка для этой главы не нужны.
 
-### Does `const` protect object from changes?
+### Защищает ли `const` объект от изменений?
 
-No.
+Нет.
 
 ```javascript
 const user = {
@@ -746,11 +785,11 @@ const user = {
 user.name = 'Kate';
 ```
 
-`const` prevents reassignment of `user`, not updating object properties.
+`const` запрещает повторное присваивание `user`, а не изменение свойств объекта.
 
 ### Как избежать случайной мутации в тестах?
 
-At a simple level, create a new object for expected data вместо reusing a shared mutable object.
+На простом уровне — создавать новый объект для ожидаемых данных вместо переиспользования общего изменяемого объекта.
 
 ```javascript
 const defaultUser = {
@@ -764,62 +803,62 @@ const expectedAdmin = {
 };
 ```
 
-Object spread syntax creates a new object at the first level. Spread will be studied later in detail.
+Раскрытие объекта создаёт новый объект на первом уровне. Подробно раскрытие будет изучаться позже.
 
-### Are arrays affected by references too?
+### Относится ли это и к массивам?
 
-Yes. Arrays are object значения, so variables can refer to the same array. Arrays will be studied in a dedicated chapter.
+Да. Массивы — объектные значения, поэтому несколько переменных могут ссылаться на один массив. Массивы будут изучаться в отдельной главе.
 
 ---
 
 ## Распространённые мифы
 
-### Миф: variable contains object
+### Миф: переменная содержит объект
 
 Реальность:
 
-Variable refers to object value.
+Переменная ссылается на объектное значение.
 
-### Миф: assigning object creates independent copy
+### Миф: присваивание объекта создаёт независимую копию
 
 Реальность:
 
-Assigning object reference to another variable makes both variables refer to the same object.
+Присваивание ссылки другой переменной делает так, что обе ссылаются на один и тот же объект.
 
 ```javascript
 const admin = user;
 ```
 
-means conceptually:
+концептуально означает:
 
 ```text
 admin refers to same object as user
 ```
 
-### Миф: if objects look the same, they are the same
+### Миф: если объекты выглядят одинаково, это один объект
 
 Реальность:
 
-Two different object значения may have same properties but different identity.
+Два разных объектных значения могут иметь одинаковые свойства и при этом быть разными объектами.
 
 ```text
 Object A { name: "Anna" }
 Object B { name: "Anna" }
 ```
 
-They are not the same object.
+Это не один и тот же объект.
 
-### Миф: references require Stack & Heap knowledge first
+### Миф: ссылки требуют сначала знать стек и кучу
 
 Реальность:
 
-References can be understood from observable поведение first. Stack & Heap will make the memory diagram clearer later.
+Ссылки можно понять по наблюдаемому поведению. Стек и куча позже сделают схему памяти нагляднее.
 
 ---
 
 ## Распространённые ошибки
 
-### Ошибка 1. Неожиданно изменить shared object
+### Ошибка 1. Неожиданно изменить общий объект
 
 ```javascript
 const expectedUser = {
@@ -839,13 +878,13 @@ console.log(expectedUser.name);
 Kate
 ```
 
-Problem:
+Проблема:
 
 ```text
 expectedUser and actualUser refer to the same object.
 ```
 
-### Ошибка 2. Думать, что object assignment copies properties
+### Ошибка 2. Думать, что присваивание объекта копирует свойства
 
 ```javascript
 const user = {
@@ -855,9 +894,9 @@ const user = {
 const admin = user;
 ```
 
-This does not create a second object.
+Второго объекта при этом не появляется.
 
-### Ошибка 3. Сравнивать object identity вместо structure
+### Ошибка 3. Сравнивать тождественность объектов вместо структуры
 
 ```javascript
 const expectedUser = {
@@ -871,11 +910,11 @@ const actualUser = {
 console.log(expectedUser === actualUser);
 ```
 
-Conceptually these are two different objects.
+Концептуально это два разных объекта.
 
-Detailed equality and assertion strategies will be studied later.
+Подробные правила равенства и приёмы проверок будут изучаться позже.
 
-### Ошибка 4. Mutate helper вход
+### Ошибка 4. Изменять объект, переданный во вспомогательную функцию
 
 ```javascript
 function markAsAdmin(user) {
@@ -883,9 +922,9 @@ function markAsAdmin(user) {
 }
 ```
 
-This helper changes the object it receives. Functions will be studied later, but the reference поведение is already visible: if вызывающий код and helper work with same object, mutation is shared.
+Эта функция изменяет полученный объект. Функции будут изучаться позже, но поведение ссылок видно уже сейчас: если вызывающий код и функция работают с одним объектом, изменение общее.
 
-### Ошибка 5. Hide shared mutable test data
+### Ошибка 5. Прятать общие изменяемые тестовые данные
 
 ```javascript
 const defaultUser = {
@@ -896,15 +935,15 @@ const defaultUser = {
 const testUser = defaultUser;
 ```
 
-If `testUser` is changed, `defaultUser` is changed too.
+Если изменить `testUser`, изменится и `defaultUser`.
 
 ---
 
 ## Практическое использование
 
-References matter whenever objects are assigned, passed or reused.
+Ссылки важны везде, где объекты присваивают, передают или переиспользуют.
 
-### Shared configuration
+### Общая конфигурация
 
 ```javascript
 const config = {
@@ -918,11 +957,11 @@ localConfig.retries = 3;
 console.log(config.retries);
 ```
 
-`config.retries` is `3`, потому что обе переменные ссылаются на один object.
+`config.retries` равно `3`, потому что обе переменные ссылаются на один объект.
 
-### Preparing new object from existing data
+### Как подготовить новый объект на основе существующих данных
 
-Sometimes you want a new object вместо shared reference.
+Иногда нужен новый объект вместо общей ссылки.
 
 ```javascript
 const defaultUser = {
@@ -936,17 +975,17 @@ const adminUser = {
 };
 ```
 
-This uses object spread to create a new first-level object. Detailed spread поведение will be studied later.
+Здесь используется раскрытие объекта, которое создаёт новый объект первого уровня. Подробное поведение раскрытия будет изучаться позже.
 
-### Complete reference overview
+### Полный обзор ссылок
 
 ---
 
 ## Использование в Automation QA
 
-### Shared test data
+### Общие тестовые данные
 
-Shared test data is convenient but risky:
+Общие тестовые данные удобны, но рискованны:
 
 ```javascript
 const defaultUser = {
@@ -959,11 +998,11 @@ const adminUser = defaultUser;
 adminUser.role = 'admin';
 ```
 
-Now `defaultUser.role` is also `'admin'`.
+Теперь `defaultUser.role` тоже равно `'admin'`.
 
-In tests, this can make one test affect another.
+В тестах из-за этого один тест может повлиять на другой.
 
-### Accidental mutation of expected objects
+### Случайное изменение ожидаемых объектов
 
 ```javascript
 const expectedUser = {
@@ -975,7 +1014,7 @@ const actualUser = expectedUser;
 actualUser.role = 'admin';
 ```
 
-This destroys the meaning of `expectedUser`.
+Это уничтожает смысл `expectedUser`.
 
 Лучше:
 
@@ -991,11 +1030,11 @@ const actualUser = {
 };
 ```
 
-Now they are separate objects.
+Теперь это отдельные объекты.
 
-### Copying test data safely
+### Как безопасно копировать тестовые данные
 
-For simple first-level objects:
+Для простых объектов первого уровня:
 
 ```javascript
 const defaultUser = {
@@ -1009,9 +1048,9 @@ const adminUser = {
 };
 ```
 
-This reduces accidental mutation of shared object. It is a first-level copy technique; nested object copying will be studied later.
+Это снижает риск случайного изменения общего объекта. Приём копирует только первый уровень; копирование вложенных объектов будет изучаться позже.
 
-### Helper functions modifying objects
+### Вспомогательные функции, изменяющие объекты
 
 ```javascript
 function addRole(user) {
@@ -1034,13 +1073,13 @@ console.log(testUser.role);
 admin
 ```
 
-The helper modified the object that `testUser` refers to.
+Функция изменила объект, на который ссылается `testUser`.
 
-Functions will be studied later. Here the important part is reference поведение.
+Функции будут изучаться позже. Здесь важно именно поведение ссылок.
 
-### Отладка unexpected object changes
+### Разбор неожиданных изменений объекта
 
-When object changes unexpectedly, ask:
+Когда объект меняется неожиданно, спросите:
 
 ```text
 Which variables refer to this object?
@@ -1049,13 +1088,13 @@ Which line updated a property?
 Was object copied or only reference assigned?
 ```
 
-This mental checklist helps debug Playwright fixtures, request payload builders, shared configs and API expected objects.
+Этот мысленный список помогает разбирать фикстуры Playwright, сборщики тел запросов, общие настройки и ожидаемые объекты API.
 
 ---
 
 ## Итоги
 
-References explain why object assignment behaves differently from primitive assignment.
+Ссылки объясняют, почему присваивание объекта ведёт себя иначе, чем присваивание примитива.
 
 Присваивание примитива:
 
@@ -1085,25 +1124,25 @@ Variables refer to object values.
 Multiple variables can refer to the same object.
 ```
 
-Reference is not the object. It is the conceptual connection that lets a variable reach an object.
+Ссылка — не объект. Это концептуальная связь, которая позволяет переменной до объекта добраться.
 
-The next chapter will explain Stack & Heap as the common conceptual memory model behind this поведение.
+Следующая глава объяснит стек и кучу как привычную концептуальную модель памяти за этим поведением.
 
 ---
 
 ## Что нужно запомнить
 
-* Object assignment does not create an independent copy.
-* Variables refer to object значения.
-* Multiple variables can refer to the same object.
-* Updating property through one variable affects the shared object.
-* Other variables referring to that object observe the update.
-* Primitive assignment behaves differently at this conceptual level.
-* Object identity asks whether variables refer to the same object.
-* Same-looking objects may still be different objects.
-* Shared test data can be accidentally mutated.
-* Helper functions can change objects they receive.
-* Stack & Heap will be studied next; references should first be understood through поведение.
+* Присваивание объекта не создаёт независимой копии.
+* Переменные ссылаются на объектные значения.
+* На один объект могут ссылаться несколько переменных.
+* Изменение свойства через одну переменную меняет общий объект.
+* Другие переменные, ссылающиеся на этот объект, видят изменение.
+* Присваивание примитива на этом концептуальном уровне ведёт себя иначе.
+* Тождественность объектов отвечает на вопрос, ссылаются ли переменные на один объект.
+* Одинаково выглядящие объекты всё равно могут быть разными.
+* Общие тестовые данные можно изменить случайно.
+* Вспомогательные функции могут менять полученные объекты.
+* Стек и куча изучаются дальше; ссылки сначала стоит понять через поведение.
 
 ---
 
@@ -1111,16 +1150,29 @@ The next chapter will explain Stack & Heap as the common conceptual memory model
 
 Ответьте без запуска кода.
 
-1. Почему `admin.name = 'Kate'` can change `user.name`?
-2. Reference and object are the same thing?
-3. Что означает `const admin = user` for object значения?
-4. Что происходит при primitive assignment?
-5. Что означает object identity?
-6. Почему two same-looking objects may not be equal by identity?
-7. Что такое reference reassignment?
-8. Почему shared expected object is risky in tests?
-9. Какой вопрос помогает debug references?
-10. Почему Stack & Heap не нужны для первого понимания references?
+1. Почему `admin.name = 'Kate'` может изменить `user.name`?
+2. Ссылка и объект — одно и то же?
+3. Что означает `const admin = user` для объектных значений?
+4. Что происходит при присваивании примитива?
+5. Что означает тождественность объекта?
+6. Почему два одинаково выглядящих объекта могут быть не равны?
+7. Что такое смена ссылки?
+8. Почему общий ожидаемый объект опасен в тестах?
+9. Какой вопрос помогает разобраться со ссылками?
+10. Почему стек и куча не нужны для первого понимания ссылок?
+
+### Ответы
+
+1. Потому что `admin` и `user` ведут к одному и тому же объекту. Присваивание объекта копирует ссылку, а не содержимое.
+2. Нет. Объект — это сами данные, ссылка — способ до них добраться. Ссылок на один объект может быть несколько.
+3. Что `admin` получает ту же ссылку, что и `user`. Новый объект не создаётся, копирования свойств не происходит.
+4. Копируется само значение. Две переменные становятся независимыми: изменение одной не касается другой.
+5. Тождественность объекта — вопрос «это тот же самый объект или другой». Он не зависит от того, совпадают ли свойства.
+6. Потому что сравниваются ссылки, а не содержимое. Два отдельно созданных объекта с одинаковыми свойствами — разные объекты, и `===` даёт `false`.
+7. Присваивание имени другой ссылки. Само имя начинает вести к другому объекту, а прежний объект не меняется — просто на него стало на одну ссылку меньше.
+8. Тест, изменивший общий объект ожидаемых данных, меняет его и для остальных. Падение возникает в другом тесте, и его причина не видна в том месте, где он упал.
+9. «Это тот же объект или другой?» Ответ на него объясняет и неожиданное изменение, и неожиданное `false` при сравнении.
+10. Ссылки объясняются поведением: одно изменение видно через два имени. Для этого достаточно модели «имя ведёт к объекту». Схема памяти отвечает на другой вопрос — где что лежит — и на первом шаге только отвлекает.
 
 ---
 
@@ -1132,7 +1184,7 @@ The next chapter will explain Stack & Heap as the common conceptual memory model
 practice/01-javascript/13-references.md
 ```
 
-Сначала решайте задания самостоятельно. Для этой темы особенно важно рисовать diagrams by hand: какая variable refers to which object right now.
+Сначала решайте задания самостоятельно. Для этой темы особенно важно рисовать схемы от руки: какая переменная на какой объект ссылается прямо сейчас.
 
 ---
 
@@ -1144,4 +1196,4 @@ practice/01-javascript/13-references.md
 solutions/01-javascript/13-references.md
 ```
 
-Читайте решения после самостоятельной попытки. Проверяйте не только вывод, но и reasoning: какой object общий, какой object новый, где произошло property update, где произошло reassignment.
+Читайте решения после самостоятельной попытки. Проверяйте не только вывод, но и рассуждение: какой объект общий, какой новый, где изменилось свойство, а где сменилась ссылка.

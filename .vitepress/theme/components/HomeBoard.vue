@@ -72,6 +72,22 @@ const parts = computed(() =>
 
 const overall = computed(() => countIn(chapters.value.flatMap(chapter => chapter.taskIds)))
 
+// Числа берутся из собранных данных книги, а не переписываются руками:
+// иначе после каждой новой главы они молча расходятся с содержимым.
+const facts = computed(() => {
+  const statistics = bookEngineData.statistics
+
+  return [
+    { label: 'Глав', value: statistics.chapters },
+    {
+      label: 'Задач с проверкой',
+      value: Object.values(tasksByChapter).reduce((sum, list) => sum + list.length, 0)
+    },
+    { label: 'Запускаемых примеров', value: statistics.examples },
+    { label: 'Диаграмм', value: statistics.mermaid }
+  ]
+})
+
 const next = computed(() => {
   const unfinished = chapters.value.find(chapter => {
     const counts = countIn(chapter.taskIds)
@@ -120,10 +136,9 @@ onMounted(() => {
       </div>
 
       <dl class="home-board__facts">
-        <div><dt>Глав</dt><dd>249</dd></div>
-        <div><dt>Задач с проверкой</dt><dd>281</dd></div>
-        <div><dt>Запускаемых примеров</dt><dd>805</dd></div>
-        <div><dt>Диаграмм</dt><dd>695</dd></div>
+        <div v-for="fact in facts" :key="fact.label">
+          <dt>{{ fact.label }}</dt><dd>{{ fact.value }}</dd>
+        </div>
       </dl>
     </header>
 

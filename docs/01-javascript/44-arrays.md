@@ -1,4 +1,4 @@
-# Arrays
+# Массивы
 
 ## Связь с предыдущей главой
 
@@ -163,11 +163,11 @@ Array solves ordered storage.
 
 ## Теория
 
-Array is an ordered collection of значения.
+Массив — упорядоченная коллекция значений.
 
 Главная модель: массив — это упорядоченный список значений, доступных по числовому индексу.
 
-Array literal:
+Литерал массива:
 
 ```javascript
 const users = [
@@ -177,22 +177,28 @@ const users = [
 ];
 ```
 
-Square brackets are syntax.
+Квадратные скобки — это запись.
 
-The concept is ordered collection:
+Суть — упорядоченная коллекция:
 
-### Index
+```text
+значения лежат по порядку,
+у каждого есть номер позиции,
+и этот порядок сохраняется между обращениями
+```
 
-Index is numbered position inside array.
+### Индекс
 
-JavaScript arrays use zero-based indexes:
+Индекс — номер позиции внутри массива.
+
+Индексы массивов в JavaScript начинаются с нуля:
 
 ```text
 index:  0                  1                  2
 value: "anna@example.test" "kate@example.test" "max@example.test"
 ```
 
-First element has index `0`.
+У первого элемента индекс `0`.
 
 ```javascript
 console.log(users[0]);
@@ -204,9 +210,9 @@ console.log(users[0]);
 anna@example.test
 ```
 
-### Reading elements
+### Чтение элементов
 
-Reading by index:
+Чтение по индексу:
 
 ```javascript
 const firstUser = users[0];
@@ -220,9 +226,9 @@ index:  0        1        2
 value: 'login'  'order'  'logout'
 ```
 
-### Updating elements
+### Обновление элементов
 
-You can replace value at position:
+Значение на позиции можно заменить:
 
 ```javascript
 users[1] = 'kate.updated@example.test';
@@ -230,13 +236,13 @@ users[1] = 'kate.updated@example.test';
 
 Ментальная модель: пронумерованные ячейки, где номер — это позиция, а не имя.
 
-This is element replacement.
+Это замена элемента.
 
-We are not studying array growth yet. Adding/removing elements with methods such as `push()` and `pop()` is the next chapter.
+Рост массива мы пока не изучаем. Добавление и удаление элементов методами вроде `push()` и `pop()` — тема следующей главы.
 
-### Length
+### Длина
 
-`length` shows how many elements array currently contains.
+`length` показывает, сколько элементов сейчас в массиве.
 
 ```javascript
 console.log(users.length);
@@ -248,7 +254,7 @@ console.log(users.length);
 const users = ['Anna', 'Kate', 'Max'];
 ```
 
-`length` is:
+`length` равен:
 
 ```text
 3
@@ -256,16 +262,16 @@ const users = ['Anna', 'Kate', 'Max'];
 
 Важная связь:
 
-For length `3`, last index is `2`.
+При длине `3` последний индекс равен `2`.
 
 ```text
 index: 0 1 2
 count: 1 2 3
 ```
 
-### Empty array
+### Пустой массив
 
-Empty array contains no elements:
+Пустой массив не содержит элементов:
 
 ```javascript
 const failedAssertions = [];
@@ -273,7 +279,7 @@ const failedAssertions = [];
 
 Ментальная модель: `length` — не последний индекс, а количество элементов; последний индекс всегда на единицу меньше.
 
-It can represent:
+Он может означать:
 
 ```text
 no failures yet
@@ -281,21 +287,21 @@ no users yet
 no requests yet
 ```
 
-We are not adding elements yet. Growth is next chapter.
+Элементы мы пока не добавляем. Рост массива — следующая глава.
 
-### Mixed значения
+### Разнородные значения
 
-JavaScript arrays can contain different kinds of значения:
+Массивы в JavaScript могут содержать значения разного вида:
 
 ```javascript
 const mixed = ['status', 200, true];
 ```
 
-This is allowed.
+Это допустимо.
 
-But for readable test code, arrays are usually clearer when elements represent the same kind of thing:
+Но код тестов читается лучше, когда элементы массива означают однотипные вещи:
 
-Mixed значения will appear naturally later, but do not use them as default style.
+Разнородные значения встретятся позже естественным образом, но не используйте их как стиль по умолчанию.
 
 ---
 
@@ -314,42 +320,45 @@ flowchart TD
 
 ## Внутренний механизм
 
-When JavaScript reads:
+Когда JavaScript читает:
 
 ```javascript
 users[2]
 ```
 
-Engine has:
+У движка есть:
 
 ```text
-array value: users
-requested index: 2
+массив: users
+запрошенный индекс: 2
 ```
 
-Then:
+Затем движок смотрит, есть ли элемент на этой позиции:
 
-If index exists:
+```text
+индекс существует      →  вернуть элемент
+элемента на позиции нет →  вернуть undefined, ошибки НЕТ
+```
 
-If index does not contain element:
+Это похоже на чтение отсутствующего свойства объекта в одном важном смысле: ни то
+ни другое не падает. Падение приходит позже, когда с `undefined` пытаются
+работать как со значением.
 
-This is similar to reading missing object property in one important way:
-
-But the question is different.
+Но вопрос здесь другой.
 
 Объект:
 
 ```text
-What value belongs to this name?
+какое значение принадлежит этому имени?
 ```
 
-Array:
+Массив:
 
 ```text
-What value is stored at this position?
+какое значение хранится на этой позиции?
 ```
 
-### Updating flow
+### Поток обновления
 
 Для:
 
@@ -357,19 +366,33 @@ What value is stored at this position?
 users[1] = 'updated@example.test';
 ```
 
-Engine:
+Движок:
 
-After update:
+```text
+1. по имени users найти массив
+2. взять позицию с номером 1
+3. заменить лежащее там значение
+```
 
-### Length flow
+После обновления:
 
-When reading:
+```text
+[0] 'anna@example.test'
+[1] 'updated@example.test'
+[2] 'max@example.test'
+```
+
+Длина массива не изменилась: заменено значение, а не добавлена позиция.
+
+### Поток изменения длины
+
+При чтении:
 
 ```javascript
 users.length
 ```
 
-You ask:
+Вы спрашиваете:
 
 ```text
 How many elements are in this array?
@@ -381,7 +404,7 @@ How many elements are in this array?
 What is the last index?
 ```
 
-This distinction matters:
+Это различие важно:
 
 ```text
 length: 3
@@ -392,19 +415,25 @@ last index: 2
 
 ## Ментальная модель
 
-Array is like bookshelf.
+Массив похож на книжную полку.
 
-Numbered lockers:
+```text
+users
+ ├─ [0]  'anna@example.test'
+ ├─ [1]  'ivan@example.test'
+ └─ [2]  'olga@example.test'
+```
 
-Train cars:
+Ячейки пронумерованы, и номер — часть адреса значения, а не его описание.
 
-Hotel rooms:
+Номера в гостинице и строки таблицы — привычные аналогии: у каждого элемента
+есть номер, и по номеру его находят.
 
-Spreadsheet rows:
+Это аналогии.
 
-These are analogies.
-
-The technical mental model:
+Техническая мысленная модель точнее: массив — объект с числовыми ключами и
+свойством `length`. Именно поэтому индексация начинается с нуля, а `length`
+всегда на единицу больше последнего индекса.
 
 ---
 
@@ -422,7 +451,7 @@ examples/01-javascript/chapter-44/
 node examples/01-javascript/chapter-44/01-first-array.js
 ```
 
-### Пример 1. First array
+### Пример 1. Первый массив
 
 Файл:
 
@@ -430,9 +459,9 @@ node examples/01-javascript/chapter-44/01-first-array.js
 examples/01-javascript/chapter-44/01-first-array.js
 ```
 
-Показывает array literal as ordered collection.
+Показывает литерал массива как упорядоченную коллекцию.
 
-### Пример 2. Indexes
+### Пример 2. Индексы
 
 Файл:
 
@@ -440,9 +469,9 @@ examples/01-javascript/chapter-44/01-first-array.js
 examples/01-javascript/chapter-44/02-indexes.js
 ```
 
-Показывает reading значения by index.
+Показывает чтение значений по индексу.
 
-### Пример 3. Update elements
+### Пример 3. Замена элементов
 
 Файл:
 
@@ -450,9 +479,9 @@ examples/01-javascript/chapter-44/02-indexes.js
 examples/01-javascript/chapter-44/03-update-elements.js
 ```
 
-Показывает replacement at existing position.
+Показывает замену на существующей позиции.
 
-### Пример 4. Length
+### Пример 4. Длина
 
 Файл:
 
@@ -460,7 +489,7 @@ examples/01-javascript/chapter-44/03-update-elements.js
 examples/01-javascript/chapter-44/04-length.js
 ```
 
-Показывает `length` and last index relation.
+Показывает связь `length` и последнего индекса.
 
 ### Пример 5. Типичные ошибки
 
@@ -470,9 +499,9 @@ examples/01-javascript/chapter-44/04-length.js
 examples/01-javascript/chapter-44/05-common-mistakes.js
 ```
 
-Показывает off-by-one mistake.
+Показывает ошибку на единицу.
 
-### Пример 6. QA example
+### Пример 6. Пример из автоматизации тестов
 
 Файл:
 
@@ -480,27 +509,32 @@ examples/01-javascript/chapter-44/05-common-mistakes.js
 examples/01-javascript/chapter-44/06-qa-example.js
 ```
 
-Показывает list of users returned from API.
+Показывает список пользователей, полученный от API.
 
 ---
 
 ## Частые вопросы
 
-### Array - это просто квадратные скобки?
+### Массив — это просто квадратные скобки?
 
 Нет.
 
-Square brackets are syntax.
+Квадратные скобки — это запись.
 
-Array is ordered collection.
+Массив — упорядоченная коллекция.
 
-### Почему первый index is `0`?
+### Почему первый индекс равен `0`?
 
-JavaScript uses zero-based indexing. This is common in many programming languages.
+JavaScript использует нумерацию с нуля. Так устроены многие языки программирования.
 
-For this chapter, remember practical rule:
+Для этой главы запомните практическое правило:
 
-### Array can store objects?
+```text
+первый элемент  →  index 0
+последний       →  index length - 1
+```
+
+### Может ли массив хранить объекты?
 
 Да.
 
@@ -513,13 +547,13 @@ const users = [
 ];
 ```
 
-This is common in API testing.
+Это частый случай при тестировании API.
 
-### Should arrays contain mixed значения?
+### Должен ли массив содержать разнородные значения?
 
-JavaScript allows it, but readability often suffers.
+JavaScript это разрешает, но читаемость обычно страдает.
 
-Prefer arrays where elements represent same kind of thing:
+Предпочитайте массивы, где элементы означают однотипные вещи:
 
 ```text
 users
@@ -528,37 +562,37 @@ assertions
 test cases
 ```
 
-### Why not use object вместо array?
+### Почему не использовать объект вместо массива?
 
-Use object when names matter.
+Берите объект, когда важны имена.
 
-Use array when order and positions matter.
+Берите массив, когда важны порядок и позиции.
 
 ---
 
 ## Распространённые мифы
 
-### Миф: Array is just object with square brackets
+### Миф: массив — это просто объект с квадратными скобками
 
-Реальность: arrays are object значения in JavaScript, but for this chapter the useful model is ordered collection with indexes. Object internals will be discussed only when needed.
+Реальность: массивы действительно являются объектными значениями, но для этой главы полезна модель упорядоченной коллекции с индексами. Внутреннее устройство обсудим, когда это понадобится.
 
-### Миф: `length` is last index
+### Миф: `length` — это последний индекс
 
-Реальность: last index is `length - 1`.
+Реальность: последний индекс равен `length - 1`.
 
-### Миф: `users[1]` reads first user
+### Миф: `users[1]` читает первого пользователя
 
-Реальность: `users[0]` reads first user.
+Реальность: первого пользователя читает `users[0]`.
 
-### Миф: Empty array means error
+### Миф: пустой массив означает ошибку
 
-Реальность: empty array can validly represent "no items".
+Реальность: пустой массив может законно означать «элементов нет».
 
 ---
 
 ## Распространённые ошибки
 
-### Ошибка 1. Off-by-one
+### Ошибка 1. Ошибка на единицу
 
 Неправильный код:
 
@@ -570,7 +604,7 @@ console.log(users[3]);
 
 Что произошло:
 
-Array has length `3`, but indexes are `0`, `1`, `2`.
+Длина массива равна `3`, но индексы — `0`, `1` и `2`.
 
 ```text
 length: 3
@@ -583,7 +617,7 @@ last index: 2
 console.log(users[2]);
 ```
 
-### Ошибка 2. Путать object property and array index
+### Ошибка 2. Путать свойство объекта и индекс массива
 
 Неправильная модель:
 
@@ -591,19 +625,19 @@ console.log(users[2]);
 users.email
 ```
 
-Для array:
+Для массива:
 
 ```text
 users[0]
 ```
 
-Если element is object:
+Если элемент — объект:
 
 ```javascript
 users[0].email
 ```
 
-### Ошибка 3. Считать `length` position
+### Ошибка 3. Считать `length` позицией
 
 Неправильно:
 
@@ -617,7 +651,7 @@ const lastUser = users[users.length];
 const lastUser = users[users.length - 1];
 ```
 
-### Ошибка 4. Использовать many variables вместо array
+### Ошибка 4. Использовать много переменных вместо массива
 
 Неправильная модель:
 
@@ -637,20 +671,22 @@ const requests = ['/users', '/orders', '/profile'];
 
 ## Практическое использование
 
-Arrays useful when you have:
+Массивы полезны, когда значений несколько, они однородны по смыслу и их порядок
+имеет значение.
 
 Примеры:
 
-* list of users;
-* list of test cases;
-* list of API responses;
-* list of failed assertions;
-* list of HTTP requests;
-* list of browser tabs.
+* список пользователей;
+* список тестовых случаев;
+* список ответов API;
+* список проваленных проверок;
+* список HTTP-запросов;
+* список вкладок браузера.
 
-Array improves readability:
+Массив улучшает читаемость: вместо набора пронумерованных имён появляется одно
+имя и обращение по индексу.
 
-Instead of:
+Вместо этого:
 
 ```text
 user1
@@ -662,9 +698,10 @@ user3
 
 ## Использование в Automation QA
 
-### Users returned from API
+### Пользователи, полученные от API
 
-API often возвращает:
+API часто возвращает список записей, а не одну: даже запрос «найти по фильтру»
+отвечает массивом, в котором может быть ноль, один или несколько элементов.
 
 В коде:
 
@@ -675,13 +712,13 @@ const users = [
 ];
 ```
 
-Read first user:
+Прочитать первого пользователя:
 
 ```javascript
 const firstUser = users[0];
 ```
 
-### List of test cases
+### Список тестовых случаев
 
 ```javascript
 const testCases = [
@@ -691,25 +728,30 @@ const testCases = [
 ];
 ```
 
-The order can match reporting order.
+Порядок может совпадать с порядком в отчёте.
 
-### Browser tabs
+### Вкладки браузера
 
-Browser contexts can have many pages/tabs.
+В контексте браузера может быть много страниц и вкладок.
 
 Концептуально:
 
-### Failed assertions
+```text
+список вкладок — упорядоченная коллекция,
+и «первая вкладка» означает элемент с индексом 0
+```
 
-Empty array can represent no failures:
+### Непройденные проверки
+
+Пустой массив может означать отсутствие падений:
 
 ```javascript
 const failedAssertions = [];
 ```
 
-Later chapters will explain how arrays grow when new failure is added.
+Следующие главы объяснят, как массив растёт при добавлении нового падения.
 
-### HTTP requests
+### Запросы HTTP
 
 ```javascript
 const requests = [
@@ -719,172 +761,96 @@ const requests = [
 ];
 ```
 
-This keeps related request descriptions together.
-
----
-
-## Диаграммы главы
-
-### 1. Why arrays exist
-
-### 2. One object vs many objects
-
-### 3. Ordered collection
-
-### 4. Numbered positions
-
-```text
-position 0
-position 1
-position 2
-```
-
-### 5. Indexes
-
-```text
-index: 0 1 2
-value: A B C
-```
-
-### 6. Reading by index
-
-### 7. Updating by index
-
-### 8. Length
-
-### 9. Empty array
-
-### 10. Mixed значения
-
-### 11. Текущая модель JavaScript
-
-### 12. QA users list
-
-### 13. API response
-
-### 14. Test cases
-
-### 15. Читаемость
-
-### 16. Типичные ошибки
-
-### 17. Bookshelf analogy
-
-### 18. Train analogy
-
-### 19. Hotel analogy
-
-### 20. Spreadsheet analogy
-
-### 21. Index lookup
-
-### 22. Last element
-
-### 23. Array growth preview
-
-### 24. Element replacement
-
-### 25. Краткая ментальная модель
-
-### 26. Complete array model
-
-### 27. Object vs array
-
-### 28. Ordered storage
-
-### 29. Принадлежность значения
-
-### 30. Array lifecycle
-
-### 31. Переход к push()
-
-### 32. Переход к loops
-
-### 33. Переход к iteration
-
-### 34. QA framework example
-
-### 35. API collection
-
-### 36. Collection evolution
-
-### 37. Element identity
-
-### 38. Array memory intuition
-
-### 39. Reading flow
-
-### 40. Итоговая схема
+Так связанные описания запросов держатся вместе.
 
 ---
 
 ## Итоги
 
-Objects answered:
+Объекты ответили:
 
 ```text
 How do we model one entity?
 ```
 
-Arrays answer:
+Массивы отвечают:
 
 ```text
-How do we store many values together in order?
+как хранить много значений вместе и в порядке?
 ```
 
-The central model:
+Центральная модель: **индекс — это адрес позиции**, а не имя свойства по смыслу.
 
-Objects and arrays solve different problems:
+Объекты и массивы решают разные задачи:
 
-The next chapter will explain how arrays grow and shrink with methods such as `push()` and `pop()`.
+| | Объект | Массив |
+| --- | --- | --- |
+| адресация | по имени свойства | по номеру позиции |
+| порядок | не является договором | является |
+| типичное содержимое | признаки одной сущности | однородный список сущностей |
+
+Следующая глава объяснит, как массивы растут и уменьшаются с помощью методов вроде `push()` и `pop()`.
 
 ---
 
 ## Что нужно запомнить
 
-✓ Array is an ordered collection of значения.
+✓ Массив — упорядоченная коллекция значений.
 
-✓ Array elements are accessed by indexes.
+✓ К элементам массива обращаются по индексам.
 
-✓ First index is `0`.
+✓ Первый индекс равен `0`.
 
-✓ `length` is count of elements, not last index.
+✓ `length` — количество элементов, а не последний индекс.
 
-✓ Last index is `length - 1`.
+✓ Последний индекс равен `length - 1`.
 
-✓ Empty array has length `0`.
+✓ У пустого массива длина `0`.
 
-✓ Arrays can contain primitive значения and objects.
+✓ Массивы могут содержать примитивные значения и объекты.
 
-✓ Objects use names; arrays use positions.
+✓ Объекты используют имена, массивы — позиции.
 
-✓ Arrays are common in API responses and test data.
+✓ Массивы часто встречаются в ответах API и тестовых данных.
 
-✓ Array methods and loops are future topics.
+✓ Методы массивов и циклы — будущие темы.
 
 ---
 
 ## Проверьте себя
 
-1. What problem do arrays solve?
+1. Какую задачу решают массивы?
 
-2. Why use an array вместо many variables?
+2. Почему массив лучше, чем много переменных?
 
-3. What is an index?
+3. Что такое индекс?
 
-4. What index reads the first element?
+4. По какому индексу читается первый элемент?
 
-5. If array length is `4`, what is the last index?
+5. Если длина массива равна `4`, какой у него последний индекс?
 
-6. What does `users[1]` mean?
+6. Что означает `users[1]`?
 
-7. What does empty array represent?
+7. Что означает пустой массив?
 
-8. How is array different from object?
+8. Чем массив отличается от объекта?
 
-9. Why should mixed arrays be used carefully?
+9. Почему разнородные массивы нужно использовать осторожно?
 
-10. What will the next chapter explain?
+10. Что объяснит следующая глава?
+
+### Ответы
+
+1. Хранение упорядоченного набора значений под одним именем: список пользователей, набор ответов, перечень проверок.
+2. Набор из десяти переменных нельзя обойти циклом и передать одним значением. Массив делает список одним значением и сохраняет порядок.
+3. Номер позиции элемента в массиве.
+4. `0`.
+5. `3` — последний индекс всегда на единицу меньше длины.
+6. Элемент на позиции `1`, то есть второй по счёту.
+7. Список, в котором сейчас нет элементов. Это осмысленное значение: например, ни одна проверка не провалилась.
+8. У массива позиции пронумерованы и порядок важен; у объекта значения лежат под именами свойств. Массив отвечает на вопрос «какие по порядку», объект — «что известно о сущности».
+9. Обход такого массива требует проверки типа на каждом шаге, и ошибка в данных перестаёт быть заметной. Обычно это признак того, что нужен массив объектов.
+10. Как добавлять и удалять элементы в конце массива.
 
 ---
 

@@ -24,8 +24,8 @@ class TimedReporter extends BaseReporter {
   // Конструктор должен передать prefix родителю.
 }`,
     hints: [
-      'Конструктор наследника вызывает родительский до обращения к this.',
-      'Родительскую реализацию метода можно вызвать через super.',
+      'Конструктор наследника вызывает родительский до обращения к `this`.',
+      'Родительскую реализацию метода можно вызвать через `super`.',
       'Дополнение приписывается к результату родительского метода.'
     ],
     tests: [
@@ -72,7 +72,7 @@ class TimedReporter extends BaseReporter {
 
   {
     id: 'js-42-super-before-this',
-    title: 'Порядок вызова super',
+    title: 'Порядок вызова `super`',
     difficulty: 'medium',
     lang: 'js',
     prompt:
@@ -85,8 +85,8 @@ class TimedReporter extends BaseReporter {
 }`,
     hints: [
       'Ошибку нужно поймать и проверить её тип.',
-      'Проверка типа выполняется через instanceof.',
-      'При успехе поле isReferenceError не возвращается.'
+      'Проверка типа выполняется через `instanceof`.',
+      'При успехе поле `isReferenceError` не возвращается.'
     ],
     tests: [
       {
@@ -95,7 +95,7 @@ class TimedReporter extends BaseReporter {
 expect(tryBuild(() => new Ok())).toEqual({ ok: true });`
       },
       {
-        name: 'обращение к this до super даёт ReferenceError',
+        name: 'обращение к `this` до `super` даёт `ReferenceError`',
         code: `class Parent { constructor() { this.a = 1; } }
 class Broken extends Parent {
   constructor() { this.b = 2; super(); }
@@ -111,7 +111,7 @@ class Good extends Parent {
 expect(tryBuild(() => new Good())).toEqual({ ok: true });`
       },
       {
-        name: 'другие ошибки не считаются ReferenceError',
+        name: 'другие ошибки не считаются `ReferenceError`',
         code: `expect(tryBuild(() => { throw new TypeError('другая'); }))
   .toEqual({ ok: false, isReferenceError: false });`
       }

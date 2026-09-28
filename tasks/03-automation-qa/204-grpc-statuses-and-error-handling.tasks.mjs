@@ -13,7 +13,7 @@ export default [
       '2) `GetWorkItem` с идентификатором неверного формата `WI-404`; ' +
       '3) `TransitionWorkItem` над **своей** записью с устаревшей ' +
       '`expectedVersion`; ' +
-      '4) `TransitionWorkItem` над seed-записью из выборки. ' +
+      '4) `TransitionWorkItem` над учебной записью из выборки. ' +
       'Свою запись создайте через `api.post(\'/work-items\', ...)` и переведите ' +
       'её в `IN_PROGRESS`, чтобы версия выросла.',
     starter: `export default async function solve({ client, metadata, grpc, api }) {
@@ -24,7 +24,7 @@ export default [
     hints: [
       'Свою запись удобно создать через REST, а менять — через gRPC.',
       'Устаревшая версия — это та, что была до успешного перехода.',
-      'Seed-запись можно взять из ответа SearchWorkItems.'
+      'Учебную запись можно взять из ответа `SearchWorkItems`.'
     ],
     tests: [
       {

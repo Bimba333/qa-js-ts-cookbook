@@ -34,7 +34,7 @@ export default async function solve(api) {
         code: `expect(String(result.created.headers['content-type'])).toContain('application/json');`
       },
       {
-        name: 'созданная запись начинается в статусе NEW и первой версии',
+        name: 'созданная запись начинается в статусе `NEW` и первой версии',
         code: `expect(result.created.body.status).toBe('NEW');
 expect(result.created.body.version).toBe(1);`
       },

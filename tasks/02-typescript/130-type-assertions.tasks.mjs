@@ -26,7 +26,7 @@ function readVersionSafe(payload: unknown): number {
 }`,
     hints: [
       'Утверждение типа влияет только на проверку до запуска.',
-      'Строка, умноженная на число, даёт NaN, а не ошибку.',
+      'Строка, умноженная на число, даёт `NaN`, а не ошибку.',
       'Проверять надо и тип значения, и тип его поля.'
     ],
     tests: [
@@ -52,7 +52,7 @@ try { readVersionSafe({}); } catch (error) { missing = error.message; }
 expect(missing).toBe('ответ не содержит версию');`
       },
       {
-        name: 'проверка отвергает null',
+        name: 'проверка отвергает `null`',
         code: `let nullMessage = '';
 try { readVersionSafe(null); } catch (error) { nullMessage = error.message; }
 expect(nullMessage).toBe('ответ не содержит версию');`

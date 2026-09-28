@@ -25,8 +25,8 @@ function runSafely(steps: string[], action: (step: string) => void) {
   return { calls: 0, failedAt: null as string | null };
 }`,
     hints: [
-      'Тип void в результате колбэка означает «результат не нужен», а не «его нет».',
-      'Функция с типом never не возвращает управление обычным путём.',
+      'Тип `void` в результате обратного вызова означает «результат не нужен», а не «его нет».',
+      'Функция с типом `never` не возвращает управление обычным путём.',
       'Число выполненных вызовов надо знать и в случае ошибки.'
     ],
     tests: [
@@ -45,7 +45,7 @@ expect(forEachStep([], () => { calls += 1; })).toBe(0);
 expect(calls).toBe(0);`
       },
       {
-        name: 'fail всегда выбрасывает',
+        name: '`fail` всегда выбрасывает',
         code: `let message = '';
 try { fail('шаг невозможен'); } catch (error) { message = (error as Error).message; }
 expect(message).toBe('шаг невозможен');`

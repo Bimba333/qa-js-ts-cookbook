@@ -1,4 +1,4 @@
-# Object Descriptors
+# Дескрипторы свойств
 
 ## Связь с предыдущей главой
 
@@ -152,15 +152,19 @@ Descriptor is the metadata sheet for a property.
 
 ## Теория
 
-Object Descriptor describes property поведение.
+Дескриптор свойства описывает его поведение.
 
 Не API является главным.
 
 Главная идея:
 
-### Why descriptors exist
+```text
+у свойства есть не только значение, но и правила обращения с ним
+```
 
-Если бы property была только value, JavaScript не мог бы ответить на вопросы:
+### Зачем нужны дескрипторы
+
+Если бы у свойства было только значение, JavaScript не смог бы ответить на вопросы:
 
 ```text
 Can this property be changed?
@@ -169,19 +173,19 @@ Can this property definition be changed?
 Can deleting this property be allowed as one consequence?
 ```
 
-Descriptors exist to store these rules.
+Дескрипторы существуют, чтобы хранить эти правила.
 
-### Property metadata
+### Метаданные свойства
 
-Metadata is information about information.
+Метаданные — это информация об информации.
 
-Business data:
+Бизнес-данные:
 
 ```text
 environment = "staging"
 ```
 
-Metadata:
+Метаданные:
 
 ```text
 writable: false
@@ -189,17 +193,17 @@ enumerable: true
 configurable: false
 ```
 
-Descriptors describe property поведение. They do not store business data beyond the `value` поле itself.
+Дескрипторы описывают поведение свойства. Кроме самого поля `value`, деловых данных они не хранят.
 
-### Descriptor поля
+### Поля дескриптора
 
-For data properties in this chapter:
+Для обычных свойств данных в этой главе:
 
-We do not study accessors, getters and setters yet.
+Геттеры и сеттеры мы пока не изучаем.
 
 ### `value`
 
-`value` is the property value:
+`value` — значение свойства:
 
 ```javascript
 Object.defineProperty(config, 'environment', {
@@ -209,11 +213,17 @@ Object.defineProperty(config, 'environment', {
 
 Концептуально:
 
+```text
+value  —  единственное поле дескриптора, которое хранит сами данные
+```
+
+Остальные поля хранят правила: что с этим значением разрешено делать.
+
 ### `writable`
 
-`writable` controls whether property value can be changed through assignment.
+`writable` управляет тем, можно ли изменить значение свойства присваиванием.
 
-Readonly property:
+Свойство только для чтения:
 
 ```javascript
 Object.defineProperty(config, 'environment', {
@@ -224,35 +234,35 @@ Object.defineProperty(config, 'environment', {
 
 ### `enumerable`
 
-`enumerable` controls whether property appears in common enumeration.
+`enumerable` управляет тем, попадает ли свойство в обычный перебор.
 
-Hidden property in this chapter means non-enumerable property, not secret secure storage.
+Скрытое свойство в этой главе означает свойство вне перебора, а не защищённое хранилище.
 
 ### `configurable`
 
-`configurable` controls whether the property definition itself may be changed.
+`configurable` управляет тем, можно ли изменить само описание свойства.
 
-Удаление property - одно из практических следствий этого правила, потому что removing property also changes object structure.
+Удаление свойства — одно из практических следствий этого правила, потому что оно тоже меняет структуру объекта.
 
 Эта глава оставляет модель высокоуровневой. Точные детали спецификации более тонкие.
 
-### Object.getOwnPropertyDescriptor()
+### Метод `Object.getOwnPropertyDescriptor()`
 
-After understanding why descriptors exist, API becomes meaningful.
+Когда понятно, зачем нужны дескрипторы, сам набор функций становится осмысленным.
 
 ```javascript
 const descriptor = Object.getOwnPropertyDescriptor(config, 'environment');
 ```
 
-It отвечает:
+Она отвечает:
 
 ```text
 What rules control this property?
 ```
 
-### Object.defineProperty()
+### Метод `Object.defineProperty()`
 
-`Object.defineProperty()` creates or modifies a property with explicit descriptor rules:
+`Object.defineProperty()` создаёт или изменяет свойство с явными правилами:
 
 ```javascript
 Object.defineProperty(config, 'environment', {
@@ -263,17 +273,17 @@ Object.defineProperty(config, 'environment', {
 });
 ```
 
-It отвечает:
+Она отвечает:
 
 ```text
 Create this property with these rules.
 ```
 
-### Defaults matter
+### Значения по умолчанию важны
 
-Properties created by object literal are usually writable, enumerable and configurable.
+Свойства, созданные литералом объекта, обычно изменяемы, перечисляемы и настраиваемы.
 
-Properties created by `Object.defineProperty()` have restrictive defaults when поля are omitted.
+Свойства, созданные через `Object.defineProperty()`, при пропущенных полях получают ограничительные значения по умолчанию.
 
 Пример:
 
@@ -291,7 +301,7 @@ enumerable: false
 configurable: false
 ```
 
-This is a common beginner mistake.
+Это распространённая ошибка новичков.
 
 ---
 
@@ -309,9 +319,9 @@ flowchart TD
 
 ## Внутренний механизм
 
-When JavaScript performs an operation on property, it checks rules.
+Когда JavaScript выполняет операцию над свойством, он проверяет правила.
 
-### Assignment attempt
+### Попытка присваивания
 
 ```javascript
 config.environment = 'production';
@@ -319,9 +329,9 @@ config.environment = 'production';
 
 Концептуальный поток:
 
-In strict mode, rejected assignment throws TypeError.
+В строгом режиме отклонённое присваивание выбрасывает `TypeError`.
 
-### Delete as a consequence
+### Удаление как следствие
 
 ```javascript
 delete config.environment;
@@ -329,9 +339,9 @@ delete config.environment;
 
 Концептуальный поток:
 
-Deletion is shown here as one visible consequence of `configurable`, not as the whole meaning of the flag.
+Удаление показано здесь как одно видимое следствие флага `configurable`, а не как весь его смысл.
 
-### Enumeration
+### Перебор свойств
 
 ```javascript
 Object.keys(config);
@@ -339,21 +349,31 @@ Object.keys(config);
 
 Концептуальный поток:
 
-### Metadata flow
+```text
+1. взять список свойств объекта
+2. для каждого прочитать флаг enumerable
+3. enumerable: true   →  свойство попадает в результат
+4. enumerable: false  →  свойство пропускается
+```
 
-Descriptors are not business data. They are the rule layer that controls how operations behave.
+Свойство при этом остаётся: оно читается по имени, но не показывается при
+переборе.
+
+### Поток метаданных
+
+Дескрипторы — не деловые данные. Это слой правил, который управляет поведением операций.
 
 ---
 
 ## Ментальная модель
 
-Property passport:
+Дескриптор удобно представлять как паспорт свойства: в нём записано не только
+значение, но и что с этим свойством разрешено делать — можно ли менять,
+попадает ли оно в перебор, можно ли переопределить сам паспорт.
 
-Permissions card:
-
-Property contract:
-
-Главная модель:
+Главная модель: у свойства есть значение и отдельно от него — правила
+обращения. Обычное присваивание задаёт значение и оставляет правила по
+умолчанию; `Object.defineProperty()` позволяет задать и то и другое.
 
 ---
 
@@ -376,7 +396,7 @@ node examples/01-javascript/chapter-38/05-common-mistakes.js
 node examples/01-javascript/chapter-38/06-qa-example.js
 ```
 
-### Пример 1. Basic descriptor
+### Пример 1. Базовый дескриптор
 
 ```javascript
 const config = {
@@ -386,7 +406,7 @@ const config = {
 console.log(Object.getOwnPropertyDescriptor(config, 'environment'));
 ```
 
-### Пример 2. Readonly
+### Пример 2. Только для чтения
 
 ```javascript
 'use strict';
@@ -409,7 +429,7 @@ try {
 console.log(config.environment);
 ```
 
-### Пример 3. Hidden property
+### Пример 3. Скрытое свойство
 
 ```javascript
 const helper = {
@@ -425,7 +445,7 @@ console.log(Object.keys(helper));
 console.log(helper.internalId);
 ```
 
-### Пример 4. defineProperty
+### Пример 4. `defineProperty`
 
 ```javascript
 const config = {};
@@ -456,9 +476,9 @@ console.log(Object.keys(config));
 console.log(Object.getOwnPropertyDescriptor(config, 'environment'));
 ```
 
-Omitted descriptor поля are not the same as object literal defaults.
+Пропущенные поля дескриптора — не то же самое, что значения по умолчанию у литерала объекта.
 
-### Пример 6. QA example
+### Пример 6. Пример из автоматизации тестов
 
 ```javascript
 'use strict';
@@ -493,63 +513,66 @@ console.log(frameworkConfig.baseUrl);
 
 ## Частые вопросы
 
-### Descriptor stores business data?
+### Дескриптор хранит деловые данные?
 
-Descriptor describes property поведение. The `value` поле contains property value, but descriptor itself is metadata about the property.
+Дескриптор описывает поведение свойства. Поле `value` содержит значение, но сам дескриптор — метаданные о свойстве.
 
-### Hidden property is secure?
+### Скрытое свойство защищено?
 
-No.
+Нет.
 
-`enumerable: false` hides property from enumeration like `Object.keys()`, but property can still be read directly if its name is known.
+`enumerable: false` убирает свойство из перебора вроде `Object.keys()`, но его по-прежнему можно прочитать напрямую, зная имя.
 
-### Readonly property makes object immutable?
+### Свойство только для чтения делает объект неизменяемым?
 
-No.
+Нет.
 
-It controls one property. Other properties may still be changed.
+Оно управляет одним свойством. Остальные по-прежнему можно менять.
 
-### `configurable: false` means writable is false?
+### `configurable: false` означает, что `writable` тоже `false`?
 
-No.
+Нет.
 
-These are separate rules. A property can be non-configurable but still writable, depending on descriptor.
+Это отдельные правила. Свойство может быть ненастраиваемым и при этом изменяемым — всё зависит от дескриптора.
 
-### Why not use descriptors everywhere?
+### Почему не использовать дескрипторы везде?
 
-Most application code does not need explicit descriptors. They are most useful for infrastructure, libraries and framework internals.
+Большинству прикладного кода явные дескрипторы не нужны. Они полезнее всего в инфраструктуре, библиотеках и внутренностях фреймворков.
 
 ---
 
 ## Распространённые мифы
 
-### Миф: property is only key and value
+### Миф: свойство — это только ключ и значение
+
+Реальность: кроме ключа и значения у свойства есть флаги `writable`,
+`enumerable` и `configurable`. Обычный литерал объекта просто задаёт им
+значение `true`, поэтому их обычно не видно.
+
+### Миф: невидимое в переборе значит приватное
+
+Реальность: скрытое от перебора свойство по-прежнему читается и изменяется по
+имени.
+
+Невидимое в переборе означает скрытое от перебора, а не приватное.
+
+### Миф: `Object.defineProperty()` — просто другой способ присвоить значение
 
 Реальность:
 
-### Миф: non-enumerable means private
+Она задаёт и значение, и правила поведения.
+
+### Миф: дескрипторы — это деловые данные
 
 Реальность:
 
-Non-enumerable means hidden from enumeration, not private.
-
-### Миф: `Object.defineProperty()` is just another way to assign value
-
-Реальность:
-
-It defines value plus поведение rules.
-
-### Миф: descriptors are business data
-
-Реальность:
-
-Descriptors are metadata controlling property operations.
+Дескрипторы — метаданные, управляющие операциями над свойством.
 
 ---
 
 ## Распространённые ошибки
 
-### Ошибка 1. Forgetting defineProperty defaults
+### Ошибка 1. Забыть про умолчания `defineProperty`
 
 ```javascript
 Object.defineProperty(config, 'environment', {
@@ -557,7 +580,7 @@ Object.defineProperty(config, 'environment', {
 });
 ```
 
-This creates restrictive property by default.
+Так по умолчанию создаётся ограниченное свойство.
 
 Исправление:
 
@@ -570,27 +593,27 @@ Object.defineProperty(config, 'environment', {
 });
 ```
 
-### Ошибка 2. Expect hidden property to be unreadable
+### Ошибка 2. Ожидать, что скрытое свойство нельзя прочитать
 
 ```javascript
 helper.internalId;
 ```
 
-If key is known, value can be read.
+Если ключ известен, значение читается.
 
-### Ошибка 3. Expect readonly assignment to always be silent
+### Ошибка 3. Ожидать, что присваивание в свойство только для чтения всегда тихое
 
-In strict mode, assigning to non-writable property throws TypeError.
+В строгом режиме присваивание в неизменяемое свойство выбрасывает `TypeError`.
 
-### Ошибка 4. Use descriptors for ordinary test data
+### Ошибка 4. Использовать дескрипторы для обычных тестовых данных
 
-Most test payloads should stay simple objects. Descriptors are better for framework infrastructure and internal metadata.
+Большинство тел запросов должны оставаться простыми объектами. Дескрипторы лучше подходят для инфраструктуры фреймворка и внутренних метаданных.
 
 ---
 
 ## Практическое использование
 
-### Immutable configuration property
+### Неизменяемое свойство настройки
 
 ```javascript
 Object.defineProperty(config, 'baseUrl', {
@@ -601,7 +624,7 @@ Object.defineProperty(config, 'baseUrl', {
 });
 ```
 
-### Hidden framework internal
+### Скрытые внутренности фреймворка
 
 ```javascript
 Object.defineProperty(helper, 'internalRunId', {
@@ -610,128 +633,39 @@ Object.defineProperty(helper, 'internalRunId', {
 });
 ```
 
-### Helper metadata
+### Метаданные вспомогательных функций
 
-Metadata can exist on helper object without appearing in ordinary key lists.
+Метаданные могут жить на вспомогательном объекте, не попадая в обычные списки ключей.
 
-### Internal service objects
+### Служебные объекты
 
-Framework infrastructure may lock certain properties to avoid accidental mutation.
+Инфраструктура фреймворка может закрывать отдельные свойства, чтобы их не изменили случайно.
 
 ---
 
 ## Использование в Automation QA
 
-### Immutable configuration
+### Неизменяемая конфигурация
 
-Framework config sometimes must not be changed after setup:
+Настройку фреймворка иногда нельзя менять после подготовки:
 
-This protects important infrastructure значения from accidental reassignment.
+Это защищает важные значения инфраструктуры от случайного переприсваивания.
 
-### Hidden framework internals
+### Скрытые внутренности фреймворка
 
-Internal IDs or technical metadata can be non-enumerable:
+Внутренние идентификаторы и технические метаданные можно сделать невидимыми в переборе:
 
-But this is not security. It is visibility control for normal enumeration.
+Но это не защита. Это управление видимостью при обычном переборе.
 
-### Helper metadata
+### Метаданные вспомогательных функций
 
-Assertion helpers may carry internal tags, run IDs or debug metadata.
+Вспомогательные проверки могут нести внутренние метки, идентификаторы прогона или отладочные метаданные.
 
-### Internal service objects
+### Служебные объекты
 
-Service objects in a test framework may expose public configuration while keeping internal metadata out of ordinary listings.
+Служебные объекты тестового фреймворка могут показывать публичную настройку, оставляя внутренние метаданные вне обычных списков.
 
-Descriptors are more common in framework infrastructure than in ordinary test scripts.
-
----
-
-## Диаграммы главы
-
-### 1. Why descriptors exist
-
-### 2. Two identical-looking properties
-
-### 3. Hidden metadata
-
-### 4. Property structure
-
-### 5. Descriptor поля
-
-### 6. writable
-
-### 7. enumerable
-
-### 8. configurable
-
-### 9. Property passport
-
-### 10. Property contract
-
-### 11. Текущая модель JavaScript
-
-### 12. Object.getOwnPropertyDescriptor()
-
-### 13. Object.defineProperty()
-
-### 14. Readonly property
-
-### 15. Hidden property
-
-### 16. Delete as consequence
-
-### 17. Assignment attempt
-
-### 18. Enumeration
-
-### 19. Metadata flow
-
-### 20. Property lifecycle
-
-### 21. Object evolution
-
-### 22. QA config object
-
-### 23. API response preview
-
-### 24. Типичные ошибки
-
-### 25. Краткая ментальная модель
-
-```text
-passport
-permissions card
-metadata sheet
-```
-
-### 26. Complete descriptor model
-
-### 27. Rules before operation
-
-### 28. Operation decision
-
-### 29. Property permissions
-
-```text
-write
-list
-change property definition
-```
-
-### 30. Переход к Prototype
-
-### 31. Переход к Classes
-
-### 32. Internal metadata
-
-### 33. State vs metadata
-
-```text
-state: environment = staging
-metadata: writable = false
-```
-
-### 34. Итоговая схема
+Дескрипторы чаще встречаются в инфраструктуре фреймворка, чем в обычных тестовых сценариях.
 
 ---
 
@@ -775,11 +709,11 @@ What rule controls this property?
 
 ## Итоги
 
-Object Descriptors расширяют модель object properties.
+Дескрипторы расширяют модель свойств объекта.
 
-Descriptors describe property поведение. They do not represent business data.
+Дескрипторы описывают поведение свойства. Деловых данных они не представляют.
 
-We studied:
+Мы изучили:
 
 * `value`;
 * `writable`;
@@ -787,26 +721,27 @@ We studied:
 * `configurable`;
 * `Object.getOwnPropertyDescriptor()`;
 * `Object.defineProperty()`;
-* readonly properties;
-* hidden properties.
+* свойства только для чтения;
+* скрытые от перебора свойства.
 
-Next chapter begins Prototype:
+Следующая глава начинает тему прототипов: она объясняет, откуда объект берёт
+свойства, которых нет в нём самом.
 
 ---
 
 ## Что нужно запомнить
 
-* Property is not only value.
-* Property has metadata.
-* Descriptor describes property поведение.
-* `writable` controls assignment.
-* `enumerable` controls visibility in enumeration.
-* `configurable` controls whether the property definition itself may be changed.
-* Deletion is one practical consequence of `configurable`, not the whole meaning of it.
-* `Object.getOwnPropertyDescriptor()` reads descriptor.
-* `Object.defineProperty()` defines property with rules.
-* Non-enumerable does not mean private.
-* Descriptors are more common in framework infrastructure than ordinary test data.
+* Свойство — это не только значение.
+* У свойства есть метаданные.
+* Дескриптор описывает поведение свойства.
+* `writable` управляет присваиванием.
+* `enumerable` управляет видимостью при переборе.
+* `configurable` управляет тем, можно ли изменить само описание свойства.
+* Удаление — одно практическое следствие флага `configurable`, а не весь его смысл.
+* `Object.getOwnPropertyDescriptor()` читает дескриптор.
+* `Object.defineProperty()` задаёт свойство вместе с правилами.
+* Невидимое в переборе не означает приватное.
+* Дескрипторы чаще встречаются в инфраструктуре фреймворка, чем в обычных тестовых данных.
 
 ---
 
@@ -814,13 +749,27 @@ Next chapter begins Prototype:
 
 Ответьте без запуска кода.
 
-1. Why do descriptors exist?
-2. What does descriptor describe?
-3. What does `writable` control?
-4. What does `enumerable` control?
-5. What does `configurable` control?
-6. Why can two properties with equal значения behave differently?
-7. Does non-enumerable mean private?
-8. Why can `Object.defineProperty()` surprise beginners?
-9. Where can descriptors be useful in Automation QA?
-10. What is the next topic after descriptors?
+1. Зачем существуют дескрипторы?
+2. Что описывает дескриптор?
+3. Чем управляет `writable`?
+4. Чем управляет `enumerable`?
+5. Чем управляет `configurable`?
+6. Почему два свойства с одинаковыми значениями могут вести себя по-разному?
+7. Означает ли невидимость при переборе приватность?
+8. Почему `Object.defineProperty()` удивляет новичков?
+9. Где дескрипторы полезны в автоматизации тестов?
+10. Какая тема идёт после дескрипторов?
+
+### Ответы
+
+1. Потому что у свойства есть не только значение, но и правила обращения с ним. Дескрипторы — место, где эти правила хранятся.
+2. Как ведёт себя свойство: можно ли изменить его значение, показывается ли оно при переборе, можно ли изменить само его описание.
+3. Можно ли заменить значение свойства присваиванием.
+4. Попадает ли свойство в перебор — например, в `Object.keys()`.
+5. Можно ли изменить описание свойства и удалить его.
+6. Потому что совпадают только значения, а флаги могут быть разными. Одно свойство изменяется присваиванием и видно при переборе, другое — нет.
+7. Нет. Скрытое от перебора свойство по-прежнему читается и изменяется по имени.
+8. Потому что по умолчанию все три флага у создаваемого свойства равны `false`. Свойство, заданное так, оказывается неизменяемым и невидимым при переборе, хотя автор этого не просил.
+9. В инфраструктуре фреймворка: служебные поля, которые не должны попадать в сериализацию или сравнение объектов, и настройки, которые нельзя перезаписать по ошибке.
+10. Прототипы: где живёт поведение, общее для многих объектов.
+

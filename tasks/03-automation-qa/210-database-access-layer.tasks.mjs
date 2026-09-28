@@ -20,7 +20,7 @@ export default [
 }`,
     hints: [
       'Имена колонок и имена полей модели не обязаны совпадать.',
-      'Драйвер PostgreSQL отдаёт bigint строкой — это не ошибка данных.',
+      'Драйвер PostgreSQL отдаёт `bigint` строкой — это не ошибка данных.',
       'Лишние колонки не должны просачиваться через распространение объекта.'
     ],
     tests: [
@@ -54,7 +54,7 @@ expect(typeof model.version).toBe('number');
 expect(model.version).toBe(10);`
       },
       {
-        name: 'пустое описание остаётся null',
+        name: 'пустое описание остаётся `null`',
         code: `const nullable = toWorkItem({
   id: 'WI-1', title: 'a', description: null, priority: 'LOW', status: 'NEW',
   version: '1', created_at: new Date(0)

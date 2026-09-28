@@ -67,7 +67,7 @@ function format(result, kind) {
 };`,
     hints: [
       'Имя ставится между ключевым словом и скобками.',
-      'Свойство name у функции доступно для чтения.',
+      'Свойство `name` у функции доступно для чтения.',
       'Сообщение об ошибке собирается из текста и кода.'
     ],
     tests: [
@@ -86,7 +86,7 @@ try { check(42); } catch (error) { message = error.message; }
 expect(message).toBe('недопустимый код: 42');`
       },
       {
-        name: 'внутреннее имя видно в свойстве name',
+        name: 'внутреннее имя видно в свойстве `name`',
         code: `expect(check.name).toBe('validateStatusCode');`
       }
     ],

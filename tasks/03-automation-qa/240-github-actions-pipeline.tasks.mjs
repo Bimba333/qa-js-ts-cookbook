@@ -25,7 +25,7 @@ export default [
 }`,
     hints: [
       'Разрешения могут быть заданы и у конвейера, и у задания.',
-      'npm install и npm ci решают разные задачи: первый может обновить версии.',
+      '`npm install` и `npm ci` решают разные задачи: первый может обновить версии.',
       'Ключ кеша без подстановки не различает версии и потому бесполезен.'
     ],
     tests: [
@@ -70,7 +70,7 @@ export default [
 })).toEqual(['test: разрешения шире необходимых']);`
       },
       {
-        name: 'npm install вместо npm ci',
+        name: '`npm install` вместо `npm ci`',
         code: `expect(validateWorkflow({
   on: ['push'],
   jobs: { test: { steps: [{ run: 'npm install' }] } }

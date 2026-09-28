@@ -1,25 +1,25 @@
 export default [
   {
     id: 'js-81-make-iterable',
-    title: 'Сделать объект пригодным для for...of',
+    title: 'Сделать объект пригодным для `for...of`',
     difficulty: 'medium',
     lang: 'js',
     prompt:
       'Напишите функцию `createRange(from, to)`, которая возвращает объект, ' +
-      'пригодный для `for...of` и spread: он выдаёт числа от `from` до `to` ' +
+      'пригодный для `for...of` и раскрытия: он выдаёт числа от `from` до `to` ' +
       'включительно. Обход должен быть повторяемым — второй проход даёт те же ' +
       'значения.',
     starter: `function createRange(from, to) {
   // Объекту нужен метод с ключом Symbol.iterator.
 }`,
     hints: [
-      'Пригодность для for...of даёт метод с ключом Symbol.iterator.',
+      'Пригодность для `for...of` даёт метод с ключом `Symbol.iterator`.',
       'Проще всего объявить его методом-генератором.',
       'Метод вызывается на каждый обход, поэтому повторяемость получается сама.'
     ],
     tests: [
       {
-        name: 'работает со spread',
+        name: 'работает с раскрытием',
         code: `expect([...createRange(1, 3)]).toEqual([1, 2, 3]);`
       },
       {
@@ -32,7 +32,7 @@ expect([[...range], [...range]]).toEqual([[1, 2], [1, 2]]);`
         code: `expect([...createRange(3, 1)]).toEqual([]);`
       },
       {
-        name: 'работает в for...of',
+        name: 'работает в `for...of`',
         code: `const seen = [];
 for (const value of createRange(5, 7)) seen.push(value);
 expect(seen).toEqual([5, 6, 7]);`
@@ -62,8 +62,8 @@ expect(seen).toEqual([5, 6, 7]);`
   // Пригодность определяется наличием метода с известным ключом.
 }`,
     hints: [
-      'Проверять нужно наличие метода с ключом Symbol.iterator.',
-      'Обращение к свойству у null выбрасывает ошибку.',
+      'Проверять нужно наличие метода с ключом `Symbol.iterator`.',
+      'Обращение к свойству у `null` выбрасывает ошибку.',
       'Проверка типа значения надёжнее проверки истинности.'
     ],
     tests: [
@@ -76,7 +76,7 @@ expect(seen).toEqual([5, 6, 7]);`
         code: `expect(isIterable({ a: 1 })).toBe(false);`
       },
       {
-        name: 'null и число непригодны',
+        name: '`null` и число непригодны',
         code: `expect([isIterable(null), isIterable(42)]).toEqual([false, false]);`
       },
       {

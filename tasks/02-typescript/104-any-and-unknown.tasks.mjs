@@ -15,9 +15,9 @@ export default [
   return 'unknown';
 }`,
     hints: [
-      'Для примитивов подходит typeof.',
-      'Перед обращением к полю нужно убедиться, что значение — объект и не null.',
-      'Оператор in даёт доступ к свойству у суженного object.'
+      'Для примитивов подходит `typeof`.',
+      'Перед обращением к полю нужно убедиться, что значение — объект и не `null`.',
+      'Оператор `in` даёт доступ к свойству у суженного `object`.'
     ],
     tests: [
       {
@@ -25,7 +25,7 @@ export default [
         code: `expect(readStatus('passed')).toBe('passed');`
       },
       {
-        name: 'читает поле status у объекта',
+        name: 'читает поле `status` у объекта',
         code: `expect(readStatus({ status: 'failed' })).toBe('failed');`
       },
       {
@@ -33,11 +33,11 @@ export default [
         code: `expect(readStatus('')).toBe('unknown');`
       },
       {
-        name: 'null и число дают unknown',
+        name: '`null` и число дают `unknown`',
         code: `expect(readStatus(null) + '|' + readStatus(42)).toBe('unknown|unknown');`
       },
       {
-        name: 'объект без поля status даёт unknown',
+        name: 'объект без поля `status` даёт `unknown`',
         code: `expect(readStatus({ name: 'a' })).toBe('unknown');`
       }
     ],
@@ -72,13 +72,13 @@ export default [
   return '';
 }`,
     hints: [
-      'Принадлежность классу проверяется через instanceof.',
-      'Строку можно отличить через typeof.',
-      'Для остальных значений подойдёт String(...).'
+      'Принадлежность классу проверяется через `instanceof`.',
+      'Строку можно отличить через `typeof`.',
+      'Для остальных значений подойдёт `String(...)`.'
     ],
     tests: [
       {
-        name: 'достаёт message из Error',
+        name: 'достаёт `message` из `Error`',
         code: `expect(toMessage(new Error('упало'))).toBe('упало');`
       },
       {

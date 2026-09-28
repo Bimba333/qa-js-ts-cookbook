@@ -10,7 +10,7 @@ export default [
       'текущей странице, затем создайте **новый контекст** того же браузера и ' +
       'откройте в нём `/work-items`. Верните `{ authorizedUrl, freshUrl, ' +
       'cookiesAuthorized, cookiesFresh }`: адрес списка в текущей странице, адрес ' +
-      'после перехода в новом контексте и число cookie в каждом контексте. ' +
+      'после перехода в новом контексте и число куки в каждом контексте. ' +
       'Созданный контекст закройте сами. Записи не создавайте.',
     starter: `export default async function solve({ page, baseUrl }) {
   // Новый контекст получается из браузера: page.context().browser().
@@ -18,8 +18,8 @@ export default [
   return { authorizedUrl: '', freshUrl: '', cookiesAuthorized: 0, cookiesFresh: 0 };
 }`,
     hints: [
-      'Контекст хранит cookie и данные сайта отдельно от других контекстов.',
-      'Новому контексту нужно указать адрес стенда: baseURL у него свой.',
+      'Контекст хранит куки и данные сайта отдельно от других контекстов.',
+      'Новому контексту нужно указать адрес стенда: `baseURL` у него свой.',
       'Незалогиненного посетителя приложение отправляет на страницу входа.'
     ],
     tests: [
@@ -32,11 +32,11 @@ export default [
         code: `expect(result.freshUrl).toContain('/login');`
       },
       {
-        name: 'в авторизованном контексте есть cookie',
+        name: 'в авторизованном контексте есть куки',
         code: `expect(result.cookiesAuthorized > 0).toBe(true);`
       },
       {
-        name: 'новый контекст начинает без cookie сессии',
+        name: 'новый контекст начинает без куки сессии',
         code: `expect(result.cookiesFresh < result.cookiesAuthorized).toBe(true);`
       },
       {

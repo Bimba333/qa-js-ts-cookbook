@@ -1,7 +1,7 @@
 export default [
   {
     id: 'js-79-return-await-in-try',
-    title: 'return await внутри try',
+    title: '`return await` внутри `try`',
     difficulty: 'hard',
     lang: 'js',
     prompt:
@@ -16,9 +16,9 @@ export default [
   }
 }`,
     hints: [
-      'Возврат промиса из try выходит из блока до его отклонения.',
-      'Чтобы catch увидел ошибку, промис нужно развернуть внутри блока.',
-      'Значение fallback возвращается как есть.'
+      'Возврат промиса из `try` выходит из блока до его отклонения.',
+      'Чтобы `catch` увидел ошибку, промис нужно развернуть внутри блока.',
+      'Запасное значение возвращается как есть.'
     ],
     tests: [
       {
@@ -82,7 +82,7 @@ catch (error) { message = error.message; }
 expect(message).toBe('чтение: файл не найден');`
       },
       {
-        name: 'исходная ошибка сохранена в cause',
+        name: 'исходная ошибка сохранена в `cause`',
         code: `let causeMessage = '';
 try { await withContext(async () => { throw new Error('файл не найден'); }, 'чтение'); }
 catch (error) { causeMessage = error.cause.message; }

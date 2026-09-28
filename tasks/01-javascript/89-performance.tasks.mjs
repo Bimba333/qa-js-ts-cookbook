@@ -20,7 +20,7 @@ export default [
   return wrapped;
 }`,
     hints: [
-      'Кеш по ключу удобно держать в Map: она различает undefined и отсутствие ключа.',
+      'Кеш по ключу удобно держать в `Map`: она различает `undefined` и отсутствие ключа.',
       'Счётчики обновляются в обёртке, а не в исходной функции.',
       'Ошибку кешировать нельзя: иначе временный сбой станет постоянным.'
     ],
@@ -52,7 +52,7 @@ fast(2);
 expect(calls).toBe(2);`
       },
       {
-        name: 'undefined кешируется',
+        name: '`undefined` кешируется',
         code: `let calls = 0;
 const fast = memoize(() => { calls += 1; return undefined; });
 expect(fast('x')).toBeUndefined();

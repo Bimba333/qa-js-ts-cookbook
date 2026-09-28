@@ -74,8 +74,8 @@ function toKey(id: Identifier): string {
   return '';
 }`,
     hints: [
-      'Различить варианты объединения помогает typeof.',
-      'NaN не равен сам себе — это удобный способ его поймать.',
+      'Различить варианты объединения помогает `typeof`.',
+      '`NaN` не равен сам себе — это удобный способ его поймать.',
       'Сообщение об ошибке должно совпадать дословно.'
     ],
     tests: [
@@ -94,7 +94,7 @@ try { toKey(''); } catch (error) { message = error.message; }
 expect(message).toBe('некорректный идентификатор');`
       },
       {
-        name: 'NaN недопустим',
+        name: '`NaN` недопустим',
         code: `let message = '';
 try { toKey(NaN); } catch (error) { message = error.message; }
 expect(message).toBe('некорректный идентификатор');`

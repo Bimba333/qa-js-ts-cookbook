@@ -17,8 +17,8 @@ export default [
   return null;
 }`,
     hints: [
-      'for...of даёт сами элементы, а не индексы.',
-      'return внутри цикла прекращает и цикл, и функцию.',
+      '`for...of` даёт сами элементы, а не индексы.',
+      '`return` внутри цикла прекращает и цикл, и функцию.',
       'Если цикл дошёл до конца, значит совпадений не было.'
     ],
     tests: [
@@ -31,11 +31,11 @@ export default [
 ])).toBe('order');`
       },
       {
-        name: 'если падений нет, возвращает null',
+        name: 'если падений нет, возвращает `null`',
         code: `expect(firstFailedName([{ name: 'login', status: 'passed' }])).toBe(null);`
       },
       {
-        name: 'для пустого массива возвращает null',
+        name: 'для пустого массива возвращает `null`',
         code: `expect(firstFailedName([])).toBe(null);`
       },
       {
@@ -58,7 +58,7 @@ expect(source).toEqual([{ name: 'order', status: 'failed' }]);`
 
   {
     id: 'js-49-numbered-steps',
-    title: 'Обход с индексом через entries',
+    title: 'Обход с индексом через `entries`',
     difficulty: 'medium',
     lang: 'js',
     prompt:
@@ -73,7 +73,7 @@ expect(source).toEqual([{ name: 'order', status: 'failed' }]);`
   return lines;
 }`,
     hints: [
-      'entries() возвращает пары «индекс — значение».',
+      '`entries()` возвращает пары «индекс — значение».',
       'Пару удобно разложить деструктуризацией прямо в заголовке цикла.',
       'Номер в отчёте на единицу больше индекса.'
     ],

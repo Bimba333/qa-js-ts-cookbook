@@ -20,8 +20,8 @@ function upperFirst(value: string): string {
   return value;
 }`,
     hints: [
-      'typeof null возвращает "object" — этот случай проверяется отдельно.',
-      'Для bigint и symbol есть собственные значения typeof.',
+      '`typeof null` возвращает `"object"` — этот случай проверяется отдельно.',
+      'Для `bigint` и `symbol` есть собственные значения `typeof`.',
       'Изменить символ строки по индексу нельзя: операция просто не действует.'
     ],
     tests: [
@@ -34,12 +34,12 @@ expect(describePrimitive(10n)).toBe('большое целое');
 expect(describePrimitive(Symbol('x'))).toBe('символ');`
       },
       {
-        name: 'null и undefined — отсутствие значения',
+        name: '`null` и `undefined` — отсутствие значения',
         code: `expect(describePrimitive(null)).toBe('ничего');
 expect(describePrimitive(undefined)).toBe('ничего');`
       },
       {
-        name: 'NaN остаётся числом',
+        name: '`NaN` остаётся числом',
         code: `expect(describePrimitive(NaN)).toBe('число');`
       },
       {

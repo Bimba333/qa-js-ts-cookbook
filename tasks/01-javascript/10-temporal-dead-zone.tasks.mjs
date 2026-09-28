@@ -25,25 +25,25 @@ export default [
   };
 }`,
     hints: [
-      'var объявляется заранее, но значение получает только в строке объявления.',
-      'Обращение к let до объявления выбрасывает ошибку — её нужно поймать.',
-      'typeof не спасает от мёртвой зоны, в отличие от необъявленной переменной.'
+      '`var` объявляется заранее, но значение получает только в строке объявления.',
+      'Обращение к `let` до объявления выбрасывает ошибку — её нужно поймать.',
+      '`typeof` не спасает от мёртвой зоны, в отличие от необъявленной переменной.'
     ],
     tests: [
       {
-        name: 'var до объявления даёт undefined',
+        name: '`var` до объявления даёт `undefined`',
         code: `expect(probeTdz().varBefore).toBeUndefined();`
       },
       {
-        name: 'let до объявления бросает ReferenceError',
+        name: '`let` до объявления бросает `ReferenceError`',
         code: `expect(probeTdz().letError).toBe('ReferenceError');`
       },
       {
-        name: 'typeof для var работает',
+        name: '`typeof` для `var` работает',
         code: `expect(probeTdz().typeofVarBefore).toBe('undefined');`
       },
       {
-        name: 'typeof не спасает от мёртвой зоны',
+        name: '`typeof` не спасает от мёртвой зоны',
         code: `expect(probeTdz().typeofLetError).toBe('ReferenceError');`
       },
       {

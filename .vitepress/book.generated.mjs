@@ -1,5 +1,5 @@
 export const bookEngineData = {
-  "cacheReads": 772,
+  "cacheReads": 790,
   "parts": [
     {
       "title": "Введение",
@@ -42,59 +42,59 @@ export const bookEngineData = {
               "path": "docs/01-javascript/02-how-javascript-works.md"
             },
             {
-              "fallbackTitle": "Execution Context",
+              "fallbackTitle": "Контекст выполнения",
               "path": "docs/01-javascript/03-execution-context.md"
             },
             {
-              "fallbackTitle": "Call Stack",
+              "fallbackTitle": "Стек вызовов",
               "path": "docs/01-javascript/04-call-stack.md"
             },
             {
-              "fallbackTitle": "Memory",
+              "fallbackTitle": "Память",
               "path": "docs/01-javascript/05-memory.md"
             },
             {
-              "fallbackTitle": "Variables",
+              "fallbackTitle": "Переменные",
               "path": "docs/01-javascript/06-variables.md"
             },
             {
-              "fallbackTitle": "Scope",
+              "fallbackTitle": "Область видимости",
               "path": "docs/01-javascript/07-scope.md"
             },
             {
-              "fallbackTitle": "Lexical Environment",
+              "fallbackTitle": "Лексическое окружение",
               "path": "docs/01-javascript/08-lexical-environment.md"
             },
             {
-              "fallbackTitle": "Hoisting",
+              "fallbackTitle": "Подъём объявлений",
               "path": "docs/01-javascript/09-hoisting.md"
             },
             {
-              "fallbackTitle": "Temporal Dead Zone",
+              "fallbackTitle": "Временная мёртвая зона",
               "path": "docs/01-javascript/10-temporal-dead-zone.md"
             },
             {
-              "fallbackTitle": "Primitive Types",
+              "fallbackTitle": "Примитивные типы",
               "path": "docs/01-javascript/11-primitive-types.md"
             },
             {
-              "fallbackTitle": "Object Type",
+              "fallbackTitle": "Объектный тип",
               "path": "docs/01-javascript/12-object-type.md"
             },
             {
-              "fallbackTitle": "References",
+              "fallbackTitle": "Ссылки",
               "path": "docs/01-javascript/13-references.md"
             },
             {
-              "fallbackTitle": "Stack & Heap",
+              "fallbackTitle": "Стек и куча",
               "path": "docs/01-javascript/14-stack-and-heap.md"
             },
             {
-              "fallbackTitle": "Type Conversion",
+              "fallbackTitle": "Преобразование типов",
               "path": "docs/01-javascript/15-type-conversion.md"
             },
             {
-              "fallbackTitle": "Equality",
+              "fallbackTitle": "Равенство",
               "path": "docs/01-javascript/16-equality.md"
             }
           ]
@@ -103,19 +103,19 @@ export const bookEngineData = {
           "title": "Управление программой",
           "chapters": [
             {
-              "fallbackTitle": "Operators",
+              "fallbackTitle": "Операторы",
               "path": "docs/01-javascript/17-operators.md"
             },
             {
-              "fallbackTitle": "Conditionals",
+              "fallbackTitle": "Условные конструкции",
               "path": "docs/01-javascript/18-conditionals.md"
             },
             {
-              "fallbackTitle": "Loops",
+              "fallbackTitle": "Циклы",
               "path": "docs/01-javascript/19-loops.md"
             },
             {
-              "fallbackTitle": "Error Handling",
+              "fallbackTitle": "Обработка ошибок",
               "path": "docs/01-javascript/20-error-handling.md"
             }
           ]
@@ -124,51 +124,51 @@ export const bookEngineData = {
           "title": "Functions",
           "chapters": [
             {
-              "fallbackTitle": "Function Declaration",
+              "fallbackTitle": "Объявление функции",
               "path": "docs/01-javascript/21-function-declaration.md"
             },
             {
-              "fallbackTitle": "Function Expression",
+              "fallbackTitle": "Функциональное выражение",
               "path": "docs/01-javascript/22-function-expression.md"
             },
             {
-              "fallbackTitle": "Arrow Functions",
+              "fallbackTitle": "Стрелочные функции",
               "path": "docs/01-javascript/23-arrow-functions.md"
             },
             {
-              "fallbackTitle": "Parameters",
+              "fallbackTitle": "Параметры",
               "path": "docs/01-javascript/24-parameters.md"
             },
             {
-              "fallbackTitle": "Return",
+              "fallbackTitle": "Возврат значения",
               "path": "docs/01-javascript/25-return.md"
             },
             {
-              "fallbackTitle": "Rest Parameters",
+              "fallbackTitle": "Параметры сбора",
               "path": "docs/01-javascript/26-rest.md"
             },
             {
-              "fallbackTitle": "Spread",
+              "fallbackTitle": "Раскрытие",
               "path": "docs/01-javascript/27-spread.md"
             },
             {
-              "fallbackTitle": "Closures",
+              "fallbackTitle": "Замыкания",
               "path": "docs/01-javascript/28-closures.md"
             },
             {
-              "fallbackTitle": "this",
+              "fallbackTitle": "Ключевое слово `this`",
               "path": "docs/01-javascript/29-this.md"
             },
             {
-              "fallbackTitle": "call()",
+              "fallbackTitle": "Метод `call()`",
               "path": "docs/01-javascript/30-call.md"
             },
             {
-              "fallbackTitle": "apply()",
+              "fallbackTitle": "Метод `apply()`",
               "path": "docs/01-javascript/31-apply.md"
             },
             {
-              "fallbackTitle": "bind()",
+              "fallbackTitle": "Метод `bind()`",
               "path": "docs/01-javascript/32-bind.md"
             }
           ]
@@ -177,47 +177,47 @@ export const bookEngineData = {
           "title": "Objects",
           "chapters": [
             {
-              "fallbackTitle": "Objects",
+              "fallbackTitle": "Объекты",
               "path": "docs/01-javascript/33-objects.md"
             },
             {
-              "fallbackTitle": "Destructuring",
+              "fallbackTitle": "Деструктуризация",
               "path": "docs/01-javascript/34-destructuring.md"
             },
             {
-              "fallbackTitle": "Optional Chaining",
+              "fallbackTitle": "Опциональная цепочка",
               "path": "docs/01-javascript/35-optional-chaining.md"
             },
             {
-              "fallbackTitle": "Nullish Coalescing",
+              "fallbackTitle": "Нулевое слияние",
               "path": "docs/01-javascript/36-nullish-coalescing.md"
             },
             {
-              "fallbackTitle": "Object Methods",
+              "fallbackTitle": "Методы объекта",
               "path": "docs/01-javascript/37-object-methods.md"
             },
             {
-              "fallbackTitle": "Object Descriptors",
+              "fallbackTitle": "Дескрипторы свойств",
               "path": "docs/01-javascript/38-object-descriptors.md"
             },
             {
-              "fallbackTitle": "Prototype",
+              "fallbackTitle": "Прототип",
               "path": "docs/01-javascript/39-prototype.md"
             },
             {
-              "fallbackTitle": "Prototype Chain",
+              "fallbackTitle": "Цепочка прототипов",
               "path": "docs/01-javascript/40-prototype-chain.md"
             },
             {
-              "fallbackTitle": "Classes",
+              "fallbackTitle": "Классы",
               "path": "docs/01-javascript/41-classes.md"
             },
             {
-              "fallbackTitle": "Class Inheritance",
+              "fallbackTitle": "Наследование классов",
               "path": "docs/01-javascript/42-class-inheritance.md"
             },
             {
-              "fallbackTitle": "super",
+              "fallbackTitle": "Ключевое слово `super`",
               "path": "docs/01-javascript/43-super.md"
             }
           ]
@@ -226,71 +226,71 @@ export const bookEngineData = {
           "title": "Arrays",
           "chapters": [
             {
-              "fallbackTitle": "Arrays",
+              "fallbackTitle": "Массивы",
               "path": "docs/01-javascript/44-arrays.md"
             },
             {
-              "fallbackTitle": "push() / pop()",
+              "fallbackTitle": "`push()` и `pop()`",
               "path": "docs/01-javascript/45-push-pop.md"
             },
             {
-              "fallbackTitle": "shift() / unshift()",
+              "fallbackTitle": "`shift()` и `unshift()`",
               "path": "docs/01-javascript/46-shift-unshift.md"
             },
             {
-              "fallbackTitle": "splice()",
+              "fallbackTitle": "Метод `splice()`",
               "path": "docs/01-javascript/47-splice.md"
             },
             {
-              "fallbackTitle": "slice()",
+              "fallbackTitle": "Метод `slice()`",
               "path": "docs/01-javascript/48-slice.md"
             },
             {
-              "fallbackTitle": "Iteration",
+              "fallbackTitle": "Перебор массива",
               "path": "docs/01-javascript/49-iteration.md"
             },
             {
-              "fallbackTitle": "forEach()",
+              "fallbackTitle": "Метод `forEach()`",
               "path": "docs/01-javascript/50-foreach.md"
             },
             {
-              "fallbackTitle": "map()",
+              "fallbackTitle": "Метод `map()`",
               "path": "docs/01-javascript/51-map.md"
             },
             {
-              "fallbackTitle": "filter()",
+              "fallbackTitle": "Метод `filter()`",
               "path": "docs/01-javascript/52-filter.md"
             },
             {
-              "fallbackTitle": "reduce()",
+              "fallbackTitle": "Метод `reduce()`",
               "path": "docs/01-javascript/53-reduce.md"
             },
             {
-              "fallbackTitle": "Chaining basics",
+              "fallbackTitle": "Цепочки вызовов",
               "path": "docs/01-javascript/54-chaining.md"
             },
             {
-              "fallbackTitle": "find()",
+              "fallbackTitle": "Метод `find()`",
               "path": "docs/01-javascript/55-find.md"
             },
             {
-              "fallbackTitle": "some()",
+              "fallbackTitle": "Метод `some()`",
               "path": "docs/01-javascript/56-some.md"
             },
             {
-              "fallbackTitle": "every()",
+              "fallbackTitle": "Метод `every()`",
               "path": "docs/01-javascript/57-every.md"
             },
             {
-              "fallbackTitle": "includes()",
+              "fallbackTitle": "Метод `includes()`",
               "path": "docs/01-javascript/58-includes.md"
             },
             {
-              "fallbackTitle": "sort()",
+              "fallbackTitle": "Метод `sort()`",
               "path": "docs/01-javascript/59-sort.md"
             },
             {
-              "fallbackTitle": "reverse()",
+              "fallbackTitle": "Метод `reverse()`",
               "path": "docs/01-javascript/60-reverse.md"
             }
           ]
@@ -299,19 +299,19 @@ export const bookEngineData = {
           "title": "Execution Model Revisited",
           "chapters": [
             {
-              "fallbackTitle": "Execution Context: углубленное повторение",
+              "fallbackTitle": "Контекст выполнения: углублённое повторение",
               "path": "docs/01-javascript/61-execution-context.md"
             },
             {
-              "fallbackTitle": "Call Stack: углубленное повторение",
+              "fallbackTitle": "Стек вызовов: углублённое повторение",
               "path": "docs/01-javascript/62-call-stack.md"
             },
             {
-              "fallbackTitle": "Memory Model",
+              "fallbackTitle": "Модель памяти",
               "path": "docs/01-javascript/63-memory-model.md"
             },
             {
-              "fallbackTitle": "Hoisting + TDZ",
+              "fallbackTitle": "Подъём объявлений и временная мёртвая зона",
               "path": "docs/01-javascript/64-hoisting-tdz.md"
             }
           ]
@@ -320,19 +320,19 @@ export const bookEngineData = {
           "title": "Function Context",
           "chapters": [
             {
-              "fallbackTitle": "Closures: углубленное повторение",
+              "fallbackTitle": "Замыкания: углублённое повторение",
               "path": "docs/01-javascript/65-closures.md"
             },
             {
-              "fallbackTitle": "this: углубленное повторение",
+              "fallbackTitle": "`this`: углублённое повторение",
               "path": "docs/01-javascript/66-this.md"
             },
             {
-              "fallbackTitle": "call(), apply(), bind()",
+              "fallbackTitle": "`call()`, `apply()`, `bind()`",
               "path": "docs/01-javascript/67-call-apply-bind.md"
             },
             {
-              "fallbackTitle": "Practical Context Management",
+              "fallbackTitle": "Практическое управление контекстом",
               "path": "docs/01-javascript/68-context-management.md"
             }
           ]
@@ -341,51 +341,51 @@ export const bookEngineData = {
           "title": "Async JavaScript",
           "chapters": [
             {
-              "fallbackTitle": "Synchronous Execution",
+              "fallbackTitle": "Синхронное выполнение",
               "path": "docs/01-javascript/69-synchronous-execution.md"
             },
             {
-              "fallbackTitle": "Asynchronous Programming",
+              "fallbackTitle": "Асинхронное программирование",
               "path": "docs/01-javascript/70-asynchronous-programming.md"
             },
             {
-              "fallbackTitle": "Callback",
+              "fallbackTitle": "Обратный вызов",
               "path": "docs/01-javascript/71-callback.md"
             },
             {
-              "fallbackTitle": "Promise",
+              "fallbackTitle": "Промис",
               "path": "docs/01-javascript/72-promise.md"
             },
             {
-              "fallbackTitle": "Event Loop",
+              "fallbackTitle": "Событийный цикл",
               "path": "docs/01-javascript/73-event-loop.md"
             },
             {
-              "fallbackTitle": "Web APIs",
+              "fallbackTitle": "Браузерные API",
               "path": "docs/01-javascript/74-web-apis.md"
             },
             {
-              "fallbackTitle": "Microtasks",
+              "fallbackTitle": "Микрозадачи",
               "path": "docs/01-javascript/75-microtasks.md"
             },
             {
-              "fallbackTitle": "Macrotasks",
+              "fallbackTitle": "Макрозадачи",
               "path": "docs/01-javascript/76-macrotasks.md"
             },
             {
-              "fallbackTitle": "Promise API",
+              "fallbackTitle": "Методы `Promise`",
               "path": "docs/01-javascript/77-promise-api.md"
             },
             {
-              "fallbackTitle": "async and await",
+              "fallbackTitle": "`async` и `await`",
               "path": "docs/01-javascript/78-async-await.md"
             },
             {
-              "fallbackTitle": "Error Handling in Asynchronous Code",
+              "fallbackTitle": "Обработка ошибок в асинхронном коде",
               "path": "docs/01-javascript/79-async-error-handling.md"
             },
             {
-              "fallbackTitle": "Parallel Asynchronous Operations",
+              "fallbackTitle": "Параллельные асинхронные операции",
               "path": "docs/01-javascript/80-parallel-async.md"
             }
           ]
@@ -394,19 +394,19 @@ export const bookEngineData = {
           "title": "Iteration Protocols",
           "chapters": [
             {
-              "fallbackTitle": "Iterable Protocol",
+              "fallbackTitle": "Протокол перебора",
               "path": "docs/01-javascript/81-iterable-protocol.md"
             },
             {
-              "fallbackTitle": "Iterators",
+              "fallbackTitle": "Итераторы",
               "path": "docs/01-javascript/82-iterators.md"
             },
             {
-              "fallbackTitle": "Generators",
+              "fallbackTitle": "Генераторы",
               "path": "docs/01-javascript/83-generators.md"
             },
             {
-              "fallbackTitle": "Custom Iteration",
+              "fallbackTitle": "Собственный перебор",
               "path": "docs/01-javascript/84-custom-iteration.md"
             }
           ]
@@ -415,11 +415,11 @@ export const bookEngineData = {
           "title": "Modules",
           "chapters": [
             {
-              "fallbackTitle": "JavaScript Modules",
+              "fallbackTitle": "Модули JavaScript",
               "path": "docs/01-javascript/85-javascript-modules.md"
             },
             {
-              "fallbackTitle": "Module Systems",
+              "fallbackTitle": "Системы модулей",
               "path": "docs/01-javascript/86-module-systems.md"
             }
           ]
@@ -428,11 +428,11 @@ export const bookEngineData = {
           "title": "Memory Management",
           "chapters": [
             {
-              "fallbackTitle": "Garbage Collector",
+              "fallbackTitle": "Сборщик мусора",
               "path": "docs/01-javascript/87-garbage-collector.md"
             },
             {
-              "fallbackTitle": "Memory Management",
+              "fallbackTitle": "Управление памятью",
               "path": "docs/01-javascript/88-memory-management.md"
             }
           ]
@@ -441,11 +441,11 @@ export const bookEngineData = {
           "title": "Engineering Practice",
           "chapters": [
             {
-              "fallbackTitle": "Performance",
+              "fallbackTitle": "Производительность",
               "path": "docs/01-javascript/89-performance.md"
             },
             {
-              "fallbackTitle": "Debugging",
+              "fallbackTitle": "Отладка",
               "path": "docs/01-javascript/90-debugging.md"
             }
           ]
@@ -454,15 +454,15 @@ export const bookEngineData = {
           "title": "JavaScript Conclusion",
           "chapters": [
             {
-              "fallbackTitle": "Modern JavaScript Features",
+              "fallbackTitle": "Возможности современного JavaScript",
               "path": "docs/01-javascript/91-modern-javascript.md"
             },
             {
-              "fallbackTitle": "JavaScript Best Practices",
+              "fallbackTitle": "Хорошие практики JavaScript",
               "path": "docs/01-javascript/92-javascript-best-practices.md"
             },
             {
-              "fallbackTitle": "Error Objects",
+              "fallbackTitle": "Объекты ошибок",
               "path": "docs/01-javascript/93-error-objects.md"
             },
             {
@@ -470,7 +470,7 @@ export const bookEngineData = {
               "path": "docs/01-javascript/94-json.md"
             },
             {
-              "fallbackTitle": "Date",
+              "fallbackTitle": "Дата и время",
               "path": "docs/01-javascript/95-date.md"
             },
             {
@@ -488,15 +488,15 @@ export const bookEngineData = {
           "title": "Компилятор и граница TypeScript",
           "chapters": [
             {
-              "fallbackTitle": "TypeScript Compiler",
+              "fallbackTitle": "Компилятор TypeScript",
               "path": "docs/02-typescript/97-typescript-compiler.md"
             },
             {
-              "fallbackTitle": "Type Checking vs Runtime",
+              "fallbackTitle": "Проверка типов и выполнение",
               "path": "docs/02-typescript/98-type-checking-vs-runtime.md"
             },
             {
-              "fallbackTitle": "Type Erasure",
+              "fallbackTitle": "Стирание типов",
               "path": "docs/02-typescript/99-type-erasure.md"
             },
             {
@@ -504,7 +504,7 @@ export const bookEngineData = {
               "path": "docs/02-typescript/100-tsconfig-json.md"
             },
             {
-              "fallbackTitle": "strict mode",
+              "fallbackTitle": "Строгий режим",
               "path": "docs/02-typescript/101-strict-mode.md"
             }
           ]
@@ -513,27 +513,27 @@ export const bookEngineData = {
           "title": "Базовый словарь типов",
           "chapters": [
             {
-              "fallbackTitle": "Type Annotations and Type Inference",
+              "fallbackTitle": "Аннотации типов и вывод типов",
               "path": "docs/02-typescript/102-type-annotations-and-type-inference.md"
             },
             {
-              "fallbackTitle": "Primitive Types",
+              "fallbackTitle": "Примитивные типы",
               "path": "docs/02-typescript/103-primitive-types.md"
             },
             {
-              "fallbackTitle": "any и unknown",
+              "fallbackTitle": "`any` и `unknown`",
               "path": "docs/02-typescript/104-any-and-unknown.md"
             },
             {
-              "fallbackTitle": "void и never",
+              "fallbackTitle": "`void` и `never`",
               "path": "docs/02-typescript/105-void-and-never.md"
             },
             {
-              "fallbackTitle": "Arrays",
+              "fallbackTitle": "Массивы",
               "path": "docs/02-typescript/106-arrays.md"
             },
             {
-              "fallbackTitle": "Tuples",
+              "fallbackTitle": "Кортежи",
               "path": "docs/02-typescript/107-tuples.md"
             }
           ]
@@ -542,31 +542,31 @@ export const bookEngineData = {
           "title": "Объектные контракты",
           "chapters": [
             {
-              "fallbackTitle": "Object Types",
+              "fallbackTitle": "Объектные типы",
               "path": "docs/02-typescript/108-object-types.md"
             },
             {
-              "fallbackTitle": "Optional and Readonly Properties",
+              "fallbackTitle": "Необязательные и неизменяемые свойства",
               "path": "docs/02-typescript/109-optional-and-readonly-properties.md"
             },
             {
-              "fallbackTitle": "Index Signatures",
+              "fallbackTitle": "Индексные сигнатуры",
               "path": "docs/02-typescript/110-index-signatures.md"
             },
             {
-              "fallbackTitle": "Type Alias",
+              "fallbackTitle": "Псевдоним типа",
               "path": "docs/02-typescript/111-type-alias.md"
             },
             {
-              "fallbackTitle": "Interface",
+              "fallbackTitle": "Интерфейс",
               "path": "docs/02-typescript/112-interface.md"
             },
             {
-              "fallbackTitle": "Interface vs Type Alias",
+              "fallbackTitle": "Интерфейс и псевдоним типа",
               "path": "docs/02-typescript/113-interface-vs-type-alias.md"
             },
             {
-              "fallbackTitle": "Structural Typing",
+              "fallbackTitle": "Структурная типизация",
               "path": "docs/02-typescript/114-structural-typing.md"
             }
           ]
@@ -575,27 +575,27 @@ export const bookEngineData = {
           "title": "Значения как типы и композиция",
           "chapters": [
             {
-              "fallbackTitle": "Literal Types",
+              "fallbackTitle": "Литеральные типы",
               "path": "docs/02-typescript/115-literal-types.md"
             },
             {
-              "fallbackTitle": "as const",
+              "fallbackTitle": "Утверждение `as const`",
               "path": "docs/02-typescript/116-as-const.md"
             },
             {
-              "fallbackTitle": "Enum",
+              "fallbackTitle": "Перечисления",
               "path": "docs/02-typescript/117-enum.md"
             },
             {
-              "fallbackTitle": "Union Types",
+              "fallbackTitle": "Объединения типов",
               "path": "docs/02-typescript/118-union-types.md"
             },
             {
-              "fallbackTitle": "Intersection Types",
+              "fallbackTitle": "Пересечения типов",
               "path": "docs/02-typescript/119-intersection-types.md"
             },
             {
-              "fallbackTitle": "Type Composition in Practice",
+              "fallbackTitle": "Композиция типов на практике",
               "path": "docs/02-typescript/120-type-composition-in-practice.md"
             }
           ]
@@ -604,27 +604,27 @@ export const bookEngineData = {
           "title": "Типизация функций",
           "chapters": [
             {
-              "fallbackTitle": "Function Types",
+              "fallbackTitle": "Типы функций",
               "path": "docs/02-typescript/121-function-types.md"
             },
             {
-              "fallbackTitle": "Optional, Default and Rest Parameters",
+              "fallbackTitle": "Необязательные параметры, значения по умолчанию и сбор аргументов",
               "path": "docs/02-typescript/122-optional-default-and-rest-parameters.md"
             },
             {
-              "fallbackTitle": "Callback Types",
+              "fallbackTitle": "Типы обратных вызовов",
               "path": "docs/02-typescript/123-callback-types.md"
             },
             {
-              "fallbackTitle": "Function Overloads",
+              "fallbackTitle": "Перегрузки функций",
               "path": "docs/02-typescript/124-function-overloads.md"
             },
             {
-              "fallbackTitle": "this Parameter",
+              "fallbackTitle": "Параметр `this`",
               "path": "docs/02-typescript/125-this-parameter.md"
             },
             {
-              "fallbackTitle": "Async Function Types",
+              "fallbackTitle": "Типы асинхронных функций",
               "path": "docs/02-typescript/126-async-function-types.md"
             }
           ]
@@ -633,27 +633,27 @@ export const bookEngineData = {
           "title": "Narrowing и безопасные ветвления",
           "chapters": [
             {
-              "fallbackTitle": "Narrowing",
+              "fallbackTitle": "Сужение типов",
               "path": "docs/02-typescript/127-narrowing.md"
             },
             {
-              "fallbackTitle": "Built-in Type Guards",
+              "fallbackTitle": "Встроенные проверки типа",
               "path": "docs/02-typescript/128-built-in-type-guards.md"
             },
             {
-              "fallbackTitle": "User Defined Type Guards",
+              "fallbackTitle": "Собственные проверки типа",
               "path": "docs/02-typescript/129-user-defined-type-guards.md"
             },
             {
-              "fallbackTitle": "Type Assertions",
+              "fallbackTitle": "Утверждения о типе",
               "path": "docs/02-typescript/130-type-assertions.md"
             },
             {
-              "fallbackTitle": "satisfies",
+              "fallbackTitle": "Оператор `satisfies`",
               "path": "docs/02-typescript/131-satisfies.md"
             },
             {
-              "fallbackTitle": "Exhaustive Checks with never",
+              "fallbackTitle": "Проверка полноты через `never`",
               "path": "docs/02-typescript/132-exhaustive-checks-with-never.md"
             }
           ]
@@ -662,27 +662,27 @@ export const bookEngineData = {
           "title": "Generics",
           "chapters": [
             {
-              "fallbackTitle": "Generic Functions",
+              "fallbackTitle": "Обобщённые функции",
               "path": "docs/02-typescript/133-generic-functions.md"
             },
             {
-              "fallbackTitle": "Generic Constraints",
+              "fallbackTitle": "Ограничения обобщений",
               "path": "docs/02-typescript/134-generic-constraints.md"
             },
             {
-              "fallbackTitle": "keyof Constraints",
+              "fallbackTitle": "Ограничения через `keyof`",
               "path": "docs/02-typescript/135-keyof-constraints.md"
             },
             {
-              "fallbackTitle": "Generic Type Aliases and Interfaces",
+              "fallbackTitle": "Обобщённые псевдонимы типов и интерфейсы",
               "path": "docs/02-typescript/136-generic-type-aliases-and-interfaces.md"
             },
             {
-              "fallbackTitle": "Generic Classes",
+              "fallbackTitle": "Обобщённые классы",
               "path": "docs/02-typescript/137-generic-classes.md"
             },
             {
-              "fallbackTitle": "Default Generic Parameters",
+              "fallbackTitle": "Значения параметров типа по умолчанию",
               "path": "docs/02-typescript/138-default-generic-parameters.md"
             }
           ]
@@ -691,31 +691,31 @@ export const bookEngineData = {
           "title": "Операции над типами",
           "chapters": [
             {
-              "fallbackTitle": "keyof",
+              "fallbackTitle": "Оператор `keyof`",
               "path": "docs/02-typescript/139-keyof.md"
             },
             {
-              "fallbackTitle": "typeof Type Query",
+              "fallbackTitle": "Запрос типа через `typeof`",
               "path": "docs/02-typescript/140-typeof-type-query.md"
             },
             {
-              "fallbackTitle": "Indexed Access Types",
+              "fallbackTitle": "Индексный доступ к типам",
               "path": "docs/02-typescript/141-indexed-access-types.md"
             },
             {
-              "fallbackTitle": "Mapped Types",
+              "fallbackTitle": "Отображённые типы",
               "path": "docs/02-typescript/142-mapped-types.md"
             },
             {
-              "fallbackTitle": "Conditional Types",
+              "fallbackTitle": "Условные типы",
               "path": "docs/02-typescript/143-conditional-types.md"
             },
             {
-              "fallbackTitle": "infer",
+              "fallbackTitle": "Ключевое слово `infer`",
               "path": "docs/02-typescript/144-infer.md"
             },
             {
-              "fallbackTitle": "Utility Types",
+              "fallbackTitle": "Служебные типы",
               "path": "docs/02-typescript/145-utility-types.md"
             }
           ]
@@ -724,19 +724,19 @@ export const bookEngineData = {
           "title": "Классы и объектные контракты",
           "chapters": [
             {
-              "fallbackTitle": "Typed Classes",
+              "fallbackTitle": "Типизированные классы",
               "path": "docs/02-typescript/146-typed-classes.md"
             },
             {
-              "fallbackTitle": "Access Modifiers and readonly Members",
+              "fallbackTitle": "Модификаторы доступа и неизменяемые члены",
               "path": "docs/02-typescript/147-access-modifiers-and-readonly-members.md"
             },
             {
-              "fallbackTitle": "Abstract Classes",
+              "fallbackTitle": "Абстрактные классы",
               "path": "docs/02-typescript/148-abstract-classes.md"
             },
             {
-              "fallbackTitle": "implements and override",
+              "fallbackTitle": "`implements` и `override`",
               "path": "docs/02-typescript/149-implements-and-override.md"
             }
           ]
@@ -745,27 +745,27 @@ export const bookEngineData = {
           "title": "Модули и декларации",
           "chapters": [
             {
-              "fallbackTitle": "TypeScript and JavaScript Modules",
+              "fallbackTitle": "Модули TypeScript и JavaScript",
               "path": "docs/02-typescript/150-typescript-and-javascript-modules.md"
             },
             {
-              "fallbackTitle": "Type-only Imports and Exports",
+              "fallbackTitle": "Импорт и экспорт только типов",
               "path": "docs/02-typescript/151-type-only-imports-and-exports.md"
             },
             {
-              "fallbackTitle": "Module Resolution",
+              "fallbackTitle": "Разрешение модулей",
               "path": "docs/02-typescript/152-module-resolution.md"
             },
             {
-              "fallbackTitle": "Declaration Files",
+              "fallbackTitle": "Файлы объявлений",
               "path": "docs/02-typescript/153-declaration-files.md"
             },
             {
-              "fallbackTitle": "Declaration Merging",
+              "fallbackTitle": "Слияние объявлений",
               "path": "docs/02-typescript/154-declaration-merging.md"
             },
             {
-              "fallbackTitle": "Compiler Options for Real Projects",
+              "fallbackTitle": "Настройки компилятора для реальных проектов",
               "path": "docs/02-typescript/155-compiler-options-for-real-projects.md"
             }
           ]
@@ -774,19 +774,19 @@ export const bookEngineData = {
           "title": "Проектная практика",
           "chapters": [
             {
-              "fallbackTitle": "Typed Configuration and Test Data",
+              "fallbackTitle": "Типизированная настройка и тестовые данные",
               "path": "docs/02-typescript/156-typed-configuration-and-test-data.md"
             },
             {
-              "fallbackTitle": "Typed Page Objects, Fixtures and Helpers",
+              "fallbackTitle": "Типизированные объекты страниц, фикстуры и вспомогательные функции",
               "path": "docs/02-typescript/157-typed-page-objects-fixtures-and-helpers.md"
             },
             {
-              "fallbackTitle": "Typed API Clients and Assertions",
+              "fallbackTitle": "Типизированные клиенты API и проверки",
               "path": "docs/02-typescript/158-typed-api-clients-and-assertions.md"
             },
             {
-              "fallbackTitle": "Maintaining Large TypeScript Test Projects",
+              "fallbackTitle": "Сопровождение больших тестовых проектов на TypeScript",
               "path": "docs/02-typescript/159-maintaining-large-typescript-test-projects.md"
             }
           ]
@@ -800,7 +800,7 @@ export const bookEngineData = {
           "title": "Основы Automation QA Framework",
           "chapters": [
             {
-              "fallbackTitle": "Что такое Automation QA Framework",
+              "fallbackTitle": "Что такое фреймворк автоматизации тестов",
               "path": "docs/03-automation-qa/160-what-is-automation-qa-framework.md"
             },
             {
@@ -837,7 +837,7 @@ export const bookEngineData = {
               "path": "docs/03-automation-qa/167-test-anatomy-and-execution-model.md"
             },
             {
-              "fallbackTitle": "Browser, BrowserContext и Page",
+              "fallbackTitle": "`Browser`, `BrowserContext` и `Page`",
               "path": "docs/03-automation-qa/168-browser-browsercontext-and-page.md"
             },
             {
@@ -849,19 +849,19 @@ export const bookEngineData = {
               "path": "docs/03-automation-qa/170-user-actions.md"
             },
             {
-              "fallbackTitle": "Web-first assertions",
+              "fallbackTitle": "Проверки, умеющие ждать",
               "path": "docs/03-automation-qa/171-web-first-assertions.md"
             },
             {
-              "fallbackTitle": "Auto-waiting и явные ожидания",
+              "fallbackTitle": "Автоматические и явные ожидания",
               "path": "docs/03-automation-qa/172-auto-waiting-and-explicit-waits.md"
             },
             {
-              "fallbackTitle": "Timeouts и границы ожидания",
+              "fallbackTitle": "Сроки ожидания и их границы",
               "path": "docs/03-automation-qa/173-timeouts-and-wait-boundaries.md"
             },
             {
-              "fallbackTitle": "Hooks и жизненный цикл теста",
+              "fallbackTitle": "Хуки и жизненный цикл теста",
               "path": "docs/03-automation-qa/174-hooks-and-test-lifecycle.md"
             },
             {
@@ -874,31 +874,31 @@ export const bookEngineData = {
           "title": "Fixtures и архитектура UI-слоя",
           "chapters": [
             {
-              "fallbackTitle": "Built-in fixtures",
+              "fallbackTitle": "Встроенные фикстуры",
               "path": "docs/03-automation-qa/176-built-in-fixtures.md"
             },
             {
-              "fallbackTitle": "Custom fixtures и граф зависимостей",
+              "fallbackTitle": "Собственные фикстуры и граф зависимостей",
               "path": "docs/03-automation-qa/177-custom-fixtures-and-dependency-graph.md"
             },
             {
-              "fallbackTitle": "Authentication state и управляемые сессии",
+              "fallbackTitle": "Состояние аутентификации и управляемые сессии",
               "path": "docs/03-automation-qa/178-authentication-state-and-managed-sessions.md"
             },
             {
-              "fallbackTitle": "Page Object",
+              "fallbackTitle": "Объект страницы",
               "path": "docs/03-automation-qa/179-page-object.md"
             },
             {
-              "fallbackTitle": "Component Objects и композиция страниц",
+              "fallbackTitle": "Объекты компонентов и композиция страниц",
               "path": "docs/03-automation-qa/180-component-objects-and-page-composition.md"
             },
             {
-              "fallbackTitle": "Frames",
+              "fallbackTitle": "Фреймы",
               "path": "docs/03-automation-qa/181-frames.md"
             },
             {
-              "fallbackTitle": "Вкладки, окна и popups",
+              "fallbackTitle": "Вкладки, окна и всплывающие окна",
               "path": "docs/03-automation-qa/182-tabs-windows-and-popups.md"
             },
             {
@@ -906,7 +906,7 @@ export const bookEngineData = {
               "path": "docs/03-automation-qa/183-dialogs-and-files.md"
             },
             {
-              "fallbackTitle": "Network interception и mocking",
+              "fallbackTitle": "Перехват сетевых запросов и подмена ответов",
               "path": "docs/03-automation-qa/184-network-interception-and-mocking.md"
             },
             {
@@ -935,7 +935,7 @@ export const bookEngineData = {
               "path": "docs/03-automation-qa/189-api-request-context.md"
             },
             {
-              "fallbackTitle": "API Client и граница HTTP-слоя",
+              "fallbackTitle": "Клиент API и граница слоя HTTP",
               "path": "docs/03-automation-qa/190-api-client-and-http-boundary.md"
             },
             {
@@ -943,7 +943,7 @@ export const bookEngineData = {
               "path": "docs/03-automation-qa/191-api-authentication.md"
             },
             {
-              "fallbackTitle": "Request Builders и подготовка данных через API",
+              "fallbackTitle": "Построители запросов и подготовка данных через API",
               "path": "docs/03-automation-qa/192-request-builders-and-api-data-setup.md"
             },
             {
@@ -976,11 +976,11 @@ export const bookEngineData = {
               "path": "docs/03-automation-qa/198-protocol-buffers-services-and-messages.md"
             },
             {
-              "fallbackTitle": "Сгенерированный код и создание gRPC Client",
+              "fallbackTitle": "Сгенерированный код и создание клиента gRPC",
               "path": "docs/03-automation-qa/199-generated-code-and-grpc-client.md"
             },
             {
-              "fallbackTitle": "Unary gRPC-вызовы",
+              "fallbackTitle": "Унарные вызовы gRPC",
               "path": "docs/03-automation-qa/200-unary-grpc-calls.md"
             },
             {
@@ -988,11 +988,11 @@ export const bookEngineData = {
               "path": "docs/03-automation-qa/201-protobuf-message-fields.md"
             },
             {
-              "fallbackTitle": "Metadata и аутентификация gRPC",
+              "fallbackTitle": "Метаданные и аутентификация gRPC",
               "path": "docs/03-automation-qa/202-grpc-metadata-and-authentication.md"
             },
             {
-              "fallbackTitle": "Deadlines и timeouts gRPC",
+              "fallbackTitle": "Крайние сроки и сроки ожидания gRPC",
               "path": "docs/03-automation-qa/203-grpc-deadlines-and-timeouts.md"
             },
             {
@@ -1004,7 +1004,7 @@ export const bookEngineData = {
               "path": "docs/03-automation-qa/205-grpc-response-and-negative-scenario-validation.md"
             },
             {
-              "fallbackTitle": "gRPC Client в Automation Framework",
+              "fallbackTitle": "Клиент gRPC во фреймворке автоматизации",
               "path": "docs/03-automation-qa/206-grpc-client-in-automation-framework.md"
             }
           ]
@@ -1017,27 +1017,27 @@ export const bookEngineData = {
               "path": "docs/03-automation-qa/207-postgresql-in-automation-qa.md"
             },
             {
-              "fallbackTitle": "Connections, pools и lifecycle",
+              "fallbackTitle": "Подключения, пулы и время жизни",
               "path": "docs/03-automation-qa/208-connections-pools-and-lifecycle.md"
             },
             {
-              "fallbackTitle": "Parameterized queries",
+              "fallbackTitle": "Параметризованные запросы",
               "path": "docs/03-automation-qa/209-parameterized-queries.md"
             },
             {
-              "fallbackTitle": "Database Access Layer",
+              "fallbackTitle": "Слой доступа к базе данных",
               "path": "docs/03-automation-qa/210-database-access-layer.md"
             },
             {
-              "fallbackTitle": "Подготовка и очистка данных в database",
+              "fallbackTitle": "Подготовка и очистка данных в базе",
               "path": "docs/03-automation-qa/211-database-data-setup-and-cleanup.md"
             },
             {
-              "fallbackTitle": "Transactions, rollback и test isolation",
+              "fallbackTitle": "Транзакции, откат и изоляция тестов",
               "path": "docs/03-automation-qa/212-transactions-rollback-and-test-isolation.md"
             },
             {
-              "fallbackTitle": "Eventual consistency и polling",
+              "fallbackTitle": "Согласованность в конечном счёте и периодический опрос",
               "path": "docs/03-automation-qa/213-eventual-consistency-and-polling.md"
             },
             {
@@ -1054,23 +1054,23 @@ export const bookEngineData = {
           "title": "Конфигурация, тестовые данные и общая инфраструктура",
           "chapters": [
             {
-              "fallbackTitle": "Конфигурация Playwright и execution projects",
+              "fallbackTitle": "Конфигурация Playwright и проекты запуска",
               "path": "docs/03-automation-qa/216-playwright-configuration-and-execution-projects.md"
             },
             {
-              "fallbackTitle": "Окружения, переменные и secrets",
+              "fallbackTitle": "Окружения, переменные и секреты",
               "path": "docs/03-automation-qa/217-environments-variables-and-secrets.md"
             },
             {
-              "fallbackTitle": "Загрузка и runtime validation конфигурации",
+              "fallbackTitle": "Загрузка конфигурации и её проверка во время выполнения",
               "path": "docs/03-automation-qa/218-configuration-loading-and-runtime-validation.md"
             },
             {
-              "fallbackTitle": "Организация test data",
+              "fallbackTitle": "Организация тестовых данных",
               "path": "docs/03-automation-qa/219-test-data-organization.md"
             },
             {
-              "fallbackTitle": "Builders, factories и уникальные данные",
+              "fallbackTitle": "Построители, фабрики и уникальные данные",
               "path": "docs/03-automation-qa/220-builders-factories-and-unique-data.md"
             },
             {
@@ -1078,11 +1078,11 @@ export const bookEngineData = {
               "path": "docs/03-automation-qa/221-test-data-lifecycle.md"
             },
             {
-              "fallbackTitle": "Helpers и границы повторного использования",
+              "fallbackTitle": "Вспомогательные функции и границы повторного использования",
               "path": "docs/03-automation-qa/222-helpers-and-reuse-boundaries.md"
             },
             {
-              "fallbackTitle": "Пользовательские проверки и soft assertions",
+              "fallbackTitle": "Пользовательские и мягкие проверки",
               "path": "docs/03-automation-qa/223-custom-assertions-and-soft-assertions.md"
             },
             {
@@ -1103,11 +1103,11 @@ export const bookEngineData = {
               "path": "docs/03-automation-qa/226-structured-logging.md"
             },
             {
-              "fallbackTitle": "Screenshots, videos и Playwright Trace",
+              "fallbackTitle": "Снимки экрана, видеозаписи и трассировка Playwright",
               "path": "docs/03-automation-qa/227-screenshots-videos-and-playwright-trace.md"
             },
             {
-              "fallbackTitle": "Attachments и lifecycle артефактов",
+              "fallbackTitle": "Вложения и жизненный цикл артефактов",
               "path": "docs/03-automation-qa/228-attachments-and-artifact-lifecycle.md"
             },
             {
@@ -1119,7 +1119,7 @@ export const bookEngineData = {
               "path": "docs/03-automation-qa/230-allure-reporting.md"
             },
             {
-              "fallbackTitle": "Диагностический поток Framework",
+              "fallbackTitle": "Диагностический поток фреймворка",
               "path": "docs/03-automation-qa/231-framework-diagnostic-flow.md"
             }
           ]
@@ -1128,31 +1128,31 @@ export const bookEngineData = {
           "title": "Стабильность и масштабирование выполнения",
           "chapters": [
             {
-              "fallbackTitle": "Причины flaky tests",
+              "fallbackTitle": "Причины нестабильных тестов",
               "path": "docs/03-automation-qa/232-causes-of-flaky-tests.md"
             },
             {
-              "fallbackTitle": "Расследование и quarantine flaky tests",
+              "fallbackTitle": "Расследование и карантин нестабильных тестов",
               "path": "docs/03-automation-qa/233-investigation-and-quarantine-of-flaky-tests.md"
             },
             {
-              "fallbackTitle": "Retry policy",
+              "fallbackTitle": "Политика повторов",
               "path": "docs/03-automation-qa/234-retry-policy.md"
             },
             {
-              "fallbackTitle": "Workers и shared resources",
+              "fallbackTitle": "Workers и общие ресурсы",
               "path": "docs/03-automation-qa/235-workers-and-shared-resources.md"
             },
             {
-              "fallbackTitle": "Parallel execution",
+              "fallbackTitle": "Параллельное выполнение",
               "path": "docs/03-automation-qa/236-parallel-execution.md"
             },
             {
-              "fallbackTitle": "Sharding",
+              "fallbackTitle": "Сегментирование",
               "path": "docs/03-automation-qa/237-sharding.md"
             },
             {
-              "fallbackTitle": "Tags, annotations и test selection",
+              "fallbackTitle": "Теги, аннотации и выбор тестов",
               "path": "docs/03-automation-qa/238-tags-annotations-and-test-selection.md"
             }
           ]
@@ -1161,19 +1161,19 @@ export const bookEngineData = {
           "title": "CI и эксплуатация проекта",
           "chapters": [
             {
-              "fallbackTitle": "CI fundamentals для Automation QA",
+              "fallbackTitle": "Основы CI для автоматизации тестов",
               "path": "docs/03-automation-qa/239-ci-fundamentals-for-automation-qa.md"
             },
             {
-              "fallbackTitle": "GitHub Actions pipeline",
+              "fallbackTitle": "Конвейер GitHub Actions",
               "path": "docs/03-automation-qa/240-github-actions-pipeline.md"
             },
             {
-              "fallbackTitle": "Browsers и системные зависимости в CI",
+              "fallbackTitle": "Браузеры и системные зависимости в CI",
               "path": "docs/03-automation-qa/241-browsers-and-system-dependencies-in-ci.md"
             },
             {
-              "fallbackTitle": "Environments и secrets в CI",
+              "fallbackTitle": "Окружения и секреты в CI",
               "path": "docs/03-automation-qa/242-environments-and-secrets-in-ci.md"
             },
             {
@@ -1181,7 +1181,7 @@ export const bookEngineData = {
               "path": "docs/03-automation-qa/243-artifacts-and-reports-in-ci.md"
             },
             {
-              "fallbackTitle": "CI jobs, sharding и диагностика запусков",
+              "fallbackTitle": "Задачи CI, сегментирование и диагностика запусков",
               "path": "docs/03-automation-qa/244-ci-jobs-sharding-and-run-diagnostics.md"
             }
           ]
@@ -1190,11 +1190,11 @@ export const bookEngineData = {
           "title": "Интеграция Automation Framework",
           "chapters": [
             {
-              "fallbackTitle": "Интеграция слоёв и dependency flow",
+              "fallbackTitle": "Интеграция слоёв и поток зависимостей",
               "path": "docs/03-automation-qa/245-layer-integration-and-dependency-flow.md"
             },
             {
-              "fallbackTitle": "Composition fixtures и configuration flow",
+              "fallbackTitle": "Фикстуры композиции и поток конфигурации",
               "path": "docs/03-automation-qa/246-composition-fixtures-and-configuration-flow.md"
             },
             {
@@ -1206,7 +1206,7 @@ export const bookEngineData = {
               "path": "docs/03-automation-qa/248-diagnostics-stability-and-ci-in-architecture.md"
             },
             {
-              "fallbackTitle": "Architecture review и эволюция Framework",
+              "fallbackTitle": "Разбор архитектуры и эволюция фреймворка",
               "path": "docs/03-automation-qa/249-architecture-review-and-framework-evolution.md"
             }
           ]
@@ -1228,12 +1228,36 @@ export const bookEngineData = {
               "path": "docs/04-final-project/251-architecture-decisions-and-implementation-plan.md"
             },
             {
-              "fallbackTitle": "Каркас, configuration и environments",
+              "fallbackTitle": "Каркас, конфигурация и окружения",
               "path": "docs/04-final-project/252-framework-skeleton-configuration-and-environments.md"
             },
             {
-              "fallbackTitle": "UI Layer, Page Objects и fixtures",
+              "fallbackTitle": "Слой интерфейса, объекты страниц и фикстуры",
               "path": "docs/04-final-project/253-ui-layer-page-objects-and-fixtures.md"
+            },
+            {
+              "fallbackTitle": "Слой REST, клиент и подготовка данных",
+              "path": "docs/04-final-project/254-rest-layer-client-and-data-setup.md"
+            },
+            {
+              "fallbackTitle": "Слой gRPC, унарные вызовы и коды состояния",
+              "path": "docs/04-final-project/255-grpc-layer-unary-calls-and-statuses.md"
+            },
+            {
+              "fallbackTitle": "Слой базы данных, пул и проверка состояния",
+              "path": "docs/04-final-project/256-database-layer-pool-and-state-verification.md"
+            },
+            {
+              "fallbackTitle": "Межслойные сценарии, каноническая модель и владение данными",
+              "path": "docs/04-final-project/257-cross-layer-scenarios-and-data-ownership.md"
+            },
+            {
+              "fallbackTitle": "Диагностика, отчёт и запуск в CI",
+              "path": "docs/04-final-project/258-diagnostics-reporting-and-ci.md"
+            },
+            {
+              "fallbackTitle": "Финальный аудит и решение о выпуске",
+              "path": "docs/04-final-project/259-final-audit-and-release-decision.md"
             }
           ]
         }
@@ -1250,10 +1274,10 @@ export const bookEngineData = {
       "section": "Введение",
       "sectionIndex": 0,
       "chapterIndex": 0,
-      "wordCount": 2102,
-      "readingMinutes": 12,
+      "wordCount": 2293,
+      "readingMinutes": 13,
       "h2": 14,
-      "h3": 10,
+      "h3": 11,
       "examples": 0,
       "tasks": 17,
       "solutions": 10,
@@ -1278,33 +1302,33 @@ export const bookEngineData = {
       "related": [
         {
           "term": "Execution Context",
-          "title": "Execution Context",
+          "title": "Контекст выполнения",
           "number": 3,
           "link": "/docs/01-javascript/03-execution-context"
         },
         {
           "term": "Scope",
-          "title": "Scope",
+          "title": "Область видимости",
           "number": 7,
           "link": "/docs/01-javascript/07-scope"
         },
         {
-          "term": "Hoisting",
-          "title": "Hoisting",
-          "number": 9,
-          "link": "/docs/01-javascript/09-hoisting"
+          "term": "this",
+          "title": "Ключевое слово `this`",
+          "number": 29,
+          "link": "/docs/01-javascript/29-this"
         },
         {
-          "term": "Closure",
-          "title": "Closures",
-          "number": 28,
-          "link": "/docs/01-javascript/28-closures"
+          "term": "Promise",
+          "title": "Промис",
+          "number": 72,
+          "link": "/docs/01-javascript/72-promise"
         }
       ],
       "card": {
         "chapterLabel": "Глава 1",
         "title": "О курсе",
-        "reading": 12,
+        "reading": 13,
         "examples": 0,
         "tasks": 17,
         "solutions": 10,
@@ -1320,10 +1344,10 @@ export const bookEngineData = {
       "section": "Введение",
       "sectionIndex": 0,
       "chapterIndex": 1,
-      "wordCount": 2504,
-      "readingMinutes": 14,
+      "wordCount": 2718,
+      "readingMinutes": 16,
       "h2": 16,
-      "h3": 18,
+      "h3": 19,
       "examples": 0,
       "tasks": 21,
       "solutions": 13,
@@ -1352,13 +1376,13 @@ export const bookEngineData = {
       "related": [
         {
           "term": "Promise",
-          "title": "Promise",
+          "title": "Промис",
           "number": 72,
           "link": "/docs/01-javascript/72-promise"
         },
         {
           "term": "Date",
-          "title": "Date",
+          "title": "Дата и время",
           "number": 95,
           "link": "/docs/01-javascript/95-date"
         }
@@ -1366,7 +1390,7 @@ export const bookEngineData = {
       "card": {
         "chapterLabel": "Глава 2",
         "title": "Как пользоваться курсом",
-        "reading": 14,
+        "reading": 16,
         "examples": 0,
         "tasks": 21,
         "solutions": 13,
@@ -1382,10 +1406,10 @@ export const bookEngineData = {
       "section": "Введение",
       "sectionIndex": 0,
       "chapterIndex": 2,
-      "wordCount": 2823,
-      "readingMinutes": 16,
+      "wordCount": 3063,
+      "readingMinutes": 18,
       "h2": 20,
-      "h3": 18,
+      "h3": 19,
       "examples": 0,
       "tasks": 20,
       "solutions": 13,
@@ -1414,7 +1438,7 @@ export const bookEngineData = {
       "related": [
         {
           "term": "Promise",
-          "title": "Promise",
+          "title": "Промис",
           "number": 72,
           "link": "/docs/01-javascript/72-promise"
         }
@@ -1422,7 +1446,7 @@ export const bookEngineData = {
       "card": {
         "chapterLabel": "Глава 3",
         "title": "Структура курса",
-        "reading": 16,
+        "reading": 18,
         "examples": 0,
         "tasks": 20,
         "solutions": 13,
@@ -1438,10 +1462,10 @@ export const bookEngineData = {
       "section": "Введение",
       "sectionIndex": 0,
       "chapterIndex": 3,
-      "wordCount": 2763,
-      "readingMinutes": 16,
+      "wordCount": 2967,
+      "readingMinutes": 17,
       "h2": 22,
-      "h3": 25,
+      "h3": 26,
       "examples": 0,
       "tasks": 17,
       "solutions": 13,
@@ -1471,7 +1495,7 @@ export const bookEngineData = {
       "card": {
         "chapterLabel": "Глава 4",
         "title": "Рабочее окружение",
-        "reading": 16,
+        "reading": 17,
         "examples": 0,
         "tasks": 17,
         "solutions": 13,
@@ -1487,10 +1511,10 @@ export const bookEngineData = {
       "section": "Основы языка",
       "sectionIndex": 0,
       "chapterIndex": 0,
-      "wordCount": 2832,
-      "readingMinutes": 16,
+      "wordCount": 3133,
+      "readingMinutes": 18,
       "h2": 20,
-      "h3": 26,
+      "h3": 27,
       "examples": 9,
       "tasks": 32,
       "solutions": 16,
@@ -1516,30 +1540,11 @@ export const bookEngineData = {
         "total": 96,
         "bar": "█░░░░░░░░░░░"
       },
-      "related": [
-        {
-          "term": "Execution Context",
-          "title": "Execution Context",
-          "number": 3,
-          "link": "/docs/01-javascript/03-execution-context"
-        },
-        {
-          "term": "Scope",
-          "title": "Scope",
-          "number": 7,
-          "link": "/docs/01-javascript/07-scope"
-        },
-        {
-          "term": "Modules",
-          "title": "JavaScript Modules",
-          "number": 85,
-          "link": "/docs/01-javascript/85-javascript-modules"
-        }
-      ],
+      "related": [],
       "card": {
         "chapterLabel": "Глава 1",
         "title": "Что такое JavaScript",
-        "reading": 16,
+        "reading": 18,
         "examples": 9,
         "tasks": 32,
         "solutions": 16,
@@ -1555,10 +1560,10 @@ export const bookEngineData = {
       "section": "Основы языка",
       "sectionIndex": 0,
       "chapterIndex": 1,
-      "wordCount": 2454,
-      "readingMinutes": 14,
+      "wordCount": 2912,
+      "readingMinutes": 17,
       "h2": 20,
-      "h3": 31,
+      "h3": 32,
       "examples": 9,
       "tasks": 37,
       "solutions": 17,
@@ -1570,7 +1575,7 @@ export const bookEngineData = {
         "link": "/docs/01-javascript/01-what-is-javascript"
       },
       "next": {
-        "title": "Execution Context",
+        "title": "Контекст выполнения",
         "number": 3,
         "link": "/docs/01-javascript/03-execution-context"
       },
@@ -1587,25 +1592,25 @@ export const bookEngineData = {
       "related": [
         {
           "term": "Execution Context",
-          "title": "Execution Context",
+          "title": "Контекст выполнения",
           "number": 3,
           "link": "/docs/01-javascript/03-execution-context"
         },
         {
           "term": "Call Stack",
-          "title": "Call Stack",
+          "title": "Стек вызовов",
           "number": 4,
           "link": "/docs/01-javascript/04-call-stack"
         },
         {
           "term": "Scope",
-          "title": "Scope",
+          "title": "Область видимости",
           "number": 7,
           "link": "/docs/01-javascript/07-scope"
         },
         {
           "term": "Hoisting",
-          "title": "Hoisting",
+          "title": "Подъём объявлений",
           "number": 9,
           "link": "/docs/01-javascript/09-hoisting"
         }
@@ -1613,7 +1618,7 @@ export const bookEngineData = {
       "card": {
         "chapterLabel": "Глава 2",
         "title": "Как выполняется JavaScript",
-        "reading": 14,
+        "reading": 17,
         "examples": 9,
         "tasks": 37,
         "solutions": 17,
@@ -1623,16 +1628,16 @@ export const bookEngineData = {
     "docs/01-javascript/03-execution-context.md": {
       "path": "docs/01-javascript/03-execution-context.md",
       "link": "/docs/01-javascript/03-execution-context",
-      "title": "Execution Context",
+      "title": "Контекст выполнения",
       "number": 3,
       "part": "JavaScript",
       "section": "Основы языка",
       "sectionIndex": 0,
       "chapterIndex": 2,
-      "wordCount": 2883,
-      "readingMinutes": 17,
+      "wordCount": 3115,
+      "readingMinutes": 18,
       "h2": 20,
-      "h3": 49,
+      "h3": 50,
       "examples": 7,
       "tasks": 36,
       "solutions": 16,
@@ -1644,7 +1649,7 @@ export const bookEngineData = {
         "link": "/docs/01-javascript/02-how-javascript-works"
       },
       "next": {
-        "title": "Call Stack",
+        "title": "Стек вызовов",
         "number": 4,
         "link": "/docs/01-javascript/04-call-stack"
       },
@@ -1661,33 +1666,33 @@ export const bookEngineData = {
       "related": [
         {
           "term": "Call Stack",
-          "title": "Call Stack",
+          "title": "Стек вызовов",
           "number": 4,
           "link": "/docs/01-javascript/04-call-stack"
         },
         {
           "term": "Scope",
-          "title": "Scope",
+          "title": "Область видимости",
           "number": 7,
           "link": "/docs/01-javascript/07-scope"
         },
         {
           "term": "Hoisting",
-          "title": "Hoisting",
+          "title": "Подъём объявлений",
           "number": 9,
           "link": "/docs/01-javascript/09-hoisting"
         },
         {
           "term": "Closure",
-          "title": "Closures",
+          "title": "Замыкания",
           "number": 28,
           "link": "/docs/01-javascript/28-closures"
         }
       ],
       "card": {
         "chapterLabel": "Глава 3",
-        "title": "Execution Context",
-        "reading": 17,
+        "title": "Контекст выполнения",
+        "reading": 18,
         "examples": 7,
         "tasks": 36,
         "solutions": 16,
@@ -1697,28 +1702,28 @@ export const bookEngineData = {
     "docs/01-javascript/04-call-stack.md": {
       "path": "docs/01-javascript/04-call-stack.md",
       "link": "/docs/01-javascript/04-call-stack",
-      "title": "Call Stack",
+      "title": "Стек вызовов",
       "number": 4,
       "part": "JavaScript",
       "section": "Основы языка",
       "sectionIndex": 0,
       "chapterIndex": 3,
-      "wordCount": 2100,
-      "readingMinutes": 12,
+      "wordCount": 2395,
+      "readingMinutes": 14,
       "h2": 20,
-      "h3": 42,
+      "h3": 43,
       "examples": 7,
       "tasks": 30,
       "solutions": 15,
       "mermaid": 20,
       "miniProjects": 1,
       "previous": {
-        "title": "Execution Context",
+        "title": "Контекст выполнения",
         "number": 3,
         "link": "/docs/01-javascript/03-execution-context"
       },
       "next": {
-        "title": "Memory",
+        "title": "Память",
         "number": 5,
         "link": "/docs/01-javascript/05-memory"
       },
@@ -1735,33 +1740,27 @@ export const bookEngineData = {
       "related": [
         {
           "term": "Execution Context",
-          "title": "Execution Context",
+          "title": "Контекст выполнения",
           "number": 3,
           "link": "/docs/01-javascript/03-execution-context"
         },
         {
-          "term": "Scope",
-          "title": "Scope",
-          "number": 7,
-          "link": "/docs/01-javascript/07-scope"
-        },
-        {
           "term": "Promise",
-          "title": "Promise",
+          "title": "Промис",
           "number": 72,
           "link": "/docs/01-javascript/72-promise"
         },
         {
           "term": "Event Loop",
-          "title": "Event Loop",
+          "title": "Событийный цикл",
           "number": 73,
           "link": "/docs/01-javascript/73-event-loop"
         }
       ],
       "card": {
         "chapterLabel": "Глава 4",
-        "title": "Call Stack",
-        "reading": 12,
+        "title": "Стек вызовов",
+        "reading": 14,
         "examples": 7,
         "tasks": 30,
         "solutions": 15,
@@ -1771,28 +1770,28 @@ export const bookEngineData = {
     "docs/01-javascript/05-memory.md": {
       "path": "docs/01-javascript/05-memory.md",
       "link": "/docs/01-javascript/05-memory",
-      "title": "Memory",
+      "title": "Память",
       "number": 5,
       "part": "JavaScript",
       "section": "Основы языка",
       "sectionIndex": 0,
       "chapterIndex": 4,
-      "wordCount": 2435,
-      "readingMinutes": 14,
+      "wordCount": 2852,
+      "readingMinutes": 16,
       "h2": 20,
-      "h3": 52,
+      "h3": 53,
       "examples": 7,
       "tasks": 29,
       "solutions": 25,
       "mermaid": 21,
       "miniProjects": 1,
       "previous": {
-        "title": "Call Stack",
+        "title": "Стек вызовов",
         "number": 4,
         "link": "/docs/01-javascript/04-call-stack"
       },
       "next": {
-        "title": "Variables",
+        "title": "Переменные",
         "number": 6,
         "link": "/docs/01-javascript/06-variables"
       },
@@ -1809,33 +1808,33 @@ export const bookEngineData = {
       "related": [
         {
           "term": "Execution Context",
-          "title": "Execution Context",
+          "title": "Контекст выполнения",
           "number": 3,
           "link": "/docs/01-javascript/03-execution-context"
         },
         {
           "term": "Call Stack",
-          "title": "Call Stack",
+          "title": "Стек вызовов",
           "number": 4,
           "link": "/docs/01-javascript/04-call-stack"
         },
         {
           "term": "Scope",
-          "title": "Scope",
+          "title": "Область видимости",
           "number": 7,
           "link": "/docs/01-javascript/07-scope"
         },
         {
           "term": "Closure",
-          "title": "Closures",
+          "title": "Замыкания",
           "number": 28,
           "link": "/docs/01-javascript/28-closures"
         }
       ],
       "card": {
         "chapterLabel": "Глава 5",
-        "title": "Memory",
-        "reading": 14,
+        "title": "Память",
+        "reading": 16,
         "examples": 7,
         "tasks": 29,
         "solutions": 25,
@@ -1845,28 +1844,28 @@ export const bookEngineData = {
     "docs/01-javascript/06-variables.md": {
       "path": "docs/01-javascript/06-variables.md",
       "link": "/docs/01-javascript/06-variables",
-      "title": "Variables",
+      "title": "Переменные",
       "number": 6,
       "part": "JavaScript",
       "section": "Основы языка",
       "sectionIndex": 0,
       "chapterIndex": 5,
-      "wordCount": 2116,
-      "readingMinutes": 12,
+      "wordCount": 2657,
+      "readingMinutes": 15,
       "h2": 20,
-      "h3": 50,
+      "h3": 51,
       "examples": 7,
       "tasks": 29,
       "solutions": 26,
       "mermaid": 11,
       "miniProjects": 1,
       "previous": {
-        "title": "Memory",
+        "title": "Память",
         "number": 5,
         "link": "/docs/01-javascript/05-memory"
       },
       "next": {
-        "title": "Scope",
+        "title": "Область видимости",
         "number": 7,
         "link": "/docs/01-javascript/07-scope"
       },
@@ -1883,33 +1882,33 @@ export const bookEngineData = {
       "related": [
         {
           "term": "Execution Context",
-          "title": "Execution Context",
+          "title": "Контекст выполнения",
           "number": 3,
           "link": "/docs/01-javascript/03-execution-context"
         },
         {
           "term": "Call Stack",
-          "title": "Call Stack",
+          "title": "Стек вызовов",
           "number": 4,
           "link": "/docs/01-javascript/04-call-stack"
         },
         {
           "term": "Scope",
-          "title": "Scope",
+          "title": "Область видимости",
           "number": 7,
           "link": "/docs/01-javascript/07-scope"
         },
         {
           "term": "Hoisting",
-          "title": "Hoisting",
+          "title": "Подъём объявлений",
           "number": 9,
           "link": "/docs/01-javascript/09-hoisting"
         }
       ],
       "card": {
         "chapterLabel": "Глава 6",
-        "title": "Variables",
-        "reading": 12,
+        "title": "Переменные",
+        "reading": 15,
         "examples": 7,
         "tasks": 29,
         "solutions": 26,
@@ -1919,28 +1918,28 @@ export const bookEngineData = {
     "docs/01-javascript/07-scope.md": {
       "path": "docs/01-javascript/07-scope.md",
       "link": "/docs/01-javascript/07-scope",
-      "title": "Scope",
+      "title": "Область видимости",
       "number": 7,
       "part": "JavaScript",
       "section": "Основы языка",
       "sectionIndex": 0,
       "chapterIndex": 6,
-      "wordCount": 1878,
-      "readingMinutes": 11,
+      "wordCount": 2322,
+      "readingMinutes": 13,
       "h2": 20,
-      "h3": 47,
+      "h3": 48,
       "examples": 7,
       "tasks": 33,
       "solutions": 25,
       "mermaid": 14,
       "miniProjects": 1,
       "previous": {
-        "title": "Variables",
+        "title": "Переменные",
         "number": 6,
         "link": "/docs/01-javascript/06-variables"
       },
       "next": {
-        "title": "Lexical Environment",
+        "title": "Лексическое окружение",
         "number": 8,
         "link": "/docs/01-javascript/08-lexical-environment"
       },
@@ -1957,33 +1956,33 @@ export const bookEngineData = {
       "related": [
         {
           "term": "Execution Context",
-          "title": "Execution Context",
+          "title": "Контекст выполнения",
           "number": 3,
           "link": "/docs/01-javascript/03-execution-context"
         },
         {
           "term": "Call Stack",
-          "title": "Call Stack",
+          "title": "Стек вызовов",
           "number": 4,
           "link": "/docs/01-javascript/04-call-stack"
         },
         {
           "term": "Hoisting",
-          "title": "Hoisting",
+          "title": "Подъём объявлений",
           "number": 9,
           "link": "/docs/01-javascript/09-hoisting"
         },
         {
           "term": "Temporal Dead Zone",
-          "title": "Temporal Dead Zone",
+          "title": "Временная мёртвая зона",
           "number": 10,
           "link": "/docs/01-javascript/10-temporal-dead-zone"
         }
       ],
       "card": {
         "chapterLabel": "Глава 7",
-        "title": "Scope",
-        "reading": 11,
+        "title": "Область видимости",
+        "reading": 13,
         "examples": 7,
         "tasks": 33,
         "solutions": 25,
@@ -1993,28 +1992,28 @@ export const bookEngineData = {
     "docs/01-javascript/08-lexical-environment.md": {
       "path": "docs/01-javascript/08-lexical-environment.md",
       "link": "/docs/01-javascript/08-lexical-environment",
-      "title": "Lexical Environment",
+      "title": "Лексическое окружение",
       "number": 8,
       "part": "JavaScript",
       "section": "Основы языка",
       "sectionIndex": 0,
       "chapterIndex": 7,
-      "wordCount": 1872,
-      "readingMinutes": 11,
+      "wordCount": 2338,
+      "readingMinutes": 13,
       "h2": 20,
-      "h3": 43,
+      "h3": 44,
       "examples": 7,
       "tasks": 27,
       "solutions": 24,
       "mermaid": 24,
       "miniProjects": 1,
       "previous": {
-        "title": "Scope",
+        "title": "Область видимости",
         "number": 7,
         "link": "/docs/01-javascript/07-scope"
       },
       "next": {
-        "title": "Hoisting",
+        "title": "Подъём объявлений",
         "number": 9,
         "link": "/docs/01-javascript/09-hoisting"
       },
@@ -2031,33 +2030,33 @@ export const bookEngineData = {
       "related": [
         {
           "term": "Execution Context",
-          "title": "Execution Context",
+          "title": "Контекст выполнения",
           "number": 3,
           "link": "/docs/01-javascript/03-execution-context"
         },
         {
           "term": "Call Stack",
-          "title": "Call Stack",
+          "title": "Стек вызовов",
           "number": 4,
           "link": "/docs/01-javascript/04-call-stack"
         },
         {
           "term": "Scope",
-          "title": "Scope",
+          "title": "Область видимости",
           "number": 7,
           "link": "/docs/01-javascript/07-scope"
         },
         {
           "term": "Hoisting",
-          "title": "Hoisting",
+          "title": "Подъём объявлений",
           "number": 9,
           "link": "/docs/01-javascript/09-hoisting"
         }
       ],
       "card": {
         "chapterLabel": "Глава 8",
-        "title": "Lexical Environment",
-        "reading": 11,
+        "title": "Лексическое окружение",
+        "reading": 13,
         "examples": 7,
         "tasks": 27,
         "solutions": 24,
@@ -2067,28 +2066,28 @@ export const bookEngineData = {
     "docs/01-javascript/09-hoisting.md": {
       "path": "docs/01-javascript/09-hoisting.md",
       "link": "/docs/01-javascript/09-hoisting",
-      "title": "Hoisting",
+      "title": "Подъём объявлений",
       "number": 9,
       "part": "JavaScript",
       "section": "Основы языка",
       "sectionIndex": 0,
       "chapterIndex": 8,
-      "wordCount": 1681,
-      "readingMinutes": 10,
+      "wordCount": 1914,
+      "readingMinutes": 11,
       "h2": 20,
-      "h3": 42,
+      "h3": 43,
       "examples": 7,
       "tasks": 26,
       "solutions": 24,
       "mermaid": 7,
       "miniProjects": 1,
       "previous": {
-        "title": "Lexical Environment",
+        "title": "Лексическое окружение",
         "number": 8,
         "link": "/docs/01-javascript/08-lexical-environment"
       },
       "next": {
-        "title": "Temporal Dead Zone",
+        "title": "Временная мёртвая зона",
         "number": 10,
         "link": "/docs/01-javascript/10-temporal-dead-zone"
       },
@@ -2105,33 +2104,33 @@ export const bookEngineData = {
       "related": [
         {
           "term": "Execution Context",
-          "title": "Execution Context",
+          "title": "Контекст выполнения",
           "number": 3,
           "link": "/docs/01-javascript/03-execution-context"
         },
         {
+          "term": "Call Stack",
+          "title": "Стек вызовов",
+          "number": 4,
+          "link": "/docs/01-javascript/04-call-stack"
+        },
+        {
           "term": "Scope",
-          "title": "Scope",
+          "title": "Область видимости",
           "number": 7,
           "link": "/docs/01-javascript/07-scope"
         },
         {
           "term": "Temporal Dead Zone",
-          "title": "Temporal Dead Zone",
+          "title": "Временная мёртвая зона",
           "number": 10,
           "link": "/docs/01-javascript/10-temporal-dead-zone"
-        },
-        {
-          "term": "Closure",
-          "title": "Closures",
-          "number": 28,
-          "link": "/docs/01-javascript/28-closures"
         }
       ],
       "card": {
         "chapterLabel": "Глава 9",
-        "title": "Hoisting",
-        "reading": 10,
+        "title": "Подъём объявлений",
+        "reading": 11,
         "examples": 7,
         "tasks": 26,
         "solutions": 24,
@@ -2141,28 +2140,28 @@ export const bookEngineData = {
     "docs/01-javascript/10-temporal-dead-zone.md": {
       "path": "docs/01-javascript/10-temporal-dead-zone.md",
       "link": "/docs/01-javascript/10-temporal-dead-zone",
-      "title": "Temporal Dead Zone",
+      "title": "Временная мёртвая зона",
       "number": 10,
       "part": "JavaScript",
       "section": "Основы языка",
       "sectionIndex": 0,
       "chapterIndex": 9,
-      "wordCount": 1678,
-      "readingMinutes": 10,
+      "wordCount": 2064,
+      "readingMinutes": 12,
       "h2": 20,
-      "h3": 45,
+      "h3": 46,
       "examples": 7,
       "tasks": 25,
       "solutions": 25,
       "mermaid": 3,
       "miniProjects": 1,
       "previous": {
-        "title": "Hoisting",
+        "title": "Подъём объявлений",
         "number": 9,
         "link": "/docs/01-javascript/09-hoisting"
       },
       "next": {
-        "title": "Primitive Types",
+        "title": "Примитивные типы",
         "number": 11,
         "link": "/docs/01-javascript/11-primitive-types"
       },
@@ -2179,33 +2178,33 @@ export const bookEngineData = {
       "related": [
         {
           "term": "Execution Context",
-          "title": "Execution Context",
+          "title": "Контекст выполнения",
           "number": 3,
           "link": "/docs/01-javascript/03-execution-context"
         },
         {
           "term": "Scope",
-          "title": "Scope",
+          "title": "Область видимости",
           "number": 7,
           "link": "/docs/01-javascript/07-scope"
         },
         {
           "term": "Hoisting",
-          "title": "Hoisting",
+          "title": "Подъём объявлений",
           "number": 9,
           "link": "/docs/01-javascript/09-hoisting"
         },
         {
           "term": "Closure",
-          "title": "Closures",
+          "title": "Замыкания",
           "number": 28,
           "link": "/docs/01-javascript/28-closures"
         }
       ],
       "card": {
         "chapterLabel": "Глава 10",
-        "title": "Temporal Dead Zone",
-        "reading": 10,
+        "title": "Временная мёртвая зона",
+        "reading": 12,
         "examples": 7,
         "tasks": 25,
         "solutions": 25,
@@ -2215,28 +2214,28 @@ export const bookEngineData = {
     "docs/01-javascript/11-primitive-types.md": {
       "path": "docs/01-javascript/11-primitive-types.md",
       "link": "/docs/01-javascript/11-primitive-types",
-      "title": "Primitive Types",
+      "title": "Примитивные типы",
       "number": 11,
       "part": "JavaScript",
       "section": "Основы языка",
       "sectionIndex": 0,
       "chapterIndex": 10,
-      "wordCount": 1803,
-      "readingMinutes": 11,
+      "wordCount": 2140,
+      "readingMinutes": 12,
       "h2": 20,
-      "h3": 47,
+      "h3": 48,
       "examples": 7,
       "tasks": 24,
       "solutions": 21,
       "mermaid": 8,
       "miniProjects": 1,
       "previous": {
-        "title": "Temporal Dead Zone",
+        "title": "Временная мёртвая зона",
         "number": 10,
         "link": "/docs/01-javascript/10-temporal-dead-zone"
       },
       "next": {
-        "title": "Object Type",
+        "title": "Объектный тип",
         "number": 12,
         "link": "/docs/01-javascript/12-object-type"
       },
@@ -2253,33 +2252,33 @@ export const bookEngineData = {
       "related": [
         {
           "term": "Scope",
-          "title": "Scope",
+          "title": "Область видимости",
           "number": 7,
           "link": "/docs/01-javascript/07-scope"
         },
         {
           "term": "this",
-          "title": "this",
+          "title": "Ключевое слово `this`",
           "number": 29,
           "link": "/docs/01-javascript/29-this"
         },
         {
           "term": "Prototype",
-          "title": "Prototype",
+          "title": "Прототип",
           "number": 39,
           "link": "/docs/01-javascript/39-prototype"
         },
         {
           "term": "Garbage Collector",
-          "title": "Garbage Collector",
+          "title": "Сборщик мусора",
           "number": 87,
           "link": "/docs/01-javascript/87-garbage-collector"
         }
       ],
       "card": {
         "chapterLabel": "Глава 11",
-        "title": "Primitive Types",
-        "reading": 11,
+        "title": "Примитивные типы",
+        "reading": 12,
         "examples": 7,
         "tasks": 24,
         "solutions": 21,
@@ -2289,28 +2288,28 @@ export const bookEngineData = {
     "docs/01-javascript/12-object-type.md": {
       "path": "docs/01-javascript/12-object-type.md",
       "link": "/docs/01-javascript/12-object-type",
-      "title": "Object Type",
+      "title": "Объектный тип",
       "number": 12,
       "part": "JavaScript",
       "section": "Основы языка",
       "sectionIndex": 0,
       "chapterIndex": 11,
-      "wordCount": 2162,
-      "readingMinutes": 13,
+      "wordCount": 2561,
+      "readingMinutes": 15,
       "h2": 20,
-      "h3": 52,
+      "h3": 53,
       "examples": 7,
       "tasks": 47,
       "solutions": 34,
       "mermaid": 5,
       "miniProjects": 1,
       "previous": {
-        "title": "Primitive Types",
+        "title": "Примитивные типы",
         "number": 11,
         "link": "/docs/01-javascript/11-primitive-types"
       },
       "next": {
-        "title": "References",
+        "title": "Ссылки",
         "number": 13,
         "link": "/docs/01-javascript/13-references"
       },
@@ -2327,19 +2326,19 @@ export const bookEngineData = {
       "related": [
         {
           "term": "this",
-          "title": "this",
+          "title": "Ключевое слово `this`",
           "number": 29,
           "link": "/docs/01-javascript/29-this"
         },
         {
           "term": "Prototype",
-          "title": "Prototype",
+          "title": "Прототип",
           "number": 39,
           "link": "/docs/01-javascript/39-prototype"
         },
         {
           "term": "Garbage Collector",
-          "title": "Garbage Collector",
+          "title": "Сборщик мусора",
           "number": 87,
           "link": "/docs/01-javascript/87-garbage-collector"
         },
@@ -2352,8 +2351,8 @@ export const bookEngineData = {
       ],
       "card": {
         "chapterLabel": "Глава 12",
-        "title": "Object Type",
-        "reading": 13,
+        "title": "Объектный тип",
+        "reading": 15,
         "examples": 7,
         "tasks": 47,
         "solutions": 34,
@@ -2363,28 +2362,28 @@ export const bookEngineData = {
     "docs/01-javascript/13-references.md": {
       "path": "docs/01-javascript/13-references.md",
       "link": "/docs/01-javascript/13-references",
-      "title": "References",
+      "title": "Ссылки",
       "number": 13,
       "part": "JavaScript",
       "section": "Основы языка",
       "sectionIndex": 0,
       "chapterIndex": 12,
-      "wordCount": 1917,
-      "readingMinutes": 11,
+      "wordCount": 2233,
+      "readingMinutes": 13,
       "h2": 20,
-      "h3": 49,
+      "h3": 50,
       "examples": 7,
       "tasks": 39,
       "solutions": 28,
       "mermaid": 1,
       "miniProjects": 1,
       "previous": {
-        "title": "Object Type",
+        "title": "Объектный тип",
         "number": 12,
         "link": "/docs/01-javascript/12-object-type"
       },
       "next": {
-        "title": "Stack & Heap",
+        "title": "Стек и куча",
         "number": 14,
         "link": "/docs/01-javascript/14-stack-and-heap"
       },
@@ -2401,27 +2400,27 @@ export const bookEngineData = {
       "related": [
         {
           "term": "this",
-          "title": "this",
+          "title": "Ключевое слово `this`",
           "number": 29,
           "link": "/docs/01-javascript/29-this"
         },
         {
           "term": "Prototype",
-          "title": "Prototype",
+          "title": "Прототип",
           "number": 39,
           "link": "/docs/01-javascript/39-prototype"
         },
         {
           "term": "Garbage Collector",
-          "title": "Garbage Collector",
+          "title": "Сборщик мусора",
           "number": 87,
           "link": "/docs/01-javascript/87-garbage-collector"
         }
       ],
       "card": {
         "chapterLabel": "Глава 13",
-        "title": "References",
-        "reading": 11,
+        "title": "Ссылки",
+        "reading": 13,
         "examples": 7,
         "tasks": 39,
         "solutions": 28,
@@ -2431,28 +2430,28 @@ export const bookEngineData = {
     "docs/01-javascript/14-stack-and-heap.md": {
       "path": "docs/01-javascript/14-stack-and-heap.md",
       "link": "/docs/01-javascript/14-stack-and-heap",
-      "title": "Stack & Heap",
+      "title": "Стек и куча",
       "number": 14,
       "part": "JavaScript",
       "section": "Основы языка",
       "sectionIndex": 0,
       "chapterIndex": 13,
-      "wordCount": 1508,
-      "readingMinutes": 9,
+      "wordCount": 1727,
+      "readingMinutes": 10,
       "h2": 20,
-      "h3": 47,
+      "h3": 48,
       "examples": 7,
       "tasks": 37,
       "solutions": 28,
       "mermaid": 13,
       "miniProjects": 1,
       "previous": {
-        "title": "References",
+        "title": "Ссылки",
         "number": 13,
         "link": "/docs/01-javascript/13-references"
       },
       "next": {
-        "title": "Type Conversion",
+        "title": "Преобразование типов",
         "number": 15,
         "link": "/docs/01-javascript/15-type-conversion"
       },
@@ -2469,33 +2468,33 @@ export const bookEngineData = {
       "related": [
         {
           "term": "Execution Context",
-          "title": "Execution Context",
+          "title": "Контекст выполнения",
           "number": 3,
           "link": "/docs/01-javascript/03-execution-context"
         },
         {
           "term": "Call Stack",
-          "title": "Call Stack",
+          "title": "Стек вызовов",
           "number": 4,
           "link": "/docs/01-javascript/04-call-stack"
         },
         {
           "term": "this",
-          "title": "this",
+          "title": "Ключевое слово `this`",
           "number": 29,
           "link": "/docs/01-javascript/29-this"
         },
         {
           "term": "Garbage Collector",
-          "title": "Garbage Collector",
+          "title": "Сборщик мусора",
           "number": 87,
           "link": "/docs/01-javascript/87-garbage-collector"
         }
       ],
       "card": {
         "chapterLabel": "Глава 14",
-        "title": "Stack & Heap",
-        "reading": 9,
+        "title": "Стек и куча",
+        "reading": 10,
         "examples": 7,
         "tasks": 37,
         "solutions": 28,
@@ -2505,28 +2504,28 @@ export const bookEngineData = {
     "docs/01-javascript/15-type-conversion.md": {
       "path": "docs/01-javascript/15-type-conversion.md",
       "link": "/docs/01-javascript/15-type-conversion",
-      "title": "Type Conversion",
+      "title": "Преобразование типов",
       "number": 15,
       "part": "JavaScript",
       "section": "Основы языка",
       "sectionIndex": 0,
       "chapterIndex": 14,
-      "wordCount": 1522,
-      "readingMinutes": 9,
+      "wordCount": 1796,
+      "readingMinutes": 10,
       "h2": 20,
-      "h3": 49,
+      "h3": 50,
       "examples": 7,
       "tasks": 39,
       "solutions": 31,
       "mermaid": 1,
       "miniProjects": 1,
       "previous": {
-        "title": "Stack & Heap",
+        "title": "Стек и куча",
         "number": 14,
         "link": "/docs/01-javascript/14-stack-and-heap"
       },
       "next": {
-        "title": "Equality",
+        "title": "Равенство",
         "number": 16,
         "link": "/docs/01-javascript/16-equality"
       },
@@ -2543,7 +2542,7 @@ export const bookEngineData = {
       "related": [
         {
           "term": "this",
-          "title": "this",
+          "title": "Ключевое слово `this`",
           "number": 29,
           "link": "/docs/01-javascript/29-this"
         },
@@ -2556,8 +2555,8 @@ export const bookEngineData = {
       ],
       "card": {
         "chapterLabel": "Глава 15",
-        "title": "Type Conversion",
-        "reading": 9,
+        "title": "Преобразование типов",
+        "reading": 10,
         "examples": 7,
         "tasks": 39,
         "solutions": 31,
@@ -2567,28 +2566,28 @@ export const bookEngineData = {
     "docs/01-javascript/16-equality.md": {
       "path": "docs/01-javascript/16-equality.md",
       "link": "/docs/01-javascript/16-equality",
-      "title": "Equality",
+      "title": "Равенство",
       "number": 16,
       "part": "JavaScript",
       "section": "Основы языка",
       "sectionIndex": 0,
       "chapterIndex": 15,
-      "wordCount": 1369,
-      "readingMinutes": 8,
+      "wordCount": 1629,
+      "readingMinutes": 10,
       "h2": 20,
-      "h3": 44,
+      "h3": 45,
       "examples": 7,
       "tasks": 37,
       "solutions": 29,
       "mermaid": 1,
       "miniProjects": 1,
       "previous": {
-        "title": "Type Conversion",
+        "title": "Преобразование типов",
         "number": 15,
         "link": "/docs/01-javascript/15-type-conversion"
       },
       "next": {
-        "title": "Operators",
+        "title": "Операторы",
         "number": 17,
         "link": "/docs/01-javascript/17-operators"
       },
@@ -2605,7 +2604,7 @@ export const bookEngineData = {
       "related": [
         {
           "term": "this",
-          "title": "this",
+          "title": "Ключевое слово `this`",
           "number": 29,
           "link": "/docs/01-javascript/29-this"
         },
@@ -2618,8 +2617,8 @@ export const bookEngineData = {
       ],
       "card": {
         "chapterLabel": "Глава 16",
-        "title": "Equality",
-        "reading": 8,
+        "title": "Равенство",
+        "reading": 10,
         "examples": 7,
         "tasks": 37,
         "solutions": 29,
@@ -2629,28 +2628,28 @@ export const bookEngineData = {
     "docs/01-javascript/17-operators.md": {
       "path": "docs/01-javascript/17-operators.md",
       "link": "/docs/01-javascript/17-operators",
-      "title": "Operators",
+      "title": "Операторы",
       "number": 17,
       "part": "JavaScript",
       "section": "Управление программой",
       "sectionIndex": 1,
       "chapterIndex": 0,
-      "wordCount": 1457,
-      "readingMinutes": 9,
+      "wordCount": 1650,
+      "readingMinutes": 10,
       "h2": 20,
-      "h3": 44,
+      "h3": 45,
       "examples": 7,
       "tasks": 45,
       "solutions": 35,
       "mermaid": 2,
       "miniProjects": 1,
       "previous": {
-        "title": "Equality",
+        "title": "Равенство",
         "number": 16,
         "link": "/docs/01-javascript/16-equality"
       },
       "next": {
-        "title": "Conditionals",
+        "title": "Условные конструкции",
         "number": 18,
         "link": "/docs/01-javascript/18-conditionals"
       },
@@ -2667,27 +2666,21 @@ export const bookEngineData = {
       "related": [
         {
           "term": "this",
-          "title": "this",
+          "title": "Ключевое слово `this`",
           "number": 29,
           "link": "/docs/01-javascript/29-this"
         },
         {
-          "term": "Prototype",
-          "title": "Prototype",
-          "number": 39,
-          "link": "/docs/01-javascript/39-prototype"
-        },
-        {
           "term": "Date",
-          "title": "Date",
+          "title": "Дата и время",
           "number": 95,
           "link": "/docs/01-javascript/95-date"
         }
       ],
       "card": {
         "chapterLabel": "Глава 17",
-        "title": "Operators",
-        "reading": 9,
+        "title": "Операторы",
+        "reading": 10,
         "examples": 7,
         "tasks": 45,
         "solutions": 35,
@@ -2697,28 +2690,28 @@ export const bookEngineData = {
     "docs/01-javascript/18-conditionals.md": {
       "path": "docs/01-javascript/18-conditionals.md",
       "link": "/docs/01-javascript/18-conditionals",
-      "title": "Conditionals",
+      "title": "Условные конструкции",
       "number": 18,
       "part": "JavaScript",
       "section": "Управление программой",
       "sectionIndex": 1,
       "chapterIndex": 1,
-      "wordCount": 1114,
-      "readingMinutes": 7,
+      "wordCount": 1321,
+      "readingMinutes": 8,
       "h2": 20,
-      "h3": 40,
+      "h3": 41,
       "examples": 7,
       "tasks": 37,
       "solutions": 27,
       "mermaid": 1,
       "miniProjects": 1,
       "previous": {
-        "title": "Operators",
+        "title": "Операторы",
         "number": 17,
         "link": "/docs/01-javascript/17-operators"
       },
       "next": {
-        "title": "Loops",
+        "title": "Циклы",
         "number": 19,
         "link": "/docs/01-javascript/19-loops"
       },
@@ -2735,15 +2728,15 @@ export const bookEngineData = {
       "related": [
         {
           "term": "this",
-          "title": "this",
+          "title": "Ключевое слово `this`",
           "number": 29,
           "link": "/docs/01-javascript/29-this"
         }
       ],
       "card": {
         "chapterLabel": "Глава 18",
-        "title": "Conditionals",
-        "reading": 7,
+        "title": "Условные конструкции",
+        "reading": 8,
         "examples": 7,
         "tasks": 37,
         "solutions": 27,
@@ -2753,28 +2746,28 @@ export const bookEngineData = {
     "docs/01-javascript/19-loops.md": {
       "path": "docs/01-javascript/19-loops.md",
       "link": "/docs/01-javascript/19-loops",
-      "title": "Loops",
+      "title": "Циклы",
       "number": 19,
       "part": "JavaScript",
       "section": "Управление программой",
       "sectionIndex": 1,
       "chapterIndex": 2,
-      "wordCount": 1142,
-      "readingMinutes": 7,
+      "wordCount": 1418,
+      "readingMinutes": 8,
       "h2": 20,
-      "h3": 44,
+      "h3": 45,
       "examples": 7,
       "tasks": 42,
       "solutions": 29,
       "mermaid": 1,
       "miniProjects": 1,
       "previous": {
-        "title": "Conditionals",
+        "title": "Условные конструкции",
         "number": 18,
         "link": "/docs/01-javascript/18-conditionals"
       },
       "next": {
-        "title": "Error Handling",
+        "title": "Обработка ошибок",
         "number": 20,
         "link": "/docs/01-javascript/20-error-handling"
       },
@@ -2791,8 +2784,8 @@ export const bookEngineData = {
       "related": [],
       "card": {
         "chapterLabel": "Глава 19",
-        "title": "Loops",
-        "reading": 7,
+        "title": "Циклы",
+        "reading": 8,
         "examples": 7,
         "tasks": 42,
         "solutions": 29,
@@ -2802,28 +2795,28 @@ export const bookEngineData = {
     "docs/01-javascript/20-error-handling.md": {
       "path": "docs/01-javascript/20-error-handling.md",
       "link": "/docs/01-javascript/20-error-handling",
-      "title": "Error Handling",
+      "title": "Обработка ошибок",
       "number": 20,
       "part": "JavaScript",
       "section": "Управление программой",
       "sectionIndex": 1,
       "chapterIndex": 3,
-      "wordCount": 1218,
-      "readingMinutes": 7,
+      "wordCount": 1487,
+      "readingMinutes": 9,
       "h2": 20,
-      "h3": 45,
+      "h3": 46,
       "examples": 7,
       "tasks": 38,
       "solutions": 26,
       "mermaid": 2,
       "miniProjects": 1,
       "previous": {
-        "title": "Loops",
+        "title": "Циклы",
         "number": 19,
         "link": "/docs/01-javascript/19-loops"
       },
       "next": {
-        "title": "Function Declaration",
+        "title": "Объявление функции",
         "number": 21,
         "link": "/docs/01-javascript/21-function-declaration"
       },
@@ -2839,20 +2832,14 @@ export const bookEngineData = {
       },
       "related": [
         {
-          "term": "this",
-          "title": "this",
-          "number": 29,
-          "link": "/docs/01-javascript/29-this"
-        },
-        {
           "term": "Promise",
-          "title": "Promise",
+          "title": "Промис",
           "number": 72,
           "link": "/docs/01-javascript/72-promise"
         },
         {
           "term": "Event Loop",
-          "title": "Event Loop",
+          "title": "Событийный цикл",
           "number": 73,
           "link": "/docs/01-javascript/73-event-loop"
         },
@@ -2865,8 +2852,8 @@ export const bookEngineData = {
       ],
       "card": {
         "chapterLabel": "Глава 20",
-        "title": "Error Handling",
-        "reading": 7,
+        "title": "Обработка ошибок",
+        "reading": 9,
         "examples": 7,
         "tasks": 38,
         "solutions": 26,
@@ -2876,28 +2863,28 @@ export const bookEngineData = {
     "docs/01-javascript/21-function-declaration.md": {
       "path": "docs/01-javascript/21-function-declaration.md",
       "link": "/docs/01-javascript/21-function-declaration",
-      "title": "Function Declaration",
+      "title": "Объявление функции",
       "number": 21,
       "part": "JavaScript",
       "section": "Functions",
       "sectionIndex": 2,
       "chapterIndex": 0,
-      "wordCount": 1085,
-      "readingMinutes": 7,
+      "wordCount": 1404,
+      "readingMinutes": 8,
       "h2": 20,
-      "h3": 41,
+      "h3": 42,
       "examples": 7,
       "tasks": 38,
       "solutions": 29,
       "mermaid": 1,
       "miniProjects": 1,
       "previous": {
-        "title": "Error Handling",
+        "title": "Обработка ошибок",
         "number": 20,
         "link": "/docs/01-javascript/20-error-handling"
       },
       "next": {
-        "title": "Function Expression",
+        "title": "Функциональное выражение",
         "number": 22,
         "link": "/docs/01-javascript/22-function-expression"
       },
@@ -2913,22 +2900,16 @@ export const bookEngineData = {
       },
       "related": [
         {
-          "term": "Execution Context",
-          "title": "Execution Context",
-          "number": 3,
-          "link": "/docs/01-javascript/03-execution-context"
-        },
-        {
           "term": "this",
-          "title": "this",
+          "title": "Ключевое слово `this`",
           "number": 29,
           "link": "/docs/01-javascript/29-this"
         }
       ],
       "card": {
         "chapterLabel": "Глава 21",
-        "title": "Function Declaration",
-        "reading": 7,
+        "title": "Объявление функции",
+        "reading": 8,
         "examples": 7,
         "tasks": 38,
         "solutions": 29,
@@ -2938,28 +2919,28 @@ export const bookEngineData = {
     "docs/01-javascript/22-function-expression.md": {
       "path": "docs/01-javascript/22-function-expression.md",
       "link": "/docs/01-javascript/22-function-expression",
-      "title": "Function Expression",
+      "title": "Функциональное выражение",
       "number": 22,
       "part": "JavaScript",
       "section": "Functions",
       "sectionIndex": 2,
       "chapterIndex": 1,
-      "wordCount": 1415,
-      "readingMinutes": 8,
+      "wordCount": 1697,
+      "readingMinutes": 10,
       "h2": 20,
-      "h3": 44,
+      "h3": 45,
       "examples": 7,
       "tasks": 36,
       "solutions": 27,
       "mermaid": 1,
       "miniProjects": 1,
       "previous": {
-        "title": "Function Declaration",
+        "title": "Объявление функции",
         "number": 21,
         "link": "/docs/01-javascript/21-function-declaration"
       },
       "next": {
-        "title": "Arrow Functions",
+        "title": "Стрелочные функции",
         "number": 23,
         "link": "/docs/01-javascript/23-arrow-functions"
       },
@@ -2976,15 +2957,15 @@ export const bookEngineData = {
       "related": [
         {
           "term": "this",
-          "title": "this",
+          "title": "Ключевое слово `this`",
           "number": 29,
           "link": "/docs/01-javascript/29-this"
         }
       ],
       "card": {
         "chapterLabel": "Глава 22",
-        "title": "Function Expression",
-        "reading": 8,
+        "title": "Функциональное выражение",
+        "reading": 10,
         "examples": 7,
         "tasks": 36,
         "solutions": 27,
@@ -2994,28 +2975,28 @@ export const bookEngineData = {
     "docs/01-javascript/23-arrow-functions.md": {
       "path": "docs/01-javascript/23-arrow-functions.md",
       "link": "/docs/01-javascript/23-arrow-functions",
-      "title": "Arrow Functions",
+      "title": "Стрелочные функции",
       "number": 23,
       "part": "JavaScript",
       "section": "Functions",
       "sectionIndex": 2,
       "chapterIndex": 2,
-      "wordCount": 1479,
-      "readingMinutes": 9,
+      "wordCount": 1776,
+      "readingMinutes": 10,
       "h2": 20,
-      "h3": 43,
+      "h3": 44,
       "examples": 7,
       "tasks": 40,
       "solutions": 32,
       "mermaid": 2,
       "miniProjects": 1,
       "previous": {
-        "title": "Function Expression",
+        "title": "Функциональное выражение",
         "number": 22,
         "link": "/docs/01-javascript/22-function-expression"
       },
       "next": {
-        "title": "Parameters",
+        "title": "Параметры",
         "number": 24,
         "link": "/docs/01-javascript/24-parameters"
       },
@@ -3032,15 +3013,15 @@ export const bookEngineData = {
       "related": [
         {
           "term": "this",
-          "title": "this",
+          "title": "Ключевое слово `this`",
           "number": 29,
           "link": "/docs/01-javascript/29-this"
         }
       ],
       "card": {
         "chapterLabel": "Глава 23",
-        "title": "Arrow Functions",
-        "reading": 9,
+        "title": "Стрелочные функции",
+        "reading": 10,
         "examples": 7,
         "tasks": 40,
         "solutions": 32,
@@ -3050,28 +3031,28 @@ export const bookEngineData = {
     "docs/01-javascript/24-parameters.md": {
       "path": "docs/01-javascript/24-parameters.md",
       "link": "/docs/01-javascript/24-parameters",
-      "title": "Parameters",
+      "title": "Параметры",
       "number": 24,
       "part": "JavaScript",
       "section": "Functions",
       "sectionIndex": 2,
       "chapterIndex": 3,
-      "wordCount": 1183,
-      "readingMinutes": 7,
+      "wordCount": 1461,
+      "readingMinutes": 9,
       "h2": 20,
-      "h3": 44,
+      "h3": 45,
       "examples": 7,
       "tasks": 35,
       "solutions": 28,
       "mermaid": 2,
       "miniProjects": 1,
       "previous": {
-        "title": "Arrow Functions",
+        "title": "Стрелочные функции",
         "number": 23,
         "link": "/docs/01-javascript/23-arrow-functions"
       },
       "next": {
-        "title": "Return",
+        "title": "Возврат значения",
         "number": 25,
         "link": "/docs/01-javascript/25-return"
       },
@@ -3088,8 +3069,8 @@ export const bookEngineData = {
       "related": [],
       "card": {
         "chapterLabel": "Глава 24",
-        "title": "Parameters",
-        "reading": 7,
+        "title": "Параметры",
+        "reading": 9,
         "examples": 7,
         "tasks": 35,
         "solutions": 28,
@@ -3099,28 +3080,28 @@ export const bookEngineData = {
     "docs/01-javascript/25-return.md": {
       "path": "docs/01-javascript/25-return.md",
       "link": "/docs/01-javascript/25-return",
-      "title": "Return",
+      "title": "Возврат значения",
       "number": 25,
       "part": "JavaScript",
       "section": "Functions",
       "sectionIndex": 2,
       "chapterIndex": 4,
-      "wordCount": 1127,
-      "readingMinutes": 7,
+      "wordCount": 1527,
+      "readingMinutes": 9,
       "h2": 20,
-      "h3": 43,
+      "h3": 44,
       "examples": 7,
       "tasks": 36,
       "solutions": 28,
       "mermaid": 2,
       "miniProjects": 1,
       "previous": {
-        "title": "Parameters",
+        "title": "Параметры",
         "number": 24,
         "link": "/docs/01-javascript/24-parameters"
       },
       "next": {
-        "title": "Rest Parameters",
+        "title": "Параметры сбора",
         "number": 26,
         "link": "/docs/01-javascript/26-rest"
       },
@@ -3137,15 +3118,15 @@ export const bookEngineData = {
       "related": [
         {
           "term": "Promise",
-          "title": "Promise",
+          "title": "Промис",
           "number": 72,
           "link": "/docs/01-javascript/72-promise"
         }
       ],
       "card": {
         "chapterLabel": "Глава 25",
-        "title": "Return",
-        "reading": 7,
+        "title": "Возврат значения",
+        "reading": 9,
         "examples": 7,
         "tasks": 36,
         "solutions": 28,
@@ -3155,28 +3136,28 @@ export const bookEngineData = {
     "docs/01-javascript/26-rest.md": {
       "path": "docs/01-javascript/26-rest.md",
       "link": "/docs/01-javascript/26-rest",
-      "title": "Rest Parameters",
+      "title": "Параметры сбора",
       "number": 26,
       "part": "JavaScript",
       "section": "Functions",
       "sectionIndex": 2,
       "chapterIndex": 5,
-      "wordCount": 1142,
-      "readingMinutes": 7,
+      "wordCount": 1430,
+      "readingMinutes": 8,
       "h2": 20,
-      "h3": 41,
+      "h3": 39,
       "examples": 7,
       "tasks": 36,
       "solutions": 29,
       "mermaid": 2,
       "miniProjects": 1,
       "previous": {
-        "title": "Return",
+        "title": "Возврат значения",
         "number": 25,
         "link": "/docs/01-javascript/25-return"
       },
       "next": {
-        "title": "Spread",
+        "title": "Раскрытие",
         "number": 27,
         "link": "/docs/01-javascript/27-spread"
       },
@@ -3193,8 +3174,8 @@ export const bookEngineData = {
       "related": [],
       "card": {
         "chapterLabel": "Глава 26",
-        "title": "Rest Parameters",
-        "reading": 7,
+        "title": "Параметры сбора",
+        "reading": 8,
         "examples": 7,
         "tasks": 36,
         "solutions": 29,
@@ -3204,28 +3185,28 @@ export const bookEngineData = {
     "docs/01-javascript/27-spread.md": {
       "path": "docs/01-javascript/27-spread.md",
       "link": "/docs/01-javascript/27-spread",
-      "title": "Spread",
+      "title": "Раскрытие",
       "number": 27,
       "part": "JavaScript",
       "section": "Functions",
       "sectionIndex": 2,
       "chapterIndex": 6,
-      "wordCount": 1096,
-      "readingMinutes": 7,
+      "wordCount": 1416,
+      "readingMinutes": 8,
       "h2": 20,
-      "h3": 42,
+      "h3": 40,
       "examples": 7,
       "tasks": 37,
       "solutions": 28,
       "mermaid": 1,
       "miniProjects": 1,
       "previous": {
-        "title": "Rest Parameters",
+        "title": "Параметры сбора",
         "number": 26,
         "link": "/docs/01-javascript/26-rest"
       },
       "next": {
-        "title": "Closures",
+        "title": "Замыкания",
         "number": 28,
         "link": "/docs/01-javascript/28-closures"
       },
@@ -3239,24 +3220,11 @@ export const bookEngineData = {
         "total": 96,
         "bar": "███░░░░░░░░░"
       },
-      "related": [
-        {
-          "term": "Closure",
-          "title": "Closures",
-          "number": 28,
-          "link": "/docs/01-javascript/28-closures"
-        },
-        {
-          "term": "this",
-          "title": "this",
-          "number": 29,
-          "link": "/docs/01-javascript/29-this"
-        }
-      ],
+      "related": [],
       "card": {
         "chapterLabel": "Глава 27",
-        "title": "Spread",
-        "reading": 7,
+        "title": "Раскрытие",
+        "reading": 8,
         "examples": 7,
         "tasks": 37,
         "solutions": 28,
@@ -3266,28 +3234,28 @@ export const bookEngineData = {
     "docs/01-javascript/28-closures.md": {
       "path": "docs/01-javascript/28-closures.md",
       "link": "/docs/01-javascript/28-closures",
-      "title": "Closures",
+      "title": "Замыкания",
       "number": 28,
       "part": "JavaScript",
       "section": "Functions",
       "sectionIndex": 2,
       "chapterIndex": 7,
-      "wordCount": 1601,
-      "readingMinutes": 9,
+      "wordCount": 2196,
+      "readingMinutes": 13,
       "h2": 20,
-      "h3": 34,
+      "h3": 35,
       "examples": 7,
       "tasks": 31,
       "solutions": 20,
       "mermaid": 15,
       "miniProjects": 1,
       "previous": {
-        "title": "Spread",
+        "title": "Раскрытие",
         "number": 27,
         "link": "/docs/01-javascript/27-spread"
       },
       "next": {
-        "title": "this",
+        "title": "Ключевое слово `this`",
         "number": 29,
         "link": "/docs/01-javascript/29-this"
       },
@@ -3304,33 +3272,33 @@ export const bookEngineData = {
       "related": [
         {
           "term": "Execution Context",
-          "title": "Execution Context",
+          "title": "Контекст выполнения",
           "number": 3,
           "link": "/docs/01-javascript/03-execution-context"
         },
         {
           "term": "Call Stack",
-          "title": "Call Stack",
+          "title": "Стек вызовов",
           "number": 4,
           "link": "/docs/01-javascript/04-call-stack"
         },
         {
           "term": "Scope",
-          "title": "Scope",
+          "title": "Область видимости",
           "number": 7,
           "link": "/docs/01-javascript/07-scope"
         },
         {
           "term": "this",
-          "title": "this",
+          "title": "Ключевое слово `this`",
           "number": 29,
           "link": "/docs/01-javascript/29-this"
         }
       ],
       "card": {
         "chapterLabel": "Глава 28",
-        "title": "Closures",
-        "reading": 9,
+        "title": "Замыкания",
+        "reading": 13,
         "examples": 7,
         "tasks": 31,
         "solutions": 20,
@@ -3340,28 +3308,28 @@ export const bookEngineData = {
     "docs/01-javascript/29-this.md": {
       "path": "docs/01-javascript/29-this.md",
       "link": "/docs/01-javascript/29-this",
-      "title": "this",
+      "title": "Ключевое слово `this`",
       "number": 29,
       "part": "JavaScript",
       "section": "Functions",
       "sectionIndex": 2,
       "chapterIndex": 8,
-      "wordCount": 1519,
-      "readingMinutes": 9,
+      "wordCount": 2160,
+      "readingMinutes": 12,
       "h2": 20,
-      "h3": 34,
+      "h3": 35,
       "examples": 7,
       "tasks": 29,
       "solutions": 20,
       "mermaid": 17,
       "miniProjects": 1,
       "previous": {
-        "title": "Closures",
+        "title": "Замыкания",
         "number": 28,
         "link": "/docs/01-javascript/28-closures"
       },
       "next": {
-        "title": "call()",
+        "title": "Метод `call()`",
         "number": 30,
         "link": "/docs/01-javascript/30-call"
       },
@@ -3378,33 +3346,27 @@ export const bookEngineData = {
       "related": [
         {
           "term": "Execution Context",
-          "title": "Execution Context",
+          "title": "Контекст выполнения",
           "number": 3,
           "link": "/docs/01-javascript/03-execution-context"
         },
         {
           "term": "Call Stack",
-          "title": "Call Stack",
+          "title": "Стек вызовов",
           "number": 4,
           "link": "/docs/01-javascript/04-call-stack"
         },
         {
-          "term": "Scope",
-          "title": "Scope",
-          "number": 7,
-          "link": "/docs/01-javascript/07-scope"
-        },
-        {
           "term": "Closure",
-          "title": "Closures",
+          "title": "Замыкания",
           "number": 28,
           "link": "/docs/01-javascript/28-closures"
         }
       ],
       "card": {
         "chapterLabel": "Глава 29",
-        "title": "this",
-        "reading": 9,
+        "title": "Ключевое слово `this`",
+        "reading": 12,
         "examples": 7,
         "tasks": 29,
         "solutions": 20,
@@ -3414,28 +3376,28 @@ export const bookEngineData = {
     "docs/01-javascript/30-call.md": {
       "path": "docs/01-javascript/30-call.md",
       "link": "/docs/01-javascript/30-call",
-      "title": "call()",
+      "title": "Метод `call()`",
       "number": 30,
       "part": "JavaScript",
       "section": "Functions",
       "sectionIndex": 2,
       "chapterIndex": 9,
-      "wordCount": 1328,
-      "readingMinutes": 8,
+      "wordCount": 1952,
+      "readingMinutes": 11,
       "h2": 20,
-      "h3": 31,
+      "h3": 32,
       "examples": 7,
       "tasks": 32,
       "solutions": 21,
       "mermaid": 17,
       "miniProjects": 1,
       "previous": {
-        "title": "this",
+        "title": "Ключевое слово `this`",
         "number": 29,
         "link": "/docs/01-javascript/29-this"
       },
       "next": {
-        "title": "apply()",
+        "title": "Метод `apply()`",
         "number": 31,
         "link": "/docs/01-javascript/31-apply"
       },
@@ -3451,22 +3413,16 @@ export const bookEngineData = {
       },
       "related": [
         {
-          "term": "Execution Context",
-          "title": "Execution Context",
-          "number": 3,
-          "link": "/docs/01-javascript/03-execution-context"
-        },
-        {
           "term": "this",
-          "title": "this",
+          "title": "Ключевое слово `this`",
           "number": 29,
           "link": "/docs/01-javascript/29-this"
         }
       ],
       "card": {
         "chapterLabel": "Глава 30",
-        "title": "call()",
-        "reading": 8,
+        "title": "Метод `call()`",
+        "reading": 11,
         "examples": 7,
         "tasks": 32,
         "solutions": 21,
@@ -3476,28 +3432,28 @@ export const bookEngineData = {
     "docs/01-javascript/31-apply.md": {
       "path": "docs/01-javascript/31-apply.md",
       "link": "/docs/01-javascript/31-apply",
-      "title": "apply()",
+      "title": "Метод `apply()`",
       "number": 31,
       "part": "JavaScript",
       "section": "Functions",
       "sectionIndex": 2,
       "chapterIndex": 10,
-      "wordCount": 1105,
-      "readingMinutes": 7,
+      "wordCount": 1815,
+      "readingMinutes": 11,
       "h2": 20,
-      "h3": 29,
+      "h3": 30,
       "examples": 7,
       "tasks": 31,
       "solutions": 20,
       "mermaid": 13,
       "miniProjects": 1,
       "previous": {
-        "title": "call()",
+        "title": "Метод `call()`",
         "number": 30,
         "link": "/docs/01-javascript/30-call"
       },
       "next": {
-        "title": "bind()",
+        "title": "Метод `bind()`",
         "number": 32,
         "link": "/docs/01-javascript/32-bind"
       },
@@ -3514,21 +3470,15 @@ export const bookEngineData = {
       "related": [
         {
           "term": "this",
-          "title": "this",
+          "title": "Ключевое слово `this`",
           "number": 29,
           "link": "/docs/01-javascript/29-this"
-        },
-        {
-          "term": "Prototype",
-          "title": "Prototype",
-          "number": 39,
-          "link": "/docs/01-javascript/39-prototype"
         }
       ],
       "card": {
         "chapterLabel": "Глава 31",
-        "title": "apply()",
-        "reading": 7,
+        "title": "Метод `apply()`",
+        "reading": 11,
         "examples": 7,
         "tasks": 31,
         "solutions": 20,
@@ -3538,28 +3488,28 @@ export const bookEngineData = {
     "docs/01-javascript/32-bind.md": {
       "path": "docs/01-javascript/32-bind.md",
       "link": "/docs/01-javascript/32-bind",
-      "title": "bind()",
+      "title": "Метод `bind()`",
       "number": 32,
       "part": "JavaScript",
       "section": "Functions",
       "sectionIndex": 2,
       "chapterIndex": 11,
-      "wordCount": 1548,
-      "readingMinutes": 9,
-      "h2": 21,
-      "h3": 68,
+      "wordCount": 1719,
+      "readingMinutes": 10,
+      "h2": 20,
+      "h3": 39,
       "examples": 7,
       "tasks": 54,
       "solutions": 28,
       "mermaid": 1,
       "miniProjects": 0,
       "previous": {
-        "title": "apply()",
+        "title": "Метод `apply()`",
         "number": 31,
         "link": "/docs/01-javascript/31-apply"
       },
       "next": {
-        "title": "Objects",
+        "title": "Объекты",
         "number": 33,
         "link": "/docs/01-javascript/33-objects"
       },
@@ -3576,21 +3526,21 @@ export const bookEngineData = {
       "related": [
         {
           "term": "Execution Context",
-          "title": "Execution Context",
+          "title": "Контекст выполнения",
           "number": 3,
           "link": "/docs/01-javascript/03-execution-context"
         },
         {
           "term": "this",
-          "title": "this",
+          "title": "Ключевое слово `this`",
           "number": 29,
           "link": "/docs/01-javascript/29-this"
         }
       ],
       "card": {
         "chapterLabel": "Глава 32",
-        "title": "bind()",
-        "reading": 9,
+        "title": "Метод `bind()`",
+        "reading": 10,
         "examples": 7,
         "tasks": 54,
         "solutions": 28,
@@ -3600,28 +3550,28 @@ export const bookEngineData = {
     "docs/01-javascript/33-objects.md": {
       "path": "docs/01-javascript/33-objects.md",
       "link": "/docs/01-javascript/33-objects",
-      "title": "Objects",
+      "title": "Объекты",
       "number": 33,
       "part": "JavaScript",
       "section": "Objects",
       "sectionIndex": 3,
       "chapterIndex": 0,
-      "wordCount": 1702,
-      "readingMinutes": 10,
-      "h2": 21,
-      "h3": 78,
+      "wordCount": 1909,
+      "readingMinutes": 11,
+      "h2": 20,
+      "h3": 49,
       "examples": 7,
       "tasks": 59,
       "solutions": 33,
       "mermaid": 1,
       "miniProjects": 0,
       "previous": {
-        "title": "bind()",
+        "title": "Метод `bind()`",
         "number": 32,
         "link": "/docs/01-javascript/32-bind"
       },
       "next": {
-        "title": "Destructuring",
+        "title": "Деструктуризация",
         "number": 34,
         "link": "/docs/01-javascript/34-destructuring"
       },
@@ -3638,21 +3588,9 @@ export const bookEngineData = {
       "related": [
         {
           "term": "this",
-          "title": "this",
+          "title": "Ключевое слово `this`",
           "number": 29,
           "link": "/docs/01-javascript/29-this"
-        },
-        {
-          "term": "Prototype",
-          "title": "Prototype",
-          "number": 39,
-          "link": "/docs/01-javascript/39-prototype"
-        },
-        {
-          "term": "Garbage Collector",
-          "title": "Garbage Collector",
-          "number": 87,
-          "link": "/docs/01-javascript/87-garbage-collector"
         },
         {
           "term": "JSON",
@@ -3663,8 +3601,8 @@ export const bookEngineData = {
       ],
       "card": {
         "chapterLabel": "Глава 33",
-        "title": "Objects",
-        "reading": 10,
+        "title": "Объекты",
+        "reading": 11,
         "examples": 7,
         "tasks": 59,
         "solutions": 33,
@@ -3674,28 +3612,28 @@ export const bookEngineData = {
     "docs/01-javascript/34-destructuring.md": {
       "path": "docs/01-javascript/34-destructuring.md",
       "link": "/docs/01-javascript/34-destructuring",
-      "title": "Destructuring",
+      "title": "Деструктуризация",
       "number": 34,
       "part": "JavaScript",
       "section": "Objects",
       "sectionIndex": 3,
       "chapterIndex": 1,
-      "wordCount": 1328,
-      "readingMinutes": 8,
-      "h2": 21,
-      "h3": 70,
+      "wordCount": 1496,
+      "readingMinutes": 9,
+      "h2": 20,
+      "h3": 41,
       "examples": 7,
       "tasks": 53,
       "solutions": 29,
       "mermaid": 1,
       "miniProjects": 0,
       "previous": {
-        "title": "Objects",
+        "title": "Объекты",
         "number": 33,
         "link": "/docs/01-javascript/33-objects"
       },
       "next": {
-        "title": "Optional Chaining",
+        "title": "Опциональная цепочка",
         "number": 35,
         "link": "/docs/01-javascript/35-optional-chaining"
       },
@@ -3712,15 +3650,15 @@ export const bookEngineData = {
       "related": [
         {
           "term": "this",
-          "title": "this",
+          "title": "Ключевое слово `this`",
           "number": 29,
           "link": "/docs/01-javascript/29-this"
         }
       ],
       "card": {
         "chapterLabel": "Глава 34",
-        "title": "Destructuring",
-        "reading": 8,
+        "title": "Деструктуризация",
+        "reading": 9,
         "examples": 7,
         "tasks": 53,
         "solutions": 29,
@@ -3730,28 +3668,28 @@ export const bookEngineData = {
     "docs/01-javascript/35-optional-chaining.md": {
       "path": "docs/01-javascript/35-optional-chaining.md",
       "link": "/docs/01-javascript/35-optional-chaining",
-      "title": "Optional Chaining",
+      "title": "Опциональная цепочка",
       "number": 35,
       "part": "JavaScript",
       "section": "Objects",
       "sectionIndex": 3,
       "chapterIndex": 2,
-      "wordCount": 1290,
-      "readingMinutes": 8,
-      "h2": 21,
-      "h3": 71,
+      "wordCount": 1444,
+      "readingMinutes": 9,
+      "h2": 20,
+      "h3": 40,
       "examples": 7,
       "tasks": 46,
       "solutions": 24,
       "mermaid": 1,
       "miniProjects": 0,
       "previous": {
-        "title": "Destructuring",
+        "title": "Деструктуризация",
         "number": 34,
         "link": "/docs/01-javascript/34-destructuring"
       },
       "next": {
-        "title": "Nullish Coalescing",
+        "title": "Нулевое слияние",
         "number": 36,
         "link": "/docs/01-javascript/36-nullish-coalescing"
       },
@@ -3768,8 +3706,8 @@ export const bookEngineData = {
       "related": [],
       "card": {
         "chapterLabel": "Глава 35",
-        "title": "Optional Chaining",
-        "reading": 8,
+        "title": "Опциональная цепочка",
+        "reading": 9,
         "examples": 7,
         "tasks": 46,
         "solutions": 24,
@@ -3779,28 +3717,28 @@ export const bookEngineData = {
     "docs/01-javascript/36-nullish-coalescing.md": {
       "path": "docs/01-javascript/36-nullish-coalescing.md",
       "link": "/docs/01-javascript/36-nullish-coalescing",
-      "title": "Nullish Coalescing",
+      "title": "Нулевое слияние",
       "number": 36,
       "part": "JavaScript",
       "section": "Objects",
       "sectionIndex": 3,
       "chapterIndex": 3,
-      "wordCount": 1100,
-      "readingMinutes": 7,
-      "h2": 21,
-      "h3": 73,
+      "wordCount": 1267,
+      "readingMinutes": 8,
+      "h2": 20,
+      "h3": 42,
       "examples": 7,
       "tasks": 52,
       "solutions": 29,
       "mermaid": 1,
       "miniProjects": 0,
       "previous": {
-        "title": "Optional Chaining",
+        "title": "Опциональная цепочка",
         "number": 35,
         "link": "/docs/01-javascript/35-optional-chaining"
       },
       "next": {
-        "title": "Object Methods",
+        "title": "Методы объекта",
         "number": 37,
         "link": "/docs/01-javascript/37-object-methods"
       },
@@ -3814,18 +3752,11 @@ export const bookEngineData = {
         "total": 96,
         "bar": "█████░░░░░░░"
       },
-      "related": [
-        {
-          "term": "this",
-          "title": "this",
-          "number": 29,
-          "link": "/docs/01-javascript/29-this"
-        }
-      ],
+      "related": [],
       "card": {
         "chapterLabel": "Глава 36",
-        "title": "Nullish Coalescing",
-        "reading": 7,
+        "title": "Нулевое слияние",
+        "reading": 8,
         "examples": 7,
         "tasks": 52,
         "solutions": 29,
@@ -3835,28 +3766,28 @@ export const bookEngineData = {
     "docs/01-javascript/37-object-methods.md": {
       "path": "docs/01-javascript/37-object-methods.md",
       "link": "/docs/01-javascript/37-object-methods",
-      "title": "Object Methods",
+      "title": "Методы объекта",
       "number": 37,
       "part": "JavaScript",
       "section": "Objects",
       "sectionIndex": 3,
       "chapterIndex": 4,
-      "wordCount": 1397,
-      "readingMinutes": 8,
-      "h2": 21,
-      "h3": 71,
+      "wordCount": 1590,
+      "readingMinutes": 9,
+      "h2": 20,
+      "h3": 40,
       "examples": 7,
       "tasks": 41,
       "solutions": 23,
       "mermaid": 1,
       "miniProjects": 0,
       "previous": {
-        "title": "Nullish Coalescing",
+        "title": "Нулевое слияние",
         "number": 36,
         "link": "/docs/01-javascript/36-nullish-coalescing"
       },
       "next": {
-        "title": "Object Descriptors",
+        "title": "Дескрипторы свойств",
         "number": 38,
         "link": "/docs/01-javascript/38-object-descriptors"
       },
@@ -3872,22 +3803,22 @@ export const bookEngineData = {
       },
       "related": [
         {
-          "term": "this",
-          "title": "this",
-          "number": 29,
-          "link": "/docs/01-javascript/29-this"
+          "term": "Execution Context",
+          "title": "Контекст выполнения",
+          "number": 3,
+          "link": "/docs/01-javascript/03-execution-context"
         },
         {
-          "term": "Prototype",
-          "title": "Prototype",
-          "number": 39,
-          "link": "/docs/01-javascript/39-prototype"
+          "term": "this",
+          "title": "Ключевое слово `this`",
+          "number": 29,
+          "link": "/docs/01-javascript/29-this"
         }
       ],
       "card": {
         "chapterLabel": "Глава 37",
-        "title": "Object Methods",
-        "reading": 8,
+        "title": "Методы объекта",
+        "reading": 9,
         "examples": 7,
         "tasks": 41,
         "solutions": 23,
@@ -3897,28 +3828,28 @@ export const bookEngineData = {
     "docs/01-javascript/38-object-descriptors.md": {
       "path": "docs/01-javascript/38-object-descriptors.md",
       "link": "/docs/01-javascript/38-object-descriptors",
-      "title": "Object Descriptors",
+      "title": "Дескрипторы свойств",
       "number": 38,
       "part": "JavaScript",
       "section": "Objects",
       "sectionIndex": 3,
       "chapterIndex": 5,
-      "wordCount": 1362,
-      "readingMinutes": 8,
-      "h2": 21,
-      "h3": 75,
+      "wordCount": 1512,
+      "readingMinutes": 9,
+      "h2": 20,
+      "h3": 42,
       "examples": 7,
       "tasks": 45,
       "solutions": 23,
       "mermaid": 1,
       "miniProjects": 0,
       "previous": {
-        "title": "Object Methods",
+        "title": "Методы объекта",
         "number": 37,
         "link": "/docs/01-javascript/37-object-methods"
       },
       "next": {
-        "title": "Prototype",
+        "title": "Прототип",
         "number": 39,
         "link": "/docs/01-javascript/39-prototype"
       },
@@ -3935,21 +3866,15 @@ export const bookEngineData = {
       "related": [
         {
           "term": "this",
-          "title": "this",
+          "title": "Ключевое слово `this`",
           "number": 29,
           "link": "/docs/01-javascript/29-this"
-        },
-        {
-          "term": "Prototype",
-          "title": "Prototype",
-          "number": 39,
-          "link": "/docs/01-javascript/39-prototype"
         }
       ],
       "card": {
         "chapterLabel": "Глава 38",
-        "title": "Object Descriptors",
-        "reading": 8,
+        "title": "Дескрипторы свойств",
+        "reading": 9,
         "examples": 7,
         "tasks": 45,
         "solutions": 23,
@@ -3959,28 +3884,28 @@ export const bookEngineData = {
     "docs/01-javascript/39-prototype.md": {
       "path": "docs/01-javascript/39-prototype.md",
       "link": "/docs/01-javascript/39-prototype",
-      "title": "Prototype",
+      "title": "Прототип",
       "number": 39,
       "part": "JavaScript",
       "section": "Objects",
       "sectionIndex": 3,
       "chapterIndex": 6,
-      "wordCount": 1873,
-      "readingMinutes": 11,
-      "h2": 21,
-      "h3": 65,
+      "wordCount": 2231,
+      "readingMinutes": 13,
+      "h2": 20,
+      "h3": 30,
       "examples": 8,
       "tasks": 42,
       "solutions": 26,
       "mermaid": 10,
       "miniProjects": 0,
       "previous": {
-        "title": "Object Descriptors",
+        "title": "Дескрипторы свойств",
         "number": 38,
         "link": "/docs/01-javascript/38-object-descriptors"
       },
       "next": {
-        "title": "Prototype Chain",
+        "title": "Цепочка прототипов",
         "number": 40,
         "link": "/docs/01-javascript/40-prototype-chain"
       },
@@ -3997,15 +3922,15 @@ export const bookEngineData = {
       "related": [
         {
           "term": "this",
-          "title": "this",
+          "title": "Ключевое слово `this`",
           "number": 29,
           "link": "/docs/01-javascript/29-this"
         }
       ],
       "card": {
         "chapterLabel": "Глава 39",
-        "title": "Prototype",
-        "reading": 11,
+        "title": "Прототип",
+        "reading": 13,
         "examples": 8,
         "tasks": 42,
         "solutions": 26,
@@ -4015,28 +3940,28 @@ export const bookEngineData = {
     "docs/01-javascript/40-prototype-chain.md": {
       "path": "docs/01-javascript/40-prototype-chain.md",
       "link": "/docs/01-javascript/40-prototype-chain",
-      "title": "Prototype Chain",
+      "title": "Цепочка прототипов",
       "number": 40,
       "part": "JavaScript",
       "section": "Objects",
       "sectionIndex": 3,
       "chapterIndex": 7,
-      "wordCount": 1599,
-      "readingMinutes": 9,
-      "h2": 21,
-      "h3": 68,
+      "wordCount": 1774,
+      "readingMinutes": 10,
+      "h2": 20,
+      "h3": 31,
       "examples": 8,
       "tasks": 39,
       "solutions": 24,
       "mermaid": 17,
       "miniProjects": 0,
       "previous": {
-        "title": "Prototype",
+        "title": "Прототип",
         "number": 39,
         "link": "/docs/01-javascript/39-prototype"
       },
       "next": {
-        "title": "Classes",
+        "title": "Классы",
         "number": 41,
         "link": "/docs/01-javascript/41-classes"
       },
@@ -4053,21 +3978,21 @@ export const bookEngineData = {
       "related": [
         {
           "term": "this",
-          "title": "this",
+          "title": "Ключевое слово `this`",
           "number": 29,
           "link": "/docs/01-javascript/29-this"
         },
         {
           "term": "Prototype",
-          "title": "Prototype",
+          "title": "Прототип",
           "number": 39,
           "link": "/docs/01-javascript/39-prototype"
         }
       ],
       "card": {
         "chapterLabel": "Глава 40",
-        "title": "Prototype Chain",
-        "reading": 9,
+        "title": "Цепочка прототипов",
+        "reading": 10,
         "examples": 8,
         "tasks": 39,
         "solutions": 24,
@@ -4077,28 +4002,28 @@ export const bookEngineData = {
     "docs/01-javascript/41-classes.md": {
       "path": "docs/01-javascript/41-classes.md",
       "link": "/docs/01-javascript/41-classes",
-      "title": "Classes",
+      "title": "Классы",
       "number": 41,
       "part": "JavaScript",
       "section": "Objects",
       "sectionIndex": 3,
       "chapterIndex": 8,
-      "wordCount": 1450,
-      "readingMinutes": 9,
-      "h2": 21,
-      "h3": 68,
+      "wordCount": 1662,
+      "readingMinutes": 10,
+      "h2": 20,
+      "h3": 28,
       "examples": 8,
       "tasks": 38,
       "solutions": 22,
       "mermaid": 1,
       "miniProjects": 0,
       "previous": {
-        "title": "Prototype Chain",
+        "title": "Цепочка прототипов",
         "number": 40,
         "link": "/docs/01-javascript/40-prototype-chain"
       },
       "next": {
-        "title": "Class Inheritance",
+        "title": "Наследование классов",
         "number": 42,
         "link": "/docs/01-javascript/42-class-inheritance"
       },
@@ -4115,21 +4040,21 @@ export const bookEngineData = {
       "related": [
         {
           "term": "this",
-          "title": "this",
+          "title": "Ключевое слово `this`",
           "number": 29,
           "link": "/docs/01-javascript/29-this"
         },
         {
           "term": "Prototype",
-          "title": "Prototype",
+          "title": "Прототип",
           "number": 39,
           "link": "/docs/01-javascript/39-prototype"
         }
       ],
       "card": {
         "chapterLabel": "Глава 41",
-        "title": "Classes",
-        "reading": 9,
+        "title": "Классы",
+        "reading": 10,
         "examples": 8,
         "tasks": 38,
         "solutions": 22,
@@ -4139,28 +4064,28 @@ export const bookEngineData = {
     "docs/01-javascript/42-class-inheritance.md": {
       "path": "docs/01-javascript/42-class-inheritance.md",
       "link": "/docs/01-javascript/42-class-inheritance",
-      "title": "Class Inheritance",
+      "title": "Наследование классов",
       "number": 42,
       "part": "JavaScript",
       "section": "Objects",
       "sectionIndex": 3,
       "chapterIndex": 9,
-      "wordCount": 1392,
-      "readingMinutes": 8,
-      "h2": 21,
-      "h3": 66,
+      "wordCount": 1580,
+      "readingMinutes": 9,
+      "h2": 20,
+      "h3": 27,
       "examples": 8,
       "tasks": 40,
       "solutions": 22,
       "mermaid": 1,
       "miniProjects": 0,
       "previous": {
-        "title": "Classes",
+        "title": "Классы",
         "number": 41,
         "link": "/docs/01-javascript/41-classes"
       },
       "next": {
-        "title": "super",
+        "title": "Ключевое слово `super`",
         "number": 43,
         "link": "/docs/01-javascript/43-super"
       },
@@ -4177,21 +4102,21 @@ export const bookEngineData = {
       "related": [
         {
           "term": "this",
-          "title": "this",
+          "title": "Ключевое слово `this`",
           "number": 29,
           "link": "/docs/01-javascript/29-this"
         },
         {
           "term": "Prototype",
-          "title": "Prototype",
+          "title": "Прототип",
           "number": 39,
           "link": "/docs/01-javascript/39-prototype"
         }
       ],
       "card": {
         "chapterLabel": "Глава 42",
-        "title": "Class Inheritance",
-        "reading": 8,
+        "title": "Наследование классов",
+        "reading": 9,
         "examples": 8,
         "tasks": 40,
         "solutions": 22,
@@ -4201,28 +4126,28 @@ export const bookEngineData = {
     "docs/01-javascript/43-super.md": {
       "path": "docs/01-javascript/43-super.md",
       "link": "/docs/01-javascript/43-super",
-      "title": "super",
+      "title": "Ключевое слово `super`",
       "number": 43,
       "part": "JavaScript",
       "section": "Objects",
       "sectionIndex": 3,
       "chapterIndex": 10,
-      "wordCount": 1371,
-      "readingMinutes": 8,
-      "h2": 21,
-      "h3": 64,
+      "wordCount": 1591,
+      "readingMinutes": 9,
+      "h2": 20,
+      "h3": 29,
       "examples": 8,
       "tasks": 40,
       "solutions": 21,
       "mermaid": 1,
       "miniProjects": 0,
       "previous": {
-        "title": "Class Inheritance",
+        "title": "Наследование классов",
         "number": 42,
         "link": "/docs/01-javascript/42-class-inheritance"
       },
       "next": {
-        "title": "Arrays",
+        "title": "Массивы",
         "number": 44,
         "link": "/docs/01-javascript/44-arrays"
       },
@@ -4239,21 +4164,15 @@ export const bookEngineData = {
       "related": [
         {
           "term": "this",
-          "title": "this",
+          "title": "Ключевое слово `this`",
           "number": 29,
           "link": "/docs/01-javascript/29-this"
-        },
-        {
-          "term": "Prototype",
-          "title": "Prototype",
-          "number": 39,
-          "link": "/docs/01-javascript/39-prototype"
         }
       ],
       "card": {
         "chapterLabel": "Глава 43",
-        "title": "super",
-        "reading": 8,
+        "title": "Ключевое слово `super`",
+        "reading": 9,
         "examples": 8,
         "tasks": 40,
         "solutions": 21,
@@ -4263,28 +4182,28 @@ export const bookEngineData = {
     "docs/01-javascript/44-arrays.md": {
       "path": "docs/01-javascript/44-arrays.md",
       "link": "/docs/01-javascript/44-arrays",
-      "title": "Arrays",
+      "title": "Массивы",
       "number": 44,
       "part": "JavaScript",
       "section": "Arrays",
       "sectionIndex": 4,
       "chapterIndex": 0,
-      "wordCount": 1279,
+      "wordCount": 1378,
       "readingMinutes": 8,
-      "h2": 21,
-      "h3": 72,
+      "h2": 20,
+      "h3": 33,
       "examples": 8,
       "tasks": 36,
       "solutions": 22,
       "mermaid": 1,
       "miniProjects": 0,
       "previous": {
-        "title": "super",
+        "title": "Ключевое слово `super`",
         "number": 43,
         "link": "/docs/01-javascript/43-super"
       },
       "next": {
-        "title": "push() and pop()",
+        "title": "`push()` и `pop()`",
         "number": 45,
         "link": "/docs/01-javascript/45-push-pop"
       },
@@ -4301,14 +4220,14 @@ export const bookEngineData = {
       "related": [
         {
           "term": "this",
-          "title": "this",
+          "title": "Ключевое слово `this`",
           "number": 29,
           "link": "/docs/01-javascript/29-this"
         }
       ],
       "card": {
         "chapterLabel": "Глава 44",
-        "title": "Arrays",
+        "title": "Массивы",
         "reading": 8,
         "examples": 8,
         "tasks": 36,
@@ -4319,28 +4238,28 @@ export const bookEngineData = {
     "docs/01-javascript/45-push-pop.md": {
       "path": "docs/01-javascript/45-push-pop.md",
       "link": "/docs/01-javascript/45-push-pop",
-      "title": "push() and pop()",
+      "title": "`push()` и `pop()`",
       "number": 45,
       "part": "JavaScript",
       "section": "Arrays",
       "sectionIndex": 4,
       "chapterIndex": 1,
-      "wordCount": 1294,
+      "wordCount": 1368,
       "readingMinutes": 8,
-      "h2": 21,
-      "h3": 67,
+      "h2": 20,
+      "h3": 30,
       "examples": 8,
       "tasks": 36,
       "solutions": 22,
       "mermaid": 1,
       "miniProjects": 0,
       "previous": {
-        "title": "Arrays",
+        "title": "Массивы",
         "number": 44,
         "link": "/docs/01-javascript/44-arrays"
       },
       "next": {
-        "title": "shift() and unshift()",
+        "title": "`shift()` и `unshift()`",
         "number": 46,
         "link": "/docs/01-javascript/46-shift-unshift"
       },
@@ -4354,17 +4273,10 @@ export const bookEngineData = {
         "total": 96,
         "bar": "██████░░░░░░"
       },
-      "related": [
-        {
-          "term": "this",
-          "title": "this",
-          "number": 29,
-          "link": "/docs/01-javascript/29-this"
-        }
-      ],
+      "related": [],
       "card": {
         "chapterLabel": "Глава 45",
-        "title": "push() and pop()",
+        "title": "`push()` и `pop()`",
         "reading": 8,
         "examples": 8,
         "tasks": 36,
@@ -4375,28 +4287,28 @@ export const bookEngineData = {
     "docs/01-javascript/46-shift-unshift.md": {
       "path": "docs/01-javascript/46-shift-unshift.md",
       "link": "/docs/01-javascript/46-shift-unshift",
-      "title": "shift() and unshift()",
+      "title": "`shift()` и `unshift()`",
       "number": 46,
       "part": "JavaScript",
       "section": "Arrays",
       "sectionIndex": 4,
       "chapterIndex": 2,
-      "wordCount": 1407,
-      "readingMinutes": 8,
-      "h2": 21,
-      "h3": 70,
+      "wordCount": 1616,
+      "readingMinutes": 9,
+      "h2": 20,
+      "h3": 33,
       "examples": 8,
       "tasks": 42,
       "solutions": 19,
       "mermaid": 4,
       "miniProjects": 0,
       "previous": {
-        "title": "push() and pop()",
+        "title": "`push()` и `pop()`",
         "number": 45,
         "link": "/docs/01-javascript/45-push-pop"
       },
       "next": {
-        "title": "splice()",
+        "title": "Метод `splice()`",
         "number": 47,
         "link": "/docs/01-javascript/47-splice"
       },
@@ -4413,8 +4325,8 @@ export const bookEngineData = {
       "related": [],
       "card": {
         "chapterLabel": "Глава 46",
-        "title": "shift() and unshift()",
-        "reading": 8,
+        "title": "`shift()` и `unshift()`",
+        "reading": 9,
         "examples": 8,
         "tasks": 42,
         "solutions": 19,
@@ -4424,28 +4336,28 @@ export const bookEngineData = {
     "docs/01-javascript/47-splice.md": {
       "path": "docs/01-javascript/47-splice.md",
       "link": "/docs/01-javascript/47-splice",
-      "title": "splice()",
+      "title": "Метод `splice()`",
       "number": 47,
       "part": "JavaScript",
       "section": "Arrays",
       "sectionIndex": 4,
       "chapterIndex": 3,
-      "wordCount": 1082,
+      "wordCount": 1187,
       "readingMinutes": 7,
       "h2": 16,
-      "h3": 9,
+      "h3": 10,
       "examples": 6,
       "tasks": 9,
       "solutions": 13,
       "mermaid": 3,
       "miniProjects": 1,
       "previous": {
-        "title": "shift() and unshift()",
+        "title": "`shift()` и `unshift()`",
         "number": 46,
         "link": "/docs/01-javascript/46-shift-unshift"
       },
       "next": {
-        "title": "slice()",
+        "title": "Метод `slice()`",
         "number": 48,
         "link": "/docs/01-javascript/48-slice"
       },
@@ -4462,7 +4374,7 @@ export const bookEngineData = {
       "related": [],
       "card": {
         "chapterLabel": "Глава 47",
-        "title": "splice()",
+        "title": "Метод `splice()`",
         "reading": 7,
         "examples": 6,
         "tasks": 9,
@@ -4473,28 +4385,28 @@ export const bookEngineData = {
     "docs/01-javascript/48-slice.md": {
       "path": "docs/01-javascript/48-slice.md",
       "link": "/docs/01-javascript/48-slice",
-      "title": "slice()",
+      "title": "Метод `slice()`",
       "number": 48,
       "part": "JavaScript",
       "section": "Arrays",
       "sectionIndex": 4,
       "chapterIndex": 4,
-      "wordCount": 825,
-      "readingMinutes": 5,
+      "wordCount": 1004,
+      "readingMinutes": 6,
       "h2": 16,
-      "h3": 8,
+      "h3": 11,
       "examples": 6,
       "tasks": 7,
       "solutions": 11,
       "mermaid": 2,
       "miniProjects": 1,
       "previous": {
-        "title": "splice()",
+        "title": "Метод `splice()`",
         "number": 47,
         "link": "/docs/01-javascript/47-splice"
       },
       "next": {
-        "title": "Iteration",
+        "title": "Перебор массива",
         "number": 49,
         "link": "/docs/01-javascript/49-iteration"
       },
@@ -4511,8 +4423,8 @@ export const bookEngineData = {
       "related": [],
       "card": {
         "chapterLabel": "Глава 48",
-        "title": "slice()",
-        "reading": 5,
+        "title": "Метод `slice()`",
+        "reading": 6,
         "examples": 6,
         "tasks": 7,
         "solutions": 11,
@@ -4522,28 +4434,28 @@ export const bookEngineData = {
     "docs/01-javascript/49-iteration.md": {
       "path": "docs/01-javascript/49-iteration.md",
       "link": "/docs/01-javascript/49-iteration",
-      "title": "Iteration",
+      "title": "Перебор массива",
       "number": 49,
       "part": "JavaScript",
       "section": "Arrays",
       "sectionIndex": 4,
       "chapterIndex": 5,
-      "wordCount": 898,
-      "readingMinutes": 5,
+      "wordCount": 1061,
+      "readingMinutes": 6,
       "h2": 16,
-      "h3": 9,
+      "h3": 12,
       "examples": 6,
       "tasks": 7,
       "solutions": 11,
       "mermaid": 1,
       "miniProjects": 1,
       "previous": {
-        "title": "slice()",
+        "title": "Метод `slice()`",
         "number": 48,
         "link": "/docs/01-javascript/48-slice"
       },
       "next": {
-        "title": "forEach()",
+        "title": "Метод `forEach()`",
         "number": 50,
         "link": "/docs/01-javascript/50-foreach"
       },
@@ -4560,8 +4472,8 @@ export const bookEngineData = {
       "related": [],
       "card": {
         "chapterLabel": "Глава 49",
-        "title": "Iteration",
-        "reading": 5,
+        "title": "Перебор массива",
+        "reading": 6,
         "examples": 6,
         "tasks": 7,
         "solutions": 11,
@@ -4571,28 +4483,28 @@ export const bookEngineData = {
     "docs/01-javascript/50-foreach.md": {
       "path": "docs/01-javascript/50-foreach.md",
       "link": "/docs/01-javascript/50-foreach",
-      "title": "forEach()",
+      "title": "Метод `forEach()`",
       "number": 50,
       "part": "JavaScript",
       "section": "Arrays",
       "sectionIndex": 4,
       "chapterIndex": 6,
-      "wordCount": 803,
-      "readingMinutes": 5,
+      "wordCount": 995,
+      "readingMinutes": 6,
       "h2": 16,
-      "h3": 9,
+      "h3": 12,
       "examples": 6,
       "tasks": 7,
       "solutions": 11,
       "mermaid": 1,
       "miniProjects": 1,
       "previous": {
-        "title": "Iteration",
+        "title": "Перебор массива",
         "number": 49,
         "link": "/docs/01-javascript/49-iteration"
       },
       "next": {
-        "title": "map()",
+        "title": "Метод `map()`",
         "number": 51,
         "link": "/docs/01-javascript/51-map"
       },
@@ -4609,15 +4521,15 @@ export const bookEngineData = {
       "related": [
         {
           "term": "this",
-          "title": "this",
+          "title": "Ключевое слово `this`",
           "number": 29,
           "link": "/docs/01-javascript/29-this"
         }
       ],
       "card": {
         "chapterLabel": "Глава 50",
-        "title": "forEach()",
-        "reading": 5,
+        "title": "Метод `forEach()`",
+        "reading": 6,
         "examples": 6,
         "tasks": 7,
         "solutions": 11,
@@ -4627,28 +4539,28 @@ export const bookEngineData = {
     "docs/01-javascript/51-map.md": {
       "path": "docs/01-javascript/51-map.md",
       "link": "/docs/01-javascript/51-map",
-      "title": "map()",
+      "title": "Метод `map()`",
       "number": 51,
       "part": "JavaScript",
       "section": "Arrays",
       "sectionIndex": 4,
       "chapterIndex": 7,
-      "wordCount": 891,
-      "readingMinutes": 5,
+      "wordCount": 1088,
+      "readingMinutes": 7,
       "h2": 16,
-      "h3": 8,
+      "h3": 11,
       "examples": 6,
       "tasks": 7,
       "solutions": 11,
       "mermaid": 1,
       "miniProjects": 1,
       "previous": {
-        "title": "forEach()",
+        "title": "Метод `forEach()`",
         "number": 50,
         "link": "/docs/01-javascript/50-foreach"
       },
       "next": {
-        "title": "filter()",
+        "title": "Метод `filter()`",
         "number": 52,
         "link": "/docs/01-javascript/52-filter"
       },
@@ -4662,11 +4574,18 @@ export const bookEngineData = {
         "total": 96,
         "bar": "██████░░░░░░"
       },
-      "related": [],
+      "related": [
+        {
+          "term": "Promise",
+          "title": "Промис",
+          "number": 72,
+          "link": "/docs/01-javascript/72-promise"
+        }
+      ],
       "card": {
         "chapterLabel": "Глава 51",
-        "title": "map()",
-        "reading": 5,
+        "title": "Метод `map()`",
+        "reading": 7,
         "examples": 6,
         "tasks": 7,
         "solutions": 11,
@@ -4676,28 +4595,28 @@ export const bookEngineData = {
     "docs/01-javascript/52-filter.md": {
       "path": "docs/01-javascript/52-filter.md",
       "link": "/docs/01-javascript/52-filter",
-      "title": "filter()",
+      "title": "Метод `filter()`",
       "number": 52,
       "part": "JavaScript",
       "section": "Arrays",
       "sectionIndex": 4,
       "chapterIndex": 8,
-      "wordCount": 845,
-      "readingMinutes": 5,
+      "wordCount": 1056,
+      "readingMinutes": 6,
       "h2": 16,
-      "h3": 9,
+      "h3": 12,
       "examples": 6,
       "tasks": 7,
       "solutions": 11,
       "mermaid": 1,
       "miniProjects": 1,
       "previous": {
-        "title": "map()",
+        "title": "Метод `map()`",
         "number": 51,
         "link": "/docs/01-javascript/51-map"
       },
       "next": {
-        "title": "reduce()",
+        "title": "Метод `reduce()`",
         "number": 53,
         "link": "/docs/01-javascript/53-reduce"
       },
@@ -4714,8 +4633,8 @@ export const bookEngineData = {
       "related": [],
       "card": {
         "chapterLabel": "Глава 52",
-        "title": "filter()",
-        "reading": 5,
+        "title": "Метод `filter()`",
+        "reading": 6,
         "examples": 6,
         "tasks": 7,
         "solutions": 11,
@@ -4725,28 +4644,28 @@ export const bookEngineData = {
     "docs/01-javascript/53-reduce.md": {
       "path": "docs/01-javascript/53-reduce.md",
       "link": "/docs/01-javascript/53-reduce",
-      "title": "reduce()",
+      "title": "Метод `reduce()`",
       "number": 53,
       "part": "JavaScript",
       "section": "Arrays",
       "sectionIndex": 4,
       "chapterIndex": 9,
-      "wordCount": 943,
-      "readingMinutes": 6,
+      "wordCount": 1127,
+      "readingMinutes": 7,
       "h2": 16,
-      "h3": 9,
+      "h3": 12,
       "examples": 6,
       "tasks": 7,
       "solutions": 11,
       "mermaid": 1,
       "miniProjects": 1,
       "previous": {
-        "title": "filter()",
+        "title": "Метод `filter()`",
         "number": 52,
         "link": "/docs/01-javascript/52-filter"
       },
       "next": {
-        "title": "Chaining basics",
+        "title": "Цепочки вызовов",
         "number": 54,
         "link": "/docs/01-javascript/54-chaining"
       },
@@ -4763,8 +4682,8 @@ export const bookEngineData = {
       "related": [],
       "card": {
         "chapterLabel": "Глава 53",
-        "title": "reduce()",
-        "reading": 6,
+        "title": "Метод `reduce()`",
+        "reading": 7,
         "examples": 6,
         "tasks": 7,
         "solutions": 11,
@@ -4774,28 +4693,28 @@ export const bookEngineData = {
     "docs/01-javascript/54-chaining.md": {
       "path": "docs/01-javascript/54-chaining.md",
       "link": "/docs/01-javascript/54-chaining",
-      "title": "Chaining basics",
+      "title": "Цепочки вызовов",
       "number": 54,
       "part": "JavaScript",
       "section": "Arrays",
       "sectionIndex": 4,
       "chapterIndex": 10,
-      "wordCount": 924,
-      "readingMinutes": 6,
+      "wordCount": 1092,
+      "readingMinutes": 7,
       "h2": 16,
-      "h3": 9,
+      "h3": 12,
       "examples": 6,
       "tasks": 7,
       "solutions": 11,
       "mermaid": 1,
       "miniProjects": 1,
       "previous": {
-        "title": "reduce()",
+        "title": "Метод `reduce()`",
         "number": 53,
         "link": "/docs/01-javascript/53-reduce"
       },
       "next": {
-        "title": "find()",
+        "title": "Метод `find()`",
         "number": 55,
         "link": "/docs/01-javascript/55-find"
       },
@@ -4812,8 +4731,8 @@ export const bookEngineData = {
       "related": [],
       "card": {
         "chapterLabel": "Глава 54",
-        "title": "Chaining basics",
-        "reading": 6,
+        "title": "Цепочки вызовов",
+        "reading": 7,
         "examples": 6,
         "tasks": 7,
         "solutions": 11,
@@ -4823,28 +4742,28 @@ export const bookEngineData = {
     "docs/01-javascript/55-find.md": {
       "path": "docs/01-javascript/55-find.md",
       "link": "/docs/01-javascript/55-find",
-      "title": "find()",
+      "title": "Метод `find()`",
       "number": 55,
       "part": "JavaScript",
       "section": "Arrays",
       "sectionIndex": 4,
       "chapterIndex": 11,
-      "wordCount": 870,
-      "readingMinutes": 5,
+      "wordCount": 1038,
+      "readingMinutes": 6,
       "h2": 16,
-      "h3": 9,
+      "h3": 12,
       "examples": 6,
       "tasks": 7,
       "solutions": 11,
       "mermaid": 1,
       "miniProjects": 1,
       "previous": {
-        "title": "Chaining basics",
+        "title": "Цепочки вызовов",
         "number": 54,
         "link": "/docs/01-javascript/54-chaining"
       },
       "next": {
-        "title": "some()",
+        "title": "Метод `some()`",
         "number": 56,
         "link": "/docs/01-javascript/56-some"
       },
@@ -4861,8 +4780,8 @@ export const bookEngineData = {
       "related": [],
       "card": {
         "chapterLabel": "Глава 55",
-        "title": "find()",
-        "reading": 5,
+        "title": "Метод `find()`",
+        "reading": 6,
         "examples": 6,
         "tasks": 7,
         "solutions": 11,
@@ -4872,28 +4791,28 @@ export const bookEngineData = {
     "docs/01-javascript/56-some.md": {
       "path": "docs/01-javascript/56-some.md",
       "link": "/docs/01-javascript/56-some",
-      "title": "some()",
+      "title": "Метод `some()`",
       "number": 56,
       "part": "JavaScript",
       "section": "Arrays",
       "sectionIndex": 4,
       "chapterIndex": 12,
-      "wordCount": 778,
-      "readingMinutes": 5,
+      "wordCount": 943,
+      "readingMinutes": 6,
       "h2": 16,
-      "h3": 9,
+      "h3": 12,
       "examples": 6,
       "tasks": 7,
       "solutions": 11,
       "mermaid": 1,
       "miniProjects": 1,
       "previous": {
-        "title": "find()",
+        "title": "Метод `find()`",
         "number": 55,
         "link": "/docs/01-javascript/55-find"
       },
       "next": {
-        "title": "every()",
+        "title": "Метод `every()`",
         "number": 57,
         "link": "/docs/01-javascript/57-every"
       },
@@ -4910,8 +4829,8 @@ export const bookEngineData = {
       "related": [],
       "card": {
         "chapterLabel": "Глава 56",
-        "title": "some()",
-        "reading": 5,
+        "title": "Метод `some()`",
+        "reading": 6,
         "examples": 6,
         "tasks": 7,
         "solutions": 11,
@@ -4921,28 +4840,28 @@ export const bookEngineData = {
     "docs/01-javascript/57-every.md": {
       "path": "docs/01-javascript/57-every.md",
       "link": "/docs/01-javascript/57-every",
-      "title": "every()",
+      "title": "Метод `every()`",
       "number": 57,
       "part": "JavaScript",
       "section": "Arrays",
       "sectionIndex": 4,
       "chapterIndex": 13,
-      "wordCount": 824,
-      "readingMinutes": 5,
+      "wordCount": 982,
+      "readingMinutes": 6,
       "h2": 16,
-      "h3": 9,
+      "h3": 12,
       "examples": 6,
       "tasks": 7,
       "solutions": 11,
       "mermaid": 1,
       "miniProjects": 1,
       "previous": {
-        "title": "some()",
+        "title": "Метод `some()`",
         "number": 56,
         "link": "/docs/01-javascript/56-some"
       },
       "next": {
-        "title": "includes()",
+        "title": "Метод `includes()`",
         "number": 58,
         "link": "/docs/01-javascript/58-includes"
       },
@@ -4959,8 +4878,8 @@ export const bookEngineData = {
       "related": [],
       "card": {
         "chapterLabel": "Глава 57",
-        "title": "every()",
-        "reading": 5,
+        "title": "Метод `every()`",
+        "reading": 6,
         "examples": 6,
         "tasks": 7,
         "solutions": 11,
@@ -4970,28 +4889,28 @@ export const bookEngineData = {
     "docs/01-javascript/58-includes.md": {
       "path": "docs/01-javascript/58-includes.md",
       "link": "/docs/01-javascript/58-includes",
-      "title": "includes()",
+      "title": "Метод `includes()`",
       "number": 58,
       "part": "JavaScript",
       "section": "Arrays",
       "sectionIndex": 4,
       "chapterIndex": 14,
-      "wordCount": 834,
-      "readingMinutes": 5,
+      "wordCount": 1012,
+      "readingMinutes": 6,
       "h2": 16,
-      "h3": 9,
+      "h3": 12,
       "examples": 6,
       "tasks": 7,
       "solutions": 11,
       "mermaid": 1,
       "miniProjects": 1,
       "previous": {
-        "title": "every()",
+        "title": "Метод `every()`",
         "number": 57,
         "link": "/docs/01-javascript/57-every"
       },
       "next": {
-        "title": "sort()",
+        "title": "Метод `sort()`",
         "number": 59,
         "link": "/docs/01-javascript/59-sort"
       },
@@ -5008,8 +4927,8 @@ export const bookEngineData = {
       "related": [],
       "card": {
         "chapterLabel": "Глава 58",
-        "title": "includes()",
-        "reading": 5,
+        "title": "Метод `includes()`",
+        "reading": 6,
         "examples": 6,
         "tasks": 7,
         "solutions": 11,
@@ -5019,28 +4938,28 @@ export const bookEngineData = {
     "docs/01-javascript/59-sort.md": {
       "path": "docs/01-javascript/59-sort.md",
       "link": "/docs/01-javascript/59-sort",
-      "title": "sort()",
+      "title": "Метод `sort()`",
       "number": 59,
       "part": "JavaScript",
       "section": "Arrays",
       "sectionIndex": 4,
       "chapterIndex": 15,
-      "wordCount": 896,
-      "readingMinutes": 5,
+      "wordCount": 1097,
+      "readingMinutes": 7,
       "h2": 16,
-      "h3": 10,
+      "h3": 13,
       "examples": 6,
       "tasks": 6,
       "solutions": 10,
       "mermaid": 1,
       "miniProjects": 1,
       "previous": {
-        "title": "includes()",
+        "title": "Метод `includes()`",
         "number": 58,
         "link": "/docs/01-javascript/58-includes"
       },
       "next": {
-        "title": "reverse()",
+        "title": "Метод `reverse()`",
         "number": 60,
         "link": "/docs/01-javascript/60-reverse"
       },
@@ -5057,8 +4976,8 @@ export const bookEngineData = {
       "related": [],
       "card": {
         "chapterLabel": "Глава 59",
-        "title": "sort()",
-        "reading": 5,
+        "title": "Метод `sort()`",
+        "reading": 7,
         "examples": 6,
         "tasks": 6,
         "solutions": 10,
@@ -5068,28 +4987,28 @@ export const bookEngineData = {
     "docs/01-javascript/60-reverse.md": {
       "path": "docs/01-javascript/60-reverse.md",
       "link": "/docs/01-javascript/60-reverse",
-      "title": "reverse()",
+      "title": "Метод `reverse()`",
       "number": 60,
       "part": "JavaScript",
       "section": "Arrays",
       "sectionIndex": 4,
       "chapterIndex": 16,
-      "wordCount": 777,
-      "readingMinutes": 5,
+      "wordCount": 937,
+      "readingMinutes": 6,
       "h2": 16,
-      "h3": 8,
+      "h3": 11,
       "examples": 6,
       "tasks": 6,
       "solutions": 10,
       "mermaid": 1,
       "miniProjects": 1,
       "previous": {
-        "title": "sort()",
+        "title": "Метод `sort()`",
         "number": 59,
         "link": "/docs/01-javascript/59-sort"
       },
       "next": {
-        "title": "Execution Context: углубленное повторение",
+        "title": "Контекст выполнения: углублённое повторение",
         "number": 61,
         "link": "/docs/01-javascript/61-execution-context"
       },
@@ -5106,8 +5025,8 @@ export const bookEngineData = {
       "related": [],
       "card": {
         "chapterLabel": "Глава 60",
-        "title": "reverse()",
-        "reading": 5,
+        "title": "Метод `reverse()`",
+        "reading": 6,
         "examples": 6,
         "tasks": 6,
         "solutions": 10,
@@ -5117,28 +5036,28 @@ export const bookEngineData = {
     "docs/01-javascript/61-execution-context.md": {
       "path": "docs/01-javascript/61-execution-context.md",
       "link": "/docs/01-javascript/61-execution-context",
-      "title": "Execution Context: углубленное повторение",
+      "title": "Контекст выполнения: углублённое повторение",
       "number": 61,
       "part": "JavaScript",
       "section": "Execution Model Revisited",
       "sectionIndex": 5,
       "chapterIndex": 0,
-      "wordCount": 989,
-      "readingMinutes": 6,
+      "wordCount": 1184,
+      "readingMinutes": 7,
       "h2": 18,
-      "h3": 6,
+      "h3": 9,
       "examples": 5,
       "tasks": 5,
       "solutions": 10,
       "mermaid": 6,
       "miniProjects": 0,
       "previous": {
-        "title": "reverse()",
+        "title": "Метод `reverse()`",
         "number": 60,
         "link": "/docs/01-javascript/60-reverse"
       },
       "next": {
-        "title": "Call Stack: углубленное повторение",
+        "title": "Стек вызовов: углублённое повторение",
         "number": 62,
         "link": "/docs/01-javascript/62-call-stack"
       },
@@ -5155,33 +5074,33 @@ export const bookEngineData = {
       "related": [
         {
           "term": "Execution Context",
-          "title": "Execution Context",
+          "title": "Контекст выполнения",
           "number": 3,
           "link": "/docs/01-javascript/03-execution-context"
         },
         {
           "term": "Call Stack",
-          "title": "Call Stack",
+          "title": "Стек вызовов",
           "number": 4,
           "link": "/docs/01-javascript/04-call-stack"
         },
         {
           "term": "Hoisting",
-          "title": "Hoisting",
+          "title": "Подъём объявлений",
           "number": 9,
           "link": "/docs/01-javascript/09-hoisting"
         },
         {
           "term": "this",
-          "title": "this",
+          "title": "Ключевое слово `this`",
           "number": 29,
           "link": "/docs/01-javascript/29-this"
         }
       ],
       "card": {
         "chapterLabel": "Глава 61",
-        "title": "Execution Context: углубленное повторение",
-        "reading": 6,
+        "title": "Контекст выполнения: углублённое повторение",
+        "reading": 7,
         "examples": 5,
         "tasks": 5,
         "solutions": 10,
@@ -5191,28 +5110,28 @@ export const bookEngineData = {
     "docs/01-javascript/62-call-stack.md": {
       "path": "docs/01-javascript/62-call-stack.md",
       "link": "/docs/01-javascript/62-call-stack",
-      "title": "Call Stack: углубленное повторение",
+      "title": "Стек вызовов: углублённое повторение",
       "number": 62,
       "part": "JavaScript",
       "section": "Execution Model Revisited",
       "sectionIndex": 5,
       "chapterIndex": 1,
-      "wordCount": 924,
-      "readingMinutes": 6,
+      "wordCount": 1090,
+      "readingMinutes": 7,
       "h2": 18,
-      "h3": 7,
+      "h3": 10,
       "examples": 5,
       "tasks": 5,
       "solutions": 10,
       "mermaid": 10,
       "miniProjects": 0,
       "previous": {
-        "title": "Execution Context: углубленное повторение",
+        "title": "Контекст выполнения: углублённое повторение",
         "number": 61,
         "link": "/docs/01-javascript/61-execution-context"
       },
       "next": {
-        "title": "Memory Model",
+        "title": "Модель памяти",
         "number": 63,
         "link": "/docs/01-javascript/63-memory-model"
       },
@@ -5229,21 +5148,21 @@ export const bookEngineData = {
       "related": [
         {
           "term": "Execution Context",
-          "title": "Execution Context",
+          "title": "Контекст выполнения",
           "number": 3,
           "link": "/docs/01-javascript/03-execution-context"
         },
         {
           "term": "Call Stack",
-          "title": "Call Stack",
+          "title": "Стек вызовов",
           "number": 4,
           "link": "/docs/01-javascript/04-call-stack"
         }
       ],
       "card": {
         "chapterLabel": "Глава 62",
-        "title": "Call Stack: углубленное повторение",
-        "reading": 6,
+        "title": "Стек вызовов: углублённое повторение",
+        "reading": 7,
         "examples": 5,
         "tasks": 5,
         "solutions": 10,
@@ -5253,28 +5172,28 @@ export const bookEngineData = {
     "docs/01-javascript/63-memory-model.md": {
       "path": "docs/01-javascript/63-memory-model.md",
       "link": "/docs/01-javascript/63-memory-model",
-      "title": "Memory Model",
+      "title": "Модель памяти",
       "number": 63,
       "part": "JavaScript",
       "section": "Execution Model Revisited",
       "sectionIndex": 5,
       "chapterIndex": 2,
-      "wordCount": 868,
-      "readingMinutes": 5,
+      "wordCount": 1027,
+      "readingMinutes": 6,
       "h2": 18,
-      "h3": 7,
+      "h3": 10,
       "examples": 5,
       "tasks": 5,
       "solutions": 10,
       "mermaid": 7,
       "miniProjects": 0,
       "previous": {
-        "title": "Call Stack: углубленное повторение",
+        "title": "Стек вызовов: углублённое повторение",
         "number": 62,
         "link": "/docs/01-javascript/62-call-stack"
       },
       "next": {
-        "title": "Hoisting + TDZ",
+        "title": "Подъём объявлений и временная мёртвая зона",
         "number": 64,
         "link": "/docs/01-javascript/64-hoisting-tdz"
       },
@@ -5291,33 +5210,21 @@ export const bookEngineData = {
       "related": [
         {
           "term": "Execution Context",
-          "title": "Execution Context",
+          "title": "Контекст выполнения",
           "number": 3,
           "link": "/docs/01-javascript/03-execution-context"
         },
         {
           "term": "Call Stack",
-          "title": "Call Stack",
+          "title": "Стек вызовов",
           "number": 4,
           "link": "/docs/01-javascript/04-call-stack"
-        },
-        {
-          "term": "Hoisting",
-          "title": "Hoisting",
-          "number": 9,
-          "link": "/docs/01-javascript/09-hoisting"
-        },
-        {
-          "term": "Garbage Collector",
-          "title": "Garbage Collector",
-          "number": 87,
-          "link": "/docs/01-javascript/87-garbage-collector"
         }
       ],
       "card": {
         "chapterLabel": "Глава 63",
-        "title": "Memory Model",
-        "reading": 5,
+        "title": "Модель памяти",
+        "reading": 6,
         "examples": 5,
         "tasks": 5,
         "solutions": 10,
@@ -5327,28 +5234,28 @@ export const bookEngineData = {
     "docs/01-javascript/64-hoisting-tdz.md": {
       "path": "docs/01-javascript/64-hoisting-tdz.md",
       "link": "/docs/01-javascript/64-hoisting-tdz",
-      "title": "Hoisting + TDZ",
+      "title": "Подъём объявлений и временная мёртвая зона",
       "number": 64,
       "part": "JavaScript",
       "section": "Execution Model Revisited",
       "sectionIndex": 5,
       "chapterIndex": 3,
-      "wordCount": 1084,
-      "readingMinutes": 7,
+      "wordCount": 1274,
+      "readingMinutes": 8,
       "h2": 18,
-      "h3": 11,
+      "h3": 14,
       "examples": 5,
       "tasks": 5,
       "solutions": 10,
       "mermaid": 1,
       "miniProjects": 0,
       "previous": {
-        "title": "Memory Model",
+        "title": "Модель памяти",
         "number": 63,
         "link": "/docs/01-javascript/63-memory-model"
       },
       "next": {
-        "title": "Closures: углубленное повторение",
+        "title": "Замыкания: углублённое повторение",
         "number": 65,
         "link": "/docs/01-javascript/65-closures"
       },
@@ -5365,33 +5272,27 @@ export const bookEngineData = {
       "related": [
         {
           "term": "Execution Context",
-          "title": "Execution Context",
+          "title": "Контекст выполнения",
           "number": 3,
           "link": "/docs/01-javascript/03-execution-context"
         },
         {
           "term": "Call Stack",
-          "title": "Call Stack",
+          "title": "Стек вызовов",
           "number": 4,
           "link": "/docs/01-javascript/04-call-stack"
         },
         {
           "term": "Hoisting",
-          "title": "Hoisting",
+          "title": "Подъём объявлений",
           "number": 9,
           "link": "/docs/01-javascript/09-hoisting"
-        },
-        {
-          "term": "Temporal Dead Zone",
-          "title": "Temporal Dead Zone",
-          "number": 10,
-          "link": "/docs/01-javascript/10-temporal-dead-zone"
         }
       ],
       "card": {
         "chapterLabel": "Глава 64",
-        "title": "Hoisting + TDZ",
-        "reading": 7,
+        "title": "Подъём объявлений и временная мёртвая зона",
+        "reading": 8,
         "examples": 5,
         "tasks": 5,
         "solutions": 10,
@@ -5401,28 +5302,28 @@ export const bookEngineData = {
     "docs/01-javascript/65-closures.md": {
       "path": "docs/01-javascript/65-closures.md",
       "link": "/docs/01-javascript/65-closures",
-      "title": "Closures: углубленное повторение",
+      "title": "Замыкания: углублённое повторение",
       "number": 65,
       "part": "JavaScript",
       "section": "Function Context",
       "sectionIndex": 6,
       "chapterIndex": 0,
-      "wordCount": 973,
-      "readingMinutes": 6,
-      "h2": 19,
-      "h3": 7,
+      "wordCount": 1167,
+      "readingMinutes": 7,
+      "h2": 18,
+      "h3": 10,
       "examples": 5,
       "tasks": 6,
       "solutions": 10,
       "mermaid": 6,
       "miniProjects": 1,
       "previous": {
-        "title": "Hoisting + TDZ",
+        "title": "Подъём объявлений и временная мёртвая зона",
         "number": 64,
         "link": "/docs/01-javascript/64-hoisting-tdz"
       },
       "next": {
-        "title": "this: углубленное повторение",
+        "title": "`this`: углублённое повторение",
         "number": 66,
         "link": "/docs/01-javascript/66-this"
       },
@@ -5439,33 +5340,33 @@ export const bookEngineData = {
       "related": [
         {
           "term": "Execution Context",
-          "title": "Execution Context",
+          "title": "Контекст выполнения",
           "number": 3,
           "link": "/docs/01-javascript/03-execution-context"
         },
         {
           "term": "Call Stack",
-          "title": "Call Stack",
+          "title": "Стек вызовов",
           "number": 4,
           "link": "/docs/01-javascript/04-call-stack"
         },
         {
           "term": "Hoisting",
-          "title": "Hoisting",
+          "title": "Подъём объявлений",
           "number": 9,
           "link": "/docs/01-javascript/09-hoisting"
         },
         {
           "term": "Closure",
-          "title": "Closures",
+          "title": "Замыкания",
           "number": 28,
           "link": "/docs/01-javascript/28-closures"
         }
       ],
       "card": {
         "chapterLabel": "Глава 65",
-        "title": "Closures: углубленное повторение",
-        "reading": 6,
+        "title": "Замыкания: углублённое повторение",
+        "reading": 7,
         "examples": 5,
         "tasks": 6,
         "solutions": 10,
@@ -5475,28 +5376,28 @@ export const bookEngineData = {
     "docs/01-javascript/66-this.md": {
       "path": "docs/01-javascript/66-this.md",
       "link": "/docs/01-javascript/66-this",
-      "title": "this: углубленное повторение",
+      "title": "`this`: углублённое повторение",
       "number": 66,
       "part": "JavaScript",
       "section": "Function Context",
       "sectionIndex": 6,
       "chapterIndex": 1,
-      "wordCount": 957,
-      "readingMinutes": 6,
-      "h2": 19,
-      "h3": 8,
+      "wordCount": 1149,
+      "readingMinutes": 7,
+      "h2": 18,
+      "h3": 11,
       "examples": 5,
       "tasks": 6,
       "solutions": 10,
       "mermaid": 6,
       "miniProjects": 1,
       "previous": {
-        "title": "Closures: углубленное повторение",
+        "title": "Замыкания: углублённое повторение",
         "number": 65,
         "link": "/docs/01-javascript/65-closures"
       },
       "next": {
-        "title": "call(), apply(), bind()",
+        "title": "`call()`, `apply()`, `bind()`",
         "number": 67,
         "link": "/docs/01-javascript/67-call-apply-bind"
       },
@@ -5513,27 +5414,27 @@ export const bookEngineData = {
       "related": [
         {
           "term": "Execution Context",
-          "title": "Execution Context",
+          "title": "Контекст выполнения",
           "number": 3,
           "link": "/docs/01-javascript/03-execution-context"
         },
         {
           "term": "Closure",
-          "title": "Closures",
+          "title": "Замыкания",
           "number": 28,
           "link": "/docs/01-javascript/28-closures"
         },
         {
           "term": "this",
-          "title": "this",
+          "title": "Ключевое слово `this`",
           "number": 29,
           "link": "/docs/01-javascript/29-this"
         }
       ],
       "card": {
         "chapterLabel": "Глава 66",
-        "title": "this: углубленное повторение",
-        "reading": 6,
+        "title": "`this`: углублённое повторение",
+        "reading": 7,
         "examples": 5,
         "tasks": 6,
         "solutions": 10,
@@ -5543,23 +5444,23 @@ export const bookEngineData = {
     "docs/01-javascript/67-call-apply-bind.md": {
       "path": "docs/01-javascript/67-call-apply-bind.md",
       "link": "/docs/01-javascript/67-call-apply-bind",
-      "title": "call(), apply(), bind()",
+      "title": "`call()`, `apply()`, `bind()`",
       "number": 67,
       "part": "JavaScript",
       "section": "Function Context",
       "sectionIndex": 6,
       "chapterIndex": 2,
-      "wordCount": 960,
-      "readingMinutes": 6,
-      "h2": 19,
-      "h3": 9,
+      "wordCount": 1162,
+      "readingMinutes": 7,
+      "h2": 18,
+      "h3": 12,
       "examples": 5,
       "tasks": 6,
       "solutions": 10,
       "mermaid": 1,
       "miniProjects": 1,
       "previous": {
-        "title": "this: углубленное повторение",
+        "title": "`this`: углублённое повторение",
         "number": 66,
         "link": "/docs/01-javascript/66-this"
       },
@@ -5581,21 +5482,21 @@ export const bookEngineData = {
       "related": [
         {
           "term": "Closure",
-          "title": "Closures",
+          "title": "Замыкания",
           "number": 28,
           "link": "/docs/01-javascript/28-closures"
         },
         {
           "term": "this",
-          "title": "this",
+          "title": "Ключевое слово `this`",
           "number": 29,
           "link": "/docs/01-javascript/29-this"
         }
       ],
       "card": {
         "chapterLabel": "Глава 67",
-        "title": "call(), apply(), bind()",
-        "reading": 6,
+        "title": "`call()`, `apply()`, `bind()`",
+        "reading": 7,
         "examples": 5,
         "tasks": 6,
         "solutions": 10,
@@ -5611,22 +5512,22 @@ export const bookEngineData = {
       "section": "Function Context",
       "sectionIndex": 6,
       "chapterIndex": 3,
-      "wordCount": 1069,
-      "readingMinutes": 6,
-      "h2": 20,
-      "h3": 9,
+      "wordCount": 1259,
+      "readingMinutes": 7,
+      "h2": 18,
+      "h3": 12,
       "examples": 5,
       "tasks": 6,
       "solutions": 10,
       "mermaid": 1,
       "miniProjects": 1,
       "previous": {
-        "title": "call(), apply(), bind()",
+        "title": "`call()`, `apply()`, `bind()`",
         "number": 67,
         "link": "/docs/01-javascript/67-call-apply-bind"
       },
       "next": {
-        "title": "Synchronous Execution",
+        "title": "Синхронное выполнение",
         "number": 69,
         "link": "/docs/01-javascript/69-synchronous-execution"
       },
@@ -5643,13 +5544,13 @@ export const bookEngineData = {
       "related": [
         {
           "term": "Closure",
-          "title": "Closures",
+          "title": "Замыкания",
           "number": 28,
           "link": "/docs/01-javascript/28-closures"
         },
         {
           "term": "this",
-          "title": "this",
+          "title": "Ключевое слово `this`",
           "number": 29,
           "link": "/docs/01-javascript/29-this"
         }
@@ -5657,7 +5558,7 @@ export const bookEngineData = {
       "card": {
         "chapterLabel": "Глава 68",
         "title": "Практическое управление контекстом",
-        "reading": 6,
+        "reading": 7,
         "examples": 5,
         "tasks": 6,
         "solutions": 10,
@@ -5667,16 +5568,16 @@ export const bookEngineData = {
     "docs/01-javascript/69-synchronous-execution.md": {
       "path": "docs/01-javascript/69-synchronous-execution.md",
       "link": "/docs/01-javascript/69-synchronous-execution",
-      "title": "Synchronous Execution",
+      "title": "Синхронное выполнение",
       "number": 69,
       "part": "JavaScript",
       "section": "Async JavaScript",
       "sectionIndex": 7,
       "chapterIndex": 0,
-      "wordCount": 1043,
-      "readingMinutes": 6,
+      "wordCount": 1248,
+      "readingMinutes": 7,
       "h2": 17,
-      "h3": 9,
+      "h3": 12,
       "examples": 5,
       "tasks": 10,
       "solutions": 10,
@@ -5688,7 +5589,7 @@ export const bookEngineData = {
         "link": "/docs/01-javascript/68-context-management"
       },
       "next": {
-        "title": "Asynchronous Programming",
+        "title": "Асинхронное программирование",
         "number": 70,
         "link": "/docs/01-javascript/70-asynchronous-programming"
       },
@@ -5704,34 +5605,34 @@ export const bookEngineData = {
       },
       "related": [
         {
-          "term": "Execution Context",
-          "title": "Execution Context",
-          "number": 3,
-          "link": "/docs/01-javascript/03-execution-context"
-        },
-        {
           "term": "Call Stack",
-          "title": "Call Stack",
+          "title": "Стек вызовов",
           "number": 4,
           "link": "/docs/01-javascript/04-call-stack"
         },
         {
           "term": "Closure",
-          "title": "Closures",
+          "title": "Замыкания",
           "number": 28,
           "link": "/docs/01-javascript/28-closures"
         },
         {
           "term": "this",
-          "title": "this",
+          "title": "Ключевое слово `this`",
           "number": 29,
           "link": "/docs/01-javascript/29-this"
+        },
+        {
+          "term": "Promise",
+          "title": "Промис",
+          "number": 72,
+          "link": "/docs/01-javascript/72-promise"
         }
       ],
       "card": {
         "chapterLabel": "Глава 69",
-        "title": "Synchronous Execution",
-        "reading": 6,
+        "title": "Синхронное выполнение",
+        "reading": 7,
         "examples": 5,
         "tasks": 10,
         "solutions": 10,
@@ -5741,28 +5642,28 @@ export const bookEngineData = {
     "docs/01-javascript/70-asynchronous-programming.md": {
       "path": "docs/01-javascript/70-asynchronous-programming.md",
       "link": "/docs/01-javascript/70-asynchronous-programming",
-      "title": "Asynchronous Programming",
+      "title": "Асинхронное программирование",
       "number": 70,
       "part": "JavaScript",
       "section": "Async JavaScript",
       "sectionIndex": 7,
       "chapterIndex": 1,
-      "wordCount": 1067,
-      "readingMinutes": 6,
+      "wordCount": 1277,
+      "readingMinutes": 8,
       "h2": 17,
-      "h3": 10,
+      "h3": 13,
       "examples": 5,
       "tasks": 6,
       "solutions": 10,
       "mermaid": 1,
       "miniProjects": 1,
       "previous": {
-        "title": "Synchronous Execution",
+        "title": "Синхронное выполнение",
         "number": 69,
         "link": "/docs/01-javascript/69-synchronous-execution"
       },
       "next": {
-        "title": "Callback",
+        "title": "Обратный вызов",
         "number": 71,
         "link": "/docs/01-javascript/71-callback"
       },
@@ -5779,21 +5680,21 @@ export const bookEngineData = {
       "related": [
         {
           "term": "Call Stack",
-          "title": "Call Stack",
+          "title": "Стек вызовов",
           "number": 4,
           "link": "/docs/01-javascript/04-call-stack"
         },
         {
           "term": "Event Loop",
-          "title": "Event Loop",
+          "title": "Событийный цикл",
           "number": 73,
           "link": "/docs/01-javascript/73-event-loop"
         }
       ],
       "card": {
         "chapterLabel": "Глава 70",
-        "title": "Asynchronous Programming",
-        "reading": 6,
+        "title": "Асинхронное программирование",
+        "reading": 8,
         "examples": 5,
         "tasks": 6,
         "solutions": 10,
@@ -5803,28 +5704,28 @@ export const bookEngineData = {
     "docs/01-javascript/71-callback.md": {
       "path": "docs/01-javascript/71-callback.md",
       "link": "/docs/01-javascript/71-callback",
-      "title": "Callback",
+      "title": "Обратный вызов",
       "number": 71,
       "part": "JavaScript",
       "section": "Async JavaScript",
       "sectionIndex": 7,
       "chapterIndex": 2,
-      "wordCount": 984,
-      "readingMinutes": 6,
-      "h2": 18,
-      "h3": 9,
+      "wordCount": 1207,
+      "readingMinutes": 7,
+      "h2": 17,
+      "h3": 12,
       "examples": 5,
       "tasks": 9,
       "solutions": 10,
       "mermaid": 1,
       "miniProjects": 1,
       "previous": {
-        "title": "Asynchronous Programming",
+        "title": "Асинхронное программирование",
         "number": 70,
         "link": "/docs/01-javascript/70-asynchronous-programming"
       },
       "next": {
-        "title": "Promise",
+        "title": "Промис",
         "number": 72,
         "link": "/docs/01-javascript/72-promise"
       },
@@ -5841,33 +5742,33 @@ export const bookEngineData = {
       "related": [
         {
           "term": "Closure",
-          "title": "Closures",
+          "title": "Замыкания",
           "number": 28,
           "link": "/docs/01-javascript/28-closures"
         },
         {
           "term": "this",
-          "title": "this",
+          "title": "Ключевое слово `this`",
           "number": 29,
           "link": "/docs/01-javascript/29-this"
         },
         {
           "term": "Promise",
-          "title": "Promise",
+          "title": "Промис",
           "number": 72,
           "link": "/docs/01-javascript/72-promise"
         },
         {
           "term": "async/await",
-          "title": "async и await",
+          "title": "`async` и `await`",
           "number": 78,
           "link": "/docs/01-javascript/78-async-await"
         }
       ],
       "card": {
         "chapterLabel": "Глава 71",
-        "title": "Callback",
-        "reading": 6,
+        "title": "Обратный вызов",
+        "reading": 7,
         "examples": 5,
         "tasks": 9,
         "solutions": 10,
@@ -5877,28 +5778,28 @@ export const bookEngineData = {
     "docs/01-javascript/72-promise.md": {
       "path": "docs/01-javascript/72-promise.md",
       "link": "/docs/01-javascript/72-promise",
-      "title": "Promise",
+      "title": "Промис",
       "number": 72,
       "part": "JavaScript",
       "section": "Async JavaScript",
       "sectionIndex": 7,
       "chapterIndex": 3,
-      "wordCount": 1017,
-      "readingMinutes": 6,
+      "wordCount": 1189,
+      "readingMinutes": 7,
       "h2": 17,
-      "h3": 8,
+      "h3": 11,
       "examples": 5,
       "tasks": 9,
       "solutions": 10,
       "mermaid": 6,
       "miniProjects": 1,
       "previous": {
-        "title": "Callback",
+        "title": "Обратный вызов",
         "number": 71,
         "link": "/docs/01-javascript/71-callback"
       },
       "next": {
-        "title": "Event Loop",
+        "title": "Событийный цикл",
         "number": 73,
         "link": "/docs/01-javascript/73-event-loop"
       },
@@ -5915,21 +5816,21 @@ export const bookEngineData = {
       "related": [
         {
           "term": "Event Loop",
-          "title": "Event Loop",
+          "title": "Событийный цикл",
           "number": 73,
           "link": "/docs/01-javascript/73-event-loop"
         },
         {
           "term": "async/await",
-          "title": "async и await",
+          "title": "`async` и `await`",
           "number": 78,
           "link": "/docs/01-javascript/78-async-await"
         }
       ],
       "card": {
         "chapterLabel": "Глава 72",
-        "title": "Promise",
-        "reading": 6,
+        "title": "Промис",
+        "reading": 7,
         "examples": 5,
         "tasks": 9,
         "solutions": 10,
@@ -5939,28 +5840,28 @@ export const bookEngineData = {
     "docs/01-javascript/73-event-loop.md": {
       "path": "docs/01-javascript/73-event-loop.md",
       "link": "/docs/01-javascript/73-event-loop",
-      "title": "Event Loop",
+      "title": "Событийный цикл",
       "number": 73,
       "part": "JavaScript",
       "section": "Async JavaScript",
       "sectionIndex": 7,
       "chapterIndex": 4,
-      "wordCount": 983,
+      "wordCount": 1055,
       "readingMinutes": 6,
       "h2": 17,
-      "h3": 8,
+      "h3": 9,
       "examples": 5,
       "tasks": 9,
       "solutions": 10,
       "mermaid": 8,
       "miniProjects": 1,
       "previous": {
-        "title": "Promise",
+        "title": "Промис",
         "number": 72,
         "link": "/docs/01-javascript/72-promise"
       },
       "next": {
-        "title": "Web APIs",
+        "title": "Браузерные API",
         "number": 74,
         "link": "/docs/01-javascript/74-web-apis"
       },
@@ -5977,20 +5878,20 @@ export const bookEngineData = {
       "related": [
         {
           "term": "Call Stack",
-          "title": "Call Stack",
+          "title": "Стек вызовов",
           "number": 4,
           "link": "/docs/01-javascript/04-call-stack"
         },
         {
           "term": "Promise",
-          "title": "Promise",
+          "title": "Промис",
           "number": 72,
           "link": "/docs/01-javascript/72-promise"
         }
       ],
       "card": {
         "chapterLabel": "Глава 73",
-        "title": "Event Loop",
+        "title": "Событийный цикл",
         "reading": 6,
         "examples": 5,
         "tasks": 9,
@@ -6001,28 +5902,28 @@ export const bookEngineData = {
     "docs/01-javascript/74-web-apis.md": {
       "path": "docs/01-javascript/74-web-apis.md",
       "link": "/docs/01-javascript/74-web-apis",
-      "title": "Web APIs",
+      "title": "Браузерные API",
       "number": 74,
       "part": "JavaScript",
       "section": "Async JavaScript",
       "sectionIndex": 7,
       "chapterIndex": 5,
-      "wordCount": 978,
-      "readingMinutes": 6,
-      "h2": 18,
-      "h3": 9,
+      "wordCount": 1165,
+      "readingMinutes": 7,
+      "h2": 17,
+      "h3": 12,
       "examples": 5,
       "tasks": 6,
       "solutions": 10,
       "mermaid": 1,
       "miniProjects": 1,
       "previous": {
-        "title": "Event Loop",
+        "title": "Событийный цикл",
         "number": 73,
         "link": "/docs/01-javascript/73-event-loop"
       },
       "next": {
-        "title": "Microtasks",
+        "title": "Микрозадачи",
         "number": 75,
         "link": "/docs/01-javascript/75-microtasks"
       },
@@ -6039,27 +5940,27 @@ export const bookEngineData = {
       "related": [
         {
           "term": "Call Stack",
-          "title": "Call Stack",
+          "title": "Стек вызовов",
           "number": 4,
           "link": "/docs/01-javascript/04-call-stack"
         },
         {
           "term": "Promise",
-          "title": "Promise",
+          "title": "Промис",
           "number": 72,
           "link": "/docs/01-javascript/72-promise"
         },
         {
           "term": "Event Loop",
-          "title": "Event Loop",
+          "title": "Событийный цикл",
           "number": 73,
           "link": "/docs/01-javascript/73-event-loop"
         }
       ],
       "card": {
         "chapterLabel": "Глава 74",
-        "title": "Web APIs",
-        "reading": 6,
+        "title": "Браузерные API",
+        "reading": 7,
         "examples": 5,
         "tasks": 6,
         "solutions": 10,
@@ -6069,28 +5970,28 @@ export const bookEngineData = {
     "docs/01-javascript/75-microtasks.md": {
       "path": "docs/01-javascript/75-microtasks.md",
       "link": "/docs/01-javascript/75-microtasks",
-      "title": "Microtasks",
+      "title": "Микрозадачи",
       "number": 75,
       "part": "JavaScript",
       "section": "Async JavaScript",
       "sectionIndex": 7,
       "chapterIndex": 6,
-      "wordCount": 805,
-      "readingMinutes": 5,
+      "wordCount": 1009,
+      "readingMinutes": 6,
       "h2": 17,
-      "h3": 8,
+      "h3": 11,
       "examples": 5,
       "tasks": 6,
       "solutions": 10,
       "mermaid": 1,
       "miniProjects": 1,
       "previous": {
-        "title": "Web APIs",
+        "title": "Браузерные API",
         "number": 74,
         "link": "/docs/01-javascript/74-web-apis"
       },
       "next": {
-        "title": "Macrotasks",
+        "title": "Макрозадачи",
         "number": 76,
         "link": "/docs/01-javascript/76-macrotasks"
       },
@@ -6107,27 +6008,27 @@ export const bookEngineData = {
       "related": [
         {
           "term": "Call Stack",
-          "title": "Call Stack",
+          "title": "Стек вызовов",
           "number": 4,
           "link": "/docs/01-javascript/04-call-stack"
         },
         {
           "term": "Promise",
-          "title": "Promise",
+          "title": "Промис",
           "number": 72,
           "link": "/docs/01-javascript/72-promise"
         },
         {
           "term": "Event Loop",
-          "title": "Event Loop",
+          "title": "Событийный цикл",
           "number": 73,
           "link": "/docs/01-javascript/73-event-loop"
         }
       ],
       "card": {
         "chapterLabel": "Глава 75",
-        "title": "Microtasks",
-        "reading": 5,
+        "title": "Микрозадачи",
+        "reading": 6,
         "examples": 5,
         "tasks": 6,
         "solutions": 10,
@@ -6137,28 +6038,28 @@ export const bookEngineData = {
     "docs/01-javascript/76-macrotasks.md": {
       "path": "docs/01-javascript/76-macrotasks.md",
       "link": "/docs/01-javascript/76-macrotasks",
-      "title": "Macrotasks",
+      "title": "Макрозадачи",
       "number": 76,
       "part": "JavaScript",
       "section": "Async JavaScript",
       "sectionIndex": 7,
       "chapterIndex": 7,
-      "wordCount": 890,
-      "readingMinutes": 5,
+      "wordCount": 1081,
+      "readingMinutes": 7,
       "h2": 17,
-      "h3": 8,
+      "h3": 11,
       "examples": 5,
       "tasks": 6,
       "solutions": 10,
       "mermaid": 1,
       "miniProjects": 1,
       "previous": {
-        "title": "Microtasks",
+        "title": "Микрозадачи",
         "number": 75,
         "link": "/docs/01-javascript/75-microtasks"
       },
       "next": {
-        "title": "Promise API",
+        "title": "Методы `Promise`",
         "number": 77,
         "link": "/docs/01-javascript/77-promise-api"
       },
@@ -6175,27 +6076,27 @@ export const bookEngineData = {
       "related": [
         {
           "term": "Call Stack",
-          "title": "Call Stack",
+          "title": "Стек вызовов",
           "number": 4,
           "link": "/docs/01-javascript/04-call-stack"
         },
         {
           "term": "Promise",
-          "title": "Promise",
+          "title": "Промис",
           "number": 72,
           "link": "/docs/01-javascript/72-promise"
         },
         {
           "term": "Event Loop",
-          "title": "Event Loop",
+          "title": "Событийный цикл",
           "number": 73,
           "link": "/docs/01-javascript/73-event-loop"
         }
       ],
       "card": {
         "chapterLabel": "Глава 76",
-        "title": "Macrotasks",
-        "reading": 5,
+        "title": "Макрозадачи",
+        "reading": 7,
         "examples": 5,
         "tasks": 6,
         "solutions": 10,
@@ -6205,28 +6106,28 @@ export const bookEngineData = {
     "docs/01-javascript/77-promise-api.md": {
       "path": "docs/01-javascript/77-promise-api.md",
       "link": "/docs/01-javascript/77-promise-api",
-      "title": "Promise API",
+      "title": "Методы `Promise`",
       "number": 77,
       "part": "JavaScript",
       "section": "Async JavaScript",
       "sectionIndex": 7,
       "chapterIndex": 8,
-      "wordCount": 723,
-      "readingMinutes": 5,
+      "wordCount": 910,
+      "readingMinutes": 6,
       "h2": 15,
-      "h3": 7,
+      "h3": 10,
       "examples": 5,
       "tasks": 6,
       "solutions": 10,
       "mermaid": 4,
       "miniProjects": 1,
       "previous": {
-        "title": "Macrotasks",
+        "title": "Макрозадачи",
         "number": 76,
         "link": "/docs/01-javascript/76-macrotasks"
       },
       "next": {
-        "title": "async и await",
+        "title": "`async` и `await`",
         "number": 78,
         "link": "/docs/01-javascript/78-async-await"
       },
@@ -6243,27 +6144,27 @@ export const bookEngineData = {
       "related": [
         {
           "term": "Call Stack",
-          "title": "Call Stack",
+          "title": "Стек вызовов",
           "number": 4,
           "link": "/docs/01-javascript/04-call-stack"
         },
         {
           "term": "Promise",
-          "title": "Promise",
+          "title": "Промис",
           "number": 72,
           "link": "/docs/01-javascript/72-promise"
         },
         {
           "term": "Event Loop",
-          "title": "Event Loop",
+          "title": "Событийный цикл",
           "number": 73,
           "link": "/docs/01-javascript/73-event-loop"
         }
       ],
       "card": {
         "chapterLabel": "Глава 77",
-        "title": "Promise API",
-        "reading": 5,
+        "title": "Методы `Promise`",
+        "reading": 6,
         "examples": 5,
         "tasks": 6,
         "solutions": 10,
@@ -6273,28 +6174,28 @@ export const bookEngineData = {
     "docs/01-javascript/78-async-await.md": {
       "path": "docs/01-javascript/78-async-await.md",
       "link": "/docs/01-javascript/78-async-await",
-      "title": "async и await",
+      "title": "`async` и `await`",
       "number": 78,
       "part": "JavaScript",
       "section": "Async JavaScript",
       "sectionIndex": 7,
       "chapterIndex": 9,
-      "wordCount": 839,
-      "readingMinutes": 5,
+      "wordCount": 1004,
+      "readingMinutes": 6,
       "h2": 15,
-      "h3": 7,
+      "h3": 10,
       "examples": 5,
       "tasks": 6,
       "solutions": 10,
       "mermaid": 4,
       "miniProjects": 1,
       "previous": {
-        "title": "Promise API",
+        "title": "Методы `Promise`",
         "number": 77,
         "link": "/docs/01-javascript/77-promise-api"
       },
       "next": {
-        "title": "Error Handling in Asynchronous Code",
+        "title": "Обработка ошибок в асинхронном коде",
         "number": 79,
         "link": "/docs/01-javascript/79-async-error-handling"
       },
@@ -6311,21 +6212,21 @@ export const bookEngineData = {
       "related": [
         {
           "term": "Promise",
-          "title": "Promise",
+          "title": "Промис",
           "number": 72,
           "link": "/docs/01-javascript/72-promise"
         },
         {
           "term": "Event Loop",
-          "title": "Event Loop",
+          "title": "Событийный цикл",
           "number": 73,
           "link": "/docs/01-javascript/73-event-loop"
         }
       ],
       "card": {
         "chapterLabel": "Глава 78",
-        "title": "async и await",
-        "reading": 5,
+        "title": "`async` и `await`",
+        "reading": 6,
         "examples": 5,
         "tasks": 6,
         "solutions": 10,
@@ -6335,28 +6236,28 @@ export const bookEngineData = {
     "docs/01-javascript/79-async-error-handling.md": {
       "path": "docs/01-javascript/79-async-error-handling.md",
       "link": "/docs/01-javascript/79-async-error-handling",
-      "title": "Error Handling in Asynchronous Code",
+      "title": "Обработка ошибок в асинхронном коде",
       "number": 79,
       "part": "JavaScript",
       "section": "Async JavaScript",
       "sectionIndex": 7,
       "chapterIndex": 10,
-      "wordCount": 850,
-      "readingMinutes": 5,
+      "wordCount": 1015,
+      "readingMinutes": 6,
       "h2": 15,
-      "h3": 8,
+      "h3": 11,
       "examples": 5,
       "tasks": 6,
       "solutions": 10,
       "mermaid": 1,
       "miniProjects": 1,
       "previous": {
-        "title": "async и await",
+        "title": "`async` и `await`",
         "number": 78,
         "link": "/docs/01-javascript/78-async-await"
       },
       "next": {
-        "title": "Parallel Asynchronous Operations",
+        "title": "Параллельные асинхронные операции",
         "number": 80,
         "link": "/docs/01-javascript/80-parallel-async"
       },
@@ -6373,21 +6274,21 @@ export const bookEngineData = {
       "related": [
         {
           "term": "Promise",
-          "title": "Promise",
+          "title": "Промис",
           "number": 72,
           "link": "/docs/01-javascript/72-promise"
         },
         {
           "term": "async/await",
-          "title": "async и await",
+          "title": "`async` и `await`",
           "number": 78,
           "link": "/docs/01-javascript/78-async-await"
         }
       ],
       "card": {
         "chapterLabel": "Глава 79",
-        "title": "Error Handling in Asynchronous Code",
-        "reading": 5,
+        "title": "Обработка ошибок в асинхронном коде",
+        "reading": 6,
         "examples": 5,
         "tasks": 6,
         "solutions": 10,
@@ -6397,28 +6298,28 @@ export const bookEngineData = {
     "docs/01-javascript/80-parallel-async.md": {
       "path": "docs/01-javascript/80-parallel-async.md",
       "link": "/docs/01-javascript/80-parallel-async",
-      "title": "Parallel Asynchronous Operations",
+      "title": "Параллельные асинхронные операции",
       "number": 80,
       "part": "JavaScript",
       "section": "Async JavaScript",
       "sectionIndex": 7,
       "chapterIndex": 11,
-      "wordCount": 954,
-      "readingMinutes": 6,
+      "wordCount": 1201,
+      "readingMinutes": 7,
       "h2": 15,
-      "h3": 8,
+      "h3": 11,
       "examples": 5,
       "tasks": 6,
       "solutions": 10,
       "mermaid": 2,
       "miniProjects": 1,
       "previous": {
-        "title": "Error Handling in Asynchronous Code",
+        "title": "Обработка ошибок в асинхронном коде",
         "number": 79,
         "link": "/docs/01-javascript/79-async-error-handling"
       },
       "next": {
-        "title": "Iterable Protocol",
+        "title": "Протокол перебора",
         "number": 81,
         "link": "/docs/01-javascript/81-iterable-protocol"
       },
@@ -6434,22 +6335,16 @@ export const bookEngineData = {
       },
       "related": [
         {
-          "term": "Call Stack",
-          "title": "Call Stack",
-          "number": 4,
-          "link": "/docs/01-javascript/04-call-stack"
-        },
-        {
           "term": "Promise",
-          "title": "Promise",
+          "title": "Промис",
           "number": 72,
           "link": "/docs/01-javascript/72-promise"
         }
       ],
       "card": {
         "chapterLabel": "Глава 80",
-        "title": "Parallel Asynchronous Operations",
-        "reading": 6,
+        "title": "Параллельные асинхронные операции",
+        "reading": 7,
         "examples": 5,
         "tasks": 6,
         "solutions": 10,
@@ -6459,28 +6354,28 @@ export const bookEngineData = {
     "docs/01-javascript/81-iterable-protocol.md": {
       "path": "docs/01-javascript/81-iterable-protocol.md",
       "link": "/docs/01-javascript/81-iterable-protocol",
-      "title": "Iterable Protocol",
+      "title": "Протокол перебора",
       "number": 81,
       "part": "JavaScript",
       "section": "Iteration Protocols",
       "sectionIndex": 8,
       "chapterIndex": 0,
-      "wordCount": 833,
-      "readingMinutes": 5,
+      "wordCount": 1048,
+      "readingMinutes": 6,
       "h2": 15,
-      "h3": 7,
+      "h3": 10,
       "examples": 5,
       "tasks": 6,
       "solutions": 10,
       "mermaid": 1,
       "miniProjects": 1,
       "previous": {
-        "title": "Parallel Asynchronous Operations",
+        "title": "Параллельные асинхронные операции",
         "number": 80,
         "link": "/docs/01-javascript/80-parallel-async"
       },
       "next": {
-        "title": "Iterators",
+        "title": "Итераторы",
         "number": 82,
         "link": "/docs/01-javascript/82-iterators"
       },
@@ -6497,27 +6392,21 @@ export const bookEngineData = {
       "related": [
         {
           "term": "this",
-          "title": "this",
+          "title": "Ключевое слово `this`",
           "number": 29,
           "link": "/docs/01-javascript/29-this"
         },
         {
           "term": "Promise",
-          "title": "Promise",
+          "title": "Промис",
           "number": 72,
           "link": "/docs/01-javascript/72-promise"
-        },
-        {
-          "term": "Iterator",
-          "title": "Iterators",
-          "number": 82,
-          "link": "/docs/01-javascript/82-iterators"
         }
       ],
       "card": {
         "chapterLabel": "Глава 81",
-        "title": "Iterable Protocol",
-        "reading": 5,
+        "title": "Протокол перебора",
+        "reading": 6,
         "examples": 5,
         "tasks": 6,
         "solutions": 10,
@@ -6527,28 +6416,28 @@ export const bookEngineData = {
     "docs/01-javascript/82-iterators.md": {
       "path": "docs/01-javascript/82-iterators.md",
       "link": "/docs/01-javascript/82-iterators",
-      "title": "Iterators",
+      "title": "Итераторы",
       "number": 82,
       "part": "JavaScript",
       "section": "Iteration Protocols",
       "sectionIndex": 8,
       "chapterIndex": 1,
-      "wordCount": 773,
-      "readingMinutes": 5,
+      "wordCount": 939,
+      "readingMinutes": 6,
       "h2": 15,
-      "h3": 8,
+      "h3": 11,
       "examples": 5,
       "tasks": 6,
       "solutions": 10,
       "mermaid": 1,
       "miniProjects": 1,
       "previous": {
-        "title": "Iterable Protocol",
+        "title": "Протокол перебора",
         "number": 81,
         "link": "/docs/01-javascript/81-iterable-protocol"
       },
       "next": {
-        "title": "Generators",
+        "title": "Генераторы",
         "number": 83,
         "link": "/docs/01-javascript/83-generators"
       },
@@ -6565,8 +6454,8 @@ export const bookEngineData = {
       "related": [],
       "card": {
         "chapterLabel": "Глава 82",
-        "title": "Iterators",
-        "reading": 5,
+        "title": "Итераторы",
+        "reading": 6,
         "examples": 5,
         "tasks": 6,
         "solutions": 10,
@@ -6576,28 +6465,28 @@ export const bookEngineData = {
     "docs/01-javascript/83-generators.md": {
       "path": "docs/01-javascript/83-generators.md",
       "link": "/docs/01-javascript/83-generators",
-      "title": "Generators",
+      "title": "Генераторы",
       "number": 83,
       "part": "JavaScript",
       "section": "Iteration Protocols",
       "sectionIndex": 8,
       "chapterIndex": 2,
-      "wordCount": 706,
-      "readingMinutes": 4,
+      "wordCount": 868,
+      "readingMinutes": 5,
       "h2": 15,
-      "h3": 7,
+      "h3": 10,
       "examples": 5,
       "tasks": 6,
       "solutions": 10,
       "mermaid": 1,
       "miniProjects": 1,
       "previous": {
-        "title": "Iterators",
+        "title": "Итераторы",
         "number": 82,
         "link": "/docs/01-javascript/82-iterators"
       },
       "next": {
-        "title": "Custom Iteration",
+        "title": "Собственный перебор",
         "number": 84,
         "link": "/docs/01-javascript/84-custom-iteration"
       },
@@ -6611,18 +6500,11 @@ export const bookEngineData = {
         "total": 96,
         "bar": "██████████░░"
       },
-      "related": [
-        {
-          "term": "Iterator",
-          "title": "Iterators",
-          "number": 82,
-          "link": "/docs/01-javascript/82-iterators"
-        }
-      ],
+      "related": [],
       "card": {
         "chapterLabel": "Глава 83",
-        "title": "Generators",
-        "reading": 4,
+        "title": "Генераторы",
+        "reading": 5,
         "examples": 5,
         "tasks": 6,
         "solutions": 10,
@@ -6632,28 +6514,28 @@ export const bookEngineData = {
     "docs/01-javascript/84-custom-iteration.md": {
       "path": "docs/01-javascript/84-custom-iteration.md",
       "link": "/docs/01-javascript/84-custom-iteration",
-      "title": "Custom Iteration",
+      "title": "Собственный перебор",
       "number": 84,
       "part": "JavaScript",
       "section": "Iteration Protocols",
       "sectionIndex": 8,
       "chapterIndex": 3,
-      "wordCount": 829,
-      "readingMinutes": 5,
+      "wordCount": 997,
+      "readingMinutes": 6,
       "h2": 15,
-      "h3": 10,
+      "h3": 13,
       "examples": 5,
       "tasks": 6,
       "solutions": 10,
       "mermaid": 1,
       "miniProjects": 1,
       "previous": {
-        "title": "Generators",
+        "title": "Генераторы",
         "number": 83,
         "link": "/docs/01-javascript/83-generators"
       },
       "next": {
-        "title": "JavaScript Modules",
+        "title": "Модули JavaScript",
         "number": 85,
         "link": "/docs/01-javascript/85-javascript-modules"
       },
@@ -6670,21 +6552,27 @@ export const bookEngineData = {
       "related": [
         {
           "term": "this",
-          "title": "this",
+          "title": "Ключевое слово `this`",
           "number": 29,
           "link": "/docs/01-javascript/29-this"
         },
         {
-          "term": "Generator",
-          "title": "Generators",
-          "number": 83,
-          "link": "/docs/01-javascript/83-generators"
+          "term": "Promise",
+          "title": "Промис",
+          "number": 72,
+          "link": "/docs/01-javascript/72-promise"
+        },
+        {
+          "term": "Iterator",
+          "title": "Итераторы",
+          "number": 82,
+          "link": "/docs/01-javascript/82-iterators"
         }
       ],
       "card": {
         "chapterLabel": "Глава 84",
-        "title": "Custom Iteration",
-        "reading": 5,
+        "title": "Собственный перебор",
+        "reading": 6,
         "examples": 5,
         "tasks": 6,
         "solutions": 10,
@@ -6694,28 +6582,28 @@ export const bookEngineData = {
     "docs/01-javascript/85-javascript-modules.md": {
       "path": "docs/01-javascript/85-javascript-modules.md",
       "link": "/docs/01-javascript/85-javascript-modules",
-      "title": "JavaScript Modules",
+      "title": "Модули JavaScript",
       "number": 85,
       "part": "JavaScript",
       "section": "Modules",
       "sectionIndex": 9,
       "chapterIndex": 0,
-      "wordCount": 1088,
+      "wordCount": 1179,
       "readingMinutes": 7,
       "h2": 15,
-      "h3": 8,
+      "h3": 9,
       "examples": 1,
       "tasks": 7,
       "solutions": 11,
       "mermaid": 6,
       "miniProjects": 1,
       "previous": {
-        "title": "Custom Iteration",
+        "title": "Собственный перебор",
         "number": 84,
         "link": "/docs/01-javascript/84-custom-iteration"
       },
       "next": {
-        "title": "Module Systems",
+        "title": "Системы модулей",
         "number": 86,
         "link": "/docs/01-javascript/86-module-systems"
       },
@@ -6732,26 +6620,26 @@ export const bookEngineData = {
       "related": [
         {
           "term": "Promise",
-          "title": "Promise",
+          "title": "Промис",
           "number": 72,
           "link": "/docs/01-javascript/72-promise"
         },
         {
           "term": "Iterator",
-          "title": "Iterators",
+          "title": "Итераторы",
           "number": 82,
           "link": "/docs/01-javascript/82-iterators"
         },
         {
           "term": "Generator",
-          "title": "Generators",
+          "title": "Генераторы",
           "number": 83,
           "link": "/docs/01-javascript/83-generators"
         }
       ],
       "card": {
         "chapterLabel": "Глава 85",
-        "title": "JavaScript Modules",
+        "title": "Модули JavaScript",
         "reading": 7,
         "examples": 1,
         "tasks": 7,
@@ -6762,28 +6650,28 @@ export const bookEngineData = {
     "docs/01-javascript/86-module-systems.md": {
       "path": "docs/01-javascript/86-module-systems.md",
       "link": "/docs/01-javascript/86-module-systems",
-      "title": "Module Systems",
+      "title": "Системы модулей",
       "number": 86,
       "part": "JavaScript",
       "section": "Modules",
       "sectionIndex": 9,
       "chapterIndex": 1,
-      "wordCount": 947,
-      "readingMinutes": 6,
+      "wordCount": 1228,
+      "readingMinutes": 7,
       "h2": 15,
-      "h3": 8,
+      "h3": 11,
       "examples": 1,
       "tasks": 7,
       "solutions": 11,
       "mermaid": 5,
       "miniProjects": 1,
       "previous": {
-        "title": "JavaScript Modules",
+        "title": "Модули JavaScript",
         "number": 85,
         "link": "/docs/01-javascript/85-javascript-modules"
       },
       "next": {
-        "title": "Garbage Collector",
+        "title": "Сборщик мусора",
         "number": 87,
         "link": "/docs/01-javascript/87-garbage-collector"
       },
@@ -6800,21 +6688,21 @@ export const bookEngineData = {
       "related": [
         {
           "term": "Promise",
-          "title": "Promise",
+          "title": "Промис",
           "number": 72,
           "link": "/docs/01-javascript/72-promise"
         },
         {
           "term": "Modules",
-          "title": "JavaScript Modules",
+          "title": "Модули JavaScript",
           "number": 85,
           "link": "/docs/01-javascript/85-javascript-modules"
         }
       ],
       "card": {
         "chapterLabel": "Глава 86",
-        "title": "Module Systems",
-        "reading": 6,
+        "title": "Системы модулей",
+        "reading": 7,
         "examples": 1,
         "tasks": 7,
         "solutions": 11,
@@ -6824,28 +6712,28 @@ export const bookEngineData = {
     "docs/01-javascript/87-garbage-collector.md": {
       "path": "docs/01-javascript/87-garbage-collector.md",
       "link": "/docs/01-javascript/87-garbage-collector",
-      "title": "Garbage Collector",
+      "title": "Сборщик мусора",
       "number": 87,
       "part": "JavaScript",
       "section": "Memory Management",
       "sectionIndex": 10,
       "chapterIndex": 0,
-      "wordCount": 1064,
-      "readingMinutes": 6,
+      "wordCount": 1162,
+      "readingMinutes": 7,
       "h2": 15,
-      "h3": 8,
+      "h3": 9,
       "examples": 5,
       "tasks": 6,
       "solutions": 11,
       "mermaid": 9,
       "miniProjects": 1,
       "previous": {
-        "title": "Module Systems",
+        "title": "Системы модулей",
         "number": 86,
         "link": "/docs/01-javascript/86-module-systems"
       },
       "next": {
-        "title": "Memory Management",
+        "title": "Управление памятью",
         "number": 88,
         "link": "/docs/01-javascript/88-memory-management"
       },
@@ -6862,8 +6750,8 @@ export const bookEngineData = {
       "related": [],
       "card": {
         "chapterLabel": "Глава 87",
-        "title": "Garbage Collector",
-        "reading": 6,
+        "title": "Сборщик мусора",
+        "reading": 7,
         "examples": 5,
         "tasks": 6,
         "solutions": 11,
@@ -6873,28 +6761,28 @@ export const bookEngineData = {
     "docs/01-javascript/88-memory-management.md": {
       "path": "docs/01-javascript/88-memory-management.md",
       "link": "/docs/01-javascript/88-memory-management",
-      "title": "Memory Management",
+      "title": "Управление памятью",
       "number": 88,
       "part": "JavaScript",
       "section": "Memory Management",
       "sectionIndex": 10,
       "chapterIndex": 1,
-      "wordCount": 1104,
-      "readingMinutes": 7,
+      "wordCount": 1326,
+      "readingMinutes": 8,
       "h2": 15,
-      "h3": 14,
+      "h3": 17,
       "examples": 5,
       "tasks": 6,
       "solutions": 11,
       "mermaid": 7,
       "miniProjects": 1,
       "previous": {
-        "title": "Garbage Collector",
+        "title": "Сборщик мусора",
         "number": 87,
         "link": "/docs/01-javascript/87-garbage-collector"
       },
       "next": {
-        "title": "Performance",
+        "title": "Производительность",
         "number": 89,
         "link": "/docs/01-javascript/89-performance"
       },
@@ -6910,22 +6798,16 @@ export const bookEngineData = {
       },
       "related": [
         {
-          "term": "Closure",
-          "title": "Closures",
-          "number": 28,
-          "link": "/docs/01-javascript/28-closures"
-        },
-        {
           "term": "Garbage Collector",
-          "title": "Garbage Collector",
+          "title": "Сборщик мусора",
           "number": 87,
           "link": "/docs/01-javascript/87-garbage-collector"
         }
       ],
       "card": {
         "chapterLabel": "Глава 88",
-        "title": "Memory Management",
-        "reading": 7,
+        "title": "Управление памятью",
+        "reading": 8,
         "examples": 5,
         "tasks": 6,
         "solutions": 11,
@@ -6935,28 +6817,28 @@ export const bookEngineData = {
     "docs/01-javascript/89-performance.md": {
       "path": "docs/01-javascript/89-performance.md",
       "link": "/docs/01-javascript/89-performance",
-      "title": "Performance",
+      "title": "Производительность",
       "number": 89,
       "part": "JavaScript",
       "section": "Engineering Practice",
       "sectionIndex": 11,
       "chapterIndex": 0,
-      "wordCount": 836,
-      "readingMinutes": 5,
+      "wordCount": 960,
+      "readingMinutes": 6,
       "h2": 15,
-      "h3": 4,
+      "h3": 5,
       "examples": 5,
       "tasks": 6,
       "solutions": 10,
       "mermaid": 3,
       "miniProjects": 1,
       "previous": {
-        "title": "Memory Management",
+        "title": "Управление памятью",
         "number": 88,
         "link": "/docs/01-javascript/88-memory-management"
       },
       "next": {
-        "title": "Debugging",
+        "title": "Отладка",
         "number": 90,
         "link": "/docs/01-javascript/90-debugging"
       },
@@ -6973,15 +6855,15 @@ export const bookEngineData = {
       "related": [
         {
           "term": "Date",
-          "title": "Date",
+          "title": "Дата и время",
           "number": 95,
           "link": "/docs/01-javascript/95-date"
         }
       ],
       "card": {
         "chapterLabel": "Глава 89",
-        "title": "Performance",
-        "reading": 5,
+        "title": "Производительность",
+        "reading": 6,
         "examples": 5,
         "tasks": 6,
         "solutions": 10,
@@ -6991,28 +6873,28 @@ export const bookEngineData = {
     "docs/01-javascript/90-debugging.md": {
       "path": "docs/01-javascript/90-debugging.md",
       "link": "/docs/01-javascript/90-debugging",
-      "title": "Debugging",
+      "title": "Отладка",
       "number": 90,
       "part": "JavaScript",
       "section": "Engineering Practice",
       "sectionIndex": 11,
       "chapterIndex": 1,
-      "wordCount": 999,
-      "readingMinutes": 6,
+      "wordCount": 1098,
+      "readingMinutes": 7,
       "h2": 15,
-      "h3": 9,
+      "h3": 10,
       "examples": 5,
       "tasks": 6,
       "solutions": 10,
       "mermaid": 3,
       "miniProjects": 1,
       "previous": {
-        "title": "Performance",
+        "title": "Производительность",
         "number": 89,
         "link": "/docs/01-javascript/89-performance"
       },
       "next": {
-        "title": "Modern JavaScript Features",
+        "title": "Возможности современного JavaScript",
         "number": 91,
         "link": "/docs/01-javascript/91-modern-javascript"
       },
@@ -7029,8 +6911,8 @@ export const bookEngineData = {
       "related": [],
       "card": {
         "chapterLabel": "Глава 90",
-        "title": "Debugging",
-        "reading": 6,
+        "title": "Отладка",
+        "reading": 7,
         "examples": 5,
         "tasks": 6,
         "solutions": 10,
@@ -7040,28 +6922,28 @@ export const bookEngineData = {
     "docs/01-javascript/91-modern-javascript.md": {
       "path": "docs/01-javascript/91-modern-javascript.md",
       "link": "/docs/01-javascript/91-modern-javascript",
-      "title": "Modern JavaScript Features",
+      "title": "Возможности современного JavaScript",
       "number": 91,
       "part": "JavaScript",
       "section": "JavaScript Conclusion",
       "sectionIndex": 12,
       "chapterIndex": 0,
-      "wordCount": 761,
+      "wordCount": 860,
       "readingMinutes": 5,
       "h2": 14,
-      "h3": 6,
+      "h3": 7,
       "examples": 5,
       "tasks": 6,
       "solutions": 10,
       "mermaid": 2,
       "miniProjects": 1,
       "previous": {
-        "title": "Debugging",
+        "title": "Отладка",
         "number": 90,
         "link": "/docs/01-javascript/90-debugging"
       },
       "next": {
-        "title": "JavaScript Best Practices",
+        "title": "Хорошие практики JavaScript",
         "number": 92,
         "link": "/docs/01-javascript/92-javascript-best-practices"
       },
@@ -7078,26 +6960,26 @@ export const bookEngineData = {
       "related": [
         {
           "term": "this",
-          "title": "this",
+          "title": "Ключевое слово `this`",
           "number": 29,
           "link": "/docs/01-javascript/29-this"
         },
         {
           "term": "Promise",
-          "title": "Promise",
+          "title": "Промис",
           "number": 72,
           "link": "/docs/01-javascript/72-promise"
         },
         {
           "term": "async/await",
-          "title": "async и await",
+          "title": "`async` и `await`",
           "number": 78,
           "link": "/docs/01-javascript/78-async-await"
         }
       ],
       "card": {
         "chapterLabel": "Глава 91",
-        "title": "Modern JavaScript Features",
+        "title": "Возможности современного JavaScript",
         "reading": 5,
         "examples": 5,
         "tasks": 6,
@@ -7108,28 +6990,28 @@ export const bookEngineData = {
     "docs/01-javascript/92-javascript-best-practices.md": {
       "path": "docs/01-javascript/92-javascript-best-practices.md",
       "link": "/docs/01-javascript/92-javascript-best-practices",
-      "title": "JavaScript Best Practices",
+      "title": "Хорошие практики JavaScript",
       "number": 92,
       "part": "JavaScript",
       "section": "JavaScript Conclusion",
       "sectionIndex": 12,
       "chapterIndex": 1,
-      "wordCount": 784,
-      "readingMinutes": 5,
+      "wordCount": 1022,
+      "readingMinutes": 6,
       "h2": 14,
-      "h3": 7,
+      "h3": 10,
       "examples": 5,
       "tasks": 6,
       "solutions": 10,
       "mermaid": 2,
       "miniProjects": 1,
       "previous": {
-        "title": "Modern JavaScript Features",
+        "title": "Возможности современного JavaScript",
         "number": 91,
         "link": "/docs/01-javascript/91-modern-javascript"
       },
       "next": {
-        "title": "Error Objects",
+        "title": "Объекты ошибок",
         "number": 93,
         "link": "/docs/01-javascript/93-error-objects"
       },
@@ -7146,8 +7028,8 @@ export const bookEngineData = {
       "related": [],
       "card": {
         "chapterLabel": "Глава 92",
-        "title": "JavaScript Best Practices",
-        "reading": 5,
+        "title": "Хорошие практики JavaScript",
+        "reading": 6,
         "examples": 5,
         "tasks": 6,
         "solutions": 10,
@@ -7157,23 +7039,23 @@ export const bookEngineData = {
     "docs/01-javascript/93-error-objects.md": {
       "path": "docs/01-javascript/93-error-objects.md",
       "link": "/docs/01-javascript/93-error-objects",
-      "title": "Error Objects",
+      "title": "Объекты ошибок",
       "number": 93,
       "part": "JavaScript",
       "section": "JavaScript Conclusion",
       "sectionIndex": 12,
       "chapterIndex": 2,
-      "wordCount": 866,
-      "readingMinutes": 5,
+      "wordCount": 951,
+      "readingMinutes": 6,
       "h2": 15,
-      "h3": 9,
+      "h3": 10,
       "examples": 5,
       "tasks": 6,
       "solutions": 10,
       "mermaid": 1,
       "miniProjects": 1,
       "previous": {
-        "title": "JavaScript Best Practices",
+        "title": "Хорошие практики JavaScript",
         "number": 92,
         "link": "/docs/01-javascript/92-javascript-best-practices"
       },
@@ -7195,7 +7077,7 @@ export const bookEngineData = {
       "related": [
         {
           "term": "this",
-          "title": "this",
+          "title": "Ключевое слово `this`",
           "number": 29,
           "link": "/docs/01-javascript/29-this"
         },
@@ -7208,8 +7090,8 @@ export const bookEngineData = {
       ],
       "card": {
         "chapterLabel": "Глава 93",
-        "title": "Error Objects",
-        "reading": 5,
+        "title": "Объекты ошибок",
+        "reading": 6,
         "examples": 5,
         "tasks": 6,
         "solutions": 10,
@@ -7225,22 +7107,22 @@ export const bookEngineData = {
       "section": "JavaScript Conclusion",
       "sectionIndex": 12,
       "chapterIndex": 3,
-      "wordCount": 813,
-      "readingMinutes": 5,
+      "wordCount": 940,
+      "readingMinutes": 6,
       "h2": 15,
-      "h3": 8,
+      "h3": 9,
       "examples": 6,
       "tasks": 6,
       "solutions": 10,
       "mermaid": 1,
       "miniProjects": 1,
       "previous": {
-        "title": "Error Objects",
+        "title": "Объекты ошибок",
         "number": 93,
         "link": "/docs/01-javascript/93-error-objects"
       },
       "next": {
-        "title": "Date",
+        "title": "Дата и время",
         "number": 95,
         "link": "/docs/01-javascript/95-date"
       },
@@ -7257,7 +7139,7 @@ export const bookEngineData = {
       "related": [
         {
           "term": "Date",
-          "title": "Date",
+          "title": "Дата и время",
           "number": 95,
           "link": "/docs/01-javascript/95-date"
         }
@@ -7265,7 +7147,7 @@ export const bookEngineData = {
       "card": {
         "chapterLabel": "Глава 94",
         "title": "JSON",
-        "reading": 5,
+        "reading": 6,
         "examples": 6,
         "tasks": 6,
         "solutions": 10,
@@ -7275,16 +7157,16 @@ export const bookEngineData = {
     "docs/01-javascript/95-date.md": {
       "path": "docs/01-javascript/95-date.md",
       "link": "/docs/01-javascript/95-date",
-      "title": "Date",
+      "title": "Дата и время",
       "number": 95,
       "part": "JavaScript",
       "section": "JavaScript Conclusion",
       "sectionIndex": 12,
       "chapterIndex": 4,
-      "wordCount": 812,
-      "readingMinutes": 5,
+      "wordCount": 1016,
+      "readingMinutes": 6,
       "h2": 15,
-      "h3": 9,
+      "h3": 12,
       "examples": 7,
       "tasks": 6,
       "solutions": 10,
@@ -7320,8 +7202,8 @@ export const bookEngineData = {
       ],
       "card": {
         "chapterLabel": "Глава 95",
-        "title": "Date",
-        "reading": 5,
+        "title": "Дата и время",
+        "reading": 6,
         "examples": 7,
         "tasks": 6,
         "solutions": 10,
@@ -7337,22 +7219,22 @@ export const bookEngineData = {
       "section": "JavaScript Conclusion",
       "sectionIndex": 12,
       "chapterIndex": 5,
-      "wordCount": 925,
+      "wordCount": 1057,
       "readingMinutes": 6,
       "h2": 15,
-      "h3": 8,
+      "h3": 9,
       "examples": 5,
       "tasks": 6,
       "solutions": 10,
       "mermaid": 4,
       "miniProjects": 1,
       "previous": {
-        "title": "Date",
+        "title": "Дата и время",
         "number": 95,
         "link": "/docs/01-javascript/95-date"
       },
       "next": {
-        "title": "TypeScript Compiler",
+        "title": "Компилятор TypeScript",
         "number": 97,
         "link": "/docs/02-typescript/97-typescript-compiler"
       },
@@ -7387,16 +7269,16 @@ export const bookEngineData = {
     "docs/02-typescript/97-typescript-compiler.md": {
       "path": "docs/02-typescript/97-typescript-compiler.md",
       "link": "/docs/02-typescript/97-typescript-compiler",
-      "title": "TypeScript Compiler",
+      "title": "Компилятор TypeScript",
       "number": 97,
       "part": "TypeScript",
       "section": "Компилятор и граница TypeScript",
       "sectionIndex": 0,
       "chapterIndex": 0,
-      "wordCount": 1042,
-      "readingMinutes": 6,
+      "wordCount": 1281,
+      "readingMinutes": 8,
       "h2": 15,
-      "h3": 9,
+      "h3": 12,
       "examples": 1,
       "tasks": 6,
       "solutions": 10,
@@ -7408,7 +7290,7 @@ export const bookEngineData = {
         "link": "/docs/01-javascript/96-why-typescript"
       },
       "next": {
-        "title": "Type Checking vs Runtime",
+        "title": "Проверка типов и выполнение",
         "number": 98,
         "link": "/docs/02-typescript/98-type-checking-vs-runtime"
       },
@@ -7425,8 +7307,8 @@ export const bookEngineData = {
       "related": [],
       "card": {
         "chapterLabel": "Глава 97",
-        "title": "TypeScript Compiler",
-        "reading": 6,
+        "title": "Компилятор TypeScript",
+        "reading": 8,
         "examples": 1,
         "tasks": 6,
         "solutions": 10,
@@ -7436,28 +7318,28 @@ export const bookEngineData = {
     "docs/02-typescript/98-type-checking-vs-runtime.md": {
       "path": "docs/02-typescript/98-type-checking-vs-runtime.md",
       "link": "/docs/02-typescript/98-type-checking-vs-runtime",
-      "title": "Type Checking vs Runtime",
+      "title": "Проверка типов и выполнение",
       "number": 98,
       "part": "TypeScript",
       "section": "Компилятор и граница TypeScript",
       "sectionIndex": 0,
       "chapterIndex": 1,
-      "wordCount": 1030,
-      "readingMinutes": 6,
+      "wordCount": 1274,
+      "readingMinutes": 8,
       "h2": 15,
-      "h3": 9,
+      "h3": 12,
       "examples": 1,
       "tasks": 6,
       "solutions": 10,
       "mermaid": 1,
       "miniProjects": 1,
       "previous": {
-        "title": "TypeScript Compiler",
+        "title": "Компилятор TypeScript",
         "number": 97,
         "link": "/docs/02-typescript/97-typescript-compiler"
       },
       "next": {
-        "title": "Type Erasure",
+        "title": "Стирание типов",
         "number": 99,
         "link": "/docs/02-typescript/99-type-erasure"
       },
@@ -7471,11 +7353,18 @@ export const bookEngineData = {
         "total": 63,
         "bar": "█░░░░░░░░░░░"
       },
-      "related": [],
+      "related": [
+        {
+          "term": "JSON",
+          "title": "JSON",
+          "number": 94,
+          "link": "/docs/01-javascript/94-json"
+        }
+      ],
       "card": {
         "chapterLabel": "Глава 98",
-        "title": "Type Checking vs Runtime",
-        "reading": 6,
+        "title": "Проверка типов и выполнение",
+        "reading": 8,
         "examples": 1,
         "tasks": 6,
         "solutions": 10,
@@ -7485,23 +7374,23 @@ export const bookEngineData = {
     "docs/02-typescript/99-type-erasure.md": {
       "path": "docs/02-typescript/99-type-erasure.md",
       "link": "/docs/02-typescript/99-type-erasure",
-      "title": "Type Erasure",
+      "title": "Стирание типов",
       "number": 99,
       "part": "TypeScript",
       "section": "Компилятор и граница TypeScript",
       "sectionIndex": 0,
       "chapterIndex": 2,
-      "wordCount": 899,
-      "readingMinutes": 5,
+      "wordCount": 1116,
+      "readingMinutes": 7,
       "h2": 15,
-      "h3": 10,
+      "h3": 13,
       "examples": 1,
       "tasks": 6,
       "solutions": 10,
       "mermaid": 3,
       "miniProjects": 1,
       "previous": {
-        "title": "Type Checking vs Runtime",
+        "title": "Проверка типов и выполнение",
         "number": 98,
         "link": "/docs/02-typescript/98-type-checking-vs-runtime"
       },
@@ -7523,8 +7412,8 @@ export const bookEngineData = {
       "related": [],
       "card": {
         "chapterLabel": "Глава 99",
-        "title": "Type Erasure",
-        "reading": 5,
+        "title": "Стирание типов",
+        "reading": 7,
         "examples": 1,
         "tasks": 6,
         "solutions": 10,
@@ -7540,22 +7429,22 @@ export const bookEngineData = {
       "section": "Компилятор и граница TypeScript",
       "sectionIndex": 0,
       "chapterIndex": 3,
-      "wordCount": 948,
+      "wordCount": 1056,
       "readingMinutes": 6,
       "h2": 15,
-      "h3": 10,
+      "h3": 11,
       "examples": 1,
       "tasks": 6,
       "solutions": 10,
       "mermaid": 1,
       "miniProjects": 1,
       "previous": {
-        "title": "Type Erasure",
+        "title": "Стирание типов",
         "number": 99,
         "link": "/docs/02-typescript/99-type-erasure"
       },
       "next": {
-        "title": "strict mode",
+        "title": "Строгий режим",
         "number": 101,
         "link": "/docs/02-typescript/101-strict-mode"
       },
@@ -7583,16 +7472,16 @@ export const bookEngineData = {
     "docs/02-typescript/101-strict-mode.md": {
       "path": "docs/02-typescript/101-strict-mode.md",
       "link": "/docs/02-typescript/101-strict-mode",
-      "title": "strict mode",
+      "title": "Строгий режим",
       "number": 101,
       "part": "TypeScript",
       "section": "Компилятор и граница TypeScript",
       "sectionIndex": 0,
       "chapterIndex": 4,
-      "wordCount": 1035,
-      "readingMinutes": 6,
+      "wordCount": 1306,
+      "readingMinutes": 8,
       "h2": 15,
-      "h3": 10,
+      "h3": 13,
       "examples": 1,
       "tasks": 6,
       "solutions": 10,
@@ -7604,7 +7493,7 @@ export const bookEngineData = {
         "link": "/docs/02-typescript/100-tsconfig-json"
       },
       "next": {
-        "title": "Type Annotations and Type Inference",
+        "title": "Аннотации типов и вывод типов",
         "number": 102,
         "link": "/docs/02-typescript/102-type-annotations-and-type-inference"
       },
@@ -7621,8 +7510,8 @@ export const bookEngineData = {
       "related": [],
       "card": {
         "chapterLabel": "Глава 101",
-        "title": "strict mode",
-        "reading": 6,
+        "title": "Строгий режим",
+        "reading": 8,
         "examples": 1,
         "tasks": 6,
         "solutions": 10,
@@ -7632,28 +7521,28 @@ export const bookEngineData = {
     "docs/02-typescript/102-type-annotations-and-type-inference.md": {
       "path": "docs/02-typescript/102-type-annotations-and-type-inference.md",
       "link": "/docs/02-typescript/102-type-annotations-and-type-inference",
-      "title": "Type Annotations and Type Inference",
+      "title": "Аннотации типов и вывод типов",
       "number": 102,
       "part": "TypeScript",
       "section": "Базовый словарь типов",
       "sectionIndex": 1,
       "chapterIndex": 0,
-      "wordCount": 851,
-      "readingMinutes": 5,
+      "wordCount": 1177,
+      "readingMinutes": 7,
       "h2": 15,
-      "h3": 9,
+      "h3": 14,
       "examples": 1,
       "tasks": 6,
       "solutions": 10,
       "mermaid": 1,
       "miniProjects": 1,
       "previous": {
-        "title": "strict mode",
+        "title": "Строгий режим",
         "number": 101,
         "link": "/docs/02-typescript/101-strict-mode"
       },
       "next": {
-        "title": "Primitive Types",
+        "title": "Примитивные типы",
         "number": 103,
         "link": "/docs/02-typescript/103-primitive-types"
       },
@@ -7667,11 +7556,18 @@ export const bookEngineData = {
         "total": 63,
         "bar": "█░░░░░░░░░░░"
       },
-      "related": [],
+      "related": [
+        {
+          "term": "JSON",
+          "title": "JSON",
+          "number": 94,
+          "link": "/docs/01-javascript/94-json"
+        }
+      ],
       "card": {
         "chapterLabel": "Глава 102",
-        "title": "Type Annotations and Type Inference",
-        "reading": 5,
+        "title": "Аннотации типов и вывод типов",
+        "reading": 7,
         "examples": 1,
         "tasks": 6,
         "solutions": 10,
@@ -7681,28 +7577,28 @@ export const bookEngineData = {
     "docs/02-typescript/103-primitive-types.md": {
       "path": "docs/02-typescript/103-primitive-types.md",
       "link": "/docs/02-typescript/103-primitive-types",
-      "title": "Primitive Types",
+      "title": "Примитивные типы",
       "number": 103,
       "part": "TypeScript",
       "section": "Базовый словарь типов",
       "sectionIndex": 1,
       "chapterIndex": 1,
-      "wordCount": 879,
-      "readingMinutes": 5,
+      "wordCount": 1213,
+      "readingMinutes": 7,
       "h2": 15,
-      "h3": 9,
+      "h3": 15,
       "examples": 1,
       "tasks": 7,
       "solutions": 11,
       "mermaid": 1,
       "miniProjects": 1,
       "previous": {
-        "title": "Type Annotations and Type Inference",
+        "title": "Аннотации типов и вывод типов",
         "number": 102,
         "link": "/docs/02-typescript/102-type-annotations-and-type-inference"
       },
       "next": {
-        "title": "any и unknown",
+        "title": "`any` и `unknown`",
         "number": 104,
         "link": "/docs/02-typescript/104-any-and-unknown"
       },
@@ -7726,8 +7622,8 @@ export const bookEngineData = {
       ],
       "card": {
         "chapterLabel": "Глава 103",
-        "title": "Primitive Types",
-        "reading": 5,
+        "title": "Примитивные типы",
+        "reading": 7,
         "examples": 1,
         "tasks": 7,
         "solutions": 11,
@@ -7737,28 +7633,28 @@ export const bookEngineData = {
     "docs/02-typescript/104-any-and-unknown.md": {
       "path": "docs/02-typescript/104-any-and-unknown.md",
       "link": "/docs/02-typescript/104-any-and-unknown",
-      "title": "any и unknown",
+      "title": "`any` и `unknown`",
       "number": 104,
       "part": "TypeScript",
       "section": "Базовый словарь типов",
       "sectionIndex": 1,
       "chapterIndex": 2,
-      "wordCount": 790,
-      "readingMinutes": 5,
+      "wordCount": 1162,
+      "readingMinutes": 7,
       "h2": 15,
-      "h3": 9,
+      "h3": 14,
       "examples": 1,
       "tasks": 6,
       "solutions": 10,
       "mermaid": 1,
       "miniProjects": 1,
       "previous": {
-        "title": "Primitive Types",
+        "title": "Примитивные типы",
         "number": 103,
         "link": "/docs/02-typescript/103-primitive-types"
       },
       "next": {
-        "title": "void и never",
+        "title": "`void` и `never`",
         "number": 105,
         "link": "/docs/02-typescript/105-void-and-never"
       },
@@ -7774,6 +7670,12 @@ export const bookEngineData = {
       },
       "related": [
         {
+          "term": "Promise",
+          "title": "Промис",
+          "number": 72,
+          "link": "/docs/01-javascript/72-promise"
+        },
+        {
           "term": "JSON",
           "title": "JSON",
           "number": 94,
@@ -7782,8 +7684,8 @@ export const bookEngineData = {
       ],
       "card": {
         "chapterLabel": "Глава 104",
-        "title": "any и unknown",
-        "reading": 5,
+        "title": "`any` и `unknown`",
+        "reading": 7,
         "examples": 1,
         "tasks": 6,
         "solutions": 10,
@@ -7793,28 +7695,28 @@ export const bookEngineData = {
     "docs/02-typescript/105-void-and-never.md": {
       "path": "docs/02-typescript/105-void-and-never.md",
       "link": "/docs/02-typescript/105-void-and-never",
-      "title": "void и never",
+      "title": "`void` и `never`",
       "number": 105,
       "part": "TypeScript",
       "section": "Базовый словарь типов",
       "sectionIndex": 1,
       "chapterIndex": 3,
-      "wordCount": 807,
-      "readingMinutes": 5,
+      "wordCount": 1165,
+      "readingMinutes": 7,
       "h2": 15,
-      "h3": 9,
+      "h3": 14,
       "examples": 1,
       "tasks": 6,
       "solutions": 10,
       "mermaid": 1,
       "miniProjects": 1,
       "previous": {
-        "title": "any и unknown",
+        "title": "`any` и `unknown`",
         "number": 104,
         "link": "/docs/02-typescript/104-any-and-unknown"
       },
       "next": {
-        "title": "Arrays",
+        "title": "Массивы",
         "number": 106,
         "link": "/docs/02-typescript/106-arrays"
       },
@@ -7831,8 +7733,8 @@ export const bookEngineData = {
       "related": [],
       "card": {
         "chapterLabel": "Глава 105",
-        "title": "void и never",
-        "reading": 5,
+        "title": "`void` и `never`",
+        "reading": 7,
         "examples": 1,
         "tasks": 6,
         "solutions": 10,
@@ -7842,28 +7744,28 @@ export const bookEngineData = {
     "docs/02-typescript/106-arrays.md": {
       "path": "docs/02-typescript/106-arrays.md",
       "link": "/docs/02-typescript/106-arrays",
-      "title": "Arrays",
+      "title": "Массивы",
       "number": 106,
       "part": "TypeScript",
       "section": "Базовый словарь типов",
       "sectionIndex": 1,
       "chapterIndex": 4,
-      "wordCount": 836,
-      "readingMinutes": 5,
+      "wordCount": 1174,
+      "readingMinutes": 7,
       "h2": 15,
-      "h3": 9,
+      "h3": 15,
       "examples": 1,
       "tasks": 6,
       "solutions": 10,
       "mermaid": 1,
       "miniProjects": 1,
       "previous": {
-        "title": "void и never",
+        "title": "`void` и `never`",
         "number": 105,
         "link": "/docs/02-typescript/105-void-and-never"
       },
       "next": {
-        "title": "Tuples",
+        "title": "Кортежи",
         "number": 107,
         "link": "/docs/02-typescript/107-tuples"
       },
@@ -7877,11 +7779,18 @@ export const bookEngineData = {
         "total": 63,
         "bar": "██░░░░░░░░░░"
       },
-      "related": [],
+      "related": [
+        {
+          "term": "JSON",
+          "title": "JSON",
+          "number": 94,
+          "link": "/docs/01-javascript/94-json"
+        }
+      ],
       "card": {
         "chapterLabel": "Глава 106",
-        "title": "Arrays",
-        "reading": 5,
+        "title": "Массивы",
+        "reading": 7,
         "examples": 1,
         "tasks": 6,
         "solutions": 10,
@@ -7891,28 +7800,28 @@ export const bookEngineData = {
     "docs/02-typescript/107-tuples.md": {
       "path": "docs/02-typescript/107-tuples.md",
       "link": "/docs/02-typescript/107-tuples",
-      "title": "Tuples",
+      "title": "Кортежи",
       "number": 107,
       "part": "TypeScript",
       "section": "Базовый словарь типов",
       "sectionIndex": 1,
       "chapterIndex": 5,
-      "wordCount": 700,
-      "readingMinutes": 4,
+      "wordCount": 1028,
+      "readingMinutes": 6,
       "h2": 15,
-      "h3": 8,
+      "h3": 14,
       "examples": 1,
       "tasks": 6,
       "solutions": 10,
       "mermaid": 1,
       "miniProjects": 1,
       "previous": {
-        "title": "Arrays",
+        "title": "Массивы",
         "number": 106,
         "link": "/docs/02-typescript/106-arrays"
       },
       "next": {
-        "title": "Object Types",
+        "title": "Объектные типы",
         "number": 108,
         "link": "/docs/02-typescript/108-object-types"
       },
@@ -7926,11 +7835,18 @@ export const bookEngineData = {
         "total": 63,
         "bar": "██░░░░░░░░░░"
       },
-      "related": [],
+      "related": [
+        {
+          "term": "Promise",
+          "title": "Промис",
+          "number": 72,
+          "link": "/docs/01-javascript/72-promise"
+        }
+      ],
       "card": {
         "chapterLabel": "Глава 107",
-        "title": "Tuples",
-        "reading": 4,
+        "title": "Кортежи",
+        "reading": 6,
         "examples": 1,
         "tasks": 6,
         "solutions": 10,
@@ -7940,28 +7856,28 @@ export const bookEngineData = {
     "docs/02-typescript/108-object-types.md": {
       "path": "docs/02-typescript/108-object-types.md",
       "link": "/docs/02-typescript/108-object-types",
-      "title": "Object Types",
+      "title": "Объектные типы",
       "number": 108,
       "part": "TypeScript",
       "section": "Объектные контракты",
       "sectionIndex": 2,
       "chapterIndex": 0,
-      "wordCount": 738,
-      "readingMinutes": 5,
+      "wordCount": 1089,
+      "readingMinutes": 7,
       "h2": 15,
-      "h3": 9,
+      "h3": 14,
       "examples": 1,
       "tasks": 6,
       "solutions": 10,
       "mermaid": 1,
       "miniProjects": 1,
       "previous": {
-        "title": "Tuples",
+        "title": "Кортежи",
         "number": 107,
         "link": "/docs/02-typescript/107-tuples"
       },
       "next": {
-        "title": "Optional and Readonly Properties",
+        "title": "Необязательные и неизменяемые свойства",
         "number": 109,
         "link": "/docs/02-typescript/109-optional-and-readonly-properties"
       },
@@ -7978,8 +7894,8 @@ export const bookEngineData = {
       "related": [],
       "card": {
         "chapterLabel": "Глава 108",
-        "title": "Object Types",
-        "reading": 5,
+        "title": "Объектные типы",
+        "reading": 7,
         "examples": 1,
         "tasks": 6,
         "solutions": 10,
@@ -7989,28 +7905,28 @@ export const bookEngineData = {
     "docs/02-typescript/109-optional-and-readonly-properties.md": {
       "path": "docs/02-typescript/109-optional-and-readonly-properties.md",
       "link": "/docs/02-typescript/109-optional-and-readonly-properties",
-      "title": "Optional and Readonly Properties",
+      "title": "Необязательные и неизменяемые свойства",
       "number": 109,
       "part": "TypeScript",
       "section": "Объектные контракты",
       "sectionIndex": 2,
       "chapterIndex": 1,
-      "wordCount": 782,
-      "readingMinutes": 5,
+      "wordCount": 1114,
+      "readingMinutes": 7,
       "h2": 15,
-      "h3": 9,
+      "h3": 14,
       "examples": 1,
       "tasks": 6,
       "solutions": 10,
       "mermaid": 1,
       "miniProjects": 1,
       "previous": {
-        "title": "Object Types",
+        "title": "Объектные типы",
         "number": 108,
         "link": "/docs/02-typescript/108-object-types"
       },
       "next": {
-        "title": "Index Signatures",
+        "title": "Индексные сигнатуры",
         "number": 110,
         "link": "/docs/02-typescript/110-index-signatures"
       },
@@ -8034,8 +7950,8 @@ export const bookEngineData = {
       ],
       "card": {
         "chapterLabel": "Глава 109",
-        "title": "Optional and Readonly Properties",
-        "reading": 5,
+        "title": "Необязательные и неизменяемые свойства",
+        "reading": 7,
         "examples": 1,
         "tasks": 6,
         "solutions": 10,
@@ -8045,28 +7961,28 @@ export const bookEngineData = {
     "docs/02-typescript/110-index-signatures.md": {
       "path": "docs/02-typescript/110-index-signatures.md",
       "link": "/docs/02-typescript/110-index-signatures",
-      "title": "Index Signatures",
+      "title": "Индексные сигнатуры",
       "number": 110,
       "part": "TypeScript",
       "section": "Объектные контракты",
       "sectionIndex": 2,
       "chapterIndex": 2,
-      "wordCount": 803,
-      "readingMinutes": 5,
+      "wordCount": 997,
+      "readingMinutes": 6,
       "h2": 15,
-      "h3": 9,
+      "h3": 12,
       "examples": 1,
       "tasks": 6,
       "solutions": 10,
       "mermaid": 1,
       "miniProjects": 1,
       "previous": {
-        "title": "Optional and Readonly Properties",
+        "title": "Необязательные и неизменяемые свойства",
         "number": 109,
         "link": "/docs/02-typescript/109-optional-and-readonly-properties"
       },
       "next": {
-        "title": "Type Alias",
+        "title": "Псевдоним типа",
         "number": 111,
         "link": "/docs/02-typescript/111-type-alias"
       },
@@ -8083,8 +7999,8 @@ export const bookEngineData = {
       "related": [],
       "card": {
         "chapterLabel": "Глава 110",
-        "title": "Index Signatures",
-        "reading": 5,
+        "title": "Индексные сигнатуры",
+        "reading": 6,
         "examples": 1,
         "tasks": 6,
         "solutions": 10,
@@ -8094,28 +8010,28 @@ export const bookEngineData = {
     "docs/02-typescript/111-type-alias.md": {
       "path": "docs/02-typescript/111-type-alias.md",
       "link": "/docs/02-typescript/111-type-alias",
-      "title": "Type Alias",
+      "title": "Псевдоним типа",
       "number": 111,
       "part": "TypeScript",
       "section": "Объектные контракты",
       "sectionIndex": 2,
       "chapterIndex": 3,
-      "wordCount": 766,
-      "readingMinutes": 5,
+      "wordCount": 1078,
+      "readingMinutes": 6,
       "h2": 15,
-      "h3": 9,
+      "h3": 14,
       "examples": 1,
       "tasks": 6,
       "solutions": 10,
       "mermaid": 1,
       "miniProjects": 1,
       "previous": {
-        "title": "Index Signatures",
+        "title": "Индексные сигнатуры",
         "number": 110,
         "link": "/docs/02-typescript/110-index-signatures"
       },
       "next": {
-        "title": "Interface",
+        "title": "Интерфейс",
         "number": 112,
         "link": "/docs/02-typescript/112-interface"
       },
@@ -8131,6 +8047,12 @@ export const bookEngineData = {
       },
       "related": [
         {
+          "term": "Promise",
+          "title": "Промис",
+          "number": 72,
+          "link": "/docs/01-javascript/72-promise"
+        },
+        {
           "term": "JSON",
           "title": "JSON",
           "number": 94,
@@ -8139,8 +8061,8 @@ export const bookEngineData = {
       ],
       "card": {
         "chapterLabel": "Глава 111",
-        "title": "Type Alias",
-        "reading": 5,
+        "title": "Псевдоним типа",
+        "reading": 6,
         "examples": 1,
         "tasks": 6,
         "solutions": 10,
@@ -8150,28 +8072,28 @@ export const bookEngineData = {
     "docs/02-typescript/112-interface.md": {
       "path": "docs/02-typescript/112-interface.md",
       "link": "/docs/02-typescript/112-interface",
-      "title": "Interface",
+      "title": "Интерфейс",
       "number": 112,
       "part": "TypeScript",
       "section": "Объектные контракты",
       "sectionIndex": 2,
       "chapterIndex": 4,
-      "wordCount": 689,
-      "readingMinutes": 4,
+      "wordCount": 975,
+      "readingMinutes": 6,
       "h2": 15,
-      "h3": 9,
+      "h3": 14,
       "examples": 1,
       "tasks": 6,
       "solutions": 10,
       "mermaid": 1,
       "miniProjects": 1,
       "previous": {
-        "title": "Type Alias",
+        "title": "Псевдоним типа",
         "number": 111,
         "link": "/docs/02-typescript/111-type-alias"
       },
       "next": {
-        "title": "Interface vs Type Alias",
+        "title": "Интерфейс и псевдоним типа",
         "number": 113,
         "link": "/docs/02-typescript/113-interface-vs-type-alias"
       },
@@ -8188,8 +8110,8 @@ export const bookEngineData = {
       "related": [],
       "card": {
         "chapterLabel": "Глава 112",
-        "title": "Interface",
-        "reading": 4,
+        "title": "Интерфейс",
+        "reading": 6,
         "examples": 1,
         "tasks": 6,
         "solutions": 10,
@@ -8199,28 +8121,28 @@ export const bookEngineData = {
     "docs/02-typescript/113-interface-vs-type-alias.md": {
       "path": "docs/02-typescript/113-interface-vs-type-alias.md",
       "link": "/docs/02-typescript/113-interface-vs-type-alias",
-      "title": "Interface vs Type Alias",
+      "title": "Интерфейс и псевдоним типа",
       "number": 113,
       "part": "TypeScript",
       "section": "Объектные контракты",
       "sectionIndex": 2,
       "chapterIndex": 5,
-      "wordCount": 750,
-      "readingMinutes": 5,
+      "wordCount": 1079,
+      "readingMinutes": 6,
       "h2": 15,
-      "h3": 10,
+      "h3": 15,
       "examples": 1,
       "tasks": 6,
       "solutions": 10,
       "mermaid": 1,
       "miniProjects": 1,
       "previous": {
-        "title": "Interface",
+        "title": "Интерфейс",
         "number": 112,
         "link": "/docs/02-typescript/112-interface"
       },
       "next": {
-        "title": "Structural Typing",
+        "title": "Структурная типизация",
         "number": 114,
         "link": "/docs/02-typescript/114-structural-typing"
       },
@@ -8237,8 +8159,8 @@ export const bookEngineData = {
       "related": [],
       "card": {
         "chapterLabel": "Глава 113",
-        "title": "Interface vs Type Alias",
-        "reading": 5,
+        "title": "Интерфейс и псевдоним типа",
+        "reading": 6,
         "examples": 1,
         "tasks": 6,
         "solutions": 10,
@@ -8248,28 +8170,28 @@ export const bookEngineData = {
     "docs/02-typescript/114-structural-typing.md": {
       "path": "docs/02-typescript/114-structural-typing.md",
       "link": "/docs/02-typescript/114-structural-typing",
-      "title": "Structural Typing",
+      "title": "Структурная типизация",
       "number": 114,
       "part": "TypeScript",
       "section": "Объектные контракты",
       "sectionIndex": 2,
       "chapterIndex": 6,
-      "wordCount": 858,
-      "readingMinutes": 5,
+      "wordCount": 1059,
+      "readingMinutes": 6,
       "h2": 15,
-      "h3": 9,
+      "h3": 12,
       "examples": 1,
       "tasks": 6,
       "solutions": 11,
       "mermaid": 1,
       "miniProjects": 1,
       "previous": {
-        "title": "Interface vs Type Alias",
+        "title": "Интерфейс и псевдоним типа",
         "number": 113,
         "link": "/docs/02-typescript/113-interface-vs-type-alias"
       },
       "next": {
-        "title": "Literal Types",
+        "title": "Литеральные типы",
         "number": 115,
         "link": "/docs/02-typescript/115-literal-types"
       },
@@ -8283,11 +8205,18 @@ export const bookEngineData = {
         "total": 63,
         "bar": "███░░░░░░░░░"
       },
-      "related": [],
+      "related": [
+        {
+          "term": "Date",
+          "title": "Дата и время",
+          "number": 95,
+          "link": "/docs/01-javascript/95-date"
+        }
+      ],
       "card": {
         "chapterLabel": "Глава 114",
-        "title": "Structural Typing",
-        "reading": 5,
+        "title": "Структурная типизация",
+        "reading": 6,
         "examples": 1,
         "tasks": 6,
         "solutions": 11,
@@ -8297,28 +8226,28 @@ export const bookEngineData = {
     "docs/02-typescript/115-literal-types.md": {
       "path": "docs/02-typescript/115-literal-types.md",
       "link": "/docs/02-typescript/115-literal-types",
-      "title": "Literal Types",
+      "title": "Литеральные типы",
       "number": 115,
       "part": "TypeScript",
       "section": "Значения как типы и композиция",
       "sectionIndex": 3,
       "chapterIndex": 0,
-      "wordCount": 821,
-      "readingMinutes": 5,
+      "wordCount": 1106,
+      "readingMinutes": 7,
       "h2": 15,
-      "h3": 9,
+      "h3": 14,
       "examples": 1,
       "tasks": 6,
       "solutions": 10,
       "mermaid": 1,
       "miniProjects": 1,
       "previous": {
-        "title": "Structural Typing",
+        "title": "Структурная типизация",
         "number": 114,
         "link": "/docs/02-typescript/114-structural-typing"
       },
       "next": {
-        "title": "as const",
+        "title": "Утверждение `as const`",
         "number": 116,
         "link": "/docs/02-typescript/116-as-const"
       },
@@ -8335,8 +8264,8 @@ export const bookEngineData = {
       "related": [],
       "card": {
         "chapterLabel": "Глава 115",
-        "title": "Literal Types",
-        "reading": 5,
+        "title": "Литеральные типы",
+        "reading": 7,
         "examples": 1,
         "tasks": 6,
         "solutions": 10,
@@ -8346,28 +8275,28 @@ export const bookEngineData = {
     "docs/02-typescript/116-as-const.md": {
       "path": "docs/02-typescript/116-as-const.md",
       "link": "/docs/02-typescript/116-as-const",
-      "title": "as const",
+      "title": "Утверждение `as const`",
       "number": 116,
       "part": "TypeScript",
       "section": "Значения как типы и композиция",
       "sectionIndex": 3,
       "chapterIndex": 1,
-      "wordCount": 824,
-      "readingMinutes": 5,
+      "wordCount": 1146,
+      "readingMinutes": 7,
       "h2": 15,
-      "h3": 10,
+      "h3": 16,
       "examples": 1,
       "tasks": 6,
       "solutions": 10,
       "mermaid": 1,
       "miniProjects": 1,
       "previous": {
-        "title": "Literal Types",
+        "title": "Литеральные типы",
         "number": 115,
         "link": "/docs/02-typescript/115-literal-types"
       },
       "next": {
-        "title": "Enum",
+        "title": "Перечисления",
         "number": 117,
         "link": "/docs/02-typescript/117-enum"
       },
@@ -8384,8 +8313,8 @@ export const bookEngineData = {
       "related": [],
       "card": {
         "chapterLabel": "Глава 116",
-        "title": "as const",
-        "reading": 5,
+        "title": "Утверждение `as const`",
+        "reading": 7,
         "examples": 1,
         "tasks": 6,
         "solutions": 10,
@@ -8395,28 +8324,28 @@ export const bookEngineData = {
     "docs/02-typescript/117-enum.md": {
       "path": "docs/02-typescript/117-enum.md",
       "link": "/docs/02-typescript/117-enum",
-      "title": "Enum",
+      "title": "Перечисления",
       "number": 117,
       "part": "TypeScript",
       "section": "Значения как типы и композиция",
       "sectionIndex": 3,
       "chapterIndex": 2,
-      "wordCount": 851,
-      "readingMinutes": 5,
+      "wordCount": 1134,
+      "readingMinutes": 7,
       "h2": 15,
-      "h3": 10,
+      "h3": 15,
       "examples": 1,
       "tasks": 6,
       "solutions": 10,
       "mermaid": 1,
       "miniProjects": 1,
       "previous": {
-        "title": "as const",
+        "title": "Утверждение `as const`",
         "number": 116,
         "link": "/docs/02-typescript/116-as-const"
       },
       "next": {
-        "title": "Union Types",
+        "title": "Объединения типов",
         "number": 118,
         "link": "/docs/02-typescript/118-union-types"
       },
@@ -8440,8 +8369,8 @@ export const bookEngineData = {
       ],
       "card": {
         "chapterLabel": "Глава 117",
-        "title": "Enum",
-        "reading": 5,
+        "title": "Перечисления",
+        "reading": 7,
         "examples": 1,
         "tasks": 6,
         "solutions": 10,
@@ -8451,28 +8380,28 @@ export const bookEngineData = {
     "docs/02-typescript/118-union-types.md": {
       "path": "docs/02-typescript/118-union-types.md",
       "link": "/docs/02-typescript/118-union-types",
-      "title": "Union Types",
+      "title": "Объединения типов",
       "number": 118,
       "part": "TypeScript",
       "section": "Значения как типы и композиция",
       "sectionIndex": 3,
       "chapterIndex": 3,
-      "wordCount": 721,
-      "readingMinutes": 5,
+      "wordCount": 1008,
+      "readingMinutes": 6,
       "h2": 15,
-      "h3": 10,
+      "h3": 16,
       "examples": 1,
       "tasks": 6,
       "solutions": 10,
       "mermaid": 1,
       "miniProjects": 1,
       "previous": {
-        "title": "Enum",
+        "title": "Перечисления",
         "number": 117,
         "link": "/docs/02-typescript/117-enum"
       },
       "next": {
-        "title": "Intersection Types",
+        "title": "Пересечения типов",
         "number": 119,
         "link": "/docs/02-typescript/119-intersection-types"
       },
@@ -8496,8 +8425,8 @@ export const bookEngineData = {
       ],
       "card": {
         "chapterLabel": "Глава 118",
-        "title": "Union Types",
-        "reading": 5,
+        "title": "Объединения типов",
+        "reading": 6,
         "examples": 1,
         "tasks": 6,
         "solutions": 10,
@@ -8507,28 +8436,28 @@ export const bookEngineData = {
     "docs/02-typescript/119-intersection-types.md": {
       "path": "docs/02-typescript/119-intersection-types.md",
       "link": "/docs/02-typescript/119-intersection-types",
-      "title": "Intersection Types",
+      "title": "Пересечения типов",
       "number": 119,
       "part": "TypeScript",
       "section": "Значения как типы и композиция",
       "sectionIndex": 3,
       "chapterIndex": 4,
-      "wordCount": 759,
-      "readingMinutes": 5,
+      "wordCount": 1037,
+      "readingMinutes": 6,
       "h2": 15,
-      "h3": 9,
+      "h3": 15,
       "examples": 1,
       "tasks": 6,
       "solutions": 10,
       "mermaid": 1,
       "miniProjects": 1,
       "previous": {
-        "title": "Union Types",
+        "title": "Объединения типов",
         "number": 118,
         "link": "/docs/02-typescript/118-union-types"
       },
       "next": {
-        "title": "Type Composition in Practice",
+        "title": "Композиция типов на практике",
         "number": 120,
         "link": "/docs/02-typescript/120-type-composition-in-practice"
       },
@@ -8545,8 +8474,8 @@ export const bookEngineData = {
       "related": [],
       "card": {
         "chapterLabel": "Глава 119",
-        "title": "Intersection Types",
-        "reading": 5,
+        "title": "Пересечения типов",
+        "reading": 6,
         "examples": 1,
         "tasks": 6,
         "solutions": 10,
@@ -8556,28 +8485,28 @@ export const bookEngineData = {
     "docs/02-typescript/120-type-composition-in-practice.md": {
       "path": "docs/02-typescript/120-type-composition-in-practice.md",
       "link": "/docs/02-typescript/120-type-composition-in-practice",
-      "title": "Type Composition in Practice",
+      "title": "Композиция типов на практике",
       "number": 120,
       "part": "TypeScript",
       "section": "Значения как типы и композиция",
       "sectionIndex": 3,
       "chapterIndex": 5,
-      "wordCount": 788,
-      "readingMinutes": 5,
+      "wordCount": 1090,
+      "readingMinutes": 7,
       "h2": 15,
-      "h3": 9,
+      "h3": 15,
       "examples": 1,
       "tasks": 6,
       "solutions": 10,
       "mermaid": 1,
       "miniProjects": 1,
       "previous": {
-        "title": "Intersection Types",
+        "title": "Пересечения типов",
         "number": 119,
         "link": "/docs/02-typescript/119-intersection-types"
       },
       "next": {
-        "title": "Function Types",
+        "title": "Типы функций",
         "number": 121,
         "link": "/docs/02-typescript/121-function-types"
       },
@@ -8601,8 +8530,8 @@ export const bookEngineData = {
       ],
       "card": {
         "chapterLabel": "Глава 120",
-        "title": "Type Composition in Practice",
-        "reading": 5,
+        "title": "Композиция типов на практике",
+        "reading": 7,
         "examples": 1,
         "tasks": 6,
         "solutions": 10,
@@ -8612,28 +8541,28 @@ export const bookEngineData = {
     "docs/02-typescript/121-function-types.md": {
       "path": "docs/02-typescript/121-function-types.md",
       "link": "/docs/02-typescript/121-function-types",
-      "title": "Function Types",
+      "title": "Типы функций",
       "number": 121,
       "part": "TypeScript",
       "section": "Типизация функций",
       "sectionIndex": 4,
       "chapterIndex": 0,
-      "wordCount": 839,
-      "readingMinutes": 5,
+      "wordCount": 1149,
+      "readingMinutes": 7,
       "h2": 15,
-      "h3": 10,
+      "h3": 16,
       "examples": 1,
       "tasks": 6,
       "solutions": 11,
       "mermaid": 1,
       "miniProjects": 1,
       "previous": {
-        "title": "Type Composition in Practice",
+        "title": "Композиция типов на практике",
         "number": 120,
         "link": "/docs/02-typescript/120-type-composition-in-practice"
       },
       "next": {
-        "title": "Optional, Default and Rest Parameters",
+        "title": "Необязательные параметры, значения по умолчанию и сбор аргументов",
         "number": 122,
         "link": "/docs/02-typescript/122-optional-default-and-rest-parameters"
       },
@@ -8650,8 +8579,8 @@ export const bookEngineData = {
       "related": [],
       "card": {
         "chapterLabel": "Глава 121",
-        "title": "Function Types",
-        "reading": 5,
+        "title": "Типы функций",
+        "reading": 7,
         "examples": 1,
         "tasks": 6,
         "solutions": 11,
@@ -8661,28 +8590,28 @@ export const bookEngineData = {
     "docs/02-typescript/122-optional-default-and-rest-parameters.md": {
       "path": "docs/02-typescript/122-optional-default-and-rest-parameters.md",
       "link": "/docs/02-typescript/122-optional-default-and-rest-parameters",
-      "title": "Optional, Default and Rest Parameters",
+      "title": "Необязательные параметры, значения по умолчанию и сбор аргументов",
       "number": 122,
       "part": "TypeScript",
       "section": "Типизация функций",
       "sectionIndex": 4,
       "chapterIndex": 1,
-      "wordCount": 810,
-      "readingMinutes": 5,
+      "wordCount": 1091,
+      "readingMinutes": 7,
       "h2": 15,
-      "h3": 9,
+      "h3": 14,
       "examples": 1,
       "tasks": 6,
       "solutions": 11,
       "mermaid": 1,
       "miniProjects": 1,
       "previous": {
-        "title": "Function Types",
+        "title": "Типы функций",
         "number": 121,
         "link": "/docs/02-typescript/121-function-types"
       },
       "next": {
-        "title": "Callback Types",
+        "title": "Типы обратных вызовов",
         "number": 123,
         "link": "/docs/02-typescript/123-callback-types"
       },
@@ -8696,11 +8625,18 @@ export const bookEngineData = {
         "total": 63,
         "bar": "█████░░░░░░░"
       },
-      "related": [],
+      "related": [
+        {
+          "term": "JSON",
+          "title": "JSON",
+          "number": 94,
+          "link": "/docs/01-javascript/94-json"
+        }
+      ],
       "card": {
         "chapterLabel": "Глава 122",
-        "title": "Optional, Default and Rest Parameters",
-        "reading": 5,
+        "title": "Необязательные параметры, значения по умолчанию и сбор аргументов",
+        "reading": 7,
         "examples": 1,
         "tasks": 6,
         "solutions": 11,
@@ -8710,28 +8646,28 @@ export const bookEngineData = {
     "docs/02-typescript/123-callback-types.md": {
       "path": "docs/02-typescript/123-callback-types.md",
       "link": "/docs/02-typescript/123-callback-types",
-      "title": "Callback Types",
+      "title": "Типы обратных вызовов",
       "number": 123,
       "part": "TypeScript",
       "section": "Типизация функций",
       "sectionIndex": 4,
       "chapterIndex": 2,
-      "wordCount": 710,
-      "readingMinutes": 4,
+      "wordCount": 1008,
+      "readingMinutes": 6,
       "h2": 15,
-      "h3": 10,
+      "h3": 16,
       "examples": 1,
       "tasks": 6,
       "solutions": 11,
       "mermaid": 1,
       "miniProjects": 1,
       "previous": {
-        "title": "Optional, Default and Rest Parameters",
+        "title": "Необязательные параметры, значения по умолчанию и сбор аргументов",
         "number": 122,
         "link": "/docs/02-typescript/122-optional-default-and-rest-parameters"
       },
       "next": {
-        "title": "Function Overloads",
+        "title": "Перегрузки функций",
         "number": 124,
         "link": "/docs/02-typescript/124-function-overloads"
       },
@@ -8748,15 +8684,15 @@ export const bookEngineData = {
       "related": [
         {
           "term": "Promise",
-          "title": "Promise",
+          "title": "Промис",
           "number": 72,
           "link": "/docs/01-javascript/72-promise"
         }
       ],
       "card": {
         "chapterLabel": "Глава 123",
-        "title": "Callback Types",
-        "reading": 4,
+        "title": "Типы обратных вызовов",
+        "reading": 6,
         "examples": 1,
         "tasks": 6,
         "solutions": 11,
@@ -8766,28 +8702,28 @@ export const bookEngineData = {
     "docs/02-typescript/124-function-overloads.md": {
       "path": "docs/02-typescript/124-function-overloads.md",
       "link": "/docs/02-typescript/124-function-overloads",
-      "title": "Function Overloads",
+      "title": "Перегрузки функций",
       "number": 124,
       "part": "TypeScript",
       "section": "Типизация функций",
       "sectionIndex": 4,
       "chapterIndex": 3,
-      "wordCount": 753,
-      "readingMinutes": 5,
+      "wordCount": 1050,
+      "readingMinutes": 6,
       "h2": 15,
-      "h3": 9,
+      "h3": 15,
       "examples": 1,
       "tasks": 6,
       "solutions": 11,
       "mermaid": 1,
       "miniProjects": 1,
       "previous": {
-        "title": "Callback Types",
+        "title": "Типы обратных вызовов",
         "number": 123,
         "link": "/docs/02-typescript/123-callback-types"
       },
       "next": {
-        "title": "this Parameter",
+        "title": "Параметр `this`",
         "number": 125,
         "link": "/docs/02-typescript/125-this-parameter"
       },
@@ -8804,15 +8740,15 @@ export const bookEngineData = {
       "related": [
         {
           "term": "this",
-          "title": "this",
+          "title": "Ключевое слово `this`",
           "number": 29,
           "link": "/docs/01-javascript/29-this"
         }
       ],
       "card": {
         "chapterLabel": "Глава 124",
-        "title": "Function Overloads",
-        "reading": 5,
+        "title": "Перегрузки функций",
+        "reading": 6,
         "examples": 1,
         "tasks": 6,
         "solutions": 11,
@@ -8822,28 +8758,28 @@ export const bookEngineData = {
     "docs/02-typescript/125-this-parameter.md": {
       "path": "docs/02-typescript/125-this-parameter.md",
       "link": "/docs/02-typescript/125-this-parameter",
-      "title": "this Parameter",
+      "title": "Параметр `this`",
       "number": 125,
       "part": "TypeScript",
       "section": "Типизация функций",
       "sectionIndex": 4,
       "chapterIndex": 4,
-      "wordCount": 758,
-      "readingMinutes": 5,
+      "wordCount": 1071,
+      "readingMinutes": 6,
       "h2": 15,
-      "h3": 9,
+      "h3": 14,
       "examples": 1,
       "tasks": 6,
       "solutions": 11,
       "mermaid": 1,
       "miniProjects": 1,
       "previous": {
-        "title": "Function Overloads",
+        "title": "Перегрузки функций",
         "number": 124,
         "link": "/docs/02-typescript/124-function-overloads"
       },
       "next": {
-        "title": "Async Function Types",
+        "title": "Типы асинхронных функций",
         "number": 126,
         "link": "/docs/02-typescript/126-async-function-types"
       },
@@ -8860,15 +8796,15 @@ export const bookEngineData = {
       "related": [
         {
           "term": "this",
-          "title": "this",
+          "title": "Ключевое слово `this`",
           "number": 29,
           "link": "/docs/01-javascript/29-this"
         }
       ],
       "card": {
         "chapterLabel": "Глава 125",
-        "title": "this Parameter",
-        "reading": 5,
+        "title": "Параметр `this`",
+        "reading": 6,
         "examples": 1,
         "tasks": 6,
         "solutions": 11,
@@ -8878,28 +8814,28 @@ export const bookEngineData = {
     "docs/02-typescript/126-async-function-types.md": {
       "path": "docs/02-typescript/126-async-function-types.md",
       "link": "/docs/02-typescript/126-async-function-types",
-      "title": "Async Function Types",
+      "title": "Типы асинхронных функций",
       "number": 126,
       "part": "TypeScript",
       "section": "Типизация функций",
       "sectionIndex": 4,
       "chapterIndex": 5,
-      "wordCount": 774,
-      "readingMinutes": 5,
+      "wordCount": 1083,
+      "readingMinutes": 7,
       "h2": 15,
-      "h3": 10,
+      "h3": 15,
       "examples": 1,
       "tasks": 6,
       "solutions": 11,
       "mermaid": 1,
       "miniProjects": 1,
       "previous": {
-        "title": "this Parameter",
+        "title": "Параметр `this`",
         "number": 125,
         "link": "/docs/02-typescript/125-this-parameter"
       },
       "next": {
-        "title": "Narrowing",
+        "title": "Сужение типов",
         "number": 127,
         "link": "/docs/02-typescript/127-narrowing"
       },
@@ -8916,27 +8852,21 @@ export const bookEngineData = {
       "related": [
         {
           "term": "this",
-          "title": "this",
+          "title": "Ключевое слово `this`",
           "number": 29,
           "link": "/docs/01-javascript/29-this"
         },
         {
           "term": "Promise",
-          "title": "Promise",
+          "title": "Промис",
           "number": 72,
           "link": "/docs/01-javascript/72-promise"
-        },
-        {
-          "term": "async/await",
-          "title": "async и await",
-          "number": 78,
-          "link": "/docs/01-javascript/78-async-await"
         }
       ],
       "card": {
         "chapterLabel": "Глава 126",
-        "title": "Async Function Types",
-        "reading": 5,
+        "title": "Типы асинхронных функций",
+        "reading": 7,
         "examples": 1,
         "tasks": 6,
         "solutions": 11,
@@ -8946,28 +8876,28 @@ export const bookEngineData = {
     "docs/02-typescript/127-narrowing.md": {
       "path": "docs/02-typescript/127-narrowing.md",
       "link": "/docs/02-typescript/127-narrowing",
-      "title": "Narrowing",
+      "title": "Сужение типов",
       "number": 127,
       "part": "TypeScript",
       "section": "Narrowing и безопасные ветвления",
       "sectionIndex": 5,
       "chapterIndex": 0,
-      "wordCount": 747,
-      "readingMinutes": 5,
+      "wordCount": 952,
+      "readingMinutes": 6,
       "h2": 15,
-      "h3": 6,
+      "h3": 9,
       "examples": 1,
       "tasks": 4,
       "solutions": 28,
       "mermaid": 2,
       "miniProjects": 1,
       "previous": {
-        "title": "Async Function Types",
+        "title": "Типы асинхронных функций",
         "number": 126,
         "link": "/docs/02-typescript/126-async-function-types"
       },
       "next": {
-        "title": "Built-in Type Guards",
+        "title": "Встроенные проверки типа",
         "number": 128,
         "link": "/docs/02-typescript/128-built-in-type-guards"
       },
@@ -8984,8 +8914,8 @@ export const bookEngineData = {
       "related": [],
       "card": {
         "chapterLabel": "Глава 127",
-        "title": "Narrowing",
-        "reading": 5,
+        "title": "Сужение типов",
+        "reading": 6,
         "examples": 1,
         "tasks": 4,
         "solutions": 28,
@@ -8995,28 +8925,28 @@ export const bookEngineData = {
     "docs/02-typescript/128-built-in-type-guards.md": {
       "path": "docs/02-typescript/128-built-in-type-guards.md",
       "link": "/docs/02-typescript/128-built-in-type-guards",
-      "title": "Built-in Type Guards",
+      "title": "Встроенные проверки типа",
       "number": 128,
       "part": "TypeScript",
       "section": "Narrowing и безопасные ветвления",
       "sectionIndex": 5,
       "chapterIndex": 1,
-      "wordCount": 788,
-      "readingMinutes": 5,
+      "wordCount": 1157,
+      "readingMinutes": 7,
       "h2": 15,
-      "h3": 7,
+      "h3": 12,
       "examples": 1,
       "tasks": 4,
       "solutions": 28,
       "mermaid": 2,
       "miniProjects": 1,
       "previous": {
-        "title": "Narrowing",
+        "title": "Сужение типов",
         "number": 127,
         "link": "/docs/02-typescript/127-narrowing"
       },
       "next": {
-        "title": "User Defined Type Guards",
+        "title": "Собственные проверки типа",
         "number": 129,
         "link": "/docs/02-typescript/129-user-defined-type-guards"
       },
@@ -9033,15 +8963,15 @@ export const bookEngineData = {
       "related": [
         {
           "term": "Date",
-          "title": "Date",
+          "title": "Дата и время",
           "number": 95,
           "link": "/docs/01-javascript/95-date"
         }
       ],
       "card": {
         "chapterLabel": "Глава 128",
-        "title": "Built-in Type Guards",
-        "reading": 5,
+        "title": "Встроенные проверки типа",
+        "reading": 7,
         "examples": 1,
         "tasks": 4,
         "solutions": 28,
@@ -9051,28 +8981,28 @@ export const bookEngineData = {
     "docs/02-typescript/129-user-defined-type-guards.md": {
       "path": "docs/02-typescript/129-user-defined-type-guards.md",
       "link": "/docs/02-typescript/129-user-defined-type-guards",
-      "title": "User Defined Type Guards",
+      "title": "Собственные проверки типа",
       "number": 129,
       "part": "TypeScript",
       "section": "Narrowing и безопасные ветвления",
       "sectionIndex": 5,
       "chapterIndex": 2,
-      "wordCount": 704,
-      "readingMinutes": 4,
+      "wordCount": 961,
+      "readingMinutes": 6,
       "h2": 15,
-      "h3": 6,
+      "h3": 10,
       "examples": 1,
       "tasks": 4,
       "solutions": 28,
       "mermaid": 2,
       "miniProjects": 1,
       "previous": {
-        "title": "Built-in Type Guards",
+        "title": "Встроенные проверки типа",
         "number": 128,
         "link": "/docs/02-typescript/128-built-in-type-guards"
       },
       "next": {
-        "title": "Type Assertions",
+        "title": "Утверждения о типе",
         "number": 130,
         "link": "/docs/02-typescript/130-type-assertions"
       },
@@ -9089,8 +9019,8 @@ export const bookEngineData = {
       "related": [],
       "card": {
         "chapterLabel": "Глава 129",
-        "title": "User Defined Type Guards",
-        "reading": 4,
+        "title": "Собственные проверки типа",
+        "reading": 6,
         "examples": 1,
         "tasks": 4,
         "solutions": 28,
@@ -9100,28 +9030,28 @@ export const bookEngineData = {
     "docs/02-typescript/130-type-assertions.md": {
       "path": "docs/02-typescript/130-type-assertions.md",
       "link": "/docs/02-typescript/130-type-assertions",
-      "title": "Type Assertions",
+      "title": "Утверждения о типе",
       "number": 130,
       "part": "TypeScript",
       "section": "Narrowing и безопасные ветвления",
       "sectionIndex": 5,
       "chapterIndex": 3,
-      "wordCount": 753,
-      "readingMinutes": 5,
+      "wordCount": 990,
+      "readingMinutes": 6,
       "h2": 15,
-      "h3": 6,
+      "h3": 10,
       "examples": 1,
       "tasks": 4,
       "solutions": 28,
       "mermaid": 2,
       "miniProjects": 1,
       "previous": {
-        "title": "User Defined Type Guards",
+        "title": "Собственные проверки типа",
         "number": 129,
         "link": "/docs/02-typescript/129-user-defined-type-guards"
       },
       "next": {
-        "title": "satisfies",
+        "title": "Оператор `satisfies`",
         "number": 131,
         "link": "/docs/02-typescript/131-satisfies"
       },
@@ -9135,11 +9065,18 @@ export const bookEngineData = {
         "total": 63,
         "bar": "██████░░░░░░"
       },
-      "related": [],
+      "related": [
+        {
+          "term": "JSON",
+          "title": "JSON",
+          "number": 94,
+          "link": "/docs/01-javascript/94-json"
+        }
+      ],
       "card": {
         "chapterLabel": "Глава 130",
-        "title": "Type Assertions",
-        "reading": 5,
+        "title": "Утверждения о типе",
+        "reading": 6,
         "examples": 1,
         "tasks": 4,
         "solutions": 28,
@@ -9149,28 +9086,28 @@ export const bookEngineData = {
     "docs/02-typescript/131-satisfies.md": {
       "path": "docs/02-typescript/131-satisfies.md",
       "link": "/docs/02-typescript/131-satisfies",
-      "title": "satisfies",
+      "title": "Оператор `satisfies`",
       "number": 131,
       "part": "TypeScript",
       "section": "Narrowing и безопасные ветвления",
       "sectionIndex": 5,
       "chapterIndex": 4,
-      "wordCount": 754,
-      "readingMinutes": 5,
+      "wordCount": 1034,
+      "readingMinutes": 6,
       "h2": 15,
-      "h3": 6,
+      "h3": 11,
       "examples": 1,
       "tasks": 4,
       "solutions": 28,
       "mermaid": 2,
       "miniProjects": 1,
       "previous": {
-        "title": "Type Assertions",
+        "title": "Утверждения о типе",
         "number": 130,
         "link": "/docs/02-typescript/130-type-assertions"
       },
       "next": {
-        "title": "Exhaustive Checks with never",
+        "title": "Проверка полноты через `never`",
         "number": 132,
         "link": "/docs/02-typescript/132-exhaustive-checks-with-never"
       },
@@ -9187,8 +9124,8 @@ export const bookEngineData = {
       "related": [],
       "card": {
         "chapterLabel": "Глава 131",
-        "title": "satisfies",
-        "reading": 5,
+        "title": "Оператор `satisfies`",
+        "reading": 6,
         "examples": 1,
         "tasks": 4,
         "solutions": 28,
@@ -9198,28 +9135,28 @@ export const bookEngineData = {
     "docs/02-typescript/132-exhaustive-checks-with-never.md": {
       "path": "docs/02-typescript/132-exhaustive-checks-with-never.md",
       "link": "/docs/02-typescript/132-exhaustive-checks-with-never",
-      "title": "Exhaustive Checks with never",
+      "title": "Проверка полноты через `never`",
       "number": 132,
       "part": "TypeScript",
       "section": "Narrowing и безопасные ветвления",
       "sectionIndex": 5,
       "chapterIndex": 5,
-      "wordCount": 704,
-      "readingMinutes": 4,
+      "wordCount": 901,
+      "readingMinutes": 6,
       "h2": 15,
-      "h3": 6,
+      "h3": 9,
       "examples": 1,
       "tasks": 4,
       "solutions": 28,
       "mermaid": 2,
       "miniProjects": 1,
       "previous": {
-        "title": "satisfies",
+        "title": "Оператор `satisfies`",
         "number": 131,
         "link": "/docs/02-typescript/131-satisfies"
       },
       "next": {
-        "title": "Generic Functions",
+        "title": "Обобщённые функции",
         "number": 133,
         "link": "/docs/02-typescript/133-generic-functions"
       },
@@ -9243,8 +9180,8 @@ export const bookEngineData = {
       ],
       "card": {
         "chapterLabel": "Глава 132",
-        "title": "Exhaustive Checks with never",
-        "reading": 4,
+        "title": "Проверка полноты через `never`",
+        "reading": 6,
         "examples": 1,
         "tasks": 4,
         "solutions": 28,
@@ -9254,28 +9191,28 @@ export const bookEngineData = {
     "docs/02-typescript/133-generic-functions.md": {
       "path": "docs/02-typescript/133-generic-functions.md",
       "link": "/docs/02-typescript/133-generic-functions",
-      "title": "Generic Functions",
+      "title": "Обобщённые функции",
       "number": 133,
       "part": "TypeScript",
       "section": "Generics",
       "sectionIndex": 6,
       "chapterIndex": 0,
-      "wordCount": 718,
-      "readingMinutes": 4,
+      "wordCount": 1016,
+      "readingMinutes": 6,
       "h2": 15,
-      "h3": 7,
+      "h3": 12,
       "examples": 1,
       "tasks": 4,
       "solutions": 28,
       "mermaid": 2,
       "miniProjects": 1,
       "previous": {
-        "title": "Exhaustive Checks with never",
+        "title": "Проверка полноты через `never`",
         "number": 132,
         "link": "/docs/02-typescript/132-exhaustive-checks-with-never"
       },
       "next": {
-        "title": "Generic Constraints",
+        "title": "Ограничения обобщений",
         "number": 134,
         "link": "/docs/02-typescript/134-generic-constraints"
       },
@@ -9292,15 +9229,15 @@ export const bookEngineData = {
       "related": [
         {
           "term": "Date",
-          "title": "Date",
+          "title": "Дата и время",
           "number": 95,
           "link": "/docs/01-javascript/95-date"
         }
       ],
       "card": {
         "chapterLabel": "Глава 133",
-        "title": "Generic Functions",
-        "reading": 4,
+        "title": "Обобщённые функции",
+        "reading": 6,
         "examples": 1,
         "tasks": 4,
         "solutions": 28,
@@ -9310,28 +9247,28 @@ export const bookEngineData = {
     "docs/02-typescript/134-generic-constraints.md": {
       "path": "docs/02-typescript/134-generic-constraints.md",
       "link": "/docs/02-typescript/134-generic-constraints",
-      "title": "Generic Constraints",
+      "title": "Ограничения обобщений",
       "number": 134,
       "part": "TypeScript",
       "section": "Generics",
       "sectionIndex": 6,
       "chapterIndex": 1,
-      "wordCount": 662,
-      "readingMinutes": 4,
+      "wordCount": 953,
+      "readingMinutes": 6,
       "h2": 15,
-      "h3": 7,
+      "h3": 13,
       "examples": 1,
       "tasks": 4,
       "solutions": 28,
       "mermaid": 2,
       "miniProjects": 1,
       "previous": {
-        "title": "Generic Functions",
+        "title": "Обобщённые функции",
         "number": 133,
         "link": "/docs/02-typescript/133-generic-functions"
       },
       "next": {
-        "title": "keyof Constraints",
+        "title": "Ограничения через `keyof`",
         "number": 135,
         "link": "/docs/02-typescript/135-keyof-constraints"
       },
@@ -9348,8 +9285,8 @@ export const bookEngineData = {
       "related": [],
       "card": {
         "chapterLabel": "Глава 134",
-        "title": "Generic Constraints",
-        "reading": 4,
+        "title": "Ограничения обобщений",
+        "reading": 6,
         "examples": 1,
         "tasks": 4,
         "solutions": 28,
@@ -9359,28 +9296,28 @@ export const bookEngineData = {
     "docs/02-typescript/135-keyof-constraints.md": {
       "path": "docs/02-typescript/135-keyof-constraints.md",
       "link": "/docs/02-typescript/135-keyof-constraints",
-      "title": "keyof Constraints",
+      "title": "Ограничения через `keyof`",
       "number": 135,
       "part": "TypeScript",
       "section": "Generics",
       "sectionIndex": 6,
       "chapterIndex": 2,
-      "wordCount": 622,
-      "readingMinutes": 4,
+      "wordCount": 928,
+      "readingMinutes": 6,
       "h2": 15,
-      "h3": 6,
+      "h3": 11,
       "examples": 1,
       "tasks": 4,
       "solutions": 28,
       "mermaid": 1,
       "miniProjects": 1,
       "previous": {
-        "title": "Generic Constraints",
+        "title": "Ограничения обобщений",
         "number": 134,
         "link": "/docs/02-typescript/134-generic-constraints"
       },
       "next": {
-        "title": "Generic Type Aliases and Interfaces",
+        "title": "Обобщённые псевдонимы типов и интерфейсы",
         "number": 136,
         "link": "/docs/02-typescript/136-generic-type-aliases-and-interfaces"
       },
@@ -9397,8 +9334,8 @@ export const bookEngineData = {
       "related": [],
       "card": {
         "chapterLabel": "Глава 135",
-        "title": "keyof Constraints",
-        "reading": 4,
+        "title": "Ограничения через `keyof`",
+        "reading": 6,
         "examples": 1,
         "tasks": 4,
         "solutions": 28,
@@ -9408,28 +9345,28 @@ export const bookEngineData = {
     "docs/02-typescript/136-generic-type-aliases-and-interfaces.md": {
       "path": "docs/02-typescript/136-generic-type-aliases-and-interfaces.md",
       "link": "/docs/02-typescript/136-generic-type-aliases-and-interfaces",
-      "title": "Generic Type Aliases and Interfaces",
+      "title": "Обобщённые псевдонимы типов и интерфейсы",
       "number": 136,
       "part": "TypeScript",
       "section": "Generics",
       "sectionIndex": 6,
       "chapterIndex": 3,
-      "wordCount": 676,
-      "readingMinutes": 4,
+      "wordCount": 937,
+      "readingMinutes": 6,
       "h2": 15,
-      "h3": 6,
+      "h3": 12,
       "examples": 1,
       "tasks": 4,
       "solutions": 28,
       "mermaid": 2,
       "miniProjects": 1,
       "previous": {
-        "title": "keyof Constraints",
+        "title": "Ограничения через `keyof`",
         "number": 135,
         "link": "/docs/02-typescript/135-keyof-constraints"
       },
       "next": {
-        "title": "Generic Classes",
+        "title": "Обобщённые классы",
         "number": 137,
         "link": "/docs/02-typescript/137-generic-classes"
       },
@@ -9443,11 +9380,18 @@ export const bookEngineData = {
         "total": 63,
         "bar": "████████░░░░"
       },
-      "related": [],
+      "related": [
+        {
+          "term": "Promise",
+          "title": "Промис",
+          "number": 72,
+          "link": "/docs/01-javascript/72-promise"
+        }
+      ],
       "card": {
         "chapterLabel": "Глава 136",
-        "title": "Generic Type Aliases and Interfaces",
-        "reading": 4,
+        "title": "Обобщённые псевдонимы типов и интерфейсы",
+        "reading": 6,
         "examples": 1,
         "tasks": 4,
         "solutions": 28,
@@ -9457,28 +9401,28 @@ export const bookEngineData = {
     "docs/02-typescript/137-generic-classes.md": {
       "path": "docs/02-typescript/137-generic-classes.md",
       "link": "/docs/02-typescript/137-generic-classes",
-      "title": "Generic Classes",
+      "title": "Обобщённые классы",
       "number": 137,
       "part": "TypeScript",
       "section": "Generics",
       "sectionIndex": 6,
       "chapterIndex": 4,
-      "wordCount": 613,
-      "readingMinutes": 4,
+      "wordCount": 890,
+      "readingMinutes": 5,
       "h2": 15,
-      "h3": 7,
+      "h3": 13,
       "examples": 1,
       "tasks": 4,
       "solutions": 28,
       "mermaid": 1,
       "miniProjects": 1,
       "previous": {
-        "title": "Generic Type Aliases and Interfaces",
+        "title": "Обобщённые псевдонимы типов и интерфейсы",
         "number": 136,
         "link": "/docs/02-typescript/136-generic-type-aliases-and-interfaces"
       },
       "next": {
-        "title": "Default Generic Parameters",
+        "title": "Значения параметров типа по умолчанию",
         "number": 138,
         "link": "/docs/02-typescript/138-default-generic-parameters"
       },
@@ -9495,15 +9439,15 @@ export const bookEngineData = {
       "related": [
         {
           "term": "this",
-          "title": "this",
+          "title": "Ключевое слово `this`",
           "number": 29,
           "link": "/docs/01-javascript/29-this"
         }
       ],
       "card": {
         "chapterLabel": "Глава 137",
-        "title": "Generic Classes",
-        "reading": 4,
+        "title": "Обобщённые классы",
+        "reading": 5,
         "examples": 1,
         "tasks": 4,
         "solutions": 28,
@@ -9513,28 +9457,28 @@ export const bookEngineData = {
     "docs/02-typescript/138-default-generic-parameters.md": {
       "path": "docs/02-typescript/138-default-generic-parameters.md",
       "link": "/docs/02-typescript/138-default-generic-parameters",
-      "title": "Default Generic Parameters",
+      "title": "Значения параметров типа по умолчанию",
       "number": 138,
       "part": "TypeScript",
       "section": "Generics",
       "sectionIndex": 6,
       "chapterIndex": 5,
-      "wordCount": 631,
-      "readingMinutes": 4,
+      "wordCount": 935,
+      "readingMinutes": 6,
       "h2": 15,
-      "h3": 6,
+      "h3": 12,
       "examples": 1,
       "tasks": 4,
       "solutions": 28,
       "mermaid": 1,
       "miniProjects": 1,
       "previous": {
-        "title": "Generic Classes",
+        "title": "Обобщённые классы",
         "number": 137,
         "link": "/docs/02-typescript/137-generic-classes"
       },
       "next": {
-        "title": "keyof",
+        "title": "Оператор `keyof`",
         "number": 139,
         "link": "/docs/02-typescript/139-keyof"
       },
@@ -9551,8 +9495,8 @@ export const bookEngineData = {
       "related": [],
       "card": {
         "chapterLabel": "Глава 138",
-        "title": "Default Generic Parameters",
-        "reading": 4,
+        "title": "Значения параметров типа по умолчанию",
+        "reading": 6,
         "examples": 1,
         "tasks": 4,
         "solutions": 28,
@@ -9562,28 +9506,28 @@ export const bookEngineData = {
     "docs/02-typescript/139-keyof.md": {
       "path": "docs/02-typescript/139-keyof.md",
       "link": "/docs/02-typescript/139-keyof",
-      "title": "keyof",
+      "title": "Оператор `keyof`",
       "number": 139,
       "part": "TypeScript",
       "section": "Операции над типами",
       "sectionIndex": 7,
       "chapterIndex": 0,
-      "wordCount": 780,
-      "readingMinutes": 5,
+      "wordCount": 987,
+      "readingMinutes": 6,
       "h2": 15,
-      "h3": 6,
+      "h3": 9,
       "examples": 1,
       "tasks": 4,
       "solutions": 28,
       "mermaid": 1,
       "miniProjects": 1,
       "previous": {
-        "title": "Default Generic Parameters",
+        "title": "Значения параметров типа по умолчанию",
         "number": 138,
         "link": "/docs/02-typescript/138-default-generic-parameters"
       },
       "next": {
-        "title": "typeof Type Query",
+        "title": "Запрос типа через `typeof`",
         "number": 140,
         "link": "/docs/02-typescript/140-typeof-type-query"
       },
@@ -9597,11 +9541,18 @@ export const bookEngineData = {
         "total": 63,
         "bar": "████████░░░░"
       },
-      "related": [],
+      "related": [
+        {
+          "term": "JSON",
+          "title": "JSON",
+          "number": 94,
+          "link": "/docs/01-javascript/94-json"
+        }
+      ],
       "card": {
         "chapterLabel": "Глава 139",
-        "title": "keyof",
-        "reading": 5,
+        "title": "Оператор `keyof`",
+        "reading": 6,
         "examples": 1,
         "tasks": 4,
         "solutions": 28,
@@ -9611,28 +9562,28 @@ export const bookEngineData = {
     "docs/02-typescript/140-typeof-type-query.md": {
       "path": "docs/02-typescript/140-typeof-type-query.md",
       "link": "/docs/02-typescript/140-typeof-type-query",
-      "title": "typeof Type Query",
+      "title": "Запрос типа через `typeof`",
       "number": 140,
       "part": "TypeScript",
       "section": "Операции над типами",
       "sectionIndex": 7,
       "chapterIndex": 1,
-      "wordCount": 706,
-      "readingMinutes": 4,
+      "wordCount": 984,
+      "readingMinutes": 6,
       "h2": 15,
-      "h3": 7,
+      "h3": 13,
       "examples": 1,
       "tasks": 4,
       "solutions": 28,
       "mermaid": 1,
       "miniProjects": 1,
       "previous": {
-        "title": "keyof",
+        "title": "Оператор `keyof`",
         "number": 139,
         "link": "/docs/02-typescript/139-keyof"
       },
       "next": {
-        "title": "Indexed Access Types",
+        "title": "Индексный доступ к типам",
         "number": 141,
         "link": "/docs/02-typescript/141-indexed-access-types"
       },
@@ -9646,11 +9597,18 @@ export const bookEngineData = {
         "total": 63,
         "bar": "████████░░░░"
       },
-      "related": [],
+      "related": [
+        {
+          "term": "JSON",
+          "title": "JSON",
+          "number": 94,
+          "link": "/docs/01-javascript/94-json"
+        }
+      ],
       "card": {
         "chapterLabel": "Глава 140",
-        "title": "typeof Type Query",
-        "reading": 4,
+        "title": "Запрос типа через `typeof`",
+        "reading": 6,
         "examples": 1,
         "tasks": 4,
         "solutions": 28,
@@ -9660,28 +9618,28 @@ export const bookEngineData = {
     "docs/02-typescript/141-indexed-access-types.md": {
       "path": "docs/02-typescript/141-indexed-access-types.md",
       "link": "/docs/02-typescript/141-indexed-access-types",
-      "title": "Indexed Access Types",
+      "title": "Индексный доступ к типам",
       "number": 141,
       "part": "TypeScript",
       "section": "Операции над типами",
       "sectionIndex": 7,
       "chapterIndex": 2,
-      "wordCount": 593,
-      "readingMinutes": 4,
+      "wordCount": 817,
+      "readingMinutes": 5,
       "h2": 15,
-      "h3": 6,
+      "h3": 12,
       "examples": 1,
       "tasks": 4,
       "solutions": 28,
       "mermaid": 1,
       "miniProjects": 1,
       "previous": {
-        "title": "typeof Type Query",
+        "title": "Запрос типа через `typeof`",
         "number": 140,
         "link": "/docs/02-typescript/140-typeof-type-query"
       },
       "next": {
-        "title": "Mapped Types",
+        "title": "Отображённые типы",
         "number": 142,
         "link": "/docs/02-typescript/142-mapped-types"
       },
@@ -9698,8 +9656,8 @@ export const bookEngineData = {
       "related": [],
       "card": {
         "chapterLabel": "Глава 141",
-        "title": "Indexed Access Types",
-        "reading": 4,
+        "title": "Индексный доступ к типам",
+        "reading": 5,
         "examples": 1,
         "tasks": 4,
         "solutions": 28,
@@ -9709,28 +9667,28 @@ export const bookEngineData = {
     "docs/02-typescript/142-mapped-types.md": {
       "path": "docs/02-typescript/142-mapped-types.md",
       "link": "/docs/02-typescript/142-mapped-types",
-      "title": "Mapped Types",
+      "title": "Отображённые типы",
       "number": 142,
       "part": "TypeScript",
       "section": "Операции над типами",
       "sectionIndex": 7,
       "chapterIndex": 3,
-      "wordCount": 592,
-      "readingMinutes": 4,
+      "wordCount": 867,
+      "readingMinutes": 5,
       "h2": 15,
-      "h3": 6,
+      "h3": 12,
       "examples": 1,
       "tasks": 4,
       "solutions": 28,
       "mermaid": 1,
       "miniProjects": 1,
       "previous": {
-        "title": "Indexed Access Types",
+        "title": "Индексный доступ к типам",
         "number": 141,
         "link": "/docs/02-typescript/141-indexed-access-types"
       },
       "next": {
-        "title": "Conditional Types",
+        "title": "Условные типы",
         "number": 143,
         "link": "/docs/02-typescript/143-conditional-types"
       },
@@ -9747,8 +9705,8 @@ export const bookEngineData = {
       "related": [],
       "card": {
         "chapterLabel": "Глава 142",
-        "title": "Mapped Types",
-        "reading": 4,
+        "title": "Отображённые типы",
+        "reading": 5,
         "examples": 1,
         "tasks": 4,
         "solutions": 28,
@@ -9758,28 +9716,28 @@ export const bookEngineData = {
     "docs/02-typescript/143-conditional-types.md": {
       "path": "docs/02-typescript/143-conditional-types.md",
       "link": "/docs/02-typescript/143-conditional-types",
-      "title": "Conditional Types",
+      "title": "Условные типы",
       "number": 143,
       "part": "TypeScript",
       "section": "Операции над типами",
       "sectionIndex": 7,
       "chapterIndex": 4,
-      "wordCount": 646,
-      "readingMinutes": 4,
+      "wordCount": 953,
+      "readingMinutes": 6,
       "h2": 15,
-      "h3": 6,
+      "h3": 12,
       "examples": 1,
       "tasks": 4,
       "solutions": 28,
       "mermaid": 1,
       "miniProjects": 1,
       "previous": {
-        "title": "Mapped Types",
+        "title": "Отображённые типы",
         "number": 142,
         "link": "/docs/02-typescript/142-mapped-types"
       },
       "next": {
-        "title": "infer",
+        "title": "Ключевое слово `infer`",
         "number": 144,
         "link": "/docs/02-typescript/144-infer"
       },
@@ -9795,6 +9753,12 @@ export const bookEngineData = {
       },
       "related": [
         {
+          "term": "Promise",
+          "title": "Промис",
+          "number": 72,
+          "link": "/docs/01-javascript/72-promise"
+        },
+        {
           "term": "JSON",
           "title": "JSON",
           "number": 94,
@@ -9803,8 +9767,8 @@ export const bookEngineData = {
       ],
       "card": {
         "chapterLabel": "Глава 143",
-        "title": "Conditional Types",
-        "reading": 4,
+        "title": "Условные типы",
+        "reading": 6,
         "examples": 1,
         "tasks": 4,
         "solutions": 28,
@@ -9814,28 +9778,28 @@ export const bookEngineData = {
     "docs/02-typescript/144-infer.md": {
       "path": "docs/02-typescript/144-infer.md",
       "link": "/docs/02-typescript/144-infer",
-      "title": "infer",
+      "title": "Ключевое слово `infer`",
       "number": 144,
       "part": "TypeScript",
       "section": "Операции над типами",
       "sectionIndex": 7,
       "chapterIndex": 5,
-      "wordCount": 578,
-      "readingMinutes": 4,
+      "wordCount": 866,
+      "readingMinutes": 5,
       "h2": 15,
-      "h3": 6,
+      "h3": 12,
       "examples": 1,
       "tasks": 4,
       "solutions": 28,
       "mermaid": 1,
       "miniProjects": 1,
       "previous": {
-        "title": "Conditional Types",
+        "title": "Условные типы",
         "number": 143,
         "link": "/docs/02-typescript/143-conditional-types"
       },
       "next": {
-        "title": "Utility Types",
+        "title": "Служебные типы",
         "number": 145,
         "link": "/docs/02-typescript/145-utility-types"
       },
@@ -9852,15 +9816,15 @@ export const bookEngineData = {
       "related": [
         {
           "term": "Promise",
-          "title": "Promise",
+          "title": "Промис",
           "number": 72,
           "link": "/docs/01-javascript/72-promise"
         }
       ],
       "card": {
         "chapterLabel": "Глава 144",
-        "title": "infer",
-        "reading": 4,
+        "title": "Ключевое слово `infer`",
+        "reading": 5,
         "examples": 1,
         "tasks": 4,
         "solutions": 28,
@@ -9870,28 +9834,28 @@ export const bookEngineData = {
     "docs/02-typescript/145-utility-types.md": {
       "path": "docs/02-typescript/145-utility-types.md",
       "link": "/docs/02-typescript/145-utility-types",
-      "title": "Utility Types",
+      "title": "Служебные типы",
       "number": 145,
       "part": "TypeScript",
       "section": "Операции над типами",
       "sectionIndex": 7,
       "chapterIndex": 6,
-      "wordCount": 589,
-      "readingMinutes": 4,
+      "wordCount": 964,
+      "readingMinutes": 6,
       "h2": 15,
-      "h3": 7,
+      "h3": 12,
       "examples": 1,
       "tasks": 4,
       "solutions": 28,
       "mermaid": 1,
       "miniProjects": 1,
       "previous": {
-        "title": "infer",
+        "title": "Ключевое слово `infer`",
         "number": 144,
         "link": "/docs/02-typescript/144-infer"
       },
       "next": {
-        "title": "Typed Classes",
+        "title": "Типизированные классы",
         "number": 146,
         "link": "/docs/02-typescript/146-typed-classes"
       },
@@ -9908,15 +9872,15 @@ export const bookEngineData = {
       "related": [
         {
           "term": "Promise",
-          "title": "Promise",
+          "title": "Промис",
           "number": 72,
           "link": "/docs/01-javascript/72-promise"
         }
       ],
       "card": {
         "chapterLabel": "Глава 145",
-        "title": "Utility Types",
-        "reading": 4,
+        "title": "Служебные типы",
+        "reading": 6,
         "examples": 1,
         "tasks": 4,
         "solutions": 28,
@@ -9926,28 +9890,28 @@ export const bookEngineData = {
     "docs/02-typescript/146-typed-classes.md": {
       "path": "docs/02-typescript/146-typed-classes.md",
       "link": "/docs/02-typescript/146-typed-classes",
-      "title": "Typed Classes",
+      "title": "Типизированные классы",
       "number": 146,
       "part": "TypeScript",
       "section": "Классы и объектные контракты",
       "sectionIndex": 8,
       "chapterIndex": 0,
-      "wordCount": 719,
-      "readingMinutes": 4,
+      "wordCount": 1014,
+      "readingMinutes": 6,
       "h2": 15,
-      "h3": 6,
+      "h3": 12,
       "examples": 1,
       "tasks": 4,
       "solutions": 28,
       "mermaid": 1,
       "miniProjects": 1,
       "previous": {
-        "title": "Utility Types",
+        "title": "Служебные типы",
         "number": 145,
         "link": "/docs/02-typescript/145-utility-types"
       },
       "next": {
-        "title": "Access Modifiers and readonly Members",
+        "title": "Модификаторы доступа и неизменяемые члены",
         "number": 147,
         "link": "/docs/02-typescript/147-access-modifiers-and-readonly-members"
       },
@@ -9964,7 +9928,7 @@ export const bookEngineData = {
       "related": [
         {
           "term": "this",
-          "title": "this",
+          "title": "Ключевое слово `this`",
           "number": 29,
           "link": "/docs/01-javascript/29-this"
         },
@@ -9977,8 +9941,8 @@ export const bookEngineData = {
       ],
       "card": {
         "chapterLabel": "Глава 146",
-        "title": "Typed Classes",
-        "reading": 4,
+        "title": "Типизированные классы",
+        "reading": 6,
         "examples": 1,
         "tasks": 4,
         "solutions": 28,
@@ -9988,28 +9952,28 @@ export const bookEngineData = {
     "docs/02-typescript/147-access-modifiers-and-readonly-members.md": {
       "path": "docs/02-typescript/147-access-modifiers-and-readonly-members.md",
       "link": "/docs/02-typescript/147-access-modifiers-and-readonly-members",
-      "title": "Access Modifiers and readonly Members",
+      "title": "Модификаторы доступа и неизменяемые члены",
       "number": 147,
       "part": "TypeScript",
       "section": "Классы и объектные контракты",
       "sectionIndex": 8,
       "chapterIndex": 1,
-      "wordCount": 659,
-      "readingMinutes": 4,
+      "wordCount": 956,
+      "readingMinutes": 6,
       "h2": 15,
-      "h3": 7,
+      "h3": 13,
       "examples": 1,
       "tasks": 4,
       "solutions": 28,
       "mermaid": 1,
       "miniProjects": 1,
       "previous": {
-        "title": "Typed Classes",
+        "title": "Типизированные классы",
         "number": 146,
         "link": "/docs/02-typescript/146-typed-classes"
       },
       "next": {
-        "title": "Abstract Classes",
+        "title": "Абстрактные классы",
         "number": 148,
         "link": "/docs/02-typescript/148-abstract-classes"
       },
@@ -10026,15 +9990,21 @@ export const bookEngineData = {
       "related": [
         {
           "term": "this",
-          "title": "this",
+          "title": "Ключевое слово `this`",
           "number": 29,
           "link": "/docs/01-javascript/29-this"
+        },
+        {
+          "term": "JSON",
+          "title": "JSON",
+          "number": 94,
+          "link": "/docs/01-javascript/94-json"
         }
       ],
       "card": {
         "chapterLabel": "Глава 147",
-        "title": "Access Modifiers and readonly Members",
-        "reading": 4,
+        "title": "Модификаторы доступа и неизменяемые члены",
+        "reading": 6,
         "examples": 1,
         "tasks": 4,
         "solutions": 28,
@@ -10044,28 +10014,28 @@ export const bookEngineData = {
     "docs/02-typescript/148-abstract-classes.md": {
       "path": "docs/02-typescript/148-abstract-classes.md",
       "link": "/docs/02-typescript/148-abstract-classes",
-      "title": "Abstract Classes",
+      "title": "Абстрактные классы",
       "number": 148,
       "part": "TypeScript",
       "section": "Классы и объектные контракты",
       "sectionIndex": 8,
       "chapterIndex": 2,
-      "wordCount": 680,
-      "readingMinutes": 4,
+      "wordCount": 979,
+      "readingMinutes": 6,
       "h2": 15,
-      "h3": 6,
+      "h3": 12,
       "examples": 1,
       "tasks": 4,
       "solutions": 28,
       "mermaid": 1,
       "miniProjects": 1,
       "previous": {
-        "title": "Access Modifiers and readonly Members",
+        "title": "Модификаторы доступа и неизменяемые члены",
         "number": 147,
         "link": "/docs/02-typescript/147-access-modifiers-and-readonly-members"
       },
       "next": {
-        "title": "implements and override",
+        "title": "`implements` и `override`",
         "number": 149,
         "link": "/docs/02-typescript/149-implements-and-override"
       },
@@ -10082,15 +10052,15 @@ export const bookEngineData = {
       "related": [
         {
           "term": "this",
-          "title": "this",
+          "title": "Ключевое слово `this`",
           "number": 29,
           "link": "/docs/01-javascript/29-this"
         }
       ],
       "card": {
         "chapterLabel": "Глава 148",
-        "title": "Abstract Classes",
-        "reading": 4,
+        "title": "Абстрактные классы",
+        "reading": 6,
         "examples": 1,
         "tasks": 4,
         "solutions": 28,
@@ -10100,28 +10070,28 @@ export const bookEngineData = {
     "docs/02-typescript/149-implements-and-override.md": {
       "path": "docs/02-typescript/149-implements-and-override.md",
       "link": "/docs/02-typescript/149-implements-and-override",
-      "title": "implements and override",
+      "title": "`implements` и `override`",
       "number": 149,
       "part": "TypeScript",
       "section": "Классы и объектные контракты",
       "sectionIndex": 8,
       "chapterIndex": 3,
-      "wordCount": 614,
-      "readingMinutes": 4,
+      "wordCount": 927,
+      "readingMinutes": 6,
       "h2": 15,
-      "h3": 7,
+      "h3": 12,
       "examples": 1,
       "tasks": 4,
       "solutions": 28,
       "mermaid": 1,
       "miniProjects": 1,
       "previous": {
-        "title": "Abstract Classes",
+        "title": "Абстрактные классы",
         "number": 148,
         "link": "/docs/02-typescript/148-abstract-classes"
       },
       "next": {
-        "title": "TypeScript and JavaScript Modules",
+        "title": "Модули TypeScript и JavaScript",
         "number": 150,
         "link": "/docs/02-typescript/150-typescript-and-javascript-modules"
       },
@@ -10137,6 +10107,12 @@ export const bookEngineData = {
       },
       "related": [
         {
+          "term": "Promise",
+          "title": "Промис",
+          "number": 72,
+          "link": "/docs/01-javascript/72-promise"
+        },
+        {
           "term": "JSON",
           "title": "JSON",
           "number": 94,
@@ -10145,8 +10121,8 @@ export const bookEngineData = {
       ],
       "card": {
         "chapterLabel": "Глава 149",
-        "title": "implements and override",
-        "reading": 4,
+        "title": "`implements` и `override`",
+        "reading": 6,
         "examples": 1,
         "tasks": 4,
         "solutions": 28,
@@ -10156,28 +10132,28 @@ export const bookEngineData = {
     "docs/02-typescript/150-typescript-and-javascript-modules.md": {
       "path": "docs/02-typescript/150-typescript-and-javascript-modules.md",
       "link": "/docs/02-typescript/150-typescript-and-javascript-modules",
-      "title": "TypeScript and JavaScript Modules",
+      "title": "Модули TypeScript и JavaScript",
       "number": 150,
       "part": "TypeScript",
       "section": "Модули и декларации",
       "sectionIndex": 9,
       "chapterIndex": 0,
-      "wordCount": 755,
-      "readingMinutes": 5,
+      "wordCount": 970,
+      "readingMinutes": 6,
       "h2": 15,
-      "h3": 6,
+      "h3": 9,
       "examples": 1,
       "tasks": 4,
       "solutions": 28,
       "mermaid": 1,
       "miniProjects": 1,
       "previous": {
-        "title": "implements and override",
+        "title": "`implements` и `override`",
         "number": 149,
         "link": "/docs/02-typescript/149-implements-and-override"
       },
       "next": {
-        "title": "Type-only Imports and Exports",
+        "title": "Импорт и экспорт только типов",
         "number": 151,
         "link": "/docs/02-typescript/151-type-only-imports-and-exports"
       },
@@ -10194,15 +10170,15 @@ export const bookEngineData = {
       "related": [
         {
           "term": "Modules",
-          "title": "JavaScript Modules",
+          "title": "Модули JavaScript",
           "number": 85,
           "link": "/docs/01-javascript/85-javascript-modules"
         }
       ],
       "card": {
         "chapterLabel": "Глава 150",
-        "title": "TypeScript and JavaScript Modules",
-        "reading": 5,
+        "title": "Модули TypeScript и JavaScript",
+        "reading": 6,
         "examples": 1,
         "tasks": 4,
         "solutions": 28,
@@ -10212,28 +10188,28 @@ export const bookEngineData = {
     "docs/02-typescript/151-type-only-imports-and-exports.md": {
       "path": "docs/02-typescript/151-type-only-imports-and-exports.md",
       "link": "/docs/02-typescript/151-type-only-imports-and-exports",
-      "title": "Type-only Imports and Exports",
+      "title": "Импорт и экспорт только типов",
       "number": 151,
       "part": "TypeScript",
       "section": "Модули и декларации",
       "sectionIndex": 9,
       "chapterIndex": 1,
-      "wordCount": 762,
-      "readingMinutes": 5,
+      "wordCount": 1083,
+      "readingMinutes": 7,
       "h2": 15,
-      "h3": 7,
+      "h3": 13,
       "examples": 1,
       "tasks": 4,
       "solutions": 28,
       "mermaid": 1,
       "miniProjects": 1,
       "previous": {
-        "title": "TypeScript and JavaScript Modules",
+        "title": "Модули TypeScript и JavaScript",
         "number": 150,
         "link": "/docs/02-typescript/150-typescript-and-javascript-modules"
       },
       "next": {
-        "title": "Module Resolution",
+        "title": "Разрешение модулей",
         "number": 152,
         "link": "/docs/02-typescript/152-module-resolution"
       },
@@ -10247,11 +10223,18 @@ export const bookEngineData = {
         "total": 63,
         "bar": "██████████░░"
       },
-      "related": [],
+      "related": [
+        {
+          "term": "Modules",
+          "title": "Модули JavaScript",
+          "number": 85,
+          "link": "/docs/01-javascript/85-javascript-modules"
+        }
+      ],
       "card": {
         "chapterLabel": "Глава 151",
-        "title": "Type-only Imports and Exports",
-        "reading": 5,
+        "title": "Импорт и экспорт только типов",
+        "reading": 7,
         "examples": 1,
         "tasks": 4,
         "solutions": 28,
@@ -10261,28 +10244,28 @@ export const bookEngineData = {
     "docs/02-typescript/152-module-resolution.md": {
       "path": "docs/02-typescript/152-module-resolution.md",
       "link": "/docs/02-typescript/152-module-resolution",
-      "title": "Module Resolution",
+      "title": "Разрешение модулей",
       "number": 152,
       "part": "TypeScript",
       "section": "Модули и декларации",
       "sectionIndex": 9,
       "chapterIndex": 2,
-      "wordCount": 798,
-      "readingMinutes": 5,
+      "wordCount": 1168,
+      "readingMinutes": 7,
       "h2": 15,
-      "h3": 6,
+      "h3": 12,
       "examples": 1,
       "tasks": 4,
       "solutions": 28,
       "mermaid": 1,
       "miniProjects": 1,
       "previous": {
-        "title": "Type-only Imports and Exports",
+        "title": "Импорт и экспорт только типов",
         "number": 151,
         "link": "/docs/02-typescript/151-type-only-imports-and-exports"
       },
       "next": {
-        "title": "Declaration Files",
+        "title": "Файлы объявлений",
         "number": 153,
         "link": "/docs/02-typescript/153-declaration-files"
       },
@@ -10296,11 +10279,18 @@ export const bookEngineData = {
         "total": 63,
         "bar": "███████████░"
       },
-      "related": [],
+      "related": [
+        {
+          "term": "Modules",
+          "title": "Модули JavaScript",
+          "number": 85,
+          "link": "/docs/01-javascript/85-javascript-modules"
+        }
+      ],
       "card": {
         "chapterLabel": "Глава 152",
-        "title": "Module Resolution",
-        "reading": 5,
+        "title": "Разрешение модулей",
+        "reading": 7,
         "examples": 1,
         "tasks": 4,
         "solutions": 28,
@@ -10310,28 +10300,28 @@ export const bookEngineData = {
     "docs/02-typescript/153-declaration-files.md": {
       "path": "docs/02-typescript/153-declaration-files.md",
       "link": "/docs/02-typescript/153-declaration-files",
-      "title": "Declaration Files",
+      "title": "Файлы объявлений",
       "number": 153,
       "part": "TypeScript",
       "section": "Модули и декларации",
       "sectionIndex": 9,
       "chapterIndex": 3,
-      "wordCount": 751,
-      "readingMinutes": 5,
+      "wordCount": 1052,
+      "readingMinutes": 6,
       "h2": 15,
-      "h3": 6,
+      "h3": 12,
       "examples": 1,
       "tasks": 4,
       "solutions": 28,
       "mermaid": 1,
       "miniProjects": 1,
       "previous": {
-        "title": "Module Resolution",
+        "title": "Разрешение модулей",
         "number": 152,
         "link": "/docs/02-typescript/152-module-resolution"
       },
       "next": {
-        "title": "Declaration Merging",
+        "title": "Слияние объявлений",
         "number": 154,
         "link": "/docs/02-typescript/154-declaration-merging"
       },
@@ -10345,11 +10335,18 @@ export const bookEngineData = {
         "total": 63,
         "bar": "███████████░"
       },
-      "related": [],
+      "related": [
+        {
+          "term": "Promise",
+          "title": "Промис",
+          "number": 72,
+          "link": "/docs/01-javascript/72-promise"
+        }
+      ],
       "card": {
         "chapterLabel": "Глава 153",
-        "title": "Declaration Files",
-        "reading": 5,
+        "title": "Файлы объявлений",
+        "reading": 6,
         "examples": 1,
         "tasks": 4,
         "solutions": 28,
@@ -10359,28 +10356,28 @@ export const bookEngineData = {
     "docs/02-typescript/154-declaration-merging.md": {
       "path": "docs/02-typescript/154-declaration-merging.md",
       "link": "/docs/02-typescript/154-declaration-merging",
-      "title": "Declaration Merging",
+      "title": "Слияние объявлений",
       "number": 154,
       "part": "TypeScript",
       "section": "Модули и декларации",
       "sectionIndex": 9,
       "chapterIndex": 4,
-      "wordCount": 692,
-      "readingMinutes": 4,
+      "wordCount": 1013,
+      "readingMinutes": 6,
       "h2": 15,
-      "h3": 6,
+      "h3": 11,
       "examples": 1,
       "tasks": 4,
       "solutions": 28,
       "mermaid": 1,
       "miniProjects": 1,
       "previous": {
-        "title": "Declaration Files",
+        "title": "Файлы объявлений",
         "number": 153,
         "link": "/docs/02-typescript/153-declaration-files"
       },
       "next": {
-        "title": "Compiler Options for Real Projects",
+        "title": "Настройки компилятора для реальных проектов",
         "number": 155,
         "link": "/docs/02-typescript/155-compiler-options-for-real-projects"
       },
@@ -10397,8 +10394,8 @@ export const bookEngineData = {
       "related": [],
       "card": {
         "chapterLabel": "Глава 154",
-        "title": "Declaration Merging",
-        "reading": 4,
+        "title": "Слияние объявлений",
+        "reading": 6,
         "examples": 1,
         "tasks": 4,
         "solutions": 28,
@@ -10408,28 +10405,28 @@ export const bookEngineData = {
     "docs/02-typescript/155-compiler-options-for-real-projects.md": {
       "path": "docs/02-typescript/155-compiler-options-for-real-projects.md",
       "link": "/docs/02-typescript/155-compiler-options-for-real-projects",
-      "title": "Compiler Options for Real Projects",
+      "title": "Настройки компилятора для реальных проектов",
       "number": 155,
       "part": "TypeScript",
       "section": "Модули и декларации",
       "sectionIndex": 9,
       "chapterIndex": 5,
-      "wordCount": 862,
-      "readingMinutes": 5,
+      "wordCount": 1209,
+      "readingMinutes": 7,
       "h2": 15,
-      "h3": 7,
+      "h3": 12,
       "examples": 1,
       "tasks": 4,
       "solutions": 28,
       "mermaid": 1,
       "miniProjects": 1,
       "previous": {
-        "title": "Declaration Merging",
+        "title": "Слияние объявлений",
         "number": 154,
         "link": "/docs/02-typescript/154-declaration-merging"
       },
       "next": {
-        "title": "Typed Configuration and Test Data",
+        "title": "Типизированная настройка и тестовые данные",
         "number": 156,
         "link": "/docs/02-typescript/156-typed-configuration-and-test-data"
       },
@@ -10446,8 +10443,8 @@ export const bookEngineData = {
       "related": [],
       "card": {
         "chapterLabel": "Глава 155",
-        "title": "Compiler Options for Real Projects",
-        "reading": 5,
+        "title": "Настройки компилятора для реальных проектов",
+        "reading": 7,
         "examples": 1,
         "tasks": 4,
         "solutions": 28,
@@ -10457,28 +10454,28 @@ export const bookEngineData = {
     "docs/02-typescript/156-typed-configuration-and-test-data.md": {
       "path": "docs/02-typescript/156-typed-configuration-and-test-data.md",
       "link": "/docs/02-typescript/156-typed-configuration-and-test-data",
-      "title": "Typed Configuration and Test Data",
+      "title": "Типизированная настройка и тестовые данные",
       "number": 156,
       "part": "TypeScript",
       "section": "Проектная практика",
       "sectionIndex": 10,
       "chapterIndex": 0,
-      "wordCount": 775,
-      "readingMinutes": 5,
+      "wordCount": 1076,
+      "readingMinutes": 6,
       "h2": 15,
-      "h3": 6,
+      "h3": 12,
       "examples": 1,
       "tasks": 4,
       "solutions": 28,
       "mermaid": 1,
       "miniProjects": 1,
       "previous": {
-        "title": "Compiler Options for Real Projects",
+        "title": "Настройки компилятора для реальных проектов",
         "number": 155,
         "link": "/docs/02-typescript/155-compiler-options-for-real-projects"
       },
       "next": {
-        "title": "Typed Page Objects, Fixtures and Helpers",
+        "title": "Типизированные объекты страниц, фикстуры и вспомогательные функции",
         "number": 157,
         "link": "/docs/02-typescript/157-typed-page-objects-fixtures-and-helpers"
       },
@@ -10502,8 +10499,8 @@ export const bookEngineData = {
       ],
       "card": {
         "chapterLabel": "Глава 156",
-        "title": "Typed Configuration and Test Data",
-        "reading": 5,
+        "title": "Типизированная настройка и тестовые данные",
+        "reading": 6,
         "examples": 1,
         "tasks": 4,
         "solutions": 28,
@@ -10513,28 +10510,28 @@ export const bookEngineData = {
     "docs/02-typescript/157-typed-page-objects-fixtures-and-helpers.md": {
       "path": "docs/02-typescript/157-typed-page-objects-fixtures-and-helpers.md",
       "link": "/docs/02-typescript/157-typed-page-objects-fixtures-and-helpers",
-      "title": "Typed Page Objects, Fixtures and Helpers",
+      "title": "Типизированные объекты страниц, фикстуры и вспомогательные функции",
       "number": 157,
       "part": "TypeScript",
       "section": "Проектная практика",
       "sectionIndex": 10,
       "chapterIndex": 1,
-      "wordCount": 804,
-      "readingMinutes": 5,
+      "wordCount": 1130,
+      "readingMinutes": 7,
       "h2": 15,
-      "h3": 6,
+      "h3": 12,
       "examples": 1,
       "tasks": 4,
       "solutions": 28,
       "mermaid": 1,
       "miniProjects": 1,
       "previous": {
-        "title": "Typed Configuration and Test Data",
+        "title": "Типизированная настройка и тестовые данные",
         "number": 156,
         "link": "/docs/02-typescript/156-typed-configuration-and-test-data"
       },
       "next": {
-        "title": "Typed API Clients and Assertions",
+        "title": "Типизированные клиенты API и проверки",
         "number": 158,
         "link": "/docs/02-typescript/158-typed-api-clients-and-assertions"
       },
@@ -10551,15 +10548,15 @@ export const bookEngineData = {
       "related": [
         {
           "term": "Promise",
-          "title": "Promise",
+          "title": "Промис",
           "number": 72,
           "link": "/docs/01-javascript/72-promise"
         }
       ],
       "card": {
         "chapterLabel": "Глава 157",
-        "title": "Typed Page Objects, Fixtures and Helpers",
-        "reading": 5,
+        "title": "Типизированные объекты страниц, фикстуры и вспомогательные функции",
+        "reading": 7,
         "examples": 1,
         "tasks": 4,
         "solutions": 28,
@@ -10569,28 +10566,28 @@ export const bookEngineData = {
     "docs/02-typescript/158-typed-api-clients-and-assertions.md": {
       "path": "docs/02-typescript/158-typed-api-clients-and-assertions.md",
       "link": "/docs/02-typescript/158-typed-api-clients-and-assertions",
-      "title": "Typed API Clients and Assertions",
+      "title": "Типизированные клиенты API и проверки",
       "number": 158,
       "part": "TypeScript",
       "section": "Проектная практика",
       "sectionIndex": 10,
       "chapterIndex": 2,
-      "wordCount": 752,
-      "readingMinutes": 5,
+      "wordCount": 1046,
+      "readingMinutes": 6,
       "h2": 15,
-      "h3": 6,
+      "h3": 11,
       "examples": 1,
       "tasks": 4,
       "solutions": 28,
       "mermaid": 1,
       "miniProjects": 1,
       "previous": {
-        "title": "Typed Page Objects, Fixtures and Helpers",
+        "title": "Типизированные объекты страниц, фикстуры и вспомогательные функции",
         "number": 157,
         "link": "/docs/02-typescript/157-typed-page-objects-fixtures-and-helpers"
       },
       "next": {
-        "title": "Maintaining Large TypeScript Test Projects",
+        "title": "Сопровождение больших тестовых проектов на TypeScript",
         "number": 159,
         "link": "/docs/02-typescript/159-maintaining-large-typescript-test-projects"
       },
@@ -10607,15 +10604,15 @@ export const bookEngineData = {
       "related": [
         {
           "term": "Promise",
-          "title": "Promise",
+          "title": "Промис",
           "number": 72,
           "link": "/docs/01-javascript/72-promise"
         }
       ],
       "card": {
         "chapterLabel": "Глава 158",
-        "title": "Typed API Clients and Assertions",
-        "reading": 5,
+        "title": "Типизированные клиенты API и проверки",
+        "reading": 6,
         "examples": 1,
         "tasks": 4,
         "solutions": 28,
@@ -10625,28 +10622,28 @@ export const bookEngineData = {
     "docs/02-typescript/159-maintaining-large-typescript-test-projects.md": {
       "path": "docs/02-typescript/159-maintaining-large-typescript-test-projects.md",
       "link": "/docs/02-typescript/159-maintaining-large-typescript-test-projects",
-      "title": "Maintaining Large TypeScript Test Projects",
+      "title": "Сопровождение больших тестовых проектов на TypeScript",
       "number": 159,
       "part": "TypeScript",
       "section": "Проектная практика",
       "sectionIndex": 10,
       "chapterIndex": 3,
-      "wordCount": 926,
-      "readingMinutes": 6,
+      "wordCount": 1167,
+      "readingMinutes": 7,
       "h2": 15,
-      "h3": 6,
+      "h3": 10,
       "examples": 1,
       "tasks": 4,
       "solutions": 28,
       "mermaid": 1,
       "miniProjects": 1,
       "previous": {
-        "title": "Typed API Clients and Assertions",
+        "title": "Типизированные клиенты API и проверки",
         "number": 158,
         "link": "/docs/02-typescript/158-typed-api-clients-and-assertions"
       },
       "next": {
-        "title": "Что такое Automation QA Framework",
+        "title": "Что такое фреймворк автоматизации тестов",
         "number": 160,
         "link": "/docs/03-automation-qa/160-what-is-automation-qa-framework"
       },
@@ -10663,8 +10660,8 @@ export const bookEngineData = {
       "related": [],
       "card": {
         "chapterLabel": "Глава 159",
-        "title": "Maintaining Large TypeScript Test Projects",
-        "reading": 6,
+        "title": "Сопровождение больших тестовых проектов на TypeScript",
+        "reading": 7,
         "examples": 1,
         "tasks": 4,
         "solutions": 28,
@@ -10674,23 +10671,23 @@ export const bookEngineData = {
     "docs/03-automation-qa/160-what-is-automation-qa-framework.md": {
       "path": "docs/03-automation-qa/160-what-is-automation-qa-framework.md",
       "link": "/docs/03-automation-qa/160-what-is-automation-qa-framework",
-      "title": "Что такое Automation QA Framework",
+      "title": "Что такое фреймворк автоматизации тестов",
       "number": 160,
       "part": "Automation QA",
       "section": "Основы Automation QA Framework",
       "sectionIndex": 0,
       "chapterIndex": 0,
-      "wordCount": 925,
-      "readingMinutes": 6,
+      "wordCount": 1250,
+      "readingMinutes": 7,
       "h2": 17,
-      "h3": 6,
+      "h3": 9,
       "examples": 1,
       "tasks": 3,
       "solutions": 24,
       "mermaid": 1,
       "miniProjects": 0,
       "previous": {
-        "title": "Maintaining Large TypeScript Test Projects",
+        "title": "Сопровождение больших тестовых проектов на TypeScript",
         "number": 159,
         "link": "/docs/02-typescript/159-maintaining-large-typescript-test-projects"
       },
@@ -10712,15 +10709,15 @@ export const bookEngineData = {
       "related": [
         {
           "term": "Promise",
-          "title": "Promise",
+          "title": "Промис",
           "number": 72,
           "link": "/docs/01-javascript/72-promise"
         }
       ],
       "card": {
         "chapterLabel": "Глава 160",
-        "title": "Что такое Automation QA Framework",
-        "reading": 6,
+        "title": "Что такое фреймворк автоматизации тестов",
+        "reading": 7,
         "examples": 1,
         "tasks": 3,
         "solutions": 24,
@@ -10736,17 +10733,17 @@ export const bookEngineData = {
       "section": "Основы Automation QA Framework",
       "sectionIndex": 0,
       "chapterIndex": 1,
-      "wordCount": 847,
-      "readingMinutes": 5,
+      "wordCount": 1195,
+      "readingMinutes": 7,
       "h2": 17,
-      "h3": 6,
-      "examples": 0,
+      "h3": 9,
+      "examples": 1,
       "tasks": 0,
       "solutions": 24,
       "mermaid": 1,
       "miniProjects": 0,
       "previous": {
-        "title": "Что такое Automation QA Framework",
+        "title": "Что такое фреймворк автоматизации тестов",
         "number": 160,
         "link": "/docs/03-automation-qa/160-what-is-automation-qa-framework"
       },
@@ -10769,8 +10766,8 @@ export const bookEngineData = {
       "card": {
         "chapterLabel": "Глава 161",
         "title": "Инструменты и роли в Automation QA",
-        "reading": 5,
-        "examples": 0,
+        "reading": 7,
+        "examples": 1,
         "tasks": 0,
         "solutions": 24,
         "mermaid": 1
@@ -10785,10 +10782,10 @@ export const bookEngineData = {
       "section": "Основы Automation QA Framework",
       "sectionIndex": 0,
       "chapterIndex": 2,
-      "wordCount": 813,
-      "readingMinutes": 5,
+      "wordCount": 1130,
+      "readingMinutes": 7,
       "h2": 17,
-      "h3": 6,
+      "h3": 9,
       "examples": 1,
       "tasks": 3,
       "solutions": 24,
@@ -10817,7 +10814,7 @@ export const bookEngineData = {
       "related": [
         {
           "term": "Promise",
-          "title": "Promise",
+          "title": "Промис",
           "number": 72,
           "link": "/docs/01-javascript/72-promise"
         }
@@ -10825,7 +10822,7 @@ export const bookEngineData = {
       "card": {
         "chapterLabel": "Глава 162",
         "title": "Архитектурные слои и поток зависимостей",
-        "reading": 5,
+        "reading": 7,
         "examples": 1,
         "tasks": 3,
         "solutions": 24,
@@ -10841,11 +10838,11 @@ export const bookEngineData = {
       "section": "Основы Automation QA Framework",
       "sectionIndex": 0,
       "chapterIndex": 3,
-      "wordCount": 794,
-      "readingMinutes": 5,
+      "wordCount": 1167,
+      "readingMinutes": 7,
       "h2": 17,
-      "h3": 6,
-      "examples": 0,
+      "h3": 10,
+      "examples": 1,
       "tasks": 0,
       "solutions": 24,
       "mermaid": 1,
@@ -10874,8 +10871,8 @@ export const bookEngineData = {
       "card": {
         "chapterLabel": "Глава 163",
         "title": "Тестовый и инфраструктурный код",
-        "reading": 5,
-        "examples": 0,
+        "reading": 7,
+        "examples": 1,
         "tasks": 0,
         "solutions": 24,
         "mermaid": 1
@@ -10890,10 +10887,10 @@ export const bookEngineData = {
       "section": "Основы Automation QA Framework",
       "sectionIndex": 0,
       "chapterIndex": 4,
-      "wordCount": 910,
-      "readingMinutes": 6,
+      "wordCount": 1117,
+      "readingMinutes": 7,
       "h2": 17,
-      "h3": 6,
+      "h3": 7,
       "examples": 1,
       "tasks": 0,
       "solutions": 24,
@@ -10922,7 +10919,7 @@ export const bookEngineData = {
       "related": [
         {
           "term": "Promise",
-          "title": "Promise",
+          "title": "Промис",
           "number": 72,
           "link": "/docs/01-javascript/72-promise"
         }
@@ -10930,7 +10927,7 @@ export const bookEngineData = {
       "card": {
         "chapterLabel": "Глава 164",
         "title": "Жизненный цикл автотеста",
-        "reading": 6,
+        "reading": 7,
         "examples": 1,
         "tasks": 0,
         "solutions": 24,
@@ -10946,10 +10943,10 @@ export const bookEngineData = {
       "section": "Основы Automation QA Framework",
       "sectionIndex": 0,
       "chapterIndex": 5,
-      "wordCount": 853,
-      "readingMinutes": 5,
+      "wordCount": 1170,
+      "readingMinutes": 7,
       "h2": 17,
-      "h3": 6,
+      "h3": 9,
       "examples": 1,
       "tasks": 0,
       "solutions": 24,
@@ -10978,7 +10975,7 @@ export const bookEngineData = {
       "related": [
         {
           "term": "Promise",
-          "title": "Promise",
+          "title": "Промис",
           "number": 72,
           "link": "/docs/01-javascript/72-promise"
         }
@@ -10986,7 +10983,7 @@ export const bookEngineData = {
       "card": {
         "chapterLabel": "Глава 165",
         "title": "Структура проекта и границы модулей",
-        "reading": 5,
+        "reading": 7,
         "examples": 1,
         "tasks": 0,
         "solutions": 24,
@@ -11002,10 +10999,10 @@ export const bookEngineData = {
       "section": "Playwright Test и основы UI-автоматизации",
       "sectionIndex": 1,
       "chapterIndex": 0,
-      "wordCount": 1064,
-      "readingMinutes": 6,
+      "wordCount": 1330,
+      "readingMinutes": 8,
       "h2": 17,
-      "h3": 6,
+      "h3": 9,
       "examples": 1,
       "tasks": 0,
       "solutions": 24,
@@ -11035,7 +11032,7 @@ export const bookEngineData = {
       "card": {
         "chapterLabel": "Глава 166",
         "title": "Playwright и Playwright Test",
-        "reading": 6,
+        "reading": 8,
         "examples": 1,
         "tasks": 0,
         "solutions": 24,
@@ -11051,10 +11048,10 @@ export const bookEngineData = {
       "section": "Playwright Test и основы UI-автоматизации",
       "sectionIndex": 1,
       "chapterIndex": 1,
-      "wordCount": 1090,
-      "readingMinutes": 7,
+      "wordCount": 1411,
+      "readingMinutes": 8,
       "h2": 17,
-      "h3": 6,
+      "h3": 9,
       "examples": 1,
       "tasks": 0,
       "solutions": 24,
@@ -11066,7 +11063,7 @@ export const bookEngineData = {
         "link": "/docs/03-automation-qa/166-playwright-and-playwright-test"
       },
       "next": {
-        "title": "Browser, BrowserContext и Page",
+        "title": "`Browser`, `BrowserContext` и `Page`",
         "number": 168,
         "link": "/docs/03-automation-qa/168-browser-browsercontext-and-page"
       },
@@ -11083,7 +11080,7 @@ export const bookEngineData = {
       "related": [
         {
           "term": "Promise",
-          "title": "Promise",
+          "title": "Промис",
           "number": 72,
           "link": "/docs/01-javascript/72-promise"
         }
@@ -11091,7 +11088,7 @@ export const bookEngineData = {
       "card": {
         "chapterLabel": "Глава 167",
         "title": "Анатомия и модель выполнения теста",
-        "reading": 7,
+        "reading": 8,
         "examples": 1,
         "tasks": 0,
         "solutions": 24,
@@ -11101,16 +11098,16 @@ export const bookEngineData = {
     "docs/03-automation-qa/168-browser-browsercontext-and-page.md": {
       "path": "docs/03-automation-qa/168-browser-browsercontext-and-page.md",
       "link": "/docs/03-automation-qa/168-browser-browsercontext-and-page",
-      "title": "Browser, BrowserContext и Page",
+      "title": "`Browser`, `BrowserContext` и `Page`",
       "number": 168,
       "part": "Automation QA",
       "section": "Playwright Test и основы UI-автоматизации",
       "sectionIndex": 1,
       "chapterIndex": 2,
-      "wordCount": 969,
-      "readingMinutes": 6,
+      "wordCount": 1262,
+      "readingMinutes": 8,
       "h2": 17,
-      "h3": 6,
+      "h3": 9,
       "examples": 1,
       "tasks": 0,
       "solutions": 24,
@@ -11139,8 +11136,8 @@ export const bookEngineData = {
       "related": [],
       "card": {
         "chapterLabel": "Глава 168",
-        "title": "Browser, BrowserContext и Page",
-        "reading": 6,
+        "title": "`Browser`, `BrowserContext` и `Page`",
+        "reading": 8,
         "examples": 1,
         "tasks": 0,
         "solutions": 24,
@@ -11156,17 +11153,17 @@ export const bookEngineData = {
       "section": "Playwright Test и основы UI-автоматизации",
       "sectionIndex": 1,
       "chapterIndex": 3,
-      "wordCount": 1075,
-      "readingMinutes": 6,
+      "wordCount": 1384,
+      "readingMinutes": 8,
       "h2": 17,
-      "h3": 6,
+      "h3": 9,
       "examples": 1,
       "tasks": 0,
       "solutions": 24,
       "mermaid": 1,
       "miniProjects": 0,
       "previous": {
-        "title": "Browser, BrowserContext и Page",
+        "title": "`Browser`, `BrowserContext` и `Page`",
         "number": 168,
         "link": "/docs/03-automation-qa/168-browser-browsercontext-and-page"
       },
@@ -11189,7 +11186,7 @@ export const bookEngineData = {
       "card": {
         "chapterLabel": "Глава 169",
         "title": "Locator и стратегия поиска элементов",
-        "reading": 6,
+        "reading": 8,
         "examples": 1,
         "tasks": 0,
         "solutions": 24,
@@ -11205,10 +11202,10 @@ export const bookEngineData = {
       "section": "Playwright Test и основы UI-автоматизации",
       "sectionIndex": 1,
       "chapterIndex": 4,
-      "wordCount": 1013,
-      "readingMinutes": 6,
+      "wordCount": 1359,
+      "readingMinutes": 8,
       "h2": 17,
-      "h3": 6,
+      "h3": 9,
       "examples": 1,
       "tasks": 0,
       "solutions": 24,
@@ -11220,7 +11217,7 @@ export const bookEngineData = {
         "link": "/docs/03-automation-qa/169-locator-and-element-search-strategy"
       },
       "next": {
-        "title": "Web-first assertions",
+        "title": "Проверки, умеющие ждать",
         "number": 171,
         "link": "/docs/03-automation-qa/171-web-first-assertions"
       },
@@ -11237,7 +11234,7 @@ export const bookEngineData = {
       "related": [
         {
           "term": "Promise",
-          "title": "Promise",
+          "title": "Промис",
           "number": 72,
           "link": "/docs/01-javascript/72-promise"
         }
@@ -11245,7 +11242,7 @@ export const bookEngineData = {
       "card": {
         "chapterLabel": "Глава 170",
         "title": "Пользовательские действия",
-        "reading": 6,
+        "reading": 8,
         "examples": 1,
         "tasks": 0,
         "solutions": 24,
@@ -11255,16 +11252,16 @@ export const bookEngineData = {
     "docs/03-automation-qa/171-web-first-assertions.md": {
       "path": "docs/03-automation-qa/171-web-first-assertions.md",
       "link": "/docs/03-automation-qa/171-web-first-assertions",
-      "title": "Web-first assertions",
+      "title": "Проверки, умеющие ждать",
       "number": 171,
       "part": "Automation QA",
       "section": "Playwright Test и основы UI-автоматизации",
       "sectionIndex": 1,
       "chapterIndex": 5,
-      "wordCount": 875,
-      "readingMinutes": 5,
+      "wordCount": 1164,
+      "readingMinutes": 7,
       "h2": 17,
-      "h3": 6,
+      "h3": 9,
       "examples": 1,
       "tasks": 0,
       "solutions": 24,
@@ -11276,7 +11273,7 @@ export const bookEngineData = {
         "link": "/docs/03-automation-qa/170-user-actions"
       },
       "next": {
-        "title": "Auto-waiting и явные ожидания",
+        "title": "Автоматические и явные ожидания",
         "number": 172,
         "link": "/docs/03-automation-qa/172-auto-waiting-and-explicit-waits"
       },
@@ -11293,8 +11290,8 @@ export const bookEngineData = {
       "related": [],
       "card": {
         "chapterLabel": "Глава 171",
-        "title": "Web-first assertions",
-        "reading": 5,
+        "title": "Проверки, умеющие ждать",
+        "reading": 7,
         "examples": 1,
         "tasks": 0,
         "solutions": 24,
@@ -11304,28 +11301,28 @@ export const bookEngineData = {
     "docs/03-automation-qa/172-auto-waiting-and-explicit-waits.md": {
       "path": "docs/03-automation-qa/172-auto-waiting-and-explicit-waits.md",
       "link": "/docs/03-automation-qa/172-auto-waiting-and-explicit-waits",
-      "title": "Auto-waiting и явные ожидания",
+      "title": "Автоматические и явные ожидания",
       "number": 172,
       "part": "Automation QA",
       "section": "Playwright Test и основы UI-автоматизации",
       "sectionIndex": 1,
       "chapterIndex": 6,
-      "wordCount": 933,
-      "readingMinutes": 6,
+      "wordCount": 1244,
+      "readingMinutes": 7,
       "h2": 17,
-      "h3": 6,
+      "h3": 9,
       "examples": 1,
       "tasks": 0,
       "solutions": 24,
       "mermaid": 1,
       "miniProjects": 0,
       "previous": {
-        "title": "Web-first assertions",
+        "title": "Проверки, умеющие ждать",
         "number": 171,
         "link": "/docs/03-automation-qa/171-web-first-assertions"
       },
       "next": {
-        "title": "Timeouts и границы ожидания",
+        "title": "Сроки ожидания и их границы",
         "number": 173,
         "link": "/docs/03-automation-qa/173-timeouts-and-wait-boundaries"
       },
@@ -11342,15 +11339,15 @@ export const bookEngineData = {
       "related": [
         {
           "term": "Promise",
-          "title": "Promise",
+          "title": "Промис",
           "number": 72,
           "link": "/docs/01-javascript/72-promise"
         }
       ],
       "card": {
         "chapterLabel": "Глава 172",
-        "title": "Auto-waiting и явные ожидания",
-        "reading": 6,
+        "title": "Автоматические и явные ожидания",
+        "reading": 7,
         "examples": 1,
         "tasks": 0,
         "solutions": 24,
@@ -11360,28 +11357,28 @@ export const bookEngineData = {
     "docs/03-automation-qa/173-timeouts-and-wait-boundaries.md": {
       "path": "docs/03-automation-qa/173-timeouts-and-wait-boundaries.md",
       "link": "/docs/03-automation-qa/173-timeouts-and-wait-boundaries",
-      "title": "Timeouts и границы ожидания",
+      "title": "Сроки ожидания и их границы",
       "number": 173,
       "part": "Automation QA",
       "section": "Playwright Test и основы UI-автоматизации",
       "sectionIndex": 1,
       "chapterIndex": 7,
-      "wordCount": 1065,
-      "readingMinutes": 6,
+      "wordCount": 1391,
+      "readingMinutes": 8,
       "h2": 17,
-      "h3": 7,
+      "h3": 10,
       "examples": 1,
       "tasks": 0,
       "solutions": 24,
       "mermaid": 1,
       "miniProjects": 0,
       "previous": {
-        "title": "Auto-waiting и явные ожидания",
+        "title": "Автоматические и явные ожидания",
         "number": 172,
         "link": "/docs/03-automation-qa/172-auto-waiting-and-explicit-waits"
       },
       "next": {
-        "title": "Hooks и жизненный цикл теста",
+        "title": "Хуки и жизненный цикл теста",
         "number": 174,
         "link": "/docs/03-automation-qa/174-hooks-and-test-lifecycle"
       },
@@ -11398,8 +11395,8 @@ export const bookEngineData = {
       "related": [],
       "card": {
         "chapterLabel": "Глава 173",
-        "title": "Timeouts и границы ожидания",
-        "reading": 6,
+        "title": "Сроки ожидания и их границы",
+        "reading": 8,
         "examples": 1,
         "tasks": 0,
         "solutions": 24,
@@ -11409,23 +11406,23 @@ export const bookEngineData = {
     "docs/03-automation-qa/174-hooks-and-test-lifecycle.md": {
       "path": "docs/03-automation-qa/174-hooks-and-test-lifecycle.md",
       "link": "/docs/03-automation-qa/174-hooks-and-test-lifecycle",
-      "title": "Hooks и жизненный цикл теста",
+      "title": "Хуки и жизненный цикл теста",
       "number": 174,
       "part": "Automation QA",
       "section": "Playwright Test и основы UI-автоматизации",
       "sectionIndex": 1,
       "chapterIndex": 8,
-      "wordCount": 1035,
-      "readingMinutes": 6,
+      "wordCount": 1338,
+      "readingMinutes": 8,
       "h2": 17,
-      "h3": 6,
+      "h3": 9,
       "examples": 1,
       "tasks": 0,
       "solutions": 24,
       "mermaid": 2,
       "miniProjects": 0,
       "previous": {
-        "title": "Timeouts и границы ожидания",
+        "title": "Сроки ожидания и их границы",
         "number": 173,
         "link": "/docs/03-automation-qa/173-timeouts-and-wait-boundaries"
       },
@@ -11447,8 +11444,8 @@ export const bookEngineData = {
       "related": [],
       "card": {
         "chapterLabel": "Глава 174",
-        "title": "Hooks и жизненный цикл теста",
-        "reading": 6,
+        "title": "Хуки и жизненный цикл теста",
+        "reading": 8,
         "examples": 1,
         "tasks": 0,
         "solutions": 24,
@@ -11464,22 +11461,22 @@ export const bookEngineData = {
       "section": "Playwright Test и основы UI-автоматизации",
       "sectionIndex": 1,
       "chapterIndex": 9,
-      "wordCount": 1018,
-      "readingMinutes": 6,
+      "wordCount": 1322,
+      "readingMinutes": 8,
       "h2": 17,
-      "h3": 6,
+      "h3": 9,
       "examples": 1,
       "tasks": 0,
       "solutions": 24,
       "mermaid": 1,
       "miniProjects": 0,
       "previous": {
-        "title": "Hooks и жизненный цикл теста",
+        "title": "Хуки и жизненный цикл теста",
         "number": 174,
         "link": "/docs/03-automation-qa/174-hooks-and-test-lifecycle"
       },
       "next": {
-        "title": "Built-in fixtures",
+        "title": "Встроенные фикстуры",
         "number": 176,
         "link": "/docs/03-automation-qa/176-built-in-fixtures"
       },
@@ -11497,7 +11494,7 @@ export const bookEngineData = {
       "card": {
         "chapterLabel": "Глава 175",
         "title": "Изоляция UI-тестов и состояние браузера",
-        "reading": 6,
+        "reading": 8,
         "examples": 1,
         "tasks": 0,
         "solutions": 24,
@@ -11507,16 +11504,16 @@ export const bookEngineData = {
     "docs/03-automation-qa/176-built-in-fixtures.md": {
       "path": "docs/03-automation-qa/176-built-in-fixtures.md",
       "link": "/docs/03-automation-qa/176-built-in-fixtures",
-      "title": "Built-in fixtures",
+      "title": "Встроенные фикстуры",
       "number": 176,
       "part": "Automation QA",
       "section": "Fixtures и архитектура UI-слоя",
       "sectionIndex": 2,
       "chapterIndex": 0,
-      "wordCount": 1089,
-      "readingMinutes": 7,
+      "wordCount": 1371,
+      "readingMinutes": 8,
       "h2": 18,
-      "h3": 6,
+      "h3": 9,
       "examples": 1,
       "tasks": 0,
       "solutions": 24,
@@ -11528,7 +11525,7 @@ export const bookEngineData = {
         "link": "/docs/03-automation-qa/175-ui-test-isolation-and-browser-state"
       },
       "next": {
-        "title": "Custom fixtures и граф зависимостей",
+        "title": "Собственные фикстуры и граф зависимостей",
         "number": 177,
         "link": "/docs/03-automation-qa/177-custom-fixtures-and-dependency-graph"
       },
@@ -11542,18 +11539,11 @@ export const bookEngineData = {
         "total": 90,
         "bar": "██░░░░░░░░░░"
       },
-      "related": [
-        {
-          "term": "Scope",
-          "title": "Scope",
-          "number": 7,
-          "link": "/docs/01-javascript/07-scope"
-        }
-      ],
+      "related": [],
       "card": {
         "chapterLabel": "Глава 176",
-        "title": "Built-in fixtures",
-        "reading": 7,
+        "title": "Встроенные фикстуры",
+        "reading": 8,
         "examples": 1,
         "tasks": 0,
         "solutions": 24,
@@ -11563,28 +11553,28 @@ export const bookEngineData = {
     "docs/03-automation-qa/177-custom-fixtures-and-dependency-graph.md": {
       "path": "docs/03-automation-qa/177-custom-fixtures-and-dependency-graph.md",
       "link": "/docs/03-automation-qa/177-custom-fixtures-and-dependency-graph",
-      "title": "Custom fixtures и граф зависимостей",
+      "title": "Собственные фикстуры и граф зависимостей",
       "number": 177,
       "part": "Automation QA",
       "section": "Fixtures и архитектура UI-слоя",
       "sectionIndex": 2,
       "chapterIndex": 1,
-      "wordCount": 1168,
-      "readingMinutes": 7,
+      "wordCount": 1495,
+      "readingMinutes": 9,
       "h2": 18,
-      "h3": 6,
+      "h3": 9,
       "examples": 1,
       "tasks": 0,
       "solutions": 24,
       "mermaid": 1,
       "miniProjects": 0,
       "previous": {
-        "title": "Built-in fixtures",
+        "title": "Встроенные фикстуры",
         "number": 176,
         "link": "/docs/03-automation-qa/176-built-in-fixtures"
       },
       "next": {
-        "title": "Authentication state и управляемые сессии",
+        "title": "Состояние аутентификации и управляемые сессии",
         "number": 178,
         "link": "/docs/03-automation-qa/178-authentication-state-and-managed-sessions"
       },
@@ -11601,8 +11591,8 @@ export const bookEngineData = {
       "related": [],
       "card": {
         "chapterLabel": "Глава 177",
-        "title": "Custom fixtures и граф зависимостей",
-        "reading": 7,
+        "title": "Собственные фикстуры и граф зависимостей",
+        "reading": 9,
         "examples": 1,
         "tasks": 0,
         "solutions": 24,
@@ -11612,28 +11602,28 @@ export const bookEngineData = {
     "docs/03-automation-qa/178-authentication-state-and-managed-sessions.md": {
       "path": "docs/03-automation-qa/178-authentication-state-and-managed-sessions.md",
       "link": "/docs/03-automation-qa/178-authentication-state-and-managed-sessions",
-      "title": "Authentication state и управляемые сессии",
+      "title": "Состояние аутентификации и управляемые сессии",
       "number": 178,
       "part": "Automation QA",
       "section": "Fixtures и архитектура UI-слоя",
       "sectionIndex": 2,
       "chapterIndex": 2,
-      "wordCount": 1085,
-      "readingMinutes": 7,
+      "wordCount": 1399,
+      "readingMinutes": 8,
       "h2": 18,
-      "h3": 7,
+      "h3": 10,
       "examples": 2,
       "tasks": 0,
       "solutions": 24,
       "mermaid": 1,
       "miniProjects": 0,
       "previous": {
-        "title": "Custom fixtures и граф зависимостей",
+        "title": "Собственные фикстуры и граф зависимостей",
         "number": 177,
         "link": "/docs/03-automation-qa/177-custom-fixtures-and-dependency-graph"
       },
       "next": {
-        "title": "Page Object",
+        "title": "Объект страницы",
         "number": 179,
         "link": "/docs/03-automation-qa/179-page-object"
       },
@@ -11650,8 +11640,8 @@ export const bookEngineData = {
       "related": [],
       "card": {
         "chapterLabel": "Глава 178",
-        "title": "Authentication state и управляемые сессии",
-        "reading": 7,
+        "title": "Состояние аутентификации и управляемые сессии",
+        "reading": 8,
         "examples": 2,
         "tasks": 0,
         "solutions": 24,
@@ -11661,28 +11651,28 @@ export const bookEngineData = {
     "docs/03-automation-qa/179-page-object.md": {
       "path": "docs/03-automation-qa/179-page-object.md",
       "link": "/docs/03-automation-qa/179-page-object",
-      "title": "Page Object",
+      "title": "Объект страницы",
       "number": 179,
       "part": "Automation QA",
       "section": "Fixtures и архитектура UI-слоя",
       "sectionIndex": 2,
       "chapterIndex": 3,
-      "wordCount": 1171,
-      "readingMinutes": 7,
+      "wordCount": 1485,
+      "readingMinutes": 9,
       "h2": 18,
-      "h3": 7,
+      "h3": 10,
       "examples": 1,
       "tasks": 0,
       "solutions": 24,
       "mermaid": 1,
       "miniProjects": 0,
       "previous": {
-        "title": "Authentication state и управляемые сессии",
+        "title": "Состояние аутентификации и управляемые сессии",
         "number": 178,
         "link": "/docs/03-automation-qa/178-authentication-state-and-managed-sessions"
       },
       "next": {
-        "title": "Component Objects и композиция страниц",
+        "title": "Объекты компонентов и композиция страниц",
         "number": 180,
         "link": "/docs/03-automation-qa/180-component-objects-and-page-composition"
       },
@@ -11699,8 +11689,8 @@ export const bookEngineData = {
       "related": [],
       "card": {
         "chapterLabel": "Глава 179",
-        "title": "Page Object",
-        "reading": 7,
+        "title": "Объект страницы",
+        "reading": 9,
         "examples": 1,
         "tasks": 0,
         "solutions": 24,
@@ -11710,28 +11700,28 @@ export const bookEngineData = {
     "docs/03-automation-qa/180-component-objects-and-page-composition.md": {
       "path": "docs/03-automation-qa/180-component-objects-and-page-composition.md",
       "link": "/docs/03-automation-qa/180-component-objects-and-page-composition",
-      "title": "Component Objects и композиция страниц",
+      "title": "Объекты компонентов и композиция страниц",
       "number": 180,
       "part": "Automation QA",
       "section": "Fixtures и архитектура UI-слоя",
       "sectionIndex": 2,
       "chapterIndex": 4,
-      "wordCount": 1082,
-      "readingMinutes": 7,
+      "wordCount": 1426,
+      "readingMinutes": 8,
       "h2": 18,
-      "h3": 6,
+      "h3": 9,
       "examples": 1,
       "tasks": 0,
       "solutions": 24,
       "mermaid": 1,
       "miniProjects": 0,
       "previous": {
-        "title": "Page Object",
+        "title": "Объект страницы",
         "number": 179,
         "link": "/docs/03-automation-qa/179-page-object"
       },
       "next": {
-        "title": "Frames",
+        "title": "Фреймы",
         "number": 181,
         "link": "/docs/03-automation-qa/181-frames"
       },
@@ -11748,8 +11738,8 @@ export const bookEngineData = {
       "related": [],
       "card": {
         "chapterLabel": "Глава 180",
-        "title": "Component Objects и композиция страниц",
-        "reading": 7,
+        "title": "Объекты компонентов и композиция страниц",
+        "reading": 8,
         "examples": 1,
         "tasks": 0,
         "solutions": 24,
@@ -11759,28 +11749,28 @@ export const bookEngineData = {
     "docs/03-automation-qa/181-frames.md": {
       "path": "docs/03-automation-qa/181-frames.md",
       "link": "/docs/03-automation-qa/181-frames",
-      "title": "Frames",
+      "title": "Фреймы",
       "number": 181,
       "part": "Automation QA",
       "section": "Fixtures и архитектура UI-слоя",
       "sectionIndex": 2,
       "chapterIndex": 5,
-      "wordCount": 1047,
-      "readingMinutes": 6,
+      "wordCount": 1359,
+      "readingMinutes": 8,
       "h2": 18,
-      "h3": 6,
+      "h3": 9,
       "examples": 1,
       "tasks": 0,
       "solutions": 24,
       "mermaid": 1,
       "miniProjects": 0,
       "previous": {
-        "title": "Component Objects и композиция страниц",
+        "title": "Объекты компонентов и композиция страниц",
         "number": 180,
         "link": "/docs/03-automation-qa/180-component-objects-and-page-composition"
       },
       "next": {
-        "title": "Вкладки, окна и popups",
+        "title": "Вкладки, окна и всплывающие окна",
         "number": 182,
         "link": "/docs/03-automation-qa/182-tabs-windows-and-popups"
       },
@@ -11797,8 +11787,8 @@ export const bookEngineData = {
       "related": [],
       "card": {
         "chapterLabel": "Глава 181",
-        "title": "Frames",
-        "reading": 6,
+        "title": "Фреймы",
+        "reading": 8,
         "examples": 1,
         "tasks": 0,
         "solutions": 24,
@@ -11808,23 +11798,23 @@ export const bookEngineData = {
     "docs/03-automation-qa/182-tabs-windows-and-popups.md": {
       "path": "docs/03-automation-qa/182-tabs-windows-and-popups.md",
       "link": "/docs/03-automation-qa/182-tabs-windows-and-popups",
-      "title": "Вкладки, окна и popups",
+      "title": "Вкладки, окна и всплывающие окна",
       "number": 182,
       "part": "Automation QA",
       "section": "Fixtures и архитектура UI-слоя",
       "sectionIndex": 2,
       "chapterIndex": 6,
-      "wordCount": 1055,
-      "readingMinutes": 6,
+      "wordCount": 1380,
+      "readingMinutes": 8,
       "h2": 18,
-      "h3": 7,
+      "h3": 10,
       "examples": 1,
       "tasks": 0,
       "solutions": 24,
       "mermaid": 1,
       "miniProjects": 0,
       "previous": {
-        "title": "Frames",
+        "title": "Фреймы",
         "number": 181,
         "link": "/docs/03-automation-qa/181-frames"
       },
@@ -11846,15 +11836,15 @@ export const bookEngineData = {
       "related": [
         {
           "term": "Promise",
-          "title": "Promise",
+          "title": "Промис",
           "number": 72,
           "link": "/docs/01-javascript/72-promise"
         }
       ],
       "card": {
         "chapterLabel": "Глава 182",
-        "title": "Вкладки, окна и popups",
-        "reading": 6,
+        "title": "Вкладки, окна и всплывающие окна",
+        "reading": 8,
         "examples": 1,
         "tasks": 0,
         "solutions": 24,
@@ -11870,22 +11860,22 @@ export const bookEngineData = {
       "section": "Fixtures и архитектура UI-слоя",
       "sectionIndex": 2,
       "chapterIndex": 7,
-      "wordCount": 1005,
-      "readingMinutes": 6,
+      "wordCount": 1312,
+      "readingMinutes": 8,
       "h2": 18,
-      "h3": 6,
+      "h3": 9,
       "examples": 1,
       "tasks": 0,
       "solutions": 24,
       "mermaid": 1,
       "miniProjects": 0,
       "previous": {
-        "title": "Вкладки, окна и popups",
+        "title": "Вкладки, окна и всплывающие окна",
         "number": 182,
         "link": "/docs/03-automation-qa/182-tabs-windows-and-popups"
       },
       "next": {
-        "title": "Network interception и mocking",
+        "title": "Перехват сетевых запросов и подмена ответов",
         "number": 184,
         "link": "/docs/03-automation-qa/184-network-interception-and-mocking"
       },
@@ -11902,7 +11892,7 @@ export const bookEngineData = {
       "related": [
         {
           "term": "Promise",
-          "title": "Promise",
+          "title": "Промис",
           "number": 72,
           "link": "/docs/01-javascript/72-promise"
         }
@@ -11910,7 +11900,7 @@ export const bookEngineData = {
       "card": {
         "chapterLabel": "Глава 183",
         "title": "Диалоги и работа с файлами",
-        "reading": 6,
+        "reading": 8,
         "examples": 1,
         "tasks": 0,
         "solutions": 24,
@@ -11920,16 +11910,16 @@ export const bookEngineData = {
     "docs/03-automation-qa/184-network-interception-and-mocking.md": {
       "path": "docs/03-automation-qa/184-network-interception-and-mocking.md",
       "link": "/docs/03-automation-qa/184-network-interception-and-mocking",
-      "title": "Network interception и mocking",
+      "title": "Перехват сетевых запросов и подмена ответов",
       "number": 184,
       "part": "Automation QA",
       "section": "Fixtures и архитектура UI-слоя",
       "sectionIndex": 2,
       "chapterIndex": 8,
-      "wordCount": 1159,
-      "readingMinutes": 7,
+      "wordCount": 1466,
+      "readingMinutes": 9,
       "h2": 18,
-      "h3": 7,
+      "h3": 10,
       "examples": 1,
       "tasks": 0,
       "solutions": 24,
@@ -11958,15 +11948,15 @@ export const bookEngineData = {
       "related": [
         {
           "term": "Promise",
-          "title": "Promise",
+          "title": "Промис",
           "number": 72,
           "link": "/docs/01-javascript/72-promise"
         }
       ],
       "card": {
         "chapterLabel": "Глава 184",
-        "title": "Network interception и mocking",
-        "reading": 7,
+        "title": "Перехват сетевых запросов и подмена ответов",
+        "reading": 9,
         "examples": 1,
         "tasks": 0,
         "solutions": 24,
@@ -11982,17 +11972,17 @@ export const bookEngineData = {
       "section": "Fixtures и архитектура UI-слоя",
       "sectionIndex": 2,
       "chapterIndex": 9,
-      "wordCount": 1230,
-      "readingMinutes": 7,
+      "wordCount": 1563,
+      "readingMinutes": 9,
       "h2": 19,
-      "h3": 7,
+      "h3": 10,
       "examples": 1,
       "tasks": 0,
       "solutions": 24,
       "mermaid": 1,
       "miniProjects": 0,
       "previous": {
-        "title": "Network interception и mocking",
+        "title": "Перехват сетевых запросов и подмена ответов",
         "number": 184,
         "link": "/docs/03-automation-qa/184-network-interception-and-mocking"
       },
@@ -12015,7 +12005,7 @@ export const bookEngineData = {
       "card": {
         "chapterLabel": "Глава 185",
         "title": "Интеграция UI-слоя",
-        "reading": 7,
+        "reading": 9,
         "examples": 1,
         "tasks": 0,
         "solutions": 24,
@@ -12031,10 +12021,10 @@ export const bookEngineData = {
       "section": "Тестирование REST API",
       "sectionIndex": 3,
       "chapterIndex": 0,
-      "wordCount": 1283,
-      "readingMinutes": 8,
+      "wordCount": 1647,
+      "readingMinutes": 10,
       "h2": 18,
-      "h3": 7,
+      "h3": 10,
       "examples": 1,
       "tasks": 0,
       "solutions": 24,
@@ -12071,7 +12061,7 @@ export const bookEngineData = {
       "card": {
         "chapterLabel": "Глава 186",
         "title": "HTTP и REST для API-тестирования",
-        "reading": 8,
+        "reading": 10,
         "examples": 1,
         "tasks": 0,
         "solutions": 24,
@@ -12087,10 +12077,10 @@ export const bookEngineData = {
       "section": "Тестирование REST API",
       "sectionIndex": 3,
       "chapterIndex": 1,
-      "wordCount": 1150,
-      "readingMinutes": 7,
+      "wordCount": 1460,
+      "readingMinutes": 9,
       "h2": 18,
-      "h3": 7,
+      "h3": 10,
       "examples": 1,
       "tasks": 0,
       "solutions": 24,
@@ -12127,7 +12117,7 @@ export const bookEngineData = {
       "card": {
         "chapterLabel": "Глава 187",
         "title": "Структура HTTP-запроса",
-        "reading": 7,
+        "reading": 9,
         "examples": 1,
         "tasks": 0,
         "solutions": 24,
@@ -12143,10 +12133,10 @@ export const bookEngineData = {
       "section": "Тестирование REST API",
       "sectionIndex": 3,
       "chapterIndex": 2,
-      "wordCount": 1194,
-      "readingMinutes": 7,
+      "wordCount": 1518,
+      "readingMinutes": 9,
       "h2": 18,
-      "h3": 7,
+      "h3": 10,
       "examples": 1,
       "tasks": 0,
       "solutions": 24,
@@ -12183,7 +12173,7 @@ export const bookEngineData = {
       "card": {
         "chapterLabel": "Глава 188",
         "title": "Структура HTTP-ответа",
-        "reading": 7,
+        "reading": 9,
         "examples": 1,
         "tasks": 0,
         "solutions": 24,
@@ -12199,10 +12189,10 @@ export const bookEngineData = {
       "section": "Тестирование REST API",
       "sectionIndex": 3,
       "chapterIndex": 3,
-      "wordCount": 1075,
-      "readingMinutes": 6,
+      "wordCount": 1368,
+      "readingMinutes": 8,
       "h2": 18,
-      "h3": 7,
+      "h3": 10,
       "examples": 1,
       "tasks": 0,
       "solutions": 24,
@@ -12214,7 +12204,7 @@ export const bookEngineData = {
         "link": "/docs/03-automation-qa/188-http-response-structure"
       },
       "next": {
-        "title": "API Client и граница HTTP-слоя",
+        "title": "Клиент API и граница слоя HTTP",
         "number": 190,
         "link": "/docs/03-automation-qa/190-api-client-and-http-boundary"
       },
@@ -12232,7 +12222,7 @@ export const bookEngineData = {
       "card": {
         "chapterLabel": "Глава 189",
         "title": "APIRequestContext",
-        "reading": 6,
+        "reading": 8,
         "examples": 1,
         "tasks": 0,
         "solutions": 24,
@@ -12242,16 +12232,16 @@ export const bookEngineData = {
     "docs/03-automation-qa/190-api-client-and-http-boundary.md": {
       "path": "docs/03-automation-qa/190-api-client-and-http-boundary.md",
       "link": "/docs/03-automation-qa/190-api-client-and-http-boundary",
-      "title": "API Client и граница HTTP-слоя",
+      "title": "Клиент API и граница слоя HTTP",
       "number": 190,
       "part": "Automation QA",
       "section": "Тестирование REST API",
       "sectionIndex": 3,
       "chapterIndex": 4,
-      "wordCount": 1202,
-      "readingMinutes": 7,
+      "wordCount": 1519,
+      "readingMinutes": 9,
       "h2": 18,
-      "h3": 7,
+      "h3": 10,
       "examples": 1,
       "tasks": 0,
       "solutions": 24,
@@ -12287,8 +12277,8 @@ export const bookEngineData = {
       ],
       "card": {
         "chapterLabel": "Глава 190",
-        "title": "API Client и граница HTTP-слоя",
-        "reading": 7,
+        "title": "Клиент API и граница слоя HTTP",
+        "reading": 9,
         "examples": 1,
         "tasks": 0,
         "solutions": 24,
@@ -12304,22 +12294,22 @@ export const bookEngineData = {
       "section": "Тестирование REST API",
       "sectionIndex": 3,
       "chapterIndex": 5,
-      "wordCount": 1211,
-      "readingMinutes": 7,
+      "wordCount": 1553,
+      "readingMinutes": 9,
       "h2": 18,
-      "h3": 7,
+      "h3": 10,
       "examples": 1,
       "tasks": 0,
       "solutions": 24,
       "mermaid": 1,
       "miniProjects": 0,
       "previous": {
-        "title": "API Client и граница HTTP-слоя",
+        "title": "Клиент API и граница слоя HTTP",
         "number": 190,
         "link": "/docs/03-automation-qa/190-api-client-and-http-boundary"
       },
       "next": {
-        "title": "Request Builders и подготовка данных через API",
+        "title": "Построители запросов и подготовка данных через API",
         "number": 192,
         "link": "/docs/03-automation-qa/192-request-builders-and-api-data-setup"
       },
@@ -12337,7 +12327,7 @@ export const bookEngineData = {
       "card": {
         "chapterLabel": "Глава 191",
         "title": "Аутентификация API",
-        "reading": 7,
+        "reading": 9,
         "examples": 1,
         "tasks": 0,
         "solutions": 24,
@@ -12347,16 +12337,16 @@ export const bookEngineData = {
     "docs/03-automation-qa/192-request-builders-and-api-data-setup.md": {
       "path": "docs/03-automation-qa/192-request-builders-and-api-data-setup.md",
       "link": "/docs/03-automation-qa/192-request-builders-and-api-data-setup",
-      "title": "Request Builders и подготовка данных через API",
+      "title": "Построители запросов и подготовка данных через API",
       "number": 192,
       "part": "Automation QA",
       "section": "Тестирование REST API",
       "sectionIndex": 3,
       "chapterIndex": 6,
-      "wordCount": 1207,
-      "readingMinutes": 7,
+      "wordCount": 1537,
+      "readingMinutes": 9,
       "h2": 18,
-      "h3": 8,
+      "h3": 11,
       "examples": 1,
       "tasks": 0,
       "solutions": 24,
@@ -12385,7 +12375,7 @@ export const bookEngineData = {
       "related": [
         {
           "term": "this",
-          "title": "this",
+          "title": "Ключевое слово `this`",
           "number": 29,
           "link": "/docs/01-javascript/29-this"
         },
@@ -12394,12 +12384,18 @@ export const bookEngineData = {
           "title": "JSON",
           "number": 94,
           "link": "/docs/01-javascript/94-json"
+        },
+        {
+          "term": "Date",
+          "title": "Дата и время",
+          "number": 95,
+          "link": "/docs/01-javascript/95-date"
         }
       ],
       "card": {
         "chapterLabel": "Глава 192",
-        "title": "Request Builders и подготовка данных через API",
-        "reading": 7,
+        "title": "Построители запросов и подготовка данных через API",
+        "reading": 9,
         "examples": 1,
         "tasks": 0,
         "solutions": 24,
@@ -12415,17 +12411,17 @@ export const bookEngineData = {
       "section": "Тестирование REST API",
       "sectionIndex": 3,
       "chapterIndex": 7,
-      "wordCount": 1164,
-      "readingMinutes": 7,
+      "wordCount": 1489,
+      "readingMinutes": 9,
       "h2": 18,
-      "h3": 7,
+      "h3": 10,
       "examples": 1,
       "tasks": 0,
       "solutions": 24,
       "mermaid": 1,
       "miniProjects": 0,
       "previous": {
-        "title": "Request Builders и подготовка данных через API",
+        "title": "Построители запросов и подготовка данных через API",
         "number": 192,
         "link": "/docs/03-automation-qa/192-request-builders-and-api-data-setup"
       },
@@ -12455,7 +12451,7 @@ export const bookEngineData = {
       "card": {
         "chapterLabel": "Глава 193",
         "title": "Проверка API-ответов и бизнес-правил",
-        "reading": 7,
+        "reading": 9,
         "examples": 1,
         "tasks": 0,
         "solutions": 24,
@@ -12471,10 +12467,10 @@ export const bookEngineData = {
       "section": "Тестирование REST API",
       "sectionIndex": 3,
       "chapterIndex": 8,
-      "wordCount": 1177,
-      "readingMinutes": 7,
+      "wordCount": 1497,
+      "readingMinutes": 9,
       "h2": 18,
-      "h3": 7,
+      "h3": 10,
       "examples": 1,
       "tasks": 0,
       "solutions": 24,
@@ -12511,7 +12507,7 @@ export const bookEngineData = {
       "card": {
         "chapterLabel": "Глава 194",
         "title": "Негативные API-сценарии и ошибки",
-        "reading": 7,
+        "reading": 9,
         "examples": 1,
         "tasks": 0,
         "solutions": 24,
@@ -12527,10 +12523,10 @@ export const bookEngineData = {
       "section": "Тестирование REST API",
       "sectionIndex": 3,
       "chapterIndex": 9,
-      "wordCount": 1192,
-      "readingMinutes": 7,
+      "wordCount": 1519,
+      "readingMinutes": 9,
       "h2": 18,
-      "h3": 7,
+      "h3": 10,
       "examples": 1,
       "tasks": 0,
       "solutions": 24,
@@ -12567,7 +12563,7 @@ export const bookEngineData = {
       "card": {
         "chapterLabel": "Глава 195",
         "title": "Проверка контрактов во время выполнения",
-        "reading": 7,
+        "reading": 9,
         "examples": 1,
         "tasks": 0,
         "solutions": 24,
@@ -12583,10 +12579,10 @@ export const bookEngineData = {
       "section": "Тестирование REST API",
       "sectionIndex": 3,
       "chapterIndex": 10,
-      "wordCount": 1241,
-      "readingMinutes": 7,
+      "wordCount": 1558,
+      "readingMinutes": 9,
       "h2": 18,
-      "h3": 7,
+      "h3": 10,
       "examples": 1,
       "tasks": 0,
       "solutions": 24,
@@ -12616,7 +12612,7 @@ export const bookEngineData = {
       "card": {
         "chapterLabel": "Глава 196",
         "title": "Совместные UI и API-сценарии",
-        "reading": 7,
+        "reading": 9,
         "examples": 1,
         "tasks": 0,
         "solutions": 24,
@@ -12632,10 +12628,10 @@ export const bookEngineData = {
       "section": "Тестирование gRPC",
       "sectionIndex": 4,
       "chapterIndex": 0,
-      "wordCount": 1201,
-      "readingMinutes": 7,
+      "wordCount": 1559,
+      "readingMinutes": 9,
       "h2": 18,
-      "h3": 6,
+      "h3": 9,
       "examples": 1,
       "tasks": 0,
       "solutions": 24,
@@ -12672,7 +12668,7 @@ export const bookEngineData = {
       "card": {
         "chapterLabel": "Глава 197",
         "title": "gRPC и REST в тестовой архитектуре",
-        "reading": 7,
+        "reading": 9,
         "examples": 1,
         "tasks": 0,
         "solutions": 24,
@@ -12688,10 +12684,10 @@ export const bookEngineData = {
       "section": "Тестирование gRPC",
       "sectionIndex": 4,
       "chapterIndex": 1,
-      "wordCount": 1167,
-      "readingMinutes": 7,
+      "wordCount": 1466,
+      "readingMinutes": 9,
       "h2": 18,
-      "h3": 7,
+      "h3": 10,
       "examples": 1,
       "tasks": 0,
       "solutions": 24,
@@ -12703,7 +12699,7 @@ export const bookEngineData = {
         "link": "/docs/03-automation-qa/197-grpc-and-rest-in-test-architecture"
       },
       "next": {
-        "title": "Сгенерированный код и создание gRPC Client",
+        "title": "Сгенерированный код и создание клиента gRPC",
         "number": 199,
         "link": "/docs/03-automation-qa/199-generated-code-and-grpc-client"
       },
@@ -12721,7 +12717,7 @@ export const bookEngineData = {
       "card": {
         "chapterLabel": "Глава 198",
         "title": "Protocol Buffers: сервисы и сообщения",
-        "reading": 7,
+        "reading": 9,
         "examples": 1,
         "tasks": 0,
         "solutions": 24,
@@ -12731,16 +12727,16 @@ export const bookEngineData = {
     "docs/03-automation-qa/199-generated-code-and-grpc-client.md": {
       "path": "docs/03-automation-qa/199-generated-code-and-grpc-client.md",
       "link": "/docs/03-automation-qa/199-generated-code-and-grpc-client",
-      "title": "Сгенерированный код и создание gRPC Client",
+      "title": "Сгенерированный код и создание клиента gRPC",
       "number": 199,
       "part": "Automation QA",
       "section": "Тестирование gRPC",
       "sectionIndex": 4,
       "chapterIndex": 2,
-      "wordCount": 1162,
-      "readingMinutes": 7,
+      "wordCount": 1492,
+      "readingMinutes": 9,
       "h2": 18,
-      "h3": 7,
+      "h3": 10,
       "examples": 1,
       "tasks": 0,
       "solutions": 24,
@@ -12752,7 +12748,7 @@ export const bookEngineData = {
         "link": "/docs/03-automation-qa/198-protocol-buffers-services-and-messages"
       },
       "next": {
-        "title": "Unary gRPC-вызовы",
+        "title": "Унарные вызовы gRPC",
         "number": 200,
         "link": "/docs/03-automation-qa/200-unary-grpc-calls"
       },
@@ -12768,6 +12764,12 @@ export const bookEngineData = {
       },
       "related": [
         {
+          "term": "Promise",
+          "title": "Промис",
+          "number": 72,
+          "link": "/docs/01-javascript/72-promise"
+        },
+        {
           "term": "JSON",
           "title": "JSON",
           "number": 94,
@@ -12776,8 +12778,8 @@ export const bookEngineData = {
       ],
       "card": {
         "chapterLabel": "Глава 199",
-        "title": "Сгенерированный код и создание gRPC Client",
-        "reading": 7,
+        "title": "Сгенерированный код и создание клиента gRPC",
+        "reading": 9,
         "examples": 1,
         "tasks": 0,
         "solutions": 24,
@@ -12787,23 +12789,23 @@ export const bookEngineData = {
     "docs/03-automation-qa/200-unary-grpc-calls.md": {
       "path": "docs/03-automation-qa/200-unary-grpc-calls.md",
       "link": "/docs/03-automation-qa/200-unary-grpc-calls",
-      "title": "Unary gRPC-вызовы",
+      "title": "Унарные вызовы gRPC",
       "number": 200,
       "part": "Automation QA",
       "section": "Тестирование gRPC",
       "sectionIndex": 4,
       "chapterIndex": 3,
-      "wordCount": 1077,
-      "readingMinutes": 6,
+      "wordCount": 1389,
+      "readingMinutes": 8,
       "h2": 18,
-      "h3": 7,
+      "h3": 10,
       "examples": 1,
       "tasks": 0,
       "solutions": 24,
       "mermaid": 1,
       "miniProjects": 0,
       "previous": {
-        "title": "Сгенерированный код и создание gRPC Client",
+        "title": "Сгенерированный код и создание клиента gRPC",
         "number": 199,
         "link": "/docs/03-automation-qa/199-generated-code-and-grpc-client"
       },
@@ -12825,21 +12827,21 @@ export const bookEngineData = {
       "related": [
         {
           "term": "Promise",
-          "title": "Promise",
+          "title": "Промис",
           "number": 72,
           "link": "/docs/01-javascript/72-promise"
         },
         {
           "term": "Date",
-          "title": "Date",
+          "title": "Дата и время",
           "number": 95,
           "link": "/docs/01-javascript/95-date"
         }
       ],
       "card": {
         "chapterLabel": "Глава 200",
-        "title": "Unary gRPC-вызовы",
-        "reading": 6,
+        "title": "Унарные вызовы gRPC",
+        "reading": 8,
         "examples": 1,
         "tasks": 0,
         "solutions": 24,
@@ -12855,22 +12857,22 @@ export const bookEngineData = {
       "section": "Тестирование gRPC",
       "sectionIndex": 4,
       "chapterIndex": 4,
-      "wordCount": 1183,
-      "readingMinutes": 7,
+      "wordCount": 1525,
+      "readingMinutes": 9,
       "h2": 18,
-      "h3": 7,
+      "h3": 10,
       "examples": 1,
       "tasks": 0,
       "solutions": 24,
       "mermaid": 1,
       "miniProjects": 0,
       "previous": {
-        "title": "Unary gRPC-вызовы",
+        "title": "Унарные вызовы gRPC",
         "number": 200,
         "link": "/docs/03-automation-qa/200-unary-grpc-calls"
       },
       "next": {
-        "title": "Metadata и аутентификация gRPC",
+        "title": "Метаданные и аутентификация gRPC",
         "number": 202,
         "link": "/docs/03-automation-qa/202-grpc-metadata-and-authentication"
       },
@@ -12888,7 +12890,7 @@ export const bookEngineData = {
       "card": {
         "chapterLabel": "Глава 201",
         "title": "Поля protobuf-сообщений",
-        "reading": 7,
+        "reading": 9,
         "examples": 1,
         "tasks": 0,
         "solutions": 24,
@@ -12898,16 +12900,16 @@ export const bookEngineData = {
     "docs/03-automation-qa/202-grpc-metadata-and-authentication.md": {
       "path": "docs/03-automation-qa/202-grpc-metadata-and-authentication.md",
       "link": "/docs/03-automation-qa/202-grpc-metadata-and-authentication",
-      "title": "Metadata и аутентификация gRPC",
+      "title": "Метаданные и аутентификация gRPC",
       "number": 202,
       "part": "Automation QA",
       "section": "Тестирование gRPC",
       "sectionIndex": 4,
       "chapterIndex": 5,
-      "wordCount": 1117,
-      "readingMinutes": 7,
+      "wordCount": 1396,
+      "readingMinutes": 8,
       "h2": 18,
-      "h3": 7,
+      "h3": 10,
       "examples": 1,
       "tasks": 0,
       "solutions": 24,
@@ -12919,7 +12921,7 @@ export const bookEngineData = {
         "link": "/docs/03-automation-qa/201-protobuf-message-fields"
       },
       "next": {
-        "title": "Deadlines и timeouts gRPC",
+        "title": "Крайние сроки и сроки ожидания gRPC",
         "number": 203,
         "link": "/docs/03-automation-qa/203-grpc-deadlines-and-timeouts"
       },
@@ -12936,8 +12938,8 @@ export const bookEngineData = {
       "related": [],
       "card": {
         "chapterLabel": "Глава 202",
-        "title": "Metadata и аутентификация gRPC",
-        "reading": 7,
+        "title": "Метаданные и аутентификация gRPC",
+        "reading": 8,
         "examples": 1,
         "tasks": 0,
         "solutions": 24,
@@ -12947,23 +12949,23 @@ export const bookEngineData = {
     "docs/03-automation-qa/203-grpc-deadlines-and-timeouts.md": {
       "path": "docs/03-automation-qa/203-grpc-deadlines-and-timeouts.md",
       "link": "/docs/03-automation-qa/203-grpc-deadlines-and-timeouts",
-      "title": "Deadlines и timeouts gRPC",
+      "title": "Крайние сроки и сроки ожидания gRPC",
       "number": 203,
       "part": "Automation QA",
       "section": "Тестирование gRPC",
       "sectionIndex": 4,
       "chapterIndex": 6,
-      "wordCount": 1075,
-      "readingMinutes": 6,
+      "wordCount": 1397,
+      "readingMinutes": 8,
       "h2": 18,
-      "h3": 7,
+      "h3": 10,
       "examples": 1,
       "tasks": 0,
       "solutions": 24,
       "mermaid": 1,
       "miniProjects": 0,
       "previous": {
-        "title": "Metadata и аутентификация gRPC",
+        "title": "Метаданные и аутентификация gRPC",
         "number": 202,
         "link": "/docs/03-automation-qa/202-grpc-metadata-and-authentication"
       },
@@ -12985,21 +12987,21 @@ export const bookEngineData = {
       "related": [
         {
           "term": "Promise",
-          "title": "Promise",
+          "title": "Промис",
           "number": 72,
           "link": "/docs/01-javascript/72-promise"
         },
         {
           "term": "Date",
-          "title": "Date",
+          "title": "Дата и время",
           "number": 95,
           "link": "/docs/01-javascript/95-date"
         }
       ],
       "card": {
         "chapterLabel": "Глава 203",
-        "title": "Deadlines и timeouts gRPC",
-        "reading": 6,
+        "title": "Крайние сроки и сроки ожидания gRPC",
+        "reading": 8,
         "examples": 1,
         "tasks": 0,
         "solutions": 24,
@@ -13015,17 +13017,17 @@ export const bookEngineData = {
       "section": "Тестирование gRPC",
       "sectionIndex": 4,
       "chapterIndex": 7,
-      "wordCount": 1073,
-      "readingMinutes": 6,
+      "wordCount": 1392,
+      "readingMinutes": 8,
       "h2": 18,
-      "h3": 7,
+      "h3": 10,
       "examples": 1,
       "tasks": 0,
       "solutions": 24,
       "mermaid": 1,
       "miniProjects": 0,
       "previous": {
-        "title": "Deadlines и timeouts gRPC",
+        "title": "Крайние сроки и сроки ожидания gRPC",
         "number": 203,
         "link": "/docs/03-automation-qa/203-grpc-deadlines-and-timeouts"
       },
@@ -13047,7 +13049,7 @@ export const bookEngineData = {
       "related": [
         {
           "term": "Promise",
-          "title": "Promise",
+          "title": "Промис",
           "number": 72,
           "link": "/docs/01-javascript/72-promise"
         }
@@ -13055,7 +13057,7 @@ export const bookEngineData = {
       "card": {
         "chapterLabel": "Глава 204",
         "title": "Статусы gRPC и обработка ошибок",
-        "reading": 6,
+        "reading": 8,
         "examples": 1,
         "tasks": 0,
         "solutions": 24,
@@ -13071,10 +13073,10 @@ export const bookEngineData = {
       "section": "Тестирование gRPC",
       "sectionIndex": 4,
       "chapterIndex": 8,
-      "wordCount": 1057,
-      "readingMinutes": 6,
+      "wordCount": 1342,
+      "readingMinutes": 8,
       "h2": 18,
-      "h3": 7,
+      "h3": 10,
       "examples": 1,
       "tasks": 0,
       "solutions": 24,
@@ -13086,7 +13088,7 @@ export const bookEngineData = {
         "link": "/docs/03-automation-qa/204-grpc-statuses-and-error-handling"
       },
       "next": {
-        "title": "gRPC Client в Automation Framework",
+        "title": "Клиент gRPC во фреймворке автоматизации",
         "number": 206,
         "link": "/docs/03-automation-qa/206-grpc-client-in-automation-framework"
       },
@@ -13111,7 +13113,7 @@ export const bookEngineData = {
       "card": {
         "chapterLabel": "Глава 205",
         "title": "Проверка gRPC-ответов и негативных сценариев",
-        "reading": 6,
+        "reading": 8,
         "examples": 1,
         "tasks": 0,
         "solutions": 24,
@@ -13121,16 +13123,16 @@ export const bookEngineData = {
     "docs/03-automation-qa/206-grpc-client-in-automation-framework.md": {
       "path": "docs/03-automation-qa/206-grpc-client-in-automation-framework.md",
       "link": "/docs/03-automation-qa/206-grpc-client-in-automation-framework",
-      "title": "gRPC Client в Automation Framework",
+      "title": "Клиент gRPC во фреймворке автоматизации",
       "number": 206,
       "part": "Automation QA",
       "section": "Тестирование gRPC",
       "sectionIndex": 4,
       "chapterIndex": 9,
-      "wordCount": 1239,
-      "readingMinutes": 7,
+      "wordCount": 1547,
+      "readingMinutes": 9,
       "h2": 19,
-      "h3": 7,
+      "h3": 10,
       "examples": 1,
       "tasks": 0,
       "solutions": 24,
@@ -13159,15 +13161,15 @@ export const bookEngineData = {
       "related": [
         {
           "term": "Promise",
-          "title": "Promise",
+          "title": "Промис",
           "number": 72,
           "link": "/docs/01-javascript/72-promise"
         }
       ],
       "card": {
         "chapterLabel": "Глава 206",
-        "title": "gRPC Client в Automation Framework",
-        "reading": 7,
+        "title": "Клиент gRPC во фреймворке автоматизации",
+        "reading": 9,
         "examples": 1,
         "tasks": 0,
         "solutions": 24,
@@ -13183,22 +13185,22 @@ export const bookEngineData = {
       "section": "Тестирование PostgreSQL",
       "sectionIndex": 5,
       "chapterIndex": 0,
-      "wordCount": 1163,
-      "readingMinutes": 7,
+      "wordCount": 1489,
+      "readingMinutes": 9,
       "h2": 17,
-      "h3": 7,
+      "h3": 10,
       "examples": 1,
       "tasks": 6,
       "solutions": 24,
       "mermaid": 2,
       "miniProjects": 0,
       "previous": {
-        "title": "gRPC Client в Automation Framework",
+        "title": "Клиент gRPC во фреймворке автоматизации",
         "number": 206,
         "link": "/docs/03-automation-qa/206-grpc-client-in-automation-framework"
       },
       "next": {
-        "title": "Connections, pools и lifecycle",
+        "title": "Подключения, пулы и время жизни",
         "number": 208,
         "link": "/docs/03-automation-qa/208-connections-pools-and-lifecycle"
       },
@@ -13212,11 +13214,18 @@ export const bookEngineData = {
         "total": 90,
         "bar": "██████░░░░░░"
       },
-      "related": [],
+      "related": [
+        {
+          "term": "Date",
+          "title": "Дата и время",
+          "number": 95,
+          "link": "/docs/01-javascript/95-date"
+        }
+      ],
       "card": {
         "chapterLabel": "Глава 207",
         "title": "PostgreSQL в Automation QA",
-        "reading": 7,
+        "reading": 9,
         "examples": 1,
         "tasks": 6,
         "solutions": 24,
@@ -13226,16 +13235,16 @@ export const bookEngineData = {
     "docs/03-automation-qa/208-connections-pools-and-lifecycle.md": {
       "path": "docs/03-automation-qa/208-connections-pools-and-lifecycle.md",
       "link": "/docs/03-automation-qa/208-connections-pools-and-lifecycle",
-      "title": "Connections, pools и lifecycle",
+      "title": "Подключения, пулы и время жизни",
       "number": 208,
       "part": "Automation QA",
       "section": "Тестирование PostgreSQL",
       "sectionIndex": 5,
       "chapterIndex": 1,
-      "wordCount": 1121,
-      "readingMinutes": 7,
+      "wordCount": 1433,
+      "readingMinutes": 8,
       "h2": 17,
-      "h3": 6,
+      "h3": 9,
       "examples": 1,
       "tasks": 6,
       "solutions": 24,
@@ -13247,7 +13256,7 @@ export const bookEngineData = {
         "link": "/docs/03-automation-qa/207-postgresql-in-automation-qa"
       },
       "next": {
-        "title": "Parameterized queries",
+        "title": "Параметризованные запросы",
         "number": 209,
         "link": "/docs/03-automation-qa/209-parameterized-queries"
       },
@@ -13264,8 +13273,8 @@ export const bookEngineData = {
       "related": [],
       "card": {
         "chapterLabel": "Глава 208",
-        "title": "Connections, pools и lifecycle",
-        "reading": 7,
+        "title": "Подключения, пулы и время жизни",
+        "reading": 8,
         "examples": 1,
         "tasks": 6,
         "solutions": 24,
@@ -13275,28 +13284,28 @@ export const bookEngineData = {
     "docs/03-automation-qa/209-parameterized-queries.md": {
       "path": "docs/03-automation-qa/209-parameterized-queries.md",
       "link": "/docs/03-automation-qa/209-parameterized-queries",
-      "title": "Parameterized queries",
+      "title": "Параметризованные запросы",
       "number": 209,
       "part": "Automation QA",
       "section": "Тестирование PostgreSQL",
       "sectionIndex": 5,
       "chapterIndex": 2,
-      "wordCount": 1136,
-      "readingMinutes": 7,
+      "wordCount": 1452,
+      "readingMinutes": 9,
       "h2": 17,
-      "h3": 7,
+      "h3": 11,
       "examples": 1,
       "tasks": 6,
       "solutions": 24,
       "mermaid": 1,
       "miniProjects": 0,
       "previous": {
-        "title": "Connections, pools и lifecycle",
+        "title": "Подключения, пулы и время жизни",
         "number": 208,
         "link": "/docs/03-automation-qa/208-connections-pools-and-lifecycle"
       },
       "next": {
-        "title": "Database Access Layer",
+        "title": "Слой доступа к базе данных",
         "number": 210,
         "link": "/docs/03-automation-qa/210-database-access-layer"
       },
@@ -13313,8 +13322,8 @@ export const bookEngineData = {
       "related": [],
       "card": {
         "chapterLabel": "Глава 209",
-        "title": "Parameterized queries",
-        "reading": 7,
+        "title": "Параметризованные запросы",
+        "reading": 9,
         "examples": 1,
         "tasks": 6,
         "solutions": 24,
@@ -13324,28 +13333,28 @@ export const bookEngineData = {
     "docs/03-automation-qa/210-database-access-layer.md": {
       "path": "docs/03-automation-qa/210-database-access-layer.md",
       "link": "/docs/03-automation-qa/210-database-access-layer",
-      "title": "Database Access Layer",
+      "title": "Слой доступа к базе данных",
       "number": 210,
       "part": "Automation QA",
       "section": "Тестирование PostgreSQL",
       "sectionIndex": 5,
       "chapterIndex": 3,
-      "wordCount": 1132,
-      "readingMinutes": 7,
+      "wordCount": 1439,
+      "readingMinutes": 8,
       "h2": 17,
-      "h3": 7,
+      "h3": 10,
       "examples": 1,
       "tasks": 6,
       "solutions": 24,
       "mermaid": 1,
       "miniProjects": 0,
       "previous": {
-        "title": "Parameterized queries",
+        "title": "Параметризованные запросы",
         "number": 209,
         "link": "/docs/03-automation-qa/209-parameterized-queries"
       },
       "next": {
-        "title": "Подготовка и очистка данных в database",
+        "title": "Подготовка и очистка данных в базе",
         "number": 211,
         "link": "/docs/03-automation-qa/211-database-data-setup-and-cleanup"
       },
@@ -13368,15 +13377,15 @@ export const bookEngineData = {
         },
         {
           "term": "Date",
-          "title": "Date",
+          "title": "Дата и время",
           "number": 95,
           "link": "/docs/01-javascript/95-date"
         }
       ],
       "card": {
         "chapterLabel": "Глава 210",
-        "title": "Database Access Layer",
-        "reading": 7,
+        "title": "Слой доступа к базе данных",
+        "reading": 8,
         "examples": 1,
         "tasks": 6,
         "solutions": 24,
@@ -13386,28 +13395,28 @@ export const bookEngineData = {
     "docs/03-automation-qa/211-database-data-setup-and-cleanup.md": {
       "path": "docs/03-automation-qa/211-database-data-setup-and-cleanup.md",
       "link": "/docs/03-automation-qa/211-database-data-setup-and-cleanup",
-      "title": "Подготовка и очистка данных в database",
+      "title": "Подготовка и очистка данных в базе",
       "number": 211,
       "part": "Automation QA",
       "section": "Тестирование PostgreSQL",
       "sectionIndex": 5,
       "chapterIndex": 4,
-      "wordCount": 1011,
-      "readingMinutes": 6,
+      "wordCount": 1304,
+      "readingMinutes": 8,
       "h2": 17,
-      "h3": 7,
+      "h3": 11,
       "examples": 1,
       "tasks": 6,
       "solutions": 24,
       "mermaid": 2,
       "miniProjects": 0,
       "previous": {
-        "title": "Database Access Layer",
+        "title": "Слой доступа к базе данных",
         "number": 210,
         "link": "/docs/03-automation-qa/210-database-access-layer"
       },
       "next": {
-        "title": "Transactions, rollback и test isolation",
+        "title": "Транзакции, откат и изоляция тестов",
         "number": 212,
         "link": "/docs/03-automation-qa/212-transactions-rollback-and-test-isolation"
       },
@@ -13424,8 +13433,8 @@ export const bookEngineData = {
       "related": [],
       "card": {
         "chapterLabel": "Глава 211",
-        "title": "Подготовка и очистка данных в database",
-        "reading": 6,
+        "title": "Подготовка и очистка данных в базе",
+        "reading": 8,
         "examples": 1,
         "tasks": 6,
         "solutions": 24,
@@ -13435,28 +13444,28 @@ export const bookEngineData = {
     "docs/03-automation-qa/212-transactions-rollback-and-test-isolation.md": {
       "path": "docs/03-automation-qa/212-transactions-rollback-and-test-isolation.md",
       "link": "/docs/03-automation-qa/212-transactions-rollback-and-test-isolation",
-      "title": "Transactions, rollback и test isolation",
+      "title": "Транзакции, откат и изоляция тестов",
       "number": 212,
       "part": "Automation QA",
       "section": "Тестирование PostgreSQL",
       "sectionIndex": 5,
       "chapterIndex": 5,
-      "wordCount": 1106,
-      "readingMinutes": 7,
+      "wordCount": 1440,
+      "readingMinutes": 8,
       "h2": 17,
-      "h3": 7,
+      "h3": 11,
       "examples": 1,
       "tasks": 6,
       "solutions": 24,
       "mermaid": 2,
       "miniProjects": 0,
       "previous": {
-        "title": "Подготовка и очистка данных в database",
+        "title": "Подготовка и очистка данных в базе",
         "number": 211,
         "link": "/docs/03-automation-qa/211-database-data-setup-and-cleanup"
       },
       "next": {
-        "title": "Eventual consistency и polling",
+        "title": "Согласованность в конечном счёте и периодический опрос",
         "number": 213,
         "link": "/docs/03-automation-qa/213-eventual-consistency-and-polling"
       },
@@ -13473,8 +13482,8 @@ export const bookEngineData = {
       "related": [],
       "card": {
         "chapterLabel": "Глава 212",
-        "title": "Transactions, rollback и test isolation",
-        "reading": 7,
+        "title": "Транзакции, откат и изоляция тестов",
+        "reading": 8,
         "examples": 1,
         "tasks": 6,
         "solutions": 24,
@@ -13484,23 +13493,23 @@ export const bookEngineData = {
     "docs/03-automation-qa/213-eventual-consistency-and-polling.md": {
       "path": "docs/03-automation-qa/213-eventual-consistency-and-polling.md",
       "link": "/docs/03-automation-qa/213-eventual-consistency-and-polling",
-      "title": "Eventual consistency и polling",
+      "title": "Согласованность в конечном счёте и периодический опрос",
       "number": 213,
       "part": "Automation QA",
       "section": "Тестирование PostgreSQL",
       "sectionIndex": 5,
       "chapterIndex": 6,
-      "wordCount": 1150,
-      "readingMinutes": 7,
+      "wordCount": 1495,
+      "readingMinutes": 9,
       "h2": 17,
-      "h3": 7,
+      "h3": 10,
       "examples": 1,
       "tasks": 6,
       "solutions": 24,
       "mermaid": 2,
       "miniProjects": 0,
       "previous": {
-        "title": "Transactions, rollback и test isolation",
+        "title": "Транзакции, откат и изоляция тестов",
         "number": 212,
         "link": "/docs/03-automation-qa/212-transactions-rollback-and-test-isolation"
       },
@@ -13522,15 +13531,15 @@ export const bookEngineData = {
       "related": [
         {
           "term": "Promise",
-          "title": "Promise",
+          "title": "Промис",
           "number": 72,
           "link": "/docs/01-javascript/72-promise"
         }
       ],
       "card": {
         "chapterLabel": "Глава 213",
-        "title": "Eventual consistency и polling",
-        "reading": 7,
+        "title": "Согласованность в конечном счёте и периодический опрос",
+        "reading": 9,
         "examples": 1,
         "tasks": 6,
         "solutions": 24,
@@ -13546,17 +13555,17 @@ export const bookEngineData = {
       "section": "Тестирование PostgreSQL",
       "sectionIndex": 5,
       "chapterIndex": 7,
-      "wordCount": 1135,
-      "readingMinutes": 7,
+      "wordCount": 1443,
+      "readingMinutes": 9,
       "h2": 17,
-      "h3": 7,
+      "h3": 10,
       "examples": 1,
       "tasks": 6,
       "solutions": 24,
       "mermaid": 2,
       "miniProjects": 0,
       "previous": {
-        "title": "Eventual consistency и polling",
+        "title": "Согласованность в конечном счёте и периодический опрос",
         "number": 213,
         "link": "/docs/03-automation-qa/213-eventual-consistency-and-polling"
       },
@@ -13584,7 +13593,7 @@ export const bookEngineData = {
         },
         {
           "term": "Date",
-          "title": "Date",
+          "title": "Дата и время",
           "number": 95,
           "link": "/docs/01-javascript/95-date"
         }
@@ -13592,7 +13601,7 @@ export const bookEngineData = {
       "card": {
         "chapterLabel": "Глава 214",
         "title": "Сверка данных PostgreSQL с API и gRPC",
-        "reading": 7,
+        "reading": 9,
         "examples": 1,
         "tasks": 6,
         "solutions": 24,
@@ -13608,10 +13617,10 @@ export const bookEngineData = {
       "section": "Тестирование PostgreSQL",
       "sectionIndex": 5,
       "chapterIndex": 8,
-      "wordCount": 1154,
-      "readingMinutes": 7,
+      "wordCount": 1486,
+      "readingMinutes": 9,
       "h2": 17,
-      "h3": 7,
+      "h3": 10,
       "examples": 1,
       "tasks": 6,
       "solutions": 24,
@@ -13623,7 +13632,7 @@ export const bookEngineData = {
         "link": "/docs/03-automation-qa/214-postgresql-api-grpc-data-comparison"
       },
       "next": {
-        "title": "Конфигурация Playwright и execution projects",
+        "title": "Конфигурация Playwright и проекты запуска",
         "number": 216,
         "link": "/docs/03-automation-qa/216-playwright-configuration-and-execution-projects"
       },
@@ -13641,7 +13650,7 @@ export const bookEngineData = {
       "card": {
         "chapterLabel": "Глава 215",
         "title": "Конфликты данных и параллельные тесты",
-        "reading": 7,
+        "reading": 9,
         "examples": 1,
         "tasks": 6,
         "solutions": 24,
@@ -13651,16 +13660,16 @@ export const bookEngineData = {
     "docs/03-automation-qa/216-playwright-configuration-and-execution-projects.md": {
       "path": "docs/03-automation-qa/216-playwright-configuration-and-execution-projects.md",
       "link": "/docs/03-automation-qa/216-playwright-configuration-and-execution-projects",
-      "title": "Конфигурация Playwright и execution projects",
+      "title": "Конфигурация Playwright и проекты запуска",
       "number": 216,
       "part": "Automation QA",
       "section": "Конфигурация, тестовые данные и общая инфраструктура",
       "sectionIndex": 6,
       "chapterIndex": 0,
-      "wordCount": 1087,
-      "readingMinutes": 7,
+      "wordCount": 1396,
+      "readingMinutes": 8,
       "h2": 17,
-      "h3": 7,
+      "h3": 10,
       "examples": 1,
       "tasks": 6,
       "solutions": 24,
@@ -13672,7 +13681,7 @@ export const bookEngineData = {
         "link": "/docs/03-automation-qa/215-data-conflicts-and-parallel-tests"
       },
       "next": {
-        "title": "Окружения, переменные и secrets",
+        "title": "Окружения, переменные и секреты",
         "number": 217,
         "link": "/docs/03-automation-qa/217-environments-variables-and-secrets"
       },
@@ -13689,8 +13698,8 @@ export const bookEngineData = {
       "related": [],
       "card": {
         "chapterLabel": "Глава 216",
-        "title": "Конфигурация Playwright и execution projects",
-        "reading": 7,
+        "title": "Конфигурация Playwright и проекты запуска",
+        "reading": 8,
         "examples": 1,
         "tasks": 6,
         "solutions": 24,
@@ -13700,28 +13709,28 @@ export const bookEngineData = {
     "docs/03-automation-qa/217-environments-variables-and-secrets.md": {
       "path": "docs/03-automation-qa/217-environments-variables-and-secrets.md",
       "link": "/docs/03-automation-qa/217-environments-variables-and-secrets",
-      "title": "Окружения, переменные и secrets",
+      "title": "Окружения, переменные и секреты",
       "number": 217,
       "part": "Automation QA",
       "section": "Конфигурация, тестовые данные и общая инфраструктура",
       "sectionIndex": 6,
       "chapterIndex": 1,
-      "wordCount": 1088,
-      "readingMinutes": 7,
+      "wordCount": 1394,
+      "readingMinutes": 8,
       "h2": 17,
-      "h3": 7,
+      "h3": 10,
       "examples": 1,
       "tasks": 6,
       "solutions": 24,
       "mermaid": 1,
       "miniProjects": 0,
       "previous": {
-        "title": "Конфигурация Playwright и execution projects",
+        "title": "Конфигурация Playwright и проекты запуска",
         "number": 216,
         "link": "/docs/03-automation-qa/216-playwright-configuration-and-execution-projects"
       },
       "next": {
-        "title": "Загрузка и runtime validation конфигурации",
+        "title": "Загрузка конфигурации и её проверка во время выполнения",
         "number": 218,
         "link": "/docs/03-automation-qa/218-configuration-loading-and-runtime-validation"
       },
@@ -13738,8 +13747,8 @@ export const bookEngineData = {
       "related": [],
       "card": {
         "chapterLabel": "Глава 217",
-        "title": "Окружения, переменные и secrets",
-        "reading": 7,
+        "title": "Окружения, переменные и секреты",
+        "reading": 8,
         "examples": 1,
         "tasks": 6,
         "solutions": 24,
@@ -13749,28 +13758,28 @@ export const bookEngineData = {
     "docs/03-automation-qa/218-configuration-loading-and-runtime-validation.md": {
       "path": "docs/03-automation-qa/218-configuration-loading-and-runtime-validation.md",
       "link": "/docs/03-automation-qa/218-configuration-loading-and-runtime-validation",
-      "title": "Загрузка и runtime validation конфигурации",
+      "title": "Загрузка конфигурации и её проверка во время выполнения",
       "number": 218,
       "part": "Automation QA",
       "section": "Конфигурация, тестовые данные и общая инфраструктура",
       "sectionIndex": 6,
       "chapterIndex": 2,
-      "wordCount": 1076,
-      "readingMinutes": 6,
+      "wordCount": 1400,
+      "readingMinutes": 8,
       "h2": 17,
-      "h3": 7,
+      "h3": 11,
       "examples": 1,
       "tasks": 6,
       "solutions": 24,
       "mermaid": 2,
       "miniProjects": 0,
       "previous": {
-        "title": "Окружения, переменные и secrets",
+        "title": "Окружения, переменные и секреты",
         "number": 217,
         "link": "/docs/03-automation-qa/217-environments-variables-and-secrets"
       },
       "next": {
-        "title": "Организация test data",
+        "title": "Организация тестовых данных",
         "number": 219,
         "link": "/docs/03-automation-qa/219-test-data-organization"
       },
@@ -13787,8 +13796,8 @@ export const bookEngineData = {
       "related": [],
       "card": {
         "chapterLabel": "Глава 218",
-        "title": "Загрузка и runtime validation конфигурации",
-        "reading": 6,
+        "title": "Загрузка конфигурации и её проверка во время выполнения",
+        "reading": 8,
         "examples": 1,
         "tasks": 6,
         "solutions": 24,
@@ -13798,28 +13807,28 @@ export const bookEngineData = {
     "docs/03-automation-qa/219-test-data-organization.md": {
       "path": "docs/03-automation-qa/219-test-data-organization.md",
       "link": "/docs/03-automation-qa/219-test-data-organization",
-      "title": "Организация test data",
+      "title": "Организация тестовых данных",
       "number": 219,
       "part": "Automation QA",
       "section": "Конфигурация, тестовые данные и общая инфраструктура",
       "sectionIndex": 6,
       "chapterIndex": 3,
-      "wordCount": 1091,
-      "readingMinutes": 7,
+      "wordCount": 1428,
+      "readingMinutes": 8,
       "h2": 17,
-      "h3": 7,
+      "h3": 11,
       "examples": 1,
       "tasks": 6,
       "solutions": 24,
       "mermaid": 1,
       "miniProjects": 0,
       "previous": {
-        "title": "Загрузка и runtime validation конфигурации",
+        "title": "Загрузка конфигурации и её проверка во время выполнения",
         "number": 218,
         "link": "/docs/03-automation-qa/218-configuration-loading-and-runtime-validation"
       },
       "next": {
-        "title": "Builders, factories и уникальные данные",
+        "title": "Построители, фабрики и уникальные данные",
         "number": 220,
         "link": "/docs/03-automation-qa/220-builders-factories-and-unique-data"
       },
@@ -13843,8 +13852,8 @@ export const bookEngineData = {
       ],
       "card": {
         "chapterLabel": "Глава 219",
-        "title": "Организация test data",
-        "reading": 7,
+        "title": "Организация тестовых данных",
+        "reading": 8,
         "examples": 1,
         "tasks": 6,
         "solutions": 24,
@@ -13854,23 +13863,23 @@ export const bookEngineData = {
     "docs/03-automation-qa/220-builders-factories-and-unique-data.md": {
       "path": "docs/03-automation-qa/220-builders-factories-and-unique-data.md",
       "link": "/docs/03-automation-qa/220-builders-factories-and-unique-data",
-      "title": "Builders, factories и уникальные данные",
+      "title": "Построители, фабрики и уникальные данные",
       "number": 220,
       "part": "Automation QA",
       "section": "Конфигурация, тестовые данные и общая инфраструктура",
       "sectionIndex": 6,
       "chapterIndex": 4,
-      "wordCount": 1086,
-      "readingMinutes": 7,
+      "wordCount": 1393,
+      "readingMinutes": 8,
       "h2": 17,
-      "h3": 6,
+      "h3": 9,
       "examples": 1,
       "tasks": 6,
       "solutions": 24,
       "mermaid": 1,
       "miniProjects": 0,
       "previous": {
-        "title": "Организация test data",
+        "title": "Организация тестовых данных",
         "number": 219,
         "link": "/docs/03-automation-qa/219-test-data-organization"
       },
@@ -13892,15 +13901,15 @@ export const bookEngineData = {
       "related": [
         {
           "term": "Date",
-          "title": "Date",
+          "title": "Дата и время",
           "number": 95,
           "link": "/docs/01-javascript/95-date"
         }
       ],
       "card": {
         "chapterLabel": "Глава 220",
-        "title": "Builders, factories и уникальные данные",
-        "reading": 7,
+        "title": "Построители, фабрики и уникальные данные",
+        "reading": 8,
         "examples": 1,
         "tasks": 6,
         "solutions": 24,
@@ -13916,22 +13925,22 @@ export const bookEngineData = {
       "section": "Конфигурация, тестовые данные и общая инфраструктура",
       "sectionIndex": 6,
       "chapterIndex": 5,
-      "wordCount": 1067,
-      "readingMinutes": 6,
+      "wordCount": 1367,
+      "readingMinutes": 8,
       "h2": 17,
-      "h3": 7,
+      "h3": 10,
       "examples": 1,
       "tasks": 6,
       "solutions": 24,
       "mermaid": 2,
       "miniProjects": 0,
       "previous": {
-        "title": "Builders, factories и уникальные данные",
+        "title": "Построители, фабрики и уникальные данные",
         "number": 220,
         "link": "/docs/03-automation-qa/220-builders-factories-and-unique-data"
       },
       "next": {
-        "title": "Helpers и границы повторного использования",
+        "title": "Вспомогательные функции и границы повторного использования",
         "number": 222,
         "link": "/docs/03-automation-qa/222-helpers-and-reuse-boundaries"
       },
@@ -13948,7 +13957,7 @@ export const bookEngineData = {
       "related": [
         {
           "term": "Scope",
-          "title": "Scope",
+          "title": "Область видимости",
           "number": 7,
           "link": "/docs/01-javascript/07-scope"
         }
@@ -13956,7 +13965,7 @@ export const bookEngineData = {
       "card": {
         "chapterLabel": "Глава 221",
         "title": "Жизненный цикл тестовых данных",
-        "reading": 6,
+        "reading": 8,
         "examples": 1,
         "tasks": 6,
         "solutions": 24,
@@ -13966,16 +13975,16 @@ export const bookEngineData = {
     "docs/03-automation-qa/222-helpers-and-reuse-boundaries.md": {
       "path": "docs/03-automation-qa/222-helpers-and-reuse-boundaries.md",
       "link": "/docs/03-automation-qa/222-helpers-and-reuse-boundaries",
-      "title": "Helpers и границы повторного использования",
+      "title": "Вспомогательные функции и границы повторного использования",
       "number": 222,
       "part": "Automation QA",
       "section": "Конфигурация, тестовые данные и общая инфраструктура",
       "sectionIndex": 6,
       "chapterIndex": 6,
-      "wordCount": 1057,
-      "readingMinutes": 6,
+      "wordCount": 1368,
+      "readingMinutes": 8,
       "h2": 17,
-      "h3": 6,
+      "h3": 10,
       "examples": 1,
       "tasks": 6,
       "solutions": 24,
@@ -13987,7 +13996,7 @@ export const bookEngineData = {
         "link": "/docs/03-automation-qa/221-test-data-lifecycle"
       },
       "next": {
-        "title": "Пользовательские проверки и soft assertions",
+        "title": "Пользовательские и мягкие проверки",
         "number": 223,
         "link": "/docs/03-automation-qa/223-custom-assertions-and-soft-assertions"
       },
@@ -14004,8 +14013,8 @@ export const bookEngineData = {
       "related": [],
       "card": {
         "chapterLabel": "Глава 222",
-        "title": "Helpers и границы повторного использования",
-        "reading": 6,
+        "title": "Вспомогательные функции и границы повторного использования",
+        "reading": 8,
         "examples": 1,
         "tasks": 6,
         "solutions": 24,
@@ -14015,23 +14024,23 @@ export const bookEngineData = {
     "docs/03-automation-qa/223-custom-assertions-and-soft-assertions.md": {
       "path": "docs/03-automation-qa/223-custom-assertions-and-soft-assertions.md",
       "link": "/docs/03-automation-qa/223-custom-assertions-and-soft-assertions",
-      "title": "Пользовательские проверки и soft assertions",
+      "title": "Пользовательские и мягкие проверки",
       "number": 223,
       "part": "Automation QA",
       "section": "Конфигурация, тестовые данные и общая инфраструктура",
       "sectionIndex": 6,
       "chapterIndex": 7,
-      "wordCount": 1058,
-      "readingMinutes": 6,
+      "wordCount": 1331,
+      "readingMinutes": 8,
       "h2": 17,
-      "h3": 7,
+      "h3": 10,
       "examples": 1,
       "tasks": 6,
       "solutions": 24,
       "mermaid": 2,
       "miniProjects": 0,
       "previous": {
-        "title": "Helpers и границы повторного использования",
+        "title": "Вспомогательные функции и границы повторного использования",
         "number": 222,
         "link": "/docs/03-automation-qa/222-helpers-and-reuse-boundaries"
       },
@@ -14052,6 +14061,12 @@ export const bookEngineData = {
       },
       "related": [
         {
+          "term": "this",
+          "title": "Ключевое слово `this`",
+          "number": 29,
+          "link": "/docs/01-javascript/29-this"
+        },
+        {
           "term": "JSON",
           "title": "JSON",
           "number": 94,
@@ -14060,8 +14075,8 @@ export const bookEngineData = {
       ],
       "card": {
         "chapterLabel": "Глава 223",
-        "title": "Пользовательские проверки и soft assertions",
-        "reading": 6,
+        "title": "Пользовательские и мягкие проверки",
+        "reading": 8,
         "examples": 1,
         "tasks": 6,
         "solutions": 24,
@@ -14077,17 +14092,17 @@ export const bookEngineData = {
       "section": "Конфигурация, тестовые данные и общая инфраструктура",
       "sectionIndex": 6,
       "chapterIndex": 8,
-      "wordCount": 1096,
-      "readingMinutes": 7,
+      "wordCount": 1418,
+      "readingMinutes": 8,
       "h2": 17,
-      "h3": 7,
+      "h3": 11,
       "examples": 1,
       "tasks": 6,
       "solutions": 24,
       "mermaid": 2,
       "miniProjects": 0,
       "previous": {
-        "title": "Пользовательские проверки и soft assertions",
+        "title": "Пользовательские и мягкие проверки",
         "number": 223,
         "link": "/docs/03-automation-qa/223-custom-assertions-and-soft-assertions"
       },
@@ -14115,7 +14130,7 @@ export const bookEngineData = {
         },
         {
           "term": "Date",
-          "title": "Date",
+          "title": "Дата и время",
           "number": 95,
           "link": "/docs/01-javascript/95-date"
         }
@@ -14123,7 +14138,7 @@ export const bookEngineData = {
       "card": {
         "chapterLabel": "Глава 224",
         "title": "Нормализация и проверки между слоями",
-        "reading": 7,
+        "reading": 8,
         "examples": 1,
         "tasks": 6,
         "solutions": 24,
@@ -14139,10 +14154,10 @@ export const bookEngineData = {
       "section": "Диагностика и отчётность",
       "sectionIndex": 7,
       "chapterIndex": 0,
-      "wordCount": 1090,
-      "readingMinutes": 7,
+      "wordCount": 1409,
+      "readingMinutes": 8,
       "h2": 17,
-      "h3": 7,
+      "h3": 10,
       "examples": 1,
       "tasks": 6,
       "solutions": 24,
@@ -14172,7 +14187,7 @@ export const bookEngineData = {
       "card": {
         "chapterLabel": "Глава 225",
         "title": "Расследование падения автотеста",
-        "reading": 7,
+        "reading": 8,
         "examples": 1,
         "tasks": 6,
         "solutions": 24,
@@ -14188,10 +14203,10 @@ export const bookEngineData = {
       "section": "Диагностика и отчётность",
       "sectionIndex": 7,
       "chapterIndex": 1,
-      "wordCount": 1113,
-      "readingMinutes": 7,
+      "wordCount": 1438,
+      "readingMinutes": 8,
       "h2": 17,
-      "h3": 7,
+      "h3": 11,
       "examples": 1,
       "tasks": 6,
       "solutions": 24,
@@ -14203,7 +14218,7 @@ export const bookEngineData = {
         "link": "/docs/03-automation-qa/225-failure-investigation"
       },
       "next": {
-        "title": "Screenshots, videos и Playwright Trace",
+        "title": "Снимки экрана, видеозаписи и трассировка Playwright",
         "number": 227,
         "link": "/docs/03-automation-qa/227-screenshots-videos-and-playwright-trace"
       },
@@ -14228,7 +14243,7 @@ export const bookEngineData = {
       "card": {
         "chapterLabel": "Глава 226",
         "title": "Структурированное логирование",
-        "reading": 7,
+        "reading": 8,
         "examples": 1,
         "tasks": 6,
         "solutions": 24,
@@ -14238,16 +14253,16 @@ export const bookEngineData = {
     "docs/03-automation-qa/227-screenshots-videos-and-playwright-trace.md": {
       "path": "docs/03-automation-qa/227-screenshots-videos-and-playwright-trace.md",
       "link": "/docs/03-automation-qa/227-screenshots-videos-and-playwright-trace",
-      "title": "Screenshots, videos и Playwright Trace",
+      "title": "Снимки экрана, видеозаписи и трассировка Playwright",
       "number": 227,
       "part": "Automation QA",
       "section": "Диагностика и отчётность",
       "sectionIndex": 7,
       "chapterIndex": 2,
-      "wordCount": 977,
-      "readingMinutes": 6,
+      "wordCount": 1299,
+      "readingMinutes": 8,
       "h2": 17,
-      "h3": 7,
+      "h3": 10,
       "examples": 1,
       "tasks": 6,
       "solutions": 24,
@@ -14259,7 +14274,7 @@ export const bookEngineData = {
         "link": "/docs/03-automation-qa/226-structured-logging"
       },
       "next": {
-        "title": "Attachments и lifecycle артефактов",
+        "title": "Вложения и жизненный цикл артефактов",
         "number": 228,
         "link": "/docs/03-automation-qa/228-attachments-and-artifact-lifecycle"
       },
@@ -14276,8 +14291,8 @@ export const bookEngineData = {
       "related": [],
       "card": {
         "chapterLabel": "Глава 227",
-        "title": "Screenshots, videos и Playwright Trace",
-        "reading": 6,
+        "title": "Снимки экрана, видеозаписи и трассировка Playwright",
+        "reading": 8,
         "examples": 1,
         "tasks": 6,
         "solutions": 24,
@@ -14287,23 +14302,23 @@ export const bookEngineData = {
     "docs/03-automation-qa/228-attachments-and-artifact-lifecycle.md": {
       "path": "docs/03-automation-qa/228-attachments-and-artifact-lifecycle.md",
       "link": "/docs/03-automation-qa/228-attachments-and-artifact-lifecycle",
-      "title": "Attachments и lifecycle артефактов",
+      "title": "Вложения и жизненный цикл артефактов",
       "number": 228,
       "part": "Automation QA",
       "section": "Диагностика и отчётность",
       "sectionIndex": 7,
       "chapterIndex": 3,
-      "wordCount": 965,
-      "readingMinutes": 6,
+      "wordCount": 1264,
+      "readingMinutes": 8,
       "h2": 17,
-      "h3": 7,
+      "h3": 10,
       "examples": 1,
       "tasks": 6,
       "solutions": 24,
       "mermaid": 1,
       "miniProjects": 0,
       "previous": {
-        "title": "Screenshots, videos и Playwright Trace",
+        "title": "Снимки экрана, видеозаписи и трассировка Playwright",
         "number": 227,
         "link": "/docs/03-automation-qa/227-screenshots-videos-and-playwright-trace"
       },
@@ -14332,8 +14347,8 @@ export const bookEngineData = {
       ],
       "card": {
         "chapterLabel": "Глава 228",
-        "title": "Attachments и lifecycle артефактов",
-        "reading": 6,
+        "title": "Вложения и жизненный цикл артефактов",
+        "reading": 8,
         "examples": 1,
         "tasks": 6,
         "solutions": 24,
@@ -14349,17 +14364,17 @@ export const bookEngineData = {
       "section": "Диагностика и отчётность",
       "sectionIndex": 7,
       "chapterIndex": 4,
-      "wordCount": 1058,
-      "readingMinutes": 6,
+      "wordCount": 1346,
+      "readingMinutes": 8,
       "h2": 17,
-      "h3": 7,
+      "h3": 10,
       "examples": 1,
       "tasks": 6,
       "solutions": 24,
       "mermaid": 1,
       "miniProjects": 0,
       "previous": {
-        "title": "Attachments и lifecycle артефактов",
+        "title": "Вложения и жизненный цикл артефактов",
         "number": 228,
         "link": "/docs/03-automation-qa/228-attachments-and-artifact-lifecycle"
       },
@@ -14382,7 +14397,7 @@ export const bookEngineData = {
       "card": {
         "chapterLabel": "Глава 229",
         "title": "Принципы тестовой отчётности",
-        "reading": 6,
+        "reading": 8,
         "examples": 1,
         "tasks": 6,
         "solutions": 24,
@@ -14398,10 +14413,10 @@ export const bookEngineData = {
       "section": "Диагностика и отчётность",
       "sectionIndex": 7,
       "chapterIndex": 5,
-      "wordCount": 1037,
-      "readingMinutes": 6,
+      "wordCount": 1336,
+      "readingMinutes": 8,
       "h2": 17,
-      "h3": 7,
+      "h3": 10,
       "examples": 1,
       "tasks": 6,
       "solutions": 24,
@@ -14413,7 +14428,7 @@ export const bookEngineData = {
         "link": "/docs/03-automation-qa/229-test-reporting-principles"
       },
       "next": {
-        "title": "Диагностический поток Framework",
+        "title": "Диагностический поток фреймворка",
         "number": 231,
         "link": "/docs/03-automation-qa/231-framework-diagnostic-flow"
       },
@@ -14438,7 +14453,7 @@ export const bookEngineData = {
       "card": {
         "chapterLabel": "Глава 230",
         "title": "Отчётность в Allure",
-        "reading": 6,
+        "reading": 8,
         "examples": 1,
         "tasks": 6,
         "solutions": 24,
@@ -14448,16 +14463,16 @@ export const bookEngineData = {
     "docs/03-automation-qa/231-framework-diagnostic-flow.md": {
       "path": "docs/03-automation-qa/231-framework-diagnostic-flow.md",
       "link": "/docs/03-automation-qa/231-framework-diagnostic-flow",
-      "title": "Диагностический поток Framework",
+      "title": "Диагностический поток фреймворка",
       "number": 231,
       "part": "Automation QA",
       "section": "Диагностика и отчётность",
       "sectionIndex": 7,
       "chapterIndex": 6,
-      "wordCount": 1085,
-      "readingMinutes": 7,
+      "wordCount": 1380,
+      "readingMinutes": 8,
       "h2": 17,
-      "h3": 7,
+      "h3": 10,
       "examples": 1,
       "tasks": 6,
       "solutions": 24,
@@ -14469,7 +14484,7 @@ export const bookEngineData = {
         "link": "/docs/03-automation-qa/230-allure-reporting"
       },
       "next": {
-        "title": "Причины flaky tests",
+        "title": "Причины нестабильных тестов",
         "number": 232,
         "link": "/docs/03-automation-qa/232-causes-of-flaky-tests"
       },
@@ -14493,8 +14508,8 @@ export const bookEngineData = {
       ],
       "card": {
         "chapterLabel": "Глава 231",
-        "title": "Диагностический поток Framework",
-        "reading": 7,
+        "title": "Диагностический поток фреймворка",
+        "reading": 8,
         "examples": 1,
         "tasks": 6,
         "solutions": 24,
@@ -14504,28 +14519,28 @@ export const bookEngineData = {
     "docs/03-automation-qa/232-causes-of-flaky-tests.md": {
       "path": "docs/03-automation-qa/232-causes-of-flaky-tests.md",
       "link": "/docs/03-automation-qa/232-causes-of-flaky-tests",
-      "title": "Причины flaky tests",
+      "title": "Причины нестабильных тестов",
       "number": 232,
       "part": "Automation QA",
       "section": "Стабильность и масштабирование выполнения",
       "sectionIndex": 8,
       "chapterIndex": 0,
-      "wordCount": 1250,
-      "readingMinutes": 7,
+      "wordCount": 1605,
+      "readingMinutes": 9,
       "h2": 17,
-      "h3": 6,
+      "h3": 9,
       "examples": 1,
       "tasks": 6,
       "solutions": 24,
       "mermaid": 1,
       "miniProjects": 0,
       "previous": {
-        "title": "Диагностический поток Framework",
+        "title": "Диагностический поток фреймворка",
         "number": 231,
         "link": "/docs/03-automation-qa/231-framework-diagnostic-flow"
       },
       "next": {
-        "title": "Расследование и quarantine flaky tests",
+        "title": "Расследование и карантин нестабильных тестов",
         "number": 233,
         "link": "/docs/03-automation-qa/233-investigation-and-quarantine-of-flaky-tests"
       },
@@ -14542,8 +14557,8 @@ export const bookEngineData = {
       "related": [],
       "card": {
         "chapterLabel": "Глава 232",
-        "title": "Причины flaky tests",
-        "reading": 7,
+        "title": "Причины нестабильных тестов",
+        "reading": 9,
         "examples": 1,
         "tasks": 6,
         "solutions": 24,
@@ -14553,28 +14568,28 @@ export const bookEngineData = {
     "docs/03-automation-qa/233-investigation-and-quarantine-of-flaky-tests.md": {
       "path": "docs/03-automation-qa/233-investigation-and-quarantine-of-flaky-tests.md",
       "link": "/docs/03-automation-qa/233-investigation-and-quarantine-of-flaky-tests",
-      "title": "Расследование и quarantine flaky tests",
+      "title": "Расследование и карантин нестабильных тестов",
       "number": 233,
       "part": "Automation QA",
       "section": "Стабильность и масштабирование выполнения",
       "sectionIndex": 8,
       "chapterIndex": 1,
-      "wordCount": 1011,
-      "readingMinutes": 6,
+      "wordCount": 1318,
+      "readingMinutes": 8,
       "h2": 17,
-      "h3": 5,
+      "h3": 8,
       "examples": 1,
       "tasks": 6,
       "solutions": 24,
       "mermaid": 1,
       "miniProjects": 0,
       "previous": {
-        "title": "Причины flaky tests",
+        "title": "Причины нестабильных тестов",
         "number": 232,
         "link": "/docs/03-automation-qa/232-causes-of-flaky-tests"
       },
       "next": {
-        "title": "Retry policy",
+        "title": "Политика повторов",
         "number": 234,
         "link": "/docs/03-automation-qa/234-retry-policy"
       },
@@ -14591,8 +14606,8 @@ export const bookEngineData = {
       "related": [],
       "card": {
         "chapterLabel": "Глава 233",
-        "title": "Расследование и quarantine flaky tests",
-        "reading": 6,
+        "title": "Расследование и карантин нестабильных тестов",
+        "reading": 8,
         "examples": 1,
         "tasks": 6,
         "solutions": 24,
@@ -14602,23 +14617,23 @@ export const bookEngineData = {
     "docs/03-automation-qa/234-retry-policy.md": {
       "path": "docs/03-automation-qa/234-retry-policy.md",
       "link": "/docs/03-automation-qa/234-retry-policy",
-      "title": "Retry policy",
+      "title": "Политика повторов",
       "number": 234,
       "part": "Automation QA",
       "section": "Стабильность и масштабирование выполнения",
       "sectionIndex": 8,
       "chapterIndex": 2,
-      "wordCount": 1070,
-      "readingMinutes": 6,
+      "wordCount": 1427,
+      "readingMinutes": 8,
       "h2": 17,
-      "h3": 5,
+      "h3": 8,
       "examples": 2,
       "tasks": 6,
       "solutions": 24,
       "mermaid": 1,
       "miniProjects": 0,
       "previous": {
-        "title": "Расследование и quarantine flaky tests",
+        "title": "Расследование и карантин нестабильных тестов",
         "number": 233,
         "link": "/docs/03-automation-qa/233-investigation-and-quarantine-of-flaky-tests"
       },
@@ -14640,8 +14655,8 @@ export const bookEngineData = {
       "related": [],
       "card": {
         "chapterLabel": "Глава 234",
-        "title": "Retry policy",
-        "reading": 6,
+        "title": "Политика повторов",
+        "reading": 8,
         "examples": 2,
         "tasks": 6,
         "solutions": 24,
@@ -14657,17 +14672,17 @@ export const bookEngineData = {
       "section": "Стабильность и масштабирование выполнения",
       "sectionIndex": 8,
       "chapterIndex": 3,
-      "wordCount": 1094,
-      "readingMinutes": 7,
+      "wordCount": 1421,
+      "readingMinutes": 8,
       "h2": 17,
-      "h3": 6,
+      "h3": 9,
       "examples": 1,
       "tasks": 6,
       "solutions": 24,
       "mermaid": 1,
       "miniProjects": 0,
       "previous": {
-        "title": "Retry policy",
+        "title": "Политика повторов",
         "number": 234,
         "link": "/docs/03-automation-qa/234-retry-policy"
       },
@@ -14690,7 +14705,7 @@ export const bookEngineData = {
       "card": {
         "chapterLabel": "Глава 235",
         "title": "Workers и общие ресурсы",
-        "reading": 7,
+        "reading": 8,
         "examples": 1,
         "tasks": 6,
         "solutions": 24,
@@ -14706,10 +14721,10 @@ export const bookEngineData = {
       "section": "Стабильность и масштабирование выполнения",
       "sectionIndex": 8,
       "chapterIndex": 4,
-      "wordCount": 1044,
-      "readingMinutes": 6,
+      "wordCount": 1361,
+      "readingMinutes": 8,
       "h2": 17,
-      "h3": 6,
+      "h3": 9,
       "examples": 1,
       "tasks": 6,
       "solutions": 24,
@@ -14721,7 +14736,7 @@ export const bookEngineData = {
         "link": "/docs/03-automation-qa/235-workers-and-shared-resources"
       },
       "next": {
-        "title": "Sharding",
+        "title": "Сегментирование",
         "number": 237,
         "link": "/docs/03-automation-qa/237-sharding"
       },
@@ -14739,7 +14754,7 @@ export const bookEngineData = {
       "card": {
         "chapterLabel": "Глава 236",
         "title": "Параллельное выполнение",
-        "reading": 6,
+        "reading": 8,
         "examples": 1,
         "tasks": 6,
         "solutions": 24,
@@ -14749,16 +14764,16 @@ export const bookEngineData = {
     "docs/03-automation-qa/237-sharding.md": {
       "path": "docs/03-automation-qa/237-sharding.md",
       "link": "/docs/03-automation-qa/237-sharding",
-      "title": "Sharding",
+      "title": "Сегментирование",
       "number": 237,
       "part": "Automation QA",
       "section": "Стабильность и масштабирование выполнения",
       "sectionIndex": 8,
       "chapterIndex": 5,
-      "wordCount": 1000,
-      "readingMinutes": 6,
+      "wordCount": 1317,
+      "readingMinutes": 8,
       "h2": 17,
-      "h3": 6,
+      "h3": 10,
       "examples": 1,
       "tasks": 6,
       "solutions": 24,
@@ -14770,7 +14785,7 @@ export const bookEngineData = {
         "link": "/docs/03-automation-qa/236-parallel-execution"
       },
       "next": {
-        "title": "Tags, annotations и test selection",
+        "title": "Теги, аннотации и выбор тестов",
         "number": 238,
         "link": "/docs/03-automation-qa/238-tags-annotations-and-test-selection"
       },
@@ -14787,8 +14802,8 @@ export const bookEngineData = {
       "related": [],
       "card": {
         "chapterLabel": "Глава 237",
-        "title": "Sharding",
-        "reading": 6,
+        "title": "Сегментирование",
+        "reading": 8,
         "examples": 1,
         "tasks": 6,
         "solutions": 24,
@@ -14798,28 +14813,28 @@ export const bookEngineData = {
     "docs/03-automation-qa/238-tags-annotations-and-test-selection.md": {
       "path": "docs/03-automation-qa/238-tags-annotations-and-test-selection.md",
       "link": "/docs/03-automation-qa/238-tags-annotations-and-test-selection",
-      "title": "Tags, annotations и test selection",
+      "title": "Теги, аннотации и выбор тестов",
       "number": 238,
       "part": "Automation QA",
       "section": "Стабильность и масштабирование выполнения",
       "sectionIndex": 8,
       "chapterIndex": 6,
-      "wordCount": 1083,
-      "readingMinutes": 7,
+      "wordCount": 1436,
+      "readingMinutes": 8,
       "h2": 17,
-      "h3": 7,
+      "h3": 10,
       "examples": 1,
       "tasks": 6,
       "solutions": 24,
       "mermaid": 1,
       "miniProjects": 0,
       "previous": {
-        "title": "Sharding",
+        "title": "Сегментирование",
         "number": 237,
         "link": "/docs/03-automation-qa/237-sharding"
       },
       "next": {
-        "title": "CI fundamentals для Automation QA",
+        "title": "Основы CI для автоматизации тестов",
         "number": 239,
         "link": "/docs/03-automation-qa/239-ci-fundamentals-for-automation-qa"
       },
@@ -14836,8 +14851,8 @@ export const bookEngineData = {
       "related": [],
       "card": {
         "chapterLabel": "Глава 238",
-        "title": "Tags, annotations и test selection",
-        "reading": 7,
+        "title": "Теги, аннотации и выбор тестов",
+        "reading": 8,
         "examples": 1,
         "tasks": 6,
         "solutions": 24,
@@ -14847,28 +14862,28 @@ export const bookEngineData = {
     "docs/03-automation-qa/239-ci-fundamentals-for-automation-qa.md": {
       "path": "docs/03-automation-qa/239-ci-fundamentals-for-automation-qa.md",
       "link": "/docs/03-automation-qa/239-ci-fundamentals-for-automation-qa",
-      "title": "CI fundamentals для Automation QA",
+      "title": "Основы CI для автоматизации тестов",
       "number": 239,
       "part": "Automation QA",
       "section": "CI и эксплуатация проекта",
       "sectionIndex": 9,
       "chapterIndex": 0,
-      "wordCount": 1146,
-      "readingMinutes": 7,
+      "wordCount": 1490,
+      "readingMinutes": 9,
       "h2": 17,
-      "h3": 7,
+      "h3": 10,
       "examples": 1,
       "tasks": 6,
       "solutions": 24,
       "mermaid": 2,
       "miniProjects": 0,
       "previous": {
-        "title": "Tags, annotations и test selection",
+        "title": "Теги, аннотации и выбор тестов",
         "number": 238,
         "link": "/docs/03-automation-qa/238-tags-annotations-and-test-selection"
       },
       "next": {
-        "title": "GitHub Actions pipeline",
+        "title": "Конвейер GitHub Actions",
         "number": 240,
         "link": "/docs/03-automation-qa/240-github-actions-pipeline"
       },
@@ -14885,8 +14900,8 @@ export const bookEngineData = {
       "related": [],
       "card": {
         "chapterLabel": "Глава 239",
-        "title": "CI fundamentals для Automation QA",
-        "reading": 7,
+        "title": "Основы CI для автоматизации тестов",
+        "reading": 9,
         "examples": 1,
         "tasks": 6,
         "solutions": 24,
@@ -14896,28 +14911,28 @@ export const bookEngineData = {
     "docs/03-automation-qa/240-github-actions-pipeline.md": {
       "path": "docs/03-automation-qa/240-github-actions-pipeline.md",
       "link": "/docs/03-automation-qa/240-github-actions-pipeline",
-      "title": "GitHub Actions pipeline",
+      "title": "Конвейер GitHub Actions",
       "number": 240,
       "part": "Automation QA",
       "section": "CI и эксплуатация проекта",
       "sectionIndex": 9,
       "chapterIndex": 1,
-      "wordCount": 1076,
-      "readingMinutes": 6,
+      "wordCount": 1441,
+      "readingMinutes": 9,
       "h2": 17,
-      "h3": 8,
+      "h3": 11,
       "examples": 0,
       "tasks": 6,
       "solutions": 24,
       "mermaid": 2,
       "miniProjects": 0,
       "previous": {
-        "title": "CI fundamentals для Automation QA",
+        "title": "Основы CI для автоматизации тестов",
         "number": 239,
         "link": "/docs/03-automation-qa/239-ci-fundamentals-for-automation-qa"
       },
       "next": {
-        "title": "Browsers и системные зависимости в CI",
+        "title": "Браузеры и системные зависимости в CI",
         "number": 241,
         "link": "/docs/03-automation-qa/241-browsers-and-system-dependencies-in-ci"
       },
@@ -14934,8 +14949,8 @@ export const bookEngineData = {
       "related": [],
       "card": {
         "chapterLabel": "Глава 240",
-        "title": "GitHub Actions pipeline",
-        "reading": 6,
+        "title": "Конвейер GitHub Actions",
+        "reading": 9,
         "examples": 0,
         "tasks": 6,
         "solutions": 24,
@@ -14945,28 +14960,28 @@ export const bookEngineData = {
     "docs/03-automation-qa/241-browsers-and-system-dependencies-in-ci.md": {
       "path": "docs/03-automation-qa/241-browsers-and-system-dependencies-in-ci.md",
       "link": "/docs/03-automation-qa/241-browsers-and-system-dependencies-in-ci",
-      "title": "Browsers и системные зависимости в CI",
+      "title": "Браузеры и системные зависимости в CI",
       "number": 241,
       "part": "Automation QA",
       "section": "CI и эксплуатация проекта",
       "sectionIndex": 9,
       "chapterIndex": 2,
-      "wordCount": 975,
-      "readingMinutes": 6,
+      "wordCount": 1303,
+      "readingMinutes": 8,
       "h2": 17,
-      "h3": 6,
+      "h3": 10,
       "examples": 0,
       "tasks": 6,
       "solutions": 24,
       "mermaid": 1,
       "miniProjects": 0,
       "previous": {
-        "title": "GitHub Actions pipeline",
+        "title": "Конвейер GitHub Actions",
         "number": 240,
         "link": "/docs/03-automation-qa/240-github-actions-pipeline"
       },
       "next": {
-        "title": "Environments и secrets в CI",
+        "title": "Окружения и секреты в CI",
         "number": 242,
         "link": "/docs/03-automation-qa/242-environments-and-secrets-in-ci"
       },
@@ -14983,8 +14998,8 @@ export const bookEngineData = {
       "related": [],
       "card": {
         "chapterLabel": "Глава 241",
-        "title": "Browsers и системные зависимости в CI",
-        "reading": 6,
+        "title": "Браузеры и системные зависимости в CI",
+        "reading": 8,
         "examples": 0,
         "tasks": 6,
         "solutions": 24,
@@ -14994,23 +15009,23 @@ export const bookEngineData = {
     "docs/03-automation-qa/242-environments-and-secrets-in-ci.md": {
       "path": "docs/03-automation-qa/242-environments-and-secrets-in-ci.md",
       "link": "/docs/03-automation-qa/242-environments-and-secrets-in-ci",
-      "title": "Environments и secrets в CI",
+      "title": "Окружения и секреты в CI",
       "number": 242,
       "part": "Automation QA",
       "section": "CI и эксплуатация проекта",
       "sectionIndex": 9,
       "chapterIndex": 3,
-      "wordCount": 1101,
-      "readingMinutes": 7,
+      "wordCount": 1439,
+      "readingMinutes": 8,
       "h2": 17,
-      "h3": 6,
+      "h3": 10,
       "examples": 0,
       "tasks": 6,
       "solutions": 24,
       "mermaid": 1,
       "miniProjects": 0,
       "previous": {
-        "title": "Browsers и системные зависимости в CI",
+        "title": "Браузеры и системные зависимости в CI",
         "number": 241,
         "link": "/docs/03-automation-qa/241-browsers-and-system-dependencies-in-ci"
       },
@@ -15039,8 +15054,8 @@ export const bookEngineData = {
       ],
       "card": {
         "chapterLabel": "Глава 242",
-        "title": "Environments и secrets в CI",
-        "reading": 7,
+        "title": "Окружения и секреты в CI",
+        "reading": 8,
         "examples": 0,
         "tasks": 6,
         "solutions": 24,
@@ -15056,22 +15071,22 @@ export const bookEngineData = {
       "section": "CI и эксплуатация проекта",
       "sectionIndex": 9,
       "chapterIndex": 4,
-      "wordCount": 1018,
-      "readingMinutes": 6,
+      "wordCount": 1373,
+      "readingMinutes": 8,
       "h2": 17,
-      "h3": 7,
+      "h3": 11,
       "examples": 0,
       "tasks": 6,
       "solutions": 24,
       "mermaid": 1,
       "miniProjects": 0,
       "previous": {
-        "title": "Environments и secrets в CI",
+        "title": "Окружения и секреты в CI",
         "number": 242,
         "link": "/docs/03-automation-qa/242-environments-and-secrets-in-ci"
       },
       "next": {
-        "title": "CI jobs, sharding и диагностика запусков",
+        "title": "Задачи CI, сегментирование и диагностика запусков",
         "number": 244,
         "link": "/docs/03-automation-qa/244-ci-jobs-sharding-and-run-diagnostics"
       },
@@ -15089,7 +15104,7 @@ export const bookEngineData = {
       "card": {
         "chapterLabel": "Глава 243",
         "title": "Артефакты и отчёты в CI",
-        "reading": 6,
+        "reading": 8,
         "examples": 0,
         "tasks": 6,
         "solutions": 24,
@@ -15099,16 +15114,16 @@ export const bookEngineData = {
     "docs/03-automation-qa/244-ci-jobs-sharding-and-run-diagnostics.md": {
       "path": "docs/03-automation-qa/244-ci-jobs-sharding-and-run-diagnostics.md",
       "link": "/docs/03-automation-qa/244-ci-jobs-sharding-and-run-diagnostics",
-      "title": "CI jobs, sharding и диагностика запусков",
+      "title": "Задачи CI, сегментирование и диагностика запусков",
       "number": 244,
       "part": "Automation QA",
       "section": "CI и эксплуатация проекта",
       "sectionIndex": 9,
       "chapterIndex": 5,
-      "wordCount": 1062,
-      "readingMinutes": 6,
+      "wordCount": 1406,
+      "readingMinutes": 8,
       "h2": 17,
-      "h3": 6,
+      "h3": 9,
       "examples": 0,
       "tasks": 6,
       "solutions": 24,
@@ -15120,7 +15135,7 @@ export const bookEngineData = {
         "link": "/docs/03-automation-qa/243-artifacts-and-reports-in-ci"
       },
       "next": {
-        "title": "Интеграция слоёв и dependency flow",
+        "title": "Интеграция слоёв и поток зависимостей",
         "number": 245,
         "link": "/docs/03-automation-qa/245-layer-integration-and-dependency-flow"
       },
@@ -15137,8 +15152,8 @@ export const bookEngineData = {
       "related": [],
       "card": {
         "chapterLabel": "Глава 244",
-        "title": "CI jobs, sharding и диагностика запусков",
-        "reading": 6,
+        "title": "Задачи CI, сегментирование и диагностика запусков",
+        "reading": 8,
         "examples": 0,
         "tasks": 6,
         "solutions": 24,
@@ -15148,28 +15163,28 @@ export const bookEngineData = {
     "docs/03-automation-qa/245-layer-integration-and-dependency-flow.md": {
       "path": "docs/03-automation-qa/245-layer-integration-and-dependency-flow.md",
       "link": "/docs/03-automation-qa/245-layer-integration-and-dependency-flow",
-      "title": "Интеграция слоёв и dependency flow",
+      "title": "Интеграция слоёв и поток зависимостей",
       "number": 245,
       "part": "Automation QA",
       "section": "Интеграция Automation Framework",
       "sectionIndex": 10,
       "chapterIndex": 0,
-      "wordCount": 1196,
-      "readingMinutes": 7,
+      "wordCount": 1542,
+      "readingMinutes": 9,
       "h2": 17,
-      "h3": 7,
+      "h3": 10,
       "examples": 1,
       "tasks": 6,
       "solutions": 24,
       "mermaid": 2,
       "miniProjects": 0,
       "previous": {
-        "title": "CI jobs, sharding и диагностика запусков",
+        "title": "Задачи CI, сегментирование и диагностика запусков",
         "number": 244,
         "link": "/docs/03-automation-qa/244-ci-jobs-sharding-and-run-diagnostics"
       },
       "next": {
-        "title": "Composition fixtures и configuration flow",
+        "title": "Фикстуры композиции и поток конфигурации",
         "number": 246,
         "link": "/docs/03-automation-qa/246-composition-fixtures-and-configuration-flow"
       },
@@ -15186,8 +15201,8 @@ export const bookEngineData = {
       "related": [],
       "card": {
         "chapterLabel": "Глава 245",
-        "title": "Интеграция слоёв и dependency flow",
-        "reading": 7,
+        "title": "Интеграция слоёв и поток зависимостей",
+        "reading": 9,
         "examples": 1,
         "tasks": 6,
         "solutions": 24,
@@ -15197,23 +15212,23 @@ export const bookEngineData = {
     "docs/03-automation-qa/246-composition-fixtures-and-configuration-flow.md": {
       "path": "docs/03-automation-qa/246-composition-fixtures-and-configuration-flow.md",
       "link": "/docs/03-automation-qa/246-composition-fixtures-and-configuration-flow",
-      "title": "Composition fixtures и configuration flow",
+      "title": "Фикстуры композиции и поток конфигурации",
       "number": 246,
       "part": "Automation QA",
       "section": "Интеграция Automation Framework",
       "sectionIndex": 10,
       "chapterIndex": 1,
-      "wordCount": 1083,
-      "readingMinutes": 7,
+      "wordCount": 1285,
+      "readingMinutes": 8,
       "h2": 17,
-      "h3": 6,
+      "h3": 7,
       "examples": 1,
       "tasks": 6,
       "solutions": 24,
       "mermaid": 2,
       "miniProjects": 0,
       "previous": {
-        "title": "Интеграция слоёв и dependency flow",
+        "title": "Интеграция слоёв и поток зависимостей",
         "number": 245,
         "link": "/docs/03-automation-qa/245-layer-integration-and-dependency-flow"
       },
@@ -15232,18 +15247,11 @@ export const bookEngineData = {
         "total": 90,
         "bar": "████████████"
       },
-      "related": [
-        {
-          "term": "Scope",
-          "title": "Scope",
-          "number": 7,
-          "link": "/docs/01-javascript/07-scope"
-        }
-      ],
+      "related": [],
       "card": {
         "chapterLabel": "Глава 246",
-        "title": "Composition fixtures и configuration flow",
-        "reading": 7,
+        "title": "Фикстуры композиции и поток конфигурации",
+        "reading": 8,
         "examples": 1,
         "tasks": 6,
         "solutions": 24,
@@ -15259,17 +15267,17 @@ export const bookEngineData = {
       "section": "Интеграция Automation Framework",
       "sectionIndex": 10,
       "chapterIndex": 2,
-      "wordCount": 1026,
-      "readingMinutes": 6,
+      "wordCount": 1347,
+      "readingMinutes": 8,
       "h2": 17,
-      "h3": 6,
+      "h3": 10,
       "examples": 1,
       "tasks": 6,
       "solutions": 24,
       "mermaid": 2,
       "miniProjects": 0,
       "previous": {
-        "title": "Composition fixtures и configuration flow",
+        "title": "Фикстуры композиции и поток конфигурации",
         "number": 246,
         "link": "/docs/03-automation-qa/246-composition-fixtures-and-configuration-flow"
       },
@@ -15291,15 +15299,21 @@ export const bookEngineData = {
       "related": [
         {
           "term": "Scope",
-          "title": "Scope",
+          "title": "Область видимости",
           "number": 7,
           "link": "/docs/01-javascript/07-scope"
+        },
+        {
+          "term": "Date",
+          "title": "Дата и время",
+          "number": 95,
+          "link": "/docs/01-javascript/95-date"
         }
       ],
       "card": {
         "chapterLabel": "Глава 247",
         "title": "Жизненный цикл данных в сценариях между слоями",
-        "reading": 6,
+        "reading": 8,
         "examples": 1,
         "tasks": 6,
         "solutions": 24,
@@ -15315,10 +15329,10 @@ export const bookEngineData = {
       "section": "Интеграция Automation Framework",
       "sectionIndex": 10,
       "chapterIndex": 3,
-      "wordCount": 1082,
-      "readingMinutes": 7,
+      "wordCount": 1405,
+      "readingMinutes": 8,
       "h2": 17,
-      "h3": 6,
+      "h3": 9,
       "examples": 1,
       "tasks": 6,
       "solutions": 24,
@@ -15330,7 +15344,7 @@ export const bookEngineData = {
         "link": "/docs/03-automation-qa/247-cross-layer-data-lifecycle"
       },
       "next": {
-        "title": "Architecture review и эволюция Framework",
+        "title": "Разбор архитектуры и эволюция фреймворка",
         "number": 249,
         "link": "/docs/03-automation-qa/249-architecture-review-and-framework-evolution"
       },
@@ -15348,7 +15362,7 @@ export const bookEngineData = {
       "card": {
         "chapterLabel": "Глава 248",
         "title": "Диагностика, стабильность и CI в общей архитектуре",
-        "reading": 7,
+        "reading": 8,
         "examples": 1,
         "tasks": 6,
         "solutions": 24,
@@ -15358,16 +15372,16 @@ export const bookEngineData = {
     "docs/03-automation-qa/249-architecture-review-and-framework-evolution.md": {
       "path": "docs/03-automation-qa/249-architecture-review-and-framework-evolution.md",
       "link": "/docs/03-automation-qa/249-architecture-review-and-framework-evolution",
-      "title": "Architecture review и эволюция Framework",
+      "title": "Разбор архитектуры и эволюция фреймворка",
       "number": 249,
       "part": "Automation QA",
       "section": "Интеграция Automation Framework",
       "sectionIndex": 10,
       "chapterIndex": 4,
-      "wordCount": 1090,
-      "readingMinutes": 7,
+      "wordCount": 1413,
+      "readingMinutes": 8,
       "h2": 17,
-      "h3": 7,
+      "h3": 10,
       "examples": 1,
       "tasks": 6,
       "solutions": 24,
@@ -15396,8 +15410,8 @@ export const bookEngineData = {
       "related": [],
       "card": {
         "chapterLabel": "Глава 249",
-        "title": "Architecture review и эволюция Framework",
-        "reading": 7,
+        "title": "Разбор архитектуры и эволюция фреймворка",
+        "reading": 8,
         "examples": 1,
         "tasks": 6,
         "solutions": 24,
@@ -15413,17 +15427,17 @@ export const bookEngineData = {
       "section": "Финальный промышленный проект",
       "sectionIndex": 0,
       "chapterIndex": 0,
-      "wordCount": 3952,
-      "readingMinutes": 22,
+      "wordCount": 4134,
+      "readingMinutes": 23,
       "h2": 29,
-      "h3": 4,
+      "h3": 5,
       "examples": 0,
       "tasks": 23,
       "solutions": 24,
       "mermaid": 2,
       "miniProjects": 0,
       "previous": {
-        "title": "Architecture review и эволюция Framework",
+        "title": "Разбор архитектуры и эволюция фреймворка",
         "number": 249,
         "link": "/docs/03-automation-qa/249-architecture-review-and-framework-evolution"
       },
@@ -15439,14 +15453,14 @@ export const bookEngineData = {
       "progress": {
         "label": "Финальный проект",
         "current": 1,
-        "total": 4,
-        "bar": "███░░░░░░░░░"
+        "total": 10,
+        "bar": "█░░░░░░░░░░░"
       },
       "related": [],
       "card": {
         "chapterLabel": "Глава 250",
         "title": "Требования и критерии готовности проекта",
-        "reading": 22,
+        "reading": 23,
         "examples": 0,
         "tasks": 23,
         "solutions": 24,
@@ -15462,10 +15476,10 @@ export const bookEngineData = {
       "section": "Финальный промышленный проект",
       "sectionIndex": 0,
       "chapterIndex": 1,
-      "wordCount": 4688,
-      "readingMinutes": 27,
+      "wordCount": 5039,
+      "readingMinutes": 28,
       "h2": 29,
-      "h3": 1,
+      "h3": 2,
       "examples": 0,
       "tasks": 12,
       "solutions": 24,
@@ -15477,7 +15491,7 @@ export const bookEngineData = {
         "link": "/docs/04-final-project/250-project-requirements-and-readiness-criteria"
       },
       "next": {
-        "title": "Каркас, configuration и environments",
+        "title": "Каркас, конфигурация и окружения",
         "number": 252,
         "link": "/docs/04-final-project/252-framework-skeleton-configuration-and-environments"
       },
@@ -15488,16 +15502,10 @@ export const bookEngineData = {
       "progress": {
         "label": "Финальный проект",
         "current": 2,
-        "total": 4,
-        "bar": "██████░░░░░░"
+        "total": 10,
+        "bar": "██░░░░░░░░░░"
       },
       "related": [
-        {
-          "term": "Scope",
-          "title": "Scope",
-          "number": 7,
-          "link": "/docs/01-javascript/07-scope"
-        },
         {
           "term": "JSON",
           "title": "JSON",
@@ -15508,7 +15516,7 @@ export const bookEngineData = {
       "card": {
         "chapterLabel": "Глава 251",
         "title": "Архитектурные решения и план реализации",
-        "reading": 27,
+        "reading": 28,
         "examples": 0,
         "tasks": 12,
         "solutions": 24,
@@ -15518,16 +15526,16 @@ export const bookEngineData = {
     "docs/04-final-project/252-framework-skeleton-configuration-and-environments.md": {
       "path": "docs/04-final-project/252-framework-skeleton-configuration-and-environments.md",
       "link": "/docs/04-final-project/252-framework-skeleton-configuration-and-environments",
-      "title": "Каркас, configuration и environments",
+      "title": "Каркас, конфигурация и окружения",
       "number": 252,
       "part": "Финальный проект",
       "section": "Финальный промышленный проект",
       "sectionIndex": 0,
       "chapterIndex": 2,
-      "wordCount": 2553,
-      "readingMinutes": 15,
+      "wordCount": 2728,
+      "readingMinutes": 16,
       "h2": 29,
-      "h3": 6,
+      "h3": 7,
       "examples": 0,
       "tasks": 14,
       "solutions": 24,
@@ -15539,7 +15547,7 @@ export const bookEngineData = {
         "link": "/docs/04-final-project/251-architecture-decisions-and-implementation-plan"
       },
       "next": {
-        "title": "UI Layer, Page Objects и fixtures",
+        "title": "Слой интерфейса, объекты страниц и фикстуры",
         "number": 253,
         "link": "/docs/04-final-project/253-ui-layer-page-objects-and-fixtures"
       },
@@ -15550,21 +15558,21 @@ export const bookEngineData = {
       "progress": {
         "label": "Финальный проект",
         "current": 3,
-        "total": 4,
-        "bar": "█████████░░░"
+        "total": 10,
+        "bar": "████░░░░░░░░"
       },
       "related": [
         {
           "term": "Scope",
-          "title": "Scope",
+          "title": "Область видимости",
           "number": 7,
           "link": "/docs/01-javascript/07-scope"
         }
       ],
       "card": {
         "chapterLabel": "Глава 252",
-        "title": "Каркас, configuration и environments",
-        "reading": 15,
+        "title": "Каркас, конфигурация и окружения",
+        "reading": 16,
         "examples": 0,
         "tasks": 14,
         "solutions": 24,
@@ -15574,25 +15582,397 @@ export const bookEngineData = {
     "docs/04-final-project/253-ui-layer-page-objects-and-fixtures.md": {
       "path": "docs/04-final-project/253-ui-layer-page-objects-and-fixtures.md",
       "link": "/docs/04-final-project/253-ui-layer-page-objects-and-fixtures",
-      "title": "UI Layer, Page Objects и fixtures",
+      "title": "Слой интерфейса, объекты страниц и фикстуры",
       "number": 253,
       "part": "Финальный проект",
       "section": "Финальный промышленный проект",
       "sectionIndex": 0,
       "chapterIndex": 3,
-      "wordCount": 1218,
-      "readingMinutes": 7,
+      "wordCount": 1337,
+      "readingMinutes": 8,
       "h2": 19,
-      "h3": 6,
+      "h3": 7,
       "examples": 0,
       "tasks": 0,
       "solutions": 0,
       "mermaid": 1,
       "miniProjects": 0,
       "previous": {
-        "title": "Каркас, configuration и environments",
+        "title": "Каркас, конфигурация и окружения",
         "number": 252,
         "link": "/docs/04-final-project/252-framework-skeleton-configuration-and-environments"
+      },
+      "next": {
+        "title": "Слой REST, клиент и подготовка данных",
+        "number": 254,
+        "link": "/docs/04-final-project/254-rest-layer-client-and-data-setup"
+      },
+      "sectionLink": {
+        "title": "Финальный промышленный проект",
+        "link": "/docs/04-final-project/250-project-requirements-and-readiness-criteria"
+      },
+      "progress": {
+        "label": "Финальный проект",
+        "current": 4,
+        "total": 10,
+        "bar": "█████░░░░░░░"
+      },
+      "related": [
+        {
+          "term": "this",
+          "title": "Ключевое слово `this`",
+          "number": 29,
+          "link": "/docs/01-javascript/29-this"
+        },
+        {
+          "term": "Promise",
+          "title": "Промис",
+          "number": 72,
+          "link": "/docs/01-javascript/72-promise"
+        }
+      ],
+      "card": {
+        "chapterLabel": "Глава 253",
+        "title": "Слой интерфейса, объекты страниц и фикстуры",
+        "reading": 8,
+        "examples": 0,
+        "tasks": 0,
+        "solutions": 0,
+        "mermaid": 1
+      }
+    },
+    "docs/04-final-project/254-rest-layer-client-and-data-setup.md": {
+      "path": "docs/04-final-project/254-rest-layer-client-and-data-setup.md",
+      "link": "/docs/04-final-project/254-rest-layer-client-and-data-setup",
+      "title": "Слой REST, клиент и подготовка данных",
+      "number": 254,
+      "part": "Финальный проект",
+      "section": "Финальный промышленный проект",
+      "sectionIndex": 0,
+      "chapterIndex": 4,
+      "wordCount": 1337,
+      "readingMinutes": 8,
+      "h2": 20,
+      "h3": 7,
+      "examples": 0,
+      "tasks": 0,
+      "solutions": 0,
+      "mermaid": 1,
+      "miniProjects": 0,
+      "previous": {
+        "title": "Слой интерфейса, объекты страниц и фикстуры",
+        "number": 253,
+        "link": "/docs/04-final-project/253-ui-layer-page-objects-and-fixtures"
+      },
+      "next": {
+        "title": "Слой gRPC, унарные вызовы и коды состояния",
+        "number": 255,
+        "link": "/docs/04-final-project/255-grpc-layer-unary-calls-and-statuses"
+      },
+      "sectionLink": {
+        "title": "Финальный промышленный проект",
+        "link": "/docs/04-final-project/250-project-requirements-and-readiness-criteria"
+      },
+      "progress": {
+        "label": "Финальный проект",
+        "current": 5,
+        "total": 10,
+        "bar": "██████░░░░░░"
+      },
+      "related": [
+        {
+          "term": "this",
+          "title": "Ключевое слово `this`",
+          "number": 29,
+          "link": "/docs/01-javascript/29-this"
+        },
+        {
+          "term": "Promise",
+          "title": "Промис",
+          "number": 72,
+          "link": "/docs/01-javascript/72-promise"
+        },
+        {
+          "term": "JSON",
+          "title": "JSON",
+          "number": 94,
+          "link": "/docs/01-javascript/94-json"
+        },
+        {
+          "term": "Date",
+          "title": "Дата и время",
+          "number": 95,
+          "link": "/docs/01-javascript/95-date"
+        }
+      ],
+      "card": {
+        "chapterLabel": "Глава 254",
+        "title": "Слой REST, клиент и подготовка данных",
+        "reading": 8,
+        "examples": 0,
+        "tasks": 0,
+        "solutions": 0,
+        "mermaid": 1
+      }
+    },
+    "docs/04-final-project/255-grpc-layer-unary-calls-and-statuses.md": {
+      "path": "docs/04-final-project/255-grpc-layer-unary-calls-and-statuses.md",
+      "link": "/docs/04-final-project/255-grpc-layer-unary-calls-and-statuses",
+      "title": "Слой gRPC, унарные вызовы и коды состояния",
+      "number": 255,
+      "part": "Финальный проект",
+      "section": "Финальный промышленный проект",
+      "sectionIndex": 0,
+      "chapterIndex": 5,
+      "wordCount": 1345,
+      "readingMinutes": 8,
+      "h2": 21,
+      "h3": 5,
+      "examples": 0,
+      "tasks": 0,
+      "solutions": 0,
+      "mermaid": 1,
+      "miniProjects": 0,
+      "previous": {
+        "title": "Слой REST, клиент и подготовка данных",
+        "number": 254,
+        "link": "/docs/04-final-project/254-rest-layer-client-and-data-setup"
+      },
+      "next": {
+        "title": "Слой базы данных, пул и проверка состояния",
+        "number": 256,
+        "link": "/docs/04-final-project/256-database-layer-pool-and-state-verification"
+      },
+      "sectionLink": {
+        "title": "Финальный промышленный проект",
+        "link": "/docs/04-final-project/250-project-requirements-and-readiness-criteria"
+      },
+      "progress": {
+        "label": "Финальный проект",
+        "current": 6,
+        "total": 10,
+        "bar": "███████░░░░░"
+      },
+      "related": [
+        {
+          "term": "Promise",
+          "title": "Промис",
+          "number": 72,
+          "link": "/docs/01-javascript/72-promise"
+        },
+        {
+          "term": "Date",
+          "title": "Дата и время",
+          "number": 95,
+          "link": "/docs/01-javascript/95-date"
+        }
+      ],
+      "card": {
+        "chapterLabel": "Глава 255",
+        "title": "Слой gRPC, унарные вызовы и коды состояния",
+        "reading": 8,
+        "examples": 0,
+        "tasks": 0,
+        "solutions": 0,
+        "mermaid": 1
+      }
+    },
+    "docs/04-final-project/256-database-layer-pool-and-state-verification.md": {
+      "path": "docs/04-final-project/256-database-layer-pool-and-state-verification.md",
+      "link": "/docs/04-final-project/256-database-layer-pool-and-state-verification",
+      "title": "Слой базы данных, пул и проверка состояния",
+      "number": 256,
+      "part": "Финальный проект",
+      "section": "Финальный промышленный проект",
+      "sectionIndex": 0,
+      "chapterIndex": 6,
+      "wordCount": 1335,
+      "readingMinutes": 8,
+      "h2": 21,
+      "h3": 5,
+      "examples": 0,
+      "tasks": 0,
+      "solutions": 0,
+      "mermaid": 1,
+      "miniProjects": 0,
+      "previous": {
+        "title": "Слой gRPC, унарные вызовы и коды состояния",
+        "number": 255,
+        "link": "/docs/04-final-project/255-grpc-layer-unary-calls-and-statuses"
+      },
+      "next": {
+        "title": "Межслойные сценарии, каноническая модель и владение данными",
+        "number": 257,
+        "link": "/docs/04-final-project/257-cross-layer-scenarios-and-data-ownership"
+      },
+      "sectionLink": {
+        "title": "Финальный промышленный проект",
+        "link": "/docs/04-final-project/250-project-requirements-and-readiness-criteria"
+      },
+      "progress": {
+        "label": "Финальный проект",
+        "current": 7,
+        "total": 10,
+        "bar": "████████░░░░"
+      },
+      "related": [
+        {
+          "term": "this",
+          "title": "Ключевое слово `this`",
+          "number": 29,
+          "link": "/docs/01-javascript/29-this"
+        },
+        {
+          "term": "Promise",
+          "title": "Промис",
+          "number": 72,
+          "link": "/docs/01-javascript/72-promise"
+        }
+      ],
+      "card": {
+        "chapterLabel": "Глава 256",
+        "title": "Слой базы данных, пул и проверка состояния",
+        "reading": 8,
+        "examples": 0,
+        "tasks": 0,
+        "solutions": 0,
+        "mermaid": 1
+      }
+    },
+    "docs/04-final-project/257-cross-layer-scenarios-and-data-ownership.md": {
+      "path": "docs/04-final-project/257-cross-layer-scenarios-and-data-ownership.md",
+      "link": "/docs/04-final-project/257-cross-layer-scenarios-and-data-ownership",
+      "title": "Межслойные сценарии, каноническая модель и владение данными",
+      "number": 257,
+      "part": "Финальный проект",
+      "section": "Финальный промышленный проект",
+      "sectionIndex": 0,
+      "chapterIndex": 7,
+      "wordCount": 1318,
+      "readingMinutes": 8,
+      "h2": 20,
+      "h3": 5,
+      "examples": 0,
+      "tasks": 0,
+      "solutions": 0,
+      "mermaid": 1,
+      "miniProjects": 0,
+      "previous": {
+        "title": "Слой базы данных, пул и проверка состояния",
+        "number": 256,
+        "link": "/docs/04-final-project/256-database-layer-pool-and-state-verification"
+      },
+      "next": {
+        "title": "Диагностика, отчёт и запуск в CI",
+        "number": 258,
+        "link": "/docs/04-final-project/258-diagnostics-reporting-and-ci"
+      },
+      "sectionLink": {
+        "title": "Финальный промышленный проект",
+        "link": "/docs/04-final-project/250-project-requirements-and-readiness-criteria"
+      },
+      "progress": {
+        "label": "Финальный проект",
+        "current": 8,
+        "total": 10,
+        "bar": "██████████░░"
+      },
+      "related": [
+        {
+          "term": "Date",
+          "title": "Дата и время",
+          "number": 95,
+          "link": "/docs/01-javascript/95-date"
+        }
+      ],
+      "card": {
+        "chapterLabel": "Глава 257",
+        "title": "Межслойные сценарии, каноническая модель и владение данными",
+        "reading": 8,
+        "examples": 0,
+        "tasks": 0,
+        "solutions": 0,
+        "mermaid": 1
+      }
+    },
+    "docs/04-final-project/258-diagnostics-reporting-and-ci.md": {
+      "path": "docs/04-final-project/258-diagnostics-reporting-and-ci.md",
+      "link": "/docs/04-final-project/258-diagnostics-reporting-and-ci",
+      "title": "Диагностика, отчёт и запуск в CI",
+      "number": 258,
+      "part": "Финальный проект",
+      "section": "Финальный промышленный проект",
+      "sectionIndex": 0,
+      "chapterIndex": 8,
+      "wordCount": 1269,
+      "readingMinutes": 8,
+      "h2": 22,
+      "h3": 5,
+      "examples": 0,
+      "tasks": 0,
+      "solutions": 0,
+      "mermaid": 1,
+      "miniProjects": 0,
+      "previous": {
+        "title": "Межслойные сценарии, каноническая модель и владение данными",
+        "number": 257,
+        "link": "/docs/04-final-project/257-cross-layer-scenarios-and-data-ownership"
+      },
+      "next": {
+        "title": "Финальный аудит и решение о выпуске",
+        "number": 259,
+        "link": "/docs/04-final-project/259-final-audit-and-release-decision"
+      },
+      "sectionLink": {
+        "title": "Финальный промышленный проект",
+        "link": "/docs/04-final-project/250-project-requirements-and-readiness-criteria"
+      },
+      "progress": {
+        "label": "Финальный проект",
+        "current": 9,
+        "total": 10,
+        "bar": "███████████░"
+      },
+      "related": [
+        {
+          "term": "JSON",
+          "title": "JSON",
+          "number": 94,
+          "link": "/docs/01-javascript/94-json"
+        }
+      ],
+      "card": {
+        "chapterLabel": "Глава 258",
+        "title": "Диагностика, отчёт и запуск в CI",
+        "reading": 8,
+        "examples": 0,
+        "tasks": 0,
+        "solutions": 0,
+        "mermaid": 1
+      }
+    },
+    "docs/04-final-project/259-final-audit-and-release-decision.md": {
+      "path": "docs/04-final-project/259-final-audit-and-release-decision.md",
+      "link": "/docs/04-final-project/259-final-audit-and-release-decision",
+      "title": "Финальный аудит и решение о выпуске",
+      "number": 259,
+      "part": "Финальный проект",
+      "section": "Финальный промышленный проект",
+      "sectionIndex": 0,
+      "chapterIndex": 9,
+      "wordCount": 1210,
+      "readingMinutes": 7,
+      "h2": 22,
+      "h3": 5,
+      "examples": 0,
+      "tasks": 0,
+      "solutions": 0,
+      "mermaid": 1,
+      "miniProjects": 0,
+      "previous": {
+        "title": "Диагностика, отчёт и запуск в CI",
+        "number": 258,
+        "link": "/docs/04-final-project/258-diagnostics-reporting-and-ci"
       },
       "next": null,
       "sectionLink": {
@@ -15601,27 +15981,14 @@ export const bookEngineData = {
       },
       "progress": {
         "label": "Финальный проект",
-        "current": 4,
-        "total": 4,
+        "current": 10,
+        "total": 10,
         "bar": "████████████"
       },
-      "related": [
-        {
-          "term": "this",
-          "title": "this",
-          "number": 29,
-          "link": "/docs/01-javascript/29-this"
-        },
-        {
-          "term": "Promise",
-          "title": "Promise",
-          "number": 72,
-          "link": "/docs/01-javascript/72-promise"
-        }
-      ],
+      "related": [],
       "card": {
-        "chapterLabel": "Глава 253",
-        "title": "UI Layer, Page Objects и fixtures",
+        "chapterLabel": "Глава 259",
+        "title": "Финальный аудит и решение о выпуске",
         "reading": 7,
         "examples": 0,
         "tasks": 0,
@@ -15631,12 +15998,12 @@ export const bookEngineData = {
     }
   },
   "statistics": {
-    "chapters": 257,
+    "chapters": 263,
     "tasks": 2759,
     "solutions": 5181,
-    "examples": 741,
-    "mermaid": 696,
+    "examples": 743,
+    "mermaid": 702,
     "miniProjects": 144,
-    "readingMinutes": 1718
+    "readingMinutes": 2155
   }
 }

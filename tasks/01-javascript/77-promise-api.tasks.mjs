@@ -1,7 +1,7 @@
 export default [
   {
     id: 'js-77-finally-keeps-value',
-    title: 'finally не меняет результат',
+    title: '`finally` не меняет результат',
     difficulty: 'medium',
     lang: 'js',
     prompt:
@@ -54,7 +54,7 @@ expect(message).toBe('сбой');`
 
   {
     id: 'js-77-catch-position',
-    title: 'Положение catch в цепочке',
+    title: 'Положение `catch` в цепочке',
     difficulty: 'medium',
     lang: 'js',
     prompt:
@@ -67,7 +67,7 @@ expect(message).toBe('сбой');`
 }`,
     hints: [
       'Обработчик ошибок ставится после преобразования, а не до.',
-      'Ошибка из обработчика успеха уходит в следующий catch по цепочке.',
+      'Ошибка из обработчика успеха уходит в следующий `catch` по цепочке.',
       'Возвращать нужно результат цепочки.'
     ],
     tests: [

@@ -17,9 +17,9 @@ export default [
   return { methods: [], aliases: [], works: 0, missing: false };
 }`,
     hints: [
-      'Свойства прототипа даёт Object.getPrototypeOf вместе с Object.keys.',
+      'Свойства прототипа даёт `Object.getPrototypeOf` вместе с `Object.keys`.',
       'Загрузчик добавляет к каждому методу вариант имени с маленькой буквы.',
-      'Отсутствие метода проверяется обычным сравнением с undefined.'
+      'Отсутствие метода проверяется обычным сравнением с `undefined`.'
     ],
     tests: [
       {

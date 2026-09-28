@@ -26,13 +26,13 @@ function classify(value: unknown) {
   return { isSession: false, isWorkItem: false, kind: '' };
 }`,
     hints: [
-      'Класс порождает код и потому доступен instanceof.',
+      'Класс порождает код и потому доступен `instanceof`.',
       'Тип исчезает после компиляции: проверять нужно форму значения.',
       'Экземпляр класса может случайно совпасть по форме — порядок проверок важен.'
     ],
     tests: [
       {
-        name: 'класс опознаётся через instanceof',
+        name: 'класс опознаётся через `instanceof`',
         code: `const classified = classify(new Session('S-1'));
 expect(classified.isSession).toBe(true);
 expect(classified.kind).toBe('класс');`

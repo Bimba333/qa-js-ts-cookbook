@@ -40,6 +40,30 @@ function failure(message) {
   throw new Error(message)
 }
 
+/**
+ * Сверяет сообщение пойманной ошибки с ожиданием.
+ *
+ * Строка проверяется на вхождение, а не на равенство: тексты ошибок движка
+ * несут лишние подробности, и требовать полного совпадения бессмысленно.
+ */
+function checkThrownMessage(error, expected) {
+  if (expected === undefined) return
+
+  const message = String(error?.message ?? error)
+
+  if (expected instanceof RegExp) {
+    if (!expected.test(message)) {
+      failure(`сообщение ошибки ${format(message)} не соответствует ${String(expected)}`)
+    }
+
+    return
+  }
+
+  if (!message.includes(String(expected))) {
+    failure(`сообщение ошибки ${format(message)} не содержит ${format(expected)}`)
+  }
+}
+
 export function expect(actual) {
   return {
     toBe(expected) {
@@ -89,6 +113,24 @@ export function expect(actual) {
       if (!pattern.test(String(actual))) {
         failure(`значение ${format(actual)} не соответствует ${String(pattern)}`)
       }
+    },
+    toBeCloseTo(expected, precision = 2) {
+      if (Math.abs(actual - expected) >= Math.pow(10, -precision) / 2) {
+        failure(`ожидалось примерно ${format(expected)}, получено ${format(actual)}`)
+      }
+    },
+    toThrow(expected) {
+      if (typeof actual !== 'function') failure('toThrow ожидает функцию')
+
+      try {
+        actual()
+      } catch (error) {
+        checkThrownMessage(error, expected)
+
+        return
+      }
+
+      failure('ожидалось исключение, но его не было')
     }
   }
 }

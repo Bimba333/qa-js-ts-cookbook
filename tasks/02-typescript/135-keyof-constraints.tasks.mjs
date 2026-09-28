@@ -19,7 +19,7 @@ function setFields<T extends object>(item: T, patch: Partial<T>): T {
   return item;
 }`,
     hints: [
-      'Ограничение K extends keyof T допускает только существующие ключи.',
+      'Ограничение `K extends keyof T` допускает только существующие ключи.',
       'Копия создаётся до присваивания, а не после.',
       'Наличие ключа у объекта проверяется во время выполнения.'
     ],
@@ -46,7 +46,7 @@ expect(setField(source, 'id', 'b') === source).toBe(false);`
   .toEqual({ id: 'a', version: 2, title: 'y' });`
       },
       {
-        name: 'undefined не затирает значение',
+        name: '`undefined` не затирает значение',
         code: `expect(setFields({ id: 'a', version: 1 }, { version: undefined }).version).toBe(1);`
       },
       {

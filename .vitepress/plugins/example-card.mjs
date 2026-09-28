@@ -33,6 +33,7 @@ const UI = {
     chapters: 'глав',
     part: label => (label === 'Введение' ? 'Введение' : `Часть «${escapeHtml(label)}»`),
     showAnswer: 'Показать ответ',
+    selfCheckAnswer: number => `Ответ ${number}`,
     example: 'Пример',
     exampleGeneric: 'Пример'
   },
@@ -53,6 +54,7 @@ const UI = {
       return en === 'Introduction' ? 'Introduction' : `Part «${escapeHtml(en)}»`
     },
     showAnswer: 'Show answer',
+    selfCheckAnswer: number => `Answer ${number}`,
     example: 'Example',
     exampleGeneric: 'Example'
   }
@@ -415,6 +417,78 @@ ${rendered}
   </div>
 </details>
 `
+}
+
+const SELF_CHECK_ANSWERS_HEADING = /^(Ответы|Answers)$/
+
+/**
+ * Превращает нумерованный список под заголовком «Ответы» в набор
+ * раскрывающихся блоков — по одному на вопрос самопроверки.
+ *
+ * Работа идет по токенам, а не по разметке: содержимое пункта (абзацы, код,
+ * таблицы) рендерится обычными правилами, меняется только обертка. Вложенные
+ * списки не затрагиваются — учитываются только пункты верхнего уровня.
+ */
+function foldSelfCheckAnswers(state, t) {
+  const tokens = state.tokens
+  const headingIndex = tokens.findIndex(
+    (token, index) =>
+      token.type === 'heading_open' &&
+      token.tag === 'h3' &&
+      SELF_CHECK_ANSWERS_HEADING.test(tokens[index + 1]?.content?.trim() ?? '')
+  )
+
+  if (headingIndex < 0) {
+    return
+  }
+
+  const listOpen = tokens.findIndex(
+    (token, index) => index > headingIndex && token.type === 'ordered_list_open'
+  )
+
+  if (listOpen < 0) {
+    return
+  }
+
+  let listClose = -1
+
+  for (let index = listOpen + 1; index < tokens.length; index += 1) {
+    if (tokens[index].type === 'ordered_list_close' && tokens[index].level === tokens[listOpen].level) {
+      listClose = index
+      break
+    }
+  }
+
+  if (listClose < 0) {
+    return
+  }
+
+  const itemLevel = tokens[listOpen].level + 1
+  let number = 0
+
+  for (let index = listOpen + 1; index < listClose; index += 1) {
+    const token = tokens[index]
+
+    if (token.level !== itemLevel) {
+      continue
+    }
+
+    if (token.type === 'list_item_open') {
+      number += 1
+      tokens[index] = htmlToken(
+        state,
+        `<details class="book-answer"><summary>${escapeHtml(t.selfCheckAnswer(number))}</summary><div class="book-answer__content">`
+      )
+      continue
+    }
+
+    if (token.type === 'list_item_close') {
+      tokens[index] = htmlToken(state, '</div></details>')
+    }
+  }
+
+  tokens[listOpen] = htmlToken(state, '<div class="book-answers">')
+  tokens[listClose] = htmlToken(state, '</div>')
 }
 
 function mergeSectionWithAnswers(md, practiceSection, solutionSection, env) {
@@ -913,6 +987,14 @@ export function exampleCardPlugin(md) {
         state.tokens.push(marker)
       }
     }
+  })
+
+  md.core.ruler.after('book_engine_blocks', 'book_self_check_answers', state => {
+    if (state.env.embeddedMarkdown) {
+      return
+    }
+
+    foldSelfCheckAnswers(state, ui(localeOf(pagePathFromEnv(state.env))))
   })
 
   md.core.ruler.after('book_engine_blocks', 'book_hide_service_sections', state => {

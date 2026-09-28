@@ -20,9 +20,9 @@ export default async function solve({ page }) {
   return { loginVisible: false, passwordVisible: false, buttonName: '' };
 }`,
     hints: [
-      'Поля с подписями удобно искать через getByLabel.',
-      'Кнопку находят через getByRole с доступным именем.',
-      'Видимость проверяется методом isVisible, текст — innerText или textContent.'
+      'Поля с подписями удобно искать через `getByLabel`.',
+      'Кнопку находят через `getByRole` с доступным именем.',
+      'Видимость проверяется методом `isVisible`, текст — `innerText` или `textContent`.'
     ],
     tests: [
       {
@@ -77,7 +77,7 @@ export default async function solve({ page }) {
 }`,
     hints: [
       'После заполнения формы вход выполняется нажатием кнопки.',
-      'Количество совпадений локатора даёт метод count.',
+      'Количество совпадений локатора даёт метод `count`.',
       'Фильтр можно применить прямо через адрес страницы.'
     ],
     tests: [

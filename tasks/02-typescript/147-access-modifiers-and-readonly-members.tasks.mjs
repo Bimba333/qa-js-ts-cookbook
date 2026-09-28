@@ -27,7 +27,7 @@ export default [
 }`,
     hints: [
       'Поле с решёткой недоступно снаружи не только компилятору, но и коду.',
-      'Модификатор private стирается при компиляции, а решётка — нет.',
+      'Модификатор `private` стирается при компиляции, а решётка — нет.',
       'Оператор in с приватным полем отвечает, принадлежит ли объект классу.'
     ],
     tests: [
@@ -48,7 +48,7 @@ expect(Object.keys(run).includes('secretToken')).toBe(false);
 expect(JSON.stringify(run).includes('abc123xyz')).toBe(false);`
       },
       {
-        name: 'private стирается: поле видно во время выполнения',
+        name: '`private` стирается: поле видно во время выполнения',
         code: `const run = new TestRun('R-1', 'abc123xyz');
 run.retry();
 expect(Object.keys(run).includes('attempts')).toBe(true);`

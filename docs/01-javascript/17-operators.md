@@ -1,4 +1,4 @@
-# Operators
+# Операторы
 
 ## Связь с предыдущей главой
 
@@ -144,9 +144,9 @@ Operators are the language mechanism that transforms, combines and evaluates з�
 
 ## Теория
 
-### Operator, operand, result
+### Оператор, операнд, результат
 
-Do not start with syntax. Start with поведение.
+Не начинайте с синтаксиса. Начните с поведения.
 
 ```javascript
 const total = 2 + 3;
@@ -158,26 +158,26 @@ const total = 2 + 3;
 Addition.
 ```
 
-Operand → Operator → Result:
+Операнд → оператор → результат:
 
-Operator receives operands and produces a result.
+Оператор получает операнды и производит результат.
 
-### Unary operators
+### Унарные операторы
 
-Unary operator works with one operand.
+Унарный оператор работает с одним операндом.
 
 ```javascript
 const valueType = typeof 'Anna';
 ```
 
-Unary operator схема:
+Схема унарного оператора:
 
 ```text
 -x        один операнд
 typeof x  один операнд
 ```
 
-Other unary examples:
+Другие унарные примеры:
 
 ```javascript
 !true;
@@ -185,55 +185,63 @@ Other unary examples:
 typeof 200;
 ```
 
-Эта глава не перечисляет все unary operators. Она строит модель: у унарного оператора один операнд, и результат зависит только от него.
+Эта глава не перечисляет все унарные операторы. Она строит модель: у унарного оператора один операнд, и результат зависит только от него.
 
-### Binary operators
+### Бинарные операторы
 
-Binary operator works with two operands.
+Бинарный оператор работает с двумя операндами.
 
 ```javascript
 const total = 2 + 3;
 const isExpected = 200 === 200;
 ```
 
-Binary operator схема:
+Схема бинарного оператора:
 
 ```text
 a + b     два операнда
 a === b   два операнда
 ```
 
-Equality is also binary:
+Сравнение тоже бинарно:
 
-### Ternary operator
+```text
+200 === 200   →  два операнда, результат true
+200 !== 404   →  два операнда, результат true
+```
 
-JavaScript has one common ternary operator:
+Сравнение отличается от арифметики только тем, какой результат получается:
+не число, а булево значение.
+
+### Тернарный оператор
+
+В JavaScript есть один распространённый тернарный оператор:
 
 ```javascript
 const label = isActive ? 'active' : 'inactive';
 ```
 
-Ternary means three operands.
+Тернарный означает «с тремя операндами».
 
-Ternary operator схема:
+Схема тернарного оператора:
 
 ```text
 условие ? значение1 : значение2     три операнда
 ```
 
-Эта глава только вводит форму. Conditionals позже подробно объяснит принятие решений.
+Эта глава только вводит форму. Условные конструкции позже подробно объяснят принятие решений.
 
-### Operator categories
+### Категории операторов
 
-Operators are grouped by the kind of operation they perform.
+Операторы группируют по виду выполняемой операции.
 
-Operator categories:
+Категории операторов:
 
 Какая операция выполняется?
 
-### Arithmetic operators
+### Арифметические операторы
 
-Arithmetic operators perform numeric-like calculations.
+Арифметические операторы выполняют вычисления над числами.
 
 ```javascript
 const itemPrice = 100;
@@ -241,7 +249,7 @@ const itemCount = 3;
 const totalPrice = itemPrice * itemCount;
 ```
 
-Arithmetic operators схема:
+Схема арифметических операторов:
 
 | Оператор | Значение |
 | --- | --- |
@@ -262,18 +270,18 @@ Arithmetic operators схема:
 
 Эта глава не учит каждый арифметический оператор отдельно. Достаточно ментальной модели:
 
-Type conversion may happen if operands are not the expected type. Type Conversion chapter explained why.
+Если операнды не того типа, может произойти преобразование. Глава про преобразование типов объяснила, почему.
 
-### Comparison operators
+### Операторы сравнения
 
-Comparison operators compare значения and produce Boolean result.
+Операторы сравнения сравнивают значения и дают булев результат.
 
 ```javascript
 const statusCode = 200;
 const isSuccess = statusCode === 200;
 ```
 
-Comparison operators схема:
+Схема операторов сравнения:
 
 | Оператор | Значение |
 | --- | --- |
@@ -292,11 +300,11 @@ Comparison operators схема:
 <=   less than or equal
 ```
 
-Equality was studied in the previous chapter. Other comparison operators will appear naturally in conditionals and loops.
+Равенство изучалось в предыдущей главе. Остальные операторы сравнения естественно появятся в условиях и циклах.
 
-### Logical operators
+### Логические операторы
 
-Logical operators work with значения used as logical decisions.
+Логические операторы работают со значениями, используемыми как логические решения.
 
 ```javascript
 const isStatusOk = statusCode === 200;
@@ -304,7 +312,7 @@ const hasUser = true;
 const canContinue = isStatusOk && hasUser;
 ```
 
-Logical operators схема:
+Схема логических операторов:
 
 | Оператор | Результат |
 | --- | --- |
@@ -312,7 +320,7 @@ Logical operators схема:
 | `\|\|` | первое истинное значение или последнее |
 | `!` | логическое отрицание |
 
-Common logical operators:
+Распространённые логические операторы:
 
 ```text
 &&  AND
@@ -320,7 +328,7 @@ Common logical operators:
 !   NOT
 ```
 
-Эта глава не разбирает детали short-circuit evaluation. Они будут объяснены позже, когда понадобятся в условиях.
+Эта глава не разбирает детали короткого замыкания. Они будут объяснены позже, когда понадобятся в условиях.
 
 На этом уровне:
 
@@ -330,16 +338,16 @@ Common logical operators:
 !  negates a condition-like value
 ```
 
-### Assignment operators
+### Операторы присваивания
 
-Assignment operators store or update значения through identifiers or properties.
+Операторы присваивания сохраняют или обновляют значения через имена и свойства.
 
 ```javascript
 let retryCount = 0;
 retryCount = 1;
 ```
 
-Assignment operators схема:
+Схема операторов присваивания:
 
 | Оператор | Эквивалент |
 | --- | --- |
@@ -347,7 +355,7 @@ Assignment operators схема:
 | `+=` | `a = a + b` |
 | `??=` | присвоить, если `null` или `undefined` |
 
-Other assignment-like forms exist:
+Существуют и другие формы присваивания:
 
 ```javascript
 retryCount += 1;
@@ -355,11 +363,11 @@ retryCount += 1;
 
 На высоком уровне:
 
-Подробные варианты operators будут изучаться по мере необходимости.
+Подробные варианты операторов будут изучаться по мере необходимости.
 
 ### `typeof`
 
-`typeof` is a unary operator that returns a string describing type category.
+`typeof` — унарный оператор, который возвращает строку с названием категории типа.
 
 ```javascript
 console.log(typeof 200);
@@ -375,7 +383,7 @@ typeof 42       →  'number'
 typeof undefined →  'undefined'
 ```
 
-Automation QA uses `typeof` for debugging unexpected API значения:
+В автоматизации тестов `typeof` используют для разбора неожиданных значений из API:
 
 ```javascript
 const statusCode = '200';
@@ -391,7 +399,7 @@ string
 
 ### `delete`
 
-`delete` removes a property from an object at a high level.
+`delete` на высоком уровне удаляет свойство из объекта.
 
 ```javascript
 const user = {
@@ -408,11 +416,11 @@ delete user.temporaryCode;
 delete user.role  →  свойство удалено из объекта
 ```
 
-Эта глава не разбирает низкоуровневое поведение памяти или детали performance.
+Эта глава не разбирает низкоуровневое поведение памяти и вопросы производительности.
 
 ### `in`
 
-`in` checks whether a property is present in an object.
+`in` проверяет, есть ли у объекта свойство с таким именем.
 
 ```javascript
 const user = {
@@ -436,17 +444,17 @@ true
 false
 ```
 
-At this level, `in` means:
+На этом уровне `in` означает:
 
 ```text
 Does this object have this property available?
 ```
 
-Prototype-related details will be studied later.
+Детали, связанные с прототипами, будут изучаться позже.
 
 ### `instanceof`
 
-`instanceof` checks runtime relationship between object and constructor-like function at a high level.
+`instanceof` на высоком уровне проверяет связь между объектом и функцией-конструктором во время выполнения.
 
 ```javascript
 const createdAt = new Date();
@@ -460,19 +468,19 @@ console.log(createdAt instanceof Date);
 value instanceof Error  →  создан ли объект этим классом
 ```
 
-Эта глава только вводит оператор. Prototypes, constructors и classes будут изучены позже.
+Эта глава только вводит оператор. Прототипы, конструкторы и классы будут изучены позже.
 
-### Operator result
+### Результат оператора
 
-Every operator produces a result.
+Каждый оператор производит результат.
 
-Operator result схема:
+Схема результата оператора:
 
 ```text
 любой оператор  →  выражение  →  значение
 ```
 
-This result can be:
+Этот результат может быть:
 
 ```text
 stored in variable
@@ -481,9 +489,9 @@ used in condition
 combined with another operator
 ```
 
-### Operator precedence
+### Приоритет операторов
 
-When expression has multiple operators, JavaScript needs an order.
+Когда в выражении несколько операторов, JavaScript нужен порядок.
 
 ```javascript
 const result = 2 + 3 * 4;
@@ -522,15 +530,28 @@ flowchart TD
 
 ## Внутренний механизм
 
-At a conceptual level, an operator is an instruction to the engine:
+На концептуальном уровне оператор — это указание движку выполнить одно
+конкретное действие над значениями и вернуть результат.
 
-Complete operator picture:
+```text
+5 + 3
+│ │ │
+│ │ └─ операнд
+│ └─── оператор: указание «сложить»
+└───── операнд
+результат: 8 — новое значение, которое можно использовать дальше
+```
 
-Текущее место в модели JavaScript:
+Полная картина операторов главы:
 
-Operators — первый шаг к control flow, потому что conditionals зависят от результатов expressions.
+| Группа | Примеры | Что даёт |
+| --- | --- | --- |
+| арифметические | `+`, `-`, `*`, `/`, `%` | число |
+| сравнения | `<`, `>`, `===`, `!==` | булево значение |
+| логические | `&&`, `\|\|`, `!` | значение одного из операндов |
+| присваивания | `=`, `+=` | записывает и возвращает значение |
 
-Переход к Conditionals:
+Операторы — первый шаг к управлению потоком, потому что условные конструкции зависят от результатов выражений.
 
 ---
 
@@ -538,7 +559,7 @@ Operators — первый шаг к control flow, потому что condition
 
 ### Калькулятор
 
-Arithmetic operator is like a calculator:
+Арифметический оператор похож на калькулятор:
 
 ```text
 Input:  2 and 3
@@ -546,21 +567,42 @@ Action: +
 Output: 5
 ```
 
-### Machine processing входs
+### Станок, обрабатывающий вход
 
-### Factory conveyor
+Оператор похож на станок: у него есть вход, одно действие и выход. Станок не
+помнит предыдущие детали и не зависит от того, откуда пришёл вход — только от
+самих значений.
 
-### Recipe step
+```text
+вход:     'qa-' и 'user'
+действие: +
+выход:    'qa-user'
+```
 
-Operator is the recipe action.
+### Заводской конвейер
 
-### Function-like mental model
+Выражение — это цепочка станков: выход одного становится входом следующего.
 
-An operator is not literally a function in syntax, but it can be imagined like:
+```text
+2 + 3 * 4
+
+3 * 4   →  12        первый станок
+2 + 12  →  14        второй станок
+```
+
+Порядок станков на конвейере задают приоритет операторов и скобки.
+
+### Шаг рецепта
+
+Оператор — это действие из рецепта.
+
+### Модель «оператор как функция»
+
+Оператор не является функцией синтаксически, но его можно представить так:
 
 Например, `a === b || c === d` читается однозначно, а `a === b || c && d` уже требует знания приоритетов — и скобки здесь дешевле памяти.
 
-This model helps remember:
+Эта модель помогает запомнить:
 
 ```text
 Operator receives operands and produces result.
@@ -589,89 +631,89 @@ node examples/01-javascript/chapter-17/06-common-mistakes.js
 
 ### 01-arithmetic.js
 
-Shows arithmetic operators as calculations.
+Показывает арифметические операторы как вычисления.
 
 ### 02-comparison.js
 
-Shows comparison operators producing Boolean results.
+Показывает операторы сравнения, дающие булев результат.
 
 ### 03-logical.js
 
-Shows logical operators combining condition-like значения.
+Показывает логические операторы, объединяющие значения-условия.
 
 ### 04-assignment.js
 
-Shows assignment and assignment update.
+Показывает присваивание и обновление значения.
 
 ### 05-special-operators.js
 
-Shows `typeof`, `delete`, `in` and `instanceof` at a high level.
+Показывает `typeof`, `delete`, `in` и `instanceof` на высоком уровне.
 
 ### 06-common-mistakes.js
 
-Shows unclear precedence and type-related operator mistake.
+Показывает неочевидный приоритет и ошибку, связанную с типами.
 
 ---
 
 ## Частые вопросы
 
-### Is an operator the same as a function?
+### Оператор — это то же самое, что функция?
 
-No. Operator has its own syntax. But as a mental model, it is useful to imagine an action that receives operands and produces result.
+Нет. У оператора свой синтаксис. Но как мысленная модель полезно представлять действие, которое получает операнды и даёт результат.
 
-### Do all operators return Boolean?
+### Все ли операторы возвращают булево значение?
 
-No. Comparison operators often return Boolean. Arithmetic operators return numeric-like results. `typeof` returns string. Assignment returns a value but its main purpose is updating target.
+Нет. Операторы сравнения часто возвращают булево значение. Арифметические дают числовой результат. `typeof` возвращает строку. Присваивание возвращает значение, но его главная задача — обновить цель.
 
-### Should I memorize precedence tables now?
+### Нужно ли сейчас заучивать таблицы приоритетов?
 
-Нет. Эта глава вводит precedence только концептуально. Используйте скобки, когда порядок expression неочевиден.
+Нет. Эта глава вводит приоритет только концептуально. Используйте скобки, когда порядок вычисления неочевиден.
 
-### Are `delete`, `in` and `instanceof` important for QA?
+### Важны ли `delete`, `in` и `instanceof` для автоматизации тестов?
 
-Yes, but at different levels. `in` helps verify object properties, `typeof` helps debugging, and `instanceof` can help runtime validation. Their deeper mechanics come later.
+Да, но по-разному. `in` помогает проверять свойства объекта, `typeof` — разбирать неожиданные значения, а `instanceof` — проверять тип во время выполнения. Их устройство разбирается позже.
 
 ---
 
 ## Распространённые мифы
 
-### Миф: Operators are just symbols
+### Миф: операторы — это просто символы
 
 Реальность:
 
-Operators are actions performed on значения.
+Операторы — это действия над значениями.
 
-### Миф: All operators behave like arithmetic
-
-Реальность:
-
-Different categories have different purposes and results.
-
-### Миф: Precedence should always be memorized
+### Миф: все операторы ведут себя как арифметические
 
 Реальность:
 
-Understanding precedence concept is important, but readable code often uses parentheses.
+У разных категорий разные назначения и результаты.
 
-### Миф: `typeof` is a function
+### Миф: приоритет нужно всегда заучивать
 
 Реальность:
 
-`typeof` is an operator.
+Понимать идею приоритета важно, но читаемый код чаще использует скобки.
+
+### Миф: `typeof` — это функция
+
+Реальность:
+
+`typeof` — это оператор.
 
 ---
 
 ## Распространённые ошибки
 
-### Ошибка 1. Ignore operator result
+### Ошибка 1. Не использовать результат оператора
 
 ```javascript
 200 === 200;
 ```
 
-This produces `true`, but if result is not used, nothing visible happens.
+Это даёт `true`, но если результат не использован, ничего видимого не происходит.
 
-### Ошибка 2. Mix string and number with `+`
+### Ошибка 2. Смешивать строку и число через `+`
 
 ```javascript
 const retryCount = '3';
@@ -684,33 +726,33 @@ console.log(retryCount + 1);
 31
 ```
 
-Type Conversion chapter explains why.
+Глава про преобразование типов объясняет, почему.
 
-### Ошибка 3. Misread precedence
+### Ошибка 3. Неверно прочитать приоритет
 
 ```javascript
 const result = 2 + 3 * 4;
 ```
 
-If not sure, write:
+Если не уверены, пишите так:
 
 ```javascript
 const result = 2 + (3 * 4);
 ```
 
-### Ошибка 4. Use `delete` without understanding object shape
+### Ошибка 4. Использовать `delete`, не понимая структуру объекта
 
-Deleting property changes object structure.
+Удаление свойства меняет структуру объекта.
 
-### Ошибка 5. Use `in` as value comparison
+### Ошибка 5. Использовать `in` как сравнение значений
 
-`in` checks property presence, not property value.
+`in` проверяет наличие свойства, а не его значение.
 
 ---
 
 ## Практическое использование
 
-Operators appear everywhere:
+Операторы встречаются повсюду:
 
 ```javascript
 const total = price * count;
@@ -735,56 +777,56 @@ const valueType = typeof value;
 
 ## Использование в Automation QA
 
-### Assertions
+### Проверки
 
-Assertions are built on comparison results.
+Проверки строятся на результатах сравнения.
 
 ```javascript
 const isStatusExpected = statusCode === 200;
 ```
 
-### Conditional checks
+### Условные проверки
 
-Conditionals use results of expressions:
+Условные конструкции используют результаты выражений:
 
 ```javascript
 const canContinue = isStatusExpected && hasUser;
 ```
 
-Detailed conditional поведение comes next.
+Подробное поведение условий разбирается дальше.
 
-### Response validation
+### Проверка ответа
 
 ```javascript
 const hasId = 'id' in responseBody;
 ```
 
-`in` checks property presence.
+`in` проверяет наличие свойства.
 
-### `typeof` in debugging
+### `typeof` при отладке
 
 ```javascript
 console.log(typeof responseBody.statusCode);
 ```
 
-This helps detect `"200"` vs `200`.
+Это помогает заметить `"200"` вместо `200`.
 
-### `instanceof` in runtime validation
+### `instanceof` при проверке во время выполнения
 
 ```javascript
 const startedAt = new Date();
 console.log(startedAt instanceof Date);
 ```
 
-Useful at runtime, but detailed constructor/prototype поведение will be studied later.
+Полезно во время выполнения, но подробное поведение конструкторов и прототипов будет изучаться позже.
 
 ---
 
 ## Итоги
 
-Operators are actions that receive operands and produce results.
+Операторы — действия, которые получают операнды и дают результат.
 
-Operators относятся к категориям:
+Операторы делятся на категории:
 
 ```text
 Arithmetic
@@ -797,33 +839,33 @@ Object/property-related
 
 Эта глава является обзором. Будущие главы объяснят многие категории подробнее.
 
-The key question:
+Ключевой вопрос:
 
 ```text
 What operation is being performed?
 ```
 
-The next chapter uses operator results to explain Conditionals.
+Следующая глава использует результаты операторов, чтобы объяснить условные конструкции.
 
 ---
 
 ## Что нужно запомнить
 
-* Operator performs an operation on operands.
-* Operand is a value used by operator.
-* Every operator produces a result.
-* Unary operators work with one operand.
-* Binary operators work with two operands.
-* Ternary operator works with three operands.
-* Operators относятся к категориям.
-* Arithmetic operators calculate.
-* Comparison operators compare.
-* Logical operators combine/evaluate condition-like значения.
-* Assignment operators update targets.
-* `typeof` inspects type category.
-* `delete`, `in` and `instanceof` are specialized operators.
-* Precedence определяет порядок, когда в expression несколько operators.
-* Используйте скобки, когда порядок expression неочевиден.
+* Оператор выполняет операцию над операндами.
+* Операнд — значение, которое использует оператор.
+* Каждый оператор производит результат.
+* Унарные операторы работают с одним операндом.
+* Бинарные операторы работают с двумя операндами.
+* Тернарный оператор работает с тремя операндами.
+* Операторы делятся на категории.
+* Арифметические операторы вычисляют.
+* Операторы сравнения сравнивают.
+* Логические операторы объединяют и вычисляют значения-условия.
+* Операторы присваивания обновляют цель.
+* `typeof` сообщает категорию типа.
+* `delete`, `in` и `instanceof` — специализированные операторы.
+* Приоритет определяет порядок, когда в выражении несколько операторов.
+* Используйте скобки, когда порядок вычисления неочевиден.
 
 ---
 
@@ -831,16 +873,29 @@ The next chapter uses operator results to explain Conditionals.
 
 Ответьте без запуска кода.
 
-1. Что такое operator?
-2. Что такое operand?
-3. Что такое результат operator?
+1. Что такое оператор?
+2. Что такое операнд?
+3. Что такое результат оператора?
 4. Какая операция выполняется в `2 + 3`?
 5. К какой категории относится `===`?
 6. К какой категории относится `typeof`?
 7. Что проверяет `in`?
 8. Что делает `delete` на высоком уровне?
-9. Зачем существует precedence?
-10. Как operators готовят нас к conditionals?
+9. Зачем существует приоритет операторов?
+10. Как операторы готовят нас к условным конструкциям?
+
+### Ответы
+
+1. Знак или слово, обозначающее операцию над значениями: сложение, сравнение, проверку типа.
+2. Значение, над которым выполняется операция. У `a + b` два операнда, у `typeof a` — один.
+3. Новое значение, которое операция возвращает. Операнды при этом не меняются.
+4. Сложение двух чисел, результат — новое число `5`.
+5. К операторам сравнения: он проверяет равенство и возвращает булево значение.
+6. К унарным операторам: у него один операнд, а результат — строка с названием типа.
+7. Есть ли свойство с таким именем у объекта, включая унаследованные по цепочке прототипов.
+8. Удаляет свойство из объекта. После этого чтение по тому же имени даёт `undefined`.
+9. Приоритет задаёт порядок, в котором применяются операторы в одном выражении. Без него `2 + 3 * 4` не имело бы однозначного значения.
+10. Операторы сравнения дают булево значение, а условная конструкция — это место, где такое значение используется для выбора ветки выполнения.
 
 ---
 
@@ -852,7 +907,7 @@ The next chapter uses operator results to explain Conditionals.
 practice/01-javascript/17-operators.md
 ```
 
-Сначала решайте predict вывод задания без запуска. Главная цель - определить operator, operands, category and result.
+Сначала решайте задания на предсказание вывода без запуска. Главная цель — определить оператор, операнды, категорию и результат.
 
 ---
 
@@ -864,4 +919,4 @@ practice/01-javascript/17-operators.md
 solutions/01-javascript/17-operators.md
 ```
 
-Читайте решения после самостоятельной попытки. Проверяйте reasoning: what operation is being performed?
+Читайте решения после самостоятельной попытки. Проверяйте рассуждение: какая операция выполняется?

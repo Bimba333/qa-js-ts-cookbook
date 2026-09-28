@@ -26,17 +26,17 @@ async function inspect() {
 }`,
     hints: [
       'Асинхронная функция возвращает промис, даже если внутри нет ожидания.',
-      'Вложенные промисы разворачиваются: await не даёт промис внутри промиса.',
-      'await работает и с обычными значениями.'
+      'Вложенные промисы разворачиваются: `await` не даёт промис внутри промиса.',
+      '`await` работает и с обычными значениями.'
     ],
     tests: [
       {
-        name: 'вызов без await даёт промис',
+        name: 'вызов без `await` даёт промис',
         code: `const inspected = await inspect();
 expect(inspected.isPromise).toBe(true);`
       },
       {
-        name: 'await разворачивает значение',
+        name: '`await` разворачивает значение',
         code: `expect((await inspect()).awaited).toBe('готово');`
       },
       {
@@ -48,11 +48,11 @@ expect(inspected.isPromise).toBe(true);`
         code: `expect((await inspect()).caught).toBe('загрузка не удалась');`
       },
       {
-        name: 'await над обычным значением',
+        name: '`await` над обычным значением',
         code: `expect((await inspect()).plain).toBe(42);`
       },
       {
-        name: 'failLoad действительно отклоняется',
+        name: '`failLoad` действительно отклоняется',
         code: `const rejected = failLoad();
 rejected.catch(() => {});
 let message = '';

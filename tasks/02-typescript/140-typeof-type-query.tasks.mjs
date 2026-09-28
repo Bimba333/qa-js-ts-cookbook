@@ -30,7 +30,7 @@ function withOverrides(overrides: Partial<Config>): Config {
 }`,
     hints: [
       'Тип, выведенный из значения, до запуска не доживает — образцом служит сам объект.',
-      'Сравнивать нужно и набор ключей, и typeof значений.',
+      'Сравнивать нужно и набор ключей, и `typeof` значений.',
       'Перекрытия применяются поэлементно, а не распространением объекта.'
     ],
     tests: [
@@ -68,7 +68,7 @@ expect(matchesShape(defaultConfig, 'конфигурация')).toBe(false);`
 });`
       },
       {
-        name: 'undefined не затирает значение по умолчанию',
+        name: '`undefined` не затирает значение по умолчанию',
         code: `expect(withOverrides({ retries: undefined }).retries).toBe(2);`
       },
       {

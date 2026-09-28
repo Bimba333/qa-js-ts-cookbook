@@ -18,7 +18,7 @@ export default [
   return [];
 }`,
     hints: [
-      'Распространение объекта копирует и явные undefined — это ловушка.',
+      'Раскрытие объекта копирует и явные `undefined` — это ловушка.',
       'Отсутствие списка проектов и пустой список — разные случаи.',
       'Общие настройки не должны меняться от вызова к вызову.'
     ],
@@ -45,14 +45,14 @@ expect(resolved.map(project => project.name)).toEqual(['быстрый', 'мед
 expect(resolved[1].use.retries).toBe(2);`
       },
       {
-        name: 'явный undefined не затирает общее значение',
+        name: 'явный `undefined` не затирает общее значение',
         code: `expect(resolveProjects({
   use: { baseURL: 'http://x' },
   projects: [{ name: 'chromium', use: { baseURL: undefined } }]
 })[0].use.baseURL).toBe('http://x');`
       },
       {
-        name: 'без проектов возвращается один default',
+        name: 'без проектов возвращается один `default`',
         code: `expect(resolveProjects({ use: { headless: true } }))
   .toEqual([{ name: 'default', use: { headless: true } }]);`
       },

@@ -56,7 +56,7 @@ function isAllowedStatus(status) {
   // includes() сравнит ссылки, а не поля.
 }`,
     hints: [
-      'Для объектов includes() проверяет идентичность ссылки, а не содержимое.',
+      'Для объектов `includes()` проверяет идентичность ссылки, а не содержимое.',
       'Нужен метод, принимающий предикат и отвечающий «да или нет».',
       'Сравнивать нужно конкретное поле объекта.'
     ],
@@ -66,11 +66,11 @@ function isAllowedStatus(status) {
         code: `expect(hasItemWithName([{ name: 'login' }, { name: 'order' }], 'order')).toBe(true);`
       },
       {
-        name: 'если записи нет, возвращает false',
+        name: 'если записи нет, возвращает `false`',
         code: `expect(hasItemWithName([{ name: 'login' }], 'order')).toBe(false);`
       },
       {
-        name: 'для пустого массива возвращает false',
+        name: 'для пустого массива возвращает `false`',
         code: `expect(hasItemWithName([], 'login')).toBe(false);`
       },
       {

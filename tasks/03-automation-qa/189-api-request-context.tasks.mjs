@@ -8,9 +8,9 @@ export default [
       'Контекст браузера и клиент API — разные сессии. Войдите как ' +
       '`educational_tester` с паролем `educational-tester-password`, затем ' +
       'выполните два запроса к `/api/v1/work-items?limit=1`: первый через ' +
-      '`page.request` (он наследует cookie контекста), второй через переданный ' +
+      '`page.request` (он наследует куки контекста), второй через переданный ' +
       '`api`. Верните `{ viaBrowser, viaApi, cookies, uiWorks }`: код состояния ' +
-      'первого запроса, код второго, число cookie контекста и признак того, что ' +
+      'первого запроса, код второго, число куки контекста и признак того, что ' +
       'страница `/work-items` в браузере при этом открывается.',
     starter: `export default async function solve({ page, api }) {
   // page.request отправляет cookie контекста, но не токен API.
@@ -18,8 +18,8 @@ export default [
   return { viaBrowser: 0, viaApi: 0, cookies: 0, uiWorks: false };
 }`,
     hints: [
-      'У page.request те же методы, что у обычного HTTP-клиента.',
-      'Код состояния ответа даёт метод status().',
+      'У `page.request` те же методы, что у обычного HTTP-клиента.',
+      'Код состояния ответа даёт метод `status()`.',
       'Интерфейс и REST-граница проверяют доступ по-разному.'
     ],
     tests: [
@@ -32,7 +32,7 @@ export default [
         code: `expect(result.viaApi).toBe(200);`
       },
       {
-        name: 'cookie сессии у контекста есть',
+        name: 'куки сессии у контекста есть',
         code: `expect(result.cookies > 0).toBe(true);`
       },
       {

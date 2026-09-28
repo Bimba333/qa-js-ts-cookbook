@@ -273,6 +273,13 @@
   html.book-sidebar-hidden .book-panel-toggle--left {
     left: 0;
   }
+
+  /* Со свёрнутым списком глав правое поле осталось бы от исходной раскладки,
+     и текст прижимался к левому краю. Убираем его — содержимое встаёт по
+     центру свободного места. */
+  html.book-sidebar-hidden .VPContent.has-sidebar {
+    padding-right: 0 !important;
+  }
 }
 
 /* Правое оглавление «На странице» (видно с 1280px). */
@@ -548,6 +555,28 @@
 
 .book-answer__content > :last-child {
   margin-bottom: 0;
+}
+
+/* Ответы самопроверки идут подряд, по одному на вопрос: между ними нужен
+   ровный узкий шаг, а не поля отдельного блока. */
+.book-answers {
+  display: grid;
+  gap: 8px;
+  margin: 16px 0 24px;
+}
+
+.book-answers .book-answer {
+  margin: 0;
+}
+
+/* Короткий ответ markdown-it отдаёт без абзаца, поэтому отступ сверху
+   задаёт сам контейнер, а не первый дочерний элемент. */
+.book-answers .book-answer__content {
+  padding-top: 14px;
+}
+
+.book-answers .book-answer__content > :first-child {
+  margin-top: 0;
 }
 
 /* ============================================================
@@ -1725,7 +1754,11 @@
 /* Тема объявляет эти правила через scoped-атрибуты (`[data-v-…]`), поэтому
    обычный селектор проигрывает по специфичности. Здесь важен результат,
    а не соревнование селекторов — отсюда !important. */
-.VPDocAside {
+/* Скрыть надо и обёртку колонки: сам блок оглавления убран, но `.aside`
+   оставался в раскладке и держал под себя ~290px — колонка текста прижималась
+   влево, а справа зияла пустота. */
+.VPDocAside,
+.VPDoc .aside {
   display: none !important;
 }
 
@@ -1783,6 +1816,10 @@
 
 .VPDoc.has-aside .content-container {
   max-width: 1060px !important;
+  /* Колонка уже контейнера, поэтому без авто-полей она прижималась влево,
+     особенно со свёрнутым списком глав. */
+  margin-left: auto !important;
+  margin-right: auto !important;
 }
 
 .VPDoc.has-aside .container {

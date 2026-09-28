@@ -56,7 +56,7 @@ expect(isRecord({ createdAt: '2026-01-01' })).toBe(false);`
         code: `expect(isRecord({ id: 1, createdAt: '2026-01-01' })).toBe(false);`
       },
       {
-        name: 'null и примитивы не проходят',
+        name: '`null` и примитивы не проходят',
         code: `expect(isRecord(null)).toBe(false);
 expect(isRecord('a')).toBe(false);`
       },

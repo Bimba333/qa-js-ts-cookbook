@@ -18,9 +18,9 @@ function isStatus(value: unknown): value is Status {
   return false;
 }`,
     hints: [
-      'as const делает массив доступным только для чтения и сохраняет литералы.',
-      'typeof STATUSES[number] — это объединение элементов массива.',
-      'Проверку принадлежности даёт includes у массива.'
+      '`as const` делает массив доступным только для чтения и сохраняет литералы.',
+      '`typeof STATUSES[number]` — это объединение элементов массива.',
+      'Проверку принадлежности даёт `includes` у массива.'
     ],
     tests: [
       {

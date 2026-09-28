@@ -1,4 +1,4 @@
-# Destructuring
+# Деструктуризация
 
 ## Связь с предыдущей главой
 
@@ -186,9 +186,9 @@ Destructuring не "разбирает" object физически и не соз
 
 ## Теория
 
-Destructuring нужен, когда object содержит много named properties, а текущему участку кода нужны только некоторые из них.
+Деструктуризация нужна, когда объект содержит много именованных свойств, а текущему участку кода нужны только некоторые из них.
 
-### Object destructuring syntax
+### Синтаксис деструктуризации объекта
 
 Базовая форма:
 
@@ -196,24 +196,25 @@ Destructuring нужен, когда object содержит много named pr
 const { name, role } = user;
 ```
 
-Это означает:
+Это означает: создать имена `name` и `role` и связать их со значениями
+одноимённых свойств объекта `user`.
 
-Эквивалент без destructuring:
+Эквивалент без деструктуризации:
 
 ```javascript
 const name = user.name;
 const role = user.role;
 ```
 
-Но destructuring выражает намерение компактнее:
+Но деструктуризация выражает намерение компактнее:
 
 ```text
 I need these properties from this object
 ```
 
-### Variable names
+### Имена переменных
 
-В простом destructuring variable name совпадает с property key:
+В простой деструктуризации имя переменной совпадает с ключом свойства:
 
 ```javascript
 const { name } = user;
@@ -225,13 +226,13 @@ const { name } = user;
 const { name } = user;   →  name получает значение user.name
 ```
 
-Это не случайность. Matching происходит by property name.
+Это не случайность. Сопоставление идёт по имени свойства.
 
-### Property matching
+### Сопоставление свойств
 
-JavaScript не берет "первую", "вторую" или "третью" property.
+JavaScript не берёт «первое», «второе» или «третье» свойство.
 
-Object destructuring matches by property name:
+Деструктуризация объекта сопоставляет по имени свойства:
 
 ```javascript
 const user = {
@@ -242,11 +243,11 @@ const user = {
 const { name, role } = user;
 ```
 
-Порядок properties в object здесь не является основой matching.
+Порядок свойств в объекте здесь не является основой сопоставления.
 
-### Missing property
+### Отсутствующее свойство
 
-Если property отсутствует, variable получит `undefined`:
+Если свойство отсутствует, переменная получит `undefined`:
 
 ```javascript
 const { email } = user;
@@ -262,9 +263,9 @@ console.log(email);
 
 Это продолжает правило из предыдущей главы: обращение к несуществующему свойству даёт `undefined`, а не ошибку.
 
-### Default значения
+### Значения по умолчанию
 
-Default value используется, если extracted value is `undefined`:
+Значение по умолчанию используется, если извлечённое значение равно `undefined`:
 
 ```javascript
 const { role = 'guest' } = user;
@@ -295,13 +296,13 @@ console.log(role);
 guest
 ```
 
-Default value не добавляет property в object.
+Значение по умолчанию не добавляет свойство в объект.
 
-### Renaming variables
+### Переименование переменных
 
-Иногда property key не подходит как local variable name.
+Иногда ключ свойства не подходит как имя локальной переменной.
 
-Например, object has `name`, но в коде лучше `userName`:
+Например, в объекте есть `name`, но в коде лучше `userName`:
 
 ```javascript
 const { name: userName } = user;
@@ -318,9 +319,9 @@ const { name: userName } = user;
 
 Это частое место ошибок.
 
-### Nested destructuring preview
+### Вложенная деструктуризация: предварительный взгляд
 
-Object может содержать nested object:
+Объект может содержать вложенный объект:
 
 ```javascript
 const response = {
@@ -331,7 +332,7 @@ const response = {
 };
 ```
 
-Можно извлечь nested value:
+Можно извлечь вложенное значение:
 
 ```javascript
 const {
@@ -345,9 +346,9 @@ const {
 объект  →  извлечь нужные поля  →  отдельные имена
 ```
 
-В этой главе nested destructuring только preview. Deep nested patterns can become hard to read, and optional chaining will be studied next.
+В этой главе вложенная деструктуризация только показана. Глубокие шаблоны трудно читать, а безопасное чтение цепочки изучается в следующей главе.
 
-### Object remains unchanged
+### Объект остаётся неизменным
 
 Это центральное правило.
 
@@ -355,9 +356,9 @@ const {
 const { name } = user;
 ```
 
-После этой строки:
-
-Destructuring:
+После этой строки существует обычная переменная `name` со значением из
+свойства. Связи с объектом у неё нет: изменение `user.name` позже на `name`
+уже не повлияет.
 
 ---
 
@@ -375,7 +376,7 @@ flowchart TD
 
 ## Внутренний механизм
 
-Посмотрим, что делает engine conceptually.
+Посмотрим, что движок делает концептуально.
 
 Код:
 
@@ -396,9 +397,15 @@ const { status, body } = response;
 8. Store response.body value in body
 ```
 
-### Extraction flow
+### Поток извлечения
 
-### Variable mapping
+```text
+объект справа  →  движок ищет в нём перечисленные свойства
+имена слева    →  становятся обычными переменными
+свойства нет   →  переменная получает undefined, ошибки не будет
+```
+
+### Соответствие переменных
 
 ```javascript
 const { name: userName } = user;
@@ -406,7 +413,15 @@ const { name: userName } = user;
 
 Сопоставление:
 
-### Default value flow
+```text
+name      —  имя свойства в объекте
+userName  —  имя создаваемой переменной
+```
+
+Переменной `name` при этом не появляется: имя слева от двоеточия относится к
+объекту, а не к коду вокруг.
+
+### Как работает значение по умолчанию
 
 ```javascript
 const { timeout = 5000 } = config;
@@ -414,11 +429,24 @@ const { timeout = 5000 } = config;
 
 Концептуально:
 
-### Existing object vs new variables
+```text
+свойство timeout есть в config        →  берётся его значение
+свойства нет, значение undefined      →  берётся 5000
+свойство есть и равно 0 или null      →  берётся само значение, не 5000
+```
 
-Очень важно отделить source object от created variables:
+Значение по умолчанию подставляется только вместо `undefined`.
 
-Destructuring не создает:
+### Исходный объект и новые переменные
+
+Очень важно отделить исходный объект от созданных переменных:
+
+```text
+response  —  исходный объект, он не изменился
+status    —  новая переменная с копией значения свойства
+```
+
+Деструктуризация не создаёт:
 
 ```text
 new response object
@@ -430,27 +458,27 @@ new response object
 new variables
 ```
 
-### Object identity unchanged
+### Тождественность объекта не меняется
 
-Если переменная ссылалась на object до destructuring, она продолжает ссылаться на тот же object после destructuring.
+Если переменная ссылалась на объект до деструктуризации, она продолжает ссылаться на тот же объект после.
 
-Это важно для понимания тестовых данных. Destructuring не делает защитную копию object.
+Это важно для понимания тестовых данных. Деструктуризация не делает защитной копии объекта.
 
 ---
 
 ## Ментальная модель
 
-Представьте folder с документами:
+Представьте папку с документами:
 
-Destructuring - это не создание новой папки.
+Деструктуризация — это не создание новой папки.
 
-Это выбор нужных documents:
+Это выбор нужных документов:
 
-Еще одна модель: profile card.
+Ещё одна модель: карточка профиля.
 
-Destructuring:
-
-Главная модель:
+Главная модель главы: деструктуризация — это **чтение** нескольких свойств
+одной строкой. Она не создаёт нового объекта, не копирует его и не связывает
+переменные с источником.
 
 ---
 
@@ -473,7 +501,7 @@ node examples/01-javascript/chapter-34/05-nested-preview.js
 node examples/01-javascript/chapter-34/06-qa-example.js
 ```
 
-### Пример 1. Basic destructuring
+### Пример 1. Базовая деструктуризация
 
 ```javascript
 const response = {
@@ -488,7 +516,7 @@ console.log(status);
 console.log(body);
 ```
 
-### Пример 2. Default значения
+### Пример 2. Значения по умолчанию
 
 ```javascript
 const config = {
@@ -502,9 +530,9 @@ console.log(timeout);
 console.log(config.timeout);
 ```
 
-`timeout` variable gets default value. `config.timeout` remains missing.
+Переменная `timeout` получает значение по умолчанию. Свойство `config.timeout` по-прежнему отсутствует.
 
-### Пример 3. Renaming
+### Пример 3. Переименование
 
 ```javascript
 const user = {
@@ -533,9 +561,9 @@ console.log(userName);
 console.log(user.name);
 ```
 
-`name: userName` creates `userName`, not `name`.
+`name: userName` создаёт `userName`, а не `name`.
 
-### Пример 5. Nested preview
+### Пример 5. Вложенная деструктуризация
 
 ```javascript
 const response = {
@@ -553,9 +581,9 @@ const {
 console.log(name);
 ```
 
-Nested destructuring works, but deep patterns can reduce readability.
+Вложенная деструктуризация работает, но глубокие шаблоны ухудшают читаемость.
 
-### Пример 6. QA example
+### Пример 6. Пример из автоматизации тестов
 
 ```javascript
 const apiResponse = {
@@ -581,73 +609,75 @@ console.log(durationMs);
 
 ## Частые вопросы
 
-### Destructuring создает новый object?
+### Деструктуризация создаёт новый объект?
 
 Нет.
 
-Source object остается тем же.
+Исходный объект остаётся тем же.
 
-### Destructuring меняет object?
+### Деструктуризация меняет объект?
 
 Нет.
 
-### Почему variable name должен совпадать с property key?
+### Почему имя переменной должно совпадать с ключом свойства?
 
-В простой форме destructuring matching идет by property name.
+В простой форме сопоставление идёт по имени свойства.
 
 ```javascript
 const { role } = user;
 ```
 
-JavaScript ищет property `"role"` and creates variable `role`.
+JavaScript ищет свойство `"role"` и создаёт переменную `role`.
 
-### Что делать, если local variable должна называться иначе?
+### Что делать, если локальная переменная должна называться иначе?
 
-Использовать renaming:
+Использовать переименование:
 
 ```javascript
 const { role: userRole } = user;
 ```
 
-### Что будет, если property отсутствует?
+### Что будет, если свойство отсутствует?
 
-Variable получит `undefined`, если нет default value.
+Переменная получит `undefined`, если нет значения по умолчанию.
 
 ---
 
 ## Распространённые мифы
 
-### Миф: destructuring - это просто короткий синтаксис
+### Миф: деструктуризация — это просто короткий синтаксис
+
+Реальность: короче она действительно получается, но главное не это.
+
+Деструктуризация выражает намерение: по строке видно, **какие именно** поля нужны
+этому участку кода. Обращения по одному такого списка не дают — их приходится
+собирать глазами по всему блоку.
+
+Краткость — следствие, но не главная идея.
+
+### Миф: деструктуризация удаляет свойства из объекта
 
 Реальность:
 
-Destructuring выражает намерение:
+Объект остаётся неизменным.
 
-Краткость - следствие, но не главная идея.
-
-### Миф: destructuring удаляет properties из object
+### Миф: деструктуризация создаёт новый объект
 
 Реальность:
 
-Object остается unchanged.
+Создаются переменные, а не новый объект.
 
-### Миф: destructuring создает новый object
-
-Реальность:
-
-Создаются variables, not a new object.
-
-### Миф: порядок properties определяет matching
+### Миф: порядок свойств определяет сопоставление
 
 Реальность:
 
-Object destructuring matches by property name.
+Деструктуризация объекта сопоставляет по имени свойства.
 
 ---
 
 ## Распространённые ошибки
 
-### Ошибка 1. Думать, что renaming создает обе variables
+### Ошибка 1. Думать, что переименование создаёт обе переменные
 
 Неправильное ожидание:
 
@@ -665,9 +695,9 @@ const { name: userName } = user;
 console.log(userName);
 ```
 
-`name` здесь property key, not created variable.
+`name` здесь ключ свойства, а не созданная переменная.
 
-### Ошибка 2. Ожидать, что default value добавит property
+### Ошибка 2. Ожидать, что значение по умолчанию добавит свойство
 
 ```javascript
 const config = {};
@@ -676,13 +706,13 @@ const { timeout = 5000 } = config;
 console.log(config.timeout);
 ```
 
-`config.timeout` is still `undefined`.
+`config.timeout` по-прежнему `undefined`.
 
 Значение по умолчанию относится к созданной переменной.
 
-### Ошибка 3. Использовать deep nested destructuring там, где страдает читаемость
+### Ошибка 3. Использовать глубокую вложенность там, где страдает читаемость
 
-Слишком плотный pattern сложно читать:
+Слишком плотный шаблон сложно читать:
 
 ```javascript
 const {
@@ -694,37 +724,37 @@ const {
 } = response;
 ```
 
-Иногда лучше сделать extraction in steps. Optional Chaining будет изучаться в следующей главе.
+Иногда лучше извлекать значения в несколько шагов. Безопасное чтение цепочки будет изучаться в следующей главе.
 
-### Ошибка 4. Забыть, что source object остается тем же
+### Ошибка 4. Забыть, что исходный объект остаётся тем же
 
 ```javascript
 const { body } = response;
 ```
 
-Если `body` is object, variable `body` refers to that object. Destructuring не делает deep copy.
+Если `body` — объект, то переменная `body` ссылается на него же. Деструктуризация не делает глубокой копии.
 
 ---
 
 ## Практическое использование
 
-Destructuring удобно, когда текущий код работает с несколькими selected properties.
+Деструктуризация удобна, когда текущий код работает с несколькими выбранными свойствами.
 
-### API response
+### Ответ API
 
 ```javascript
 const { status, body } = response;
 ```
 
-Так тест сразу показывает, что важны `status` and `body`.
+Так тест сразу показывает, что важны `status` и `body`.
 
-### Config значения
+### Значения настройки
 
 ```javascript
 const { baseUrl, timeout = 5000 } = config;
 ```
 
-Это удобно для setup code.
+Это удобно в коде подготовки.
 
 ### Ожидаемые данные пользователя
 
@@ -732,21 +762,21 @@ const { baseUrl, timeout = 5000 } = config;
 const { name, role } = expectedUser;
 ```
 
-Код фокусируется on значения required for assertion.
+Код сосредоточен на значениях, нужных для проверки.
 
-### Payload processing
+### Обработка тела ответа
 
 ```javascript
 const { email, role } = payload;
 ```
 
-Так helper clearly selects required payload поля.
+Так вспомогательная функция явно выбирает нужные поля тела запроса.
 
 ---
 
 ## Использование в Automation QA
 
-### Extracting status/body from API response
+### Извлечение кода и тела из ответа API
 
 ```javascript
 const { status, body } = apiResponse;
@@ -758,13 +788,13 @@ const { status, body } = apiResponse;
 const { status, body } = apiResponse;
 ```
 
-### Reading config значения
+### Чтение значений настройки
 
 ```javascript
 const { baseUrl, retries = 2 } = stagingConfig;
 ```
 
-Default value помогает задать fallback for local variable, не меняя config object.
+Значение по умолчанию задаёт запасной вариант для локальной переменной, не меняя объект настройки.
 
 ### Ожидаемые данные пользователя
 
@@ -772,91 +802,22 @@ Default value помогает задать fallback for local variable, не м
 const { name: expectedName, role: expectedRole } = expectedUser;
 ```
 
-Renaming makes assertion code clearer:
+Переименование делает код проверки понятнее:
 
 ```text
 expectedName
 expectedRole
 ```
 
-### Assertion helpers
+### Вспомогательные проверки
 
-Helper может извлечь только нужные поля from response object:
+Вспомогательная функция может извлечь только нужные поля из объекта ответа:
 
 ```javascript
 const { status, body } = response;
 ```
 
-Parameter destructuring будет отдельной темой позже. Сейчас мы destructure inside code block.
-
----
-
-## Диаграммы главы
-
-### 1. Why destructuring exists
-
-### 2. Object before extraction
-
-### 3. Needed properties
-
-### 4. Destructuring process
-
-### 5. Property matching
-
-### 6. Variable creation
-
-### 7. Default значения
-
-### 8. Renaming
-
-### 9. Nested object preview
-
-### 10. Текущая модель JavaScript
-
-### 11. QA response object
-
-### 12. API payload
-
-### 13. Читаемость
-
-### 14. Типичные ошибки
-
-### 15. Missing property
-
-### 16. Extraction flow
-
-### 17. Variable mapping
-
-### 18. Object unchanged
-
-```text
-before: object with properties
-after:  same object with properties
-```
-
-### 19. Переход к Optional Chaining
-
-### 20. Краткая ментальная модель
-
-### 21. Complete destructuring model
-
-### 22. Folder analogy
-
-### 23. Property selection
-
-### 24. Object identity unchanged
-
-### 25. Existing object vs new variables
-
-### 26. Matching by property name
-
-### 27. Default value flow
-
-### 28. QA expected data
-
-### 29. Extraction timeline
-
-### 30. Итоговая схема
+Деструктуризация параметров будет отдельной темой позже. Сейчас мы извлекаем значения внутри блока кода.
 
 ---
 
@@ -890,32 +851,32 @@ practice/01-javascript/34-destructuring.md
 solutions/01-javascript/34-destructuring.md
 ```
 
-Не открывайте решения до самостоятельной попытки. Главный навык этой главы - видеть, какие значения are extracted and which variables are created.
+Не открывайте решения до самостоятельной попытки. Главный навык этой главы — видеть, какие значения извлекаются и какие переменные создаются.
 
 ---
 
 ## Итоги
 
-Destructuring продолжает тему Objects.
+Деструктуризация продолжает тему объектов.
 
-Главная модель: destructuring — это способ назвать нужные части объекта в одну строку вместо серии обращений.
+Главная модель: деструктуризация — способ назвать нужные части объекта в одну строку вместо серии обращений.
 
-Destructuring не создает новый object. Он создает variables from existing properties.
+Деструктуризация не создаёт новый объект. Она создаёт переменные из существующих свойств.
 
 ---
 
 ## Что нужно запомнить
 
-* Destructuring извлекает значения from object properties.
-* Destructuring создает variables.
-* Source object не меняется.
-* Object destructuring matches by property name.
-* Missing property gives `undefined`.
-* Default value applies to created variable, not to source object.
-* Renaming syntax `key: variableName` создает `variableName`.
-* Nested destructuring exists, but deep patterns can hurt readability.
-* Array destructuring, rest properties and parameter destructuring будут изучаться позже.
-* В Automation QA destructuring удобно для API responses, configs, payloads and assertions.
+* Деструктуризация извлекает значения из свойств объекта.
+* Деструктуризация создаёт переменные.
+* Исходный объект не меняется.
+* Деструктуризация объекта сопоставляет по имени свойства.
+* Отсутствующее свойство даёт `undefined`.
+* Значение по умолчанию применяется к созданной переменной, а не к исходному объекту.
+* Запись `ключ: имяПеременной` создаёт `имяПеременной`.
+* Вложенная деструктуризация существует, но глубокие шаблоны ухудшают читаемость.
+* Деструктуризация массивов, остаточные свойства и деструктуризация параметров будут изучаться позже.
+* В автоматизации тестов деструктуризация удобна для ответов API, настроек, тел запросов и проверок.
 
 ---
 
@@ -923,13 +884,27 @@ Destructuring не создает новый object. Он создает variabl
 
 Ответьте без запуска кода.
 
-1. Какую проблему решает destructuring?
-2. Создает ли destructuring новый object?
-3. Меняет ли destructuring source object?
-4. Как object destructuring выбирает properties?
-5. Что будет, если property отсутствует?
-6. Когда сработает default value?
+1. Какую задачу решает деструктуризация?
+2. Создаёт ли деструктуризация новый объект?
+3. Меняет ли деструктуризация исходный объект?
+4. Как деструктуризация объекта выбирает свойства?
+5. Что будет, если свойство отсутствует?
+6. Когда сработает значение по умолчанию?
 7. Что создает `const { name: userName } = user`?
-8. Почему destructuring не стоит понимать только как "короткий синтаксис"?
-9. Где destructuring полезен в Automation QA?
-10. Какая следующая тема логически продолжает destructuring?
+8. Почему деструктуризацию не стоит понимать только как «короткий синтаксис»?
+9. Где деструктуризация полезна в автоматизации тестов?
+10. Какая следующая тема логически продолжает деструктуризацию?
+
+### Ответы
+
+1. Избавляет от повторяющегося обращения к одному объекту: вместо нескольких строк вида `const status = response.status` нужные свойства извлекаются одной записью.
+2. Нет. Создаются только новые переменные.
+3. Нет. Исходный объект остаётся прежним.
+4. По имени свойства. Позиция роли не играет, в отличие от деструктуризации массива.
+5. Переменная получит `undefined`. Ошибки не будет.
+6. Только когда значение равно `undefined` — то есть свойства нет или оно явно не задано. Для `null`, `0`, `''` и `false` подставляется само значение.
+7. Переменную `userName` со значением свойства `name`. Переменной `name` при этом не появляется.
+8. Потому что важнее, что именно происходит: значения копируются в новые переменные, а связь с объектом теряется. Для примитивов это полная независимость, для вложенных объектов — та же ссылка.
+9. При разборе ответа сервера, при получении фикстур в тесте, при чтении настроек: нужные поля называются явно прямо в строке.
+10. Безопасное чтение вложенных свойств: деструктуризация падает, если промежуточного объекта нет.
+

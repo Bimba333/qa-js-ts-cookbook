@@ -1,4 +1,4 @@
-# Loops
+# Циклы
 
 ## Связь с предыдущей главой
 
@@ -143,9 +143,9 @@ Repetition overview:
 
 ## Теория
 
-### Зачем существуют loops
+### Зачем существуют циклы
 
-Loops существуют, потому что программам часто нужно повторять алгоритм.
+Циклы существуют, потому что программам часто нужно повторять одно и то же действие.
 
 Примеры:
 
@@ -157,7 +157,7 @@ Retry while server is unavailable.
 Poll until status changes.
 ```
 
-Without loop:
+Без цикла:
 
 ```text
 check response 1
@@ -165,21 +165,21 @@ check response 2
 check response 3
 ```
 
-With loop:
+С циклом:
 
-Loop = repeated execution until stopping condition is reached.
+Цикл — это повторяющееся выполнение, пока не достигнуто условие остановки.
 
-### Loop lifecycle
+### Время жизни цикла
 
-Every loop has a lifecycle.
+У каждого цикла есть свой жизненный цикл.
 
-Loop lifecycle схема:
+Схема жизненного цикла:
 
 ```text
 инициализация → проверка условия → тело → обновление → проверка условия → ...
 ```
 
-Four core parts:
+Четыре основные части:
 
 ```text
 1. initialization
@@ -188,15 +188,15 @@ Four core parts:
 4. update
 ```
 
-### Initialization
+### Инициализация
 
-Initialization prepares loop состояние.
+Начальная установка готовит состояние цикла.
 
 ```javascript
 let responseIndex = 0;
 ```
 
-Initialization схема:
+Схема начальной установки:
 
 ```text
 let i = 0        выполняется один раз перед циклом
@@ -209,35 +209,35 @@ Not initialization.
 It usually happens once before repetition.
 ```
 
-### Condition
+### Условие
 
-Condition decides whether loop continues.
+Условие решает, продолжается ли цикл.
 
 ```javascript
 responseIndex < totalResponses
 ```
 
-Condition схема:
+Схема условия:
 
 ```text
 i < items.length   проверяется перед каждой итерацией
 ```
 
-Loop decision:
+Решение о цикле:
 
 ```text
 Should repetition continue?
 ```
 
-### Body
+### Тело
 
-Loop body is the repeated work.
+Тело цикла — повторяемая работа.
 
 ```javascript
 console.log('Validate response');
 ```
 
-Body схема:
+Схема тела:
 
 ```text
 тело выполняется только если условие истинно
@@ -249,37 +249,41 @@ Body схема:
 The body.
 ```
 
-### Update
+### Обновление
 
-Update moves loop toward stopping condition.
+Изменение состояния двигает цикл к условию остановки.
 
 ```javascript
 responseIndex += 1;
 ```
 
-Update схема:
+Схема изменения состояния:
 
 ```text
 i++              выполняется после каждой итерации
 ```
 
-Without update, loop may never stop.
+Без изменения состояния цикл может не остановиться никогда.
 
-### Iteration
+### Итерация
 
-One iteration is one complete pass through loop body.
+Одна итерация — один полный проход по телу цикла.
 
-Iteration временная шкала:
-
-Iteration отвечает:
+Временная шкала итерации:
 
 ```text
-Which repetition are we on?
+проверка условия → выполнение тела → шаг обновления → снова проверка условия
+```
+
+Итерация отвечает на вопрос:
+
+```text
+на каком повторе мы находимся?
 ```
 
 ### `while`
 
-`while` repeats while condition is true.
+`while` повторяется, пока условие истинно.
 
 ```javascript
 let responseIndex = 0;
@@ -301,7 +305,7 @@ while (responseIndex < totalResponses) {
 
 ### `do...while`
 
-`do...while` runs body first, then checks condition.
+`do...while` сначала выполняет тело, затем проверяет условие.
 
 ```javascript
 let attempt = 1;
@@ -320,7 +324,7 @@ do {
 тело выполняется минимум один раз
 ```
 
-Key idea:
+Ключевая идея:
 
 ```text
 Body runs at least once.
@@ -330,7 +334,7 @@ Body runs at least once.
 
 ### `for`
 
-`for` puts initialization, condition and update in one line.
+`for` собирает начальную установку, условие и изменение состояния в одну строку.
 
 ```javascript
 for (let responseIndex = 0; responseIndex < 3; responseIndex += 1) {
@@ -350,13 +354,13 @@ for (
 }
 ```
 
-Expanded lifecycle:
+Расширенное время жизни:
 
-Используйте `for`, когда у loop есть понятный counter-like lifecycle.
+Используйте `for`, когда у цикла есть понятный счётчик.
 
 ### `break`
 
-`break` stops loop early.
+`break` останавливает цикл досрочно.
 
 ```javascript
 for (let attempt = 1; attempt <= 3; attempt += 1) {
@@ -374,11 +378,11 @@ for (let attempt = 1; attempt <= 3; attempt += 1) {
 break  →  выйти из цикла целиком
 ```
 
-Используйте `break`, когда loop нашёл нужное или должен остановиться раньше.
+Используйте `break`, когда цикл нашёл нужное или должен остановиться раньше.
 
 ### `continue`
 
-`continue` skips current iteration and moves to next one.
+`continue` пропускает текущую итерацию и переходит к следующей.
 
 ```javascript
 for (let responseIndex = 0; responseIndex < 3; responseIndex += 1) {
@@ -396,11 +400,11 @@ for (let responseIndex = 0; responseIndex < 3; responseIndex += 1) {
 continue  →  пропустить остаток тела и перейти к следующей итерации
 ```
 
-Используйте `continue`, когда текущий item нужно пропустить, но loop должен продолжаться.
+Используйте `continue`, когда текущий элемент нужно пропустить, но цикл должен продолжаться.
 
-### Avoiding infinite loops
+### Как избегать бесконечных циклов
 
-Infinite loop возникает, когда stopping condition никогда не достигается.
+Бесконечный цикл возникает, когда условие остановки никогда не достигается.
 
 ```javascript
 let attempt = 1;
@@ -410,25 +414,25 @@ while (attempt <= 3) {
 }
 ```
 
-Infinite loop схема:
+Схема бесконечного цикла:
 
 ```text
 условие никогда не становится ложным  →  цикл не завершается
 ```
 
-Avoid it by ensuring update changes loop состояние:
+Избежать этого можно, убедившись, что состояние цикла действительно меняется:
 
 ```javascript
 attempt += 1;
 ```
 
-### Choosing the appropriate loop
+### Выбор подходящего цикла
 
-Choosing loop type:
+Как выбирать тип цикла:
 
-This is a guideline, not a law.
+Это ориентир, а не закон.
 
-Future chapters will introduce `for...of`, `for...in`, array iteration methods and asynchronous loops.
+Будущие главы введут `for...of`, `for...in`, методы перебора массивов и асинхронные циклы.
 
 ---
 
@@ -447,33 +451,64 @@ flowchart TD
 
 ## Внутренний механизм
 
-На концептуальном уровне:
+На концептуальном уровне движок выполняет один и тот же набор шагов:
 
-Complete loop picture:
+```text
+1. вычислить условие
+2. если ложно — выйти из цикла
+3. выполнить тело
+4. выполнить шаг обновления (если он есть)
+5. вернуться к шагу 1
+```
 
-Текущее место в модели JavaScript:
+Отсюда и различие между видами циклов: `while` начинает с шага 1, `do...while` —
+с шага 3 (поэтому его тело выполняется хотя бы раз), а `for` собирает
+инициализацию, условие и обновление в одну строку.
 
-Переход к Error Handling:
+```text
+Loops           —  повторение, пока выполняется условие
+Error Handling  —  что делать, если один из повторов упал
+```
 
 ---
 
 ## Ментальная модель
 
-### Factory conveyor
+### Заводской конвейер
 
-Loop is the conveyor that keeps processing items until there are no more items.
+Цикл — это конвейер, который обрабатывает элементы, пока они не закончатся.
 
-### Checklist
+### Чек-лист
 
-### Assembly line
+Цикл — это чек-лист: один и тот же вопрос задают каждому пункту, пока пункты
+не закончатся.
 
-### Repeated inspection
+```text
+пункт 1  →  проверен
+пункт 2  →  проверен
+пункт 3  →  проверен
+пунктов больше нет  →  цикл закончился
+```
 
-QA loop:
+### Сборочная линия
 
-### Security gate checking many visitors
+Тело цикла — одна и та же операция над разными деталями. Меняются только
+входные данные, а действие остаётся прежним.
 
-Loop = repeated execution until stopping condition is reached.
+### Повторный осмотр
+
+Цикл в тестах:
+
+```text
+для каждого ответа из списка    →  проверить код ответа
+для каждой строки таблицы       →  сравнить с ожидаемым значением
+```
+
+Один цикл — одна повторяемая проверка.
+
+### Охрана, проверяющая много посетителей
+
+Цикл — это повторяющееся выполнение, пока не достигнуто условие остановки.
 
 ---
 
@@ -498,75 +533,75 @@ node examples/01-javascript/chapter-19/06-qa-example.js
 
 ### 01-while.js
 
-Shows repetition while condition remains true.
+Показывает повторение, пока условие остаётся истинным.
 
 ### 02-do-while.js
 
-Shows body running at least once.
+Показывает тело, которое выполняется хотя бы один раз.
 
 ### 03-for.js
 
-Shows counter-based loop.
+Показывает цикл со счётчиком.
 
 ### 04-break-continue.js
 
-Shows early stop and skipping current iteration.
+Показывает досрочную остановку и пропуск текущей итерации.
 
 ### 05-common-mistakes.js
 
-Shows a guarded version of missing update problem.
+Показывает безопасный вариант задачи с пропущенным изменением состояния.
 
 ### 06-qa-example.js
 
-Shows validation of multiple API-like responses.
+Показывает проверку нескольких ответов, похожих на ответы API.
 
 ---
 
 ## Частые вопросы
 
-### Is loop just repeated `if`?
+### Цикл — это просто повторённый `if`?
 
-No. A loop repeats body and condition evaluation. `if` makes one decision.
+Нет. Цикл повторяет и тело, и вычисление условия. `if` принимает одно решение.
 
-### Какой loop использовать чаще всего?
+### Какой цикл использовать чаще всего?
 
-For counter-based repetition, `for` is common. For unknown repetition count, `while` is often clearer.
+Для повторения со счётчиком обычно берут `for`. Когда число повторов заранее неизвестно, часто понятнее `while`.
 
-### Is `do...while` common?
+### Часто ли встречается `do...while`?
 
-Менее распространён, но полезен, когда body должен выполниться хотя бы один раз.
+Менее распространён, но полезен, когда тело должно выполниться хотя бы один раз.
 
-### Should I use `break` and `continue`?
+### Стоит ли использовать `break` и `continue`?
 
-Используйте их, когда они делают loop понятнее. Не злоупотребляйте ими так, чтобы скрывать control flow.
+Используйте их, когда они делают цикл понятнее. Не злоупотребляйте так, чтобы прятать за ними ход выполнения.
 
-### Почему не изучать array methods сейчас?
+### Почему не изучать методы массивов сейчас?
 
-Array iteration methods are important, but they rely on arrays and functions. They will be studied later.
+Методы перебора массивов важны, но они опираются на массивы и функции. Они будут изучаться позже.
 
 ---
 
 ## Распространённые мифы
 
-### Миф: Loop repeats automatically until data ends
+### Миф: цикл повторяется сам, пока не кончатся данные
 
 Реальность:
 
-Loop repeats according to its condition and update logic.
+Цикл повторяется согласно своему условию и изменению состояния.
 
-### Миф: `while` and `for` are completely different ideas
-
-Реальность:
-
-They both express repeated execution with condition and update. Syntax differs.
-
-### Миф: Infinite loop is random
+### Миф: `while` и `for` — совершенно разные идеи
 
 Реальность:
 
-Infinite loop usually means stopping condition never becomes false.
+Оба выражают повторение с условием и изменением состояния. Отличается запись.
 
-### Миф: `break` and `continue` are bad
+### Миф: бесконечный цикл возникает случайно
+
+Реальность:
+
+Бесконечный цикл обычно означает, что условие остановки никогда не становится ложным.
+
+### Миф: `break` и `continue` — это плохо
 
 Реальность:
 
@@ -576,7 +611,7 @@ Infinite loop usually means stopping condition never becomes false.
 
 ## Распространённые ошибки
 
-### Ошибка 1. Missing update
+### Ошибка 1. Пропущенное изменение состояния
 
 ```javascript
 let attempt = 1;
@@ -586,9 +621,9 @@ while (attempt <= 3) {
 }
 ```
 
-`attempt` never changes.
+`attempt` не меняется.
 
-### Ошибка 2. Wrong condition
+### Ошибка 2. Неверное условие
 
 ```javascript
 for (let index = 0; index <= 3; index += 1) {
@@ -596,9 +631,9 @@ for (let index = 0; index <= 3; index += 1) {
 }
 ```
 
-This runs for `0`, `1`, `2`, `3`. If you wanted three iterations, condition should be `index < 3`.
+Этот цикл выполнится для `0`, `1`, `2` и `3`. Если нужно было три итерации, условием должно быть `index < 3`.
 
-### Ошибка 3. Update in wrong direction
+### Ошибка 3. Изменение состояния в другую сторону
 
 ```javascript
 let attempt = 1;
@@ -608,19 +643,34 @@ while (attempt <= 3) {
 }
 ```
 
-Condition moves away from stopping.
+Условие отдаляется от остановки.
 
-### Ошибка 4. Confuse `break` and `continue`
+### Ошибка 4. Путать `break` и `continue`
 
-### Ошибка 5. Put too much logic inside one loop
+```javascript
+for (let index = 0; index < responses.length; index += 1) {
+  if (responses[index].statusCode !== 200) {
+    break;    // выходит из цикла: остальные ответы не проверены
+  }
+}
+```
 
-If loop body becomes large, future functions can help organize logic. Functions are a future section.
+```text
+break     —  выйти из цикла целиком
+continue  —  пропустить текущий шаг и перейти к следующему
+```
+
+Подмена одного другим меняет не стиль, а количество проверенных элементов.
+
+### Ошибка 5. Класть слишком много логики в один цикл
+
+Если тело цикла разрастается, организовать логику помогут функции. Это тема следующего раздела.
 
 ---
 
 ## Практическое использование
 
-Loops are useful when:
+Циклы полезны, когда:
 
 ```text
 same action repeats
@@ -644,7 +694,7 @@ condition decides when to stop
 
 ## Использование в Automation QA
 
-### Validating many API responses
+### Проверка множества ответов API
 
 ```javascript
 for (let index = 0; index < responses.length; index += 1) {
@@ -653,11 +703,16 @@ for (let index = 0; index < responses.length; index += 1) {
 }
 ```
 
-QA validation example:
+Пример проверки данных:
 
-### Checking table rows
+```text
+один ответ проверяют один раз,
+а цикл превращает эту проверку в проверку всего списка
+```
 
-Loop can check row by row:
+### Проверка строк таблицы
+
+Цикл может проверять строку за строкой:
 
 ```text
 row 1
@@ -665,19 +720,31 @@ row 2
 row 3
 ```
 
-Detailed DOM and Playwright APIs will be studied later.
+Подробно DOM и API Playwright будут изучаться позже.
 
-### Processing test data
+### Обработка тестовых данных
 
-### Polling until condition changes
+Один и тот же сценарий часто нужно прогнать на нескольких наборах данных.
 
-Polling means repeat check until status changes or max attempts reached.
+```javascript
+const users = ['qa-user', 'qa-admin', 'qa-guest'];
 
-Asynchronous polling will be studied later.
+for (let index = 0; index < users.length; index += 1) {
+  console.log('Проверяем вход для: ' + users[index]);
+}
+```
 
-### Avoiding endless retries
+Набор данных лежит в одном месте, а шаги проверки описаны один раз.
 
-Always have a stopping condition:
+### Опрос до изменения состояния
+
+Опрос означает повторять проверку, пока состояние не изменится или не кончатся попытки.
+
+Асинхронный опрос будет изучаться позже.
+
+### Как избегать бесконечных повторов
+
+Всегда задавайте условие остановки:
 
 ```text
 retry while not ready
@@ -688,7 +755,7 @@ but stop after max attempts
 
 ## Итоги
 
-Loops answer:
+Циклы отвечают:
 
 ```text
 What if the same decision or action must happen many times?
@@ -696,7 +763,7 @@ What if the same decision or action must happen many times?
 
 Основная модель: цикл — это условие плюс тело, и выполнение повторяется ровно до тех пор, пока условие остаётся истинным.
 
-Main loop forms:
+Основные формы циклов:
 
 ```text
 while
@@ -704,31 +771,32 @@ do...while
 for
 ```
 
-Control tools:
+Средства управления ходом цикла — `break` (выйти сразу) и `continue` (перейти к
+следующему повтору).
 
-Next chapter explains Error Handling:
+Следующая глава объясняет обработку ошибок:
 
 ```text
-What should happen if an error occurs during execution?
+что должно происходить, если во время выполнения возникла ошибка?
 ```
 
 ---
 
 ## Что нужно запомнить
 
-* Loop repeats execution.
-* Loop repeats until stopping condition is reached.
-* Iteration is one pass through loop body.
-* Initialization prepares loop состояние.
-* Condition decides whether to continue.
-* Body contains repeated work.
-* Update moves loop toward stopping.
-* `while` checks condition before body.
-* `do...while` runs body at least once.
-* `for` is useful for clear counter lifecycle.
-* `break` stops loop.
-* `continue` skips current iteration.
-* Infinite loops обычно возникают, когда condition никогда не становится false.
+* Цикл повторяет выполнение.
+* Цикл повторяется, пока не достигнуто условие остановки.
+* Итерация — один проход по телу цикла.
+* Начальная установка готовит состояние цикла.
+* Условие решает, продолжать ли.
+* Тело содержит повторяемую работу.
+* Изменение состояния двигает цикл к остановке.
+* `while` проверяет условие до тела.
+* `do...while` выполняет тело хотя бы один раз.
+* `for` удобен, когда у цикла понятный счётчик.
+* `break` прекращает цикл.
+* `continue` пропускает текущую итерацию.
+* Бесконечные циклы обычно возникают, когда условие никогда не становится ложным.
 
 ---
 
@@ -736,16 +804,29 @@ What should happen if an error occurs during execution?
 
 Ответьте без запуска кода.
 
-1. Почему существуют loops?
-2. Что повторяется в loop?
-3. Что такое iteration?
-4. Какие четыре основные части есть у loop?
-5. When does `while` stop?
+1. Почему существуют циклы?
+2. Что повторяется в цикле?
+3. Что такое итерация?
+4. Какие четыре основные части есть у цикла?
+5. Когда останавливается `while`?
 6. В чём особенность `do...while`?
-7. When is `for` useful?
+7. Когда полезен `for`?
 8. Что делает `break`?
 9. Что делает `continue`?
-10. Как эта глава ведёт к Error Handling?
+10. Как эта глава ведёт к обработке ошибок?
+
+### Ответы
+
+1. Одно и то же действие часто нужно выполнить для многих значений или повторять, пока не выполнится условие. Без циклов это пришлось бы писать вручную столько раз, сколько элементов.
+2. Тело цикла — блок кода, который выполняется заново на каждом шаге.
+3. Один проход по телу цикла.
+4. Начальное состояние, условие продолжения, тело и изменение состояния, которое приближает условие к завершению.
+5. Когда условие перестаёт выполняться — проверка происходит перед каждым шагом.
+6. Тело выполняется хотя бы один раз: условие проверяется после шага, а не до него.
+7. Когда все четыре части цикла удобно держать рядом: обход по индексам, известное число повторений.
+8. Полностью выходит из цикла: оставшиеся шаги не выполняются.
+9. Пропускает текущий шаг и переходит к следующему. Цикл при этом продолжается.
+10. Цикл повторяет действие много раз, и любой из повторов может упасть. Отсюда вопрос, что делать с ошибкой: остановить весь прогон или обработать шаг и продолжить.
 
 ---
 
@@ -757,7 +838,7 @@ What should happen if an error occurs during execution?
 practice/01-javascript/19-loops.md
 ```
 
-Сначала решайте predict вывод задания без запуска. Главная цель - видеть lifecycle: initialization, condition, body, update.
+Сначала решайте задания на предсказание вывода без запуска. Главная цель — видеть четыре части цикла: установку, условие, тело и изменение состояния.
 
 ---
 

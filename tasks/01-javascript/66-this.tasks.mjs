@@ -22,8 +22,8 @@ export default [
 }`,
     hints: [
       'Получатель определяется формой вызова, а не местом объявления функции.',
-      'new создаёт новый объект и делает его получателем.',
-      'Стрелка берёт this из окружающего кода, а не из вызова.'
+      '`new` создаёт новый объект и делает его получателем.',
+      'Стрелка берёт `this` из окружающего кода, а не из вызова.'
     ],
     tests: [
       {
@@ -31,11 +31,11 @@ export default [
         code: `expect(describeCallForms().asMethod).toBe('объект');`
       },
       {
-        name: 'явный получатель через call',
+        name: 'явный получатель через `call`',
         code: `expect(describeCallForms().borrowed).toBe('заимствованный');`
       },
       {
-        name: 'вызов через new',
+        name: 'вызов через `new`',
         code: `expect(describeCallForms().constructed).toBe('созданный');`
       },
       {

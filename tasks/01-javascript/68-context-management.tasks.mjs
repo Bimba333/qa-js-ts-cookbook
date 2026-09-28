@@ -27,8 +27,8 @@ function runStrategies(values) {
 }`,
     hints: [
       'Переданный напрямую метод теряет получателя, и обращение к его полю падает.',
-      'bind создаёт функцию с уже закреплённым получателем.',
-      'Замыкание вообще не зависит от this: оно держит ссылку на объект.'
+      '`bind` создаёт функцию с уже закреплённым получателем.',
+      'Замыкание вообще не зависит от `this`: оно держит ссылку на объект.'
     ],
     tests: [
       {
@@ -36,7 +36,7 @@ function runStrategies(values) {
         code: `expect(runStrategies([1, 2]).lost).toBe('TypeError');`
       },
       {
-        name: 'bind сохраняет получателя',
+        name: '`bind` сохраняет получателя',
         code: `expect(runStrategies([1, 2]).bound).toEqual([1, 2]);`
       },
       {
@@ -44,7 +44,7 @@ function runStrategies(values) {
         code: `expect(runStrategies(['a', 'b']).arrow).toEqual(['a', 'b']);`
       },
       {
-        name: 'замыкание обходится без this',
+        name: 'замыкание обходится без `this`',
         code: `expect(runStrategies([1]).closure).toEqual([1]);`
       },
       {

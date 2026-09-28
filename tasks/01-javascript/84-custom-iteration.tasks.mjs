@@ -1,7 +1,7 @@
 export default [
   {
     id: 'js-84-iterable-collection',
-    title: 'Своя коллекция, пригодная для for...of',
+    title: 'Своя коллекция, пригодная для `for...of`',
     difficulty: 'hard',
     lang: 'js',
     prompt:
@@ -18,7 +18,7 @@ export default [
   };
 }`,
     hints: [
-      'Symbol.iterator должен возвращать НОВЫЙ итератор при каждом вызове.',
+      '`Symbol.iterator` должен возвращать НОВЫЙ итератор при каждом вызове.',
       'Функция-генератор — самый короткий способ такой итератор получить.',
       'Отбор упавших тоже должен быть итерируемым, а не массивом.'
     ],
@@ -56,7 +56,7 @@ suite.add('отчёт', 'failed');
 expect([...suite.failed()].map(test => test.title)).toEqual(['оплата', 'отчёт']);`
       },
       {
-        name: 'работает с Array.from и for...of',
+        name: 'работает с `Array.from` и `for...of`',
         code: `const suite = createSuite('smoke');
 suite.add('вход', 'passed');
 const titles = [];

@@ -13,7 +13,7 @@ export default [
 }`,
     hints: [
       'Оператор || срабатывает на любом ложном значении, включая 0.',
-      'Нужен оператор, реагирующий только на null и undefined.',
+      'Нужен оператор, реагирующий только на `null` и `undefined`.',
       'Значение 0 должно доходить до вызывающего кода без изменений.'
     ],
     tests: [
@@ -30,7 +30,7 @@ export default [
         code: `expect(readRetries({})).toBe(2);`
       },
       {
-        name: 'при null подставляет 2',
+        name: 'при `null` подставляет `2`',
         code: `expect(readRetries({ retries: null })).toBe(2);`
       }
     ],
@@ -53,8 +53,8 @@ export default [
   // Для каждого поля нужна проверка только на null и undefined.
 }`,
     hints: [
-      'Оператор || испортит false, 0 и пустую строку.',
-      'Нужен оператор, реагирующий только на null и undefined.',
+      'Оператор `||` испортит `false`, `0` и пустую строку.',
+      'Нужен оператор, реагирующий только на `null` и `undefined`.',
       'Полей три — правило для каждого одинаковое.'
     ],
     tests: [
@@ -71,7 +71,7 @@ export default [
   .toEqual({ baseUrl: 'http://b', retries: 1, verbose: false });`
       },
       {
-        name: 'false и ноль из окружения сохраняются',
+        name: '`false` и ноль из окружения сохраняются',
         code: `expect(resolveConfig(
   { retries: 0, verbose: false },
   { baseUrl: 'http://b', retries: 5, verbose: true }

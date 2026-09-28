@@ -21,7 +21,7 @@ export default [
   return {};
 }`,
     hints: [
-      'Отсутствующее поле и поле со значением undefined различаются через Object.keys.',
+      'Отсутствующее поле и поле со значением `undefined` различаются через `Object.keys`.',
       'Метки окружения добавляются после меток из тегов.',
       'Неизвестный статус лучше не переводить молча.'
     ],
@@ -76,7 +76,7 @@ expect(Object.keys(clean).includes('statusDetails')).toBe(false);`
 expect(linked.links).toEqual([{ name: 'задача', url: 'http://tracker/1' }]);`
       },
       {
-        name: 'падение подготовки переводится как broken',
+        name: 'падение подготовки переводится как `broken`',
         code: `expect(toAllureResult({
   id: 'a', title: 'b', status: 'broken', durationMs: 1, tags: [], links: []
 }, 'ci').status).toBe('broken');`

@@ -13,7 +13,7 @@ export default [
   return {} as Pick<T, K>;
 }`,
     hints: [
-      'Ограничение K extends keyof T допускает только существующие ключи.',
+      'Ограничение `K extends keyof T` допускает только существующие ключи.',
       'Перед копированием стоит убедиться, что свойство есть у объекта.',
       'Исходный объект изменяться не должен.'
     ],
@@ -73,7 +73,7 @@ function toComplete(draft: DraftItem): Required<DraftItem> | null {
   return null;
 }`,
     hints: [
-      'Тип Required описывает результат, но не проверяет данные.',
+      'Тип `Required` описывает результат, но не проверяет данные.',
       'Проверять нужно и отсутствие поля, и пустую строку.',
       'Возвращать следует новый объект.'
     ],
@@ -84,7 +84,7 @@ function toComplete(draft: DraftItem): Required<DraftItem> | null {
   .toEqual({ title: 'login', priority: 'HIGH' });`
       },
       {
-        name: 'отсутствующее поле даёт null',
+        name: 'отсутствующее поле даёт `null`',
         code: `expect(toComplete({ title: 'login' })).toBe(null);`
       },
       {
@@ -92,7 +92,7 @@ function toComplete(draft: DraftItem): Required<DraftItem> | null {
         code: `expect(toComplete({ title: '', priority: 'HIGH' })).toBe(null);`
       },
       {
-        name: 'пустой черновик даёт null',
+        name: 'пустой черновик даёт `null`',
         code: `expect(toComplete({})).toBe(null);`
       }
     ],

@@ -19,9 +19,9 @@ function tryMutate(value) {
   return { changed: false, result: undefined };
 }`,
     hints: [
-      'typeof null возвращает "object" — этот случай обрабатывается отдельно.',
+      '`typeof null` возвращает `"object"` — этот случай обрабатывается отдельно.',
       'Присваивание свойства примитиву не выбрасывает ошибку вне строгого режима.',
-      'У примитива после присваивания свойства читается undefined.'
+      'У примитива после присваивания свойства читается `undefined`.'
     ],
     tests: [
       {
@@ -32,7 +32,7 @@ expect(describeValue(true)).toBe('boolean');
 expect(describeValue(undefined)).toBe('undefined');`
       },
       {
-        name: 'null и массив — особые случаи',
+        name: '`null` и массив — особые случаи',
         code: `expect(describeValue(null)).toBe('null');
 expect(describeValue([])).toBe('array');`
       },

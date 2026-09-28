@@ -19,7 +19,7 @@ export default [
   return { transition: null, afterSuccess: null, refusal: null, afterRefusal: null };
 }`,
     hints: [
-      'Ответ TransitionWorkItem оборачивает запись в поле item.',
+      'Ответ `TransitionWorkItem` оборачивает запись в поле `item`.',
       'После отказа состояние должно остаться прежним — это и надо показать.',
       'Состояние читается отдельным вызовом, а не берётся из ответа перехода.'
     ],

@@ -54,7 +54,7 @@ await shared.resolve('b');
 expect(made).toBe(1);`
       },
       {
-        name: 'повторный resolve возвращает то же значение',
+        name: 'повторный `resolve` возвращает то же значение',
         code: `const stable = buildFixtures({ page: { deps: [], create: () => ({}) } });
 expect(await stable.resolve('page')).toBe(await stable.resolve('page'));`
       },

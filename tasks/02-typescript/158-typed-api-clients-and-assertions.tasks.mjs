@@ -7,7 +7,7 @@ export default [
     prompt:
       'Напишите `fetchItem(transport, id)`, где `transport: (path: string) => Promise<unknown>`. ' +
       'Функция запрашивает `/work-items/<id>` и возвращает объект типа ' +
-      '`{ id: string; version: number }`. Форму ответа нужно проверить в runtime: ' +
+      '`{ id: string; version: number }`. Форму ответа нужно проверить во время выполнения: ' +
       'если ответ не объект или поля имеют неверный тип, выбросьте ошибку ' +
       '`неожиданная форма ответа`. Использовать `as` для подмены проверки нельзя — ' +
       'проверки подают неверные данные и ждут ошибку.',
@@ -25,8 +25,8 @@ async function fetchItem(transport: Transport, id: string): Promise<WorkItem> {
   return payload as WorkItem;
 }`,
     hints: [
-      'Тип ответа объявлен как unknown — его нужно проверить, а не утверждать.',
-      'null тоже имеет typeof "object".',
+      'Тип ответа объявлен как `unknown` — его нужно проверить, а не утверждать.',
+      '`null` тоже имеет `typeof "object"`.',
       'Проверять надо и наличие полей, и их типы.'
     ],
     tests: [
@@ -57,7 +57,7 @@ try { await fetchItem(transport, 'WI-1'); } catch (error) { message = error.mess
 expect(message).toBe('неожиданная форма ответа');`
       },
       {
-        name: 'null отвергается',
+        name: '`null` отвергается',
         code: `const transport = async () => null;
 let message = '';
 try { await fetchItem(transport, 'WI-1'); } catch (error) { message = error.message; }

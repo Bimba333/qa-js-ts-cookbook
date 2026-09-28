@@ -29,8 +29,8 @@ function findItems(input: string | string[]): Item | Item[] | undefined {
 }`,
     hints: [
       'Перегрузки видны вызывающему коду, реализация — нет.',
-      'Различить варианты помогает Array.isArray.',
-      'Порядок результата задаётся переданными идентификаторами, а не массивом ITEMS.'
+      'Различить варианты помогает `Array.isArray`.',
+      'Порядок результата задаётся переданными идентификаторами, а не массивом `ITEMS`.'
     ],
     tests: [
       {
@@ -38,7 +38,7 @@ function findItems(input: string | string[]): Item | Item[] | undefined {
         code: `expect(findItems('WI-2')).toEqual({ id: 'WI-2', title: 'оплата' });`
       },
       {
-        name: 'неизвестный идентификатор даёт undefined',
+        name: 'неизвестный идентификатор даёт `undefined`',
         code: `expect(findItems('WI-9')).toBeUndefined();`
       },
       {

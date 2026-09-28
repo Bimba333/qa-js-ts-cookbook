@@ -19,8 +19,8 @@ export default [
   return { id: '', title: '', version: 0, description: null, createdAt: '' };
 }`,
     hints: [
-      'Number.isFinite отсекает и NaN, и бесконечность, в отличие от isFinite.',
-      'Date разбирает строку молча: проверять надо getTime.',
+      '`Number.isFinite` отсекает и `NaN`, и бесконечность, в отличие от `isFinite`.',
+      '`Date` разбирает строку молча: проверять надо `getTime`.',
       'Обрезка пробелов выполняется до проверки на пустоту.'
     ],
     tests: [
@@ -41,7 +41,7 @@ export default [
 });`
       },
       {
-        name: 'три вида отсутствия описания дают null',
+        name: 'три вида отсутствия описания дают `null`',
         code: `const base = { id: 'WI-1', title: 'a', version: 1, createdAt: '2026-01-01T00:00:00.000Z' };
 expect(normalize(base).description).toBe(null);
 expect(normalize({ ...base, description: null }).description).toBe(null);

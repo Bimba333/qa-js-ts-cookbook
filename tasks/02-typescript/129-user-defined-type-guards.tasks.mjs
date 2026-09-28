@@ -19,8 +19,8 @@ function isWorkItem(value: unknown): value is WorkItem {
   return false;
 }`,
     hints: [
-      'Сначала проверьте, что значение — объект и не null.',
-      'Оператор in даёт доступ к свойству у суженного object.',
+      'Сначала проверьте, что значение — объект и не `null`.',
+      'Оператор `in` даёт доступ к свойству у суженного `object`.',
       'Для каждого поля нужна отдельная проверка типа.'
     ],
     tests: [
@@ -37,7 +37,7 @@ function isWorkItem(value: unknown): value is WorkItem {
         code: `expect(isWorkItem({ id: 'a' })).toBe(false);`
       },
       {
-        name: 'null и массив не подходят',
+        name: '`null` и массив не подходят',
         code: `expect(isWorkItem(null) || isWorkItem([])).toBe(false);`
       },
       {
@@ -93,7 +93,7 @@ try { parseWorkItem({ id: 'a' }); } catch (error) { message = (error as Error).m
 expect(message).toBe('ответ не соответствует контракту WorkItem');`
       },
       {
-        name: 'бросает ошибку на null',
+        name: 'бросает ошибку на `null`',
         code: `let thrown = false;
 try { parseWorkItem(null); } catch (error) { thrown = true; }
 expect(thrown).toBe(true);`

@@ -16,9 +16,9 @@ function takeIds(generator, count) {
   // Возьмите ровно count значений.
 }`,
     hints: [
-      'Функция-генератор объявляется через function*.',
+      'Функция-генератор объявляется через `function*`.',
       'Бесконечный цикл в генераторе не зависает: значения выдаются по запросу.',
-      'Значения берутся вызовами next() или обходом с ограничением.'
+      'Значения берутся вызовами `next()` или обходом с ограничением.'
     ],
     tests: [
       {
@@ -70,7 +70,7 @@ function takeIds(generator, count) {
     prompt:
       'Напишите функцию-генератор `steps()`, которая выдаёт `"first"` и `"second"`, ' +
       'а затем возвращает через `return` значение `"done"`. Напишите функции ' +
-      '`collectBySpread()` и `collectByNext()`: первая собирает значения через spread, ' +
+      '`collectBySpread()` и `collectByNext()`: первая собирает значения раскрытием, ' +
       'вторая — ручным обходом, включая значение из `return`.',
     starter: `function* steps() {
   // Два yield и один return.
@@ -84,21 +84,21 @@ function collectByNext() {
   // Ручной обход видит и значение из return.
 }`,
     hints: [
-      'Значение из return приходит вместе с done: true.',
-      'Spread и for...of такие значения игнорируют.',
-      'Ручной обход через next() позволяет их получить.'
+      'Значение из `return` приходит вместе с `done: true`.',
+      'Раскрытие и `for...of` такие значения игнорируют.',
+      'Ручной обход через `next()` позволяет их получить.'
     ],
     tests: [
       {
-        name: 'spread не включает значение из return',
+        name: 'раскрытие не включает значение из `return`',
         code: `expect(collectBySpread()).toEqual(['first', 'second']);`
       },
       {
-        name: 'ручной обход включает значение из return',
+        name: 'ручной обход включает значение из `return`',
         code: `expect(collectByNext()).toEqual(['first', 'second', 'done']);`
       },
       {
-        name: 'генератор сам является iterable',
+        name: 'генератор сам является итерируемым объектом',
         code: `expect(typeof steps()[Symbol.iterator]).toBe('function');`
       },
       {

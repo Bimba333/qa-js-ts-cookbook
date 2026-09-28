@@ -60,7 +60,7 @@ await runWithLimit(staggered, 2);
 expect(started).toEqual([0, 1, 2]);`
       },
       {
-        name: 'отклонение даёт null и не мешает остальным',
+        name: 'отклонение даёт `null` и не мешает остальным',
         code: `const mixed = [
   async () => 'ok',
   async () => { throw new Error('упал'); },

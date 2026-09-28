@@ -12,8 +12,8 @@ export default [
   // JSON.parse выбрасывает SyntaxError на некорректном тексте.
 }`,
     hints: [
-      'Разбор нужно обернуть в try/catch.',
-      'В блоке catch достаточно вернуть null.',
+      'Разбор нужно обернуть в `try/catch`.',
+      'В блоке `catch` достаточно вернуть `null`.',
       'Пустая строка тоже не является корректным JSON.'
     ],
     tests: [
@@ -22,11 +22,11 @@ export default [
         code: `expect(parseBody('{"status":"ok"}')).toEqual({ status: 'ok' });`
       },
       {
-        name: 'некорректный текст даёт null',
+        name: 'некорректный текст даёт `null`',
         code: `expect(parseBody('{не json}')).toBe(null);`
       },
       {
-        name: 'пустая строка даёт null',
+        name: 'пустая строка даёт `null`',
         code: `expect(parseBody('')).toBe(null);`
       },
       {
@@ -59,9 +59,9 @@ expect(thrown).toBe(false);`
   // Очистка должна выполняться в блоке finally.
 }`,
     hints: [
-      'Блок finally выполняется независимо от исхода.',
-      'Возврат из try не отменяет finally.',
-      'В message передавайте текст ошибки.'
+      'Блок `finally` выполняется независимо от исхода.',
+      'Возврат из `try` не отменяет `finally`.',
+      'В `message` передавайте текст ошибки.'
     ],
     tests: [
       {

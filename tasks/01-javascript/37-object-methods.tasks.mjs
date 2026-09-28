@@ -1,7 +1,7 @@
 export default [
   {
     id: 'js-37-object-entries-report',
-    title: 'Отчёт из объекта через entries',
+    title: 'Отчёт из объекта через `Object.entries`',
     difficulty: 'easy',
     lang: 'js',
     prompt:
@@ -12,9 +12,9 @@ export default [
   // Объект нельзя обойти циклом for...of напрямую.
 }`,
     hints: [
-      'Пары «ключ — значение» даёт Object.entries.',
-      'Результат entries — обычный массив, его можно сортировать и преобразовывать.',
-      'Сортировка строк выполняется компаратором или localeCompare.'
+      'Пары «ключ — значение» даёт `Object.entries`.',
+      'Результат `Object.entries` — обычный массив, его можно сортировать и преобразовывать.',
+      'Сортировка строк выполняется компаратором или `localeCompare`.'
     ],
     tests: [
       {
@@ -58,7 +58,7 @@ expect(source).toEqual({ passed: 1 });`
     hints: [
       'Оператор in проверяет всю цепочку прототипов.',
       'Для собственных свойств есть отдельная проверка.',
-      'Значение undefined у собственного свойства всё равно считается своим.'
+      'Значение `undefined` у собственного свойства всё равно считается своим.'
     ],
     tests: [
       {
@@ -76,7 +76,7 @@ expect(hasOwnField(child, 'shared')).toBe(false);`
         code: `expect(hasOwnField({ name: 'login' }, 'status')).toBe(false);`
       },
       {
-        name: 'собственное свойство со значением undefined считается своим',
+        name: 'собственное свойство со значением `undefined` считается своим',
         code: `expect(hasOwnField({ name: undefined }, 'name')).toBe(true);`
       },
       {

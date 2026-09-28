@@ -1,0 +1,35 @@
+# Неактивный учебный сценарий сборки.
+#
+# Файл намеренно лежит вне .github/workflows: на GitHub он не запускается,
+# а проверяет его отдельный валидатор проекта.
+name: final-project
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  checks:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/setup-node@v6
+        with:
+          node-version: 22
+      - run: npm ci
+      - run: npm run final-project:typecheck
+      - run: npm run final-project:test
+      - run: npm run final-project:diagnostics
+      - if: always()
+        uses: actions/upload-artifact@v6
+        with:
+          name: final-project-results
+          path: test-results/final-project
+          if-no-files-found: error
+          retention-days: 7

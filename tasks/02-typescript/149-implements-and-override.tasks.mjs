@@ -28,8 +28,8 @@ class PrettyJsonSerializer extends JsonSerializer {
   }
 }`,
     hints: [
-      'Третий аргумент JSON.stringify задаёт отступ.',
-      'super.serialize вызывает реализацию родителя, а не текущую.',
+      'Третий аргумент `JSON.stringify` задаёт отступ.',
+      '`super.serialize` вызывает реализацию родителя, а не текущую.',
       'Экземпляр наследника остаётся и экземпляром базового класса.'
     ],
     tests: [
@@ -42,7 +42,7 @@ class PrettyJsonSerializer extends JsonSerializer {
         code: `expect(new PrettyJsonSerializer().serialize({ a: 1 })).toBe('{\\n  "a": 1\\n}');`
       },
       {
-        name: 'super даёт базовую реализацию',
+        name: '`super` даёт базовую реализацию',
         code: `expect(new PrettyJsonSerializer().serializeCompact({ a: 1 })).toBe('{"a":1}');`
       },
       {

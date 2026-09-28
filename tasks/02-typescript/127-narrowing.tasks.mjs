@@ -14,9 +14,9 @@ export default [
   return 5000;
 }`,
     hints: [
-      'Для примитивов сужение выполняет typeof.',
+      'Для примитивов сужение выполняет `typeof`.',
       'Строку нужно преобразовать и проверить результат.',
-      'Отрицательное значение и NaN одинаково недопустимы.'
+      'Отрицательное значение и `NaN` одинаково недопустимы.'
     ],
     tests: [
       {
@@ -36,7 +36,7 @@ export default [
         code: `expect(readTimeout('быстро')).toBe(5000);`
       },
       {
-        name: 'null и объект заменяются',
+        name: '`null` и объект заменяются',
         code: `expect(readTimeout(null) + readTimeout({})).toBe(10000);`
       }
     ],
@@ -73,9 +73,9 @@ function readUrl(source: Source): string {
   return '';
 }`,
     hints: [
-      'Сначала отделите строку через typeof.',
+      'Сначала отделите строку через `typeof`.',
       'После этого остаётся только объектный вариант.',
-      'Поле url доступно лишь в суженной ветке.'
+      'Поле `url` доступно лишь в суженной ветке.'
     ],
     tests: [
       {
@@ -83,7 +83,7 @@ function readUrl(source: Source): string {
         code: `expect(readUrl('http://a')).toBe('http://a');`
       },
       {
-        name: 'объект даёт поле url',
+        name: 'объект даёт поле `url`',
         code: `expect(readUrl({ url: 'http://b' })).toBe('http://b');`
       },
       {
@@ -91,7 +91,7 @@ function readUrl(source: Source): string {
         code: `expect(readUrl('')).toBe('');`
       },
       {
-        name: 'пустой url сохраняется',
+        name: 'пустой `url` сохраняется',
         code: `expect(readUrl({ url: '' })).toBe('');`
       }
     ],
