@@ -401,12 +401,12 @@ reassignment     значение заменено на другое
 Сравнение:
 
 ```text
-Operation       | What happens
+Операция        | Что происходит
 ----------------|-------------------------------
-Declaration     | name is registered
-Initialization  | initial value is provided
-Assignment      | value is written
-Reassignment    | existing value is replaced
+Объявление      | имя зарегистрировано
+Инициализация   | задано начальное значение
+Присваивание    | значение записано
+Переприсваивание| прежнее значение заменено
 ```
 
 ### Время жизни переменной
@@ -510,8 +510,8 @@ var legacyStatus = 'created';
 
 ```text
 const by default
-let when reassignment is needed
-var mainly for reading legacy code
+let — когда нужно переприсваивание
+var — в основном для чтения старого кода
 ```
 
 ### Почему в JavaScript есть `var`, `let` и `const`
@@ -1105,13 +1105,13 @@ const userName = buildUserName();
 `const` сообщает:
 
 ```text
-This named access will not be reassigned.
+Этот доступ по имени не будет переприсвоен.
 ```
 
 `let` сообщает:
 
 ```text
-This named access may change.
+Этот доступ по имени может измениться.
 ```
 
 Для Automation QA это важно, потому что тесты читаются как сценарии. Если значение меняется, это должно быть видно. Если значение не меняется, `const` снижает когнитивную нагрузку.

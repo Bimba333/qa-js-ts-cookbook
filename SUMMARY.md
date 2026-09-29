@@ -41,7 +41,7 @@
 * [Циклы](docs/01-javascript/19-loops.md)
 * [Обработка ошибок](docs/01-javascript/20-error-handling.md)
 
-## Раздел 3. Functions
+## Раздел 3. Функции
 
 * [Объявление функции](docs/01-javascript/21-function-declaration.md)
 * [Функциональное выражение](docs/01-javascript/22-function-expression.md)
@@ -56,7 +56,7 @@
 * [Метод `apply()`](docs/01-javascript/31-apply.md)
 * [Метод `bind()`](docs/01-javascript/32-bind.md)
 
-## Раздел 4. Objects
+## Раздел 4. Объекты
 
 * [Объекты](docs/01-javascript/33-objects.md)
 * [Деструктуризация](docs/01-javascript/34-destructuring.md)
@@ -70,7 +70,7 @@
 * [Наследование классов](docs/01-javascript/42-class-inheritance.md)
 * [Ключевое слово `super`](docs/01-javascript/43-super.md)
 
-## Раздел 5. Arrays
+## Раздел 5. Массивы
 
 * [Массивы](docs/01-javascript/44-arrays.md)
 * [`push()` и `pop()`](docs/01-javascript/45-push-pop.md)
@@ -90,21 +90,21 @@
 * [Метод `sort()`](docs/01-javascript/59-sort.md)
 * [Метод `reverse()`](docs/01-javascript/60-reverse.md)
 
-## Раздел 6. Execution Model Revisited
+## Раздел 6. Модель выполнения ещё раз
 
 * [Контекст выполнения: углублённое повторение](docs/01-javascript/61-execution-context.md)
 * [Стек вызовов: углублённое повторение](docs/01-javascript/62-call-stack.md)
 * [Модель памяти](docs/01-javascript/63-memory-model.md)
 * [Подъём объявлений и временная мёртвая зона](docs/01-javascript/64-hoisting-tdz.md)
 
-## Раздел 7. Function Context
+## Раздел 7. Контекст функции
 
 * [Замыкания: углублённое повторение](docs/01-javascript/65-closures.md)
 * [`this`: углублённое повторение](docs/01-javascript/66-this.md)
 * [`call()`, `apply()`, `bind()`](docs/01-javascript/67-call-apply-bind.md)
 * [Практическое управление контекстом](docs/01-javascript/68-context-management.md)
 
-## Раздел 8. Async JavaScript
+## Раздел 8. Асинхронный JavaScript
 
 * [Синхронное выполнение](docs/01-javascript/69-synchronous-execution.md)
 * [Асинхронное программирование](docs/01-javascript/70-asynchronous-programming.md)
@@ -119,29 +119,29 @@
 * [Обработка ошибок в асинхронном коде](docs/01-javascript/79-async-error-handling.md)
 * [Параллельные асинхронные операции](docs/01-javascript/80-parallel-async.md)
 
-## Раздел 9. Iteration Protocols
+## Раздел 9. Протоколы перебора
 
 * [Протокол перебора](docs/01-javascript/81-iterable-protocol.md)
 * [Итераторы](docs/01-javascript/82-iterators.md)
 * [Генераторы](docs/01-javascript/83-generators.md)
 * [Собственный перебор](docs/01-javascript/84-custom-iteration.md)
 
-## Раздел 10. Modules
+## Раздел 10. Модули
 
 * [Модули JavaScript](docs/01-javascript/85-javascript-modules.md)
 * [Системы модулей](docs/01-javascript/86-module-systems.md)
 
-## Раздел 11. Memory Management
+## Раздел 11. Управление памятью
 
 * [Сборщик мусора](docs/01-javascript/87-garbage-collector.md)
 * [Управление памятью](docs/01-javascript/88-memory-management.md)
 
-## Раздел 12. Engineering Practice
+## Раздел 12. Инженерная практика
 
 * [Производительность](docs/01-javascript/89-performance.md)
 * [Отладка](docs/01-javascript/90-debugging.md)
 
-## Раздел 13. JavaScript Conclusion
+## Раздел 13. Итоги JavaScript
 
 * [Возможности современного JavaScript](docs/01-javascript/91-modern-javascript.md)
 * [Хорошие практики JavaScript](docs/01-javascript/92-javascript-best-practices.md)
@@ -201,7 +201,7 @@
 * [Параметр `this`](docs/02-typescript/125-this-parameter.md)
 * [Типы асинхронных функций](docs/02-typescript/126-async-function-types.md)
 
-## Раздел 6. Narrowing и безопасные ветвления
+## Раздел 6. Сужение типов и безопасные ветвления
 
 * [Сужение типов](docs/02-typescript/127-narrowing.md)
 * [Встроенные проверки типа](docs/02-typescript/128-built-in-type-guards.md)
@@ -210,7 +210,7 @@
 * [Оператор `satisfies`](docs/02-typescript/131-satisfies.md)
 * [Проверка полноты через `never`](docs/02-typescript/132-exhaustive-checks-with-never.md)
 
-## Раздел 7. Generics
+## Раздел 7. Обобщённые типы
 
 * [Обобщённые функции](docs/02-typescript/133-generic-functions.md)
 * [Ограничения обобщений](docs/02-typescript/134-generic-constraints.md)
@@ -278,7 +278,7 @@
 * [Хуки и жизненный цикл теста](docs/03-automation-qa/174-hooks-and-test-lifecycle.md)
 * [Изоляция UI-тестов и состояние браузера](docs/03-automation-qa/175-ui-test-isolation-and-browser-state.md)
 
-## Раздел 3. Fixtures и архитектура UI-слоя
+## Раздел 3. Фикстуры и архитектура UI-слоя
 
 * [Встроенные фикстуры](docs/03-automation-qa/176-built-in-fixtures.md)
 * [Собственные фикстуры и граф зависимостей](docs/03-automation-qa/177-custom-fixtures-and-dependency-graph.md)

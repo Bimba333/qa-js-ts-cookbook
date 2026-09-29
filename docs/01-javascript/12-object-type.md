@@ -309,7 +309,7 @@ const user = {
 Значение свойства отвечает на вопрос:
 
 ```text
-What information is stored under this name?
+Какая информация хранится под этим именем?
 ```
 
 ### Имена свойств
@@ -656,8 +656,8 @@ user.age = 31
 Какая информация сгруппирована прямо сейчас?
 
 ```text
-Information about the same user,
-but one property value changed.
+Информация о том же пользователе,
+но значение одного свойства изменилось.
 ```
 
 ### Текущее место в модели JavaScript
@@ -670,13 +670,13 @@ but one property value changed.
 Глава про примитивы отвечала на вопрос:
 
 ```text
-What kind of single value is this?
+Какого вида это одиночное значение?
 ```
 
 Глава про объекты отвечает:
 
 ```text
-What related information belongs together?
+Какая связанная информация относится друг к другу?
 ```
 
 ### Переход к ссылкам
@@ -751,7 +751,7 @@ const loginData = {
 Объект отвечает:
 
 ```text
-Which pieces of information should travel together?
+Какие части информации должны передаваться вместе?
 ```
 
 ---
@@ -793,7 +793,7 @@ console.log(user);
 Какая информация сгруппирована прямо сейчас?
 
 ```text
-All basic user profile information.
+Вся основная информация профиля пользователя.
 ```
 
 ### 02-read-properties.js
@@ -976,7 +976,7 @@ const user = {
 Почему:
 
 ```text
-Object makes relationship explicit.
+Объект делает связь явной.
 ```
 
 ### Ошибка 2. Путать имя свойства и его значение
@@ -1070,7 +1070,7 @@ const user = {
 Какая информация сгруппирована прямо сейчас?
 
 ```text
-Information about one user.
+Информация об одном пользователе.
 ```
 
 ### Конфигурация теста
@@ -1100,7 +1100,17 @@ const expectedUser = {
 
 ### Полный обзор объекта
 
----
+Все четыре модели описывают одно и то же с разных сторон:
+
+| Модель | Что подчёркивает |
+| --- | --- |
+| папка с документами | несколько частей принадлежат одному целому |
+| карточка профиля | у сущности есть набор признаков |
+| словарь | доступ по имени, а не по номеру |
+| запись в базе данных | объект как одна строка данных |
+
+Выбирайте ту, которая ближе к задаче. Для ответа API удобнее «запись», для
+настройки — «карточка», для поиска значения по имени — «словарь».
 
 ## Использование в Automation QA
 
@@ -1197,9 +1207,9 @@ const registrationData = {
 Тестировщик должен спросить себя:
 
 ```text
-Which properties should this object have?
-Which values should be under these property names?
-Which nested objects are expected?
+Какие свойства должны быть у этого объекта?
+Какие значения должны быть под этими именами свойств?
+Какие вложенные объекты ожидаются?
 ```
 
 Это и есть мышление в терминах объектов.
@@ -1226,7 +1236,7 @@ Which nested objects are expected?
 
 ```text
 If objects contain multiple values,
-how does JavaScript work with them internally?
+как JavaScript работает с ними внутри?
 ```
 
 Это тема главы про ссылки.

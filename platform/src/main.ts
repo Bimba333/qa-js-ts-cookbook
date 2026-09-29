@@ -181,6 +181,41 @@ export async function start(): Promise<http.Server> {
       return;
     }
 
+    if (route === "GET /api/v1/entitlement") {
+      const user = await requireUser(request);
+
+      if (!user) {
+        send(response, 401, { code: "UNAUTHENTICATED", message: "Требуется вход" }, cors);
+        return;
+      }
+
+      send(response, 200, await database.readEntitlement(user.id), cors);
+      return;
+    }
+
+    if (route === "POST /api/v1/entitlement/dev-grant") {
+      // Заглушка вместо платёжного провайдера. Выключена по умолчанию: с ней
+      // подписку может выдать себе любой вошедший читатель.
+      if (!config.allowDevGrant) {
+        send(response, 404, { code: "NOT_FOUND", message: "Маршрут отключён" }, cors);
+        return;
+      }
+
+      const user = await requireUser(request);
+
+      if (!user) {
+        send(response, 401, { code: "UNAUTHENTICATED", message: "Требуется вход" }, cors);
+        return;
+      }
+
+      const body = (await readJson(request)) as { plan?: unknown; days?: unknown };
+      const plan = typeof body.plan === "string" && body.plan.length > 0 ? body.plan : "dev";
+      const days = Number.isInteger(body.days) && (body.days as number) > 0 ? (body.days as number) : 30;
+
+      send(response, 200, await database.grantSubscription(user.id, plan, days), cors);
+      return;
+    }
+
     if (route === "GET /api/v1/progress" || route === "PUT /api/v1/progress") {
       const user = await requireUser(request);
 

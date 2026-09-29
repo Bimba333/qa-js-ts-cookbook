@@ -214,8 +214,27 @@ const results = []
 let done = 0
 
 try {
+  // Прогон примеров не должен упираться в подписку: предмет проверки — примеры,
+  // а не разграничение доступа. Состояние подписчика ставится до загрузки.
+  const asSubscriber = async () => {
+    const context = await browser.newContext()
+
+    await context.addInitScript(() => {
+      const until = new Date(Date.now() + 30 * 24 * 60 * 60 * 1000).toISOString()
+
+      window.localStorage.setItem('book:sync-session:v1', JSON.stringify({
+        token: 'examples-check', email: 'examples@check.test'
+      }))
+      window.localStorage.setItem('book:entitlement:v1', JSON.stringify({
+        subscribed: true, plan: 'check', validUntil: until, checkedAt: new Date().toISOString()
+      }))
+    })
+
+    return context
+  }
+
   const contexts = await Promise.all(
-    Array.from({ length: CONCURRENCY }, () => browser.newContext())
+    Array.from({ length: CONCURRENCY }, () => asSubscriber())
   )
   const queue = [...chapters]
 

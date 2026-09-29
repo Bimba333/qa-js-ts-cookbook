@@ -762,7 +762,7 @@ const validateStagingResponse = validateResponse.bind(stagingConfig);
 Такое имя говорит:
 
 ```text
-this helper validates staging responses
+этот помощник проверяет ответы стенда
 ```
 
 ---
@@ -884,7 +884,7 @@ solutions/01-javascript/32-bind.md
 Главное отличие `bind()`:
 
 ```text
-bind() returns a function
+bind() возвращает функцию
 ```
 
 Он не выполняет исходную функцию сразу.

@@ -107,8 +107,8 @@ function createLogger(configuration) {
 ```mermaid
 flowchart TD
     N1["createLogger() finished"]
-    N2["log function still exists"]
-    N3["log has access to configuration"]
+    N2["функция log ещё существует"]
+    N3["log имеет доступ к конфигурации"]
     N1 --> N2
     N2 --> N3
 ```

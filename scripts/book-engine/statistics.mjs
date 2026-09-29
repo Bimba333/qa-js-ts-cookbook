@@ -8,6 +8,9 @@ export function buildStatistics(chapters) {
     stats.miniProjects += chapter.miniProjects
     stats.readingMinutes += chapter.readingMinutes
 
+    if (chapter.access === 'free') stats.freeChapters += 1
+    else stats.paidChapters += 1
+
     return stats
   }, {
     chapters: 0,
@@ -16,6 +19,8 @@ export function buildStatistics(chapters) {
     examples: 0,
     mermaid: 0,
     miniProjects: 0,
-    readingMinutes: 0
+    readingMinutes: 0,
+    freeChapters: 0,
+    paidChapters: 0
   })
 }

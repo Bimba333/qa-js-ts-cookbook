@@ -869,7 +869,7 @@ practice/01-javascript/30-call.md
 Главный вопрос практики:
 
 ```text
-Who chooses the receiver?
+Кто выбирает получателя?
 ```
 
 ---

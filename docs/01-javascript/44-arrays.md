@@ -395,13 +395,13 @@ users.length
 Вы спрашиваете:
 
 ```text
-How many elements are in this array?
+Сколько элементов в этом массиве?
 ```
 
 Не так:
 
 ```text
-What is the last index?
+Какой индекс последний?
 ```
 
 Это различие важно:
@@ -770,7 +770,7 @@ const requests = [
 Объекты ответили:
 
 ```text
-How do we model one entity?
+Как описать одну сущность?
 ```
 
 Массивы отвечают:

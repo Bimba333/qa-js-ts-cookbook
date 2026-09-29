@@ -531,9 +531,9 @@ const checkStatus = validateStatus;
 Главная модель:
 
 ```text
-Function Expression creates a function object.
-Variable stores that value.
-Invocation reads the value and executes it.
+Выражение-функция создаёт объект функции.
+Переменная хранит это значение.
+Вызов читает значение и выполняет его.
 ```
 
 ---

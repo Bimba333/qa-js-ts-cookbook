@@ -7,6 +7,7 @@ import { applyNavigation } from './navigation.mjs'
 import { applyCrossReferences } from './cross-references.mjs'
 import { buildStatistics } from './statistics.mjs'
 import { applyChapterCardData } from './chapter-cards.mjs'
+import { loadAccessConfig, resolveAccess } from './access.mjs'
 
 const ROOT = process.cwd()
 const OUT = path.join(ROOT, '.vitepress', 'book.generated.mjs')
@@ -30,13 +31,20 @@ for (const part of parts) {
   })
 }
 
-const withNavigation = applyNavigation(chapters)
+const accessConfig = await loadAccessConfig(ROOT)
+const withAccess = chapters.map(chapter => ({
+  ...chapter,
+  access: resolveAccess(chapter.path, accessConfig)
+}))
+
+const withNavigation = applyNavigation(withAccess)
 const withCrossReferences = applyCrossReferences(withNavigation, fileCache)
 const withCards = applyChapterCardData(withCrossReferences)
 const statistics = buildStatistics(withCards)
 
 const data = {
   cacheReads: fileCache.size(),
+  access: { fallback: accessConfig.fallback, preview: accessConfig.preview },
   parts,
   chapters: Object.fromEntries(withCards.map(chapter => [chapter.path, chapter])),
   statistics
@@ -53,4 +61,5 @@ console.log(`- Examples: ${statistics.examples}`)
 console.log(`- Mermaid: ${statistics.mermaid}`)
 console.log(`- Mini-projects: ${statistics.miniProjects}`)
 console.log(`- Reading time: ${statistics.readingMinutes} min`)
+console.log(`- Free chapters: ${statistics.freeChapters}, paid: ${statistics.paidChapters}`)
 console.log(`- Cached file reads: ${fileCache.size()}`)

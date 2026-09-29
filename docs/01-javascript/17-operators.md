@@ -296,8 +296,8 @@ const isSuccess = statusCode === 200;
 !==  strict inequality
 >    greater than
 <    less than
->=   greater than or equal
-<=   less than or equal
+>=   больше или равно
+<=   меньше или равно
 ```
 
 Равенство изучалось в предыдущей главе. Остальные операторы сравнения естественно появятся в условиях и циклах.
@@ -335,7 +335,7 @@ const canContinue = isStatusOk && hasUser;
 ```text
 && combines conditions
 || combines alternatives
-!  negates a condition-like value
+!  меняет истинность значения на противоположную
 ```
 
 ### Операторы присваивания
@@ -447,7 +447,7 @@ false
 На этом уровне `in` означает:
 
 ```text
-Does this object have this property available?
+Доступно ли у этого объекта такое свойство?
 ```
 
 Детали, связанные с прототипами, будут изучаться позже.
@@ -486,7 +486,7 @@ value instanceof Error  →  создан ли объект этим класс�
 stored in variable
 passed to function
 used in condition
-combined with another operator
+в сочетании с другим оператором
 ```
 
 ### Приоритет операторов
@@ -507,7 +507,7 @@ const result = 2 + 3 * 4;
 Эта глава не учит таблицы приоритета. Практическое правило пока такое:
 
 ```text
-If expression is not obvious, use parentheses.
+Если выражение неочевидно, поставьте скобки.
 ```
 
 ```javascript
@@ -605,7 +605,7 @@ Output: 5
 Эта модель помогает запомнить:
 
 ```text
-Operator receives operands and produces result.
+Оператор получает операнды и даёт результат.
 ```
 
 ---
@@ -765,12 +765,12 @@ const valueType = typeof value;
 Практический чек-лист чтения:
 
 ```text
-1. Find the operator.
+1. Найти оператор.
 2. Identify operands.
 3. Identify operator category.
-4. Ask what operation is being performed.
+4. Спросить, какая операция выполняется.
 5. Determine result.
-6. Check whether type conversion may be involved.
+6. Проверить, не участвует ли приведение типов.
 ```
 
 ---
@@ -842,7 +842,7 @@ Object/property-related
 Ключевой вопрос:
 
 ```text
-What operation is being performed?
+Какая операция выполняется?
 ```
 
 Следующая глава использует результаты операторов, чтобы объяснить условные конструкции.

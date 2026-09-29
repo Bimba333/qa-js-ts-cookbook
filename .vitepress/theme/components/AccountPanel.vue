@@ -9,6 +9,7 @@ import {
   writeSession,
   writeSettings
 } from '../composables/progress-sync.js'
+import { entitlementState, forgetAccess, refreshAccess, restoreAccess } from '../composables/access.js'
 
 const emit = defineEmits(['changed'])
 
@@ -20,10 +21,64 @@ const busy = ref(false)
 const message = ref('')
 const problem = ref('')
 
-onMounted(() => {
+onMounted(async () => {
   settings.value = readSettings()
   session.value = readSession()
+  restoreAccess()
+
+  if (session.value) {
+    try {
+      await refreshAccess()
+    } catch {
+      // Недоступный сервис не должен ломать страницу: останется последнее
+      // известное состояние подписки.
+    }
+  }
 })
+
+/**
+ * Локальная выдача подписки.
+ *
+ * Кнопка появляется только для собственного сервиса на локальном адресе:
+ * маршрут `dev-grant` существует ради того, чтобы автор книги мог пройти её
+ * целиком до появления платежей, и в рабочей среде он выключен.
+ */
+const local = computed(() => {
+  if (settings.value.provider !== PROVIDERS.service) return false
+
+  try {
+    const { hostname } = new URL(settings.value.baseUrl)
+
+    return hostname === '127.0.0.1' || hostname === 'localhost'
+  } catch {
+    return false
+  }
+})
+
+const subscription = computed(() => entitlementState.value)
+
+function grantLocally() {
+  return run(async () => {
+    const base = settings.value.baseUrl.replace(/\/+$/, '')
+
+    const response = await fetch(`${base}/api/v1/entitlement/dev-grant`, {
+      method: 'POST',
+      headers: {
+        'content-type': 'application/json',
+        authorization: `Bearer ${session.value.token}`
+      },
+      body: JSON.stringify({ plan: 'local', days: 365 })
+    })
+
+    if (response.status === 404) {
+      throw new Error('Сервис запущен без PLATFORM_ALLOW_DEV_GRANT=1: выдача подписки отключена')
+    }
+
+    if (!response.ok) throw new Error(`Сервис ответил ${response.status}`)
+
+    return refreshAccess()
+  }, result => `Подписка выдана до ${new Date(result.validUntil).toLocaleDateString('ru-RU')}.`)
+}
 
 const needsService = computed(() => settings.value.provider === PROVIDERS.service)
 const needsSupabase = computed(() => settings.value.provider === PROVIDERS.supabase)
@@ -88,6 +143,7 @@ function signOut() {
     await provider.signOut(session.value)
     session.value = null
     writeSession(null)
+    forgetAccess()
   }, 'Выход выполнен. Прогресс остался в этом браузере.')
 }
 </script>
@@ -146,10 +202,33 @@ function signOut() {
 
     <template v-if="session">
       <p class="account-panel__signed">Вход выполнен: {{ session.email }}</p>
+
+      <p class="account-panel__subscription">
+        <template v-if="subscription.subscribed">
+          Подписка активна до
+          {{ new Date(subscription.validUntil).toLocaleDateString('ru-RU') }}: открыта вся книга.
+        </template>
+        <template v-else>
+          Подписки нет: открыты бесплатные главы, прогресс сохраняется.
+        </template>
+      </p>
+
       <div class="account-panel__actions">
         <button type="button" :disabled="busy" @click="sync">Синхронизировать</button>
+        <button
+          v-if="local && !subscription.subscribed"
+          type="button"
+          :disabled="busy"
+          @click="grantLocally"
+        >Выдать подписку локально</button>
         <button type="button" :disabled="busy" @click="signOut">Выйти</button>
       </div>
+
+      <p v-if="local" class="account-panel__note">
+        Кнопка выдачи подписки работает только с локальным сервисом и только
+        когда он запущен с <code>PLATFORM_ALLOW_DEV_GRANT=1</code>. В рабочей
+        среде этот маршрут отвечает 404.
+      </p>
     </template>
 
     <p v-if="message" class="account-panel__message" role="status">{{ message }}</p>
@@ -193,6 +272,12 @@ function signOut() {
   background: var(--vp-c-bg);
   color: var(--vp-c-text-1);
   font: inherit;
+}
+
+.account-panel__subscription {
+  margin: 0;
+  font-size: 14px;
+  color: var(--vp-c-text-2);
 }
 
 .account-panel__actions {

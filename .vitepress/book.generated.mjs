@@ -1,5 +1,9 @@
 export const bookEngineData = {
   "cacheReads": 790,
+  "access": {
+    "fallback": "paid",
+    "preview": 2
+  },
   "parts": [
     {
       "title": "Введение",
@@ -121,7 +125,7 @@ export const bookEngineData = {
           ]
         },
         {
-          "title": "Functions",
+          "title": "Функции",
           "chapters": [
             {
               "fallbackTitle": "Объявление функции",
@@ -174,7 +178,7 @@ export const bookEngineData = {
           ]
         },
         {
-          "title": "Objects",
+          "title": "Объекты",
           "chapters": [
             {
               "fallbackTitle": "Объекты",
@@ -223,7 +227,7 @@ export const bookEngineData = {
           ]
         },
         {
-          "title": "Arrays",
+          "title": "Массивы",
           "chapters": [
             {
               "fallbackTitle": "Массивы",
@@ -296,7 +300,7 @@ export const bookEngineData = {
           ]
         },
         {
-          "title": "Execution Model Revisited",
+          "title": "Модель выполнения ещё раз",
           "chapters": [
             {
               "fallbackTitle": "Контекст выполнения: углублённое повторение",
@@ -317,7 +321,7 @@ export const bookEngineData = {
           ]
         },
         {
-          "title": "Function Context",
+          "title": "Контекст функции",
           "chapters": [
             {
               "fallbackTitle": "Замыкания: углублённое повторение",
@@ -338,7 +342,7 @@ export const bookEngineData = {
           ]
         },
         {
-          "title": "Async JavaScript",
+          "title": "Асинхронный JavaScript",
           "chapters": [
             {
               "fallbackTitle": "Синхронное выполнение",
@@ -391,7 +395,7 @@ export const bookEngineData = {
           ]
         },
         {
-          "title": "Iteration Protocols",
+          "title": "Протоколы перебора",
           "chapters": [
             {
               "fallbackTitle": "Протокол перебора",
@@ -412,7 +416,7 @@ export const bookEngineData = {
           ]
         },
         {
-          "title": "Modules",
+          "title": "Модули",
           "chapters": [
             {
               "fallbackTitle": "Модули JavaScript",
@@ -425,7 +429,7 @@ export const bookEngineData = {
           ]
         },
         {
-          "title": "Memory Management",
+          "title": "Управление памятью",
           "chapters": [
             {
               "fallbackTitle": "Сборщик мусора",
@@ -438,7 +442,7 @@ export const bookEngineData = {
           ]
         },
         {
-          "title": "Engineering Practice",
+          "title": "Инженерная практика",
           "chapters": [
             {
               "fallbackTitle": "Производительность",
@@ -451,7 +455,7 @@ export const bookEngineData = {
           ]
         },
         {
-          "title": "JavaScript Conclusion",
+          "title": "Итоги JavaScript",
           "chapters": [
             {
               "fallbackTitle": "Возможности современного JavaScript",
@@ -630,7 +634,7 @@ export const bookEngineData = {
           ]
         },
         {
-          "title": "Narrowing и безопасные ветвления",
+          "title": "Сужение типов и безопасные ветвления",
           "chapters": [
             {
               "fallbackTitle": "Сужение типов",
@@ -659,7 +663,7 @@ export const bookEngineData = {
           ]
         },
         {
-          "title": "Generics",
+          "title": "Обобщённые типы",
           "chapters": [
             {
               "fallbackTitle": "Обобщённые функции",
@@ -871,7 +875,7 @@ export const bookEngineData = {
           ]
         },
         {
-          "title": "Fixtures и архитектура UI-слоя",
+          "title": "Фикстуры и архитектура UI-слоя",
           "chapters": [
             {
               "fallbackTitle": "Встроенные фикстуры",
@@ -1283,6 +1287,7 @@ export const bookEngineData = {
       "solutions": 10,
       "mermaid": 14,
       "miniProjects": 1,
+      "access": "free",
       "previous": null,
       "next": {
         "title": "Как пользоваться курсом",
@@ -1353,6 +1358,7 @@ export const bookEngineData = {
       "solutions": 13,
       "mermaid": 15,
       "miniProjects": 1,
+      "access": "free",
       "previous": {
         "title": "О курсе",
         "number": 1,
@@ -1415,6 +1421,7 @@ export const bookEngineData = {
       "solutions": 13,
       "mermaid": 31,
       "miniProjects": 1,
+      "access": "free",
       "previous": {
         "title": "Как пользоваться курсом",
         "number": 2,
@@ -1471,6 +1478,7 @@ export const bookEngineData = {
       "solutions": 13,
       "mermaid": 21,
       "miniProjects": 1,
+      "access": "free",
       "previous": {
         "title": "Структура курса",
         "number": 3,
@@ -1520,6 +1528,7 @@ export const bookEngineData = {
       "solutions": 16,
       "mermaid": 7,
       "miniProjects": 1,
+      "access": "free",
       "previous": {
         "title": "Рабочее окружение",
         "number": 4,
@@ -1569,6 +1578,7 @@ export const bookEngineData = {
       "solutions": 17,
       "mermaid": 3,
       "miniProjects": 1,
+      "access": "free",
       "previous": {
         "title": "Что такое JavaScript",
         "number": 1,
@@ -1634,15 +1644,16 @@ export const bookEngineData = {
       "section": "Основы языка",
       "sectionIndex": 0,
       "chapterIndex": 2,
-      "wordCount": 3115,
-      "readingMinutes": 18,
+      "wordCount": 3254,
+      "readingMinutes": 19,
       "h2": 20,
-      "h3": 50,
+      "h3": 53,
       "examples": 7,
       "tasks": 36,
       "solutions": 16,
       "mermaid": 19,
       "miniProjects": 1,
+      "access": "paid",
       "previous": {
         "title": "Как выполняется JavaScript",
         "number": 2,
@@ -1692,7 +1703,7 @@ export const bookEngineData = {
       "card": {
         "chapterLabel": "Глава 3",
         "title": "Контекст выполнения",
-        "reading": 18,
+        "reading": 19,
         "examples": 7,
         "tasks": 36,
         "solutions": 16,
@@ -1708,15 +1719,16 @@ export const bookEngineData = {
       "section": "Основы языка",
       "sectionIndex": 0,
       "chapterIndex": 3,
-      "wordCount": 2395,
-      "readingMinutes": 14,
+      "wordCount": 2524,
+      "readingMinutes": 15,
       "h2": 20,
-      "h3": 43,
+      "h3": 46,
       "examples": 7,
       "tasks": 30,
       "solutions": 15,
       "mermaid": 20,
       "miniProjects": 1,
+      "access": "paid",
       "previous": {
         "title": "Контекст выполнения",
         "number": 3,
@@ -1760,7 +1772,7 @@ export const bookEngineData = {
       "card": {
         "chapterLabel": "Глава 4",
         "title": "Стек вызовов",
-        "reading": 14,
+        "reading": 15,
         "examples": 7,
         "tasks": 30,
         "solutions": 15,
@@ -1785,6 +1797,7 @@ export const bookEngineData = {
       "solutions": 25,
       "mermaid": 21,
       "miniProjects": 1,
+      "access": "paid",
       "previous": {
         "title": "Стек вызовов",
         "number": 4,
@@ -1859,6 +1872,7 @@ export const bookEngineData = {
       "solutions": 26,
       "mermaid": 11,
       "miniProjects": 1,
+      "access": "free",
       "previous": {
         "title": "Память",
         "number": 5,
@@ -1933,6 +1947,7 @@ export const bookEngineData = {
       "solutions": 25,
       "mermaid": 14,
       "miniProjects": 1,
+      "access": "free",
       "previous": {
         "title": "Переменные",
         "number": 6,
@@ -2007,6 +2022,7 @@ export const bookEngineData = {
       "solutions": 24,
       "mermaid": 24,
       "miniProjects": 1,
+      "access": "paid",
       "previous": {
         "title": "Область видимости",
         "number": 7,
@@ -2081,6 +2097,7 @@ export const bookEngineData = {
       "solutions": 24,
       "mermaid": 7,
       "miniProjects": 1,
+      "access": "paid",
       "previous": {
         "title": "Лексическое окружение",
         "number": 8,
@@ -2146,15 +2163,16 @@ export const bookEngineData = {
       "section": "Основы языка",
       "sectionIndex": 0,
       "chapterIndex": 9,
-      "wordCount": 2064,
-      "readingMinutes": 12,
+      "wordCount": 2167,
+      "readingMinutes": 13,
       "h2": 20,
-      "h3": 46,
+      "h3": 48,
       "examples": 7,
       "tasks": 25,
       "solutions": 25,
       "mermaid": 3,
       "miniProjects": 1,
+      "access": "paid",
       "previous": {
         "title": "Подъём объявлений",
         "number": 9,
@@ -2204,7 +2222,7 @@ export const bookEngineData = {
       "card": {
         "chapterLabel": "Глава 10",
         "title": "Временная мёртвая зона",
-        "reading": 12,
+        "reading": 13,
         "examples": 7,
         "tasks": 25,
         "solutions": 25,
@@ -2220,15 +2238,16 @@ export const bookEngineData = {
       "section": "Основы языка",
       "sectionIndex": 0,
       "chapterIndex": 10,
-      "wordCount": 2140,
-      "readingMinutes": 12,
+      "wordCount": 2251,
+      "readingMinutes": 13,
       "h2": 20,
-      "h3": 48,
+      "h3": 50,
       "examples": 7,
       "tasks": 24,
       "solutions": 21,
       "mermaid": 8,
       "miniProjects": 1,
+      "access": "paid",
       "previous": {
         "title": "Временная мёртвая зона",
         "number": 10,
@@ -2257,12 +2276,6 @@ export const bookEngineData = {
           "link": "/docs/01-javascript/07-scope"
         },
         {
-          "term": "this",
-          "title": "Ключевое слово `this`",
-          "number": 29,
-          "link": "/docs/01-javascript/29-this"
-        },
-        {
           "term": "Prototype",
           "title": "Прототип",
           "number": 39,
@@ -2273,12 +2286,18 @@ export const bookEngineData = {
           "title": "Сборщик мусора",
           "number": 87,
           "link": "/docs/01-javascript/87-garbage-collector"
+        },
+        {
+          "term": "JSON",
+          "title": "JSON",
+          "number": 94,
+          "link": "/docs/01-javascript/94-json"
         }
       ],
       "card": {
         "chapterLabel": "Глава 11",
         "title": "Примитивные типы",
-        "reading": 12,
+        "reading": 13,
         "examples": 7,
         "tasks": 24,
         "solutions": 21,
@@ -2294,7 +2313,7 @@ export const bookEngineData = {
       "section": "Основы языка",
       "sectionIndex": 0,
       "chapterIndex": 11,
-      "wordCount": 2561,
+      "wordCount": 2628,
       "readingMinutes": 15,
       "h2": 20,
       "h3": 53,
@@ -2303,6 +2322,7 @@ export const bookEngineData = {
       "solutions": 34,
       "mermaid": 5,
       "miniProjects": 1,
+      "access": "paid",
       "previous": {
         "title": "Примитивные типы",
         "number": 11,
@@ -2325,12 +2345,6 @@ export const bookEngineData = {
       },
       "related": [
         {
-          "term": "this",
-          "title": "Ключевое слово `this`",
-          "number": 29,
-          "link": "/docs/01-javascript/29-this"
-        },
-        {
           "term": "Prototype",
           "title": "Прототип",
           "number": 39,
@@ -2347,6 +2361,12 @@ export const bookEngineData = {
           "title": "JSON",
           "number": 94,
           "link": "/docs/01-javascript/94-json"
+        },
+        {
+          "term": "Date",
+          "title": "Дата и время",
+          "number": 95,
+          "link": "/docs/01-javascript/95-date"
         }
       ],
       "card": {
@@ -2368,7 +2388,7 @@ export const bookEngineData = {
       "section": "Основы языка",
       "sectionIndex": 0,
       "chapterIndex": 12,
-      "wordCount": 2233,
+      "wordCount": 2265,
       "readingMinutes": 13,
       "h2": 20,
       "h3": 50,
@@ -2377,6 +2397,7 @@ export const bookEngineData = {
       "solutions": 28,
       "mermaid": 1,
       "miniProjects": 1,
+      "access": "paid",
       "previous": {
         "title": "Объектный тип",
         "number": 12,
@@ -2398,12 +2419,6 @@ export const bookEngineData = {
         "bar": "██░░░░░░░░░░"
       },
       "related": [
-        {
-          "term": "this",
-          "title": "Ключевое слово `this`",
-          "number": 29,
-          "link": "/docs/01-javascript/29-this"
-        },
         {
           "term": "Prototype",
           "title": "Прототип",
@@ -2445,6 +2460,7 @@ export const bookEngineData = {
       "solutions": 28,
       "mermaid": 13,
       "miniProjects": 1,
+      "access": "paid",
       "previous": {
         "title": "Ссылки",
         "number": 13,
@@ -2471,12 +2487,6 @@ export const bookEngineData = {
           "title": "Контекст выполнения",
           "number": 3,
           "link": "/docs/01-javascript/03-execution-context"
-        },
-        {
-          "term": "Call Stack",
-          "title": "Стек вызовов",
-          "number": 4,
-          "link": "/docs/01-javascript/04-call-stack"
         },
         {
           "term": "this",
@@ -2510,8 +2520,8 @@ export const bookEngineData = {
       "section": "Основы языка",
       "sectionIndex": 0,
       "chapterIndex": 14,
-      "wordCount": 1796,
-      "readingMinutes": 10,
+      "wordCount": 1847,
+      "readingMinutes": 11,
       "h2": 20,
       "h3": 50,
       "examples": 7,
@@ -2519,6 +2529,7 @@ export const bookEngineData = {
       "solutions": 31,
       "mermaid": 1,
       "miniProjects": 1,
+      "access": "paid",
       "previous": {
         "title": "Стек и куча",
         "number": 14,
@@ -2556,7 +2567,7 @@ export const bookEngineData = {
       "card": {
         "chapterLabel": "Глава 15",
         "title": "Преобразование типов",
-        "reading": 10,
+        "reading": 11,
         "examples": 7,
         "tasks": 39,
         "solutions": 31,
@@ -2581,6 +2592,7 @@ export const bookEngineData = {
       "solutions": 29,
       "mermaid": 1,
       "miniProjects": 1,
+      "access": "paid",
       "previous": {
         "title": "Преобразование типов",
         "number": 15,
@@ -2602,12 +2614,6 @@ export const bookEngineData = {
         "bar": "██░░░░░░░░░░"
       },
       "related": [
-        {
-          "term": "this",
-          "title": "Ключевое слово `this`",
-          "number": 29,
-          "link": "/docs/01-javascript/29-this"
-        },
         {
           "term": "JSON",
           "title": "JSON",
@@ -2643,6 +2649,7 @@ export const bookEngineData = {
       "solutions": 35,
       "mermaid": 2,
       "miniProjects": 1,
+      "access": "paid",
       "previous": {
         "title": "Равенство",
         "number": 16,
@@ -2664,12 +2671,6 @@ export const bookEngineData = {
         "bar": "██░░░░░░░░░░"
       },
       "related": [
-        {
-          "term": "this",
-          "title": "Ключевое слово `this`",
-          "number": 29,
-          "link": "/docs/01-javascript/29-this"
-        },
         {
           "term": "Date",
           "title": "Дата и время",
@@ -2696,15 +2697,16 @@ export const bookEngineData = {
       "section": "Управление программой",
       "sectionIndex": 1,
       "chapterIndex": 1,
-      "wordCount": 1321,
-      "readingMinutes": 8,
+      "wordCount": 1488,
+      "readingMinutes": 9,
       "h2": 20,
-      "h3": 41,
+      "h3": 43,
       "examples": 7,
       "tasks": 37,
       "solutions": 27,
       "mermaid": 1,
       "miniProjects": 1,
+      "access": "paid",
       "previous": {
         "title": "Операторы",
         "number": 17,
@@ -2725,18 +2727,11 @@ export const bookEngineData = {
         "total": 96,
         "bar": "██░░░░░░░░░░"
       },
-      "related": [
-        {
-          "term": "this",
-          "title": "Ключевое слово `this`",
-          "number": 29,
-          "link": "/docs/01-javascript/29-this"
-        }
-      ],
+      "related": [],
       "card": {
         "chapterLabel": "Глава 18",
         "title": "Условные конструкции",
-        "reading": 8,
+        "reading": 9,
         "examples": 7,
         "tasks": 37,
         "solutions": 27,
@@ -2761,6 +2756,7 @@ export const bookEngineData = {
       "solutions": 29,
       "mermaid": 1,
       "miniProjects": 1,
+      "access": "paid",
       "previous": {
         "title": "Условные конструкции",
         "number": 18,
@@ -2801,7 +2797,7 @@ export const bookEngineData = {
       "section": "Управление программой",
       "sectionIndex": 1,
       "chapterIndex": 3,
-      "wordCount": 1487,
+      "wordCount": 1565,
       "readingMinutes": 9,
       "h2": 20,
       "h3": 46,
@@ -2810,6 +2806,7 @@ export const bookEngineData = {
       "solutions": 26,
       "mermaid": 2,
       "miniProjects": 1,
+      "access": "paid",
       "previous": {
         "title": "Циклы",
         "number": 19,
@@ -2866,7 +2863,7 @@ export const bookEngineData = {
       "title": "Объявление функции",
       "number": 21,
       "part": "JavaScript",
-      "section": "Functions",
+      "section": "Функции",
       "sectionIndex": 2,
       "chapterIndex": 0,
       "wordCount": 1404,
@@ -2878,6 +2875,7 @@ export const bookEngineData = {
       "solutions": 29,
       "mermaid": 1,
       "miniProjects": 1,
+      "access": "paid",
       "previous": {
         "title": "Обработка ошибок",
         "number": 20,
@@ -2889,7 +2887,7 @@ export const bookEngineData = {
         "link": "/docs/01-javascript/22-function-expression"
       },
       "sectionLink": {
-        "title": "Functions",
+        "title": "Функции",
         "link": "/docs/01-javascript/21-function-declaration"
       },
       "progress": {
@@ -2922,7 +2920,7 @@ export const bookEngineData = {
       "title": "Функциональное выражение",
       "number": 22,
       "part": "JavaScript",
-      "section": "Functions",
+      "section": "Функции",
       "sectionIndex": 2,
       "chapterIndex": 1,
       "wordCount": 1697,
@@ -2934,6 +2932,7 @@ export const bookEngineData = {
       "solutions": 27,
       "mermaid": 1,
       "miniProjects": 1,
+      "access": "paid",
       "previous": {
         "title": "Объявление функции",
         "number": 21,
@@ -2945,7 +2944,7 @@ export const bookEngineData = {
         "link": "/docs/01-javascript/23-arrow-functions"
       },
       "sectionLink": {
-        "title": "Functions",
+        "title": "Функции",
         "link": "/docs/01-javascript/21-function-declaration"
       },
       "progress": {
@@ -2978,7 +2977,7 @@ export const bookEngineData = {
       "title": "Стрелочные функции",
       "number": 23,
       "part": "JavaScript",
-      "section": "Functions",
+      "section": "Функции",
       "sectionIndex": 2,
       "chapterIndex": 2,
       "wordCount": 1776,
@@ -2990,6 +2989,7 @@ export const bookEngineData = {
       "solutions": 32,
       "mermaid": 2,
       "miniProjects": 1,
+      "access": "paid",
       "previous": {
         "title": "Функциональное выражение",
         "number": 22,
@@ -3001,7 +3001,7 @@ export const bookEngineData = {
         "link": "/docs/01-javascript/24-parameters"
       },
       "sectionLink": {
-        "title": "Functions",
+        "title": "Функции",
         "link": "/docs/01-javascript/21-function-declaration"
       },
       "progress": {
@@ -3034,18 +3034,19 @@ export const bookEngineData = {
       "title": "Параметры",
       "number": 24,
       "part": "JavaScript",
-      "section": "Functions",
+      "section": "Функции",
       "sectionIndex": 2,
       "chapterIndex": 3,
-      "wordCount": 1461,
+      "wordCount": 1580,
       "readingMinutes": 9,
       "h2": 20,
-      "h3": 45,
+      "h3": 48,
       "examples": 7,
       "tasks": 35,
       "solutions": 28,
       "mermaid": 2,
       "miniProjects": 1,
+      "access": "paid",
       "previous": {
         "title": "Стрелочные функции",
         "number": 23,
@@ -3057,7 +3058,7 @@ export const bookEngineData = {
         "link": "/docs/01-javascript/25-return"
       },
       "sectionLink": {
-        "title": "Functions",
+        "title": "Функции",
         "link": "/docs/01-javascript/21-function-declaration"
       },
       "progress": {
@@ -3083,18 +3084,19 @@ export const bookEngineData = {
       "title": "Возврат значения",
       "number": 25,
       "part": "JavaScript",
-      "section": "Functions",
+      "section": "Функции",
       "sectionIndex": 2,
       "chapterIndex": 4,
-      "wordCount": 1527,
-      "readingMinutes": 9,
+      "wordCount": 1647,
+      "readingMinutes": 10,
       "h2": 20,
-      "h3": 44,
+      "h3": 47,
       "examples": 7,
       "tasks": 36,
       "solutions": 28,
       "mermaid": 2,
       "miniProjects": 1,
+      "access": "paid",
       "previous": {
         "title": "Параметры",
         "number": 24,
@@ -3106,7 +3108,7 @@ export const bookEngineData = {
         "link": "/docs/01-javascript/26-rest"
       },
       "sectionLink": {
-        "title": "Functions",
+        "title": "Функции",
         "link": "/docs/01-javascript/21-function-declaration"
       },
       "progress": {
@@ -3126,7 +3128,7 @@ export const bookEngineData = {
       "card": {
         "chapterLabel": "Глава 25",
         "title": "Возврат значения",
-        "reading": 9,
+        "reading": 10,
         "examples": 7,
         "tasks": 36,
         "solutions": 28,
@@ -3139,7 +3141,7 @@ export const bookEngineData = {
       "title": "Параметры сбора",
       "number": 26,
       "part": "JavaScript",
-      "section": "Functions",
+      "section": "Функции",
       "sectionIndex": 2,
       "chapterIndex": 5,
       "wordCount": 1430,
@@ -3151,6 +3153,7 @@ export const bookEngineData = {
       "solutions": 29,
       "mermaid": 2,
       "miniProjects": 1,
+      "access": "paid",
       "previous": {
         "title": "Возврат значения",
         "number": 25,
@@ -3162,7 +3165,7 @@ export const bookEngineData = {
         "link": "/docs/01-javascript/27-spread"
       },
       "sectionLink": {
-        "title": "Functions",
+        "title": "Функции",
         "link": "/docs/01-javascript/21-function-declaration"
       },
       "progress": {
@@ -3188,7 +3191,7 @@ export const bookEngineData = {
       "title": "Раскрытие",
       "number": 27,
       "part": "JavaScript",
-      "section": "Functions",
+      "section": "Функции",
       "sectionIndex": 2,
       "chapterIndex": 6,
       "wordCount": 1416,
@@ -3200,6 +3203,7 @@ export const bookEngineData = {
       "solutions": 28,
       "mermaid": 1,
       "miniProjects": 1,
+      "access": "paid",
       "previous": {
         "title": "Параметры сбора",
         "number": 26,
@@ -3211,7 +3215,7 @@ export const bookEngineData = {
         "link": "/docs/01-javascript/28-closures"
       },
       "sectionLink": {
-        "title": "Functions",
+        "title": "Функции",
         "link": "/docs/01-javascript/21-function-declaration"
       },
       "progress": {
@@ -3237,7 +3241,7 @@ export const bookEngineData = {
       "title": "Замыкания",
       "number": 28,
       "part": "JavaScript",
-      "section": "Functions",
+      "section": "Функции",
       "sectionIndex": 2,
       "chapterIndex": 7,
       "wordCount": 2196,
@@ -3249,6 +3253,7 @@ export const bookEngineData = {
       "solutions": 20,
       "mermaid": 15,
       "miniProjects": 1,
+      "access": "paid",
       "previous": {
         "title": "Раскрытие",
         "number": 27,
@@ -3260,7 +3265,7 @@ export const bookEngineData = {
         "link": "/docs/01-javascript/29-this"
       },
       "sectionLink": {
-        "title": "Functions",
+        "title": "Функции",
         "link": "/docs/01-javascript/21-function-declaration"
       },
       "progress": {
@@ -3311,7 +3316,7 @@ export const bookEngineData = {
       "title": "Ключевое слово `this`",
       "number": 29,
       "part": "JavaScript",
-      "section": "Functions",
+      "section": "Функции",
       "sectionIndex": 2,
       "chapterIndex": 8,
       "wordCount": 2160,
@@ -3323,6 +3328,7 @@ export const bookEngineData = {
       "solutions": 20,
       "mermaid": 17,
       "miniProjects": 1,
+      "access": "paid",
       "previous": {
         "title": "Замыкания",
         "number": 28,
@@ -3334,7 +3340,7 @@ export const bookEngineData = {
         "link": "/docs/01-javascript/30-call"
       },
       "sectionLink": {
-        "title": "Functions",
+        "title": "Функции",
         "link": "/docs/01-javascript/21-function-declaration"
       },
       "progress": {
@@ -3379,7 +3385,7 @@ export const bookEngineData = {
       "title": "Метод `call()`",
       "number": 30,
       "part": "JavaScript",
-      "section": "Functions",
+      "section": "Функции",
       "sectionIndex": 2,
       "chapterIndex": 9,
       "wordCount": 1952,
@@ -3391,6 +3397,7 @@ export const bookEngineData = {
       "solutions": 21,
       "mermaid": 17,
       "miniProjects": 1,
+      "access": "paid",
       "previous": {
         "title": "Ключевое слово `this`",
         "number": 29,
@@ -3402,7 +3409,7 @@ export const bookEngineData = {
         "link": "/docs/01-javascript/31-apply"
       },
       "sectionLink": {
-        "title": "Functions",
+        "title": "Функции",
         "link": "/docs/01-javascript/21-function-declaration"
       },
       "progress": {
@@ -3435,7 +3442,7 @@ export const bookEngineData = {
       "title": "Метод `apply()`",
       "number": 31,
       "part": "JavaScript",
-      "section": "Functions",
+      "section": "Функции",
       "sectionIndex": 2,
       "chapterIndex": 10,
       "wordCount": 1815,
@@ -3447,6 +3454,7 @@ export const bookEngineData = {
       "solutions": 20,
       "mermaid": 13,
       "miniProjects": 1,
+      "access": "paid",
       "previous": {
         "title": "Метод `call()`",
         "number": 30,
@@ -3458,7 +3466,7 @@ export const bookEngineData = {
         "link": "/docs/01-javascript/32-bind"
       },
       "sectionLink": {
-        "title": "Functions",
+        "title": "Функции",
         "link": "/docs/01-javascript/21-function-declaration"
       },
       "progress": {
@@ -3491,7 +3499,7 @@ export const bookEngineData = {
       "title": "Метод `bind()`",
       "number": 32,
       "part": "JavaScript",
-      "section": "Functions",
+      "section": "Функции",
       "sectionIndex": 2,
       "chapterIndex": 11,
       "wordCount": 1719,
@@ -3503,6 +3511,7 @@ export const bookEngineData = {
       "solutions": 28,
       "mermaid": 1,
       "miniProjects": 0,
+      "access": "paid",
       "previous": {
         "title": "Метод `apply()`",
         "number": 31,
@@ -3514,7 +3523,7 @@ export const bookEngineData = {
         "link": "/docs/01-javascript/33-objects"
       },
       "sectionLink": {
-        "title": "Functions",
+        "title": "Функции",
         "link": "/docs/01-javascript/21-function-declaration"
       },
       "progress": {
@@ -3553,7 +3562,7 @@ export const bookEngineData = {
       "title": "Объекты",
       "number": 33,
       "part": "JavaScript",
-      "section": "Objects",
+      "section": "Объекты",
       "sectionIndex": 3,
       "chapterIndex": 0,
       "wordCount": 1909,
@@ -3565,6 +3574,7 @@ export const bookEngineData = {
       "solutions": 33,
       "mermaid": 1,
       "miniProjects": 0,
+      "access": "paid",
       "previous": {
         "title": "Метод `bind()`",
         "number": 32,
@@ -3576,7 +3586,7 @@ export const bookEngineData = {
         "link": "/docs/01-javascript/34-destructuring"
       },
       "sectionLink": {
-        "title": "Objects",
+        "title": "Объекты",
         "link": "/docs/01-javascript/33-objects"
       },
       "progress": {
@@ -3615,7 +3625,7 @@ export const bookEngineData = {
       "title": "Деструктуризация",
       "number": 34,
       "part": "JavaScript",
-      "section": "Objects",
+      "section": "Объекты",
       "sectionIndex": 3,
       "chapterIndex": 1,
       "wordCount": 1496,
@@ -3627,6 +3637,7 @@ export const bookEngineData = {
       "solutions": 29,
       "mermaid": 1,
       "miniProjects": 0,
+      "access": "paid",
       "previous": {
         "title": "Объекты",
         "number": 33,
@@ -3638,7 +3649,7 @@ export const bookEngineData = {
         "link": "/docs/01-javascript/35-optional-chaining"
       },
       "sectionLink": {
-        "title": "Objects",
+        "title": "Объекты",
         "link": "/docs/01-javascript/33-objects"
       },
       "progress": {
@@ -3647,14 +3658,7 @@ export const bookEngineData = {
         "total": 96,
         "bar": "████░░░░░░░░"
       },
-      "related": [
-        {
-          "term": "this",
-          "title": "Ключевое слово `this`",
-          "number": 29,
-          "link": "/docs/01-javascript/29-this"
-        }
-      ],
+      "related": [],
       "card": {
         "chapterLabel": "Глава 34",
         "title": "Деструктуризация",
@@ -3671,7 +3675,7 @@ export const bookEngineData = {
       "title": "Опциональная цепочка",
       "number": 35,
       "part": "JavaScript",
-      "section": "Objects",
+      "section": "Объекты",
       "sectionIndex": 3,
       "chapterIndex": 2,
       "wordCount": 1444,
@@ -3683,6 +3687,7 @@ export const bookEngineData = {
       "solutions": 24,
       "mermaid": 1,
       "miniProjects": 0,
+      "access": "paid",
       "previous": {
         "title": "Деструктуризация",
         "number": 34,
@@ -3694,7 +3699,7 @@ export const bookEngineData = {
         "link": "/docs/01-javascript/36-nullish-coalescing"
       },
       "sectionLink": {
-        "title": "Objects",
+        "title": "Объекты",
         "link": "/docs/01-javascript/33-objects"
       },
       "progress": {
@@ -3720,7 +3725,7 @@ export const bookEngineData = {
       "title": "Нулевое слияние",
       "number": 36,
       "part": "JavaScript",
-      "section": "Objects",
+      "section": "Объекты",
       "sectionIndex": 3,
       "chapterIndex": 3,
       "wordCount": 1267,
@@ -3732,6 +3737,7 @@ export const bookEngineData = {
       "solutions": 29,
       "mermaid": 1,
       "miniProjects": 0,
+      "access": "paid",
       "previous": {
         "title": "Опциональная цепочка",
         "number": 35,
@@ -3743,7 +3749,7 @@ export const bookEngineData = {
         "link": "/docs/01-javascript/37-object-methods"
       },
       "sectionLink": {
-        "title": "Objects",
+        "title": "Объекты",
         "link": "/docs/01-javascript/33-objects"
       },
       "progress": {
@@ -3769,7 +3775,7 @@ export const bookEngineData = {
       "title": "Методы объекта",
       "number": 37,
       "part": "JavaScript",
-      "section": "Objects",
+      "section": "Объекты",
       "sectionIndex": 3,
       "chapterIndex": 4,
       "wordCount": 1590,
@@ -3781,6 +3787,7 @@ export const bookEngineData = {
       "solutions": 23,
       "mermaid": 1,
       "miniProjects": 0,
+      "access": "paid",
       "previous": {
         "title": "Нулевое слияние",
         "number": 36,
@@ -3792,7 +3799,7 @@ export const bookEngineData = {
         "link": "/docs/01-javascript/38-object-descriptors"
       },
       "sectionLink": {
-        "title": "Objects",
+        "title": "Объекты",
         "link": "/docs/01-javascript/33-objects"
       },
       "progress": {
@@ -3831,7 +3838,7 @@ export const bookEngineData = {
       "title": "Дескрипторы свойств",
       "number": 38,
       "part": "JavaScript",
-      "section": "Objects",
+      "section": "Объекты",
       "sectionIndex": 3,
       "chapterIndex": 5,
       "wordCount": 1512,
@@ -3843,6 +3850,7 @@ export const bookEngineData = {
       "solutions": 23,
       "mermaid": 1,
       "miniProjects": 0,
+      "access": "paid",
       "previous": {
         "title": "Методы объекта",
         "number": 37,
@@ -3854,7 +3862,7 @@ export const bookEngineData = {
         "link": "/docs/01-javascript/39-prototype"
       },
       "sectionLink": {
-        "title": "Objects",
+        "title": "Объекты",
         "link": "/docs/01-javascript/33-objects"
       },
       "progress": {
@@ -3863,14 +3871,7 @@ export const bookEngineData = {
         "total": 96,
         "bar": "█████░░░░░░░"
       },
-      "related": [
-        {
-          "term": "this",
-          "title": "Ключевое слово `this`",
-          "number": 29,
-          "link": "/docs/01-javascript/29-this"
-        }
-      ],
+      "related": [],
       "card": {
         "chapterLabel": "Глава 38",
         "title": "Дескрипторы свойств",
@@ -3887,7 +3888,7 @@ export const bookEngineData = {
       "title": "Прототип",
       "number": 39,
       "part": "JavaScript",
-      "section": "Objects",
+      "section": "Объекты",
       "sectionIndex": 3,
       "chapterIndex": 6,
       "wordCount": 2231,
@@ -3899,6 +3900,7 @@ export const bookEngineData = {
       "solutions": 26,
       "mermaid": 10,
       "miniProjects": 0,
+      "access": "paid",
       "previous": {
         "title": "Дескрипторы свойств",
         "number": 38,
@@ -3910,7 +3912,7 @@ export const bookEngineData = {
         "link": "/docs/01-javascript/40-prototype-chain"
       },
       "sectionLink": {
-        "title": "Objects",
+        "title": "Объекты",
         "link": "/docs/01-javascript/33-objects"
       },
       "progress": {
@@ -3943,7 +3945,7 @@ export const bookEngineData = {
       "title": "Цепочка прототипов",
       "number": 40,
       "part": "JavaScript",
-      "section": "Objects",
+      "section": "Объекты",
       "sectionIndex": 3,
       "chapterIndex": 7,
       "wordCount": 1774,
@@ -3955,6 +3957,7 @@ export const bookEngineData = {
       "solutions": 24,
       "mermaid": 17,
       "miniProjects": 0,
+      "access": "paid",
       "previous": {
         "title": "Прототип",
         "number": 39,
@@ -3966,7 +3969,7 @@ export const bookEngineData = {
         "link": "/docs/01-javascript/41-classes"
       },
       "sectionLink": {
-        "title": "Objects",
+        "title": "Объекты",
         "link": "/docs/01-javascript/33-objects"
       },
       "progress": {
@@ -4005,7 +4008,7 @@ export const bookEngineData = {
       "title": "Классы",
       "number": 41,
       "part": "JavaScript",
-      "section": "Objects",
+      "section": "Объекты",
       "sectionIndex": 3,
       "chapterIndex": 8,
       "wordCount": 1662,
@@ -4017,6 +4020,7 @@ export const bookEngineData = {
       "solutions": 22,
       "mermaid": 1,
       "miniProjects": 0,
+      "access": "paid",
       "previous": {
         "title": "Цепочка прототипов",
         "number": 40,
@@ -4028,7 +4032,7 @@ export const bookEngineData = {
         "link": "/docs/01-javascript/42-class-inheritance"
       },
       "sectionLink": {
-        "title": "Objects",
+        "title": "Объекты",
         "link": "/docs/01-javascript/33-objects"
       },
       "progress": {
@@ -4067,7 +4071,7 @@ export const bookEngineData = {
       "title": "Наследование классов",
       "number": 42,
       "part": "JavaScript",
-      "section": "Objects",
+      "section": "Объекты",
       "sectionIndex": 3,
       "chapterIndex": 9,
       "wordCount": 1580,
@@ -4079,6 +4083,7 @@ export const bookEngineData = {
       "solutions": 22,
       "mermaid": 1,
       "miniProjects": 0,
+      "access": "paid",
       "previous": {
         "title": "Классы",
         "number": 41,
@@ -4090,7 +4095,7 @@ export const bookEngineData = {
         "link": "/docs/01-javascript/43-super"
       },
       "sectionLink": {
-        "title": "Objects",
+        "title": "Объекты",
         "link": "/docs/01-javascript/33-objects"
       },
       "progress": {
@@ -4129,7 +4134,7 @@ export const bookEngineData = {
       "title": "Ключевое слово `super`",
       "number": 43,
       "part": "JavaScript",
-      "section": "Objects",
+      "section": "Объекты",
       "sectionIndex": 3,
       "chapterIndex": 10,
       "wordCount": 1591,
@@ -4141,6 +4146,7 @@ export const bookEngineData = {
       "solutions": 21,
       "mermaid": 1,
       "miniProjects": 0,
+      "access": "paid",
       "previous": {
         "title": "Наследование классов",
         "number": 42,
@@ -4152,7 +4158,7 @@ export const bookEngineData = {
         "link": "/docs/01-javascript/44-arrays"
       },
       "sectionLink": {
-        "title": "Objects",
+        "title": "Объекты",
         "link": "/docs/01-javascript/33-objects"
       },
       "progress": {
@@ -4185,7 +4191,7 @@ export const bookEngineData = {
       "title": "Массивы",
       "number": 44,
       "part": "JavaScript",
-      "section": "Arrays",
+      "section": "Массивы",
       "sectionIndex": 4,
       "chapterIndex": 0,
       "wordCount": 1378,
@@ -4197,6 +4203,7 @@ export const bookEngineData = {
       "solutions": 22,
       "mermaid": 1,
       "miniProjects": 0,
+      "access": "paid",
       "previous": {
         "title": "Ключевое слово `super`",
         "number": 43,
@@ -4208,7 +4215,7 @@ export const bookEngineData = {
         "link": "/docs/01-javascript/45-push-pop"
       },
       "sectionLink": {
-        "title": "Arrays",
+        "title": "Массивы",
         "link": "/docs/01-javascript/44-arrays"
       },
       "progress": {
@@ -4241,18 +4248,19 @@ export const bookEngineData = {
       "title": "`push()` и `pop()`",
       "number": 45,
       "part": "JavaScript",
-      "section": "Arrays",
+      "section": "Массивы",
       "sectionIndex": 4,
       "chapterIndex": 1,
-      "wordCount": 1368,
-      "readingMinutes": 8,
+      "wordCount": 1495,
+      "readingMinutes": 9,
       "h2": 20,
-      "h3": 30,
+      "h3": 32,
       "examples": 8,
       "tasks": 36,
       "solutions": 22,
       "mermaid": 1,
       "miniProjects": 0,
+      "access": "paid",
       "previous": {
         "title": "Массивы",
         "number": 44,
@@ -4264,7 +4272,7 @@ export const bookEngineData = {
         "link": "/docs/01-javascript/46-shift-unshift"
       },
       "sectionLink": {
-        "title": "Arrays",
+        "title": "Массивы",
         "link": "/docs/01-javascript/44-arrays"
       },
       "progress": {
@@ -4277,7 +4285,7 @@ export const bookEngineData = {
       "card": {
         "chapterLabel": "Глава 45",
         "title": "`push()` и `pop()`",
-        "reading": 8,
+        "reading": 9,
         "examples": 8,
         "tasks": 36,
         "solutions": 22,
@@ -4290,7 +4298,7 @@ export const bookEngineData = {
       "title": "`shift()` и `unshift()`",
       "number": 46,
       "part": "JavaScript",
-      "section": "Arrays",
+      "section": "Массивы",
       "sectionIndex": 4,
       "chapterIndex": 2,
       "wordCount": 1616,
@@ -4302,6 +4310,7 @@ export const bookEngineData = {
       "solutions": 19,
       "mermaid": 4,
       "miniProjects": 0,
+      "access": "paid",
       "previous": {
         "title": "`push()` и `pop()`",
         "number": 45,
@@ -4313,7 +4322,7 @@ export const bookEngineData = {
         "link": "/docs/01-javascript/47-splice"
       },
       "sectionLink": {
-        "title": "Arrays",
+        "title": "Массивы",
         "link": "/docs/01-javascript/44-arrays"
       },
       "progress": {
@@ -4339,7 +4348,7 @@ export const bookEngineData = {
       "title": "Метод `splice()`",
       "number": 47,
       "part": "JavaScript",
-      "section": "Arrays",
+      "section": "Массивы",
       "sectionIndex": 4,
       "chapterIndex": 3,
       "wordCount": 1187,
@@ -4351,6 +4360,7 @@ export const bookEngineData = {
       "solutions": 13,
       "mermaid": 3,
       "miniProjects": 1,
+      "access": "paid",
       "previous": {
         "title": "`shift()` и `unshift()`",
         "number": 46,
@@ -4362,7 +4372,7 @@ export const bookEngineData = {
         "link": "/docs/01-javascript/48-slice"
       },
       "sectionLink": {
-        "title": "Arrays",
+        "title": "Массивы",
         "link": "/docs/01-javascript/44-arrays"
       },
       "progress": {
@@ -4388,7 +4398,7 @@ export const bookEngineData = {
       "title": "Метод `slice()`",
       "number": 48,
       "part": "JavaScript",
-      "section": "Arrays",
+      "section": "Массивы",
       "sectionIndex": 4,
       "chapterIndex": 4,
       "wordCount": 1004,
@@ -4400,6 +4410,7 @@ export const bookEngineData = {
       "solutions": 11,
       "mermaid": 2,
       "miniProjects": 1,
+      "access": "paid",
       "previous": {
         "title": "Метод `splice()`",
         "number": 47,
@@ -4411,7 +4422,7 @@ export const bookEngineData = {
         "link": "/docs/01-javascript/49-iteration"
       },
       "sectionLink": {
-        "title": "Arrays",
+        "title": "Массивы",
         "link": "/docs/01-javascript/44-arrays"
       },
       "progress": {
@@ -4437,7 +4448,7 @@ export const bookEngineData = {
       "title": "Перебор массива",
       "number": 49,
       "part": "JavaScript",
-      "section": "Arrays",
+      "section": "Массивы",
       "sectionIndex": 4,
       "chapterIndex": 5,
       "wordCount": 1061,
@@ -4449,6 +4460,7 @@ export const bookEngineData = {
       "solutions": 11,
       "mermaid": 1,
       "miniProjects": 1,
+      "access": "paid",
       "previous": {
         "title": "Метод `slice()`",
         "number": 48,
@@ -4460,7 +4472,7 @@ export const bookEngineData = {
         "link": "/docs/01-javascript/50-foreach"
       },
       "sectionLink": {
-        "title": "Arrays",
+        "title": "Массивы",
         "link": "/docs/01-javascript/44-arrays"
       },
       "progress": {
@@ -4486,7 +4498,7 @@ export const bookEngineData = {
       "title": "Метод `forEach()`",
       "number": 50,
       "part": "JavaScript",
-      "section": "Arrays",
+      "section": "Массивы",
       "sectionIndex": 4,
       "chapterIndex": 6,
       "wordCount": 995,
@@ -4498,6 +4510,7 @@ export const bookEngineData = {
       "solutions": 11,
       "mermaid": 1,
       "miniProjects": 1,
+      "access": "paid",
       "previous": {
         "title": "Перебор массива",
         "number": 49,
@@ -4509,7 +4522,7 @@ export const bookEngineData = {
         "link": "/docs/01-javascript/51-map"
       },
       "sectionLink": {
-        "title": "Arrays",
+        "title": "Массивы",
         "link": "/docs/01-javascript/44-arrays"
       },
       "progress": {
@@ -4542,7 +4555,7 @@ export const bookEngineData = {
       "title": "Метод `map()`",
       "number": 51,
       "part": "JavaScript",
-      "section": "Arrays",
+      "section": "Массивы",
       "sectionIndex": 4,
       "chapterIndex": 7,
       "wordCount": 1088,
@@ -4554,6 +4567,7 @@ export const bookEngineData = {
       "solutions": 11,
       "mermaid": 1,
       "miniProjects": 1,
+      "access": "paid",
       "previous": {
         "title": "Метод `forEach()`",
         "number": 50,
@@ -4565,7 +4579,7 @@ export const bookEngineData = {
         "link": "/docs/01-javascript/52-filter"
       },
       "sectionLink": {
-        "title": "Arrays",
+        "title": "Массивы",
         "link": "/docs/01-javascript/44-arrays"
       },
       "progress": {
@@ -4598,7 +4612,7 @@ export const bookEngineData = {
       "title": "Метод `filter()`",
       "number": 52,
       "part": "JavaScript",
-      "section": "Arrays",
+      "section": "Массивы",
       "sectionIndex": 4,
       "chapterIndex": 8,
       "wordCount": 1056,
@@ -4610,6 +4624,7 @@ export const bookEngineData = {
       "solutions": 11,
       "mermaid": 1,
       "miniProjects": 1,
+      "access": "paid",
       "previous": {
         "title": "Метод `map()`",
         "number": 51,
@@ -4621,7 +4636,7 @@ export const bookEngineData = {
         "link": "/docs/01-javascript/53-reduce"
       },
       "sectionLink": {
-        "title": "Arrays",
+        "title": "Массивы",
         "link": "/docs/01-javascript/44-arrays"
       },
       "progress": {
@@ -4647,7 +4662,7 @@ export const bookEngineData = {
       "title": "Метод `reduce()`",
       "number": 53,
       "part": "JavaScript",
-      "section": "Arrays",
+      "section": "Массивы",
       "sectionIndex": 4,
       "chapterIndex": 9,
       "wordCount": 1127,
@@ -4659,6 +4674,7 @@ export const bookEngineData = {
       "solutions": 11,
       "mermaid": 1,
       "miniProjects": 1,
+      "access": "paid",
       "previous": {
         "title": "Метод `filter()`",
         "number": 52,
@@ -4670,7 +4686,7 @@ export const bookEngineData = {
         "link": "/docs/01-javascript/54-chaining"
       },
       "sectionLink": {
-        "title": "Arrays",
+        "title": "Массивы",
         "link": "/docs/01-javascript/44-arrays"
       },
       "progress": {
@@ -4696,7 +4712,7 @@ export const bookEngineData = {
       "title": "Цепочки вызовов",
       "number": 54,
       "part": "JavaScript",
-      "section": "Arrays",
+      "section": "Массивы",
       "sectionIndex": 4,
       "chapterIndex": 10,
       "wordCount": 1092,
@@ -4708,6 +4724,7 @@ export const bookEngineData = {
       "solutions": 11,
       "mermaid": 1,
       "miniProjects": 1,
+      "access": "paid",
       "previous": {
         "title": "Метод `reduce()`",
         "number": 53,
@@ -4719,7 +4736,7 @@ export const bookEngineData = {
         "link": "/docs/01-javascript/55-find"
       },
       "sectionLink": {
-        "title": "Arrays",
+        "title": "Массивы",
         "link": "/docs/01-javascript/44-arrays"
       },
       "progress": {
@@ -4745,7 +4762,7 @@ export const bookEngineData = {
       "title": "Метод `find()`",
       "number": 55,
       "part": "JavaScript",
-      "section": "Arrays",
+      "section": "Массивы",
       "sectionIndex": 4,
       "chapterIndex": 11,
       "wordCount": 1038,
@@ -4757,6 +4774,7 @@ export const bookEngineData = {
       "solutions": 11,
       "mermaid": 1,
       "miniProjects": 1,
+      "access": "paid",
       "previous": {
         "title": "Цепочки вызовов",
         "number": 54,
@@ -4768,7 +4786,7 @@ export const bookEngineData = {
         "link": "/docs/01-javascript/56-some"
       },
       "sectionLink": {
-        "title": "Arrays",
+        "title": "Массивы",
         "link": "/docs/01-javascript/44-arrays"
       },
       "progress": {
@@ -4794,7 +4812,7 @@ export const bookEngineData = {
       "title": "Метод `some()`",
       "number": 56,
       "part": "JavaScript",
-      "section": "Arrays",
+      "section": "Массивы",
       "sectionIndex": 4,
       "chapterIndex": 12,
       "wordCount": 943,
@@ -4806,6 +4824,7 @@ export const bookEngineData = {
       "solutions": 11,
       "mermaid": 1,
       "miniProjects": 1,
+      "access": "paid",
       "previous": {
         "title": "Метод `find()`",
         "number": 55,
@@ -4817,7 +4836,7 @@ export const bookEngineData = {
         "link": "/docs/01-javascript/57-every"
       },
       "sectionLink": {
-        "title": "Arrays",
+        "title": "Массивы",
         "link": "/docs/01-javascript/44-arrays"
       },
       "progress": {
@@ -4843,7 +4862,7 @@ export const bookEngineData = {
       "title": "Метод `every()`",
       "number": 57,
       "part": "JavaScript",
-      "section": "Arrays",
+      "section": "Массивы",
       "sectionIndex": 4,
       "chapterIndex": 13,
       "wordCount": 982,
@@ -4855,6 +4874,7 @@ export const bookEngineData = {
       "solutions": 11,
       "mermaid": 1,
       "miniProjects": 1,
+      "access": "paid",
       "previous": {
         "title": "Метод `some()`",
         "number": 56,
@@ -4866,7 +4886,7 @@ export const bookEngineData = {
         "link": "/docs/01-javascript/58-includes"
       },
       "sectionLink": {
-        "title": "Arrays",
+        "title": "Массивы",
         "link": "/docs/01-javascript/44-arrays"
       },
       "progress": {
@@ -4892,7 +4912,7 @@ export const bookEngineData = {
       "title": "Метод `includes()`",
       "number": 58,
       "part": "JavaScript",
-      "section": "Arrays",
+      "section": "Массивы",
       "sectionIndex": 4,
       "chapterIndex": 14,
       "wordCount": 1012,
@@ -4904,6 +4924,7 @@ export const bookEngineData = {
       "solutions": 11,
       "mermaid": 1,
       "miniProjects": 1,
+      "access": "paid",
       "previous": {
         "title": "Метод `every()`",
         "number": 57,
@@ -4915,7 +4936,7 @@ export const bookEngineData = {
         "link": "/docs/01-javascript/59-sort"
       },
       "sectionLink": {
-        "title": "Arrays",
+        "title": "Массивы",
         "link": "/docs/01-javascript/44-arrays"
       },
       "progress": {
@@ -4941,7 +4962,7 @@ export const bookEngineData = {
       "title": "Метод `sort()`",
       "number": 59,
       "part": "JavaScript",
-      "section": "Arrays",
+      "section": "Массивы",
       "sectionIndex": 4,
       "chapterIndex": 15,
       "wordCount": 1097,
@@ -4953,6 +4974,7 @@ export const bookEngineData = {
       "solutions": 10,
       "mermaid": 1,
       "miniProjects": 1,
+      "access": "paid",
       "previous": {
         "title": "Метод `includes()`",
         "number": 58,
@@ -4964,7 +4986,7 @@ export const bookEngineData = {
         "link": "/docs/01-javascript/60-reverse"
       },
       "sectionLink": {
-        "title": "Arrays",
+        "title": "Массивы",
         "link": "/docs/01-javascript/44-arrays"
       },
       "progress": {
@@ -4990,7 +5012,7 @@ export const bookEngineData = {
       "title": "Метод `reverse()`",
       "number": 60,
       "part": "JavaScript",
-      "section": "Arrays",
+      "section": "Массивы",
       "sectionIndex": 4,
       "chapterIndex": 16,
       "wordCount": 937,
@@ -5002,6 +5024,7 @@ export const bookEngineData = {
       "solutions": 10,
       "mermaid": 1,
       "miniProjects": 1,
+      "access": "paid",
       "previous": {
         "title": "Метод `sort()`",
         "number": 59,
@@ -5013,7 +5036,7 @@ export const bookEngineData = {
         "link": "/docs/01-javascript/61-execution-context"
       },
       "sectionLink": {
-        "title": "Arrays",
+        "title": "Массивы",
         "link": "/docs/01-javascript/44-arrays"
       },
       "progress": {
@@ -5039,7 +5062,7 @@ export const bookEngineData = {
       "title": "Контекст выполнения: углублённое повторение",
       "number": 61,
       "part": "JavaScript",
-      "section": "Execution Model Revisited",
+      "section": "Модель выполнения ещё раз",
       "sectionIndex": 5,
       "chapterIndex": 0,
       "wordCount": 1184,
@@ -5051,6 +5074,7 @@ export const bookEngineData = {
       "solutions": 10,
       "mermaid": 6,
       "miniProjects": 0,
+      "access": "paid",
       "previous": {
         "title": "Метод `reverse()`",
         "number": 60,
@@ -5062,7 +5086,7 @@ export const bookEngineData = {
         "link": "/docs/01-javascript/62-call-stack"
       },
       "sectionLink": {
-        "title": "Execution Model Revisited",
+        "title": "Модель выполнения ещё раз",
         "link": "/docs/01-javascript/61-execution-context"
       },
       "progress": {
@@ -5113,7 +5137,7 @@ export const bookEngineData = {
       "title": "Стек вызовов: углублённое повторение",
       "number": 62,
       "part": "JavaScript",
-      "section": "Execution Model Revisited",
+      "section": "Модель выполнения ещё раз",
       "sectionIndex": 5,
       "chapterIndex": 1,
       "wordCount": 1090,
@@ -5125,6 +5149,7 @@ export const bookEngineData = {
       "solutions": 10,
       "mermaid": 10,
       "miniProjects": 0,
+      "access": "paid",
       "previous": {
         "title": "Контекст выполнения: углублённое повторение",
         "number": 61,
@@ -5136,7 +5161,7 @@ export const bookEngineData = {
         "link": "/docs/01-javascript/63-memory-model"
       },
       "sectionLink": {
-        "title": "Execution Model Revisited",
+        "title": "Модель выполнения ещё раз",
         "link": "/docs/01-javascript/61-execution-context"
       },
       "progress": {
@@ -5175,7 +5200,7 @@ export const bookEngineData = {
       "title": "Модель памяти",
       "number": 63,
       "part": "JavaScript",
-      "section": "Execution Model Revisited",
+      "section": "Модель выполнения ещё раз",
       "sectionIndex": 5,
       "chapterIndex": 2,
       "wordCount": 1027,
@@ -5187,6 +5212,7 @@ export const bookEngineData = {
       "solutions": 10,
       "mermaid": 7,
       "miniProjects": 0,
+      "access": "paid",
       "previous": {
         "title": "Стек вызовов: углублённое повторение",
         "number": 62,
@@ -5198,7 +5224,7 @@ export const bookEngineData = {
         "link": "/docs/01-javascript/64-hoisting-tdz"
       },
       "sectionLink": {
-        "title": "Execution Model Revisited",
+        "title": "Модель выполнения ещё раз",
         "link": "/docs/01-javascript/61-execution-context"
       },
       "progress": {
@@ -5237,7 +5263,7 @@ export const bookEngineData = {
       "title": "Подъём объявлений и временная мёртвая зона",
       "number": 64,
       "part": "JavaScript",
-      "section": "Execution Model Revisited",
+      "section": "Модель выполнения ещё раз",
       "sectionIndex": 5,
       "chapterIndex": 3,
       "wordCount": 1274,
@@ -5249,6 +5275,7 @@ export const bookEngineData = {
       "solutions": 10,
       "mermaid": 1,
       "miniProjects": 0,
+      "access": "paid",
       "previous": {
         "title": "Модель памяти",
         "number": 63,
@@ -5260,7 +5287,7 @@ export const bookEngineData = {
         "link": "/docs/01-javascript/65-closures"
       },
       "sectionLink": {
-        "title": "Execution Model Revisited",
+        "title": "Модель выполнения ещё раз",
         "link": "/docs/01-javascript/61-execution-context"
       },
       "progress": {
@@ -5305,7 +5332,7 @@ export const bookEngineData = {
       "title": "Замыкания: углублённое повторение",
       "number": 65,
       "part": "JavaScript",
-      "section": "Function Context",
+      "section": "Контекст функции",
       "sectionIndex": 6,
       "chapterIndex": 0,
       "wordCount": 1167,
@@ -5317,6 +5344,7 @@ export const bookEngineData = {
       "solutions": 10,
       "mermaid": 6,
       "miniProjects": 1,
+      "access": "paid",
       "previous": {
         "title": "Подъём объявлений и временная мёртвая зона",
         "number": 64,
@@ -5328,7 +5356,7 @@ export const bookEngineData = {
         "link": "/docs/01-javascript/66-this"
       },
       "sectionLink": {
-        "title": "Function Context",
+        "title": "Контекст функции",
         "link": "/docs/01-javascript/65-closures"
       },
       "progress": {
@@ -5379,7 +5407,7 @@ export const bookEngineData = {
       "title": "`this`: углублённое повторение",
       "number": 66,
       "part": "JavaScript",
-      "section": "Function Context",
+      "section": "Контекст функции",
       "sectionIndex": 6,
       "chapterIndex": 1,
       "wordCount": 1149,
@@ -5391,6 +5419,7 @@ export const bookEngineData = {
       "solutions": 10,
       "mermaid": 6,
       "miniProjects": 1,
+      "access": "paid",
       "previous": {
         "title": "Замыкания: углублённое повторение",
         "number": 65,
@@ -5402,7 +5431,7 @@ export const bookEngineData = {
         "link": "/docs/01-javascript/67-call-apply-bind"
       },
       "sectionLink": {
-        "title": "Function Context",
+        "title": "Контекст функции",
         "link": "/docs/01-javascript/65-closures"
       },
       "progress": {
@@ -5447,7 +5476,7 @@ export const bookEngineData = {
       "title": "`call()`, `apply()`, `bind()`",
       "number": 67,
       "part": "JavaScript",
-      "section": "Function Context",
+      "section": "Контекст функции",
       "sectionIndex": 6,
       "chapterIndex": 2,
       "wordCount": 1162,
@@ -5459,6 +5488,7 @@ export const bookEngineData = {
       "solutions": 10,
       "mermaid": 1,
       "miniProjects": 1,
+      "access": "paid",
       "previous": {
         "title": "`this`: углублённое повторение",
         "number": 66,
@@ -5470,7 +5500,7 @@ export const bookEngineData = {
         "link": "/docs/01-javascript/68-context-management"
       },
       "sectionLink": {
-        "title": "Function Context",
+        "title": "Контекст функции",
         "link": "/docs/01-javascript/65-closures"
       },
       "progress": {
@@ -5509,7 +5539,7 @@ export const bookEngineData = {
       "title": "Практическое управление контекстом",
       "number": 68,
       "part": "JavaScript",
-      "section": "Function Context",
+      "section": "Контекст функции",
       "sectionIndex": 6,
       "chapterIndex": 3,
       "wordCount": 1259,
@@ -5521,6 +5551,7 @@ export const bookEngineData = {
       "solutions": 10,
       "mermaid": 1,
       "miniProjects": 1,
+      "access": "paid",
       "previous": {
         "title": "`call()`, `apply()`, `bind()`",
         "number": 67,
@@ -5532,7 +5563,7 @@ export const bookEngineData = {
         "link": "/docs/01-javascript/69-synchronous-execution"
       },
       "sectionLink": {
-        "title": "Function Context",
+        "title": "Контекст функции",
         "link": "/docs/01-javascript/65-closures"
       },
       "progress": {
@@ -5571,7 +5602,7 @@ export const bookEngineData = {
       "title": "Синхронное выполнение",
       "number": 69,
       "part": "JavaScript",
-      "section": "Async JavaScript",
+      "section": "Асинхронный JavaScript",
       "sectionIndex": 7,
       "chapterIndex": 0,
       "wordCount": 1248,
@@ -5583,6 +5614,7 @@ export const bookEngineData = {
       "solutions": 10,
       "mermaid": 1,
       "miniProjects": 1,
+      "access": "paid",
       "previous": {
         "title": "Практическое управление контекстом",
         "number": 68,
@@ -5594,7 +5626,7 @@ export const bookEngineData = {
         "link": "/docs/01-javascript/70-asynchronous-programming"
       },
       "sectionLink": {
-        "title": "Async JavaScript",
+        "title": "Асинхронный JavaScript",
         "link": "/docs/01-javascript/69-synchronous-execution"
       },
       "progress": {
@@ -5645,7 +5677,7 @@ export const bookEngineData = {
       "title": "Асинхронное программирование",
       "number": 70,
       "part": "JavaScript",
-      "section": "Async JavaScript",
+      "section": "Асинхронный JavaScript",
       "sectionIndex": 7,
       "chapterIndex": 1,
       "wordCount": 1277,
@@ -5657,6 +5689,7 @@ export const bookEngineData = {
       "solutions": 10,
       "mermaid": 1,
       "miniProjects": 1,
+      "access": "paid",
       "previous": {
         "title": "Синхронное выполнение",
         "number": 69,
@@ -5668,7 +5701,7 @@ export const bookEngineData = {
         "link": "/docs/01-javascript/71-callback"
       },
       "sectionLink": {
-        "title": "Async JavaScript",
+        "title": "Асинхронный JavaScript",
         "link": "/docs/01-javascript/69-synchronous-execution"
       },
       "progress": {
@@ -5707,7 +5740,7 @@ export const bookEngineData = {
       "title": "Обратный вызов",
       "number": 71,
       "part": "JavaScript",
-      "section": "Async JavaScript",
+      "section": "Асинхронный JavaScript",
       "sectionIndex": 7,
       "chapterIndex": 2,
       "wordCount": 1207,
@@ -5719,6 +5752,7 @@ export const bookEngineData = {
       "solutions": 10,
       "mermaid": 1,
       "miniProjects": 1,
+      "access": "paid",
       "previous": {
         "title": "Асинхронное программирование",
         "number": 70,
@@ -5730,7 +5764,7 @@ export const bookEngineData = {
         "link": "/docs/01-javascript/72-promise"
       },
       "sectionLink": {
-        "title": "Async JavaScript",
+        "title": "Асинхронный JavaScript",
         "link": "/docs/01-javascript/69-synchronous-execution"
       },
       "progress": {
@@ -5781,7 +5815,7 @@ export const bookEngineData = {
       "title": "Промис",
       "number": 72,
       "part": "JavaScript",
-      "section": "Async JavaScript",
+      "section": "Асинхронный JavaScript",
       "sectionIndex": 7,
       "chapterIndex": 3,
       "wordCount": 1189,
@@ -5793,6 +5827,7 @@ export const bookEngineData = {
       "solutions": 10,
       "mermaid": 6,
       "miniProjects": 1,
+      "access": "paid",
       "previous": {
         "title": "Обратный вызов",
         "number": 71,
@@ -5804,7 +5839,7 @@ export const bookEngineData = {
         "link": "/docs/01-javascript/73-event-loop"
       },
       "sectionLink": {
-        "title": "Async JavaScript",
+        "title": "Асинхронный JavaScript",
         "link": "/docs/01-javascript/69-synchronous-execution"
       },
       "progress": {
@@ -5843,7 +5878,7 @@ export const bookEngineData = {
       "title": "Событийный цикл",
       "number": 73,
       "part": "JavaScript",
-      "section": "Async JavaScript",
+      "section": "Асинхронный JavaScript",
       "sectionIndex": 7,
       "chapterIndex": 4,
       "wordCount": 1055,
@@ -5855,6 +5890,7 @@ export const bookEngineData = {
       "solutions": 10,
       "mermaid": 8,
       "miniProjects": 1,
+      "access": "paid",
       "previous": {
         "title": "Промис",
         "number": 72,
@@ -5866,7 +5902,7 @@ export const bookEngineData = {
         "link": "/docs/01-javascript/74-web-apis"
       },
       "sectionLink": {
-        "title": "Async JavaScript",
+        "title": "Асинхронный JavaScript",
         "link": "/docs/01-javascript/69-synchronous-execution"
       },
       "progress": {
@@ -5905,7 +5941,7 @@ export const bookEngineData = {
       "title": "Браузерные API",
       "number": 74,
       "part": "JavaScript",
-      "section": "Async JavaScript",
+      "section": "Асинхронный JavaScript",
       "sectionIndex": 7,
       "chapterIndex": 5,
       "wordCount": 1165,
@@ -5917,6 +5953,7 @@ export const bookEngineData = {
       "solutions": 10,
       "mermaid": 1,
       "miniProjects": 1,
+      "access": "paid",
       "previous": {
         "title": "Событийный цикл",
         "number": 73,
@@ -5928,7 +5965,7 @@ export const bookEngineData = {
         "link": "/docs/01-javascript/75-microtasks"
       },
       "sectionLink": {
-        "title": "Async JavaScript",
+        "title": "Асинхронный JavaScript",
         "link": "/docs/01-javascript/69-synchronous-execution"
       },
       "progress": {
@@ -5973,18 +6010,19 @@ export const bookEngineData = {
       "title": "Микрозадачи",
       "number": 75,
       "part": "JavaScript",
-      "section": "Async JavaScript",
+      "section": "Асинхронный JavaScript",
       "sectionIndex": 7,
       "chapterIndex": 6,
-      "wordCount": 1009,
-      "readingMinutes": 6,
+      "wordCount": 1093,
+      "readingMinutes": 7,
       "h2": 17,
-      "h3": 11,
+      "h3": 13,
       "examples": 5,
       "tasks": 6,
       "solutions": 10,
       "mermaid": 1,
       "miniProjects": 1,
+      "access": "paid",
       "previous": {
         "title": "Браузерные API",
         "number": 74,
@@ -5996,7 +6034,7 @@ export const bookEngineData = {
         "link": "/docs/01-javascript/76-macrotasks"
       },
       "sectionLink": {
-        "title": "Async JavaScript",
+        "title": "Асинхронный JavaScript",
         "link": "/docs/01-javascript/69-synchronous-execution"
       },
       "progress": {
@@ -6028,7 +6066,7 @@ export const bookEngineData = {
       "card": {
         "chapterLabel": "Глава 75",
         "title": "Микрозадачи",
-        "reading": 6,
+        "reading": 7,
         "examples": 5,
         "tasks": 6,
         "solutions": 10,
@@ -6041,18 +6079,19 @@ export const bookEngineData = {
       "title": "Макрозадачи",
       "number": 76,
       "part": "JavaScript",
-      "section": "Async JavaScript",
+      "section": "Асинхронный JavaScript",
       "sectionIndex": 7,
       "chapterIndex": 7,
-      "wordCount": 1081,
+      "wordCount": 1181,
       "readingMinutes": 7,
       "h2": 17,
-      "h3": 11,
+      "h3": 13,
       "examples": 5,
       "tasks": 6,
       "solutions": 10,
       "mermaid": 1,
       "miniProjects": 1,
+      "access": "paid",
       "previous": {
         "title": "Микрозадачи",
         "number": 75,
@@ -6064,7 +6103,7 @@ export const bookEngineData = {
         "link": "/docs/01-javascript/77-promise-api"
       },
       "sectionLink": {
-        "title": "Async JavaScript",
+        "title": "Асинхронный JavaScript",
         "link": "/docs/01-javascript/69-synchronous-execution"
       },
       "progress": {
@@ -6109,7 +6148,7 @@ export const bookEngineData = {
       "title": "Методы `Promise`",
       "number": 77,
       "part": "JavaScript",
-      "section": "Async JavaScript",
+      "section": "Асинхронный JavaScript",
       "sectionIndex": 7,
       "chapterIndex": 8,
       "wordCount": 910,
@@ -6121,6 +6160,7 @@ export const bookEngineData = {
       "solutions": 10,
       "mermaid": 4,
       "miniProjects": 1,
+      "access": "paid",
       "previous": {
         "title": "Макрозадачи",
         "number": 76,
@@ -6132,7 +6172,7 @@ export const bookEngineData = {
         "link": "/docs/01-javascript/78-async-await"
       },
       "sectionLink": {
-        "title": "Async JavaScript",
+        "title": "Асинхронный JavaScript",
         "link": "/docs/01-javascript/69-synchronous-execution"
       },
       "progress": {
@@ -6177,7 +6217,7 @@ export const bookEngineData = {
       "title": "`async` и `await`",
       "number": 78,
       "part": "JavaScript",
-      "section": "Async JavaScript",
+      "section": "Асинхронный JavaScript",
       "sectionIndex": 7,
       "chapterIndex": 9,
       "wordCount": 1004,
@@ -6189,6 +6229,7 @@ export const bookEngineData = {
       "solutions": 10,
       "mermaid": 4,
       "miniProjects": 1,
+      "access": "paid",
       "previous": {
         "title": "Методы `Promise`",
         "number": 77,
@@ -6200,7 +6241,7 @@ export const bookEngineData = {
         "link": "/docs/01-javascript/79-async-error-handling"
       },
       "sectionLink": {
-        "title": "Async JavaScript",
+        "title": "Асинхронный JavaScript",
         "link": "/docs/01-javascript/69-synchronous-execution"
       },
       "progress": {
@@ -6239,7 +6280,7 @@ export const bookEngineData = {
       "title": "Обработка ошибок в асинхронном коде",
       "number": 79,
       "part": "JavaScript",
-      "section": "Async JavaScript",
+      "section": "Асинхронный JavaScript",
       "sectionIndex": 7,
       "chapterIndex": 10,
       "wordCount": 1015,
@@ -6251,6 +6292,7 @@ export const bookEngineData = {
       "solutions": 10,
       "mermaid": 1,
       "miniProjects": 1,
+      "access": "paid",
       "previous": {
         "title": "`async` и `await`",
         "number": 78,
@@ -6262,7 +6304,7 @@ export const bookEngineData = {
         "link": "/docs/01-javascript/80-parallel-async"
       },
       "sectionLink": {
-        "title": "Async JavaScript",
+        "title": "Асинхронный JavaScript",
         "link": "/docs/01-javascript/69-synchronous-execution"
       },
       "progress": {
@@ -6301,18 +6343,19 @@ export const bookEngineData = {
       "title": "Параллельные асинхронные операции",
       "number": 80,
       "part": "JavaScript",
-      "section": "Async JavaScript",
+      "section": "Асинхронный JavaScript",
       "sectionIndex": 7,
       "chapterIndex": 11,
-      "wordCount": 1201,
-      "readingMinutes": 7,
+      "wordCount": 1325,
+      "readingMinutes": 8,
       "h2": 15,
-      "h3": 11,
+      "h3": 13,
       "examples": 5,
       "tasks": 6,
       "solutions": 10,
       "mermaid": 2,
       "miniProjects": 1,
+      "access": "paid",
       "previous": {
         "title": "Обработка ошибок в асинхронном коде",
         "number": 79,
@@ -6324,7 +6367,7 @@ export const bookEngineData = {
         "link": "/docs/01-javascript/81-iterable-protocol"
       },
       "sectionLink": {
-        "title": "Async JavaScript",
+        "title": "Асинхронный JavaScript",
         "link": "/docs/01-javascript/69-synchronous-execution"
       },
       "progress": {
@@ -6344,7 +6387,7 @@ export const bookEngineData = {
       "card": {
         "chapterLabel": "Глава 80",
         "title": "Параллельные асинхронные операции",
-        "reading": 7,
+        "reading": 8,
         "examples": 5,
         "tasks": 6,
         "solutions": 10,
@@ -6357,18 +6400,19 @@ export const bookEngineData = {
       "title": "Протокол перебора",
       "number": 81,
       "part": "JavaScript",
-      "section": "Iteration Protocols",
+      "section": "Протоколы перебора",
       "sectionIndex": 8,
       "chapterIndex": 0,
-      "wordCount": 1048,
-      "readingMinutes": 6,
+      "wordCount": 1147,
+      "readingMinutes": 7,
       "h2": 15,
-      "h3": 10,
+      "h3": 12,
       "examples": 5,
       "tasks": 6,
       "solutions": 10,
       "mermaid": 1,
       "miniProjects": 1,
+      "access": "paid",
       "previous": {
         "title": "Параллельные асинхронные операции",
         "number": 80,
@@ -6380,7 +6424,7 @@ export const bookEngineData = {
         "link": "/docs/01-javascript/82-iterators"
       },
       "sectionLink": {
-        "title": "Iteration Protocols",
+        "title": "Протоколы перебора",
         "link": "/docs/01-javascript/81-iterable-protocol"
       },
       "progress": {
@@ -6406,7 +6450,7 @@ export const bookEngineData = {
       "card": {
         "chapterLabel": "Глава 81",
         "title": "Протокол перебора",
-        "reading": 6,
+        "reading": 7,
         "examples": 5,
         "tasks": 6,
         "solutions": 10,
@@ -6419,7 +6463,7 @@ export const bookEngineData = {
       "title": "Итераторы",
       "number": 82,
       "part": "JavaScript",
-      "section": "Iteration Protocols",
+      "section": "Протоколы перебора",
       "sectionIndex": 8,
       "chapterIndex": 1,
       "wordCount": 939,
@@ -6431,6 +6475,7 @@ export const bookEngineData = {
       "solutions": 10,
       "mermaid": 1,
       "miniProjects": 1,
+      "access": "paid",
       "previous": {
         "title": "Протокол перебора",
         "number": 81,
@@ -6442,7 +6487,7 @@ export const bookEngineData = {
         "link": "/docs/01-javascript/83-generators"
       },
       "sectionLink": {
-        "title": "Iteration Protocols",
+        "title": "Протоколы перебора",
         "link": "/docs/01-javascript/81-iterable-protocol"
       },
       "progress": {
@@ -6468,7 +6513,7 @@ export const bookEngineData = {
       "title": "Генераторы",
       "number": 83,
       "part": "JavaScript",
-      "section": "Iteration Protocols",
+      "section": "Протоколы перебора",
       "sectionIndex": 8,
       "chapterIndex": 2,
       "wordCount": 868,
@@ -6480,6 +6525,7 @@ export const bookEngineData = {
       "solutions": 10,
       "mermaid": 1,
       "miniProjects": 1,
+      "access": "paid",
       "previous": {
         "title": "Итераторы",
         "number": 82,
@@ -6491,7 +6537,7 @@ export const bookEngineData = {
         "link": "/docs/01-javascript/84-custom-iteration"
       },
       "sectionLink": {
-        "title": "Iteration Protocols",
+        "title": "Протоколы перебора",
         "link": "/docs/01-javascript/81-iterable-protocol"
       },
       "progress": {
@@ -6517,7 +6563,7 @@ export const bookEngineData = {
       "title": "Собственный перебор",
       "number": 84,
       "part": "JavaScript",
-      "section": "Iteration Protocols",
+      "section": "Протоколы перебора",
       "sectionIndex": 8,
       "chapterIndex": 3,
       "wordCount": 997,
@@ -6529,6 +6575,7 @@ export const bookEngineData = {
       "solutions": 10,
       "mermaid": 1,
       "miniProjects": 1,
+      "access": "paid",
       "previous": {
         "title": "Генераторы",
         "number": 83,
@@ -6540,7 +6587,7 @@ export const bookEngineData = {
         "link": "/docs/01-javascript/85-javascript-modules"
       },
       "sectionLink": {
-        "title": "Iteration Protocols",
+        "title": "Протоколы перебора",
         "link": "/docs/01-javascript/81-iterable-protocol"
       },
       "progress": {
@@ -6585,18 +6632,19 @@ export const bookEngineData = {
       "title": "Модули JavaScript",
       "number": 85,
       "part": "JavaScript",
-      "section": "Modules",
+      "section": "Модули",
       "sectionIndex": 9,
       "chapterIndex": 0,
-      "wordCount": 1179,
-      "readingMinutes": 7,
+      "wordCount": 1300,
+      "readingMinutes": 8,
       "h2": 15,
-      "h3": 9,
+      "h3": 12,
       "examples": 1,
       "tasks": 7,
       "solutions": 11,
       "mermaid": 6,
       "miniProjects": 1,
+      "access": "paid",
       "previous": {
         "title": "Собственный перебор",
         "number": 84,
@@ -6608,7 +6656,7 @@ export const bookEngineData = {
         "link": "/docs/01-javascript/86-module-systems"
       },
       "sectionLink": {
-        "title": "Modules",
+        "title": "Модули",
         "link": "/docs/01-javascript/85-javascript-modules"
       },
       "progress": {
@@ -6640,7 +6688,7 @@ export const bookEngineData = {
       "card": {
         "chapterLabel": "Глава 85",
         "title": "Модули JavaScript",
-        "reading": 7,
+        "reading": 8,
         "examples": 1,
         "tasks": 7,
         "solutions": 11,
@@ -6653,7 +6701,7 @@ export const bookEngineData = {
       "title": "Системы модулей",
       "number": 86,
       "part": "JavaScript",
-      "section": "Modules",
+      "section": "Модули",
       "sectionIndex": 9,
       "chapterIndex": 1,
       "wordCount": 1228,
@@ -6665,6 +6713,7 @@ export const bookEngineData = {
       "solutions": 11,
       "mermaid": 5,
       "miniProjects": 1,
+      "access": "paid",
       "previous": {
         "title": "Модули JavaScript",
         "number": 85,
@@ -6676,7 +6725,7 @@ export const bookEngineData = {
         "link": "/docs/01-javascript/87-garbage-collector"
       },
       "sectionLink": {
-        "title": "Modules",
+        "title": "Модули",
         "link": "/docs/01-javascript/85-javascript-modules"
       },
       "progress": {
@@ -6715,18 +6764,19 @@ export const bookEngineData = {
       "title": "Сборщик мусора",
       "number": 87,
       "part": "JavaScript",
-      "section": "Memory Management",
+      "section": "Управление памятью",
       "sectionIndex": 10,
       "chapterIndex": 0,
-      "wordCount": 1162,
-      "readingMinutes": 7,
+      "wordCount": 1293,
+      "readingMinutes": 8,
       "h2": 15,
-      "h3": 9,
+      "h3": 12,
       "examples": 5,
       "tasks": 6,
       "solutions": 11,
       "mermaid": 9,
       "miniProjects": 1,
+      "access": "paid",
       "previous": {
         "title": "Системы модулей",
         "number": 86,
@@ -6738,7 +6788,7 @@ export const bookEngineData = {
         "link": "/docs/01-javascript/88-memory-management"
       },
       "sectionLink": {
-        "title": "Memory Management",
+        "title": "Управление памятью",
         "link": "/docs/01-javascript/87-garbage-collector"
       },
       "progress": {
@@ -6751,7 +6801,7 @@ export const bookEngineData = {
       "card": {
         "chapterLabel": "Глава 87",
         "title": "Сборщик мусора",
-        "reading": 7,
+        "reading": 8,
         "examples": 5,
         "tasks": 6,
         "solutions": 11,
@@ -6764,7 +6814,7 @@ export const bookEngineData = {
       "title": "Управление памятью",
       "number": 88,
       "part": "JavaScript",
-      "section": "Memory Management",
+      "section": "Управление памятью",
       "sectionIndex": 10,
       "chapterIndex": 1,
       "wordCount": 1326,
@@ -6776,6 +6826,7 @@ export const bookEngineData = {
       "solutions": 11,
       "mermaid": 7,
       "miniProjects": 1,
+      "access": "paid",
       "previous": {
         "title": "Сборщик мусора",
         "number": 87,
@@ -6787,7 +6838,7 @@ export const bookEngineData = {
         "link": "/docs/01-javascript/89-performance"
       },
       "sectionLink": {
-        "title": "Memory Management",
+        "title": "Управление памятью",
         "link": "/docs/01-javascript/87-garbage-collector"
       },
       "progress": {
@@ -6820,7 +6871,7 @@ export const bookEngineData = {
       "title": "Производительность",
       "number": 89,
       "part": "JavaScript",
-      "section": "Engineering Practice",
+      "section": "Инженерная практика",
       "sectionIndex": 11,
       "chapterIndex": 0,
       "wordCount": 960,
@@ -6832,6 +6883,7 @@ export const bookEngineData = {
       "solutions": 10,
       "mermaid": 3,
       "miniProjects": 1,
+      "access": "paid",
       "previous": {
         "title": "Управление памятью",
         "number": 88,
@@ -6843,7 +6895,7 @@ export const bookEngineData = {
         "link": "/docs/01-javascript/90-debugging"
       },
       "sectionLink": {
-        "title": "Engineering Practice",
+        "title": "Инженерная практика",
         "link": "/docs/01-javascript/89-performance"
       },
       "progress": {
@@ -6876,7 +6928,7 @@ export const bookEngineData = {
       "title": "Отладка",
       "number": 90,
       "part": "JavaScript",
-      "section": "Engineering Practice",
+      "section": "Инженерная практика",
       "sectionIndex": 11,
       "chapterIndex": 1,
       "wordCount": 1098,
@@ -6888,6 +6940,7 @@ export const bookEngineData = {
       "solutions": 10,
       "mermaid": 3,
       "miniProjects": 1,
+      "access": "paid",
       "previous": {
         "title": "Производительность",
         "number": 89,
@@ -6899,7 +6952,7 @@ export const bookEngineData = {
         "link": "/docs/01-javascript/91-modern-javascript"
       },
       "sectionLink": {
-        "title": "Engineering Practice",
+        "title": "Инженерная практика",
         "link": "/docs/01-javascript/89-performance"
       },
       "progress": {
@@ -6925,7 +6978,7 @@ export const bookEngineData = {
       "title": "Возможности современного JavaScript",
       "number": 91,
       "part": "JavaScript",
-      "section": "JavaScript Conclusion",
+      "section": "Итоги JavaScript",
       "sectionIndex": 12,
       "chapterIndex": 0,
       "wordCount": 860,
@@ -6937,6 +6990,7 @@ export const bookEngineData = {
       "solutions": 10,
       "mermaid": 2,
       "miniProjects": 1,
+      "access": "paid",
       "previous": {
         "title": "Отладка",
         "number": 90,
@@ -6948,7 +7002,7 @@ export const bookEngineData = {
         "link": "/docs/01-javascript/92-javascript-best-practices"
       },
       "sectionLink": {
-        "title": "JavaScript Conclusion",
+        "title": "Итоги JavaScript",
         "link": "/docs/01-javascript/91-modern-javascript"
       },
       "progress": {
@@ -6993,7 +7047,7 @@ export const bookEngineData = {
       "title": "Хорошие практики JavaScript",
       "number": 92,
       "part": "JavaScript",
-      "section": "JavaScript Conclusion",
+      "section": "Итоги JavaScript",
       "sectionIndex": 12,
       "chapterIndex": 1,
       "wordCount": 1022,
@@ -7005,6 +7059,7 @@ export const bookEngineData = {
       "solutions": 10,
       "mermaid": 2,
       "miniProjects": 1,
+      "access": "paid",
       "previous": {
         "title": "Возможности современного JavaScript",
         "number": 91,
@@ -7016,7 +7071,7 @@ export const bookEngineData = {
         "link": "/docs/01-javascript/93-error-objects"
       },
       "sectionLink": {
-        "title": "JavaScript Conclusion",
+        "title": "Итоги JavaScript",
         "link": "/docs/01-javascript/91-modern-javascript"
       },
       "progress": {
@@ -7042,18 +7097,19 @@ export const bookEngineData = {
       "title": "Объекты ошибок",
       "number": 93,
       "part": "JavaScript",
-      "section": "JavaScript Conclusion",
+      "section": "Итоги JavaScript",
       "sectionIndex": 12,
       "chapterIndex": 2,
-      "wordCount": 951,
-      "readingMinutes": 6,
+      "wordCount": 1091,
+      "readingMinutes": 7,
       "h2": 15,
-      "h3": 10,
+      "h3": 13,
       "examples": 5,
       "tasks": 6,
       "solutions": 10,
       "mermaid": 1,
       "miniProjects": 1,
+      "access": "paid",
       "previous": {
         "title": "Хорошие практики JavaScript",
         "number": 92,
@@ -7065,7 +7121,7 @@ export const bookEngineData = {
         "link": "/docs/01-javascript/94-json"
       },
       "sectionLink": {
-        "title": "JavaScript Conclusion",
+        "title": "Итоги JavaScript",
         "link": "/docs/01-javascript/91-modern-javascript"
       },
       "progress": {
@@ -7091,7 +7147,7 @@ export const bookEngineData = {
       "card": {
         "chapterLabel": "Глава 93",
         "title": "Объекты ошибок",
-        "reading": 6,
+        "reading": 7,
         "examples": 5,
         "tasks": 6,
         "solutions": 10,
@@ -7104,18 +7160,19 @@ export const bookEngineData = {
       "title": "JSON",
       "number": 94,
       "part": "JavaScript",
-      "section": "JavaScript Conclusion",
+      "section": "Итоги JavaScript",
       "sectionIndex": 12,
       "chapterIndex": 3,
-      "wordCount": 940,
+      "wordCount": 1039,
       "readingMinutes": 6,
       "h2": 15,
-      "h3": 9,
+      "h3": 11,
       "examples": 6,
       "tasks": 6,
       "solutions": 10,
       "mermaid": 1,
       "miniProjects": 1,
+      "access": "paid",
       "previous": {
         "title": "Объекты ошибок",
         "number": 93,
@@ -7127,7 +7184,7 @@ export const bookEngineData = {
         "link": "/docs/01-javascript/95-date"
       },
       "sectionLink": {
-        "title": "JavaScript Conclusion",
+        "title": "Итоги JavaScript",
         "link": "/docs/01-javascript/91-modern-javascript"
       },
       "progress": {
@@ -7160,18 +7217,19 @@ export const bookEngineData = {
       "title": "Дата и время",
       "number": 95,
       "part": "JavaScript",
-      "section": "JavaScript Conclusion",
+      "section": "Итоги JavaScript",
       "sectionIndex": 12,
       "chapterIndex": 4,
-      "wordCount": 1016,
-      "readingMinutes": 6,
+      "wordCount": 1130,
+      "readingMinutes": 7,
       "h2": 15,
-      "h3": 12,
+      "h3": 14,
       "examples": 7,
       "tasks": 6,
       "solutions": 10,
       "mermaid": 1,
       "miniProjects": 1,
+      "access": "paid",
       "previous": {
         "title": "JSON",
         "number": 94,
@@ -7183,7 +7241,7 @@ export const bookEngineData = {
         "link": "/docs/01-javascript/96-why-typescript"
       },
       "sectionLink": {
-        "title": "JavaScript Conclusion",
+        "title": "Итоги JavaScript",
         "link": "/docs/01-javascript/91-modern-javascript"
       },
       "progress": {
@@ -7203,7 +7261,7 @@ export const bookEngineData = {
       "card": {
         "chapterLabel": "Глава 95",
         "title": "Дата и время",
-        "reading": 6,
+        "reading": 7,
         "examples": 7,
         "tasks": 6,
         "solutions": 10,
@@ -7216,18 +7274,19 @@ export const bookEngineData = {
       "title": "Почему появился TypeScript",
       "number": 96,
       "part": "JavaScript",
-      "section": "JavaScript Conclusion",
+      "section": "Итоги JavaScript",
       "sectionIndex": 12,
       "chapterIndex": 5,
-      "wordCount": 1057,
-      "readingMinutes": 6,
+      "wordCount": 1195,
+      "readingMinutes": 7,
       "h2": 15,
-      "h3": 9,
+      "h3": 12,
       "examples": 5,
       "tasks": 6,
       "solutions": 10,
       "mermaid": 4,
       "miniProjects": 1,
+      "access": "paid",
       "previous": {
         "title": "Дата и время",
         "number": 95,
@@ -7239,7 +7298,7 @@ export const bookEngineData = {
         "link": "/docs/02-typescript/97-typescript-compiler"
       },
       "sectionLink": {
-        "title": "JavaScript Conclusion",
+        "title": "Итоги JavaScript",
         "link": "/docs/01-javascript/91-modern-javascript"
       },
       "progress": {
@@ -7259,7 +7318,7 @@ export const bookEngineData = {
       "card": {
         "chapterLabel": "Глава 96",
         "title": "Почему появился TypeScript",
-        "reading": 6,
+        "reading": 7,
         "examples": 5,
         "tasks": 6,
         "solutions": 10,
@@ -7284,6 +7343,7 @@ export const bookEngineData = {
       "solutions": 10,
       "mermaid": 3,
       "miniProjects": 1,
+      "access": "paid",
       "previous": {
         "title": "Почему появился TypeScript",
         "number": 96,
@@ -7333,6 +7393,7 @@ export const bookEngineData = {
       "solutions": 10,
       "mermaid": 1,
       "miniProjects": 1,
+      "access": "paid",
       "previous": {
         "title": "Компилятор TypeScript",
         "number": 97,
@@ -7389,6 +7450,7 @@ export const bookEngineData = {
       "solutions": 10,
       "mermaid": 3,
       "miniProjects": 1,
+      "access": "paid",
       "previous": {
         "title": "Проверка типов и выполнение",
         "number": 98,
@@ -7438,6 +7500,7 @@ export const bookEngineData = {
       "solutions": 10,
       "mermaid": 1,
       "miniProjects": 1,
+      "access": "paid",
       "previous": {
         "title": "Стирание типов",
         "number": 99,
@@ -7487,6 +7550,7 @@ export const bookEngineData = {
       "solutions": 10,
       "mermaid": 1,
       "miniProjects": 1,
+      "access": "paid",
       "previous": {
         "title": "tsconfig.json",
         "number": 100,
@@ -7536,6 +7600,7 @@ export const bookEngineData = {
       "solutions": 10,
       "mermaid": 1,
       "miniProjects": 1,
+      "access": "paid",
       "previous": {
         "title": "Строгий режим",
         "number": 101,
@@ -7592,6 +7657,7 @@ export const bookEngineData = {
       "solutions": 11,
       "mermaid": 1,
       "miniProjects": 1,
+      "access": "paid",
       "previous": {
         "title": "Аннотации типов и вывод типов",
         "number": 102,
@@ -7648,6 +7714,7 @@ export const bookEngineData = {
       "solutions": 10,
       "mermaid": 1,
       "miniProjects": 1,
+      "access": "paid",
       "previous": {
         "title": "Примитивные типы",
         "number": 103,
@@ -7710,6 +7777,7 @@ export const bookEngineData = {
       "solutions": 10,
       "mermaid": 1,
       "miniProjects": 1,
+      "access": "paid",
       "previous": {
         "title": "`any` и `unknown`",
         "number": 104,
@@ -7759,6 +7827,7 @@ export const bookEngineData = {
       "solutions": 10,
       "mermaid": 1,
       "miniProjects": 1,
+      "access": "paid",
       "previous": {
         "title": "`void` и `never`",
         "number": 105,
@@ -7815,6 +7884,7 @@ export const bookEngineData = {
       "solutions": 10,
       "mermaid": 1,
       "miniProjects": 1,
+      "access": "paid",
       "previous": {
         "title": "Массивы",
         "number": 106,
@@ -7871,6 +7941,7 @@ export const bookEngineData = {
       "solutions": 10,
       "mermaid": 1,
       "miniProjects": 1,
+      "access": "paid",
       "previous": {
         "title": "Кортежи",
         "number": 107,
@@ -7920,6 +7991,7 @@ export const bookEngineData = {
       "solutions": 10,
       "mermaid": 1,
       "miniProjects": 1,
+      "access": "paid",
       "previous": {
         "title": "Объектные типы",
         "number": 108,
@@ -7976,6 +8048,7 @@ export const bookEngineData = {
       "solutions": 10,
       "mermaid": 1,
       "miniProjects": 1,
+      "access": "paid",
       "previous": {
         "title": "Необязательные и неизменяемые свойства",
         "number": 109,
@@ -8025,6 +8098,7 @@ export const bookEngineData = {
       "solutions": 10,
       "mermaid": 1,
       "miniProjects": 1,
+      "access": "paid",
       "previous": {
         "title": "Индексные сигнатуры",
         "number": 110,
@@ -8087,6 +8161,7 @@ export const bookEngineData = {
       "solutions": 10,
       "mermaid": 1,
       "miniProjects": 1,
+      "access": "paid",
       "previous": {
         "title": "Псевдоним типа",
         "number": 111,
@@ -8136,6 +8211,7 @@ export const bookEngineData = {
       "solutions": 10,
       "mermaid": 1,
       "miniProjects": 1,
+      "access": "paid",
       "previous": {
         "title": "Интерфейс",
         "number": 112,
@@ -8185,6 +8261,7 @@ export const bookEngineData = {
       "solutions": 11,
       "mermaid": 1,
       "miniProjects": 1,
+      "access": "paid",
       "previous": {
         "title": "Интерфейс и псевдоним типа",
         "number": 113,
@@ -8241,6 +8318,7 @@ export const bookEngineData = {
       "solutions": 10,
       "mermaid": 1,
       "miniProjects": 1,
+      "access": "paid",
       "previous": {
         "title": "Структурная типизация",
         "number": 114,
@@ -8290,6 +8368,7 @@ export const bookEngineData = {
       "solutions": 10,
       "mermaid": 1,
       "miniProjects": 1,
+      "access": "paid",
       "previous": {
         "title": "Литеральные типы",
         "number": 115,
@@ -8339,6 +8418,7 @@ export const bookEngineData = {
       "solutions": 10,
       "mermaid": 1,
       "miniProjects": 1,
+      "access": "paid",
       "previous": {
         "title": "Утверждение `as const`",
         "number": 116,
@@ -8395,6 +8475,7 @@ export const bookEngineData = {
       "solutions": 10,
       "mermaid": 1,
       "miniProjects": 1,
+      "access": "paid",
       "previous": {
         "title": "Перечисления",
         "number": 117,
@@ -8451,6 +8532,7 @@ export const bookEngineData = {
       "solutions": 10,
       "mermaid": 1,
       "miniProjects": 1,
+      "access": "paid",
       "previous": {
         "title": "Объединения типов",
         "number": 118,
@@ -8500,6 +8582,7 @@ export const bookEngineData = {
       "solutions": 10,
       "mermaid": 1,
       "miniProjects": 1,
+      "access": "paid",
       "previous": {
         "title": "Пересечения типов",
         "number": 119,
@@ -8556,6 +8639,7 @@ export const bookEngineData = {
       "solutions": 11,
       "mermaid": 1,
       "miniProjects": 1,
+      "access": "paid",
       "previous": {
         "title": "Композиция типов на практике",
         "number": 120,
@@ -8605,6 +8689,7 @@ export const bookEngineData = {
       "solutions": 11,
       "mermaid": 1,
       "miniProjects": 1,
+      "access": "paid",
       "previous": {
         "title": "Типы функций",
         "number": 121,
@@ -8661,6 +8746,7 @@ export const bookEngineData = {
       "solutions": 11,
       "mermaid": 1,
       "miniProjects": 1,
+      "access": "paid",
       "previous": {
         "title": "Необязательные параметры, значения по умолчанию и сбор аргументов",
         "number": 122,
@@ -8717,6 +8803,7 @@ export const bookEngineData = {
       "solutions": 11,
       "mermaid": 1,
       "miniProjects": 1,
+      "access": "paid",
       "previous": {
         "title": "Типы обратных вызовов",
         "number": 123,
@@ -8773,6 +8860,7 @@ export const bookEngineData = {
       "solutions": 11,
       "mermaid": 1,
       "miniProjects": 1,
+      "access": "paid",
       "previous": {
         "title": "Перегрузки функций",
         "number": 124,
@@ -8829,6 +8917,7 @@ export const bookEngineData = {
       "solutions": 11,
       "mermaid": 1,
       "miniProjects": 1,
+      "access": "paid",
       "previous": {
         "title": "Параметр `this`",
         "number": 125,
@@ -8879,7 +8968,7 @@ export const bookEngineData = {
       "title": "Сужение типов",
       "number": 127,
       "part": "TypeScript",
-      "section": "Narrowing и безопасные ветвления",
+      "section": "Сужение типов и безопасные ветвления",
       "sectionIndex": 5,
       "chapterIndex": 0,
       "wordCount": 952,
@@ -8891,6 +8980,7 @@ export const bookEngineData = {
       "solutions": 28,
       "mermaid": 2,
       "miniProjects": 1,
+      "access": "paid",
       "previous": {
         "title": "Типы асинхронных функций",
         "number": 126,
@@ -8902,7 +8992,7 @@ export const bookEngineData = {
         "link": "/docs/02-typescript/128-built-in-type-guards"
       },
       "sectionLink": {
-        "title": "Narrowing и безопасные ветвления",
+        "title": "Сужение типов и безопасные ветвления",
         "link": "/docs/02-typescript/127-narrowing"
       },
       "progress": {
@@ -8928,7 +9018,7 @@ export const bookEngineData = {
       "title": "Встроенные проверки типа",
       "number": 128,
       "part": "TypeScript",
-      "section": "Narrowing и безопасные ветвления",
+      "section": "Сужение типов и безопасные ветвления",
       "sectionIndex": 5,
       "chapterIndex": 1,
       "wordCount": 1157,
@@ -8940,6 +9030,7 @@ export const bookEngineData = {
       "solutions": 28,
       "mermaid": 2,
       "miniProjects": 1,
+      "access": "paid",
       "previous": {
         "title": "Сужение типов",
         "number": 127,
@@ -8951,7 +9042,7 @@ export const bookEngineData = {
         "link": "/docs/02-typescript/129-user-defined-type-guards"
       },
       "sectionLink": {
-        "title": "Narrowing и безопасные ветвления",
+        "title": "Сужение типов и безопасные ветвления",
         "link": "/docs/02-typescript/127-narrowing"
       },
       "progress": {
@@ -8984,7 +9075,7 @@ export const bookEngineData = {
       "title": "Собственные проверки типа",
       "number": 129,
       "part": "TypeScript",
-      "section": "Narrowing и безопасные ветвления",
+      "section": "Сужение типов и безопасные ветвления",
       "sectionIndex": 5,
       "chapterIndex": 2,
       "wordCount": 961,
@@ -8996,6 +9087,7 @@ export const bookEngineData = {
       "solutions": 28,
       "mermaid": 2,
       "miniProjects": 1,
+      "access": "paid",
       "previous": {
         "title": "Встроенные проверки типа",
         "number": 128,
@@ -9007,7 +9099,7 @@ export const bookEngineData = {
         "link": "/docs/02-typescript/130-type-assertions"
       },
       "sectionLink": {
-        "title": "Narrowing и безопасные ветвления",
+        "title": "Сужение типов и безопасные ветвления",
         "link": "/docs/02-typescript/127-narrowing"
       },
       "progress": {
@@ -9033,7 +9125,7 @@ export const bookEngineData = {
       "title": "Утверждения о типе",
       "number": 130,
       "part": "TypeScript",
-      "section": "Narrowing и безопасные ветвления",
+      "section": "Сужение типов и безопасные ветвления",
       "sectionIndex": 5,
       "chapterIndex": 3,
       "wordCount": 990,
@@ -9045,6 +9137,7 @@ export const bookEngineData = {
       "solutions": 28,
       "mermaid": 2,
       "miniProjects": 1,
+      "access": "paid",
       "previous": {
         "title": "Собственные проверки типа",
         "number": 129,
@@ -9056,7 +9149,7 @@ export const bookEngineData = {
         "link": "/docs/02-typescript/131-satisfies"
       },
       "sectionLink": {
-        "title": "Narrowing и безопасные ветвления",
+        "title": "Сужение типов и безопасные ветвления",
         "link": "/docs/02-typescript/127-narrowing"
       },
       "progress": {
@@ -9089,7 +9182,7 @@ export const bookEngineData = {
       "title": "Оператор `satisfies`",
       "number": 131,
       "part": "TypeScript",
-      "section": "Narrowing и безопасные ветвления",
+      "section": "Сужение типов и безопасные ветвления",
       "sectionIndex": 5,
       "chapterIndex": 4,
       "wordCount": 1034,
@@ -9101,6 +9194,7 @@ export const bookEngineData = {
       "solutions": 28,
       "mermaid": 2,
       "miniProjects": 1,
+      "access": "paid",
       "previous": {
         "title": "Утверждения о типе",
         "number": 130,
@@ -9112,7 +9206,7 @@ export const bookEngineData = {
         "link": "/docs/02-typescript/132-exhaustive-checks-with-never"
       },
       "sectionLink": {
-        "title": "Narrowing и безопасные ветвления",
+        "title": "Сужение типов и безопасные ветвления",
         "link": "/docs/02-typescript/127-narrowing"
       },
       "progress": {
@@ -9138,7 +9232,7 @@ export const bookEngineData = {
       "title": "Проверка полноты через `never`",
       "number": 132,
       "part": "TypeScript",
-      "section": "Narrowing и безопасные ветвления",
+      "section": "Сужение типов и безопасные ветвления",
       "sectionIndex": 5,
       "chapterIndex": 5,
       "wordCount": 901,
@@ -9150,6 +9244,7 @@ export const bookEngineData = {
       "solutions": 28,
       "mermaid": 2,
       "miniProjects": 1,
+      "access": "paid",
       "previous": {
         "title": "Оператор `satisfies`",
         "number": 131,
@@ -9161,7 +9256,7 @@ export const bookEngineData = {
         "link": "/docs/02-typescript/133-generic-functions"
       },
       "sectionLink": {
-        "title": "Narrowing и безопасные ветвления",
+        "title": "Сужение типов и безопасные ветвления",
         "link": "/docs/02-typescript/127-narrowing"
       },
       "progress": {
@@ -9194,7 +9289,7 @@ export const bookEngineData = {
       "title": "Обобщённые функции",
       "number": 133,
       "part": "TypeScript",
-      "section": "Generics",
+      "section": "Обобщённые типы",
       "sectionIndex": 6,
       "chapterIndex": 0,
       "wordCount": 1016,
@@ -9206,6 +9301,7 @@ export const bookEngineData = {
       "solutions": 28,
       "mermaid": 2,
       "miniProjects": 1,
+      "access": "paid",
       "previous": {
         "title": "Проверка полноты через `never`",
         "number": 132,
@@ -9217,7 +9313,7 @@ export const bookEngineData = {
         "link": "/docs/02-typescript/134-generic-constraints"
       },
       "sectionLink": {
-        "title": "Generics",
+        "title": "Обобщённые типы",
         "link": "/docs/02-typescript/133-generic-functions"
       },
       "progress": {
@@ -9250,7 +9346,7 @@ export const bookEngineData = {
       "title": "Ограничения обобщений",
       "number": 134,
       "part": "TypeScript",
-      "section": "Generics",
+      "section": "Обобщённые типы",
       "sectionIndex": 6,
       "chapterIndex": 1,
       "wordCount": 953,
@@ -9262,6 +9358,7 @@ export const bookEngineData = {
       "solutions": 28,
       "mermaid": 2,
       "miniProjects": 1,
+      "access": "paid",
       "previous": {
         "title": "Обобщённые функции",
         "number": 133,
@@ -9273,7 +9370,7 @@ export const bookEngineData = {
         "link": "/docs/02-typescript/135-keyof-constraints"
       },
       "sectionLink": {
-        "title": "Generics",
+        "title": "Обобщённые типы",
         "link": "/docs/02-typescript/133-generic-functions"
       },
       "progress": {
@@ -9299,7 +9396,7 @@ export const bookEngineData = {
       "title": "Ограничения через `keyof`",
       "number": 135,
       "part": "TypeScript",
-      "section": "Generics",
+      "section": "Обобщённые типы",
       "sectionIndex": 6,
       "chapterIndex": 2,
       "wordCount": 928,
@@ -9311,6 +9408,7 @@ export const bookEngineData = {
       "solutions": 28,
       "mermaid": 1,
       "miniProjects": 1,
+      "access": "paid",
       "previous": {
         "title": "Ограничения обобщений",
         "number": 134,
@@ -9322,7 +9420,7 @@ export const bookEngineData = {
         "link": "/docs/02-typescript/136-generic-type-aliases-and-interfaces"
       },
       "sectionLink": {
-        "title": "Generics",
+        "title": "Обобщённые типы",
         "link": "/docs/02-typescript/133-generic-functions"
       },
       "progress": {
@@ -9348,7 +9446,7 @@ export const bookEngineData = {
       "title": "Обобщённые псевдонимы типов и интерфейсы",
       "number": 136,
       "part": "TypeScript",
-      "section": "Generics",
+      "section": "Обобщённые типы",
       "sectionIndex": 6,
       "chapterIndex": 3,
       "wordCount": 937,
@@ -9360,6 +9458,7 @@ export const bookEngineData = {
       "solutions": 28,
       "mermaid": 2,
       "miniProjects": 1,
+      "access": "paid",
       "previous": {
         "title": "Ограничения через `keyof`",
         "number": 135,
@@ -9371,7 +9470,7 @@ export const bookEngineData = {
         "link": "/docs/02-typescript/137-generic-classes"
       },
       "sectionLink": {
-        "title": "Generics",
+        "title": "Обобщённые типы",
         "link": "/docs/02-typescript/133-generic-functions"
       },
       "progress": {
@@ -9404,7 +9503,7 @@ export const bookEngineData = {
       "title": "Обобщённые классы",
       "number": 137,
       "part": "TypeScript",
-      "section": "Generics",
+      "section": "Обобщённые типы",
       "sectionIndex": 6,
       "chapterIndex": 4,
       "wordCount": 890,
@@ -9416,6 +9515,7 @@ export const bookEngineData = {
       "solutions": 28,
       "mermaid": 1,
       "miniProjects": 1,
+      "access": "paid",
       "previous": {
         "title": "Обобщённые псевдонимы типов и интерфейсы",
         "number": 136,
@@ -9427,7 +9527,7 @@ export const bookEngineData = {
         "link": "/docs/02-typescript/138-default-generic-parameters"
       },
       "sectionLink": {
-        "title": "Generics",
+        "title": "Обобщённые типы",
         "link": "/docs/02-typescript/133-generic-functions"
       },
       "progress": {
@@ -9460,7 +9560,7 @@ export const bookEngineData = {
       "title": "Значения параметров типа по умолчанию",
       "number": 138,
       "part": "TypeScript",
-      "section": "Generics",
+      "section": "Обобщённые типы",
       "sectionIndex": 6,
       "chapterIndex": 5,
       "wordCount": 935,
@@ -9472,6 +9572,7 @@ export const bookEngineData = {
       "solutions": 28,
       "mermaid": 1,
       "miniProjects": 1,
+      "access": "paid",
       "previous": {
         "title": "Обобщённые классы",
         "number": 137,
@@ -9483,7 +9584,7 @@ export const bookEngineData = {
         "link": "/docs/02-typescript/139-keyof"
       },
       "sectionLink": {
-        "title": "Generics",
+        "title": "Обобщённые типы",
         "link": "/docs/02-typescript/133-generic-functions"
       },
       "progress": {
@@ -9521,6 +9622,7 @@ export const bookEngineData = {
       "solutions": 28,
       "mermaid": 1,
       "miniProjects": 1,
+      "access": "paid",
       "previous": {
         "title": "Значения параметров типа по умолчанию",
         "number": 138,
@@ -9577,6 +9679,7 @@ export const bookEngineData = {
       "solutions": 28,
       "mermaid": 1,
       "miniProjects": 1,
+      "access": "paid",
       "previous": {
         "title": "Оператор `keyof`",
         "number": 139,
@@ -9633,6 +9736,7 @@ export const bookEngineData = {
       "solutions": 28,
       "mermaid": 1,
       "miniProjects": 1,
+      "access": "paid",
       "previous": {
         "title": "Запрос типа через `typeof`",
         "number": 140,
@@ -9682,6 +9786,7 @@ export const bookEngineData = {
       "solutions": 28,
       "mermaid": 1,
       "miniProjects": 1,
+      "access": "paid",
       "previous": {
         "title": "Индексный доступ к типам",
         "number": 141,
@@ -9731,6 +9836,7 @@ export const bookEngineData = {
       "solutions": 28,
       "mermaid": 1,
       "miniProjects": 1,
+      "access": "paid",
       "previous": {
         "title": "Отображённые типы",
         "number": 142,
@@ -9793,6 +9899,7 @@ export const bookEngineData = {
       "solutions": 28,
       "mermaid": 1,
       "miniProjects": 1,
+      "access": "paid",
       "previous": {
         "title": "Условные типы",
         "number": 143,
@@ -9849,6 +9956,7 @@ export const bookEngineData = {
       "solutions": 28,
       "mermaid": 1,
       "miniProjects": 1,
+      "access": "paid",
       "previous": {
         "title": "Ключевое слово `infer`",
         "number": 144,
@@ -9905,6 +10013,7 @@ export const bookEngineData = {
       "solutions": 28,
       "mermaid": 1,
       "miniProjects": 1,
+      "access": "paid",
       "previous": {
         "title": "Служебные типы",
         "number": 145,
@@ -9967,6 +10076,7 @@ export const bookEngineData = {
       "solutions": 28,
       "mermaid": 1,
       "miniProjects": 1,
+      "access": "paid",
       "previous": {
         "title": "Типизированные классы",
         "number": 146,
@@ -10029,6 +10139,7 @@ export const bookEngineData = {
       "solutions": 28,
       "mermaid": 1,
       "miniProjects": 1,
+      "access": "paid",
       "previous": {
         "title": "Модификаторы доступа и неизменяемые члены",
         "number": 147,
@@ -10085,6 +10196,7 @@ export const bookEngineData = {
       "solutions": 28,
       "mermaid": 1,
       "miniProjects": 1,
+      "access": "paid",
       "previous": {
         "title": "Абстрактные классы",
         "number": 148,
@@ -10147,6 +10259,7 @@ export const bookEngineData = {
       "solutions": 28,
       "mermaid": 1,
       "miniProjects": 1,
+      "access": "paid",
       "previous": {
         "title": "`implements` и `override`",
         "number": 149,
@@ -10203,6 +10316,7 @@ export const bookEngineData = {
       "solutions": 28,
       "mermaid": 1,
       "miniProjects": 1,
+      "access": "paid",
       "previous": {
         "title": "Модули TypeScript и JavaScript",
         "number": 150,
@@ -10259,6 +10373,7 @@ export const bookEngineData = {
       "solutions": 28,
       "mermaid": 1,
       "miniProjects": 1,
+      "access": "paid",
       "previous": {
         "title": "Импорт и экспорт только типов",
         "number": 151,
@@ -10315,6 +10430,7 @@ export const bookEngineData = {
       "solutions": 28,
       "mermaid": 1,
       "miniProjects": 1,
+      "access": "paid",
       "previous": {
         "title": "Разрешение модулей",
         "number": 152,
@@ -10371,6 +10487,7 @@ export const bookEngineData = {
       "solutions": 28,
       "mermaid": 1,
       "miniProjects": 1,
+      "access": "paid",
       "previous": {
         "title": "Файлы объявлений",
         "number": 153,
@@ -10420,6 +10537,7 @@ export const bookEngineData = {
       "solutions": 28,
       "mermaid": 1,
       "miniProjects": 1,
+      "access": "paid",
       "previous": {
         "title": "Слияние объявлений",
         "number": 154,
@@ -10469,6 +10587,7 @@ export const bookEngineData = {
       "solutions": 28,
       "mermaid": 1,
       "miniProjects": 1,
+      "access": "paid",
       "previous": {
         "title": "Настройки компилятора для реальных проектов",
         "number": 155,
@@ -10525,6 +10644,7 @@ export const bookEngineData = {
       "solutions": 28,
       "mermaid": 1,
       "miniProjects": 1,
+      "access": "paid",
       "previous": {
         "title": "Типизированная настройка и тестовые данные",
         "number": 156,
@@ -10581,6 +10701,7 @@ export const bookEngineData = {
       "solutions": 28,
       "mermaid": 1,
       "miniProjects": 1,
+      "access": "paid",
       "previous": {
         "title": "Типизированные объекты страниц, фикстуры и вспомогательные функции",
         "number": 157,
@@ -10637,6 +10758,7 @@ export const bookEngineData = {
       "solutions": 28,
       "mermaid": 1,
       "miniProjects": 1,
+      "access": "paid",
       "previous": {
         "title": "Типизированные клиенты API и проверки",
         "number": 158,
@@ -10686,6 +10808,7 @@ export const bookEngineData = {
       "solutions": 24,
       "mermaid": 1,
       "miniProjects": 0,
+      "access": "paid",
       "previous": {
         "title": "Сопровождение больших тестовых проектов на TypeScript",
         "number": 159,
@@ -10742,6 +10865,7 @@ export const bookEngineData = {
       "solutions": 24,
       "mermaid": 1,
       "miniProjects": 0,
+      "access": "paid",
       "previous": {
         "title": "Что такое фреймворк автоматизации тестов",
         "number": 160,
@@ -10791,6 +10915,7 @@ export const bookEngineData = {
       "solutions": 24,
       "mermaid": 1,
       "miniProjects": 0,
+      "access": "paid",
       "previous": {
         "title": "Инструменты и роли в Automation QA",
         "number": 161,
@@ -10847,6 +10972,7 @@ export const bookEngineData = {
       "solutions": 24,
       "mermaid": 1,
       "miniProjects": 0,
+      "access": "paid",
       "previous": {
         "title": "Архитектурные слои и поток зависимостей",
         "number": 162,
@@ -10896,6 +11022,7 @@ export const bookEngineData = {
       "solutions": 24,
       "mermaid": 1,
       "miniProjects": 0,
+      "access": "paid",
       "previous": {
         "title": "Тестовый и инфраструктурный код",
         "number": 163,
@@ -10952,6 +11079,7 @@ export const bookEngineData = {
       "solutions": 24,
       "mermaid": 1,
       "miniProjects": 0,
+      "access": "paid",
       "previous": {
         "title": "Жизненный цикл автотеста",
         "number": 164,
@@ -11008,6 +11136,7 @@ export const bookEngineData = {
       "solutions": 24,
       "mermaid": 1,
       "miniProjects": 0,
+      "access": "paid",
       "previous": {
         "title": "Структура проекта и границы модулей",
         "number": 165,
@@ -11057,6 +11186,7 @@ export const bookEngineData = {
       "solutions": 24,
       "mermaid": 2,
       "miniProjects": 0,
+      "access": "paid",
       "previous": {
         "title": "Playwright и Playwright Test",
         "number": 166,
@@ -11113,6 +11243,7 @@ export const bookEngineData = {
       "solutions": 24,
       "mermaid": 1,
       "miniProjects": 0,
+      "access": "paid",
       "previous": {
         "title": "Анатомия и модель выполнения теста",
         "number": 167,
@@ -11162,6 +11293,7 @@ export const bookEngineData = {
       "solutions": 24,
       "mermaid": 1,
       "miniProjects": 0,
+      "access": "paid",
       "previous": {
         "title": "`Browser`, `BrowserContext` и `Page`",
         "number": 168,
@@ -11211,6 +11343,7 @@ export const bookEngineData = {
       "solutions": 24,
       "mermaid": 1,
       "miniProjects": 0,
+      "access": "paid",
       "previous": {
         "title": "Locator и стратегия поиска элементов",
         "number": 169,
@@ -11267,6 +11400,7 @@ export const bookEngineData = {
       "solutions": 24,
       "mermaid": 2,
       "miniProjects": 0,
+      "access": "paid",
       "previous": {
         "title": "Пользовательские действия",
         "number": 170,
@@ -11316,6 +11450,7 @@ export const bookEngineData = {
       "solutions": 24,
       "mermaid": 1,
       "miniProjects": 0,
+      "access": "paid",
       "previous": {
         "title": "Проверки, умеющие ждать",
         "number": 171,
@@ -11372,6 +11507,7 @@ export const bookEngineData = {
       "solutions": 24,
       "mermaid": 1,
       "miniProjects": 0,
+      "access": "paid",
       "previous": {
         "title": "Автоматические и явные ожидания",
         "number": 172,
@@ -11421,6 +11557,7 @@ export const bookEngineData = {
       "solutions": 24,
       "mermaid": 2,
       "miniProjects": 0,
+      "access": "paid",
       "previous": {
         "title": "Сроки ожидания и их границы",
         "number": 173,
@@ -11470,6 +11607,7 @@ export const bookEngineData = {
       "solutions": 24,
       "mermaid": 1,
       "miniProjects": 0,
+      "access": "paid",
       "previous": {
         "title": "Хуки и жизненный цикл теста",
         "number": 174,
@@ -11507,7 +11645,7 @@ export const bookEngineData = {
       "title": "Встроенные фикстуры",
       "number": 176,
       "part": "Automation QA",
-      "section": "Fixtures и архитектура UI-слоя",
+      "section": "Фикстуры и архитектура UI-слоя",
       "sectionIndex": 2,
       "chapterIndex": 0,
       "wordCount": 1371,
@@ -11519,6 +11657,7 @@ export const bookEngineData = {
       "solutions": 24,
       "mermaid": 1,
       "miniProjects": 0,
+      "access": "paid",
       "previous": {
         "title": "Изоляция UI-тестов и состояние браузера",
         "number": 175,
@@ -11530,7 +11669,7 @@ export const bookEngineData = {
         "link": "/docs/03-automation-qa/177-custom-fixtures-and-dependency-graph"
       },
       "sectionLink": {
-        "title": "Fixtures и архитектура UI-слоя",
+        "title": "Фикстуры и архитектура UI-слоя",
         "link": "/docs/03-automation-qa/176-built-in-fixtures"
       },
       "progress": {
@@ -11556,7 +11695,7 @@ export const bookEngineData = {
       "title": "Собственные фикстуры и граф зависимостей",
       "number": 177,
       "part": "Automation QA",
-      "section": "Fixtures и архитектура UI-слоя",
+      "section": "Фикстуры и архитектура UI-слоя",
       "sectionIndex": 2,
       "chapterIndex": 1,
       "wordCount": 1495,
@@ -11568,6 +11707,7 @@ export const bookEngineData = {
       "solutions": 24,
       "mermaid": 1,
       "miniProjects": 0,
+      "access": "paid",
       "previous": {
         "title": "Встроенные фикстуры",
         "number": 176,
@@ -11579,7 +11719,7 @@ export const bookEngineData = {
         "link": "/docs/03-automation-qa/178-authentication-state-and-managed-sessions"
       },
       "sectionLink": {
-        "title": "Fixtures и архитектура UI-слоя",
+        "title": "Фикстуры и архитектура UI-слоя",
         "link": "/docs/03-automation-qa/176-built-in-fixtures"
       },
       "progress": {
@@ -11605,7 +11745,7 @@ export const bookEngineData = {
       "title": "Состояние аутентификации и управляемые сессии",
       "number": 178,
       "part": "Automation QA",
-      "section": "Fixtures и архитектура UI-слоя",
+      "section": "Фикстуры и архитектура UI-слоя",
       "sectionIndex": 2,
       "chapterIndex": 2,
       "wordCount": 1399,
@@ -11617,6 +11757,7 @@ export const bookEngineData = {
       "solutions": 24,
       "mermaid": 1,
       "miniProjects": 0,
+      "access": "paid",
       "previous": {
         "title": "Собственные фикстуры и граф зависимостей",
         "number": 177,
@@ -11628,7 +11769,7 @@ export const bookEngineData = {
         "link": "/docs/03-automation-qa/179-page-object"
       },
       "sectionLink": {
-        "title": "Fixtures и архитектура UI-слоя",
+        "title": "Фикстуры и архитектура UI-слоя",
         "link": "/docs/03-automation-qa/176-built-in-fixtures"
       },
       "progress": {
@@ -11654,7 +11795,7 @@ export const bookEngineData = {
       "title": "Объект страницы",
       "number": 179,
       "part": "Automation QA",
-      "section": "Fixtures и архитектура UI-слоя",
+      "section": "Фикстуры и архитектура UI-слоя",
       "sectionIndex": 2,
       "chapterIndex": 3,
       "wordCount": 1485,
@@ -11666,6 +11807,7 @@ export const bookEngineData = {
       "solutions": 24,
       "mermaid": 1,
       "miniProjects": 0,
+      "access": "paid",
       "previous": {
         "title": "Состояние аутентификации и управляемые сессии",
         "number": 178,
@@ -11677,7 +11819,7 @@ export const bookEngineData = {
         "link": "/docs/03-automation-qa/180-component-objects-and-page-composition"
       },
       "sectionLink": {
-        "title": "Fixtures и архитектура UI-слоя",
+        "title": "Фикстуры и архитектура UI-слоя",
         "link": "/docs/03-automation-qa/176-built-in-fixtures"
       },
       "progress": {
@@ -11703,7 +11845,7 @@ export const bookEngineData = {
       "title": "Объекты компонентов и композиция страниц",
       "number": 180,
       "part": "Automation QA",
-      "section": "Fixtures и архитектура UI-слоя",
+      "section": "Фикстуры и архитектура UI-слоя",
       "sectionIndex": 2,
       "chapterIndex": 4,
       "wordCount": 1426,
@@ -11715,6 +11857,7 @@ export const bookEngineData = {
       "solutions": 24,
       "mermaid": 1,
       "miniProjects": 0,
+      "access": "paid",
       "previous": {
         "title": "Объект страницы",
         "number": 179,
@@ -11726,7 +11869,7 @@ export const bookEngineData = {
         "link": "/docs/03-automation-qa/181-frames"
       },
       "sectionLink": {
-        "title": "Fixtures и архитектура UI-слоя",
+        "title": "Фикстуры и архитектура UI-слоя",
         "link": "/docs/03-automation-qa/176-built-in-fixtures"
       },
       "progress": {
@@ -11752,7 +11895,7 @@ export const bookEngineData = {
       "title": "Фреймы",
       "number": 181,
       "part": "Automation QA",
-      "section": "Fixtures и архитектура UI-слоя",
+      "section": "Фикстуры и архитектура UI-слоя",
       "sectionIndex": 2,
       "chapterIndex": 5,
       "wordCount": 1359,
@@ -11764,6 +11907,7 @@ export const bookEngineData = {
       "solutions": 24,
       "mermaid": 1,
       "miniProjects": 0,
+      "access": "paid",
       "previous": {
         "title": "Объекты компонентов и композиция страниц",
         "number": 180,
@@ -11775,7 +11919,7 @@ export const bookEngineData = {
         "link": "/docs/03-automation-qa/182-tabs-windows-and-popups"
       },
       "sectionLink": {
-        "title": "Fixtures и архитектура UI-слоя",
+        "title": "Фикстуры и архитектура UI-слоя",
         "link": "/docs/03-automation-qa/176-built-in-fixtures"
       },
       "progress": {
@@ -11801,7 +11945,7 @@ export const bookEngineData = {
       "title": "Вкладки, окна и всплывающие окна",
       "number": 182,
       "part": "Automation QA",
-      "section": "Fixtures и архитектура UI-слоя",
+      "section": "Фикстуры и архитектура UI-слоя",
       "sectionIndex": 2,
       "chapterIndex": 6,
       "wordCount": 1380,
@@ -11813,6 +11957,7 @@ export const bookEngineData = {
       "solutions": 24,
       "mermaid": 1,
       "miniProjects": 0,
+      "access": "paid",
       "previous": {
         "title": "Фреймы",
         "number": 181,
@@ -11824,7 +11969,7 @@ export const bookEngineData = {
         "link": "/docs/03-automation-qa/183-dialogs-and-files"
       },
       "sectionLink": {
-        "title": "Fixtures и архитектура UI-слоя",
+        "title": "Фикстуры и архитектура UI-слоя",
         "link": "/docs/03-automation-qa/176-built-in-fixtures"
       },
       "progress": {
@@ -11857,7 +12002,7 @@ export const bookEngineData = {
       "title": "Диалоги и работа с файлами",
       "number": 183,
       "part": "Automation QA",
-      "section": "Fixtures и архитектура UI-слоя",
+      "section": "Фикстуры и архитектура UI-слоя",
       "sectionIndex": 2,
       "chapterIndex": 7,
       "wordCount": 1312,
@@ -11869,6 +12014,7 @@ export const bookEngineData = {
       "solutions": 24,
       "mermaid": 1,
       "miniProjects": 0,
+      "access": "paid",
       "previous": {
         "title": "Вкладки, окна и всплывающие окна",
         "number": 182,
@@ -11880,7 +12026,7 @@ export const bookEngineData = {
         "link": "/docs/03-automation-qa/184-network-interception-and-mocking"
       },
       "sectionLink": {
-        "title": "Fixtures и архитектура UI-слоя",
+        "title": "Фикстуры и архитектура UI-слоя",
         "link": "/docs/03-automation-qa/176-built-in-fixtures"
       },
       "progress": {
@@ -11913,7 +12059,7 @@ export const bookEngineData = {
       "title": "Перехват сетевых запросов и подмена ответов",
       "number": 184,
       "part": "Automation QA",
-      "section": "Fixtures и архитектура UI-слоя",
+      "section": "Фикстуры и архитектура UI-слоя",
       "sectionIndex": 2,
       "chapterIndex": 8,
       "wordCount": 1466,
@@ -11925,6 +12071,7 @@ export const bookEngineData = {
       "solutions": 24,
       "mermaid": 1,
       "miniProjects": 0,
+      "access": "paid",
       "previous": {
         "title": "Диалоги и работа с файлами",
         "number": 183,
@@ -11936,7 +12083,7 @@ export const bookEngineData = {
         "link": "/docs/03-automation-qa/185-ui-layer-integration"
       },
       "sectionLink": {
-        "title": "Fixtures и архитектура UI-слоя",
+        "title": "Фикстуры и архитектура UI-слоя",
         "link": "/docs/03-automation-qa/176-built-in-fixtures"
       },
       "progress": {
@@ -11969,7 +12116,7 @@ export const bookEngineData = {
       "title": "Интеграция UI-слоя",
       "number": 185,
       "part": "Automation QA",
-      "section": "Fixtures и архитектура UI-слоя",
+      "section": "Фикстуры и архитектура UI-слоя",
       "sectionIndex": 2,
       "chapterIndex": 9,
       "wordCount": 1563,
@@ -11981,6 +12128,7 @@ export const bookEngineData = {
       "solutions": 24,
       "mermaid": 1,
       "miniProjects": 0,
+      "access": "paid",
       "previous": {
         "title": "Перехват сетевых запросов и подмена ответов",
         "number": 184,
@@ -11992,7 +12140,7 @@ export const bookEngineData = {
         "link": "/docs/03-automation-qa/186-http-and-rest-for-api-testing"
       },
       "sectionLink": {
-        "title": "Fixtures и архитектура UI-слоя",
+        "title": "Фикстуры и архитектура UI-слоя",
         "link": "/docs/03-automation-qa/176-built-in-fixtures"
       },
       "progress": {
@@ -12030,6 +12178,7 @@ export const bookEngineData = {
       "solutions": 24,
       "mermaid": 1,
       "miniProjects": 0,
+      "access": "paid",
       "previous": {
         "title": "Интеграция UI-слоя",
         "number": 185,
@@ -12086,6 +12235,7 @@ export const bookEngineData = {
       "solutions": 24,
       "mermaid": 1,
       "miniProjects": 0,
+      "access": "paid",
       "previous": {
         "title": "HTTP и REST для API-тестирования",
         "number": 186,
@@ -12142,6 +12292,7 @@ export const bookEngineData = {
       "solutions": 24,
       "mermaid": 1,
       "miniProjects": 0,
+      "access": "paid",
       "previous": {
         "title": "Структура HTTP-запроса",
         "number": 187,
@@ -12198,6 +12349,7 @@ export const bookEngineData = {
       "solutions": 24,
       "mermaid": 1,
       "miniProjects": 0,
+      "access": "paid",
       "previous": {
         "title": "Структура HTTP-ответа",
         "number": 188,
@@ -12247,6 +12399,7 @@ export const bookEngineData = {
       "solutions": 24,
       "mermaid": 1,
       "miniProjects": 0,
+      "access": "paid",
       "previous": {
         "title": "APIRequestContext",
         "number": 189,
@@ -12303,6 +12456,7 @@ export const bookEngineData = {
       "solutions": 24,
       "mermaid": 1,
       "miniProjects": 0,
+      "access": "paid",
       "previous": {
         "title": "Клиент API и граница слоя HTTP",
         "number": 190,
@@ -12352,6 +12506,7 @@ export const bookEngineData = {
       "solutions": 24,
       "mermaid": 1,
       "miniProjects": 0,
+      "access": "paid",
       "previous": {
         "title": "Аутентификация API",
         "number": 191,
@@ -12420,6 +12575,7 @@ export const bookEngineData = {
       "solutions": 24,
       "mermaid": 1,
       "miniProjects": 0,
+      "access": "paid",
       "previous": {
         "title": "Построители запросов и подготовка данных через API",
         "number": 192,
@@ -12476,6 +12632,7 @@ export const bookEngineData = {
       "solutions": 24,
       "mermaid": 1,
       "miniProjects": 0,
+      "access": "paid",
       "previous": {
         "title": "Проверка API-ответов и бизнес-правил",
         "number": 193,
@@ -12532,6 +12689,7 @@ export const bookEngineData = {
       "solutions": 24,
       "mermaid": 1,
       "miniProjects": 0,
+      "access": "paid",
       "previous": {
         "title": "Негативные API-сценарии и ошибки",
         "number": 194,
@@ -12588,6 +12746,7 @@ export const bookEngineData = {
       "solutions": 24,
       "mermaid": 1,
       "miniProjects": 0,
+      "access": "paid",
       "previous": {
         "title": "Проверка контрактов во время выполнения",
         "number": 195,
@@ -12637,6 +12796,7 @@ export const bookEngineData = {
       "solutions": 24,
       "mermaid": 1,
       "miniProjects": 0,
+      "access": "paid",
       "previous": {
         "title": "Совместные UI и API-сценарии",
         "number": 196,
@@ -12693,6 +12853,7 @@ export const bookEngineData = {
       "solutions": 24,
       "mermaid": 1,
       "miniProjects": 0,
+      "access": "paid",
       "previous": {
         "title": "gRPC и REST в тестовой архитектуре",
         "number": 197,
@@ -12742,6 +12903,7 @@ export const bookEngineData = {
       "solutions": 24,
       "mermaid": 1,
       "miniProjects": 0,
+      "access": "paid",
       "previous": {
         "title": "Protocol Buffers: сервисы и сообщения",
         "number": 198,
@@ -12804,6 +12966,7 @@ export const bookEngineData = {
       "solutions": 24,
       "mermaid": 1,
       "miniProjects": 0,
+      "access": "paid",
       "previous": {
         "title": "Сгенерированный код и создание клиента gRPC",
         "number": 199,
@@ -12866,6 +13029,7 @@ export const bookEngineData = {
       "solutions": 24,
       "mermaid": 1,
       "miniProjects": 0,
+      "access": "paid",
       "previous": {
         "title": "Унарные вызовы gRPC",
         "number": 200,
@@ -12915,6 +13079,7 @@ export const bookEngineData = {
       "solutions": 24,
       "mermaid": 1,
       "miniProjects": 0,
+      "access": "paid",
       "previous": {
         "title": "Поля protobuf-сообщений",
         "number": 201,
@@ -12964,6 +13129,7 @@ export const bookEngineData = {
       "solutions": 24,
       "mermaid": 1,
       "miniProjects": 0,
+      "access": "paid",
       "previous": {
         "title": "Метаданные и аутентификация gRPC",
         "number": 202,
@@ -13026,6 +13192,7 @@ export const bookEngineData = {
       "solutions": 24,
       "mermaid": 1,
       "miniProjects": 0,
+      "access": "paid",
       "previous": {
         "title": "Крайние сроки и сроки ожидания gRPC",
         "number": 203,
@@ -13082,6 +13249,7 @@ export const bookEngineData = {
       "solutions": 24,
       "mermaid": 1,
       "miniProjects": 0,
+      "access": "paid",
       "previous": {
         "title": "Статусы gRPC и обработка ошибок",
         "number": 204,
@@ -13138,6 +13306,7 @@ export const bookEngineData = {
       "solutions": 24,
       "mermaid": 1,
       "miniProjects": 0,
+      "access": "paid",
       "previous": {
         "title": "Проверка gRPC-ответов и негативных сценариев",
         "number": 205,
@@ -13194,6 +13363,7 @@ export const bookEngineData = {
       "solutions": 24,
       "mermaid": 2,
       "miniProjects": 0,
+      "access": "paid",
       "previous": {
         "title": "Клиент gRPC во фреймворке автоматизации",
         "number": 206,
@@ -13250,6 +13420,7 @@ export const bookEngineData = {
       "solutions": 24,
       "mermaid": 2,
       "miniProjects": 0,
+      "access": "paid",
       "previous": {
         "title": "PostgreSQL в Automation QA",
         "number": 207,
@@ -13299,6 +13470,7 @@ export const bookEngineData = {
       "solutions": 24,
       "mermaid": 1,
       "miniProjects": 0,
+      "access": "paid",
       "previous": {
         "title": "Подключения, пулы и время жизни",
         "number": 208,
@@ -13348,6 +13520,7 @@ export const bookEngineData = {
       "solutions": 24,
       "mermaid": 1,
       "miniProjects": 0,
+      "access": "paid",
       "previous": {
         "title": "Параметризованные запросы",
         "number": 209,
@@ -13410,6 +13583,7 @@ export const bookEngineData = {
       "solutions": 24,
       "mermaid": 2,
       "miniProjects": 0,
+      "access": "paid",
       "previous": {
         "title": "Слой доступа к базе данных",
         "number": 210,
@@ -13459,6 +13633,7 @@ export const bookEngineData = {
       "solutions": 24,
       "mermaid": 2,
       "miniProjects": 0,
+      "access": "paid",
       "previous": {
         "title": "Подготовка и очистка данных в базе",
         "number": 211,
@@ -13508,6 +13683,7 @@ export const bookEngineData = {
       "solutions": 24,
       "mermaid": 2,
       "miniProjects": 0,
+      "access": "paid",
       "previous": {
         "title": "Транзакции, откат и изоляция тестов",
         "number": 212,
@@ -13564,6 +13740,7 @@ export const bookEngineData = {
       "solutions": 24,
       "mermaid": 2,
       "miniProjects": 0,
+      "access": "paid",
       "previous": {
         "title": "Согласованность в конечном счёте и периодический опрос",
         "number": 213,
@@ -13626,6 +13803,7 @@ export const bookEngineData = {
       "solutions": 24,
       "mermaid": 2,
       "miniProjects": 0,
+      "access": "paid",
       "previous": {
         "title": "Сверка данных PostgreSQL с API и gRPC",
         "number": 214,
@@ -13675,6 +13853,7 @@ export const bookEngineData = {
       "solutions": 24,
       "mermaid": 2,
       "miniProjects": 0,
+      "access": "paid",
       "previous": {
         "title": "Конфликты данных и параллельные тесты",
         "number": 215,
@@ -13724,6 +13903,7 @@ export const bookEngineData = {
       "solutions": 24,
       "mermaid": 1,
       "miniProjects": 0,
+      "access": "paid",
       "previous": {
         "title": "Конфигурация Playwright и проекты запуска",
         "number": 216,
@@ -13773,6 +13953,7 @@ export const bookEngineData = {
       "solutions": 24,
       "mermaid": 2,
       "miniProjects": 0,
+      "access": "paid",
       "previous": {
         "title": "Окружения, переменные и секреты",
         "number": 217,
@@ -13822,6 +14003,7 @@ export const bookEngineData = {
       "solutions": 24,
       "mermaid": 1,
       "miniProjects": 0,
+      "access": "paid",
       "previous": {
         "title": "Загрузка конфигурации и её проверка во время выполнения",
         "number": 218,
@@ -13878,6 +14060,7 @@ export const bookEngineData = {
       "solutions": 24,
       "mermaid": 1,
       "miniProjects": 0,
+      "access": "paid",
       "previous": {
         "title": "Организация тестовых данных",
         "number": 219,
@@ -13934,6 +14117,7 @@ export const bookEngineData = {
       "solutions": 24,
       "mermaid": 2,
       "miniProjects": 0,
+      "access": "paid",
       "previous": {
         "title": "Построители, фабрики и уникальные данные",
         "number": 220,
@@ -13990,6 +14174,7 @@ export const bookEngineData = {
       "solutions": 24,
       "mermaid": 1,
       "miniProjects": 0,
+      "access": "paid",
       "previous": {
         "title": "Жизненный цикл тестовых данных",
         "number": 221,
@@ -14039,6 +14224,7 @@ export const bookEngineData = {
       "solutions": 24,
       "mermaid": 2,
       "miniProjects": 0,
+      "access": "paid",
       "previous": {
         "title": "Вспомогательные функции и границы повторного использования",
         "number": 222,
@@ -14101,6 +14287,7 @@ export const bookEngineData = {
       "solutions": 24,
       "mermaid": 2,
       "miniProjects": 0,
+      "access": "paid",
       "previous": {
         "title": "Пользовательские и мягкие проверки",
         "number": 223,
@@ -14163,6 +14350,7 @@ export const bookEngineData = {
       "solutions": 24,
       "mermaid": 2,
       "miniProjects": 0,
+      "access": "paid",
       "previous": {
         "title": "Нормализация и проверки между слоями",
         "number": 224,
@@ -14212,6 +14400,7 @@ export const bookEngineData = {
       "solutions": 24,
       "mermaid": 1,
       "miniProjects": 0,
+      "access": "paid",
       "previous": {
         "title": "Расследование падения автотеста",
         "number": 225,
@@ -14268,6 +14457,7 @@ export const bookEngineData = {
       "solutions": 24,
       "mermaid": 2,
       "miniProjects": 0,
+      "access": "paid",
       "previous": {
         "title": "Структурированное логирование",
         "number": 226,
@@ -14317,6 +14507,7 @@ export const bookEngineData = {
       "solutions": 24,
       "mermaid": 1,
       "miniProjects": 0,
+      "access": "paid",
       "previous": {
         "title": "Снимки экрана, видеозаписи и трассировка Playwright",
         "number": 227,
@@ -14373,6 +14564,7 @@ export const bookEngineData = {
       "solutions": 24,
       "mermaid": 1,
       "miniProjects": 0,
+      "access": "paid",
       "previous": {
         "title": "Вложения и жизненный цикл артефактов",
         "number": 228,
@@ -14422,6 +14614,7 @@ export const bookEngineData = {
       "solutions": 24,
       "mermaid": 1,
       "miniProjects": 0,
+      "access": "paid",
       "previous": {
         "title": "Принципы тестовой отчётности",
         "number": 229,
@@ -14478,6 +14671,7 @@ export const bookEngineData = {
       "solutions": 24,
       "mermaid": 2,
       "miniProjects": 0,
+      "access": "paid",
       "previous": {
         "title": "Отчётность в Allure",
         "number": 230,
@@ -14534,6 +14728,7 @@ export const bookEngineData = {
       "solutions": 24,
       "mermaid": 1,
       "miniProjects": 0,
+      "access": "paid",
       "previous": {
         "title": "Диагностический поток фреймворка",
         "number": 231,
@@ -14583,6 +14778,7 @@ export const bookEngineData = {
       "solutions": 24,
       "mermaid": 1,
       "miniProjects": 0,
+      "access": "paid",
       "previous": {
         "title": "Причины нестабильных тестов",
         "number": 232,
@@ -14632,6 +14828,7 @@ export const bookEngineData = {
       "solutions": 24,
       "mermaid": 1,
       "miniProjects": 0,
+      "access": "paid",
       "previous": {
         "title": "Расследование и карантин нестабильных тестов",
         "number": 233,
@@ -14681,6 +14878,7 @@ export const bookEngineData = {
       "solutions": 24,
       "mermaid": 1,
       "miniProjects": 0,
+      "access": "paid",
       "previous": {
         "title": "Политика повторов",
         "number": 234,
@@ -14730,6 +14928,7 @@ export const bookEngineData = {
       "solutions": 24,
       "mermaid": 1,
       "miniProjects": 0,
+      "access": "paid",
       "previous": {
         "title": "Workers и общие ресурсы",
         "number": 235,
@@ -14779,6 +14978,7 @@ export const bookEngineData = {
       "solutions": 24,
       "mermaid": 1,
       "miniProjects": 0,
+      "access": "paid",
       "previous": {
         "title": "Параллельное выполнение",
         "number": 236,
@@ -14828,6 +15028,7 @@ export const bookEngineData = {
       "solutions": 24,
       "mermaid": 1,
       "miniProjects": 0,
+      "access": "paid",
       "previous": {
         "title": "Сегментирование",
         "number": 237,
@@ -14877,6 +15078,7 @@ export const bookEngineData = {
       "solutions": 24,
       "mermaid": 2,
       "miniProjects": 0,
+      "access": "paid",
       "previous": {
         "title": "Теги, аннотации и выбор тестов",
         "number": 238,
@@ -14926,6 +15128,7 @@ export const bookEngineData = {
       "solutions": 24,
       "mermaid": 2,
       "miniProjects": 0,
+      "access": "paid",
       "previous": {
         "title": "Основы CI для автоматизации тестов",
         "number": 239,
@@ -14975,6 +15178,7 @@ export const bookEngineData = {
       "solutions": 24,
       "mermaid": 1,
       "miniProjects": 0,
+      "access": "paid",
       "previous": {
         "title": "Конвейер GitHub Actions",
         "number": 240,
@@ -15024,6 +15228,7 @@ export const bookEngineData = {
       "solutions": 24,
       "mermaid": 1,
       "miniProjects": 0,
+      "access": "paid",
       "previous": {
         "title": "Браузеры и системные зависимости в CI",
         "number": 241,
@@ -15080,6 +15285,7 @@ export const bookEngineData = {
       "solutions": 24,
       "mermaid": 1,
       "miniProjects": 0,
+      "access": "paid",
       "previous": {
         "title": "Окружения и секреты в CI",
         "number": 242,
@@ -15129,6 +15335,7 @@ export const bookEngineData = {
       "solutions": 24,
       "mermaid": 1,
       "miniProjects": 0,
+      "access": "paid",
       "previous": {
         "title": "Артефакты и отчёты в CI",
         "number": 243,
@@ -15178,6 +15385,7 @@ export const bookEngineData = {
       "solutions": 24,
       "mermaid": 2,
       "miniProjects": 0,
+      "access": "paid",
       "previous": {
         "title": "Задачи CI, сегментирование и диагностика запусков",
         "number": 244,
@@ -15227,6 +15435,7 @@ export const bookEngineData = {
       "solutions": 24,
       "mermaid": 2,
       "miniProjects": 0,
+      "access": "paid",
       "previous": {
         "title": "Интеграция слоёв и поток зависимостей",
         "number": 245,
@@ -15276,6 +15485,7 @@ export const bookEngineData = {
       "solutions": 24,
       "mermaid": 2,
       "miniProjects": 0,
+      "access": "paid",
       "previous": {
         "title": "Фикстуры композиции и поток конфигурации",
         "number": 246,
@@ -15338,6 +15548,7 @@ export const bookEngineData = {
       "solutions": 24,
       "mermaid": 2,
       "miniProjects": 0,
+      "access": "paid",
       "previous": {
         "title": "Жизненный цикл данных в сценариях между слоями",
         "number": 247,
@@ -15387,6 +15598,7 @@ export const bookEngineData = {
       "solutions": 24,
       "mermaid": 1,
       "miniProjects": 0,
+      "access": "paid",
       "previous": {
         "title": "Диагностика, стабильность и CI в общей архитектуре",
         "number": 248,
@@ -15436,6 +15648,7 @@ export const bookEngineData = {
       "solutions": 24,
       "mermaid": 2,
       "miniProjects": 0,
+      "access": "paid",
       "previous": {
         "title": "Разбор архитектуры и эволюция фреймворка",
         "number": 249,
@@ -15485,6 +15698,7 @@ export const bookEngineData = {
       "solutions": 24,
       "mermaid": 3,
       "miniProjects": 0,
+      "access": "paid",
       "previous": {
         "title": "Требования и критерии готовности проекта",
         "number": 250,
@@ -15541,6 +15755,7 @@ export const bookEngineData = {
       "solutions": 24,
       "mermaid": 5,
       "miniProjects": 0,
+      "access": "paid",
       "previous": {
         "title": "Архитектурные решения и план реализации",
         "number": 251,
@@ -15597,6 +15812,7 @@ export const bookEngineData = {
       "solutions": 0,
       "mermaid": 1,
       "miniProjects": 0,
+      "access": "paid",
       "previous": {
         "title": "Каркас, конфигурация и окружения",
         "number": 252,
@@ -15659,6 +15875,7 @@ export const bookEngineData = {
       "solutions": 0,
       "mermaid": 1,
       "miniProjects": 0,
+      "access": "paid",
       "previous": {
         "title": "Слой интерфейса, объекты страниц и фикстуры",
         "number": 253,
@@ -15733,6 +15950,7 @@ export const bookEngineData = {
       "solutions": 0,
       "mermaid": 1,
       "miniProjects": 0,
+      "access": "paid",
       "previous": {
         "title": "Слой REST, клиент и подготовка данных",
         "number": 254,
@@ -15795,6 +16013,7 @@ export const bookEngineData = {
       "solutions": 0,
       "mermaid": 1,
       "miniProjects": 0,
+      "access": "paid",
       "previous": {
         "title": "Слой gRPC, унарные вызовы и коды состояния",
         "number": 255,
@@ -15857,6 +16076,7 @@ export const bookEngineData = {
       "solutions": 0,
       "mermaid": 1,
       "miniProjects": 0,
+      "access": "paid",
       "previous": {
         "title": "Слой базы данных, пул и проверка состояния",
         "number": 256,
@@ -15913,6 +16133,7 @@ export const bookEngineData = {
       "solutions": 0,
       "mermaid": 1,
       "miniProjects": 0,
+      "access": "paid",
       "previous": {
         "title": "Межслойные сценарии, каноническая модель и владение данными",
         "number": 257,
@@ -15969,6 +16190,7 @@ export const bookEngineData = {
       "solutions": 0,
       "mermaid": 1,
       "miniProjects": 0,
+      "access": "paid",
       "previous": {
         "title": "Диагностика, отчёт и запуск в CI",
         "number": 258,
@@ -16004,6 +16226,8 @@ export const bookEngineData = {
     "examples": 743,
     "mermaid": 702,
     "miniProjects": 144,
-    "readingMinutes": 2155
+    "readingMinutes": 2171,
+    "freeChapters": 8,
+    "paidChapters": 255
   }
 }

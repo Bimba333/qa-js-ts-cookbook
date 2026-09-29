@@ -107,7 +107,7 @@ type ArrayKeys = keyof string[];   // number | 'length' | 'push' | 'map' | …
 
 ```mermaid
 flowchart TD
-    A[ObjectType] --> B[keyof ObjectType]
+    A["тип объекта"] --> B["keyof этого типа"]
     B --> C[Key ограничен существующими ключами]
     C --> D[object[key] имеет точный тип]
 ```

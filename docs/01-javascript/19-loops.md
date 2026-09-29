@@ -153,8 +153,8 @@ Repetition overview:
 Validate many API responses.
 Check table rows.
 Process test data.
-Retry while server is unavailable.
-Poll until status changes.
+Повторять, пока сервер недоступен.
+Опрашивать, пока статус не изменится.
 ```
 
 Без цикла:
@@ -206,7 +206,7 @@ let i = 0        выполняется один раз перед циклом
 
 ```text
 Not initialization.
-It usually happens once before repetition.
+Обычно выполняется один раз до повторов.
 ```
 
 ### Условие
@@ -226,7 +226,7 @@ i < items.length   проверяется перед каждой итераци
 Решение о цикле:
 
 ```text
-Should repetition continue?
+Продолжать ли повторы?
 ```
 
 ### Тело
@@ -327,7 +327,7 @@ do {
 Ключевая идея:
 
 ```text
-Body runs at least once.
+Тело выполняется хотя бы один раз.
 ```
 
 Используйте его, когда действие должно выполниться до решения о повторе.
@@ -673,9 +673,9 @@ continue  —  пропустить текущий шаг и перейти к �
 Циклы полезны, когда:
 
 ```text
-same action repeats
-state changes each iteration
-condition decides when to stop
+одно и то же действие повторяется
+состояние меняется на каждом повторе
+условие решает, когда остановиться
 ```
 
 Практический чек-лист чтения:
@@ -683,11 +683,11 @@ condition decides when to stop
 ```text
 1. What is repeated?
 2. What is initialized?
-3. What condition controls repetition?
-4. What body runs?
-5. What update moves loop toward stop?
-6. Can break or continue change normal flow?
-7. Can the loop become infinite?
+3. Какое условие управляет повторами?
+4. Какое тело выполняется?
+5. Какой шаг приближает цикл к остановке?
+6. Могут ли break или continue изменить обычный ход?
+7. Может ли цикл стать бесконечным?
 ```
 
 ---
@@ -747,7 +747,7 @@ for (let index = 0; index < users.length; index += 1) {
 Всегда задавайте условие остановки:
 
 ```text
-retry while not ready
+повторять, пока не готово
 but stop after max attempts
 ```
 
@@ -758,7 +758,7 @@ but stop after max attempts
 Циклы отвечают:
 
 ```text
-What if the same decision or action must happen many times?
+А если одно и то же решение или действие нужно выполнять много раз?
 ```
 
 Основная модель: цикл — это условие плюс тело, и выполнение повторяется ровно до тех пор, пока условие остаётся истинным.

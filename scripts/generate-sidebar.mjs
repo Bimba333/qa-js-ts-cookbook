@@ -19,17 +19,20 @@ const PART_TITLES_EN = {
 const SECTION_TITLES_EN = {
   'Основы языка': 'Language Fundamentals',
   'Управление программой': 'Control Flow',
-  'Functions': 'Functions',
-  'Objects': 'Objects',
-  'Arrays': 'Arrays',
-  'Execution Model Revisited': 'Execution Model Revisited',
-  'Function Context': 'Function Context',
-  'Async JavaScript': 'Async JavaScript',
-  'Iteration Protocols': 'Iteration Protocols',
-  'Modules': 'Modules',
-  'Memory Management': 'Memory Management',
-  'Engineering Practice': 'Engineering Practice',
-  'JavaScript Conclusion': 'JavaScript Conclusion'
+  'Функции': 'Functions',
+  'Объекты': 'Objects',
+  'Массивы': 'Arrays',
+  'Модель выполнения ещё раз': 'Execution Model Revisited',
+  'Контекст функции': 'Function Context',
+  'Асинхронный JavaScript': 'Async JavaScript',
+  'Протоколы перебора': 'Iteration Protocols',
+  'Модули': 'Modules',
+  'Управление памятью': 'Memory Management',
+  'Инженерная практика': 'Engineering Practice',
+  'Итоги JavaScript': 'JavaScript Conclusion',
+  'Сужение типов и безопасные ветвления': 'Narrowing and Safe Branching',
+  'Обобщённые типы': 'Generics',
+  'Фикстуры и архитектура UI-слоя': 'Fixtures and UI Layer Architecture'
 }
 
 function readHeading(filePath) {

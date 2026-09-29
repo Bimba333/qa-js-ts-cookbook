@@ -365,7 +365,7 @@ const firstTask = requestTasks.shift();
 `unshift()` добавляет новый вагон в начало:
 
 ```text
-[urgent][car A][car B][car C]
+[срочный][вагон A][вагон B][вагон C]
 ```
 
 Интуиция очереди:

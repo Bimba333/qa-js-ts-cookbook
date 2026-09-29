@@ -111,7 +111,13 @@
 }
 
 .vp-doc li + li {
-  margin-top: 2px;
+  margin-top: 6px;
+}
+
+/* Вложенный список отделяется от своего пункта, иначе уровни сливаются. */
+.vp-doc li > ul,
+.vp-doc li > ol {
+  margin: 6px 0 0;
 }
 
 .vp-doc blockquote {
@@ -1850,3 +1856,217 @@
   display: flex;
 }
 
+
+/* ============================================================
+   Скрытие содержимого закрытой главы.
+
+   Элементы не удаляются, а получают класс: текст всё равно лежит в статической
+   сборке, поэтому «надёжное» сокрытие здесь было бы самообманом. Настоящая
+   граница — доставка (platform/README.md).
+   ============================================================ */
+
+.chapter-access-hidden {
+  display: none !important;
+}
+
+/* Страница карты книги: широкая раскладка, но с теми же полями, что у текста. */
+.book-map-page {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 36px 24px 0;
+}
+
+.book-map-page > h1 {
+  font-family: var(--book-serif);
+  font-size: 34px;
+  line-height: 1.15;
+  margin: 0 0 12px;
+}
+
+.book-map-page > p {
+  font-family: var(--book-serif);
+  font-size: 16px;
+  line-height: 1.6;
+  color: var(--book-ink-2);
+  max-width: 62ch;
+  margin: 0 0 8px;
+}
+
+/* ============================================================
+   Плотность чтения: таблицы и длинные главы.
+
+   Измерено до правок: строка 75 знаков при 17px/28px — это в норме, поэтому
+   меру строки не трогаем. Мешала не она, а ориентир внутри главы на 30 000
+   пикселей и плотность таблиц, которых в книге стало много.
+   ============================================================ */
+
+.vp-doc th,
+.vp-doc td {
+  padding: 8px 12px;
+  vertical-align: top;
+}
+
+.vp-doc th {
+  text-align: left;
+}
+
+/* Чётные строки подсвечиваются слабо: таблицы книги — это сравнения на
+   5–8 строк, и зебра здесь помогает вести глаз, а не украшает. */
+.vp-doc tr:nth-child(even) td {
+  background: var(--book-surface);
+}
+
+.vp-doc table {
+  display: table;
+  width: 100%;
+}
+
+/* Таблица шире колонки текста прокручивается, а не ломает раскладку. */
+.vp-doc > div > table,
+.vp-doc table {
+  overflow-x: auto;
+}
+
+/* Абзац после заголовка не должен отрываться от него. */
+.vp-doc h2 + p,
+.vp-doc h3 + p {
+  margin-top: 6px;
+}
+
+/* ============================================================
+   Интерактивные блоки: один визуальный паттерн.
+
+   Измерено до правок: запускаемый пример, карточка задачи, песочница и схема
+   были близки по рамке, но расходились в мелочах — радиус 2px против 3px,
+   подпись то моноширинным 11px, то полужирным 12px, у диаграммы подписи не было
+   вовсе, а метка JS/TS приносила на страницу два чужих фирменных цвета при
+   правиле «синий — единственный акцент».
+
+   Ниже — общая рамка, общая строка-подпись и более плотная внутренняя
+   типографика. Содержимое не скрывается: уменьшается только оформление.
+   ============================================================ */
+
+.code-runner,
+.code-task,
+.book-mermaid,
+.code-runner__output,
+.code-runner__error,
+.code-runner__node,
+.code-runner__code,
+.code-runner__editor {
+  border-radius: var(--book-radius);
+}
+
+/* Строка-подпись блока: слева — что это, справа — действия. */
+.book-block__bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 10px;
+}
+
+.book-block__label,
+.code-runner__badge,
+.code-runner__output-title,
+.code-task__badge {
+  font-family: var(--book-mono);
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.book-block__label {
+  color: var(--book-ink-3);
+}
+
+/* Метка языка — обозначение данных, а не кнопка: тонкая рамка вместо заливки
+   чужим фирменным цветом. */
+.code-runner__badge,
+.code-runner__badge--js,
+.code-runner__badge--ts {
+  padding: 2px 7px;
+  border: 1px solid var(--book-rule);
+  border-radius: 0;
+  background: transparent;
+  color: var(--book-ink-3);
+  font-weight: 600;
+}
+
+.code-runner__title {
+  font-family: var(--book-serif);
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 1.35;
+}
+
+.code-runner__header {
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+/* Плотность кода: 1.7 на 14px давало 24px на строку, из-за чего пример из
+   двенадцати строк занимал почти четыреста пикселей. */
+.code-runner__code,
+.code-runner__editor {
+  padding: 12px 14px;
+  line-height: 1.55;
+}
+
+.code-runner__output,
+.code-runner__error,
+.code-runner__node {
+  margin-top: 10px;
+  padding: 10px 12px;
+}
+
+.code-runner__output-title {
+  margin-bottom: 6px;
+  font-weight: 600;
+  opacity: 0.8;
+}
+
+.code-runner__output pre,
+.code-runner__error pre,
+.code-runner__node pre {
+  line-height: 1.5;
+}
+
+/* Диаграмма получает такую же подпись и такие же поля, как остальные блоки.
+   Раскладка остаётся прежней: подпись сверху, схема по центру — иначе меняется
+   ширина отрисовки, а вместе с ней и читаемость подписей внутри схемы. */
+.book-mermaid {
+  display: flex;
+  flex-direction: column;
+  padding: 12px 14px;
+}
+
+.book-mermaid__open {
+  position: static;
+  padding: 3px 10px;
+  border: 1px solid var(--book-rule);
+  background: transparent;
+  color: var(--book-ink-2);
+  font-family: var(--book-mono);
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+.book-mermaid__open:hover {
+  border-color: var(--vp-c-brand-1);
+  color: var(--vp-c-brand-1);
+}
+
+.book-mermaid__canvas {
+  display: flex;
+  justify-content: center;
+  overflow-x: auto;
+}
+
+/* Высота схемы в тексте ограничена: подробности читатель открывает кнопкой
+   «Увеличить», а не прокруткой через восемьсот пикселей картинки. */
+.book-mermaid__canvas svg {
+  max-height: 420px;
+}

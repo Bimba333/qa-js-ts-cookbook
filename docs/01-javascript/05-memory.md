@@ -210,7 +210,7 @@ flowchart TD
     N1["Step 1: receive value &quot;admin&quot;"]
     N2["Step 2: value disappeared"]
     N3["Step 3: need value &quot;admin&quot;"]
-    N4["Error in mental model: nothing to read"]
+    N4["ошибка в модели: читать нечего"]
     N1 --> N2
     N2 --> N3
     N3 --> N4
@@ -441,8 +441,8 @@ Engine обновляет сохраненную информацию.
 Это высокоуровневая модель. Сборщик мусора — механизм автоматического освобождения памяти в движках; он будет изучаться позже. В этой главе важно только понять:
 
 ```text
-Some data is needed now.
-Some data is needed later.
+Часть данных нужна сейчас.
+Часть данных нужна позже.
 Some data becomes unnecessary.
 ```
 
@@ -557,13 +557,13 @@ flowchart TD
 Стек вызовов отвечает на вопрос:
 
 ```text
-Which Execution Context is active?
+Какой контекст выполнения активен?
 ```
 
 Память отвечает на вопрос:
 
 ```text
-What information is available for execution?
+Какая информация доступна для выполнения?
 ```
 
 Вместе:
@@ -651,10 +651,10 @@ console.log(...)   →  значение использовано
 
 ```text
 Memory answers:
-"Where is information kept?"
+«Где хранится информация?»
 
 Variables answer:
-"How do we create and use named access to that information?"
+«Как создать и использовать доступ к ней по имени?»
 ```
 
 ---
@@ -876,7 +876,7 @@ console.log remembers previous values
 const status = "ready"
 console.log(status)
 
-Both lines do the same thing
+Обе строки делают одно и то же
 ```
 
 Что произошло:
@@ -929,7 +929,7 @@ done
 
 ```text
 Function execution needs some information.
-After function finishes, that execution information is no longer active.
+После завершения функции эта информация о выполнении перестаёт быть активной.
 ```
 
 ---
@@ -1035,9 +1035,9 @@ console.log(expectedStatus);
 Теперь общая модель JavaScript стала такой:
 
 ```text
-Execution Context creates the execution environment.
-Call Stack manages which context is active.
-Memory stores everything the engine needs while the program runs.
+Контекст выполнения создаёт среду выполнения.
+Стек вызовов определяет, какой контекст активен.
+Память хранит всё, что нужно движку во время работы программы.
 ```
 
 Следующая глава объяснит переменные: как программист создаёт имена, связывает их со значениями и управляет сохранённой информацией через `var`, `let` и `const`.

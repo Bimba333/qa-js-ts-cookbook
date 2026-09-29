@@ -93,7 +93,23 @@ function check(name, condition, detail = '') {
 }
 
 const browser = await chromium.launch()
-const page = await browser.newPage()
+const context = await browser.newContext()
+
+// Проверка движка задач не должна упираться в подписку: главы книги платные,
+// а предмет проверки здесь — карточка задачи, а не разграничение доступа.
+// Состояние подписчика ставится до первой загрузки страницы.
+await context.addInitScript(() => {
+  const until = new Date(Date.now() + 30 * 24 * 60 * 60 * 1000).toISOString()
+
+  window.localStorage.setItem('book:sync-session:v1', JSON.stringify({
+    token: 'engine-check', email: 'engine@check.test'
+  }))
+  window.localStorage.setItem('book:entitlement:v1', JSON.stringify({
+    subscribed: true, plan: 'check', validUntil: until, checkedAt: new Date().toISOString()
+  }))
+})
+
+const page = await context.newPage()
 
 try {
   await page.goto(CHAPTER, { waitUntil: 'domcontentloaded' })

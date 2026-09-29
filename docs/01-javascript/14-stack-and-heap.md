@@ -173,8 +173,8 @@ flowchart TD
 Что эта диаграмма помогает понять?
 
 ```text
-There is one object.
-There are two variable entries.
+Объект один.
+Записей переменных две.
 Both entries lead to the same object.
 Property update changes the shared object.
 ```
@@ -190,11 +190,11 @@ Property update changes the shared object.
 Такие схемы отвечают на практические вопросы:
 
 ```text
-Where do I draw variable names?
-Where do I draw object values?
-How do I show references?
-Why did object change through another variable?
-Why did reassignment not change old object?
+Где рисовать имена переменных?
+Где рисовать объектные значения?
+Как показывать ссылки?
+Почему объект изменился через другую переменную?
+Почему переприсваивание не изменило прежний объект?
 ```
 
 Концептуальный обзор:
@@ -202,15 +202,15 @@ Why did reassignment not change old object?
 ```mermaid
 flowchart TD
     N1["Conceptual Memory Map"]
-    N2["Stack-like area"]
-    N3["local variable entries"]
-    N4["primitive values in simple diagrams"]
+    N2["область, похожая на стек"]
+    N3["записи локальных переменных"]
+    N4["примитивные значения на простых схемах"]
     N5["references to objects"]
-    N6["Heap-like area"]
+    N6["область, похожая на кучу"]
     N7["object values"]
     N8["arrays"]
     N9["функции"]
-    N10["nested object values"]
+    N10["вложенные объектные значения"]
     N1 --> N2
     N1 --> N3
     N1 --> N4
@@ -225,9 +225,9 @@ flowchart TD
 Важно:
 
 ```text
-This is a conceptual map.
+Это концептуальная карта.
 It explains behavior.
-It is not a promise of exact engine layout.
+Она не обещает точного устройства движка.
 ```
 
 ### Стек как концептуальная модель
@@ -238,10 +238,10 @@ It is not a promise of exact engine layout.
 
 ```mermaid
 flowchart TD
-    N1["Stack-like area"]
+    N1["область, похожая на стек"]
     N2["userName: &quot;Anna&quot;"]
     N3["age: 30"]
-    N4["user: reference to Object A"]
+    N4["user: ссылка на объект A"]
     N1 --> N2
     N1 --> N3
     N1 --> N4
@@ -250,9 +250,9 @@ flowchart TD
 Что помогает понять эта схема?
 
 ```text
-Which names are active right now.
-Which primitive values are easy to show directly.
-Which variables point to objects elsewhere in the diagram.
+Какие имена активны прямо сейчас.
+Какие примитивные значения удобно показать прямо.
+Какие переменные указывают на объекты в другой части схемы.
 ```
 
 Это продолжает предыдущие главы:
@@ -260,9 +260,9 @@ Which variables point to objects elsewhere in the diagram.
 ```mermaid
 flowchart TD
     N1["Execution Context создает environment"]
-    N2["Call Stack manages active contexts"]
-    N3["Variables give named access"]
-    N4["Stack diagram shows active names in a compact way"]
+    N2["стек вызовов ведёт активные контексты"]
+    N3["переменные дают доступ по имени"]
+    N4["схема стека компактно показывает активные имена"]
     N1 --> N2
     N2 --> N3
     N3 --> N4
@@ -278,7 +278,7 @@ flowchart TD
 
 ```mermaid
 flowchart TD
-    N1["Heap-like area"]
+    N1["область, похожая на кучу"]
     N2["Object A"]
     N3["name: &quot;Anna&quot;"]
     N4["role: &quot;user&quot;"]
@@ -296,21 +296,21 @@ flowchart TD
 Что помогает понять эта схема?
 
 ```text
-Objects can be shared.
-Objects can be mutated through references.
-Objects can outlive one specific variable entry while still reachable.
+Объекты могут быть общими.
+Объекты можно изменять через ссылки.
+Объект может пережить отдельную переменную, пока остаётся достижимым.
 ```
 
 Не читайте это как:
 
 ```text
-Every engine physically stores every object exactly here.
+Любой движок физически хранит каждый объект именно здесь.
 ```
 
 Читайте это как:
 
 ```text
-The conceptual model represents object values separately from variable entries.
+Концептуальная модель показывает объектные значения отдельно от записей переменных.
 ```
 
 ### Примитивные значения в концептуальной модели
@@ -334,8 +334,8 @@ Heap  — объекты и структуры
 Что помогает понять эта схема?
 
 ```text
-Changing adminName does not change userName.
-Primitive assignment is shown as independent values in this model.
+Изменение adminName не меняет userName.
+Присваивание примитива показано в этой модели как независимые значения.
 ```
 
 Присваивание примитива:
@@ -369,9 +369,9 @@ heap:   user    ──→  ref  ──→  [ { ... } ]
 Что помогает понять эта схема?
 
 ```text
-Variable entry is drawn separately.
-Object value is drawn as grouped information.
-Reference connects them.
+Запись переменной рисуется отдельно.
+Объектное значение рисуется как сгруппированная информация.
+Ссылка их соединяет.
 ```
 
 ### Переменная → ссылка → объект
@@ -387,9 +387,9 @@ Reference connects them.
 Что помогает понять эта схема?
 
 ```text
-The variable is not the object.
-The reference is not the object.
-The object is the grouped value reached through reference.
+Переменная — это не объект.
+Ссылка — это не объект.
+Объект — это сгруппированное значение, до которого доходят по ссылке.
 ```
 
 ### Присваивание объекта
@@ -412,9 +412,9 @@ user  ──→ ref#1  ───────→  [ { name: 'Anna' } ]
 Что помогает понять эта схема?
 
 ```text
-There is one object.
-There are two variable entries.
-Both references lead to the same object.
+Объект один.
+Записей переменных две.
+Обе ссылки ведут к одному объекту.
 ```
 
 ### Общий объект
@@ -430,8 +430,8 @@ admin ──→ ref#1  ──┴────→  [ { name: 'Anna' } ]
 Что помогает понять эта схема?
 
 ```text
-Mutating through any of these variables affects Object A.
-All other variables that refer to Object A observe the change.
+Изменение через любую из этих переменных затрагивает объект A.
+Все остальные переменные, ссылающиеся на объект A, видят это изменение.
 ```
 
 ### Изменение объекта
@@ -450,8 +450,8 @@ adminUser.role = 'admin';
 Что помогает понять эта схема?
 
 ```text
-The reference did not change.
-The object property changed.
+Ссылка не изменилась.
+Изменилось свойство объекта.
 ```
 
 ### Повторное присваивание
@@ -478,9 +478,9 @@ currentUser = {
 Что помогает понять эта схема?
 
 ```text
-Reassignment changes what currentUser refers to.
-It does not mutate Object A.
-It does not move firstUser.
+Переприсваивание меняет то, на что ссылается currentUser.
+Оно не изменяет объект A.
+Оно не трогает firstUser.
 ```
 
 ### Вызовы функций и стек на высоком уровне
@@ -512,8 +512,8 @@ updateRole(testUser);
 Что помогает понять эта схема?
 
 ```text
-Function parameter can refer to same object as outer variable.
-Mutation inside function changes shared object.
+Параметр функции может ссылаться на тот же объект, что и внешняя переменная.
+Изменение внутри функции меняет общий объект.
 ```
 
 Внутреннее устройство функций, параметры и возврат будут подробно изучаться позже. Здесь только связь на высоком уровне.
@@ -540,9 +540,9 @@ const user = {
 Что помогает понять эта схема?
 
 ```text
-Nested object is also an object value in the conceptual map.
-Several levels can be connected.
-Changing nested property may affect shared nested object.
+Вложенный объект на карте — тоже объектное значение.
+Уровней может быть несколько.
+Изменение вложенного свойства может затронуть общий вложенный объект.
 ```
 
 Подробное копирование вложенных объектов будет изучаться позже, вместе с раскрытием, структурами данных и неизменяемостью.
@@ -567,9 +567,9 @@ const sameUser = firstUser;
 Что помогает понять эта схема?
 
 ```text
-firstUser and sameUser refer to same object.
-firstUser and secondUser refer to different objects.
-Same-looking properties do not mean same identity.
+firstUser и sameUser ссылаются на один объект.
+firstUser и secondUser ссылаются на разные объекты.
+Одинаковые с виду свойства не означают тождественности.
 ```
 
 ### Полная картина выполнения
@@ -629,8 +629,8 @@ console.log(user.name)  →  'Kate'
 Что помогает понять эта схема?
 
 ```text
-We are not learning a new syntax feature.
-We are learning a map for previously observed behavior.
+Мы изучаем не новую возможность синтаксиса.
+Мы изучаем карту для уже наблюдавшегося поведения.
 ```
 
 ### Миф и реальность
@@ -657,9 +657,9 @@ We are learning a map for previously observed behavior.
 Что помогает понять эта модель?
 
 ```text
-Active variables are easy to see on the desk.
-Larger grouped information lives in folders.
-Notes point from desk to folders.
+Активные переменные видно на столе.
+Более крупная сгруппированная информация лежит в папках.
+Записки со стола указывают на папки.
 ```
 
 ### Записки, указывающие на папки
@@ -799,8 +799,8 @@ node examples/01-javascript/chapter-14/06-common-mistakes.js
 Правильный взгляд:
 
 ```text
-Use diagram to reason.
-Do not overclaim implementation.
+Схемой пользуются, чтобы рассуждать.
+Не выдавайте её за устройство движка.
 ```
 
 ### Ошибка 2. Рисовать два объекта после прямого присваивания
@@ -841,7 +841,7 @@ changed property
 Переназначение:
 
 ```text
-same variable name
+одно и то же имя переменной
 new reference
 different object
 ```
@@ -855,8 +855,8 @@ different object
 Если общее тело запроса меняется неожиданно, нарисуйте:
 
 ```text
-which variables point to which object
-which helper changed which property
+какие переменные указывают на какой объект
+какая вспомогательная функция изменила какое свойство
 ```
 
 ---
@@ -875,13 +875,13 @@ which helper changed which property
 Практический чек-лист:
 
 ```text
-1. Draw variable names.
-2. Draw object values separately.
-3. Connect variables to objects.
-4. Mark shared references.
-5. Mark mutation lines.
-6. Mark reassignment lines.
-7. Ask what each variable refers to after each step.
+1. Нарисовать имена переменных.
+2. Нарисовать объектные значения отдельно.
+3. Соединить переменные с объектами.
+4. Отметить общие ссылки.
+5. Отметить изменения.
+6. Отметить переприсваивания.
+7. После каждого шага спросить, на что теперь ссылается каждая переменная.
 ```
 
 ---
@@ -935,10 +935,10 @@ const adminPayload = {
 Когда тест Playwright нестабилен, спросите:
 
 ```text
-Was the same object reused?
-Did a helper mutate it?
-Did fixture return shared object?
-Did one test change data used by another test?
+Использовался ли один и тот же объект повторно?
+Изменяла ли его вспомогательная функция?
+Возвращала ли фикстура общий объект?
+Менял ли один тест данные, которыми пользуется другой?
 ```
 
 Схемы памяти помогают, потому что нестабильность часто возникает из скрытого общего состояния.
@@ -958,7 +958,7 @@ References
 Shared objects
 Mutation
 Reassignment
-Function calls at a high level
+Вызовы функций на высоком уровне
 Identity
 ```
 

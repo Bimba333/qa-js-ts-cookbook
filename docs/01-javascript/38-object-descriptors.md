@@ -167,10 +167,10 @@ Descriptor is the metadata sheet for a property.
 Если бы у свойства было только значение, JavaScript не смог бы ответить на вопросы:
 
 ```text
-Can this property be changed?
-Can this property appear in enumeration?
-Can this property definition be changed?
-Can deleting this property be allowed as one consequence?
+Можно ли изменить это свойство?
+Попадает ли это свойство в перебор?
+Можно ли изменить само описание свойства?
+Разрешено ли, как следствие, удаление этого свойства?
 ```
 
 Дескрипторы существуют, чтобы хранить эти правила.
@@ -257,7 +257,7 @@ const descriptor = Object.getOwnPropertyDescriptor(config, 'environment');
 Она отвечает:
 
 ```text
-What rules control this property?
+Какие правила действуют для этого свойства?
 ```
 
 ### Метод `Object.defineProperty()`
@@ -276,7 +276,7 @@ Object.defineProperty(config, 'environment', {
 Она отвечает:
 
 ```text
-Create this property with these rules.
+Создать это свойство с такими правилами.
 ```
 
 ### Значения по умолчанию важны
@@ -702,7 +702,7 @@ solutions/01-javascript/38-object-descriptors.md
 Не открывайте решения до самостоятельной попытки. Главный вопрос:
 
 ```text
-What rule controls this property?
+Какое правило действует для этого свойства?
 ```
 
 ---

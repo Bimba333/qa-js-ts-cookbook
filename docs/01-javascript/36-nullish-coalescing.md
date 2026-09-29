@@ -25,7 +25,7 @@ Nullish Coalescing отвечает:
 Главная мысль главы:
 
 ```text
-?? replaces only null and undefined
+?? replaces только null и undefined
 ```
 
 Он не заменяет `0`, `false`, `''` or `NaN`.
@@ -290,7 +290,7 @@ const retries = config.retryPolicy?.retries ?? 2;
 Пока достаточно запомнить высокоуровневую разницу:
 
 ```text
-?? checks only null and undefined
+?? проверяет только null и undefined
 || has broader logical behavior
 ```
 
@@ -550,7 +550,7 @@ NaN
 Реальность:
 
 ```text
-only null and undefined
+только null и undefined
 ```
 
 ### Миф: `??` исправляет данные в объекте

@@ -5,6 +5,12 @@ export type PlatformConfig = Readonly<{
   databaseUrl: string;
   sessionDays: number;
   allowedOrigins: readonly string[];
+  /**
+   * Разрешает выдавать подписку запросом, без платёжного провайдера.
+   * Нужно для локальной разработки и проверок; в рабочей среде должно быть
+   * выключено, иначе подписку сможет выдать себе любой вошедший.
+   */
+  allowDevGrant: boolean;
 }>;
 
 function readNumber(name: string, fallback: number): number {
@@ -39,5 +45,6 @@ export function loadConfig(): PlatformConfig {
     sessionDays: readNumber("PLATFORM_SESSION_DAYS", 30),
     // Книга — статический сайт на другом адресе, поэтому браузеру нужен CORS.
     allowedOrigins: Object.freeze(origins.length > 0 ? origins : ["*"]),
+    allowDevGrant: process.env.PLATFORM_ALLOW_DEV_GRANT === "1",
   });
 }

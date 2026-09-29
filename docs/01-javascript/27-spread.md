@@ -396,7 +396,7 @@ collect(...[200, 201, 204])  →  три отдельных аргумента
 Краткая ментальная модель:
 
 ```text
-Spread expands one collection.
+Раскрытие разворачивает одну коллекцию.
 Array spread expands values.
 Object spread expands properties.
 Rest collects.
@@ -653,7 +653,7 @@ validateThreeStatuses(...statuses);
 Раскрытие отвечает:
 
 ```text
-How can one collection become many values?
+Как одна коллекция может стать множеством значений?
 ```
 
 Главная модель:

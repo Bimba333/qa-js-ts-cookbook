@@ -130,7 +130,7 @@ function isTestResultArray(value: unknown): value is TestResult[] {
 
 ```mermaid
 flowchart TD
-    A[unknown] --> B[Guard function]
+    A[unknown] --> B["функция-страж"]
     B -->|true| C[Уточненный тип]
     B -->|false| D[Тип не доказан]
 ```

@@ -191,16 +191,16 @@ flowchart TD
 
 ```text
 Identifier visible here.
-Identifier not visible there.
+Имя там не видно.
 ```
 
 Но движок не может работать с абстрактным словом «видимость». Во время выполнения ему нужна конкретная внутренняя организация:
 
 ```mermaid
 flowchart TD
-    N1["Current code asks for identifier"]
-    N2["Engine needs a record of current identifiers"]
-    N3["If not found, engine needs a link to outer identifiers"]
+    N1["текущий код запрашивает имя"]
+    N2["движку нужна запись текущих имён"]
+    N3["если не нашлось — нужна ссылка на внешние имена"]
     N1 --> N2
     N2 --> N3
 ```
@@ -395,7 +395,7 @@ function printBaseUrl() {
 Объяснение области видимости:
 
 ```text
-Function can access outer global identifier.
+Функция может обратиться к внешнему глобальному имени.
 ```
 
 Объяснение через лексическое окружение:
@@ -802,7 +802,7 @@ examples/01-javascript/chapter-08/06-common-mistakes.js
 Неправильная модель:
 
 ```text
-Environment Record is all memory.
+Запись окружения — это вся память.
 ```
 
 Что произошло:
@@ -830,7 +830,7 @@ Outer link follows the вызывающий код.
 Неправильная модель:
 
 ```text
-Engine scans the whole file for matching name.
+Движок просматривает весь файл в поисках подходящего имени.
 ```
 
 Исправленная модель: поиск идёт по цепочке окружений от текущего к внешним и останавливается на первом найденном имени — файл целиком не просматривается.
@@ -848,7 +848,7 @@ First:
 Lexical Environment stores identifier records.
 
 Next:
-Hoisting and TDZ explain timing and access restrictions.
+Подъём и мёртвая зона объясняют моменты и ограничения доступа.
 ```
 
 ---
@@ -858,11 +858,11 @@ Hoisting and TDZ explain timing and access restrictions.
 При чтении кода задавайте вопросы:
 
 ```text
-1. What is the current Lexical Environment?
-2. What identifiers are in its Environment Record?
-3. What is the Outer Environment Reference?
-4. Where will lookup go if identifier is not local?
-5. Where will lookup stop?
+1. Какое лексическое окружение текущее?
+2. Какие имена есть в его записи окружения?
+3. Куда ведёт ссылка на внешнее окружение?
+4. Куда пойдёт поиск, если имя не локальное?
+5. Где поиск остановится?
 ```
 
 Таблица анализа:

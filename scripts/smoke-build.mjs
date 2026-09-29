@@ -58,8 +58,14 @@ if (!exists(indexPath)) {
     fail('На главной странице нет сводки по объёму книги')
   }
 
-  if (!/Начать с введения|Продолжить/.test(indexHtml)) {
+  if (!/Начать читать|Продолжить/.test(indexHtml)) {
     fail('На главной странице нет входа в работу')
+  }
+
+  // Главная обязана называть границу доступа: сколько глав открыто и что даёт
+  // подписка. Без этого читатель узнаёт о платном только на закрытой главе.
+  if (!indexHtml.includes('home-board__tier')) {
+    fail('На главной странице нет блока уровней доступа')
   }
 }
 
@@ -68,6 +74,14 @@ const enIndexPath = path.join(DIST, 'en', 'index.html')
 
 if (exists(enIndexPath) && !read(enIndexPath).includes('book-stats')) {
   fail('На английской главной нет блока статистики книги')
+}
+
+const mapPath = path.join(DIST, 'docs', 'map.html')
+
+if (!exists(mapPath)) {
+  fail('Не собрана карта книги: docs/map.html')
+} else if (!read(mapPath).includes('book-map')) {
+  fail('На карте книги нет списка глав')
 }
 
 const jsHtmlFiles = walk(path.join(DIST, 'docs', '01-javascript'))

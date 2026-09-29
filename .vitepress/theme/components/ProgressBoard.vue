@@ -1,4 +1,5 @@
 <script setup>
+import { withBase } from 'vitepress'
 import { computed, onMounted, ref } from 'vue'
 import AccountPanel from './AccountPanel.vue'
 import tasksByChapter from '../../tasks.generated.json'
@@ -167,7 +168,7 @@ function reset() {
       </p>
       <p v-if="ready && nextChapter" class="progress-board__hint">
         Продолжить:
-        <a :href="nextChapter.link">{{ nextChapter.number }}. {{ nextChapter.title }}</a>
+        <a :href="withBase(nextChapter.link)">{{ nextChapter.number }}. {{ nextChapter.title }}</a>
       </p>
       <p v-else-if="ready" class="progress-board__hint">Все задачи книги решены.</p>
     </div>
@@ -213,7 +214,7 @@ function reset() {
         </thead>
         <tbody>
           <tr v-for="chapter in part.chapters" :key="chapter.key">
-            <td><a :href="chapter.link">{{ chapter.number }}. {{ chapter.title }}</a></td>
+            <td><a :href="withBase(chapter.link)">{{ chapter.number }}. {{ chapter.title }}</a></td>
             <td>
               {{ countIn(chapter.taskIds).solved }} / {{ chapter.taskIds.length }}
               <span

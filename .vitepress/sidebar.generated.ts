@@ -118,7 +118,7 @@ export const sidebar = [
         ]
       },
       {
-        "text": "Functions",
+        "text": "Функции",
         "collapsed": true,
         "items": [
           {
@@ -172,7 +172,7 @@ export const sidebar = [
         ]
       },
       {
-        "text": "Objects",
+        "text": "Объекты",
         "collapsed": true,
         "items": [
           {
@@ -222,7 +222,7 @@ export const sidebar = [
         ]
       },
       {
-        "text": "Arrays",
+        "text": "Массивы",
         "collapsed": true,
         "items": [
           {
@@ -296,7 +296,7 @@ export const sidebar = [
         ]
       },
       {
-        "text": "Execution Model Revisited",
+        "text": "Модель выполнения ещё раз",
         "collapsed": true,
         "items": [
           {
@@ -318,7 +318,7 @@ export const sidebar = [
         ]
       },
       {
-        "text": "Function Context",
+        "text": "Контекст функции",
         "collapsed": true,
         "items": [
           {
@@ -340,7 +340,7 @@ export const sidebar = [
         ]
       },
       {
-        "text": "Async JavaScript",
+        "text": "Асинхронный JavaScript",
         "collapsed": true,
         "items": [
           {
@@ -394,7 +394,7 @@ export const sidebar = [
         ]
       },
       {
-        "text": "Iteration Protocols",
+        "text": "Протоколы перебора",
         "collapsed": true,
         "items": [
           {
@@ -416,7 +416,7 @@ export const sidebar = [
         ]
       },
       {
-        "text": "Modules",
+        "text": "Модули",
         "collapsed": true,
         "items": [
           {
@@ -430,7 +430,7 @@ export const sidebar = [
         ]
       },
       {
-        "text": "Memory Management",
+        "text": "Управление памятью",
         "collapsed": true,
         "items": [
           {
@@ -444,7 +444,7 @@ export const sidebar = [
         ]
       },
       {
-        "text": "Engineering Practice",
+        "text": "Инженерная практика",
         "collapsed": true,
         "items": [
           {
@@ -458,7 +458,7 @@ export const sidebar = [
         ]
       },
       {
-        "text": "JavaScript Conclusion",
+        "text": "Итоги JavaScript",
         "collapsed": true,
         "items": [
           {
@@ -644,7 +644,7 @@ export const sidebar = [
         ]
       },
       {
-        "text": "Narrowing и безопасные ветвления",
+        "text": "Сужение типов и безопасные ветвления",
         "collapsed": true,
         "items": [
           {
@@ -674,7 +674,7 @@ export const sidebar = [
         ]
       },
       {
-        "text": "Generics",
+        "text": "Обобщённые типы",
         "collapsed": true,
         "items": [
           {
@@ -894,7 +894,7 @@ export const sidebar = [
         ]
       },
       {
-        "text": "Fixtures и архитектура UI-слоя",
+        "text": "Фикстуры и архитектура UI-слоя",
         "collapsed": true,
         "items": [
           {

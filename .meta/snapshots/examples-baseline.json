@@ -4326,10 +4326,22 @@
     "text": "Проверка order-42 в https://staging.example.test"
   },
   {
+    "chapter": "docs/03-automation-qa/161-tools-and-roles-in-automation-qa",
+    "title": "JS Пример 1. Roles And Owners",
+    "outcome": "ok",
+    "text": "браузер: Playwright\nзапуск тестов: Playwright Test\nпроверки: Playwright Test\nтестовые данные: команда проекта\nотчётность: Allure"
+  },
+  {
     "chapter": "docs/03-automation-qa/162-architectural-layers-and-dependency-flow",
     "title": "JS Пример 1. Composition Root",
     "outcome": "ok",
     "text": "Чтение статуса order-42\ncreated"
+  },
+  {
+    "chapter": "docs/03-automation-qa/163-test-code-and-infrastructure-code",
+    "title": "JS Пример 1. Test And Infrastructure",
+    "outcome": "ok",
+    "text": "переход на /login\nвход как educational_tester\nоткрыт список задач"
   },
   {
     "chapter": "docs/03-automation-qa/164-automated-test-lifecycle",

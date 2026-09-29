@@ -935,7 +935,7 @@ practice/01-javascript/29-this.md
 Главное упражнение этой главы - для каждого вызова задавать вопрос:
 
 ```text
-Who is the receiver of this invocation?
+Кто является получателем этого вызова?
 ```
 
 ---
@@ -957,7 +957,7 @@ solutions/01-javascript/29-this.md
 `this` отвечает на вопрос:
 
 ```text
-Who is the current receiver?
+Кто получатель прямо сейчас?
 ```
 
 Полная модель: значение `this` определяется формой вызова — через объект, напрямую, через `call`/`apply`/`bind` или через `new`.

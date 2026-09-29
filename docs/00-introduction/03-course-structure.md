@@ -883,7 +883,7 @@ flowchart TD
     N7["Promise"]
     N8["assertion"]
     N9["comparison logic"]
-    N10["values and references"]
+    N10["значения и ссылки"]
     N1 --> N2
     N1 --> N3
     N1 --> N4

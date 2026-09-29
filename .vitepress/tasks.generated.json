@@ -13873,5 +13873,761 @@
       "solution": "function pickNextRefactoring(signals) {\n  const confirmed = signals.filter(signal => signal.evidence.length > 0);\n\n  if (confirmed.length === 0) return null;\n\n  return confirmed.reduce((best, signal) => {\n    if (signal.severity !== best.severity) {\n      return signal.severity > best.severity ? signal : best;\n    }\n\n    return signal.problem < best.problem ? signal : best;\n  });\n}",
       "chapter": "03-automation-qa/249-architecture-review-and-framework-evolution"
     }
+  ],
+  "04-final-project/250-project-requirements-and-readiness-criteria": [
+    {
+      "id": "fp-250-missing-criteria",
+      "title": "Чего не хватает до готовности",
+      "difficulty": "easy",
+      "lang": "js",
+      "transaction": false,
+      "runner": "browser",
+      "prompt": "Критерий готовности полезен, только если по нему можно ответить «да» или «нет». Напишите `missingCriteria(criteria)`: на вход приходит массив объектов `{ id, required, status }`, где `status` — `done`, `partial` или `todo`. Верните отсортированный массив идентификаторов тех **обязательных** критериев, которые не выполнены. Частично выполненный критерий выполненным не считается.",
+      "starter": "function missingCriteria(criteria) {\n  // Верните идентификаторы обязательных и невыполненных критериев.\n\n  return [];\n}",
+      "hints": [
+        "Сначала отберите обязательные, потом — невыполненные.",
+        "Выполненным считается только статус done.",
+        "Порядок задаёт обычный sort() по идентификаторам."
+      ],
+      "standSetup": "",
+      "tests": [
+        {
+          "name": "необязательные критерии не попадают в список",
+          "code": "const optionalOnly = [\n  { id: 'a', required: false, status: 'todo' },\n  { id: 'b', required: true, status: 'done' }\n];\nexpect(missingCriteria(optionalOnly)).toEqual([]);"
+        },
+        {
+          "name": "частичное выполнение считается невыполненным",
+          "code": "const partial = [{ id: 'ui-01', required: true, status: 'partial' }];\nexpect(missingCriteria(partial)).toEqual(['ui-01']);"
+        },
+        {
+          "name": "результат отсортирован",
+          "code": "const several = [\n  { id: 'db-02', required: true, status: 'todo' },\n  { id: 'api-01', required: true, status: 'done' },\n  { id: 'ci-03', required: true, status: 'partial' }\n];\nexpect(missingCriteria(several)).toEqual(['ci-03', 'db-02']);"
+        },
+        {
+          "name": "пустой список даёт пустой результат",
+          "code": "expect(missingCriteria([])).toEqual([]);"
+        }
+      ],
+      "solution": "function missingCriteria(criteria) {\n  return criteria\n    .filter(criterion => criterion.required && criterion.status !== 'done')\n    .map(criterion => criterion.id)\n    .sort();\n}",
+      "chapter": "04-final-project/250-project-requirements-and-readiness-criteria"
+    },
+    {
+      "id": "fp-250-empty-is-not-ready",
+      "title": "Пустой список не значит «готово»",
+      "difficulty": "medium",
+      "lang": "js",
+      "transaction": false,
+      "runner": "browser",
+      "prompt": "Напишите `readinessVerdict(criteria)`. Он возвращает `{ ready, missing }`, где `missing` — идентификаторы невыполненных обязательных критериев (как в предыдущей задаче), а `ready` истинно только тогда, когда невыполненных нет **и** проверять было что. Пустой список критериев — это не готовность, а отсутствие критериев: для него `ready` должно быть ложным.",
+      "starter": "function readinessVerdict(criteria) {\n  const missing = criteria\n    .filter(criterion => criterion.required && criterion.status !== 'done')\n    .map(criterion => criterion.id)\n    .sort();\n\n  // every() на пустом массиве истинно — учтите это.\n  return { ready: missing.length === 0, missing };\n}",
+      "hints": [
+        "Проверьте, есть ли вообще обязательные критерии.",
+        "Готовность требует двух условий: критерии есть и все выполнены.",
+        "Отсутствие критериев стоит считать отдельным случаем, а не успехом."
+      ],
+      "standSetup": "",
+      "tests": [
+        {
+          "name": "все обязательные выполнены — готово",
+          "code": "const allDone = [\n  { id: 'a', required: true, status: 'done' },\n  { id: 'b', required: false, status: 'todo' }\n];\nexpect(readinessVerdict(allDone)).toEqual({ ready: true, missing: [] });"
+        },
+        {
+          "name": "невыполненный обязательный критерий отменяет готовность",
+          "code": "const oneLeft = [\n  { id: 'a', required: true, status: 'done' },\n  { id: 'b', required: true, status: 'todo' }\n];\nconst oneLeftVerdict = readinessVerdict(oneLeft);\nexpect(oneLeftVerdict.ready).toBe(false);\nexpect(oneLeftVerdict.missing).toEqual(['b']);"
+        },
+        {
+          "name": "пустой список критериев не является готовностью",
+          "code": "expect(readinessVerdict([]).ready).toBe(false);"
+        },
+        {
+          "name": "список только из необязательных тоже не готовность",
+          "code": "const optional = [{ id: 'nice', required: false, status: 'todo' }];\nexpect(readinessVerdict(optional).ready).toBe(false);"
+        }
+      ],
+      "solution": "function readinessVerdict(criteria) {\n  const required = criteria.filter(criterion => criterion.required);\n\n  const missing = required\n    .filter(criterion => criterion.status !== 'done')\n    .map(criterion => criterion.id)\n    .sort();\n\n  // Нечего проверять — значит, готовность не подтверждена ничем.\n  return { ready: required.length > 0 && missing.length === 0, missing };\n}",
+      "chapter": "04-final-project/250-project-requirements-and-readiness-criteria"
+    }
+  ],
+  "04-final-project/251-architecture-decisions-and-implementation-plan": [
+    {
+      "id": "fp-251-build-order",
+      "title": "Порядок сборки слоёв",
+      "difficulty": "medium",
+      "lang": "js",
+      "transaction": false,
+      "runner": "browser",
+      "prompt": "План реализации — это граф зависимостей. Напишите `buildOrder(deps)`: на вход приходит объект, где ключ — имя слоя, а значение — массив слоёв, от которых он зависит. Верните массив имён в таком порядке, чтобы каждый слой шёл после всех своих зависимостей. Слои, независимые друг от друга, упорядочивайте по имени — тогда результат воспроизводим.",
+      "starter": "function buildOrder(deps) {\n  // Слой можно строить, когда все его зависимости уже построены.\n\n  return Object.keys(deps);\n}",
+      "hints": [
+        "На каждом шаге выбирайте слои, все зависимости которых уже в результате.",
+        "Из нескольких готовых к сборке берите первый по алфавиту.",
+        "Повторяйте, пока не разберёте все слои."
+      ],
+      "standSetup": "",
+      "tests": [
+        {
+          "name": "зависимость идёт раньше зависимого",
+          "code": "const simple = { client: ['config'], config: [] };\nexpect(buildOrder(simple)).toEqual(['config', 'client']);"
+        },
+        {
+          "name": "цепочка из трёх слоёв",
+          "code": "const chain = { scenario: ['client'], client: ['config'], config: [] };\nexpect(buildOrder(chain)).toEqual(['config', 'client', 'scenario']);"
+        },
+        {
+          "name": "независимые слои упорядочены по имени",
+          "code": "const flat = { ui: [], api: [], database: [] };\nexpect(buildOrder(flat)).toEqual(['api', 'database', 'ui']);"
+        },
+        {
+          "name": "ветвление: общий слой строится один раз",
+          "code": "const branching = {\n  crossLayer: ['api', 'database'],\n  api: ['config'],\n  database: ['config'],\n  config: []\n};\nexpect(buildOrder(branching)).toEqual(['config', 'api', 'database', 'crossLayer']);"
+        }
+      ],
+      "solution": "function buildOrder(deps) {\n  const order = [];\n  const remaining = new Set(Object.keys(deps));\n\n  while (remaining.size > 0) {\n    const ready = [...remaining]\n      .filter(name => deps[name].every(dependency => order.includes(dependency)))\n      .sort();\n\n    if (ready.length === 0) break;\n\n    for (const name of ready) {\n      order.push(name);\n      remaining.delete(name);\n    }\n  }\n\n  return order;\n}",
+      "chapter": "04-final-project/251-architecture-decisions-and-implementation-plan"
+    },
+    {
+      "id": "fp-251-cycle-is-an-error",
+      "title": "Цикл в графе — это отказ",
+      "difficulty": "hard",
+      "lang": "js",
+      "transaction": false,
+      "runner": "browser",
+      "prompt": "Дополните `buildOrder(deps)`: если слои зависят друг от друга по кругу, порядка не существует. В этом случае бросьте `Error`, в сообщении которого перечислены имена слоёв, попавших в цикл, — отсортированные и разделённые запятой с пробелом. Неизвестная зависимость (её нет среди ключей) — тоже ошибка: сообщение должно содержать её имя.",
+      "starter": "function buildOrder(deps) {\n  const order = [];\n  const remaining = new Set(Object.keys(deps));\n\n  while (remaining.size > 0) {\n    const ready = [...remaining]\n      .filter(name => deps[name].every(dependency => order.includes(dependency)))\n      .sort();\n\n    // Если готовых к сборке нет, а слои остались — порядка не существует.\n    if (ready.length === 0) break;\n\n    for (const name of ready) {\n      order.push(name);\n      remaining.delete(name);\n    }\n  }\n\n  return order;\n}",
+      "hints": [
+        "Сначала проверьте, что каждая зависимость есть среди ключей.",
+        "Если готовых к сборке слоёв нет, а неразобранные остались — это цикл.",
+        "В сообщение об ошибке попадают именно оставшиеся слои."
+      ],
+      "standSetup": "",
+      "tests": [
+        {
+          "name": "корректный граф по-прежнему упорядочивается",
+          "code": "const ok = { client: ['config'], config: [] };\nexpect(buildOrder(ok)).toEqual(['config', 'client']);"
+        },
+        {
+          "name": "цикл из двух слоёв даёт ошибку с их именами",
+          "code": "const pair = { a: ['b'], b: ['a'] };\nexpect(() => buildOrder(pair)).toThrow('a, b');"
+        },
+        {
+          "name": "цикл не мешает сообщить о нём при большом графе",
+          "code": "const mixed = { config: [], left: ['right'], right: ['left'] };\nexpect(() => buildOrder(mixed)).toThrow('left, right');"
+        },
+        {
+          "name": "неизвестная зависимость названа в сообщении",
+          "code": "const unknown = { client: ['secrets'] };\nexpect(() => buildOrder(unknown)).toThrow('secrets');"
+        }
+      ],
+      "solution": "function buildOrder(deps) {\n  const names = Object.keys(deps);\n\n  for (const name of names) {\n    for (const dependency of deps[name]) {\n      if (!names.includes(dependency)) {\n        throw new Error('неизвестная зависимость: ' + dependency);\n      }\n    }\n  }\n\n  const order = [];\n  const remaining = new Set(names);\n\n  while (remaining.size > 0) {\n    const ready = [...remaining]\n      .filter(name => deps[name].every(dependency => order.includes(dependency)))\n      .sort();\n\n    if (ready.length === 0) {\n      throw new Error('цикл в зависимостях: ' + [...remaining].sort().join(', '));\n    }\n\n    for (const name of ready) {\n      order.push(name);\n      remaining.delete(name);\n    }\n  }\n\n  return order;\n}",
+      "chapter": "04-final-project/251-architecture-decisions-and-implementation-plan"
+    }
+  ],
+  "04-final-project/252-framework-skeleton-configuration-and-environments": [
+    {
+      "id": "fp-252-collect-all-config-problems",
+      "title": "Все проблемы конфигурации сразу",
+      "difficulty": "medium",
+      "lang": "js",
+      "transaction": false,
+      "runner": "browser",
+      "prompt": "Напишите `loadRunConfig(env)`. На вход приходит объект со строковыми значениями (как `process.env`). Нужны три переменные: `BASE_URL` — непустая строка, `WORKERS` — целое число больше нуля, `HEADLESS` — строка `true` или `false`. Если всё верно, верните `{ baseUrl, workers, headless }` с приведёнными значениями. Если нет — бросьте `Error`, в сообщении которого перечислены **все** имена проблемных переменных, отсортированные и разделённые запятой с пробелом.",
+      "starter": "function loadRunConfig(env) {\n  // Проверка должна назвать все проблемы, а не первую найденную.\n\n  return {\n    baseUrl: env.BASE_URL,\n    workers: Number(env.WORKERS),\n    headless: env.HEADLESS === 'true'\n  };\n}",
+      "hints": [
+        "Собирайте имена проблемных переменных в массив, а не бросайте сразу.",
+        "Number(\"\") даёт 0, а Number(\"два\") даёт NaN — проверяйте результат.",
+        "Строка \"false\" истинна: сравнивайте со списком допустимых значений."
+      ],
+      "standSetup": "",
+      "tests": [
+        {
+          "name": "корректное окружение даёт приведённые значения",
+          "code": "const good = loadRunConfig({\n  BASE_URL: 'http://127.0.0.1:4310',\n  WORKERS: '4',\n  HEADLESS: 'false'\n});\nexpect(good).toEqual({\n  baseUrl: 'http://127.0.0.1:4310',\n  workers: 4,\n  headless: false\n});"
+        },
+        {
+          "name": "сообщение перечисляет все проблемы",
+          "code": "expect(() => loadRunConfig({ HEADLESS: 'да' }))\n  .toThrow('BASE_URL, HEADLESS, WORKERS');"
+        },
+        {
+          "name": "пустая строка не является заданным значением",
+          "code": "expect(() => loadRunConfig({\n  BASE_URL: '',\n  WORKERS: '2',\n  HEADLESS: 'true'\n})).toThrow('BASE_URL');"
+        },
+        {
+          "name": "нецелое и неположительное число не проходят",
+          "code": "expect(() => loadRunConfig({\n  BASE_URL: 'http://x',\n  WORKERS: '0',\n  HEADLESS: 'true'\n})).toThrow('WORKERS');\nexpect(() => loadRunConfig({\n  BASE_URL: 'http://x',\n  WORKERS: '1.5',\n  HEADLESS: 'true'\n})).toThrow('WORKERS');"
+        }
+      ],
+      "solution": "function loadRunConfig(env) {\n  const problems = [];\n\n  const baseUrl = typeof env.BASE_URL === 'string' ? env.BASE_URL.trim() : '';\n  if (baseUrl === '') problems.push('BASE_URL');\n\n  const workers = Number(env.WORKERS);\n  if (!Number.isInteger(workers) || workers <= 0) problems.push('WORKERS');\n\n  const headlessRaw = env.HEADLESS;\n  if (headlessRaw !== 'true' && headlessRaw !== 'false') problems.push('HEADLESS');\n\n  if (problems.length > 0) {\n    throw new Error('неверные переменные окружения: ' + problems.sort().join(', '));\n  }\n\n  return { baseUrl, workers, headless: headlessRaw === 'true' };\n}",
+      "chapter": "04-final-project/252-framework-skeleton-configuration-and-environments"
+    },
+    {
+      "id": "fp-252-project-overrides-shared",
+      "title": "Настройка проекта перекрывает общую",
+      "difficulty": "easy",
+      "lang": "js",
+      "transaction": false,
+      "runner": "browser",
+      "prompt": "Напишите `resolveProject(config, name)`. В `config` есть общий блок `use` и массив `projects`, у каждого — своё имя и свой `use`. Верните настройку проекта: значения его `use` перекрывают общие, отсутствующие наследуются из общего блока. Имя проекта добавьте в результат полем `project`. Неизвестное имя — `Error` с этим именем в сообщении.",
+      "starter": "function resolveProject(config, name) {\n  // Отсутствующее в проекте наследуется, а не обнуляется.\n\n  const project = config.projects.find(item => item.name === name);\n\n  return { project: name, ...project.use };\n}",
+      "hints": [
+        "Раскрытие объектов накладывает правый на левый.",
+        "Проект может не задать ни одного значения — тогда берутся все общие.",
+        "Отсутствующий проект нужно обнаружить до обращения к его use."
+      ],
+      "standSetup": "",
+      "tests": [
+        {
+          "name": "значение проекта перекрывает общее",
+          "code": "const overriding = {\n  use: { baseUrl: 'http://local', timeout: 30000 },\n  projects: [{ name: 'preview', use: { baseUrl: 'http://preview' } }]\n};\nexpect(resolveProject(overriding, 'preview')).toEqual({\n  project: 'preview',\n  baseUrl: 'http://preview',\n  timeout: 30000\n});"
+        },
+        {
+          "name": "проект без своих значений наследует все общие",
+          "code": "const inheriting = {\n  use: { baseUrl: 'http://local', timeout: 30000 },\n  projects: [{ name: 'local', use: {} }]\n};\nexpect(resolveProject(inheriting, 'local')).toEqual({\n  project: 'local',\n  baseUrl: 'http://local',\n  timeout: 30000\n});"
+        },
+        {
+          "name": "неизвестный проект даёт ошибку с именем",
+          "code": "const single = { use: {}, projects: [{ name: 'local', use: {} }] };\nexpect(() => resolveProject(single, 'staging')).toThrow('staging');"
+        },
+        {
+          "name": "общий блок не изменяется",
+          "code": "const shared = { baseUrl: 'http://local' };\nconst configWithShared = {\n  use: shared,\n  projects: [{ name: 'preview', use: { baseUrl: 'http://preview' } }]\n};\nresolveProject(configWithShared, 'preview');\nexpect(shared.baseUrl).toBe('http://local');"
+        }
+      ],
+      "solution": "function resolveProject(config, name) {\n  const project = config.projects.find(item => item.name === name);\n\n  if (!project) {\n    throw new Error('неизвестный проект: ' + name);\n  }\n\n  return { project: name, ...config.use, ...project.use };\n}",
+      "chapter": "04-final-project/252-framework-skeleton-configuration-and-environments"
+    }
+  ],
+  "04-final-project/253-ui-layer-page-objects-and-fixtures": [
+    {
+      "id": "fp-253-scoped-component",
+      "title": "Компонент ищет только внутри своего корня",
+      "difficulty": "medium",
+      "lang": "js",
+      "transaction": false,
+      "runner": "browser",
+      "prompt": "Область поиска — это и есть граница компонента. Дерево задано объектами `{ role, name, children }`. Напишите `createComponent(root)`, который возвращает объект с методом `find(role, name)`: он ищет узел с такими ролью и именем **внутри поддерева root** (сам корень тоже считается) и возвращает найденный узел или `null`. Узел с теми же ролью и именем за пределами корня найден быть не должен.",
+      "starter": "function createComponent(root) {\n  return {\n    find(role, name) {\n      // Поиск должен ограничиваться поддеревом root.\n\n      return null;\n    }\n  };\n}",
+      "hints": [
+        "Обход в глубину: проверить сам узел, затем его детей.",
+        "Дети могут отсутствовать — тогда считайте их пустым массивом.",
+        "Первое совпадение и есть результат."
+      ],
+      "standSetup": "",
+      "tests": [
+        {
+          "name": "элемент внутри корня находится",
+          "code": "const insideTree = {\n  role: 'row',\n  name: 'order-42',\n  children: [{ role: 'button', name: 'Открыть', children: [] }]\n};\nconst insideComponent = createComponent(insideTree);\nexpect(insideComponent.find('button', 'Открыть').name).toBe('Открыть');"
+        },
+        {
+          "name": "такой же элемент вне корня не находится",
+          "code": "const page = {\n  role: 'table',\n  name: 'Задачи',\n  children: [\n    { role: 'row', name: 'order-42', children: [] },\n    { role: 'row', name: 'order-43', children: [\n      { role: 'button', name: 'Открыть', children: [] }\n    ] }\n  ]\n};\nconst firstRow = createComponent(page.children[0]);\nexpect(firstRow.find('button', 'Открыть')).toBeNull();"
+        },
+        {
+          "name": "сам корень тоже участвует в поиске",
+          "code": "const rootOnly = { role: 'form', name: 'Фильтр задач', children: [] };\nconst rootComponent = createComponent(rootOnly);\nexpect(rootComponent.find('form', 'Фильтр задач').role).toBe('form');"
+        },
+        {
+          "name": "поиск идёт на любую глубину",
+          "code": "const deepTree = {\n  role: 'dialog',\n  name: 'Подтверждение',\n  children: [{ role: 'section', name: 'тело', children: [\n    { role: 'button', name: 'Удалить', children: [] }\n  ] }]\n};\nconst deepComponent = createComponent(deepTree);\nexpect(deepComponent.find('button', 'Удалить').name).toBe('Удалить');"
+        }
+      ],
+      "solution": "function createComponent(root) {\n  function search(node, role, name) {\n    if (node.role === role && node.name === name) return node;\n\n    for (const child of node.children ?? []) {\n      const found = search(child, role, name);\n\n      if (found) return found;\n    }\n\n    return null;\n  }\n\n  // Корень захвачен замыканием: снаружи область поиска изменить нельзя.\n  return {\n    find(role, name) {\n      return search(root, role, name);\n    }\n  };\n}",
+      "chapter": "04-final-project/253-ui-layer-page-objects-and-fixtures"
+    },
+    {
+      "id": "fp-253-fixture-releases-on-failure",
+      "title": "Фикстура освобождает ресурс и после падения",
+      "difficulty": "medium",
+      "lang": "js",
+      "transaction": false,
+      "runner": "browser",
+      "prompt": "Напишите `withPage(open, body)`. Функция `open()` создаёт объект страницы и возвращает `{ page, close }`. Вызовите `open()`, передайте `page` в `body`, а затем **всегда** вызовите `close()` — и при успехе, и при исключении. Верните то, что вернул `body`. Исключение из `body` пропустите наружу без изменений; ошибка из `close()` не должна его подменять.",
+      "starter": "async function withPage(open, body) {\n  const { page, close } = await open();\n\n  const value = await body(page);\n\n  await close();\n\n  return value;\n}",
+      "hints": [
+        "Освобождение принадлежит блоку finally.",
+        "Ошибку close() нужно перехватить отдельно, чтобы не потерять исходную.",
+        "Возврат значения body должен происходить после освобождения."
+      ],
+      "standSetup": "",
+      "tests": [
+        {
+          "name": "значение тела возвращается, ресурс освобождён",
+          "code": "let closedOnSuccess = 0;\nconst openOk = async () => ({ page: { id: 1 }, close: async () => { closedOnSuccess += 1; } });\nexpect(await withPage(openOk, async page => page.id)).toBe(1);\nexpect(closedOnSuccess).toBe(1);"
+        },
+        {
+          "name": "после падения тела ресурс тоже освобождён",
+          "code": "let closedOnFailure = 0;\nconst openFail = async () => ({ page: {}, close: async () => { closedOnFailure += 1; } });\nlet caught = null;\ntry {\n  await withPage(openFail, async () => { throw new Error('проверка не прошла'); });\n} catch (error) {\n  caught = error;\n}\nexpect(caught.message).toBe('проверка не прошла');\nexpect(closedOnFailure).toBe(1);"
+        },
+        {
+          "name": "ошибка освобождения не подменяет ошибку теста",
+          "code": "const openBroken = async () => ({\n  page: {},\n  close: async () => { throw new Error('не удалось закрыть страницу'); }\n});\nlet replaced = null;\ntry {\n  await withPage(openBroken, async () => { throw new Error('статус не изменился'); });\n} catch (error) {\n  replaced = error;\n}\nexpect(replaced.message).toBe('статус не изменился');"
+        },
+        {
+          "name": "при успешном теле ошибка освобождения не теряется молча",
+          "code": "const openNoisy = async () => ({\n  page: {},\n  close: async () => { throw new Error('канал не закрыт'); }\n});\nlet quiet = null;\ntry {\n  await withPage(openNoisy, async () => 'готово');\n} catch (error) {\n  quiet = error;\n}\nexpect(quiet.message).toBe('канал не закрыт');"
+        }
+      ],
+      "solution": "async function withPage(open, body) {\n  const { page, close } = await open();\n\n  let failure = null;\n  let value;\n\n  try {\n    value = await body(page);\n  } catch (error) {\n    failure = error;\n  }\n\n  try {\n    await close();\n  } catch (closeError) {\n    // Ошибка освобождения важна, но не важнее причины падения теста.\n    if (!failure) failure = closeError;\n  }\n\n  if (failure) throw failure;\n\n  return value;\n}",
+      "chapter": "04-final-project/253-ui-layer-page-objects-and-fixtures"
+    }
+  ],
+  "04-final-project/254-rest-layer-client-and-data-setup": [
+    {
+      "id": "fp-254-failure-as-value",
+      "title": "Отказ как значение, а не исключение",
+      "difficulty": "medium",
+      "lang": "js",
+      "transaction": false,
+      "runner": "browser",
+      "prompt": "Напишите `toResult(response)`. На вход приходит объект `{ status, body }`. Для кодов 2xx верните `{ ok: true, value: body }`. Для остальных — `{ ok: false, failure: { status, code, message } }`, где `code` и `message` берутся из тела (`body.code`, `body.message`). Если тела нет или полей в нём нет, подставьте `code: \"UNKNOWN\"` и пустое сообщение. Исключений функция не бросает: отказ — это результат.",
+      "starter": "function toResult(response) {\n  // Негативный сценарий должен проверяться как обычное значение.\n\n  return { ok: true, value: response.body };\n}",
+      "hints": [
+        "Успешными считаются коды от 200 до 299 включительно.",
+        "Тело ошибки может отсутствовать — не обращайтесь к его полям напрямую.",
+        "Возвращайте одну из двух форм, не смешивая их поля."
+      ],
+      "standSetup": "",
+      "tests": [
+        {
+          "name": "успешный ответ отдаёт значение",
+          "code": "const okResult = toResult({ status: 201, body: { id: 'T-1' } });\nexpect(okResult).toEqual({ ok: true, value: { id: 'T-1' } });"
+        },
+        {
+          "name": "отказ сохраняет код состояния и причину",
+          "code": "const conflict = toResult({\n  status: 409,\n  body: { code: 'VERSION_CONFLICT', message: 'устаревшая версия' }\n});\nexpect(conflict).toEqual({\n  ok: false,\n  failure: { status: 409, code: 'VERSION_CONFLICT', message: 'устаревшая версия' }\n});"
+        },
+        {
+          "name": "ответ без тела не ломает разбор",
+          "code": "const noBody = toResult({ status: 500 });\nexpect(noBody.ok).toBe(false);\nexpect(noBody.failure.code).toBe('UNKNOWN');\nexpect(noBody.failure.message).toBe('');"
+        },
+        {
+          "name": "код 204 успешен, 304 — нет",
+          "code": "expect(toResult({ status: 204, body: null }).ok).toBe(true);\nexpect(toResult({ status: 304, body: null }).ok).toBe(false);"
+        }
+      ],
+      "solution": "function toResult(response) {\n  const status = response.status;\n\n  if (status >= 200 && status <= 299) {\n    return { ok: true, value: response.body };\n  }\n\n  const body = response.body ?? {};\n\n  return {\n    ok: false,\n    failure: {\n      status,\n      code: body.code ?? 'UNKNOWN',\n      message: body.message ?? ''\n    }\n  };\n}",
+      "chapter": "04-final-project/254-rest-layer-client-and-data-setup"
+    },
+    {
+      "id": "fp-254-contract-guard",
+      "title": "Страж контракта называет поле",
+      "difficulty": "medium",
+      "lang": "js",
+      "transaction": false,
+      "runner": "browser",
+      "prompt": "Напишите `assertWorkItem(value)`. Запись обязана быть объектом с полями `id` (непустая строка), `title` (непустая строка) и `version` (целое число не меньше 1). При нарушении бросьте `Error`, в сообщении которого есть **имя первого проблемного поля** в этом порядке. Если значение — не объект или `null`, сообщение должно содержать слово `объект`. При успехе верните само значение.",
+      "starter": "function assertWorkItem(value) {\n  // Сообщение должно называть поле, а не просто «ответ не подходит».\n\n  return value;\n}",
+      "hints": [
+        "Сначала проверьте, что это объект и не null.",
+        "Порядок проверок задаёт, какое поле попадёт в сообщение.",
+        "Целое число проверяется через Number.isInteger."
+      ],
+      "standSetup": "",
+      "tests": [
+        {
+          "name": "корректная запись проходит и возвращается",
+          "code": "const valid = { id: 'T-1', title: 'Отчёт', version: 1 };\nexpect(assertWorkItem(valid)).toEqual(valid);"
+        },
+        {
+          "name": "не объект отклоняется с понятным сообщением",
+          "code": "expect(() => assertWorkItem(null)).toThrow('объект');\nexpect(() => assertWorkItem('T-1')).toThrow('объект');"
+        },
+        {
+          "name": "пустая строка не считается заданным полем",
+          "code": "expect(() => assertWorkItem({ id: '', title: 'Отчёт', version: 1 }))\n  .toThrow('id');\nexpect(() => assertWorkItem({ id: 'T-1', title: '', version: 1 }))\n  .toThrow('title');"
+        },
+        {
+          "name": "версия обязана быть целым числом не меньше единицы",
+          "code": "expect(() => assertWorkItem({ id: 'T-1', title: 'Отчёт', version: 0 }))\n  .toThrow('version');\nexpect(() => assertWorkItem({ id: 'T-1', title: 'Отчёт', version: '2' }))\n  .toThrow('version');"
+        },
+        {
+          "name": "при нескольких проблемах назван первый по порядку",
+          "code": "expect(() => assertWorkItem({ id: '', title: '', version: 0 }))\n  .toThrow('id');"
+        }
+      ],
+      "solution": "function assertWorkItem(value) {\n  if (typeof value !== 'object' || value === null) {\n    throw new Error('ответ не объект: ' + typeof value);\n  }\n\n  if (typeof value.id !== 'string' || value.id === '') {\n    throw new Error('контракт нарушен, поле id');\n  }\n\n  if (typeof value.title !== 'string' || value.title === '') {\n    throw new Error('контракт нарушен, поле title');\n  }\n\n  if (!Number.isInteger(value.version) || value.version < 1) {\n    throw new Error('контракт нарушен, поле version');\n  }\n\n  return value;\n}",
+      "chapter": "04-final-project/254-rest-layer-client-and-data-setup"
+    }
+  ],
+  "04-final-project/255-grpc-layer-unary-calls-and-statuses": [
+    {
+      "id": "fp-255-call-unary",
+      "title": "Обратный вызов в промис",
+      "difficulty": "medium",
+      "lang": "js",
+      "transaction": false,
+      "runner": "browser",
+      "prompt": "Унарный вызов gRPC сообщает результат обратным вызовом ровно один раз. Напишите `callUnary(client, method, request)`: вызовите `client[method](request, callback)` и верните промис. Промис разрешается ответом, если ошибки нет, и отклоняется ошибкой, если она есть. Повторное срабатывание обратного вызова не должно приводить ко второму разрешению.",
+      "starter": "function callUnary(client, method, request) {\n  // Один вызов — один результат: либо ответ, либо ошибка.\n\n  return new Promise(resolve => {\n    client[method](request, (error, response) => resolve(response));\n  });\n}",
+      "hints": [
+        "Промису нужны оба исхода: resolve и reject.",
+        "Ошибка приходит первым аргументом обратного вызова.",
+        "Отклонение промиса — это reject(error), а не возврат ошибки."
+      ],
+      "standSetup": "",
+      "tests": [
+        {
+          "name": "успешный вызов разрешает промис ответом",
+          "code": "const okClient = {\n  GetWorkItem(request, callback) { callback(null, { id: request.id }); }\n};\nexpect(await callUnary(okClient, 'GetWorkItem', { id: 'T-1' })).toEqual({ id: 'T-1' });"
+        },
+        {
+          "name": "ошибка вызова отклоняет промис",
+          "code": "const failingClient = {\n  GetWorkItem(request, callback) {\n    const error = new Error('запись не найдена');\n    error.code = 5;\n    callback(error);\n  }\n};\nlet failure = null;\ntry {\n  await callUnary(failingClient, 'GetWorkItem', { id: 'нет' });\n} catch (error) {\n  failure = error;\n}\nexpect(failure.code).toBe(5);"
+        },
+        {
+          "name": "запрос передаётся методу без изменений",
+          "code": "let seenRequest = null;\nconst echoClient = {\n  SearchWorkItems(request, callback) {\n    seenRequest = request;\n    callback(null, { items: [], total: 0 });\n  }\n};\nawait callUnary(echoClient, 'SearchWorkItems', { limit: 50, offset: 0 });\nexpect(seenRequest).toEqual({ limit: 50, offset: 0 });"
+        },
+        {
+          "name": "повторный обратный вызов не меняет результат",
+          "code": "const noisyClient = {\n  GetWorkItem(request, callback) {\n    callback(null, { id: 'первый' });\n    callback(new Error('второй раз'));\n  }\n};\nexpect(await callUnary(noisyClient, 'GetWorkItem', {})).toEqual({ id: 'первый' });"
+        }
+      ],
+      "solution": "function callUnary(client, method, request) {\n  return new Promise((resolve, reject) => {\n    client[method](request, (error, response) => {\n      if (error) reject(error);\n      else resolve(response);\n    });\n  });\n}",
+      "chapter": "04-final-project/255-grpc-layer-unary-calls-and-statuses"
+    },
+    {
+      "id": "fp-255-status-code-name",
+      "title": "Код состояния читается по имени",
+      "difficulty": "easy",
+      "lang": "js",
+      "transaction": false,
+      "runner": "browser",
+      "prompt": "У gRPC собственная нумерация состояний, и в отчёте полезно видеть имя, а не число. Напишите `codeName(code)`: для известных кодов верните имя (`0` → `OK`, `1` → `CANCELLED`, `3` → `INVALID_ARGUMENT`, `4` → `DEADLINE_EXCEEDED`, `5` → `NOT_FOUND`, `6` → `ALREADY_EXISTS`, `7` → `PERMISSION_DENIED`, `9` → `FAILED_PRECONDITION`, `14` → `UNAVAILABLE`, `16` → `UNAUTHENTICATED`). Для неизвестного кода верните строку вида `UNKNOWN(42)` — с самим числом внутри.",
+      "starter": "function codeName(code) {\n  // Неизвестный код тоже должен читаться в отчёте.\n\n  return String(code);\n}",
+      "hints": [
+        "Соответствие удобно хранить объектом или Map.",
+        "Код 0 существует — проверка на истинность здесь не подходит.",
+        "Для неизвестного кода в строку подставляется само число."
+      ],
+      "standSetup": "",
+      "tests": [
+        {
+          "name": "известные коды переводятся в имена",
+          "code": "expect(codeName(0)).toBe('OK');\nexpect(codeName(5)).toBe('NOT_FOUND');\nexpect(codeName(16)).toBe('UNAUTHENTICATED');"
+        },
+        {
+          "name": "нулевой код не теряется",
+          "code": "expect(codeName(0)).toBe('OK');"
+        },
+        {
+          "name": "неизвестный код читается вместе с числом",
+          "code": "expect(codeName(42)).toBe('UNKNOWN(42)');"
+        },
+        {
+          "name": "предусловие и неверный аргумент различаются",
+          "code": "expect(codeName(3)).toBe('INVALID_ARGUMENT');\nexpect(codeName(9)).toBe('FAILED_PRECONDITION');"
+        }
+      ],
+      "solution": "const CODE_NAMES = {\n  0: 'OK',\n  1: 'CANCELLED',\n  3: 'INVALID_ARGUMENT',\n  4: 'DEADLINE_EXCEEDED',\n  5: 'NOT_FOUND',\n  6: 'ALREADY_EXISTS',\n  7: 'PERMISSION_DENIED',\n  9: 'FAILED_PRECONDITION',\n  14: 'UNAVAILABLE',\n  16: 'UNAUTHENTICATED'\n};\n\nfunction codeName(code) {\n  // Object.hasOwn различает отсутствие ключа и значение по умолчанию.\n  return Object.hasOwn(CODE_NAMES, code) ? CODE_NAMES[code] : 'UNKNOWN(' + code + ')';\n}",
+      "chapter": "04-final-project/255-grpc-layer-unary-calls-and-statuses"
+    }
+  ],
+  "04-final-project/256-database-layer-pool-and-state-verification": [
+    {
+      "id": "fp-256-release-always",
+      "title": "Подключение возвращается в пул всегда",
+      "difficulty": "medium",
+      "lang": "js",
+      "transaction": false,
+      "runner": "browser",
+      "prompt": "Забытый `release()` не роняет прогон — он его подвешивает, потому что срок ожидания подключения по умолчанию не задан. Напишите `withClient(pool, body)`: возьмите клиента через `pool.connect()`, передайте его в `body`, верните результат и **всегда** освободите клиента через `client.release()`. Ошибку из `body` пропустите наружу. Повторное освобождение недопустимо: `release()` вызывается ровно один раз.",
+      "starter": "async function withClient(pool, body) {\n  const client = await pool.connect();\n\n  const value = await body(client);\n\n  client.release();\n\n  return value;\n}",
+      "hints": [
+        "Освобождение принадлежит блоку finally.",
+        "Проверьте, что release вызывается ровно один раз и при ошибке тоже.",
+        "Результат возвращается после освобождения."
+      ],
+      "standSetup": "",
+      "tests": [
+        {
+          "name": "клиент освобождён после успешной работы",
+          "code": "let okReleases = 0;\nconst okPool = {\n  connect: async () => ({ id: 'c1', release() { okReleases += 1; } })\n};\nexpect(await withClient(okPool, async client => client.id)).toBe('c1');\nexpect(okReleases).toBe(1);"
+        },
+        {
+          "name": "клиент освобождён и после ошибки",
+          "code": "let failReleases = 0;\nconst failPool = {\n  connect: async () => ({ release() { failReleases += 1; } })\n};\nlet dbFailure = null;\ntry {\n  await withClient(failPool, async () => { throw new Error('23505'); });\n} catch (error) {\n  dbFailure = error;\n}\nexpect(dbFailure.message).toBe('23505');\nexpect(failReleases).toBe(1);"
+        },
+        {
+          "name": "release не вызывается дважды",
+          "code": "let doubleReleases = 0;\nconst countingPool = {\n  connect: async () => ({ release() { doubleReleases += 1; } })\n};\nawait withClient(countingPool, async () => 'готово');\nexpect(doubleReleases).toBe(1);"
+        },
+        {
+          "name": "клиент берётся из пула ровно один раз",
+          "code": "let connects = 0;\nconst singlePool = {\n  connect: async () => { connects += 1; return { release() {} }; }\n};\nawait withClient(singlePool, async () => null);\nexpect(connects).toBe(1);"
+        }
+      ],
+      "solution": "async function withClient(pool, body) {\n  const client = await pool.connect();\n\n  try {\n    return await body(client);\n  } finally {\n    // Освобождение обязано произойти на любом пути выхода.\n    client.release();\n  }\n}",
+      "chapter": "04-final-project/256-database-layer-pool-and-state-verification"
+    },
+    {
+      "id": "fp-256-row-to-model",
+      "title": "Строка таблицы приводится к модели",
+      "difficulty": "medium",
+      "lang": "js",
+      "transaction": false,
+      "runner": "browser",
+      "prompt": "Драйвер отдаёт типы PostgreSQL как есть: `bigint` приходит **строкой**, `timestamptz` — объектом `Date`, `NULL` — как `null`. Напишите `rowToWorkItem(row)`, который возвращает `{ id, title, total, createdAt, closedAt }`: `total` — число из строки, `createdAt` — строка ISO из `Date`, `closedAt` — строка ISO или `null`. Если `total` не приводится к целому числу, бросьте `Error` со словом `total` в сообщении.",
+      "starter": "function rowToWorkItem(row) {\n  // Приведение типов — обязанность слоя доступа, а не теста.\n\n  return {\n    id: row.id,\n    title: row.title,\n    total: row.total,\n    createdAt: row.created_at,\n    closedAt: row.closed_at\n  };\n}",
+      "hints": [
+        "Number(\"12\") даёт число, а Number(\"\") — ноль: проверяйте результат.",
+        "У объекта Date есть toISOString().",
+        "Отсутствующая дата остаётся null, а не превращается в строку."
+      ],
+      "standSetup": "",
+      "tests": [
+        {
+          "name": "bigint строкой превращается в число",
+          "code": "const bigintRow = rowToWorkItem({\n  id: 'T-1',\n  title: 'Отчёт',\n  total: '12',\n  created_at: new Date('2026-09-28T10:00:00.000Z'),\n  closed_at: null\n});\nexpect(bigintRow.total).toBe(12);"
+        },
+        {
+          "name": "дата приводится к строке ISO",
+          "code": "const dateRow = rowToWorkItem({\n  id: 'T-2',\n  title: 'Отчёт',\n  total: '0',\n  created_at: new Date('2026-09-28T10:00:00.000Z'),\n  closed_at: new Date('2026-09-29T11:30:00.000Z')\n});\nexpect(dateRow.createdAt).toBe('2026-09-28T10:00:00.000Z');\nexpect(dateRow.closedAt).toBe('2026-09-29T11:30:00.000Z');"
+        },
+        {
+          "name": "отсутствующая дата остаётся null",
+          "code": "const openRow = rowToWorkItem({\n  id: 'T-3',\n  title: 'Отчёт',\n  total: '5',\n  created_at: new Date('2026-09-28T10:00:00.000Z'),\n  closed_at: null\n});\nexpect(openRow.closedAt).toBeNull();"
+        },
+        {
+          "name": "пустое значение total не становится нулём молча",
+          "code": "expect(() => rowToWorkItem({\n  id: 'T-4',\n  title: 'Отчёт',\n  total: '',\n  created_at: new Date('2026-09-28T10:00:00.000Z'),\n  closed_at: null\n})).toThrow('total');"
+        }
+      ],
+      "solution": "function rowToWorkItem(row) {\n  const total = Number(row.total);\n\n  if (row.total === '' || row.total === null || !Number.isInteger(total)) {\n    throw new Error('поле total не приводится к целому числу: ' + row.total);\n  }\n\n  return {\n    id: row.id,\n    title: row.title,\n    total,\n    createdAt: row.created_at.toISOString(),\n    closedAt: row.closed_at === null ? null : row.closed_at.toISOString()\n  };\n}",
+      "chapter": "04-final-project/256-database-layer-pool-and-state-verification"
+    }
+  ],
+  "04-final-project/257-cross-layer-scenarios-and-data-ownership": [
+    {
+      "id": "fp-257-cleanup-stack",
+      "title": "Стек очистки в обратном порядке",
+      "difficulty": "medium",
+      "lang": "js",
+      "transaction": false,
+      "runner": "browser",
+      "prompt": "Напишите `createOwnedData()`. Объект имеет два метода: `own(name, release)` — зарегистрировать ресурс, и `release()` — освободить всё. Освобождение идёт в порядке, обратном регистрации. Одна упавшая функция освобождения не должна прерывать остальные. Если ошибок не было, `release()` возвращает массив имён в порядке освобождения; если были — бросает `Error`, в сообщении которого перечислены имена упавших ресурсов через запятую с пробелом, в том же обратном порядке.",
+      "starter": "function createOwnedData() {\n  const items = [];\n\n  return {\n    own(name, release) {\n      items.push({ name, release });\n    },\n    async release() {\n      // Обратный порядок и продолжение после ошибки.\n      for (const item of items) await item.release();\n\n      return items.map(item => item.name);\n    }\n  };\n}",
+      "hints": [
+        "Дочерние ресурсы регистрируются позже родительских, поэтому освобождаются раньше.",
+        "Каждый шаг закрывается собственным перехватом, иначе остальные не выполнятся.",
+        "Имена упавших собираются в список и попадают в сообщение."
+      ],
+      "standSetup": "",
+      "tests": [
+        {
+          "name": "освобождение идёт в обратном порядке",
+          "code": "const orderLog = [];\nconst owned = createOwnedData();\nowned.own('владелец', async () => { orderLog.push('владелец'); });\nowned.own('задача', async () => { orderLog.push('задача'); });\nowned.own('метка', async () => { orderLog.push('метка'); });\nexpect(await owned.release()).toEqual(['метка', 'задача', 'владелец']);\nexpect(orderLog).toEqual(['метка', 'задача', 'владелец']);"
+        },
+        {
+          "name": "одна ошибка не останавливает остальные шаги",
+          "code": "const partialLog = [];\nconst partial = createOwnedData();\npartial.own('владелец', async () => { partialLog.push('владелец'); });\npartial.own('задача', async () => { throw new Error('23503'); });\npartial.own('метка', async () => { partialLog.push('метка'); });\nlet partialFailure = null;\ntry {\n  await partial.release();\n} catch (error) {\n  partialFailure = error;\n}\nexpect(partialLog).toEqual(['метка', 'владелец']);\nexpect(partialFailure.message).toContain('задача');"
+        },
+        {
+          "name": "несколько упавших ресурсов названы в обратном порядке",
+          "code": "const twoBroken = createOwnedData();\ntwoBroken.own('первый', async () => { throw new Error('x'); });\ntwoBroken.own('второй', async () => { throw new Error('y'); });\nlet twoFailure = null;\ntry {\n  await twoBroken.release();\n} catch (error) {\n  twoFailure = error;\n}\nexpect(twoFailure.message).toContain('второй, первый');"
+        },
+        {
+          "name": "пустой стек освобождается без ошибок",
+          "code": "const emptyOwned = createOwnedData();\nexpect(await emptyOwned.release()).toEqual([]);"
+        }
+      ],
+      "solution": "function createOwnedData() {\n  const items = [];\n\n  return {\n    own(name, release) {\n      items.push({ name, release });\n    },\n    async release() {\n      const released = [];\n      const broken = [];\n\n      // Обратный порядок повторяет порядок зависимостей.\n      for (const item of [...items].reverse()) {\n        try {\n          await item.release();\n          released.push(item.name);\n        } catch (error) {\n          broken.push(item.name);\n        }\n      }\n\n      if (broken.length > 0) {\n        throw new Error('не удалось освободить: ' + broken.join(', '));\n      }\n\n      return released;\n    }\n  };\n}",
+      "chapter": "04-final-project/257-cross-layer-scenarios-and-data-ownership"
+    },
+    {
+      "id": "fp-257-original-error-first",
+      "title": "Исходная ошибка идёт первой",
+      "difficulty": "hard",
+      "lang": "js",
+      "transaction": false,
+      "runner": "browser",
+      "prompt": "Напишите `runScenario(body, cleanup)`. Выполните `body()`, затем — **всегда** — `cleanup()`. Если упало только тело, пропустите его ошибку наружу. Если упала только очистка, пропустите её ошибку. Если упали оба, бросьте `AggregateError`, в котором `errors[0]` — ошибка тела, а `errors[1]` — ошибка очистки: причина падения важнее проблемы удаления. При успехе верните результат тела.",
+      "starter": "async function runScenario(body, cleanup) {\n  try {\n    return await body();\n  } finally {\n    // Ошибка очистки не должна подменять причину падения.\n    await cleanup();\n  }\n}",
+      "hints": [
+        "Ошибку тела нужно сохранить, а не пробросить сразу.",
+        "Очистка выполняется в собственном try.",
+        "AggregateError принимает массив ошибок первым аргументом."
+      ],
+      "standSetup": "",
+      "tests": [
+        {
+          "name": "успешный сценарий возвращает результат и чистит данные",
+          "code": "let cleanedOnSuccess = 0;\nconst okValue = await runScenario(\n  async () => 'готово',\n  async () => { cleanedOnSuccess += 1; }\n);\nexpect(okValue).toBe('готово');\nexpect(cleanedOnSuccess).toBe(1);"
+        },
+        {
+          "name": "ошибка тела доходит наружу, очистка всё равно выполняется",
+          "code": "let cleanedOnFailure = 0;\nlet bodyFailure = null;\ntry {\n  await runScenario(\n    async () => { throw new Error('статус не изменился'); },\n    async () => { cleanedOnFailure += 1; }\n  );\n} catch (error) {\n  bodyFailure = error;\n}\nexpect(bodyFailure.message).toBe('статус не изменился');\nexpect(cleanedOnFailure).toBe(1);"
+        },
+        {
+          "name": "при падении обоих исходная ошибка идёт первой",
+          "code": "let bothFailure = null;\ntry {\n  await runScenario(\n    async () => { throw new Error('проверка не прошла'); },\n    async () => { throw new Error('не удалось удалить запись'); }\n  );\n} catch (error) {\n  bothFailure = error;\n}\nexpect(bothFailure.errors).toHaveLength(2);\nexpect(bothFailure.errors[0].message).toBe('проверка не прошла');\nexpect(bothFailure.errors[1].message).toBe('не удалось удалить запись');"
+        },
+        {
+          "name": "падение только очистки сообщается как есть",
+          "code": "let cleanupOnlyFailure = null;\ntry {\n  await runScenario(\n    async () => 'готово',\n    async () => { throw new Error('не удалось удалить запись'); }\n  );\n} catch (error) {\n  cleanupOnlyFailure = error;\n}\nexpect(cleanupOnlyFailure.message).toBe('не удалось удалить запись');"
+        }
+      ],
+      "solution": "async function runScenario(body, cleanup) {\n  let bodyFailure = null;\n  let value;\n\n  try {\n    value = await body();\n  } catch (error) {\n    bodyFailure = error;\n  }\n\n  let cleanupFailure = null;\n\n  try {\n    await cleanup();\n  } catch (error) {\n    cleanupFailure = error;\n  }\n\n  if (bodyFailure && cleanupFailure) {\n    // Первой идёт причина падения теста, второй — проблема очистки.\n    throw new AggregateError([bodyFailure, cleanupFailure], 'сценарий и очистка не удались');\n  }\n\n  if (bodyFailure) throw bodyFailure;\n  if (cleanupFailure) throw cleanupFailure;\n\n  return value;\n}",
+      "chapter": "04-final-project/257-cross-layer-scenarios-and-data-ownership"
+    }
+  ],
+  "04-final-project/258-diagnostics-reporting-and-ci": [
+    {
+      "id": "fp-258-redact-by-field-name",
+      "title": "Маскирование по имени поля",
+      "difficulty": "medium",
+      "lang": "js",
+      "transaction": false,
+      "runner": "browser",
+      "prompt": "Секрет маскируют **до** записи в журнал и по имени поля, а не по содержимому. Напишите `redact(value)`: он возвращает копию структуры, в которой значения полей с именами `token`, `authorization`, `password` и `cookie` (без учёта регистра) заменены на строку `***`. Обход идёт на любую глубину, массивы сохраняют порядок, остальные значения не меняются. Исходный объект изменяться не должен.",
+      "starter": "function redact(value) {\n  // Маскировать нужно по имени поля, на любой глубине.\n\n  return value;\n}",
+      "hints": [
+        "Имена сравниваются в нижнем регистре.",
+        "Для массивов нужен массив, для объектов — объект.",
+        "Копия создаётся на каждом уровне, иначе исходные данные изменятся."
+      ],
+      "standSetup": "",
+      "tests": [
+        {
+          "name": "секретное поле маскируется",
+          "code": "const flat = redact({ token: 'abc', title: 'Отчёт' });\nexpect(flat).toEqual({ token: '***', title: 'Отчёт' });"
+        },
+        {
+          "name": "регистр имени не важен, глубина не мешает",
+          "code": "const nested = redact({\n  request: { headers: { Authorization: 'Bearer abc', accept: 'json' } }\n});\nexpect(nested.request.headers.Authorization).toBe('***');\nexpect(nested.request.headers.accept).toBe('json');"
+        },
+        {
+          "name": "массивы сохраняют порядок и тип",
+          "code": "const withArray = redact({ items: [{ password: 'p' }, { title: 'ок' }] });\nexpect(Array.isArray(withArray.items)).toBe(true);\nexpect(withArray.items[0].password).toBe('***');\nexpect(withArray.items[1].title).toBe('ок');"
+        },
+        {
+          "name": "исходный объект не изменяется",
+          "code": "const original = { cookie: 'session=1' };\nredact(original);\nexpect(original.cookie).toBe('session=1');"
+        },
+        {
+          "name": "значения других типов проходят без изменений",
+          "code": "expect(redact(42)).toBe(42);\nexpect(redact(null)).toBeNull();\nexpect(redact('строка')).toBe('строка');"
+        }
+      ],
+      "solution": "const SECRET_FIELDS = ['token', 'authorization', 'password', 'cookie'];\n\nfunction redact(value) {\n  if (Array.isArray(value)) {\n    return value.map(item => redact(item));\n  }\n\n  if (typeof value !== 'object' || value === null) {\n    return value;\n  }\n\n  const copy = {};\n\n  for (const [key, item] of Object.entries(value)) {\n    copy[key] = SECRET_FIELDS.includes(key.toLowerCase()) ? '***' : redact(item);\n  }\n\n  return copy;\n}",
+      "chapter": "04-final-project/258-diagnostics-reporting-and-ci"
+    },
+    {
+      "id": "fp-258-evidence-has-limits",
+      "title": "Доказательство с пределами",
+      "difficulty": "hard",
+      "lang": "js",
+      "transaction": false,
+      "runner": "browser",
+      "prompt": "Вложение должно записываться всегда — даже если данные содержат цикл или слишком велики. Напишите `serializeEvidence(value, limit)`: верните строку JSON, где повторно встреченная ссылка заменена на `\"[cycle]\"`. Если результат длиннее `limit` символов, обрежьте его до `limit` и допишите в конец `…[обрезано]`. Функция не бросает исключений.",
+      "starter": "function serializeEvidence(value, limit) {\n  // Цикл и размер не должны мешать записать вложение.\n\n  return JSON.stringify(value);\n}",
+      "hints": [
+        "У JSON.stringify есть второй аргумент — функция-заменитель.",
+        "Уже встреченные объекты удобно помнить в Set.",
+        "Обрезка выполняется после сериализации, по длине строки."
+      ],
+      "standSetup": "",
+      "tests": [
+        {
+          "name": "обычная структура сериализуется как есть",
+          "code": "expect(serializeEvidence({ id: 'T-1' }, 1000)).toBe('{\"id\":\"T-1\"}');"
+        },
+        {
+          "name": "цикл не роняет запись",
+          "code": "const cyclic = { name: 'узел' };\ncyclic.self = cyclic;\nconst cyclicText = serializeEvidence(cyclic, 1000);\nexpect(cyclicText).toContain('[cycle]');\nexpect(cyclicText).toContain('узел');"
+        },
+        {
+          "name": "длинное значение обрезается с пометкой",
+          "code": "const long = { text: 'a'.repeat(200) };\nconst longText = serializeEvidence(long, 50);\nexpect(longText).toContain('…[обрезано]');\nexpect(longText.length).toBeLessThan(80);"
+        },
+        {
+          "name": "короткое значение не помечается обрезанным",
+          "code": "const shortText = serializeEvidence({ ok: true }, 100);\nexpect(shortText).toBe('{\"ok\":true}');"
+        },
+        {
+          "name": "повторная ссылка на один объект тоже помечается",
+          "code": "const shared = { id: 'общий' };\nconst repeatedText = serializeEvidence({ first: shared, second: shared }, 1000);\nexpect(repeatedText).toContain('[cycle]');"
+        }
+      ],
+      "solution": "function serializeEvidence(value, limit) {\n  const seen = new Set();\n\n  const text = JSON.stringify(value, (key, item) => {\n    if (typeof item === 'object' && item !== null) {\n      if (seen.has(item)) return '[cycle]';\n\n      seen.add(item);\n    }\n\n    return item;\n  });\n\n  if (typeof text !== 'string') return '';\n\n  return text.length > limit ? text.slice(0, limit) + '…[обрезано]' : text;\n}",
+      "chapter": "04-final-project/258-diagnostics-reporting-and-ci"
+    }
+  ],
+  "04-final-project/259-final-audit-and-release-decision": [
+    {
+      "id": "fp-259-blocker-cancels-release",
+      "title": "Один блокер отменяет выпуск",
+      "difficulty": "medium",
+      "lang": "js",
+      "transaction": false,
+      "runner": "browser",
+      "prompt": "Напишите `auditVerdict(findings)`. Каждая находка — `{ id, severity, status }`, где `severity` — `blocker`, `major` или `minor`, а `status` — `PASS` или `FAIL`. Верните `{ verdict, weight, blockers }`: `weight` — сумма весов невыполненных находок (блокер 100, major 10, minor 1), `blockers` — отсортированные идентификаторы невыполненных блокеров, а `verdict` — `RELEASE CANDIDATE`, если невыполненных блокеров нет, и `REWORK REQUIRED`, если есть. Сумма весов на вердикт не влияет.",
+      "starter": "const WEIGHT = { blocker: 100, major: 10, minor: 1 };\n\nfunction auditVerdict(findings) {\n  const failed = findings.filter(finding => finding.status === 'FAIL');\n  const weight = failed.reduce((sum, finding) => sum + WEIGHT[finding.severity], 0);\n\n  // Вердикт решает не сумма, а наличие невыполненного блокера.\n  return { verdict: weight < 100 ? 'RELEASE CANDIDATE' : 'REWORK REQUIRED', weight, blockers: [] };\n}",
+      "hints": [
+        "Блокеры отбираются отдельно от подсчёта веса.",
+        "Девяносто девять minor дают вес 99, но выпуск не отменяют.",
+        "Идентификаторы блокеров сортируются обычным sort()."
+      ],
+      "standSetup": "",
+      "tests": [
+        {
+          "name": "без невыполненных находок выпуск возможен",
+          "code": "const clean = [\n  { id: 'API-01', severity: 'blocker', status: 'PASS' },\n  { id: 'UI-02', severity: 'minor', status: 'PASS' }\n];\nexpect(auditVerdict(clean)).toEqual({\n  verdict: 'RELEASE CANDIDATE',\n  weight: 0,\n  blockers: []\n});"
+        },
+        {
+          "name": "один невыполненный блокер отменяет выпуск",
+          "code": "const blocked = [{ id: 'PORT-01', severity: 'blocker', status: 'FAIL' }];\nconst blockedVerdict = auditVerdict(blocked);\nexpect(blockedVerdict.verdict).toBe('REWORK REQUIRED');\nexpect(blockedVerdict.blockers).toEqual(['PORT-01']);"
+        },
+        {
+          "name": "большая сумма весов без блокеров выпуск не отменяет",
+          "code": "const heavy = [];\nfor (let index = 0; index < 30; index += 1) {\n  heavy.push({ id: 'MIN-' + index, severity: 'major', status: 'FAIL' });\n}\nconst heavyVerdict = auditVerdict(heavy);\nexpect(heavyVerdict.weight).toBe(300);\nexpect(heavyVerdict.verdict).toBe('RELEASE CANDIDATE');"
+        },
+        {
+          "name": "вес считается только по невыполненным",
+          "code": "const mixed = [\n  { id: 'A', severity: 'major', status: 'FAIL' },\n  { id: 'B', severity: 'minor', status: 'FAIL' },\n  { id: 'C', severity: 'blocker', status: 'PASS' }\n];\nexpect(auditVerdict(mixed).weight).toBe(11);"
+        },
+        {
+          "name": "блокеры отсортированы",
+          "code": "const twoBlockers = [\n  { id: 'Z-01', severity: 'blocker', status: 'FAIL' },\n  { id: 'A-02', severity: 'blocker', status: 'FAIL' }\n];\nexpect(auditVerdict(twoBlockers).blockers).toEqual(['A-02', 'Z-01']);"
+        }
+      ],
+      "solution": "const WEIGHT = { blocker: 100, major: 10, minor: 1 };\n\nfunction auditVerdict(findings) {\n  const failed = findings.filter(finding => finding.status === 'FAIL');\n\n  const weight = failed.reduce((sum, finding) => sum + WEIGHT[finding.severity], 0);\n\n  const blockers = failed\n    .filter(finding => finding.severity === 'blocker')\n    .map(finding => finding.id)\n    .sort();\n\n  return {\n    verdict: blockers.length === 0 ? 'RELEASE CANDIDATE' : 'REWORK REQUIRED',\n    weight,\n    blockers\n  };\n}",
+      "chapter": "04-final-project/259-final-audit-and-release-decision"
+    },
+    {
+      "id": "fp-259-observation-needs-evidence",
+      "title": "Наблюдение без доказательства не считается",
+      "difficulty": "easy",
+      "lang": "js",
+      "transaction": false,
+      "runner": "browser",
+      "prompt": "Аудит не придумывает итог: каждая находка должна опираться на проверяемое доказательство. Напишите `acceptFindings(findings)`, который возвращает `{ accepted, rejected }`. Находка принимается, только если у неё есть непустая команда (`command`) и непустой ожидаемый результат (`expected`). Остальные попадают в `rejected`. В оба массива кладите идентификаторы, порядок — как во входных данных.",
+      "starter": "function acceptFindings(findings) {\n  // Наблюдение без команды и ожидаемого результата воспроизвести нельзя.\n\n  return { accepted: findings.map(finding => finding.id), rejected: [] };\n}",
+      "hints": [
+        "Пустая строка и отсутствующее поле — одинаково негодны.",
+        "Достаточно одного отсутствующего поля, чтобы находку отклонить.",
+        "Порядок входных данных сохраняется в обоих списках."
+      ],
+      "standSetup": "",
+      "tests": [
+        {
+          "name": "находка с командой и ожиданием принимается",
+          "code": "const good = [{ id: 'DB-01', command: 'npm run final-project:db', expected: '6 passed' }];\nexpect(acceptFindings(good)).toEqual({ accepted: ['DB-01'], rejected: [] });"
+        },
+        {
+          "name": "без команды находка отклоняется",
+          "code": "const noCommand = [{ id: 'UI-09', command: '', expected: 'страница открылась' }];\nexpect(acceptFindings(noCommand)).toEqual({ accepted: [], rejected: ['UI-09'] });"
+        },
+        {
+          "name": "без ожидаемого результата находка отклоняется",
+          "code": "const noExpected = [{ id: 'API-03', command: 'npm run final-project:api' }];\nexpect(acceptFindings(noExpected).rejected).toEqual(['API-03']);"
+        },
+        {
+          "name": "порядок сохраняется",
+          "code": "const several = [\n  { id: 'A', command: 'c', expected: 'e' },\n  { id: 'B', command: '', expected: 'e' },\n  { id: 'C', command: 'c', expected: 'e' },\n  { id: 'D', command: 'c', expected: '' }\n];\nconst orderResult = acceptFindings(several);\nexpect(orderResult.accepted).toEqual(['A', 'C']);\nexpect(orderResult.rejected).toEqual(['B', 'D']);"
+        }
+      ],
+      "solution": "function acceptFindings(findings) {\n  const accepted = [];\n  const rejected = [];\n\n  for (const finding of findings) {\n    const hasCommand = typeof finding.command === 'string' && finding.command !== '';\n    const hasExpected = typeof finding.expected === 'string' && finding.expected !== '';\n\n    if (hasCommand && hasExpected) accepted.push(finding.id);\n    else rejected.push(finding.id);\n  }\n\n  return { accepted, rejected };\n}",
+      "chapter": "04-final-project/259-final-audit-and-release-decision"
+    }
   ]
 }

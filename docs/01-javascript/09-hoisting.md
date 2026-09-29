@@ -22,9 +22,9 @@ Before execution, engine prepares the environment.
 ```text
 Hoisting is NOT moving code.
 
-Hoisting is the observable result
-of the engine preparing declarations
-during the Creation Phase.
+Подъём — это наблюдаемое следствие того,
+что движок готовит объявления
+в фазе подготовки.
 ```
 
 Source code не меняет position. Engine не берет строки и не переносит их вверх. Вместо этого до выполнения строк engine подготавливает records в Lexical Environment.
@@ -163,7 +163,7 @@ ready
 Популярное объяснение:
 
 ```text
-JavaScript moves declarations to the top.
+JavaScript переносит объявления наверх.
 ```
 
 Это удобная, но опасная фраза.
@@ -226,9 +226,9 @@ let status = 'ready';
 Вопрос:
 
 ```text
-Why does function declaration work?
-Why does var produce undefined?
-Why do let/const fail before initialization?
+Почему объявление функции работает?
+Почему var даёт undefined?
+Почему let и const дают ошибку до инициализации?
 ```
 
 Ответ начинается в фазе подготовки.
@@ -260,8 +260,8 @@ Why do let/const fail before initialization?
 Identifier records.
 Initial access behavior.
 Function declaration bindings.
-var bindings with undefined.
-let/const bindings not initialized yet.
+имена var связаны со значением undefined;
+имена let и const ещё не инициализированы.
 ```
 
 ### Лексическое окружение до выполнения
@@ -338,8 +338,8 @@ let userRole = 'admin';
 Подробный механизм TDZ будет в следующей главе. Сейчас нужно запомнить:
 
 ```text
-let is registered during Creation Phase.
-It is not initialized like var.
+let регистрируется в фазе подготовки.
+Он не инициализируется, как var.
 ```
 
 ### Регистрация `const`
@@ -480,10 +480,10 @@ baseUrl     → не инициализировано (доступ запрещ
 Временная шкала выполнения:
 
 ```text
-Source code order is preserved.
+Порядок исходного кода сохраняется.
 No line moved.
 No declaration moved.
-Prepared records are used.
+Используются подготовленные записи.
 ```
 
 ### Фильм о подготовке движка
@@ -515,8 +515,8 @@ Hoisting            — видимый результат того, что за�
 После этой главы остается важный вопрос:
 
 ```text
-If let and const are registered during Creation Phase,
-why does accessing them before initialization throw an error?
+Если let и const регистрируются в фазе подготовки,
+почему обращение к ним до инициализации даёт ошибку?
 ```
 
 Это вопрос временной мёртвой зоны.
@@ -565,9 +565,9 @@ why does accessing them before initialization throw an error?
 
 ```text
 Function declarations.
-var identifiers with undefined.
-let identifiers in uninitialized state.
-const identifiers in uninitialized state.
+имена var — со значением undefined;
+имена let — в неинициализированном состоянии;
+имена const — в неинициализированном состоянии.
 ```
 
 ---
@@ -623,8 +623,8 @@ Code moves upward
 Правильная формула:
 
 ```text
-Hoisting is not moving code.
-Hoisting is preparation before execution.
+Подъём — это не перемещение кода.
+Подъём — это подготовка перед выполнением.
 ```
 
 ---
@@ -760,7 +760,7 @@ examples/01-javascript/chapter-09/06-common-mistakes.js
 Неправильная модель:
 
 ```text
-var userName = "Anna" moved to top.
+var userName = "Anna" перенесено наверх.
 ```
 
 Что произошло:
@@ -770,7 +770,7 @@ var userName = "Anna" moved to top.
 Исправленная модель:
 
 ```text
-Creation Phase registered userName with undefined.
+Фаза подготовки зарегистрировала userName со значением undefined.
 Execution Phase later assigned "Anna".
 ```
 
@@ -805,14 +805,14 @@ undefined
 Неправильная модель:
 
 ```text
-let and const are not hoisted.
+let и const не поднимаются.
 ```
 
 Более точная модель:
 
 ```text
-let and const are registered during Creation Phase,
-but access before initialization is restricted.
+let и const регистрируются в фазе подготовки,
+но обращение до инициализации ограничено.
 ```
 
 Это объяснит следующая глава про временную мёртвую зону.
@@ -928,8 +928,8 @@ const userName = buildUserName();
 Правило для Automation QA:
 
 ```text
-Understand Hoisting to read existing code.
-Avoid relying on Hoisting in new test code.
+Подъём нужно понимать, чтобы читать существующий код.
+В новом тестовом коде на подъём не опираются.
 ```
 
 ---
@@ -941,9 +941,9 @@ Avoid relying on Hoisting in new test code.
 Главная модель:
 
 ```text
-Hoisting is the observable result
-of the engine preparing declarations
-during the Creation Phase.
+Подъём — это наблюдаемое следствие того,
+что движок готовит объявления
+в фазе подготовки.
 ```
 
 Исходный код остаётся в исходном порядке. Движок создаёт контекст выполнения, входит в фазу подготовки, готовит лексическое окружение и записи об именах, регистрирует объявления и только затем начинает фазу выполнения.

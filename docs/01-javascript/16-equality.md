@@ -150,11 +150,11 @@ Equality overview:
 Программы постоянно принимают решения:
 
 ```text
-Is response status expected?
-Is user role admin?
+Тот ли код состояния у ответа?
+Роль пользователя — admin?
 Is API field missing?
-Is parsed value equal to expected value?
-Is this object the same object as before?
+Разобранное значение равно ожидаемому?
+Это тот же объект, что и раньше?
 ```
 
 В коде:
@@ -169,7 +169,7 @@ console.log(statusCode === expectedStatusCode);
 Равенство нужно, чтобы ответить на вопрос:
 
 ```text
-Do these two values match according to this comparison rule?
+Совпадают ли эти два значения по правилам данного сравнения?
 ```
 
 ### Почему в JavaScript несколько операторов равенства
@@ -294,8 +294,8 @@ console.log(true === true);
 Что именно сравнивается?
 
 ```text
-For primitives with ===:
-type and value.
+Для примитивов при ===:
+тип и значение.
 ```
 
 ### Сравнение объектов
@@ -354,7 +354,7 @@ true
 
 ```text
 For objects:
-whether both variables refer to the same object.
+ссылаются ли обе переменные на один объект.
 ```
 
 Библиотеки глубокого сравнения, сравнение JSON и сопоставители объектов в тестовых фреймворках будут изучаться позже.
@@ -403,7 +403,7 @@ Object.is(NaN, NaN) →  true
 
 ```text
 === follows strict equality behavior.
-Object.is() has special NaN semantics.
+У Object.is() особое поведение для NaN.
 ```
 
 На практике для проверки на `NaN` часто используют `Number.isNaN()`. Подробно числовые функции будут разобраны позже.
@@ -495,7 +495,7 @@ flowchart TD
 Следующая глава расширяет вопрос:
 
 ```text
-How do JavaScript operators transform, combine and evaluate values?
+Как операторы JavaScript преобразуют, соединяют и вычисляют значения?
 ```
 
 Переход к операторам:
@@ -716,9 +716,9 @@ false
 ```text
 1. Prefer === by default.
 2. Convert explicitly before comparison if needed.
-3. Use == only when conversion is intentional.
-4. Use Object.is() for special semantics.
-5. For objects, know whether you need identity or structure.
+3. Использовать == только там, где приведение нужно осознанно.
+4. Использовать Object.is() для особых случаев.
+5. Для объектов знать, что проверяется: тождественность или содержимое.
 ```
 
 Пример проверки:
@@ -805,11 +805,11 @@ const actualUser = {
 Чек-лист:
 
 ```text
-1. What are the types of both values?
+1. Каковы типы обоих значений?
 2. Is conversion intentional?
-3. Is comparison checking value or identity?
-4. Should parsing happen before comparison?
-5. Is Object.is() needed for NaN or +0/-0?
+3. Сравнение проверяет значение или тождественность?
+4. Нужно ли разобрать значение до сравнения?
+5. Нужен ли Object.is() для NaN или +0/-0?
 ```
 
 ---
@@ -819,7 +819,7 @@ const actualUser = {
 Равенство отвечает:
 
 ```text
-How does JavaScript decide whether two values are equal?
+Как JavaScript решает, равны ли два значения?
 ```
 
 Основная модель: `===` сравнивает значения примитивов и идентичность объектов, а сравнение содержимого объектов нужно писать самому.
@@ -832,8 +832,8 @@ How does JavaScript decide whether two values are equal?
 
 ```text
 Prefer === by default.
-Use == only when conversion rules are intentionally desired.
-Use Object.is() for the few cases where its semantics are specifically needed.
+Использовать == только тогда, когда правила приведения нужны осознанно.
+Использовать Object.is() в тех редких случаях, где нужно именно его поведение.
 ```
 
 ---

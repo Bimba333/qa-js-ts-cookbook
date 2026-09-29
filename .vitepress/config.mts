@@ -64,6 +64,7 @@ export default defineConfig({
               { text: 'Финальный проект', link: '/docs/04-final-project/250-project-requirements-and-readiness-criteria' }
             ]
           },
+          { text: 'Карта книги', link: '/docs/map' },
           { text: 'Прогресс', link: '/docs/progress' }
         ],
 

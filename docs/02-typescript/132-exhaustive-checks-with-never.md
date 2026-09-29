@@ -101,7 +101,7 @@ throw new Error(`Неизвестный статус: ${String(exhaustive)}`);  
 
 ```mermaid
 flowchart TD
-    A[Union type] --> B[switch по discriminant]
+    A["объединение"] --> B["switch по полю-признаку"]
     B --> C[Вариант 1 обработан]
     B --> D[Вариант 2 обработан]
     C --> E[default]

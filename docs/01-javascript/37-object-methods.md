@@ -290,7 +290,7 @@ const user = {
 
 ```text
 Methods — это обычные функции.
-They become methods because they are accessed and called through an object.
+Они становятся методами потому, что к ним обращаются и их вызывают через объект.
 ```
 
 ### Связь с `this`

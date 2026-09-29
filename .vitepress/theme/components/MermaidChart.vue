@@ -1,13 +1,16 @@
 <template>
   <div class="book-mermaid">
-    <button
-      v-if="svgContent && !error"
-      class="book-mermaid__open"
-      type="button"
-      @click="openViewer"
-    >
-      Увеличить
-    </button>
+    <div class="book-block__bar">
+      <span class="book-block__label">схема</span>
+      <button
+        v-if="svgContent && !error"
+        class="book-mermaid__open"
+        type="button"
+        @click="openViewer"
+      >
+        Увеличить
+      </button>
+    </div>
     <div
       ref="container"
       class="book-mermaid__canvas"

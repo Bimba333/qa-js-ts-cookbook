@@ -49,7 +49,7 @@ const timeoutMs = 5000;
 
 ```mermaid
 flowchart TD
-    A["TypeScript types"] --> B["compile time"]
+    A["типы TypeScript"] --> B["время компиляции"]
     B --> C["проверка кода"]
     C --> D["типы удаляются"]
     D --> E["JavaScript runtime"]

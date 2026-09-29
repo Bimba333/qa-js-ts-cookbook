@@ -220,7 +220,7 @@ flowchart TD
     N3["Local identifiers prepared"]
     N4["тело функции executed"]
     N5["Function returns"]
-    N6["Execution Context removed from Call Stack"]
+    N6["контекст выполнения снят со стека вызовов"]
     N1 --> N2
     N2 --> N3
     N3 --> N4
@@ -784,13 +784,13 @@ function createStatusValidator(expectedStatus) {
 Область видимости отвечает на вопрос:
 
 ```text
-Where is identifier visible?
+Где имя видно?
 ```
 
 Замыкание отвечает на вопрос:
 
 ```text
-Why can function still reach outer environment later?
+Почему функция позже по-прежнему достаёт внешнее окружение?
 ```
 
 Они связаны, но это не одно и то же.

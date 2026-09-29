@@ -209,7 +209,7 @@ const role = user.role;
 Но деструктуризация выражает намерение компактнее:
 
 ```text
-I need these properties from this object
+мне нужны эти свойства из этого объекта
 ```
 
 ### Имена переменных
@@ -389,12 +389,12 @@ const { status, body } = response;
 ```text
 1. Read identifier response
 2. Get object value
-3. Look for property "status"
+3. Найти свойство "status"
 4. Create variable status
-5. Store response.status value in status
-6. Look for property "body"
+5. Записать значение response.status в status
+6. Найти свойство "body"
 7. Create variable body
-8. Store response.body value in body
+8. Записать значение response.body в body
 ```
 
 ### Поток извлечения

@@ -61,7 +61,13 @@
     "test:playwright:list": "playwright test --list",
     "examples:run": "node scripts/book-qa/run-all-examples.mjs",
     "examples:check": "node scripts/book-qa/run-all-examples.mjs --baseline .meta/snapshots/examples-baseline.json",
-    "examples:baseline": "node scripts/book-qa/run-all-examples.mjs --out .meta/snapshots/examples-baseline.json"
+    "examples:baseline": "node scripts/book-qa/run-all-examples.mjs --out .meta/snapshots/examples-baseline.json",
+    "docs:access:check": "node scripts/book-qa/check-access.mjs",
+    "docs:home:check": "node scripts/book-qa/check-home.mjs",
+    "docs:map:check": "node scripts/book-qa/check-map.mjs",
+    "docs:reading:check": "node scripts/book-qa/check-reading.mjs",
+    "docs:blocks:check": "node scripts/book-qa/check-blocks.mjs",
+    "docs:local:check": "node scripts/book-qa/check-local-subscription.mjs"
   },
   "dependencies": {
     "@grpc/grpc-js": "1.14.4",

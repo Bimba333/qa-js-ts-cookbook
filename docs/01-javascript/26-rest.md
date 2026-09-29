@@ -419,10 +419,10 @@ flowchart TD
 Краткая ментальная модель:
 
 ```text
-Arguments arrive one by one.
+Аргументы приходят по одному.
 Normal parameters receive known values.
 Rest parameter collects remaining arguments.
-Collected values become one array.
+Собранные значения становятся одним массивом.
 ```
 
 Полная модель такая: обычные параметры разбирают аргументы по позициям, а

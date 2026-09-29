@@ -677,7 +677,7 @@ const validateStatus = (statusCode) => {
 `this` действительно связан со стрелочными функциями, но это отдельная тема. Сейчас главная модель проще:
 
 ```text
-Arrow Function creates function object with concise syntax.
+Стрелочная функция создаёт объект функции в короткой записи.
 ```
 
 ---

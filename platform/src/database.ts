@@ -20,6 +20,13 @@ CREATE TABLE IF NOT EXISTS sessions (
 
 CREATE INDEX IF NOT EXISTS sessions_user_id_idx ON sessions(user_id);
 
+CREATE TABLE IF NOT EXISTS subscriptions (
+  user_id uuid PRIMARY KEY REFERENCES users(id) ON DELETE CASCADE,
+  plan text NOT NULL,
+  valid_until timestamptz NOT NULL,
+  updated_at timestamptz NOT NULL DEFAULT now()
+);
+
 CREATE TABLE IF NOT EXISTS progress (
   user_id uuid PRIMARY KEY REFERENCES users(id) ON DELETE CASCADE,
   tasks jsonb NOT NULL DEFAULT '{}'::jsonb,
@@ -28,6 +35,18 @@ CREATE TABLE IF NOT EXISTS progress (
 `;
 
 export type User = Readonly<{ id: string; email: string }>;
+
+/**
+ * Право доступа к платным главам.
+ *
+ * `subscribed` вычисляется на сервере, а не хранится: срок мог истечь между
+ * записью и чтением, и клиент об этом знать не обязан.
+ */
+export type Entitlement = Readonly<{
+  subscribed: boolean;
+  plan: string | null;
+  validUntil: string | null;
+}>;
 
 export class Database {
   readonly #pool: pg.Pool;
@@ -110,6 +129,45 @@ export class Database {
 
   async deleteSession(tokenHash: string): Promise<void> {
     await this.#pool.query("DELETE FROM sessions WHERE token_hash = $1", [tokenHash]);
+  }
+
+  async readEntitlement(userId: string): Promise<Entitlement> {
+    const result = await this.#pool.query<{ plan: string; valid_until: Date }>(
+      "SELECT plan, valid_until FROM subscriptions WHERE user_id = $1",
+      [userId],
+    );
+
+    const row = result.rows[0];
+
+    if (!row) {
+      return { subscribed: false, plan: null, validUntil: null };
+    }
+
+    return {
+      subscribed: row.valid_until.getTime() > Date.now(),
+      plan: row.plan,
+      validUntil: row.valid_until.toISOString(),
+    };
+  }
+
+  /** Выдаёт подписку на указанное число дней. Вызывается платёжным провайдером. */
+  async grantSubscription(userId: string, plan: string, days: number): Promise<Entitlement> {
+    const result = await this.#pool.query<{ plan: string; valid_until: Date }>(
+      `INSERT INTO subscriptions (user_id, plan, valid_until, updated_at)
+       VALUES ($1, $2, now() + ($3 || ' days')::interval, now())
+       ON CONFLICT (user_id) DO UPDATE
+         SET plan = EXCLUDED.plan, valid_until = EXCLUDED.valid_until, updated_at = now()
+       RETURNING plan, valid_until`,
+      [userId, plan, String(days)],
+    );
+
+    const row = result.rows[0]!;
+
+    return {
+      subscribed: row.valid_until.getTime() > Date.now(),
+      plan: row.plan,
+      validUntil: row.valid_until.toISOString(),
+    };
   }
 
   async readProgress(userId: string): Promise<Readonly<{ tasks: ProgressMap; updatedAt: string }>> {

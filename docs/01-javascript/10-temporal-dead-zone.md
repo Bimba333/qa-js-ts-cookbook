@@ -23,9 +23,9 @@ during the Creation Phase.
 Главная модель главы:
 
 ```text
-The identifier already exists.
-The engine already knows about it.
-Access is temporarily forbidden until initialization.
+Имя уже существует.
+Движок уже знает о нём.
+Обращение временно запрещено — до инициализации.
 ```
 
 ---
@@ -217,7 +217,7 @@ let  до объявления  →  ReferenceError (ошибка сразу, н
 Если сказать:
 
 ```text
-let and const are not hoisted
+let и const не поднимаются
 ```
 
 то возникает неправильная модель: будто `let` и `const` вообще неизвестны движку до строки объявления.
@@ -237,8 +237,8 @@ let and const are not hoisted
 Важно:
 
 ```text
-TDZ is not about code movement.
-TDZ is about identifier state before initialization.
+Мёртвая зона — не про перемещение кода.
+Мёртвая зона — про состояние имени до инициализации.
 ```
 
 ### Почему существует TDZ
@@ -287,7 +287,7 @@ Engine creates identifier record.
 Инициализация:
 
 ```text
-Engine gives identifier its first usable value.
+Движок даёт имени первое пригодное значение.
 ```
 
 Схема регистрации:
@@ -609,10 +609,10 @@ Execution Context → Creation Phase → Environment Record →
 Временная мёртвая зона достраивает объяснение подъёма `let` и `const`:
 
 ```text
-They are registered.
-They are known.
-They are temporarily locked.
-They become usable after initialization.
+Они зарегистрированы.
+Они известны движку.
+Они временно закрыты.
+Они становятся пригодны после инициализации.
 ```
 
 ### Переход к функциям
@@ -656,6 +656,35 @@ var         │ зарегистрировано и инициализирова
 
 ---
 
+### Почему зона существует
+
+```javascript
+{
+  // здесь baseUrl уже зарегистрирован, но обращаться нельзя
+  const baseUrl = 'http://127.0.0.1:4310';
+}
+```
+
+У `var` обращение до объявления даёт `undefined` — то есть ошибка превращается в
+значение и проявляется позже. Зона делает это ошибкой сразу, в той строке, где
+обращение написано.
+
+### Что наблюдаемо
+
+| Обращение | Результат |
+| --- | --- |
+| к `let`/`const` до объявления | `ReferenceError: Cannot access … before initialization` |
+| `typeof` от имени в зоне | **тоже** `ReferenceError` |
+| `typeof` от необъявленного имени | строка `'undefined'` |
+| к `var` до объявления | `undefined` |
+
+Вторая и третья строки вместе — единственный надёжный способ увидеть зону
+изнутри кода: `typeof` защищает от необъявленного имени, но не от имени, которое
+объявлено ниже.
+
+`class` ведёт себя как `let`: обращение к классу выше его объявления даёт ту же
+ошибку.
+
 ## Ментальная модель
 
 ### Забронированное парковочное место
@@ -670,9 +699,9 @@ var         │ зарегистрировано и инициализирова
 
 ```text
 Room exists.
-Name is on the door.
-Engine knows the room.
-Door is locked until initialization.
+Имя написано на двери.
+Движок знает о комнате.
+Дверь закрыта до инициализации.
 ```
 
 ### Запечатанная коробка
@@ -700,9 +729,9 @@ Door is locked until initialization.
 Итоговая модель:
 
 ```text
-The identifier already exists.
-The engine already knows about it.
-Access is temporarily forbidden until initialization.
+Имя уже существует.
+Движок уже знает о нём.
+Обращение временно запрещено — до инициализации.
 ```
 
 ---
@@ -880,14 +909,14 @@ console.log(baseUrl);
 Неправильная формулировка:
 
 ```text
-let and const are not hoisted.
+let и const не поднимаются.
 ```
 
 Исправленная формулировка:
 
 ```text
-let and const are registered during Creation Phase,
-but access before initialization is forbidden.
+let и const регистрируются в фазе подготовки,
+но обращение до инициализации запрещено.
 ```
 
 ### Ошибка 4. Путать отсутствующее имя и временную мёртвую зону
@@ -938,9 +967,9 @@ status     | line 1       | line 8 var       | undefined         | assigned late
 
 ```text
 Declare before read.
-Initialize before use.
-Prefer const when reassignment is not needed.
-Use let only when state changes.
+Инициализируйте до использования.
+Выбирайте const, когда переприсваивание не нужно.
+Берите let только там, где состояние меняется.
 ```
 
 ---
@@ -959,8 +988,8 @@ const expectedStatus = 'active';
 `const` делает намерение явным:
 
 ```text
-This identifier is initialized here.
-This identifier will not be reassigned.
+Это имя инициализировано здесь.
+Это имя не будет переприсвоено.
 ```
 
 Временная мёртвая зона помогает: обращение до инициализации падает громко, а не возвращает тихий `undefined`.
@@ -976,7 +1005,7 @@ ReferenceError: Cannot access 'baseUrl' before initialization
 Это не значит:
 
 ```text
-baseUrl does not exist anywhere.
+baseUrl не существует нигде.
 ```
 
 Более точная модель:
@@ -984,7 +1013,7 @@ baseUrl does not exist anywhere.
 ```text
 baseUrl is registered.
 baseUrl is in TDZ.
-Code reads it before initialization.
+Код читает его до инициализации.
 ```
 
 ### Чтение таких ошибок во вспомогательных файлах
@@ -1021,9 +1050,9 @@ const loginUrl = baseUrl + '/login';
 Главная модель:
 
 ```text
-The identifier already exists.
-The engine already knows about it.
-Access is temporarily forbidden until initialization.
+Имя уже существует.
+Движок уже знает о нём.
+Обращение временно запрещено — до инициализации.
 ```
 
 Зона начинается, когда область видимости стартует и имя зарегистрировано, но ещё не инициализировано. Заканчивается, когда выполнение доходит до строки объявления и происходит инициализация.

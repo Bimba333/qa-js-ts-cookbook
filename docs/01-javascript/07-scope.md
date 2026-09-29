@@ -227,11 +227,11 @@ Scope существует потому, что программе нужны г
 
 ```mermaid
 flowchart TD
-    N1["All names visible everywhere"]
-    N2["helper can accidentally change test variable"]
-    N3["test can accidentally rely on helper-local detail"]
-    N4["same names collide"]
-    N5["code becomes hard to reason about"]
+    N1["все имена видны везде"]
+    N2["вспомогательная функция может случайно изменить переменную теста"]
+    N3["тест может случайно опереться на внутреннюю деталь помощника"]
+    N4["одинаковые имена конфликтуют"]
+    N5["о коде становится трудно рассуждать"]
     N1 --> N2
     N1 --> N3
     N1 --> N4
@@ -259,9 +259,9 @@ console.log(status);
 
 ```mermaid
 flowchart TD
-    N1["Current line asks for status"]
-    N2["Which status is visible here?"]
-    N3["Which value should be read?"]
+    N1["текущая строка запрашивает status"]
+    N2["какой status здесь видим?"]
+    N3["какое значение нужно прочитать?"]
     N1 --> N2
     N2 --> N3
 ```
@@ -275,7 +275,7 @@ flowchart TD
 ```mermaid
 flowchart TD
     N1["Scope"]
-    N2["rules of identifier visibility"]
+    N2["правила видимости имён"]
     N1 --> N2
 ```
 
@@ -283,10 +283,10 @@ flowchart TD
 
 ```text
 Variables answer:
-"How do names appear?"
+«Как появляются имена?»
 
 Scope answers:
-"Where are those names visible?"
+«Где эти имена видны?»
 ```
 
 Область видимости не создаёт значение сама по себе. Она определяет, где имя можно использовать для доступа к значению.
@@ -296,7 +296,7 @@ flowchart TD
     N1["Variable"]
     N2["name exists"]
     N3["Scope"]
-    N4["name is visible here or not visible here"]
+    N4["имя здесь видимо или не видимо"]
     N1 --> N2
     N1 --> N3
     N3 --> N4
@@ -307,8 +307,8 @@ flowchart TD
 ```text
 Engine sees identifier.
 Engine checks current scope.
-If not found, engine searches outward.
-If no visible identifier is found, access fails.
+Если имя не найдено, движок ищет наружу.
+Если видимого имени нет, обращение завершается ошибкой.
 ```
 
 ### Глобальная область видимости
@@ -389,9 +389,9 @@ userName найдено
 Снаружи:
 
 ```text
-Global line asks for userName.
-lookup starts in Global Scope.
-userName is not found.
+Строка верхнего уровня запрашивает userName.
+поиск начинается в глобальной области.
+userName не найдено.
 access fails.
 ```
 
@@ -484,7 +484,7 @@ Global Scope
 Это ключевой принцип:
 
 ```text
-Identifier lookup searches outward only.
+Поиск имени идёт только наружу.
 ```
 
 ### Локальный рабочий стол
@@ -554,11 +554,11 @@ printLoginUrl();
 Алгоритм:
 
 ```text
-1. Start in current scope.
-2. If identifier exists here, use it.
-3. If not, move to parent scope.
-4. Repeat until Global Scope.
-5. If not found, access fails.
+1. Начать в текущей области.
+2. Если имя есть здесь — использовать его.
+3. Если нет — перейти к внешней области.
+4. Повторять до глобальной области.
+5. Если не найдено — обращение завершается ошибкой.
 ```
 
 Полный процесс поиска:
@@ -604,10 +604,10 @@ Global Scope
 
 ```text
 Inside printStatus:
-status means local status.
+status означает локальный status.
 
 Outside printStatus:
-status means global status.
+status означает глобальный status.
 ```
 
 ### Видимость и время жизни
@@ -617,13 +617,13 @@ status means global status.
 Видимость отвечает на вопрос:
 
 ```text
-Can this identifier be accessed from here?
+Доступно ли это имя отсюда?
 ```
 
 Время жизни отвечает на вопрос:
 
 ```text
-How long is this information needed or active?
+Как долго эта информация нужна или активна?
 ```
 
 ```text
@@ -695,7 +695,7 @@ console.log(userName); // ReferenceError: userName is not defined
 ```text
 Engine searches current scope.
 Then parent scope.
-Then parent of parent.
+Затем внешняя область внешней области.
 ```
 
 Но пока это только идея.
@@ -781,13 +781,13 @@ Search never jumps into unrelated rooms.
 
 ```text
 Variables answer:
-"How do names appear?"
+«Как появляются имена?»
 
 Scope answers:
-"Where are those names visible?"
+«Где эти имена видны?»
 
 Scope Chain answers conceptually:
-"In what outward order does lookup happen?"
+«В каком порядке поиск идёт наружу?»
 ```
 
 ---
@@ -1003,7 +1003,7 @@ function printStatus() {
 Неправильная модель:
 
 ```text
-One global variable can safely store current test data for all tests.
+Одна глобальная переменная может безопасно хранить данные текущего теста для всех тестов.
 ```
 
 Что произошло:
@@ -1013,7 +1013,7 @@ One global variable can safely store current test data for all tests.
 Исправленная модель:
 
 ```text
-Keep test data local to test / fixture / helper when possible.
+Держите данные теста локальными: в тесте, фикстуре или помощнике.
 ```
 
 ---
@@ -1023,7 +1023,7 @@ Keep test data local to test / fixture / helper when possible.
 При чтении кода задавайте вопрос:
 
 ```text
-What identifiers can the engine access right now?
+К каким именам движок имеет доступ прямо сейчас?
 ```
 
 Алгоритм:
@@ -1040,11 +1040,11 @@ What identifiers can the engine access right now?
 Таблица анализа:
 
 ```text
-Identifier | Current Scope | Found where?     | Value used
------------|---------------|------------------|------------
-fullUrl    | block         | block            | local
-path       | block         | function         | parent
-baseUrl    | block         | global           | outer
+имя      | текущая область | где найдено | какое значение
+---------|-----------------|-------------|----------------
+fullUrl  | блок            | блок        | локальное
+path     | блок            | функция     | из внешней
+baseUrl  | блок            | глобальная  | из внешней
 ```
 
 Чек-лист:
@@ -1170,10 +1170,10 @@ function assertStatus() {
 
 ```text
 Variables answer:
-"How do names appear?"
+«Как появляются имена?»
 
 Scope answers:
-"Where are those names visible?"
+«Где эти имена видны?»
 ```
 
 Глобальная область видима из многих мест через поиск наружу, но общее изменяемое состояние нужно использовать осторожно. Область функции скрывает её локальные переменные. Область блока ограничивает видимость имён внутри фигурных скобок для `let` и `const`.

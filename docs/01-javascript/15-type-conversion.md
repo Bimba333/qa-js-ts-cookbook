@@ -214,7 +214,7 @@ console.log('5' - 1);
 Какой тип ожидает эта операция?
 
 ```text
-The subtraction operation expects Number-like values.
+Вычитание ожидает значения, приводимые к числу.
 ```
 
 Неявное преобразование не всегда плохо. Оно опасно, когда незаметно и неожиданно.
@@ -299,7 +299,7 @@ NaN !== NaN
 Какой тип ожидает эта операция?
 
 ```text
-Number conversion expects value that can become a Number.
+Приведение к числу ожидает значение, которое числом стать может.
 ```
 
 В автоматизации тестов `NaN` часто означает, что разобрали не то поле:
@@ -531,7 +531,18 @@ flowchart TD
 
 ### Полная картина преобразования
 
----
+```text
+                   ┌─ к числу   →  Number(x),  арифметика, сравнение
+значение любого ───┼─ к строке  →  String(x),  склейка через +, шаблон
+типа               └─ к логике  →  Boolean(x), условие, && и ||
+```
+
+Направление выбирает **операция**, а не значение. Одно и то же `'5'` в
+`'5' - 1` приводится к числу, в `'5' + 1` — остаётся строкой, а в `if ('5')` —
+проверяется на истинность.
+
+Отсюда правило для тестов: там, где тип важен, преобразование выполняют явно —
+`Number(raw)` с проверкой результата, а не надеются на правило операции.
 
 ## Ментальная модель
 
@@ -551,7 +562,7 @@ Result:             Number value
 Преобразование похоже на переходник:
 
 ```text
-Device expects Type A
+устройству нужен разъём типа A
 Cable has Type B
 Adapter converts connection
 ```
@@ -567,9 +578,9 @@ Conversion adapts value
 ### Переходник для розетки
 
 ```text
-Socket expects one plug shape
+розетка принимает одну форму вилки
 Device has another plug shape
-Adapter makes it fit
+переходник делает их совместимыми
 ```
 
 Переходник не произволен. Он следует физическому правилу. Преобразование тоже следует правилам.
@@ -756,7 +767,7 @@ NaN
 Более точный вопрос:
 
 ```text
-What type does this operation expect?
+Какой тип ожидает эта операция?
 ```
 
 ---
@@ -800,12 +811,12 @@ const headless = booleanTextMap.false;
 ### Памятка по преобразованиям
 
 ```text
-1. What value did I receive?
-2. What type is it now?
-3. What type does the operation expect?
-4. Should conversion be explicit?
-5. What happens if conversion produces NaN?
-6. Is Boolean conversion using truthy/falsy rules?
+1. Какое значение пришло?
+2. Какого оно типа сейчас?
+3. Какой тип ожидает операция?
+4. Нужно ли приводить явно?
+5. Что будет, если приведение даст NaN?
+6. Не используется ли здесь приведение к логическому по правилам истинности?
 ```
 
 ---
@@ -873,10 +884,10 @@ const retries = Number(retriesFromEnv);
 Когда тест падает неожиданно, спросите:
 
 ```text
-What type did this value have before assertion?
-What type did operation expect?
-Did JavaScript convert it implicitly?
-Should the test convert explicitly?
+Какого типа было значение до проверки?
+Какой тип ожидала операция?
+Приводил ли JavaScript его неявно?
+Не должен ли тест приводить значение явно?
 ```
 
 ---

@@ -120,6 +120,18 @@ function createServiceProvider(settings) {
       if (!result.ok) throw failure(result.body, 'Не удалось сохранить прогресс')
 
       return result.body.tasks ?? {}
+    },
+
+    async entitlement(session) {
+      const result = await call('GET', '/api/v1/entitlement', { token: session.token })
+
+      if (!result.ok) throw failure(result.body, 'Не удалось прочитать право доступа')
+
+      return {
+        subscribed: result.body.subscribed === true,
+        plan: result.body.plan ?? null,
+        validUntil: result.body.validUntil ?? null
+      }
     }
   }
 }
@@ -190,6 +202,34 @@ function createSupabaseProvider(settings) {
       if (!response.ok) throw failure(payload, 'Не удалось сохранить прогресс')
 
       return payload?.[0]?.tasks ?? tasks
+    },
+
+    /**
+     * Право доступа в Supabase лежит в таблице `subscriptions` с политикой RLS
+     * «читать только свою строку». Срок сравнивается на клиенте, потому что
+     * своего кода на стороне Supabase здесь нет, — это осознанная слабость
+     * этого варианта, описанная в platform/README.md.
+     */
+    async entitlement(session) {
+      const response = await fetch(`${base}/rest/v1/subscriptions?select=plan,valid_until`, {
+        headers: restHeaders(session)
+      })
+
+      const payload = await asJson(response)
+
+      if (!response.ok) throw failure(payload, 'Не удалось прочитать право доступа')
+
+      const row = payload?.[0]
+
+      if (!row) return { subscribed: false, plan: null, validUntil: null }
+
+      const validUntil = row.valid_until ?? null
+
+      return {
+        subscribed: validUntil !== null && new Date(validUntil).getTime() > Date.now(),
+        plan: row.plan ?? null,
+        validUntil
+      }
     }
   }
 }

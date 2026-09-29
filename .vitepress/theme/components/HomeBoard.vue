@@ -1,11 +1,20 @@
 <script setup>
 import { computed, onMounted, ref } from 'vue'
+import { withBase } from 'vitepress'
 import tasksByChapter from '../../tasks.generated.json'
 import { bookEngineData } from '../../book.generated.mjs'
 import { TASK_STATUS, readAllProgress } from '../composables/task-progress.js'
+import {
+  READER_STATES,
+  accessSummary,
+  readerState,
+  refreshAccess,
+  restoreAccess
+} from '../composables/access.js'
 
-// Прогресс есть только в браузере: до монтирования страница показывает
-// маршрут без отметок, а не расходится с тем, что увидит читатель.
+// Прогресс и состояние читателя есть только в браузере: до монтирования
+// страница показывает маршрут без отметок, а не расходится с тем, что увидит
+// читатель.
 const progress = ref({})
 const ready = ref(false)
 
@@ -19,7 +28,7 @@ const PARTS = [
   {
     key: '02-typescript',
     title: 'TypeScript',
-    goal: 'Типы как инструмент проверки до запуска и его границы',
+    goal: 'Типы как проверка до запуска — и граница, где они бессильны',
     entry: '/docs/02-typescript/97-typescript-compiler'
   },
   {
@@ -31,10 +40,12 @@ const PARTS = [
   {
     key: '04-final-project',
     title: 'Финальный проект',
-    goal: 'Свой фреймворк против учебного стенда',
+    goal: 'Свой фреймворк против учебного стенда и честный аудит',
     entry: '/docs/04-final-project/250-project-requirements-and-readiness-criteria'
   }
 ]
+
+const access = accessSummary()
 
 const chapters = computed(() =>
   Object.entries(tasksByChapter)
@@ -62,12 +73,30 @@ function countIn(taskIds) {
   return { solved, total: taskIds.length }
 }
 
+/** Сколько глав части открыто без подписки — считается по данным сборки. */
+function accessIn(partKey) {
+  const own = Object.values(bookEngineData.chapters).filter(chapter => chapter.part === partKey)
+
+  return {
+    total: own.length,
+    free: own.filter(chapter => chapter.access === 'free').length
+  }
+}
+
 const parts = computed(() =>
   PARTS.map(part => {
     const own = chapters.value.filter(chapter => chapter.part === part.key)
     const taskIds = own.flatMap(chapter => chapter.taskIds)
+    const byDirectory = Object.values(bookEngineData.chapters)
+      .filter(chapter => chapter.path.startsWith(`docs/${part.key}/`))
 
-    return { ...part, chapters: own.length, counts: countIn(taskIds) }
+    return {
+      ...part,
+      chapters: byDirectory.length,
+      tasks: taskIds.length,
+      counts: countIn(taskIds),
+      free: byDirectory.filter(chapter => chapter.access === 'free').length
+    }
   }))
 
 const overall = computed(() => countIn(chapters.value.flatMap(chapter => chapter.taskIds)))
@@ -100,13 +129,23 @@ const next = computed(() => {
 
 const started = computed(() => Object.keys(progress.value).length > 0)
 
+const state = computed(() => (ready.value ? readerState.value : READER_STATES.guest))
+
 function percent(counts) {
   return counts.total === 0 ? 0 : Math.round((counts.solved / counts.total) * 100)
 }
 
-onMounted(() => {
+onMounted(async () => {
   progress.value = readAllProgress()
+  restoreAccess()
   ready.value = true
+
+  try {
+    await refreshAccess()
+  } catch {
+    // Недоступный сервис не должен ломать главную: состояние доступа
+    // остаётся последним известным.
+  }
 })
 </script>
 
@@ -115,23 +154,31 @@ onMounted(() => {
     <header class="home-board__top">
       <div>
         <p class="home-board__eyebrow">JavaScript и TypeScript для Automation QA</p>
-        <h1 class="home-board__title">Учебник, в котором работают руками</h1>
+        <h1 class="home-board__title">
+          От синтаксиса до своего фреймворка автотестов
+        </h1>
         <p class="home-board__lede">
-          Теория, запускаемые примеры и задачи с проверкой — на одной странице.
-          Код выполняется прямо в браузере, а задачи уровня фреймворка решаются
-          против учебного стенда в Docker.
+          Книга для тестировщика, который хочет писать автотесты на JavaScript и
+          TypeScript: разобраться в языке, а затем собрать фреймворк с UI, REST,
+          gRPC и базой данных — против настоящего стенда, а не учебных заглушек.
         </p>
 
         <div class="home-board__actions">
-          <a v-if="ready && started && next" class="home-board__cta" :href="next.link">
+          <a v-if="ready && started && next" class="home-board__cta" :href="withBase(next.link)">
             Продолжить
             <small>{{ next.number }}. {{ next.title }}</small>
           </a>
-          <a v-else class="home-board__cta" href="/docs/00-introduction/01-about-course">
-            Начать с введения
-            <small>как устроен курс</small>
+          <a
+            v-else
+            class="home-board__cta"
+            :href="withBase('/docs/00-introduction/01-about-course')"
+          >
+            Начать читать
+            <small>бесплатно, без регистрации</small>
           </a>
-          <a class="home-board__cta home-board__cta--ghost" href="/docs/progress">Прогресс</a>
+          <a class="home-board__cta home-board__cta--ghost" :href="withBase('/docs/progress')">
+            {{ state === READER_STATES.guest ? 'Войти' : 'Прогресс и подписка' }}
+          </a>
         </div>
       </div>
 
@@ -142,6 +189,83 @@ onMounted(() => {
       </dl>
     </header>
 
+    <section class="home-board__why">
+      <h2 class="home-board__section-title">Чем эта книга отличается</h2>
+      <div class="home-board__why-grid">
+        <article>
+          <h3>Задачи проверяет машина</h3>
+          <p>
+            Решение прогоняется набором проверок прямо в браузере, и отчёт
+            говорит, <em>что именно</em> не сошлось. Не «правильный ответ
+            откроется ниже», а падение с объяснением.
+          </p>
+        </article>
+        <article>
+          <h3>Настоящий стенд, а не заглушки</h3>
+          <p>
+            UI, REST, gRPC и PostgreSQL поднимаются одной командой в Docker.
+            Часть задач решается против него локально — с оптимистической
+            блокировкой, кодами gRPC и живыми ошибками базы.
+          </p>
+        </article>
+        <article>
+          <h3>Разбор ошибок, которые не падают</h3>
+          <p>
+            Главная опасность автотеста — зелёный отчёт при неверной проверке.
+            Книга показывает такие места отдельно: перекрытый элемент, промис
+            вместо значения, пустой массив, который всё подтверждает.
+          </p>
+        </article>
+        <article>
+          <h3>Финальный проект с аудитом</h3>
+          <p>
+            В конце читатель собирает фреймворк по слоям и проводит аудит
+            готовности. Аудит учебного проекта намеренно заканчивается вердиктом
+            «нужна доработка» — так честнее, чем выдуманное «всё готово».
+          </p>
+        </article>
+      </div>
+    </section>
+
+    <section class="home-board__access">
+      <h2 class="home-board__section-title">Что открыто и что даёт подписка</h2>
+      <div class="home-board__access-grid">
+        <article class="home-board__tier">
+          <p class="home-board__eyebrow">Без регистрации</p>
+          <p class="home-board__tier-value">{{ access.free }}</p>
+          <p class="home-board__tier-text">
+            глав открыто сразу, с примерами и задачами. Прогресс при этом не
+            сохраняется — он живёт только до закрытия браузера.
+          </p>
+        </article>
+        <article class="home-board__tier">
+          <p class="home-board__eyebrow">После входа</p>
+          <p class="home-board__tier-value">{{ access.free }}</p>
+          <p class="home-board__tier-text">
+            те же главы, но решённые задачи запоминаются и переносятся между
+            устройствами вместе с учётной записью.
+          </p>
+        </article>
+        <article
+          class="home-board__tier home-board__tier--paid"
+          :class="{ 'home-board__tier--active': state === READER_STATES.subscriber }"
+        >
+          <p class="home-board__eyebrow">Подписка</p>
+          <p class="home-board__tier-value">{{ access.total }}</p>
+          <p class="home-board__tier-text">
+            все главы, включая TypeScript, Automation QA и финальный проект —
+            остальные {{ access.paid }} главы книги.
+          </p>
+          <p v-if="ready && state === READER_STATES.subscriber" class="home-board__tier-note">
+            Подписка активна.
+          </p>
+          <p v-else class="home-board__tier-note">
+            <a :href="withBase('/docs/progress')">Открыть подписку</a>
+          </p>
+        </article>
+      </div>
+    </section>
+
     <section class="home-board__progress" v-if="ready && started">
       <div class="home-board__progress-head">
         <span class="home-board__eyebrow">Решено задач</span>
@@ -150,25 +274,29 @@ onMounted(() => {
       <div class="home-board__bar"><i :style="{ width: `${percent(overall)}%` }"></i></div>
     </section>
 
-    <section class="home-board__parts">
-      <article v-for="part in parts" :key="part.key" class="home-board__part">
-        <header>
-          <span class="home-board__eyebrow">
-            {{ part.counts.total > 0 ? `${part.chapters} глав с задачами` : 'финальная работа' }}
-          </span>
-          <h2><a :href="part.entry">{{ part.title }}</a></h2>
-        </header>
-        <p>{{ part.goal }}</p>
-        <template v-if="part.counts.total > 0">
+    <section class="home-board__parts-block">
+      <h2 class="home-board__section-title">
+        Маршрут
+        <a class="home-board__section-link" :href="withBase('/docs/map')">карта всех глав →</a>
+      </h2>
+      <div class="home-board__parts">
+        <article v-for="part in parts" :key="part.key" class="home-board__part">
+          <header>
+            <span class="home-board__eyebrow">
+              {{ part.chapters }} глав · {{ part.tasks }} задач
+            </span>
+            <h2><a :href="withBase(part.entry)">{{ part.title }}</a></h2>
+          </header>
+          <p>{{ part.goal }}</p>
           <div class="home-board__bar home-board__bar--thin">
             <i :style="{ width: `${percent(part.counts)}%` }"></i>
           </div>
           <span class="home-board__part-counts">
-            {{ part.counts.solved }} / {{ part.counts.total }} задач
+            {{ part.counts.solved }} / {{ part.counts.total }} задач решено ·
+            {{ part.free > 0 ? `${part.free} глав открыто` : 'по подписке' }}
           </span>
-        </template>
-        <span v-else class="home-board__part-counts">задания проекта, без автопроверки</span>
-      </article>
+        </article>
+      </div>
     </section>
 
     <section class="home-board__how">
@@ -191,6 +319,16 @@ onMounted(() => {
           <p>UI, REST, gRPC и PostgreSQL поднимаются локально одной командой.</p>
         </li>
       </ol>
+    </section>
+
+    <section class="home-board__limits">
+      <h2 class="home-board__section-title">Чего в книге нет</h2>
+      <ul>
+        <li>Готовых решений «скопировать в свой проект» — код собирается по ходу и объясняется.</li>
+        <li>Обзора всех инструментов рынка: стек один — Playwright, REST, gRPC, PostgreSQL.</li>
+        <li>Английской версии: переведено несколько глав, работа заморожена в пользу русской.</li>
+        <li>Обещания «выучить за неделю»: объём книги — {{ facts[0].value }} глав.</li>
+      </ul>
     </section>
   </div>
 </template>
@@ -306,6 +444,61 @@ onMounted(() => {
   font-variant-numeric: tabular-nums;
 }
 
+.home-board__why-grid,
+.home-board__access-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 1px;
+  background: var(--book-rule);
+  border: 1px solid var(--book-rule);
+}
+
+.home-board__why-grid article,
+.home-board__tier {
+  background: var(--vp-c-bg);
+  padding: 22px;
+  display: grid;
+  gap: 8px;
+  align-content: start;
+}
+
+.home-board__why-grid h3 {
+  font-family: var(--book-serif);
+  font-size: 19px;
+  margin: 0;
+}
+
+.home-board__why-grid p,
+.home-board__tier-text {
+  margin: 0;
+  color: var(--book-ink-2);
+  font-size: 15px;
+  line-height: 1.55;
+}
+
+.home-board__tier-value {
+  margin: 0;
+  font-family: var(--book-serif);
+  font-size: 40px;
+  line-height: 1;
+  font-variant-numeric: tabular-nums;
+}
+
+.home-board__tier--paid {
+  border-top: 3px solid var(--vp-c-brand-1);
+}
+
+.home-board__tier--active {
+  border-top-color: var(--book-pass);
+}
+
+.home-board__tier-note {
+  margin: 4px 0 0;
+  font-family: var(--book-mono);
+  font-size: 12px;
+  color: var(--book-ink-3);
+}
+
 .home-board__progress-head {
   display: flex;
   justify-content: space-between;
@@ -380,7 +573,21 @@ onMounted(() => {
   margin: 0 0 18px;
   padding-bottom: 10px;
   border-bottom: 1px solid var(--book-rule);
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 16px;
+  flex-wrap: wrap;
 }
+
+.home-board__section-link {
+  font-family: var(--book-mono);
+  font-size: 12px;
+  color: var(--vp-c-brand-1);
+  text-decoration: none;
+}
+
+.home-board__section-link:hover { text-decoration: underline; }
 
 .home-board__steps {
   list-style: none;
@@ -416,6 +623,19 @@ onMounted(() => {
   margin: 0;
   color: var(--book-ink-2);
   font-size: 15px;
+}
+
+.home-board__limits ul {
+  margin: 0;
+  padding-left: 20px;
+  display: grid;
+  gap: 8px;
+}
+
+.home-board__limits li {
+  color: var(--book-ink-2);
+  font-size: 15px;
+  line-height: 1.55;
 }
 
 @media (max-width: 860px) {

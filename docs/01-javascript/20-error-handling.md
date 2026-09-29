@@ -196,8 +196,8 @@ console.log(body.id);
 Что теперь происходит с выполнением?
 
 ```text
-Either error is handled
-or it continues upward and program/test stops.
+Либо ошибка обработана,
+либо она уходит выше — и программа или тест останавливается.
 ```
 
 ### Ошибки времени выполнения
@@ -253,7 +253,7 @@ throw new Error('...')  →  выполнение прерывается,
 Что теперь происходит с выполнением?
 
 ```text
-Statements after throw in the same normal path do not run.
+Инструкции после throw в том же обычном пути не выполняются.
 ```
 
 Собственные классы ошибок — будущая тема. Эта глава использует встроенный `Error`.
@@ -299,8 +299,8 @@ try {
 Что теперь происходит с выполнением?
 
 ```text
-Error is handled by catch block.
-Program can continue after catch if appropriate.
+Ошибку обрабатывает блок catch.
+После catch выполнение может продолжиться, если это уместно.
 ```
 
 ### `finally`
@@ -609,21 +609,21 @@ throw new Error('Expected status 200, received 500');
 Используйте обработку ошибок, когда:
 
 ```text
-operation can fail
-failure has a meaningful recovery/reporting path
+операция может не выполниться
+у отказа есть осмысленный путь восстановления или сообщения
 cleanup must happen
-error message should be improved
+сообщение об ошибке нужно улучшить
 ```
 
 Практический чек-лист:
 
 ```text
-1. What operation can fail?
-2. Can current code handle it meaningfully?
-3. Should execution continue or stop?
-4. What should be logged?
+1. What операция может не выполниться?
+2. Может ли текущий код осмысленно это обработать?
+3. Продолжать выполнение или остановиться?
+4. Что записать в журнал?
 5. Is cleanup needed?
-6. Should error propagate?
+6. Нужно ли передать ошибку выше?
 ```
 
 ---
@@ -669,10 +669,10 @@ try {
 Записывайте достаточно контекста:
 
 ```text
-which operation failed
-what input was used
-what was expected
-what error message appeared
+какая операция не выполнилась
+какие данные были на входе
+что ожидалось
+какое сообщение об ошибке появилось
 ```
 
 ### Очистка в `finally`
@@ -689,7 +689,18 @@ try {
 
 ### Как решить, должен ли тест остановиться
 
----
+Вопрос сводится к одному: имеет ли смысл следующий шаг на текущем состоянии.
+
+| Ситуация | Что делать |
+| --- | --- |
+| дальше идут зависимые шаги | не перехватывать: пусть тест упадёт здесь |
+| ошибка и есть проверяемое поведение | перехватить и проверить её |
+| нужно освободить ресурс | `finally`, но ошибку не глотать |
+| нужно собрать несколько независимых расхождений | продолжать, накапливая ошибки |
+
+Худший вариант — перехватить и промолчать. Тогда тест идёт дальше на неверном
+состоянии и падает позже, в шаге, который ни при чём: расследование начинается
+не с той строки.
 
 ## Итоги
 
@@ -698,9 +709,9 @@ try {
 Основная модель:
 
 ```text
-Programs execute normally until an error interrupts execution.
-Errors do not disappear automatically.
-JavaScript provides mechanisms for deciding how execution continues.
+Программа выполняется обычным путём, пока ошибка его не прервёт.
+Ошибки не исчезают сами.
+JavaScript даёт средства решить, как выполнение продолжится.
 ```
 
 Основные конструкции:
